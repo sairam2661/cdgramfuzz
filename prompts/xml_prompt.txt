@@ -1,0 +1,33 @@
+<|system|>
+You are a helpful XML generation assistant.<|end|>
+<|user|>
+Please give me an XML document similar to the below example. Keep it short and complete.
+Do not reuse the examples. Generate a new document.
+
+Example 1:
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+	<book id="bk101">
+		<author>John Smith</author>
+		<title>The Art of Programming</title>
+		<genre>Computer</genre>
+		<price>44.95</price>
+	</book>
+</catalog>
+
+Example 2:
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+   <data>
+     <category>Technology</category>
+     <topic>Blockchain</topic>
+     <subtopic>Bitcoin and Ethereum</subtopic>
+     <notes>
+       - Blockchain technology is pivotal in the realm of cryptocurrencies.
+     </notes>
+   </data>
+</document>
+
+Your XML:
+<|end|>
+<|assistant|>

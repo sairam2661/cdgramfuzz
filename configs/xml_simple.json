@@ -1,0 +1,12 @@
+{
+	"model_name": "microsoft/Phi-3.5-mini-instruct",
+	"grammar_path": "grammars/xml_simple.lark",
+	"prompt_path": "prompts/xml_prompt.txt",
+	"max_length": 2000,
+	"device": "cuda",
+	"log_level": 1,
+	"enable_backtrack": false,
+	"enable_ff_tokens": false,
+	"output_dir": "output",
+	"file_format": "xml"
+  }

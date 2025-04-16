@@ -1,0 +1,29 @@
+?start: document
+
+document: prolog? element
+
+prolog: "<?xml" attr* "?>"
+
+?element: empty_element
+       | start_tag content end_tag
+
+empty_element: "<" NAME attr* "/>"
+
+start_tag: "<" NAME attr* ">"
+
+end_tag: "</" NAME ">"
+
+content: (element | TEXT)*
+
+attr: NAME "=" STRING
+
+TEXT: /[^<>&]+/
+
+STRING: "\"" /[^"]/ "\""
+      | "'" /[^']/ "'"
+
+NAME: /[a-zA-Z][a-zA-Z0-9-]*/
+
+WHITESPACE: /[ \t\n\r\f]+/
+
+%ignore WHITESPACE

@@ -1,0 +1,150 @@
+// XML LARK Grammar with support for namespaces and complex attributes
+
+?start: document
+
+document: prolog? misc_pre* doctypedecl? misc_pre* element misc_post*
+
+prolog: "<?xml" version_info encoding_decl? standalone_decl? whitespace? "?>"
+
+version_info: whitespace "version" eq STRING
+
+encoding_decl: whitespace "encoding" eq STRING
+
+standalone_decl: whitespace "standalone" eq ("\"yes\"" | "\"no\"" | "'yes'" | "'no'")
+
+eq: whitespace? "=" whitespace?
+
+doctypedecl: "<!DOCTYPE" whitespace NAME (whitespace external_id)? whitespace? ("[" internal_subset "]" whitespace?)? ">"
+
+external_id: "SYSTEM" whitespace STRING 
+           | "PUBLIC" whitespace STRING whitespace STRING
+
+internal_subset: (markupdecl | pedef)*
+
+markupdecl: elementdecl 
+          | attlistdecl 
+          | entitydecl 
+          | notationdecl 
+          | pi 
+          | comment
+
+pedef: "<!ENTITY" whitespace "%" whitespace NAME whitespace entity_def whitespace? ">"
+
+entity_def: entity_value | external_id (whitespace "NDATA" whitespace NAME)?
+
+entity_value: STRING
+
+elementdecl: "<!ELEMENT" whitespace NAME whitespace content_spec whitespace? ">"
+
+content_spec: "EMPTY" 
+            | "ANY" 
+            | mixed 
+            | children
+
+mixed: "(" whitespace? "#PCDATA" (whitespace? "|" whitespace? NAME)* whitespace? ")*"
+     | "(" whitespace? "#PCDATA" whitespace? ")"
+
+children: (choice | seq) ("?" | "*" | "+")?
+
+choice: "(" whitespace? cp (whitespace? "|" whitespace? cp)+ whitespace? ")"
+
+seq: "(" whitespace? cp (whitespace? "," whitespace? cp)* whitespace? ")"
+
+cp: (NAME | choice | seq) ("?" | "*" | "+")?
+
+attlistdecl: "<!ATTLIST" whitespace NAME whitespace? att_def* whitespace? ">"
+
+att_def: whitespace NAME whitespace att_type whitespace default_decl
+
+att_type: string_type 
+        | tokenized_type 
+        | enumerated_type
+
+string_type: "CDATA"
+
+tokenized_type: "ID" | "IDREF" | "IDREFS" | "ENTITY" | "ENTITIES" | "NMTOKEN" | "NMTOKENS"
+
+enumerated_type: notation_type | enumeration
+
+notation_type: "NOTATION" whitespace "(" whitespace? NAME (whitespace? "|" whitespace? NAME)* whitespace? ")"
+
+enumeration: "(" whitespace? NMTOKEN (whitespace? "|" whitespace? NMTOKEN)* whitespace? ")"
+
+default_decl: "#REQUIRED" 
+            | "#IMPLIED" 
+            | (("#FIXED" whitespace)? STRING)
+
+entitydecl: gedecl | pedecl
+
+gedecl: "<!ENTITY" whitespace NAME whitespace entity_def whitespace? ">"
+
+pedecl: "<!ENTITY" whitespace "%" whitespace NAME whitespace pe_def whitespace? ">"
+
+pe_def: entity_value | external_id
+
+notationdecl: "<!NOTATION" whitespace NAME whitespace (external_id | public_id) whitespace? ">"
+
+public_id: "PUBLIC" whitespace STRING
+
+misc_pre: comment | pi | misc_whitespace
+
+misc_post: comment | pi | misc_whitespace
+
+comment: "<!--" _COMMENT_CONTENT "-->"
+
+_COMMENT_CONTENT: /([^-]|(-[^-]))*/ 
+
+pi: "<?" NAME (whitespace PI_CONTENT)? "?>"
+
+PI_CONTENT: /[^?]*(\?[^>])*[^?]*/
+
+?element: empty_element
+       | start_tag content end_tag
+
+empty_element: "<" qualified_name attr* whitespace? "/>"
+
+start_tag: "<" qualified_name attr* whitespace? ">"
+
+end_tag: "</" qualified_name whitespace? ">"
+
+qualified_name: (prefix ":")? local_part
+
+prefix: NAME
+
+local_part: NAME
+
+attr: whitespace attr_name eq STRING
+
+attr_name: (prefix ":")? local_part 
+
+content: (CHARDATA? ((element | comment | pi | reference | cdata_sect) CHARDATA?)*)?
+
+cdata_sect: "<![CDATA[" CDATA_CONTENT "]]>"
+
+CDATA_CONTENT: /([^\]]|\][^\]]|\]\][^>])*/
+
+reference: entity_ref | char_ref
+
+entity_ref: "&" NAME ";"
+
+char_ref: "&#" DIGIT+ ";"
+        | "&#x" HEXDIGIT+ ";"
+
+misc_whitespace: /[ \t\r\n]+/
+
+whitespace: /[ \t\r\n]+/
+
+NMTOKEN: /[a-zA-Z0-9:_.-]+/
+
+NAME: /[a-zA-Z_:]([a-zA-Z0-9_:.-])*/
+
+STRING: "\"" /[^"]*/ "\""
+      | "'" /[^']*/ "'"
+
+CHARDATA: /[^<&]+/
+
+DIGIT: /[0-9]/
+
+HEXDIGIT: /[0-9a-fA-F]/
+
+%ignore /[ \t\r\n]+/

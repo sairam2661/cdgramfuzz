@@ -1,0 +1,63 @@
+<|system|>
+You are a helpful XML generation assistant.
+<|end|>
+<|user|>
+Can you please give me complex XML?
+Ensure you write ONLY THE XML, without any comments.
+The program should be complete and atomic.
+Once you generate the program, you can stop.
+Do not reuse the Examples. You should create a new one.
+
+
+; Please create a short XML document with complex nested elements, mixed content, and varied attribute types
+<?xml version="1.0" encoding="UTF-8"?>
+<sys:system xmlns:sys="http://example.org/system" xmlns:cfg="http://example.org/config" timestamp="20250408T123456Z">
+  <sys:node id="n1" status="up">
+    <sys:specs>
+      <sys:cpu cores="8">
+        <sys:freq unit="GHz">3.2</sys:freq>
+        <sys:cache>
+          <sys:l1>64K</sys:l1>
+          <sys:l2>256K</sys:l2>
+          <sys:l3>8M</sys:l3>
+        </sys:cache>
+      </sys:cpu>
+      <sys:ram size="16G">
+        <sys:type>DDR4</sys:type>
+        <sys:channels>4</sys:channels>
+      </sys:ram>
+    </sys:specs>
+    <cfg:config>
+      <cfg:params>
+        <cfg:p k="timeout">30</cfg:p>
+        <cfg:p k="retry">5</cfg:p>
+        <cfg:p k="mode">A</cfg:p>
+      </cfg:params>
+      <cfg:flags active="true">
+        <cfg:f>v</cfg:f>
+        <cfg:f>q</cfg:f>
+        <![CDATA[x&y]]>
+      </cfg:flags>
+    </cfg:config>
+    <sys:jobs>
+      <sys:job pid="1042">
+        <sys:prio>1</sys:prio>
+        <sys:state>R</sys:state>
+        <sys:io>
+          <sys:in>/dev/null</sys:in>
+          <sys:out>
+            <sys:file>out.log</sys:file>
+            <sys:buffer>8K</sys:buffer>
+          </sys:out>
+        </sys:io>
+      </sys:job>
+    </sys:jobs>
+  </sys:node>
+</sys:system>
+
+
+
+; Please create a short XML document with complex nested elements, mixed content, and varied attribute types
+<|end|>
+<|assistant|>
+

@@ -1,0 +1,1 @@
+python src/cli/generate_seeds.py --config configs/xml_simple.json --count 5

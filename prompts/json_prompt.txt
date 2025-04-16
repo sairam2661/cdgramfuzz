@@ -1,0 +1,18 @@
+<|system|>
+You are a helpful JSON generation assistant.
+<|end|>
+<|user|>
+Ensure you write ONLY THE JSON, without any comments.
+The JSON should be complete and atomic.
+Once you generate the JSON, you can stop.
+Do not reuse the Examples. You should create a new one.
+
+; Please create a short JSON with complex nested elements, mixed content, and varied attribute types
+{"name":"john", "age":20, "fruits":["apple", "banana", "kiwi"]}
+
+; Please create a short JSON with complex nested elements, mixed content, and varied attribute types
+{"pokemon":"umbreon", "type":"dark", "hp":200, "atk":170, "spa":130, "def":180, "spd":250, "spe":250}
+
+; Please create a short JSON with complex nested elements, mixed content, and varied attribute types
+<|end|>
+<|assistant|>
