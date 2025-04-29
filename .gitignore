@@ -1,3 +1,5 @@
 benchmarks/libxml2-2.9.10/*
 output/*
-
+runs/*/coverage/*id*
+runs/*/coverage/coverage*
+runs/*/output/*

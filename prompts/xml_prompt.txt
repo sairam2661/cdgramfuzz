@@ -1,33 +1,17 @@
-<|system|>
-You are a helpful XML generation assistant.<|end|>
-<|user|>
-Please give me an XML document similar to the below example. Keep it short and complete.
-Do not reuse the examples. Generate a new document.
+Question 1:
+Generate a short but complex XML document using different features. Do not reuse previous solutions. Try to make it as different as possible.
 
-Example 1:
-<?xml version="1.0" encoding="UTF-8"?>
-<catalog>
-	<book id="bk101">
-		<author>John Smith</author>
-		<title>The Art of Programming</title>
-		<genre>Computer</genre>
-		<price>44.95</price>
-	</book>
-</catalog>
+Solution 1:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<note>
+  <to>Alice</to>
+  <from>Bob</from>
+  <subject>Meeting</subject>
+  <message>Don't forget our meeting at 2pm!</message>
+  <priority level="high"/>
+</note>
 
-Example 2:
-<?xml version="1.0" encoding="UTF-8"?>
-<document>
-   <data>
-     <category>Technology</category>
-     <topic>Blockchain</topic>
-     <subtopic>Bitcoin and Ethereum</subtopic>
-     <notes>
-       - Blockchain technology is pivotal in the realm of cryptocurrencies.
-     </notes>
-   </data>
-</document>
+Question 2:
+Generate a short but complex XML document using different features. Do not reuse previous solutions. Try to make it as different as possible.
 
-Your XML:
-<|end|>
-<|assistant|>
+Solution 2:

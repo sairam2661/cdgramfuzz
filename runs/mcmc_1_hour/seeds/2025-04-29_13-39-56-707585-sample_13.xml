@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <description>Product catalog for MyShop</description>
+  <vendor>MyShop</vendor>
+  <date>2022-01-01</date>
+  <product category="electronic">
+    <name>Piano</name>
+    <price>850</price>
+    <inventory>1</inventory>
+    <description>This is a beautiful piano</description>
+    <barcode>1234567890</barcode>
+    <comments>Only 1 in stock</comments>
+  </product>
+  <product category="clothing">
+    <name>T-Shirt</name>
+    <price>15</price>
+    <inventory>10</inventory>
+    <description>A cool T-Shirt</description>
+    <barcode>9876785432</barcode>
+    <comments>No warranty offered</comments>
+  </product>
+  <product category="electronic">
+    <name>Computer</name>
+    <price>2000</price>
+    <inventory>2</inventory>
+    <description>This is a powerful computer</description>
+    <barcode>1100111101</barcode>
+    <comments>Free shipping</comments>
+  </product>
+</catalog>

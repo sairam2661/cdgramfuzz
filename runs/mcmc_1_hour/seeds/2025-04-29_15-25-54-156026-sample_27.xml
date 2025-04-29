@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+  <country name="USA" code="US" currency="USD">
+    <city name="New York" code="NY" district="Manhattan"/>
+    <company name="Toyota">
+      <branch name="Toyota Service" address="34 Wall Street"/>
+    </company>
+  </country>
+  <country name="UK" code="GB" currency="GBP">
+    <city name="London" code="LND" district="Central"/>
+    <company name="BMW">
+      <branch name="BMW Centre" address="200 Fleet Street"/>
+    </company>
+  </country>
+</catalog>

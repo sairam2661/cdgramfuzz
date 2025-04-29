@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <description>
+    <name>Company Catalog</name>
+    <address>
+      <street>123 Main St.</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+      <country>USA</country>
+    </address>
+    <phone type="customer-service">
+      <number>1-800-CUSTOMER</number>
+    </phone>
+    <phone type="sales">
+      <number>1-800-SALES</number>
+    </phone>
+    <fax>
+      <number>1-800-FAX-123</number>
+    </fax>
+    <url>http://www.Anytown.com</url>
+  </description>
+  <product>
+    <name>Widget</name>
+    <description>
+      <longDescription>
+        This is a widget. It does something.
+      </longDescription>
+    </description>
+    <price currency="USD">19.99</price>
+    <inventory quantity="100"/>
+    <category>
+      <name>Tools</name>
+    </category>
+    <image width="200" height="300">
+      <data>
+        R0l GODlahaHAIAAAMMAAAAMKp4bGVzc2UvdHx1cy0yYy4+bH0+T1U3aW5kZXRlcy8+AAACH5BAKE6AQABAAAAFABAAAAACAAICRAEAOw==</data>
+    </image>
+  </product>
+  <product>
+    <name>Jaguar</name>
+    <description>
+      <longDescription>
+        This is a lovely car. It is blue.
+      </longDescription>
+    </description>
+    <price currency="USD">49.99</price>
+    <inventory quantity="50"/>
+    <category>
+      <name>Automotive</name>
+    </category>
+    <image width="200" height="300">
+      <data>
+        R0l GODlahaHAIAAAMAAAMKp4bGVzc2UvdHx1cy0yYy4+bH0+T1U3aW5kZXRlcy8+AAACH5BAKE6AQABAAAAFABAAAAACAAICRAEAOw==</data>
+    </image>
+  </product>
+</catalog>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Dummies</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An introduction to XML programming.</description>
+    <company>ABC Books</company>
+    <contact>012-345-67890</contact>
+    <country>USA</country>
+    <language>English</language>
+    <pages>300</pages>
+    <reviews>
+      <review>
+        <rating>5</rating>
+        <comment>Great book!</comment>
+        <author>Bruce Meyer</author>
+      </review>
+    </reviews>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT for Beginners</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A guide to XSLT programming.</description>
+    <company>ABC Books</company>
+    <contact>012-345-67890</contact>
+    <country>USA</country>
+    <language>English</language>
+    <pages>400</pages>
+    <reviews>
+      <review>
+        <rating>5</rating>
+        <comment>Saved my job!</comment>
+        <author>Ray Murtaugh</author>
+      </review>
+    </reviews>
+  </book>
+</catalog>

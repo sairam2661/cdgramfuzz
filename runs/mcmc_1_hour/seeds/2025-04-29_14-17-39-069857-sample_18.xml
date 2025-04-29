@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <productset>
+    <product name="Laptop" sku="LP001">
+      <description>High performance laptop with 16GB RAM</description>
+      <specifications>
+        <cpu processor="Intel Core i7" clockSpeed="3.2GHz"/>
+        <memory>16GB DDR4 RAM</memory>
+        <storage>512GB SSD</storage>
+        <battery life="Up to 10 hours"/>
+      </specifications>
+      <revisions>
+        <revision date="2020-01-01">
+          <description>Initial release</description>
+        </revision>
+        <revision date="2020-06-01">
+          <description>Updated with Intel Core i9 processor</description>
+        </revision>
+      </revisions>
+      <pricing>
+        <price currency="USD" amount="1299.99"/>
+        <discount level="10%"/>
+      </pricing>
+    </product>
+    <product name="Smartphone" sku="SM001">
+      <description>High-end smartphone with 12GB RAM</description>
+      <specifications>
+        <cpu processor="Qualcomm Snapdragon 888" clockSpeed="2.9GHz"/>
+        <memory>12GB LPDDR5 RAM</memory>
+        <storage>256GB UFS 3.0</storage>
+        <camera resolution="108MP + 16MP + 12MP triple camera"/>
+      </specifications>
+      <revisions>
+        <revision date="2020-09-01">
+          <description>Initial release</description>
+        </revision>
+      </revisions>
+      <pricing>
+        <price currency="USD" amount="899.99"/>
+        <discount level="5%"/>
+      </pricing>
+    </product>
+  </productset>
+</catalog>

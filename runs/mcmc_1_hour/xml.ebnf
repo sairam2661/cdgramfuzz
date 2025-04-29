@@ -1,0 +1,22 @@
+root      ::= document
+
+document  ::= (prolog)? element
+prolog    ::= xmldecl (ws comment | ws pi)*
+xmldecl   ::= "<?xml" ws attr* "?>" ws
+
+element   ::= emptyelement | openclose
+emptyelement ::= "<" name ws attr* "/>" ws
+openclose ::= opentag content closetag
+opentag   ::= "<" name ws attr* ">" ws
+closetag  ::= "</" name ">" ws
+attr      ::= name "=" string ws
+content   ::= (chardata | element | comment | pi | cdata)*
+
+name      ::= [a-zA-Z_:] [a-zA-Z0-9_:.-]* ws
+chardata  ::= [^<&]+ ws
+cdata     ::= "<![CDATA[" [^\]]* "]]>" ws
+comment   ::= "<!--" [^-]* "-->" ws
+pi        ::= "<?" [^?]* "?>" ws
+string    ::= "\"" [^"]* "\"" | "'" [^']* "'"
+
+ws        ::= ([ \t\n\r] ws)?

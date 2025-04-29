@@ -1,10 +1,10 @@
 {
-	"model_name": "microsoft/Phi-3.5-mini-instruct",
+	"model_name": "meta-llama/Llama-3.2-3B-Instruct",
 	"grammar_path": "grammars/xml_simple.lark",
 	"prompt_path": "prompts/xml_prompt.txt",
-	"max_length": 2000,
+	"max_length": 512,
 	"device": "cuda",
-	"log_level": 1,
+	"log_level": 0,
 	"enable_backtrack": false,
 	"enable_ff_tokens": false,
 	"output_dir": "output",

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <product>
+    <name>Mona Lisa</name>
+    <description>An oil painting by Leonardo da Vinci from the early 16th century.</description>
+    <price currency="USD">600.000,00</price>
+    <author>Leonardo da Vinci</author>
+    <artist>
+      <first_name>L</first_name>
+      <last_name>Da Vinci</last_name>
+    </artist>
+    <date>
+      <year>1503</year>
+      <month>02</month>
+      <day>18</day>
+    </date>
+    <tags>
+      <tag>art</tag>
+      <tag>painting</tag>
+      <tag>historical</tag>
+    </tags>
+  </product>
+  <product>
+    <name>The Starry Night</name>
+    <description>A painting by Vincent van Gogh from the late 19th century.</description>
+    <price currency="EUR">800.000,00</price>
+    <author>Vincent van Gogh</author>
+    <artist>
+      <first_name>Vincent</first_name>
+      <last_name>Van Gogh</last_name>
+    </artist>
+    <date>
+      <year>1889</year>
+      <month>06</month>
+      <day>18</day>
+    </date>
+    <tags>
+      <tag>art</tag>
+      <tag>painting</tag>
+      <tag>pictorialism</tag>
+    </tags>
+  </product>
+</catalog>

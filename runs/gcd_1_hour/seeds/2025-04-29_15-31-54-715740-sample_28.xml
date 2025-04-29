@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+  <description>Products Catalog</description>
+  <store name="Warehouse A" address="123 Main St, New York, NY"></store>
+  <store name="Warehouse B" address="456 Market St, San Francisco, CA">
+    <product name="Product A" price="19.99" category="Electronics"></product>
+    <product name="Product B" price="9.99" category="Books"></product>
+  </store>
+  <store name="Warehouse C" address="789 Oak St, Los Angeles, CA" tax_rate="8%"></store>
+  <store name="Warehouse D" address="321 Pine St, Chicago, IL" shipment_policy="free"></store>
+  <product name="Product C" price="29.99" category="Electronics" shipping_cost="5.99"></product>
+  <product name="Product D" price="19.99" category="Books" currency="EUR" exchange_rate="1.25"></product>
+</catalog>
