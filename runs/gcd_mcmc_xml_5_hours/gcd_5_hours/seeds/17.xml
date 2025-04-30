@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+   <country>USA</country>
+   <city>New York</city>
+   <coins>
+     <coin name="dollar"/>
+     <coin name="dollar"/>
+     <coin name="penny"/>
+     <coin name="cent"/>
+   </coins>
+   <toy>
+     <name>Die-Cast Car</name>
+     <weight units="oz">0.3</weight>
+     <color>red</color>
+     <descriptiontir>Die-Cast Car is the best!</descriptiontir>
+   </toy>
+</catalog><|eot_id|>

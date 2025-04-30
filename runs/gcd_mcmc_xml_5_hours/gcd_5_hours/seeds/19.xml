@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+   <bookstore:name>Words, Wonders, and Whimsy</bookstore:name>
+   <book>
+     <title>Web Programming</title>
+     <author>Lisa</author>
+     <publisher>New Hope</publisher>
+     <price>29.99</price>
+   </book>
+   <book>
+     <title>Photography Basics</title>
+     <author>Joshua</author>
+     <genre>Western</genre>
+   </book>
+   <bookstore:author>
+     <name>Johnchan</name>
+     <ocupation>Author</ocupation>
+   </bookstore:author>
+   <bookstore:rating system="4.5"/>
+</bookstore>

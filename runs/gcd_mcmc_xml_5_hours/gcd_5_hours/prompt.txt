@@ -1,0 +1,17 @@
+Question 1:
+Generate a short but complex XML document using different features. Do not reuse previous solutions. Try to make it as different as possible.
+
+Solution 1:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<note>
+  <to>Alice</to>
+  <from>Bob</from>
+  <subject>Meeting</subject>
+  <message>Don't forget our meeting at 2pm!</message>
+  <priority level="high"/>
+</note>
+
+Question 2:
+Generate a short but complex XML document using different features. Do not reuse previous solutions. Try to make it as different as possible.
+
+Solution 2:

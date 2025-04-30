@@ -3,3 +3,6 @@ output/*
 runs/*/coverage/*id*
 runs/*/coverage/coverage*
 runs/*/output/*
+runs/*/*/coverage/*id*
+runs/*/*/coverage/coverage*
+runs/*/*/output/*

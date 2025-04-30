@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<caddress>
+   <streetNumber>123 Denham Street</streetNumber>
+   <city>Kensington</city>
+   <secondaryAddress>
+      <suiteNumber>201</suiteNumber>
+      <buildNumber>43</buildNumber>
+   </secondaryAddress>
+   <mainAddress>
+      <streetNumber>456 Gr Treatter Street</streetNumber>
+      <city>Rug do Branch</city>
+   </mainAddress>
+   <enzhen>
+      <locality>no</locality>
+   </zhengen>
+   <geodeticLocation>
+     <altitude>123.45</altitude>
+     <geoCoordinate>
+       <attribute>23.456789</attribute>
+     </geoCoordinate>
+   </geodeticLocation>
+   <rating>78</rating>
+</caddress><|eot_id|>

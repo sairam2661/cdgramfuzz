@@ -1,0 +1,23 @@
+start: document
+
+document: [prolog] element
+prolog: xmldecl (WS comment | WS pi)*
+xmldecl: "<?xml" WS attr* "?>" WS
+
+element: emptyelement | openclose
+emptyelement: "<" name WS attr* "/>" WS
+openclose: opentag content closetag
+opentag: "<" name WS attr* ">" WS
+closetag: "</" name ">" WS
+attr: name "=" string WS
+content: (chardata | element | comment | pi | cdata)*
+
+name: /[a-zA-Z_:][a-zA-Z0-9_:.-]*/ WS
+chardata: /[^<&]+/ WS
+cdata: "<![CDATA[" /[^\]]*/ "]]>" WS
+comment: "<!--" /[^-]*/ "-->" WS
+pi: "<?" /[^?]*/ "?>" WS
+string: ESCAPED_STRING WS
+
+WS: /[ \t\n\r]*/
+%import common.ESCAPED_STRING

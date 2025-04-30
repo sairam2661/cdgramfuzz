@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+   <book id="bk101">
+      <author>John Smith</author>
+      <title>XML for Dummies</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2001-10-10</publish_date>
+      <description>An XML book</description>
+      <publisher>$a Books</publisher>
+      <isbn>0-13-091322-7</isbn>
+   </book>
+   <book id="bk102">
+      <author>Jane Doe</author>
+      <title>XSLT for Dummies</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2001-05-20</publish_date>
+      <description>A practical guide to XSLT</description>
+      <publisher>$b Books</publisher>
+      <isbn>0-13-091385-4</isbn>
+   </book>
+   <book id="bk103">
+      <author>John Smith</author>
+      <title>XSLT for Intermediate Users</title>
+      <genre>Computer</genre>
+      <price>49.95</price>
+      <publish_date>2002-06-10</publish_date>
+      <description>A more advanced look at XSLT</description>
+      <publisher>$c Books</publisher>
+      <isbn>0-13-091342-8</isbn>
+   </book>
+</catalog>

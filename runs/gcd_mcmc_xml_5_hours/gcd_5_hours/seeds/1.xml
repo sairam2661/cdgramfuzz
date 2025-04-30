@@ -1,0 +1,18 @@
+<catalog>
+   <description xml:lang="en">
+      <title>Hello World</title>
+      <description>
+         <p>Hello, world.</p>
+         <p>This is a test document.</p>
+      </description>
+   </description>
+   <company xml:lang="en">
+      <companyName>RedHat</companyName>
+      <address xml:lang="en">
+         <street>123 Main St</street>
+         <city>Anytown</city>
+         <state>CA</state>
+         <zip>12345</zip>
+      </address>
+   </company>
+</catalog>
