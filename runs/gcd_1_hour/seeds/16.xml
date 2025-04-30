@@ -1,0 +1,20 @@
+<catalog>
+   <book id="bk101">
+      <title>C</title>
+      <author>John Smith</author>
+      <publisher>Alpha</publisher>
+      <price>p.00</price>
+      <rating>5</rating>
+   </book>
+   <book id="bk102">
+      <title>Foobar</title>
+      <author>Jane Doe</author>
+      <publisher>Bravo</publisher>
+      <price>p.50</price>
+      <rating>4</rating>
+   </book>
+   <ol>
+      <li id="li001"><emphasis>Quick</emphasis></li>
+      <li id="li002"><emphasis>Brief</emphasis></li>
+   </ol>
+</catalog>

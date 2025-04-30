@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog>
+   <description xml:lang="en">This is a sample catalog.</description>
+   <company name="Big Inc." date="2020-01-01" tax-exempt="no"/>
+   <product name="Sample Product" price="19.99">
+      <size>Size Large</size>
+      <cost currency="USD">9.99</cost>
+      <description xml:lang="en">This is the product description.</description>
+   </product>
+</catalog>

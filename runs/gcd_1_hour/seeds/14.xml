@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+   <result>
+      <item>
+         <name> Christos Giamparelli</name>
+         <age>46</age>
+         <address>
+            <street>10 Via Nazionale</street>
+            <city>Luca</city>
+            <region>Barcellona</region>
+         </address>
+         <employment>
+            <position>Professor</position>
+            <institution>Buscar</institution>
+         </employment>
+      </item>
+   </result>
+</catalog><|eot_id|>

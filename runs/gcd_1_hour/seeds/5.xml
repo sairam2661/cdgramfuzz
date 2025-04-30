@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+A comment within the XML file
+-->
+
+<!--
+The Only Technology
+-->
+
+<bookstore>
+    <book category="textbook">
+        <title>Integrated Systems Design
+        </title>
+        <author>This is a book about big ideas
+        </author>
+        <year>2004
+        </year>
+        <price>60.00
+        </price>
+    </book>
+    <book category="non-fiction">
+        <title>How to explain calculus
+        </title>
+        <author>Tϟ man
+        </author>
+        <year>2019
+        </year>
+        <price>0.00
+        </price>
+    </book>
+</bookstore>

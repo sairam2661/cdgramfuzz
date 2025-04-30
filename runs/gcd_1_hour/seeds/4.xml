@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+   <product>TV</product>
+   <description>Standard TV with 24in screen and 720p resolution.</description>
+   <brand>Mansur Gavriel</brand>
+   <condition>new</condition>
+   <price currency="USD">593.70</price>
+   <image src="newman-islam-standings-6763.jpg"/>
+   <attribute key="color">white</attribute>
+   <author>Shahzad Islam</author>
+</catalog>

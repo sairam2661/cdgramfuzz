@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<library>
+   <book id="b101">
+     <title>ARomanceNovel</title>
+     <author><name>Alice</name></author>
+     <subject>爱情战争</subject>
+     <rating rating="4.5"/>
+   </book>
+   <book id="b102">
+     <title>ThePresident</title>
+     <author><name> constrained 部割 funciones minist</name></author>
+     <subject> estão Status Nó</subject>
+     <rating rating="3.2"/>
+   </book>
+</library>

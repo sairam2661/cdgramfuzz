@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playlist>
+   <channel>
+      <title>ExampleSong</title>
+      <artist>John Tesh</artist>
+      <genre>Japanesesecnario</genre>
+      <rating>3/5</rating>
+      <length>180</length>
+      <samplerate>44100Hz</samplerate>
+      <poster>example-music.jpg</poster>
+   </channel>
+   <channel>
+      <title>Abundance</title>
+      <artist>Andy Allison</artist>
+      <genre>New Age</genre>
+      <rating>4/5</rating>
+      <length>220</length>
+      <samplerate>48000Hz</samplerate>
+      <postdatum>2020-02-25</postdatum>
+   </channel>
+   <track>
+      <channelref then=">Utf Copyright</channelref>
+      <total_tracks>2</total_tracks>
+   </track>
+   <track>
+      <title>Magnifico</title>
+      <channelref then=">Wh Audio Unit</channelref>
+      <total_tracks>2</total_tracks>
+   </track>
+</playlist>
