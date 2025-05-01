@@ -1,0 +1,46 @@
+<personal-communications xmlns:xi="http://schemas.xmlsoap.org/xi/2008/"
+  xmlns:tei="http://www.tei-c.org/xml/tei10"
+  encoding="UTF-8"
+  tei:xmlVersion="1.0"
+  xi:includeComments="no"
+  standalone="yes">
+  <letter sender="Carol"
+    to="Derek"
+    date="16 May 1811"
+    source="Hertfordshire"
+    destination="London"
+    postmark="Hertford">
+
+    <address>
+      <front>
+        <addressLine>Mr. John Robinson</addressLine>
+        <addressLine>High Street</addressLine>
+        <addressLine>Hungry Hill</addressLine>
+        <addressLine>Bishop's Stortford</addressLine>
+        <addressLine>HerEFORDSHIRE</addressLine>
+        <country>England</country>
+      </front>
+    </address>
+
+    <insideAddress>
+      <street>
+        <streetName>High</streetName>
+        <streetNumber />
+      </street>
+      <town>Stortford</town>
+      <region>Hertfordshire</region>
+      <postCode>CB13 9JF</postCode>
+      <state />
+      <country>England</country>
+    </insideAddress>
+
+    <back>
+      <addressLine>Mr. Edward Robinson</addressLine>
+      <addressLine>High Street</addressLine>
+      <addressLine>Hungry Hill</addressLine>
+      <addressLine>Bishop's Stortford</addressLine>
+      <addressLine>HerEFORDSHIRE</addressLine>
+      <country>England</country>
+    </back>
+  </letter>
+</personal-communications>

@@ -1,0 +1,16 @@
+<hospitality>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <!---->
+  <hotel name="Royal Inn">
+    <notation name="Currency" definition="USD"/>
+    <room type="Suite" pricecurrency="USD"/>
+    <facilities>
+      <facility name="Pool" type="Swimming" currency="USD"/>
+      <facility name="Gym" type="Fitness" currency="USD"/>
+    </facilities>
+    <amenities>
+      <amenity name="Free WiFi" pricecurrency="USD"/>
+      <amenity name="Complimentary Breakfast" pricecurrency="USD"/>
+    </amenities>
+  </hotel>
+</hospitality>

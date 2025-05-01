@@ -1,0 +1,24 @@
+<?xml version =  1.0  encoding = "UTF-8" standalone =  yes?>
+
+<personal-data>
+  <name>John Doe</name>
+  <address>
+    <street>Holyoake Height</street>
+    <city>Manchester</city>
+    <state>Greater Manchester</state>
+    <zip>M14 5DQ</zip>
+    <phone>0161 123 4567</phone>
+    <fax>0161 123 4789</fax>
+  </address>
+  <emergency-contact>
+    <name>Nan</name>
+    <relation>Parent</relation>
+    <phone>0789 123 4567</phone>
+    <address>
+      <street>123 High Street</street>
+      <city>Timberhatch</city>
+      <state>Devon</state>
+      <zip>EX5 7BU</zip>
+    </address>
+  </emergency-contact>
+</personal-data>

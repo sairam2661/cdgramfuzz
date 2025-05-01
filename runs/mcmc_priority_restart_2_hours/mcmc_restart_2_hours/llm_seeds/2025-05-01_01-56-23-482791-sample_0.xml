@@ -1,0 +1,13 @@
+<!DOCTYPE productcatalog SYSTEM "productcatalog.dtd">
+<productcatalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.com/productcatalog.xsd productcatalog.xsd">
+  <product>
+    <name>&amp;Product A&amp;</name>
+    <description>&lt;p&gt;This is a paragraph of text.&lt;/p&gt;</description>
+    <price>10.99</price>
+  </product>
+  <product>
+    <name>Product B</name>
+    <description>Character reference test &lt; &gt; a &amp; b &amp;</description>
+    <price>9.99</price>
+  </product>
+</productcatalog>

@@ -1,0 +1,22 @@
+<?xml version=1.0 encoding="UTF-8" standalone = no?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
+  <item id="book1">
+    <title>XML for Beginners</title>
+    <author xi:type="AuthorType">
+      <firstName>John</firstName>
+      <lastName>Doe</lastName>
+    </author>
+    <price currency="USD">29.99</price>
+    <pubDate>2022-01-01T00:00:00.0000-05:00</pubDate>
+    <description xsi:type="descriptionType">This is a sample XML document.</description>
+    <bookType>Hardcover</bookType>
+  </item>
+  <item id="book2">
+    <title>XML Tutorial</title>
+    <author> Jane Smith </author>
+    <price currency="USD">19.99</price>
+    <pubDate>2022-02-01T00:00:00.0000-05:00</pubDate>
+    <description>This is a sample XML document</description>
+    <bookType>Paperback</bookType>
+  </item>
+</catalog>

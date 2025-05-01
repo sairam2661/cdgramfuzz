@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <description>World Wide Web catalog</description>
+    <entity name="USDollar" >\$ </entity>
+    <entity name="Celsius" >°C </entity>
+    <document>
+        <section name="Currency" >
+            <section name="Euro" >
+                <section name="EuroZone" >
+                    <section name="EuropeanUnion">
+                        <section name="Country1">
+                            <section name="City1" >Paris </section>
+                            <section name="City2" >Rome </section>
+                        </section>
+                        <section name="Country2">
+                            <section name="City3" >Berlin </section>
+                            <section name="City4" >Munich </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </document>
+</catalog>

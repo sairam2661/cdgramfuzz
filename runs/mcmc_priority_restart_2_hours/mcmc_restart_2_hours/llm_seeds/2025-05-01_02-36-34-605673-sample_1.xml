@@ -1,0 +1,17 @@
+<Bibliography xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance http://example.comschema/schema.xsd"
+version="1.0"
+encoding="UTF-8"
+standalone="yes">
+    <Reference PublicationMonth="February" Identification="Book-123">
+        <Title>Algorithms to Live By</Title>
+        <Authors>Steven J. Brooks, William N. Taylor</Authors>
+        <Year>2017</Year>
+        <Publisher>William Morrow Paperbacks</Publisher>
+    </Reference>
+    <Reference PublicationMonth="March" Identification="Journal-456">
+        <Title>From Linear to Nonlinear Regression - An Improved Method</Title>
+        <Authors>William O. Hill</Authors>
+        <Year>2019</Year>
+        <Journal>American Journal of Mathematics</Journal>
+    </Reference>
+</Bibliography>

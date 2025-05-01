@@ -1,0 +1,32 @@
+<SchoolYear xmlns="http://www.schoolyear.org schema">
+  <CourseSchedule>
+    <Course ID="math125">
+      <CourseName>Calculus</CourseName>
+      <Credits>4</Credits>
+      <GradeSchedule>
+        <WeekNumber>1</WeekNumber>
+        <Homework>
+          <Problem1>Find the derivative of x^2</Problem1>
+          <Problem2>Find the integral of x^2</Problem2>
+        </Homework>
+        <MidtermExam>
+          <Date>10/12/2023</Date>
+        </MidtermExam>
+      </GradeSchedule>
+    </Course>
+    <Course ID="scis101">
+      <CourseName>Biology</CourseName>
+      <Credits>3</Credits>
+      <GradeSchedule>
+        <WeekNumber>1</WeekNumber>
+        <Homework>
+          <Problem1>Describe the water cycle</Problem1>
+          <Problem2>Compare the characteristics of plants and animals</Problem2>
+        </Homework>
+        <FinalExam>
+          <Date>12/15/2023</Date>
+        </FinalExam>
+      </GradeSchedule>
+    </Course>
+  </CourseSchedule>
+</SchoolYear>

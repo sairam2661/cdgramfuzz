@@ -1,0 +1,24 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<?external-param set='myparam'?>
+
+<!DOCTYPE address SYSTEM "address.dtd">
+
+<address xmlns="http://doc.xmldt.com/dtd/03-10-06/">
+
+    <country code="US">UNITED STATES OF AMERICA</country>
+    <name>John T. Doe</name>
+    <streetName1>123 Main St</streetName1>
+    <streetName2>APT 101</streetName2>
+    <city>ANYTOWN</city>
+    <state>CA</state>
+    <zipCode>A1B 2C3</zipCode>
+    <telephone>555-555-5555</telephone>
+    <alternatingTelephone>555-1234</alternatingTelephone>
+    <faxNumber>555-678-90-12</faxNumber>
+    <email>john.doe@anytown.com</email>
+
+    <external-entity>
+        <external-param name="myparam">This is an external entity reference</external-param>
+    </external-entity>
+    
+</address>

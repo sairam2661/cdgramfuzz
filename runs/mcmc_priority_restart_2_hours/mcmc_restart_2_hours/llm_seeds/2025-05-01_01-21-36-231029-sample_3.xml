@@ -1,0 +1,24 @@
+<?xml version =  1.0  encoding="UTF-8"?>
+ <catalog>
+    <book id="bk101">
+       <author>John Smith</author>
+       <title>XML for Beginners</title>
+       <genre>Computer</genre>
+       <price>39.95</price>
+       <publish_date>2000-10-01</publish_date>
+       <description>An in-depth look at creating documents with XML.</description>
+       <category>Computer</category>
+       <image><mathml xmlns="http://www.w3.org/1998.MathML">image</mathml></image>
+       <language>English</language>
+       <country>USA</country>
+       <company>ABC Inc.</company>
+       <contacts>
+          <person>
+             <name>John Smith</name>
+             <title>Developer</title>
+             <email>jsmith@abc.com</email>
+             <phone>555 123 4567</phone>
+          </person>
+       </contacts>
+    </book>
+ </catalog>

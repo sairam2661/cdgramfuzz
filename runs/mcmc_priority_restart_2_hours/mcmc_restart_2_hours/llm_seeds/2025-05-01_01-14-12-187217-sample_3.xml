@@ -1,0 +1,29 @@
+<Solutions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=" Solutions_schema.xsd">
+  <Solutions>
+    <Solution>
+      <ID>SO001</ID>
+      <Title>
+        <Title-String Languages="en-US_fr-FR">
+          <Text xml:lang="en-US">Solution Overview</Text>
+          <Text xml:lang="fr-FR">Description de la solution</Text>
+        </Title-String>
+      </Title>
+      <Description>
+        <Description-Text Types="short-long-abstract">
+          <Text xml:lang="en-US">This solution aims to... </Text>
+          <Text xml:lang="fr-FR">Cette solution vise à... </Text>
+        </Description-Text>
+      </Description>
+      <Priority>
+        <Priority-Indicator
+          Status="in_review"
+          Tags="priority,highrisk"
+          Estimated-Time="08:00"
+        />
+      </Priority>
+      <Created>
+        <Date>2023-04-22T00:00:00.000Z</Date>
+      </Created>
+    </Solution>
+  </Solutions>
+</Solutions>

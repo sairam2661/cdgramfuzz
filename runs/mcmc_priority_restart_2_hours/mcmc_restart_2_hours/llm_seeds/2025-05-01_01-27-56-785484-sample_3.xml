@@ -1,0 +1,19 @@
+<!DOCTYPE product_catalog SYSTEM "product_catalog.dtd">
+<product_catalog xmlns="http://www.example.com/products" version="1.2">
+    <product id="PROD-001">
+        <name>Smartphone</name>
+        <description>An advanced smartphone with high-end camera and processor.</description>
+        <attribute name="color">Silver</attribute>
+        <attribute name="storage" type="int">256</attribute>
+        <attribute name="ram" type="float">6.5</attribute>
+        <manufacturer>Apple Inc.</manufacturer>
+    </product>
+    <product id="PROD-002">
+        <name>Laptop</name>
+        <description>A powerful laptop with large display and long battery life.</description>
+        <attribute name="gpu" type="int">4</attribute>
+        <attribute name="display" type="int">15.6</attribute>
+        <attribute name="ram" type="float">8.0</attribute>
+        <manufacturer>Dell Inc.</manufacturer>
+    </product>
+</product_catalog>

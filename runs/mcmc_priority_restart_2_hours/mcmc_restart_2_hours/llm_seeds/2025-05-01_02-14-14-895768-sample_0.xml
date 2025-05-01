@@ -1,0 +1,15 @@
+<h:root xmlns="http://example.com/ns"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://example.com/ns Schema.xsd"
+       version="1.0"
+       encoding="UTF-8">
+  <person>
+    <name>John Doe</name>
+    <age>30</age>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+    </address>
+  </person>
+</h:root>

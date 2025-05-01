@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!-- XML Document Declaration -->
+<catalog>
+  <product weight="10">
+    <name>Book1</name>
+    <description>This is a test Book1</description>
+    <!-- Book1 Details -->
+    <price>20</price>
+  </product>
+  <product weight="15">
+    <name>Book2</name>
+    <description>This is a test Book2</description>
+    <!-- Book2 Details -->
+    <price>25</price>
+  </product>
+  <!-- Product List  -->
+</catalog>

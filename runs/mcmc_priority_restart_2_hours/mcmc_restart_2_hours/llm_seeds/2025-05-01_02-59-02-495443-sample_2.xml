@@ -1,0 +1,13 @@
+<hierarchy version="1.1" encoding="ISO-8859-1" standalone="no">
+    <organization logo="orglogo.gif" name="ABC Corporation" />
+    <person id="person1">
+        <name first="John" last="Doe">John Doe</name>
+        <address street="123 Main St" city="Anytown" state="CA" zip="12345"/>
+        <phone type="home">555-123-4567</phone>
+    </person>
+    <person id="person2">
+        <name first="Jane" last="Doe">Jane Doe</name>
+        <address street="456 Elm St" city="Othertown" state="NY" zip="67890"/>
+        <phone type="work">555-901-2345</phone>
+    </person>
+</hierarchy>

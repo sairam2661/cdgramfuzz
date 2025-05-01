@@ -1,0 +1,17 @@
+<?xml version =1.0 encoding="UTF-8"?>
+<catalog>
+   <country name="USA">
+     <city name="New York"/>
+     <shop href="http://owl.ink-and-pen.com"/>
+     <email contact="info@owl.ink-and-pen.com"/>
+     <phone type="home">212 953 4051</phone>
+     <address>
+       <street>Wall Street</street>
+       <street type="street">14</street>
+       <city name="New York"/>
+       <state>NY</state>
+       <code>10005</code>
+       <country name="USA"/>
+     </address>
+   </country>
+</catalog>

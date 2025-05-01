@@ -1,0 +1,46 @@
+<catalog xmlns="http://example.com catalog">
+  <description>&lt;entity&gt;CD Collection&amp;lt;/entity&gt;</description>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>&lt;![CDATA[<p>This book contains 10 chapters, each providing a comprehensive introduction to a different aspect of XML.]]></description>
+    <copyright>2001-2007 Pearson Education, Inc., Houston, TX, USA.</copyright>
+    <publisher> Pearson Education</publisher>
+    <price>39.95</price>
+    <idno>ISBN 0-13-080102-4</idno>
+  </book>
+  <book id="bk102">
+    <author>Joe Smith</author>
+    <title>xslt &quot;XML &quot;Language,&quot; Transformation</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>&lt;![CDATA[<p>This book provides a clear introduction to the uses of XSLT, as well as its design principles and advanced techniques.]]></description>
+    <copyright>2008-2015 Pearson Education, Inc., Houston, TX, USA.</copyright>
+    <publisher> Pearson Education</publisher>
+    <price>49.95</price>
+    <idno>ISBN 1-56619-807-9</idno>
+  </book>
+  <country>
+    <name>USA</name>
+    <code>US</code>
+  </country>
+  <company>
+    <name>Pearson Education</name>
+    <address>
+      <street>1 Pearson Plaza</street>
+      <city>New York</city>
+      <state>NY</state>
+      <country>USA</country>
+      <zip>10001-4011</zip>
+    </address>
+    <phone>800-786-4627</phone>
+    <fax>212-401-8538</fax>
+  </company>
+  <employee id=" emp101">
+    <first_name>John</first_name>
+    <last_name>Doe</last_name>
+    <

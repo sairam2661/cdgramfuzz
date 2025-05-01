@@ -1,0 +1,70 @@
+# Simplified XML
+root      ::= document
+document  ::= (prolog)? (doctype ws)? element
+doctype    ::= "<!DOCTYPE" ws name (ws externalid)? ( ws "[" ws intSubset ws "]" )? ws ">" ws
+
+intSubset      ::= ( markupdecl ws )*
+markupdecl     ::= elementdecl | attlistdecl | entitydecl | notationdecl | PEReference | comment | pi 
+
+PEReference    ::= "%" name ";" ws
+elementdecl    ::= "<!ELEMENT" ws name ws contentspec ws ">" ws
+attlistdecl    ::= "<!ATTLIST" ws name ws attdef+ ws ">" ws
+entitydecl     ::= GEDecl | PEDecl
+
+GEDecl         ::= "<!ENTITY" ws name ws entityDef ws ">" ws
+PEDecl         ::= "<!ENTITY" ws "%" ws name ws entityDef ws ">" ws
+entityDef      ::= string | externalid ( ws NDataDecl )?
+NDataDecl      ::= "NDATA" ws name
+
+notationdecl   ::= "<!NOTATION" ws name ws externalid ws ">" ws
+
+contentspec ::= name | "EMPTY" | "ANY" | Mixed | children
+Mixed       ::= "(" ws "#PCDATA" ( ws "|" ws name )* ws ")" "*" ws
+choice      ::= "(" ws cp ( ws "|" ws cp )+ ws ")" occurrence? ws
+seq         ::= "(" ws cp ( ws "," ws cp )* ws ")" occurrence? ws
+children    ::= choice | seq
+
+cp          ::= name occurrence? ws
+occurrence  ::= "?" | "*" | "+" ws
+
+attdef         ::= name ws attType ws defaultDecl ws
+attType        ::= StringType | TokenizedType | EnumeratedType
+
+StringType     ::= "CDATA" ws
+TokenizedType  ::= "ID" ws | "IDREF" ws | "IDREFS" ws | "ENTITY" ws | "ENTITIES" ws | "NMTOKEN" ws | "NMTOKENS" ws | "NOTATION" ws "(" ws name ( ws "|" ws name )* ws ")" ws
+
+EnumeratedType ::= "(" ws name ( ws "|" ws name )* ws ")" ws
+
+defaultDecl    ::= "#REQUIRED" | "#IMPLIED" | ("#FIXED" ws string) | string
+
+externalid ::= "SYSTEM" ws string | "PUBLIC" ws string ws string
+prolog         ::= xmldecl ( ws comment | ws pi )*
+xmldecl        ::= "<?xml" ws VersionInfo ( ws EncodingDecl )? ( ws StandaloneDecl )? ws "?>" ws
+Digit          ::= [0-9]
+Digits         ::= Digit+
+VersionInfo    ::= "version" ws "=" ws Digits "." Digits ws
+EncodingDecl   ::= "encoding" ws "=" ws string ws
+StandaloneDecl ::= "standalone" ws "=" ws ( "yes" | "no" ) ws
+
+element   ::= emptyelement | openclose
+emptyelement ::= "<" name ws attr* "/>" ws
+openclose ::= opentag content closetag
+opentag   ::= "<" name ws attr* ">" ws
+closetag  ::= "</" name ">" ws
+attr      ::= namespaceDecl | name "=" string ws
+namespaceDecl ::= "xmlns" ( ":" name )? ws "=" ws string ws
+
+entityref ::= "&" name ";" ws
+charref   ::= "&#" [0-9]+ ";" ws | "&#x" [0-9A-Fa-f]+ ";" ws
+content   ::= (chardata | entityref | element | comment | pi | cdata)*
+name      ::= QName ws
+prefix    ::= [A-Za-z_][A-Za-z0-9_.-]* 
+localPart ::= [A-Za-z_][A-Za-z0-9_.-]* 
+QName     ::= prefix ":" localPart | localPart
+
+chardata  ::= [^<&]+ ws
+cdata     ::= "<![CDATA[" [^\]]* "]]>" ws
+comment   ::= "<!--" [^-]* "-->" ws 
+pi        ::= "<?" [^?]* "?>" ws
+string    ::= "\"" ( [^"&] | entityref | charref )* "\"" ws | "'" ( [^'&] | entityref | charref )* "'" ws
+ws        ::= ([ \t\n\r] ws)?

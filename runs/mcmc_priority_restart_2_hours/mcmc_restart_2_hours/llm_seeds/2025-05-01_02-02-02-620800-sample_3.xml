@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+<country code ="Myanmar">Myanmar</country>
+<country code="Thailand">Thailand</country>
+<person name ="\u00c1lbert" surname ="\u00d6ystrom"/> 
+<book isbn =""  price="\u20ac 29,99" author ="\u00e5hlberg" title ="\u00c3pple \u00c5pple"/>
+<book isbn =""  price="\u20ac 19,99" author ="\u00e5hlberg" title ="\u00c3rd \u00e5rd"/>
+<book isbn =""  price="\u20ac 9,99" author ="\u00e5hlberg" title ="\u00c3ir \u00e5ir"/>
+</catalog>

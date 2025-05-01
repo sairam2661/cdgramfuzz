@@ -1,0 +1,7 @@
+<div:book xmlns:div="http://www.example.com/book" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.com/book Book.xsd">
+    <div:title>Sample Book</div:title>
+    <div:author>John Doe</div:author>
+    <div:genre>Non-Fiction</div:genre>
+    <div:price currency="USD" amount="19.99">19.99</div:price>
+    <div:published>2020</div:published>
+</div:book>

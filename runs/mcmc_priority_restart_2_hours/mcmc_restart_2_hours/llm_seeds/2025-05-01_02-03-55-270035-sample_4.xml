@@ -1,0 +1,16 @@
+<?xml version =1.0 encoding="utf-8"?>
+<catalog>
+  <description>&copy; 2024.</description>
+  <product name="Book1" price="19.99">
+    <description>Regular book</description>
+    <character ref="&lt;p&gt; &lt;/p&gt;"/>
+    <character ref="&amp;"></character>
+    <condition condition-type="used"/>
+  </product>
+  <product name="Music1" price="9.99">
+    <description>Demo music</description>
+    <character ref="&agr;"/>
+    <item-ref item-ref-name="item1" item-ref-url="https: item1"></character>
+    <condition condition-type="new"></condition>
+  </product>
+</catalog>

@@ -1,0 +1,13 @@
+<?xml version =1.0 encoding="UTF-8"?>
+<catalog xmlns:cid="http://example.com/catalog/identifiers" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/catalog/identifiers catalog.xsd">
+    <item id="1">
+        <cid:identifier>Item 1</cid:identifier>
+        <name>Book A</name>
+        <description>First book.</description>
+    </item>
+    <item id="2">
+        <cid:identifier>Item 2</cid:identifier>
+        <name>Book B</name>
+        <description>Second book.</description>
+    </item>
+</catalog>

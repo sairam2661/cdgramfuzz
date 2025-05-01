@@ -1,0 +1,26 @@
+<SchoolData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schooldata.xsd http://schemas.example.com/school/schooldata.xsd" version="1.0" encoding="UTF-8" standalone="yes">
+  <School>
+    <Name>Springfield Elementary</Name>
+    <Address>
+      <Street>20 W Main St</Street>
+      <City>Springfield</City>
+      <State>MO</State>
+      <Zip>65806</Zip>
+    </Address>
+    <ContactInfo>
+      <Phone>417-862-4260</Phone>
+      <Email>springfield elementary</Email>
+    </ContactInfo>
+    <SchoolYear>
+      <StartTime>8:00 AM</StartTime>
+      <EndTime>3:00 PM</EndTime>
+      <Address>
+        <Street>20 W Main St</Street>
+        <City>Springfield</City>
+        <State>MO</State>
+        <Zip>65806</Zip>
+      </Address>
+      <Capacity>500</Capacity>
+    </SchoolYear>
+  </School>
+</SchoolData>

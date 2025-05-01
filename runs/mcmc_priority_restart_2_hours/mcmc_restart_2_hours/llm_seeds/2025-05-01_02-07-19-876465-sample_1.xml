@@ -1,0 +1,26 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+    <product category="home">
+        <name>Desk</name>
+        <price currency="USD">49.95</price>
+        <description xml:lang="en">A standard desk, very standard.</description>
+        <company>Smith</company>
+        <contact>
+            <name>John</name>
+            <email>john@email.com</email>
+            <phone>123-456-7890</phone>
+        </contact>
+    </product>
+    <product category="home">
+        <name>Dresser</name>
+        <price currency="EUR">120.00</price>
+        <description xml:lang="fr">Un dresser standard, très standard.</description>
+        <company>Johnson</company>
+        <contact>
+            <name>Jane</name>
+            <email>jane@email.com</email>
+            <phone>987-654-3210</phone>
+        </contact>
+    </product>
+</catalog>

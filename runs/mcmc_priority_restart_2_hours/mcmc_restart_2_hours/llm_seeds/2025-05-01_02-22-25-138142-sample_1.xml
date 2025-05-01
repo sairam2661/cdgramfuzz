@@ -1,0 +1,12 @@
+<QDML>
+  <XML:version xmlns:XML="http://www.w3.org/1998/01/xml+xml">1.0</XML:version>
+  <XML:encoding xmlns:XML="http://www.w3.org/1998/01/xml+xml">UTF-8</XML:encoding>
+  <standalone xmlns:standalone="http://www.w3.org/1999/xml/standalone">yes</standalone>
+  <Note xmlns="http://www.example.org">
+    <To>Alice</To>
+    <From>Bob</From>
+    <Subject>Meeting</Subject>
+    <Message>Don't forget our meeting at 2pm!</Message>
+    <Priority xmlns:priority="http://www.example.org/priorities">high</Priority>
+  </Note>
+</QDML>

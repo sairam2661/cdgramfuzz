@@ -1,0 +1,33 @@
+<pre>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+  <description>Product catalog</description>
+  <product>
+    <name>Book</name>
+    <price currency="USD">19.99</price>
+    <entity name="BOOK" publicId="ISBN-1-234-56789-0">
+      <!-- entity definition -->
+      <description>This is a book entity</description>
+    </entity>
+    <category category="Fiction"/>
+  </product>
+  <product>
+    <name>Joy</name>
+    <price currency="USD">4.99</price>
+    <entity name="CANDLE" publicId="SID-901-234">
+      <!-- entity definition -->
+      <wax>paraffin</wax>
+      <color>white</color>
+    </entity>
+    <category category="Home"/>
+  </product>
+</catalog>
+</pre>
+ 
+
+ 
+
+ 
+  
+ 
+ 

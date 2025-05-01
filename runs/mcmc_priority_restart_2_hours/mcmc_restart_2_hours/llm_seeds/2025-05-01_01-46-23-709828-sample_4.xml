@@ -1,0 +1,14 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+
+<bookstore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.com/bookstore.xsd bookstore.xsd">
+  <bookstore:book collection="hardcover">
+    <bookstore:author>John Smith</bookstore:author>
+    <bookstore:title>Advanced Java Programming</bookstore:title>
+    <bookstore:year>2020</bookstore:year>
+  </bookstore:book>
+  
+  <notation name="custom notation">
+    <notation:root element="customRoot" href="customnotation.xsd"/>
+    <notation:schema href="customnotation.xsd"/>
+  </notation>
+</bookstore>

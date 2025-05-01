@@ -1,0 +1,24 @@
+<division>
+    <xml-stylesheet type="text/xsl" href="division.xsl"/>
+    <note>
+        <?entity xmlns="xmlversion" name="XMLDeclaration" public "-"?>
+
+        <?entity xmlns="xmlversion" name="EntityDeclaration" public "xml"?>
+
+        <?include href="other.xml"/>
+
+        <?>
+        <?end-division?>
+
+        <?version>
+        <?>
+
+        <?end-division?>
+
+        <?xmlversion="1.0"?>
+
+        <?end-division?>
+
+        <?version?>
+    </note>
+</division>

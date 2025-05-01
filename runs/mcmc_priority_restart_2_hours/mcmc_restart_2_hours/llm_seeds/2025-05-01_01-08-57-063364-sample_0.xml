@@ -1,0 +1,21 @@
+<Schedule xmlns="http://example.com schedule.dtd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com schedule.dtd schedule.xsd"
+          version="1.0" encoding="UTF-8" standalone="yes">
+  <Day Monday="true" Friday="false">
+    <Event id="Lecture-1" start="09:00" end="10:00">
+      <Title>Introduction to Algorithms</Title>
+      <Speaker>John Doe</Speaker>
+    </Event>
+    <Event id="Office Hours" start="11:00" end="12:00">
+      <Title>Office Hours</Title>
+      <Speaker>Jane Smith</Speaker>
+    </Event>
+  </Day>
+  <Day Tuesday="true" Saturday="false">
+    <Event id="Discussion Group" start="14:00" end="15:00">
+      <Title>Software Engineering</Title>
+      <Speaker>Bob Brown</Speaker>
+    </Event>
+  </Day>
+</Schedule>

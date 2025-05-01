@@ -1,0 +1,30 @@
+<?xml version = 1.0 encoding = "ISO-8859-2"?>
+<catalog>
+    <description>&lt;Product&gt;Catalog&lt;/Product&gt;</description>
+    <name>Example Catalog</name>
+    <currency>USD</currency>
+    <language>EN</language>
+    <items>
+        <item>
+            <code>prod01</code>
+            <name>Product 1</name>
+            <description>Short description 1</description>
+            <price>10.00</price>
+            <currency>USD</currency>
+            <image>prod01_large.jpg</image>
+            <warehouse>Whs A</warehouse>
+            <amount>75</amount>
+            &lt;/item&gt;
+        </item>
+        <item>
+            <code>prod02</code>
+            <name>Product 2</name>
+            <description>Short description 2</description>
+            <price>20.00</price>
+            <currency>USD</currency>
+            <image>prod02_small.jpg</image>
+            <warehouse>Whs B</warehouse>
+            <amount>20</amount>
+        </item>
+    </items>
+</catalog>

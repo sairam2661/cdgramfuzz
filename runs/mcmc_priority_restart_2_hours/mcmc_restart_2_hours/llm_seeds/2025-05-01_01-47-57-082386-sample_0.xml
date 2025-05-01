@@ -1,0 +1,28 @@
+<SchoolData xmlns="http://example.com/school">
+  <SchoolName>&lt;name&gt;Springfield Elementary&lt;/name&gt;</SchoolName>
+  <Location>&lt;address&gt;20 Oak Street, Springfield&amp;lt;/address&gt;</Location>
+  <Contact>
+    <Admin>
+      <Name>&lt; administer&gt;Ms. Krabappel&lt;/administer&gt;</Name>
+      <Email>&lt;Email&gt;mskrabappel@example.com&lt;/Email&gt;</Email>
+    </Admin>
+  </Contact>
+  <Students>
+    <Student1>
+      <Name>&lt;name&gt;Maggie Simpson&lt;/name&gt;</Name>
+      <Grade>3rd</Grade>
+      <Subjects>
+        <Math>&lt;Math&gt;Excellent&lt;/Math&gt;</Math>
+        <English>&lt;English&gt;Satisfactory&lt;/English&gt;</English>
+      </Subjects>
+    </Student1>
+  </Students>
+  <Schedule>
+    <Class>
+      <Time>9:00 AM</Time>
+      <SubJECT>&lt;subject&gt;Math&lt;/subject&gt;</SUBJECT>
+    </Class>
+  </Schedule>
+  <ExternalData source="https://www.example.com/student-data.xml" />
+  <ExternalData source="image.png" />
+</SchoolData>

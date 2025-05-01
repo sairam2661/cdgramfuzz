@@ -1,0 +1,12 @@
+<personal-info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://example.com/personal-info 
+                                    http://example.com/personal-info.xsd"
+               version="2.0" encoding="UTF-8" standalone="yes">
+
+    <name title="mr" firstName="John" lastName="Doe"/>
+    <address street="123 Main St" city="Anytown" state="CA" zip="12345" country="USA"/>
+    <relationship rank="primary" type="sibling"/>
+    <organization title="Dev" company="ABC Inc." occupation="Software Engineer"/>
+    <phone type="home" number="555-1234"/>
+    <email address="john.doe@example.com"/>
+</personal-info>

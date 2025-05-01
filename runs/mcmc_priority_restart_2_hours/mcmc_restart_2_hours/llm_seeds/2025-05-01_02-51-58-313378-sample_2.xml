@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <description>
+        This is a sample catalog entry and its line contains: <nowiki>nowiki</nowiki> special tags.
+        <link href ="#">Permanent link to this document</link>
+    </description>
+    <source code ="<<echo %s>>" echo ="" />
+</catalog>

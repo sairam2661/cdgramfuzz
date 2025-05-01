@@ -1,0 +1,16 @@
+<houseInfo xmlns="http://example.com/houseinfo" version="2.0" encoding="UTF-8">
+  <address>
+    <street>123 Street Name</street>
+    <city>Town Name</city>
+    <state>State Name</state>
+    <zip>12345</zip>
+    <country>Australia</country>
+    <telephoneNumber>01312345678</telephoneNumber>
+    <facilities>
+      <facilityName>Wi-Fi</facilityName>
+      <facilityName>Swim Pool</facilityName>
+      <facilityName>Kitchen</facilityName>
+    </facilities>
+    <characterDataElement>This is a character data element, <b>bold</b> and <i>italic</i> text using markdown formatting for added visual effect.</characterDataElement>
+  </address>
+</houseInfo>

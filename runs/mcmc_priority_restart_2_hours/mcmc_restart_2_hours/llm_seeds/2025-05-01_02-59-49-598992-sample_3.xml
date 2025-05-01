@@ -1,0 +1,23 @@
+<?xml version=1.1 encoding="ISO-8859-1"?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An introduction to XML.</description>
+        <editor>MSU</editor>
+        <quantity>150</quantity>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT Masterclass</title>
+        <genre>Computer</genre>
+        <price>69.95</price>
+        <publish_date>2002-09-01</publish_date>
+        <description>A comprehensive guide to XSLT.</description>
+        <editor>ABC</editor>
+        <quantity>225</quantity>
+    </book>
+</catalog>

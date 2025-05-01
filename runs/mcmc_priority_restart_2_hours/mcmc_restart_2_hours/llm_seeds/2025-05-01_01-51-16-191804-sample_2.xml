@@ -1,0 +1,21 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes">
+   <?include externalEntitySystem.xml?>
+   <library>
+      <book id="bk101">
+         <author>John Smith</author>
+         <title>XML Tutorial</title>
+         <genre>Computer</genre>
+         <price>39.95</price>
+         <publish_date>2000-10-01</publish_date>
+         <description>An in-depth look at creating applications with XML.</description>
+      </book>
+      <book id="bk102">
+         <author>Jane Doe</author>
+         <title>XSLT Tutorial</title>
+         <genre>Computer</genre>
+         <price>49.95</price>
+         <publish_date>2001-05-01</publish_date>
+         <description>"Learning XSLT is a must for any aspiring XML developer."</description>
+      </book>
+   </library>
+ </xml>

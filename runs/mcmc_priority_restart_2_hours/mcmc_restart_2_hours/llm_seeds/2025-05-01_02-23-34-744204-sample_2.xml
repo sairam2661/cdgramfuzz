@@ -1,0 +1,8 @@
+<Education xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1">
+  <Course xmlns="http://example.com/course" xsi:schemaLocation="http://example.com/course http://example.com/course.xsd">
+    <Title>Mathematics</Title>
+    <Credits>3</Credits>
+    <Year>4</Year>
+    <GPA>3.5</GPA>
+  </Course>
+</Education>

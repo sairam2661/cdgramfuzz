@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone  =  yes?>
+
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation ="
+
+http://books.xmlschema.org/catalog   catalogue.xsd
+http://docs.oasis-open.org/ns/invocation#schema-reference-1.0  invoke.xsd">
+
+  <description xml:lang ="(US)" xml:space="preserve">Online bookstore</description>
+
+  <vendor xml:lang="en">ABC bookstore</vendor>
+
+  <cataloginfo xml:lang ="(US)">
+    <title>Online catalogue</title>
+    <link href="index.html">index</link>
+  </cataloginfo>
+</catalog>

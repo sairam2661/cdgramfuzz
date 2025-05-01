@@ -1,0 +1,16 @@
+<h:html xmlns:h="http://xmlns.jcp.org/xml/ns/html" xmlns:fo="http://www.w3.org/1999/XSL/Format"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="5.0">
+  <head>
+    <title>Sample Document</title>
+    <h:import url="Stylesheet-1.xsl"/>
+  </head>
+  <body>
+    <h1>Sample Document</h1>
+    <p>&amp;&amp; An Ampersand (&amp;)</p>
+    <p>Here is a <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:h="http://xmlns.jcp.org/xml/ns/html" version="5.0">
+                 A paragraph with some formatting information.</fo:root> 
+              </p>
+    <p>Here is a <pre>&lt;p&gt;&lt;/p&gt;</pre> preformatted paragraph with some XML escaping and line breaks.</p>
+    <p>Here is a <h:link href="https://www.example.com/
+&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;
+&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x

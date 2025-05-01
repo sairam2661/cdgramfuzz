@@ -1,0 +1,12 @@
+<personalData xmlns="http://www.example.org/personalData" version="2.0" encoding="utf-8">
+  <personalInfo>
+    <name entity="cn">John Doe</name>
+    <address>&amp;height; Address 
+      <phone>&amp;Phone Number: 123-456-7890 (abc) def</phone> &amp;&amp; <email>john.doe@example.org</email>
+    </address>
+  </personalInfo>
+  <contactDetails>
+    <bankAccount>1234567890$</bankAccount>
+    <creditCard>1234-5678-9012-3456</creditCard>
+  </contactDetails>
+</personalData>

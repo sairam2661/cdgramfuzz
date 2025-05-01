@@ -1,0 +1,18 @@
+<div xmlns="https://www.example.com/my-namespace"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="https://www.example.com/my-namespace schema.xsd"
+     version="1.0" encoding="UTF-8" standalone="yes">
+    <data>
+        <id>123</id>
+        <name>
+            <first>John</first>
+            <last>Doe</last>
+        </name>
+        <address>
+            <street>123 Main St</street>
+            <city>Doeville</city>
+            <state>US</state>
+            <zip>12345</zip>
+        </address>
+    </data>
+</div>

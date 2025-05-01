@@ -1,0 +1,24 @@
+<catalog xmlns="http://www.georossi.com/xml/catalog"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.georossi.com/xml/catalog catalog.xsd"
+         version="1.0" encoding="ISO-8859-2">
+
+  <book id="bk102">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>&lt;p&gt;This book covers the basics of XML, including entities and character references.&lt;/p&gt;</description>
+  </book>
+
+  <book id="bk103">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Fiction</genre>
+    <price>29.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>&lt;strong&gt;With XSLT, you can transform and style XML documents with ease.&lt;/strong&gt;</description>
+  </book>
+
+</catalog>

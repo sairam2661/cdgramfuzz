@@ -1,0 +1,38 @@
+<?xml version=1.0 encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish Date="2000-10-01"/>
+    <description>An in-depth look at creating XML documents.</description>
+    <language>English</language>
+    <country>USA</country>
+    <company>ABC Inc.</company>
+    <address>123 Main St.</address>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+    <phone>(800)555-1234</phone>
+    <email>support@abcinc.com</email>
+  </book>
+  <book id="bk102">
+    <author>John Smith</author>
+    <title>Naming Conventions</title>
+    <genre>Computer</genre>
+    <price>29.95</price>
+    <publish Date="1999-01-01"/>
+    <description>A practical guide to naming conventions.</description>
+    <language>English</language>
+    <country>USA</country>
+    <company>ABC Inc.</company>
+    <address>123 Main St.</address>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+    <phone>(800)555-1234</phone>
+    <email>support@abcinc.com</email>
+  </book>
+</catalog>

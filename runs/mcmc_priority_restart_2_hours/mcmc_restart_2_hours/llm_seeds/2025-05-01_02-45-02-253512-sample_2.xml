@@ -1,0 +1,17 @@
+<PersonalOrganizer>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <AddCategory>
+    <CategoryName>Groceries</CategoryName>
+    <Priority level="medium"></Priority>
+  </AddCategory>
+  <AddCategory>
+    <CategoryName>Entertainment</CategoryName>
+    <Priority level="low"></Priority>
+  </AddCategory>
+  <!-- Add a system note to indicate the categorization system update -->
+  <!-- is done monthly and all categories have been reviewed and updated -->
+  <CategorySystemUpdate>
+    <LastUpdate>2023-02-15</LastUpdate>
+    <NextUpdate>2023-03-15</NextUpdate>
+  </CategorySystemUpdate>
+</PersonalOrganizer>

@@ -1,0 +1,31 @@
+<?xml version = 
+1.0  encoding = 
+"UTF-8" standalone = 
+ yes?>
+ 
+<products xmlns:xlink="http://www.w3.org/1999/xlink">
+  <product>
+    <name>Book</name>
+    <price>
+      <amount>40</amount>
+      <currency>&amp;#8364;</currency>
+    </price>
+    <rating>4.5</rating>
+  </product>
+  <product>
+    <name>Pen</name>
+    <price>
+      <amount>5</amount>
+      <currency>&amp;#8364;</currency>
+    </price>
+    <rating>4.8</rating>
+  </product>
+  <product>
+    <name>Pencil</name>
+    <price>
+      <amount>2</amount>
+      <currency>&amp;#8364;</currency>
+    </price>
+    <rating>4.2</rating>
+  </product>
+</products>

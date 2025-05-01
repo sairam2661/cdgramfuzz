@@ -1,0 +1,17 @@
+<style xmlns="http://www.w3.org/1999/xsl/transform" version="1.0">
+  <xsl:template match="/">
+    <xml-stylesheet type="text/xsl" href="styles.xsl"/>
+    <root xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <data>
+        <entry key="1">
+          <title>Entry 1</title>
+          <description>This is entry 1.</description>
+        </entry>
+        <entry key="2">
+          <title>Entry 2</title>
+          <description>This is entry 2.</description>
+        </entry>
+      </data>
+    </root>
+  </xsl:template>
+</style>

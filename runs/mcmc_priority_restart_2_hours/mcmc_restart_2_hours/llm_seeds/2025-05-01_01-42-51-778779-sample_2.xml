@@ -1,0 +1,46 @@
+<BusinessEntity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.com/BUSINESS_entity.xsd BUSINESS_entity.xsd"
+         version="2.0" encoding="UTF-8" standalone="yes">
+
+   <BusinessEntityHeader>
+      <HeaderId>BE-001</HeaderId>
+      <InvoiceDate>2023-03-01</InvoiceDate>
+      <CustomerName>XYZ Corporation</CustomerName>
+   </BusinessEntityHeader>
+
+   <Customer>
+      <CustomerID>CUST-001</CustomerID>
+      <Name>John Doe</Name>
+   </Customer>
+
+   <OrderSummary>
+      <OrderNumber>ORD-001</OrderNumber>
+      <OrderDate>2023-03-02</OrderDate>
+      <ProductCode>ABC-101</ProductCode>
+      <Quantity>5</Quantity>
+      <UnitPrice>$100.00</UnitPrice>
+   </OrderSummary>
+
+   <PaymentMethods>
+      <PaymentMethod>Credit Card</PaymentMethod>
+      <PaymentMethod>Bank Transfer</PaymentMethod>
+   </PaymentMethods>
+
+   <TermsAndConditions>
+      <Terms>Terms and conditions apply.</Terms>
+   </TermsAndConditions>
+
+   <References />
+   <Disclaimer>Disclaimer: The above information is accurate and up to date.</Disclaimer>
+
+   <EntityIndex>
+      <EntityIndexEntry EntityID="BE-001" IndexNo="001"/>
+   </EntityIndex>
+
+   <Notation>
+      <name>Entity Schema</name>
+      <public>
+         <schemaLocation>http://www.example.com/BUSINESS_entity.xsd</schemaLocation>
+      </public>
+   </Notation>
+
+</BusinessEntity>

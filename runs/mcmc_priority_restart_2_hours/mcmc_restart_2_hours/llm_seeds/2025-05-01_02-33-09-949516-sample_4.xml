@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<personal-data>
+    <name>&amp;#39;John Doe&amp;#39;</name>
+    <address>
+        <street1>123 Main St</street1>
+        <city>New York</city>
+        <state>NY</state>
+        <zip>10001</zip>
+    </address>
+    <phone numbers="2">+1-800-555-1234</phone>
+    <fax>&amp;#38; +1-800-FAX-ME&amp;#38;</fax>
+    <email contact-type="work">john.doe@example.com</email>
+</personal-data>

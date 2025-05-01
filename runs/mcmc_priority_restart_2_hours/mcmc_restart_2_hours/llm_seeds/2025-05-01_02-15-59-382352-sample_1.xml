@@ -1,0 +1,27 @@
+<div:bookstore xmlns:div="urn:addtogroup">
+    <div:genre>Computer
+    </div:genre>
+    <div:price>19.99</div:price>
+    <div:title>XML Beginner</div:title>
+    <div:author>
+        <div:first-name>John</div:first-name>
+        <div:last-name>Doe</div:last-name>
+    </div:author>
+    <div:reviews>
+        <div:review rating="5">
+            <div:title>Excellent book</div:title>
+            <div.text>A great introduction to XML</div:text>
+        </div:review>
+        <div:review rating="4">
+            <div:title>Good book</div:title>
+            <div.text>Helpful for beginners</div:text>
+        </div:review>
+    </div:reviews>
+    <div:book id="CB001">
+        <div:image url="XMLBeginner.jpg"/>
+        <div:summary>
+            <div:title>XML Beginner</div:title>
+            <div:description>A comprehensive guide to XML</div:description>
+        </div:summary>
+    </div:book>
+</div:bookstore>

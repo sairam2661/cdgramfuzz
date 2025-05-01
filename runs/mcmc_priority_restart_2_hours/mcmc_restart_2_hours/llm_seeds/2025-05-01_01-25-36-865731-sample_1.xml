@@ -1,0 +1,14 @@
+<nationals>
+    <country type="string" name="@Name" code="@Code">
+        <name>Australia</name>
+        <code>AUS</code>
+        <population Units="thousands">22,538,740</population>
+        <region Name="Oceania" Country="@code"/>
+    </country>
+    <country type="string" name="@Name" code="@Code">
+        <name>United Kingdom</name>
+        <code>GBR</code>
+        <population Units="thousands">67,133,000</population>
+        <region Name="Europe" Country="@code"/>
+    </country>
+</nationals>

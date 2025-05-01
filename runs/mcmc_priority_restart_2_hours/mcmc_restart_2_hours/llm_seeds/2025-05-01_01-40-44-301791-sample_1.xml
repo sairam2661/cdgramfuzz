@@ -1,0 +1,34 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-notation xmlns:math = "http://www.w3.org/2000/xlink"
+         xmlns:xlink = "http://www.w3.org/1999/xlink"
+         vocab = "http:// schemas.mathml.org/ns/vocab"
+          math-notation = "http://www.w3.org Trace/1998/NS/mathml" 
+         math-interpretation = "http://www.w3.org Trace/1998/NS mathml"/>
+ 
+<math xmlns = "http://www.w3.org Trace/1998/NS/mathml"
+       xmlns:xlink = "http://www.w3.org 1999/xlink"    
+       xmlns:dvi  =  "http://www.w3.org Trace/1998/NS/dvi"
+       xmlns:del =  "http://www.w3.org Trace/1998/NS/del"
+       xmlns:mml  =  "http://www.w3.org Trace/1998/NS/mml"
+       xmlns:msm =  "http://www.w3.org Trace/1998/NS/msm"
+       xmlns:plain  =  "http://www.w3.org Trace/1998/NS/plain"
+       xmlns:xlink = "http://www.w3.org/1999/xlink"
+       xml:space="preserve">
+  <mrow xmlns:mrow = "http://www.w3.org Trace/1998/NS/mathml"
+        xmlns:xlink = "http://www.w3.org 1999/xlink">
+   <msup>
+    <mi math:display = "true">x</mi>
+    <msup><mn>3<</mn><mn>4</mn></msup>
+  </msup>
+  </mrow>
+  <mrow xmlns:mrow = "http://www.w3.org Trace/1998/NS/mathml" 
+       xmlns:xlink = "http://www.w3.org 
+  1999/xlink">
+   <mstyle math:direction = "ltr" math:align = "center">
+    <mtext Math Alley</mtext>
+   </mstyle>
+  </mrow>
+  <mrow xmlns:mrow = "http://www.w3.org Trace/1998/NS/mathml" 
+       xmlns:xlink = "http://www.w3.org 
+      1999/xlink">
+  

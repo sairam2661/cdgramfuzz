@@ -1,0 +1,45 @@
+<holiday_voucher xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://voucheronline.com/schemas/schema XSD_Holiday_Voucher.xsd"
+  version="2.0" encoding="UTF-8"
+  standalone="yes">
+
+  <voucher_ref>HO-001</voucher_ref>
+  <issuing Institution_ID_CD_code="HOI123">
+    <issuer_name>Holiday Vacation Resort</issuer_name>
+  </Issuing_INstitution_ID_CD_code>
+
+  <issuer_address>
+    <street_number>101</street_number>
+    <street_name>Main Street</street_name>
+    <city>Beachville</city>
+    <state>LW</state>
+    <zip_code>12345</zip_code>
+    <countries>USA</countries>
+  </issuer_address>
+
+  <purchase_deduction_info>
+    <purchase_deduction_type_cd>PAID:</purchase_deduction_type_cd>
+    <purchase_deduction_date>2020-03-25</purchase_deduction_date>
+  </purchase_deduction_info>
+
+  <holder_info>
+    <holder_name>
+      <first_name>Eddie</first_name>
+      <middle_name>Middle</middle_name>
+      <last_name>Marshall</last_name>
+    </holder_name>
+    <holder_address>
+      <street_number>56</street_number>
+      <street_name>Water Street</street_name>
+      <city>Beachville</city>
+      <state>LW</state>
+      <zip_code>12345</zip_code>
+      <countries>USA</countries>
+    </holder_address>
+  </holder_info>
+
+  <voucher_period>
+    <start_date>2020-04-01</start_date>
+    <end_date>2020-06-30</end_date>
+  </voucher_period>
+</holiday_voucher>

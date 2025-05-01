@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!-- XML Declaration -->
+<!DOCTYPE product_catalog SYSTEM "product_catalog.dtd">
+<product_catalog>
+  <product id="p1">
+    <brand>
+      <style> </style>
+    </brand>
+    <name>Product A</name>
+    <description><![CDATA[This is a sample product description with <b>bold</b> and <i>italic</i> text.]]></description>
+    <price currency="USD">99.99</price>
+  </product>
+</product_catalog>

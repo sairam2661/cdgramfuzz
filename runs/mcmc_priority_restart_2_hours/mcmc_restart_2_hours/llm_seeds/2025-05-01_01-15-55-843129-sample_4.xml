@@ -1,0 +1,19 @@
+<hello-world-automation-system
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://example.com/automation-system DTDs/automation-system.dtd">
+    <system-status status="operational">
+        <system-name>Automation System 1</system-name>
+        <system-type>Batch Processing</system-type>
+        <system-version>1.5</system-version>
+        <system-release>Alpha</system-release>
+        <system-up-time>3 days, 12 hours, 45 minutes</system-up-time>
+    </system-status>
+
+    <system-status status="maintenance">
+        <system-name>Automation System 2</system-name>
+        <system-type>Real-time Processing</system-type>
+        <system-version>1.8</system-version>
+        <system-release>Beta</system-release>
+        <system-up-time>2 days, 10 hours, 15 minutes</system-up-time>
+    </system-status>
+</hello-world-automation-system>

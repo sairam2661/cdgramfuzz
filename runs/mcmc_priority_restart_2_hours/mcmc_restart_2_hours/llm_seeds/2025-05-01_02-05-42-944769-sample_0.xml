@@ -1,0 +1,14 @@
+<E-commerce-Transaction Version="2.0" encoding="UTF-8" standalone="yes">
+    <Order-Reference Number="OR-001" Status="pending"/>
+    <Customer-Details>
+        <Name FirstName="John" LastName="Doe" Address="123 Main St"/>
+        <Phone Number="123-456-7890" Type="Home"/>
+        <Email Address="johndoe@example.com" Verified="yes"/>
+    </Customer-Details>
+    <Order-Items>
+        <Item-1 Product-Name="iPhone 13" Quantity="2" Unit-Price="599.99" Subtotal="1199.98"/>
+        <Item-2 Product-Name="Apple-Watch" Quantity="1" Unit-Price="399.99" Subtotal="399.99"/>
+    </Order-Items>
+    <Shipping-Information Address="456 Elm St" City="Anytown" State="CA" Zip="12345" Country="USA" Tracking-Number="TRK-001"/>
+    <Payment-Information Method="Credit-Card" Card-Type="Visa" Card-Number="1234-5678-9012-3456" Expiration-Date="12/2025" CVV="123"/>
+</E-commerce-Transaction>

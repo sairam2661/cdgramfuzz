@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE book [
+<!ELEMENT book (title, subtitle, publisher, price, reviews) >
+<!ATTLIST book
+xmlns:dc 
+  CDATA "http://purl.org/dc/elements/1.1/"
+>
+]>
+<book dc:creator="John Smith" dc:title="The Adventures of Sherlock Holmes" dc:subject="Mystery" dc:publisher="Oxford University Press">
+  <dc:description>The famous detective &quot;Sherlock Holmes&quot; solves 12 bizarre crimes</dc:description>
+  <subtitle>The Classic Sherlock Holmes Stories</subtitle>
+  <publisher>Oxford University Press</publisher>
+  <price currency="GBP">9.99</price>
+  <reviews>
+    <review rating="5">
+      <name>John Doe</name>
+      <text>This is a great book.</text>
+    </review>
+  </reviews>
+</book>

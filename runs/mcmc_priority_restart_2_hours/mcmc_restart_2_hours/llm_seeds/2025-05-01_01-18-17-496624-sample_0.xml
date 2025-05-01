@@ -1,0 +1,13 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+<catalog>
+    <description xml:lang="en">Excerpt from Gale Cengage Learning</description>
+    <title xml:space="preserve">Gale Cengage Learning</title>
+    <productInfo>
+        <bookID>1234</bookID>
+        <ISBN xmlns:z39.50="http://z39.50.org/">
+            <title>Maths</title>
+            <subject>Maths</subject>
+        </ISBN>
+    </productInfo>
+    <subject xml:lang="en"/>
+</catalog>

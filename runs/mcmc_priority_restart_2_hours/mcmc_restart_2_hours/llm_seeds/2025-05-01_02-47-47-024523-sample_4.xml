@@ -1,0 +1,20 @@
+<SchoolRecords version="1.1" characterEncoding="UTF-8" creationDate="2023-02-20">
+  <Student ID="S12345">
+    <Name>
+      <First>John</First>
+      <Last>Doe</Last>
+    </Name>
+    <CourseGrades>
+      <Course>Math</Course>
+      <Grade>80.5%</Grade>
+    </CourseGrades>
+    <!--Student's Address Information: This field is required in compliance with federal regulations -->
+    <Address>
+      <Street>123 Main Street</Street>
+      <City>Anytown</City>
+      <State>CA</State>
+      <Zip>12345</Zip>
+      <Country>USA</Country>
+    </Address>
+  </Student>
+</SchoolRecords>

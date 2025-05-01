@@ -1,0 +1,11 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<catalog xmlns="http://example.com/products" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/products catalog.xsd">
+  <product id="P1" name="Pen" description="Writing Tool">
+    <price currency="USD">5.99</price>
+    <discount percentage="20" type="fixed"/>
+  </product>
+  <product id="P2" name="Pencil" description="Writing/ Drawing Tool">
+    <price currency="USD">1.99</price>
+    <discount percentage="5" type="percentage"/>
+  </product>
+</catalog>

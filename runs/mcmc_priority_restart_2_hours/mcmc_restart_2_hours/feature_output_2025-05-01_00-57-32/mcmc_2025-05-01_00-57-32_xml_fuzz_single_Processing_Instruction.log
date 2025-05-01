@@ -1,0 +1,1070 @@
+2025-05-01 02:33:09,951 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initialized MCMC with propose_style: restart, name_prefix: xml_fuzz_single_Processing_Instruction
+2025-05-01 02:33:09,951 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Prompt: <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 01 May 2025
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Question 1:
+Generate a short but complex XML file specifically using this feature: 
+XML Declaration - The XML declaration is a mandatory element that specifies the version and encoding of the document.
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 1:
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</note>
+        
+
+Question 2:
+Generate a short but complex XML file specifically using this feature: 
+Processing Instruction - A processing instruction is a directive that provides information about how to process the XML document.
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 2:<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+2025-05-01 02:33:09,951 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Generating 5 samples with 5 steps each
+2025-05-01 02:33:09,951 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting sample 0/5
+2025-05-01 02:33:09,951 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 02:33:17,723 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'processing', ' instructions', ' xmlns', '=x', 'sl', ' process', ' =', ' "', 'x', 'slt', '-', 'styles', 'heet', '.x', 'sl', '"?>\n', '<', 'note', '>\n', ' ', ' <', 'to', '>A', 'lice', '</', 'to', '>\n', ' ', ' <', 'from', '>', 'Bob', '</', 'from', '>\n', ' ', ' <', 'subject', '>', 'Meeting', '</', 'subject', '>\n', ' ', ' <', 'message', '>', 'Don', "'t", ' forget', ' our', ' meeting', ' at', ' ', '2', 'pm', '!</', 'message', '>\n', ' ', ' <', 'priority', '>\n', '   ', ' <', 'level', '>', 'high', '</', 'level', '>\n', '   ', ' <', 'duration', '>', '2', ' hours', '</', 'duration', '>\n', ' ', ' </', 'priority', '>\n', ' ', ' <', 'attachments', '>\n', '   ', ' <', 'attachment', ' filename', '="', 'report', '.doc', 'x', '"', ' type', '="', 'document', '"/>\n', '   ', ' <', 'attachment', ' filename', '="', 'presentation', '.p', 'pt', 'x', '"', ' type', '="', 'presentation', '"/>\n', ' ', ' </', 'attachments', '>\n', '</', 'note', '>\n\n', ' ', '<|eot_id|>']
+2025-05-01 02:33:17,724 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial raw logprob: tensor([-127.5000], device='cuda:0')
+2025-05-01 02:33:17,724 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 0 (restart)
+2025-05-01 02:33:17,728 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'processing', ' instructions', ' xmlns', '=x', 'sl', ' process', ' =', ' "', 'x', 'slt', '-', 'styles', 'heet', '.x', 'sl', '"?>\n', '<', 'note', '>\n', ' ', ' <', 'to', '>A', 'lice', '</', 'to', '>\n', ' ', ' <', 'from', '>', 'Bob', '</', 'from', '>\n', ' ', ' <', 'subject', '>', 'Meeting', '</', 'subject', '>\n', ' ', ' <', 'message', '>', 'Don', "'t", ' forget', ' our', ' meeting', ' at', ' ', '2', 'pm', '!</', 'message', '>\n', ' ', ' <', 'priority', '>\n', '   ', ' <', 'level', '>', 'high', '</', 'level', '>\n', '   ', ' <', 'duration', '>', '2', ' hours', '</', 'duration', '>\n', ' ', ' </', 'priority', '>\n', ' ', ' <', 'attachments', '>\n', '   ', ' <', 'attachment', ' filename', '="', 'report', '.doc', 'x', '"', ' type', '="', 'document', '"/>\n', '   ', ' <', 'attachment', ' filename', '="', 'presentation', '.p', 'pt', 'x', '"', ' type', '="', 'presentation', '"/>\n', ' ', ' </', 'attachments', '>\n', '</', 'note', '>\n\n', ' ', '<|eot_id|>']
+2025-05-01 02:33:17,728 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-127.5000], device='cuda:0')
+2025-05-01 02:33:50,998 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' ', ' yes', '?>\n\n', '<', 'schema', ' version', ' =', '""', ' target', 'Namespace', ' =', '""', ' xmlns', ' =', '""', ' xmlns', ':x', 'sd', ' =', '""', ' xmlns', ':', 'xs', ' ="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '"\n', '        ', ' xmlns', ':', 'tn', 's', ' =', '""', ' \n', 'xmlns', '="', 'http', '://', 'example', '.com', '/s', 'chemas', '/my', 'Schema', '.x', 'sd', '"', ' \n', 'extension', 'Element', 'Prefix', 'es', ' =', '""', ' >\n\n', ' ', ' <', 'xs', ':s', 'chema', ' xmlns', ':', 'xs', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '"\n', '               ', ' element', 'Form', 'Default', ' =', '""', ' attribute', 'Form', 'Default', ' =', '""', ' \n\n', '            ', ' xmlns', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '"', ' \n', '               ', ' element', 'Type', 'Extensions', ' =', '""', ' \n', '               ', ' legacy', 'Element', 'Prefix', 'es', ' =', '""', '  \n', '               ', ' element', 'Declaration', 'Prefix', 'es', ' =', '""', ' >', '  \n  \n', '   ', ' <', 'xs', ':', 'element', ' name', ' =', '""', ' my', 'Complex', 'Element', ' \n', '                ', '    ', '    ', ' ', '="', 'xs', ':string', '"', ' ', ' mandatory', ' =', '""', '  ', ' type', ' =', '""', ' >', '  \n\n', '     ', ' <', 'xs', ':', 'complex', 'Type', '>\n', '           ', ' <', 'xs', ':', 'sequence', '>\n', ' \n', '     ', ' </', 'xs', ':', 'complexType', '>\n', ' ', ' </', 'xs', ':', 'element', '>\n\n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '""', ' my', 'Attribute', ' \n', '              ', '\t  ', ' =', '""', ' mandatory', ' =', '""', ' >', ' \n\n', ' ', ' <', 'xs', ':', 'complexType', '>\n', '   ', ' <', 'xs', ':', 'attribute', ' name', ' =', '""', ' my', 'Simple', 'Attribute', ' \n', '            ', '\t\t ', ' =', '""', ' ', ' ref', ' =', '""', ' >', '  \n\n', ' ', ' </', 'xs', ':', 'complexType', '>\n', '</', 'xs', ':', 'element', '>\n\n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '""', ' my', 'Mixed', 'Content', ' \n', '              ', '\t  ', ' =', '""', ' mandatory', ' =', '""', '  \n', '           ', ' type', ' =', '""', ' >\n', ' \n', '   ', ' <', 'xs', ':', 'extension', ' base', ' =', '""', ' >', '  \n\n', ' ', ' </', 'xs', ':', 'element', '>', ' \n  \n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '""', ' my', 'Simple', 'Type', ' \n', '              ', '\t  ', ' =', '""', ' mandatory', ' =', '""', '  \n', '           ', ' type', ' =', '""', ' >\n\n', '   ', ' <', 'xs', ':', 'element', ' form', ' =', '""', ' >', '   \n\n', ' ', ' </', 'xs', ':', 'element', '>\n\n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '""', ' my', 'Group', ' \n', '              ', '\t  ', ' =', '""', ' mandatory', ' =', '""', '  \n', '           ', ' type', ' =', '""', ' >\n', ' \n', ' ', ' <', 'xs', ':', 'complexType', '>\n', '   ', ' <', 'xs', ':', 'sequence', '>\n', ' \n', ' ', ' </', 'xs', ':', 'complexType', '>\n', '</', 'xs', ':', 'element', '>\n\n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '""', ' my', 'Attribute', 'Use', ' \n', '              ', '\t  ', ' =', '""', ' mandatory', ' =', '""', ' >', ' \n', '           ', '\n\n', ' ', ' <', 'xs', ':', 'complexType', '>\n', '   ', ' <', 'xs', ':s', 'impl', 'er', 'Type', '>\n', '     ', ' <', 'xs', ':', 'union', ' member', 'Types', ' =', '""', ' >', '  \n\n', ' ', ' </', 'xs', ':', 'complexType', '>\n', '</', 'xs', ':', 'element', '>\n', '  \n', ' ', ' <', 'xs', ':', 'attribute', ' name', ' =', '""', ' my', 'Attribute', 'Use', ' \n', '             ', '\t ', ' =', '""', ' ref', ' =', '""', ' >', '  \n\n', ' ', ' </', 'xs', ':', 'attribute', '>\n', '  \n', '</', 'schema', '>', '  \n\n', '<?', 'import', ' namespace', ' =', '""', ' schema', ' =', '""', ' \n\n', '       ', ' name', ' =', '""', ' http', '://', 'www', '.w', '3']
+2025-05-01 02:33:50,999 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-552.], device='cuda:0')
+2025-05-01 02:33:51,005 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-52.99796295]
+2025-05-01 02:33:51,005 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [9.62226111e-24]
+2025-05-01 02:33:51,013 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-33-17-724166-n5.json
+2025-05-01 02:33:51,013 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:33:51,013 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 1 (restart)
+2025-05-01 02:33:51,017 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'processing', ' instructions', ' xmlns', '=x', 'sl', ' process', ' =', ' "', 'x', 'slt', '-', 'styles', 'heet', '.x', 'sl', '"?>\n', '<', 'note', '>\n', ' ', ' <', 'to', '>A', 'lice', '</', 'to', '>\n', ' ', ' <', 'from', '>', 'Bob', '</', 'from', '>\n', ' ', ' <', 'subject', '>', 'Meeting', '</', 'subject', '>\n', ' ', ' <', 'message', '>', 'Don', "'t", ' forget', ' our', ' meeting', ' at', ' ', '2', 'pm', '!</', 'message', '>\n', ' ', ' <', 'priority', '>\n', '   ', ' <', 'level', '>', 'high', '</', 'level', '>\n', '   ', ' <', 'duration', '>', '2', ' hours', '</', 'duration', '>\n', ' ', ' </', 'priority', '>\n', ' ', ' <', 'attachments', '>\n', '   ', ' <', 'attachment', ' filename', '="', 'report', '.doc', 'x', '"', ' type', '="', 'document', '"/>\n', '   ', ' <', 'attachment', ' filename', '="', 'presentation', '.p', 'pt', 'x', '"', ' type', '="', 'presentation', '"/>\n', ' ', ' </', 'attachments', '>\n', '</', 'note', '>\n\n', ' ', '<|eot_id|>']
+2025-05-01 02:33:51,018 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-127.5000], device='cuda:0')
+2025-05-01 02:34:19,374 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'stylesheet', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '107', '">\n', '<title', '>', 'SQL', ' Queries', ' for', ' M', 'ere', ' Mort', 'als', '</', 'title', '>\n', '<', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '<', 'genre', '>', 'Computer', '</', 'genre', '>\n', '<p', 'ublisher', '>', 'O', "'Re", 'illy', ' Media', '</', 'publisher', '>\n', '<', 'description', '>', 'Book', ' about', ' SQL', ' queries', '</', 'description', '>\n', '<', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '<', 'pages', '>', '416', '</', 'pages', '>\n', '<', 'chapter', 'Quality', '>', 'Good', '</', 'chapter', 'Quality', '>\n', '<', 'note', '>\n', '<', 'to', '>', 'Bob', '</', 'to', '>\n', '<', 'from', '>', 'John', '</', 'from', '>\n', '<', 'subject', '>', 'Re', ':', ' Updated', ' Instructions', '</', 'subject', '>\n', '<message', '>Please', ' check', ' the', ' updated', ' tutorial', '.</', 'message', '>\n', '<p', 'riority', ' level', '="', 'high', '"/>\n', '</', 'note', '>\n', '</', 'book', '>\n', '<', 'book', ' id', '="', 'bk', '108', '">\n', '...\n', '</', 'catalog', '>', ' \n\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'system', 'Id', '="', 'schema', '.x', 'sd', '"?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '109', '">\n', '...\n', '</', 'catalog', '>', ' \n\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'stylesheet', '.x', 'sl', '"?>\n', '<?', 'xml', '-', 'declaration', ' version', '="', '1', '.', '1', '"?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '110', '">\n', '...\n', '</', 'catalog', '>', ' \n\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' href', '="', 'stylesheet', '.css', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/text', '"', '?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '111', '">\n', '...\n', '</', 'catalog', '>', ' \n\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'stylesheet', '.x', 'sl', '"?>\n', '<?', 'include', ' href', '="', 'included', '-file', '.xml', '"?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '112', '">\n', '...\n', '</', 'catalog', '>', ' \n\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'param', ' name', '="', 'xml', '-', 'stylesheet', '"', ' content', '="', 'stylesheet', '.css', '"?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '113', '">\n', '...\n', '</', 'catalog', '>', ' \n\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'stylesheet', '.x', 'sl', '"?>\n', '<', 'note', '>\n', '<', 'to', '>A', 'lice', '</', 'to', '>\n', '<', 'from', '>', 'Bob', '</', 'from', '>\n', '<', 'subject', '>', 'Meeting', '</', 'subject', '>\n', '<message', '>', 'Don', "'t", ' forget', ' our', ' meeting', ' at', ' ', '2', 'pm', '!</', 'message', '>\n', '<p', 'riority', ' level', '="', 'high', '"/>\n', '</', 'note', '>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '114']
+2025-05-01 02:34:19,375 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-249.], device='cuda:0')
+2025-05-01 02:34:19,381 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-18.68830109]
+2025-05-01 02:34:19,381 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [7.65198239e-09]
+2025-05-01 02:34:19,389 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-33-17-724166-n5.json
+2025-05-01 02:34:19,389 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:34:19,389 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 2 (restart)
+2025-05-01 02:34:19,393 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'processing', ' instructions', ' xmlns', '=x', 'sl', ' process', ' =', ' "', 'x', 'slt', '-', 'styles', 'heet', '.x', 'sl', '"?>\n', '<', 'note', '>\n', ' ', ' <', 'to', '>A', 'lice', '</', 'to', '>\n', ' ', ' <', 'from', '>', 'Bob', '</', 'from', '>\n', ' ', ' <', 'subject', '>', 'Meeting', '</', 'subject', '>\n', ' ', ' <', 'message', '>', 'Don', "'t", ' forget', ' our', ' meeting', ' at', ' ', '2', 'pm', '!</', 'message', '>\n', ' ', ' <', 'priority', '>\n', '   ', ' <', 'level', '>', 'high', '</', 'level', '>\n', '   ', ' <', 'duration', '>', '2', ' hours', '</', 'duration', '>\n', ' ', ' </', 'priority', '>\n', ' ', ' <', 'attachments', '>\n', '   ', ' <', 'attachment', ' filename', '="', 'report', '.doc', 'x', '"', ' type', '="', 'document', '"/>\n', '   ', ' <', 'attachment', ' filename', '="', 'presentation', '.p', 'pt', 'x', '"', ' type', '="', 'presentation', '"/>\n', ' ', ' </', 'attachments', '>\n', '</', 'note', '>\n\n', ' ', '<|eot_id|>']
+2025-05-01 02:34:19,394 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-127.5000], device='cuda:0')
+2025-05-01 02:34:31,859 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<S', 'olution', '1', '>\n', '   ', ' <?', 'xml', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '"?>\n', '   ', ' <', 'Catalog', '>\n', '       ', ' <', 'Book', ' id', '="', 'bk', '101', '">\n', '           ', ' <', 'Author', '>', 'John', ' Smith', '</', 'Author', '>\n', '           ', ' <', 'Title', '>', 'XML', ' Tutorial', '</', 'Title', '>\n', '           ', ' <', 'Genre', '>', 'Computer', '</', 'Genre', '>\n', '           ', ' <', 'Price', '>', '39', '.', '95', '</', 'Price', '>\n', '           ', ' <', 'Publisher', '>', 'ABC', '</', 'Publisher', '>\n', '           ', ' <', 'Is', 'bn', '>', '123', '456', '789', '0', '</', 'Is', 'bn', '>\n', '           ', ' <', 'Description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' documents', ' with', ' XML', '.</', 'Description', '>\n', '           ', ' <', 'Condition', '>New', '</', 'Condition', '>\n', '           ', ' <', 'Stock', 'Quantity', '>', '1', '</', 'Stock', 'Quantity', '>\n', '       ', ' </', 'Book', '>\n', '       ', ' <', 'Book', ' id', '="', 'bk', '102', '">\n', '           ', ' <', 'Author', '>J', 'ane', ' Doe', '</', 'Author', '>\n', '           ', ' <', 'Title', '>', 'XML', ' Essentials', '</', 'Title', '>\n', '           ', ' <', 'Genre', '>', 'Computer', '</', 'Genre', '>\n', '           ', ' <', 'Price', '>', '29', '.', '95', '</', 'Price', '>\n', '           ', ' <', 'Publisher', '>', 'ABC', '</', 'Publisher', '>\n', '           ', ' <', 'Is', 'bn', '>', '987', '654', '321', '0', '</', 'Is', 'bn', '>\n', '           ', ' <', 'Description', '>A', ' thorough', ' introduction', ' to', ' the', ' world', ' of', ' XML', '.</', 'Description', '>\n', '           ', ' <', 'Condition', '>', 'Used', '</', 'Condition', '>\n', '           ', ' <', 'Stock', 'Quantity', '>', '2', '</', 'Stock', 'Quantity', '>\n', '       ', ' </', 'Book', '>\n', '   ', ' </', 'Catalog', '>\n', '</', 'Solution', '1', '>\n\n', '   ', ' \n\n\n\n', '  ', '\n    \n', '  ', '<|eot_id|>']
+2025-05-01 02:34:31,860 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-109.5000], device='cuda:0')
+2025-05-01 02:34:31,863 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [25.13913727]
+2025-05-01 02:34:31,863 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:34:31,869 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-33-17-724166-n5.json
+2025-05-01 02:34:31,870 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:34:31,870 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 3 (restart)
+2025-05-01 02:34:31,876 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<S', 'olution', '1', '>\n', '   ', ' <?', 'xml', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '"?>\n', '   ', ' <', 'Catalog', '>\n', '       ', ' <', 'Book', ' id', '="', 'bk', '101', '">\n', '           ', ' <', 'Author', '>', 'John', ' Smith', '</', 'Author', '>\n', '           ', ' <', 'Title', '>', 'XML', ' Tutorial', '</', 'Title', '>\n', '           ', ' <', 'Genre', '>', 'Computer', '</', 'Genre', '>\n', '           ', ' <', 'Price', '>', '39', '.', '95', '</', 'Price', '>\n', '           ', ' <', 'Publisher', '>', 'ABC', '</', 'Publisher', '>\n', '           ', ' <', 'Is', 'bn', '>', '123', '456', '789', '0', '</', 'Is', 'bn', '>\n', '           ', ' <', 'Description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' documents', ' with', ' XML', '.</', 'Description', '>\n', '           ', ' <', 'Condition', '>New', '</', 'Condition', '>\n', '           ', ' <', 'Stock', 'Quantity', '>', '1', '</', 'Stock', 'Quantity', '>\n', '       ', ' </', 'Book', '>\n', '       ', ' <', 'Book', ' id', '="', 'bk', '102', '">\n', '           ', ' <', 'Author', '>J', 'ane', ' Doe', '</', 'Author', '>\n', '           ', ' <', 'Title', '>', 'XML', ' Essentials', '</', 'Title', '>\n', '           ', ' <', 'Genre', '>', 'Computer', '</', 'Genre', '>\n', '           ', ' <', 'Price', '>', '29', '.', '95', '</', 'Price', '>\n', '           ', ' <', 'Publisher', '>', 'ABC', '</', 'Publisher', '>\n', '           ', ' <', 'Is', 'bn', '>', '987', '654', '321', '0', '</', 'Is', 'bn', '>\n', '           ', ' <', 'Description', '>A', ' thorough', ' introduction', ' to', ' the', ' world', ' of', ' XML', '.</', 'Description', '>\n', '           ', ' <', 'Condition', '>', 'Used', '</', 'Condition', '>\n', '           ', ' <', 'Stock', 'Quantity', '>', '2', '</', 'Stock', 'Quantity', '>\n', '       ', ' </', 'Book', '>\n', '   ', ' </', 'Catalog', '>\n', '</', 'Solution', '1', '>\n\n', '   ', ' \n\n\n\n', '  ', '\n    \n', '  ', '<|eot_id|>']
+2025-05-01 02:34:31,877 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-109.5000], device='cuda:0')
+2025-05-01 02:34:44,931 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'processing', ' instruction', '\n', 'include', '-before', ' =', ' "', 'Document', ' Start', '"\n', 'include', '-after', ' =', ' "', 'Document', ' End', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>\n', '     ', ' <', 'decimal', '>', '39', '.', '95', '</', 'decimal', '>\n', '     ', ' <', 'currency', '>', 'USD', '</', 'currency', '>\n', '   ', ' </', 'price', '>\n', '   ', ' <', 'publish', '_date', '><', 'day', '>', '12', '</', 'day', '><', 'month', '>', '5', '</', 'month', '><', 'year', '>', '200', '0', '</', 'year', '></', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' applications', ' with', ' XML', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>\n', '     ', ' <', 'decimal', '>', '29', '.', '95', '</', 'decimal', '>\n', '     ', ' <', 'currency', '>', 'USD', '</', 'currency', '>\n', '   ', ' </', 'price', '>\n', '   ', ' <', 'publish', '_date', '><', 'day', '>', '21', '</', 'day', '><', 'month', '>', '10', '</', 'month', '><', 'year', '>', '200', '0', '</', 'year', '></', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' guide', ' to', ' transforming', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:34:44,932 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-114.5000], device='cuda:0')
+2025-05-01 02:34:44,936 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [1.34259796]
+2025-05-01 02:34:44,936 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:34:44,944 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-33-17-724166-n5.json
+2025-05-01 02:34:44,944 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:34:44,944 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 4 (restart)
+2025-05-01 02:34:44,951 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'processing', ' instruction', '\n', 'include', '-before', ' =', ' "', 'Document', ' Start', '"\n', 'include', '-after', ' =', ' "', 'Document', ' End', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>\n', '     ', ' <', 'decimal', '>', '39', '.', '95', '</', 'decimal', '>\n', '     ', ' <', 'currency', '>', 'USD', '</', 'currency', '>\n', '   ', ' </', 'price', '>\n', '   ', ' <', 'publish', '_date', '><', 'day', '>', '12', '</', 'day', '><', 'month', '>', '5', '</', 'month', '><', 'year', '>', '200', '0', '</', 'year', '></', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' applications', ' with', ' XML', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>\n', '     ', ' <', 'decimal', '>', '29', '.', '95', '</', 'decimal', '>\n', '     ', ' <', 'currency', '>', 'USD', '</', 'currency', '>\n', '   ', ' </', 'price', '>\n', '   ', ' <', 'publish', '_date', '><', 'day', '>', '21', '</', 'day', '><', 'month', '>', '10', '</', 'month', '><', 'year', '>', '200', '0', '</', 'year', '></', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' guide', ' to', ' transforming', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:34:44,952 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-114.5000], device='cuda:0')
+2025-05-01 02:34:59,474 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'internal', '-result', '-element', '-names', 'paces', ' schema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '.x', 'sd', '"?>\n', '<?', 'm', 'XML', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' stand', '-alone', '="', 'yes', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Example', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'pub', 'Date', '>', '200', '2', '-', '10', '-', '01', '</', 'pub', 'Date', '>\n', '   ', ' <', 'description', '>An', ' example', ' XML', ' document', '.</', 'description', '>\n', '   ', ' <', 'coverage', '>\n', '     ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '     ', ' <', 'city', '>', 'New', ' York', '</', 'city', '>\n', '   ', ' </', 'coverage', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', ' another', 'XML', 'doc', 'x', 'ample', '.title', 'title', '="', 'Another', ' XML', ' Document', ' Example', '">', 'Another', ' XML', ' Document', ' Example', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '62', '</', 'price', '>\n', '   ', ' <', 'pub', 'Date', '>', '200', '2', '-', '10', '-', '01', '</', 'pub', 'Date', '>\n', '   ', ' <', 'description', '>A', ' sample', ' XML', ' example', ' document', '.</', 'description', '>\n', '   ', ' <', 'coverage', '>\n', '     ', ' <', 'country', '>', 'Japan', '</', 'country', '>\n', '     ', ' <', 'city', '>T', 'ok', 'yo', '</', 'city', '>\n', '   ', ' </', 'coverage', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:34:59,474 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-193.], device='cuda:0')
+2025-05-01 02:34:59,480 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-32.3891983]
+2025-05-01 02:34:59,480 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [8.58123714e-15]
+2025-05-01 02:34:59,488 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-33-17-724166-n5.json
+2025-05-01 02:34:59,489 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:34:59,489 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample time: 109.54 s
+2025-05-01 02:34:59,489 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample: <?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?processing instruction
+include-before = "Document Start"
+include-after = "Document End"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>Computer</genre>
+    <price>
+      <decimal>39.95</decimal>
+      <currency>USD</currency>
+    </price>
+    <publish_date><day>12</day><month>5</month><year>2000</year></publish_date>
+    <description>An in-depth look at creating applications with XML.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Tutorial</title>
+    <genre>Computer</genre>
+    <price>
+      <decimal>29.95</decimal>
+      <currency>USD</currency>
+    </price>
+    <publish_date><day>21</day><month>10</month><year>2000</year></publish_date>
+    <description>A comprehensive guide to transforming XML documents.</description>
+  </book>
+</catalog><|eot_id|>
+2025-05-01 02:34:59,489 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample saved to /data/saiva/libxml_mcmc_restart_test/llm_seeds/2025-05-01_02-34-59-489607-sample_0.xml
+2025-05-01 02:34:59,489 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting sample 1/5
+2025-05-01 02:34:59,489 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 02:35:11,851 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<?', 'param', ' name', '="', 'lang', '"', ' value', '="', 'en', '"?>\n', '<?', 'note', '-level', ' level', '="', 'urgent', '"', ' author', '="', 'John', ' Doe', '"?>\n', '<', 'catalog', ' xmlns', '="', 'http', '://', 'www', '.w', '3', 'schools', '.com', '/xml', '">\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', 'ing', 'Date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', 'ing', 'Date', '>\n', '   ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' your', ' own', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Master', 'class', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Script', 'ing', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', 'ing', 'Date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', 'ing', 'Date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:35:11,852 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial raw logprob: tensor([-118.], device='cuda:0')
+2025-05-01 02:35:11,852 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 0 (restart)
+2025-05-01 02:35:11,859 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<?', 'param', ' name', '="', 'lang', '"', ' value', '="', 'en', '"?>\n', '<?', 'note', '-level', ' level', '="', 'urgent', '"', ' author', '="', 'John', ' Doe', '"?>\n', '<', 'catalog', ' xmlns', '="', 'http', '://', 'www', '.w', '3', 'schools', '.com', '/xml', '">\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', 'ing', 'Date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', 'ing', 'Date', '>\n', '   ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' your', ' own', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Master', 'class', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Script', 'ing', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', 'ing', 'Date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', 'ing', 'Date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:35:11,859 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-118.], device='cuda:0')
+2025-05-01 02:35:39,201 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' href', ' =', ' "', 'style', '.css', '"', ' type', ' =', ' "', 'text', '/css', '"?>\n', '<', 'catalog', ' xmlns', ' =', ' "', 'http', '://', 'example', '.com', '">\n', '<head', '>\n', '<title', ' Catalog', '_example', ':', 'Catalog', 's', '_in', '_XML', '\n', '   ', ' ', '\t\t\t  ', ' ', '\t\t\t\t   ', '\t\t\n', '   ', ' ', '\t\t\n\t\t\n', '\t', '\t', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '  \n\n\n', '  \n\n\n', '  \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n', '\t\n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '\t\n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '\t', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', '  \n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '  \n  \n', '\t ', '\n  \n', ' \n \n', '\n\n\n\n\n\n', '\t\n\t\n', ' \n \n', '\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n', '\t\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', '\t\n\t\n\t\n\t\n', '\t\t\n\t\t\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n', '\t', '\n\n\n\n\n\n\n\n\n\n\n', '\t\n\t\n', '\t\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\t\t\n\t\t\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n', '\t \n', '\t\t\n\t\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n', '\t\t\r\n', '\n\n\n\n\n', ' \n\n\n\n\n', '\t \n', '\t\t\t \n', '\t', '\n\n\n\n\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n\t\n', '\t\n\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n', '\t\n\t\n\t\n', '\t\t\n', '\t\n\t\n', '\t\n\t\n\t\n', '\t\n\n', '\t\n\t\n\t\n\t\n', '\t\n\t\n\t\n', '\t\n\t\n', ' \n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\n\n\n\n\n\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\n\n\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 02:35:39,202 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-864.], device='cuda:0')
+2025-05-01 02:35:39,209 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-122.81437683]
+2025-05-01 02:35:39,209 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [4.5961463e-54]
+2025-05-01 02:35:39,217 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-35-11-852857-n5.json
+2025-05-01 02:35:39,218 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:35:39,218 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 1 (restart)
+2025-05-01 02:35:39,224 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<?', 'param', ' name', '="', 'lang', '"', ' value', '="', 'en', '"?>\n', '<?', 'note', '-level', ' level', '="', 'urgent', '"', ' author', '="', 'John', ' Doe', '"?>\n', '<', 'catalog', ' xmlns', '="', 'http', '://', 'www', '.w', '3', 'schools', '.com', '/xml', '">\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', 'ing', 'Date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', 'ing', 'Date', '>\n', '   ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' creating', ' your', ' own', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Master', 'class', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Script', 'ing', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', 'ing', 'Date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', 'ing', 'Date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:35:39,224 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-118.], device='cuda:0')
+2025-05-01 02:35:49,572 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<B', 'ibli', 'ography', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', ' http', '://', 'example', '.com', 'schema', '/schema', '.x', 'sd', '"\n', 'version', '="', '1', '.', '0', '"\n', 'encoding', '="', 'UTF', '-', '8', '"\n', 'stand', 'alone', '="', 'yes', '">\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'February', '"', ' Identification', '="', 'Book', '-', '123', '">\n', '       ', ' <', 'Title', '>', 'Al', 'gorithms', ' to', ' Live', ' By', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'Steven', ' J', '.', ' Brooks', ',', ' William', ' N', '.', ' Taylor', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '7', '</', 'Year', '>\n', '       ', ' <', 'Publisher', '>', 'William', ' Morrow', ' Paper', 'backs', '</', 'Publisher', '>\n', '   ', ' </', 'Reference', '>\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'March', '"', ' Identification', '="', 'Journal', '-', '456', '">\n', '       ', ' <', 'Title', '>', 'From', ' Linear', ' to', ' Non', 'linear', ' Regression', ' -', ' An', ' Improved', ' Method', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'William', ' O', '.', ' Hill', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '9', '</', 'Year', '>\n', '       ', ' <', 'Journal', '>A', 'merican', ' Journal', ' of', ' Mathematics', '</', 'Journal', '>\n', '   ', ' </', 'Reference', '>\n', '</', 'B', 'ibli', 'ography', '>', '<|eot_id|>']
+2025-05-01 02:35:49,573 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-171.], device='cuda:0')
+2025-05-01 02:35:49,577 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [18.76737976]
+2025-05-01 02:35:49,577 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:35:49,583 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-35-11-852857-n5.json
+2025-05-01 02:35:49,583 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:35:49,584 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 2 (restart)
+2025-05-01 02:35:49,589 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<B', 'ibli', 'ography', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', ' http', '://', 'example', '.com', 'schema', '/schema', '.x', 'sd', '"\n', 'version', '="', '1', '.', '0', '"\n', 'encoding', '="', 'UTF', '-', '8', '"\n', 'stand', 'alone', '="', 'yes', '">\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'February', '"', ' Identification', '="', 'Book', '-', '123', '">\n', '       ', ' <', 'Title', '>', 'Al', 'gorithms', ' to', ' Live', ' By', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'Steven', ' J', '.', ' Brooks', ',', ' William', ' N', '.', ' Taylor', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '7', '</', 'Year', '>\n', '       ', ' <', 'Publisher', '>', 'William', ' Morrow', ' Paper', 'backs', '</', 'Publisher', '>\n', '   ', ' </', 'Reference', '>\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'March', '"', ' Identification', '="', 'Journal', '-', '456', '">\n', '       ', ' <', 'Title', '>', 'From', ' Linear', ' to', ' Non', 'linear', ' Regression', ' -', ' An', ' Improved', ' Method', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'William', ' O', '.', ' Hill', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '9', '</', 'Year', '>\n', '       ', ' <', 'Journal', '>A', 'merican', ' Journal', ' of', ' Mathematics', '</', 'Journal', '>\n', '   ', ' </', 'Reference', '>\n', '</', 'B', 'ibli', 'ography', '>', '<|eot_id|>']
+2025-05-01 02:35:49,590 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-171.], device='cuda:0')
+2025-05-01 02:36:17,050 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<', 'catalog', ' xml', ':', 'lang', ' =', '"H', 'ind', 'u', ' mythology', '"', ' xmlns', ':x', 'si', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xsi', ':s', 'chema', 'Location', ' =', '"\n\n', '       ', ' "', 'http', ':', 'www', '.w', '3', '.org', '200', '1', 'xml', 'schema', '\n', '       ', ' ', '\t\t ', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n', ' \n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n', '      ', '\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r', '\r\n', '\r\n\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 02:36:17,051 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-728.], device='cuda:0')
+2025-05-01 02:36:17,057 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-115.46401978]
+2025-05-01 02:36:17,057 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [7.15506121e-51]
+2025-05-01 02:36:17,066 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-35-11-852857-n5.json
+2025-05-01 02:36:17,067 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:36:17,067 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 3 (restart)
+2025-05-01 02:36:17,072 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<B', 'ibli', 'ography', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', ' http', '://', 'example', '.com', 'schema', '/schema', '.x', 'sd', '"\n', 'version', '="', '1', '.', '0', '"\n', 'encoding', '="', 'UTF', '-', '8', '"\n', 'stand', 'alone', '="', 'yes', '">\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'February', '"', ' Identification', '="', 'Book', '-', '123', '">\n', '       ', ' <', 'Title', '>', 'Al', 'gorithms', ' to', ' Live', ' By', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'Steven', ' J', '.', ' Brooks', ',', ' William', ' N', '.', ' Taylor', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '7', '</', 'Year', '>\n', '       ', ' <', 'Publisher', '>', 'William', ' Morrow', ' Paper', 'backs', '</', 'Publisher', '>\n', '   ', ' </', 'Reference', '>\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'March', '"', ' Identification', '="', 'Journal', '-', '456', '">\n', '       ', ' <', 'Title', '>', 'From', ' Linear', ' to', ' Non', 'linear', ' Regression', ' -', ' An', ' Improved', ' Method', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'William', ' O', '.', ' Hill', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '9', '</', 'Year', '>\n', '       ', ' <', 'Journal', '>A', 'merican', ' Journal', ' of', ' Mathematics', '</', 'Journal', '>\n', '   ', ' </', 'Reference', '>\n', '</', 'B', 'ibli', 'ography', '>', '<|eot_id|>']
+2025-05-01 02:36:17,073 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-171.], device='cuda:0')
+2025-05-01 02:36:27,042 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '       ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '       ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '       ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '       ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '       ', ' <', 'description', '>An', ' introduction', ' to', ' the', ' basics', ' of', ' XML', '.</', 'description', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '       ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '       ', ' <', 'title', '>X', 'SL', 'T', ' Essentials', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '       ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '       ', ' <', 'publish', '_date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', '_date', '>\n', '       ', ' <', 'description', '>A', ' comprehensive', ' guide', ' to', ' X', 'SL', 'T', '.</', 'description', '>\n', '   ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:36:27,043 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-49.7500], device='cuda:0')
+2025-05-01 02:36:27,046 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-16.02197552]
+2025-05-01 02:36:27,046 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [1.10089131e-07]
+2025-05-01 02:36:27,053 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-35-11-852857-n5.json
+2025-05-01 02:36:27,053 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:36:27,053 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 4 (restart)
+2025-05-01 02:36:27,059 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<B', 'ibli', 'ography', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', ' http', '://', 'example', '.com', 'schema', '/schema', '.x', 'sd', '"\n', 'version', '="', '1', '.', '0', '"\n', 'encoding', '="', 'UTF', '-', '8', '"\n', 'stand', 'alone', '="', 'yes', '">\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'February', '"', ' Identification', '="', 'Book', '-', '123', '">\n', '       ', ' <', 'Title', '>', 'Al', 'gorithms', ' to', ' Live', ' By', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'Steven', ' J', '.', ' Brooks', ',', ' William', ' N', '.', ' Taylor', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '7', '</', 'Year', '>\n', '       ', ' <', 'Publisher', '>', 'William', ' Morrow', ' Paper', 'backs', '</', 'Publisher', '>\n', '   ', ' </', 'Reference', '>\n', '   ', ' <', 'Reference', ' Publication', 'Month', '="', 'March', '"', ' Identification', '="', 'Journal', '-', '456', '">\n', '       ', ' <', 'Title', '>', 'From', ' Linear', ' to', ' Non', 'linear', ' Regression', ' -', ' An', ' Improved', ' Method', '</', 'Title', '>\n', '       ', ' <', 'Authors', '>', 'William', ' O', '.', ' Hill', '</', 'Authors', '>\n', '       ', ' <', 'Year', '>', '201', '9', '</', 'Year', '>\n', '       ', ' <', 'Journal', '>A', 'merican', ' Journal', ' of', ' Mathematics', '</', 'Journal', '>\n', '   ', ' </', 'Reference', '>\n', '</', 'B', 'ibli', 'ography', '>', '<|eot_id|>']
+2025-05-01 02:36:27,059 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-171.], device='cuda:0')
+2025-05-01 02:36:34,593 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'version', ' ', '1', '.', '0', ' encoding', '="', 'iso', '-', '885', '9', '-', '1', '"?>\n', '<!', 'DOCTYPE', ' book', ' [\n', '<!', 'ELEMENT', ' book', ' (', 'title', ',', 'author', ',', 'edition', ',C', 'opy', 'number', ')', ' >\n', '<!', 'ELEMENT', ' title', ' (#', 'PC', 'DATA', ')', '*\n', ' ', ' >\n', ' ', ' <!', 'ELEMENT', ' author', ' (#', 'PC', 'DATA', ')', '*\n', ' ', ' >\n', ' ', ' <!', 'ELEMENT', ' edition', ' (#', 'PC', 'DATA', ')*', '>\n', ' ', ' <!', 'ELEMENT', ' Copy', 'number', ' (#', 'PC', 'DATA', ')*', '>\n', ']>\n', '<', 'book', '>\n', ' ', ' <', 'title', '>', 'U', 'ly', 'ss', 'es', '</', 'title', '>\n', ' ', ' <', 'author', '>I', 'reland', ' ', '192', '2', '</', 'author', '>\n', ' ', ' <', 'edition', '>', '1', '</', 'edition', '>\n', ' ', ' <', 'Copy', 'number', '>', '4', '</', 'Copy', 'number', '>\n', '</', 'book', '>', '<|eot_id|>']
+2025-05-01 02:36:34,594 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-142.], device='cuda:0')
+2025-05-01 02:36:34,598 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-53.86435699]
+2025-05-01 02:36:34,598 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [4.045824e-24]
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-35-11-852857-n5.json
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample time: 95.12 s
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample: <Bibliography xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance http://example.comschema/schema.xsd"
+version="1.0"
+encoding="UTF-8"
+standalone="yes">
+    <Reference PublicationMonth="February" Identification="Book-123">
+        <Title>Algorithms to Live By</Title>
+        <Authors>Steven J. Brooks, William N. Taylor</Authors>
+        <Year>2017</Year>
+        <Publisher>William Morrow Paperbacks</Publisher>
+    </Reference>
+    <Reference PublicationMonth="March" Identification="Journal-456">
+        <Title>From Linear to Nonlinear Regression - An Improved Method</Title>
+        <Authors>William O. Hill</Authors>
+        <Year>2019</Year>
+        <Journal>American Journal of Mathematics</Journal>
+    </Reference>
+</Bibliography><|eot_id|>
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample saved to /data/saiva/libxml_mcmc_restart_test/llm_seeds/2025-05-01_02-36-34-605673-sample_1.xml
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting sample 2/5
+2025-05-01 02:36:34,605 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 02:36:52,241 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial: ['<?', 'xml', ' version', '=\n', '       ', ' ', '1', '.', '0', '\n', '       ', ' encoding', '=\n', '       ', ' "', 'UTF', '-', '8', '"\n', '       ', ' standalone', '=\n', '       ', ' yes', '\n', '       ', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '       ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '       ', ' <', 'title', '>', ' XML', ' Example', ' </', 'title', '>\n', '       ', ' <', 'genre', '>', 'Comput', 'ers', '</', 'genre', '>\n', '       ', ' <', 'price', '>\n', '           ', ' <', 'currency', '>\n', '               ', ' <', 'USD', '>\n', '                   ', ' <', 'amount', '>', '39', '.', '95', '</', 'amount', '>\n', '               ', ' </', 'USD', '>\n', '           ', ' </', 'currency', '>\n', '       ', ' </', 'price', '>\n', '       ', ' <', 'publish', 'Date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', 'Date', '>\n', '       ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' building', ' XML', ' documents', '</', 'description', '>\n', '       ', ' <', 'terms', 'Of', 'Service', '>', 'See', ' <', 'terms', '-of', '-service', ' link', '="', 'http', '://', 'www', '.xml', '.org', '/legal', '/c', 'opyright', '.htm', '"', '/>', ' for', ' terms', ' of', ' service', '.</', 'terms', 'Of', 'Service', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '       ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '       ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Comput', 'ers', '</', 'genre', '>\n', '       ', ' <', 'price', '>\n', '           ', ' <', 'currency', '>\n', '               ', ' <', 'USD', '>\n', '                   ', ' <', 'amount', '>', '29', '.', '95', '</', 'amount', '>\n', '               ', ' </', 'USD', '>\n', '           ', ' </', 'currency', '>\n', '       ', ' </', 'price', '>\n', '       ', ' <', 'publish', 'Date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', 'Date', '>\n', '       ', ' <', 'description', '>A', ' tutorial', ' on', ' using', ' X', 'SL', 'T', ' for', ' data', ' transformation', '</', 'description', '>\n', '       ', ' <', 'terms', 'Of', 'Service', '>', 'See', ' <', 'terms', '-of', '-service', ' link', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/x', 'slt', '/"', '/>', ' for', ' terms', ' of', ' service', '.</', 'terms', 'Of', 'Service', '>\n', '   ', ' </', 'book', '>\n', '</', 'catalog', '>\n\n', '    \n    \n', '   ', '\n    \n', '    \n    \n', '   ', '\n    \n', '    \n    \n', '   ', ' \n    \n', '   ', '\n    \n\n', '    \n', '          ', '\n    \n', '    \n    \n', '    ', '\n\n\n\n\n\n\n\n\n', '    \n', '          ', '\n    \n', '    \n\n', '    \n', '   ', '    \n    \n    \n', '    ', '\n\n\n\n\n\n\n', '    \n    \n    \n    \n', '<|eot_id|>']
+2025-05-01 02:36:52,241 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial raw logprob: tensor([-244.], device='cuda:0')
+2025-05-01 02:36:52,242 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 0 (restart)
+2025-05-01 02:36:52,251 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=\n', '       ', ' ', '1', '.', '0', '\n', '       ', ' encoding', '=\n', '       ', ' "', 'UTF', '-', '8', '"\n', '       ', ' standalone', '=\n', '       ', ' yes', '\n', '       ', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '       ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '       ', ' <', 'title', '>', ' XML', ' Example', ' </', 'title', '>\n', '       ', ' <', 'genre', '>', 'Comput', 'ers', '</', 'genre', '>\n', '       ', ' <', 'price', '>\n', '           ', ' <', 'currency', '>\n', '               ', ' <', 'USD', '>\n', '                   ', ' <', 'amount', '>', '39', '.', '95', '</', 'amount', '>\n', '               ', ' </', 'USD', '>\n', '           ', ' </', 'currency', '>\n', '       ', ' </', 'price', '>\n', '       ', ' <', 'publish', 'Date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', 'Date', '>\n', '       ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' building', ' XML', ' documents', '</', 'description', '>\n', '       ', ' <', 'terms', 'Of', 'Service', '>', 'See', ' <', 'terms', '-of', '-service', ' link', '="', 'http', '://', 'www', '.xml', '.org', '/legal', '/c', 'opyright', '.htm', '"', '/>', ' for', ' terms', ' of', ' service', '.</', 'terms', 'Of', 'Service', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '       ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '       ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Comput', 'ers', '</', 'genre', '>\n', '       ', ' <', 'price', '>\n', '           ', ' <', 'currency', '>\n', '               ', ' <', 'USD', '>\n', '                   ', ' <', 'amount', '>', '29', '.', '95', '</', 'amount', '>\n', '               ', ' </', 'USD', '>\n', '           ', ' </', 'currency', '>\n', '       ', ' </', 'price', '>\n', '       ', ' <', 'publish', 'Date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', 'Date', '>\n', '       ', ' <', 'description', '>A', ' tutorial', ' on', ' using', ' X', 'SL', 'T', ' for', ' data', ' transformation', '</', 'description', '>\n', '       ', ' <', 'terms', 'Of', 'Service', '>', 'See', ' <', 'terms', '-of', '-service', ' link', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/x', 'slt', '/"', '/>', ' for', ' terms', ' of', ' service', '.</', 'terms', 'Of', 'Service', '>\n', '   ', ' </', 'book', '>\n', '</', 'catalog', '>\n\n', '    \n    \n', '   ', '\n    \n', '    \n    \n', '   ', '\n    \n', '    \n    \n', '   ', ' \n    \n', '   ', '\n    \n\n', '    \n', '          ', '\n    \n', '    \n    \n', '    ', '\n\n\n\n\n\n\n\n\n', '    \n', '          ', '\n    \n', '    \n\n', '    \n', '   ', '    \n    \n    \n', '    ', '\n\n\n\n\n\n\n', '    \n    \n    \n    \n', '<|eot_id|>']
+2025-05-01 02:36:52,251 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-244.], device='cuda:0')
+2025-05-01 02:37:19,426 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' \n', ' ', ' ', '1', '.', '0', ' encoding', ' =', ' \n', '   ', ' "', 'UTF', '-', '8', '"', ' \n', '   ', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n\n', '<?', 'import', ' xmlns', ' =', ' \n', ' ', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '0', '/xml', 'ns', '/"', '?>\n', ' \n', '<', 'xs', ':s', 'chema', ' xmlns', ':', 'xs', ' =', ' \n', ' ', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '"\n', ' xmlns', ':x', 'si', ' =', ' \n', ' ', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '">\n', ' \n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '   ', ' Country', 'Information', '"></', 'xs', ':', 'element', '>\n', '  \n', ' ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '   ', ' Person', '">\n', ' \n', '   ', ' <', 'xs', ':', 'complexType', '>\n', ' \n', '    ', ' <', 'xs', ':', 'sequence', '>\n', ' \n', '     ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '       ', ' Country', '"', ' \n', '        ', ' type', ' =', '"\n', '       ', ' xs', ':string', '"/>\n', ' \n', '     ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '       ', ' Address', '"', ' \n', '        ', ' type', ' =', '"\n', '       ', ' Address', 'Type', '"/>\n', ' \n', '    ', ' </', 'xs', ':', 'sequence', '>\n', ' \n', '   ', ' </', 'xs', ':', 'complexType', '>\n', ' \n', ' ', ' </', 'xs', ':', 'element', '>\n', ' \n', ' ', ' <', 'xs', ':', 'complexType', ' name', ' =', '"\n', '   ', ' Address', 'Type', '">\n', '   \n', '  ', ' <', 'xs', ':', 'sequence', '>\n', '   \n', '   ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '     ', ' Street', '"', ' \n', '      ', ' type', ' =', '"\n', '     ', ' xs', ':string', '"/>\n', '   \n', '   ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '     ', ' City', '"', ' \n', '      ', ' type', ' =', '"\n', '     ', ' xs', ':string', '"/>\n', '   \n', '   ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '     ', ' State', '"', ' \n', '      ', ' type', ' =', '"\n', '     ', ' xs', ':string', '"/>\n', '   \n', '   ', ' <', 'xs', ':', 'element', ' name', ' =', '"\n', '     ', ' Zip', 'Code', '"', ' \n', '      ', ' type', ' =', '"\n', '     ', ' xs', ':string', '"/>\n', '   \n', '  ', ' </', 'xs', ':', 'sequence', '>\n', ' \n', ' ', ' </', 'xs', ':', 'complexType', '>\n', ' \n', ' </', 'xs', ':s', 'chema', '>\n', ' \n', ' ', '\n        \n        \n', ' \n \n', ' \n \n', ' \n', ' ', '        \n        \n        \n', '       ', '\n\n\n\n', ' \n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', '        \n        \n        \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '       ', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n']
+2025-05-01 02:37:19,427 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-506.], device='cuda:0')
+2025-05-01 02:37:19,434 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-21.49240112]
+2025-05-01 02:37:19,434 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [4.63413615e-10]
+2025-05-01 02:37:19,444 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-36-52-241992-n5.json
+2025-05-01 02:37:19,444 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:37:19,444 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 1 (restart)
+2025-05-01 02:37:19,453 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=\n', '       ', ' ', '1', '.', '0', '\n', '       ', ' encoding', '=\n', '       ', ' "', 'UTF', '-', '8', '"\n', '       ', ' standalone', '=\n', '       ', ' yes', '\n', '       ', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '       ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '       ', ' <', 'title', '>', ' XML', ' Example', ' </', 'title', '>\n', '       ', ' <', 'genre', '>', 'Comput', 'ers', '</', 'genre', '>\n', '       ', ' <', 'price', '>\n', '           ', ' <', 'currency', '>\n', '               ', ' <', 'USD', '>\n', '                   ', ' <', 'amount', '>', '39', '.', '95', '</', 'amount', '>\n', '               ', ' </', 'USD', '>\n', '           ', ' </', 'currency', '>\n', '       ', ' </', 'price', '>\n', '       ', ' <', 'publish', 'Date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', 'Date', '>\n', '       ', ' <', 'description', '>An', ' in', '-depth', ' look', ' at', ' building', ' XML', ' documents', '</', 'description', '>\n', '       ', ' <', 'terms', 'Of', 'Service', '>', 'See', ' <', 'terms', '-of', '-service', ' link', '="', 'http', '://', 'www', '.xml', '.org', '/legal', '/c', 'opyright', '.htm', '"', '/>', ' for', ' terms', ' of', ' service', '.</', 'terms', 'Of', 'Service', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '       ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '       ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Comput', 'ers', '</', 'genre', '>\n', '       ', ' <', 'price', '>\n', '           ', ' <', 'currency', '>\n', '               ', ' <', 'USD', '>\n', '                   ', ' <', 'amount', '>', '29', '.', '95', '</', 'amount', '>\n', '               ', ' </', 'USD', '>\n', '           ', ' </', 'currency', '>\n', '       ', ' </', 'price', '>\n', '       ', ' <', 'publish', 'Date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', 'Date', '>\n', '       ', ' <', 'description', '>A', ' tutorial', ' on', ' using', ' X', 'SL', 'T', ' for', ' data', ' transformation', '</', 'description', '>\n', '       ', ' <', 'terms', 'Of', 'Service', '>', 'See', ' <', 'terms', '-of', '-service', ' link', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/x', 'slt', '/"', '/>', ' for', ' terms', ' of', ' service', '.</', 'terms', 'Of', 'Service', '>\n', '   ', ' </', 'book', '>\n', '</', 'catalog', '>\n\n', '    \n    \n', '   ', '\n    \n', '    \n    \n', '   ', '\n    \n', '    \n    \n', '   ', ' \n    \n', '   ', '\n    \n\n', '    \n', '          ', '\n    \n', '    \n    \n', '    ', '\n\n\n\n\n\n\n\n\n', '    \n', '          ', '\n    \n', '    \n\n', '    \n', '   ', '    \n    \n    \n', '    ', '\n\n\n\n\n\n\n', '    \n    \n    \n    \n', '<|eot_id|>']
+2025-05-01 02:37:19,454 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-244.], device='cuda:0')
+2025-05-01 02:37:46,615 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<S', 'olution', '1', '>\n\n', '<?', 'xml', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Introduction', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' XML', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '199', '9', '-', '05', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>\n', '</', 'Solution', '1', '>\n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n']
+2025-05-01 02:37:46,616 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-69.5000], device='cuda:0')
+2025-05-01 02:37:46,622 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [37.55840302]
+2025-05-01 02:37:46,622 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:37:46,633 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-36-52-241992-n5.json
+2025-05-01 02:37:46,633 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:37:46,633 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 2 (restart)
+2025-05-01 02:37:46,647 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<S', 'olution', '1', '>\n\n', '<?', 'xml', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Introduction', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' XML', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '199', '9', '-', '05', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>\n', '</', 'Solution', '1', '>\n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n']
+2025-05-01 02:37:46,647 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-69.5000], device='cuda:0')
+2025-05-01 02:37:49,479 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'external', '-style', ' sheet', ' href', ' =', ' "', 'styles', '.css', '"', '?>\n', '<', 'countries', '>\n', ' ', ' <', 'country', ' name', '="', 'Australia', '"\n', '          ', ' capital', '="', 'Can', 'berra', '"\n', '          ', ' population', '="', '25', ' triệu', '<|eot_id|>']
+2025-05-01 02:37:49,480 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-96.], device='cuda:0')
+2025-05-01 02:37:49,485 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-7.69504929]
+2025-05-01 02:37:49,485 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [0.00045507]
+2025-05-01 02:37:49,494 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-36-52-241992-n5.json
+2025-05-01 02:37:49,494 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:37:49,494 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 3 (restart)
+2025-05-01 02:37:49,508 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<S', 'olution', '1', '>\n\n', '<?', 'xml', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Introduction', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' XML', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '199', '9', '-', '05', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>\n', '</', 'Solution', '1', '>\n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n']
+2025-05-01 02:37:49,508 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-69.5000], device='cuda:0')
+2025-05-01 02:38:01,033 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', '    ', ' ', '1', '.', '0', ' ', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', '    ', ' yes', '?>\n', '<?', 'processing', ' instruction', ' ', ' xml', '-', 'stylesheet', ' type', ' =', ' "', 'text', '/x', 'sl', '"', '    ', ' href', ' =', ' "', 'document', '.x', 'sl', '"?>\n', '<', 'library', '>\n', '<', 'book', ' genre', '="', ' romance', '">\n', '<title', '>', ' Pride', ' and', ' Pre', 'jud', 'ice', ' </', 'title', '>\n', '<', 'author', '>', ' Jane', ' Aust', 'en', ' </', 'author', '>\n', '<p', 'ublisher', ' ', ' >', '  ', ' Book', 'land', ' ', ' </', 'publisher', '>\n', '<', 'year', ' >', '        ', ' ', '181', '3', '  ', ' </', 'year', '>\n', '<', 'price', ' >', '       ', ' ', '19', '.', '99', '    ', ' </', 'price', '>\n', '<', 'description', '  ', ' >', '    ', ' Jane', ' Aust', 'en', "'s", ' debut', ' novel', ',', ' published', ' ', '200', ' years', ' ago', '.', ' ', ' </', 'description', '>\n', '</', 'book', '>\n', '<', 'book', ' genre', '="', ' fiction', '">\n', '<title', '>', '  ', ' To', ' Kill', ' a', ' Mock', 'ing', 'bird', '   ', ' </', 'title', '>\n', '<', 'author', ' ', ' >', '   ', ' Harper', ' Lee', '    ', ' </', 'author', '>\n', '<p', 'ublisher', ' >', '   ', ' W', '.W', '.', ' Norton', ' &', 'amp', ';', ' Co', '.', ' ', ' </', 'publisher', '>\n', '<', 'year', ' >', '      ', ' ', '196', '0', '  ', ' </', 'year', '>\n', '<', 'price', ' >', '     ', ' ', '12', '.', '99', '    ', ' </', 'price', '>\n', '<', 'description', ' >', ' Harper', ' Lee', "'s", ' Pulitzer', ' Prize', '-winning', ' novel', '.', ' ', ' </', 'description', '>\n', '</', 'book', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 02:38:01,034 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-199.], device='cuda:0')
+2025-05-01 02:38:01,040 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-6.73326874]
+2025-05-01 02:38:01,040 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [0.00119063]
+2025-05-01 02:38:01,051 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-36-52-241992-n5.json
+2025-05-01 02:38:01,051 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:38:01,051 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 4 (restart)
+2025-05-01 02:38:01,065 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<S', 'olution', '1', '>\n\n', '<?', 'xml', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' Introduction', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' XML', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '199', '9', '-', '05', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' tutorial', ' on', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>\n', '</', 'Solution', '1', '>\n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n']
+2025-05-01 02:38:01,066 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-69.5000], device='cuda:0')
+2025-05-01 02:38:28,351 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<', 'catalog', ' xml', ':', 'lang', ' =', '"Our', ' language', '"', ' xml', ':', 'character', '-', 'encoding', '="', 'iso', '-', '885', '9', '-', '1', '">\n', ' ', ' <', 'description', ' xml', ':', 'namespace', '=', '">\n', '   ', ' <', 'book', ' id', '="', 'bk', '101', '01', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '3', 'b', '5', 'c', '3', 'b', '6', 'c', '3', 'b', '7', 'c', '3', 'b', '8', 'c', '3', 'b', '9', 'b', '3', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '3', 'b', '6', 'c', '3', 'b', '7', 'c', '2', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '4', 'd', '9', 'b', '3', 'b', '3', 'c', '3', 'b', '1', 'b', '6', 'c', '3', 'b', '7', 'b', '3', 'b', '8', 'c', '3', 'b', '9', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '3', 'b', '6', 'c', '3', 'b', '7', 'c', '3', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '4', 'd', '9', 'b', '3', 'b', '3', 'c', '3', 'b', '1', 'b', '6', 'c', '3', 'b', '7', 'b', '3', 'b', '8', 'c', '3', 'b', '9', 'b', '2', 'c', '7', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '3', 'b', '6', 'c', '3', 'b', '7', 'c', '3', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '4', 'd', '9', 'b', '3', 'b', '3', 'c', '3', 'b', '1', 'b', '6', 'c', '3', 'b', '7', 'b', '3', 'b', '8', 'c', '3', 'b', '9', 'b', '3', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '4', 'd', '9', 'b', '3', 'b', '3', 'c', '3', 'b', '1', 'b', '6', 'c', '3', 'b', '7', 'b', '3', 'b', '8', 'c', '3', 'b', '9', 'b', '3', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b', '1', 'f', '45', 'b', '3', 'c', '3', 'b', '6', 'c', '3', 'b', '7', 'c', '3', 'b', '3', 'c', '45', 'b', '2', 'c', '3', 'a', '4', 'dd', '35', 'c', '4', 'eb', '0', 'e', '7', 'b', '4', 'b']
+2025-05-01 02:38:28,351 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-344.], device='cuda:0')
+2025-05-01 02:38:28,359 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-55.28417206]
+2025-05-01 02:38:28,360 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [9.78113242e-25]
+2025-05-01 02:38:28,374 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-36-52-241992-n5.json
+2025-05-01 02:38:28,374 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:38:28,375 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample time: 113.77 s
+2025-05-01 02:38:28,375 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample: <Solution1>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Introduction</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An introduction to XML.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Tutorial</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>1999-05-01</publish_date>
+    <description>A tutorial on XSLT.</description>
+  </book>
+</catalog>
+</Solution1>
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+2025-05-01 02:38:28,375 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample saved to /data/saiva/libxml_mcmc_restart_test/llm_seeds/2025-05-01_02-38-28-375756-sample_2.xml
+2025-05-01 02:38:28,375 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting sample 3/5
+2025-05-01 02:38:28,375 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 02:38:37,403 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial: ['<?', 'xml', ' version', '=', '1', '.', '0', ' encoding', '="', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Company', ' Catalog', '</', 'description', '>\n', ' ', ' <', 'person', '>\n', '   ', ' <', 'name', '>', 'David', '</', 'name', '>\n', '   ', ' <', 'title', '>', 'Manager', '</', 'title', '>\n', ' ', ' </', 'person', '>\n', ' ', ' <', 'category', '>\n', '   ', ' <', 'title', '>', 'Electronic', '</', 'title', '>\n', '   ', ' <', 'description', '>', 'Electronic', ' devices', '</', 'description', '>\n', ' ', ' </', 'category', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'L', 'aptop', '</', 'name', '>\n', '   ', ' <', 'price', '>', '800', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' high', ' quality', ' laptop', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'Table', 't', '</', 'name', '>\n', '   ', ' <', 'price', '>', '600', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' good', ' quality', ' tablet', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:38:37,404 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial raw logprob: tensor([-94.5000], device='cuda:0')
+2025-05-01 02:38:37,404 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 0 (restart)
+2025-05-01 02:38:37,409 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=', '1', '.', '0', ' encoding', '="', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Company', ' Catalog', '</', 'description', '>\n', ' ', ' <', 'person', '>\n', '   ', ' <', 'name', '>', 'David', '</', 'name', '>\n', '   ', ' <', 'title', '>', 'Manager', '</', 'title', '>\n', ' ', ' </', 'person', '>\n', ' ', ' <', 'category', '>\n', '   ', ' <', 'title', '>', 'Electronic', '</', 'title', '>\n', '   ', ' <', 'description', '>', 'Electronic', ' devices', '</', 'description', '>\n', ' ', ' </', 'category', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'L', 'aptop', '</', 'name', '>\n', '   ', ' <', 'price', '>', '800', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' high', ' quality', ' laptop', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'Table', 't', '</', 'name', '>\n', '   ', ' <', 'price', '>', '600', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' good', ' quality', ' tablet', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:38:37,409 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-94.5000], device='cuda:0')
+2025-05-01 02:38:48,749 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', '<', 'book', ' id', '="', 'bk', '101', '">\n', '<title', '>', 'Harry', ' Potter', ' and', ' the', ' Phil', 'osopher', "'s", ' Stone', '</', 'title', '>\n', '<', 'author', '>', 'JK', ' Rowling', '</', 'author', '>\n', '<', 'genre', '>', 'Children', '</', 'genre', '>\n', '<', 'price', '>', '10', '.', '99', '</', 'price', '>\n', '<', 'publish', '_date', '>', '199', '7', '-', '06', '-', '26', '</', 'publish', '_date', '>\n', '<', 'description', '>An', ' imaginary', ' book', ' about', ' a', ' boy', ' wizard', '.</', 'description', '>\n', '<', 'image', '>', 'hp', '1', '.jpg', '</', 'image', '>\n', '<', 'review', ' rating', '="', '5', '">', 'A', ' must', ' read', ' for', ' boy', ' wizards', '.</', 'review', '>\n', '</', 'book', '>\n', '<', 'book', ' id', '="', 'bk', '102', '">\n', '<title', '>The', ' Lord', ' of', ' the', ' Rings', '</', 'title', '>\n', '<', 'author', '>J', 'RR', ' Tol', 'ke', 'in', '</', 'author', '>\n', '<', 'genre', '>F', 'antasy', '</', 'genre', '>\n', '<', 'price', '>', '19', '.', '99', '</', 'price', '>\n', '<', 'publish', '_date', '>', '195', '4', '-', '07', '-', '29', '</', 'publish', '_date', '>\n', '<', 'description', '>A', ' classic', ' fantasy', ' novel', '.</', 'description', '>\n', '<', 'image', '>', 'lot', 'r', '.jpg', '</', 'image', '>\n', '<', 'review', ' rating', '="', '5', '"></', 'review', '>\n', '</', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:38:48,750 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-106.], device='cuda:0')
+2025-05-01 02:38:48,753 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-7.9768219]
+2025-05-01 02:38:48,754 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [0.00034333]
+2025-05-01 02:38:48,758 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-38-37-404598-n5.json
+2025-05-01 02:38:48,758 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:38:48,758 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 1 (restart)
+2025-05-01 02:38:48,763 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=', '1', '.', '0', ' encoding', '="', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Company', ' Catalog', '</', 'description', '>\n', ' ', ' <', 'person', '>\n', '   ', ' <', 'name', '>', 'David', '</', 'name', '>\n', '   ', ' <', 'title', '>', 'Manager', '</', 'title', '>\n', ' ', ' </', 'person', '>\n', ' ', ' <', 'category', '>\n', '   ', ' <', 'title', '>', 'Electronic', '</', 'title', '>\n', '   ', ' <', 'description', '>', 'Electronic', ' devices', '</', 'description', '>\n', ' ', ' </', 'category', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'L', 'aptop', '</', 'name', '>\n', '   ', ' <', 'price', '>', '800', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' high', ' quality', ' laptop', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'Table', 't', '</', 'name', '>\n', '   ', ' <', 'price', '>', '600', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' good', ' quality', ' tablet', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:38:48,763 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-94.5000], device='cuda:0')
+2025-05-01 02:39:15,937 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'processing', '-in', 'struction', ' type', ' =', ' "', 'xml', '-', 'stylesheet', '"', ' href', ' =', ' "', 'x', 'sl', ' stylesheet', '.x', 'sl', '"', '?>', ' \n', '<', 'doc', '>\n', '   ', ' <', 'title', '>', 'Company', ' Database', '</', 'title', '>\n', '   ', ' <', 'company', ' Info', 'Target', '="', 'employees', '">\n', '       ', ' <', 'employee', ' Name', 'Target', '="', 'John', ' Doe', '">\n', '           ', ' <', 'Contact', ' Address', '="', '123', ' Main', ' St', ' />\n', '           ', ' <', 'Salary', '>', '700', '00', '.', '0', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', ' Name', 'Target', '="', 'Jane', '_sm', 'ith', '_', '32', '_', '13', 'd', '456', '6', 'd', '4', 'ac', '23', 'd', '0', 'ad', '66', 'e', '1', 'ee', '77', 'd', '8', 'c', '75', 'c', '7', 'c', '8', 'e', '75', 'af', '25', 'f', '56', 'd', '4', 'b', '2', 'cd', '6', 'd', '8', 'c', '3', 'd', '45', 'd', '87', 'b', '6', 'd', '4', 'c', '5', 'd', '23', 'b', '6', 'c', '75', 'a', '2', 'd', '45', 'c', '2', 'b', '4', 'ca', '6', 'c', '25', 'd', '4', 'c', '8', 'a', '4', 'd', '23', 'a', '4', 'e', '15', 'a', '4', 'c', '23', 'a', '4', 'c', '45', 'a', '2', 'a', '35', 'd', '23', 'a', '6', 'c', '25', 'd', '45', 'c', '2', 'b', '45', 'cd', '23', 'b', '4', 'c', '25', 'c', '8', 'ac', '23', 'a', '3', 'ac', '4', 'c', '42', 'ac', '4', 'a', '4', 'c', '6', 'ac', '6', 'b', '6', 'a', '7', 'd', '45', 'cd', '23', 'a', '4', 'd', '23', 'c', '4', 'ac', '4', 'a', '2', 'd', '45', 'd', '23', 'a', '3', 'ac', '45', 'a', '2', 'a', '3', 'c', '23', 'a', '6', 'c', '45', 'a', '6', 'd', '23', 'a', '2', 'd', '23', 'a', '23', 'd', '45', 'd', '2', 'e', '4', 'd', '23', 'd', '23', 'c', '4', 'e', '56', 'b', '7', 'a', '4', 'd', '85', 'a', '43', 'd', '25', 'e', '56', 'a', '85', 'a', '86', 'b', '45', 'ec', '4', 'a', '23', 'e', '25', 'e', '23', 'd', '47', 'a', '3', 'c', '4', 'd', '23', 'a', '4', 'c', '6', 'e', '46', 'a', '4', 'd', '43', 'd', '25', 'e', '56', 'b', '43', 'eda', '76', 'd', '6', 'a', '4', 'd', '85', 'a', '86', 'b', '85', 'd', '66', 'a', '45', 'd', '47', 'e', '4', 'd', '4', 'f', '45', 'a', '9', 'a', '5', 'd', '25', 'd', '23', 'c', '7', 'd', '4', 'a', '34', 'c', '23', 'ac', '4', 'b', '23', 'c', '46', 'a', '4', 'd', '76', 'e', '4', 'd', '45', 'e', '45', 'a', '9', 'a', '95', 'd', '65', 'e', '42', 'd', '4', 'e', '36', 'c', '85', 'e', '42', 'd', '4', 'c', '66', 'd', '75', 'c', '23', 'd', '47', 'e', '4', 'd', '45', 'a', '6', 'a', '26', 'c', '85', 'e', '4', 'd', '45', 'a', '6', 'a', '26', 'c', '8', 'a', '3', 'a', '85', 'e', '45', 'a', '7', 'e', '4', 'd', '45', 'a', '7', 'a', '3', 'a', '85', 'd', '4', 'd', '23', 'e', '4', 'd', '45', 'a', '6', 'a', '26', 'c', '45', 'e', '4', 'd', '45', 'a', '7', 'e', '4', 'd', '45', 'a', '45', 'e', '4', 'd', '45', 'a', '85', 'd', '23', 'a', '85', 'e', '4', 'd', '23', 'a', '85', 'a', '43', 'a', '4', 'd', '7', 'b', '75', 'c', '23']
+2025-05-01 02:39:15,938 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-1120.], device='cuda:0')
+2025-05-01 02:39:15,944 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-71.52680969]
+2025-05-01 02:39:15,944 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [8.63577349e-32]
+2025-05-01 02:39:15,952 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-38-37-404598-n5.json
+2025-05-01 02:39:15,952 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:39:15,952 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 2 (restart)
+2025-05-01 02:39:15,957 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=', '1', '.', '0', ' encoding', '="', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Company', ' Catalog', '</', 'description', '>\n', ' ', ' <', 'person', '>\n', '   ', ' <', 'name', '>', 'David', '</', 'name', '>\n', '   ', ' <', 'title', '>', 'Manager', '</', 'title', '>\n', ' ', ' </', 'person', '>\n', ' ', ' <', 'category', '>\n', '   ', ' <', 'title', '>', 'Electronic', '</', 'title', '>\n', '   ', ' <', 'description', '>', 'Electronic', ' devices', '</', 'description', '>\n', ' ', ' </', 'category', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'L', 'aptop', '</', 'name', '>\n', '   ', ' <', 'price', '>', '800', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' high', ' quality', ' laptop', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'Table', 't', '</', 'name', '>\n', '   ', ' <', 'price', '>', '600', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' good', ' quality', ' tablet', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:39:15,958 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-94.5000], device='cuda:0')
+2025-05-01 02:39:43,075 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<', 'processing', '-in', 'struction', ' phi', '="', 'xml', ' version', ' ', '1', '.', '0', ' encoding', ' utf', '-', '8', '"/>\n', '                 ', '\n        \n', '         ', '\n        \n', '       ', '\n        \n', '        \n        \n', '        \n        \n', '    ', '\n\n\n\n\n\n\n', '          ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', '      ', '\n\n\n\n\n\n\n\n\n\n\n\n', '            \n', '           \n', '                  \n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n', '         ', '\n        \n', '          \n', '           \n', '                    \n', '                \n', '                ', '\n\n\n\n', '  \n', ' \n\n\n\n', '            ', '\n\n\n\n\n\n', '  \n\n\n', '     ', '\n    \n    \n', '            \n', '      \n', '  \n    \n', '                \n', '       ', '\t\n\t\n\t\n\t\n', ' \n \n', ' \n \n', '    \n', ' \n\n\n\n\n', '  \n\n', ' \n\n\n\n', '    \n', '    ', '\n\n\n\n\n\n\n\n\n\n\n\n', '     ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', '  \n', '          ', '\n      \n', '    \n    \n', ' \n', '    \n    \n    \n    \n', '  \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', '    \n\n\n', '  ', '\n\n\n\n\n\n\n', '    \n', ' \n\n\n\n', '   ', '\n\n\n\n\n\n', ' \n', '           \n', '         \n', ' \n  \n', ' \n\n\n\n', '\n\n\n\n\n\n\n', '  \n', '       ', '\n\n\n\n\n\n', '    \n    \n    \n    \n', '     ', '\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '  \n', '  \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n', '  \n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', '    \n    \n    \n    \n', ' \n  \n', ' \n \n', ' \n\n\n', '  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '    \n\n', '  \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n', '  \n', '   \n', '  ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', '  \n', ' \n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n\n', '        ', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '   ', '\n\n\n\n\n\n\n', '     ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '  \n  \n', '  \n  \n', '  \n', '  \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n', '  \n  \n', ' \n\n\n\n', ' \n\n\n\n\n', '  ', '\n\n\n\n\n\n', '   ', '\n\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n', ' \n\n\n\n', '  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '   \n', '  ', '\n\n\n\n\n\n\n\n', '    ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', '  \n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\n\n\n\n\n\n\n\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r', '\r\r\r\n', '\r', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\t\r\n\r\n', '\r', '\r\n', '\t\t', '\r', '\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r', '  \n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r', '\r', ' \r', '\r\n\n', '\r', '\t', '\r', '\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r', '\r', '\r', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n', '\r', '\r', '\r\n', '\r\n\n', '\r\n\r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\r\n', '\r', '\r', ' \r\n', '\r', ' \t', '\n\n\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', '\r', '\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t\t\r\n', '\r\n\r\n', '\t\r\n\t\r\n', '\t \r\n', '\t\r\n', '\t \r\n', '\t\r\n', '\t \r\n', '\t\n', ' \n\n\n\n', '\t\t', '\r', '\n\n\n\n\n\n\n\n', '\r', '\n\n\n\n\n\n', '\t', '\r', '\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n', '\t\t', '\r', '\n\n\n\n\n\n\n', '\r', '\r\n\n', ' \t', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t \r\n', '\t\n\t\n\t\n\t\n', ' \r\n', ' \r\n', '  \r\n\r\n', '\t\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', ' \n\n\n\n', '\t\t', '\n\n\n\n\n\n\n', '\t\t\n', ' \n\n\n\n\n', '\t\t\r\n\r\n', '\n\t\t\n', '\t\t', '\r\n\r\n\r\n', '\t\t\n', '\t', '\r\n\r\n\r\n', '\t\r\n\r\n', '\t\r\n', '\t\t\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t\t ', '\t\n', ' \n\t\t\n', ' \r\n', '\r\n\r\n\r\n', '\t\t\n\t\t\n\t\t\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n \r\n', ' \r\n\r\n', '\r\n\r\n', '\t\t', '\n\n\n\n\n\n', '\t\t\r\n', '\t', '\t', '\n\n\n\n\n\n\n\n\n\n\n', ' \r\n', ' \r\n\r\n']
+2025-05-01 02:39:43,076 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-1320.], device='cuda:0')
+2025-05-01 02:39:43,082 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-93.88502502]
+2025-05-01 02:39:43,082 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [1.68364955e-41]
+2025-05-01 02:39:43,091 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-38-37-404598-n5.json
+2025-05-01 02:39:43,091 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:39:43,091 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 3 (restart)
+2025-05-01 02:39:43,095 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=', '1', '.', '0', ' encoding', '="', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Company', ' Catalog', '</', 'description', '>\n', ' ', ' <', 'person', '>\n', '   ', ' <', 'name', '>', 'David', '</', 'name', '>\n', '   ', ' <', 'title', '>', 'Manager', '</', 'title', '>\n', ' ', ' </', 'person', '>\n', ' ', ' <', 'category', '>\n', '   ', ' <', 'title', '>', 'Electronic', '</', 'title', '>\n', '   ', ' <', 'description', '>', 'Electronic', ' devices', '</', 'description', '>\n', ' ', ' </', 'category', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'L', 'aptop', '</', 'name', '>\n', '   ', ' <', 'price', '>', '800', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' high', ' quality', ' laptop', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'Table', 't', '</', 'name', '>\n', '   ', ' <', 'price', '>', '600', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' good', ' quality', ' tablet', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:39:43,096 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-94.5000], device='cuda:0')
+2025-05-01 02:39:52,625 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' ', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' ', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'DVD', ' id', '="', 'DVD', '001', '">\n', '   ', ' <', 'title', '>', 'In', 'ception', '</', 'title', '>\n', '   ', ' <', 'artist', '>M', '.', ' Night', ' Sh', 'y', 'am', 'alan', '</', 'artist', '>\n', '   ', ' <', 'genre', '>', 'Action', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'image', ' href', '="', 'in', 'ception', '.jpg', '"/>\n', '   ', ' <', 'rating', ' value', '="', '4', '.', '5', '"/>\n', ' ', ' </', 'DVD', '>\n', ' ', ' <', 'DVD', ' id', '="', 'DVD', '002', '">\n', '   ', ' <', 'title', '>The', ' Shaw', 'sh', 'ank', ' Redemption', '</', 'title', '>\n', '   ', ' <', 'artist', '>', 'Frank', ' Dar', 'ab', 'ont', '</', 'artist', '>\n', '   ', ' <', 'genre', '>D', 'rama', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '14', '.', '99', '</', 'price', '>\n', '   ', ' <', 'image', ' href', '="', 'red', 'emption', '.jpg', '"/>\n', '   ', ' <', 'rating', ' value', '="', '4', '.', '8', '"/>\n', ' ', ' </', 'DVD', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:39:52,626 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-95.5000], device='cuda:0')
+2025-05-01 02:39:52,629 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-16.84590912]
+2025-05-01 02:39:52,630 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [4.82963852e-08]
+2025-05-01 02:39:52,636 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-38-37-404598-n5.json
+2025-05-01 02:39:52,636 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:39:52,636 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 4 (restart)
+2025-05-01 02:39:52,641 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', '=', '1', '.', '0', ' encoding', '="', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Company', ' Catalog', '</', 'description', '>\n', ' ', ' <', 'person', '>\n', '   ', ' <', 'name', '>', 'David', '</', 'name', '>\n', '   ', ' <', 'title', '>', 'Manager', '</', 'title', '>\n', ' ', ' </', 'person', '>\n', ' ', ' <', 'category', '>\n', '   ', ' <', 'title', '>', 'Electronic', '</', 'title', '>\n', '   ', ' <', 'description', '>', 'Electronic', ' devices', '</', 'description', '>\n', ' ', ' </', 'category', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'L', 'aptop', '</', 'name', '>\n', '   ', ' <', 'price', '>', '800', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' high', ' quality', ' laptop', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', ' ', ' <', 'product', '>\n', '   ', ' <', 'name', '>', 'Table', 't', '</', 'name', '>\n', '   ', ' <', 'price', '>', '600', '.', '00', '</', 'price', '>\n', '   ', ' <', 'description', '>A', ' good', ' quality', ' tablet', '</', 'description', '>\n', ' ', ' </', 'product', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:39:52,641 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-94.5000], device='cuda:0')
+2025-05-01 02:40:06,841 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', "='", 'text', '/x', 'sl', "'", ' href', " ='", ' stylesheet', '.x', 'sl', "'", '?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' XML', ' programming', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ':', ' The', ' Ultimate', ' Power', ' Tool', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '1', '-', '05', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' guide', ' to', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '103', '">\n', '   ', ' <', 'author', '>', 'Bob', ' Johnson', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'HTML', ' for', ' D', 'ummies', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '199', '9', '-', '08', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>', 'Learn', ' how', ' to', ' use', ' HTML', ' with', ' this', ' book', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:40:06,841 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-98.5000], device='cuda:0')
+2025-05-01 02:40:06,846 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-6.7114563]
+2025-05-01 02:40:06,846 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [0.00121689]
+2025-05-01 02:40:06,853 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-38-37-404598-n5.json
+2025-05-01 02:40:06,854 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:40:06,854 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample time: 98.48 s
+2025-05-01 02:40:06,854 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample: <?xml version=1.0 encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<catalog>
+  <description>Company Catalog</description>
+  <person>
+    <name>David</name>
+    <title>Manager</title>
+  </person>
+  <category>
+    <title>Electronic</title>
+    <description>Electronic devices</description>
+  </category>
+  <product>
+    <name>Laptop</name>
+    <price>800.00</price>
+    <description>A high quality laptop</description>
+  </product>
+  <product>
+    <name>Tablet</name>
+    <price>600.00</price>
+    <description>A good quality tablet</description>
+  </product>
+</catalog><|eot_id|>
+2025-05-01 02:40:06,854 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample saved to /data/saiva/libxml_mcmc_restart_test/llm_seeds/2025-05-01_02-40-06-854470-sample_3.xml
+2025-05-01 02:40:06,854 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting sample 4/5
+2025-05-01 02:40:06,854 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 02:40:19,369 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '.x', 'sl', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/css', '"', ' href', '="', 'color', '.css', '"?>\n', '<!', 'DOCTYPE', ' person', ' [\n', '   ', ' <!', 'ELEMENT', ' person', ' (', 'name', ',', ' age', ',', ' address', ')>\n', '   ', ' <!', 'ELEMENT', ' name', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' age', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' address', ' (', 'street', ',', ' city', ',', ' state', ',', ' zip', ')', '?>', '    \n', '   ', ' <!', 'ELEMENT', ' street', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' city', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' state', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' zip', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'AT', 'TL', 'IST', ' person', '\n', '       ', ' id', ' ', ' CD', 'ATA', ' ', ' #', 'REQUIRED', '\n', '       ', ' email', ' ', ' CD', 'ATA', ' #', 'IMPLIED', '\n', '   ', ' >\n', ']>\n', '<p', 'erson', ' id', ' =', '""', ' email', '="', 'john', '.d', 'oe', '@example', '.com', '">\n', '   ', ' <', 'name', '/>\n', '   ', ' <', 'age', '>', '30', '</', 'age', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' Street', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>N', 'Y', '</', 'state', '>\n', '       ', ' <', 'zip', '>', '100', '01', '</', 'zip', '>\n', '   ', ' </', 'address', '>\n', '</', 'person', '>', '<|eot_id|>']
+2025-05-01 02:40:19,370 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Initial raw logprob: tensor([-137.], device='cuda:0')
+2025-05-01 02:40:19,370 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 0 (restart)
+2025-05-01 02:40:19,377 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '.x', 'sl', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/css', '"', ' href', '="', 'color', '.css', '"?>\n', '<!', 'DOCTYPE', ' person', ' [\n', '   ', ' <!', 'ELEMENT', ' person', ' (', 'name', ',', ' age', ',', ' address', ')>\n', '   ', ' <!', 'ELEMENT', ' name', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' age', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' address', ' (', 'street', ',', ' city', ',', ' state', ',', ' zip', ')', '?>', '    \n', '   ', ' <!', 'ELEMENT', ' street', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' city', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' state', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'ELEMENT', ' zip', ' (#', 'PC', 'DATA', ')', '*>', '    \n', '   ', ' <!', 'AT', 'TL', 'IST', ' person', '\n', '       ', ' id', ' ', ' CD', 'ATA', ' ', ' #', 'REQUIRED', '\n', '       ', ' email', ' ', ' CD', 'ATA', ' #', 'IMPLIED', '\n', '   ', ' >\n', ']>\n', '<p', 'erson', ' id', ' =', '""', ' email', '="', 'john', '.d', 'oe', '@example', '.com', '">\n', '   ', ' <', 'name', '/>\n', '   ', ' <', 'age', '>', '30', '</', 'age', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' Street', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>N', 'Y', '</', 'state', '>\n', '       ', ' <', 'zip', '>', '100', '01', '</', 'zip', '>\n', '   ', ' </', 'address', '>\n', '</', 'person', '>', '<|eot_id|>']
+2025-05-01 02:40:19,377 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-137.], device='cuda:0')
+2025-05-01 02:40:30,351 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '3', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Online', ' Newspaper', ' /', ' Magazine', ' Archive', '</', 'description', '>\n', ' ', ' <', 'company', '>\n', '   ', ' <', 'name', '>', 'Online', '-', 'News', '</', 'name', '>\n', '   ', ' <', 'street', '>', '8', ' Wall', ' St', ',', ' New', ' York', ' NY', '</', 'street', '>\n', '   ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '   ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '   ', ' <', 'postcode', '>', '100', '05', '</', 'postcode', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'email', '>', 'admin', '@', 'online', '-news', '.com', '</', 'email', '>\n', '   ', ' <', 'phone', '>', '1', '-', '800', '-M', 'AG', 'AZ', 'INE', '</', 'phone', '>\n', ' ', ' </', 'company', '>\n', ' ', ' <', 'language', '>\n', '   ', ' <', 'language', '>', 'English', '</', 'language', '>\n', '   ', ' <', 'language', '>S', 'pan', 'ish', '</', 'language', '>\n', '   ', ' <', 'language', '>F', 'ran', 'ca', 'is', '</', 'language', '>\n', ' ', ' </', 'language', '>\n', ' ', ' <', 'country', '>\n', '   ', ' <', 'country', '>J', 'apan', '</', 'country', '>\n', '   ', ' <', 'country', '>', 'Germany', '</', 'country', '>\n', '   ', ' <', 'country', '>', 'Sw', 'itzerland', '</', 'country', '>\n', ' ', ' </', 'country', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:40:30,351 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-160.], device='cuda:0')
+2025-05-01 02:40:30,357 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [26.9332962]
+2025-05-01 02:40:30,357 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:40:30,362 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-40-19-370553-n5.json
+2025-05-01 02:40:30,363 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:40:30,363 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 1 (restart)
+2025-05-01 02:40:30,368 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '3', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Online', ' Newspaper', ' /', ' Magazine', ' Archive', '</', 'description', '>\n', ' ', ' <', 'company', '>\n', '   ', ' <', 'name', '>', 'Online', '-', 'News', '</', 'name', '>\n', '   ', ' <', 'street', '>', '8', ' Wall', ' St', ',', ' New', ' York', ' NY', '</', 'street', '>\n', '   ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '   ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '   ', ' <', 'postcode', '>', '100', '05', '</', 'postcode', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'email', '>', 'admin', '@', 'online', '-news', '.com', '</', 'email', '>\n', '   ', ' <', 'phone', '>', '1', '-', '800', '-M', 'AG', 'AZ', 'INE', '</', 'phone', '>\n', ' ', ' </', 'company', '>\n', ' ', ' <', 'language', '>\n', '   ', ' <', 'language', '>', 'English', '</', 'language', '>\n', '   ', ' <', 'language', '>S', 'pan', 'ish', '</', 'language', '>\n', '   ', ' <', 'language', '>F', 'ran', 'ca', 'is', '</', 'language', '>\n', ' ', ' </', 'language', '>\n', ' ', ' <', 'country', '>\n', '   ', ' <', 'country', '>J', 'apan', '</', 'country', '>\n', '   ', ' <', 'country', '>', 'Germany', '</', 'country', '>\n', '   ', ' <', 'country', '>', 'Sw', 'itzerland', '</', 'country', '>\n', ' ', ' </', 'country', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:40:30,369 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-160.], device='cuda:0')
+2025-05-01 02:40:41,118 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '.x', 'sl', '"?>\n', '<?', 'm', 'soap', '-processing', ' instruction', ' php', '?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' creating', ' complex', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Master', 'class', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '59', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '3', '-', '04', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' guide', ' to', ' creating', ' styles', 'heets', ' using', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:40:41,119 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-99.5000], device='cuda:0')
+2025-05-01 02:40:41,124 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [4.54669952]
+2025-05-01 02:40:41,124 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:40:41,130 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-40-19-370553-n5.json
+2025-05-01 02:40:41,130 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:40:41,130 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 2 (restart)
+2025-05-01 02:40:41,135 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'style', '.x', 'sl', '"?>\n', '<?', 'm', 'soap', '-processing', ' instruction', ' php', '?>\n', '<', 'catalog', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '0', '-', '10', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>An', ' introduction', ' to', ' creating', ' complex', ' XML', ' documents', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' Master', 'class', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '59', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publish', '_date', '>', '200', '3', '-', '04', '-', '01', '</', 'publish', '_date', '>\n', '   ', ' <', 'description', '>A', ' comprehensive', ' guide', ' to', ' creating', ' styles', 'heets', ' using', ' X', 'SL', 'T', '.</', 'description', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:40:41,136 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-99.5000], device='cuda:0')
+2025-05-01 02:40:50,581 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<S', 'chool', 'Data', 'XML', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '">\n', ' ', ' <', 'Students', '>\n', '   ', ' <', 'Student', '>\n', '     ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '     ', ' <', 'age', '>', '15', '</', 'age', '>\n', '     ', ' <', 'grade', ' level', '="', 'A', '"/>\n', '     ', ' <', 'subjects', '>\n', '       ', ' <', 'subject', '>', 'Math', '</', 'subject', '>\n', '       ', ' <', 'subject', '>', 'English', '</', 'subject', '>\n', '     ', ' </', 'subjects', '>\n', '   ', ' </', 'Student', '>\n', '   ', ' <', 'Student', '>\n', '     ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '     ', ' <', 'age', '>', '14', '</', 'age', '>\n', '     ', ' <', 'grade', ' level', '="', 'B', '"/>\n', '     ', ' <', 'subjects', '>\n', '       ', ' <', 'subject', '>', 'Science', '</', 'subject', '>\n', '       ', ' <', 'subject', '>', 'History', '</', 'subject', '>\n', '     ', ' </', 'subjects', '>\n', '   ', ' </', 'Student', '>\n', ' ', ' </', 'Students', '>\n', ' ', ' <?', 'xml', '-', 'visual', 'izer', '="', 'Image', 'Extractor', '"', '?>\n', ' ', ' <?', 'system', '-properties', ' java', 'file', '="/', 'tmp', '/file', '.properties', '"?>\n', ' ', ' <?', 'option', ' param', '1', '="', 'Option', '1', '"', ' param', '2', '="', 'value', '2', '"?>\n', '</', 'School', 'Data', 'XML', '>', '<|eot_id|>']
+2025-05-01 02:40:50,581 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-121.5000], device='cuda:0')
+2025-05-01 02:40:50,585 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [29.13704681]
+2025-05-01 02:40:50,585 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: 1
+2025-05-01 02:40:50,591 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-40-19-370553-n5.json
+2025-05-01 02:40:50,591 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal accepted
+2025-05-01 02:40:50,591 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 3 (restart)
+2025-05-01 02:40:50,596 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<S', 'chool', 'Data', 'XML', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '">\n', ' ', ' <', 'Students', '>\n', '   ', ' <', 'Student', '>\n', '     ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '     ', ' <', 'age', '>', '15', '</', 'age', '>\n', '     ', ' <', 'grade', ' level', '="', 'A', '"/>\n', '     ', ' <', 'subjects', '>\n', '       ', ' <', 'subject', '>', 'Math', '</', 'subject', '>\n', '       ', ' <', 'subject', '>', 'English', '</', 'subject', '>\n', '     ', ' </', 'subjects', '>\n', '   ', ' </', 'Student', '>\n', '   ', ' <', 'Student', '>\n', '     ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '     ', ' <', 'age', '>', '14', '</', 'age', '>\n', '     ', ' <', 'grade', ' level', '="', 'B', '"/>\n', '     ', ' <', 'subjects', '>\n', '       ', ' <', 'subject', '>', 'Science', '</', 'subject', '>\n', '       ', ' <', 'subject', '>', 'History', '</', 'subject', '>\n', '     ', ' </', 'subjects', '>\n', '   ', ' </', 'Student', '>\n', ' ', ' </', 'Students', '>\n', ' ', ' <?', 'xml', '-', 'visual', 'izer', '="', 'Image', 'Extractor', '"', '?>\n', ' ', ' <?', 'system', '-properties', ' java', 'file', '="/', 'tmp', '/file', '.properties', '"?>\n', ' ', ' <?', 'option', ' param', '1', '="', 'Option', '1', '"', ' param', '2', '="', 'value', '2', '"?>\n', '</', 'School', 'Data', 'XML', '>', '<|eot_id|>']
+2025-05-01 02:40:50,597 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-121.5000], device='cuda:0')
+2025-05-01 02:40:57,708 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' ', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<?', 'import', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"\n', '       ', ' xsi', ':no', 'Namespace', 'Schema', 'Location', '="', 'Person', '.x', 'sd', '"', '?>', '  \n\n', '<', 'note', '>\n', ' ', ' <', 'to', '>A', 'lice', '</', 'to', '>\n', ' ', ' <', 'from', '>', 'Bob', '</', 'from', '>\n', ' ', ' <', 'subject', '>', 'Meeting', '</', 'subject', '>\n', ' ', ' <', 'message', '>', 'Don', "'t", ' forget', ' our', ' meeting', ' at', ' ', '2', 'pm', '!</', 'message', '>\n', ' ', ' <', 'priority', ' level', '="', 'high', '"/>\n', ' ', ' <', 'contact', '>\n', '  ', ' <', 'phone', '>', '123', '-', '456', '-', '789', '0', '</', 'phone', '>\n', '  ', ' <', 'email', '>', 'bob', '@example', '.com', '</', 'email', '>\n', ' ', ' </', 'contact', '>\n', '</', 'note', '>', '<|eot_id|>']
+2025-05-01 02:40:57,709 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-88.], device='cuda:0')
+2025-05-01 02:40:57,712 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-27.42874146]
+2025-05-01 02:40:57,712 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [1.22419032e-12]
+2025-05-01 02:40:57,718 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-40-19-370553-n5.json
+2025-05-01 02:40:57,718 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:40:57,718 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Step 4 (restart)
+2025-05-01 02:40:57,723 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current: ['<S', 'chool', 'Data', 'XML', ' version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '">\n', ' ', ' <', 'Students', '>\n', '   ', ' <', 'Student', '>\n', '     ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '     ', ' <', 'age', '>', '15', '</', 'age', '>\n', '     ', ' <', 'grade', ' level', '="', 'A', '"/>\n', '     ', ' <', 'subjects', '>\n', '       ', ' <', 'subject', '>', 'Math', '</', 'subject', '>\n', '       ', ' <', 'subject', '>', 'English', '</', 'subject', '>\n', '     ', ' </', 'subjects', '>\n', '   ', ' </', 'Student', '>\n', '   ', ' <', 'Student', '>\n', '     ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '     ', ' <', 'age', '>', '14', '</', 'age', '>\n', '     ', ' <', 'grade', ' level', '="', 'B', '"/>\n', '     ', ' <', 'subjects', '>\n', '       ', ' <', 'subject', '>', 'Science', '</', 'subject', '>\n', '       ', ' <', 'subject', '>', 'History', '</', 'subject', '>\n', '     ', ' </', 'subjects', '>\n', '   ', ' </', 'Student', '>\n', ' ', ' </', 'Students', '>\n', ' ', ' <?', 'xml', '-', 'visual', 'izer', '="', 'Image', 'Extractor', '"', '?>\n', ' ', ' <?', 'system', '-properties', ' java', 'file', '="/', 'tmp', '/file', '.properties', '"?>\n', ' ', ' <?', 'option', ' param', '1', '="', 'Option', '1', '"', ' param', '2', '="', 'value', '2', '"?>\n', '</', 'School', 'Data', 'XML', '>', '<|eot_id|>']
+2025-05-01 02:40:57,724 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Current raw logprob: tensor([-121.5000], device='cuda:0')
+2025-05-01 02:41:10,204 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n', '<?', 'xml', '-', 'stylesheet', ' type', ' =', ' "', 'text', '/x', 'sl', '"', ' href', ' =', ' "', 'style', '.x', 'sl', '"?>\n', '<', 'catalog', ' xmlns', ':', 'xi', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/x', 'i', '">\n', '   ', ' <', 'xi', ':', 'include', ' xml', ':', 'stylesheet', ' =', '"use', ' stylesheet', '"', ' xmlns', ':x', 'link', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '199', '9', '/x', 'link', '"', ' href', ' =', '"My', 'Styles', 'heet', '.xhtml', '"/>\n', '   ', ' <', 'book', ' id', ' =', '"Our', ' first', ' book', '">\n', '       ', ' <', 'author', '>', 'John', ' Doe', '</', 'author', '>\n', '       ', ' <', 'title', '>', 'XML', ' Tutorial', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '       ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '       ', ' <', 'pub', 'Date', '>', '200', '1', '-', '12', '-', '20', '</', 'pub', 'Date', '>\n', '       ', ' <', 'description', '>', 'Discount', ' book', '</', 'description', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' id', ' =', '"Our', ' second', ' book', '">\n', '       ', ' <', 'author', '>J', 'ane', ' Smith', '</', 'author', '>\n', '       ', ' <', 'title', '>X', 'SL', 'T', ' Tutorial', '</', 'title', '>\n', '       ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '       ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '       ', ' <', 'pub', 'Date', '>', '200', '1', '-', '12', '-', '15', '</', 'pub', 'Date', '>\n', '       ', ' <', 'description', '>', 'Regular', ' book', '</', 'description', '>\n', '   ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 02:41:10,205 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal raw logprob: tensor([-170.], device='cuda:0')
+2025-05-01 02:41:10,209 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Log acceptance ratio: [-63.68608093]
+2025-05-01 02:41:10,209 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Acceptance prob: [2.19526259e-28]
+2025-05-01 02:41:10,216 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Saved step data to mcmc_runs/2025-05-01_02-33-09-xml_fuzz_single_Processing_Instruction-restart/2025-05-01_02-40-19-370553-n5.json
+2025-05-01 02:41:10,216 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Proposal rejected
+2025-05-01 02:41:10,216 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample time: 63.36 s
+2025-05-01 02:41:10,216 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample: <SchoolDataXML version="1.0" encoding="UTF-8" standalone="yes">
+  <Students>
+    <Student>
+      <name>John Doe</name>
+      <age>15</age>
+      <grade level="A"/>
+      <subjects>
+        <subject>Math</subject>
+        <subject>English</subject>
+      </subjects>
+    </Student>
+    <Student>
+      <name>Jane Smith</name>
+      <age>14</age>
+      <grade level="B"/>
+      <subjects>
+        <subject>Science</subject>
+        <subject>History</subject>
+      </subjects>
+    </Student>
+  </Students>
+  <?xml-visualizer="ImageExtractor"?>
+  <?system-properties javafile="/tmp/file.properties"?>
+  <?option param1="Option1" param2="value2"?>
+</SchoolDataXML><|eot_id|>
+2025-05-01 02:41:10,217 - mcmc_xml_fuzz_single_Processing_Instruction - INFO - Sample saved to /data/saiva/libxml_mcmc_restart_test/llm_seeds/2025-05-01_02-41-10-216978-sample_4.xml

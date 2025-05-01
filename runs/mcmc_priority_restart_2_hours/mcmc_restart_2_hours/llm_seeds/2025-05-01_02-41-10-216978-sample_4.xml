@@ -1,0 +1,25 @@
+<SchoolDataXML version="1.0" encoding="UTF-8" standalone="yes">
+  <Students>
+    <Student>
+      <name>John Doe</name>
+      <age>15</age>
+      <grade level="A"/>
+      <subjects>
+        <subject>Math</subject>
+        <subject>English</subject>
+      </subjects>
+    </Student>
+    <Student>
+      <name>Jane Smith</name>
+      <age>14</age>
+      <grade level="B"/>
+      <subjects>
+        <subject>Science</subject>
+        <subject>History</subject>
+      </subjects>
+    </Student>
+  </Students>
+  <?xml-visualizer="ImageExtractor"?>
+  <?system-properties javafile="/tmp/file.properties"?>
+  <?option param1="Option1" param2="value2"?>
+</SchoolDataXML>

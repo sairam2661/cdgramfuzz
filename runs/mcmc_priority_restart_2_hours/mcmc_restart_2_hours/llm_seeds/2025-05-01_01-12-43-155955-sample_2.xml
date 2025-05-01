@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+ 
+<!DOCTYPE productCatalog SYSTEM "productCatalog.dtd">
+ 
+<productCatalog>
+  <catalogName>Electronic Devices</catalogName>
+  <description>Listing of electronic devices</description>
+  <products>
+    <product id="P101">
+      <name>Apple iPhone 14</name>
+      <price currency="USD">599.99</price>
+      <description>LCD display, 6GB RAM, 128GB storage</description>
+      <category>Electronics</category>
+      <subcategory>Smartphones</subcategory>
+    </product>
+    <product id="P102">
+      <name>Samsung TV</name>
+      <price currency="USD">799.99</price>
+      <description>4K resolution, LED display, SmartThings</description>
+      <category>Electronics</category>
+      <subcategory>TVs</subcategory>
+    </product>
+  </products>
+</productCatalog>

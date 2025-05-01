@@ -1,0 +1,50 @@
+<RoomBookingSystem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="roombooking.xsd"
+                             version="1.0" encoding="UTF-8" standalone="no">
+    <RoomBooking ID="123">
+        <Guests>
+            <Guest>
+                <Name>John Doe</Name>
+                <Email>johndoe@example.com</Email>
+                <Description>Captain of the ship</Description>
+                <PhoneNumber>123 456 7890</PhoneNumber>
+            </Guest>
+            <Guest>
+                <Name>Jane Doe</Name>
+                <Email>jane@example.com</Email>
+                <Description>Cook on the ship</Description>
+                <PhoneNumber>098 765 4321</PhoneNumber>
+            </Guest>
+        </Guests>
+        <Dates>
+            <From>2023-01-01T00:00:00</From>
+            <To>2023-01-31T23:59:59</To>
+        </Dates>
+        <Services>
+            <Service>
+                <Type>Single Occupancy</Type>
+                <RoomRate>100</RoomRate>
+                <Discount>5%</Discount>
+            </Service>
+            <Service>
+                <Type>Double Occupancy</Type>
+                <RoomRate>150</RoomRate>
+                <Discount>5%</Discount>
+            </Service>
+        </Services>
+        <SpecialInstructions><![CDATA[For extra guests please pay an additional $20 per person per night.
+For cancelled bookings please provide at least 7 days notice to avoid a fee of $500 per night.
+For special events please contact the management 14 days prior to the event.
+]]>
+</SpecialInstructions>
+        <Policies>
+            <Policy>
+                <Type>Refund Policy</Type>
+                <Details>Full refund 7 days prior to check-in, partial refund 3 days prior to check-in</Details>
+            </Policy>
+            <Policy>
+                <Type>Cancellation Policy</Type>
+                <Details>7 days prior to check-in: 50% refund, 3 days prior to check-in: 20% refund</Details>
+            </Policy>
+        </Policies>
+    </RoomBooking>
+</RoomBookingSystem>

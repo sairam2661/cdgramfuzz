@@ -1,0 +1,28 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?processing instruction
+include-before = "Document Start"
+include-after = "Document End"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>Computer</genre>
+    <price>
+      <decimal>39.95</decimal>
+      <currency>USD</currency>
+    </price>
+    <publish_date><day>12</day><month>5</month><year>2000</year></publish_date>
+    <description>An in-depth look at creating applications with XML.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Tutorial</title>
+    <genre>Computer</genre>
+    <price>
+      <decimal>29.95</decimal>
+      <currency>USD</currency>
+    </price>
+    <publish_date><day>21</day><month>10</month><year>2000</year></publish_date>
+    <description>A comprehensive guide to transforming XML documents.</description>
+  </book>
+</catalog>

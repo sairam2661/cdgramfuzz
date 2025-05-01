@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>XML Document</title>
+    </head>
+    <body>
+        <table xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="table_schema.xsd">
+            <tr>
+                <td>Table Header 1</td>
+                <td>Table Header 2</td>
+            </tr>
+            <tr>
+                <td>Cell 1</td>
+                <td rowSpan="3">Cell 2</td>
+            </tr>
+            <tr>
+                <td>Celled 1</td>
+                <td>Celled 2</td>
+            </tr>
+        </table>
+    </body>
+</html>

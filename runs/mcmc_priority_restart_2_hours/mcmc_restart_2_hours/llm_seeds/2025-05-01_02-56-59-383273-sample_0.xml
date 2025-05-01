@@ -1,0 +1,19 @@
+<?xml version=1.1 encoding="ISO-8859-1"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <book id="bk101" xsi:schemaLocation="http://www.example.com/schema/ Catalog.xsd Catalog.xsd">
+    <author>John Smith</author>
+    <title>XML for Dummies</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating applications with XML.</description>
+  </book>
+  <book id="bk102" xsi:schemaLocation="http://www.example.com/schema/ Catalog.xsd Catalog.xsd">
+    <author>Jane Doe</author>
+    <title>XSLT for Dummies</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A detailed look at using XSLT for XML processing.</description>
+  </book>
+</catalog>

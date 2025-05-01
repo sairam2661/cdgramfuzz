@@ -1,0 +1,20 @@
+<metaxml version="1.0" encoding="UTF-16" standalone="yes">
+  <!-- Entity Declaration -->
+  <!--)
+    &nbsp;  is a zero width no break space
+    &#123;  is a hex code for left parenthesis
+    &#x27;  is a hex code for apostrophe
+    &amp;   is an ampersand
+  -->
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <description>Book about XML</description>
+    &nbsp;
+    <entity name="isbn" value="978-0-9729549-8-9"/>
+    <entity name="price" value="39.95"/>
+  </book>
+  &amp;  is an ampersand
+</meta>

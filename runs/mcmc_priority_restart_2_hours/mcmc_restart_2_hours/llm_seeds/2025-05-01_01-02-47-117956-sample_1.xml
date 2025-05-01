@@ -1,0 +1,18 @@
+<links>
+<library id="12345" version="3.2">
+    <doc name="History" encoding="UTF-8" encodingtype="UTF-8">
+        <author name="John Smith">
+            <pubDate>Thu, 01 Sep 2022 14:30:00 GMT</pubDate>
+            <modified>2022-09-01T14:30:00-05:00</modified>
+        </author>
+    </doc>
+    <doc name="Examples" encoding="UTF-8" encodingtype="UTF-8">
+        <author name="Jane Doe">
+            <pubDate>Thu, 01 Sep 2022 14:45:00 GMT</pubDate>
+            <modified>2022-09-01T14:45:00-05:00</modified>
+        </author>
+    </doc>
+</library>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+</links>

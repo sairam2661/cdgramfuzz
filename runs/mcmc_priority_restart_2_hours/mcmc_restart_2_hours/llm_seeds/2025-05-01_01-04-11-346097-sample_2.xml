@@ -1,0 +1,22 @@
+<?xml
+version = 1.0
+encoding = "UTF-8"
+standalone = yes?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An in-depth look at creating applications with XML.</description>
+    </book>
+    <book id="bk102">
+        <author>John Smith</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>1999-05-01</publish_date>
+        <description>A comprehensive guide to styling documents with XSLT.</description>
+    </book>
+</catalog>

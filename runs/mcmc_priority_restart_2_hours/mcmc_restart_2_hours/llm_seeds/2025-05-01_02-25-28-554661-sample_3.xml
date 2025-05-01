@@ -1,0 +1,13 @@
+<MessageContract xmlns:tns="http://temp Uri.org/SampleContracts" xmlns:xsi="http://www.w3.org/2001/XMLSchema_INSTANCE">
+          <MessageContent>
+              <to>David</to>
+              <from>eXecutiveX</from>
+              <subject>DateChngeAlertMsg</subject>
+              <message>New Date Chameleon Alert!!!</message>
+              <Priority>
+                  <Level>medium</Level>
+              </Priority>
+              <Datecreated xsi:Type="xsd:DateTime" />
+              <DateModified xsi:Type="xsd:DateTime" />
+          </MessageContent>
+</MessageContract>

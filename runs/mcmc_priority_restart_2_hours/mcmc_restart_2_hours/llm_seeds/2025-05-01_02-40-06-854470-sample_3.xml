@@ -1,0 +1,23 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<catalog>
+  <description>Company Catalog</description>
+  <person>
+    <name>David</name>
+    <title>Manager</title>
+  </person>
+  <category>
+    <title>Electronic</title>
+    <description>Electronic devices</description>
+  </category>
+  <product>
+    <name>Laptop</name>
+    <price>800.00</price>
+    <description>A high quality laptop</description>
+  </product>
+  <product>
+    <name>Tablet</name>
+    <price>600.00</price>
+    <description>A good quality tablet</description>
+  </product>
+</catalog>

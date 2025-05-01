@@ -1,0 +1,28 @@
+<pre>
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <product name="Book" price="19.99">
+    <author>
+      <name>John Smith</name>
+      <position>Lead</position>
+    </author>
+    <description>
+      <p>This is a book</p>
+      <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ol>
+    </description>
+    <condition condition-type="Used">Good</condition>
+    <image src="image.jpg" alt="Book Cover"/>
+  </product>
+  <product name="CD" price="9.99">
+    <artist>Various Artists</artist>
+    <tracklist>
+      <track title="Song 1" duration="4:30"/>
+      <track title="Song 2" duration="4:00"/>
+    </tracklist>
+    <condition condition-type="New">New</condition>
+  </product>
+</catalog>
+</pre>

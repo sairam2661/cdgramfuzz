@@ -1,0 +1,12 @@
+<RailwaySchedule version="2.1" xmlns:pt="http://schemas.example.com/railway"
+  xml:lang="en-US" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://schemas.example.com/railway railway.xsd"
+  encoding="UTF-8" standalone="yes">
+  <Station name="New York" latitude="40.7128" longitude="-74.0060" pt:yrs="1900" pt:decimals="0">
+    <Train number="101" timetable="8:00 AM" duration="2 hours 30 minutes" pt:decimals="0" ref="NY">
+      <Carriage capacity="100" type="Standard" pt:yrs="1950" pt:decimals="0" ref="101"/>
+      <Coach capacity="80" type="First Class" pt:yrs="2000" pt:decimals="0" ref="105"/>
+      <Locomotive capacity="70" type="Diesel" pt:yrs="1990" pt:decimals="0" ref="110"/>
+    </Train>
+  </Station>
+</RailwaySchedule>
