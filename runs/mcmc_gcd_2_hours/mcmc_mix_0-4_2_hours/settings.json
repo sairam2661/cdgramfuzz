@@ -1,0 +1,43 @@
+{
+	"fuzzer": {
+	  "name": "AFL++",
+	  "version": "4.00c",
+	  "command": "afl-fuzz -i libxml_mcmc_mix_0-4_test/seeds -o libxml_mcmc_mix_0-4_test/output -M master -F libxml_mcmc_mix_0-4_test/llm_seeds -V 7200 ./xml_fuzzer @@"
+	},
+	"environment": {
+	  "variables": {
+		"AFL_SKIP_CPUFREQ": "1",
+		"AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES": "1",
+		"AFL_NO_UI": "1",
+		"AFL_HARDEN": "1"
+	  },
+	  "compiler": "afl-clang-fast",
+	  "build_flags": "--disable-shared"
+	},
+	"target": {
+	  "name": "xmllint (libxml2)",
+	  "args": "--memory",
+	  "map_size": 51002
+	},
+	"fuzzing_campaign": {
+	  "duration": "7200s",
+	  "schedule": "exponential (FAST)",
+	  "testcache": "50 MB",
+	  "exec_timeout": "20 ms (auto)",
+	  "seeds_generation": {
+		"method": "MCMC Sampling",
+		"model": "meta-llama/Llama-3.2-3B-Instruct",
+		"grammar": "xml.ebnf",
+		"sampling_params": {
+		  "steps": 5,
+		  "max_tokens": 512,
+		  "propose_style": ["mix-0.4"]
+		}
+	  }
+	},
+	"coverage_instrumentation": {
+	  "method": "Separate LLVM build",
+	  "compiler": "clang",
+	  "flags": "-fprofile-instr-generate -fcoverage-mapping"
+	}
+}

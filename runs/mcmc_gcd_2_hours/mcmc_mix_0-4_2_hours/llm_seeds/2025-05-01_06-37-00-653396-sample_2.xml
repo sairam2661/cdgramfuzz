@@ -1,0 +1,23 @@
+<?xml version = 1.1 encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!DOCTYPE bookstore SYSTEM "bookstore.dtd">
+<bookstore>
+  <book category="cooking">
+    <title lang="en">Everyday Italian</title>
+    <author>Frances Mayes</author>
+    <year>2000</year>
+    <price>30.00</price>
+    <description>
+      A cookbook containing a collection of traditional Italian recipes.
+    </description>
+  </book>
+  <book category=" children's">
+    <title lang="en">Tips from Cinderella's Mouse</title>
+    <author>Joseph Jacobs</author>
+    <year>2013</year>
+    <price>10.50</price>
+    <description>
+      Collection of classic folk tales from around the world.
+    </description>
+  </book>
+</bookstore>

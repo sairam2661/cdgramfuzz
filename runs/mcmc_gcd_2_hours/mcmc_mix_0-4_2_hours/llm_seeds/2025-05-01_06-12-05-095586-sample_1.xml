@@ -1,0 +1,22 @@
+<SchoolDiscipline>
+  <xml:stylesheet type="text/xsl" href="DisciplineStyles.xsl"/>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <Case>
+    <CaseNumber>CSD-001</CaseNumber>
+    <StudentInfo>
+      <StudentID>101</StudentID>
+      <StudentName>
+        <First>John</First>
+        <Last>Doe</Last>
+      </StudentName>
+      <CDATALine>&lt;font color="red"&gt;Student Name&lt;/font color="red"&gt;</CDATALine>
+    </StudentInfo>
+    <StudentDiscipline>
+      <Date>15-Feb-2024</Date>
+      <Time>3:45 PM</Time>
+      <Discipline>Disruption/Disrespect</Discipline>
+      <Reinforcement>No</Reinforcement>
+      <ParentSigned>true</ParentSigned>
+    </StudentDiscipline>
+  </Case>
+</SchoolDiscipline>

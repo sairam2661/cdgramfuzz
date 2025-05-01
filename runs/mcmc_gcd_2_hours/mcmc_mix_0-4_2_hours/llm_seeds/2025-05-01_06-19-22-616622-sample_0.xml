@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?xml-stylesheet type = "text/xsl" href ="stylesheets/style.xsl"?>
+<catalog xml:lang="en">
+  <description>This is a catalog</description>
+  <company>
+    <name>Acme, Inc.</name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <phone>(800) 123-4567</phone>
+    <fax>(800) 123-4568</fax>
+  </company>
+</catalog>

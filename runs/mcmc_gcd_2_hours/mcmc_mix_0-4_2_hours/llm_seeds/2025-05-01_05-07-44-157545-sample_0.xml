@@ -1,0 +1,18 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog xml:lang="EN">
+  <description>Product Catalog</description>
+  <product id="prod1">
+    <name>Widget</name>
+    <price currency="USD" unitPrice="19.99"/>
+    <shippingWeight unit="lbs" default="5.99"/>
+    <category categoryName="Widget Category"/>
+    <productImage src="Widget1.jpg"/>
+  </product>
+  <product id="prod2">
+    <name>Gadget</name>
+    <price currency="USD" unitPrice="9.99"/>
+    <shippingWeight unit="lbs" default="3.99"/>
+    <category categoryName="Gadget Category"/>
+    <productImage src="Gadget1.jpg"/>
+  </product>
+</catalog>

@@ -1,0 +1,24 @@
+<Bibliography>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+  <references>
+    <reference id="bib1">
+      <author>John Smith</author>
+      <title>The Book of Mathematics</title>
+      <journal>Mathematical Times</journal>
+      <year>2010</year>
+      <volume>20</volume>
+      <issue>3</issue>
+      <pages>123-150</pages>
+    </reference>
+    <reference id="bib2">
+      <author>Mary Johnson</author>
+      <title>Theories in Computer Science</title>
+      <journal>Computing Today</journal>
+      <year>2008</year>
+      <volume>15</volume>
+      <issue>1</issue>
+      <pages>25-50</pages>
+    </reference>
+  </references>
+</Bibliography>

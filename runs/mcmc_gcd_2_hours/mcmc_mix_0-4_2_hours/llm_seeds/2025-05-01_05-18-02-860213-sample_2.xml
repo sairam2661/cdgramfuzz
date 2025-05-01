@@ -1,0 +1,22 @@
+<HTML PUBLIC="-//W3C//DTD XHTML 1.0 Strict//EN" xml:lang="en">
+  <![CDATA[
+    <meta http-equiv="refresh" content="5;url=new.html">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="script.js"></script>
+  ]]>>
+  <head>
+    <title>Page Title</title>
+    <entity name="amp" public="" system="math!"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/png"/>
+  </head>
+  <body>
+    <h1 main="sample">This is a sample</h1>
+    <p>Hello &amp; #42; world!</p>
+    <p>This is a numbered list:
+      <ol start="1">
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ol>
+    </p>
+  </body>
+</HTML>

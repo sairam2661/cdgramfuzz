@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<personal-data>
+    <contact information-type="business">
+        <name>&lt;John&gt; Doe</name>
+        <email address="johndoe@example.com"></email>
+        <phone number="&pound; 01234 567890"></phone>
+    </contact>
+    <address xml:lang="en-gb">
+        <streetaddress>123 Main Street</streetaddress>
+        <city>London</city>
+        <postalcodex>EC1A 1BB</postalcodex>
+    </address>
+</personal-data>

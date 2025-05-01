@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type = "text/xsl" href = "style.xsl"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.example.com/catalog 
+                              http://www.example.com/catalog.xsd"
+         xmlns="http://www.example.com/catalog">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <pubDate>2001-10-10</pubDate>
+    <description>An XML tutorial</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>RSS Feed</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <pubDate>2002-03-12</pubDate>
+    <description>A sample RSS feed</description>
+  </book>
+</catalog>

@@ -1,0 +1,12 @@
+<!DOCTYPE note SYSTEM "note.schema">
+<note version="1.0" xmlns="http://example.com/schema/notepad">
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority>high</priority>
+    <contacts>
+        <contact name="Alice" email="alice@example.com"/>
+        <contact name="Bob" email="bob@example.com"/>
+    </contacts>
+</note>

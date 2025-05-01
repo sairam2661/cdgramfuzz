@@ -1,0 +1,64 @@
+Filename                                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+libxml2/HTMLparser.c                             2719              2719     0.00%          95                95     0.00%        2908              2908     0.00%        1900              1900     0.00%
+libxml2/HTMLtree.c                                601               601     0.00%          20                20     0.00%         626               626     0.00%         434               434     0.00%
+libxml2/SAX2.c                                   1291               857    33.62%          52                30    42.31%        1678              1161    30.81%        1024               775    24.32%
+libxml2/buf.c                                     621               385    38.00%          44                27    38.64%         570               399    30.00%         386               292    24.35%
+libxml2/catalog.c                                1952              1945     0.36%          74                71     4.05%        2287              2269     0.79%        1506              1502     0.27%
+libxml2/chvalid.c                                 118               118     0.00%           9                 9     0.00%          69                69     0.00%          96                96     0.00%
+libxml2/debugXML.c                                725               725     0.00%          41                41     0.00%        1119              1119     0.00%         688               688     0.00%
+libxml2/dict.c                                    343                69    79.88%          30                 6    80.00%         486               104    78.60%         198                65    67.17%
+libxml2/encoding.c                                917               628    31.52%          46                26    43.48%        1262               842    33.28%         644               489    24.07%
+libxml2/entities.c                                476               332    30.25%          25                16    36.00%         524               355    32.25%         350               251    28.29%
+libxml2/error.c                                   552               251    54.53%          27                16    40.74%         888               464    47.75%         608               241    60.36%
+libxml2/globals.c                                  67                42    37.31%          47                28    40.43%         290               181    37.59%          16                12    25.00%
+libxml2/hash.c                                    545               349    35.96%          36                23    36.11%         607               358    41.02%         352               249    29.26%
+libxml2/include/private/memory.h                   12                 0   100.00%           1                 0   100.00%          24                10    58.33%           8                 1    87.50%
+libxml2/list.c                                    223               223     0.00%          32                32     0.00%         311               311     0.00%         136               136     0.00%
+libxml2/parser.c                                 9170              4228    53.89%         213                99    53.52%        8050              4045    49.75%        6516              3592    44.87%
+libxml2/parserInternals.c                        1404               776    44.73%          90                58    35.56%        1698               965    43.17%         990               613    38.08%
+libxml2/pattern.c                                1941              1941     0.00%          38                38     0.00%        1479              1479     0.00%        1224              1224     0.00%
+libxml2/relaxng.c                                5749              5746     0.05%         148               147     0.68%        7515              7511     0.05%        4554              4553     0.02%
+libxml2/threads.c                                  63                35    44.44%          22                 9    59.09%         163                60    63.19%          30                22    26.67%
+libxml2/timsort.h                                 277               277     0.00%          12                12     0.00%         303               303     0.00%         130               130     0.00%
+libxml2/tree.c                                   5596              5006    10.54%         169               136    19.53%        5236              4638    11.42%        4390              4054     7.65%
+libxml2/uri.c                                    2455              1403    42.85%          44                14    68.18%        1603              1030    35.75%        1904              1126    40.86%
+libxml2/valid.c                                  3215              2998     6.75%         127               116     8.66%        3906              3651     6.53%        2634              2490     5.47%
+libxml2/xinclude.c                                993               993     0.00%          35                35     0.00%        1355              1355     0.00%         776               776     0.00%
+libxml2/xmlIO.c                                   776               690    11.08%          67                57    14.93%        1210              1068    11.74%         570               527     7.54%
+libxml2/xmlmemory.c                               173               171     1.16%          23                21     8.70%         188               180     4.26%          62                62     0.00%
+libxml2/xmlreader.c                              2875              2875     0.00%         121               121     0.00%        3424              3424     0.00%        2244              2244     0.00%
+libxml2/xmlregexp.c                              3519              3519     0.00%          93                93     0.00%        3875              3875     0.00%        2842              2842     0.00%
+libxml2/xmlsave.c                                1243              1243     0.00%          66                66     0.00%        1635              1635     0.00%        1018              1018     0.00%
+libxml2/xmlschemas.c                            14752             14752     0.00%         391               391     0.00%       16142             16142     0.00%       10000             10000     0.00%
+libxml2/xmlschemastypes.c                        4377              4375     0.05%          74                73     1.35%        4063              4060     0.07%        3450              3449     0.03%
+libxml2/xmlstring.c                               599               429    28.38%          33                21    36.36%         567               391    31.04%         410               308    24.88%
+libxml2/xmlunicode.c                              559               559     0.00%         167               167     0.00%         565               565     0.00%         660               660     0.00%
+libxml2/xpath.c                                  8373              8354     0.23%         249               247     0.80%        7152              7127     0.35%        5896              5887     0.15%
+libxml2/xpointer.c                                355               355     0.00%           9                 9     0.00%         350               350     0.00%         198               198     0.00%
+xml_fuzzer.c                                       18                 3    83.33%           2                 0   100.00%          31                 9    70.97%          12                 4    66.67%
+
+Files which contain no functions:
+libxml2/include/libxml/HTMLtree.h                   0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/catalog.h                    0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/chvalid.h                    0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/parser.h                     0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/parserInternals.h            0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/schemasInternals.h           0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/tree.h                       0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xinclude.h                   0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xmlIO.h                      0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xmlerror.h                   0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xmlstring.h                  0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xmlversion.h                 0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xpath.h                      0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/libxml/xpathInternals.h             0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/private/dict.h                      0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/private/entities.h                  0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/private/error.h                     0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/private/io.h                        0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/private/parser.h                    0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/include/private/regexp.h                    0                 0         -           0                 0         -           0                 0         -           0                 0         -
+libxml2/libxml.h                                    0                 0         -           0                 0         -           0                 0         -           0                 0         -
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                           79644             69972    12.14%        2772              2370    14.50%       84159             75039    10.84%       58856             52910    10.10%

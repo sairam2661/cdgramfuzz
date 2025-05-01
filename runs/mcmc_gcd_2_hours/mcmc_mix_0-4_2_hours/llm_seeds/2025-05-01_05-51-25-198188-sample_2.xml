@@ -1,0 +1,20 @@
+<basketballGame>
+  <gameNumber>123</gameNumber>
+  <date>2023-04-01</date>
+  <teams>
+    <team><name>Chicago Bulls</name><city>New York</city></team>
+    <team><name>Los Angeles Lakers</name><city>Chicago</city></team>
+  </teams>
+  <score>
+    <ChicagoBulls>90</ChicagoBulls>
+    <LosAngelesLakers>85</LosAngelesLakers>
+  </score>
+  <player stats="100">
+    <name>Lebron James</name>
+    <jerseyNumber>23</jerseyNumber>
+    <points>40</points>
+    <rebounds>15</rebounds>
+    <assists>10</assists>
+  </player>
+  <referee name="Michael Regan" gameNumber="123" description="Experienced referee with &quot;The Call&quot; reputation"/>
+</basketballGame>

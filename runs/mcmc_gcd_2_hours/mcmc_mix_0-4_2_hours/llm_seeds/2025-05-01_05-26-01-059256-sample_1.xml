@@ -1,0 +1,23 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     xmlns:ink="http://inkfarm.eu/inkscape/extension" encoding="utf-8" standalone="yes">
+  <title>My SVG Document</title>
+  <svg:metadata xmlns:metadata="http://www.w3.org/2001/REC-metadata-mime-20110813">
+    <metadata:metadata xml:lang="en" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+      <metadata:author xml:lang="en">John Doe</metadata:author>
+      <metadata:date xml:lang="en">2022-01-01</metadata:date>
+      <metadata:title xml:lang="en">My SVG Document</metadata:title>
+    </metadata:metadata>
+  </svg:metadata>
+  <desc>A simple SVG document with a title, metadata, and a description.</desc>
+  <defs>
+    <ink:inksvg-inkscape xmlns:ink="http://inkfarm.eu/inkscape/extension">
+      <ink:inkscape-inkxml xmlns:xlink="http://www.w3.org/1999/xlink">1.0 (r382)</ink:inkscape-inkxml>
+    </ink:inksvg-inkscape>
+  </defs>
+  <path d="M50,100 L50,0 L100,0 L100,100 L50,100 Z" transform="scale(0.5)" ink:inkwidthunits="px" ink:inkscape-inkwidthunits="px" 
+      ink:xalign="center" ink:yalign="center">
+    <ink:xlink:href="#ink:ink1" ink:width="10" ink:height="20" ink:x="10" ink:y="10" ink:inktype="rectangle" ink:strokecolor="#000000" 
+      ink:linecap="round" ink:linejoin="round" ink:inkopacity="0.5"/>
+  </path>
+</svg>

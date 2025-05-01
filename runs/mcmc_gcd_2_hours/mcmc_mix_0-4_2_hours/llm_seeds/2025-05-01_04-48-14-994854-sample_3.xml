@@ -1,0 +1,20 @@
+<xml version="1.9" encoding="Windows-1251" standalone="yes">
+<books>
+<book id="bk102">
+<author>John Smith</author>
+<title>XML Document</title>
+<genre>Information</genre>
+<price>39.95</price>
+<publish_date>2000-10-01</publish_date>
+<description>An XML document</description>
+</book>
+<book id="bk103">
+<author>Jane Doe</author>
+<title>XSLT Tutorial</title>
+<genre>Instruction</genre>
+<price>49.95</price>
+<publish_date>2001-06-01</publish_date>
+<description>XSLT for XML</description>
+</book>
+</books> 
+</xml>

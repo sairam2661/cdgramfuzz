@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<ns0:studentGroup xmlns:ns0 = "http://schemas.datacontract0.bind" >
+  <ns0:studentGroup>
+    <ns0:id>GS123456789</ns0:id>
+    <ns0:name>Lisa Nguyen</ns0:name>
+    <ns0:grade>A</ns0:grade>
+    <ns0:course>
+      <ns0:id>Math</ns0:id>
+      <ns0:hours>4</ns0:hours>
+      <ns0:price>120.00</ns0:price>
+    </ns0:course>
+  </ns0:studentGroup>
+</ns0:studentGroup>

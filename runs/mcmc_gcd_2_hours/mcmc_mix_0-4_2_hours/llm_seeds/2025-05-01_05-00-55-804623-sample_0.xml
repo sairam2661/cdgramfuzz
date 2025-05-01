@@ -1,0 +1,9 @@
+<div xmlns="http://www.w3.org/2001/XMLSchema" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:schemaLocation="http://www.w3.org/2001/XMLSchema schema.xsd">
+    <library bookID="BK1001" author="J.K Rowling">
+        <title>Goblin's Revenge</title>
+        <publicationDate>15 Dec 2003</publicationDate>
+        <genre>Fantasy</genre>
+    </library>
+</div>

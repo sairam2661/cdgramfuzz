@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <?xml-stylesheet type="text/css" href="styles.css"?>
+        <title>Complex XML Document</title>
+    </head>
+    <body>
+        <h1 xml:lang="en-ca">Title</h1>
+        <p xml:space="preserve" xml:lang="fr-CA">Title in French</p>
+        <div xml:lang="en-us">This is a complex XML document.</div>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<personal-xml-file>
+
+   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   
+   <address details="$name ($address_type) at $street,$state,$zip">
+   
+      <personal-info>
+         <name><![CDATA[John Doe]]></name>
+         <address-type><![CDATA[Residental]]></address-type>
+         <street>123 Main Street</street>
+         <state>CA</state>
+         <zip>12345</zip>
+      </personal-info>
+      
+   </address>
+   
+</personal-xml-file>

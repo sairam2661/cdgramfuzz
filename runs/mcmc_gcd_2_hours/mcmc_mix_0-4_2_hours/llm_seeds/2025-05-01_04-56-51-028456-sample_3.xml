@@ -1,0 +1,13 @@
+<a xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<note xmlns:alt="http://example.com/alt">
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority alt:high="true"/>
+<attributes>
+<name>John</name>
+<age>30</age>
+</attributes>
+</note>
+</a>

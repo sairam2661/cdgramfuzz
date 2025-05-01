@@ -1,0 +1,19 @@
+<?xml version =7200.0 encoding="UTF-16le" standalone = yes?>
+<catalog>
+    <product>
+        <name> &amp; BookTitle</name>
+        <description>
+            Learn &lt; and &gt; HTML - &frac13; Learning HTML the fast, easy &amp; comprehensive way.
+        </description>
+        <price>39.95</price>
+        <currency>USD</currency>
+    </product>
+    <product>
+        <name> &lt; BookTitle</name>
+        <description>
+            Learn &gt; HTML - &frac23; Learning HTML the fast, easy &amp; comprehensive way.
+        </description>
+        <price>39.95</price>
+        <currency>USD</currency>
+    </product>
+</catalog>

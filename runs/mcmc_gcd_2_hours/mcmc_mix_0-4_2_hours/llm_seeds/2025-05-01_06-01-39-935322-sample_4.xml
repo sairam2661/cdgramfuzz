@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xmlns = "http://example.com/shelves" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/shelves catalog.xsd">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publishDate>2000-10-01</publishDate>
+    <description>An in-depth look at creating XML documents.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publishDate>2001-05-01</publishDate>
+    <description>A comprehensive guide to XSLT.</description>
+  </book>
+</catalog>

@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-16"?>
+<catalog xmlns:prod="http://www.example.com/products" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.example.com/products 
+         http://www.example.com/products Catalog.xsd">
+    <description>&quot;The Official Guide&quot;</description> 
+    <prod:name>HTML Pocket Reference</prod:name>
+    &amp;lt;p&gt;For fast reference throughout the day, at home, at the office, or on the road.&lt;/p&gt;
+    <pubDate>Daily Updated</pubDate>
+    <prod:price level="1.99" currency="USD"/>
+    <prod:condition>Good</prod:condition>
+</catalog>

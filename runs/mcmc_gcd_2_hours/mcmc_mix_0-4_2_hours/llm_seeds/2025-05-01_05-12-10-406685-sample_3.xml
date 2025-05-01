@@ -1,0 +1,15 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE product>
+<product id="prod101" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <name>Apple iPhone 14</name>
+    <description>Latest 6.1" device with enhanced camera and display.</description>
+    <categories>
+        <category name="gadgets">Smartphones</category>
+        <category name="Electronics">Electronics</category>
+    </categories>
+    <price currency="USD" units="piece" value="599.99" xsi:noNamespaceSchemaLocation="product.xsd"/>
+    <images>
+        <image file="image1.jpg"/>
+        <image file="image2.jpg"/>
+    </images>
+</product>

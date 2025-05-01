@@ -1,0 +1,54 @@
+<?xml version = 1.0 encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Math Quiz</title>
+    <link>https://example.com/purpose-of-xml/</link>
+    <description>An XML document for a math quiz.</description>
+    <lastBuildDate>Wed, 01 May 2024 12:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Math Problem 1</title>
+      <link>https://example.com/purpose-of-xml/math-problem-1/</link>
+      <description>What is the value of 2 + 2?</description>
+      &amp;lt;/item&gt;
+    </channel>
+  </rss> 
+
+<?xml version = 1.0 encoding="UTF-8"?>
+<!--
+  This is an example of an entity declaration, where an entity is defined.
+  The entity is referenced later in the document.
+-->
+<!--
+  The &copy; symbol is used in the description of the purpose of XML file.
+-->
+<p purpose-of-xml="Description 
+  of the purpose of an XML document. 
+  An XML document is used to describe the purpose of a particular XML file.">
+  The purpose of this XML file is to 
+  describe the purpose of an XML file 
+  used to provide information about XML.
+</p>
+
+<?xml version = "1.0" encoding="UTF-8"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    &lt;description&gt;An in-depth tutorial on the purpose of XML&amp;#124;nbsp;
+      documentation.
+    &lt;/description&gt;
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Tutorial</title>
+    <genre>computer</genre>
+    <price>44.95</price>
+    <publish_date>2001-05-01</publish_date>
+    &lt;description&gt;A detailed tutorial on the 
+      use of XSLT in transforming XML&amp;#124;nbsp;
+      documents.
+    &lt;/description&gt;
+  </book

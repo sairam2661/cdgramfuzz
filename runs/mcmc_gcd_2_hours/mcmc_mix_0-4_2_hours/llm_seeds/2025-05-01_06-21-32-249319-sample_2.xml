@@ -1,0 +1,10 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?processing-instruction xml-stylesheet href="stylesheet.xsl"?>
+<personalData xmlns:ad="http://example.com/address">
+  <name>John Doe</name>
+  <ad:address street="123 Main St" city="Anytown" ad:state="CA" ad:zip="12345"/>
+  <phoneNumbers>
+    <phoneNumber type="home">555-555-5555</phoneNumber>
+    <phoneNumber type="work">555-555-1234</phoneNumber>
+  </phoneNumbers>
+</personalData>

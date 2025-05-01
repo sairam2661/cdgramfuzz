@@ -1,0 +1,13 @@
+<?xml version =1.0 encoding="UTF-8" standalone = yes?>
+<?xml-notation xlink = "http://www.w3.org/1999/xlink" xmlns:tcs = "http://www.example.com/text-content-spec"?>
+<document xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <style tcs:name="default">
+    <tcs:FONTS>
+    <tcs:FONT tcs:name="Times New Roman" tcs:POINT-SIZE="14"/>
+    </tcs:FONTS>
+    </style>
+    <body>
+    <h1 tcs:name="title">Text Example</h1>
+    <p tcs:style="default">This is an example of a paragraph of text.</p>
+    </body>
+</document>

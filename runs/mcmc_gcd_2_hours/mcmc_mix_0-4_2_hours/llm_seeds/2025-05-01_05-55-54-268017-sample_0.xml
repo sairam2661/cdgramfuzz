@@ -1,0 +1,40 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/orders"
+           xmlns:tns="http://example.com/orders"
+           elementFormDefault="qualified">
+  <xs:element name="order">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="customer" type="tns:customer"/>
+        <xs:element name="order-items" type="tns:orderItems" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="customer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="order-items">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="product" type="tns:product"/>
+        <xs:element name="quantity" type="xs:integer"/>
+      </xs:sequence>
+      <xs:attribute name="product-id" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="product">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string"/>
+      <xs:attribute name="description" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,11 @@
+<?xml version =   1.0   encoding = "UTF-8"?>
+<?xml-stylesheet href="styles.xsl" type="text/xsl"?>
+<catalog>
+    <description>Directory of web applications.</description>
+    <company>Apache Software Foundation</company>
+    <product> Apache Tomcat</product>
+    <package>
+        <content> Apache Tomcat 9.0.45, the popular web server for both Windows and Unix/Linux. It is a 100% Java web server available for different operating systems.</content>
+    </package>
+    <import resource="database.properties"/>
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<library>
+  <book genre ="http://example.org/book-genre" 
+         price ="$19.99">
+    <title>Harry Potter</title> 
+          <author>J.K. Rowling</author>
+    <comment>Must read for any fantasy fan!</comment> 
+    <publication_date>1997</publication_date>  
+  </book>  
+  <book genre ="http://example.org/book-genre" 
+         price ="$9.99">
+    <title>The Lord of the Rings</title> 
+          <author>J.R.R. Tolkien</author>
+    <comment>A classic in the high fantasy genre.</comment> 
+    <publication_date>1954</publication_date>  
+  </book>  
+</library>

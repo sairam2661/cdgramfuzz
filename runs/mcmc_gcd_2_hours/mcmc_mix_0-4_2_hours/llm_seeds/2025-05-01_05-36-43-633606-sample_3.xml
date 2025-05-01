@@ -1,0 +1,14 @@
+<TodoList version="2.0" xmlns="http://example.com/todo" encoding="UTF-8" standalone="yes">
+    <Task ID="1">
+        <Title>Buy Milk</Title>
+        <Description>&nbsp; &amp; Buy milk from the store.</Description>
+        <Priority>&uml;</Priority>
+        <Completed status="true"/>
+    </Task>
+    <Task ID="2">
+        <Title>Walk the Dog</Title>
+        <Description>&amp;&nbsp; Take the dog out for a walk.</Description>
+        <Priority>&hearts;</Priority>
+        <Completed status="false"/>
+    </Task>
+</TodoList>

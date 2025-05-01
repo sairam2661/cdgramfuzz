@@ -1,0 +1,19 @@
+<?xml version = 
+1.0 encoding="UTF-8"?>
+ 
+<ns:catalog xmlns:ns="http://example.com/catalog" 
+ns:namespace-declaration="example.com.catalog"
+>
+<book 
+ns:book-title="Introduction to XSLT" 
+ns:author="Jamie Miles-London" 
+ns:published="2001" 
+ns:isbn="0-596-00261-7"
+>
+<picture 
+ns:picturewidth="10cm" 
+ns:pictureheight="5cm" 
+ns:image-source="image1.jpg"
+/>
+</book>
+ </ns:catalog>

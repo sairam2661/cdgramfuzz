@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <book id="bk101">
+    <attr name="price" type="float">49.95</attr>
+    <attr name="manufacturer" type="string" default="Unknown">Unknown</attr>
+    <subject>Computer</subject>
+    <description>Learn programming and data structures.</description>
+    <publisher>Cengage Learning</publisher>
+    <price level="high"/>
+    <author>John Smith</author>
+    <pubdate>2000-10-01</pubdate>
+  </book>
+  <book id="bk102">
+    <attr name="price" type="float">39.95</attr>
+    <attr name="manufacturer" type="string">Best Buy</attr>
+    <subject>Camera</subject>
+    <description>Learn about camera equipment.</description>
+    <publisher>Aperture Press</publisher>
+    <price level="very high"/>
+    <author>Jane Doe</author>
+  </book>
+</catalog>

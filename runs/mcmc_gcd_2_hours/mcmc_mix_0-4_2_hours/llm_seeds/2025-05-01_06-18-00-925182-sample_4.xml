@@ -1,0 +1,36 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+      <description>&lt;b&gt;Books&quot;&lt;/b&gt; catalog containing &lt;b&gt;certain&lt;/b&gt; items.</description>
+
+    <book id="bk101">
+      <author>John Smith</author>
+      <title>XML for Dummies</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>&lt;strikethrough>Strikethrough text&lt;/strikethrough&gt;. This is a line of text that will be struck through.</description>
+
+      <content>
+          <![CDATA[
+          <p>This is a paragraph of text that includes a few special characters.</p>
+          <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+          </ul>
+          ]]>
+
+      </content>
+    </book>
+
+    <book id="bk102">
+      <author>Jane Doe</author>
+      <title>XSLT the Definitive Guide</title>
+      <genre>Computer</genre>
+      <price>49.95</price>
+      <publish_date>2001-05-01</publish_date>
+      <description>&lt;acronym&gt;ASCII&gt; stands for <c>American Standard Code for Information Interchange</c>.</description>
+
+    </book>
+
+</catalog>

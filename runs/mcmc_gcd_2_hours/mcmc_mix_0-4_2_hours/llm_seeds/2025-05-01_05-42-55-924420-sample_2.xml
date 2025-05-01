@@ -1,0 +1,6 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<library catalog ="{&book-catalog;}">
+  <book title ="{&title;}&#160;&#160;&#160;&#160;}"/>
+  <author name ="{&name;}&#60;&#62;&#60;&#62;}"/>
+  <price currency ="{&currency;}&#x20AC;}&#x20AC;#39;#39;"/>
+</library>

@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <description>&lt;xml&amp;gt; Catalogue of the finest books. &amp;lt;/xml&gt;</description>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>The Great Gatsby</title>
+        <genre>Classics</genre>
+        <price>30.00</price>
+        <publish_date>2001-06-01</publish_date>
+        <description>&lt;b&gt;Longest Book&lt;/b&gt; &lt;br /&gt; &lt;b&gt;Most Expensive Book&lt;/b&gt;</description>
+        <publisher>Simon &amp; Schuster</publisher>
+        <status>Sold</status>
+    </book>
+    <book id="bk102">
+        <author>John Doe</author>
+        <title>The Catcher in the Rye</title>
+        <genre>Fiction</genre>
+        <price>20.00</price>
+        <publish_date>1997-09-22</publish_date>
+        <description>Hardcover with dust jacket.</description>
+        <publisher>Doubleday</publisher>
+        <status>Sold</status>
+    </book>
+</catalog>

@@ -1,0 +1,21 @@
+<?xml version = 
+        1.0 
+        encoding = 
+        "UTF-8" 
+        standalone = 
+        yes?>
+
+<catalog xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <product wpid="BDK10342" id="BGD00187" version="1.1.1" xmlns="http://book.info/">
+        <title>Leather-bound edition</title>
+        <price currency="USD" price="59.99"/>
+        <discount>3% off</discount>
+        <geo:geodestination xsi:type="geo:Point"
+                           geo:latdeg="52.5200" geo:longdeg="13.4050"/>
+        <image>image1.jpg</image>
+        <author>John Doe</author>
+        <description xml:lang="en">A new book</description>
+        <country iso="DE" countryName="Germany"/>
+    </product>
+</catalog>

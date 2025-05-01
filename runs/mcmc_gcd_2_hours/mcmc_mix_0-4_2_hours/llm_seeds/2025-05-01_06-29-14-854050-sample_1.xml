@@ -1,0 +1,16 @@
+<SchoolData version="2.5" encoding="ISO-8859-1">
+  <?xml-stylesheet type="text/xsl" href="school.xsl"?>
+  <SchoolYear>
+    <Quarter>
+      <Name>First Quarter</Name>
+      <Start_date>Sunday, March 12, 2023</Start_date>
+      <End_date>Tuesday, June 14, 2023</End_date>
+    </Quarter>
+    <Course>
+      <Subject>Math</Subject>
+      <Teacher>Name>Mr. Smith</Name>
+      <ClassSize>35</ClassSize>
+    </Course>
+    <!-- Student information will be added here -->
+  </SchoolYear>
+</SchoolData>

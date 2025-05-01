@@ -1,0 +1,54 @@
+<Solutions>
+  <Solution1>
+    <xml version="1.0" encoding="UTF-8" standalone="yes">
+      <Library catalog="Database 1">
+        <title>Computer Science</title>
+        <author>Bob Smith</author>
+        <date>2003</date>
+        <subject>Computing</subject>
+        <description>An introduction to computer science.</description>
+        <books>
+          <book title="Introduction to Algorithms">
+            <author>Tom Leighton</author>
+            <year>2002</year>
+            <publisher>MIT Press</publisher>
+          </book>
+          <book title="Introduction to Database Systems">
+            <author>Christian Queiroz</author>
+            <year>2001</year>
+            <publisher>Cengage Learning</publisher>
+        </books>
+      </Library>
+    </xml>
+  </Solution1>
+  <Solution2>
+    <!-- xsd schema for Library and book elements -->
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Library" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="subject" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="books" type="xs:sequence"/>
+          </xs:sequence>
+          <xs:attribute name="catalog" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="book">
+        <xs:sequence>
+          <xs:element name="title" type="xs:string"/>
+          <xs:element name="author" type="xs:string"/>
+          <xs:element name="year" type="xs:integer"/>
+          <xs:element name="publisher" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="books" type="xs:sequence"/>
+    </xs:schema>
+
+    <Library catalog="Database 1">
+      <title>Computer Science</title>
+      <author>Bob Smith</author

@@ -1,0 +1,29 @@
+<formatted-note xml-stylesheet="text/xsl stylesheet" type="application/xml" xml:lang="en">
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <custom-header>
+        <user-agent>Catch-A-Bug Browser</user-agent>
+        <document-id>CA-BG-12345-12-12</document-id>
+    </custom-header>
+    <note-to>
+        To: Alice
+    </note-to>
+    <note-from>
+        From: Bob
+    </note-from>
+    <note-subject>
+        Meeting
+    </note-subject>
+    <message>
+        Don't forget our meeting at 2pm!
+    </message>
+    <note-templates>
+        <template>
+            <priority level="high"/>
+        </template>
+        <template>
+            <priority level="low"/>
+        </template>
+    </note-templates>
+    <!-- There was an unexpected error while processing the document.  Call the support hotline for assistance. -->
+    <comment>This is an automated response.</comment>
+</formatted-note>

@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<config xmlns:c  = "http://www.example.com/config" 
+        xmlns:db = "http://www.example.com/db"
+        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation ="http://www.example.com/config.config"
+        xmlns = "http://www.example.com/config"
+        elementFormDefault ="The default"
+        xml:lang ='en'
+        extension =".xml">
+
+    <dbSetting name ="" value="">
+        <name> </name>
+        <value>0</value>
+    </dbSetting>
+
+    <server>
+        <name value =""/>
+        <ip>localhost</ip>
+        <port>3306</port>
+        <username value =""/>
+    </server>
+
+</config>

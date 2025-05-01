@@ -1,0 +1,10 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<Library xmlns:xb="http://example.com/catalog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://example.com/catalog catalog.xsd">
+  <Book Title="To Kill a Mockingbird" Author="Harper Lee" xb:genre="Fiction" xsi:name="Book"/>
+  <Book Title="1984" Author="George Orwell" xb:published="1949" xsi:name="Book"/>
+  <xb:BibliographicData>
+    <author HB="Harper Lee"/>
+    <author GW="George Orwell"/>
+  </xb:BibliographicData>
+</Library>

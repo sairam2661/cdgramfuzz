@@ -1,0 +1,11 @@
+<?xml version =1.0 encoding="UTF-8"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="catalog.xsd">
+ <book id="bk101">
+  <author>John Smith</author>
+  <title>XML for Beginners</title>
+  <genre>Computers</genre>
+  <price>39.95</price>
+  <publish_date>2000-10-01</publish_date>
+  <description>&lt;p&gt;This is a book about XML.&lt;/p&gt;&lt;ol&gt;&lt;li&gt;XML stands for Extensible Markup Language.&lt;/li&lt;lt./ol&gt;</description>
+ </book>
+</catalog>

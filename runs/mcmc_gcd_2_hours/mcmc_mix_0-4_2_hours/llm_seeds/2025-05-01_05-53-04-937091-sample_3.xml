@@ -1,0 +1,29 @@
+<root version="2.0" encoding="UTF-8" standalone="yes">
+    <bookstore>
+        <book category="cooking">
+            <title lang="en">Everyday Italian</title>
+            <author>Giada De Laurentiis</author>
+            <year>2005</year>
+            <price>30.00</price>
+            <description>
+                <strong>Learn to cook the Italian way, from pasta dishes to pizza</strong>.
+                <br />
+                <br />
+                With simple, easy-to-follow recipes and beautiful photographs, this book will make you a confident cook in no time!
+            </description>
+            <word count="250"/>
+        </book>
+        <book category="children">
+            <title lang="en">Harry Potter and the Philosopher's Stone </title>
+            <author>J.K. Rowling </author>
+            <year>1997</year>
+            <price>29.99</price>
+            <description>
+                <strong>Hagrid takes Harry to Diagon Alley </strong>.
+                <br />
+                A young wizard's journey begins.
+            </description>
+            <word count="75"/>
+        </book>
+    </bookstore>
+</root>

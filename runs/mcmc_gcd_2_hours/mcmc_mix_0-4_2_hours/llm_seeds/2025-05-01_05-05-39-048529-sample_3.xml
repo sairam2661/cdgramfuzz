@@ -1,0 +1,18 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns:fb="http://www.facebook.com">
+  <person>
+    <name>
+      <first>John</first>
+      <last>Doe</last>
+    </name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <phone fb:type="home">555-1234</phone>
+    <email>john.doe@example.com</email>
+  </person>
+</note>

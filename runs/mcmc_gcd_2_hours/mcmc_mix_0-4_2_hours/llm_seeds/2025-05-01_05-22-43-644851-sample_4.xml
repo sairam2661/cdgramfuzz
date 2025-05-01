@@ -1,0 +1,20 @@
+<Solution1>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <note xmlns:ns1="http://example.com" xmlns:ns2="http://xmlschema.org">
+    <to ns1:address="123 Main St"/>
+    <from ns2:email="bob@example.com"></from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority>
+      <ns1:highLevel>High</ns1:highLevel>
+      <ns2:warningLevel>Caution</ns2:warningLevel>
+    </priority>
+  </note>
+  <?xml:entity xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#id1" encoding="UTF-8"?>
+  <?xml:entity xmlns:xi="http://www.w3.org/2001/xInclude" include="externalEntity"?>
+  <?xml:externalparsesystem="UTF-8"?>
+  <?xml:entities xmlns:ens1="http://www.example.com/entities" encoding="UTF-8"?>
+  <?xml:entities xmlns:ens2="http://www.example.com/entities" encoding="UTF-8"?>
+</Solution1>
+
+     

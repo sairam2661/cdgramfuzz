@@ -1,0 +1,17 @@
+<hotelReservation xmlns="http://www.example.com/hotelreservation"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.example.com/hotelreservation HotelReservationSchema.xsd"
+                   version="2.5">
+
+  <hotelID>HN123</hotelID>
+  <confirmationNumber>CONF1234</confirmationNumber>
+  <visitorID>VIS123</visitorID>
+  <arrivalDate>2024-05-01</arrivalDate>
+  <departureDate>2024-05-03</departureDate>
+  <roomType>Standard</roomType>
+  <roomNumber>101</roomNumber>
+  <taxRate>10.00</taxRate>
+  <taxAmount currency="USD">$200.00</taxAmount>
+  <totalBill currency="USD">$500.00</totalBill>
+
+</hotelReservation>

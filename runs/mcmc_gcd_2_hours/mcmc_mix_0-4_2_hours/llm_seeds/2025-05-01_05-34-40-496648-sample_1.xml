@@ -1,0 +1,19 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+<catalog>
+    <book id="bk101">
+        <author>&lt;afbeelding&gt;John Smith&lt;/afbeelding&gt;</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>&amp;lt;strong&gt;Learn how to create robust documents with XML in this tutorial.&amp;lt;/strong&gt;</description>
+    </book>
+    <book id="bk102">
+        <author>John Smith</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>Master the art of transforming data with XSLT in this comprehensive guide.</description>
+    </book>
+</catalog>

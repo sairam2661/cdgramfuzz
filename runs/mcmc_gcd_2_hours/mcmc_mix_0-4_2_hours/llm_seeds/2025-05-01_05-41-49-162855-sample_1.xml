@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <description>&lt;javanet&gt; Java&quot; Reference, 9th Edition.&lt;/javanet&gt;</description>
+  <company>
+    <name>Sun Microsystems</name>
+    <address>
+      <street>1 Sun Drive</street>
+      <city>Menlo Park</city>
+      <state>CA</state>
+      <zip>94025</zip>
+    </address>
+  </company>
+  <product id="BK001">
+    <name>Java SE 9 Documentation</name>
+    <description>This book contains information on all the features which are available in Java SE 9</description>
+    <price>124.95</price>
+    <currency>USD</currency>
+  </product>
+</catalog>

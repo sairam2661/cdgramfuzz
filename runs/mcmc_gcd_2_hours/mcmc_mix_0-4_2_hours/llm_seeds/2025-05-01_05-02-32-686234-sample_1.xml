@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE Library SYSTEM "library catalogue.dtd">
+
+<Library catalog ="{lib_catalog}" version ="{library_version}">
+    <AuthorList basedata ="{auth_data}">
+        <Author Name ="{author_name}">
+            <Publication>
+                <FirstPubDate >{first_publication}</FirstPubDate>
+                <LastPubDate >{last_publication}</LastPubDate>
+            </Publication>
+        </Author>
+        <Author Name ="{secondary_author}">
+            <Publication>
+                <FirstPubYear >{first_year_publication}</FirstPubYear>
+                <LastPubYear >{last_year_publication}</LastPubYear>
+            </Publication>
+        </Author>
+    </AuthorList>
+</Library>

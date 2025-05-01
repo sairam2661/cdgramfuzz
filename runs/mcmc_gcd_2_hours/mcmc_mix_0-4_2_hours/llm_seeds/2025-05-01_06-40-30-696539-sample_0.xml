@@ -1,0 +1,44 @@
+<?xml version                              
+   =1.0                                                
+   encoding="UTF-8"                               
+   standalone =yes                               
+  ?>
+  
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners </title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating applications with XML.</description>
+    <category>Books</category>
+    <language>English</language>
+    <country>USA</country>
+    <company>ABC Inc.</company>
+    <stock>10</stock>
+    <description></description>
+    <page_count>300</page_count>
+  </book>
+
+  <author id="au1">
+    <name>John Smith</name>
+    <email> John.Smith@example.com </email>
+  </author>
+
+  <bookstore>
+    <book id="bk102">
+      <author>John Smith</author>
+      <title>XML for Advanced Users </title>
+      <price>49.95</price>
+      <publish_date>2001-05-01</publish_date>
+      <description>In-depth information on advanced XML topics.</description>
+      <genre>Computer</genre>
+      <category>Books</category>
+      <language>English</language>
+      <country>USA</country>
+      <company>NEXT Corporation.</company>
+      <stock>10</stock>
+    </book>
+  </bookstore>
+</catalog>

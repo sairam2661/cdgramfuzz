@@ -1,0 +1,14 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<?processing-instruction 
+         xml : namespace = "http://example.com/namespace" 
+         processingInstruction = "custom-PI"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Dummies</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <pubDate>2003-10-15</pubDate>
+    <description>An in-depth look at creating applications with XML.</description>
+  </book>
+</catalog>

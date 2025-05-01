@@ -1,0 +1,26 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:tns="http://www.example.com">
+  <description xml:lang="en" xml:space="preserve">
+    <title>Animal Catalog</title>
+    <author>John Smith</author>
+    <copyright>2022 - All Rights Reserved</copyright>
+  </description>
+  <notation xmlns:notation="http://www.example.com/notations">
+    <symbol name="Circle" definition="A regular polygon with five equal sides and angles"/>
+    <symbol name="Parallelogram" definition="A quadrilateral with opposite sides parallel"/>
+  </notation>
+  <productList>
+    <product>
+      <name>Golden Retriever</name>
+      <description xml:lang="en">A beautiful dog with a golden coat.</description>
+      <price currency="USD">75.0</price>
+      <availability level="out-of-stock"/>
+    </product>
+    <product>
+      <name>Bulldog</name>
+      <description xml:lang="en">A playful dog with a short, easy-to-maintain coat.</description>
+      <price currency="USD">65.0</price>
+      <availability level="in-stock"/>
+    </product>
+  </productList>
+</catalog>

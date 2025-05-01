@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+  <description xml:lang ="African">
+    &copy;2024 African Cuisine
+  </description>
+  <company>
+    <name>The Spice Market</name>
+    <address>
+      <street>The Row</street>
+      <city>Notting Hill</city>
+      <country>London</country>
+      <postcode>W11 2AY</postcode>
+    </address>
+  </company>
+  <product id =">AFC001"
+    name="Jollof Rice"
+    colour="Red"
+    price="4.99$" />
+</catalog>

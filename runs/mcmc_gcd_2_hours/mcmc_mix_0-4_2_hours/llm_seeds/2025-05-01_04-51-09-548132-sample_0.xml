@@ -1,0 +1,32 @@
+<BloodBankRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://BloodBankSchema.xsd http://www.bloodbank.com/BloodBankSchema.xsd">
+  <MedicalRecord>
+    <PatientInformation>
+      <PatientId>101</PatientId>
+      <Name>
+        <First>John</First>
+        <Last>Doe</Last>
+      </Name>
+      <Address>
+        <Street>123 Main St</Street>
+        <City>Anytown</City>
+        <State>CA</State>
+        <Zip>12345</Zip>
+      </Address>
+    </PatientInformation>
+    <BloodType>
+      <Type>A+</Type>
+      <RhNegative>true</RhNegative>
+    </BloodType>
+    <RecipientInformation>
+      <RecipientName>Jane Smith</RecipientName>
+      <ContactInformation>
+        <Phone>555-555-5555</Phone>
+        <Email>john.doe@example.com</Email>
+      </ContactInformation>
+    </RecipientInformation>
+    <BloodDonation>
+      <DateOfBirth>1990-01-01</DateOfBirth>
+      <LastDonated>2022-01-01</LastDonated>
+    </BloodDonation>
+  </MedicalRecord>
+</BloodBankRecord>

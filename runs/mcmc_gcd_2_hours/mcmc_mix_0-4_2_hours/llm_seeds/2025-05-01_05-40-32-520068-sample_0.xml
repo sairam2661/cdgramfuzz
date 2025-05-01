@@ -1,0 +1,13 @@
+<personal_info xmlns="http://example.com/personal-info" version="2.0" encoding="UTF-8">
+  <full_name>&nbsp;&nbsp;&nbsp;&nbsp;Alessandra Maria &amp; Francesco;&nbsp;&nbsp;&nbsp;&nbsp;</full_name>
+  <address>
+    <street_number>20</street_number>
+    <street_name>Main Street</street_name>
+    <city>Cityville</city>
+    <state>CA</state>
+    <zip_code>12345</zip_code>
+  </address>
+  <contact_info>
+    <phone_number>&nbsp;&nbsp;&nbsp;&nbsp;+1234567890;&nbsp;&nbsp;&norm;i&nbsp;&nbsp;</phone_number>
+  </contact_info>
+</personal_info>

@@ -1,0 +1,24 @@
+<personal-info version="3.0" encoding="UTF-8" standalone="yes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="personal-info.xsd"
+    xmlns:ad="http://example.ad"
+>
+  <contact-information>
+    <address-line1>123 Main St.</address-line1>
+    <address-line2>Apt 101</address-line2>
+    <city>New York</city>
+    <state>NY</state>
+    <postal-code>10001</postal-code>
+    <phone-number>+1-212-123-4567</phone-number>
+  </contact-information>
+  <employment-information>
+    <job-title>Software Engineer</job-title>
+    <company-name>ABC Corporation</company-name>
+    <job-duration>2018-Present</job-duration>
+  </employment-information>
+  <education-information>
+    <school-name>Harvard University</school-name>
+    <degree>Bachelor of Science</degree>
+    <graduation-date>2016</graduation-date>
+  </education-information>
+</personal-info>

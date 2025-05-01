@@ -1,0 +1,44 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog xmlns = "http://example.com/cd catalogs"
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+xmlns:cd = "http://example.com/cd catalogs"
+xsi:noNamespaceSchemaLocation ="xsd_catalog.xsd">
+
+    <title>Music CDs</title>
+    <artist>
+        <name>George Harrison</name>
+        <nationality>British</nationality>
+        <activity>Musician</activity>
+    </artist>
+    <album>All Things Must Pass</album>
+    <year>1970</year>
+    <price>10.90</price>
+    <labels>
+
+        <label>Apple Records</label>
+
+    </labels>
+    <tracks>
+
+        <track>
+            <name>She's Leaving Home</name>
+            <year>1970</year>
+            <minutes>2</minutes>
+            <seconds>26</seconds>
+            <duration>142</duration>
+            <type>Pop</type>
+        </track>
+
+        <track>
+            <name>Something</name>
+            <year>1970</year>
+            <minutes>3</minutes>
+            <seconds>43</seconds>
+            <duration>223</duration>
+            <type>Rock</type>
+        </track>
+
+    </tracks>
+
+</catalog>

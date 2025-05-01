@@ -1,0 +1,28 @@
+<?xml version = 1.0 encoding="UTF-8" standalone = yes?>
+
+<catalog>
+<description language="enUS"
+             xml:version="1.0"
+        xml:lang="en-US"
+             encoding="UTF-8"
+             XML:namespace="http://books.example.com/catalog" />
+<book id="bk101">
+ <author>
+ <name>John Smith</name>
+ <honourary>James Johnson</honourary>
+ </author>
+ <title>XML in a Nutshell</title>
+ <genre>Computer</genre>
+ <price>39.95</price>
+ <publish_date>2001-10-11</publish_date>
+ <description>There's nothing more exciting than learning something new.</description>
+ <company name="ABC Inc." />
+ <contact email=" Contact Us " phone="123-456-7890" />
+ <currency>USD</currency>
+ <language code="en"></language>
+ <country>USA</country>
+ <stock quantity="10"/>
+ <price_total>39.95</price_total>
+ <reviews rating="4" count="10"/>
+</book>
+</catalog>

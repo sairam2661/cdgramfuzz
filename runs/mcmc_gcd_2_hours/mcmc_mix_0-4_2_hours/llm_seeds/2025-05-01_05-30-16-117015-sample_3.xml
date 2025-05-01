@@ -1,0 +1,8 @@
+<hello xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:tns="http://example.com/types" 
+    version="2.0" encoding="UTF-8" standalone="yes"
+    xml:version="2.0"
+    xml:notation-declaration="MathML: http://www.mathml.org/namespaces/math">
+    <mrow xmlns:ms="http://www.w3.org/1992/MathMate">
+        <mi xmlns="http://www.w3.org/1998/Math/MathML">sin</mi> 
+        <mi mathnotation="Greek">π

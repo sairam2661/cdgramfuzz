@@ -1,0 +1,29 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+     <cd country="USA">
+       <title>Empire Burlesque</title>
+       <artist>Bob Dylan</artist>
+       <price>10.90</price>
+       <picture>empire burlesque.jpg</picture>
+       <genre>Blues</genre>
+       <label>Columbia</label>
+       <catalogue>
+          <item>Audio CD</item>
+          <item>CD Single</item>
+          <item>Vinyl</item>
+       </catalogue>
+     </cd>
+     <cd country="UK">
+       <title>The Man Who Sold the World</title>
+       <artist>Pink Floyd</artist>
+       <price>9.99</price>
+       <picture>the man who sold the world.jpg</picture>
+       <genre>Folk Rock</genre>
+       <label>EMI</label>
+       <release-date>1970-01-23</release-date>
+       <catalogue>
+          <item>Audio CD</item>
+          <item>Vinyl</item>
+       </catalogue>
+     </cd>
+</catalog>

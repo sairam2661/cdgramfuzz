@@ -1,0 +1,9 @@
+<hyperlink>
+<href>https://www.example.com/about.html#services</href>
+<title>Example Website</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32"/>
+<meta charset="UTF-8" xml:lang="en" lang="en"/>
+<document-type>informational</document-type>
+<created date="2022-01-01T00:00:00Z" timezone="UTC"/>
+<version>1.0.2</version>
+</hyperlink>

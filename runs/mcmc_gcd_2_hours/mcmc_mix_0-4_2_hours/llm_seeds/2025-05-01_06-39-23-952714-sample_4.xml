@@ -1,0 +1,16 @@
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/catalog/XMLSchemacatalog.xsd">
+    <description.xmlversion="1.1">
+        <company>
+            <name>Acme Inc.</name>
+            <address>
+                <street>123 Main St</street>
+                <city>Anytown</city>
+                <state>CA</state>
+                <zip>12345</zip>
+            </address>
+            <phone>555-555-5555</phone>
+            <fax>555-555-1234</fax>
+            <email>support@acme.com</email>
+        </company>
+    </description>
+</catalog>

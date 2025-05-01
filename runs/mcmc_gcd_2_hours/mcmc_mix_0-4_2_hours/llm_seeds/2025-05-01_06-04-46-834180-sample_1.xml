@@ -1,0 +1,16 @@
+<?xml version =	1.0	 encoding = "UTF-8"?>
+<catalog xmlns = "http://www.example.com" 
+ XMLNS:catalog ="http:// catalog.example.org" 
+ XMLNS:book ="http://book.example.net">
+   <catalog name ="[{x}Book]"
+   xmlns:xsd = "{x}XSD">
+    <description>Books</description>
+    <book id="[book1]">
+     <title>[title]">Book Title 1</title>
+     <author id ="[author1}">
+      <name>[name]">First Author</name>
+     </author>
+     <year >{y}1920</year>
+    </book>
+   </catalog>
+</catalog>

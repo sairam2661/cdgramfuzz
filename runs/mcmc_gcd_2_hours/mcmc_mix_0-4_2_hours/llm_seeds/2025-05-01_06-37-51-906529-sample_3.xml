@@ -1,0 +1,7 @@
+<hello_world version="2.5">
+  <system_status>
+    <status_code>123</status_code>
+    <response_time>10.3 seconds</response_time>
+  </system_status>
+  <error_description>This is a test error</error_description>
+  </hello_world>

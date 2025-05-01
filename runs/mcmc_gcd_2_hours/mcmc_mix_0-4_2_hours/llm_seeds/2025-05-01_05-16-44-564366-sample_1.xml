@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone=  yes?>
+<!DOCTYPE product [
+<!ENTITY produto      "Produto" > 
+<!ENTITY preco        "Preco" > 
+<!ENTITY descricao    "Descricao" > 
+<!ENTITY foto          "Foto do produto" > 
+<!ENTITY detalhes      "Detalhes do produto">
+]>
+<catalog>
+    <product>
+        <nome> &produto; </nome>
+        <valor> &preco; </valor>
+        <descricao> &descricao; </descricao>
+        <foto> &foto; </foto>
+        <detalhes> &detalhes; </detalhes>
+    </product>
+</catalog>

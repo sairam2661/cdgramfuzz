@@ -1,0 +1,34 @@
+<persons xmlns:geo="http://www.example.com/geo">
+    <person geo:country="USA" geo:city="New York" geo:addrType="street">
+        <name>John Doe</name>
+        <address>
+            <street>123 Example St</street>
+            <city>New York</city>
+            <state>NY</state>
+            <zip>10001</zip>
+        </address>
+        <phone type="home">123-456-7890</phone>
+        <phone type="work">987-654-3210</phone>
+        <email>john.doe@example.com</email>
+        <hobbies>
+            <hobby>Reading</hobby>
+            <hobby>Writing</hobby>
+        </hobbies>
+    </person>
+    <person geo:country="UK" geo:city="London">
+        <name>Jane Smith</name>
+        <address>
+            <street>456 Example St</street>
+            <city>London</city>
+            <state></state>
+            <zip>SW1A 0AA</zip>
+        </address>
+        <phone type="home">567-890-1234</phone>
+        <phone type="mobile">901-234-5678</phone>
+        <email>jane.smith@example.com</email>
+        <hobbies>
+            <hobby>Sporting</hobby>
+            <hobby>Music</hobby>
+        </hobbies>
+    </person>
+</persons>

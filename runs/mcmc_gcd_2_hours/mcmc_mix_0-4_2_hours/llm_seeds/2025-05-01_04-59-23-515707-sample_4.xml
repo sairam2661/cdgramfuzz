@@ -1,0 +1,34 @@
+<?xml version = 
+1.0 
+encoding = 
+"UTF-8" 
+standalone = 
+yes?>
+ 
+<addressbook namespace ="There is no place like home">
+  <person id ="I-1" name ="{http://www.w3.org/2001/XMLSchema}name">
+    <address type ="{http://www.w3.org/2001/XMLSchema}home">
+      <street>123 Fake Street</street>
+      <city>Amarillo</city>
+      <state>TX</state>
+      <zip>79055</zip>
+    </address>
+    <address type ="{http://www.w3.org/2001/XMLSchema}work">
+      <street>456 Mock Office</street>
+      <city>Cincinnati</city>
+      <state>OH</state>
+      <zip>45201</zip>
+    </address>
+    <phone number ="{http://www.w3.org/2001/XMLSchema}phone">
+      <type>home</type>
+      <value>555-123-4567</value>
+    </phone>
+    <phone number ="{http://www.w3.org/2001/XMLSchema}work">
+      <type>work</type>
+      <value>888-555-1234</value>
+    </phone>
+    <email address ="{http://www.w3.org/2001/XMLSchema}email">
+      <address>example@gmail.com</address>
+    </email>
+  </person>
+</addressbook>

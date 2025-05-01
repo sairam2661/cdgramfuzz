@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+
+<catalog>
+  <description> Online Shopping Catalog </description>
+  
+  <!--<This is an XML catalog that stores product information.-->
+  
+  <product>
+    <name>Apple Laptop</name>
+    <price>1000.00</price>
+    <brand>Apple</brand>
+    <category>Electronics</category>
+    <!--<Add more product details if needed.-->
+  </product>
+  
+  <product>
+    <name>Samsung TV</name>
+    <price>500.00</price>
+    <brand>Samsung</brand>
+    <category>Electronics</category>
+    <!--<Category and price are fixed for demonstration purposes.-->
+  </product>
+</catalog>

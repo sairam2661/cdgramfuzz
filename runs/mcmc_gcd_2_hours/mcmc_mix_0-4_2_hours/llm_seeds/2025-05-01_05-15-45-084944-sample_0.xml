@@ -1,0 +1,30 @@
+<!DOCTYPE book [
+  <!ENTITY book.title "The XML Primer">
+  <!ENTITY book.subtitle "A Brief Introduction">
+  <!ENTITY author SYSTEM "authors.xml">
+  <!ENTITY chapter1 SYSTEM "chapters/chapter1.xml">
+  <!ENTITY section1 SYSTEM "sections/section1.xml">
+  <!ENTITY code SYSTEM "code.xml">
+]>
+<book>
+  <title>&book.title;</title>
+  <subtitle>&book.subtitle;</subtitle>
+  <cover image="cover.jpg"/>
+  <author>&author;</author>
+  <publication_date>2022-01-01</publication_date>
+  
+  <chapter>
+    <title>Introduction</title>
+    <content>&section1;</content>
+  </chapter>
+  
+  <chapter>
+    <title>Best Practices</title>
+    <content>&chapter1;</content>
+  </chapter>
+  
+  <section>
+    <title>Example Code</title>
+    <code>&code;</code>
+  </section>
+</book>
