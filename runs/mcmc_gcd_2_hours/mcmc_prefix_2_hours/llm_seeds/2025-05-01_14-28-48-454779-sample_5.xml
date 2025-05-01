@@ -1,0 +1,24 @@
+<?xml version = 
+  1.0 
+  encoding = 
+  "UTF-8" 
+  standalone = 
+  yes?>
+
+<catalog>
+<description> This is a sample catalogue </description>
+<title>Book List</title>
+<author>
+<![CDATA[
+ <xml tag
+  name="author-name" contents="Author Name"><name>John Doe</name></xml
+-tag>]]>
+</author>
+
+<country>USA</country>
+<company>ABC Inc.</company>
+<decade>90</decade>
+<price currency="USD">19.95</price>
+<language code="en" xmlref="language"/>
+<coverage xmlref="coverage"/>
+</catalog>

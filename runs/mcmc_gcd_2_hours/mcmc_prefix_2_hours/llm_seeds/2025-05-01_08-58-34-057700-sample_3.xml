@@ -1,0 +1,16 @@
+<Bibliography xmlns="http://www.example.com/bibliography-ns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.com/bibliography-ns Bibliography.xsd">
+    <AuthorList>
+        <Author>
+            <Last>Smith</Last>
+            <First>Jane</First>
+            <Publication Date="2022-01-01"/>
+            <Title>Example Book Title</Title>
+        </Author>
+        <Author>
+            <Last>Doe</Last>
+            <First>John</First>
+            <Publication Date="2022-01-15"/>
+            <Title>Another Book Title</Title>
+        </Author>
+    </AuthorList>
+</Bibliography>

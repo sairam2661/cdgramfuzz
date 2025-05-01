@@ -1,0 +1,22 @@
+<?xml version = 1.0  encoding = "UTF-8"  standalone =  no ?>
+
+<?processing-instruction system = "DTD Validation" 
+    targetSystem = "External DTD" 
+    data = "This is a sample processing instruction"?>
+ 
+<personnel>
+  <employee id="E001">
+    <name>John Doe</name>
+    <age>30</age>
+    <employment Status="Full-Time"/>
+    <salary currency="USD" value="50000"/>
+    <address street="123 Main St" city="New York" state="NY" zip="10001"/>
+  </employee>
+  <employee id="E002">
+    <name>Jane Doe</name>
+    <age>25</age>
+    <employment Status="Part-Time"/>
+    <salary currency="USD" value="40000"/>
+    <address street="456 Park Ave" city="New York" state="NY" zip="10021"/>
+  </employee>
+</personnel>

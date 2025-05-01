@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<address>
+    <person>
+        <name>John Doe</name>
+        <age>30</age>
+        <city>New York</city>
+        <state>CY</state>
+    </person>
+    <order>
+        <items>
+            <item>
+                <product>Book</product>
+                <quantity>5</quantity>
+            </item>
+            <item>
+                <product>Mouse</product>
+                <quantity>2</quantity>
+            </item>
+        </items>
+        <shipping>
+            <carrier>USPS</carrier>
+            <cost>$10.00</cost>
+        </shipping>
+    </order>
+</address>

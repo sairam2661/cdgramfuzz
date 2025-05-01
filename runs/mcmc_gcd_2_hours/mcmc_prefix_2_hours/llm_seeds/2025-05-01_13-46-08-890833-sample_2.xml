@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<notebook>
+    <?pragma xml version="1.0" encoding="UTF-8"?>
+    <data type="text">
+        <book id="bk101">
+            <author>John Smith</author>
+            <title>XML for Beginners</title>
+            <genre>Computer</genre>
+            <price>39.95</price>
+            <publish_date>2000-10-01</publish_date>
+            <description>An in-depth look at creating applications with XML.</description>
+        </book>
+    </data>
+</notebook>

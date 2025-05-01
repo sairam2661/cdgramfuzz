@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE books [
+<!ELEMENT books (book)>
+<!ELEMENT book (title, author, year, description)>
+<!ELEMENT title (#PCDATA)*
+><!-- The title is a required element -->
+<!ELEMENT author (#PCDATA)*
+><!-- The author is a required element -->
+<!ELEMENT year (#PCDATA)*
+><!-- The year is an optional element -->
+<!ELEMENT description (#PCDATA)*
+><!-- The description is an optional element -->
+]>
+<books>
+  <book>
+    <title>Python Programming</title>
+    <author>John Doe</author>
+    <year>2022</year>
+    <description>This is a book about Python programming.</description>
+  </book>
+</books>

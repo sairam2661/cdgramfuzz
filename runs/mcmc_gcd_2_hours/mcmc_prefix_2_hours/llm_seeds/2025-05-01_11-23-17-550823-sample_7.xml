@@ -1,0 +1,20 @@
+<?xml version = 
+               1.0 
+               encoding="UTF-8" 
+               standalone = 
+               yes?>
+       <address>
+    <contact-info>
+    <phone-number>123 456 789</phone-number> 
+    <fax> 987654321</fax> 
+    </contact-info>
+    <address-detail>
+     <type > 
+      <name > Work</name> 
+      </type> 
+     <location> 
+      <city>New York</city> 
+      <country name="USA">  </country> 
+     </location> 
+    </address-detail> 
+   </address>

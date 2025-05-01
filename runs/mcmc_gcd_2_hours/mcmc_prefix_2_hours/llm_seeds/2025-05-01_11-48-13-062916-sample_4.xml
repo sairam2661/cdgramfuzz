@@ -1,0 +1,48 @@
+<?xml version = 
+    1.0
+    encoding = "UTF-8"
+    standalone = no
+   ?> 
+<catalog>
+  <bookstore>
+    <title>My Books</title>
+    <author>John Smith</author>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <product>
+      <title>Introduction to SQL</title>
+      <price>50</price>
+    </product>
+    <product>
+      <title>Java Programming</title>
+      <price>60</price>
+      <description>An introduction to the basics of Java</description>
+    </product>
+    <book>    
+      <title>This is a book</title>
+      <price>40.0</price>    
+      <section name="part1">
+        <chapter name="chapter1">
+          <section name="subsection1">
+            <text>This is the text for the first subsection.</text>
+          </section>
+          <section name="subsection2">
+            <text>This is the text for the second subsection.</text>
+          </section>
+        </chapter>
+        <chapter name="chapter2">
+          <section name="subsection1">
+            <text>This is the text for the first subsection in part2.</text>
+          </section>
+          <section name="subsection2">
+            <text>This is the text for the second subsection in part2.</text>
+          </section>
+        </chapter>
+      </section>
+    </book>   
+  </bookstore> 
+</catalog>

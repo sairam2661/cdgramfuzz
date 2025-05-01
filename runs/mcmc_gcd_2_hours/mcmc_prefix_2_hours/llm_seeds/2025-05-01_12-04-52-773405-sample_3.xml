@@ -1,0 +1,5 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+   <catalog xml:lang ="" xmlns:xsi ="" xsi:schemaLocation ="" http ="" catalog.xsd ="">
+      <book id ="" isbn ="" style="" xml:lang ="" category ="" author ="" publisher ="" pages ="" price ="" cover ="" copyright ="" version ="" />
+      <condition descr ="" rating ="" status ="" />
+   </catalog>

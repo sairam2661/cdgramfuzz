@@ -1,0 +1,16 @@
+<BorrowedBookInfo Version="1.0" Encoding="ISO-8859-1">
+  <BookTitle>
+    <Title>Alice's Wonderland</Title>
+    <Author>
+      <First_Name>Alice</First_name>
+      <Last_Name>Eat.</Last_name>
+    </Author>
+  </BookTitle>
+  <AuthorInformation>
+    <Birth_Date>12th of April, 1859</Birth_Date>
+    <Nationality>English</Nationality>
+  </AuthorInformation>
+  <BookDescription>
+    <Description>It's a story about a girl who follows a rabbit down a hole.</Description>
+  </BookDescription>
+</BorrowedBookInfo>

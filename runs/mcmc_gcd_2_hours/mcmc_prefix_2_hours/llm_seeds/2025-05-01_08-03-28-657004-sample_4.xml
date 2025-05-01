@@ -1,0 +1,11 @@
+<?xml version =1.0 encoding = "UTF-8"?>
+<catalog xmlns:prod = "http://www.example.com/catalog/products" xml:lang="en">
+<book id ="{prod:bookid}" prod:price ="{prod prices }">
+<title>Python Programming</title>
+<author>John Smith</author>
+<year>2022</year>
+<price currency ="{prod:currency }">{prod:price}</price>
+<description>Hello, World!</description>
+<category>Computer</category>
+</book>
+</catalog>

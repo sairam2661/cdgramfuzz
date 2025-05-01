@@ -1,0 +1,10 @@
+<hreflang xml:lang="en">
+  <href href="http://example.com/en" xml:lang="en">
+    <a href="http://example.com/en" xml:lang="en">English</a>
+    <a href="http://example.com/fr" xml:lang="fr">French</a>
+    <a href="http://example.com/es" xml:lang="es">Spanish</a>
+  </href>
+  <system ref="http://example.org/en">
+    <a href="http://example.org/en">Example.org</a>
+  </system>
+</hreflang>

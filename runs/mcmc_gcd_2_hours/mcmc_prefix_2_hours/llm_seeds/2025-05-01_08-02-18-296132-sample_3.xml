@@ -1,0 +1,71 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<xsd:schema xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+  <xsd:element name ="xAddress">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="city" type="xsd:string"/>
+        <xsd:element name="country" type="xsd:string"/>
+        <xsd:element name="street" type="xsd:string"/>
+        <xsd:element name="state" type="xsd:string"/>
+        <xsd:element name="zipCode" type="xsd:integer"/>
+      </xsd:sequence>
+      <xsd:attribute name="xid" type="xsd:integer" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+
+  
+  			
+  		
+	
+ 	 	 
+	 	
+ 
+	 	
+	  
+ 
+	 	
+ 	  
+  
+ 
+ 	  
+
+
+
+
+
+
+
+
+
+
+  
+ 
+				 
+ 
+
+
+
+ 
+ 
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                    
+  
+                   

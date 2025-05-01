@@ -1,0 +1,72 @@
+<?xml version = 1.0 encoding = "utf-8"?>
+<catalog xml:lang ="xslt-xsl-transformation">
+ <description xml:anchor ="'book1'"> Book One</description>
+ <image uri ="xsl:output/stylesheet" style ="/image"/>
+ <person id ="xsl:if($book == 'book1')">
+  <name xml:lang ="/product/name">
+   <firstName xml:lang ="/product/firstName">John</firstName>
+   <lastName xml:lang ="/product/lastName">Smith</lastName>
+  </name>
+  <age xml:lang ="/product/age">25</age>
+ </person>
+ <book store ="/store">
+  <title xml:lang ="/product/title">XML for Beginners</title>
+  <price xml:lang ="/product/price">
+   <currency xml:lang ="/product/currency">$ 
+   <num xml:lang ="/product/num">49.95</num>
+  </price>
+  <description xml:lang ="/product/description">
+   This is the 1st book of the series.</description>
+  <category xml:lang ="/product\Category"/> 
+  <author xml:lang ="/product/author">
+   <firstName xml:lang ="/product/author/first">John</firstName>
+   <lastName xml:lang ="/product/author/lastName">Smith</lastName>
+  </author>
+  <publisher xml:lang ="/product/publisher">
+   <name xml:lang ="/product/publisher/name">ABC</name>
+   <address xml:lang ="/product/publisher/address">
+    <street xml:lang ="/product/publisher/address/street">123</street>
+    <city xml:lang ="/product/publisher/address/city">New York</city>
+    <state xml:lang ="/product/publisher/address/state">NY</state>
+    <zip xml:lang ="/product/publisher/address/zip">10001</zip>
+   </address>
+  </publisher>
+  <isbn xml:lang ="/product/isbn">1234567890</isbn>
+  <condition xml:lang ="/product/condition">new</condition>
+  <price xml:lang ="/product/price">
+   <currency xml:lang ="/product/currency">$ 
+   <num xml:lang ="/product/num">49.95</num>
+  </price>
+  <quantity xml:lang ="/product/quantity">3</quantity>
+  <link xml:lang ="/product/link">http://example.com</link>
+  <title xml:lang ="/product/title">XML for Beginners</title>
+  <price xml:lang ="/product/price">
+   <currency xml:lang ="/product/currency">$ 
+   <num xml:lang ="/product/num">49.95</num>
+  </price>
+  <description xml:lang ="/product/description">
+   This is the 1st book of the series.</description>
+  <category xml:lang ="/productCategoryIdCategory">Computer</category>
+  <author xml:lang ="/productAuthorAuthor">John Smith</author>
+  <publisher xml:lang ="/productPublisherPublisher">ABC Publishing</publisher>
+</book>
+<product store ="/store">
+ <book xml:lang ="/book">
+  <title xml:lang ="/book/title">Another Book</title>
+  <price xml:lang ="/book/price">
+   <currency xml:lang ="/book/currency">$ 
+   <num xml:lang ="/book/num">39.30</num>
+  </price>
+  <description xml:lang ="/book/description">
+   This is the 2nd book of the series.</description>
+  <category xml:lang ="/book(Category)">Computer Book</category>
+  <author xml:lang ="/book/author">
+   <firstName xml:lang ="/book/author/first">John</firstName>
+   <lastName xml:lang ="/book/author/lastName">Smith</lastName>
+  </author>
+  <publisher xml:lang ="/book/publisher">
+   <name xml:lang ="/book/publisher/name">ABC Publishing</name>
+   <address xml:lang ="/book/publisher/address">
+    <street xml:lang ="/book/publisher/address/street">123</street>
+    <city xml:lang ="/book/publisher/address/city">New York</city>
+    <state xml:lang =

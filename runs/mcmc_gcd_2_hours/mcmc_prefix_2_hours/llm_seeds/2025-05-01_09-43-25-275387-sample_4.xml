@@ -1,0 +1,33 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+ 
+<!-- A person's details -->
+<customer-info>
+  <!-- Customer's personal data starts here -->
+  <customer-name>John Doe</customer-name>
+  <!-- Customer's address starts here -->
+  <address>
+    <!-- Street address line 1 -->
+    <street1>
+      123 Main Street
+    </street1>
+    <!-- Street address line 2 -->
+    <street2>Apartment 101</street2>
+    <!-- City and state in which person lives -->
+    <city>New York</city>
+    <state>NY</state>
+    <!-- Zipcode 
+     where the customer resides -->
+    <zipcode>10001</zipcode>
+  </address>
+  <!-- Customer's contact information starts here -->
+  <contact>
+    <!-- Primary phone number of the customer -->
+    <phone.Primary>+1-123-456-7890</phone.Primary>
+    <!-- Email address of the customer -->
+    <email>john.doe@email.com</email>
+  </contact>
+  <!-- Customer's order history starts here -->
+  <order-history>
+    <!-- Record of items purchased by the customer-->
+  </order-history>
+</customer-info>

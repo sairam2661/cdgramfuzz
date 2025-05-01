@@ -1,0 +1,17 @@
+<bibliography>
+    <citation id="citation1">
+        <title>XML</title>
+        <author>John Doe</author>
+        <year>2020</year>
+    </citation>
+    <citation id="citation2">
+        <title>XML</title>
+        <author>Jane Doe</author>
+        <year>2022</year>
+    </citation>
+    <citation id="citation3">
+        <title>XSLT</title>
+        <author>Cong Dong</author>
+        <year>2021</year>
+    </citation>
+</bibliography>

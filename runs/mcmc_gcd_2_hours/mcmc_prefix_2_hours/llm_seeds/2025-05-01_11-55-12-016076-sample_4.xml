@@ -1,0 +1,13 @@
+<personal-data-xml version="1.1" encoding="ISO-8859-15" standalone="no">
+    <contact-information>
+        <address street="123 Main St" city="Anytown" state="CA" zip="12345"/>
+        <phone-numbers>
+            <phone-number type="home" extension="?1"/>
+            <phone-number type="work" extension="?2"/>
+        </phone-numbers>
+        <email-addresses>
+            <email-address type="personal" extension="?1.0"/>
+            <email-address type="professional" extension="?2.0"/>
+        </email-addresses>
+    </contact-information>
+</personal-data-xml>

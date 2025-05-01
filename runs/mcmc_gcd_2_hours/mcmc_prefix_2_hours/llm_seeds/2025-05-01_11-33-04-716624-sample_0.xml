@@ -1,0 +1,22 @@
+<?xml version =	1.0	encoding=	"UTF-8"?>
+<portfolio>
+   <header>
+    <title>John Doe's Website</title>
+    <author>John Doe</author>
+    <date pub-date="2020-01-01" creation-date="2022-09-01"/>
+    <description>This is a sample website.</description>
+    </header>
+   <portfolio-items>
+    <item title="Project 1: Website Development" short-description="Development of a website for a fictional company">
+    <description>This is a longer description of the website development project.</description>
+    </item>
+    <item title="Project 2: E-commerce Platform" short-description="Building a platform using the MERN Stack">
+    <description>This is a longer description of the e-commerce project.</description>
+    </item>
+   </portfolio-items>
+   <keywords>
+    <keyword>web development</keyword>
+    <keyword>frontend</keyword>
+    <keyword>backend</keyword>
+   </keywords>
+</portfolio>

@@ -1,0 +1,23 @@
+<personal-information xmlns:type="individual" xmlns:address="address-type">
+    <person-number>001</person-number>
+    <personal-data>
+        <name format="title-and-first-name">Mr.</name>
+        <name format="first-name-and-title">John</name>
+        <name format="last-name">Doe</name>
+        <date-of-birth>10/12/1990</date-of-birth>
+    </personal-data>
+    <address details="home">
+        <street>123 Main Street</street>
+        <city>New York</city>
+        <state>New York</state>
+        <zip>10001</zip>
+        <country>USA</country>
+    </address>
+    <address details="work">
+        <street>456 Wall Street</street>
+        <city>Los Angeles</city>
+        <state>California</state>
+        <zip>90001</zip>
+        <country>USA</country>
+    </address>
+</personal-information>

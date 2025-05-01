@@ -1,0 +1,15 @@
+<?xml version = 
+  1.0 
+  encoding="ISO-8859-1" 
+  standalone = 
+  yes 
+ ?>
+
+<catalog>
+    <country name="France" lang="fr" phone="33" alpha="FRA"/>
+    <country name="Germany" lang="de" phone="49" alpha="DEU"/>
+    <region name="Europe" code="EU"/>
+    <region name="Americas" code="AM"/>
+    <city name="Berlin" country="Germany" region="Europe"/>
+    <city name="Poznan" country="Germany" region="Europe"/>
+</catalog>

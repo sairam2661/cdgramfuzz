@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <description XML:Type ="" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation  ="" xmlns ="" version ="" encoding ="" />
+    <book>
+        <author xml:lang ="" href ="/bookfile.xml#fig:Author"/>
+        <title xml:space ="" attributes ="" encoding ="" />
+        <subject></subject> 
+        <genre id ="" xml:lang ="" />
+        <price totalCost ="" unit="CAD"/>
+        <pubDate>Mon Oct 2 15:45:26 GMT+0000 2006</pubDate>
+    </book>
+</catalog>

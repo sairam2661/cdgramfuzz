@@ -1,0 +1,21 @@
+<?xml version =   1.0  encoding =  "UTF-8" standalone =  yes?>
+
+<catalog>
+  <description>
+    Product catalog XML document
+  </description>
+  <product>
+    <name>Desk</name>
+    <price>25.00</price>
+    <is-discounted>&lt;b&gt;Yes&lt;/b&gt;</is-discounted>
+    <description>Steel frame desk with wooden top</description>
+    <quantity>50</quantity>
+  </product>
+  <product>
+    <name>Chair</name>
+    <price>15.00</price>
+    <is-discounted>&lt;i&gt;No&lt;/i&gt;</is-discounted>
+    <description>Wooden chair</description>
+    <quantity>100</quantity>
+  </product>
+</catalog>

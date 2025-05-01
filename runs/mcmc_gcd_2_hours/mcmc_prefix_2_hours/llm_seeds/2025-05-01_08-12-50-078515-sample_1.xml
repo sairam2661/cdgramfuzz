@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<account 
+  xmlns:ex = "http://example.com/extras" 
+  accountNumber ="{accountNumber}" 
+  currency ="{currency}" 
+  maxInterest="{maxInterest}" 
+  xmlns = "http://schema.org/ProductPrice">
+  <extra attribute ="{ex:attribute}" ex:version ="{ex:version}" />
+</account>

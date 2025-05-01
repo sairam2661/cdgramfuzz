@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog species ="" name ="" date ="" url ="" description ="" image ="" lastmodificationdate ="" itemtype ="" itemid ="" system ="" publicid ="http://www.iana.org/assignments/media-types/text/text.xml" encodings ="" author ="" copyright ="http://www.copyright.gov" policy ="http://www.w3.org/TR/SIunit-for-HTML">
+
+       <book isbn ="" category ="fiction"   price ="19.99" publisher ="" author ="John Smith" title ="Java Programming" uri ="http://example.com/java " bookid ="123456789" system ="ISBN" publicid ="http://www.niso.org/standards/978ISBN" encodings ="ISO 78028" language ="en" cover ="java.jpg" creationdate ="1999-01-01" lastupdate ="" rights ="http://www.w3.org/DARIAH/" contenttype ="text/html" rightsencoding ="ISO 1167">  
+
+             <itemname></itemname>
+
+            <price>19.99</price>
+
+       </book>
+
+        <record url="http://example.com/search">    
+</record> 
+
+</catalog>

@@ -1,0 +1,28 @@
+<span style="font-family:Courier; font-size: 12pt">
+
+Solution 1:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+ <books>
+  <book id="bk101">
+   <author>John Smith</author>
+   <title>XML for Beginners</title>
+   <genre>Computer</genre>
+   <price>39.95</price>
+   <publishDate>2000-10-01</publishDate>
+   <description>An in-depth look at creating applications with XML.</description>
+   <coverImage>bookcover01.jpg</coverImage>
+  </book>
+  <book id="bk102">
+   <author>Jane Doe</author>
+   <title>XSLT: The Ultimate Guide</title>
+   <genre>Computer</genre>
+   <price>49.95</price>
+   <publishDate>2001-05-01</publishDate>
+   <description>A comprehensive guide to XSLT.</description>
+   <coverImage>bookcover02.jpg</coverImage>
+  </book>
+ </books>
+</catalog>
+
+</span>

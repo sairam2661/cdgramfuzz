@@ -1,0 +1,11 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<catalog>
+
+  <attribute xmlns:mmt="http://example.com/mmtaxonomy" name="size" mmt:type="integer" mmt:default="10"/>
+  <attribute xmlns:mmt="http://example.com/mmtaxonomy" name="price_currency" mmt:type="string" mmt:default="USD"/>
+  <cataloginfo>
+    <manufacturer id="man1234" brand="example brand"/>
+    <product id="prod1234" name="example product" description="A very cool product"/>
+  </cataloginfo>
+
+</catalog>

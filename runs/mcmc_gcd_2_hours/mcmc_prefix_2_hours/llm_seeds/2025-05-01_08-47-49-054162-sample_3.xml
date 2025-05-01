@@ -1,0 +1,11 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<?microsoft-xml-stylesheet type="text XHTML" xmlns="http://www.w3.org/1999/xhtml"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns:fn="http://www.w3.org/1999/XLink" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" xml:lang="en-US">
+  <to>Alice</to>
+  <from>Bob</from>
+  <subject>Meeting</subject>
+  <message>Don't forget our meeting at 2pm!</message>
+  <priority level="high"/>
+</note>

@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <book id ="_book1" title ="$title1$ &amp;&amp; 12345$">
+        <author>John Smith</author>
+        <genre>novel</genre>
+        <price>19.95</price>
+        <publish_date>2003</publish_date>
+        <description>a great book</description>
+    </book>
+    <book id ="_book2" title ="$title2$ &#62; 67890$">
+        <author>Jane Doe</author>
+        <genre>biography</genre>
+        <price>15.95</price>
+        <publish_date>2006</publish_date>
+        <description>another great book</description>
+    </book>
+    <book id ="_book3" title ="$title3$ &#x3e; 34567$">
+        <author>Joe Brown</author>
+        <genre>romance</genre>
+        <price>9.95</price>
+        <publish_date>2004</publish_date>
+        <description>yet another great book</description>
+    </book>
+</catalog>

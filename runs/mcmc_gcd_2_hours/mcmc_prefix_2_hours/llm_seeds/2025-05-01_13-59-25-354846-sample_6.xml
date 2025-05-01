@@ -1,0 +1,13 @@
+<Bibliography xmlns="http://www.xsd.cs.kuleuven.be/Xdoc"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.xsd.cs.kuleuven.be/Xdoc Bibliography.xsd"
+              version="5.0"
+              encoding="UTF-8"
+              standalone="yes">
+  <Author>John Doe</Author>
+  <Title>XML Tutorial</Title>
+  <PublicationDate>2020-01-01</PublicationDate>
+  <Publisher>ABC Publishing</Publisher>
+  <DOI>https://example.com/xml-tutorial</DOI>
+  <Pages>10-15</Pages>
+</Bibliography>

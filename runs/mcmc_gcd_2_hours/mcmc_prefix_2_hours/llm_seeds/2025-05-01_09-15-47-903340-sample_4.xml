@@ -1,0 +1,9 @@
+<SalesData version="1.0" encoding="ISO-8859-1">
+    <Company>Shopwise Inc.</Company>
+    <Year>2022</Year>
+    <Sales>
+        <Product name="Widget">1000</Product>
+        <Product name="Gadget">&lt;hr&gt;</Product>
+        <Product name="Toyboxed">500</Product>
+    </Sales>
+</SalesData>

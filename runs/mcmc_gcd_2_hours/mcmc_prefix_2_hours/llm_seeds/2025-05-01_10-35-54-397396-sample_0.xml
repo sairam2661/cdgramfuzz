@@ -1,0 +1,7 @@
+<?xml version = 1.0  encoding =  "UTF-8"  standalone =  yes?>
+<catalog xmlns:po = "http://www.example.org/po">
+  <book id ="{po:book-id}  #IMPLIED"/>
+  <author name ="{po:name}  #FIXED 'Author Name'}"/>
+  <price currency ="{po:currency}  #REQUIRED">12.99</price>
+  <condition condition-type ="{po:condition-type}  #IMPLIED">Good</condition>
+</catalog>

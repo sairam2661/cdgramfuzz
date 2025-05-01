@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <catalog-type ID ="ThisCatalog">
+    <description>This is a sample product catalog</description>
+    <tokenized-type ID ="CATEGORY">
+      <token>Electronics</token>
+      <token>Home Appliances</token>
+      <token>Clothing</token>
+    </tokenized-type>
+    <tokenized-type ID ="SUBCATEGORY" ref ="#CATEGORY">
+      <token>Laptops</token>
+      <token>Mobile Phones</token>
+      <token>Tvs</token>
+    </tokenized-type>
+    <tokenized-type ID ="PRODUCT">
+      <token>Laptop</token>
+      <token>Mobile Phone</token>
+      <token>TV</token>
+    </tokenized-type>
+  </catalog-type>
+</catalog>

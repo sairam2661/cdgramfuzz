@@ -1,0 +1,155 @@
+<?xml version = 
+    1.0 
+    encoding="UTF-16"
+    standalone = 
+    yes
+   ?>
+
+<note>
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority level="high"/>
+    <address>
+        <address-number>123</address-number>
+        <address-name>High Street</address-name>
+        <address-city>Anytown</address-city>
+        <address-country>USA</address-country>
+    </address>
+    <note-ref>Ref1</note-ref>
+    <note-ref-ref>Ref2</note-ref-ref>
+</note>
+
+    
+
+    
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+

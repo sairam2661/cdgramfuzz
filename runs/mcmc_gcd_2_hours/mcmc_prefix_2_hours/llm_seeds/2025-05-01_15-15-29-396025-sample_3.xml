@@ -1,0 +1,83 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalogs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <catalog id="Catalog1" xsi:noNamespaceSchemaLocation="catalog.xsd">
+    <product name="Laptop"  price="999.99"  xsi:nil="true" />
+
+
+      <author>
+        <name>John Smith</name>
+        <email>john.smith@example.com" />
+
+
+      <product price="$10.99"  xmlns:currency="http://www.example.com/currency" currency:code="USD" />
+
+
+      <product name="Laptop"  price="999.99"  xlink:href="#product1" />
+
+
+  </catalogs>  
+
+?>
+ 
+
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<order orderNo="12345">
+  <customer>
+    <name>John Smith</name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <phone>(555) 123-4567</phone>
+  </customer>
+  <order-items>
+    <item>
+      <product-id>1</product-id>
+      <quantity>2</quantity>
+      <unit-price currency="USD">10.99</unit-price>
+    </item>
+    <item>
+      <product-id>2</product-id>
+      <quantity>1</quantity>
+      <unit-price currency="USD">9.99</unit-price>
+    </item>
+  </order-items>
+</order>  
+
+?> 
+ 
+
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<config>
+  <database>
+    <host>localhost</host>
+    <username>admin</username>
+    <password>password123</password>
+    <driver>mysql-connector-java</driver>
+    <url>"jdbc:mysql://localhost:3306/mydb"</url>
+    <properties>
+      <property name="connection_string" type="string">jdbc:mysql://localhost:3306/mydb</property>
+      <property name="username" type="string">admin</property>
+      <property name="password" type="string">password123</property>
+    </properties>
+  </database>
+</config>
+ 
+?> 
+
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<countries xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <country code="USA" name="United States of America">
+    <regions>
+      <region code="US" name="USA"/>
+      <region code="CAN" name="Canada"/>
+    </regions>
+    <capital>Washington D.C.</capital>
+    <pop>331420579</pop>
+  </country>
+  <country code="CAN" name="Canada">
+    <regions>
+      <region code="US" name="USA"/>
+      <region code

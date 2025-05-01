@@ -1,0 +1,22 @@
+<?xml version = 1.0 
+  encoding = "UTF-8" 
+ standalone = yes 
+?>
+<catalog>
+ <cd>
+  <title>Empire Burlesque</title>
+  <artist>Bob Dylan</artist>
+  <country>USA</country>
+  <company>Columbia</company>
+  <price>10.90</price>
+  <year>1985</year>
+ </cd>
+ <cd>
+  <title>Desire</title>
+  <artist>Bob Dylan</artist>
+  <country>USA</country>
+  <company>Columbia</company>
+  <price>11.10</price>
+  <year>1987</year>
+ </cd>
+</catalog>

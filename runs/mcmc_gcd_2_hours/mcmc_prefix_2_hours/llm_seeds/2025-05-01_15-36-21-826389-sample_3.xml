@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog genre="#REQUIRED">
+  <author>
+    <first name="#IMPLIED"/>
+    <last name="#FIXED">Smith"/>
+  </author>
+  <title genre="#IMPLIED">Introduction to XML</title>
+  <language code="#REQUIRED">English</language>
+  <publisher name="#IMPLIED">O'Reilly &amp; Associates</publisher>
+  <price currency="#REQUIRED">USD</price>
+  <year>
+    <begin value="#IMPLIED"/>
+    <end value="#FIXED">2005</end>
+  </year>
+</catalog> 
+
+<?xml version = 1.0 encoding = "UTF-8"?>
+<order>
+  <total>#REQUIRED"></total>
+  <items total="#IMPLIED" quantity="# IMPLIED">0</quantity>
+    <item description="#IMPLIED" price="#REQUIRED">10.6</price>
+      <total quantity="#IMPLIED">0</quantity>
+      <status level="#REQUIRED">#pending</status>
+    </item>
+</order>

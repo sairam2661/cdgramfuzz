@@ -1,0 +1,23 @@
+<h:menu xmlns:h="http://xmlns.jcp.org/jsf/h" version="1.0" encoding="UTF-8" standalone="yes">
+  <h:menu item="Home">
+    <h submenu="Files">
+      <h:menu item="New" value="#{menuItemBean.newItem}"/>
+      <h:menu item="Open" value="#{menuItemBean.openItem}"/>
+      <h:menu item="Save" value="#{menuItemBean.saveItem}"/>
+    </h:menu>
+  </h:menu>
+  <h:menu item="Edit">
+    <h submenu="Cut">
+      <h:menu item="Copy" value="#{menuItemBean.copyItem}"/>
+      <h:menu item="Paste" value="#{menuItemBean.pasteItem}"/>
+      <h:menu item="Cut" value="#{menuItemBean.cutItem}"/>
+    </h:menu>
+  </h:menu>
+  <h:menu item="View">
+    <h submenu="Format">
+      <h:menu item="Font" value="#{menuItemBean.fontItem}"/>
+      <h:menu item="Alignment" value="#{menuItemBean.alignmentItem}"/>
+      <h:menu item="Color" value="#{menuItemBean.colorItem}"/>
+    </h:menu>
+  </h:menu>
+</h:menu>

@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = " UTF-8 " standalone =  yes?>
+<catalog>
+  <country name ="" code ="" />
+  <city name ="" code ="" />
+ 
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+  <city code ="" name ="" countrycode ="" province ="" population ="" areasquare ="" curw ="" />
+  <city code ="" name ="" countrycode ="" province ="" population ="" areasquare ="" curw ="" />
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+ 
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+  <city code ="" name ="" countrycode ="" province ="" population ="" areasquare ="" curw ="" />
+
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+ 
+  <country code ="" name ="" countrycode ="" regioncode ="" regionname ="" subregioncode ="" subregionname ="" population ="" areasquare ="" largestcitycode ="" />
+ 
+</catalog>

@@ -1,0 +1,103 @@
+<?xml version =  1.0  encoding =  "UTF-8"  standalone =  yes?>
+<?processing instruction href="file:///schema.xsd"?> 
+    <taxi-service xmlns:ns1="http://schemas.microsoft.com/2003/10/WHC/PropertySchema1/" 
+      ns2 ="{urn:schemas-microsoft-com:office:office}">
+      
+      <ns3:Taxi ns4="urn:schemas-netcode:TaxiTypes">
+        <ns3:TaxiType id ="'12345'">
+          <ns3:AvailableStatus>Available</ns3:AvailableStatus>
+          <ns3:CurrentLocation>Nice City</ns3:CurrentLocation>
+          <ns3:MaxSpeedSpeed>80</ns3:MaxSpeedSpeed>
+          <ns3:PricePerKm>10</ns3:PricePerKm>
+          <ns3:PricePerMin>2</ns3:PricePerMin>
+          <ns3:Priority>High</ns3:Priority>
+          <ns3:TollFree>False</ns3:TollFree>
+        </ns3:TaxiType>  
+      </ns3:Taxi>       
+    </ns3:Taxi-service>  
+     
+    
+    
+   
+    
+    
+     
+    
+    
+  
+    
+   
+    
+    
+  
+    
+     
+    
+ 
+   
+    
+    
+    
+    
+       
+    
+    
+       
+    
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+  
+
+  
+    
+ 
+
+
+
+
+    
+    
+   
+    
+    
+    
+    

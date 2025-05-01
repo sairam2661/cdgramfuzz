@@ -1,0 +1,12 @@
+<hello-world xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="hello-world.xsd">
+  <person xmlns="http://example.com/person">
+    <name xsi:type="string">John Doe</name>
+    <age xsi:type="integer">30</age>
+    <address>
+      <street xsi:type="string">123 Main St</street>
+      <city xsi:type="string">Anytown</city>
+      <state xsi:type="string">US</state>
+      <zip xsi:type="integer">12345</zip>
+    </address>
+  </person>
+</hello-world>

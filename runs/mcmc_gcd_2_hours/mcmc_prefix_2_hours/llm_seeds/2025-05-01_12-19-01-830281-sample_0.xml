@@ -1,0 +1,22 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+  <description xml:lang="en-us">
+  <copyright>
+   <year>2003</year>
+  </copyright>
+  <name>Library of Congress</name>
+   </description>
+  <definitionSets>
+      <definitionSet>
+          <member name ="{http://standards.iso.org/iso/19156-5}ISO-19156-5">
+              <shortName>ISO 19156-5</shortName>
+              <type>definition-set</type>
+          </member>
+          <memberOf>
+              <link href="{http://standards.iso.org/iso/19156}" title="ISO/TS 19156" rel="externalLink"/>
+          </memberOf>
+          <type>reference</type>
+      </definitionSet>
+  </definitionSets>
+  </catalog>

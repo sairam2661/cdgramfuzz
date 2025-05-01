@@ -1,0 +1,30 @@
+<S schemaVersion="1.1"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+
+    xml:lang="en-US"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+    xml:base.href="http://example.com/base.html">
+
+<note xmlns="http://example.com/ns/documents"
+      elementFormDefault="qualified"
+      attributeFormDefault="unqualified">
+
+<to>John</to>
+<from>Jane</from>
+<subject>Mt. Everest Expedition</subject>
+<message>We are now on day 14 of our expedition
+          to track the climbing progress of Sir Edmond Hillary
+          and his partner, Tenzing Norgay.</message>
+<priority level="high"/>
+<geo:point xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+             xmlns:ns="http://example.com/ns/geography"
+             precision="10.5">27.9881 -86.1537</geo:point>
+
+<timestamp>2023-03-14T10:00:00Z</timestamp>
+
+</note>
+
+</schema>

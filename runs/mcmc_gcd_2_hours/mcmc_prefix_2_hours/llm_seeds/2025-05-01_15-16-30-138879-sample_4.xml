@@ -1,0 +1,18 @@
+<SportsData>
+  <Event xmlns:math="http://www.w3.org/2001/XMLSchema">
+    <Match id="M001" type="match">
+      <Team id="T001" name="Lionheart FC" math:points="120"/>
+      <Team id="T002" name="Regal Rangers" math:points="100"/>
+      <Date>2024-04-01</Date>
+      <KickOffTime>15:00:00</KickOffTime>
+      <Result>
+        <Winner id="W001" value="Lionheart FC"/>
+        <Score>
+          <HomeTeamGoals>3</HomeTeamGoals>
+          <AwayTeamGoals>1</AwayTeamGoals>
+        </Score>
+      </Result>
+      <AttendanceNumber>4000</AttendanceNumber>
+    </Match>
+  </Event>
+</SportsData>

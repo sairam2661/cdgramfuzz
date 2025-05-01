@@ -1,0 +1,7 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <vendor ref="#REQUIRED" id="123"/>
+    <product name="#IMPLIED" brand="#FIXED" stock ="" price="$19.99"/>
+    <description>Our catalog includes a variety of products, such as shoes.</description>
+    <manufacturer namespace ="" manufacturer ="/" manufacturer-name="John Doe"/>
+</catalog>

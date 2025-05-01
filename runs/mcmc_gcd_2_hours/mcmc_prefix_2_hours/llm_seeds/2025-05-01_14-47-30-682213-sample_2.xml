@@ -1,0 +1,17 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+
+<catalog>
+    <?xml-stylesheet type="text/xsl" href="style.xsl"?>
+    <publisher>ABC Inc.</publisher>
+    <copyright year="2023">
+        <country>USA</country>
+        <language>English</language>
+        <content owner="John Doe"/>
+    </copyright>
+    <book id="bk101" genre="coobook" au-thor="John Smith" inc-itation="XML Documentation">
+        <title>XML: A Beginners Guide</title>
+        <price>39.95</price>
+        <pub_date>2000-10-01</pub_date>
+    </book>
+    <!-- <book>... </book> -->
+</catalog>

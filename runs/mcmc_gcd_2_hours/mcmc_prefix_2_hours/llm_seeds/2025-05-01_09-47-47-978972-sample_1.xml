@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:cd = "urn:catalog:compact disc" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation ="http://example.com/catalog.xml" 
+  xmlns = "http://www.example.com/catalog">
+  <description>Music catalog XML file</description>
+  <track-listing>
+    <track genre="rock" price="9.99" duration="3:40">
+      <musician>John Lennon</musician>
+      <album title="Abbey Road" releaseYear="1970"/>
+      <artist>Plastic Ono Band</artist>
+    </track>
+    <track genre="rock" price="14.99" duration="4:50">
+      <musician>Jean-Luc Ponty</musician>
+      <album title="Miles Ahead" releaseYear="1974"/>
+      <artist>Herbie Hancock</artist>
+    </track>
+  </track-listing>
+  <?php xml:namespace-style="http://www.w3.org/2001/XMLSchema-namespaces"?>
+  <?php xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+</catalog>

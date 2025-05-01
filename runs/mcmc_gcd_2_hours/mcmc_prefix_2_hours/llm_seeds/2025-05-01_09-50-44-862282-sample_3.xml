@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <description>World's Best Vehicles</description>
+  <?xml-stylesheet href="styles.xsl"?>
+  <car>
+    <make>Toyota</make>
+    <model>Camry</model>
+    <year>2015</year>
+    <color>Blue</color>
+  </car>
+  <car>
+    <make>Ford</make>
+    <model>F-150</model>
+    <year>2012</year>
+    <color>White</color>
+  </car>
+  <car>
+    <make>Honda</make>
+    <model>Civic</model>
+    <year>2018</year>
+    <color>Red</color>
+  </car>
+</catalog>

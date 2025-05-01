@@ -1,0 +1,12 @@
+<hello-world xmlns="http://example.com/hello-world"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:math="http://example.com/math"
+           xsi:schemaLocation="http://example.com/hello-world hello-world.xsd"
+           id="hello-world-id"
+           xml:lang="en">
+   <name system="PERSONAL_ID"/>
+   <name-public public-id="1234567890"/>
+   <greeting math:expr="2+2"/>
+   <math math:expression="5*3"/>
+   <person id="1234567890" name="John Doe"/>
+</hello-world>

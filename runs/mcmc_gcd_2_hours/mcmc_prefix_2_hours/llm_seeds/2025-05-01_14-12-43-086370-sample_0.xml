@@ -1,0 +1,14 @@
+<Timeline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" encoding="UTF-8" standalone="yes">
+  <Event Id="E001">
+    <Title>Project Start</Title>
+    &lt;Date&gt;2022-01-01&lt;/Date&gt;
+    <Description>Initial project setup.</Description>
+    <Priority>High</Priority>
+  </Event>
+  <Event Id="E002">
+    <Title>Feature Complete</Title>
+    &lt;Date&gt;2022-02-15&lt;/Date&gt;
+    <Description>Feature development completed.</Description>
+    <Priority>Medium</Priority>
+  </Event>
+</Timeline>

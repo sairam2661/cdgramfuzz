@@ -1,0 +1,40 @@
+<SchoolYear xmlns="http://example.com/schoollayer" version="2.0" encoding="UTF-8" standalone="no">
+  <Term>
+    <Name>First Semester</Name>
+    <StartDate>2024-02-01</StartDate>
+    <EndDate>2024-06-30</EndDate>
+    <Subjects>
+      <Subject>
+        <Name>Mathematics</Name>
+        <Credits>3</Credits>
+        <Grade>Pass</Grade>
+      </Subject>
+      <Subject>
+        <Name>Science</Name>
+        <Credits>4</Credits>
+        <Grade>Fail</Grade>
+      </Subject>
+      <EmptySubject />
+    </Subjects>
+    <Exams>
+      <Exam>
+        <Name>Math Mid-Term</Name>
+        <Date>2024-04-20</Date>
+        <Score>80</Score>
+      </Exam>
+      <Exam>
+        <Name>Science Final</Name>
+        <Date>2024-07-15</Date>
+        <Score>80</Score>
+      </Exam>
+      <EmptyExam />
+    </Exams>
+    <Tests>
+      <Test>
+        <Name>Math Practice Test</Name>
+        <Date>2024-04-15</Date>
+        <Score>90</Score>
+      </Test>
+    </Tests>
+  </Term>
+</SchoolYear>

@@ -1,0 +1,21 @@
+<?xml version =	1.0 encoding="UTF-8" standalone=	yes?>
+<catalog>
+    <book ID="bk101" >
+        <author>John Smith</author>
+        <title>XII: War of the Worlds</title>
+        <genre>Science Fiction</genre>
+        <price>10.99</price>
+        <publish_date>1990-10-01</publish_date>
+        <description>An alien invasion of Earth.</description>
+    </book>
+    <book ID="bk102" >
+        <author>Jane Doe</author>
+        <title>The Shining</title>
+        <genre>Fiction</genre>
+        <price>8.99</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>A family is trapped in a haunted hotel.</description>
+    </book>
+    <book ID="bk103" />
+    <book ID="bk104" ID="bk105" />
+</catalog>

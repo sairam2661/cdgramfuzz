@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:prod="http://example.com/products">
+<product id="1">
+<ProductRef prod:iPad
+	         ="
+ iPads are highly portable and powerful tablets,
+ ideal for browsing the web,
+ checking email,
+             watching movies
+          "/>
+.</product>
+<product id="2">
+/ProductRef prod:iMac ="
+ iMacs are all-in-one desktop computers,
+ ideal for work,
+ photo editing,
+ gaming
+"/>
+</product>
+</catalog>

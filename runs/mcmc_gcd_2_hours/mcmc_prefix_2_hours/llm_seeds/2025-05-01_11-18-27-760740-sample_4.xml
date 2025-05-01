@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<library>
+ <book title ="(#PCDATA ( | | title )+" > A Thousand Splendid Suns</title>
+ <author name ="(#PCDATA ( | | name )+" > Khaled Hosseini</author>
+ <publishing-date level ="(cp ( | | cp )+)" > February 2007</publishing-date>
+ <reviews>
+  <review content ="(#PCDATA ( | | content )+" > An amazing novel about love, loss and war</review>
+  <rating level ="(cp ( | | cp )+)" > 5/5</rating>
+ </reviews>
+  <book title ="(#PCDATA ( | | title )+" > The Alchemist</title>
+ <author name ="(#PCDATA ( | | name )+" > Paulo Coelho</author>
+ <publishing-date level ="(cp ( | | cp )+" > 1988</publishing-date>
+</library>

@@ -1,0 +1,23 @@
+<human resources.xml
+   ="<?xml version="ISO-8859-1charset="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://example.com schema.xsd">
+  <employees>
+    <employee>
+      <name xml:lang="en-BR" xml:space="preserve">
+        <firstname>Carlos</firstname>
+        <lastname>Antônio</lastname>
+      </name>
+      <position xml:lang="pt-BR" xml:space="preserve">Director</position>
+      <dateOfHire xml:lang="pt-BR" xml:space="preserve">1994-03-01</dateOfHire>
+      <salary xml:lang="pt-BR" xml:space="preserve">12000</salary>
+    </employee>
+    <employee>
+      <name xml:lang="en-US" xml:space="preserve">
+        <firstname>Jane</firstname>
+        <lastname>Doe</lastname>
+      </name>
+      <position xml:lang="en-US" xml:space="preserve">Manager</position>
+      <dateOfHire xml:lang="en-US" xml:space="preserve">2000-09-01</dateOfHire>
+      <salary xml:lang="en-US" xml:space="preserve">15000</salary>
+    </employee>
+  </employees>
+</human-resources>

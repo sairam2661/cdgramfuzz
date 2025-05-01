@@ -1,0 +1,19 @@
+<?xml version = 
+  1.0 
+  encoding = 
+  "UTF-8" 
+  standalone = 
+  no?>
+
+<account id="ACCT123"
+  data-type="customer"
+  status="active" 
+  default-lang="English"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="account.xsd">
+  <country code="USA"/>
+  <product category="Electronics" code="TV" brand="Samsung" 
+    manufacturer="Samsung Electronics Co." serial-number="SN12345" 
+    warranty-period-years="2"
+  />
+</account>

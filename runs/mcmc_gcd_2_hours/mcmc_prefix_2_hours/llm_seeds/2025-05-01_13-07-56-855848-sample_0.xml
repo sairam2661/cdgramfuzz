@@ -1,0 +1,8 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <book id =""  title =""  author =""  description =""  language =""  publicationDate ="" ISBN =""  price =""  publisher =""  desc ="" />
+  <book id =""  title =""  author =""  description =""  language =""  publicationDate =""  ISBN =""  price =""  publisher =""  desc ="" />
+  <book id =""  title =""  author =""  description =""  language =""  publicationDate =""  ISBN =""  price =""  publisher =""  desc ="" />
+  <link href =""  title =""  ext =""  type =""  hrefloc =""  />
+  <metadata name =""  xmlfile =""  ext ="" />
+</catalog>

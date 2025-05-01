@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<!DOCTYPE library SYSTEM "books catalog.dtd">
+<library xmlns:cb="http://www.example.com/books/catalog">
+   <book genre="coat"  cb:isbn="0321885467" cb:title="1984" cb:author="George Orwell">
+      <cb:type>novel</cb:type>
+      <cb:price>$15.95</cb:price>
+   </book>
+   <book genre="biography" cb:isbn="0422210227" cb:title="The Autobiography of Malcolm X">
+      <cb:type>non-fiction</cb:type>
+      <cb:price>$17.99</cb:price>
+   </book>
+</library>

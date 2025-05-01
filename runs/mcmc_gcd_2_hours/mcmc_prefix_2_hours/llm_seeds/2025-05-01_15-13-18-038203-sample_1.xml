@@ -1,0 +1,32 @@
+<catalog>
+  <description xml:lang="en">Catalog of Books and Audiobooks</description>
+  <bookstore id="A00B">
+    <address>
+      <street>123 Wall Street</street>
+      <city>New York</city>
+      <state>NY</state>
+      <zip>10001</zip>
+      <country>USA</country>
+    </address>
+    <phone type="business">1-800-FLOWERS</phone>
+    <priceCurrency>USD</priceCurrency>
+  </bookstore>
+  <book id="BK101">
+    <author>John Smith</author>
+    <title xml:lang="en">Java 3D Programming</title>
+    <subject xml:lang="en">Computer Programming</subject>
+    <publisher xml:lang="en">Pearson Education</publisher>
+    <publicationDate>2000-01-01</publicationDate>
+    <price currency="USD">49.99</price>
+    <weight unit="grams">0.5</weight>
+  </book>
+  <audiobook id="BK102">
+    <author>Jane Doe</author>
+    <title xml:lang="en">Introduction to English</title>
+    <subject xml:lang="en">Language Arts</subject>
+    <publisher xml:lang="en">Random House</publisher>
+    <publicationDate>1999-11-01</publicationDate>
+    <price currency="USD">29.99</price>
+    <runningTime units="minutes">45</runningTime>
+  </audiobook>
+</catalog>

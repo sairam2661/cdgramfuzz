@@ -1,0 +1,22 @@
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD DITO 1.0//EN" "http://www.oasis-open.org/dito/dito-1.0.dtd">
+<catalog xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+         SYSTEM="catalog.xsd">
+
+  <title>Product Catalog</title>
+  <body>
+
+    <product xml:lang="en-US">
+      <name>Gaming Console</name>
+      <description>
+        The latest gaming console with advanced graphics and gaming features.
+      </description>
+      <price>599.99</price>
+      <condition>NEW</condition>
+      <catalog_number>PCG1001</catalog_number>
+      <external_identifier SYSTEM="http://example.com/pcg1001.xml"/>
+
+    </product>
+  </body>
+</catalog>

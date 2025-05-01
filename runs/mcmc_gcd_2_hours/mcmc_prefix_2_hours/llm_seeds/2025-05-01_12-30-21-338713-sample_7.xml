@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE library [
+<!ENTITY library-name "Central Library">
+<!ENTITY library-address "123 Main St, Anytown, USA">
+<!ENTITY library-mailing-address "ltahwyr@anytown.org">
+<!ENTITY library-phone "(555)123-4567">
+<!ENTITY library-fax "(555)567-8901">
+<!ENTITY payment-processing-url "https://www.example.com/payments">
+<!ENTITY payment-processing-email "ltahwyr@anytown.org">
+]>
+<library name ="{library-name}">
+<address street ="{library-address}" city ="{library-city}" state ="{library-state}" zip ="{library-zip}"/>
+<contact-mailing-address mailing-address="{library-mailing-address}"/>
+<contact-phone phone-number="{library-phone}"/>
+<contact-fax fax-number="{library-fax}"/>
+<online-payment-system processing-url="{payment-processing-url}"/>
+<accounting email="{payment-processing-email}"/>
+</library>

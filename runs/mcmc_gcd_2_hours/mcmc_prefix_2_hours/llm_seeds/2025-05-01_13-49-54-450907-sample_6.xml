@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?oprolog xmlns:xs = "http://www.w3.org/2001/XMLSchema" 
+          xmlns:tns = "http://example.com/XMLSchema"
+          typeDefinition = "ROOT"
+          elementFormDefault = "qualified"
+          attributeFormDefault = "unqualified"
+          encodingStyle = "http://www.w3.org/2003/05/feature/relaxng/relaxNG-structure"
+          schemaLocation = "http://example.com/XMLSchema.xsd"?>
+<note>
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority level="high"/>
+</note>

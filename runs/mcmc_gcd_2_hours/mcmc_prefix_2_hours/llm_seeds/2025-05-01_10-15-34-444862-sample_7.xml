@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<bank>
+    <account id ="E12345:USA">
+        <customer id ="C67890:UK">
+            <name>
+                <firstNames>John</firstNames>
+                <middleNames>Jane</middleNames>
+                <lastName>Doe</lastName>
+            </name>
+            <email id ="E1">john.doe@example.com</email>
+        </customer>
+        <balance>1000.00</balance>
+        <transaction id ="T1:USA">
+            <date>2022-01-01</date>
+            <amount>500.00</amount>
+        </transaction>
+    </account>
+</bank>

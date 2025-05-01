@@ -1,0 +1,1716 @@
+2025-05-01 04:43:21,920 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initialized MCMC with propose_style: prefix, name_prefix: xml_fuzz_single_XML_Declaration
+2025-05-01 04:43:21,920 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Prompt: <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 01 May 2025
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Question 1:
+Generate a short but complex XML file specifically using this feature: 
+XML Declaration - The XML declaration is a mandatory element that specifies the version and encoding of the document.
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 1:
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</note>
+        
+
+Question 2:
+Generate a short but complex XML file specifically using this feature: 
+XML Declaration - The XML declaration is the first line of the XML document, which specifies the version of the XML document and the character encoding used to represent the document.
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 2:<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+2025-05-01 04:43:21,920 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Generating 5 samples with 5 steps each
+2025-05-01 04:43:21,920 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting sample 0/5
+2025-05-01 04:43:21,920 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 04:44:20,978 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:44:20,987 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial raw logprob: tensor([-808.], device='cuda:0')
+2025-05-01 04:44:20,987 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 0 (prefix)
+2025-05-01 04:44:21,001 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:44:21,002 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-808.], device='cuda:0')
+2025-05-01 04:44:49,674 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\t\r\n', '\t\t\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\n', ' \r\n', '\t\r\n\t\r\n', '\r\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t\n', '\t\r\n', '\t\r\n\t\r\n', '\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n\t\r\n', '\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t \r\n', '\t\r\n', '\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \t', '\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t \r\n', '\r\n\t\r\n', ' \r\n', '\t\r\n', ' \r\n \r\n', '\t \r\n', ' \r\n', ' \r\n', '\t \n', '\t \n', '\t \n', '\t \r\n', '\t \n', '\t \n', '\t \r\n', '\t \r\n', '\t \r\n', '\t \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t \r\n', '\t \n', '\t \n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t \r\n', '\t \r\n', '\t \r\n', '\t\r\n', ' \r\n', '\t \r\n', '\t \r\n', '\t \r\n', ' \r\n', '\t \r\n', ' \r\n', '\t \r\n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \r\n', '\t \n', '\t \r\n', '\t \r\n', '\t \r\n', '\t \r\n', '\t \n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t \r\n', '\r\n', '\t \n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n', '\t\r\n', '\t \r\n', '\t \n', '\t \n', '\t \r\n', '\t \r\n', '\t \r\n', '\t \n', '\t \n', '\t \r\n', '\t\r\n', '\t \r\n', '\t \n', ' \r\n', '\t \r\n', '\t \n', '\t \n', '\t \n', '\t \n', '         \r\n', ' \r\n', '\t \r\n', '\t \n', '\t \n', '\t \n', '\t ', '\t\r\n\t\r\n', '     \r\n', '\t\r\n', ' \r\n', '  \r\n', '\t\r\n', ' \r\n\r\n', ' \t', '\n\n\n', ' \r\n', '\t \r\n', ' \r\n', '\t \n', ' \r\n', '\t \n', '\t\r\n\t\r\n', '\r\n\r\n\r\n', ' \t\n', '\r\n\r\n\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\t \r\n', ' \r\n', '\t\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t\t\t\r\n', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\t \n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '     \r\n', '\r\n\r\n\r\n', '\t \r\n', '\t\r\n', '\t ', '\n\t\t\n', '\r\n', '\r\n\r\n\r\n', ' \n\n\n\n\n', ' \n\n\n\n', '\r\n', '\t \r\n', ' \n\n\n\n', '\t\r\n', ' \r\n', '\t', '\r\n\n', ' \n', ' \r\n', '\t \r\n', ' \r\n', ' \r\n', '\t \r\n', ' \t', '\r\n', ' \r\n', '        \r\n', '\t   ', '\r\n', '\t   ', '\r\n', '\t   ', '\r\n', '\t', '\t\t\r\n', '\t', '\r\n        \r\n', '\t', '        \r\n        \r\n', '\t\r\n', ' \r\n', '\t  ', '\t  ', '\r\n\t\r\n', '\t  ', '\t   ', '\n\t\n', '\t \r\n', '\t', '\t', '\r\n\r\n\r\n', ' \r\n', '\t\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n', '      \r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', '\t\r\n', '\r', '\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\t', '\t', '\r\n\r\n\r\n\r\n', '\t\r\n', '\t', ' \r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', '\t', '\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t \r\n', '\t \n', '\t \n', ' \r\n', '\t \r\n', '\t\t', '\n\n\n', '\t\t\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\t \n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n']
+2025-05-01 04:44:49,676 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-1880.], device='cuda:0')
+2025-05-01 04:44:51,698 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-130.5998934]
+2025-05-01 04:44:51,698 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [1.91067561e-57]
+2025-05-01 04:44:51,715 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-44-20-987298-n5.json
+2025-05-01 04:44:51,715 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:44:51,715 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 1 (prefix)
+2025-05-01 04:44:51,729 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:44:51,729 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-808.], device='cuda:0')
+2025-05-01 04:45:21,314 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\n\t\n', ' \r\n\r\n', '\t\r\n', '\t \n', '\t\n', ' \r\n\r\n', '\r', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '  \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', '\t\t\r\n', '\t\r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\r\n', '\t\t\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t \r\n', '\t\r\n', '\t\t\r\n', '\t\r\n', '\t', '\n\n\n\n', '\r\n', '\t\r\n\r\n', '\t \r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', ' \t', '\n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n', ' ', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t \r\n', ' \r\n', ' \n\n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t', '\n\n\n\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', '\t', '\n\n\n\n', '\r', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\r\n', '\t\r\n\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', '\r\n\r\n', ' \r\n', '     \r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n', '\r\n\r\n\r\n', '\r', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n', '\t\r\n', ' \n\n\n\n\n', ' \r\n', ' \r\n', ' \n\n\n\n\n', ' \r\n\r\n', '\t\t\r\n', ' \n\t\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t \n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n', '\t', '\n\n\n\n', ' \r\n', ' \t\n', ' \r\n', '\t \n', '\t \n', '\t\r\n', '\r', '\n\n\n\n\n\n\n\n\n\n\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t', '\n\n\n\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\t\r\n', ' \r\n\r\n', '\t\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t\t\r\n\t\t\r\n', '\n\t\t\t\t\n', ' \r\n', ' \r\n\r\n', '\t\t\r\n', ' \r\n\r\n', '\t\r\n\r\n', '\t\r\n\t\r\n', '\t\t\r\n\t\t\r\n', '\t\t\t\t\t\r\n', '\t\t\t\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\r\n\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '    \r\n', ' \t', '\n\n', '\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\t\t', '\n\t\n', '\t \r\n', '\t \n', '\t \n', '\t\r\n\t\r\n', '\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\t\r\n', ' \r\n \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\n\n\n\n\n\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \t\n', ' \r\n', '\t\r\n\r\n', '\t\r\n', ' \r\n', '\t\t\t\t\n', ' \n\t\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', '\t\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\r\n\t\r\n', '\t   ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\t\n', ' \r\n', '\t\r\n\r\n', '\t\t\r\n', ' \r\n', '\t\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t\t\t\t\t', '\n\t\t\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', '\t \r\n', '\t\r\n', '\t\r\n', ' \r\n', '\t ', '\r\n\r\n\r\n', '\t', '\n\n\n\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n \r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \n \n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t \n', '\t\r\n', '\t', '\n\n\n\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t   ', '\r\n', '\t \r\n', '\t  ', '\n\n\n\n\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', '\t\r\n', ' \r\n\r\n', '\t\t\t\t\t', '\t', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', '\t\t\t\t\r\n', '\t\t\r\n\t\t\r\n', '\t\r\n', ' \r\n\r\n', '\t\t\t\t', '\t', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t\t\t', '\n\n\n\n\n\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \n\n\n\n\n', '\t\n\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\t\t\t\t\n', '\t \r\n', '\t   ', '\t\t\t\t\r\n', '   \r\n', '\t ', '\n\n\n\n\n\n\n\n\n', ' \t\n', '  \r\n', '  \r\n\r\n', '  \r\n', '  \r\n', '\r\n\r\n\r\n\r\n', '\r\n', '  \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\n\t\n\t\n\t\n', '\t\r\n', '\t\n', '\r\n\r\n', '\t', '\n\n\n\n\n\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\t', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t', '\n\n\n\n\n\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\t\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', '\r\n', '\t \r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\t\r\n', '\t \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n']
+2025-05-01 04:45:21,315 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-1992.], device='cuda:0')
+2025-05-01 04:45:22,902 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-133.31125061]
+2025-05-01 04:45:22,902 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [1.26957828e-58]
+2025-05-01 04:45:22,919 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-44-20-987298-n5.json
+2025-05-01 04:45:22,919 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:45:22,919 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 2 (prefix)
+2025-05-01 04:45:22,933 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:45:22,934 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-808.], device='cuda:0')
+2025-05-01 04:45:52,078 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\r\n', ' \r\n', '\r\n\t\t\r\n', ' \r\n\r\n', '\t\t\r\n\t\t\r\n', '\t\t\r\n', ' \r\n', '\t\t\r\n\r\n', '\r\n\r\n', '\t\t\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\t \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\t\r\n\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\r\n', ' \r\n', ' \r\n\r\n', ' \r\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t\t\t\r\n', '\r\n', '\t ', '\n\n\n\n', ' \r\n', ' \r\n', '\t\r\n\t\r\n', '\r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \t', '\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\t\r\n', ' \r', ' \n\n\n\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r', '\r\n\r\n\r\n', '\r\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n', '\t', '\n\n\n\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t \r\n', '\r\n\r\n', '\t\t\r\n', ' \n\n\n\n\n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \r\n', '\t \r\n', '\t \n', '\t \n', '\t \n', '\t \t', '\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t \n', '\t \t', '\r\n\r\n\r\n', '\t \n', '\t\r\n\t\r\n', '\r\n\r\n\r\n', '\t \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\t', '\t', '\r\n\n', '\t\t', '\t', '\r\n\n', ' \t', '\t', '\r\n\r\n\r\n', ' \r\n', '\t', '\n\n\n\n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t', '\n\n\n\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', '\t \n', '\t\t\r\n', '\t\r\n\r\n', ' \t', '\n\n\n\n\n\n\n\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', '\t \n', ' \r\n', '\t\r\n', ' ', '\r\n\r\n\r\n', '\t\t', '\n\n\n', '\t\t', '\t', '\r\n\n', '\t\t', '\t', '\n\n\n\n\n\n\n\n', '\r', '\n\n\n\n\n\n', '\r', '\n\n\n', '\r', '\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t ', '\r\n\r\n\r\n\r\n', ' \n\n\n\n', ' \n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' ', '\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \n\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', '        \r\n', '\r\n\r\n\r\n', ' \t', '\n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \n\n\n\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t', '\n\n\n', ' \t', '\n\n\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \t', ' \n\n\n\n', ' \r\n\r\n', ' \r\n\r\n', ' \t\n', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n']
+2025-05-01 04:45:52,079 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-1792.], device='cuda:0')
+2025-05-01 04:45:53,964 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-106.45505171]
+2025-05-01 04:45:53,964 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [5.85003512e-47]
+2025-05-01 04:45:53,983 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-44-20-987298-n5.json
+2025-05-01 04:45:53,983 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:45:53,983 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 3 (prefix)
+2025-05-01 04:45:53,997 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:45:53,997 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-808.], device='cuda:0')
+2025-05-01 04:46:23,390 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n\n', ' ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', '   ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n', ' \n\n\n\n\n', ' \n\n\n\n', '   \n', ' \n\n\n\n', '  \n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '   ', '\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n    \n', '   \n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \t\n', '\t\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:46:23,391 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-936.], device='cuda:0')
+2025-05-01 04:46:23,996 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-9.23255366]
+2025-05-01 04:46:23,997 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [9.78031609e-05]
+2025-05-01 04:46:24,014 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-44-20-987298-n5.json
+2025-05-01 04:46:24,014 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:46:24,014 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 4 (prefix)
+2025-05-01 04:46:24,028 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 04:46:24,028 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-808.], device='cuda:0')
+2025-05-01 04:46:52,667 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"', ' standalone', ' =', ' no', '?>\n', '<', 'catalog', '>\n', '   ', ' <', 'book', ' id', ' =', '""', ' \n', '         ', ' isbn', ' =', '""', ' \n', '         ', ' author', ' =', '""', ' \n', '         ', ' title', ' =', '""', ' \n', '         ', ' genre', ' =', '""', ' \n', '         ', ' price', ' =', '""', ' \n', '         ', ' publisher', ' =', '""', ' \n', '         ', ' description', ' =', '""', '/>\n', '   ', ' <', 'author', '>\n', '       ', ' <', 'name', '>&', 'nbsp', ';</', 'name', '>\n', '       ', ' <', 'description', '>&', 'nbsp', ';</', 'description', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'book', 'store', ' name', ' =', '""', ' countries', ' =', '""', ' currency', ' =', '">\n', '       ', ' <', 'currency', '_convert', 'or', ' rate', ' =', '"/>\n', '       ', ' <', 'dis', 'claimer', '>&', 'nbsp', ';</', 'dis', 'claimer', '>\n', '   ', ' </', 'book', 'store', '>\n', '   ', '\n    \n', '   ', '\n    \n', ' \n\n', '   \n\n', ' \n\n', '  \n\n', ' \n\n', ' \n\n', ' \n\n', ' \n', '  ', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t\r\n', '\t\r\n\t\r\n', '\r\r\n', '\t\t\t\t', '\t', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\t\r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\r\n', ' \r\n\r\n', ' \r\n \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '    \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n \r\n', '\t\t\r\n', '\r\n\r\n\r\n', ' \n\t\t\n', '\t\t\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\t \r\n', '  \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', ' \n \n', '\t\r\n\r\n', '\t', '\n\n\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \t', '\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t \r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\t \r\n', '\t\r\n', '\t \r\n', '\t\r\n', '\t \r\n', '\t\r\n', '\t \r\n', '\t \r\n', '\t\r\n', '\t  ', '\r\n\t\t\r\n', ' \r\n', '  \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r', '\n\n\n\n\n', '\r', '\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \t', '\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n', ' \t', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n\t\t\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n\t\r\n', '\r\n', '\t \n', '\t\r\n', '  \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', '\t', '\r\n\n', '\r\n', '\t\t\n', '\t\n\n\n', '\t\t', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\t\t', '\n\n\n\n\n\n\n\n\n\n\n\n', '\t\t\n', '\t', '\n\n\n\n\n\n', '\t\t\r\n\t\t\r\n', '\t\t\r\n', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t ', '\n\n\n\n\n\n', ' \r\n', '\t', '\n\n\n\n\n\n', '\r\n\r\n\r\n', '\t\r\n', '  \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', '\r\r\n', '\r\n\r\n\r\n\r\n', '\t\t\t\t\t', '\n\n\n\n\n', ' \n\n\n\n\n', ' \r\n', '\t\r\n', ' \n\n\n\n', '\r\n\r\n', '\t\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\t \r\n', '\t\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\n', ' \r\n\r\n', '\r', '\n\n\n\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n\n\n', '\t', '\n\n\n\n\n\n', ' \r\n', '  \r\n\r\n', '\t', '\n\n\n\n\n\n', '\t\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '  \r\n', ' \n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t \r\n', ' \r\n\r\n', '\t ', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', '\t\t', '\r\n\r\n\r\n\r\n', '\t\t\t\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t', '\n\n\n\n\n\n\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n', '\t\t\t\t\t\n', '\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\t\t', '\r\n', '\t\t\t', '\t', '\r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', '\t \r\n', '\r\n', '\t \r\n', ' \r\n', '  \r\n', '\t\r\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\t\r\n', ' \r\n', ' \n \n', '\t\r\n\t\r\n', '\t\t\r\n', ' \r\n', '\t\r\n', '\t ', '\n\n\n\n\n\n\n\n\n\n\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', ' \t\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\t\t\t\r\n', '\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', '\t\r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', '\t', '\n\n\n\n\n\n\n\n', '\t', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r', '\n\n\n\n', '\r', '\n\n\n\n\n\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \n\n\n', '\t', '\r\n\r\n\r\n', ' \r\n', '\t\r\n\r\n', ' \r\n', ' \r\n', '\t \r\n', '\t\r\n\r\n', ' \r\n', ' \r\n', '\t\t\r\n', ' \r\n', '  \r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\t\t\t\r\n', '\r\n\r\n', '  \r\n\r\n', ' \r\n', '\t\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', '\t', '\r\n\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t\r\n', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t', '\n\n\n\n\n\n\n\n']
+2025-05-01 04:46:52,668 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-2000.], device='cuda:0')
+2025-05-01 04:46:54,703 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-129.05342095]
+2025-05-01 04:46:54,703 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [8.97039181e-57]
+2025-05-01 04:46:54,725 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-44-20-987298-n5.json
+2025-05-01 04:46:54,725 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:46:54,726 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample time: 212.81 s
+2025-05-01 04:46:54,726 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample: <?xml version = 1.0 encoding = "utf-8" standalone = no?>
+<catalog>
+    <book id ="" 
+          isbn ="" 
+          author ="" 
+          title ="" 
+          genre ="" 
+          price ="" 
+          publisher ="" 
+          description =""/>
+    <author>
+        <name>&nbsp;</name>
+        <description>&nbsp;</description>
+    </author>
+    <bookstore name ="" countries ="" currency =">
+        <currency_convertor rate ="/>
+        <disclaimer>&nbsp;</disclaimer>
+    </bookstore>
+   
+    
+   
+    
+ 
+
+   
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
+  
+
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+				
+ 
+	
+	
+	
+	
+	
+	
+	
+	
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+ 
+
+
+ 
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+  
+ 
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+    
+		
+
+
+
+ 
+		
+
+
+
+		
+ 
+ 
+		
+
+
+
+ 
+		
+		
+
+
+
+
+		
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+ 
+
+
+
+ 
+		
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+	
+	
+ 
+	
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+2025-05-01 04:46:54,726 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_prefix_test/llm_seeds/2025-05-01_04-46-54-726739-sample_0.xml
+2025-05-01 04:46:54,726 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting sample 1/5
+2025-05-01 04:46:54,726 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 04:47:32,802 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', ' genre', '="', 'rom', 'ance', '">\n', '   ', ' <', 'title', '>The', ' Great', ' G', 'atsby', '</', 'title', '>\n', '   ', ' <', 'author', '>', 'Scott', ' Fitzgerald', '</', 'author', '>\n', '   ', ' <', 'publisher', '>', 'Charles', ' Scri', 'b', 'ner', "'s", ' Sons', '</', 'publisher', '>\n', '   ', ' <', 'price', '>', '15', '.', '95', '</', 'price', '>\n', '   ', ' <', 'pub', '_date', '>', '200', '1', '-', '01', '-', '01', '</', 'pub', '_date', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' genre', '="', 'sci', '-fi', '">\n', '   ', ' <', 'title', '>D', 'une', '</', 'title', '>\n', '   ', ' <', 'author', 'Frank', ' Herbert', ' ', ' ', '\r\n\n', ' ', ' ', '=""></', 'author', '>\n', ' ', ' <', 'book', ' genre', '="', 'sci', '-fi', '">\n', '   ', ' <', 'title', '>', 'Foundation', '</', 'title', '>\n', '   ', ' <', 'author', 'Is', 'aac', ' As', 'im', 'ov', ' ', ' ', '\r\n\n', ' ', ' ', '=""></', 'author', '>\n', ' ', ' <', 'book', ' genre', '="', 'sci', '-fi', '">\n', '   ', ' <', 'title', '>', 'Foundation', '</', 'title', '>\n', '   ', ' <', 'author', 'Is', 'aac', ' As', 'im', 'ov', ' ', ' ', '\r\n\n', ' ', ' ', '=""></', 'author', '>', ' \n', ' ', ' </', 'library', '>', ' \n', ' ', ' </', 'library', '>', ' \n', ' </', 'library', '>', ' \n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:32,803 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial raw logprob: tensor([-160.], device='cuda:0')
+2025-05-01 04:47:32,803 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 0 (prefix)
+2025-05-01 04:47:32,809 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', ' genre', '="', 'rom', 'ance', '">\n', '   ', ' <', 'title', '>The', ' Great', ' G', 'atsby', '</', 'title', '>\n', '   ', ' <', 'author', '>', 'Scott', ' Fitzgerald', '</', 'author', '>\n', '   ', ' <', 'publisher', '>', 'Charles', ' Scri', 'b', 'ner', "'s", ' Sons', '</', 'publisher', '>\n', '   ', ' <', 'price', '>', '15', '.', '95', '</', 'price', '>\n', '   ', ' <', 'pub', '_date', '>', '200', '1', '-', '01', '-', '01', '</', 'pub', '_date', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' genre', '="', 'sci', '-fi', '">\n', '   ', ' <', 'title', '>D', 'une', '</', 'title', '>\n', '   ', ' <', 'author', 'Frank', ' Herbert', ' ', ' ', '\r\n\n', ' ', ' ', '=""></', 'author', '>\n', ' ', ' <', 'book', ' genre', '="', 'sci', '-fi', '">\n', '   ', ' <', 'title', '>', 'Foundation', '</', 'title', '>\n', '   ', ' <', 'author', 'Is', 'aac', ' As', 'im', 'ov', ' ', ' ', '\r\n\n', ' ', ' ', '=""></', 'author', '>\n', ' ', ' <', 'book', ' genre', '="', 'sci', '-fi', '">\n', '   ', ' <', 'title', '>', 'Foundation', '</', 'title', '>\n', '   ', ' <', 'author', 'Is', 'aac', ' As', 'im', 'ov', ' ', ' ', '\r\n\n', ' ', ' ', '=""></', 'author', '>', ' \n', ' ', ' </', 'library', '>', ' \n', ' ', ' </', 'library', '>', ' \n', ' </', 'library', '>', ' \n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:32,809 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-160.], device='cuda:0')
+2025-05-01 04:47:38,419 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'wl', 'head', '"', ' title', '="', 'The', ' Lord', ' of', ' the', ' Rings', '"/>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '"', ' publisher', '="', 'Ad', 'ams', ' Journal', '"', ' title', '="', 'The', ' History', ' of', ' Wind', 'mill', ' Development', '"/>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'Self', ' Publish', '"', ' title', '="', 'C', '++', ' Primer', '"/>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:38,420 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-116.5000], device='cuda:0')
+2025-05-01 04:47:38,459 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [54.03864313]
+2025-05-01 04:47:38,459 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:47:38,462 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-47-32-803382-n5.json
+2025-05-01 04:47:38,462 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:47:38,462 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 1 (prefix)
+2025-05-01 04:47:38,465 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'wl', 'head', '"', ' title', '="', 'The', ' Lord', ' of', ' the', ' Rings', '"/>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '"', ' publisher', '="', 'Ad', 'ams', ' Journal', '"', ' title', '="', 'The', ' History', ' of', ' Wind', 'mill', ' Development', '"/>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'Self', ' Publish', '"', ' title', '="', 'C', '++', ' Primer', '"/>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:38,466 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-116.5000], device='cuda:0')
+2025-05-01 04:47:46,130 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'xford', ' University', ' Press', '">\n', '     ', ' <', 'title', '>', '198', '4', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'George', ' Orwell', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '_f', 'iction', '"', ' publisher', '="', 'Cam', 'bridge', ' University', ' Press', '">\n', '     ', ' <', 'title', '>The', ' History', ' of', ' Computer', ' Science', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'Thomas', ' H', '.', ' Corm', 'en', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'document', '>\n', '   ', ' <', 'title', '>', 'Math', '</', 'title', '>\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', ' ', ' </', 'document', '>\n', ' ', ' <', 'image', '>\n', '   ', ' <', 'title', '>', 'Mountain', '</', 'title', '>\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'url', '>', 'https', '://', 'example', '.com', '/image', '.jpg', '</', 'url', '>\n', ' ', ' </', 'image', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:46,131 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-102.5000], device='cuda:0')
+2025-05-01 04:47:46,185 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-0.59494244]
+2025-05-01 04:47:46,185 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.55159432]
+2025-05-01 04:47:46,189 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-47-32-803382-n5.json
+2025-05-01 04:47:46,189 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:47:46,189 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 2 (prefix)
+2025-05-01 04:47:46,194 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'xford', ' University', ' Press', '">\n', '     ', ' <', 'title', '>', '198', '4', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'George', ' Orwell', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '_f', 'iction', '"', ' publisher', '="', 'Cam', 'bridge', ' University', ' Press', '">\n', '     ', ' <', 'title', '>The', ' History', ' of', ' Computer', ' Science', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'Thomas', ' H', '.', ' Corm', 'en', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'document', '>\n', '   ', ' <', 'title', '>', 'Math', '</', 'title', '>\n', '   ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', ' ', ' </', 'document', '>\n', ' ', ' <', 'image', '>\n', '   ', ' <', 'title', '>', 'Mountain', '</', 'title', '>\n', '   ', ' <', 'author', '>J', 'ane', ' Doe', '</', 'author', '>\n', '   ', ' <', 'url', '>', 'https', '://', 'example', '.com', '/image', '.jpg', '</', 'url', '>\n', ' ', ' </', 'image', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:46,194 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-102.5000], device='cuda:0')
+2025-05-01 04:47:51,414 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'xford', ' University', ' Press', '">\n', '     ', ' <', 'title', '>', '198', '4', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'George', ' Orwell', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>The', ' Name', ' of', ' the', ' Rose', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'U', 'mb', 'erto', ' Eco', '</', 'author', '>\n', '     ', ' <', 'publisher', '>', 'Har', 'per', 'Coll', 'ins', '</', 'publisher', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>', 'Under', 'world', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'Don', ' De', 'L', 'illo', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:51,415 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-82.5000], device='cuda:0')
+2025-05-01 04:47:51,518 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [1.37505521]
+2025-05-01 04:47:51,518 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:47:51,522 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-47-32-803382-n5.json
+2025-05-01 04:47:51,522 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:47:51,523 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 3 (prefix)
+2025-05-01 04:47:51,527 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'xford', ' University', ' Press', '">\n', '     ', ' <', 'title', '>', '198', '4', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'George', ' Orwell', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>The', ' Name', ' of', ' the', ' Rose', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'U', 'mb', 'erto', ' Eco', '</', 'author', '>\n', '     ', ' <', 'publisher', '>', 'Har', 'per', 'Coll', 'ins', '</', 'publisher', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>', 'Under', 'world', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'Don', ' De', 'L', 'illo', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:51,527 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-82.5000], device='cuda:0')
+2025-05-01 04:47:58,737 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' encoding', '="', 'ISO', '-', '885', '9', '-', '15', '"', ' standalone', ' =', ' yes', '?>\n', '<Book', 'store', '>\n', ' ', ' <', 'Book', ' cat', '="', 'co', 'oking', '"', ' ', ' price', '="', '19', '.', '99', '">\n', ' ', ' <', 'Title', '>', 'Every', ' Day', ' Values', '</', 'Title', '>\n', ' ', ' <', 'Author', '>', 'George', ' Anderson', '</', 'Author', '>\n', ' ', ' </', 'Book', '>\n', ' ', ' <', 'Book', ' cat', '="', 'children', '"', ' price', '="', '9', '.', '99', '">\n', ' ', ' <', 'Title', '>', 'First', ' Love', '</', 'Title', '>\n', ' ', ' <', 'Author', '>A', 'lice', ' Hay', 'eur', '</', 'Author', '>\n', ' ', ' </', 'Book', '>\n', ' ', ' <', 'Book', ' cat', '="', 'co', 'oking', '"', ' price', '="', '9', '.', '99', '">\n', ' ', ' <', 'Title', '>', 'Every', ' Day', ' Values', ' ', '2', '</', 'Title', '>\n', ' ', ' <', 'Author', '>This', ' Is', ' A', ' Test', '</', 'Author', '>\n', ' ', ' </', 'Book', '>\n', '</', 'Book', 'store', '>', '<|eot_id|>']
+2025-05-01 04:47:58,738 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-133.], device='cuda:0')
+2025-05-01 04:47:58,752 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-8.94110266]
+2025-05-01 04:47:58,752 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.0001309]
+2025-05-01 04:47:58,757 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-47-32-803382-n5.json
+2025-05-01 04:47:58,757 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:47:58,757 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 4 (prefix)
+2025-05-01 04:47:58,761 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'xford', ' University', ' Press', '">\n', '     ', ' <', 'title', '>', '198', '4', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'George', ' Orwell', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>The', ' Name', ' of', ' the', ' Rose', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'U', 'mb', 'erto', ' Eco', '</', 'author', '>\n', '     ', ' <', 'publisher', '>', 'Har', 'per', 'Coll', 'ins', '</', 'publisher', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>', 'Under', 'world', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'Don', ' De', 'L', 'illo', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:47:58,762 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-82.5000], device='cuda:0')
+2025-05-01 04:48:02,158 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', '1', '.', '0', ' ', ' encoding', '="', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'library', '>\n', ' ', ' <', 'book', 'store', '>\n', '   ', ' <', 'book', ' genre', '="', 'nov', 'el', '"', ' publisher', '="', 'O', 'xford', ' University', ' Press', '">\n', '     ', ' <', 'title', '>', '198', '4', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'George', ' Orwell', '</', 'author', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>The', ' Name', ' of', ' the', ' Rose', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'U', 'mb', 'erto', ' Eco', '</', 'author', '>\n', '     ', ' <', 'publisher', '>', 'Har', 'per', 'Coll', 'ins', '</', 'publisher', '>\n', '   ', ' </', 'book', '>\n', '   ', ' <', 'book', ' genre', '="', 'non', '-fiction', '">\n', '     ', ' <', 'title', '>The', ' Hitch', 'h', 'iker', "'s", ' Guide', ' to', ' the', ' Galaxy', '</', 'title', '>\n', '     ', ' <', 'author', '>', 'Dou', 'glas', ' Adams', '</', 'author', '>\n', '     ', ' <', 'publisher', '>P', 'enguin', ' Books', '</', 'publisher', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>', ' \n', '</', 'library', '>', '<|eot_id|>']
+2025-05-01 04:48:02,159 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-92.5000], device='cuda:0')
+2025-05-01 04:48:02,310 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-0.90683817]
+2025-05-01 04:48:02,310 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.40379895]
+2025-05-01 04:48:02,315 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-47-32-803382-n5.json
+2025-05-01 04:48:02,315 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:48:02,316 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample time: 67.59 s
+2025-05-01 04:48:02,316 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample: <?xml version =1.0  encoding="ISO-8859-1"?>
+<library>
+  <bookstore>
+    <book genre="novel" publisher="Oxford University Press">
+      <title>1984</title>
+      <author>George Orwell</author>
+    </book>
+    <book genre="non-fiction">
+      <title>The Name of the Rose</title>
+      <author>Umberto Eco</author>
+      <publisher>HarperCollins</publisher>
+    </book>
+    <book genre="non-fiction">
+      <title>Underworld</title>
+      <author>Don DeLillo</author>
+    </book>
+  </bookstore>
+</library><|eot_id|>
+2025-05-01 04:48:02,316 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_prefix_test/llm_seeds/2025-05-01_04-48-02-316288-sample_1.xml
+2025-05-01 04:48:02,316 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting sample 2/5
+2025-05-01 04:48:02,316 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 04:48:13,206 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '212', '123', '456', '7', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'office', '">', '212', '987', '654', '3', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '917', '876', '543', '2', '</', 'probability', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:13,207 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial raw logprob: tensor([-104.5000], device='cuda:0')
+2025-05-01 04:48:13,207 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 0 (prefix)
+2025-05-01 04:48:13,211 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '212', '123', '456', '7', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'office', '">', '212', '987', '654', '3', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '917', '876', '543', '2', '</', 'probability', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:13,212 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-104.5000], device='cuda:0')
+2025-05-01 04:48:19,783 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CEO', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CT', 'O', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '900', '00', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:19,784 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-88.5000], device='cuda:0')
+2025-05-01 04:48:19,947 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-0.03875535]
+2025-05-01 04:48:19,948 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.96198603]
+2025-05-01 04:48:19,952 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-13-207267-n5.json
+2025-05-01 04:48:19,952 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:48:19,952 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 1 (prefix)
+2025-05-01 04:48:19,958 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CEO', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CT', 'O', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '900', '00', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:19,959 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-88.5000], device='cuda:0')
+2025-05-01 04:48:28,455 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phones', '>\n', '       ', ' <', 'phone', ' type', '="', 'office', '">', '555', '-', '123', '4', '</', 'phone', '>\n', '       ', ' <', 'phone', ' type', '="', 'mobile', '">', '555', '-', '567', '8', '</', 'phone', '>\n', '   ', ' </', 'phones', '>\n', '   ', ' <', 'employee', 'List', '>\n', '       ', ' <', 'employee', ' id', '="', '1', '">\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'title', '>', 'Software', ' Engineer', '</', 'title', '>\n', '           ', ' <', 'salary', '>', '100', '000', '</', 'salary', '>\n', '           ', ' <', 'bonus', '>', '500', '00', '</', 'bonus', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', ' id', '="', '2', '">\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'title', '>', 'Project', ' Manager', '</', 'title', '>\n', '           ', ' <', 'salary', '>', '800', '00', '</', 'salary', '>\n', '           ', ' <', 'bonus', '>', '200', '00', '</', 'bonus', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employee', 'List', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:28,456 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-109.5000], device='cuda:0')
+2025-05-01 04:48:28,641 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-0.84353325]
+2025-05-01 04:48:28,641 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.43018787]
+2025-05-01 04:48:28,646 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-13-207267-n5.json
+2025-05-01 04:48:28,646 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:48:28,647 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 2 (prefix)
+2025-05-01 04:48:28,652 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CEO', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CT', 'O', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '900', '00', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:28,653 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-88.5000], device='cuda:0')
+2025-05-01 04:48:32,564 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'firstName', '>J', 'ane', '</', 'firstName', '>\n', '           ', ' <', 'lastName', '>D', 'oe', '</', 'lastName', '>\n', '           ', ' <', 'hire', 'Date', '>', '200', '0', '-', '01', '-', '01', 'T', '00', ':', '00', ':', '00', 'Z', '</', 'hire', 'Date', '>\n', '           ', ' <', 'salary', '>$', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:32,565 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-104.5000], device='cuda:0')
+2025-05-01 04:48:32,792 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-0.60825643]
+2025-05-01 04:48:32,793 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.54429907]
+2025-05-01 04:48:32,798 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-13-207267-n5.json
+2025-05-01 04:48:32,798 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:48:32,799 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 3 (prefix)
+2025-05-01 04:48:32,805 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CEO', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CT', 'O', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '900', '00', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:32,805 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-88.5000], device='cuda:0')
+2025-05-01 04:48:37,449 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CEO', '</', 'position', '>\n', '           ', ' <', 'salary', '>$', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CT', 'O', '</', 'position', '>\n', '           ', ' <', 'salary', '>$', '800', '00', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>\n\n', ' ', '\t \t', ' \n', ' ', '\t ', '\t ', '\t ', '\t ', '\t ', '\t       ', '\n  \n', ' ', '\t    \t\t', '  \n', ' ', '\t\t\t\t\t\t\t\t\t', '    ', '<|eot_id|>']
+2025-05-01 04:48:37,450 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-166.], device='cuda:0')
+2025-05-01 04:48:37,714 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-26.95490153]
+2025-05-01 04:48:37,714 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [1.96623312e-12]
+2025-05-01 04:48:37,720 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-13-207267-n5.json
+2025-05-01 04:48:37,720 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:48:37,720 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 4 (prefix)
+2025-05-01 04:48:37,726 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'mobile', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '   ', ' <', 'employees', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>', 'John', ' Doe', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CEO', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '100', '000', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '       ', ' <', 'employee', '>\n', '           ', ' <', 'name', '>J', 'ane', ' Smith', '</', 'name', '>\n', '           ', ' <', 'position', '>', 'CT', 'O', '</', 'position', '>\n', '           ', ' <', 'salary', '>', '900', '00', '</', 'salary', '>\n', '       ', ' </', 'employee', '>\n', '   ', ' </', 'employees', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:37,727 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-88.5000], device='cuda:0')
+2025-05-01 04:48:39,936 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'utf', '-', '8', '"?>\n', '<', 'company', ' info', 'version', '="', '2', '.', '1', '"', ' date', 'Created', '="', '202', '2', '-', '01', '-', '01', 'T', '14', ':', '30', ':', '00', 'Z', '">\n', '   ', ' <', 'name', '>', 'ABC', ' Inc', '.</', 'name', '>\n', '   ', ' <', 'address', '>\n', '       ', ' <', 'street', '>', '123', ' Main', ' St', '</', 'street', '>\n', '       ', ' <', 'city', '>New', ' York', '</', 'city', '>\n', '       ', ' <', 'state', '>', 'NY', '</', 'state', '>\n', '       ', ' <', 'zip', 'Code', '>', '100', '01', '</', 'zip', 'Code', '>\n', '   ', ' </', 'address', '>\n', '   ', ' <', 'phone', 'Numbers', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'office', '">', '098', '-', '765', '-', '432', '1', '</', 'phoneNumber', '>\n', '   ', ' </', 'phone', 'Numbers', '>\n', '</', 'company', '>', '<|eot_id|>']
+2025-05-01 04:48:39,937 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-82.], device='cuda:0')
+2025-05-01 04:48:40,110 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [0.58069146]
+2025-05-01 04:48:40,110 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-13-207267-n5.json
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample time: 37.80 s
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample: <?xml version = 1.0 encoding = "utf-8"?>
+<company infoversion="2.1" dateCreated="2022-01-01T14:30:00Z">
+    <name>ABC Inc.</name>
+    <address>
+        <street>123 Main St</street>
+        <city>New York</city>
+        <state>NY</state>
+        <zipCode>10001</zipCode>
+    </address>
+    <phoneNumbers>
+        <phoneNumber type="home">123-456-7890</phoneNumber>
+        <phoneNumber type="office">098-765-4321</phoneNumber>
+    </phoneNumbers>
+</company><|eot_id|>
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_prefix_test/llm_seeds/2025-05-01_04-48-40-116799-sample_2.xml
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting sample 3/5
+2025-05-01 04:48:40,116 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 04:48:56,043 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'image', '.jpg', '</', 'image', '>\n', '   ', ' <', 'has', '-fiction', '>', 'yes', '</', 'has', '-fiction', '>\n', '   ', ' <', 'ISBN', '>', '0', '-', '97', '-', '566', '-', '020', '-', '0', '</', 'ISBN', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'title', '>X', 'SL', 'T', ':', ' The', ' Ultimate', ' Guide', '</', 'title', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ennifer', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>An', 'ne', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>', 'Howard', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '02', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:48:56,044 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 04:48:56,044 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 0 (prefix)
+2025-05-01 04:48:56,052 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'image', '.jpg', '</', 'image', '>\n', '   ', ' <', 'has', '-fiction', '>', 'yes', '</', 'has', '-fiction', '>\n', '   ', ' <', 'ISBN', '>', '0', '-', '97', '-', '566', '-', '020', '-', '0', '</', 'ISBN', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'title', '>X', 'SL', 'T', ':', ' The', ' Ultimate', ' Guide', '</', 'title', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ennifer', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>An', 'ne', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>', 'Howard', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '02', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:48:56,053 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 04:49:03,874 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'image', '.jpg', '</', 'image', '>\n', '   ', ' <', 'has', '-fiction', '>', 'yes', '</', 'has', '-fiction', '>\n', '   ', ' <', 'ISBN', '>', '0', '-', '97', '-', '566', '-', '020', '-', '0', '</', 'ISBN', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Experts', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'image', '2', '.jpg', '</', 'image', '>\n', '   ', ' <', 'has', '-fiction', '>', 'yes', '</', 'has', '-fiction', '>\n', '   ', ' <', 'ISBN', '>', '0', '-', '97', '-', '566', '-', '020', '-', '1', '</', 'ISBN', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:03,875 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-123.], device='cuda:0')
+2025-05-01 04:49:04,273 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [0.42951189]
+2025-05-01 04:49:04,273 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:49:04,280 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-56-044622-n5.json
+2025-05-01 04:49:04,280 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:49:04,280 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 1 (prefix)
+2025-05-01 04:49:04,288 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'image', '.jpg', '</', 'image', '>\n', '   ', ' <', 'has', '-fiction', '>', 'yes', '</', 'has', '-fiction', '>\n', '   ', ' <', 'ISBN', '>', '0', '-', '97', '-', '566', '-', '020', '-', '0', '</', 'ISBN', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Experts', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'image', '2', '.jpg', '</', 'image', '>\n', '   ', ' <', 'has', '-fiction', '>', 'yes', '</', 'has', '-fiction', '>\n', '   ', ' <', 'ISBN', '>', '0', '-', '97', '-', '566', '-', '020', '-', '1', '</', 'ISBN', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:04,289 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-123.], device='cuda:0')
+2025-05-01 04:49:11,931 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '2', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:11,932 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-79.5000], device='cuda:0')
+2025-05-01 04:49:12,253 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [4.23414444]
+2025-05-01 04:49:12,253 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:49:12,260 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-56-044622-n5.json
+2025-05-01 04:49:12,260 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:49:12,260 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 2 (prefix)
+2025-05-01 04:49:12,268 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '2', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:12,269 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-79.5000], device='cuda:0')
+2025-05-01 04:49:27,124 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'version', '>', '1', '.', '0', '</', 'version', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>F', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ':', ' The', ' Ultimate', ' Guide', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '49', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'version', '>', '1', '.', '1', '</', 'version', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '103', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'Michael', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>', 'Scott', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', ' xml', ':', 'lang', '="', 'en', '">', 'XML', ' in', ' a', ' Nut', 'shell', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '03', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '103', '</', 'id', '>\n', '   ', ' <', 'version', '>', '2', '.', '0', '</', 'version', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:27,125 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-112.], device='cuda:0')
+2025-05-01 04:49:27,490 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-1.27715481]
+2025-05-01 04:49:27,490 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.2788295]
+2025-05-01 04:49:27,499 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-56-044622-n5.json
+2025-05-01 04:49:27,499 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:49:27,499 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 3 (prefix)
+2025-05-01 04:49:27,507 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '2', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:27,507 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-79.5000], device='cuda:0')
+2025-05-01 04:49:29,562 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '2', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:29,562 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-79.5000], device='cuda:0')
+2025-05-01 04:49:29,562 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal identical to current, acceptance prob = 1
+2025-05-01 04:49:29,563 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:49:29,571 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-56-044622-n5.json
+2025-05-01 04:49:29,571 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:49:29,571 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 4 (prefix)
+2025-05-01 04:49:29,578 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '29', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '2', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:29,579 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-79.5000], device='cuda:0')
+2025-05-01 04:49:34,090 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<?', 'xml', '-', 'stylesheet', ' type', '="', 'text', '/x', 'sl', '"', ' href', '="', 'styles', '.x', 'sl', '"?>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '.xml', ' version', '="', '1', '.', '0', '"/>\n', ' ', ' <', 'book', ' id', '="', 'bk', '101', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>', 'John', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>H', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>', 'XML', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '0', '-', '10', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '101', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', ' ', ' <', 'book', ' id', '="', 'bk', '102', '">\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'first', '-name', '>J', 'ane', '</', 'first', '-name', '>\n', '     ', ' <', 'middle', '-name', '>A', '</', 'middle', '-name', '>\n', '     ', ' <', 'last', '-name', '>D', 'oe', '</', 'last', '-name', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'title', '>X', 'SL', 'T', ' for', ' Beginners', '</', 'title', '>\n', '   ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '   ', ' <', 'price', '>', '44', '.', '95', '</', 'price', '>\n', '   ', ' <', 'publication', '-date', '>', '200', '1', '-', '05', '-', '01', '</', 'publication', '-date', '>\n', '   ', ' <', 'id', '>', 'bk', '102', '</', 'id', '>\n', '   ', ' <', 'image', '>', 'cover', '2', '.jpg', '</', 'image', '>\n', ' ', ' </', 'book', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 04:49:34,091 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-80.], device='cuda:0')
+2025-05-01 04:49:34,476 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [0.33900654]
+2025-05-01 04:49:34,476 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-48-56-044622-n5.json
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample time: 54.37 s
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample: <?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<catalog>
+  <description.xml version="1.0"/>
+  <book id="bk101">
+    <author>
+      <first-name>John</first-name>
+      <middle-name>H</middle-name>
+      <last-name>Doe</last-name>
+    </author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publication-date>2000-10-01</publication-date>
+    <id>bk101</id>
+    <image>cover.jpg</image>
+  </book>
+  <book id="bk102">
+    <author>
+      <first-name>Jane</first-name>
+      <middle-name>A</middle-name>
+      <last-name>Doe</last-name>
+    </author>
+    <title>XSLT for Beginners</title>
+    <genre>Computer</genre>
+    <price>44.95</price>
+    <publication-date>2001-05-01</publication-date>
+    <id>bk102</id>
+    <image>cover2.jpg</image>
+  </book>
+</catalog><|eot_id|>
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_prefix_test/llm_seeds/2025-05-01_04-49-34-485713-sample_3.xml
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting sample 4/5
+2025-05-01 04:49:34,485 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 04:49:49,545 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '9', '.', '99', '</', 'price', '>\n', '   ', ' <', 'year', '>', '199', '7', '</', 'year', '>\n', '   ', ' <', 'publisher', '>D', 'emo', '</', 'publisher', '>\n', '   ', ' <', 'address', '>', '15', ' S', '.', ' St', '.', ' Louis', ' St', '.</', 'address', '>\n', '   ', ' <', 'city', '>New', ' Orleans', '</', 'city', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'phone', '>', '131', '-', '455', '-', '310', '0', '</', 'phone', '>\n', '   ', ' <', 'email', '>', 'cd', 's', '@', 'b', 'obby', 'mc', 'f', 'err', 'in', '.com', '</', 'email', '>\n', '   ', ' <', 'image', '>', 'cd', '.jpg', '</', 'image', '>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>V', 'ideos', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>T', 'am', 'my', ' Townsend', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '2', '.', '99', '</', 'price', '>\n', '   ', ' <', 'year', '>', '199', '8', '</', 'year', '>\n', '   ', ' <', 'publisher', '>', 'Demo', '</', 'publisher', '>\n', '   ', ' <', 'address', '>', '15', ' S', '.', ' St', '.', ' Louis', ' St', '.</', 'address', '>\n', '   ', ' <', 'city', '>New', ' Orleans', '</', 'city', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'phone', '>', '131', '-', '455', '-', '310', '0', '</', 'phone', '>\n', '   ', ' <', 'email', '>', 'vid', 's', '@', 't', 'amm', 'ont', 'own', 'send', '.com', '</', 'email', '>\n', '   ', ' <', 'image', '>', 'vid', '.jpg', '</', 'image', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:49:49,546 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Initial raw logprob: tensor([-201.], device='cuda:0')
+2025-05-01 04:49:49,546 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 0 (prefix)
+2025-05-01 04:49:49,554 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '9', '.', '99', '</', 'price', '>\n', '   ', ' <', 'year', '>', '199', '7', '</', 'year', '>\n', '   ', ' <', 'publisher', '>D', 'emo', '</', 'publisher', '>\n', '   ', ' <', 'address', '>', '15', ' S', '.', ' St', '.', ' Louis', ' St', '.</', 'address', '>\n', '   ', ' <', 'city', '>New', ' Orleans', '</', 'city', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'phone', '>', '131', '-', '455', '-', '310', '0', '</', 'phone', '>\n', '   ', ' <', 'email', '>', 'cd', 's', '@', 'b', 'obby', 'mc', 'f', 'err', 'in', '.com', '</', 'email', '>\n', '   ', ' <', 'image', '>', 'cd', '.jpg', '</', 'image', '>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>V', 'ideos', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>T', 'am', 'my', ' Townsend', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '2', '.', '99', '</', 'price', '>\n', '   ', ' <', 'year', '>', '199', '8', '</', 'year', '>\n', '   ', ' <', 'publisher', '>', 'Demo', '</', 'publisher', '>\n', '   ', ' <', 'address', '>', '15', ' S', '.', ' St', '.', ' Louis', ' St', '.</', 'address', '>\n', '   ', ' <', 'city', '>New', ' Orleans', '</', 'city', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'phone', '>', '131', '-', '455', '-', '310', '0', '</', 'phone', '>\n', '   ', ' <', 'email', '>', 'vid', 's', '@', 't', 'amm', 'ont', 'own', 'send', '.com', '</', 'email', '>\n', '   ', ' <', 'image', '>', 'vid', '.jpg', '</', 'image', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:49:49,554 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-201.], device='cuda:0')
+2025-05-01 04:49:55,604 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'yes', '">', 'Yes', '</', 'availability', '>\n', '   ', ' <', 'description', '>The', ' best', ' album', ' of', ' the', ' ', '20', 'th', ' century', '</', 'description', '>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>', 'Video', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>C', 'eline', ' Dion', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'yes', '">', 'Yes', '</', 'availability', '>\n', '   ', ' <', 'description', '>A', ' masterpiece', ' of', ' video', ' art', '</', 'description', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:49:55,605 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-123.5000], device='cuda:0')
+2025-05-01 04:49:55,725 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [8.46974466]
+2025-05-01 04:49:55,725 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:49:55,731 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-49-49-546334-n5.json
+2025-05-01 04:49:55,731 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:49:55,731 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 1 (prefix)
+2025-05-01 04:49:55,735 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'yes', '">', 'Yes', '</', 'availability', '>\n', '   ', ' <', 'description', '>The', ' best', ' album', ' of', ' the', ' ', '20', 'th', ' century', '</', 'description', '>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>', 'Video', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>C', 'eline', ' Dion', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'yes', '">', 'Yes', '</', 'availability', '>\n', '   ', ' <', 'description', '>A', ' masterpiece', ' of', ' video', ' art', '</', 'description', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:49:55,736 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-123.5000], device='cuda:0')
+2025-05-01 04:50:01,908 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'yes', '">', 'Yes', '</', 'availability', '>\n', '   ', ' <', 'product', 'Image', ' url', '="', 'http', '://', 'www', '.pr', 'ime', 'audi', 'ob', 'ooks', '.com', '/image', '1', '.jpg', '"/>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>V', 'ideos', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>', 'Microsoft', '</', 'manufacturer', '>\n', '   ', ' <', 'genre', '>', 'Movie', '</', 'genre', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'no', '">', 'No', '</', 'availability', '>\n', '   ', ' <', 'product', 'Image', ' url', '="', 'http', '://', 'www', '.v', 'ideos', '.com', '/image', '2', '.jpg', '"/>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:01,909 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-145.], device='cuda:0')
+2025-05-01 04:50:02,031 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-1.56944661]
+2025-05-01 04:50:02,031 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.20816034]
+2025-05-01 04:50:02,036 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-49-49-546334-n5.json
+2025-05-01 04:50:02,036 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:50:02,036 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 2 (prefix)
+2025-05-01 04:50:02,041 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'yes', '">', 'Yes', '</', 'availability', '>\n', '   ', ' <', 'product', 'Image', ' url', '="', 'http', '://', 'www', '.pr', 'ime', 'audi', 'ob', 'ooks', '.com', '/image', '1', '.jpg', '"/>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>V', 'ideos', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>', 'Microsoft', '</', 'manufacturer', '>\n', '   ', ' <', 'genre', '>', 'Movie', '</', 'genre', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '99', '</', 'price', '>\n', '   ', ' <', 'availability', ' status', '="', 'no', '">', 'No', '</', 'availability', '>\n', '   ', ' <', 'product', 'Image', ' url', '="', 'http', '://', 'www', '.v', 'ideos', '.com', '/image', '2', '.jpg', '"/>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:02,041 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-145.], device='cuda:0')
+2025-05-01 04:50:10,596 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '95', '</', 'price', '>\n', '   ', ' <', 'items', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '001', '">\n', '       ', ' <', 'name', '>G', 'reg', 'orian', ' Ch', 'ant', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '95', '</', 'price', '>\n', '       ', ' <', 'quantity', '>', '100', '</', 'quantity', '>\n', '     ', ' </', 'item', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '002', '">\n', '       ', ' <', 'name', '>M', 'c', 'Magic', 'g', 'ym', '</', 'name', '>\n', '       ', ' <', 'brand', '>B', 'MC', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '9', '.', '95', '</', 'price', '>\n', '       ', ' <', 'quantity', '>', '50', '</', 'quantity', '>\n', '     ', ' </', 'item', '>\n', '   ', ' </', 'items', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:10,597 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-134.], device='cuda:0')
+2025-05-01 04:50:10,702 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-0.16557632]
+2025-05-01 04:50:10,702 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.84740518]
+2025-05-01 04:50:10,707 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-49-49-546334-n5.json
+2025-05-01 04:50:10,707 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:50:10,707 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 3 (prefix)
+2025-05-01 04:50:10,712 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '95', '</', 'price', '>\n', '   ', ' <', 'items', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '001', '">\n', '       ', ' <', 'name', '>G', 'reg', 'orian', ' Ch', 'ant', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '95', '</', 'price', '>\n', '       ', ' <', 'quantity', '>', '100', '</', 'quantity', '>\n', '     ', ' </', 'item', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '002', '">\n', '       ', ' <', 'name', '>M', 'c', 'Magic', 'g', 'ym', '</', 'name', '>\n', '       ', ' <', 'brand', '>B', 'MC', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '9', '.', '95', '</', 'price', '>\n', '       ', ' <', 'quantity', '>', '50', '</', 'quantity', '>\n', '     ', ' </', 'item', '>\n', '   ', ' </', 'items', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:10,713 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-134.], device='cuda:0')
+2025-05-01 04:50:14,938 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '95', '</', 'price', '>\n', '   ', ' <', 'items', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '001', '">\n', '       ', ' <', 'name', '>G', 'reg', 'orian', ' Ch', 'ant', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '002', '">\n', '       ', ' <', 'name', '>', 'Human', ' Alphabet', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '8', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '   ', ' </', 'items', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:14,939 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-117.5000], device='cuda:0')
+2025-05-01 04:50:15,100 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [0.98854619]
+2025-05-01 04:50:15,100 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: 1
+2025-05-01 04:50:15,106 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-49-49-546334-n5.json
+2025-05-01 04:50:15,106 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal accepted
+2025-05-01 04:50:15,106 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Step 4 (prefix)
+2025-05-01 04:50:15,111 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '95', '</', 'price', '>\n', '   ', ' <', 'items', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '001', '">\n', '       ', ' <', 'name', '>G', 'reg', 'orian', ' Ch', 'ant', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '002', '">\n', '       ', ' <', 'name', '>', 'Human', ' Alphabet', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '8', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '   ', ' </', 'items', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:15,111 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Current raw logprob: tensor([-117.5000], device='cuda:0')
+2025-05-01 04:50:25,129 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"?>\n', '<', 'catalog', 's', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '1', '">\n', '   ', ' <', 'name', '>', 'Audio', ' CDs', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>B', 'obby', ' Mc', 'F', 'err', 'in', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '95', '</', 'price', '>\n', '   ', ' <', 'items', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '001', '">\n', '       ', ' <', 'name', '>G', 'reg', 'orian', ' Ch', 'ant', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '002', '">\n', '       ', ' <', 'name', '>', 'Human', ' Alphabet', '</', 'name', '>\n', '       ', ' <', 'brand', '>', 'MC', 'MP', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '12', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '   ', ' </', 'items', '>\n', ' ', ' </', 'catalog', '>\n', ' ', ' <', 'catalog', ' id', '="', 'C', '000', '2', '">\n', '   ', ' <', 'name', '>V', 'ideos', '</', 'name', '>\n', '   ', ' <', 'manufacturer', '>M', 'CF', ' Production', '</', 'manufacturer', '>\n', '   ', ' <', 'price', ' currency', '="', 'USD', '">', '24', '.', '95', '</', 'price', '>\n', '   ', ' <', 'items', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '003', '">\n', '       ', ' <', 'name', '>', 'De', 'but', '</', 'name', '>\n', '       ', ' <', 'brand', '>M', 'CF', ' Video', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '19', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '     ', ' <', 'item', ' id', '="', 'I', '004', '">\n', '       ', ' <', 'name', '>', 'Other', ' one', '</', 'name', '>\n', '       ', ' <', 'brand', '>M', 'CF', ' Video', '</', 'brand', '>\n', '       ', ' <', 'price', ' currency', '="', 'USD', '">', '14', '.', '95', '</', 'price', '>\n', '     ', ' </', 'item', '>\n', '   ', ' </', 'items', '>\n', ' ', ' </', 'catalog', '>\n', '</', 'catalog', 's', '>', '<|eot_id|>']
+2025-05-01 04:50:25,130 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal raw logprob: tensor([-154.], device='cuda:0')
+2025-05-01 04:50:25,388 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Log acceptance ratio: [-3.43584204]
+2025-05-01 04:50:25,388 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Acceptance prob: [0.03219829]
+2025-05-01 04:50:25,395 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_04-43-21-xml_fuzz_single_XML_Declaration-prefix/2025-05-01_04-49-49-546334-n5.json
+2025-05-01 04:50:25,395 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Proposal rejected
+2025-05-01 04:50:25,395 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample time: 50.91 s
+2025-05-01 04:50:25,395 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample: <?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalogs>
+  <catalog id="C0001">
+    <name>Audio CDs</name>
+    <manufacturer>Bobby McFerrin</manufacturer>
+    <price currency="USD">19.95</price>
+    <items>
+      <item id="I001">
+        <name>Gregorian Chant</name>
+        <brand>MCMP</brand>
+        <price currency="USD">14.95</price>
+      </item>
+      <item id="I002">
+        <name>Human Alphabet</name>
+        <brand>MCMP</brand>
+        <price currency="USD">8.95</price>
+      </item>
+    </items>
+  </catalog>
+</catalogs><|eot_id|>
+2025-05-01 04:50:25,396 - mcmc_xml_fuzz_single_XML_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_prefix_test/llm_seeds/2025-05-01_04-50-25-396007-sample_4.xml

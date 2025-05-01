@@ -1,0 +1,32 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xml:lang ="LATN">
+    <cd title ="/discography/" />
+    <cd title ="/tracklist/" />
+    <cd>
+        <title>First Album</title>
+        <artist>Band Name</artist>
+        <country>Australia</country>
+        <company>Record Company</company>
+        <price>19.90</price>
+        <year>1995</year>
+        <![CDATA[
+        <disc id = "1">
+            <track>
+
+                <title>Track 1</title>
+                <artist>Band Name</artist>
+                <duration>3:27</duration>
+
+            </track>
+            <track>
+                <title>Track 2</title>
+                <artist>Band Name</artist>
+                <duration>4:33</duration>
+
+            </track>
+        </disc>
+        ]]>
+
+    </cd>
+
+</catalog>

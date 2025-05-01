@@ -1,0 +1,22 @@
+<?xml version = 
+    1.0 
+    encoding = 
+    "UTF-8" 
+    standalone = 
+    yes 
+   ?>
+ 
+<catalog>
+<book id="bk101">
+  <author>
+    <name>John Smith</name>
+    <name>Jane Smith</name>
+  </author>
+  <title>XML for Beginners</title>
+  <price>39.95</price>
+  <publish_date>2000-10-01</publish_date>
+  <description>
+    &quot;This book contains a lot of information on XML. A lot of people will find this book helpful as an introduction to the world of XML programming.&quot;
+  </description>
+</book>
+</catalog>

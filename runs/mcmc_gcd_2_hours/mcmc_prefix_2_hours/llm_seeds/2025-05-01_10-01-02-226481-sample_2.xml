@@ -1,0 +1,27 @@
+<?xml version = 
+    1.0 encoding = "ISO-8859-1" 
+    standalone =  yes 
+  ?> 
+<library catalog="books">
+  <book author="John Doe" 
+    title="Example Book" 
+     price="19.99$" 
+    ISBN="1234567890"
+
+    >  Example book: This is example book.
+
+    <editor>John Smith</editor>
+    <year>2022</year>
+  </book>
+
+  <book author="Jane Doe" 
+    title="Another Book" 
+    price="9.99$" 
+    ISBN="2345678901"
+
+    >  Another book: This is another book.
+
+    <editor>Jane Doe</editor>
+    <year>2020</year>
+  </book>
+</library>

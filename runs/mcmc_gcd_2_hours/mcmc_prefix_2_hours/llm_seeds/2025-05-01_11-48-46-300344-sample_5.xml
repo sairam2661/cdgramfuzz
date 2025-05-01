@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <description>Online Shopping Catalog</description>
+    <item>
+        <name>Music</name>
+        <price>19.95</price>
+    </item>
+    <item>
+        <name>Office</name>
+        <price>40.00</price>
+        <description>This is a test.</description>
+    </item>
+    <item>
+        <name>Hospitality</name>
+        <price>
+            <monday>15.90</monday>
+            <tuesday>17.50</tuesday>
+            <wednesday>19.20</wednesday>
+        </price>
+    </item>
+</catalog>

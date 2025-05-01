@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <book id="bk101">
+        <name> HTML Form</name>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <author>John Smith</author>
+        <description>An in-depth look at form elements in HTML.</description>
+    </book>
+    <book id="bk102">
+        <name>C# Starter</name>
+        <genre>C#</genre>
+        <price>49.95</price>
+        <publish_date>2001-07-05</publish_date>
+        <author>Jane Wilson</author>
+        <description>"Getting Started with C#".</description>
+    </book>
+</catalog>

@@ -1,0 +1,479 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<!-- Character Set Definition -->
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+
+<catalog>
+    <book id =">&#x1F600;Adventure;&#x1F601;;Science;Fiction</book>
+    <book id =;&#x1F502;Harry Potter and the Philosopher's Stone;Harry Potter;J.K. Rowling;Children</book>
+    <book id =;&#x1F601;To Kill a Mockingbird;&#x1F6DA;;Harper Lee;Classic</book>
+</catalog><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+Question 3:
+Generate a short but complex XML file specifically using this feature: 
+Entity Reference - An entity reference is a reference to a set of characters in the document, represented by the syntax &lt; &gt; &amp; and &#x9;
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+ DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 3:
+
+<?xml version="PHP_SELF  			     		     		     		      		       	  	
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+     
+   
+
+
+
+  
+  
+  
+
+
+
+  
+
+  
+
+   
+
+      
+     
+   
+
+	
+  
+  
+	
+  
+  
+	
+  
+    
+
+
+
+
+    
+    
+    
+    
+      
+    
+    
+     
+       
+     
+       
+     
+          
+         
+
+
+  
+
+  
+
+   
+   
+
+     
+       
+      
+
+
+
+     
+ 
+
+
+   
+   
+     
+    
+    
+    
+         
+
+
+   
+   
+           
+         
+     
+       
+   
+     
+         
+       
+     
+         
+
+    
+   
+   
+  
+       
+       
+     
+         
+
+
+    
+   
+     
+    
+    
+
+  
+   
+     
+   
+   
+
+     
+     
+
+
+    
+    
+     
+       
+    
+     
+   
+    
+   
+   
+    
+    
+    
+
+   
+    
+
+   
+  
+     
+     
+  
+
+    
+    
+  
+
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+   
+     
+
+
+  
+  
+       
+     
+
+
+ 
+
+
+
+
+  
+
+
+
+
+ 
+ 
+   
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+   
+     
+     
+     
+   
+    
+  
+
+
+  
+
+
+    
+    
+   
+     
+    
+   
+     
+
+
+  
+    
+  
+   
+
+
+
+
+
+ 
+
+
+  
+  
+
+  
+   
+	
+  
+   
+
+
+     
+ 
+ 
+   
+  
+   
+	
+  
+
+  
+   
+
+
+  
+
+
+  
+
+
+   
+
+
+  
+
+
+ 
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+
+
+
+    
+
+
+
+
+
+
+      
+
+
+ 
+   
+  
+
+
+  
+
+
+
+ 
+
+
+  
+  
+
+
+   
+  
+
+
+ 
+   
+   
+ 
+     
+  
+  
+   
+     
+   
+  
+  
+
+   
+  
+
+
+ 
+  
+  
+   
+		
+ 
+
+
+  
+  
+
+
+
+
+  
+  
+ 
+   
+
+ 
+ 
+ 
+ 
+  
+  
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+  
+  
+  
+
+
+	
+  
+
+
+	
+ 
+
+
+
+  
+
+
+	
+  
+
+   
+  
+	
+  
+ 
+ 
+  
+	
+ 
+ 
+  
+	
+  
+   
+	
+  
+
+				 
+ 
+
+
+
+
+					
+
+  
+				  
+
+
+
+
+	
+   
+  
+
+
+	
+	
+  
+	
+  
+  
+
+
+
+
+
+ 
+ 
+ 
+ 
+  

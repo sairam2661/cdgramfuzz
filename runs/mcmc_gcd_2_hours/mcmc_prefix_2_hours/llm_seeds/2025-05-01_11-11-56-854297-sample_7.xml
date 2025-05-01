@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+    <product ID ="P01">
+        <name><![CDATA[ Widget]]> </name>
+        <description>Nice widget, but no guarantee</description>
+        <price>25.99</price>
+        <comment><![CDATA[ It's just a small widget, just enough to get you started.]]></comment>
+        <brand>Northwind</brand>
+        <shipping>
+            <method>Ground</method>
+            <cost>10.00</cost>
+            <online>Yes</online>
+        </shipping>
+    </product>
+    <product ID ="P02">
+        <name><![CDATA[ Widget, with wheels!]]></name>
+        <description>This is a widget with wheels!</description>
+        <price>49.99</price>
+        <comment>[CDATA[ It has wheels! You will not like this widget!]].</comment>
+        <brand>Northwind</brand>
+        <shipping>
+            <method>Air</method>
+            <cost>20.00</cost>
+            <online>No</online>
+        </shipping>
+    </product>
+</catalog>

@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "iso-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<catalog>
+  <cd>
+    <title>My Song</title>
+    <artist>U2</artist>
+    <country>Ireland</country>
+    <company>Universal</company>
+    <price>10.90</price>
+    <year>1989</year>
+  </cd>
+  <cd>
+    <title>Another Song</title>
+    <artist>U2</artist>
+    <country>USA</country>
+    <company>Columbia</company>
+    <price>9.90</price>
+    <year>1990</year>
+  </cd>
+</catalog>

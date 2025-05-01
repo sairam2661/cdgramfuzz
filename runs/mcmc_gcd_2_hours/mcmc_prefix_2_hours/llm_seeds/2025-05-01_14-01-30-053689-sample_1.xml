@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "ISO-8859-7"?>
+<document>
+    <header>
+        <title>Example Document</title>
+        <creator>John Doe</creator>
+        <date>#Mon Jan 1 00:00:00 CST 2024#</date>
+    </header>
+    <section>
+        <heading>Introduction</heading>
+        <text>
+            This is a &amp;lt;strong&gt;sample document&amp;lt;/strong&gt; of an XML document.
+            It includes an &amp;lt;img src="sample.jpg" alt="Sample Image"/&amp;gt;.
+            The &amp;lt;ul&gt;
+                &amp;lt;li&gt;Item 1&amp;lt;/li&gt;
+                &amp;lt;li&gt;Item 2&amp;lt;/li&gt;
+                &amp;lt;li&gt;Item 3&amp;lt;/li&gt;
+            &amp;lt;/ul&gt;
+            And the &amp;lt;blockquote cite="source">Quote Here&lt;/blockquote&gt;.
+        </text>
+    </section>
+</document>

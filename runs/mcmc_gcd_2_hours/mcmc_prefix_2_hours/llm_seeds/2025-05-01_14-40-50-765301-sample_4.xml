@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!-- This XML declaration is the root of our XML document -->
+<!-- We are specifying the version and encoding of the document -->
+<!DOCTYPE product [
+<!ENTITY product_name "Digital Music Player">
+<!ENTITY product_desc "&lt;div&gt;Our product is a high-quality digital music player.&lt;/div&gt;">
+<!ENTITY product_price "$99.99">
+]>
+
+<products xmlns:ent="http://example.ent">
+  <product ent:id="001" ent:name="%.{ent:product_name}">
+    <name>{ent:product_name}</name>
+    <description>{ent:product_desc}</description>
+    <price>{ent:product_price}</price>
+  </product>
+</products>

@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<library catalog ="AliceBobLibrary.xml">
+  <book id ="12345">
+    <title SYSTEM="books.xml#chapter1">Chapter 1 Title</title>
+    <author PUBLIC="-//Author-0.1//DTD Book//EN">John Doe</author>
+    <genre>Novel</genre>
+    <published>2005</published>
+  </book>
+  <book id ="{12345}">
+    <title>Chapter 1 Title</title>
+    <author>John Doe</author>
+    <genre>Novel</genre>
+    <published>2005</published>
+  </book>
+</library>

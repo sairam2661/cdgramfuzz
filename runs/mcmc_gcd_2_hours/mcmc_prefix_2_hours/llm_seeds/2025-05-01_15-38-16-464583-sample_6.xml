@@ -1,0 +1,9 @@
+<TeacherInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://teacherinfo.school.xml 
+    http://teacherinfo.school.xml/student.xsd" version="1.0" encoding="UTF-8" standalone="yes">
+    <CourseName level="#IMPLIED" course_type="#FIXED">Math, Science, English</CourseName>
+    <Semester startDate="#REQUIRED" endDate="2024-09-01"/>
+    <Student>
+        <Name first="#IMPLIED" last="#REQUIRED">John Doe</Name>
+        <GPA min="#FIXED" max="4.0" default="#REQUIRED">3.8</GPA>
+    </Student>
+</TeacherInfo>

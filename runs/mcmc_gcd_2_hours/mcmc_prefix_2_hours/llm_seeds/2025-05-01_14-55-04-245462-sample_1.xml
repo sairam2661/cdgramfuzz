@@ -1,0 +1,37 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+   <movie genre="comedy">
+      <title>The Big Lebowski</title>
+      <director>Joel Coen</director>
+      <year>1998</year>
+      <priceCurrency>USD</priceCurrency>
+      <description>
+         <star>Jeff Bridges</star>
+         <award>Academy Award for Best Original Screenplay (Coen brothers)</award>
+      </description>
+   </movie>
+   <movie genre="drama">
+      <title>The Godfather</title>
+      <director>Franco Zeffirelli</director>
+      <year>1972</year>
+      &quot;One of the greatest films of all time!&quot;
+   </movie>
+   <movie genre="action">
+      <title>Die Hard</title>
+      <director>John McTiernan</director>
+      <year>1988</year>
+      <rating decimal="8.3">
+         0.00
+         1.00
+         2.00
+         3.00
+         4.00
+         5.00
+         6.00
+         7.00
+         8.00
+         9.00
+         10.00
+      </rating>
+   </movie>
+</catalog>

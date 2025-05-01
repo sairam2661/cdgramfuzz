@@ -1,0 +1,26 @@
+<?xml version = 
+1.0
+            encoding = "UTF-8"
+            standalone = 
+            yes?>
+
+   <catalog>
+    <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <image>image01.jpg</image>
+    <content>
+     <![CDATA[
+     <xml version="1.0" encoding="UTF-8" standing="yes"?>
+       <note>
+        <to>Alice</to>
+        <from>Bob</from>
+        <subject>Meeting</subject>
+        <message>Don't forget our meeting at 2pm!</message>
+        <priority level="high"/>
+        </note>
+     ]]></content>
+    </book>
+   </catalog>

@@ -1,0 +1,120 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!--XML Declaration and Encoding Instructions-->
+<!DOCTYPE catalog [
+<!ELEMENT catalog (product*)>
+<!ELEMENT product (name, price, description)>
+<!ELEMENT name (#PCDATA)*>  
+<!ELEMENT price (#PCDATA)*>  
+<!ELEMENT description (#PCDATA)*>
+<!ELEMENT manufacturer (#PCDATA)*>
+<!ELEMENT year (#PCDATA)*> 
+<!ELEMENT stock (#PCDATA)*>  
+<!ELEMENT product>
+  <!--XML Comment-->
+  <!--Special Instructions For Developers-->
+  <!ELEMENT bookreview (title, rating, author)>
+  <!ELEMENT title (#PCDATA)*>  
+  <!ELEMENT rating (#PCDATA)*>  
+  <!ELEMENT author (#PCDATA)*>
+  <!ELEMENT bookreview>
+  <!ELEMENT catalog>
+    <!ELEMENT book>
+      <!ELEMENT title>
+        <!ELEMENT price>
+        <!ELEMENT author>
+        <!ELEMENT rating>
+      <!ELEMENT title>
+      <!ELEMENT book>
+      <!ELEMENT description>
+      <!ELEMENT manufacturer>
+      <!ELEMENT year>
+      <!ELEMENT stock>
+      <!ELEMENT bookreview> 
+  <!ELEMENT catalog> 
+<!ELEMENT manufacturer (#PCDATA)*>
+<!ELEMENT year (#PCDATA)*> 
+<!ELEMENT stock (#PCDATA)*> 
+<!ELEMENT product (name, price, description)>
+<!ELEMENT name (#PCDATA)*>  
+<!ELEMENT price (#PCDATA)*>  
+<!ELEMENT description (#PCDATA)*>
+<!ELEMENT catalog (product*)>
+<!ELEMENT product (manufacturer, year, stock)>
+<!ELEMENT product>
+  <!--Developer's Note-->
+  <!ELEMENT note (to, from, subject, message, priority)>
+  <!ELEMENT to (#PCDATA)*>  
+  <!ELEMENT from (#PCDATA)*>  
+  <!ELEMENT subject (#PCDATA)*>  
+  <!ELEMENT message (#PCDATA)*>  
+  <!ELEMENT priority (#PCDATA)*>  
+  <!ELEMENT priority>
+  <!ELEMENT note> 
+  <!ELEMENT from>
+  <!ELEMENT message>
+  <!ELEMENT priority> 
+  <!ELEMENT to> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT from> 
+  <!ELEMENT note> 
+  <!ELEMENT to> 
+  <!ELEMENT note> 
+  <!ELEMENT subject> 
+  <!ELEMENT note> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT note> 
+  <!ELEMENT note> 
+  <!ELEMENT note> 
+  <!ELEMENT message> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT from> 
+  <!ELEMENT from> 
+  <!ELEMENT note> 
+  <!ELEMENT from> 
+  <!ELEMENT note> 
+  <!ELEMENT to> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT to> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT to> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT from> 
+  <!ELEMENT priority> 
+  <!ELEMENT to> 
+  <!ELEMENT note> 
+  <!ELEMENT from> 
+  <!ELEMENT priority> 
+  <!ELEMENT priority> 
+  <!ELEMENT from> 
+  <!ELEMENT subject> 
+  <!ELEMENT note> 
+  <!ELEMENT note> 
+  <!ELEMENT from> 
+  <!ELEMENT note> 
+  <!ELEMENT from> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT from> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT note> 
+  <!ELEMENT to> 
+  <!ELEMENT note> 
+  <!ELEMENT priority> 
+  <!ELEMENT priority> 
+  <!ELEMENT from>

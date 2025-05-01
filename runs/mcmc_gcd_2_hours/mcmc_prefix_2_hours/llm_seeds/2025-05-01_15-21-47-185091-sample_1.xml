@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+    <record id="001" systemId=" catalog001"/>
+    <record id="002" publicId="catalog-001.xml"/>
+    <record>
+        <author>John Smith</author>
+        <title> XML Tutorial Example</title>
+        <link href="https://www.example.com"/>
+        <description>This is an XML tutorial example</description>
+        <language>English</language>
+    </record>
+</catalog>

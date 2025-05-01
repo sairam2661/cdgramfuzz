@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xmlns="http://www.example.com/catalog"
+  parserVersion="1.0"> 
+  <book id="bk101" isbn="1234567890" 
+         title="X: A Novel"
+         author="John Smith"
+         pubdate="1999-03-22">
+    <attribute default="Hardback">Book
+  </attribute>
+    <price currency="USD">39.95</price>
+    <description>One of the best books ever</description>
+  </book>
+  <book id="bk102" isbn="2345678901" 
+         title="Y: A Novel"
+         author="John Doe"
+         pubdate="1998-09-12">
+    <attribute>CD
+  </attribute>
+    <price currency="USD">29.95</price>
+    <description>A great book with a good story</description>
+  </book>
+</catalog>

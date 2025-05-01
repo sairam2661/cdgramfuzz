@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<?imports xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema"?>
+<governance>
+  <country code="USA">United States of America</country>
+  <states>
+    <state name="CA">California</state>
+    <state name="NY">New York</state>
+  </states>
+  
+  <?configuration system="Linux" architecture="32-bit"?>
+  <companies>
+    <company id="1">Google</company>
+    <company id="2">Microsoft</company>
+  </companies>
+</governance>

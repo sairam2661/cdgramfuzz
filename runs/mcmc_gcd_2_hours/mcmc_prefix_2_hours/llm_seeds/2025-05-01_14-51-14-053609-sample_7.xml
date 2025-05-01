@@ -1,0 +1,26 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <?xml-stylesheet type="text/xsl" href="style.xsl"?>
+  <?xml-stylesheet type="text/xml" href="format.xsl"?>
+  <person>
+    <name>
+      <first>John</first>
+      <last>Doe</last>
+    </name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <phones>
+      <phone type="home">555-1234</phone>
+      <phone type="work">555-5678</phone>
+      <phone type="mobile">555-9012</phone>
+    </phones>
+    <emails>
+      <email>john.doe@example.com</email>
+      <email>john.doe2@example.com</email>
+    </emails>
+    <xsi:noNamespaceSchemaLocation="person schema.xsd"/>
+  </person>
+</root>

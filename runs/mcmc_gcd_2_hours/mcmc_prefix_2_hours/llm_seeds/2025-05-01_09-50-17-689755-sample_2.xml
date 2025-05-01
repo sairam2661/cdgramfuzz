@@ -1,0 +1,36 @@
+<?xml version = 1.0  encoding =  "UTF-8" standalone =  yes?>
+
+<catalog>
+    <?xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+    <books>
+        <?import xsl="http://www.w3.org/1999/XSL/Transform"?>
+        <book id="bk101">
+            <author>Hermoine Granger</author>
+            <title>Spell Master </title>
+            <genre>Children </genre>
+            <price>10.99</price>
+            <pub_date>2005-10-01</pub_date>
+            <description>A book for young witches </description>
+        </book>
+        <book id="bk102">
+            <author>Harry Potter</author>
+            <title>Wizardry </title>
+            <genre>Children </genre>
+            <price>9.99</price>
+            <pub_date>2006-12-01</pub_date>
+            <description>A classic in the wizard series </description>
+        </book>
+    </books>
+    <processing-instructions target="www.wizardxml.com">
+     <xsl:import href="xsl/stylesheet.xsl"/>
+     <xsl:template match="/">
+       <p xml:lang="en"></p>
+     </processing-instructions>
+</catalog> 
+            <?mumble code is just examples and may not work but provides what you requested
+            This xml includes a processing instruction that imports in an xsl style sheet to transform the xml, and uses an xsl:template to create a new element. It will output: <p xml:lang="en"></p>. There is also an import statement for the xsl module which is required for this processing instruction and template to have effect, the module is not included in the current example
+            This XML promotes XML document processing by including the necessary information to support XSLT processing capabilities. The processing instruction defines the style sheet for transforming the XML document, and the XSLT import ensures that the transformation template is applied to the XML document. The XSLT style sheet is not included here, but would be required to fully implement this processing instruction. The final output of this XML will be exactly: <p xml:lang="en"></p>  when passed through an XSLT processor. Please ensure the above components are available and accessible to the XSLT processor when the XML is being processed.?> 
+
+<metadata>
+<author>JohnDoe</author>
+    <title>Wizard Catalog

@@ -1,0 +1,17 @@
+<?xml version =
+      1.0
+      encoding=
+      "UTF-8"
+      standalone=
+      yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+   <entity id="e1" symbol="#">
+      <attribute name="name" type="string">Product 1</attribute>
+      <attribute name="description" type="string">This is a product description.</attribute>
+   </entity>
+   <entity id="e2" symbol="£">
+      <attribute name="name" type="string">Product 2</attribute>
+      <attribute name="price" type="float">2.50</attribute>
+   </entity>
+</catalog>

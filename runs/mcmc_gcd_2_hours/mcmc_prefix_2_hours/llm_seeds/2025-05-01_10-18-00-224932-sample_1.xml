@@ -1,0 +1,15 @@
+<?xml version = 
+1.0 encoding = "ISO-8859-1"
+standalone =  yes?>
+
+<payment>
+  <transaction id ="use-1234567890" type="credit">
+    <amount>123.45
+      &amp; 678.90 ZAR
+      <![CDATA[Holiday Gift Cash Reimbursement 2024]]>
+    
+    </amount>
+    <created>2024-01-01T09:00:00+05:30</created>
+    <status>success</status>
+  </transaction>
+</payment>

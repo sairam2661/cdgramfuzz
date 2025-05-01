@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE productCatalog SYSTEM "productCatalog.dtd">
+<productCatalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation ="http://www.w3.org/2001/XMLSchema instance.xsd">
+  <product description ="[![CDATA[
+    It is highly recommended that you do not trust or consume or use any information contained in any of the information sections of this document.
+  ]]>">
+  <brand>Acer</brand>
+  <type>
+    <hardware > Motherboards </hardware >
+    <hardware > Graphics Cards </hardware >
+  </type>
+  <specifications>  
+     <cpu> Intel Core i9 </cpu >
+    <ram> 32 GB DDR4 </ram >
+    <hdd> 512 GB SSD </hdd>
+  </specifications>
+  <warranty> 3 Year Warranty </warranty>
+</product>
+</productCatalog>

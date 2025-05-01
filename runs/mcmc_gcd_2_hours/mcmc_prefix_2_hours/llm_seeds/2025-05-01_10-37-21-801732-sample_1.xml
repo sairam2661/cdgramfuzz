@@ -1,0 +1,5 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog type ="#BOOK catalog" xmlns = "http://www.example.org/" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" default-lang ="" xsi:noNamespaceSchemaLocation ="" xmlns:my = "http://www.example.org/my" my:custom-attribute ="" default-color ="#FFFFFF" book-count ="#REQUIRED" product-count ="#IMPLIED" product-price ="#FIXED">
+  <book id ="" price ="" tax ="" book-num ="" title ="" author ="" ISBN ="" description ="" price-per-unit ="" tax-per-unit ="" product-price ="#FIXED" book-count ="" name ="book1" product-count ="product1"/>
+  <book id ="" price ="" tax ="" book-num ="" title ="" author ="" ISBN ="" description ="" price-per-unit ="" tax-per-unit ="" product-price ="#FIXED" book-count ="book2" product-count ="product2"/>
+</catalog>

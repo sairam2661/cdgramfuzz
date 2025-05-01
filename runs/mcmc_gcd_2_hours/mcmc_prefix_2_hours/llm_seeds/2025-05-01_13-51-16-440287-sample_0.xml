@@ -1,0 +1,8 @@
+<personal-data xml:lang="en-US" version="1.0" encoding="UTF-8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ad="http://schemas.example.com-addressbook">
+  <contact id="123" xsi:schemaLocation="http://schemas.example.com/contact http://schemas.example.com/contact.xsd">
+    <name>John Doe</name>
+    <email>john.doe@example.com</email>
+    <phone type="home">123-456-7890</phone>
+    <address ad:street="123 Main St" ad:city="Anytown" ad:state="US" ad:zip="12345"/>
+  </contact>
+</personal-data>

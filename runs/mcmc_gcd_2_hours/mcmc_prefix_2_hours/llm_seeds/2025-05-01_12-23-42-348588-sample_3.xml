@@ -1,0 +1,42 @@
+<?xml version =        1.0
+      encoding =       "ISO-8859-1"
+      standalone =   yes?>
+
+<catalog>
+  <description xml:lang="en-US">
+ Langauge = English 
+  </description>
+    <company>
+      <name>Apple</name>
+      <address>
+        <street>1 Infinite Loop</street>
+        <city>Cupertino</city>
+        <state>CA</state>
+        <zip>95014</zip>
+      </address>
+      <phone type="fax">650-988-0888</phone>
+      <email type="administrative">ca-info@apple.com</email>
+      <email type="press">ca-press@apple.com</email>
+    </company>
+  <producer>
+    <name>Apple</name>
+    <country>USA</country>
+    <price currency="USD">19.95</price>
+    <language xml:lang="en-US">English</language>
+    <classification>Electronics</classification>
+  </producer>
+  <book id="bk101">
+    <author>Edward F. Kellogg</author>
+    <title>HTML &amp; CSS: Design and Build Websites</title>
+    <genre>computer</genre>
+    <price currency="USD">39.95</price>
+    <publicationDate>2012-10-10</publicationDate>
+    <publisher>Oracle</publisher>
+    <description xml:lang="en-US">
+    HTML and CSS: Design and Build Websites 
+    </description>
+    <rating total="5" max="5" value="3"/>
+    <label set="label-1" xml:lang="en-US">Best Seller</label>
+    <coverage>General Purpose</coverage>
+  </book>
+</catalog>

@@ -1,0 +1,12 @@
+<?xml version =1.0 encoding="UTF-8" standalone =  no?>
+<catalog xml:lang="en-US">
+  <description>Book Catalog for online shopping</description>
+  <data xmlns:xlink="http://www.w3.org/1999/xlink">
+    <record>
+      <author>John Smith</author>
+      <title>XML Reference</title>
+      <link href="http://www.example.org/xml&amp;ref=book.xml#/book1" xlink:href="#book1"/>
+      <subject>Documentation</subject>
+    </record>
+  </data>
+</catalog>

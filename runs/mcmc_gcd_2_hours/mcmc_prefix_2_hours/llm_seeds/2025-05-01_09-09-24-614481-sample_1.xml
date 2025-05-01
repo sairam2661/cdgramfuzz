@@ -1,0 +1,9 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<catalog  xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation ="
+               http://www.example.com/collection catalog.xsd"
+             version ="{ &#x99;9.99 }">
+   <book  id ="{ &#x61;61 }"  price ="{ &#x5a;123.50 }">Book Sixty-One</book>
+   <book  id ="{ &#x33;33 }"  price ="{ &#x64;100.00 }">Book Thirty-Three</book>
+   <book  id ="{ &#x27;27 }"  price ="{ &#x5b;100.25 }">Book Twenty-Seven</book>
+</catalog>

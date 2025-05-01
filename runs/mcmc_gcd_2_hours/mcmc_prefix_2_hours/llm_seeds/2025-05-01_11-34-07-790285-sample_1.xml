@@ -1,0 +1,36 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+
+<catalog>
+  <employee id="123">
+    <employeeName>Naruto</employeeName>
+    <employeeAddress>
+      <street> Konoha </street>
+      <city> Hidden Leaf </city>
+      <state> Japanese </state>
+      <zip> 00000 </zip>
+    </employeeAddress>
+    <employeeContact>
+      <phone> 000-0000 </phone>
+      <fax> 000-0000 </fax>
+    </employeeContact>
+    <employeeSal>
+      <hourlyWage> 5000000 </hourlyWage>
+    </employeeSal>
+  </employee>
+  <employee id="456">
+    <employeeName>Sasuke</employeeName>
+    <employeeAddress>
+      <street> The Uchiha </street>
+      <city> Hidden Leaf </city>
+      <state> Japanese </state>
+      <zip> 00000 </zip>
+    </employeeAddress>
+    <employeeContact>
+      <phone> 000-0000 </phone>
+      <fax> 000-0000 </fax>
+    </employeeContact>
+    <employeeSal>
+      <hourlyWage> 6000000 </hourlyWage>
+    </employeeSal>
+  </employee>
+</catalog>

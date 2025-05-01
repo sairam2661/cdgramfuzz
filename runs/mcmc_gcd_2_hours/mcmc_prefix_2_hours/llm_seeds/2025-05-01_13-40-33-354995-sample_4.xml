@@ -1,0 +1,47 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<definitions xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+             xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+             xmlns:tns = "http://example.com/XMLSchema"
+             targetNamespace ="http://example.com/XMLSchema"
+             xmlns = "http://example.com/XMLSchema"
+             xmlns:a = "http://example.com/Addition"
+
+             xml:notationDecl ='{http://www.w3.org/2000/svg/notation}circle'
+             xml:notationDecl ='{http://www.w3.org/1999/XLink/types}SimpleLink'
+             xml:notationDecl ='{http://www.w3.org/XML/1998/namespace}anyURI'
+             xml:notationDecl ='{http://www.w3.org/2010/10/xsd-binary}Binary'
+
+         elementFormDefault="qualified"
+         attributeFormDefault="unqualified"
+         elementFormDefault="qualified"
+         attributeFormDefault="unqualified"
+         attributeFormDefault="unqualified"
+         typeCompatibility="lax"
+         version ="{http://www.w3.org/2000/10 XML Schema/xsd}2.1"
+         encodingStyle ="{http://www.w3.org/2001/XMLSchema}complete"
+         schemaLocation ="{http://example.com/XMLSchema}schema.xsd"
+         xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+         elementFormDefault="qualified"
+         attributeFormDefault="unqualified"
+         elementFormDefault="qualified"
+         attributeFormDefault="unqualified"
+         typeCompatibility="lax"
+         version ="{http://www.w3.org/2000/10 XML Schema/xsd}2.1"
+         encodingStyle ="{http://www.w3.org/2001/XMLSchema}complete"
+         schemaLocation ="{http://example.com/XMLSchema}schema.xsd"
+         xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+         xmlns:tns = "http://example.com/XMLSchema"
+
+        ><xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+             targetNamespace ="{http://example.com/XMLSchema}"
+             xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+             version ="{http://www.w3.org/2000/10 XML Schema/ schema.xsd}2.1"
+             elementFormDefault="qualified"
+             attributeFormDefault="unqualified"
+             typeCompatibility="lax"
+             encodingStyle ="{http://www.w3.org/2001/XMLSchema}complete"
+             schemaLocation ="{http://example.com/XMLSchema}schema.xsd"
+             xmlns:ds = "http://www.w3.org/2000/09/xmldsig#">
+
+             <!-- Notation Declarions -->
+             <xs notations="{http://www.w3.org/200

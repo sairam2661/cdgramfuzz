@@ -1,0 +1,14 @@
+<SchoolData version="2.0" encoding="UTF-8" standalone="no">
+  <Year>
+    <FirstHalf>
+      <Lesson>&lt;math&gt;Algebra II&lt;/math&gt;</Lesson>
+      <Lesson>&lt;english&gt;English IV&lt;/english&gt;</Lesson>
+      <Lesson>&lt;science&gt;Biology Lab&lt;/science&gt;</Lesson>
+    </FirstHalf>
+    <SecondHalf>
+      <Lesson>&lt;math&gt;Geometry&lt;/math&gt;</Lesson>
+      <Lesson>&lt;english&gt;US History&lt;/english&gt;</Lesson>
+      <Lesson>&lt;science&gt;Physics Lab&lt;/science&gt;</Lesson>
+    </SecondHalf>
+  </Year>
+</SchoolData>

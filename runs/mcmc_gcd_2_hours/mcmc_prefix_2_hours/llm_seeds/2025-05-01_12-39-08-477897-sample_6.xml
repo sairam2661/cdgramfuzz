@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<bookstore>
+  <catalog>
+    <cd>
+      <artist>AC/DC</artist>
+      <title>Back in Black</title>
+      <genre>Hard Rock</genre>
+      <price>19.99</price>
+      <video>Yes</video>
+      <operator>&lt;</operator>
+      <author>Angus Young</author>
+    </cd>
+    <cd>
+      <artist>BBC</artist>
+      <title>Music for the Jive Aposhops</title>
+      &amp;
+      <genre>Punk</genre>
+      <price>12.99</price>
+      <video>Yes</video>
+      <operator>&lt;</operator>
+      <author>John Peel</author>
+    </cd>
+  </catalog>
+</bookstore>

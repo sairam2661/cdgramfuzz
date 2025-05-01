@@ -1,0 +1,44 @@
+<Schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    targetNamespace="http://example.org"
+    xsi:schemaLocation="http://example.org example.xsd">
+
+  <element name="Person">
+    <complexType>
+      <sequence>
+        <element name="Name" type="string"/>
+        <element name="Age" type="integer"/>
+      </sequence>
+      <attribute name="Id" type="integer" use="required"/>
+    </complexType>
+  </element>
+
+  <entity name="bookstore">
+    <property name="title" type="string"/>
+    <property name="author" type="string"/>
+    <property name="price" type="decimal"/>
+    <property name="isbn" type="integer"/>
+  </entity>
+
+  <xs:entity name="person">
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="age" type="xs:integer"/>
+    <xs:attribute name=" occupation" use="optional" type="xs:string"/>
+  </xs:entity>
+
+  <xs:entity name="movie">
+    <xs:attribute name="title" type="xs:string"/>
+    <xs:attribute name="genre" use="optional" type="xs:string"/>
+  </xs:entity>;
+
+  <xs:simpleEntity name="organization">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element name="chairman" type="xs:string"/>
+        <xs:element name="secretary" type="xs:string"/>
+      </xs:sequence>
+      <xs:attribute name="founder" type="xs:string"/>
+    </xs:complexType>
+  </xs:simpleEntity>
+
+</Schema>

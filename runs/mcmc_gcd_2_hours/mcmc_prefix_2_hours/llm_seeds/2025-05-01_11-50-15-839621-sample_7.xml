@@ -1,0 +1,34 @@
+<!DOCTYPE book [
+    <!ENTITY book.title "XML for Dummies">
+    <!ENTITY book.author "John Doe">
+    <!ENTITY book.publisher "ABC Books">
+    <!ENTITY book.publication-date "2022-01-01">
+    <!ENTITY book.isbn "1234567890">
+    <!ENTITY book.description "A book about XML">
+]>
+<book xmlns:xi="http://www.w3.org/2001/xi">
+    <xi:include href="#book.title"/>
+    <xi:include href="#book.author"/>
+    <xi:include href="#book.publisher"/>
+    <xi:include href="#book.publication-date"/>
+    <xi:include href="#book.isbn"/>
+    <xi:include href="#book.description"/>
+    <title>
+        <xi:include select="book.title"/>
+    </title>
+    <author>
+        <xi:include select="book.author"/>
+    </author>
+    <publisher>
+        <xi:include select="book.publisher"/>
+    </publisher>
+    <publication-date>
+        <xi:include select="book.publication-date"/>
+    </publication-date>
+    <isbn>
+        <xi:include select="book.isbn"/>
+    </isbn>
+    <description>
+        <xi:include select="book.description"/>
+    </description>
+</book>

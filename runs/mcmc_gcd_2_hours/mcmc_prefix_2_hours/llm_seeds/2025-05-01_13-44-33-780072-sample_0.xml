@@ -1,0 +1,16 @@
+<?xml version = 1.0  encoding  =  "UTF-8"  standalone  =  yes?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<?import namespace="http://www.w3.org/2001/XMLSchema"?>
+<?mso-application programid="Excel.Sheet" data=file="example.xlsx" embedded="True"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:noNamespaceSchemaLocation="note.xsd">
+  <to>Alice</to>
+  <from>Bob</from>
+  <subject>Meeting</subject>
+  <message>Don't forget our meeting at 2pm!</message>
+  <priority>
+    <level>high</level>
+    <description>Brief</description>
+  </priority>
+</note>

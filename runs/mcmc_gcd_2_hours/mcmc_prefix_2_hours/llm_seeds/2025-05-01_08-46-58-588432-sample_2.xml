@@ -1,0 +1,21 @@
+<?xml version = 
+  1.0
+ encoding= "UTF-8"
+ standalone =  no
+?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<!DOCTYPE 
+  catalog PUBLIC "-//OASIS//DTD Catalog 1.0//EN"
+  "http://www.oasis-open.org/2001/ catalog-1.0.dtd">
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Basics</title>
+    <price>39.95</price>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XML Advanced</title>
+    <price>49.95</price>
+  </book>
+</catalog>

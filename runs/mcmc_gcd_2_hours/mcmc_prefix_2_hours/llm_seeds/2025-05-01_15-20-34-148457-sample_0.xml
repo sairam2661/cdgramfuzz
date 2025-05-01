@@ -1,0 +1,27 @@
+<?xml version =     1.0 encoding = "UTF-8" standalone =  yes?>
+   <bookstore>
+    <book system="ISBN" id="BK-1234-56789-01234-56789">
+      <title>XML for Beginners</title>
+      <price monetaryUnit="USD">$34.99</price>
+      <author>John Smith</author>
+      <description xml:lang="en">
+        A book about XML syntax and usage.
+      </description>
+    </book>
+    <book publicId="bk100" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <title>Another Book</title>
+      <price monetaryUnit="USD">$24.99</price>
+      <author>Jane Doe</author>
+      <description xml:lang="en">
+        Another book with a lot of data.
+      </description>
+    </book>
+    <book>
+      <title>XML Test</title>
+      <price monetaryUnit="USD">$14.99</price>
+      <author>John Smith</author>
+      <description xml:lang="en">
+        An example book.
+      </description>
+    </book>
+  </bookstore>

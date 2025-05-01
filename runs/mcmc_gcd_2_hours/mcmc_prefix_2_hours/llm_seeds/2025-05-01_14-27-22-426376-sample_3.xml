@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE product_catalog SYSTEM "product_catalog.dtd">
+<product_catalog>
+  <product_list>
+    <product id ="My-123">
+      <product_name><![CDATA[<u>Smartphone</u>, <i>IPhone</i>]]></product_name>
+      <description>
+        <p>This is the detailed description of <u>Smartphone</u>, <i>IPhone</i>.
+        It has a great camera and fast processor, perfect for everyone.</p>
+      </description>
+      <price currency="USD">999.99</price>
+    </product>
+  </product_list>
+</product_catalog>

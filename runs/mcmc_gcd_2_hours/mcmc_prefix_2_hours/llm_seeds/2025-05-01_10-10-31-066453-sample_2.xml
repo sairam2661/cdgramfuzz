@@ -1,0 +1,15 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation ="http://www.example.com/example.xsd"
+         xmlns = "http://www.example.com/example"
+         xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+          xmlns:fn = "http://www.w3.org/2006/xquery/functions">
+  <book id ="{xsd:integer}1" name ="{xsd:string}Harry Potter"
+         xsi:type ="{xsd:string}book"
+         fn:format-string-attribute ="{xsd:string}'{bookTitle}'"/>
+  <author id ="{xsd:integer}2" name ="{xsd:string}J.K. Rowling"
+          xsi:type ="{xsd:string}author"
+          fn:starts-with ="{xsd:string}'RowLING,'"/>
+  <book id ="{xsd:integer}3" name ="{xsd:string}Harry Potter and the Goblet of Fire"
+         xsi:type ="{xsd:string}book"
+          fn:lang ="{xsd:string}fr FR"/>
+</catalog>

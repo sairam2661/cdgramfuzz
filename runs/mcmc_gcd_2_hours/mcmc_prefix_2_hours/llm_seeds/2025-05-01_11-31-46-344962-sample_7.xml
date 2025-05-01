@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <description name ="/" />
+  <version>2.0</version>
+  <product>
+    <name>Smart Watch</name>
+    <description>Interact with the watch face</description>
+    <price>$30.00</price>
+    <availability>N</availability>
+  </product>
+  <product>
+    <name>Smart Card</name>
+    <description>Conduct secure transactions</description>
+    <price>$40.00</price>
+    <availability>Y</availability>
+  </product>
+</catalog>

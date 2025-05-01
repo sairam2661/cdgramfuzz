@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE customer [
+  <!ELEMENT customer (name, address, ordering) >
+  <!ELEMENT name (#PCDATA)*
+  >
+  <!ELEMENT address (#PCDATA)*
+  >
+  <!ELEMENT ordering (#PCDATA)* >
+]>
+<customer>
+  <name>John Doe</name>
+  <address_street>123 Main St. </address_street>
+  <address_city>Anytown </address_city>
+  <address_state>US </address_state>
+  <address_zip>12345 </address_zip>
+  <address_country>USA </address_country>
+  <ordering_item type="book">Book 1</ordering_item>
+  <ordering_item type="book">Book 2</ordering_item>
+  <!--  This is a comment about the ordering items  -->
+  <ordering_item type="book">Book 3</ordering_item>
+</customer>

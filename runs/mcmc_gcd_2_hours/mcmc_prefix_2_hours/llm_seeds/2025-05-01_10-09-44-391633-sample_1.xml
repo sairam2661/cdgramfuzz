@@ -1,0 +1,32 @@
+<!DOCTYPE catalog 
+    SYSTEM "catalog.docType.DTD">
+
+<catalog id="prog-catalog" version="3.0">
+    <description>
+        Description of the catalog
+    </description>
+    <publisher>HP</publisher>
+    <copyright>Copyright 1999</copyright>
+    <firstPublisher>HP</firstPublisher>
+    <last Publisher="None"/>
+    <address>
+        <street>1 Infinite Field</street>
+        <city>Palo Alto</city>
+        <state>CA</state>
+        <country>USA</country>
+        <postalCode>94304</postalCode>
+    </address>
+    <publicationDate>1999-12-31</publicationDate>
+    <languages>
+        <language code="en">
+            <title>English</title>
+            <author>John Smith</author>
+            <sortKey>20</sortKey>
+        </language>
+        <language code="fr">
+            <title>Français</title>
+            <author>John Smith</author>
+            <sortKey>20</sortKey>
+        </language>
+    </languages>
+</catalog>

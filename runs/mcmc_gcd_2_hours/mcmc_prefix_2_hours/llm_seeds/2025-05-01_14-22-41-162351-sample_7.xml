@@ -1,0 +1,62 @@
+<?xml version =1.0  encoding = "UTF-8" standalone = yes?>
+<catalog>
+    <description>
+        &amp;The world of books is at your fingertips.
+    </description>
+    <company name ="\&amp;Company Name \&quot;" country="USA" />
+    <stationary>
+        <address name ="\&apos;The Book Shop\&apos; &quot; />
+    </stationary>
+</catalog> 
+
+and also, another short but complex XML file specifically designed for 
+
+Soap XML Schema: 
+
+ <?xml version='1.0' encoding='UTF-8'?> 
+<xs:schema xmlns:xs="http:apache.org.Xml.Schema.Schema10.xsd
+  	="
+     <xs:element name='Student'>
+    <xs:complexType>
+       <xs:sequence>
+          <xs:element name='name' type='xs:string'/>
+          <xs:element name='age' type='xs:integer'/>
+          <xs:element name='marks' type='xs:integer'/>
+       </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+
+<xs:element name='course'>
+    <xs:complexType>
+        <xs:sequence>
+          <xs:element name='name' type='xs:string'/>
+          <xs:element name='days' type='xs:string'/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:simpleType name='Grade'>
+    <xs:restriction base='xs:string'>
+        <xs:enumeration value='A'/>
+        <xs:enumeration value='B'/>
+        <xs:enumeration value='C'/>
+        <xs:enumeration value='D'/>
+        <xs:enumeration value='E'/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:element name='result'>
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name='student' type='xs:StudentType'/>
+            <xs:element name='course' type='xs:CourseType'/>
+            <xs:element name='grade' type='xs:Grade'/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name='exam-result' type='xs:resultType'/>
+
+<xs:XSDSchema xmlns:xs="http:apache.org.Xml.Schema.Schema10.xsd
+  ="
+<xs:simpleType name

@@ -1,0 +1,29 @@
+<?xml version = 
+1.0 
+encoding="UTF-8" 
+standalone = yes  
+
+?>
+
+<!DOCTYPE public 
+      > 
+
+<productinfo xmlns:prod="http://product.info.com" 
+        ProdName="Smartphone 10" 
+        ProdDescription="High end Android smartphone"
+
+        > 
+
+  <!-- Product details start here -->
+
+  <productdet1>Smartphone Specifications</productdet1>  
+
+  <!-- Product details end here -->
+
+  <ProdCat>Electronics</ProdCat>  
+
+  <ProdSubCat>Smartphones</ProdSubCat>  
+
+  <ProdSubSubCat>Luxury</ProdSubSubCat>  
+
+  </productinfo>

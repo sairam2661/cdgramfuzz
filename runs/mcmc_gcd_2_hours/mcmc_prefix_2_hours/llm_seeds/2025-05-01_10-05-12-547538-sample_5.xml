@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog  xml:lang ="-EN" xmlns:book = "urn:isbn:0-201-62045-5" xmlns:xlink="http://www.w3.org/1999/xlink"  xml:space="preserve"  version="1.0" >
+   <description >Book Information</description >
+   <book   id ='"12345"'   xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title xml:lang ="-EN">Ways    to   Learn   XML</title >
+    <link href ='"about.html"'   xlink:type="simple"   xlink:href="http://www.w3.org/1999/xlink" />
+    <description xml:lang ="-EN">XML    tutorials,   examples,   reference  materials</description >
+    <xlink:href="http://www.w3.org/1999/xlink">
+    <title>XLink</title >
+    </xlink >
+    <book:author   id ='"author123"'   xmlns:book = "urn:isbn:0-201-62045-5" >John   Doe</book:author >
+    <price>39.95</price >
+   </book >
+</catalog>

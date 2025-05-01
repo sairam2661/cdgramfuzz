@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = yes?>
+<catalog>
+    <description xml:lang ='"en"' xmlns:dc = 'http://purl.org/dc/ elementSet' item-type ='"book"' type ='"text'>'Text description of book'</description>
+    <identifier>pubID:12345-12345-12345-12345-123456789012</identifier>
+    <title xml:lang ='"en"' xmlns:dc = 'http://purl.org/dc/elementSet' item-type ='"book"' type ='"text'>'Text title of book'</title>
+    <publisher>Publication House</publisher>
+    <description xml:lang ='"fr"' xmlns:dc = 'http://purl.org/dc/elementSet' item-type ='"book"' type ='"text'>'Description en français</description>
+    <identifier xmlns:PIM = 'http://pim standard.net/' SYSTEM ='",http://catalog.example.com/book/12345"'/>
+    <subject>Science Fiction</subject>
+    <identifier PUBLIC ="-/book/12345/-/">Public identifier</identifier>
+</catalog>

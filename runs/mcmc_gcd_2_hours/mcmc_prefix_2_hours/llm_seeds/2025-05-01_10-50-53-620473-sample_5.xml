@@ -1,0 +1,54 @@
+<?xml version = 
+
+            1.0  
+            encoding = "UTF-8" 
+            standalone =   yes 
+          ?>
+ 
+ <catalog>     
+   <book id="bk101">
+     <author>John Smith</author>
+     <title>XML for Beginners</title>
+     
+     <languageCode>
+       <enumValue>EN</enumValue>
+       <enumValue>ES</enumValue>
+       <enumValue>FR</enumValue>
+     </languageCode>
+     
+     <subject>
+       <enumValue>Computer</enumValue>
+       <enumValue>Programming</enumValue>
+       <enumValue>Diskettes</enumValue>
+     </subject>
+     
+     <publisher>O'Reilly &amp;amp; Sons</publisher>
+     
+     <price>39.95</price>
+     
+     <description>An in-depth look at creating applications with XML.</description>
+   </book>  
+
+   <book id="bk102">
+     <author>Jane Doe</author>
+     <title>XSLT: The Ultimate Guide</title>
+     
+     <languageCode>
+       <enumValue>EN</enumValue>
+       <enumValue>ES</enumValue>
+       <enumValue>FR</enumValue>
+     </languageCode>
+     
+     <subject>
+       <enumValue>Computer</enumValue>
+       <enumValue>Programming</enumValue>
+       <enumValue>XSLT</enumValue>
+     </subject>
+     
+     <publisher>Wiley Publishing</publisher>
+     
+     <price>49.95</price>
+     
+     <description>A comprehensive introduction to XSLT.</description>
+   </book>      
+ </catalog>

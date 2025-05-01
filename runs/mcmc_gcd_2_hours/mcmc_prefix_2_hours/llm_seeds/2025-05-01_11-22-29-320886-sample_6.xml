@@ -1,0 +1,46 @@
+<SongBook version="1.2" encoding="UTF-8" standalone="no">
+    <Song Title="Happy Birthday">
+        <Genre>(Shindig | Pop)</Genre>
+        <Tempo>(Slow | Normal)</Tempo>
+        <Lyrics>
+            (<C>Happy</C> (<As>world</As>),
+            (<Melody> Happy <C>birthday</C> to you</Melody>.)
+            (<C>Happy</C> (<As>world</As>),
+            (<Melody> Happy <C>birthday</C> to you!</Melody>)
+            (<C>Happy</C> (<Em>every</Em>year</C>),
+            (<Melody> Happy <C>birthday</C> to you!</Melody>)
+            (<C>You</C> (<As>are</As>),
+            (<Melody> a</Melody>)(<S>treasure</S>))
+        </Lyrics>
+        <Music>
+            (<C>Happy</C>(<As>world</As>)),
+            (<Melody>)<C>birthday</C>(<Em>to</Em>)<C>you</C>())
+            (<C>Happy</C>(<As>world</As>)),
+            (<Melody>)<C>birthday</C>(<Em>to</Em>)<C>you</C>())
+            (<S>treasure</S>)
+        </Music>
+        <TempoLevel>(Slow)</TempoLevel>
+        <CueList>
+            (<Initiative>Start</Initiative>),
+            (<Event>Play</Event>),
+            (<Cue>Guitar</Cue>),
+            (<Event>Stop</Event>),
+            (<Cue>Drums</Cue>)
+        </CueList>
+    </Song>
+</SongBook> 
+
+ <?xml version="1.2" encoding="UTF-8" standalone="no"?>
+<Symphony>
+<Title>Beauty and the Beast</Title>
+<Composer>(Beethoven | Mozart)</Composer>
+<Description>
+    (<Phrase>Once upon a time</Phrase>),
+    (<Phrase>in a castle</Phrase>),
+    (<Phrase>there lived a man</Phrase>),
+    (<Phrase>who was enchanted</Phrase>)
+</Description>
+<MovementList>
+    (<Movement>Act I</Movement>),
+    (<Movement>Act II</Movement>),
+    (<Movement>Act

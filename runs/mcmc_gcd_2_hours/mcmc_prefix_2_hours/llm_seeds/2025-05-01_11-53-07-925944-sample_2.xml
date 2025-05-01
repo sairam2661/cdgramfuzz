@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xml:lang="en">
+  <product id="p1">
+    <name>Product 1</name>
+    <description>
+      <p>The <span>red </span>headlight... </p>
+      <p>The <span>right</span> headlight...</p>
+    </description>
+    <comment>extra comment </comment>
+  </product>
+  <product xml:key="p2">
+    <name>Product 2</name>
+    <description>
+      <p>The <span>green </span>headlight... </p>
+      <p>The <span>left</span> headlight...</p>
+    </description>
+    <comment>extra comment </comment>
+  </product>
+  <product xml:key="p3"/>
+  <description>
+    <p>This is a <span>free</span> gift...</p>
+  </description>
+</catalog>

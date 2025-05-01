@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "ISO-8859-15"?>
+<catalog>
+   <book id="bk101">
+      <author>John Smith</author>
+      <title lang="en">XML for Beginners</title>
+      <genre>Computer</genre>
+      <price currency="USD">39.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>An in-depth look at creating databases with XML.</description>
+      <pub_id>bk101</pub_id>
+      <rating>4/5</rating>
+      <definiteNotthere>maybe</definiteNotthere>
+    </book>
+     <book id="bk102">
+      <author>Jane Bobbin</author>
+      <title lang="en">XSLT and XPath</title>
+      <genre>Computer</genre>
+      <price currency="USD">49.95</price>
+      <publish_date>1999-08-01</publish_date>
+      <description>An in-depth look at using XSLT and XPath.</description>
+      <pub_id>bk102</pub_id>
+      <rating>5/5</rating>
+      <available>no</available>
+    </book>
+   </catalog>

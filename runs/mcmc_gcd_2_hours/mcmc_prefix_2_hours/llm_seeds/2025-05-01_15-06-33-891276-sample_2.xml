@@ -1,0 +1,27 @@
+<?xml version = 
+  1.0 
+  encoding = 
+  "UTF-8" 
+  standalone = 
+  yes 
+?>
+<catalog xmlns = 
+  "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace" 
+         xmlns:product = 
+  "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product" 
+         lang ="Yeah.9.1.xml">
+  <productinfo xmlns = 
+    "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product:info">
+    <productname xmlns = 
+      "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product:info:productname">#01</productname>
+    <serialnumber xmlns = 
+      "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product:info:serialnumber">#02</serialnumber>
+  </productinfo>
+  <discount xmlns = 
+    "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product:discount">
+    <productcode xmlns = 
+      "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product:discount:productcode">A</productcode>
+    <percentagexmlns = 
+      "urn:oasis:names:tc:docbf:xml:2003:namespace schemas:xml:namespace:product:discount:percentage">24</percentage>
+  </discount>
+</catalog>

@@ -1,0 +1,25 @@
+<?xml version = 
+  1.0 
+  encoding = 
+  "UTF-8" 
+  standalone = 
+  no?>
+ 
+<catalog xml:namespace="http://example.com/catalog" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://example.com/catalog.xsd">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publisher>My Publisher</publisher>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Master Class</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publisher>Your Publisher</publisher>
+  </book>
+</catalog>

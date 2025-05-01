@@ -1,0 +1,6 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog  xmlns:ex= "http://example.com/enumeratedTypes">
+     <country ex:Code  ="(US|CA|MX)"/>
+     <product id="(P01 | P02 | P03)"/>
+     <status>(active|inactive)</status>
+</catalog>

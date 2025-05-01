@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalogue>
+  <author>
+    <name>John Smith</name>
+    <name>Jane Doe</name>
+  </author>
+  <book collection ="?">
+    <title>XML Tutorial</title>
+    <title>XML Demonstration</title>
+  </book>
+  <book collection ="+">
+    <title>Advanced XML Topics</title>
+    <title>XML Best Practices</title>
+  </book>
+  <book collection="*">
+    <title>XML Error Handling</title>
+    <title>XML Validation Examples</title>
+  </book>
+</catalogue>

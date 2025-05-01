@@ -1,0 +1,13 @@
+<SkillsDatabase
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.example.com/skills schema.xsd"
+    version="1.0" encoding="UTF-8" standalone="yes">
+
+    <DatabaseSkills>
+        <Programming lang="Python" difficulty="hard" rating="9"/>
+        <Programming lang="Java" difficulty="medium" rating="7"/>
+        <Design lang="HTML" difficulty="easy" rating="6"/>
+        <Management lang="SQL" difficulty="hard" rating="8"/>
+    </DatabaseSkills>
+
+</SkillsDatabase>

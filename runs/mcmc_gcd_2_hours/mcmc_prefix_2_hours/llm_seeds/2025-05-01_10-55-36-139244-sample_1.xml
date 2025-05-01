@@ -1,0 +1,49 @@
+<?xml version = 
+        1.0?>
+    <schema ID ="
+        urn:isbn:123-4567890123"
+        xmlns = 
+            "urn:isbn:123-4567890123"
+            xmlns:xsd = 
+                "http://www.w3.org/2001/XMLSchema"
+            xmlns:tns = 
+                "urn:isbn:123-4567890123" 
+                targetNamespace ="
+                    urn:isbn:123-4567890123"
+                elementFormDefault ="
+                    qualified"
+>
+
+    <xs:simpleType name="TokenType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]+" />
+        </xs:restriction>
+        <xs:enumeration value="A" />
+        <xs:enumeration value="B" />
+        <xs:enumeration value="C" />
+        <xs:enumeration value="D" />
+    </xs:simpleType>
+
+    <xs:simpleType name="PriorityType">
+        <xs:restriction base="TokenType" />
+    </xs:simpleType>
+
+    <xs:element name="Book" type="tns:BookType" />
+    <xs:complexType name="BookType">
+        <xs:sequence>
+            <xs:element name="Title" type="xs:string" />
+            <xs:element name="Author" type="xs:string" />
+            <xs:element name="Publisher" type="xs:string" />
+            <xs:element name="PublicationDate" type="xs:date" />
+            <xs:element name="Priority" type="tns:PriorityType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Library" type="tns:LibraryType" />
+    <xs:complexType name="LibraryType">
+        <xs:sequence>
+            <xs:element name="Book" maxOccurs="unbounded" type="tns:BookType" />
+        </xs:sequence>
+    </xs:complexType>
+
+</schema>

@@ -1,0 +1,39 @@
+<?xml version = 1.0 encoding = "UTF-16"?>
+<?xml-stylesheet type = "text/xsl" href = "stylesheet.xsl"?>
+<!DOCTYPE library [
+<!ELEMENT library (title, author, publisher, year, bookdescription, price, quantity, image) >
+<!ELEMENT title (#PCDATA)*
+  >
+
+<!ELEMENT author (#PCDATA)*
+  >
+  
+<!ELEMENT publisher (#PCDATA)*
+  >
+  
+<!ELEMENT year (#PCDATA)*
+  >
+  
+<!ELEMENT bookdescription (#PCDATA)*
+  >
+  
+<!ELEMENT price (#PCDATA)*
+  >
+  
+<!ELEMENT quantity (#PCDATA)*
+  >
+  
+<!ELEMENT image (#PCDATA)*
+  >
+]>
+
+<library>
+  <title>Technical Computing</title>
+  <author>David F. Parker</author>
+  <publisher>Manning Publications</publisher>
+  <year>2008</year>
+  <bookdescription>This book is about technical computing.</bookdescription>
+  <price>150.00</price>
+  <quantity>4</quantity>
+  <image>image.jpg</image>
+</library>

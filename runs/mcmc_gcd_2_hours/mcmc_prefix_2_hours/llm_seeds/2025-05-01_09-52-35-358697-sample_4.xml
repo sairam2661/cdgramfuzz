@@ -1,0 +1,47 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href=" Stylesheet.xsl"?>
+<?processing-instruction system = "http://www.oasis-open.org/docappliance"
+         encoding = "utf-8"
+         xmlns : xml = "http://www.w3.org XML /1998/  SVG "
+
+<catalog>
+  <book id="bk101">
+  <author>John Smith</author>
+  <<title>XML Tutorial</title>>
+  <genre>Computer</genre>
+  <price>39.95</price>
+  <publish_date>2000-10-01</publish_date>
+  <description>An in-depth introduction to XML.</description>
+  </book>
+  <book id="bk102">
+  <author>Jane Doe</author>
+  <<title>XSLT Tutorial</title>>
+  <genre>Computer</genre>
+  <price>49.95</price>
+  <publish_date>2001-05-01</publish_date>
+  <description>A comprehensive guide to XSLT.</description>
+  </book>
+</catalog> 
+
+<?><!-- /processingInstruction--> 
+<?xml-stylesheet type="text/xsl" href=" Stylesheet.xsl"?> 
+<?xml-stylesheet type="text/xsl" href=" anotherStyle.xsl"?> 
+ 
+<catalog>
+  <book id="bk101">
+  <author>John Smith</author>
+  <title>XML Tutorial</title>
+  <genre>Computer</genre>
+  <price>39.95</price>
+  <publish_date>2000-10-01</publish_date>
+  <description>An in-depth introduction to XML.</description>
+  </book>
+  <book id="bk102">
+  <author>Jane Doe</author>
+  <title>XSLT Tutorial</title>
+  <genre>Computer</genre>
+  <price>49.95</price>
+  <publish_date>2001-05-01</publish_date>
+  <description>A comprehensive guide to XSLT.</description>
+  </book>
+</catalog>

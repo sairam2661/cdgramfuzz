@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+   <description xml:lang ="" xmlns:fb ="" xmlns ="" encoding ="" revision ="" xml:space ="" format ="" date ="">
+      This is a product catalog.
+   </description>
+   <product id ="" price ="" rating ="" features ="">
+      <name>Bread Oven</name>
+      <description>Bread making machine.</description>
+      <ingredients>
+         <item name="Flour" quantity="2500"/>
+         <item name="Milk" quantity="900"/>
+      </ingredients>
+   </product>
+   <product id ="" price ="" rating ="" features ="">
+      <name>Beard Trimmer</name>
+      <description>Trimmers for men's beards.</description>
+      <ingredients>
+         <item name="Steel Razor Bits" quantity="2"/>
+         <item name="Adjustable Handle" quantity="1"/>
+      </ingredients>
+   </product>
+   <book id ="" author ="" reference ="" isbn ="">
+      <title>XML for beginners</title>
+      <description>Basic principles of XML.</description>
+      <contributor>John Smith </contributor>
+      <date iso ="" year ="" month ="" day ="" xml:lang ="" xmlns ="" revision ="" format ="" encoding ="" xml:space ="" encoding ="" xml:space ="" date ="">
+         <year iso ="" calendar ="" week ="" month ="" day ="" xml ="" xml:date ="" format ="" iso ="" year ="" iso ="" date ="" xml:lang ="" day ="" month ="" iso ="" year ="" iso ="" year ="" iso ="" month ="" calendar ="" day ="" xml ="" year ="" iso ="" month ="" day ="" calendar ="" week ="" iso ="" iso ="" iso ="" iso ="" iso ="" calendar ="" month ="" day ="" year ="" xml:lang ="" week ="" xml:year ="" iso ="" month ="" iso ="" month ="" month ="" iso ="" months ="" year ="" calendar ="" day ="" week ="" month ="" month ="" iso ="" year ="" iso ="" month ="" iso ="" month ="" iso ="" month ="" iso ="" month ="" iso ="" calendar ="" day ="" week ="" month ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso ="" iso =""

@@ -1,0 +1,28 @@
+<Rigidbody>
+    <StructuralFrame>
+        <Dimention>Length</Dimention>
+        <Dimention>Width</Dimention>
+        <Dimention.Height />
+        <MaterialWood />
+        <Weight>50#</Weight>
+        <MeasurementSystemMetric />
+        <Standard>ASME</Standard>
+        <ClassificationFireResistance />
+    </StructuralFrame>
+    <KinematicChain>
+        <Segment1>
+            <TypeGear />
+            <Diameter>2.5in</Diameter>
+            <PathLength>24in</PathLength>
+            <Velocity>50ft/min</Velocity>
+            <Acceleration>10ft/sec^2</Acceleration>
+        </Segment1>
+        <Segment2>
+            <TypeShaft />
+            <Diameter>1.25in</Diameter>
+            <PathLength>12in</PathLength>
+            <Velocity>30ft/min</Velocity>
+            <Acceleration>5ft/sec^2</Acceleration>
+        </Segment2>
+    </KinematicChain>
+</Rigidbody>

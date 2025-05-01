@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:db2 = "http://www.db2.com/xsd/cATALOG.xsd"
+db2:namespaces ="Yes"
+db2:schema="urn:isbn:0-201-89647-5"
+db2:entities="urn:isbn:0-201-89647-7"
+db2:types="urn:isbn:0-201-89647-9">
+
+  <record id ="My Records">
+    <field name="ISBN">0-201-89647-5</field>
+    <field name="Title">Data Management, 2nd Edition</field>
+    <field name="Publication Date">1997-12-10</field>
+    <field name="Price">34.95</field>
+  </record>
+
+  <record id =".My Records.2">
+    <field name="ISBN">0-201-89647-7</field>
+    <field name="Title">Data Management, 5th Edition</field>
+    <field name="Publication Date">2002-10-10</field>
+    <field name="Price">49.95</field>
+  </record>
+
+</catalog>

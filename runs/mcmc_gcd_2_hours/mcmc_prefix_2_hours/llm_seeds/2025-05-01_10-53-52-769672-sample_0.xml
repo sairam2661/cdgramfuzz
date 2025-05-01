@@ -1,0 +1,17 @@
+<?xml version =  1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog
+xml:lang ="" xmlns:xs =  "http://www.w3.org/2001/XMLSchema" 
+           xmlns:tc =  "http://www.example.org/types"
+
+  ><product
+  ID ="{tc:productCode}"
+  datatype ="{tc:productTypeCode}"
+  name ="{xs:string}"
+  description ="{xs:string}"
+  price ="{xs:decimal}"
+  ><productcode>PLN-123</productcode>
+  ><producttypecode>TOUR</producttypecode>
+  ><codestring>This is a test</codestring>
+  ><decimal>1242.56</decimal>
+  ></product
+></catalog>

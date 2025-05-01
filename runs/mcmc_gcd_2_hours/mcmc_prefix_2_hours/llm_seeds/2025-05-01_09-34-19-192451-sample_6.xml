@@ -1,0 +1,14 @@
+<?xml version = 
+    1.0 
+    encoding = 
+        "UTF-8" 
+        standalone = 
+            yes 
+       ?>
+    <note>
+    <to>Alice</to>
+    <from>Alice</from>
+    <subject>Meeting</subject>
+    <message><![CDATA[Don't forget our meeting at 2pm! Be at the conference room with all materials ready by 12pm.]]></message>
+    <priority>high</priority>
+    </note>

@@ -1,0 +1,93 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE document [
+<!ELEMENT note (to,from,subject,message,priority) >
+<!ELEMENT to (#PCDATA)*
+><!ELEMENT from (#PCDATA)*>
+<!ELEMENT subject (#PCDATA)*>
+<!ELEMENT message (#PCDATA)*>
+<!ELEMENT priority level>
+<!ELEMENT level (#PCDATA)*>
+<!ELEMENT data>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT details (#PCDATA)*> 
+<!ELEMENT price (#PCDATA)*> 
+  <!ELEMENT specialOffer (#PCDATA)*>
+<!ELEMENT note >
+  
+
+<!ELEMENT special>
+  <!ELEMENT discount (#PCDATA)*>
+<!ELEMENT product >
+<!ELEMENT name (#PCDATA)*>
+<!ELEMENT description (#PCDATA)*>
+
+<!ELEMENT address >
+<!ELEMENT street (#PCDATA)*>
+<!ELEMENT city (#PCDATA)*>
+<!ELEMENT state (#PCDATA)*>
+<!ELEMENT zip (#PCDATA)*>
+  
+  <!ELEMENT name>
+<!ELEMENT price>
+<!ELEMENT review (#PCDATA)*>
+ 
+  <!ELEMENT product>
+  <!ELEMENT discount>
+  <!ELEMENT rating (#PCDATA)*>
+  
+  <!ELEMENT deal>  
+<!ELEMENT book >
+<!ELEMENT details> 
+<!ELEMENT price >  
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT subject (#PCDATA)*> 
+<!ELEMENT description (#PCDATA)*> 
+<!ELEMENT review (#PCDATA)*> 
+  <!ELEMENT author>
+<!ELEMENT isbn (#PCDATA)*>
+<!ELEMENT language (#PCDATA)*>
+<!ELEMENT edition (#PCDATA)*> 
+ 
+  <!ELEMENT deal>
+<!ELEMENT product >
+<!ELEMENT review >
+ 
+<!ELEMENT user >
+ 
+<!ELEMENT id (#PCDATA)*>
+<!ELEMENT name (#PCDATA)*>
+<!ELEMENT rating (#PCDATA)*>
+ 
+<!ELEMENT book> 
+<!ELEMENT isbn (#PCDATA)*> 
+<!ELEMENT price (#PCDATA)*>   
+<!ELEMENT book> 
+<!ELEMENT deal>
+<!ELEMENT product> 
+<!ELEMENT book> 
+<!ELEMENT description >
+ 
+
+  
+ 
+  <!ELEMENT product>
+  <!ELEMENT details >
+<!ELEMENT offer (#PCDATA)*> 
+<!ELEMENT name > 
+<!ELEMENT price > 
+<!ELEMENT code (#PCDATA)*> 
+	
+<!ELEMENT detail >
+ 
+  <!ELEMENT product>
+<!ELEMENT rating >
+ 
+<!ELEMENT user >
+ 
+<!ELEMENT id > 
+<!ELEMENT name >
+ 
+<!ELEMENT date (#PCDATA)*>
+<!ELEMENT price >
+ 
+ 

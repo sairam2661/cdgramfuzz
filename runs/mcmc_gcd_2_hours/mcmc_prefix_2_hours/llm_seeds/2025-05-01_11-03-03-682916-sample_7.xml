@@ -1,0 +1,31 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<catalog>
+<description lang="en">Books</description>
+<country>USA</country>
+<company>ABC Inc.</company>
+<pricerule type="tokenized">
+<token>0-20</token>
+<token>21-30</token>
+<token>31+</token>
+</pricerule>
+<product id="bk101">
+<name>HTML Primer</name>
+<price>39.95</price>
+<description>Page 3 of 4, HTML: Hypertext Markup Language, Chapter 12: HTML Image Files</description>
+<writer>Eric Meyers</writer>
+<pubdate>2000-10-15</pubdate>
+<pricedev>0.30</pricedev>
+<ingress>3</ingress>
+<ingressunit priceunit="price">price</ingressunit>
+</product>
+<product id="bk102">
+<name>Cafe Discreet</name>
+<price>39.95</price>
+<description>A short book on coffee</description>
+<writer>Eric Meyers</writer>
+<pubdate>2001-10-15</pubdate>
+<pricedev>0.60</pricedev>
+<ingress>4</ingress>
+<ingressunit priceunit="price">price</ingressunit>
+</product>
+</catalog>

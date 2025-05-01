@@ -1,0 +1,32 @@
+<?xml version = 
+    1.0
+    encoding = 
+    "UTF-16"
+    standalone = 
+    no
+   ?>
+ 
+ <xs:schema xmlns:xs = 
+    "http://www.w3.org/2001/XMLSchema"
+    targetNamespace ="" xmlns:tns = ""
+    elementFormDefault ="qualified">
+
+  <xs:element name="Product"  maxOccurs="unbounded">
+   <xs:complexType>
+
+    <xs:sequence>
+     <xs:element name="Name" type ="
+   xs:string"/>
+     <xs:element name="Price" type ="
+   xs:decimal"/>
+     <xs:element name="Description" maxOccurs="unbounded" 
+      nillable ="" type ="
+   xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:element>
+ 
+  <xs:notation ref ="
+   {product-notation}"/>
+ 
+</xs:schema>

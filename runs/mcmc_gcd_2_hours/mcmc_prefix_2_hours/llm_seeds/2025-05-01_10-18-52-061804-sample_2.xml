@@ -1,0 +1,27 @@
+<?xml version =3.0 encoding="ISO-8859-1"?>
+<catalog>
+  <book id="bk101">
+    <author >John Smith </author>
+    <title>XML for Beginners </title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <description>An introduction to XML.</description>
+    <pub date="2000-10-01"/>
+  </book>
+  <book id="bk102">
+    <author>John Smith </author>
+    <title>XSLT: The Ultimate Guide </title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <description>A comprehensive guide to XSLT.</description>
+    <pub date="2001-05-01"/>
+  </book>
+  <book id="bk103">
+    <author>Jane Doe</author>
+    <title>Regular Expressions </title>
+    <genre>Computer</genre>
+    <price>29.95</price>
+    <description>A guide to regular expressions.</description>
+    <pub date="2000-02-01" currency="USD"/>
+  </book>
+</catalog>

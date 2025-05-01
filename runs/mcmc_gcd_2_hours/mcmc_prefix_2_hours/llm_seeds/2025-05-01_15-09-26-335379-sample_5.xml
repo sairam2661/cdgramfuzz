@@ -1,0 +1,19 @@
+<?xml version = 
+  1.0 encoding ="UTF-8"?>
+ 
+<dvd-player:program
+  xmlns:dvd-player ="http://example.com/wrappers/dvd-player" 
+  xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation ="http://example.com/wrappers/dvd-player DVDPlayerSchema.xsd"
+  version ="1.0" 
+  encoding ="UTF-8" 
+  standalone ="yes">
+ 
+  <player-info name ="Player 1" 
+    country ="USA" 
+    type ="DVD Player"/>
+ 
+  <movie-content title ="Inception" 
+    runtime ="148"
+    director ="Christopher Nolan"></movie-content>
+</dvd-player:program>

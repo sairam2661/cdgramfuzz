@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<catalog>
+    <description>Library catalog</description>
+    <entity>
+        <name>microsoft Sql</name>
+        <description>Microsoft SQL Server</description>
+    </entity>
+    <entity>
+        <name>mysql</name>
+        <description>MySQL database</description>
+    </entity>
+    <document>
+        <title>Database Management</title>
+        <author>John Smith</author>
+        <entityref name="sql"/>
+        <entitiesql>
+            <question>What is SQL?</question>
+            <answer>Structured Query Language (SQL)</answer>
+        </entitiesql>
+    </document>
+</catalog>

@@ -1,0 +1,19 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<Note>
+  <Title>Meeting Invitation</Title>
+  <Entity>
+    <Name>John</Name>
+    <Address>
+      <Street>123 Main St</Street>
+      <City>Anytown</City>
+      <State>CA</State>
+      <Zip>12345</Zip>
+    </Address>
+    <Phone>Contact Number</Phone>
+  </Entity>
+  <Notation>
+    <Name>HyperText Markup Language</Name>
+    <URI>http://www.w3.org/2000/xmldschema#
+          NS-hyml.xsd</URI>
+  </Notation>
+</Note>

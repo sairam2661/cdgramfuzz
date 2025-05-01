@@ -1,0 +1,6 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <book id="$book001 " title=" &quot;Introduction to XML&quot;" author="John Smith"/>
+  <book id=" &quot;XML for Beginners&quot; " title="XML Tutorial for Beginners" author="John Doe"/>
+  <book encoding="utf-8 " rev="2.1" publication=" &quot;January 1999&quot;" />
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<LibraryBook>
+    <Metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="book.xsd">
+      <Title>Example Book</Title>
+      <Author>John Doe</Author>
+      <PublicationDate>2022-01-01</PublicationDate>
+    </Metadata>
+    <Content>
+      <Chapter name="Introduction">
+        <Text>Introduction to the book.</Text>
+      </Chapter>
+      <Chapter name="Conclusion">
+        <Text>Conclusion of the book.</Text>
+      </Chapter>
+    </Content>
+  </LibraryBook>

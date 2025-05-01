@@ -1,0 +1,24 @@
+<SchoolYear>
+    <YearInformation xml:lang="en-us">
+        <SchoolName>&lt;School Name&gt;</SchoolName>
+        <Description>&amp;A school that is awesome!&amp;</Description>
+        <ContactInfo>
+            <Address>&lt;Address&gt;</Address>
+            <PhoneNum>123-456-7890</PhoneNum>
+            <Email>info@example.com</Email>
+        </ContactInfo>
+        <Administration>
+            <Principal>&lt;Principal&gt;</Principal>
+        </Administration>
+        <Calendar>
+            <Holiday>
+                <DayOfWeek>Saturday</DayOfWeek>
+                <HolidayName>New Year's Day</HolidayName>
+            </Holiday>
+            <Holiday>
+                <DayOfWeek>Sunday</DayOfWeek>
+                <HolidayName>Thanksgiving</HolidayName>
+            </Holiday>
+        </Calendar>
+    </YearInformation>
+</SchoolYear>

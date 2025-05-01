@@ -1,0 +1,30 @@
+<personal-data-martyr>
+  <xml_declaration version="1.1" encoding="ISO-8859-1" standalone="no"/>
+  <personal-info>
+    <identification>
+      <country-of-residence URIs="https://example.com/country" name="France"/>
+      <date-of-birth day="12" month="December" year="1990"/>
+      <place-of-birth city="Paris" country="France"/>
+    </identification>
+    <contact-information>
+      <email addresses="john.doe@example.com"/>
+      <phone-numbers>
+        <phone>+33 6 11 22 33 44</phone>
+      </phone-numbers>
+      <address>
+        <street>12 Chemin de la Paix</street>
+        <zip>75015 Paris</zip>
+        <country name="France"/>
+        <city name="Paris"/>
+        <state name="Île-de-France"/>
+      </address>
+    </contact-information>
+    <emergency-contact>
+      <name>Mother</name>
+      <relationship>parent</relationship>
+      <phone-numbers>
+        <phone>+33 6 33 33 44 55</phone>
+      </phone-numbers>
+    </emergency-contact>
+  </personal-info>
+</personal-data-martyr>

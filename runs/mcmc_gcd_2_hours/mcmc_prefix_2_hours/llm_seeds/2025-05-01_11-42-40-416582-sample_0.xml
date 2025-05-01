@@ -1,0 +1,26 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+
+<catalog>
+<description xml:lang="en"> Online Catalog </description>
+
+<country name="USA" code="US" />
+<contact>
+    <phone type="international" >+1 800-MAGIC CARD</phone>
+</contact>
+
+<product name="Guitar" description="A musical instrument">
+    <category>stringed</category>
+    <price currency="USD">250.00</price>
+    <brand name="Yamaha" logo="Yamaha_Logo.bmp" />
+    <size unit="inches">41 x 9.9 x 15</size>
+    <weight unit="pounds">9.5</weight>
+</product>
+
+<product name="Violin" description="A musical instrument">
+    <category>stringed</category>
+    <price currency="USD">350.00</price>
+    <brand name="Stentor" logo="Stentor Logo.jpg" />
+    <size unit="inches">14.2 x 3.8 x 7.2</size>
+</product>
+
+</catalog>

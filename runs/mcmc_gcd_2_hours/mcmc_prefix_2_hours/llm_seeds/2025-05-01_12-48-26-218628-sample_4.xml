@@ -1,0 +1,75 @@
+<?xml version = 1.0 encoding = "iso-8859-1"?>
+<library>
+    <books>
+        <book>
+            <title>1984</title>
+            <author>George Orwell</author>
+            <year>1949</year>
+            <publisher>Secker &Warburg
+            ;
+        </book>
+        <book>
+            <title>The Great Gatsby</title>
+            <author>F. Scott Fitzgerald</author>
+            <year>1925</year>
+            <publisher>Charles Scribner's Sons</publisher>
+        </book>
+    </books>
+    <magazines>
+        <magazine>
+            <title>Time</title>
+            <issue>42</issue>
+            <year>1922</year>
+            <publisher>Time Inc.</publisher>
+        </magazine>
+        <magazine>
+            <title>Life</title>
+            <issue>1</issue>
+            <year>1936</year>
+            <publisher>Time Inc.</publisher>
+        </magazine>
+    </magazines>
+</library> 
+
+<?xml version = 1.0 encoding = "UTF-16"?>
+<Catalog>
+    <Exhibits>
+        <Exhibit>
+            <Title>Exhibit Title</Title>
+            <Description>This is a test exhibit.&lt;br&gt;  &amp;  &lt;/Exhibit>
+        </Exhibit>
+        <Exhibit>
+            <Title>New Exhibit</Title>
+            <Description>This new exhibit is test.&lt;br&gt;&lt;/Exhibit>
+        </Exhibit>
+    </Exhibits>
+</Catalog> 
+
+<?xml version = 1.0 encoding = "latin1"?>
+<config>
+  <system>
+    <device>
+      <processor>
+        <type>Intel</type>
+        <speed>4.2</speed>
+      </processor>
+      <ram>16</ram>
+    </device>
+    <storage>
+      <hdd>
+        <size>512GB</size>
+        <type>SATA</type>
+      </hdd>
+    </storage>
+    <power>
+      <adapter>
+        <type>PCIe</type>
+        <power>
+          <source>X16</source>
+          <supply>80W</supply>
+        </power>
+      </adapter>
+    </power>
+  </system>
+</config> 
+<?xml version = "1.0" encoding = "iso

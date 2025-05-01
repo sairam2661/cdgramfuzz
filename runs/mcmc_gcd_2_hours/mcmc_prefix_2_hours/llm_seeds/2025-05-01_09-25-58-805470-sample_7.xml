@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+    <description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </description>
+    <entity ref="{http://xml.covernter.org/2009/08/xml-xmlcovernter-schema}&#169;">
+        <name>Nathan Thompson</name>
+        <email>nashawn@gmail.com</email>
+        <address>
+            The Old Mill, 12 High Street,<br/>London N1 9JT, UK<br/>
+            Phone: 0207 8765432,
+        </address>
+    </entity>
+    <entity ref="{http://xml.covernter.org/2009/08/xml-xmlcovernter-schema}? ">
+        <name>Ashley Moore</name>
+        <email>ashlee@gmail.com</email>
+        <address>
+            123 Willow Street,<br/>London, UK<br/>
+            Phone: 0207 7654321
+        </address>
+    </entity>
+</catalog>

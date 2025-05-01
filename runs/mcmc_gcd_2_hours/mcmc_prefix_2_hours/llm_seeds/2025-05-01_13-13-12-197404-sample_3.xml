@@ -1,0 +1,45 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE Library [
+<!ELEMENT Book (#PCDATA)*> 
+<!ELEMENT Author (#PCDATA)*> 
+<!ELEMENT ISBN (#PCDATA)*> 
+<!ATTLIST Book 
+    ISBN CDATA #REQUIRED > 
+    <!-- 
+     *   This attribute is present with a default value and can be overridden by the user.
+     *   ISBN is required to avoid a parse error when parsing this XML document.
+     --> 
+    <!ELEMENT Title (#PCDATA)*> 
+    <!ELEMENT Edition (#PCDATA)*> 
+    <!ELEMENT Publisher (#PCDATA)*> 
+    <!ELEMENT Year (#PCDATA)*> 
+    <!ELEMENT Language (#PCDATA)*> 
+    <!ELEMENT Publisher CDATA>
+    <!ELEMENT BookTitle (#PCDATA)*> 
+    <!ELEMENT ISBN (#PCDATA)*> 
+    <!ELEMENT Author (#PCDATA)*> 
+    <!ELEMENT Edition (#PCDATA)*> 
+    <!ELEMENT ISBN CDATA>
+    <!ELEMENT Country CDATA>
+
+]>
+
+<Library>
+    <Book ISBN="1234567890">
+        <Title>Python Programming</Title>
+        <Edition>2</Edition>
+        <Publisher>ABC Publishers</Publisher>
+        <Year>2022</Year>
+        <Language>English</Language>
+        <BookTitle>Python Programming</BookTitle>
+        <ISBN>1234567890</ISBN>
+        <Author>
+            <FirstName>John</FirstName>
+            <LastName>Dee</LastName>
+        </Author>
+        <Edition>2</Edition>
+        <ISBN>1234567890</ISBN>
+        <Country>USA</Country>
+    </Book>
+</Library>

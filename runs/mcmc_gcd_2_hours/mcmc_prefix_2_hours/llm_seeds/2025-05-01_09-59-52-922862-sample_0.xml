@@ -1,0 +1,48 @@
+<?xml version = 
+    1.0  encoding="UTF-8" standalone = 
+    yes?>
+ 
+<catalog>
+    <title>Library Catalog</title>
+
+    <description>
+        A catalog of books, movies, music, and video games.
+
+        <author>John Smith</author>, <author>Jane Doe</author>
+    </description>
+
+    <book id="bk101">
+        <genre>Romance</genre>
+        <title>The Great Gatsby</title>
+        <price>10.99</price>
+        <pub-date>2001-10-01</pub-date>
+
+        <summary>
+            This book is a classic romance story.
+            &lt;span style="font-style:italic"&gt;The Great Gatsby&lt;/span&gt; is a romance novel by F. Scott Fitzgerald.
+        </summary>
+
+        <isbn>9780743273565</isbn>
+        <publisher>Simon and Schuster</publisher>
+        <author>John G. Riviera</author>
+
+    </book>
+
+    <book id="bk102">
+        <genre>Fiction</genre>
+        <title>The Catcher in the Rye</title>
+        <price>12.99</price>
+        <pub-date>1988-10-01</pub-date>
+
+        <summary>
+            This book is a coming-of-age story.
+            &lt;span style="font-style:italic"&gt;The Catcher in the Rye&lt;/span&gt; by J.D. Salinger is a classic novel.
+        </summary>
+
+        <isbn>9780345407314</isbn>
+        <publisher>Little, Brown and Company</publisher>
+        <author>J.D. Salinger</author>
+
+    </book>
+
+</catalog>

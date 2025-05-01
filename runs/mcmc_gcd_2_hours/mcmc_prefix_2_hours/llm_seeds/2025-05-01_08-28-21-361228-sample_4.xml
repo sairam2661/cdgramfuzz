@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <description>
+        Company Catalog
+    </description>
+    <product id="p1">
+        <name>Peter Piper</name>
+        <description>Piper angles across quick red foxes.</description>
+        <price>10.99</price>
+        <entity name="amp" type="amp" />
+        <entity name="lb" type="lb" />
+    </product>
+    <product id="p2">
+        <name Greater-than-signltimesubscriptgt-subscriptltimesubscriptgt2lt2gt2gtlt6lt6gt-amp-amp-13lt6gt-gt-subs-13gt-amp-amp-p-amp-2lt6gt-3-3-gtsub-1-p-29-sub-p-28-lb-1gt-p-29-lb-p-28-amp-26gt-27gt-p-8-27-gt-p-28-gt-6-subs-1-1-6lt-p-22gt-p-28-lb-1gt-p-33-lb-p-32gt-p-28-lb-5amp-3-p-33-lb-2gt-p-19gt-p-25-subs-1-1-28gt-29gt-p-12gts-1p-14gt-6gts-16gt-p-25gt-3gt-15-p25gts-1-27gts-5-25lt-p-29s-22gt-15s-20gt-p-29lt-4-8gt-p-33-lb-1lt-3-6lt-15gt-p-25lt-p-28gts-15s-20gts-15gts-2gts-2lt-25lt-p-8lbgts-12gt-29lt-11-14gt-p-25gt-3gt-25lt-gt3lt-6lt-6lt-4gts-22lt-p-31gt-15gt-6gts-11gts-10gt-6gts-39gt-p-8-25gts-2-4lt-6lt-25gts-31gt-p-20gts-1p-8gt-25gts-31s-32gt-6s-31s-25s-27gt-8s-26lt-25lt-6lt-25gt-8s-26lt-p-27s-25lt-p-25lt-25lt-25lt-7lt-6gt-8s-32gts-8gt-6-3lt-20-s-31gt-15-4-2lt-4gt-p-8-11-gt-8gt-27-gt-p-26lt-25lt-6lt-7lt-7lt-27lt-25lt-6s-14-

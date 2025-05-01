@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?xml-entities 
+  xmlns:xlink = "http://www.w3.org/1999/xlink" 
+  preserve-amount = "yes" 
+  amount-by-type = "yes"
+  amount-by-uri-reference = "yes"
+  amount-by-external-General-entity = "yes"
+  no-namespace-uri = "yes" 
+  no-namespace-URI = "yes" 
+  no-namespace-URI = "yes"
+?>
+
+<entities>
+  <named-entity xml:lang ="Irish" xml:include-target ="#irish-namespace"/>
+  <external-General-entity xmlns = "other-namespace" entity-name ="[http://other-namespace.org/entity/|]" />
+  <xi:include xmlns:xi = "http://www.w3.org/1999/xlink" href ="[http://example.org/irish.xml]" />
+  <named-text xml:lang ="" xml:include-target ="#irish-namespace"/>
+  <xi:include xmlns:xi = "http://www.w3.org/1999/xlink" href ="[http://example.org/text.xml]" />
+  <general-entity xmlns = "other-namespace" entity-name ="[http://other-namespace.org entity/|]" />
+</entities>

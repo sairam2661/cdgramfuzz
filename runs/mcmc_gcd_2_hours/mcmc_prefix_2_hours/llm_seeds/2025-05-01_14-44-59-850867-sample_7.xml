@@ -1,0 +1,124 @@
+<?xml version = 
+1.0 
+encoding="ISO-8859-1"?>
+ 
+<!DOCTYPE customer 
+[ 
+<!ELEMENT customer (name, country, address, phone, email)> 
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT country (#PCDATA)*> 
+<!ELEMENT address (#PCDATA)*> 
+<!ELEMENT phone (#PCDATA)*> 
+<!ELEMENT email (#PCDATA)*> 
+<!ATTLIST customer 
+name CDATA #REQUIRED 
+country CDATA #REQUIRED 
+address CDATA #REQUIRED 
+phone CDATA #REQUIRED 
+email CDATA #REQUIRED 
+address-city CDATA #REQUIRED 
+address-state CDATA #REQUIRED 
+address-zip CDATA #REQUIRED 
+number CDATA #REQUIRED 
+vat-cod CDATA #REQUIRED > 
+ 
+<!ELEMENT company (company-name, phone, email)> 
+<!ELEMENT company-name CDATA > 
+<!ELEMENT phone (#PCDATA)*> 
+<!ELEMENT email (#PCDATA)*> 
+ 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT customer 
+name 
+    > 
+<!ATTLIST author 
+id CDATA #REQUIRED 
+name CDATA #REQUIRED > 
+<!ELEMENT country 
+code 
+    > 
+<!ELEMENT phone 
+number 
+    > 
+<!ELEMENT email 
+local-part 
+    > 
+<!ELEMENT company 
+name 
+    > 
+<!ATTLIST image 
+name CDATA #REQUIRED 
+src CDATA #REQUIRED > 
+<!ELEMENT image 
+src 
+    > 
+<!ELEMENT company-name 
+name 
+    > 
+<!ELEMENT phone 
+number 
+    > 
+<!ELEMENT email 
+local-part 
+    > 
+<!ELEMENT address 
+street 
+    > 
+<!ELEMENT address 
+city 
+    > 
+<!ELEMENT address 
+state 
+    > 
+<!ELEMENT address 
+zip 
+    > 
+<!ELEMENT address 
+number 
+    > 
+<!ELEMENT email 
+domain 
+    > 
+<!ELEMENT company 
+number 
+    > 
+<!ELEMENT company 
+vat-cod 
+    > 
+<!ELEMENT email 
+domain 
+    > 
+<!ELEMENT customer 
+name 
+    > 
+<!ATTLIST image 
+name CDATA #REQUIRED 
+src CDATA #REQUIRED > 
+<!ELEMENT company 
+name 
+    > 
+<!ATTLIST customer 
+name CDATA #REQUIRED 
+country CDATA #REQUIRED 
+address CDATA #REQUIRED 
+phone CDATA #REQUIRED 
+email CDATA #REQUIRED 
+address-city CDATA #REQUIRED 
+address-state CDATA #REQUIRED 
+address-zip CDATA #REQUIRED 
+number CDATA #REQUIRED 
+vat-cod CDATA #REQUIRED > 
+ 
+ 
+ 
+ <!-- 
+  This is an example of a complex comment 
+ 
+  We will use it to store information about a customer, 
+  like customer name, country, address, phone and email. 
+ 
+  The customer info will be inside a company tag 
+  and this tag will have several attributes like number, vat cod, etc 
+ 
+  We will also have a section to store an image address with the company 
+  name,

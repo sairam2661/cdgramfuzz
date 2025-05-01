@@ -1,0 +1,24 @@
+<RatingSystem version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="RatingSchema.xsd" xmlns="RatingSchema">
+<Settings xml:lang="en-US">
+<Display language="en" default="yes"/>
+<Summary>
+<General description="Overall rating" />
+<Specific rating-1="4" rating-2="5" rating-3="3"/>
+</Summary>
+<Configuration>
+<Default rating-1="4" default="yes" />
+</Configuration>
+<Features xmlns:features="http://example.com/features">
+<title>Advanced Rating Features</title>
+<Description>This schema defines advanced rating features.</Description>
+<Feature level="feature-1">
+<Name>Rating feature 1</Name>
+<Enabled default="no"/>
+<Description>Discribes the functionality of feature 1</Description>
+<Attributes>
+<Attribute name="attrib1" default="no" type="bool"/>
+</Attributes>
+</Feature>
+</Features>
+</Settings>
+</RatingSystem>

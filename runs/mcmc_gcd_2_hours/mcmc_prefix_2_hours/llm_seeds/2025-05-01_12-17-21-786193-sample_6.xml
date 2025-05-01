@@ -1,0 +1,10 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE addressbook SYSTEM "addressbook.xsd">
+ <addressbook xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <book id="BOOK-12345">
+   <contact name="John Doe"
+         xs:elementFormDefault="qualified"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.example.com/addressbook xs-addressbook.xsd"></contact>
+  </book>
+  </addressbook>

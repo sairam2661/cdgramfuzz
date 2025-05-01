@@ -1,0 +1,11 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD DTD ExternalReference //EN"
+                    "http://www.oasis-open.org/2009/06/oasiscatalog-1.0.dtd">
+
+<catalog xml:lang ="My language" xmlns:xlink = "http://www.w3.org/1999/xlink"
+           xmlns = "urn:oasis:names:tc:opencatalog:vol1">
+  <record match ="PUB" system ="{http://example.com}catalogs/file1.txt" xmlns:sql = "urn:oasis: Names:std:sql:1999:TC1:SQL:Basic-4"
+            xsi:schemaLocation ="{urn:oasis:names:std:sql:1999:TC1:SQL:Basic-4}http://www.oasis-open.org/ 2004/07/sqlbasic10.xsd"
+           />
+</catalog>

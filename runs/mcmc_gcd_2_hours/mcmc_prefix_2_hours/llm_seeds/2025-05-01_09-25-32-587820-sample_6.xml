@@ -1,0 +1,85 @@
+<?xml version = 
+   1.0 
+   encoding = 
+   "UTF-8" 
+   standalone = 
+   yes?>
+
+<!DOCTYPE product 
+   SYSTEM "product.xsd">
+
+<catalog >
+  <description>&lt;strong&gt;Strong text&lt;/strong&gt; &lt;em&gt;Emphasized text&lt;/em&gt;.&lt;/description&gt;
+  <group name="tools" description="Tools &quot;&quot;">
+    <product name="Magic Saddle" description="A fine leather hand bag" />
+    <product name="Saddle Soap" description="Very good saddle soap" />
+    <product name="Hat" description="Nice hat" />
+  </group>
+  <group name="printable">
+    <product name="Brochure" description="A colorful catalogue" />
+  </group>
+</catalog> 
+
+<!---->
+
+<!-- More entities can be added here using the syntax &quot;&quot; -->
+
+<!---->
+
+<!-- Entity: A single ampersand &amp; can be used to indicate an unescaped &. But use &amp; in places where it's escaped like this &amp;lt; -->
+<!---->
+
+<entity name="unescaped-&amp;">&amp;</entity> 
+
+<!---->
+
+<entity name="escaped-amp;="ampGreaterThanQuotationMark=".">
+  &amp;>
+</entity> 
+
+<!---->
+
+<!-- Additional entities can be used here -->
+<entity name="lt;less-than-sign;="gtSignSign="=lt">
+  &lt;
+</entity> 
+<entity name="gt;_greater-than-sign;="ltSignSign="gt">
+  &gt;
+</entity> 
+<entity name="amp;=ampersand;">
+  &amp;
+</entity> 
+<entity name="quot;single-quotation-mark;
+=double-quotation-mark;">
+  &quot;
+</entity> 
+<entity name="apos;'single-apos-sign; 
+=double-apos-sign...">
+  &apos;
+</entity> 
+<entity name=", comma;">
+ ,
+</entity> 
+<entity name="!exclamation-mark;">
+ !
+</entity> 
+<entity name="period=full-stop;=dot;
+=dots">
+ .
+</entity> 
+<entity name="?:question-mark;">
+ ?
+</entity> 
+<entity name="\begin{align*}begin of math">
+  \begin{align*}
+</entity> 
+<entity name="\end{align*}end of math">
+  \end{align*}
+</entity> 
+<entity name="^\asciicircumflex;=minus-sign;=minus;=subtract;sign">
+  ^
+</entity> 
+<entity name="_underscore;=times-bar;=over-line;=horizontal-line;">
+  _
+</entity> 
+<entity name="~tilde;=wedge;=two-s

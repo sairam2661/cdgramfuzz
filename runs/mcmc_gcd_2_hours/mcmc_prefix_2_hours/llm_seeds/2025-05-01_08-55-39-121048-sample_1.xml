@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog xmlns:book = "http://bookstore.axiom"
+         xmlns:customer = "http://customer.axiom"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation ="
+          http://bookstore.axiom 
+          bookstore.xsd
+          http://customer.axiom 
+          customer.xsd">
+
+  <description>Online bookstore retailing books, CDs, videos, software, and video games.</description>
+  <company>
+    <name>OnlineBooks Ltd.</name>
+    <address>2560 W. Olympic Blvd.</address>
+    <phone>310-474-3000</phone>
+  </company>
+  <copyright>
+    <year>2001</year>
+  </copyright>
+  <author>
+    <name>John Smith</name>
+    <email>j.smith@onlinebooks.com</email>
+  </author>
+</catalog>

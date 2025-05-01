@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<?xml-stylesheet type = "text/xsl" href = "styles.xsl"?>
+<catalog xmlns = "http://www.example.comatalog" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation ="
+www.example.com catalog.xsd">
+    <description>
+        Online Catalog
+    </description>
+    <Publisher>Oracle Corporation</Publisher>
+    <Contact>
+        <Address>
+            500 Garden City Science Park   
+            Road, Monrovia, CA  91016-1819
+        </Address>
+        <Phone>408-544-2233</Phone>
+        <Email>scott.morton@oracle.com</Email>
+    </Contact>
+    <CompanyVersion>3.0.1</CompanyVersion>
+</catalog>

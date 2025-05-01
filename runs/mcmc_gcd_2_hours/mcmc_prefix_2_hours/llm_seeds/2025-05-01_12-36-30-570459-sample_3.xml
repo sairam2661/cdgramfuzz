@@ -1,0 +1,110 @@
+<?xml version = 
+  1.0 
+  encoding = 
+  "UTF-8" 
+  standalone = 
+  yes?>
+ 
+<library catalog ="In Depth" 
+  xmlns = 
+  "http://books.xmlcatalog.com" 
+  xmlns:xsi = 
+  "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation ="
+
+  http://books.xmlcatalog.com/Library.xsd 
+  Library.xsd">
+ 
+  <book id ="" isbn ="" 
+    author ="" title ="" 
+    publisher ="" publication_date ="" country ="">
+
+    <chapter>
+      <title> Introduction </title>
+      <content>Book content is here</content>
+    </chapter>
+
+    <chapter>
+      <title> Basic </title>
+      <content>Basic content is here</content>
+    </chapter>
+
+  </book>
+ 
+  <author>
+    <name>T. Rex</name>
+    <books>
+
+      <bookref isbn =""/>
+
+    </author>
+ 
+</library> 
+
+<library>
+
+  <author>
+    <name>D. D. Boulton</name>
+    <books>
+
+      <bookref isbn ="/ref/200">
+
+        <book author ="" isbn ="/ref/202" 
+        title =""  chapterref ="/chapter/123">
+
+       </book>
+
+      </bookref>
+
+    </author>
+
+  </library> 
+
+<book>
+
+  <author name ="" isbn ="/ref/202" 
+  title =""  chapterref ="/chapter/123">
+
+    <comment>Author's comment is here</comment>
+
+  </book> 
+
+<chapter>
+
+  <author name ="" title ="" 
+
+  content ="" chapterref ="/chapter/42">
+
+  </chapter> 
+
+<reference bookref ="/ref/202" isbn ="/ref/203"> 
+  <category categoryref ="/ref/104">
+</reference>
+
+<author name ="/ref/104" isbn ="/ref/204" title ="/ref/205">  
+
+<book>
+
+<author name ="" isbn ="/ref/206" 
+
+title ="/ref/207" chapterref ="/chapter/45"> 
+    
+<comment>This is another comment from different book</comment>  
+
+</book>
+
+<library>
+
+<author name ="/ref/104" isbn ="/ref/208" title ="/ref/209"> 
+<books>
+
+<bookref author ="/ref/210" isbn ="/ref/211"> 
+ <chapter>
+  <title>TITLE 1</title>
+  <content>CONTENT 1</content>
+ </chapter>
+
+<bookref author ="/ref/212" isbn ="/ref/213"> 
+ <chapter>
+  <title>TITLE 2</title>
+  <content>CONTENT 2</content>

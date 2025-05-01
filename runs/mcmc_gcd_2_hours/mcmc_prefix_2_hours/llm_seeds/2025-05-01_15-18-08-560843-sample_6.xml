@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = 'UTF-8' standalone = yes?>
+
+<personal-contact>
+    <name>John &amp; Jane Doe</name>
+    <email ref="employee123" address="john.jane.doe@example.com"/>
+    <phone type="office" value="+1-202-456-1111"/>
+    <address country="USA" city="New York" postal="10021-0010"/>
+</personal-contact>

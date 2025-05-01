@@ -1,0 +1,22 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+
+<catalog>
+<description>&copy; 2024 Examples.com; All rights reserved.</description>
+<company name="ABC Corporation" address="123 Main St."/>
+<product>
+<name>Desk</name>
+<price>120.00</price>
+<description>
+This is a product.
+It is a desk and it has a
+&quot;back&quot; and a
+&lt;foo&gt; that is bar.
+</description>
+<category>Office</category>
+<specifications>
+<spec>&amp;nbsp; A specification&nbsp;
+  that spans multiple lines of text.
+</spec>
+</specifications>
+</product>
+</catalog>

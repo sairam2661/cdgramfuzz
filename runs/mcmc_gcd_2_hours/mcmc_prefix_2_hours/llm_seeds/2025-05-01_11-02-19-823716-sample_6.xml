@@ -1,0 +1,22 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<catalog>
+ <book lang="en" content-type="text/html">
+  <author>John Smith</author>
+  <title xml:lang="en">XML for Dummies</title>
+  <publisher xml:lang="en">New Technology Publishing</publisher>
+  <price currency="USD">
+    <price amount="19.95"/>
+    <price amount="24.95"/>
+  </price>
+ </book>
+  <document>
+    <title xml:lang="fr">Gras aux yeux volants</title>
+    <date xml:lang="en" xml:space="preserve">16 décembre 2001</date>
+  </document>
+  <ref gr:target="book1">
+    <id gr:id="book1"/>
+  </ref>
+  <ref gr:target="doc1">
+    <date xml:lang="fr" xml:space="preserve">11 février 2000</date>
+  </ref>
+</catalog>

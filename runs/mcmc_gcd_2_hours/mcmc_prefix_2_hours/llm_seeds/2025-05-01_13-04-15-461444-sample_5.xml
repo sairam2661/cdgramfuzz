@@ -1,0 +1,17 @@
+<?xml version = 4.0 encoding = "UTF-8"?>
+<!DOCTYPE person [
+<!ELEMENT person (address, phone, email)>
+<!ELEMENT address (street, city, state, zip)>
+<!ELEMENT street (#PCDATA)*
+><!ELEMENT phone (#PCDATA)*>]> 
+
+<person>
+<address>
+<street>123 Main St</street>
+<city>New York</city>
+<state>NY</state>
+<zip>10001</zip>
+</address>
+<phone>123-456-7890</phone>
+<email>john.doe@example.com</email>
+</person>

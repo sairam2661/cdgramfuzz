@@ -1,0 +1,10 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<catalog provider="#required">
+    <book id="#fixed" title="Java Programming" author="John Smith" 
+          price="#fixed" currency="USD" provider="#fixed"/>
+    <book id="book1" title="Python Tutorial" author="Alice Brown" 
+          price="29.99" currency="USD" provider="#implied"/>
+    <book id="book2" title="C++ Programming" author="Bob Johnson" 
+          price="39.99" currency="USD" provider="#fixed"/>
+    <manufacturer name="#required" address="123 Main St" city="New York"/>
+</catalog>

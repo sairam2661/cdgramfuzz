@@ -1,0 +1,23 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+<catalog xmlns="http://www.w3schools.com/xmlcatalog">
+    <book id="bk101">
+        <title>XML for Beginners</title>
+        <author>John Smith</author>
+        <publication-date>2009-10-15</publication-date>
+        <price>39.95</price>
+        <system-identifier SYSTEM="bk1001">
+            <description>XML catalogbook</description>
+        </system-identifier>
+        <public-identifier PUBLIC="XMLCatalogBook"/>
+
+    </book>
+
+    <book id="bk102">
+        <title>XSLT Master</title>
+        <author>Jane Doe</author>
+        <publication-date>2009-07-17</publication-date>
+        <price>59.95</price>
+        <image SYSTEM="xl.jpg"/>
+    </book>
+
+</catalog>

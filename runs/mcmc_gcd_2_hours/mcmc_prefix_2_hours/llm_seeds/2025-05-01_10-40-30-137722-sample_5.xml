@@ -1,0 +1,14 @@
+<?xml version = 1.0  encoding="UTF-8" standalone =  yes?>
+<Customer xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+
+ <CustomerData>
+
+     <CustomerID type ="xsd:integer">CustomerId1</CustomerID>
+     <CustomerID type ="xsd:integer" default="#REQUIRED">CustomerId2</CustomerID>
+     <CustomerID type ="xsd:integer" xsi:nil="true"/>
+     <CustomerID type ="xsd:integer" default="#IMPLIED">CustomerId3</CustomerID>
+     <CustomerID type ="xsd:integer" default="#FIXED 'fixedValue'" >CustomerId4</CustomerID>
+     
+ </CustomerData>
+
+</Customer>

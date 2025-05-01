@@ -1,0 +1,24 @@
+<?xml version =9.0  encoding="UTF-8" standalone= no?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/note note.xsd">
+
+  <to>John Doe</to>
+  <from> Jane Smith</from>
+  <subject>Project Update</subject>
+
+  <address>
+    <street>155 Main St</street>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+  </address>
+
+  <message>
+    &copy; 2022 Company Name.  All rights reserved.
+  </message>
+
+  <footer>
+    <legal>&nbsp; &amp; </legal>
+  </footer>
+
+</note>

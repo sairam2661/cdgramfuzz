@@ -1,0 +1,18 @@
+<TDML xmlns:td="http://www.example.com/data-model-language" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Table xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.example.com/data-model-language td.xsd">
+        <Row>
+            <TD value="TD-001"/>
+            <TD value="John Doe"/>
+            <TD value="john.doe@example.com"/>
+            <TD value="123 Main St"/>
+            <TD value="(123) 456-7890"/>
+        </Row>
+        <Row>
+            <TD value="TD-002"/>
+            <TD value="Jane Doe"/>
+            <TD value="jane.doe@example.com"/>
+            <TD value="456 Elm St"/>
+            <TD value="(098) 765-4321"/>
+        </Row>
+    </Table>
+</TDML>

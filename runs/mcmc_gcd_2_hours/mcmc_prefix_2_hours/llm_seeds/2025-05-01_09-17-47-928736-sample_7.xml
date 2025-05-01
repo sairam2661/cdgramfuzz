@@ -1,0 +1,41 @@
+<?xml version = 
+    
+  1.0?>
+  <catalog>
+    <country code="USA">
+      <title>United States</title>
+      <description>An English-speaking country</description>
+      <phone>1-800-Hotel</phone>
+      <fax>1-800-232-8342</fax>
+      <url>http://www.usa.com</url>
+      <email>
+        contact@usa.com
+      </email>
+      <countryCode>USA</countryCode>
+      <city>New York City</city>
+      <state>New York</state>
+      <zip>10021</zip>
+      <notes>
+        Special Information
+        &copy;
+      </notes>
+    </country>
+    <country code="UK">
+      <title>United Kingdom</title>
+      <description>A country in Northwestern Europe</description>
+      <phone>44 800 808 0202</phone>
+      <fax>44 300 020 0291</fax>
+      <url>http://www.uk.com</url>
+      <email>
+        contact@uk.com
+      </email>
+      <countryCode>UK</countryCode>
+      <city>London</city>
+      <state>d</state>
+      <zip>WA 1AA</zip>
+      <notes>
+        Special Information
+        &copy;2005 Oxfam
+      </notes>
+    </country>
+  </catalog>

@@ -1,0 +1,18 @@
+<Sitemap xmlns="http://www.w3.org/2005/Atom">
+  <Feed xml:namespace-uri="http://www.w3.org/2005/Atom" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Id>https://example.com/rss</Id>
+    <Title>Example Feed</Title>
+    <Updated>2023-02-20T14:30:00-05:00</Updated>
+    <Link rel="alternate" type="application/rss+xml" title="Rss" href="https://example.com/rss"/>
+    <Author>
+      <Name>Tony</Name>
+      <Href>/me</Href>
+    </Author>
+    <Author>
+      <Name>Joe</Name>
+      <Href>/joey</Href>
+    </Author>
+    <Subscribe rel="self"/>
+    <ExternalIdentifier System="https://example.com/external-id"/>
+  </Feed>
+</Sitemap>

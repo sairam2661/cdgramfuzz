@@ -1,0 +1,65 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+  <catalog>
+    <book>
+      <author>John Smith</author>
+      <title math:ij="2" style="font-size: larger">XML Tutorial</title>
+      <genre>Computer</genre>
+      <price currency="USD">19.95</price>
+      <description>This is a tutorial on the XML language />
+      <pageCount>100</pageCount>
+      <company>ABC Inc.</company>
+      <catalogItem>
+        <title>Empty Book</title>
+        <author />
+      </catalogItem>
+    </book>
+    <book>
+      <author>Jane Doe</author>
+      <title xml:lang="fr">Introduction &quot;XML&quot;</title>
+      <genre>Self Help</genre>
+      <price currency="USD">14.95</price>
+      <description>You could also do better, if you knew more</description>
+      <pageCount>50</pageCount>
+      <company>ABC Inc.</company>
+      <catalogItem>NotEmpty Book</catalogItem>
+    </book>
+  </catalog> 
+
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+  <catalog>
+    <book id="bk101">
+      <author>John Smith</author>
+      <title math:ij="2" style="font-size: larger">XML Tutorial</title>
+      <genre>Computer</genre>
+      <price currency="USD">19.95</price>
+      <description>This is a tutorial on the XML language />
+      <pageCount>100</pageCount>
+      <company>ABC Inc.</company>
+      <catalogItem>
+        <title>Empty Book</title>
+        <author />
+      </catalogItem>
+    </book>
+    <book>
+      <author>Jane Doe</author>
+      <title xml:lang="fr">Introduction &quot;XML&quot;</title>
+      <genre>Self Help</genre>
+      <price currency="USD">14.95</price>
+      <description>You could also do better, if you knew more</description>
+      <pageCount>50</pageCount>
+      <Company>XYZ Corp.</company>
+      <CatalogItem>NotEmpty Book</CatalogItem>
+    </book>
+  </catalog> 
+
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+    <catalog>
+        <address>
+          <street1>Metro Turner Crossing</street1>
+          <street2>4550 Van Dyke St</street2>
+        </address>
+        <contact>
+          <phone type="voice">201-555-4359</phone>
+          <phone type="fax">201-555-2478</phone>
+          <email>support@abcinc.com</email>
+          <website>http://www.ab.com</website

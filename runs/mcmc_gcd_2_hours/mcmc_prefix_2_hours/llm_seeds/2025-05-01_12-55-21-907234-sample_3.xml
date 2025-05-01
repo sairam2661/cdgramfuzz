@@ -1,0 +1,29 @@
+<?xml version = 
+    1.0 
+    encoding="ISO-8859-1"
+    standalone=    yes
+   ?>
+
+<!DOCTYPE catalog SYSTEM 
+        "http://www.example.com/cd Catalog 1.0 Catalog DTD">
+
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An introduction to XML.</description>
+        <cover_image>xmlbookcover.jpg</cover_image>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>A comprehensive guide to XSLT.</description>
+        <cover_image>xsltbookcover.jpg</cover_image>
+    </book>
+</catalog>

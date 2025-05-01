@@ -1,0 +1,41 @@
+<?xml version = 
+        1.0 
+        encoding = "UTF-8" 
+        standalone = 
+          yes 
+         ?>
+<catalog>
+  <book id="bk101">
+    <author> John Smith </author>
+    <title> XML Examples </title>
+    <genre>Programming</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    &nbsp;
+    <description> A book on XML programming </description>
+    <content 
+          entity ="Some #PCDATA outside the book"
+          reference =">&lt;http://www.w3.org/2000/10/xml-range#Some#
+            &quot;;quot&quot;=&gt;Some #PCDATA&quot; outside the book&quot; &#60;/&gt;"/>
+    <language>English</language>
+    <subject>Computer Sci</subject>
+    <custom_id>bk101</custom_id>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>Introduction to XML</title>
+    <genre>Computer Sci</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    &nbsp;
+    <description> A book on XML introduction for beginners </description>
+    <content 
+          entity ="&lt;Some #PCDATA outside the book&gt;"
+          reference ="&lt;http://www.w3.org/2000/10/xml-range/#Some;
+            &quot;;quot&quot;=&gt;Some #PCDATA outside the book&quot; 
+                      &#60;/&gt;"/>
+    <language>English</language>
+    <subject>Computer Sci</subject>
+    <custom_id>bk102</custom_id>
+  </book>
+</catalog>

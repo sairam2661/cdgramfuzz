@@ -1,0 +1,53 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+ <catalog>
+  <book lang =""  xml:space="preserve">
+    <title>    Title of Book</title>
+    <first_name>Anthony</first_name>
+    <last_name>Cecil</last_name>
+    <address>
+      <street>The Angel Art Centre</street>
+      <city>Islington</city>
+      <country>United Kingdom</country>
+      <zip>EC1Z 6HA</zip>
+      <phone>0207834535</phone>
+      <fax>0207834536</fax>
+      <email anzumanthonycecil.curtis.mbe.abcuk.gov.uk.  =">
+        anzumanthonycecil.curtis.mbe.abcuk.gov.uk.  =
+      </email>
+    </address>
+    <date>   1999-12-16   </date>
+    <price>24.99
+   </price>
+    <description>
+      A &quot;best of&quot; compilation (no flash).  The title includes 1,000 characters.
+      A unique compilation that is a combination of some of our other
+      books. The title includes 999 characters.
+    </description>
+  </book>
+  <book lang ="/>">
+    <title>             Title of Book</title>
+    <first_name>Karen</first_name>
+    <last_name>Harrison</last_name>
+    <address>
+      <street>The Angel Art Centre</street>
+      <city>Islington</city>
+      <country>United Kingdom</country>
+      <zip>EC1Z 6HA</zip>
+      <phone>0207834535</phone>
+      <fax>0207834536</fax>
+      <email>
+        <name>harrisonkaren</name>
+        <space>&nbsp;    &nbsp;   </space>
+        <url>http://www.harrisonkaren.com/
+        ="/>
+      </email>
+    </address>
+    <date>   1999-12-16   </date>
+    <price>25.99</price>
+    <description>Nice compilation.  (Title has no links)</description>
+  </book>
+</catalog>  
+
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <book lang =

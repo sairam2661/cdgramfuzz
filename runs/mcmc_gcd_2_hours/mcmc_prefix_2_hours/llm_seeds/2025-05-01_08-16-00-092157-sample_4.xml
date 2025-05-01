@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<catalog xml:lang =" EN">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <name>Smith</name>
+    <price>39.95</price>
+    <pubdate>2000-10-01</pubdate>
+    <copyNumber>1</copyNumber>
+    <attribute name="ISBN" type="string"/>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XML: A Guide</title>
+    <genre>Computer</genre>
+    <name>Doe</name>
+    <price>49.95</price>
+    <pubdate>2000-09-30</pubdate>
+    <copyNumber>2</copyNumber>
+    <attribute name="ISBN" type="string"/>
+  </book>
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<catalog xmlns = "http://books.codaWorks.com">
+<book id ="{http://www.codaWorks.com/book/}1">
+<title>XML Data Types</title>
+<type>Text</type>
+<subject>
+<term>DOM</term>
+<term>XSLT</term>
+</subject>
+<memo>This section covers various XML data types.</memo>
+<keywords>
+<keyword>DOM</keyword>
+<keyword>XSLT</keyword>
+</keywords>
+<price currency ="{http://www.codaWorks.com/currency}USD">19.95</price>
+</book>
+</catalog>

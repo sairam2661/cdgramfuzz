@@ -1,0 +1,16 @@
+<?xml version=1.0 encoding= "UTF-8"?>
+<terms>
+    <keyword value=".http://schema.org/DataFormat"/>
+    <keyword value=".http://schema.org/Software"/>
+    <notebook>
+        <notebookEntry id="#nb1"/>
+        <notebookEntry id="#nb2">
+            <keyword value=".http://schema.org/DataFormat"/>
+        </notebookEntry>
+        <notebookEntry idref="#nb1"/>
+    </notebook>
+    <tokenizedType name="SoftwareFormat">
+        <keyword value=".http://schema.org/DataFormat"/>
+        <keyword value=".http://schema.org/Offline"/>
+    </tokenizedType>
+</terms>

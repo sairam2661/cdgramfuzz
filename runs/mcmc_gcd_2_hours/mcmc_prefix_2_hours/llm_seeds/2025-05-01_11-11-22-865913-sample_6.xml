@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<?xml-stylesheet href ="style.css" type="text/css"?>
+<catalog>
+    <book id="bk101">
+        <author>Cedar Simmons</author>
+        <first-name>James</first-name>
+        <last-name>Tate</last-name>
+        <NMTOKEN name="Main-Catalog">Main-Catalog</NMTOKEN>
+        <publisher>Simon &amp; Schuster</publisher>
+        <price>
+            <price currency="USD">39.95</price>
+            <carton>2</carton>
+        </price>
+        <NMTOKEN name="Author-Info">James Tate
+            <NMTOKEN name="Bio">Computer Engineer &amp; Researcher</NMTOKEN>
+        </NMTOKEN>
+    </book>
+    <book>
+        <NMTOKEN name="Book-Caption">Book Title</NMTOKEN>
+        <NMTOKEN name="Description">This is a description of a book</NMTOKEN>
+    </book>
+</catalog>

@@ -1,0 +1,23 @@
+<?xml version = 
+    1.0 
+    encoding = 
+        "UTF-8" 
+        standalone = 
+            yes 
+           ?>
+
+<!DOCTYPE catalog 
+    PUBLIC 
+        "-//OASIS//DTD Document Style XML 1.0//EN"
+        "http://www.oasis-open.org/docstyle.dtd">
+
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>The Introduction to XML</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <description>A short introduction to XML.</description>
+        <pubdate>2001-10-12</pubdate>
+    </book>
+</catalog>

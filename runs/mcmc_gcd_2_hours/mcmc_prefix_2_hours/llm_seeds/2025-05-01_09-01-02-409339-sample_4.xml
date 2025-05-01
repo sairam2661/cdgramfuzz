@@ -1,0 +1,60 @@
+<html xmlns:fb="http://www.facebook.com/xml/ns/">
+  <head>
+    <title>My Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta property="fb:app_id" content="1234567890"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <fb:login-button scope="email" callback="loginCallback"></fb:login-button>
+    </header>
+    <main>
+      <section>
+        <h1>Welcome to my page</h1>
+      </section>
+      <section>
+        <p>This is a paragraph of text.</p>
+      </section>
+    </main>
+  </body>
+</html>
+
+Solution 2:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://books.example.com/catalog 
+            http://books.example.com/catalog/catalog.xsd">
+  <book genre="novel"  id="bk101" >
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <PublicationDate>2000-10-01</PublicationDate>
+    <ISBN>978-0-381-48987-8</ISBN>
+    <price>39.95</price>
+    <description>An introduction to XML.</description>
+  </book>
+  <book genre="non-fiction" id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <PublicationDate>2001-05-01</PublicationDate>
+    <ISBN>978-0-486-25986-8</ISBN>
+    <price>49.95</price>
+    <description>A comprehensive guide to XSLT.</description>
+  </book>
+  <book genre="other">
+    <author>Mary Smith</author>
+    <title>JSON: The Next Big Thing</title>
+    <PublicationDate>2002-02-01</PublicationDate>
+    <ISBN>978-0-674-00753-6</ISBN>
+    <price>24.95</price>
+    <description>Exploring the possibilities of JSON.</description>
+  </book>
+</catalog> 
+
+Solution 3: 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns:ex="http://www.example.com/ex"
+          xmlns:fb="http://www.facebook.com/xml/ns/">
+  <book genre="novel"  id="bk101" >

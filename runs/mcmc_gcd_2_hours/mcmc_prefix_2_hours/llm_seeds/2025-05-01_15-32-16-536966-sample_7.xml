@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <description SYSTEM ="/catalog.xml">
+    A catalog of books
+  </description>
+  <title PUBLIC ="-//MyTitle//DTD MyTitle//EN" >My Title</title>
+  <book ID="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publishDate>2000-10-01</publishDate>
+    <description> A book on XML</description>
+    <contentTYPE>text/xml</contentTYPE>
+  </book>
+  <book ID="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publishDate>2001-05-01</publishDate>
+    <description> A book on XSLT</description>
+    <contentTYPE>text/xml</contentTYPE>
+  </book>
+</catalog>

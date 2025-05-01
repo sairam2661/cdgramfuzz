@@ -1,0 +1,10 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<!DOCTYPE catalogue SYSTEM "catalogue.dtd">
+<catalogue xmlns="http://www.w3.org/tags/1999/02/adjunct#">
+    <description language="en-us">This is a sample catalogue</description>
+    <title xml:lang="en">Catalogue</title>
+    <author><name>John Doe</name></author>
+    <date><year>2023</year></date>
+    <note><to>Alice</to><from>Bob</from><subject>Meeting</subject><message>Don't forget our meeting at 2pm!</message><priority level="high"/></note>
+</catalogue>

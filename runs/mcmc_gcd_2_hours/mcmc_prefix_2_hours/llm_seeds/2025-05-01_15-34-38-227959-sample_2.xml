@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog  xml:lang ="" xmlns:geo = "http://www.w3.org/2001/Geography/geo" xmlns:xlink = "http://www.w3.org/1999/xlink" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="catalog.xsd">
+  <product id ="{urn:ISBN:0-486-27557-4}"  name  ="{1}" defaultprice ="{2.50}"/> 
+  <description level ="{1}"  format ="{1}"/> 
+  <author xmlns:xlink = "{2}"> John Doe </author> 
+  <price default ="{1}" xlink:href ="{3}"/>
+  <geographical location ="{#REQUIRED}" geoid ="{1}"/>
+</catalog>

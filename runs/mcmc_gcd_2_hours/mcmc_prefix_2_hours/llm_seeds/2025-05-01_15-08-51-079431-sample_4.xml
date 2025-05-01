@@ -1,0 +1,31 @@
+<?xml version =1.0 encoding="UTF-8" standalone =no?>
+<catalog xmlns:eb = "http://example.com/goods "
+   xmlns:xsi = "@http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation ="
+          http://example.com/categories
+          http://example.com/goods/categories.xsd
+          "
+>
+  <book idris="ba03f8d8-7e18-4464-8e41-77634a77f1da"
+        xmlns:wim = "http://www.wimxml.org/"
+        xmlns:fb = "http://fbcdn.net/profiles/xHTML/1"
+        xsi:schemaLocation ="
+            http://www.wimxml.org/
+            http://www.wimxml.org/schemas/1/
+            "
+  >
+    <category id ="{urn:isbn:1-57610-049-0}" rel ="{http://www.wimxml.org/}children">
+      <book id ="{urn:isbn:0-486-27532-5}"
+        xmlns:wim = "http://www.wimxml.org/"
+        xmlns:fb = "http://fbcdn.net/profiles/xHTML/1"
+        xsi:schemaLocation ="
+            http://www.wimxml.org/
+            http://www.wimxml.org/schemas/1/
+            "
+      >
+        <title />
+        <abstract />
+      </book>
+    </category>
+  </book>
+</catalog>

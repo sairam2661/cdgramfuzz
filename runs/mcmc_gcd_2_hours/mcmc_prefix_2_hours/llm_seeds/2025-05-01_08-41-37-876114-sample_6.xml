@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?xml-notation 
+  xmlns:math = "http://example.com/math"
+  xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+  xsi:noNamespaceSchemaLocation = "math.notatioon.xsd"
+  xmlns:xlink = "http://www.w3.org/1999/xlink"
+  xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  math:notation-name = "ExampleMathNotation"
+  math:external-body = "notatioonBody"
+  xsi:schemaLocation = "http://example.com/math math.xsd"?>
+
+<math:example xmlns:math = "http://example.com/math">
+  <math:expression math:notation-name ="@exampleMathNotation">
+    <xs:element name="complexNumber" type ="xsd:complex"/>
+    <math:number>10</math:number>
+    <math:number>5</math:number>
+    <math:operator>+</math:operator>
+  </math:expression>
+</math:example>

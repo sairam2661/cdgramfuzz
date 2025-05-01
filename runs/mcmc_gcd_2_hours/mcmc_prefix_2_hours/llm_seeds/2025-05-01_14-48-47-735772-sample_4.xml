@@ -1,0 +1,12 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<catalog>
+    <country code="USA">
+        <city name="New York"/>
+        <state name="New York"/>
+    </country>
+    <country code="UK">
+        <city name="London"/>
+        <state name="England"/>
+    </country>
+    <?xml:stylesheet type="text/xsl" href="style.xsl"?>
+</catalog>

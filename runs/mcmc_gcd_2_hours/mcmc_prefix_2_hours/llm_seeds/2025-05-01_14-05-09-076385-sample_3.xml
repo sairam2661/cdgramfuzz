@@ -1,0 +1,22 @@
+<?xml version=
+ 1.0 encoding="ISO-8859-2"?>
+<catalog xml:lang="en"
+  xmlns="http://www.w3.org/1999/02/2001catalog"
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:dc="http://purl.org/dc/elements/1.0/"
+  xmlns:geo="http://www.w3.org/1999/02/2001geo"
+  vocab="http://purl.org/linked-data/namespace#'"
+>
+  <genre>Rock</genre>
+  <title>&lt;Example&gt;</title>
+  <link xmlns:xlink="http://www.w3.org/1999/xlink" href='http://example.org/link'/>
+  <media:content url="http://example.org/content"
+    xmlns:media="http://search.yahoo.com/mrss/"
+    medium="audio"
+    duration="3600"
+    bitrate="128"
+    />
+  <dc:date>2001-08-15</dc:date>
+  <geo:position lat="48.8566" datatype="http://www.w3.org/2003/01/geo/wgs84_pos #Point"
+    xmlns:geo="http://www.w3.org/1999/02/2001geo"/>
+</catalog>

@@ -1,0 +1,32 @@
+<?xml version = 
+  1.0  
+  encoding = "UTF-8"
+  standalone = 
+   yes  
+ ?>
+ 
+<catalog>
+  <description xml:lang ="" xml:space ="" />
+  <country name ="" />
+  <company name ="" countrycode ="" />
+  <product>
+    <name>East   Blueberry</name>
+    <description>&lt;a&gt;Mangos &lt;/a&gt;</description>
+    <price>10.2</price>
+    <currency>USD</currency>
+    <photo>east-blblueberry.jpg</photo>
+    <hscode>720420</hscode>
+    <productid>902</productid>
+    <description level ="" xml:space ="" />
+  </product>
+  <product>
+    <name>West   Blueberry</name>
+    <description>&lt;p&gt;Strawberries&lt;/p&gt;</description>
+    <price>8.5</price>
+    <currency>USD</currency>
+    <photo>west-blblueberry.jpg</photo>
+    <hscode>720420</hscode>
+    <productid>903</productid>
+    <description level ="" xml:space ="" />
+  </product>
+</catalog>

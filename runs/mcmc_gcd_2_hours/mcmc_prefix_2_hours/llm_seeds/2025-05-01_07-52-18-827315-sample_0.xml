@@ -1,0 +1,14 @@
+<personal-appointments version="2.0" encoding="ISO-8859-1">
+  <company>
+    <name>ABC Inc.</name>
+    <address street="123 Main St" city="New York" state="NY" zip="10001"/>
+  </company>
+  <employee id="12345" first="John" last="Doe" department="IT">
+    <email>john.doe@example.com</email>
+    <phone>(123) 456-7890</phone>
+    <salaries>
+      <salary currency="USD" amount="50000" date="2020-01-01"/>
+      <salary currency="EUR" amount="45000" date="2020-06-01"/>
+    </salaries>
+  </employee>
+</personal-appointments>

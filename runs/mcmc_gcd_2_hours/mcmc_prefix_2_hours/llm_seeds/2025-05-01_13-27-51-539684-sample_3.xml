@@ -1,0 +1,33 @@
+<?xml version = 1.0  encoding = " utf-8 " standalone =  yes?>
+<?xml-entities xmlns:math = "http://www.w3.org/1998/Math/MathML"?>
+<!DOCTYPE book [
+    <!ELEMENT book (title, publication_date, price, chapter*)>
+    <!ELEMENT chapter (title, contents*)>
+    <!ELEMENT title (#PCDATA)*
+    ><!ELEMENT publication_date (#PCDATA)*> 
+    <!ELEMENT chapter (#PCDATA)*>
+    <!ELEMENT price (#PCDATA)*>
+    <!ELEMENT contents (#PCDATA)*>
+    <!ELEMENT img (#PCDATA)*>
+    <!ELEMENT copyright (#PCDATA)*>
+    ]>
+    <book>
+    <title>Mathematical Reasoning</title>
+    <publication_date>2003</publication_date>
+    <price>40.00</price>
+    <chapter>
+    <title>Complex Variables</title>
+    <contents>
+    <img src="Complex Variables.jpg"/>
+    <section>Definition of s'</section>
+    </contents>
+    </chapter>
+    <chapter>
+    <title>Data Analysis</title>
+    <contents>
+    <img src="Data Analysis.jpg"/>
+    <section>Applications of Data Analysis</section>
+    </contents>
+    </chapter>
+    </book>
+   

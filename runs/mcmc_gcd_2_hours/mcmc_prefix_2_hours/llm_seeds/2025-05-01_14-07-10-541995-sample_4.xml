@@ -1,0 +1,22 @@
+<?xml version = 
+    1.0 
+    encoding = "ISO-8859-1" 
+    standalone = 
+    yes 
+   ?>
+ 
+<catalog>
+  <description>&amp;#8203; Our catalog contains a wide variety of products.</description>
+  <company>ACME</company>
+  <product>
+    <name>Desk
+    &copy;
+    1999</name>
+    <price>$99.99</price>
+  </product>
+  <product>
+    <name>Stapler
+    &nbsp;  Office Supply</name>
+    <price>$19.99</price>
+  </product>
+</catalog>

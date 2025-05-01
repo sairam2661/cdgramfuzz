@@ -1,0 +1,30 @@
+<?xml version=
+    1.0 encoding="UTF-8"?>
+<catalog>
+    <book id="bk101">
+        <entity name="ISBN-10" type="Identification" href="http://schema.org/ISBN">
+            <entityTerm value="3-16-148410-0"/>
+        </entity>
+        <entity name="ISBN-13" type="Identification" href="http://schema.org/ISBN">
+            <entityTerm value="978-1-57-531-815-9"/>
+        </entity>
+        <entity name="UPC" type="Identification" href="http://schema.org/UPC">
+            <entityTerm value="978-1-57-531-815-9"/>
+        </entity>
+        <entity name="EAN" type="Identification" href="http://schema.org/EAN">
+            <entityTerm value="978-1-57-531-815-9"/>
+        </entity>
+        <entity name="GTIN" type="Identification" href="http://schema.org/GTIN">
+            <entityTerm value="9781575318159"/>
+            <entityTerm value="978-1-57-531-815-9"/>
+        </entity>
+        <entity name="GTIN_Canada" type="Identification" href="http://schema.org/GTIN_Canada">
+            <entityTerm value="978-1-56-937-150-5"/>
+            <entityTerm value="978-1-57-531-815-9"/>
+        </entity>
+        <entity name="EAN_Europe" type="Identification" href="http://schema.org/EAN_Europe">
+            <entityTerm value="978-1-57-531-815-9"/>
+            <entityTerm value="978-1-56-937-150-5"/>
+        </entity>
+    </book>
+</catalog>

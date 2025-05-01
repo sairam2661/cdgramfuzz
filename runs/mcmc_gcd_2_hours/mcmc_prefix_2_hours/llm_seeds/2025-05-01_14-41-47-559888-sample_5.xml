@@ -1,0 +1,33 @@
+<UMLDiagram xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="uml.xsd">
+  <classes>
+    <class name="Student">
+      <attributes>
+        <attribute name="id" type="string"/>
+        <attribute name="name" type="string"/>
+        <association name="courses" type="Course"/>
+      </attributes>
+    </class>
+    <class name="Course">
+      <attributes>
+        <attribute name="id" type="string"/>
+        <attribute name="name" type="string"/>
+        <association name="instructor" type="Teacher"/>
+        <association name="students" type="Student"/>
+      </attributes>
+    </class>
+    <class name="Teacher">
+      <attributes>
+        <attribute name="id" type="string"/>
+        <attribute name="name" type="string"/>
+        <association name="courses" type="Course"/>
+        <association name="assignedStudents" type="Student"/>
+      </attributes>
+    </class>
+  </classes>
+  <associations>
+    <association type="one-to-many" source="Student" target="Course"/>
+    <association type="one-to-many" source="Course" target="Student"/>
+    <association type="many-to-one" source="Course" target="Teacher"/>
+    <association type="many-to-one" source="Teacher" target="Course"/>
+  </associations>
+</UMLDiagram>

@@ -1,0 +1,41 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:schemaLocation="http://www.example.com/catalog  catalog.xsd">
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publishDate>2000-10-01</publishDate>
+        <description>An in-depth tutorial on building XML documents.</description>
+        <content type="text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.
+        </content>
+        <author ID="av012">Jane Smith</author>
+    </book>
+
+    <book id="bk102">
+        <author>John Smith</author>
+        <title>XSLT for Beginners</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publishDate>2000-10-01</publishDate>
+        <description>A comprehensive guide to building XSLT stylesheets.</description>
+        <pages>200</pages>
+    </book>
+
+    <book id="bk103">
+        <author ID="av007">Joe Doe</author>
+        <title>DOM for Beginners</title>
+        <genre>Computer</genre>
+        <price>59.95</price>
+        <publishDate>2000-10-01</publishDate>
+        <description>An introduction to the Document Object Model.</description>
+        <content type="image">
+            <img src="im2.jpg" width="150" height="100" />
+        </content>
+    </book>
+</catalog>

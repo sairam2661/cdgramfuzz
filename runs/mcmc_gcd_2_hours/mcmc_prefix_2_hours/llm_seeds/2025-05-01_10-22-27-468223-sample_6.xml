@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-16LE" standalone = no?>
+<bookstore xmlns = "http://www.example.com/bookstore"
+           xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation ="http://www.example.com/bookstore bookstore.xsd">
+    <address country ="Australia" city ="" state ="" postalCode ="" street ="" />
+    <book category ="" ISBN ="" author ="" title ="" />
+    <author xml:lang ="" country ="" street ="" />
+    <bookstore-version>2.0</bookstore-version>
+</bookstore>

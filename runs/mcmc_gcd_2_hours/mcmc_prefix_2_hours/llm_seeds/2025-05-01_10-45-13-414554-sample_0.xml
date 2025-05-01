@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+<country>United States</country>
+<country>Canada</country>
+<country>Mexico</country>
+
+<product>
+<productId>1</productId>
+<productName>Database</productName>
+<productDescription>A powerful database product</productDescription>
+<price level ="(low | medium | high)"/>
+<image>database.jpg</image>
+</product>
+
+<product>
+<productId>2</productId>
+<productName>HTML Editor</productName>
+<productDescription>A powerful HTML editor product</productDescription>
+<price level ="(low | medium | high)"/>
+<image>editor.jpg</image>
+</product>
+</catalog>

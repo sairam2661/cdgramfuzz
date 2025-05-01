@@ -1,0 +1,27 @@
+<?xml version = 
+  1.0 
+  encoding = 
+  "UTF-8" 
+  standalone = 
+  yes 
+?>
+<!DOCTYPE 
+  notes 
+  SYSTEM "notes.dtd">
+
+<root>
+  <note id="notes-1">
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority>high</priority>
+  </note>
+  <note id="notes-2">
+    <to>Jane</to>
+    <from>Bob</from>
+    <subject>Lunch</subject>
+    <message>Let's eat at 1pm!</message>
+    <priority>low</priority>
+  </note>
+</root>

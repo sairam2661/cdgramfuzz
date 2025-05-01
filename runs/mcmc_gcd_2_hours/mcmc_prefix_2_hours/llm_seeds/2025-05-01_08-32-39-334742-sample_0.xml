@@ -1,0 +1,6 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xml:noNamespaceSchemaLocation="schema document.xsd"/>
+  <notation name="Image">
+    <externalIdentity href="https://example.com/image.png"/>
+  </notation>
+</html>

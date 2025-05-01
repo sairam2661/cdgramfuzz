@@ -1,0 +1,15 @@
+<?xml version = 
+    1.0 
+    encoding = "UTF-8" 
+    standalone = 
+    no 
+ 
+?>
+ 
+<note xml:lang="English" xmlns:mailaddr = "urn:uuid:6b1dc6be-0971-48da-8ab6-88ad36d4d32c">
+<to mailaddr:localpart ="" mailaddr:address="mailto:alice@example.com"></to>
+<from mailaddr:localpart ="" mailaddr:address="mailto:bob@example.com"></from>
+<subject xml:lang="English"></subject>
+<message xml:lang="English"></message>
+<priority xml:lang="English" level="high"/>
+</note>

@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+  <country  xml:lang ='" English"'  region ="" xml:space="preserve">
+    <city> London</city>
+    <name>UK</name>
+  </country>
+  <country xml:lang ='" Español"'  region ="" xml:space="preserve">
+    <city> Madrid</city>
+    <name>ES</name>
+  </country>
+</catalog>

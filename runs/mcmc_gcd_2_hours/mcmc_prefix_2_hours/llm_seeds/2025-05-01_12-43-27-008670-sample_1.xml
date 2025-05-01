@@ -1,0 +1,23 @@
+<?xml version = 1.1 encoding="ISO-8859-1"?>
+<catalog>
+  <country name="France" lang="fr" currency="Euro">
+    <region name="Nord" description="North"/>
+    <city name="Paris" description="Capital"/>
+    <population>21000000</population>
+    <phones>
+      <phone type="office">01.23.45.67</phone>
+      <phone type="mobile">04.58.75.93</phone>
+    </phones>
+    <mailing addresses="163, rue de Sèvres"/>
+  </country>
+  <country name="Japan" lang="ja" currency=" Yen">
+    <region name="Kanto" description="Region"/>
+    <city name="Tokyo" description="big city"/>
+    <population>13000000</population>
+    <phones>
+      <phone type="office">03.11.22.33</phone>
+      <phone type="mobile">07.89.01.23</phone>
+    </phones>
+    <mailing addresses="5-45-11 Shinjuku"/>
+  </country>
+</catalog>

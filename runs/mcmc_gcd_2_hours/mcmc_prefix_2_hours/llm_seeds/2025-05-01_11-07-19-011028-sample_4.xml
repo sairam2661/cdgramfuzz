@@ -1,0 +1,18 @@
+<?xml version = 4.0 
+encoding = "ISO-8859-1" 
+standalone =  no?>
+ 
+<address> 
+  <cdata>My name is John Doe and occupation is Software Developer</cdata>
+ 
+  <full-name NMTOKEN='Doe, John'>
+   <organization>ABC Software</organization>
+   <city>New York</city>
+   <state>NY</state>
+   <zip>10021</zip>
+   <country>USA</country>
+  </full-name>
+ 
+  <email address="johndoe@example.com"/>
+  <phone number="1234567890"/>
+</address>

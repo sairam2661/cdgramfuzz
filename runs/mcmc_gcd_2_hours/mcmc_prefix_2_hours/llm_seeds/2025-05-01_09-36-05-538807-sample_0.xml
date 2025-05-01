@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!-- Main Document Header -->
+<catalog>
+  <!-- Catalog Description -->
+  
+  <!-- Section: Products -->
+  <section name ="" title ="" items ="" sortby ="" order ="" count ="" offset ="" />
+
+  <!-- Comment: This section contains information about the products -->
+  <!--<# This is a complex section that contains multiple items #>-->
+
+  <!-- Section: Authors -->
+  <section name ="" title ="" items ="" sortby ="" order ="" count ="" offset ="" />
+
+  <!-- Comment: The authors section contains a list of authors -->
+  <!--<# This section is used to keep track of authors who contributed to this catalog #>-->
+
+  <!-- Section: Publishers -->
+  <section name ="" title ="" items ="" sortby ="" order ="" count ="" offset ="" />
+</catalog>

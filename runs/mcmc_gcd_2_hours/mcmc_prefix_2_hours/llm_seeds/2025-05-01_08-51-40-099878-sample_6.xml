@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-16" standalone = yes?>
+
+<!DOCTYPE note SYSTEM "note.dtd">
+
+<note id ="{123}">
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+
+<author name ="{John Doe}">
+  <address street ="{Main St}" city ="{Anytown}" state ="{CA}" zip ="{12345}">
+    <phone type ="{home}" number ="{555-5555}"/>
+    <phone type ="{office}" number ="{555-1234}"/>
+  </address>
+</author>
+
+<priority level ="{high}"/>
+<created date ="{2022-07-25}"/>
+<modified date ="{2022-07-26}"/>
+</note>

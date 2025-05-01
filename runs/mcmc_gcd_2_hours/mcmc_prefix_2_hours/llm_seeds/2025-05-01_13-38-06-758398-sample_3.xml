@@ -1,0 +1,29 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes">
+  <person>
+    <address>
+      <country name="United States"/>
+      <city name="New York"/>
+      <region name="North East"/>
+      <postalCode name="10001"/>
+    </address>
+    <name>
+      <first name="John"/>
+      <last name="Doe"/>
+      <honors>
+        <degree level="Ph.D"/>
+        <award name="Nobel Prize"/>
+      </honors>
+    </name>
+    <phoneNumbers>
+      <homeNumber type=" residential">123-456-7890</homeNumber>
+      <mobileNumber type="cellular">098-765-4321</mobileNumber>
+      <officeNumber type="work">555-555-5555</officeNumber>
+    </phoneNumbers>
+    <notations>
+      <math notation-name="ASCII"
+         external-Identifier="(ASCII)"
+         format="character-encoding"
+         media="text"/>
+    </notations>
+  </person>
+</xml>

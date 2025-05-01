@@ -1,0 +1,8 @@
+<hierarchy version="1.0.2">
+    <root xmlns:app="http://schemas.microsoft.com/asmx hc/extension"
+          app:keyspace="example_keyspace" app:default="test_string">
+        <child name="John Doe" id="123" app:author="Jane Smith"/>
+        <child name="John Smith" app:city="New York"/>
+        <child app:age="30" name="Bob Doe"/>
+    </root>
+</hierarchy>

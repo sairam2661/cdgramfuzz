@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<personal-data>
+    <name JohnJoe 
+                ="Smith">
+        <address>
+            <street>123 </street>
+            <city>New York </city>
+            <state>NY </state>
+            <zip ="+1">10001</zip>
+            <country>USA</country>
+        </address>
+   <phone-number>123 456 7890</phone-number>    
+   <fax      >111 222 3333</fax>
+   <email   >example@example.com</email>
+   <title>Mr. </title>
+    </name>
+   </personal-data>

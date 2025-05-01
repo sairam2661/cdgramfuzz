@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE books [
+<!ELEMENT books (book*)>
+<!ELEMENT book (title, author, year, price)>
+<!ELEMENT title (#PCDATA)*> 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT year (#PCDATA)*> 
+<!ELEMENT price (#PCDATA)*> 
+]>
+<books>
+    <book>
+        <title>The Great Gatsby</title>
+        <author>Ernest Hemingway</author>
+        <year>1925</year>
+        <price>10.99</price>
+    </book>
+    <book>
+        <title>To Kill a Mockingbird</title>
+        <author>Harper Lee</author>
+        <year>1960</year>
+        <price>12.99</price>
+    </book>
+</books>

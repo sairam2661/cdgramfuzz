@@ -1,0 +1,14 @@
+<holiday_trip xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="trip_schema.xsd" version="1.0" encoding="UTF-8">
+    <destination city="Rome" country="Italy" id="Rome_001">
+        <accommodation type="hotel" quantity="3" rating="5"/>
+        <travel_dates start_date="2024-06-01" end_date="2024-06-08"/>
+    </destination>
+    <transportation>
+        <flight origin="New York" destination="Rome" id="NYR_001"/>
+        <car_rental company="Hertz" start_date="2024-06-01" end_date="2024-06-08" rental_status="available"/>
+    </transportation>
+    <itinerary>
+        <activity time="2024-06-01, 10:00" title="Arrival and check-in" description="Check-in at hotel and explore the city"/>
+        <activity time="2024-06-02, 9:00" title="Visit the Colosseum" description="Visit the iconic Colosseum and learn about ancient history"/>
+    </itinerary>
+</holiday_trip>

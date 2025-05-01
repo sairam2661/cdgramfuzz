@@ -1,0 +1,15 @@
+<table xmlns="http://www.w3.org/2000/svg" width="600" height="400" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:fx="http://ns.adobe.com/fox/2006/01/actions">
+  <style>
+   .rect {
+      fill: rgb(200, 200, 200);
+    }
+  </style>
+  <rect x="50" y="50" width="500" height="300" class="rect" style="opacity: 0.5;"/>
+  <rect x="200" y="50" width="50" height="20" class="rect" xlink:href="#button"/>
+  <defs>
+    <symbol id="button">
+      <rect width="50" height="20"/>
+      <line x1="20" y1="5" x2="30" y2="15"/>
+    </symbol>
+  </defs>
+</table>

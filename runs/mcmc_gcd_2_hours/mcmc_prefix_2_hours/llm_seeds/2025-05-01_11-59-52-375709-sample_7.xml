@@ -1,0 +1,44 @@
+<hotel-reservations>
+  <hotel>
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <reservation day="2024-03-15" month="March" year="2024">
+      <room>
+        <available>true</available>
+      </room>
+      <number-of-rooms>2</number-of-rooms>
+      <customer>
+        <name>Jane Doe</name>
+        <check-in>-</check-in>
+        <check-out>-</check-out>
+      </customer>
+    </reservation>
+  </hotel>
+  <hotel>
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <reservation day="2024-03-16" month="March" year="2024">
+      <room>
+        <available>false</available>
+      </room>
+      <number-of-rooms>3</number-of-rooms>
+      <customer>
+        <name>John Smith</name>
+        <check-in>2024-03-15</check-in>
+        <check-out>2024-03-17</check-out>
+      </customer>
+    </reservation>
+  </hotel>
+  <hotel>
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <reservation day="2024-03-17" month="March" year="2024">
+      <room>
+        <available>true</available>
+      </room>
+      <number-of-rooms>2</number-of-rooms>
+      <customer>
+        <name>Jane Doe</name>
+        <check-in>-</check-in>
+        <check-out>-</check-out>
+      </customer>
+    </reservation>
+  </hotel>
+</hotel-reservations>

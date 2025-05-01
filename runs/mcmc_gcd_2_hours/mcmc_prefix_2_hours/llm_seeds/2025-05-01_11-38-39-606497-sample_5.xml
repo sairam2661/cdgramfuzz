@@ -1,0 +1,11 @@
+<personal-info xmlns:ad="http://schemas.example.com/address" version="1.2">
+    <name>John Doe</name>
+    <email>john.doe@example.com</email>
+    <phone-number><ad:street>123 Main St</ad:street><ad:city>Anytown</ad:city><ad:state>US</ad:state><ad:zip>12345</ad:zip></phone-number>
+    <address>
+        <ad:street>456 Elm St</ad:street>
+        <ad:city>Anytown</ad:city>
+        <ad:state>US</ad:state>
+        <ad:zip>67890</ad:zip>
+    </address>
+</personal-info>

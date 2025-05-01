@@ -1,0 +1,11 @@
+<!DOCTYPE note SYSTEM "note.dtd">
+<note version="1.0" encoding="UTF-8" xmlns="http://example.com/note">
+<note:head>
+<note:from>Bob</note:from>
+<note:to>Alice</note:to>
+<note:subject>Meeting</note:subject>
+</note:head>
+<note:message>Don't forget our meeting at 2pm!</note:message>
+<note:priority level="high"/>
+<note:time>14:00</note:time>
+</note>

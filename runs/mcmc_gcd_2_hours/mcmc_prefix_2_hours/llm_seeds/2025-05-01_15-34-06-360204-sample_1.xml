@@ -1,0 +1,16 @@
+<?xml version = 1.0?>
+<catalog description ="Highest Quality Products" version ="{3.20}">
+
+    <product ID ="{1}" category ="{Hardware,Home}">
+        <color>Blue</color>
+        <quantity>45</quantity>
+        <price unit  ="{U.S. dollars}">95.00</price>
+    </product>
+
+    <product ID  ="{2}" category ="{Software,Desktop}">
+        <color>White</color>
+        <quantity>80</quantity>
+        <price unit  ="{Euros}">129.90</price>
+    </product>
+
+</catalog>

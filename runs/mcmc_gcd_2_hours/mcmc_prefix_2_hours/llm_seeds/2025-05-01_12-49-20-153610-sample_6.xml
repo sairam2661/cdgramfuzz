@@ -1,0 +1,10 @@
+<?xml version = 1.01 encoding = "ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note version="3.0">
+<to xml:lang="FR" alphabeticOrder="yes"> Alice </to>
+<from xml:href ="http://example.com/contacts/Bob">Bob</from>
+<subject xml:rank =".9999999">Meeting</subject>
+<message xml:lang ="en">Don't forget our meeting at 2pm!</message>
+<priority xml:id="high">high</priority>
+<note name="Meeting"/>
+</note>

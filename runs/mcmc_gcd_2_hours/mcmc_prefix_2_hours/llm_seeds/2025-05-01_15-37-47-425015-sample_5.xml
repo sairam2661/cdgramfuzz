@@ -1,0 +1,12 @@
+<?xml version = 1.0  encoding = "utf-8" standalone =  yes?>
+<customer-order
+    version ="{default:1.0, required}" 
+    total ="{default:100.0, fixed}" 
+    ship-date ="{default:2024-01-01, implied}"
+    shipping-address="{default:123 Street, required}">
+    <contact-person>John Doe</contact-person>
+    <order-summary>
+        <product item-id="1">Laptop</product>
+        <product item-id="2">Keyboard</product>
+    </order-summary>
+</customer-order>

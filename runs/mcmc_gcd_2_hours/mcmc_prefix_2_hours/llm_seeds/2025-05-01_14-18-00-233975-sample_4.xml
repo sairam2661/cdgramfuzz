@@ -1,0 +1,92 @@
+<?xml version = 1.0?>
+
+<!DOCTYPE document [
+<!ELEMENT document (title, publisher, year, copyrights)>
+<!ELEMENT title (#PCDATA)*> 
+<!ELEMENT publisher (name, city, country)>
+<!ELEMENT year (#PCDATA)*> 
+<!ELEMENT copyrights (#PCDATA)*> 
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT city (#PCDATA)*> 
+<!ELEMENT country (#PCDATA)*> 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT book (#PCDATA)*> 
+<!ELEMENT chapter (#PCDATA)*> 
+<!ELEMENT section (#PCDATA)*> 
+<!ELEMENT page (#PCDATA)*> 
+<!ELEMENT edition (#PCDATA)*> 
+<!ATTLIST document 
+    edition CDATA "#"
+    publisher CDATA "#"
+    copyright CDATA "#"> 
+
+<!ENTITY docEntity "Document Entity"> <!ENTITY authorEntity "&amp;lt;!-- author Entity --&gt;">
+
+<!ELEMENT chapter (title, page)>
+<!ELEMENT title (docEntity)>
+<!ELEMENT page (#PCDATA)*>
+
+<!ELEMENT book (author, title, copyright, edition, chapter)>
+<!ELEMENT copyright (docEntity)>
+<!ELEMENT edition (docEntity)>
+<!ELEMENT author (#PCDATA)*>
+
+<!ELEMENT publisher (name, city, country)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT city (#PCDATA)*> 
+<!ELEMENT country (#PCDATA)*> 
+<!ELEMENT document > 
+<!ELEMENT bookTitle docEntity> 
+<!ELEMENT authors authorEntity> 
+<!ELEMENT address publisher> 
+<!ELEMENT cityInfo city> 
+<!ELEMENT editions edition> 
+<!ELEMENT bookInfo book> 
+<!ELEMENT editionInfo edition> 
+<!ELEMENT editionContent edition> 
+<!ELEMENT editionCaption editions> 
+<!ELEMENT editionTitle edition> 
+<!ELEMENT editionSubTitle editions> 
+<!ELEMENT editionBody edition> 
+<!ELEMENT editionLayout editions> 
+<!ELEMENT editionLayoutInfo editionLayout> 
+<!ELEMENT pageInfo page> 
+<!ELEMENT chapterInfo chapter> 
+<!ELEMENT chapterRef chapter> 
+<!ELEMENT chapterBody chapter> 
+<!ELEMENT chapterCaption chapter> 
+<!ELEMENT chapterTitle chapter> 
+<!ELEMENT pageInfo page> 
+<!ELEMENT pageRef page> 
+<!ELEMENT contentPage page> 
+<!ELEMENT sectionRef section> 
+<!ELEMENT sectionBody section> 
+<!ELEMENT sectionCaption section> 
+<!ELEMENT sectionTitle section> 
+<!ENTITY pageEntity "&lt;!-- Page Entity --&gt;">
+
+<!ELEMENT chapter (chapterInfo, chapterBody)> 
+<!ELEMENT chapterTitle chapter>
+<!ELEMENT chapterCaption chapter> 
+<!ELEMENT chapterRef chapter>
+<!ELEMENT chapterInfo chapter>
+<!ELEMENT chapterBody chapter> 
+
+<!ELEMENT author (authors, address)>
+<!ELEMENT address publisher> 
+<!ELEMENT cityInfo city>
+<!ELEMENT editions edition>
+<!ELEMENT chapterRef chapter>
+<!ELEMENT chapterBody chapter>
+<!ELEMENT bookBody book>
+<!ELEMENT bookRef book>
+<!ELEMENT pageInfo page>
+<!ELEMENT pageRef page>
+<!ELEMENT bookInfo book>
+<!ELEMENT editions editions>
+<!ELEMENT edition ed>
+<!ELEMENT chapterRef chapter>
+<!ELEMENT editionCaption editions>
+<!ELEMENT editionBody editions>
+<!ELEMENT sectionRef section>
+<

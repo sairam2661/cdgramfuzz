@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <book id ="">
+        <title>
+<![CDATA[<u>Some Special</u> Book Title</title>
+        <author>John Smith</author>
+        <price>39.95</price>
+    </book>
+    <book id ="">
+        <title>Some Book</title>
+        <author>Jane Doe</author>
+        <price>24.95</price>
+        <pubdate><![CDATA[<b>22 Mar 1997</b>]]></pubdate>
+    </book>
+</catalog>

@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog type="book">
+<description>Library catalog</description>
+<book>
+<title entities =">{ &quot;Book Title&quot; }</title>
+<author entities =">{ &amp; #123; }</author>
+<price currency="USD">39.95</price>
+<publisher>ABC Book</publisher>
+<copyright year ="{ 2022 }">{ &amp; #x20; }{ 2022 }{ &amp; #x20; }Book Rights</copyright>
+</book>
+<book type ="{ hardcover }">
+<title>Reference Book</title>
+<author>John Smith</author>
+<price currency="USD">24.95</price>
+<country>USA</country>
+<Publisher>RMS</Publisher>
+</book>
+</catalog>

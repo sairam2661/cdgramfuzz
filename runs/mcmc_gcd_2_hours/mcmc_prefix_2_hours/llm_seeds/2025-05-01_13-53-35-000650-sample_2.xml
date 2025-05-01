@@ -1,0 +1,268 @@
+<Solution1>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xml:lang="en">
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publishDate>2000-10-01</publishDate>
+        <description>An in-depth look at creating applications with XML.</description>
+        <pageCount>300</pageCount>
+        <created>2001-06-05T16:51:01Z</created>
+        <publisher>ABC Books</publisher>
+        <isbn>978-0743218690</isbn>
+        <language>English</language>
+        <country>United States</country>
+        <company>ABC-Books</company>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT for XML Developers</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publishDate>2001-03-05</publishDate>
+        <description>XSLT for XML developers.</description>
+        <pageCount>350</pageCount>
+        <created>2001-12-07T11:54:52Z</created>
+        <publisher>XYZ Books</publisher>
+        <isbn>978-0743218706</isbn>
+        <language>English</language>
+        <country>United States</country>
+        <company>XYZ-Books</company>
+    </book>
+</catalog>
+
+</Solution1>
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+   
+
+ 
+
+  
+
+  
+
+  
+
+ 
+
+ 
+
+ 
+
+  
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+

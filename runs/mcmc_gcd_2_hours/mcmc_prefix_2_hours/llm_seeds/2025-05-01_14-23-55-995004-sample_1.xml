@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <description>
+    <![CDATA[This is a sample description containing &lt;&gt; and &#39;&#39; special characters.]]>
+  </description>
+  <item>
+    <title>Sample Book</title>
+    <author>John Smith</author>
+    <price>19.95</price>
+  </item>
+  <item>
+    <title>&lt;Special Deal&gt;</title>
+    <author>Jane Doe</author>
+    <price>9.95</price>
+  </item>
+</catalog>

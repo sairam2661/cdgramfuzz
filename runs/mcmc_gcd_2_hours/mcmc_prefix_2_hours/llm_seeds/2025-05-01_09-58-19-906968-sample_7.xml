@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./styles2.xsl"?>
+<?xml-strict version="1.0" encoding="UTF-8"?>
+<catalog>
+    <band>
+        <greatest-hit-name>Stairway</greatest-hit-name>
+        <greatest-hit-artist> Led Zeppelin</greatest-hit-artist>
+        <artist-name> Led Zeppelin </artist-name>
+        <artist-name> Led Zeppelin </artist-name>
+        <price currency="USD"> 3</price>
+        <type-of-product>single</type-of-product>
+        <release-date>1971-0-22T00:00:00Z</release-date>
+        <producer-name> Jimmy Page</producer-name>
+        <genre>classic rock</genre>
+    </band>
+</catalog>

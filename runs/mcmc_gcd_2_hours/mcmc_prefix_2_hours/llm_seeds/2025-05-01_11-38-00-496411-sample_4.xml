@@ -1,0 +1,71 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog XML:version ='"1.0"">
+  <category>Books</category>
+  <description>This is an online bookstore</description>
+  <shop>
+    <item name = "Book 1">Price 50</item>
+    <item name = "Book 2">Price 75</item>
+    <item name = "Book 3">Price 25</item>
+  </shop>
+  <product quantity = "30">Tean Shirts</product>
+  <category>Comics</category>
+  <product quantity = "50">Boromir Action Figurine</product>
+</catalog> 
+
+<?xml version = 1.0 encoding = "UTF-8"?>
+<bookstore>
+  <country>USA</country>
+  <language>English</language>
+  <priceCurrency>USD</priceCurrency>
+  <book>
+    <title>Harry Potter</title>
+    <author>Tom Riddle</author>
+    <genre>Fantasy</genre>
+    <price>19.99</price>
+    <pageCount>300</pageCount>
+    <pubDate>1999-07-01</pubDate>
+  </book>
+  <book>
+    <title>The Lord of the Rings</title>
+    <author>John R. Doe</author>
+    <genre>Fantasy</genre>
+    <price>16.99</price>
+    <pageCount>200</pageCount>
+    <pubDate>1998-08-01</pubDate>
+  </book>
+  <book>
+    <title>The Lion King</title>
+    <author>Jane R. Doe</author>
+    <genre>Animated</genre>
+    <price>14.99</price>
+    <pageCount>100</pageCount>
+    <pubDate>1997-01-01</pubDate>
+  </book>
+</bookstore> 
+
+<?xml version = 1.0 encoding = "UTF-8"?>
+<family>
+  <parent>
+    <name>Eva</name>
+    <age>65</age>
+  </parent>
+  <child>
+    <name>Kai</name>
+    <age>20</age>
+  </child>
+  <child>
+    <name>Jane</name>
+    <age>15</age>
+  </child>
+  <sibling>
+    <name>Rachel</name>
+    <age>10</age>
+  </sibling>
+</family> 
+
+<?xml version = 1.0 encoding = "UTF-8"?>
+<person>
+  <name>John Smith</name>
+  <age>35</age>
+  <address>
+    <street>Hanover Street

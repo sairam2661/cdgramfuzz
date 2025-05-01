@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<address>
+    <person id ="" href ="/contact/" name="John Smith">
+        <address line1 ="" type ="/default/" postcode ="" country ="/en/" city ="/London/" postalcode ="/W1B 5AH/" state ="/Greater London/" street ="" street2="" countrycode ="/GB/" citycode =""/>{address}
+            <phonetonumber prefix ="/default/" suffix ="/US/" value ="/1234567890/" type ="/default/" country ="/US/" nationalnumber ="/(123) 456-7890/" internationalnumber ="/+1 123 456 7890/"/>{phonetonumber}
+            <courier email ="/default/" from ="/default/" href ="/default/" to ="/default/"/>{email}
+            <correaddress alt ="/default/" from ="/default/" href ="/default/" to ="/default/"/>{correaddress}
+        </address>
+
+    <address line1 ="/default/" postcode ="/GB/" city ="/London/" postalcode ="/W1B 5AH/" state ="/Greater London/" street ="/Baker Street/" street2 ="/10/" countrycode ="/GB/" citycode ="/London/" href ="/address/"/>{address}
+
+    <address line1 ="/default/" postcode ="/US/" city ="/New York/" postalcode ="/10001/" state ="/New York/" street ="/Times Square/" street2 ="/123/" countrycode ="/US/" citycode ="/NY/" href ="/address/"/>{address}
+
+</person>

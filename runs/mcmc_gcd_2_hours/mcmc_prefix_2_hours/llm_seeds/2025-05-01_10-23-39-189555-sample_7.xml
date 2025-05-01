@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog xmlns:catalog="http://sample.com catalog">
+  <book id="bk101">
+    <catalog:book-description>Important Book</catalog:book-description>
+    <book-author>John Smith</book-author>
+    <title lang="en-US">XML for Beginners</title>
+    <genre>Computer</genre>
+    <price currency="USD">39.95</price>
+    <pub-date dayOfMonth="15" month="12" year="2022"
+          isoYearMonth="20221215"/>
+  </book>
+</catalog>

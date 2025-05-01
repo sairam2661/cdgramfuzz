@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns = "http://test.com/catalog" 
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation ="http://test.com/catalog catalog.xsd">
+   <book publisher ="TSL Publications"
+         author ="\&quot;Nigel Rees\&quot;"
+         title ="\&quot;English Prepositions\&quot;"
+         ISBN ="\&quot;0-7507-9034-1\&quot;">
+     <price currency ="\&quot;USD\&quot;">39.95</price>
+     <pubDate>2000-10-01</pubDate>
+   </book>
+</catalog>

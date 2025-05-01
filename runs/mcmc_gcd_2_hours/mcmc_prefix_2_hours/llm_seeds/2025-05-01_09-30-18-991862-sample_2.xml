@@ -1,0 +1,35 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE notes [
+    <!ELEMENT note (to,from,subject,message,tanggal,prioritas) >
+    <!ELEMENT to (#PCDATA)*> 
+    <!ELEMENT from (#PCDATA)*> 
+    <!ELEMENT subject (#PCDATA)*> 
+    <!ELEMENT message (#PCDATA)*> 
+    <!ELEMENT tanggal (#PCDATA)*> 
+    <!ELEMENT prioritas (#PCDATA)*> 
+    <!ELEMENT tanggal (#PCDATA)*> 
+    <!ELEMENT prioritas (#PCDATA)*> 
+    <!ELEMENT note (
+        tanggal,
+        prioritas,
+        to,
+        from,
+        subject,
+        message
+    )>
+]>
+<notes>
+    <note tanggal="25/03/2023">
+        <prioritas>Urgent</prioritas>
+        <to>Alice</to>
+        <from>Boris</from>
+        <subject>Brief Meeting Tomorrow</subject>
+        <message>
+            <![CDATA[
+            Don't forget our meeting tomorrow at 10am! 
+            We also need to discuss some changes to the project. 
+            See you all there.
+            ]]>
+        </message>
+    </note>
+</notes>

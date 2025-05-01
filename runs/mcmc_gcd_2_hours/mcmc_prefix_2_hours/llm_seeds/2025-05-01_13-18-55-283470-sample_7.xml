@@ -1,0 +1,29 @@
+<?xml version =1.0  encoding="UTF-8"?>
+<uat>
+  <systemSpecs xmlns="http://example.com_specs"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation="system_specs.xsd"
+         version="1.2"
+         manufacturer="Example Corp" 
+         attributeRating='High'>
+  <cpuSpec speed="3.4GHz" numCores='4' manufacturer='Intel' />
+  <memorySpec capacity="16GB" speed="2133MHz" type="DDR4" />
+  </uat> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<studentRecord>
+  <studentId name="ABC123"  description="Student 1"
+         address="123 Example St" 
+         priority="High" 
+         attributeRating='Strong'
+         >
+    <courseEnrollment language="English" />
+    <degree level="Bachelor" />
+  </studentId> 
+  <studentId name="PQR456" description="Student 2" 
+         address="456 North Main St"  priority="Medium"  attributeRating='Weak'
+         >
+    <courseEnrollment language="Spanish" />
+    <degree level="Associate" />
+  </studentId> 
+</studentRecord> 
+</studentId>

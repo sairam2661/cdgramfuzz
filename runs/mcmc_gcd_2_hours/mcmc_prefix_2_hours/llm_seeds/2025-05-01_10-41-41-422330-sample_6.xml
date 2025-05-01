@@ -1,0 +1,9 @@
+<?xml version =	1.0	encoding =	"UTF-8"	standalone =	yes?>
+  <addressbook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="addressbook.xsd">
+  <contact>
+  <firstName xsi:nil ="Yeah"/>
+  <lastName xsi:noNamespaceSchemaLocation="#/lastName"/>
+  <email xsi:nil ="Yes #IMPLIED"/>
+  <phone type="#REQUIRED" value="+1234567890"/>
+  </contact>
+  </addressbook>

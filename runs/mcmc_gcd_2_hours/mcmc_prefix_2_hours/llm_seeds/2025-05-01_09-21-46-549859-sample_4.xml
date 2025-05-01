@@ -1,0 +1,19 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<!DOCTYPE product_catalog SYSTEM "product_catalog.dtd">
+<product_catalog>
+  <product name="Laptop"
+     quantity="15"
+     price="1000.00"
+     weight="10"
+     length="15"
+     width="5"
+     height="10"
+     colour="blue"
+     brand="Xiaomi"
+     code="XMI-HD">
+    <description>
+      &nbsp;&nbsp;&nbsp;The Laptop of Future
+    </description>
+    <listprice currency="USD">1000.00</listprice>
+  </product>
+</product_catalog>

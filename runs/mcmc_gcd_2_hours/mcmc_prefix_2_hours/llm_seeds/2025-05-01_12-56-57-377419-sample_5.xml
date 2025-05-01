@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note id="12345">
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority level="high"/>
+    <recipient>
+        <name>Mike</name>
+        <address>123 Main St</address>
+    </recipient>
+    <meeting>
+        <date>2023-04-15</date>
+        <time>14:00:00</time>
+    </meeting>
+    <attachment>
+        <filename>report.pdf</filename>
+        <size>1024</size>
+    </attachment>
+</note>

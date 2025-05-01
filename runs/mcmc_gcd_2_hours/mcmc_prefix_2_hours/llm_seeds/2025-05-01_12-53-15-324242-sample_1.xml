@@ -1,0 +1,33 @@
+<UMLVersion="2.5">
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ClassDiagram">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="Classes" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType mixed="true">
+              <xs:sequence>
+                <xs:element name="Class"
+                                      maxOccurs="unbounded">
+                  <xs:complexType mixed="true">
+                    <xs:sequence>
+                      <xs:element name="Attributes" maxOccurs="unbounded"/>
+                      <xs:element name="Methods" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                    <xs:attribute name="Name" type="xs:string"/>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:attribute name="xmlns:xs" use="exclusive">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="http://www.w3.org/2001/XMLSchema"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:schema>
+  </UMLVersion>
+</xs:schema>

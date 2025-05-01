@@ -1,0 +1,8 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<address>
+  <contact-type value ="(student | faculty | staff)"/>
+  <email address ="{user}@example.com"/>
+  <phone-number>555-1234</phone-number>
+  <fax-number>-555-5678</fax-number>
+  <department department_type ="{degree | internship}" department_code="{A-Z}[0-9]{3}"/>
+</address>

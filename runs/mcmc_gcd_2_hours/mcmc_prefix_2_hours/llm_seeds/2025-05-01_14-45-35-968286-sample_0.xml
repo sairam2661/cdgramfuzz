@@ -1,0 +1,10 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+
+<catalog>
+  <description language="en">
+    <?xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+    This is a sample catalog.
+  </description>
+  <store name="Store 1" from="UK"/>
+  <store name="Store 2" from="USA"/>
+</catalog>

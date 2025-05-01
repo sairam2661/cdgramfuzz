@@ -1,0 +1,20 @@
+<?xml version = 
+1.0  encoding = 
+"UTF-8" standalone = 
+yes?>
+
+  <address xmlns:xsi = 
+"http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:tns = 
+"http://example.org">
+  <tns:contactInfo xsi:type ="Tns:ContactInfo">
+    <tns:firstName>John</tns:firstName>
+    <tns:lastName>Doe</tns:lastName>
+    <tns:addressLine1>123 Main St</tns:addressLine1>
+    <tns:addressLine2></tns:addressLine2>
+    <tns:city>Austin</tns:city>
+    <tns:state>TX</tns:state>
+    <tns:zip>78701</tns:zip>
+    <tns:country>USA</tns:country>
+  </tns:contactInfo>
+</address>

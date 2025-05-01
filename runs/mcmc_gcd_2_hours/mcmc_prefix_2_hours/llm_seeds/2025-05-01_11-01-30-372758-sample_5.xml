@@ -1,0 +1,37 @@
+<?xml version = 
+  1.0 encoding = "UTF-8" 
+  standalone = yes?>
+ 
+<customer>
+<catalog id="cat50000000">
+<note>
+<to idref="n1">Alice</to>
+<from idref="n2">Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<tokenized_type ID="tok" IDREFS="n1 n2"/>
+<priority>low</priority>
+</note>
+</catalog>
+ 
+<catalog id="cat20000000">
+<note>
+<to idref="n3">Charlie</to>
+<from idref="n4">Dave</from>
+<subject>Tournament</subject>
+<message>Don't forget our tournament at 3pm!</message>
+<tokenized_type ID="tok" IDREFS="n3 n4"/>
+<priority>high</priority>
+</note>
+</catalog>
+
+<catalog idref="cat50000001">
+<note>
+<to idref="n5">Eve</to>
+<from idref="n6">Frank</from>
+<subject>Conference</subject>
+-message>Don't forget our conference at 4pm!</message>
+<tokenized_type ID="tok" IDREFS="n5 n6"/>
+<priority>medium</priority>
+</note>
+</catalog>

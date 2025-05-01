@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!-- This is the XML declaration specifying the document type and character encoding -->
+<catalog>
+  <!-- The catalog element contains information about products -->
+  <catalog_name>Welcome to Online Shopping</catalog_name>
+  <!-- The description element contains a description of the catalog -->
+  <description>Our catalog features a wide range of products from various sellers.</description>
+  <!-- The comment element contains additional information about the catalog -->
+  <!-- Additional information about catalog maintenance: -->
+  <!-- The price elements contain information about the prices of products in the catalog -->
+  <price>
+    <product_id>1</product_id>
+    <brand>Brand A</brand>
+    <model>Model 1</model>
+    <price_value>100.00</price_value>
+  </price>
+  <price>
+    <product_id>2</product_id>
+    <brand>Brand B</brand>
+    <model>Model 2</model>
+    <price_value>200.00</price_value>
+  </price>
+</catalog>

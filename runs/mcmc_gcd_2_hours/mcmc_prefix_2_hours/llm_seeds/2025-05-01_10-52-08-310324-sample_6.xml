@@ -1,0 +1,24 @@
+<?xml version = 
+    1.0 
+    encoding = 
+      "UTF-8" 
+    standalone 
+    = 
+      no 
+   ?>
+<catalog>
+  <description>Exotic quokkas</description>
+  <manufacturer>Happy Quokka Inc.</manufacturer>
+  <color>
+    <taxon>White</taxon>
+    <taxon>Fawn</taxon>
+    <taxon>Black and White</taxon>
+  </color>
+  <product>Quokka Toy</product>
+  <weight unit="gram">0.4 kg</weight>
+  <weight unit="pound">0.4 lbs</weight>
+  <daysToShip>3</daysToShip>
+  <daysToShip unit="weeks">1-2 weeks</daysToShip>
+  <price currency="USD">15.99</price>
+  <price currency="CAD">19.99</price>
+</catalog>

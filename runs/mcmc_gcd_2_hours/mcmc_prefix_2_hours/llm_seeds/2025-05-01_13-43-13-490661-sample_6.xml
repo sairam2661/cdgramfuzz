@@ -1,0 +1,44 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = no?>
+<?xml-notation xmlns:math = "http://www.w3.org/1998/Math/MathML"?>
+<math xmlns:ci = "http://www.oeis.org/notations/01ci" xmlns:msup = "http://www.oeis.org/notations/01msup" xmlns:vsp = "http://www.oeis.org/notations/01vsp" >
+  <mi>m</mi>
+  <mi>n</mi>
+  <msup>
+    <mrow>
+      <msup>
+        <mi>i</mi>
+        <mi>n</mi>
+      </msup>
+      <mrow>
+        <mi>e</mi>
+        <mo>+</mo>
+        <mrow>
+          <mi>e</mi>
+          <mo>+</mo>
+          <mrow>
+            <msup>
+              <mi>z</mi>
+              <mrow>
+                <mi>e</mi>
+                <mo>+</mo>
+                <msup>
+                  <mi>x</mi>
+                  <mi>e</mi>
+                </msup>
+              </mrow>
+            </msup>
+          </mrow>
+        </mrow>
+      </mrow>
+    </msup>
+  </msup>
+  <mtext> equals </mtext>
+  <mo>=</mo>
+  <msup>
+    <mrow>
+      <mi>n</mi>
+      <mi>e</mi>
+    </mrow>
+    <mi>d</mi>
+  </msup>
+</math>

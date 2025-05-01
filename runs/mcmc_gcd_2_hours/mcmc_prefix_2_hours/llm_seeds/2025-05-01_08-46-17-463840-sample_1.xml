@@ -1,0 +1,18 @@
+<?xml version=1.0 encoding="UTF-16"
+   standalone= yes
+  ?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<?msoap soapAction="searchBooks" method="post" 
+       encodingStyle= "urn: soap: encoding: xml11"
+       SOAPVersion="1.1" 
+       transportSOAPVersion="http://schemas.xmlsoap.org/soap/Envelope/"
+      ?>
+<?msoap:encoding version=" soap: encoding: xml11" encodingStyle="urn: soap: encoding: xml11"?>
+ 
+<?dom use="schema"?>
+ 
+<catalog>
+<book id="bk101">The Shrimp Boat by John Jones</book>
+<book id="bk102">A Visit to the Beach by Jane Smith</book>
+<book id="bk103">The View from the Top by Bob Johnson</book>
+</catalog>

@@ -1,0 +1,19 @@
+<?xml version = 1.0?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating documents with XML.</description>
+    <empty_element/></book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A detailed exploration of styling and transforming documents with XSLT.</description>
+  </book>
+</catalog>

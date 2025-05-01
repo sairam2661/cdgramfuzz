@@ -1,0 +1,42 @@
+<?xml version = 
+1.0 
+encoding = "UTF-8" 
+standalone = 
+
+no?>
+
+  
+<!DOCTYPE 
+catalog 
+SYSTEM "catalog.dtd">
+
+  
+<catalog>  
+
+  <!-- This document contains a list of DVD catalogs -->
+
+  <dvd>  
+
+    <!-- A DVD catalog entry with title, release date, and price -->
+
+    <title> The Matrix </title>
+
+    <release-date> 01 Mar 1999 </release-date>
+
+    <price> $12.99 </price>
+
+  </dvd>  
+
+  <!-- Another DVD catalog entry with title, release date, and price -->
+
+  <dvd>  
+
+    <title> The Shawshank Redemption </title>
+
+    <release-date> 10 Sep 1994 </release-date>
+
+    <price> $8.99 </price>
+
+  </dvd>
+
+</catalog>

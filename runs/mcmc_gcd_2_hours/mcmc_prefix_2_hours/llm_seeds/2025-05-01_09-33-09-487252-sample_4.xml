@@ -1,0 +1,30 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE product
+        SYSTEM "product catalogue.dtd">
+<product id="PR1234">
+    <title>
+        <![CDATA[
+   <u>   This is an unordered paragraph of text. 
+   it may include some html elements.
+   eg <b>bold</b>
+   or <i>italic</i>
+   or <u>underlined</u>
+   or <font color="blue">blue colour</font>.
+
+   <img src="productImage.jpg" width="150" height = "100"/>
+   ]]> 
+        </title>
+    <description>
+        <![CDATA[
+            Here is an attempt to escape non-breaking spaces:
+
+            &#160;
+
+            as a plain text replacement for   the space.
+
+            In the above example, the regular space can be replaced with the actual content.
+
+        ]]> 
+        </description>
+    <price currency="USD">250</price>
+</product>

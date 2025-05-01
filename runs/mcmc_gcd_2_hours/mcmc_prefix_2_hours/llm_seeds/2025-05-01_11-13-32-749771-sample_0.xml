@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<address>
+  <contact-info type ="(#PCDATA ( | | phone )+">">
+    Phone: 123-456-7890 <cp>(#PCDATA)</cp>
+    Email: <cp>(#PCDATA)</cp>
+  </contact-info>
+  <names>
+    <first-name>John</first-name>
+    <middle-name>A</middle-name>
+    <last-name>Doe</last-name>
+    <initial>(#PCDATA)</initial>
+  </names>
+  <address-info type ="( | | address )+">
+    <address-line-1>
+      123 Main Street <cp>(#PCDATA)</cp>
+      Apt 101
+    </address-line-1>
+    <address-line-2>
+      Anytown, CA 12345 <cp>(#PCDATA)</cp>
+    </address-line-2>
+    <city>(#PCDATA)</city>
+    <state>(#PCDATA)</state>
+    <zip-code>(#PCDATA)</zip-code>
+  </address-info>
+</address>

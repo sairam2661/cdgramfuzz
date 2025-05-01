@@ -1,0 +1,8 @@
+<personalDetails xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PERSONAL_DETAILS.XSD">
+  <name>
+    <givenName><![CDATA[John]]></givenName>
+    <familyName>Nicholson</familyName>
+  </name>
+  <dateOfBirth>1990-05-27</dateOfBirth>
+  <emailAddress>Nicholson.John@email.com</emailAddress>
+</personalDetails>

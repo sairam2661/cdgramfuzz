@@ -1,0 +1,32 @@
+<?xml version = 
+    1.0 
+    encoding = "ISO-8859-1" 
+    standalone = yes 
+   ?>
+
+<metadata 
+    xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation ="http://example.com/schema.xsd"
+    xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+    <document 
+        xmlns = "http://example.com/document"
+        lang ="" 
+        xml:lang ="" 
+        xmlns:dc = "http://purl.org/dc/elements/1.1"
+        xmlns:mods = "http://purl.org/metadata/itemschema/xsd"
+        xml:base="" 
+        xmlns:ext = "urn:oasis:names:tc:opendocument:extension-list:1.0"
+        id="docid1"
+        type="doc2">
+        <dc:title xml:lang ="en"> My Document </dc:title>
+        <dc:description xml:lang ="" xml:lang ="" />
+        <dc:subject xml:lang ="" xml:lang ="" />
+        <dc:type xml:lang ="" xml:lang ="" />
+        <dc:identifier xml:lang ="" xml:lang ="" />
+        <mods:subject xml:lang ="" xml:lang ="" />
+        <mods:name xml:lang ="" xml:lang ="" />
+        <mods:issued xml:lang ="" xml:lang ="" />
+        <mods:status xml:lang ="" xml:lang ="" />
+        <mods:rights xml:lang ="" xml:lang ="" />
+    </document>
+</metadata>

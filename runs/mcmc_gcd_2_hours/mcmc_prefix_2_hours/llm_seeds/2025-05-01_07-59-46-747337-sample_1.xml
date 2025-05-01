@@ -1,0 +1,10 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+<!DOCTYPE note SYSTEM "note.xsd">
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xsi:schemaLocation="http://example.com/schemas/note.xsd note.xsd">
+  <id>123</id>
+  <from>Bob</from>
+  <to>Alice</to>
+  <priority xmlns="http://example.com/schemas/level.xsd" level="high"/>
+</note>

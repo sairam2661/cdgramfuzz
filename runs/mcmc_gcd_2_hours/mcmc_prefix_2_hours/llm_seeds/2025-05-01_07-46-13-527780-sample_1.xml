@@ -1,0 +1,20 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes">
+  <catalog>
+    <book id="bk101">
+      <author>John Smith</author>
+      <title lang="en">XML for Beginner</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>An in-depth look at creating applications with XML.</description>
+    </book>
+    <book id="bk102">
+      <author>J Jane Smith</author>
+      <title lang="en">XML for Advanced</title>
+      <genre>Computer</genre>
+      <price>49.95</price>
+      <publish_date>2001-05-01</publish_date>
+      <description>Building greater complexity with XML.</description>
+    </book>
+  </catalog>
+</xml>

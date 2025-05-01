@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+
+<person xmlns:fn = "http://www.w3.org/2005/xpath-functions" xmlns:adr = "http://www.w3.org/2007/05/adr">
+    <fn:lang>en-US</fn:lang>
+    <name>John Smith</name>
+    <adr:street>1234 Main St</adr:street>
+    <adr:city>New York</adr:city>
+    <adr:country>USA</adr:country>
+    <adr:region>NY</adr:region>
+    <adr:postal-code>10001</adr:postal-code>
+    <fn:age>30</fn:age>
+    <fn:salary>$100000/year</fn:salary>
+</person>

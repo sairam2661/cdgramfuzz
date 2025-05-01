@@ -1,0 +1,13 @@
+<personal-data xmlns:ext="http://example.com/extensions"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://example.com/extensions http://example.com/extensions/schema"
+            encoding="UTF-8">
+    <contact-infos>
+        <name>John Doe</name>
+        <ext:phone-number ext:type="mobile">+1234567890</ext:phone-number>
+        <?system-format version="3.4"?>
+            <language>English</language>
+            <region>USA</region>
+        <?end-system-format?>
+    </contact-infos>
+</personal-data>

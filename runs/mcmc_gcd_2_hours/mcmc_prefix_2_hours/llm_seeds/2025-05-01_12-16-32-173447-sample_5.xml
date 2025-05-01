@@ -1,0 +1,7 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <description xml:lang ="" xml:space ="" xmlns:xsi ="" xsi:schemaLocation ="" xmlns ="" />
+    <book id ="" BOOKID ="" SYSTEM ="" book.xsd ="" href ="" />
+    <book id ="" BOOKID2 ="" PUBLIC ="" ISBN-10 ="" href ="" />
+    <book id ="" BOOKID3 ="" PUBLIC ="" ISBN ="" href ="" />
+</catalog>

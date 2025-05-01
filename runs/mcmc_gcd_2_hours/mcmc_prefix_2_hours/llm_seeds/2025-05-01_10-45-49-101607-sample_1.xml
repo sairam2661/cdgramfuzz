@@ -1,0 +1,12 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  no?>
+<employee>
+<name>
+  <givenName>John</givenName>
+  <familyName>Doe</familyName>
+</name>
+<contract>
+  <status> active | suspended | terminated </status>
+  <type> full-time | part-time | contract </type>
+</contract>
+<salary> 40000 | 50000 | 60000</salary>
+</employee>

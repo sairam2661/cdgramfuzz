@@ -1,0 +1,14 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <book id ="T0">
+        <title>    Alice's Adventures in Wonderland   </title>
+        <author>    Paul McCartney   </author>
+        <publisher>    Washington Square Press   </publisher>
+        <description>
+            <para>In this book, Alice's imagination runs wild in this fantastical tale that combines wit, satire, and nonsense.</para>
+            <emphasis>With</emphasis> a conversational style that reflects the author's British upbringings, the story showcases themes of identity, morality, and social class, making it a timeless classic.
+        </description>
+        <price currency ="$">$45.95</price>
+        <pubDate sun="2023-03-14"Fri="Fri20Mar 2023"month="03"day="14"year="2023"/>
+    </book>
+</catalog>

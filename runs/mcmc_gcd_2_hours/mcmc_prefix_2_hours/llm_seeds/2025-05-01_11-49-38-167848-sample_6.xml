@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <description xml:lang ="'en'"></description>
+  <company name =""/>
+
+  <person>
+    <address street ="" city="" country="" postal =""/>
+
+    <phone type ="" number =""/>
+    <email address =""/>
+
+    <fax type ="" number ="/"/>
+  </person>
+
+  <book genre ="" edition ="" publisher ="" author ="" title =""/>
+  <book genre ="" edition ="" publisher ="" author ="" title =""/>
+</catalog>

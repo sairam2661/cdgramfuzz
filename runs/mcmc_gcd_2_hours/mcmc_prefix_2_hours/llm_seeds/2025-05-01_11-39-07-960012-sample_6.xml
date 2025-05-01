@@ -1,0 +1,17 @@
+<?xml version =  1.0  encoding = "UTF-8" standalone =  yes?>
+<address>
+    <person>
+        <name>John</name>
+        <addressLine>123 Main St</addressLine>
+        <city>Anytown</city>
+        <state>CA</state>
+        <zip>12345</zip>
+    </person>
+    <person>
+        <name>Jane</name>
+        <addressLine>456 Elm St</addressLine>
+        <city>Othertown</city>
+        <state>NY</state>
+        <zip>67890</zip>
+    </person>
+</address>

@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog type="print">
+    <?xml-stylesheet href="styles.xsl"?>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre novel="yes" nonfiction="yes"/>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An in-depth look at creating documents with XML, including syntax and style sheets.</description>
+    </book>
+    <book id="bk102">
+        <author>John Smith</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre novel="yes" nonfiction="yes"/>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>A comprehensive guide to using XSLT to transform and style XML documents.</description>
+    </book>
+</catalog>

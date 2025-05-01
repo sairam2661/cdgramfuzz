@@ -1,0 +1,25 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<addressbook>
+  <person id ="" name ="" address ="" phone ="" email =""/>
+  <phonebook>
+    <entry>
+      <name>John</name>
+      <number>123 456 7890</number>
+      <type>Mobile</type>
+    </entry>
+    <entry>
+      <name>Jane</name>
+      <number>987 654 3210</number>
+      <type>Home</type>
+    </entry>
+  </phonebook>
+  <address>
+    <street>123, Street Name</street>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+    <country>USA</country>
+    <fax>555-555-1234</fax>
+    <email>john@example.com</email>
+  </address>
+</addressbook>

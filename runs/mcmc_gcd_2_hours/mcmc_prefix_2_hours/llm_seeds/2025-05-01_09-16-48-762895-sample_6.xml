@@ -1,0 +1,14 @@
+<?xml version = 1.0  encoding="UTF-8"?>
+<library>
+  <book id="bk101">
+    <author>First</author>
+    <title>Normal</title>
+    <genre>General</genre>
+    <price>24.99</price>
+    <publishDate>2006-10-22</publishDate>
+    <description>Some new book</description>
+    <chapter>
+      &lt;a&gt;First chapter&lt;/a&gt;
+    </chapter>
+  </book>
+</library>

@@ -1,0 +1,34 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?prolog?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+    <title>Product Catalogue</title>
+    <description>This is a web catalogue for our products</description>
+    <author>John Doe</author>
+    <copyright>2022 My Company</copyright>
+    <year>2022</year>
+    <version>1.0</version>
+    <pubdate>2022-01-01</pubdate>
+    <catalog>
+        <product name ="" SKU ="" price ="" quantity =">
+            <description>This is a sample product</description>
+            <category>Clothing</category>
+            <image>product1.jpg</image>
+            <product>
+                <name>Product 2</name>
+                <SKU >P2</SKU>
+                <price >19.99</price>
+                <quantity >100</quantity>
+            </product>
+        </catalog>
+    </catalog>
+    </catalog>
+</prolog> 
+</catalog> 
+ </xml> 
+
+Solution 3:
+
+<?xml version = 1.0 encoding = "UTF-8StandingAlone="Yes?>
+<?prolog?>
+<!DOCTYPE bibliografia SYSTEM "bibliografia.dtd.dtd.dtd.dtdsddd.dtd.dtd.dtdsddd.dtd.dtd.dtd.dtdsddd.dtd.dtd.dtd.dtdsddd.dtd.dtd.dtd.dtdsddd.dtd.dtd.dtd.dtdsddd.dtd.dtdsddd.dtd.dtdsddd.dtd.dtdsddd.dtd.dtd.dtdsddd.dtd.dtdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd

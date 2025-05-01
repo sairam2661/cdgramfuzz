@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <description>Library catalog</description>
+  <edition>First edition</edition>
+  <language>
+    <languageName>English</languageName>
+    <scriptFormat>HTML</scriptFormat>
+    <notation>
+      <notationName>TeX</notationName>
+      <externalIdentifier>ams</externalIdentifier>
+    </notation>
+  </language>
+</catalog>

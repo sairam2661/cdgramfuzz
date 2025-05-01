@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation ="useBooks.xsd">
+    <description>&amp;lt;&gt;The name of the author&lt;&gt;</description>
+    <title>Book Title</title>
+        <address street ="{http://www.w3.org/2003/01 address}123 Main St&amp;&lt;Br /&gt;</address>
+        <phone type = "home="/">123-456-7890</phone>
+        <book id ="{http://www.w3.org/2003/01 address}book123">
+            <author>
+                &amp;lt;&gt;Author Name&amp;lt;/&gt;
+            </author>
+            <title >Another Book Title</title>
+            <genre> Fiction</genre>
+            <price>39.99</price>
+            <publish_date>2005-10-1</publish_date>
+            <description>&amp;lt;&gt;Short book description&amp;lt;/&gt;</description>
+            <cover image ="{http://www.w3.org/2003/01 address}image123.jpg"/>
+        </book>
+</catalog>

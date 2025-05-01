@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = no?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <pub_date>2000-10-01</pub_date>
+    <description>An in-depth look at creating your own XML documents.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Programming</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <pub_date>2001-05-01</pub_date>
+    <description>A comprehensive guide to creating XSLT documents.</description>
+  </book>
+  <book id="bk103">
+    <author>John Smith</author>
+    <title>SOAP Web Services</title>
+    <genre>Computer</genre>
+    <price>59.95</price>
+    <pub_date>2002-01-01</pub_date>
+    <description>A guide to creating SOAP web services.</description>
+  </book>
+</catalog>

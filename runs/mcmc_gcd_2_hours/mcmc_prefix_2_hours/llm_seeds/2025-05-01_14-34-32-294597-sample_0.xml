@@ -1,0 +1,261 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE data [
+<!ELEMENT data (book | review)>
+<!ELEMENT book (title, author, year)>
+<!ELEMENT author (name, nationality)>
+<!ELEMENT title (#PCDATA)*
+><!ELEMENT review (title, author, rating, price)>
+<!ELEMENT rating (#PCDATA)*
+><!ELEMENT price (#PCDATA)*>
+<!ELEMENT name (#PCDATA)*>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT author (#PCDATA)*>
+<!ELEMENT book (
+  title,
+  author,
+  year,
+   rating,
+  price
+)>
+<!ELEMENT rating (#PCDATA)*> 
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT review (
+  title,
+  author,
+  rating,
+  price
+)>
+<!ELEMENT comment (message, name)>
+<!ELEMENT book (
+  title, 
+  author, 
+  year, 
+  rating,
+  price
+)>
+<!ELEMENT name (#PCDATA)*>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT author (#PCDATA)*>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT book (
+  book,
+   title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT message (#PCDATA)*>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+  rating,
+  price
+)>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT author (#PCDATA)*>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT message (#PCDATA)*>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT book (
+  book,
+   title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT year (#PCDATA)*>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+<!ELEMENT year (#PCDATA)*>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+  rating,
+  price
+)>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT year (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT author (
+  name, 
+  nationality
+)>
+<!ELEMENT nationality (#PCDATA)*>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT rating (#PCDATA)*>
+<!ELEMENT comment (
+  message,
+  name
+)>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT book (
+  book, 
+  title, 
+  author, 
+  year, 
+   rating,
+  price
+)>
+<!ELEMENT data (
+  book | review
+)>
+<!ELEMENT title (#

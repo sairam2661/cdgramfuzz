@@ -1,0 +1,18 @@
+<?xml version = 
+      1.0
+      encoding = 
+      "UTF-8" 
+      standalone = 
+      yes?>
+
+ 
+<library>
+  <catalog>
+    <book id ="(hardcover | softcover)">
+      <title>Example Title</title>
+    </book>
+    <book category ="(fiction|non-fiction)">
+      <title>Book Title</title>
+    </book>
+  </catalog>
+</library>

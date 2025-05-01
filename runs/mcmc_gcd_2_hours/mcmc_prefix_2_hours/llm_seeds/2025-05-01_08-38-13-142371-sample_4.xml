@@ -1,0 +1,36 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title Language="en-US">XML for Dummies</title>
+    <genre Type="non-fiction">Computer</genre>
+    <price currency="USD">39.95</price>
+    <publish Date="2000-10-01">O'Reilly &amp; Associates</publish>
+    <description>Not any ordinary book</description>
+    <condition>
+      <condition_type type="new">New</condition_type>
+      <condition_level level="1">Fine</condition_level>
+    </condition>
+    <notation>
+      <notationship name="MathML">http://www.mathml.org/</notationship>
+      <notationship name="SVG">http://www.w3.org/TR/SVG/</notationship>
+    </notation>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title Language="en-GB">XML for Beginners</title>
+    <genre Type="non-fiction">Computer</genre>
+    <price currency="USD">49.95</price>
+    <publish Date="2001-5-01">O'Reilly &amp; Associates</publish>
+    <description>Not any ordinary book</description>
+    <condition>
+      <condition_type type="new">New</condition_type>
+      <condition_level level="1">Fine</condition_level>
+    </condition>
+    <notation>
+      <notationship name="MathML">http://www.mathml.org/</notationship>
+      <notationship name="SVG">http://www.w3.org/TR/SVG/</notationship>
+    </notation>
+  </book>
+</catalog>

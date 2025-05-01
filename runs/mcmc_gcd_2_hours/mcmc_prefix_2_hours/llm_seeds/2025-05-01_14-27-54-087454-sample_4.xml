@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<document>
+  <title>Project Proposal</title>
+  <description><![CDATA[ This is a project proposal for a new product launch,
+                  which will include a unique marketing campaign and special discounts,
+                  resulting in a significant increase in sales. The target audience is tech-savvy individuals.
+                  The proposed budget is $100,000.
+                  The timeline is as follows:
+                  - Week 1-2: Market research and analysis
+                  - Week 3-4: Design and development
+                  - Week 5-6: Testing and quality assurance
+                  - Week 7-8: Launch and promotion
+                  - Week 9-10: Evaluation and follow-up]]></description>
+  <author>
+    <name>John Doe</name>
+    <email>johndoe@example.com</email>
+  </author>
+</document>

@@ -1,0 +1,14 @@
+<Schedule xmlns="http://www.example.com/schedule.xsd" version="1.3" encoding="UTF-8" standalone="yes">
+  <Event ID="E001" StartTime="2023-03-14T10:00:00Z" EndTime="2023-03-14T11:00:00Z">
+    <Title>&lt;Conference&gt; Meeting &lt;/Title&gt;</Event>
+    <Recurring weekly="true">Daily</Recurring>
+  </Schedule>
+
+  <Event ID="E002" StartTime="2023-03-15T14:30:00Z" EndTime="2023-03-15T16:00:00Z" Recurring="daily">
+    <Title daily="true">&lt;Workshop&gt; Training &lt;/Title&gt;</Event>
+  </Schedule> 
+
+  <Address Street="123 Main St" City="New York" State="NY" Country="USA" Zip="10001"> 
+    <AdditionalAddress>&lt;Apo&gt;APO AP 96465&lt;/Apo&gt;</AdditionalAddress>
+  </Address> 
+</Schedule>

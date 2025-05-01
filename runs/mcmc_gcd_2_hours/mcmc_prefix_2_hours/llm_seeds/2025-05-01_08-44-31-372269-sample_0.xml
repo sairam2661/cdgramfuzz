@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<?import xsd="http://www.w3.org/2001/XMLSchema"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns="http://www.example.com/ns">
+    <title>Example Document</title>
+    <author>John Doe</author>
+    <date>2022-01-01</date>
+    <import>
+        <book id="bk101">
+            <author>John Smith</author>
+            <genre>Romance</genre>
+            <price>10.00</price>
+            <publish_date>2001-10-01</publish_date>
+            <description>An example book.</description>
+        </book>
+    </import>
+</note>

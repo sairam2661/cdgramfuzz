@@ -1,0 +1,23 @@
+<?xml
+version = 1.0
+encoding = "UTF-8" 
+standalone = yes
+?>
+ 
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+ 
+<?mmdoc xmlns:mmdoc="http://relaxng.org/images/01-relaxngschema-20010324.xsd"?>
+ 
+<?xml-stylesheet type="application/xml" href="schema.xsl"?>
+ 
+<person>
+  <name>John Doe</name>
+  <address>
+    <street>123 Main St</street>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+  </address>
+  <phone type="home">555-1234</phone>
+  <phone type="work">555-5678</phone>
+</person>

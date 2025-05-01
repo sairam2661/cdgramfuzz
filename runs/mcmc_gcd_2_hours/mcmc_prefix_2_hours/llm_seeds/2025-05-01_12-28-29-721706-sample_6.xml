@@ -1,0 +1,21 @@
+<Schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <Entity Name="Book">
+        <Attribute Name="ISBN" Type="string"/>
+        <Attribute Name="Title" Type="string"/>
+        <Attribute Name="Author" Type="string"/>
+        <Key Name="BookID">
+            <Particle Name="ISBN"/>
+            <Particle Name="BookID"/>
+        </Key>
+    </Entity>
+    <Entity Name="Author">
+        <Attribute Name="ID" Type="int"/>
+        <Attribute Name="Name" Type="string"/>
+        <ManyToOne Ref="Book"/>
+    </Entity>
+    <Element Name="Book">
+        <Particle Name="ISBN"/>
+        <Particle Name="Title"/>
+        <Particle Name="Author"/>
+    </Element>
+</Schema>

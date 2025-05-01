@@ -1,0 +1,56 @@
+<?xml version = 
+    1.0  encoding = "UTF-8" 
+    standalone =  no?>
+
+<!-- The root element that contains all the other elements -->
+<catalog>
+
+  <!-- The opening tag of the element -->
+  <book id="bk102">
+    
+    <!-- The child element that contains the author -->
+    <author>
+      
+      <!-- The child element that contains the name of the author, which can be an empty string -->
+      <name/>
+
+      <!-- The child element that contains the surname of the author -->
+      <surname>Smith</surname>
+    </author>
+
+    <!-- The opening tag of the content element, which can contain elements (address) and/or text -->
+    <content>
+      <!-- The child element that contains the address of the book, which can be empty or contain elements (<street>, <city>, etc.) -->
+      <address>
+        <!-- The child element that contains the street number, which can be empty -->
+        <street/>
+
+        <!-- The child element that contains the street name, which can be empty -->
+        <streetName/>
+
+        <!-- The child element that contains the city, which can be empty -->
+        <city/>
+
+        <!-- The child element that contains the state, which can be empty -->
+        <state/>
+
+        <!-- The child element that contains the zip code, which can be empty -->
+        <zip/>
+      </address>
+
+      <!-- The child element that contains plain text, which can be empty -->
+      <text>This book contains one or more paragraphs.</text>
+
+    </content>
+
+  </book>
+
+  <!-- The opening tag of the element, which can contain elements (note) and/or text -->
+  <note>
+    
+    <!-- The child element that contains plain text, which can be empty -->
+    <text>This book may contain figures and tables.</text>
+
+  </note>
+
+</catalog>

@@ -1,0 +1,19 @@
+<?xml version = 
+  1.0 encoding = "UTF-8" standalone = no?>
+<!DOCTYPE product [
+<!ELEMENT product (name,description,price,categories)>
+<!ATTLIST product
+    name CDATA #REQUIRED
+    description CDATA #REQUIRED
+    price CDATA #REQUIRED
+    categories CDATA #REQUIRED
+    barcode CDATA #REQUIRED
+    weight CDATA #REQUIRED>
+]>
+<product name =">&#10063; iPhone 14 Pro Max">
+  <description>IPhone 14 Pro Max is a powerful smartphone with a powerful quad-camera system and long-lasting battery life.</description>
+  <price>$1,099.99</price>
+  <categories>Electronics</categories>
+  <barcode>0948765432109</barcode>
+  <weight>200g</weight>
+</product>

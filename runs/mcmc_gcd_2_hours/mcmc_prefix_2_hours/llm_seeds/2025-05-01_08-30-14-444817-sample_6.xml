@@ -1,0 +1,33 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE library [
+<!ELEMENT book (title, author, edition, description) >
+<!ELEMENT title (#PCDATA)*
+  >
+  <!ELEMENT author (name, birthdate) >
+  <!ELEMENT name (#PCDATA)*> 
+  <!ELEMENT birthdate (#PCDATA )*>
+  <!ELEMENT edition (#PCDATA)* >
+  <!ELEMENT description (#PCDATA)*  >
+]>
+ 
+<library>
+<book>
+<title>1984</title>
+<author>
+<name>George Orwell</name>
+<birthdate>1903-01-25</birthdate>
+</author>
+<edition>1st Edition</edition>
+<description>A dystopian novel</description>
+</book>
+<book>
+<title>The Great Gatsby</title>
+<author>
+<name>F Scott Fitzgerald</name>
+<birthdate>1896-09-24</birthdate>
+</author>
+<edition>1st Edition</edition>
+<description>A classic of American literature</description>
+</book>
+</library>

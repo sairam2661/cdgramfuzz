@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = 'UTF-8' standalone = yes?>
+ <catalog>
+  <book id ="{NMTOKEN}book-1"/>
+  <book>
+   <title>&lt;a&gt;Book Title&lt;/a&gt;</title>
+   <author CDATA ="John Smith &amp; Jane Doe">
+    <note>
+     <to>John Smith</to>
+     <from>Jane Doe</from>
+     <subject>Document Update</subject>
+     <message>Update completed.</message>
+     <priority level="high"/>
+    </note>
+   </author>
+   <price>39.95</price>
+   <pubdate>2006-02-14</pubdate>
+  </book>
+  <book id ="{NMTOKEN}book-2"/>
+ </catalog>

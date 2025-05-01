@@ -1,0 +1,23 @@
+<?xml version = 
+1.0  
+encoding="UTF-8"
+standalone = 
+ yes   
+
+?><bookstore
+    elementDeclaration="book"
+    author="John Smith"
+    title="XML Tutorial"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://test.example.com/book.xsd http://test.example.com/book.xsd">
+
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML Tutorial</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publishDate>2001-05-27</publishDate>
+        <description>An in-depth look at creating your own XML documents.</description>
+    </book>
+
+</bookstore>

@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xmlns:price = "http://www.example.com Prices" xmlns:product = "http://www.example.com Products">
+    <product isbn ="{ISBN}" guid="prod_123">
+        <details price ="{Price}">
+            <brand name ="{Brand}"/>
+            <model name ="{Model}"/>
+            <year>
+                <from date="1998"></from>
+                <to date="2001"/>
+            </year>
+            <description>{Description}</description>
+        </details>
+    </product>
+    <product isbn ="{ISBN}" guid="prod_456">
+        <details price ="{Price}">
+            <brand name ="{Brand}"/>
+            <model name ="{Model}"/>
+            <year>
+                <from date="1995"></from>
+                <to date="1999"/>
+            </year>
+            <description>{Description}</description>
+        </details>
+    </product>
+</catalog>

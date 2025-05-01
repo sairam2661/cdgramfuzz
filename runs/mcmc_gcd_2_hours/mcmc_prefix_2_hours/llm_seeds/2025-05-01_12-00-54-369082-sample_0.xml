@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog >
+  <book id ="" name ="" category ="" author="" publishDate="" price ="" currency="" description="" url ="" image ="" >  
+    <genre>  </genre>
+    <company>  </company>
+    <address line1="" line2="" line3="" line4="" line5="" postalCode="" country="" state=""  city=""  province="" > 
+      <name>John Smith</name>
+      <street1>100, 23 Main St</street1>
+      <street2> Anytown</street2>        
+      <city>Anytown</city>
+      <state>NY</state>
+      <country>USA</country>
+      <postalCode>12345</postalCode>
+    </address>
+    <contact person ="" title ="" org ="" email ="" phone ="" fax ="" > 
+      <organization>AcmeCorp</organization>
+      <name>John Smith</name>
+      <title>CEO</title> 
+      <email>joe.smith@acme.com</email> 
+      <phone>555-1234567</phone>         
+      <fax>111-222-3333</fax> 
+    </contact>
+  </book>
+</catalog>

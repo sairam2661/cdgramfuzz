@@ -1,0 +1,11 @@
+<?xml version =720.0 encoding = "UTF-8" standalone =  yes?>
+<catalog>
+<description xml:lang ="" xml:space ="" > A list of books for which XML can be used as the structural schema. &amp;lt;pre&gt;This &amp;lt;pre&gt; is a preformatted paragraph of text. &amp;lt;/pre&gt; &lt;pre&gt;This is another &lt;pre&gt; paragraph&amp;lt;/pre&gt;. &lt;/description&gt;
+  <bookshop>
+  <book id="bk101">
+  <author>John Smith</author>
+  <title>XML for Beginners</title>
+  <genre>Computer</genre>
+  <price>39.95</price>
+  <publish_date>2000-10-01</publish_date>
+  <description xml:lang ="" xml:space ="" > A short description of this book, with a line break in the middle. &amp;lt;p&gt;This is a test line.  Here is another line with this character, €

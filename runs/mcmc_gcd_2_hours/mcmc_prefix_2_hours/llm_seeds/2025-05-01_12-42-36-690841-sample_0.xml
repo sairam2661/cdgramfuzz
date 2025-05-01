@@ -1,0 +1,7 @@
+<homework-list xmlns="http://example.com/homework-list.xsd" version="1.1" encoding="ISO-8859-1">
+  <course name="Math" grade="A"/>
+  <course name="Science" grade="B"/>
+  <course name="English" grade="A-"/>
+  <student name="John Doe" id="12345" address="123 Main St"/>
+  <student name="Jane Doe" id="67891" address="456 Elm St"/>
+</homework-list>

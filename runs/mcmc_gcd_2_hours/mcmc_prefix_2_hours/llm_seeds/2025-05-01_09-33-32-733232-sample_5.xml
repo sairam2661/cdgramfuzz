@@ -1,0 +1,23 @@
+<?xml version =1.0
+encoding="UTF-8" standalone = yes?>
+<!DOCTYPE root SYSTEM "root.dtd">
+<root>
+<product name ="Cars"
+version ="2005/01/01">
+<tag></tag>
+<tds>
+<![CDATA[
+<feature1>4x4 transmission </feature1>
+<feature2>sunroof </feature2>
+<feature3>paw-trac 4 Wheel Drive</feature3>
+]]></tds>
+<pers>1</pers>
+<specs>
+<engine type="V8" displacement="5.0">
+<displacementL>3750</displacementL>
+<displacementR>3750</displacementR>
+</engine>
+<trans type="automatic"/>
+</specs>
+</product>
+</root>

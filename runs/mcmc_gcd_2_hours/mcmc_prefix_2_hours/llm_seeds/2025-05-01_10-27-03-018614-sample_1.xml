@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:xs = "http://www.w3.org/2001/XMLSchema-instance"
+xml:lang ="http://it/romeo.xml"
+xmlns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xi:type="http://www.w3.org/1999/06/xml-infrastructure#Properties">
+    <item externalID=" PUBLIC:myItem" />
+    <item externalID ="SomeOtherItem SYSTEM:myOtherItem"/>
+    <item>SomeOtherItem</item>
+    <item>PublicResource</item>
+    <characteristic name ="" length="10" value ="" type="xs:string"/>
+</catalog>

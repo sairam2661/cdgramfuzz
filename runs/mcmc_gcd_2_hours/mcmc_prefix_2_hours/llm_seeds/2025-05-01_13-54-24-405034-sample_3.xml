@@ -1,0 +1,19 @@
+<?xml version =   1.0 encoding="UTF-8"?>
+<doc xmlns:fb="http://schemas.openxmlformats.org/officedocument/2006/main">
+  <part xmlns:d="http://schemas.openxmlformats.org/packaging/2006/mimedocument">
+    <tbl>
+      <row>
+        <c>Item 1</c>
+        <c>Item 2</c>
+        <c>Item 3</c>
+        <c>Item 4</c>
+      </row>
+      <row>
+        <c>Item 5</c>
+        <c>Item 6</c>
+        <c>Item 7</c>
+        <c>Item 8</c>
+      </row>
+    </tbl>
+  </part>
+</doc>

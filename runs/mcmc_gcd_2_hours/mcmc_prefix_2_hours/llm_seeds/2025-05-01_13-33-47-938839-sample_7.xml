@@ -1,0 +1,53 @@
+<?xml version = 1.0?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (book|document)>
+<!ELEMENT book (title, publicationdate, price,author)>
+<!ELEMENT document (title, author, price)>
+<!ELEMENT title (#PCDATA)*
+><!ELEMENT author (#PCDATA)*> 
+<!ELEMENT publicationdate (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+<!ELEMENT book> 
+<!ELEMENT document> 
+<!ELEMENT title> 
+<!ELEMENT author> 
+<!ELEMENT publicationdate> 
+<!ELEMENT price> 
+<!ELEMENT catalog> 
+<!ATTLIST catalog PUBLICID CDATA #IMPLIED>
+<!ATTLIST book PUBLICID CDATA #IMPLIED>
+<!ATTLIST document PUBLICID CDATA #IMPLIED>
+<!ATTLIST title PUBLICID CDATA #IMPLIED>
+<!ATTLIST author PUBLICID CDATA #IMPLIED>
+<!ATTLIST publicationdate PUBLICID CDATA #IMPLIED>
+<!ATTLIST price PUBLICID CDATA #IMPLIED>
+<!ATTLIST catalog name CDATA #IMPLIED>
+<!ATTLIST book isbn CDATA #IMPLIED>
+<!ATTLIST document id CDATA #IMPLIED>
+<!ATTLIST title edition CDATA #IMPLIED>
+<!ATTLIST author nationality CDATA #IMPLIED>
+<!ATTLIST publicationdate publisher CDATA #IMPLIED>
+<!ATTLIST price amount CDATA #IMPLIED>
+<!ATTLIST book category CDATA #IMPLIED>
+<!ATTLIST document subject CDATA #IMPLIED>
+<!ATTLIST title subtitle CDATA #IMPLIED>
+<!ATTLIST author biography CDATA #IMPLIED>
+<!ATTLIST publicationdate publication_date CDATA #IMPLIED>
+<!ATTLIST price quantity CDATA #IMPLIED>
+<!ATTLIST catalog lang CDATA #IMPLIED>
+<!ATTLIST book country CDATA #IMPLIED>
+<!ATTLIST document status CDATA #IMPLIED>
+<!ATTLIST title language CDATA #IMPLIED>
+<!ATTLIST author nationality_language CDATA #IMPLIED>
+<!ATTLIST publicationdate format CDATA #IMPLIED>
+<!ATTLIST price unit CDATA #IMPLIED>
+<!ATTLIST book copyright CDATA #IMPLIED>
+<!ATTLIST document creator CDATA #IMPLIED>
+<!ATTLIST title translator CDATA #IMPLIED>
+<!ATTLIST author translator_language CDATA #IMPLIED>
+<!ATTLIST publicationdate address CDATA #IMPLIED>
+<!ATTLIST price buyer CDATA #IMPLIED>
+<!ATTLIST catalog created CDATA #IMPLIED>
+<!ATTLIST book contributor CDATA #IMPLIED>
+<!ATTLIST document

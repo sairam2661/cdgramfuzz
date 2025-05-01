@@ -1,0 +1,11 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<company  xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" version ="x  1. 0"   
+          xsi:schemaLocation ="http://www.corp.x  /xs/schemas/company.xsd">
+    <address street ="" city="" country=""  postcode=""  xsi:noNamespaceSchemaLocation ="#company.xsd">
+        <contact-name>John  Doe</contact-name> 
+        <contact-role>CTO</contact-role> 
+         <company-name>ABC  Corp.</company-name> 
+         <year-established>1998</year-established> 
+         <employee-count>50000</employee-count>     
+       </address>
+</company>

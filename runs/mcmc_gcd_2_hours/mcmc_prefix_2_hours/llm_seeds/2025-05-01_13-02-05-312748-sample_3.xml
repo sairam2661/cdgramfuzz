@@ -1,0 +1,32 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+ <customer>
+   <customerservice>
+     <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+     </address>
+     <phone>987-654-3210</phone>
+   </customerservice>
+   <order>
+     <orderdate>2023-02-14</orderdate>
+     <total>100.00</total>
+     <items>
+       <items>
+         <product>Book</product>
+         <Quantity>2</Quantity>
+         <price>20.00</price>
+       </items>
+       <items>
+         <product>Shirt</product>
+         <Quantity>1</Quantity>
+         <price>15.00</price>
+       </items>
+     </items>
+   </order>
+   <payment>
+     <paymentdate>2023-02-15</paymentdate>
+     <method>CARD</method>
+   </payment>
+ </customer>

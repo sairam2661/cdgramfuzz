@@ -1,0 +1,19 @@
+<holidaySeason>
+  <year>2022</year>
+  <month monthType="winter"/>
+  <day ofWeek="monday"/>
+  <emptyDay/> 
+  <weatherForecast>
+    <sky skyType="sunny"/>
+    <temp>80°F</temp>
+  </weatherForecast>
+  <event eventName="new year">
+    <details> 
+      <time timeType="start"/>
+      <location locationType="city"/>
+    </details>
+  </event>
+  <holiday name="christmas">
+    <importance level="high"/>
+  </holiday>
+</holidaySeason>

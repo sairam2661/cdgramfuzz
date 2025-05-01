@@ -1,0 +1,11 @@
+<?xml version = 1.0  encoding = "ISO-4952"?>
+<address person="John Doe" phone="+(123) 456-7890">
+  <street-name>123 Main St</street-name>
+  <city>Anytown</city>
+  <state>US</state>
+  <zip>12345</zip>
+  <country name="USA">
+    <capital>Washington D.C.</capital>
+    <time-zone time-zone=" edt"/>
+  </country>
+</address>

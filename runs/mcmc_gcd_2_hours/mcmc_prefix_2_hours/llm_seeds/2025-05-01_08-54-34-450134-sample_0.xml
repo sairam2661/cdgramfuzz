@@ -1,0 +1,11 @@
+<h:root xmlns="http://www.example.com/example" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xsi:schemaLocation="http://www.example.com/example example.xsd"
+        version="1.0" encoding="UTF-8" standalone="yes">
+    <note>
+        <to>Alice</to>
+        <from>Bob</from>
+        <subject>Meeting</subject>
+        <message>Don't forget our meeting at 2pm!</message>
+        <priority level="high"/>
+    </note>
+</h:root>

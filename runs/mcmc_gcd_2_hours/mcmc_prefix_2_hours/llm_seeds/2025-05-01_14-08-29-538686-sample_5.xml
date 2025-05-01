@@ -1,0 +1,26 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE library [
+<!ELEMENT book (title, author, publisher, price, rating) >
+<!ELEMENT book (title, author, publisher, price, rating, ISBN, ISBN3, barcode) >
+<!ELEMENT title (#PCDATA)*
+  >
+<!ELEMENT author (#PCDATA)* >
+<!ELEMENT publisher (#PCDATA)* >
+<!ELEMENT price CDATA >
+<!ELEMENT rating (#PCDATA)* >
+<!ELEMENT ISBN CDATA >
+<!ELEMENT ISBN3 CDATA >
+<!ELEMENT barcode CDATA >
+]>
+<library>
+  <book>
+    <title>&lt;The Great Gatsby&amp;gt;</title>
+    <author>F. Scott Fitzgerald</author>
+    <publisher>Charles Scribner's Sons</publisher>
+    <price>8.99</price>
+    <rating>4&nbsp;/&nbsp;5</rating>
+    <ISBN>9780743273565</ISBN>
+    <ISBN3>9781401388240</ISBN3>
+    <barcode>9780743273565</barcode>
+  </book>
+</library>

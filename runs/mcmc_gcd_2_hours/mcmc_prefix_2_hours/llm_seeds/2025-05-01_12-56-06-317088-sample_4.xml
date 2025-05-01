@@ -1,0 +1,29 @@
+<?xml version = 
+    1.0 
+    encoding = "ISO-8859-15" 
+    standalone = 
+        yes 
+       ?>
+<!DOCTYPE 
+    library 
+    SYSTEM 
+    "library catalog.dtd">
+
+<library>
+    <book genre="cooking">
+        <title lang="en">Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <year>2005</year>
+        <price amount="19.95" currency="USD"/>
+        <!-- Additional elements not specified in DTD -->
+        <review rating="3">
+            <comment>Great cookbook for beginners!</comment>
+        </review>
+    </book>
+    <book genre="self-help">
+        <title lang="en">The 7 Habits of Highly Effective People</title>
+        <author>Stephen Covey</author>
+        <year>1989</year>
+        <price amount="16.95" currency="USD"/>
+    </book>
+</library>

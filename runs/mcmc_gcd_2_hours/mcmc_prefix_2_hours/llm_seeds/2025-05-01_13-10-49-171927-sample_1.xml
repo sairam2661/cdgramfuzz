@@ -1,0 +1,124 @@
+<!DOCTYPE note [
+<!ELEMENT note (person)>
+<!ATTLIST note
+    id             CDATA     #REQUIRED
+    action         (read     | write    )  "write"
+    title          CDATA     "#IMPLIED"
+    creation-date  CDATA     "#IMPLIED"
+    last-update    CDATA     "#IMPLIED"
+    priority       (low      | medium | high) "low"
+    format         CDATA     "#IMPLIED"
+    size           CDATA     "#IMPLIED"
+    color          (red      | blue   | green) "red"
+    font           (Arial    | Times   ) "Arial"
+ note
+  (
+    person
+      |
+      book
+      |
+      drawing
+  )
+  "@id"
+  id
+  (
+    book
+    |
+    drawing
+  )
+  "priority"
+  priority
+  (
+    low      |
+    medium  |
+    high
+  )
+  "font"
+  font
+  (
+    Arial    |
+    Times   | green
+  )
+  "size"
+  size
+  (
+    A4     |
+    A3     | 
+  ild
+  )
+  "color"
+  color
+  (
+    gray      |
+    red      | blue
+  )
+  "format"
+  format
+  (
+    PCD     |
+    PDF     |
+    XLS     | 
+  omb
+  )
+  "last-update"
+  last-update
+  (
+    YYYY-MM-DD
+    |
+    DD-MM-YYYY | MM-DD-YYYY | YYYY-MM-DD
+  )
+  "title"
+  title
+  (
+    Book1
+    |
+    Book2    |
+    Article1 | 
+  acking
+  )
+  "creation-date"
+  creation-date
+  (
+    YYYY-MM-DD
+    |
+    DD-MM-YYYY | MM-DD-YYYY | YYYY 
+  )
+  "notes"
+  notes
+  (
+    note
+      |
+      book
+  )
+  "@action"
+  action
+  (
+    read     |
+    write    | 
+  online
+  )
+  "format"
+  format
+  (
+    PCD     |
+    PDF     |
+    XLS     | 
+  online
+  )
+  "format"
+  format
+  (
+    PCD     |
+    PDF     |
+    XLS     | 
+  online
+  )
+  "@notes"
+  notes
+  (
+    note
+      |
+      book
+  )
+  "@id"
+ 

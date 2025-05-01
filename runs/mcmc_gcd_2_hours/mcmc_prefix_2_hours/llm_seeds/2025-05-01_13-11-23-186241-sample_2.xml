@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+   <book id="bk101" genre="cooking">
+      <author>John Smith</author>
+      <title lang="en">A Gentleman's Guide to Cookery</title>
+      <genre>cooking|romance</genre>
+      <price currency="USD">19.99</price>
+      <publish_date>2007-10-01</publish_date>
+      <description>Hardcover for 'A Gentleman's Guide to Cookery'.</description>
+   </book>
+   <book id="bk102" genre="children">
+      <author>Jane Doe</author>
+      <title lang="en">HarperCollins Is The Best</title>
+      <genre>romance|children</genre>
+      <price currency="USD">9.99</price>
+      <publish_date>2007-05-01</publish_date>
+      <description>A great children's book.</description>
+   </book>
+</catalog>

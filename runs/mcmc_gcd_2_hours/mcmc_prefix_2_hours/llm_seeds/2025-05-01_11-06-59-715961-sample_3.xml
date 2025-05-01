@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<catalog>
+  <description xml:lang =""  xml:space ="" />
+  <note xml:space ="preserve">
+    <to>alice@example.com</to>
+    <from>Bob&lt;&lt;Alice&gt;&gt;</from>
+    <subject>Meeting&amp;lt;&lt;Wedged&gt;</subject>
+    <message xml:value="Don't forgo our meeting at 2:04pm!!"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="strtype.xsd"/>
+    <priority>High</priority>
+    <excess><a>too much</a></excess>
+    <note xml:id ="a"  xml:space="preserve">second note</note>
+    <book id="bk101"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="bks.xsd">
+      <author>John Smith</author>
+      <title>XML for Dummies</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description xml:lang=''  xml:space=''>A book on XML</description>
+    </book>
+  </note>
+</catalog>

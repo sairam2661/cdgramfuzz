@@ -1,0 +1,21 @@
+<?xml version = 
+  1.0  encoding = "UTF-8"
+  standalone = 
+    yes?>
+<brand>
+    <id name="Nike" 
+      logoUrl ="/images/nike-logo.png" 
+       country="/country/canada"
+    />
+    <socialMedia>
+   
+      <twitter Id="Nike"  
+          username="Nike" 
+           defaultPicture="/images/twitter-icon.png"
+          />
+     
+      <facebook name="Nike"  
+                  locale="/country/canada"
+                 />
+    </socialMedia>
+</brand>

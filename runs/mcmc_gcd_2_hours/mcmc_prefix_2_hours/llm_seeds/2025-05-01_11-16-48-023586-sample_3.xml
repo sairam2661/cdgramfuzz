@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <book id ="{123}" type ="(price  |  name  |  ISBN)">
+        <title>XML</title>
+        <author>Johne</author>
+        <price>$15.96</price>
+    </book>
+    <book id ="{124}" type ="(name  |  price)">
+        <title>XML</title>
+        <author>Johne</author>
+        <price>$24.95</price>
+    </book>
+    <book id ="{125}" type="price">
+        <title>XML</title>
+        <author>Johne</author>
+        <price>$15.96</price>
+    </book>
+    <cd id ="{126}">
+        <title>XML</title>
+        <artist>XML</artist>
+        <price>$12.99</price>
+    </cd>
+</catalog>

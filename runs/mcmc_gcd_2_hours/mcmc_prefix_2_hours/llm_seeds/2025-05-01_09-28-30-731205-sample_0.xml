@@ -1,0 +1,82 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE article [
+<!ELEMENT article (title, content, image)>
+<!ELEMENT title (#PCDATA)*
+><!ELEMENT content (#PCDATA)*> 
+<!ELEMENT image (#PCDATA)*> 
+
+<!ELEMENT title (name, publication, year)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT publication (#PCDATA)*> 
+<!ELEMENT year (#PCDATA)*> 
+
+<!ELEMENT article (
+    title,
+    content, 
+    image, 
+    author, 
+    date, 
+    source
+)>
+<!ELEMENT title (name, publication, year)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT publication (#PCDATA)*> 
+<!ELEMENT year (#PCDATA)*> 
+
+<!ELEMENT content (#PCDATA)*> 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT date (#PCDATA)*> 
+<!ELEMENT source (#PCDATA)*> 
+
+<!ELEMENT image (#PCDATA)*> 
+
+<!ELEMENT publisher (#PCDATA)*> 
+<!ELEMENT page (#PCDATA)*> 
+<!ELEMENT volume (#PCDATA)*> 
+
+<!ELEMENT article (
+    title,
+    content, 
+    image, 
+    author, 
+    date, 
+    source, 
+    publisher, 
+    page, 
+    volume
+)>
+<!ELEMENT title (name, publication, year)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT publication (#PCDATA)*> 
+<!ELEMENT year (#PCDATA)*> 
+
+<!ELEMENT content (#PCDATA)*> 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT date (#PCDATA)*> 
+<!ELEMENT source (#PCDATA)*> 
+
+<!ELEMENT image (#PCDATA)*> 
+
+<!ELEMENT publisher (#PCDATA)*> 
+<!ELEMENT page (#PCDATA)*> 
+<!ELEMENT volume (#PCDATA)*> 
+
+
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT date (#PCDATA)*> 
+<!ELEMENT source (#PCDATA)*> 
+
+
+<!ELEMENT publisher (#PCDATA)*> 
+<!ELEMENT page (#PCDATA)*> 
+<!ELEMENT volume (#PCDATA)*> 
+
+
+<!ELEMENT content (#PCDATA)*> 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT date (#PCDATA)*> 
+<!ELEMENT source (#PCDATA)*> 
+
+
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT date (#

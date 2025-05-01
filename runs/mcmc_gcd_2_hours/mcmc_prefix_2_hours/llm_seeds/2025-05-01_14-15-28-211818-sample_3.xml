@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<?xml-stylesheet type = "text/xsl" href = "styles.xsl"?>
+<catalog>
+    <description>&lt;a&gt;New book&lt;/a&gt;</description>
+    <company name ="Samantha Co." address ="[123] 45th St, New York, NY"/>
+    <person name ="Samantha Co."/>
+    <contact email ="[auto]">
+        <phone type ="[home]"></phone>
+        <phone type ="[office]">123-1234</phone>
+        <phone type ="[mobile]">567-5678</phone>
+    </contact>
+</catalog>

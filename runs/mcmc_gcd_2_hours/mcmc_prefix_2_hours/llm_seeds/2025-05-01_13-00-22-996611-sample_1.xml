@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <bookstore xmlns = "http://example.com/catalog/bookstore">
+    <ISBN-10>0-306-40615-2</ISBN-10>
+    <ISBN-13>978-0-306-40615-8</ISBN-13>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <pubDate>2001-12-23</pubDate>
+  </bookstore>
+  <magazine>
+    <title>HTML for Beginners</title>
+    <genre>Computer</genre>
+    <price>19.95</price>
+    <pubDate>2001-12-23</pubDate>
+  </magazine>
+</catalog>

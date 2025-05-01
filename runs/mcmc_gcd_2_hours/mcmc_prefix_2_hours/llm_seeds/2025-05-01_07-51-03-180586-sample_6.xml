@@ -1,0 +1,16 @@
+<?xml version=1.0 encoding="ISO-8859-1"?>
+<organization>
+  <company name="ABC Inc." id="12345">
+    <city>New York</city>
+    <state>NY</state>
+    <country>USA</country>
+    <address>
+      <street>123 Main St</street>
+      <apartment>4</apartment>
+      <zip>10001</zip>
+      <country>USA</country>
+    </address>
+    <phone>1-800-555-5555</phone>
+    <fax>1-800-555-1234</fax>
+  </company>
+</organization>

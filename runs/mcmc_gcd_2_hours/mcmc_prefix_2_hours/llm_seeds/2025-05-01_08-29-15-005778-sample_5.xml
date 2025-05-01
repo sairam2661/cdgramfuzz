@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+<!--
+    Entity Declaration
+    Custom Entity: currency denominated
+-->
+<entities>
+<c1 name="USD">United States Dollar</c1>
+<c2 name="EUR">Euro</c2>
+<c3 name="GBP">British Pound</c3>
+</entities>
+<books>
+    <book ISBN="12345">
+        <title bookAuthor="John Smith">XML Primer</title>
+        <price currency="USD" amount="49.99">ISBN &amp; Title</price>
+    </book>
+    <book>
+        <title bookAuthor="Jane Doe">Best Book Ever</title>
+        <price currency="GBP" amount="10.00">ISBN &amp; Title</price>
+    </book>
+</books>
+</catalog>

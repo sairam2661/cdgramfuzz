@@ -1,0 +1,20 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+     xmlns:tns = "http://www.example.org/XMLSchema"
+     targetNamespace ="http://www.example.org/XMLSchema"
+     xmlns = "http://www.example.org/XMLSchema"
+     elementFormDefault ="(qualified,instructed)"
+     attributeFormDefault ="(unqualified)"
+
+  >
+  <xs:element name ="_ttns:tElement">
+  <xs:complexType>
+  <xs:sequence>
+  <xs:element name="_ttns:elem1" type ="{tns:EltType1}"/>
+  <xs:element name="_ttns:elem2" type ="{tns:EltType2}"/>
+  </xs:sequence>
+  </xs:complexType>
+  </xs:element>
+  <xs:element name="_ttns:elem3" type="{tns:EltType3}"/>
+  </xs:schema>

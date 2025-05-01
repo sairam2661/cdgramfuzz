@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?xml-notation xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink"?>
+<diagram title="Mathematical Functions">
+    <axis xlabel="x" xlabelalign="left"/>
+    <axis ylabel="y" ylabelalign="top"/>
+    <curve id="f" math:apply="func">
+        <math:apply func="trig"
+           xmlns:trig="http://www.w3.org/2000/trig/"
+           xmlns="http://www.w3.org/2000/svg"/>
+    </curve>
+    <axis xlink:href="#yaxis"/>
+</diagram>

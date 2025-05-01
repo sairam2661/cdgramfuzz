@@ -1,0 +1,17 @@
+<?xml version =1.0 encoding="UTF-8" standalone = yes?>
+
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publishDate>2000-10-01</publishDate>
+    <description>An in-depth look at creating applications using XML.</description>
+    <libraryItem>
+      <title>XML</title>
+      <price>29.95</price>
+      <quantity>4</quantity>
+    </libraryItem>
+  </book>
+</catalog>

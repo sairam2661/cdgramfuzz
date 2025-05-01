@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+
+<catalog>
+  <title>Product Catalog</title>
+  <description>This is a sample product catalog.</description>
+  <company>ABC Inc.</company>
+  <contact>
+    <name>John Doe</name>
+    <email>john.doe@example.com</email>
+    <phone>123-456-7890</phone>
+  </contact>
+  <product>
+    <name>Sample Product</name>
+    <price>19.99</price>
+    <description>This is a sample product.</description>
+    <external-identifier PUBLIC="/products/123">
+      <name>Product ID</name>
+    </external-identifier>
+  </product>
+</catalog>

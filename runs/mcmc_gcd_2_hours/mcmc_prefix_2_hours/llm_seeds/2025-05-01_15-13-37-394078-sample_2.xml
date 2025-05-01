@@ -1,0 +1,7 @@
+<?xml version = 1.0 encoding = "UTF-16"?>
+<products>
+  <product id ="@prod1" sku="PROD1" desc="Camera"/>
+  <product id ="@prod2" sku="PROD2"  price ="$19.99"/>
+  <product  id ="@prod3" sku="PROD3"  revdate="2020-01-14"/>
+  <product id ="@prod4" sku="PROD4" price ="$29.95" desc="Printer"/>
+</products>

@@ -1,0 +1,32 @@
+<?xml version=
+    1.0  encoding="UTF-8" standalone=
+        yes?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genref>COB</genref>
+        <price>39.95</price>
+        <pubdate>2000-10-01</pubdate>
+        <description>
+            ISBN:
+            <x>&lt;x&gt;</x>
+            &quot;
+            &quot;
+            &lt;/description>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT in a Nutshell</title>
+        <genref>COX</genref>
+        <price>49.95</price>
+        <pubdate>2001-05-01</pubdate>
+        <description>
+            ISBN:
+            <x>&lt;x&gt;</x>
+            &quot;
+            &quot;
+            <x>&lt;/x&gt;</x>
+        </description>
+    </book>
+</catalog></xml>

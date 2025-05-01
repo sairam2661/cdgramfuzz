@@ -1,0 +1,35 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<library>
+  <book genre="fiction">
+    <title>Pericles</title>
+    <author>Aristotle</author>
+      <description>
+        <l>Aristotle(384-322 BCE) was a Greek philosopher and student of Plato. </l>
+        <l>Aristotle made significant contributions to various fields, including philosophy, science, and ethics. </l>
+        <l>Some of his notable philosophical works include the Categories, De Interpretatione, and the Posterior Analytics. </l>
+      </description>
+    <publishingDetails>
+      <publicationDate>1983</publicationDate>
+      <publisher>Everyman's Library</publisher>
+      <price>4.95</price>
+    </publishingDetails>
+  </book>
+  <book genre="non-fiction">
+    <title>Introduction to Mathematics</title>
+    <author>Smith, John</author>
+      <description>
+        <p>This is a new paragraph within a paragraph.</p>
+        <pre>A very long line of text that may wrap to the next line.</pre>
+        <ul>
+          <li> Item 1</li>
+          <li> Item 2</li>
+          <li> Item 3</li>
+        </ul>
+      </description>
+    <publishingDetails>
+      <publicationDate>1990</publicationDate>
+      <publisher>Oxford University Press</publisher>
+      <price>24.99</price>
+    </publishingDetails>
+  </book>
+</library>

@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (book|author) >
+<!ELEMENT book (title, price, publisher, author ) >
+<!ELEMENT author (name, birthdate) >
+]>
+<catalog>
+<subject level="system" publicId="/catalog subjects">
+    <title>Business Information Systems</title>
+    <price>90.00</price>
+    <publisher>McGraw-Hill</publisher>
+    <author>
+        <name>Robert L. Scott</name>
+        <birthdate>6 November 1945</birthdate>
+    </author>
+</subject>
+</catalog>

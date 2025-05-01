@@ -1,0 +1,25 @@
+<div>
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <catalog>
+        <book id="bk101">
+            <author>John Smith</author>
+            <title>XML for Beginners</title>
+            <genre>Computer</genre>
+            <price>39.95</price>
+            <description>An introduction to XML programming.</description>
+            <vendor>Online Books</vendor>
+            <publish_date>2000-10-01</publish_date>
+            <image>img.xml</image>
+        </book>
+        <book id="bk102">
+            <author>Jane Doe</author>
+            <title>XSLT: The Ultimate Guide</title>
+            <genre>Computer</genre>
+            <price>49.95</price>
+            <description>A comprehensive guide to XSLT programming.</description>
+            <vendor>Online Books</vendor>
+            <publish_date>2001-05-01</publish_date>
+            <image>img2.xml</image>
+        </book>
+    </catalog>
+</div>

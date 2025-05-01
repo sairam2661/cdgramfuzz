@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+ <catalog>
+  <description>Exhibition Catalogue</description>
+  <company>
+   <name>ABC Corporation</name>
+   <address>
+    <street>123 Main Street</street>
+    <city>New York</city>
+    <state>NY</state>
+    <zip>10001</zip>
+   </address>
+   <phone>123-456-7890</phone>
+   <fax>987-654-3210</fax>
+  </company>
+  <product>
+   <name>Painting</name>
+   <description>This is a painting</description>
+   <price>$200.00</price>
+   <image>painting.jpg</image>
+  </product>
+  <product>
+   <name>Car</name>
+   <description>This is a car</description>
+   <price>$10,000.00</price>
+   <image>car.jpg</image>
+  </product>
+ </catalog>

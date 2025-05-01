@@ -1,0 +1,13 @@
+<SchoolData xmlns:D="http://www.example.org/Domains" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <D:SchoolName D:ID="#001" D:Name="Springfield Elementary School"/>
+    <D:SchoolAddress D:Address-ID="#001" D:Street="123 Main St" D:City="Springfield" D:State="IL" D:Zip="62704"/>
+    <xs:simpleType name="GradeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Kindergarten"/>
+            <xs:enumeration value="First Grade"/>
+            <xs:enumeration value="Second Grade"/>
+            <xs:enumeration value="#IMPLIED"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <D:Grades D:ID="#001" D:Grade-Type="#REQUIRED"/>
+</SchoolData>

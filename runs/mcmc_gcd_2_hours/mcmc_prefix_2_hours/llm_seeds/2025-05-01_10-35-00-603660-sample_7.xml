@@ -1,0 +1,16 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?><product company ="My Company Inc." version="3.0" creator="John Doe">
+
+<external-identifier key="EXTERNAL_ID12345" type="PUBLIC" href="file://example.xml"/>
+<attribute name="price" value="99.99" units="USD"/>
+<image-system-image guid="SYSTEM Image-123" name="Sofia Image"/>
+<rating rating="4.5"/>
+<short-description>My Software Solution</short-description>
+
+<availability status="In Stock" quantity="500"/>
+<delivery-method method="Mail"/>
+<shipping-carrier carrier="UPS"></shipping-carrier>
+
+<product-metric metric="Customer Satisfaction (CSAT)" units="%" value="85"/>
+<productmetric metric="User Experience (UX)" units="%" value="92"/>
+<product-metric metric="Product Support" units="%" value="95"/>
+</product>

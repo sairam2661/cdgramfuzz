@@ -1,0 +1,25 @@
+<?xml version =1.0 encoding = "UTF-16le" standalone =no?>
+<catalog xmlns = "http://www.w3.org/1999/03/cd/catalog" 
+    xml:lang ="" xml:space ="" 
+    format-version ="" revision ="" productionInfo ="" 
+    productInfo ="" xml:stylesheet ="" 
+    xml:base ="" date ="" time ="" xml:characterEncoding ="" 
+    xml:contentStyle ="" xmlns:xsi ="" 
+    targetNamespace ="" 
+    xsi:schemaLocation ="" encoding ="" 
+    XMLNS ="">
+
+  <cd>
+    <title>My Song</title>
+    <artist>Joe <songwriter>Joe Smith</songwriter></artist>
+    <album>My Album</album>
+    <label>Columbia</label>
+    <country>USA</country>
+    <company>BMG Music</company>
+    <year>1999</year>
+    <genre>Rock</genre>
+    <price>11.90</price>
+    <picture>photo.jpg</picture>
+  </cd>
+
+</catalog>

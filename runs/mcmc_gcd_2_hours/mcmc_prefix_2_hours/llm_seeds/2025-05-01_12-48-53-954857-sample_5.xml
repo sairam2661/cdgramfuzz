@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-16le" standalone = yes?>
+<namedEntityList>
+<entity id ="{1}" version="1.0">
+<name>Company A</name>
+<description>An American corporation</description>
+<type>Business</type>
+<dateFounded>2000-01-01</dateFounded>
+</entity>
+<entity id ="{2}" version="1.0">
+<name>Amazon</name>
+<description>An American e-commerce company</description>
+<type>Business</type>
+<dateFounded>1994-07-05</dateFounded>
+</entity>
+</namedEntityList>

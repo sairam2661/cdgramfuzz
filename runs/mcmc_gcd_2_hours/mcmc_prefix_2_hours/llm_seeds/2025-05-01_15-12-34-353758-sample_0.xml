@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+<country name="USA">
+  <area code="US"/>
+  <cities>
+    <city name="New York"/>
+    <city name="Los Angeles"/>
+    <city name="Chicago" id="1"/>
+  </cities>
+</country>
+<country name="Canada">
+  <area code="CA"/>
+  <cities>
+    <city name="Toronto"/>
+    <city name="Vancouver"/>
+  </cities>
+</country>
+</catalog>

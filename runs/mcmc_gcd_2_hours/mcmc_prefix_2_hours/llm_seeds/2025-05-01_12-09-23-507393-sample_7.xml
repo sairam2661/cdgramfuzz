@@ -1,0 +1,29 @@
+<?xml version = 
+1.0 
+encoding = "UTF-8" 
+standalone = 
+yes?>
+
+<catalog xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="catalog.xsd" version="1.0">
+
+   <bookstore>
+   <book id="bk101" 
+         datatype="book">
+      <author>(John Smith)</author>
+      <title>XML for Beginners</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publishDate>12/5/20</publishDate>  
+      <description>An in-depth look at creating applications with XML.</description>
+      <language>English</language>       
+      <country>USA</country>
+      <company>ABC</company>  
+      <contact>John Smith (562) 123-4567</contact>
+      <coverImage>https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/XML.svg/800px-XML.svg.png</coverImage>
+      <ISBN>0-123-45678-0</ISBN>        
+   </book>
+   
+   </bookstore>
+   
+   </catalog>

@@ -1,0 +1,75 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE xml-public [ <!ATTLIST note (priority 	) #REQUIRED >]>
+<note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message><![CDATA[We urgently need to discuss the new marketing strategy for the quarter, expecting significant revenue growth, thus we should allocate more funds.]]>
+<priority level="high"/>
+</note> 
+<?xml-system-id "http://www.example.com/example.dtd"?> 
+<personal-info>
+<details>
+<full-name>
+<Title> Mr.&nbsp;</Title>
+<First Name.Microsoft="">Aloos.</First-Name.Microsoft>
+<Last name.microsoft="">Bazaa.</last-name.microsoft>
+<Age>35</Age>
+</full-name>
+<Address>
+<Street>123 Main St</Street>
+<City>New York</City>
+<Country>USA</Country>
+</Address>
+</details>
+</personal-info> 
+<personal-info>
+<details>
+<full-name>
+<Title> Mr.&nbsp;</Title>
+<First Name.microsoft="">S.</First-Name.microsoft>
+<Last name.microsoft="">Nancy</Last-name.microsoft>
+<Age>50</Age>
+</full-name>
+<Address>
+<Street>456 Maple Ave </Street>
+<City>New York</City>
+<Country>USA</Country>
+</Address>
+</details>
+</personal-info> 
+<personal-info>
+<details>
+<full-name>
+<Title>  </Title>
+<First Name.microsoft="">H.</First-Name.microsoft>
+<Last name.microsoft="">Y.</Last-name.microsoft>
+<Age>25</Age>
+</full-name>
+<Address>
+<Street>234 Elm St.</Street>
+<City>Niagara Falls</City>
+<Country>Canada</Country>
+</Address>
+</details>
+</personal-info> 
+<personal-info>
+<details>
+<full-name>
+<Title> Mr.&nbsp;</Title>
+<First Name.microsoft="">Z.</First-Name.microsoft>
+<Last name.microsoft="">P.</Last-name.microsoft>
+<Age>40</Age>
+</full-name>
+<Address>
+<Street>678 Oak St </Street>
+<City>New York</City>
+<Country>USA</Country>
+</Address>
+</details>
+</personal-info> 
+<personal-info>
+<details>
+<full-name>
+<Title> Ms.</Title>
+<First Name.microsoft="">F

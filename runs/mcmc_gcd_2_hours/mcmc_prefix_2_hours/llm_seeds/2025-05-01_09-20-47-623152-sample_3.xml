@@ -1,0 +1,15 @@
+<hello-world>
+    <root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema.xsd">
+        <person id="1" xmlns:jira="http://jira.xml">
+            <name xml:lang="en">Robert</name>
+            <description xml:space="preserve">&copy; 2022 Robert</description>
+            <address>
+                <street>123 Main St</street>
+                <city>New York</city>
+                <state>NY</state>
+                <zip>10001</zip>
+                <country>USA</country>
+            </address>
+        </person>
+    </root>
+</hello-world>

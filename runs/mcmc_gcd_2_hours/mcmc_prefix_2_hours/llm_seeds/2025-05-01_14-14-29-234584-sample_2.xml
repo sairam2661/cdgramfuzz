@@ -1,0 +1,7 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<catalog xmlns:store="http://catalog.store/">
+  <description>
+    Entity Reference:  The address for "The Great Pizza" is &amp; Address: 123 Main St, Anytown, USA 12345.
+  </description>
+  <store:address>123 Main St, Anytown, USA 12345</store:address>
+</catalog>

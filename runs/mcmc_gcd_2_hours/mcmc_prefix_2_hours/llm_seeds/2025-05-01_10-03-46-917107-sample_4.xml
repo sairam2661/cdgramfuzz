@@ -1,0 +1,25 @@
+<?xml version = 1.0?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+ catalogs catalog-name="Example Catalog"
+ publisher-name="Example Publisher"
+ publisher-address="123 Main St. Anytown USA 12345"
+ currency="USD"
+ version-number="1.0"
+ encoding="UTF-8"
+>
+ product product-name="Book A"
+ product-description="This book is a real page-turner."
+ price currency="USD"
+>
+  author-name="Author Joe"
+  author-email="joe@example.com"
+  publisher-ref="P001"
+/>
+ product product-name="Book B"
+ price currency="USD"
+>
+  ISBNnumber "ISBN 1-1234-56789-0"
+  author-name="Author Jane"
+/>
+</catalog>

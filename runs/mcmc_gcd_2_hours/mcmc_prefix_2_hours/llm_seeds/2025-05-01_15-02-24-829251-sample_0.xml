@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog xml:lang ="en" xml:space  ="preserve">
+    <book id ="" rel ="" category ="">
+        <title>   Mathematics and Computer Science</title>
+        <author>John Smith</author>
+        <price> 49.99</price>
+    </book>
+    <book id ="" rel ="" category ="">
+        <title>    Data Structure</title>
+        <author>Jane Doe</author>
+        <price>59.99</price>
+    </book>
+</catalog>

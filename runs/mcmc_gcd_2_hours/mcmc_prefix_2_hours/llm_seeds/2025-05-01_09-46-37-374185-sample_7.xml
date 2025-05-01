@@ -1,0 +1,33 @@
+<?xml version = 
+    1.0 
+    encoding = "UTF-16"
+    standalone = 
+    yes 
+   ?>
+ 
+<catalog>
+  <!-- Root level comment for the entire document -->
+  <description> This is a sample XML file </description>
+  <book id="bk101">
+    <author> John Smith </author> 
+    <!-- User comment that will be ignored -->
+    <!-- This line is a separate line break for better readability -->
+    <title> XML for Beginners </title>
+    <genre>Computer</genre>
+    <price>40.00</price>
+    <publish_date>2000-10-01</publish_date>
+    <description> A book on beginner XML skills </description>
+  </book>
+  <book id="bk102">
+    <author> John Smith </author> 
+    <title> XML Tutorial </title>
+    <genre>Computer</genre>
+    <price>50.00</price>
+    <publish_date>2001-05-02</publish_date>
+    <description> An intermediate-level book on XML </description>
+  </book>
+  <!-- Start of a new root level comment -->
+  <catalog_info>
+      <!-- More comments here -->
+  </catalog_info>
+</catalog>

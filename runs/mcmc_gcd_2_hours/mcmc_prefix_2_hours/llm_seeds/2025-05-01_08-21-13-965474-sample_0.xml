@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+<description>Product catalogue</description>
+
+<country>USA</country>
+<company>ABC Inc.</company>
+<phone>123-456-7890</phone>
+<email>info@abc.com</email>
+
+<currency>USD</currency>
+<language>English</language>
+<zip>10021-3001</zip>
+
+<product>
+  <name>Desk</name>
+  <description>Wooden desk</description>
+  <price>250.00</price>
+  <inventory>50</inventory>
+  <entity name="PIX_ID_1" sysid="ABC123" publicid="ABC123">
+
+    <characteristic name="size" value="120" dataType="length"/>
+    <characteristic name="material" value="wood" dataType="text"/>
+    <characteristic name="quantity" value="50" dataType="int"/>
+  </entity>
+</product>
+
+</catalog>
