@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?> 
+<!DOCTYPE catalog SYSTEM "catalog.dtd" > 
+<catalog version="XML:1.0" author="XML Database Committee">
+  <book id="bk101">
+    <author>Bernon Albright</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>36.50</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating documents using XML.</description>
+    <custom>Special edition</custom>
+  </book>
+  <book id="bk102">
+    <author>Norman Walsh</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Computer</genre>
+    <price>45.99</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A comprehensive guide to using XSLT.</description>
+    <custom>International edition</custom>
+  </book>
+</catalog>

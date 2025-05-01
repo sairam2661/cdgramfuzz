@@ -1,0 +1,16 @@
+<history_of_art>
+  <chapter name="Renaissance" level="Advanced">
+    <artist>Leonardo da Vinci</artist>
+    <time_frame start="1400" end="1500"/>
+    <style>Realism</style>
+    <notation name="Perspective" public="yes">
+      <description>A technique of creating the illusion of three-dimensionality on a two-dimensional surface.</description>
+    </notation>
+    <museum name="Louvre Museum" location="Paris, France"/>
+  </chapter>
+  <chapter name="Impressionism" level="Easy">
+    <artist>Claude Monet</artist>
+    <time_frame start="1870" end="1880"/>
+    <style>Impressionism</style>
+  </chapter>
+</history_of_art>

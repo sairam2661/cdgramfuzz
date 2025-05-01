@@ -1,0 +1,14 @@
+<?xml version = 
+    1.0 encoding = "UTF-8" 
+    standalone = 
+       yes?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<xml:namespace xmlns:v="urn:schemas-microsoft-com:office:word">
+  <ns:plainText xmlns="urn:schemas-microsoft-com:office:office">
+    <span v:word="World" />
+    <span v:field="ISBN" >1234567890</span>
+  </ns:plainText>
+</xml:namespace>

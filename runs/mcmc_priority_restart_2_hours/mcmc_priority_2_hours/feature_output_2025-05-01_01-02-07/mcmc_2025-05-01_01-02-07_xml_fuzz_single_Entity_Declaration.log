@@ -1,0 +1,1405 @@
+2025-05-01 01:39:00,700 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initialized MCMC with propose_style: priority, name_prefix: xml_fuzz_single_Entity_Declaration
+2025-05-01 01:39:00,700 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Prompt: <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 01 May 2025
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Question 1:
+Generate a short but complex XML file specifically using this feature: 
+XML Declaration - The XML declaration is a mandatory element that specifies the version and encoding of the document.
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 1:
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</note>
+        
+
+Question 2:
+Generate a short but complex XML file specifically using this feature: 
+Entity Declaration - An entity declaration is a declaration that defines a named entity, which can be used to represent a character or a reference to another entity.
+Make sure to prominently incorporate this feature in your solution. Do not reuse previous solutions. Try to make it as different as possible.
+DO NOT INCLUDE any comments or explanations in your solution.
+
+Solution 2:<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+
+2025-05-01 01:39:00,700 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Generating 5 samples with 5 steps each
+2025-05-01 01:39:00,700 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting sample 0/5
+2025-05-01 01:39:00,700 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 01:39:15,207 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '",&', 'lt', ';i', '&gt', ';', 'John', ' Smith', '&lt', ';/', 'i', '&gt', ';', '"/>\n', '   ', ' <', 'company', 'Name', '>', 'Ac', 'me', ' Corp', '.</', 'company', 'Name', '>\n', '   ', ' <', 'copyright', '>', '199', '5', ' Sam', 'ual', ' Flight', '</', 'copyright', '>\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n', '     \n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n', '\n   \n', ' \n  \n', ' ', '<|eot_id|>']
+2025-05-01 01:39:15,208 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial raw logprob: tensor([-314.], device='cuda:0')
+2025-05-01 01:39:15,208 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 0 (priority)
+2025-05-01 01:39:15,214 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '",&', 'lt', ';i', '&gt', ';', 'John', ' Smith', '&lt', ';/', 'i', '&gt', ';', '"/>\n', '   ', ' <', 'company', 'Name', '>', 'Ac', 'me', ' Corp', '.</', 'company', 'Name', '>\n', '   ', ' <', 'copyright', '>', '199', '5', ' Sam', 'ual', ' Flight', '</', 'copyright', '>\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n', '     \n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n', '\n   \n', ' \n  \n', ' ', '<|eot_id|>']
+2025-05-01 01:39:15,215 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-314.], device='cuda:0')
+2025-05-01 01:39:18,000 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '"[', 'http', '://', 'www', '.b', 'obby', 'wo', 'oly', '.com', '/', ']"\n', '     ', ' person', 'Name', ' ="', 'B', 'obby', ' Wool', 'y', '"\n', '   ', ' /', '>&', 'nbsp', ';\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:39:18,001 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-215.], device='cuda:0')
+2025-05-01 01:39:18,157 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [30.85118904]
+2025-05-01 01:39:18,157 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: 1
+2025-05-01 01:39:18,161 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-39-15-208749-n5.json
+2025-05-01 01:39:18,161 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal accepted
+2025-05-01 01:39:18,161 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 1 (priority)
+2025-05-01 01:39:18,165 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '"[', 'http', '://', 'www', '.b', 'obby', 'wo', 'oly', '.com', '/', ']"\n', '     ', ' person', 'Name', ' ="', 'B', 'obby', ' Wool', 'y', '"\n', '   ', ' /', '>&', 'nbsp', ';\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:39:18,166 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-215.], device='cuda:0')
+2025-05-01 01:39:54,642 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', ' xml', ':', 'lang', ' =', '\'"', 'US', '-', 'EN', '"\'', ' xmlns', ':x', 'link', ' =', '\'"', 'http', '://', 'www', '.w', '3', '.org', '/', '199', '9', '/x', 'link', '"\'', ' xmlns', ':x', 'si', ' =', '\'"', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"\'', '>\n', '   ', ' <', 'description', '>&', 'copy', ';', ' ', '202', '3', ' Software', ' Publisher', ' -', ' Title', ' Page', '</', 'description', '>\n', '   ', ' &', 'amp', ';', 'World', ' Wide', ' Publishing', ' Inc', '.', ' -', ' All', ' rights', ' reserved', '.\n\n', '   ', ' <!--', ' entity', ' declaration', ' -->\n', '   ', ' <', 'entity', ' xmlns', ':k', 'itt', 'ens', ' =', '"\'', 'http', '://', 'schemas', '.k', 'itt', 'ens', '.com', '/', '200', '5', '"', ' version', '="', '3', '"', ' type', '="', 'k', 'itten', '"/>\n', '    \n', '   ', ' <!--', ' reference', ' to', ' the', ' entity', ' --', '><', 'k', 'itt', 'ens', '>', ' &', 'lt', ';/', 'k', 'itt', 'ens', '>\n', '   ', ' <', 'page', ' start', "='", '3', "'", ' stop', "='", '21', "'", ' xlink', ':href', ' =', '"#', 'title', 'Page', '"/>\n', '   ', ' <', 'book', ' id', ' =', '"{', '123', '45', 'X', '}"', ' xlink', ':href', ' =', '"#', 'title', 'Page', '"/>\n', '   ', ' <', 'chapter', ' id', ' =', '"{', '111', '15', '}"', ' xlink', ':href', ' =', '"#', 'title', 'Page', '"/>\n', '   ', ' <', 'sec', ' id', ' =', '"{', '111', '15', 'A', '}"', ' xlink', ':href', ' =', '"#', 'title', 'Page', '"/>\n', '   ', ' <', 'para', ' id', ' =', '"{', '111', '15', 'B', '}"', ' xlink', ':href', ' =', '"#', 'title', 'Page', '"/>\n', '   ', ' <', 'part', ' id', ' =', '"{', '111', '00', '}"', ' xlink', ':href', ' =', '"#', 'title', 'Page', '"/>\n', '   ', ' <', 'toc', ' link', 'type', ' =', '"\'', 'toc', "'", '"/>\n', '</', 'catalog', '>\n\n', 'Entity', ' Declaration', ' Solution', ' ', '2', ':\n', '<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', '--\n', ' ', ' entity', ' declaration', '\n', '-->\n', '<!', '--\n', ' ', ' entity', ' definition', ' \n', '-->\n', '<', 'catalog', ' xmlns', ':x', 'si', ' =', '"\'', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '\'"', ' xmlns', ':x', 'link', ' =', '"\'', 'http', '://', 'www', '.w', '3', '.org', '/', '199', '9', '/x', 'link', '\'"', ' xmlns', ':', 'ext', ' =', '"\'', 'http', '://', 'www', '.example', '.com', '/', 'external', '\'"', ' ', ' xsi', ':s', 'chema', 'Location', '="\'', 'http', '://', 'www', '.example', '.com', '/', 'external', ' custom', '-', 'external', '.x', 'sd', '\'"', ' ', ' target', 'Namespace', ' =', '"\'', 'http', '://', 'www', '.example', '.com', 'external', '\'"', ' ', ' element', 'Form', 'Default', ' =', '"\'', 'Qualified', '\'"', ' ', ' attribute', 'Form', 'Default', ' =', '"\'', 'Un', 'qualified', "'", '">\n', '   ', ' <!--', ' external', ' entity', ' reference', ' -->\n', '   ', ' <', 'para', '>&', 'ext', ':A', ';\n', '</', 'para', '>\n\n', '   ', ' <!--', ' internal', ' entity', ' reference', ' -->\n', '   ', ' <', 'description', '>&', 'amp', ';', 'B', ';</', 'description', '>\n', '   ', ' <', 'book', ' id', ' =', '"{', '123', '45', 'X', '}"', ' xmlns', ':', 'bo', ' =', '"\'', 'http', '://', 'www', '.example', '.com', '/book', "'", '"/>\n', '</', 'catalog', '>', ' \n', '&', 'copy', ';-', 'powered', ' solution', ' by', ' World', ' Wide', ' Publishing', '.', ' \n', '&', 'copy', ';', ' ', '202', '3', ' World', ' Wide', ' Publishing', '.', ' All', ' rights', ' reserved', '.', ' \n', 'Entity', ' Entity', ' \n', 'Entity', ' entity', ' \n', 'Entity', ' Entity', '.', ' XML', ' Declaration', ' Solution', ' ', '2', '.\n', 'Entity', ' Entity', '.', ' Entity', '.', ' Entity', ' Entity', ' Entity', '.', ' Entity', ' Entity', '.', ' \n', 'Entity', ' Entity', ' Entity', ' \n', 'Entity', ' Entity', ' Entity', '.', ' Entity', '.', ' Entity', ' Entity', '.', ' Entity', ' Entity', '.', ' \n', 'Entity', ' Entity', ' Entity', ' Entity', ' Entity', ' Entity']
+2025-05-01 01:39:54,643 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-724.], device='cuda:0')
+2025-05-01 01:39:54,725 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-80.6363579]
+2025-05-01 01:39:54,726 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [9.55156909e-36]
+2025-05-01 01:39:54,735 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-39-15-208749-n5.json
+2025-05-01 01:39:54,735 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:39:54,735 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 2 (priority)
+2025-05-01 01:39:54,739 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '"[', 'http', '://', 'www', '.b', 'obby', 'wo', 'oly', '.com', '/', ']"\n', '     ', ' person', 'Name', ' ="', 'B', 'obby', ' Wool', 'y', '"\n', '   ', ' /', '>&', 'nbsp', ';\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:39:54,740 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-215.], device='cuda:0')
+2025-05-01 01:39:57,007 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '",&', 'lt', ';', 'Sam', 'uel', ' Flight', '&lt', ';/', 'in', 'vent', 'or', '&gt', ';', '"/>\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:39:57,008 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-182.], device='cuda:0')
+2025-05-01 01:39:57,137 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [2.60530672]
+2025-05-01 01:39:57,137 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: 1
+2025-05-01 01:39:57,141 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-39-15-208749-n5.json
+2025-05-01 01:39:57,142 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal accepted
+2025-05-01 01:39:57,142 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 3 (priority)
+2025-05-01 01:39:57,145 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '199', '5', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'pub', 'Status', ' entity', ' =', '"#', '">\n', '   ', ' <', 'in', 'vent', 'or', ' entity', ' =', '",&', 'lt', ';', 'Sam', 'uel', ' Flight', '&lt', ';/', 'in', 'vent', 'or', '&gt', ';', '"/>\n', ' ', ' </', 'pub', 'Status', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:39:57,146 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-182.], device='cuda:0')
+2025-05-01 01:40:01,950 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '198', '2', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'company', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'street', '>', '100', '0', ' Innovation', ' Drive', '</', 'street', '>\n', '   ', ' <', 'city', '>', 'Al', 'buquerque', '</', 'city', '>\n', '   ', ' <', 'state', '>New', ' Mexico', '</', 'state', '>\n', '   ', ' <', 'zip', '>', '871', '23', '</', 'zip', '>\n', ' ', ' </', 'company', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:01,951 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-163.], device='cuda:0')
+2025-05-01 01:40:02,062 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [11.50055131]
+2025-05-01 01:40:02,062 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: 1
+2025-05-01 01:40:02,068 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-39-15-208749-n5.json
+2025-05-01 01:40:02,068 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal accepted
+2025-05-01 01:40:02,068 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 4 (priority)
+2025-05-01 01:40:02,073 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '198', '2', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'company', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'street', '>', '100', '0', ' Innovation', ' Drive', '</', 'street', '>\n', '   ', ' <', 'city', '>', 'Al', 'buquerque', '</', 'city', '>\n', '   ', ' <', 'state', '>New', ' Mexico', '</', 'state', '>\n', '   ', ' <', 'zip', '>', '871', '23', '</', 'zip', '>\n', ' ', ' </', 'company', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:02,074 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-163.], device='cuda:0')
+2025-05-01 01:40:08,711 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"', ' standalone', ' =', ' yes', '?>\n\n', '<', 'catalog', '>\n', ' ', ' <', 'genre', ' entity', ' =', '"Yes', 'No', '"/', '>&', 'amp', ';t', 'ld', ';', 'tag', '\n', ' ', ' <', 'description', '>&', 'lt', ';i', '&gt', ';', 'In', 'vent', 'or', '&lt', ';/', 'i', '&gt', ';', ' of', ' the', ' theoretical', ' flight', ' simulator', '.</', 'description', '>\n', ' ', ' <', 'name', '>', 'Sam', 'uel', ' Flight', '</', 'name', '>\n', ' ', ' <', 'year', '>', '198', '2', '</', 'year', '>\n', ' ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', ' ', ' <', 'company', '>\n', '   ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '   ', ' <', 'street', '>', '158', '7', ' Massachusetts', ' Ave', '</', 'street', '>\n', '   ', ' <', 'city', '>', 'Cam', 'bridge', '</', 'city', '>\n', '   ', ' <', 'state', '>', 'MA', '</', 'state', '>\n', '   ', ' <', 'zip', '>', '021', '38', '</', 'zip', '>\n', ' ', ' </', 'company', '>\n', ' ', ' <', 'phone', '>', '617', ' ', '225', ' ', '650', '0', '</', 'phone', '>\n', ' ', ' <', 'email', '>', 'fly', ' @', ' ms', 'ft', '.', ' com', '</', 'email', '>\n', ' ', ' <', 'website', '>', 'http', '://', 'www', '.f', 'light', 'shop', '.com', '</', 'website', '>\n', ' ', ' <', 'picture', '>', 'pic', '2', '.jpg', '</', 'picture', '>\n', ' ', ' <', 'language', ' entity', '="', 'English', '"/', '>&', 'amp', ';', 'nbsp', ';\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:08,712 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-220.], device='cuda:0')
+2025-05-01 01:40:08,886 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-4.11398672]
+2025-05-01 01:40:08,886 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.01634249]
+2025-05-01 01:40:08,893 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-39-15-208749-n5.json
+2025-05-01 01:40:08,894 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:40:08,894 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample time: 68.19 s
+2025-05-01 01:40:08,894 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+  <genre entity ="YesNo"/>&amp;tld;tag
+  <description>&lt;i&gt;Inventor&lt;/i&gt; of the theoretical flight simulator.</description>
+  <name>Samuel Flight</name>
+  <year>1982</year>
+  <price>39.95</price>
+  <company>
+    <country>USA</country>
+    <street>1000 Innovation Drive</street>
+    <city>Albuquerque</city>
+    <state>New Mexico</state>
+    <zip>87123</zip>
+  </company>
+</catalog><|eot_id|>
+2025-05-01 01:40:08,894 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_priority_test/llm_seeds/2025-05-01_01-40-08-894758-sample_0.xml
+2025-05-01 01:40:08,894 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting sample 1/5
+2025-05-01 01:40:08,895 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 01:40:21,320 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Products', ' and', ' Services', ' of', ' &', 'company', 'Name', ';.', ' For', ' more', ' information', ' contact', ' us', ' at', ' &', 'store', 'Address', ';', ' or', ' call', ' &', 'phoneNumber', ';', '.</', 'description', '>\n', ' ', ' <', 'entity', ' name', '="', 'cat', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', ' ', ' <', 'entity', ' name', '="', 'store', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:21,321 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 01:40:21,321 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 0 (priority)
+2025-05-01 01:40:21,326 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Products', ' and', ' Services', ' of', ' &', 'company', 'Name', ';.', ' For', ' more', ' information', ' contact', ' us', ' at', ' &', 'store', 'Address', ';', ' or', ' call', ' &', 'phoneNumber', ';', '.</', 'description', '>\n', ' ', ' <', 'entity', ' name', '="', 'cat', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', ' ', ' <', 'entity', ' name', '="', 'store', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:21,327 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 01:40:28,040 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', '<', 'item', ' name', '="', 'Book', '1', '">\n', ' ', ' <', 'subject', '>&', 'company', 'Name', ';</', 'subject', '>\n', ' ', ' <', 'description', '>&', 'store', 'Address', ';', ',&', 'phrase', ';', ' (', 'page', ' ', ' ', '1', ' to', ' ', '333', ')</', 'description', '>\n', ' ', ' <', 'type', '>e', 'book', '</', 'type', '>\n', '</', 'item', '>\n', '<', 'item', ' name', '="', 'Song', '1', '">\n', ' ', ' <', 'title', '>&', 'store', ';', ' Song', ' Volume', ' ', '1', '</', 'title', '>\n', ' ', ' <', 'artist', '>&', 'company', 'Name', ';</', 'artist', '>\n', ' ', ' <', 'album', '>&', 'store', ';', ' Song', ' Volume', ' ', '1', '</', 'album', '>\n', ' ', ' <', 'genre', '>', 'music', '</', 'genre', '>\n', '</', 'item', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:28,041 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-209.], device='cuda:0')
+2025-05-01 01:40:28,166 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-2.09419745]
+2025-05-01 01:40:28,166 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.12316905]
+2025-05-01 01:40:28,170 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-40-21-321840-n5.json
+2025-05-01 01:40:28,170 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:40:28,170 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 1 (priority)
+2025-05-01 01:40:28,175 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Products', ' and', ' Services', ' of', ' &', 'company', 'Name', ';.', ' For', ' more', ' information', ' contact', ' us', ' at', ' &', 'store', 'Address', ';', ' or', ' call', ' &', 'phoneNumber', ';', '.</', 'description', '>\n', ' ', ' <', 'entity', ' name', '="', 'cat', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', ' ', ' <', 'entity', ' name', '="', 'store', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:28,175 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 01:40:32,675 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' prices', ' "', 'Price', ' List', '">\n', ']', '>\n\n', '<', 'cat', '>\n', ' ', ' <', 'store', '>\n', '   ', ' <', 'price', ' book', ' =', '"{', 'cat', '}', '">{', 'store', '}</', 'price', '>\n', '   ', ' <', 'price', ' date', ' =', '"{', 'price', ' list', ' =', " '{", 'prices', ' ', '202', '4', "}'", ' }', '">\n', '     ', ' <', 'date', '>', 'Jan', ' ', '1', ' ', '202', '4', '</', 'date', '>\n', '   ', ' </', 'price', '>', ' \n', ' ', ' </', 'store', '>\n', '</', 'cat', '>', '<|eot_id|>']
+2025-05-01 01:40:32,676 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-156.], device='cuda:0')
+2025-05-01 01:40:32,731 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-6.93637874]
+2025-05-01 01:40:32,731 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.00097178]
+2025-05-01 01:40:32,735 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-40-21-321840-n5.json
+2025-05-01 01:40:32,735 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:40:32,735 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 2 (priority)
+2025-05-01 01:40:32,740 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Products', ' and', ' Services', ' of', ' &', 'company', 'Name', ';.', ' For', ' more', ' information', ' contact', ' us', ' at', ' &', 'store', 'Address', ';', ' or', ' call', ' &', 'phoneNumber', ';', '.</', 'description', '>\n', ' ', ' <', 'entity', ' name', '="', 'cat', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', ' ', ' <', 'entity', ' name', '="', 'store', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:40:32,740 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 01:41:03,864 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', 'log', ' "', 'Catalog', '">\n', '<!', 'ENTITY', ' cat', 'log', '2', ' SYSTEM', ' "', 'catalog', '.xml', '">\n\n', '<!', 'ENTITY', ' price', ' "$', '">\n', '<!', 'ENTITY', ' discount', ' "&', 'lt', ';%', ' discount', ' %', '&', 'gt', ';', '">\n\n', '<!', 'ELEMENT', ' book', ' (', 'title', ',', ' author', ',', ' price', ',', ' discount', ')>\n', '<!', 'ELEMENT', ' author', ' (', 'name', ',', ' nationality', ')>\n', '<!', 'ELEMENT', ' title', ' (', 'genre', ',', ' edition', ')>\n', '<!', 'ELEMENT', ' genre', ' (', 'books', ')>\n', '<!', 'ELEMENT', ' books', ' (', 'book', ')>\n', '<!', 'ELEMENT', ' price', ' (', 'amount', ',', ' currency', ')>\n', '<!', 'ELEMENT', ' amount', ' (#', 'PC', 'DATA', ')', '*>', ' \n', '<!', 'ELEMENT', ' currency', ' (', 'code', ',', ' country', ')>\n', '<!', 'ELEMENT', ' code', ' (#', 'PC', 'DATA', ')', '*>', ' \n', '<!', 'ELEMENT', ' country', ' (#', 'PC', 'DATA', ')', '*>', ' \n\n', '<', '!', 'ENTITY', ' name', ' "&#', '169', ';">\n', '<!', 'ENTITY', ' edition', ' "&#', '91', ';', '">\n\n', '<', '!', 'ELEMENT', ' person', ' (', 'name', ',', ' nationality', ')>\n', '<!', 'ELEMENT', ' nationality', ' (', 'country', ')>\n', '<!', 'ELEMENT', ' country', ' (', 'code', ')>\n', '<!', 'ELEMENT', ' code', ' (', 'code', ')>', ' \n\n', '<', '!', 'ELEMENT', ' catalog', ' (', 'book', '+,', ' book', ')>\n', '<!', 'ELEMENT', ' book', ' (', 'title', ',', ' author', ',', ' price', ',', ' discount', ')>\n', '<', '!', 'ELEMENT', ' title', ' (', 'genre', ',', ' edition', ')>\n', '<', '!', 'ELEMENT', ' genre', ' (', 'books', ')>\n', '<', '!', 'ELEMENT', ' books', ' (', 'book', ')>\n', '<', '!', 'ELEMENT', ' price', ' (', 'amount', ',', ' currency', ')>\n', '<', '!', 'ELEMENT', ' amount', ' (#', 'PC', 'DATA', ')*', '>\n', '<!', 'ELEMENT', ' currency', ' (', 'code', ',', ' country', ')>\n', '<', '!', 'ELEMENT', ' code', ' (#', 'PC', 'DATA', ')*', '>\n', '<!', 'ELEMENT', ' country', ' (#', 'PC', 'DATA', ')*', '>\n\n', '<', '!', 'ELEMENT', ' database', ' (', 'catalog', ')', '>\n\n', '<', '!', 'ENTITY', ' amount', ' "&#', '36', ';">\n', '<!', 'ENTITY', ' currency', ' "&#', '163', ';">\n', '<', '!', 'ENTITY', ' discount', ' "&#', '45', ';">\n', '<!', 'ENTITY', ' nationality', ' "&#', '124', ';">\n', '<!', 'ENTITY', ' edition', ' "&#', '91', ';">\n', '<', '!', 'ENTITY', ' name', ' "&#', '169', ';', '">\n\n', '<', '!', 'ELEMENT', ' item', ' (', 'title', ',', ' price', ')>\n', '<!', 'ELEMENT', ' title', ' (', 'genre', ')>\n', '<!', 'ELEMENT', ' genre', ' (', 'books', ')>\n', '<!', 'ELEMENT', ' books', ' (', 'book', ')>\n', '<!', 'ELEMENT', ' price', ' (', 'amount', ',', ' currency', ')', '>\n\n', '<', '!', 'ELEMENT', ' item', '1', ' (', 'book', ')>\n', '<', '!', 'ELEMENT', ' book', ' (', 'author', ',', ' message', ')>', ' \n', '<!', 'ELEMENT', ' author', ' (', 'name', ',', ' country', ')>\n', '<!', 'ELEMENT', ' name', ' (#', 'PC', 'DATA', ')', '*>', ' \n', '<!', 'ELEMENT', ' country', ' (#', 'PC', 'DATA', ')', '*>', ' \n\n', '<', '!', 'ELEMENT', ' customer', ' (', 'name', ',', ' address', ',', ' city', ',', ' country', ')', '>\n\n', '<', '!', 'ELEMENT', ' address', ' (', 'street', ',', ' zip', ',', ' city', ',', ' country', ')>\n', '<!', 'ELEMENT', ' street', ' (#', 'PC', 'DATA', ')', '*>', ' \n', '<!', 'ELEMENT', ' zip', ' (#', 'PC', 'DATA', ')', '*>', ' \n', '<!', 'ELEMENT', ' city', ' (#', 'PC', 'DATA', ')', '*>', ' \n', '<!', 'ELEMENT', ' country', ' (#', 'PC', 'DATA', ')', '*>', ' \n\n', '<', '!', 'ELEMENT', ' customer', '1', ' (', 'book', ')>\n', '<', '!', 'ELEMENT', ' customer', '2', ' (', 'database', ')>', ' \n', '<!', 'ELEMENT', ' database', ' (', 'catalog', ')', '>\n\n', '<', '!', 'ENTITY', ' book', ' "&#', '169', ';">', ' \n\n', '<', '!', 'ELEMENT', ' customer', '4', ' (', 'catalog', ')', '>\n\n', '<', '!', 'ELEMENT', ' customer', '3', ' (', 'catalog', ')', '>\n\n', '<', '!', 'ELEMENT', ' catalog', '3', ' (', 'book', ')>\n', '<', '!', 'ELEMENT', ' book', '2', ' (', 'genre', ')>\n', '<', '!', 'ELEMENT', ' book', '1', ' (', 'author', ',', ' message', ',', ' priority', ')>\n']
+2025-05-01 01:41:03,865 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-492.], device='cuda:0')
+2025-05-01 01:41:03,949 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-122.9876794]
+2025-05-01 01:41:03,950 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [3.86482197e-54]
+2025-05-01 01:41:03,958 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-40-21-321840-n5.json
+2025-05-01 01:41:03,959 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:41:03,959 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 3 (priority)
+2025-05-01 01:41:03,963 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Products', ' and', ' Services', ' of', ' &', 'company', 'Name', ';.', ' For', ' more', ' information', ' contact', ' us', ' at', ' &', 'store', 'Address', ';', ' or', ' call', ' &', 'phoneNumber', ';', '.</', 'description', '>\n', ' ', ' <', 'entity', ' name', '="', 'cat', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', ' ', ' <', 'entity', ' name', '="', 'store', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:41:03,964 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 01:41:09,117 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', '-address', ' "', '123', ' Main', ' St', '">\n', '<!', 'ENTITY', ' company', '-name', ' "&', 'cat', ';', ' &', 'store', ';">\n', '<!', 'ENTITY', ' store', '-name', ' "&', 'store', '-address', ';', ' &', 'company', '-name', ';">\n', '<!', 'ENTITY', ' address', ' "&', 'store', '-name', ';', '">\n', ']>\n', '<', 'catalog', '>\n', '   ', ' <', 'company', '>&', 'company', '-name', ';</', 'company', '>\n', '   ', ' <', 'store', '>&', 'store', '-name', ';</', 'store', '>\n', '   ', ' <', 'address', '>&', 'address', ';</', 'address', '>\n', '</', 'catalog', '>\n\n', '          \n', '        ', '\n\n\n', '      ', '\n        \n', '     ', '\n\n', '     ', '\n\n\n', '     ', '\n\n\n', '            ', '<|eot_id|>']
+2025-05-01 01:41:09,118 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-153.], device='cuda:0')
+2025-05-01 01:41:09,177 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-12.88003811]
+2025-05-01 01:41:09,177 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [2.54841717e-06]
+2025-05-01 01:41:09,182 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-40-21-321840-n5.json
+2025-05-01 01:41:09,182 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:41:09,182 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 4 (priority)
+2025-05-01 01:41:09,187 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' store', 'Address', ' "', '123', ' Main', ' St', ',', ' Any', 'town', ',', ' USA', ' ', '123', '45', '">\n', '<!', 'ENTITY', ' phoneNumber', ' "(', '555', ')', ' ', '555', '-', '555', '5', '">\n', '<!', 'ENTITY', ' company', 'Name', ' "&', 'cat', ';', ' &', 'store', ';">', ']>\n', '<', 'catalog', '>\n', ' ', ' <', 'description', '>', 'Products', ' and', ' Services', ' of', ' &', 'company', 'Name', ';.', ' For', ' more', ' information', ' contact', ' us', ' at', ' &', 'store', 'Address', ';', ' or', ' call', ' &', 'phoneNumber', ';', '.</', 'description', '>\n', ' ', ' <', 'entity', ' name', '="', 'cat', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', ' ', ' <', 'entity', ' name', '="', 'store', '">\n', '   ', ' <!--', ' entity', ' definition', ' goes', ' here', ' -->\n', ' ', ' </', 'entity', '>\n', '</', 'catalog', '>', '<|eot_id|>']
+2025-05-01 01:41:09,187 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-143.], device='cuda:0')
+2025-05-01 01:41:23,209 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'UTF', '-', '8', '"?>\n', '<!', 'DOCTYPE', ' catalog', ' [\n', '<!', 'ENTITY', ' cat', ' "', 'General', ' Catalog', '">\n', '<!', 'ENTITY', ' store', ' "', 'Retail', ' Store', '">\n', '<!', 'ENTITY', ' logo', ' "[', 'insert', ' logo', ' here', ']', '">\n', ']>\n', '<', 'catalog', ' type', ' =', '"[', 'entity', ']', '">\n', ' <', 'document', '>\n', ' ', ' <', 'catalog', 'ue', ' ID', ' =', '"{', 'cat', '}">\n', '  ', ' <', 'title', '>', 'General', ' Catalog', 'ue', '</', 'title', '>\n', '  ', ' <', 'description', '>This', ' is', ' a', ' description', '</', 'description', '>\n', '  ', ' <', 'image', ' src', ' =', '"{', 'logo', '}">\n', ' ', ' </', 'document', '>\n', ' ', ' <', 'shop', ' ID', ' =', '"{', 'store', '}">\n', '  ', ' <', 'name', '>', 'Shop', ' Name', '</', 'name', '>\n', '  ', ' <', 'address', '>', '123', ' Main', ' St', '.</', 'address', '>\n', '  ', ' <', 'phone', '>', '555', '-', '555', '-', '555', '5', '</', 'phone', '>\n', ' ', ' </', 'shop', '>\n', '</', 'catalog', '>', ' \n\n', ' <?', 'xml', ':', 'namespace', ' prefix', ' =', ' "', 'xmlns', ':x', 'si', '"', 'urn', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"?>\n', '<?', 'xml', ':', 'namespace', ' prefix', ' =', ' "', 'xs', '"', 'uri', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '"?>\n', '  ', ' <', 'item', ' ID', ' =', '"{', 'cat', '}">\n', ' ', ' <', 'product', '-name', '>This', ' is', ' a', ' product', '</', 'product', '-name', '>\n', ' ', ' <', 'description', '>This', ' is', ' a', ' description', '</', 'description', '>\n', ' ', ' <', 'price', '>', '5', '.', '99', '</', 'price', '>\n', ' </', 'item', '>\n', '  ', ' </', 'catalog', '>', ' ', '?>', ' \n', '  ', ' <', 'tax', ' ID', ' =', '"{', 'store', '}', '">', '8', '.', '00', '%', ' tax', '</', 'tax', '>', ' \n', ' ', ' </', 'document', '>', '<|eot_id|>']
+2025-05-01 01:41:23,210 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-288.], device='cuda:0')
+2025-05-01 01:41:23,290 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-42.65674899]
+2025-05-01 01:41:23,290 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [2.98132483e-19]
+2025-05-01 01:41:23,297 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-40-21-321840-n5.json
+2025-05-01 01:41:23,297 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:41:23,297 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample time: 74.40 s
+2025-05-01 01:41:23,298 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample: <?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE catalog [
+<!ENTITY cat "General Catalog">
+<!ENTITY store "Retail Store">
+<!ENTITY storeAddress "123 Main St, Anytown, USA 12345">
+<!ENTITY phoneNumber "(555) 555-5555">
+<!ENTITY companyName "&cat; &store;">]>
+<catalog>
+  <description>Products and Services of &companyName;. For more information contact us at &storeAddress; or call &phoneNumber;.</description>
+  <entity name="cat">
+    <!-- entity definition goes here -->
+  </entity>
+  <entity name="store">
+    <!-- entity definition goes here -->
+  </entity>
+</catalog><|eot_id|>
+2025-05-01 01:41:23,298 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_priority_test/llm_seeds/2025-05-01_01-41-23-298209-sample_1.xml
+2025-05-01 01:41:23,298 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting sample 2/5
+2025-05-01 01:41:23,298 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 01:41:44,648 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:41:44,648 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:41:44,649 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 0 (priority)
+2025-05-01 01:41:44,660 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:41:44,660 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:41:53,280 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'in', 'format', 'ique', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'category', ' term', '="', 'in', 'format', 'ique', '"/>\n', '   ', ' <', 'contrib', 'utor', '>\n', '     ', ' <', 'name', '>B', 'run', 'o', ' Fr', 'ison', '</', 'name', '>\n', '     ', ' <', 'role', ' term', '="', 'a', 'uteur', '"/>\n', '   ', ' </', 'contrib', 'utor', '>\n', '   ', ' <', 'content', ' type', '="', 'html', '">\n', '     ', ' <!--', ' contenu', ' -->\n', '   ', ' </', 'content', '>\n', '   ', ' <', 'rights', '>\n', '     ', ' <', 'clause', '>', 'Text', 'e', '</', 'clause', '>\n', '   ', ' </', 'rights', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/category', '/in', 'format', 'ique', '/', '201', '6', '/', '03', '/article', '1', '.xml', '"', ' rel', '="', 'category', '"/>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:41:53,281 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-199.], device='cuda:0')
+2025-05-01 01:41:53,790 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-3.53792724]
+2025-05-01 01:41:53,791 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.02907353]
+2025-05-01 01:41:53,798 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-41-44-649060-n5.json
+2025-05-01 01:41:53,798 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:41:53,799 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 1 (priority)
+2025-05-01 01:41:53,809 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:41:53,810 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:42:07,056 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'information', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'category', '>', 'information', '</', 'category', '>\n', '   ', ' <', 'atom', ':', 'link', ' href', '="', 'http', '://', 'example', '.com', '/feed', '/', 'atom', '.xml', '"', ' type', '="', 'alternate', '"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'atom', ':', 'link', ' href', '="', 'http', '://', 'example', '.com', '/feed', '/"', ' type', '="', 'alternate', '"', ' title', '="', 'Acc', 'ueil', '"/>\n', '   ', ' <', 'entry', '>\n', '     ', ' <', 'title', '>', 'Ex', 'emple', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/ex', 'emple', '/"', ' rel', '="', 'alternate', '"/>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/ex', 'emple', '/', '</', 'id', '>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>', 'Mat', 'th', 'ieu', ' Am', 'al', 'ric', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/mat', 'th', 'ieu', '.xml', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'content', ' type', '="', 'text', '">', 'Ex', 'emple', '</', 'content', '>\n', '   ', ' </', 'entry', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:42:07,057 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-188.], device='cuda:0')
+2025-05-01 01:42:07,650 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-1.86347335]
+2025-05-01 01:42:07,650 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.15513286]
+2025-05-01 01:42:07,660 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-41-44-649060-n5.json
+2025-05-01 01:42:07,660 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:42:07,660 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 2 (priority)
+2025-05-01 01:42:07,671 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:42:07,672 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:42:09,456 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:42:09,457 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:42:09,457 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal identical to current, acceptance prob = 1
+2025-05-01 01:42:09,457 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: 1
+2025-05-01 01:42:09,468 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-41-44-649060-n5.json
+2025-05-01 01:42:09,468 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal accepted
+2025-05-01 01:42:09,468 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 3 (priority)
+2025-05-01 01:42:09,478 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:42:09,479 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:42:23,018 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<S', 'olutions', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', ' http', '://', ' relax', 'ng', '.org', '/tr', 'avers', 'ing', '.x', 'sd', '"\n', 'version', '="', '1', '.', '0', '"', ' encoding', '="', 'UTF', '-', '8', '"', ' standalone', '="', 'yes', '">\n', '   ', ' <', 'character', 'Entity', ' name', '="', 'Euro', '"', ' public', 'Id', '="', 'EN', '-', '1', '.', '2', '"', ' system', 'Id', '="', 'E', 'uro', 'Entity', '.xml', '"/>\n', '   ', ' <', 'system', 'Entity', ' name', '="', 'base', '64', '"', ' public', 'Id', '="', 'EN', '-B', '-', '1', '.', '2', '"', ' url', '="', 'https', '://', 'example', '.com', '/base', '64', 'encode', '"/>\n', '   ', ' <', 'person', '>\n', '       ', ' <', 'name', '>\n', '           ', ' <', 'first', 'Name', '>', 'Sam', '</', 'firstName', '>\n', '           ', ' <', 'lastName', '>D', 'oe', '</', 'lastName', '>\n', '       ', ' </', 'name', '>\n', '       ', ' <', 'address', '>\n', '           ', ' <', 'street', 'Main', '>', '123', ' Main', ' St', '</', 'street', 'Main', '>\n', '           ', ' <', 'street', 'Secondary', '>', '123', ' Main', ' St', '</', 'street', 'Secondary', '>\n', '           ', ' <', 'city', '>', 'Any', 'town', '</', 'city', '>\n', '           ', ' <', 'state', '>', 'CA', '</', 'state', '>\n', '           ', ' <', 'country', '>', 'USA', '</', 'country', '>\n', '           ', ' <', 'postal', 'Code', '>', '123', '45', '</', 'postal', 'Code', '>\n', '       ', ' </', 'address', '>\n', '       ', ' <', 'phoneNumber', ' type', '="', 'home', '">', '123', '-', '456', '-', '789', '0', '</', 'phoneNumber', '>\n', '   ', ' </', 'person', '>\n', '</', 'S', 'olutions', '>', '<|eot_id|>']
+2025-05-01 01:42:23,018 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-165.], device='cuda:0')
+2025-05-01 01:42:23,038 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-4.2726114]
+2025-05-01 01:42:23,038 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.01394532]
+2025-05-01 01:42:23,048 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-41-44-649060-n5.json
+2025-05-01 01:42:23,048 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:42:23,048 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 4 (priority)
+2025-05-01 01:42:23,059 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xml', ':', 'lang', '="', 'fr', '">', 'Actual', 'ité', '</', 'description', '>\n', '   ', ' <', 'tag', '>\n', '     ', ' <', 'term', '>', 'act', 'u', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'actual', 'ité', '</', 'term', '>\n', '     ', ' <', 'term', '>', 'info', '</', 'term', '>\n', '   ', ' </', 'tag', '>\n', '   ', ' <', 'item', '>\n', '     ', ' <', 'title', '>V', 'in', 'cent', ' Cass', 'el', '</', 'title', '>\n', '     ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/"', ' rel', '="', 'self', '"/>\n', '     ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '40', ':', '00', 'Z', '</', 'updated', '>\n', '     ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/v', 'in', 'cent', '-c', 'ass', 'el', '/rss', '</', 'id', '>\n', '     ', ' <', 'author', '>\n', '       ', ' <', 'name', '>V', 'in', 'cent', ' Cass', 'el', '</', 'name', '>\n', '       ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/v', 'in', 'cent', '-c', 'ass', 'el', '/', '</', 'uri', '>\n', '     ', ' </', 'author', '>\n', '     ', ' <', 'summary', ' xml', ':', 'lang', '="', 'fr', '">', 'Tit', 're', '</', 'summary', '>\n', '   ', ' </', 'item', '>\n', ' ', ' </', 'feed', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:42:23,059 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-152.], device='cuda:0')
+2025-05-01 01:42:32,116 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<S', 'y', 'nd', 'ication', 'Feed', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '"', ' xmlns', ':', 'atom', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', '"', ' xsi', ':s', 'chema', 'Location', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'Atom', ' http', '://', 'www', '.w', '3', '.org', '/', '200', '5', '/', 'atom', '/x', 'sd', '/', 'atom', '20', '.x', 'sd', '">\n', ' ', ' <', 'feed', ' xml', ':', 'lang', '="', 'fr', '">\n', '   ', ' <', 'title', '>', 'Actual', 'ité', '</', 'title', '>\n', '   ', ' <', 'link', ' href', '="', 'http', '://', 'example', '.com', '/"', ' rel', '="', 'self', '"/>\n', '   ', ' <', 'updated', '>', '202', '3', '-', '03', '-', '15', 'T', '14', ':', '30', ':', '00', 'Z', '</', 'updated', '>\n', '   ', ' <', 'id', '>', 'http', '://', 'example', '.com', '/rss', '</', 'id', '>\n', '   ', ' <', 'author', '>\n', '     ', ' <', 'name', '>D', 'aniel', ' Sc', 'iam', 'ma', '</', 'name', '>\n', '     ', ' <', 'uri', '>', 'http', '://', 'example', '.com', '/', 'author', '/', '</', 'uri', '>\n', '   ', ' </', 'author', '>\n', '   ', ' <', 'subtitle', '>', 'Actual', 'ité', '</', 'subtitle', '>\n', '   ', ' <', 'description', ' xmlns', ':', 'media', '="', 'http', '://', 'search', '.yahoo', '.com', '/m', 'rss', '/', '">', 'Un', 'blog', ' sur', ' le', ' web', '</', 'description', '>\n', '   ', ' <', 'media', ':', 'content', ' type', '="', 'image', '/jpeg', '"', ' uri', '="', ' images', '/', 'actual', 'ite', '.jpg', ' "/', '>\n', '   ', ' <', 'category', ' term', '="', 'actual', 'ite', '"', ' />\n', '   ', ' <', 'atom', ':', 'link', ' href', '="', 'http', '://', 'example', '.com', '/', 'previous', '"', ' rel', '="', 'prev', '"/>\n', '   ', ' <', 'atom', ':', 'link', ' href', '="', 'http', '://', 'example', '.com', '/', 'next', '"', ' rel', '="', 'next', '"/>\n', ' ', ' </', 'feed', '>\n', ' ', ' <', 'entity', ' name', '="', 'é', '"', ' PUBLIC', '="-', '//', 'W', '3', 'C', '//', 'ENT', 'ités', '//', 'EN', '">\n', '   ', ' <', 'system', '>', 'ê', '</', 'system', '>\n', '   ', ' <', 'name', '>', 'é', '</', 'name', '>\n', ' ', ' </', 'entity', '>\n', '</', 'Sy', 'nd', 'ication', 'Feed', '>', '<|eot_id|>']
+2025-05-01 01:42:32,117 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-189.], device='cuda:0')
+2025-05-01 01:42:32,582 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-6.15946455]
+2025-05-01 01:42:32,582 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.00211338]
+2025-05-01 01:42:32,594 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-41-44-649060-n5.json
+2025-05-01 01:42:32,595 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:42:32,595 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample time: 69.30 s
+2025-05-01 01:42:32,595 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample: <SyndicationFeed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:atom="http://www.w3.org/2005/Atom" xsi:schemaLocation="http://www.w3.org/2005/Atom http://www.w3.org/2005/atom/xsd/atom20.xsd">
+  <feed xml:lang="fr">
+    <title>Actualité</title>
+    <link href="http://example.com/" rel="self"/>
+    <updated>2023-03-15T14:30:00Z</updated>
+    <id>http://example.com/rss</id>
+    <author>
+      <name>Daniel Sciamma</name>
+      <uri>http://example.com/author/</uri>
+    </author>
+    <subtitle>Actualité</subtitle>
+    <description xml:lang="fr">Actualité</description>
+    <tag>
+      <term>actu</term>
+      <term>actualité</term>
+      <term>info</term>
+    </tag>
+    <item>
+      <title>Vincent Cassel</title>
+      <link href="http://example.com/vincent-cassel/" rel="self"/>
+      <updated>2023-03-15T14:40:00Z</updated>
+      <id>http://example.com/vincent-cassel/rss</id>
+      <author>
+        <name>Vincent Cassel</name>
+        <uri>http://example.com/author/vincent-cassel/</uri>
+      </author>
+      <summary xml:lang="fr">Titre</summary>
+    </item>
+  </feed>
+</SyndicationFeed><|eot_id|>
+2025-05-01 01:42:32,595 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_priority_test/llm_seeds/2025-05-01_01-42-32-595775-sample_2.xml
+2025-05-01 01:42:32,595 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting sample 3/5
+2025-05-01 01:42:32,595 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 01:42:39,292 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' Amp', 'ers', 'and', ' entity', '.\n', '     ', ' &', 'lt', ';', ' is', ' the', ' Less', '-', 'Than', ' entity', '.\n', '     ', ' &', 'gt', ';', ' is', ' the', ' Greater', '-', 'Than', ' entity', '.\n', '   ', ' </', 'h', ':p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:42:39,293 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial raw logprob: tensor([-58.2500], device='cuda:0')
+2025-05-01 01:42:39,294 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 0 (priority)
+2025-05-01 01:42:39,297 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' Amp', 'ers', 'and', ' entity', '.\n', '     ', ' &', 'lt', ';', ' is', ' the', ' Less', '-', 'Than', ' entity', '.\n', '     ', ' &', 'gt', ';', ' is', ' the', ' Greater', '-', 'Than', ' entity', '.\n', '   ', ' </', 'h', ':p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:42:39,298 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-58.2500], device='cuda:0')
+2025-05-01 01:42:50,436 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', ' XHTML', ' File', ' Example', '</', 'h', ':title', '>\n', '   ', ' <', 'h', ':', 'meta', ' name', '="', 'abstract', '"', ' content', '="', 'A', ' sample', ' XHTML', ' document', '"/>\n', '   ', ' <', 'h', ':', 'meta', ' name', '="', 'keywords', '"', ' content', '="', 'X', 'HTML', ',', ' Example', ',', ' File', '"/>\n', '   ', ' <', 'h', ':', 'meta', ' name', '="', 'description', '"', ' content', '="', 'A', ' sample', ' XHTML', ' file', ' with', ' various', ' elements', '"/>\n', '   ', ' <!--', ' Entity', ' Declaration', ' -->\n', '   ', ' <!--', ' &#', 'x', '20', ';', ' represents', ' a', ' non', '-', '->{$', ',', ' [', '}\n', '   ', ' <!', '[', 'CDATA', '[\n', '   ', ' <', 'person', '>\n', '     ', ' <!--', ' Character', ' Entity', ' -->\n', '     ', ' &#', '60', ';', 'name', ' &#', '62', ';', 'value', '&#', '60', ';/', 'name', '&#', '62', ';\n', '     ', ' <!--', ' entity', ' declaration', ' -->\n', '     ', ' &#', 'x', '5', 'C', ';a', '&gt', ';', 'hello', ' world', '\n', '   ', ' </', 'person', '>\n', '   ', ' ]', ']>', '>\n\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':', 'section', '>\n', '     ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '"></', 'h', ':title', '>\n', '   ', ' </', 'h', ':', 'section', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:42:50,437 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-248.], device='cuda:0')
+2025-05-01 01:42:50,503 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-37.48981475]
+2025-05-01 01:42:50,503 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [5.2285387e-17]
+2025-05-01 01:42:50,507 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-42-39-294033-n5.json
+2025-05-01 01:42:50,507 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:42:50,507 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 1 (priority)
+2025-05-01 01:42:50,511 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' Amp', 'ers', 'and', ' entity', '.\n', '     ', ' &', 'lt', ';', ' is', ' the', ' Less', '-', 'Than', ' entity', '.\n', '     ', ' &', 'gt', ';', ' is', ' the', ' Greater', '-', 'Than', ' entity', '.\n', '   ', ' </', 'h', ':p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:42:50,511 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-58.2500], device='cuda:0')
+2025-05-01 01:43:20,719 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'head', '>\n', '   ', ' <', 'h', ':title', ' xml', ':', 'lang', '="', 'en', '">', 'Contact', ' Information', '</', 'h', ':title', '>\n', '   ', ' <', 'h', ':', 'meta', ' name', '="', 'description', '"', ' content', '="', 'Contact', ' Information', ' Page', '"/>\n', '   ', ' <', 'h', ':', 'meta', ' name', '="', 'keywords', '"', ' content', '="', 'info', ',', 'contact', ',G', 'IT', '"/>\n', '   ', ' <', 'h', ':', 'entity', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '">\n', '     ', ' PI', '\n', '     ', ' <', 'h', ':', 'pi', ' name', '="', '3', '.', '14', '"\n', '     ', ' format', '="', '9', '.', '8', 'E', '"\n', '     ', ' precision', '="', '4', '"\n', '     ', ' decimal', '="', '2', '"/>\n', '   ', ' </', 'h', ':', 'entity', '>\n', ' ', ' </', 'head', '>\n', ' ', ' <', 'body', '>\n', '   ', ' <', 'h', ':h', '1', '>', 'My', ' Contact', ' Information', '</', 'h', ':h', '1', '>\n', '   ', ' <', 'ul', '>\n', '     ', ' <', 'li', '>\n', '       ', ' <', 'h', ':h', '2', '>Name', '</', 'h', ':h', '2', '>\n', '       ', ' <', 'h', ':p', ' Johann', 'sen', '\n', '       ', ' ', '\t\t\t\t\t\t\t\n', '\t', '\t', '                  \n', '\t', '\t', '                                \n', '\t', '\t', '               \n', '\t', '\t', '                                \n', '\t', '\t', '                                \n', '\t', '\t', '                                \n', '\t', '\t', '                             \n', '\t', '\t', '                             \n', '\t', '\t', '                 \n', '\t', '\t', '             \n', '\t', '\t', '             \n', '\t', '\t', '                 \n', '\t', '\t', '      \n', '\t', '\t', '                             \n', '         ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t', '            \n', '         ', '\t \n', '\t', '\t', '                 \n', '\t', '\t', '                 \n', '\t', '\t', '         \n', '\t\t\t', '\t', '                  \n', '         ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t', '                  \n', '         ', '\t \n', '          \n', '          \n', '\t', '\t', '          \n', '         ', '\t \n', '       ', '\t ', '\t \n', '       ', '\t \n', '\t   ', '\t \n', '\t   ', '\t \n', '\t   ', '\t \n', '      ', '\t', '            \n', '\t   ', '\t \n', '\t ', '\t \n', '\t ', '\t \n', '\t', '      \n', '\t ', '\t \n', '\t', '\t', '\n     \n', '         ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t', '            \n', '         ', '\t \n', '\t', '\t', '                 \n', '\t', '\t', '                 \n', '\t', '\t', '         \n', '\t\t\t', '\t', '                  \n', '         ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t', '            \n', '          ', '\t \n', '\t', '\t', '         \n', '        \n', '       ', '\t \n', '          ', '\t \n', '          ', '\t \n', '\t   ', '\n        \n        \n', '          \n', '\t\n\n', '      ', '\t\t\t\t', '   \n', '\t\n\n', '  \n', ' ', '\t', '         \n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\t\n', '\t', '  \n  \n', '\t\n\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n', '\t\t\n\t\t\n\t\t\n', '\t  ', '\t   ', '\t\t', '       \n', '\t\n\t\n\t\n', '      ', '\t\n', '\t\n\t\n', '\t   ', '\t\t\t\t', '   \n', '\t\n\t\n', '\t\n\t\n\t\n', '\t   ', '\t  ', '\t\n', '\t\t\n', '\t\n\t\n\t\n\t\n', '\t\n\n', ' \t\n', '\t ', '\t \n', '\t \n', '\t', '  \n', '\t  ', '\t \n', '\t ', '\t \n', '\t', '  \n  \n', '\t \n', '\t \n', '\t ', '\n\t\n', '\t ', '\t \n', '\t', '  \n  \n', '\t \n', '\t \n', '\t ', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t\n', '\t ', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t ', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t   \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '     \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t ', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n']
+2025-05-01 01:43:20,720 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-688.], device='cuda:0')
+2025-05-01 01:43:20,799 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-96.42005696]
+2025-05-01 01:43:20,799 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [1.33444696e-42]
+2025-05-01 01:43:20,807 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-42-39-294033-n5.json
+2025-05-01 01:43:20,807 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:43:20,807 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 2 (priority)
+2025-05-01 01:43:20,811 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' Amp', 'ers', 'and', ' entity', '.\n', '     ', ' &', 'lt', ';', ' is', ' the', ' Less', '-', 'Than', ' entity', '.\n', '     ', ' &', 'gt', ';', ' is', ' the', ' Greater', '-', 'Than', ' entity', '.\n', '   ', ' </', 'h', ':p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:43:20,811 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-58.2500], device='cuda:0')
+2025-05-01 01:43:30,259 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'XML', ' Document', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'p', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '">', 'This', ' is', ' an', ' example', ' of', ' XML', ' declaration', '.\n', '    ', ' &', 'amp', ';', 'copy', ';\\', 'u', '202', '2', '\\x', 'A', '9', '\\x', '20', '\\x', '24', '\\x', '20', '\\x', '52', '\\x', '4', 'f', '\\x', '42', '\\x', '69', '\\x', '6', 'e', '\\x', '20', '\\x', '44', '\\x', '6', 'F', '\\x', '6', 'F', '\\x', '74', '\\x', '20', '\\x', '4', 'x', '\\x', '20', '\\x', '57', '\\x', '69', '\\x', '6', 'E', '\\x', '64', '\\x', '65', '\\x', '72', '.</', 'p', '>\n', '   ', ' <', 'p', ' xmlns', ':x', 'si', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '200', '1', '/XMLSchema', '-instance', '">', 'Entity', ' declaration', ':', ' &', 'quot', ';\\', 'u', '002', '0', '&quot', ';', ' matches', ' the', ' space', ' character', '.</', 'p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:43:30,260 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-171.], device='cuda:0')
+2025-05-01 01:43:30,323 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-2.93299734]
+2025-05-01 01:43:30,324 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.05323723]
+2025-05-01 01:43:30,329 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-42-39-294033-n5.json
+2025-05-01 01:43:30,329 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:43:30,329 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 3 (priority)
+2025-05-01 01:43:30,332 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' Amp', 'ers', 'and', ' entity', '.\n', '     ', ' &', 'lt', ';', ' is', ' the', ' Less', '-', 'Than', ' entity', '.\n', '     ', ' &', 'gt', ';', ' is', ' the', ' Greater', '-', 'Than', ' entity', '.\n', '   ', ' </', 'h', ':p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:43:30,333 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-58.2500], device='cuda:0')
+2025-05-01 01:43:39,956 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' entity', ' declaration', ' for', ' the', ' amp', 'ers', 'and', ' character', '.\n', '   ', ' </', 'h', ':p', '>\n', '   ', ' <', 'h', ':', 'table', '>\n', '     ', ' <', 'h', ':', 'tr', '>\n', '       ', ' <', 'h', ':', 'th', '>', 'Entity', ' Name', '</', 'h', ':', 'th', '>\n', '       ', ' <', 'h', ':', 'th', '>', 'Entity', ' Reference', '</', 'h', ':', 'th', '>\n', '     ', ' </', 'h', ':', 'tr', '>\n', '     ', ' <', 'h', ':', 'tr', '>\n', '       ', ' <', 'h', ':', 'td', '>&', 'amp', ';</', 'h', ':', 'td', '>\n', '       ', ' <', 'h', ':', 'td', '>&', 'amp', ';</', 'h', ':', 'td', '>\n', '     ', ' </', 'h', ':', 'tr', '>\n', '   ', ' </', 'h', ':', 'table', '>\n', '   ', ' <', 'p', '>This', ' is', ' a', ' literal', ' string', ' of', ' characters', '.</', 'p', '>\n', '   ', ' <', 'p', '>The', ' named', ' character', ' reference', ' &', 'copy', ';', ' is', ' used', ' to', ' represent', ' a', ' copyright', ' symbol', '.</', 'p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:43:39,957 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-100.5000], device='cuda:0')
+2025-05-01 01:43:40,063 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-2.14192141]
+2025-05-01 01:43:40,064 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.117429]
+2025-05-01 01:43:40,069 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-42-39-294033-n5.json
+2025-05-01 01:43:40,069 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:43:40,069 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 4 (priority)
+2025-05-01 01:43:40,073 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', '>\n', '     ', ' &', 'amp', ';', ' is', ' the', ' Amp', 'ers', 'and', ' entity', '.\n', '     ', ' &', 'lt', ';', ' is', ' the', ' Less', '-', 'Than', ' entity', '.\n', '     ', ' &', 'gt', ';', ' is', ' the', ' Greater', '-', 'Than', ' entity', '.\n', '   ', ' </', 'h', ':p', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:43:40,073 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-58.2500], device='cuda:0')
+2025-05-01 01:43:51,261 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<h', ':', 'html', ' xmlns', ':h', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-transitional', '">\n', ' ', ' <', 'h', ':', 'head', '>\n', '   ', ' <', 'h', ':title', ' lang', '="', 'en', '-US', '">', 'Entity', ' Declaration', ' Example', '</', 'h', ':title', '>\n', ' ', ' </', 'h', ':', 'head', '>\n', ' ', ' <', 'h', ':', 'body', '>\n', '   ', ' <', 'h', ':p', ' xmlns', ':p', '="', 'http', '://', 'www', '.w', '3', '.org', '/TR', '/xhtml', '1', '/DTD', '/xhtml', '1', '-', 'strict', '">\n', '     ', ' &', '_entity', ';', ' is', ' a', ' reserved', ' keyword', ' in', ' Java', '.\n', '   ', ' </', 'p', '>\n', '   ', ' <', 'h', ':', 'table', '>\n', '     ', ' <', 'h', ':', 'tr', '>\n', '       ', ' <', 'h', ':', 'td', '>\n', '         ', ' <', 'h', ':', 'math', ' xmlns', ':', 'math', '="', 'http', '://', 'www', '.w', '3', '.org', '/', '199', '8', '/Math', '/Math', 'ML', '">\n', '           ', ' <', 'm', 'row', '>\n', '             ', ' <', 'mi', '>x', '</', 'mi', '>\n', '           ', ' </', 'm', 'row', '>\n', '         ', ' </', 'h', ':', 'math', '>\n', '       ', ' </', 'h', ':', 'td', '>\n', '     ', ' </', 'h', ':', 'tr', '>\n', '   ', ' </', 'h', ':', 'table', '>\n', ' ', ' </', 'h', ':', 'body', '>\n', '</', 'h', ':', 'html', '>', '<|eot_id|>']
+2025-05-01 01:43:51,262 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-99.], device='cuda:0')
+2025-05-01 01:43:51,355 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-2.12340016]
+2025-05-01 01:43:51,355 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [0.1196242]
+2025-05-01 01:43:51,361 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-42-39-294033-n5.json
+2025-05-01 01:43:51,361 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:43:51,361 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample time: 78.77 s
+2025-05-01 01:43:51,361 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample: <h:html xmlns:h="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional">
+  <h:head>
+    <h:title lang="en-US">Entity Declaration Example</h:title>
+  </h:head>
+  <h:body>
+    <h:p>
+      &amp; is the Ampersand entity.
+      &lt; is the Less-Than entity.
+      &gt; is the Greater-Than entity.
+    </h:p>
+  </h:body>
+</h:html><|eot_id|>
+2025-05-01 01:43:51,361 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_priority_test/llm_seeds/2025-05-01_01-43-51-361862-sample_3.xml
+2025-05-01 01:43:51,362 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting sample 4/5
+2025-05-01 01:43:51,362 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Starting MCMC sampling with n_steps=5, max_new_tokens=512
+2025-05-01 01:44:21,362 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\t \n', '\t\n\t\n\t\n\t\n']
+2025-05-01 01:44:21,363 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Initial raw logprob: tensor([-720.], device='cuda:0')
+2025-05-01 01:44:21,363 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 0 (priority)
+2025-05-01 01:44:21,378 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\t \n', '\t\n\t\n\t\n\t\n']
+2025-05-01 01:44:21,379 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-720.], device='cuda:0')
+2025-05-01 01:44:54,230 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'note', '>', ' \n\n', ' ', '\r\n\n', '  ', '\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', '    \n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', '   ', '\n\n\n\n\n\n\n\n', '  ', '\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n', '  ', '\n\n\n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '  \n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '  \n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n', '\n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\n\n\n\n\n\n\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n', '\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r', '\n\n\n\n', ' \n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n \r\n', '  \n\n\n', ' \n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n', ' \n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \n\n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 01:44:54,231 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-1064.], device='cuda:0')
+2025-05-01 01:44:55,040 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-24.21320381]
+2025-05-01 01:44:55,040 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [3.05027642e-11]
+2025-05-01 01:44:55,055 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-44-21-363701-n5.json
+2025-05-01 01:44:55,055 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:44:55,055 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 1 (priority)
+2025-05-01 01:44:55,072 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\t \n', '\t\n\t\n\t\n\t\n']
+2025-05-01 01:44:55,073 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-720.], device='cuda:0')
+2025-05-01 01:45:29,444 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' inner', ' workings', ' of', ' popular', '\n', '     ', ' scripting', ' technologies', '.</', 'description', '>\n\n', '         ', ' <', 'cart', ':', 'catalog', ' xmlns', ':', 'ns', ' =', ' "', 'http', '://', 'www', '.w', '3', '.org', '/XML', '/', '199', '8', '/', 'namespace', '">\n', '                 ', ' <', 'ns', ':', 'book', ' href', ' =', '"/>\n', '         ', ' </', 'cart', ':', 'catalog', '>\n\n', '     ', ' </', 'publish', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', '</', 'note', '>', ' \n\n', '<!', 'ELEMENT', ' note', ' (', 'title', ',', 'genre', ',', 'price', ',p', 'ublish', ',', 'book', 'store', ')>\n', '<!', 'ELEMENT', ' bookstore', ' (', 'book', ')>\n', '<!', 'ELEMENT', ' book', ' (', 'author', ',title', ',', 'genre', ',', 'price', ',', 'description', ',p', 'ublish', ')>\n', '<!', 'ELEMENT', ' title', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' price', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' publish', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' book', 'store', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' author', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' genre', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' price', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' description', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' description', ' (', 'cart', ':', 'catalog', ')>\n', '<!', 'ELEMENT', ' catalog', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ELEMENT', ' cart', ':', 'catalog', ' (#', 'PC', 'DATA', ')>\n', '<!', 'ENTITY', ' book', '1', ' Entity', ' "', 'Chapter', ' ', ' ', ' ', '\n                    \n', '                    ', ' ', ' ', '\n    \n    \n', ' \n', '         ', ' ', ' ', '\t\n\t\n', '         ', ' ', ' ', '\t\n\t\n\t\n\t\n', '  ', ' ', '\t   \n', '\t\n\t\n\t\n', ' ', ' ', '\t\t\n\t\t\n\t\t\n', '   \n', '       ', '\n                    \n', '         \n', '         \n', '        ', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '    ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', '\n    \n    \n', '        \n        \n', '    \n    \n    \n    \n', '     ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n \n', '                    \n', ' \n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n\n', '                    \n', '       ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n\n', '                    \n                    \n', ' \n\n\n', '    \n    \n    \n    \n', '    \n    \n    \n    \n', '    \n    \n    \n    \n', '        ', '\n\n\n\n\n', '    \n    \n    \n', '  ', '\n\n\n\n\n\n\n\n', '     ', '\n\n\n\n\n\n\n\n\n\n\n', '  ', '\n\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '  \n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', '  \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', '  \n\n', '  \n', ' \n\n\n\n', '\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n']
+2025-05-01 01:45:29,445 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-692.], device='cuda:0')
+2025-05-01 01:45:30,102 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-79.94656368]
+2025-05-01 01:45:30,102 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [1.90391935e-35]
+2025-05-01 01:45:30,118 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-44-21-363701-n5.json
+2025-05-01 01:45:30,119 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:45:30,119 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 2 (priority)
+2025-05-01 01:45:30,135 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\t \n', '\t\n\t\n\t\n\t\n']
+2025-05-01 01:45:30,136 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-720.], device='cuda:0')
+2025-05-01 01:46:02,706 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n  \n', ' \n \n', '  \n  \n', ' \n \n', '  \n    \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n  \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n \n', ' \n \n', '  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \t\n', '\r\n\r\n\r\n', '\t\t\r\n', '\t\r\n', '\t\t\r\n', ' \r\n\r\n', '\t', '\n\n\n\n\n\n\n', '\r\n\r\n\r\n', ' \n \n', ' \n\n\n\n', ' \r\n', ' \n\n\n\n', ' \n \n', ' \n\t\t\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \t\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t\n', ' \r\n', ' \r\n\r\n', '\t\t\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', ' \r\n', '\r\n\t\r\n', ' \r\n\r\n', ' \n\n\n\n', ' \r\n', ' \n\n\n\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\n\t\n', ' \n\n\n\n\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \n\n\n\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \n\n\n\n\n', ' \r\n', ' \r\n', ' \r\n \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\r\n', ' \r\n', '\t\t\r\n\t\t\r\n', '\t\t\n\t\t\n\t\t\n', '\t\t\r\n\r\n', '\t', '\r\n\r\n\r\n', '\t\t\n', ' \t\t\n', ' \t\t\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n \r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n\t\r\n', '\t\r\n', ' \r\n\r\n', ' \t\n', '\t \r\n', '\t\r\n', '\r\n\r\n\r\n\r\n', '\t\r\n', '\r\n\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n \r\n', '\t\r\n', ' \r\n', '\t', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', '\t\r\n', '\t\r\n\t\r\n', '\t ', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\t\r\n', ' \r\n', '\t', '\r\n\r\n\r\n', '\t\t\r\n', '\t\t\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', '\t\r\n\t\r\n', '\t', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \t\n', ' \r\n', '\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \t\n', ' \r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', ' \n\n\n\n\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \n\n\n\n', ' \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n', ' \n\n\n\n\n', '\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \n\n\n\n\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n\t\r\n', '\t', '\r', '\n\n\n\n', ' \r\n', ' \r\n\r\n', ' \r\n', '  \r\n\r\n', ' \r\n\r\n', '    \r\n', '\r\n\r\n\r\n', '\t\r\n\r\n', '\t\r\n\t\r\n', '\r\n\r\n\r\n\r\n', '\t\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\n\n\n\n\n\n', '\t\r\n\t\r\n', '\t\r\n', ' \r\n\r\n', '\t\r\n', ' \r\n\r\n', '    \r\n', '\r\n\r\n\r\n', '\t \r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', '\t\r\n', ' \n \n', ' \r\n\r\n', '\t \n', ' \r\n \r\n', '\t\r\n\t\r\n', '\t\r\n', '\r\n\r\n\r\n', '\t \n', '\t\r\n', ' \r\n\r\n', '\t\r\n', '\t', '\r\n\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n', '\t\r\n', '\t\r\n', '\t\r\n', '\t', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', ' \r\n', '    \r\n', '\t\t\t\t\r\n', ' \r\n\r\n', ' \r\n', ' \r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', ' \t', '\n\n\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n \r\n', ' \r\n', ' \r\n', '\t\r\n\t\r\n', ' \n \n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', ' \r\n', '\t\r\n', '\t \r\n', '\t\r\n', '\t \r\n', '\t\r\n', '\t\r\n\t\r\n', ' \r\n', ' \r\n \r\n', '\t\r\n\r\n', '\r', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', '\t\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\t', '\r\n\r\n\r\n', '\t ', '\r\n\r\n\r\n', '\t\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \r\n\r\n', '\t\r\n', ' \r\n', '\t\r\n\t\r\n', '\t ', '\n\n\n\n\n\n\n\n']
+2025-05-01 01:46:02,708 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-1632.], device='cuda:0')
+2025-05-01 01:46:04,039 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-103.1736045]
+2025-05-01 01:46:04,039 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [1.55694363e-45]
+2025-05-01 01:46:04,057 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-44-21-363701-n5.json
+2025-05-01 01:46:04,057 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:46:04,057 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 3 (priority)
+2025-05-01 01:46:04,072 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\t \n', '\t\n\t\n\t\n\t\n']
+2025-05-01 01:46:04,073 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-720.], device='cuda:0')
+2025-05-01 01:46:14,543 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \r\n\r\n', '  \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \r\n\r\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \t', '\r\n\r\n', '\r\n\r\n\r\n', '    \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t\r\n', '\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', ' \r\n\r\n', '\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', ' \r\n\r\n', '\r\n\r\n\r\n', '\t\r\n\t\r\n', '\t\r\n', '\t \r\n', '\t\r\n\t\r\n', '\t\t\r\n', ' \n\n\n\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', ' \r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n\r\n', ' \r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\t\r\n\t\t\r\n', '\t\r\n', '\t ', '\r\n\r\n\r\n\r\n', '\r', '\t', '\n\n\n\n\n\n\n\n\n\n\n\n', '  \r\n', ' \r\n\r\n', '\t\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '  \r\n', ' \r\n \r\n', '\t \r\n', ' \r\n\r\n', '\t  \n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n', '  \r\n', '\t\r\n\t\r\n', '\r\n\t\r\n', ' \r\n\r\n', ' \r\n\r\n', '\t\r\n\t\r\n', '\t\r\n\t\r\n', '\t \n', ' \r\n\r\n', ' \r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\t\r\n', '  \r\n\r\n', ' \n\n\n', '<|eot_id|>']
+2025-05-01 01:46:14,544 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-872.], device='cuda:0')
+2025-05-01 01:46:15,629 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-22.80356948]
+2025-05-01 01:46:15,630 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [1.24892283e-10]
+2025-05-01 01:46:15,645 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-44-21-363701-n5.json
+2025-05-01 01:46:15,645 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:46:15,646 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Step 4 (priority)
+2025-05-01 01:46:15,660 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\t \n', '\t\n\t\n\t\n\t\n']
+2025-05-01 01:46:15,661 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Current raw logprob: tensor([-720.], device='cuda:0')
+2025-05-01 01:46:47,402 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal: ['<?', 'xml', ' version', ' =', ' \n', '     ', ' ', '1', '.', '0', ' encoding', ' =', ' "', 'ISO', '-', '885', '9', '-', '1', '"', ' standalone', ' =', ' \n', '     ', ' yes', '?>\n', '<!', 'DOCTYPE', ' note', ' SYSTEM', ' "', 'note', '.dtd', '">\n', '<', 'note', ' xmlns', ' =', ' "', 'http', '://', 'www', '.example', '.com', '/n', 'ote', '">\n', ' ', ' <', 'title', '>', 'Example', '</', 'title', '>\n', ' ', ' <', 'book', 'store', ' xmlns', ':', 'cart', ' =', ' "', 'http', '://', 'www', '.example', '.com', '-cart', '">\n', '   ', ' <', 'book', ' cart', ':', 'catalog', ' =', '"io', ' Catalog', '">\n', '     ', ' <', 'author', '>', 'John', ' Smith', '</', 'author', '>\n', '     ', ' <', 'title', '>X', 'HTML', '/XML', ' D', 'TM', ' and', ' DOM', '</', 'title', '>\n', '     ', ' <', 'genre', '>', 'Computer', '</', 'genre', '>\n', '     ', ' <', 'price', '>', '39', '.', '95', '</', 'price', '>\n', '     ', ' <', 'publish', ' Date', ' =', '"-', '12', '-', '31', '-', '199', '9', '">\n', '     ', ' <', 'description', '>', 'For', ' anyone', ' interested', ' in', ' the', ' latest', ' developments', '</', 'description', '>\n', '     ', ' </', 'publish', '>\n', '     ', ' <', 'isbn', '>', '0', '-', '973', '488', '9', '-', '5', '-', '3', '</', 'isbn', '>\n', '   ', ' </', 'book', '>\n', ' ', ' </', 'book', 'store', '>\n', ' ', ' <', 'characters', '>\n', '   ', ' <', 'character', '>\n', '     ', ' <', 'species', '>', 'Human', '</', 'species', '>\n', '     ', ' <', 'h', 'ometown', '>R', 'ome', '</', 'h', 'ometown', '>\n', '     ', ' <', 'name', '>', 'Eric', '</', 'name', '>\n', '   ', ' </', 'character', '>\n', ' ', ' </', 'characters', '>\n', '</', 'note', '>\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '  \n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n', '  \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', '  \n', ' \n \n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n', '   \n', ' \n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', ' \n', ' ', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n', '\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', '  \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n  \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', '   \n', ' \n \n', ' \n', ' \n\n\n\n', ' \n  \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n  \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n', ' \n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \r\n \r\n', ' \n \n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n', ' ', '\n\n\n\n\n\n\n\n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n \n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', '\t\n\n\n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\t \n', '\n     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '     \n', '\n     \n', '     \n', '     \n\n', '\n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', '\n\n\n\n\n\n\n\n\n\n', ' \n\n\n\n', '\n\n\n\n', ' \n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n \n', ' \n \n', ' \n \n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n', ' \n\n\n\n\n', ' \n\n\n\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n\r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n', '\r\n\r\n\r\n']
+2025-05-01 01:46:47,403 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal raw logprob: tensor([-892.], device='cuda:0')
+2025-05-01 01:46:49,500 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Log acceptance ratio: [-14.22401965]
+2025-05-01 01:46:49,500 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Acceptance prob: [6.64640427e-07]
+2025-05-01 01:46:49,523 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Saved step data to mcmc_runs/2025-05-01_01-39-00-xml_fuzz_single_Entity_Declaration-priority/2025-05-01_01-44-21-363701-n5.json
+2025-05-01 01:46:49,523 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Proposal rejected
+2025-05-01 01:46:49,523 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample time: 178.16 s
+2025-05-01 01:46:49,524 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample: <?xml version = 
+      1.0 encoding = "ISO-8859-1" standalone = 
+      yes?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns = "http://www.example.com/note">
+  <title>Example</title>
+  <bookstore xmlns:cart = "http://www.example.com-cart">
+    <book cart:catalog ="io Catalog">
+      <author>John Smith</author>
+      <title>XHTML/XML DTM and DOM</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish Date ="-12-31-1999">
+      <description>For anyone interested in the latest developments</description>
+      </publish>
+      <isbn>0-9734889-5-3</isbn>
+    </book>
+  </bookstore>
+  <characters>
+    <character>
+      <species>Human</species>
+      <hometown>Rome</hometown>
+      <name>Eric</name>
+    </character>
+  </characters>
+</note>
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+  
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+
+
+  
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+  
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+  
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+   
+ 
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+  
+ 
+  
+ 
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+  
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+   
+ 
+ 
+ 
+ 
+
+
+
+ 
+  
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+ 
+	 
+	
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+	 
+	
+	
+	
+	
+
+2025-05-01 01:46:49,524 - mcmc_xml_fuzz_single_Entity_Declaration - INFO - Sample saved to /data/saiva/libxml_mcmc_priority_test/llm_seeds/2025-05-01_01-46-49-524462-sample_4.xml

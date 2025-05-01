@@ -1,0 +1,12 @@
+<hibernate-configuration version="5.4.20.Final" xmlns="http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+  <session-factory>
+    <property name="database_connection_url">jdbc:mysql://localhost:3306/testdb</property>
+    <property name="connection_driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="connection_username">root</property>
+    <property name="connection_password">password</property>
+    <property name="hibernate-show-sql">true</property>
+    <property name="hibernate-dialect">org.hibernate.dialect.MySQLDialect</property>
+    <mapping class="com.example.model.Test"></mapping>
+  </session-factory>
+  <?xml-stylesheet type="text/xsl" href="hibernate-xml.xsl"?>
+</hibernate-configuration>

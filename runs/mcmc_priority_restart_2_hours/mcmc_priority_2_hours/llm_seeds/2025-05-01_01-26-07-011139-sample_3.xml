@@ -1,0 +1,8 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE ProductCatalog SYSTEM "product CatalogSchema.dtd">
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.com/ProductCatalog
+http://www.example.com/ProductCatalog.xsd"
+version="2.0" encoding="Window-1251">
+    <product id="12345" name="Laptop" price="1000.00"/>
+    <product id="67890" name="Phone" price="500.00"/>
+</catalog>

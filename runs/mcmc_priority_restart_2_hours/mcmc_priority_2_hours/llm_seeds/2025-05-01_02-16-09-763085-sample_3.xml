@@ -1,0 +1,33 @@
+<?xml version=
+    1.0 encoding="UTF-8"?>
+<company>
+    <location>
+        <country>
+            <ISO-code>US</ISO-code>
+        </country>
+        <city>New York</city>
+    </location>
+    <information>
+        <name>&lt;John Doe&gt;&lt;/name&gt;
+        <age><?xml Version='1.0'?><CDATA section="employee informations">25</CDATA></age>
+    </information>
+    <branches>
+        <!--
+        -->
+    </branches>
+</company>  
+
+<!--end?> 
+
+<?xml version="1.0" encoding="UTF-->"
+><customer>
+<address style="background-color: blue">-->
+<name>Jack</name>
+<email>jack@example.com</email>
+<message><![CDATA[Nice to meet you, let's meet up for coffee]]></message>
+<phone>123-456-7890</phone>>>
+
+</address>
+</customer>
+-->.xml 
+</address>

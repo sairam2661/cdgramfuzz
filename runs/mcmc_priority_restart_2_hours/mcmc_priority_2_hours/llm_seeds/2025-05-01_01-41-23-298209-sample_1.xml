@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE catalog [
+<!ENTITY cat "General Catalog">
+<!ENTITY store "Retail Store">
+<!ENTITY storeAddress "123 Main St, Anytown, USA 12345">
+<!ENTITY phoneNumber "(555) 555-5555">
+<!ENTITY companyName "&cat; &store;">]>
+<catalog>
+  <description>Products and Services of &companyName;. For more information contact us at &storeAddress; or call &phoneNumber;.</description>
+  <entity name="cat">
+    <!-- entity definition goes here -->
+  </entity>
+  <entity name="store">
+    <!-- entity definition goes here -->
+  </entity>
+</catalog>

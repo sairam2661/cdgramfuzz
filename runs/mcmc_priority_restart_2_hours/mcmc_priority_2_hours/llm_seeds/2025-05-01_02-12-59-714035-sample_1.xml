@@ -1,0 +1,52 @@
+<SchoolDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="school_schema.xsd"
+
+                xmlns="http://example.com/school/db" version="1.0" encoding="UTF-8" standalone="yes">
+
+    <Students>
+        <!-- <![CDATA[This is a CDATA section, it can contain any printable ASCII characters or specially
+         designed characters like ']]>' or '<']]>' or ']]>' ]]>']]>']]>]]'-->]]
+        <Student ID="101">
+            <Name><![CDATA[John Doe]]></Name>
+            <Age>22</Age>
+            <Grade>A</Grade>
+        </Student>
+        <Student ID="102">
+            <Name>Emily Chen</Name>
+            <Age>21</Age>
+            <Grade>B</Grade>
+        </Student>
+    </Students>
+
+    <Teachers>
+        <!-- <![CDATA[This is another CDATA section, it can contain any printable ASCII characters or specially
+         designed characters like ']]>' or '<']]>' or ']]>' ]]>']]>]]'-->]]
+        <Teacher>
+            <Name><![CDATA[Ms. Smith]]></Name>
+            <Subject></Subject>
+            <Department>Math</Department>
+            <Year>10</Year>
+        </Teacher>
+        <Teacher>
+            <Name><![CDATA[Ms. Johnson]]></Name>
+            <Subject></Subject>
+            <Department>Science</Department>
+            <Year>10</Year>
+        </Teacher>
+    </Teachers>
+
+    <Parents>
+        <!-- <![CDATA[This is another CDATA section, it can contain any printable ASCII characters or specially
+         designed characters like ']]>' or '<']]>' or ']]>' ]]>']]>]]'-->]]
+        <Parent>
+            <Name><![CDATA[Mom]]></Name>
+            <PhoneNo>12345678</PhoneNo>
+            <Address><![CDATA[123 Main St]]></Address>
+        </Parent>
+        <Parent>
+            <Name><![CDATA[Dad]]></Name>
+            <PhoneNo>98765432</PhoneNo>
+            <Address><![CDATA[456 Wall St]]></Address>
+        </Parent>
+    </Parents>
+
+</SchoolDatabase>

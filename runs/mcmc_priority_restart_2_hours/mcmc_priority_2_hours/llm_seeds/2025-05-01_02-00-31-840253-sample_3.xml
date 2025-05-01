@@ -1,0 +1,43 @@
+<?xml version=1.0 encoding="UTF-8" standalone= yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+<description>
+       <name>Software List</name>
+       <year>2023</year>
+   </description>
+      <company>
+  <name>ABC Inc.</name>
+   <address>
+      <street>New York</street>
+      <city>NA</city>
+      <state>NA</state>
+      <zip>NA</zip>
+   </address>
+   <phone>123 456 7890</phone>
+   <fax>234 567 8901</fax>
+   </company>
+   <product>
+  <name>Windows 11</name>
+  <price>$1000.00</price>
+   <description>
+      <title>Operating System</title>
+      <manufacturer>Microsoft</manufacturer>
+   </description>
+   <comment>
+      <firstname>Jane</firstname>
+      <lastname>Doe</lastname>
+      </comment>
+   </product>
+   <product>
+  <name>Linux Mint</name>
+  <price>$200.00</price>
+   <description>
+      <title>Linux</title>
+      <manufacturer>NTRU, Inc.</manufacturer>
+   </description>
+   <comment>
+      <firstname>John</firstname>
+      <lastname>Smith</lastname>
+      </comment>
+   </product>
+   </catalog>

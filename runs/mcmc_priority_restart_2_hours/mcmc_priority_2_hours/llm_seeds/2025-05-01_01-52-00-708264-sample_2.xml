@@ -1,0 +1,20 @@
+<?xml version = 1.0  encoding = "utf-8"?>
+<magazine ISSN =".1234 ">
+<masthead>
+ <title>Weekly Buzz</title>
+<notations>
+ <notation name=" Times New Roman">
+  <param name="FontFamily" value="Times New Roman"/>
+  <param name="FontSize" value="12"/>
+ </notation>
+ <notation name=" Bold">
+  <param name="FontStyle" value="Bold"/>
+ </notation>
+</notations>
+</masthead>
+<edition>
+ <issueNumber>10</issueNumber>
+ <volumeNumber>3</volumeNumber>
+ <headline>Top 10 Movies of 2023</headline>
+</edition>
+</magazine>

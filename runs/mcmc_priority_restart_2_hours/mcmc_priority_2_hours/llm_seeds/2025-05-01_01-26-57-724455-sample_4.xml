@@ -1,0 +1,25 @@
+<?xml version = 
+    1.0 
+  encoding = 
+    "ISO-8859-1"
+  standalone = 
+    yes?>
+
+<addressbook>
+  <person id="123" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:type=" AddressBook ">
+    <name>John</name>
+    <telephone-number primary="true">123-456-7890</telephone-number>
+    <email>john.doe@example.com</email>
+    <address location="123 Main St" city="Anytown" 
+             state="CA" country="USA"/>
+  </person>
+  <person id="234" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:type=" AddressBook ">
+    <name>Jane</name>
+    <telephone-number primary="false">987-654-3210</telephone-number>
+    <email>jane.doe@example.com</email>
+    <address location="456 Oak St" city="Othertown" 
+             state="NY" country="USA"/>
+  </person>
+</addressbook>

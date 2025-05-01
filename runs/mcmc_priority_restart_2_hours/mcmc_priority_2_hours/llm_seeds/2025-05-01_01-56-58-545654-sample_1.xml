@@ -1,0 +1,12 @@
+<?xml version =1.0 encoding = "ISO-8859-1"?>
+<!DOCTYPE product SYSTEM "product catalog.dtd">
+<product>
+  <name>Apple</name>
+  <description> Fruit that grows on fruit-bearing trees.</description>
+  <price currency="USD">4.99</price>
+  <image href="apple.jpg"/>
+  <categories>
+    <category>fruit </category>
+    <category>basket</category>
+  </categories>
+</product>

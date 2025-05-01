@@ -1,0 +1,29 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xmlns="http://example.com(note)" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <to> Alice </to>
+ <from> Bob </from>
+ <subject> Meeting </subject>
+ <message> Don't forget our meeting at 2pm! &lt;tag&gt;This is a test&lt;/tag&gt; </message>
+ <priority level="high"/>
+ <namespace href="#notenamespace"/>
+ <qualifiedName xmlns:cn="http://example.com(cn)" cn:prefix="notePrefix"> element </qualifiedName>
+</note>
+
+  
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+ 
+
+ 

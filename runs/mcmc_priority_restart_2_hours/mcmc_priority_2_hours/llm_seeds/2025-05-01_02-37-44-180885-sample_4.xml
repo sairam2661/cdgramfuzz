@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<account>
+    <person xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/schema Person.xsd">
+        <name xmlns:tns="http://www.example.com/tns" tns:prefix="personName">John Doe</name>
+        <address tns:addressType="home">
+            <street>123 Main St</street>
+            <city>New York</city>
+            <state>NY</state>
+            <zip>10001</zip>
+        </address>
+        <profile xsi:type="vipMember">
+            <membershipNumber>MEM001</membershipNumber>
+        </profile>
+    </person>
+</account>

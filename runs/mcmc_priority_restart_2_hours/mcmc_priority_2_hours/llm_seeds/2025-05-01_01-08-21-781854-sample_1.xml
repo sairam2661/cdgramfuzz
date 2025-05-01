@@ -1,0 +1,24 @@
+<?xml version = 
+    1.0 
+
+      encoding="ISO-8859-1" 
+      standalone = 
+      yes?>
+      <doc type="article"  
+          title ="XML  Fundamentals "   
+          section=" Sample 
+          Note"   
+          date ="2023"  
+          xml:lang="en"
+          author="John Doe">
+      <heading level="2">
+      Introduction 
+      </heading>
+      <section>
+      <title> What is XML </title>
+      <p>XML is a simple, yet versatile markup language. </p>
+      </section>
+      <footer>
+      <!-- end of document -->
+      </footer>
+      </doc>

@@ -1,0 +1,83 @@
+<?xml version = 1.0
+encoding = " ISO-8859-1"
+?>
+<catalog>
+<book id =""/>
+<gallery>
+<picture href ="/>
+</gallery>
+<book id = "bk101=""/>
+<author>
+<name>John Smith</name>
+<address>
+<street>123 Main St</street>
+<city>Denton</city>
+<state>TX</state>
+<zip>76205</zip>
+</address>
+<phone>799-852-0188</phone>
+<email>johns@example.com</email>
+<comment>I love reading books.</comment>
+</author>
+<copyright year =""/>
+</catalog> 
+
+<?xml version = 1.0
+encoding = "ascii"?>
+<customer>
+    <customer-id>100</customer-id>
+    <contact-name>John Smith</contact-name>
+    <contact-address>
+        <street>123 Main St</street>
+        <city>Denton</city>
+        <state>TX</state>
+        <zip>76205</zip>
+    </contact-address>
+    <email>johns@example.com</email>
+    <phone>799-852-0188</phone>
+    <notes>No notes</notes>
+</customer> 
+
+<?xml version = 1.0
+encoding = "UTF-8"?>
+<employee id="101" >
+  <name>John Doe</name>
+  <salary dollar =""/>
+  <bonus percent =""/>
+
+  <address>
+    <street>123 Maple St</street>
+    <city>Springfield</city>
+    <state>IL</state>
+    <zip>62704</zip>
+  </address>
+  <phone>217-927-6666</phone>
+  <email>johndoe@example.com</email>
+</employee> 
+
+<?xml version = 1.0
+encoding = "ISO-8859-2"?>
+<product category =""/>
+<description> 
+  <name> Mushroom </name> 
+  <price> 5.99 </price> 
+  <weight>1</weight>
+</description> 
+
+<?xml version = 1.0
+encoding = "US-ASCII"?>
+<rss version =""/>
+<channel>
+<title>Today</title>
+<link>daily News</link>
+<description>
+<item> 
+<title> News</title> 
+<link>http://www.example.com</link> 
+<description>News headlines</description>
+<pubDate>Fri, 01-Jan-2004 00:00:01 GMT</pubDate>
+<guid>http://www.example.com/news1.xml</guid>
+</item> 
+</description> 
+</channel> 
+</rss>

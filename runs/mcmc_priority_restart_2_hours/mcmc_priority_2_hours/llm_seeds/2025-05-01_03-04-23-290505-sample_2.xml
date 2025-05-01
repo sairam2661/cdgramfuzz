@@ -1,0 +1,24 @@
+<?xml version = 
+
+   1.0 
+   encoding = 
+   "UTF-16LE"
+   standalone = 
+   yes 
+  ?>
+<catalog
+  xmlns = 
+   "http://www.w3.org/NativeDoc/xml"
+  xmlns:xsi = 
+   "http://www.w3.org/2001/XMLSchema-instance">
+  <item>
+    <name>Hardbound Book</name>
+    <price>39.99</price>
+    <description>Fits perfectly in your suitcase.</description>
+  </item>
+  <item>
+    <name>Postard</name>
+    <price>9.99</price>
+    <description>A great souvenir.</description>
+  </item>
+</catalog>

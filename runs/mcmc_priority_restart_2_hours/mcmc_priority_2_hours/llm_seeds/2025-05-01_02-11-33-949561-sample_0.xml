@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE library [
+<!ELEMENT catalog (book*)>
+<!ELEMENT book (title,author,price)>
+<!ELEMENT title (#PCDATA)*> 
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT price (#PCDATA)*> 
+<!ELEMENT priceunit (#PCDATA)*> 
+<!ELEMENT quantity (#PCDATA)*> 
+<!ELEMENT catalogentry (title,author,price,priceunit,quantity)>
+]>
+<catalog>
+ <cdatatext>&lt;script&gt;alert('This is a CDATA section')&lt;/script&gt;</caddata>
+ <catalogentry>
+  <title>Harry Potter</title>
+  <author>Jo Kowalski</author>
+  <price>15.99</price>
+  <priceunit>Dollars</priceunit>
+  <quantity>1</quantity>
+ </catalogentry>
+</catalog>

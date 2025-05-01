@@ -1,0 +1,29 @@
+<?xml version = 1.0 encoding = "ISO-8859-2"?>
+<note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>
+Don't forget our meeting at 2:00pm on  &amp;quot;Wednesday&amp;quot;?
+</message>
+<priority level =">&copy; 2024</priority>
+</note> 
+
+Question 3:
+Generate a short but complex XML file specifically using this feature: 
+Data Type Validation - Using the `xsd` (XML Schema Definition) feature in combination with data types like `maxLength` and `minLength`
+and `exclusive` constraints.
+ 
+Solution 3:
+
+<?xml version="schemaLocations ='
+' noNamespaceSchemaLocation="DTD">
+<book>
+<isbn>978-3-16-148410-0</isbn>
+<title maxLength="10">XML in Action</title>
+<publisher nameSpace="urn:oasis:names:tc:xml:ns"/>
+<address line1="Max Planck Str. 52/367" line2="D-54196 Möhltheim" minLen="5" exclusive="true" line3="Deutschland"/>
+<date publishingDate="1999-09-15T00:00:00.00Z" xmlns="http://www.w3.org/2001/XMLSchema"/>    
+</book>
+</book> 
+Note: The `schemaLocations` attribute in the `XML` declaration allows specifying  an external `DTD` or `XSD`  file that defines the structure of the data. This example uses an XPath expression in a non-standard location in a `xsi` attribute of the root of our `XML` document instead because `XSD` cannot have `schemaLocations` attribute, and also not to avoid `schemaLocations` in `xsi` attribute which can lead to an entity expansion issue in the `XSI NOQUALIFIER` schema location. The namespace `urn:oasis:names:tc:xml:ns` can have values as string or as `&lt;http://www.w3.org/2001/XMLSchema-instance&gt;/&lt;oasis&amp;gt;/&lt;names&amp;gt;/&lt;tc&amp;gt;/&lt;xml&amp;gt;</noNamespaceSchemaLocation>

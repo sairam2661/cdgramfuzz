@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation ="
+  http://catalyst.schwartz.it/ns/catalog_1.0 catalogs.xsd"
+  xmlns = "http://catalyst.schwartz.it/ns/catalog_1.0"
+>
+
+  <description xml:lang ="HENK-Italian"
+  language ="(it) Italiano"></description>
+  <listitem>
+    <title>Example</title>
+  </listitem>
+
+</catalog>

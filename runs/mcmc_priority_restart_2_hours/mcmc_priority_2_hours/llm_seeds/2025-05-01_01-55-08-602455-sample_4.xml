@@ -1,0 +1,9 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<?xml-notation xmlns:sql="http://schemas.sqlxml.org/sql-notation"?>
+<!DOCTYPE sqlnotation SYSTEM "style.sql">
+<sqlnotation name="query">
+    <param name="query-string" sql:escape="query_string"/>
+    <param name="parameter1" sql:type="int"/>
+    <param name="parameter2" sql:type="varchar(10)"/>
+    <param name="parameter3" sql:literal="true"/>
+</sqlnotation>

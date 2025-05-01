@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<bookstore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="bookstore.xsd"
+           processinginstruction="xml-visualizer 1.2"
+           encoding="xml 2.0">
+  <books>
+    <book genre="fiction">
+      <title>Xenogenesis</title>
+      <author>Dan Simmons</author>
+      <year>1989</year>
+      <price>15.99</price>
+    </book>
+  </books>
+</bookstore>

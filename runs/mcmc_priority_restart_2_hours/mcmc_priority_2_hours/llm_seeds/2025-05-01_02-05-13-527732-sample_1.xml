@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE product_cat  [
+  <!ELEMENT product_cat (name, description, price, brand, model) >
+  <!ELEMENT name (#PCDATA)*
+  ><!ELEMENT description (#PCDATA)*
+  ><!ELEMENT price (#PCDATA)*
+  ><!ELEMENT brand (#PCDATA)*
+  ><!ELEMENT model (#PCDATA)*>]
+  
+  ><product_cat id ="\d+">
+    <name>Mobile Phone</name>
+    <description>&copy; 2022 </description>
+    <price>$599</price>
+    <brand>BlackBerry</brand>
+    <model>Folding 5</model>
+  >/product_cat>]
+
+<!---->
+    
+<catalog>
+  <book id="bk101">
+  <author>John Smith</author>
+  <title> X€

@@ -1,0 +1,16 @@
+<personal-contacts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://validator.w3.org/schemas/personal-contacts.xsd" version="1.1" encoding="ISO-8859-1">
+
+  <contact>
+    <name>John Doe</name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>US</state>
+      <zip>12345</zip>
+    </address>
+    <phone type="home">123-456-7890</phone>
+    <phone type="mobile">987-654-3210</phone>
+    <email>jd@sample.com</email>
+  </contact>
+
+</personal-contacts>

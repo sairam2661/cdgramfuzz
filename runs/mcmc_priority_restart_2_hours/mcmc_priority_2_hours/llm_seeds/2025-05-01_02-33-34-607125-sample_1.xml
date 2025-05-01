@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding="UTF-8"?>
+<d:library xmlns:d="http://example.com/library">
+    <d:publisher>ABC</d:publisher>
+    <d.title>Alice in Wonderland</d:title>
+    <d:edition level="second"/>
+    <d:author xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://example.com/library/schema.xsd">
+        John Doe
+    </d:author>
+</d:library>

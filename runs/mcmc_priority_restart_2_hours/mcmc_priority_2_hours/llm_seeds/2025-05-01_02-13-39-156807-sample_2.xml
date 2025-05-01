@@ -1,0 +1,27 @@
+<house>
+  <address>
+    <street>
+      <name>CoolStreet</name>
+    </street>
+    <city>New York</city>
+    <state>NY</state>
+    <zipcode>10001</zipcode>
+  </address>
+  <owner>
+    <person>
+      <id>1</id>
+      <name>Henry</name>
+      <![CDATA[
+        When will I get paid on my birthday?
+      ]]>
+      <address>
+        <street>
+          <name>CoolStreet</name>
+        </street>
+        <city>New York</city>
+        <state>NY</state>
+        <zipcode>10001</zipcode>
+      </address>
+    </person>
+  </owner>
+</house>

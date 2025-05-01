@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="style.css" type="text/css" 
+     xmlns="http://www.w3.org/1999/xhtml" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" 
+     xmlns:fb="http://www.facebook.com/2008/fbml" 
+     profile="http://gmpg.org/xfn/11" 
+     vocab="http://schema.org/">   
+<title>Sample XML Document</title> 
+<meta http-equiv="Content-Style-Type" content="text/css"></meta> 
+<meta name="xml-stylesheet" content="style.css#style"> 
+<body></body> 
+</html> 
+</link>

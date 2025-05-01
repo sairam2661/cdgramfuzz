@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog xmlns:fn = "http://www.w3.org/2005/04/xpath-functions">
+  <book id ="My Book" xmlns:db = "http://www.example.com/db/book">
+    <author xml:lang ="WengYan">Hermione Granger</author>
+    <title xml:space ="preserve">The Book of Secrets</title>
+    <content>...</content>
+    <date xml:date ="xsd:date">2003-11-14</date>
+  </book>
+</catalog>

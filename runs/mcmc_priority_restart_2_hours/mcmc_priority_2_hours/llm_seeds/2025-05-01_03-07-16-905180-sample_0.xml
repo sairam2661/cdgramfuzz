@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE ProductList SYSTEM "productlist.xsd" >
+<ProductList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="productlist.xsd">
+    <Product>
+        <Name>Apple Watch</Name>
+        <Price>299.99</Price>
+        <Description>Wear your fitness goals on your wrist</Description>
+    </Product>
+    <Product>
+        <Name>Apple AirPods</Name>
+        <Price>159.99</Price>
+        <Description>Immerse yourself in wireless sound</Description>
+    </Product>
+</ProductList>

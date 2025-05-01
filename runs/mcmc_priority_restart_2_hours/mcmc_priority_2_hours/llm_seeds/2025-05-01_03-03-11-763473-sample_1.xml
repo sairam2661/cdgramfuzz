@@ -1,0 +1,51 @@
+<?xml version = 
+1.0 encoding="ISO-8859-1" 
+ standalone = 
+no?>
+
+<Library Catalogue 
+    											 	="?>
+< CatalogueInfo 
+    											 	>
+     <CatalogueInfoDetails>
+        <CatalogueID> 123456789</CatalogueID>
+        <CatalogueName>Digital Library</CatalogueName>
+        <PublisherDetails>
+           <PublisherName>Javascript Solutions</PublisherName>
+           <City>New York</City>
+           <State>NY</State>
+        </PublisherDetails>
+      </CatalogueInfoDetails>
+      <PublicationDate>2021-01-01T00:00:00</PublicationDate>
+      <NumberofPages>200</NumberofPages>
+    </CatalogueInfo>
+  </CatalogueInfo>
+ </Library Catalogue><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+<?xml version="ISO-8859-2-encoding=" 
+encoding="Windows-1252-encoding=" 
+standalone="no 
+  							
+     ="1"
+
+  >    
+<CompanyLogo 
+    											 	="?">
+  <LogoDescription 
+   											 	>
+       <LogoImage>Company Logo</LogoImage>
+       <LogoAltText>Company Logo Text</LogoAltText>
+  </LogoDescription>
+
+  <LogoDetails>
+     <LogoFile>logo.pdf</LogoFile>
+     <LogoFileSize>100KB</LogoFileSize>
+  </LogoDetails>
+</CompanyLogo>
+
+<SocialMedia>
+    <FacebookURL>https://www.facebook.com/company</FacebookURL>
+    <TwitterHandle>@Company</TwitterHandle>
+    <InstagramHandle>@Company</InstagramHandle>
+</SocialMedia>
+</CompanyLogo>

@@ -1,0 +1,15 @@
+<personal-data>
+  <name xml:lang="en">
+    &lt;John Doe&gt;
+  </name>
+  <address xml:lang="en">
+    &lt;123 Main St&gt;,
+    &lt;Anytown&gt;,
+    &lt;ST&gt;12345&gt;,
+    &lt;US&gt;
+    <phone-number xml:lang="en">123-456-7890</phone-number>
+  </address>
+  <email xml:lang="en">
+    &lt;john.doe@example.com&gt;
+  </email>
+</personal-data>

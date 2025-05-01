@@ -1,0 +1,35 @@
+<?xml version =1.0?>
+<catalog xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <link xlink:href="#bk101" xlink:style="solid" />
+    <subject>Computer</subject>
+    <publisher>Adobe Press</publisher>
+    <price amount="39.95" currency="USD"/>
+    <description>Best introduction to XML ever</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Essentials</title>
+    <link xlink:href="#bk102" xlink:style="dotted" />
+    <subject>Programming</subject>
+    <publisher>Wiley Publishing</publisher>
+    <price amount="49.95" currency="USD"/>
+    <description>A must have resource for XSLT</description>
+  </book>
+  <book id="bk103">
+    <author>Bob Johnson</author>
+    <title>Schema Design</title>
+    <link xlink:href="http://www.example.org/schemapath" xlink:style="both" xmlns:tns="http://www.example.org/schema" />
+    <subject>XML Schema</subject>
+    <publisher>O'Reilly Media</publisher>
+    <price amount="29.95" currency="USD"/>
+    <description>Understanding XML Schema</description>
+  </book>
+  <![CDATA[
+  <catalog-extended>
+    <description>Extended catalog file</description>
+  </catalog-extended>
+  ]]>
+</catalog>

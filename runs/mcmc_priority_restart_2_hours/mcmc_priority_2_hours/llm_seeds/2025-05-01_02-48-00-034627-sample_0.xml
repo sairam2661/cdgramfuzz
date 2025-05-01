@@ -1,0 +1,17 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<note xmlns="http://www.example.org/note" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.example.org/note note.xsd">
+    <to>Emily</to>
+    <from xmlns:fb="http://schemas.openxmlformats.org/officeDocument/2006/relationships" fb:relation="id">
+        David
+    </from>
+    <subject>Meeting &amp; Party</subject>
+    <message>
+        Don't forget our meeting at 2pm! &lt;fb:anchor ID="1"/&gt; See you there. 
+    </message>
+    <priority level="high"/>
+    <entities>
+        <person name="David" id="1"/>
+        <company name="ABC Inc." id="2"/>
+    </entities>
+</note>

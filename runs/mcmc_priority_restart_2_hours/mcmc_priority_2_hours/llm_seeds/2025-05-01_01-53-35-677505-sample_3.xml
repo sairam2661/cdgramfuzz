@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE note [
+  <!ELEMENT note (
+    name | address | organization |
+    contact | email | phone | website |
+    priority | remark |
+    note |
+ igure |
+ igure
+  |
+ igure
+  |
+ igure)>
+]>
+<note xmlns:fn="http://example.com/notations">
+  <note xmlns:ns1="http://example.com/ns1">
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <fn:figure xmlns:fn="http://example.com/notations" name="example.footnote"/>
+    <priority level="high"/>
+    <remark>This is a remark.</remark>
+  </note>
+</note>

@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?system id="xml-parser" version="1.0" encoding="UTF-8"?><catalog>
+    <description>Library Catalog</description>
+    <publisher>Hello World, Inc.</publisher>
+    <date>2022</date>
+    <language>English</language>
+    <subject>
+        <subject>Computer Science</subject>
+        <subject>Mathematics</subject>
+    </subject>
+    <author>
+        <name>John Smith</name>
+        <address>123 Main St</address>
+    </author>
+    <book id="bk101">
+        <title>Introduction to Algorithms</title>
+        <genre>Computer</genre>
+        <pub_date>2020-10-01</pub_date>
+        <price>39.95</price>
+        <pub_id>ISBN-0-8138-0183-4</pub_id>
+        <description>An introduction to algorithms</description>
+    </book>
+</catalog>

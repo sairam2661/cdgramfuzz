@@ -1,0 +1,12 @@
+<history>
+  <entry>
+    <date>Mon, 14 Sep 1998 16:24:50 +0000</date>
+    <msg>&lt;b&gt;Hello&lt;/b&gt;, this is a &lt;a href=&quot;https://www.example.com&quot; target=&quot;base&quot;&gt;test&lt;/a&gt;.</msg>
+    <author>Steve</author>
+  </entry>
+  <entry>
+    <date>Mon, 14 Sep 1998 16:24:51 +0000</date>
+    <msg>This is another one from the &lt;quot;test&quot;&gt;.</msg>
+    <author>John</author>
+  </entry>
+</history>

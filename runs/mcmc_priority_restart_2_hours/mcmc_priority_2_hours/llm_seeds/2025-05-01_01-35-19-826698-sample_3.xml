@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xml:lang="English">
+  <description xml:lang="English">
+    A database that provides information on various products
+  </description>
+  <product list="catalog">
+    <name xml:lang="English">Bicycle</name>
+    <price currency="USD">19.95</price>
+    <brand xml:lang="English">Trek</brand>
+    <attributes>
+      <color xml:min="red" xml:max="blue">red</color>
+      <size xml:units="inches">24</size>
+    </attributes>
+  </product>
+  <product list="catalog">
+    <name xml:lang="English">Basketball</name>
+    <price currency="USD">25.99</price>
+    <brand xml:lang="English">Nike</brand>
+    <attributes>
+      <color xml:max="orange" xml:min="yellow">orange</color>
+      <size xml:units="feet">6.5</size>
+    </attributes>
+  </product>
+</catalog>

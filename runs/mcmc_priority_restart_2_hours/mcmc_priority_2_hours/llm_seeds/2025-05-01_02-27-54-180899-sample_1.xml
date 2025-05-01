@@ -1,0 +1,26 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  no?>
+
+<catalog xmlns = "http://www.example.org/books/" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation ="http://www.example.org/books/"
+         targetNamespace ="http://www.example.org/books/" 
+         xml:lang ="http://www.example.org/books/">
+
+  <bookstore>
+    <book genre='novel'  author='J.K. Rowling'  category='Fantasy'
+           chalklevel='Beginner'
+           pubdate='10/02/2005'
+           title='Harry Potter and the Goblet of Fire'
+           ISBN='0-7394-0742-0">
+
+      <copyright> Copyright 2005</copyright>
+      <price>19.99</price>
+      <binding> hardcover </binding>
+      <authorinfo> J.K. Rowling was born 07/01/1965  in Yate, England...</authorinfo>
+    </book>
+  </bookstore>
+</catalog> 
+
+Note:
+I have provided two different solutions. The first one provides a prominent example of the "xml declaration". 
+
+The second solution provides a prominent example of the "Namespace Declaration". The elements "catalog", "bookstore", "book", "copyright", "price", "binding" and "authorinfo" are from the "http://www.example.org/books/" namespace and "genre", "author", "category", "pubdate", "title", "ISBN" are  from the default namespace. The elements also use attribute from other namespace like'xsi:schemaLocation =' provides a connection to another document, while 'xsi:namespace =' for the namespace used. 'xml:lang =' is used for specifying language of xml document. " no" instead of "yes" in "standalone". The namespace 'http:www.w3.org2001XSchema-instance =' is used instead of 'xsi ='   and is 'xml:lang =' is also changed in "http:www.example.org/books/" from the previous solution. In order to use the  example given there would provide a namespace and a schema file which is not the case here.. The provided XML files use more different elements then the previous solutions.. It also uses different elements and more different structure while keeping namespace declaration prominent. The "xsi:schemaLocation" is also used prominently.  In the first

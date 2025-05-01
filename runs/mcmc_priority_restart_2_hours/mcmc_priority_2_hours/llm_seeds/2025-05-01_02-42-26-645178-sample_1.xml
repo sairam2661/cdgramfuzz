@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding="ISO-8859-1"?>
+<catalog xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://store.example.com/catalog 
+          http://store.example.com/catalog Schema.xsd">
+  <item id="book1">
+    <dc:title>Harry Potter and the Philosopher's Stone</dc:title>
+    <dc:creator> J.K. Rowling </dc:creator>
+   <dc publisher ="Orrible Pictures" xsi:nil="true"/>
+    <dc:subject> Children's Books 
+                    <dc:type>Novel </dc:type>
+     <dc:format> Paperback 
+               <dc:code>ISBN: 0747532748</dc:code>
+      </dc:format> 
+      </dc:subject> 
+    <dc:description>Harry Potter receives his Hogwarts acceptance letter. He then embarks on a magical journey, where he makes friends with Ron and Hermione, and they embark on adventures protecting the wizarding world from the dark wizard Lord Voldmort.</dc:description> </item>
+</catalog>

@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+      <author name ="[Person's Name]" nationality ="[Person's Nationality]" href =".#author"/>
+      <book genre ="[Book's Genre]" price ="[Currency]/[Book's Price]" format ="[Book's Format]" href =".#author[Person's Name]/book[?Book's ISBN]/?"
+        pub-date ="[Year]"
+        pub-place ="[City]"
+      />
+      <admin
+        firstname ="[Admin's First Name]" 
+        lastname ="[Admin's Last Name]"
+        street ="[Address]"
+        postal-code ="[Zip Code]"
+        city ="[City]"
+      />
+  </catalog>

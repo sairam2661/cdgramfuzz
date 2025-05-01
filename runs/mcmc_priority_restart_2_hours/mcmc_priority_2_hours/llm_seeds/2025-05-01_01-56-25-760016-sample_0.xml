@@ -1,0 +1,14 @@
+<hibernate-mapping version="4.0.0.Beta2" xmlns="urn:hibernate-mapping-2.2">
+  <hibernate-mapping xmlns:hib="urn:hibernate-mapping-2.2" default-lazy="true" inheritance="joined">
+    <class name="User" table="users">
+      <hib:field name="id" column="id"/>
+      <hib:many-to-one name="address" class="Address"/>
+    </class>
+    <hib:map-type name="Address" table="addresses">
+      <hib:column name="street"/>
+      <hib:column name="city"/>
+      <hib:column name="state" type="String"/>
+      <hib:column name="zip"/>
+    </hib:map-type>
+  </hibernate-mapping>
+</hibernate-mapping>

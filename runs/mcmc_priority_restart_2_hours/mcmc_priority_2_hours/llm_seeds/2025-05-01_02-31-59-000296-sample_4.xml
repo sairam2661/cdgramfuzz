@@ -1,0 +1,23 @@
+<?xml version = 
+    1.0 
+    encoding="UTF-8" 
+    standalone = 
+    yes
+?>
+
+<example:Library xmlns:ex =
+    "http://example.com/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://example.com/namespace 
+        http://example.com/namespace/library.xsd"
+>
+
+   <description> 
+      A reference library for complex XML documents.
+   </description>
+
+   <category> 
+      A book on XML programming tutorials.
+   </category>
+
+</example:Library>

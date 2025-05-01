@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "utf-8"?>
+<!DOCTYPE Catalog SYSTEM "catalog.dtd">
+<Catalog Name="Books">
+    <Publisher location="London" Country="UK"/>
+    <Book ISBN="1234567890" Title="Introduction to Programming">
+        <Author Name="John Doe" Initials="J.D." DatePublished="2020-01-01"/>
+        <Chapter Title="Variables and Data Types">
+            <Subsection>Subsection 1</Subsection>
+            <Subsection>Subsection 2</Subsection>
+        </Chapter>
+        <Illustration Filename="images/chapter1.jpg"/>
+    </Book>
+    <Book ISBN="9876543210" Title="Data Structures">
+        <Author Name="Jane Smith" Initials="J.S." DatePublished="2021-01-01"/>
+        <Chapter Title="Arrays and Linked Lists">
+            <Subsection>Subsection 1</Subsection>
+            <Subsection>Subsection 2</Subsection>
+        </Chapter>
+        <Illustration Filename="images/chapter2.jpg"/>
+    </Book>
+</Catalog>

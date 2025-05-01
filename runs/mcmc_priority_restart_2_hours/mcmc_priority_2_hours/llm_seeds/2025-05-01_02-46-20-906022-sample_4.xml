@@ -1,0 +1,14 @@
+<?xml version = 1.0  encoding = "ISO-8859-1"?>
+ <catalog>
+  <item id="book1">
+   <title>Harry Potter and the Philosopher's Stone</title>
+   <price>12.99</price>
+   <description>Magical adventures await you in this timeless tale!</description>
+  </item>
+  <item id="book2">
+   <title>The Lord of the Rings</title>
+   <price>15.99</price>
+   <description>"One ring to rule them all." Embark on an epic quest in Middle-earth.</description>
+   <author>John Tolkien</author>
+  </item>
+ </catalog>

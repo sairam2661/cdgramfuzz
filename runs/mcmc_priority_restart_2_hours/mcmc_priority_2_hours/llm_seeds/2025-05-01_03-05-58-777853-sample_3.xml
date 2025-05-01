@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+    <CD ID="B001">
+        <title>Empire Burlesque</title>
+        <artist>Bob Dylan</artist>
+        <country>USA</country>
+        <company>Columbia</company>
+        <price>10.90</price>
+        <year>1985</year>
+        <genre>Blues</genre>
+        <mediaType video0="yes" audio0="yes"/>
+        <label>CBS Records</label>
+        <catalogue>
+            <CD ID="B002">
+                <title>Desire</title>
+                <artist>Bob Dylan</artist>
+                <country>USA</country>
+                <company>Columbia</company>
+                <price>11.80</price>
+                <year>1985</year>
+                <genre>Folk Rock</genre>
+            </CD>
+        </catalogue>
+    </CD>
+</catalog>

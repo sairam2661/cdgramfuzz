@@ -1,0 +1,28 @@
+<?xml version = 
+              1.0
+          encoding = 
+            "UTF-8, windows-1252, unicode"
+          standalone = 
+            yes?>
+ 
+<formulate namespacePrefix="ns" 
+         namespaceURI="http://www.example.org/schemas/formulate">
+  
+ <section title ="{ns:calculateTax}">
+  <table>
+   <tr>
+    <column label ="{ns:title}">
+     <row data ="{ns:value}"/>
+    </column>
+   </tr>
+  </table>
+ </section>
+
+ <section title ="{ns:displayResult}">
+  <expression language ="{ns:lang}">
+   <source code ="{ns:source}"/>
+   <result value ="{ns:target}"/>
+  </expression>
+ </section>
+
+</formulate>

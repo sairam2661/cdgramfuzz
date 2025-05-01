@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-16LE" standalone = yes?>
+<museum Exhibition 
+ 	=":Exhibition1" 
+ 	isOpen ="" 
+ 	accessTime ="(9;17)"
+>
+ <ExhibitorCountry  >Germany </ExhibitorCountry>
+ <ExhibitorCity    >Berlin </ExhibitorCity>
+ <ExhibitionTitle  >Christmas Market</ExhibitionTitle>
+ <ExhibitionDescription>This is a Christmas market. There are lots of stalls selling drinks and sweets.</ExhibitionDescription>
+ <ExhibitionAddress>Charlottenburg Palace Grounds</ExhibitionAddress>
+ <Dates>
+  <OpeningDate>18-11-2023</OpeningDate>
+  <ClosingDate>17-12-2023</ClosingDate>
+ </Dates>
+ <TicketInfo>
+  <TicketPricing>3</TicketPricing>
+  <Discounts>Yes</Discounts>
+  <DiscountPercentage>20</DiscountPercentage>
+ </TicketInfo>
+</museum>

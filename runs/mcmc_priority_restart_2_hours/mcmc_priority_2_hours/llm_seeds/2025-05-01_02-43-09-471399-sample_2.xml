@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = yes?>
+<catalog>
+    <title>Library Catalog</title>
+    <description>Lists books in the library</description>
+    <item>
+        <title>Book1</title>
+        <author>Author1</author>
+        <price>$19.99</price>
+        <content>
+            <h1>Book Information</h1>
+            <p>This book is a classic novel.</p>
+        </content>
+    </item>
+    <item>
+        <title>Book2</title>
+        <author>Author2</author>
+        <price>$9.99</price>
+        <content>
+            <h1>Book Information</h1>
+            <p>This book is a fiction novel.</p>
+        </content>
+    </item>
+</catalog>

@@ -1,0 +1,11 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+<?xml-stylesheet type="text/xsl" href="stylesheets/style.xsl"?>
+<catalog xml:lang="en">
+    <description>A simple online bookstore</description>
+    <author>John Smith</author>
+    <title>Online Bookstore</title>
+    <genre>Online Store</genre>
+    <price currency="USD">19.95</price>
+    <pubDate>Mon, 01 Dec 2022 12:00:00 GMT</pubDate>
+    <image src="img/online-bookstore.jpg"/>
+</catalog>

@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "utf-8"?>
+<catalog>
+  <record>
+    <name>Thomas Dewar</name>
+    <address>
+      <street>21, Wellington Crescent</street>
+      <city>Egham</city>
+      <state>Surrey</state>
+      <zip>TW20 0AQ</zip>
+    </address>
+    <phone>01234 567890</phone>
+    <fax>01442 123456</fax>
+    <email>tdewar@example.com</email>
+  </record>
+</catalog>

@@ -1,0 +1,25 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<catalog>
+
+<book id ="'B001'" ISBN ="'0345453745'" >
+<author>John Smith</author>
+<title>XML in Action</title>
+<publisher>Premier Communications</publisher>
+<language>English</language>
+<rating>5</rating>
+<review  >It's the best book I've ever read!</review>
+  <chapter name ="'Introduction'" />
+  <chapter name ="'Chapter 1'" />
+  <chapter name ="'Chapter 2'" />
+</book>
+<book id ="'B002'" ISBN ="'0345453753'" >
+<author>Jane Doe</author>
+<title>XSLT Masterclass</title>
+<publisher>Bruce Haley Books</publisher>
+<language>English</language>
+<rating>4</rating>
+<review   >A great resource for learning XSLT!</review>
+  <chapter name ="'Chapter 1'" />
+  <chapter name ="'Chapter 2'" />
+</book>
+</catalog>

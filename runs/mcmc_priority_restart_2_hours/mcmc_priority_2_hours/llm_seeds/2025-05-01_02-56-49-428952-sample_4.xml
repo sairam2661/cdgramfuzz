@@ -1,0 +1,27 @@
+<?xml version = 
+            1.0
+        encoding=" utf-8
+        "
+        standalone = 
+        yes
+?>
+
+<!DOCTYPE note
+        SYSTEM
+        "note.dcd">
+
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="note.xsd">
+    <to>James Bond</to>
+    <from>MI6</from>
+    <subject>Top Secret Mission</subject>
+    <message><![CDATA[Meet me at the coffee shop at midnight. Bring your A-game.
+]]>
+
+</message>
+    <priority>
+        <level>x-high</level>
+    </priority>
+    <sender>Q</sender>
+    <receiver>00 Agent</receiver>
+</note>

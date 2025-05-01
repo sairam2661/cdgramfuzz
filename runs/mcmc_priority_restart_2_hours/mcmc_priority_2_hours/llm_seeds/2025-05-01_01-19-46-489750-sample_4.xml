@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE library SYSTEM "library.dtd">
+
+<library isbn="978-1-56619-909-4">
+  <book title="XML for Dummies" author="Eric A. Robertson" publication-date="2003-10-06" />
+  <book title="XML Cookbook" author="Frank Retkin" publication-date="1999-07-01" />
+</library>

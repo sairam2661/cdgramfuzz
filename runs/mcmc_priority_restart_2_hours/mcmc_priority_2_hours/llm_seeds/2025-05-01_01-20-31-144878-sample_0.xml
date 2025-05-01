@@ -1,0 +1,6 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation ="EuroShop.xsd">
+  <currency rate ="{US Dollar @ 4.48 Euro / 1 USD}"/>
+  <product name="Nescafe Taster's Choice 250g" price ="{4.50Euro @ 4.65US Dollar}" brand="Nestle" category="Beverages"/>
+</catalog>

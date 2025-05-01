@@ -1,0 +1,25 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE product_catalog SYSTEM "product_catalog.xsd">
+<product_catalog xmlns:prodcat="http://example.com/product_catalog">
+  <product>
+    <prodcat:id type="unique">12345</prodcat:id>
+    <prodcat:name xml:lang="en">Example Product</prodcat:name>
+    <prodcat:description xml:lang="en">This is an example product.</prodcat:description>
+    <prodcat:price currency="USD">19.99</prodcat:price>
+    <prodcat:images>
+      <prodcat:image src="image1.jpg"/>
+      <prodcat:image src="image2.jpg"/>
+    </prodcat:images>
+  </product>
+  <product>
+    <prodcat:id type="unique">67890</prodcat:id>
+    <prodcat:name xml:lang="fr">Produit d'exemple</prodcat:name>
+    <prodcat:description xml:lang="fr">Ceci est un produit d'exemple.</prodcat:description>
+    <prodcat:price currency="EUR">14,99</prodcat:price>
+    <prodcat:images>
+      <prodcat:image src="image3.jpg"/>
+      <prodcat:image src="image4.jpg"/>
+    </prodcat:images>
+  </product>
+</product_catalog>

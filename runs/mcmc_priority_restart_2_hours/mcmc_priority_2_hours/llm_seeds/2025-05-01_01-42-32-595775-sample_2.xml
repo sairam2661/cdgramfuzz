@@ -1,0 +1,30 @@
+<SyndicationFeed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:atom="http://www.w3.org/2005/Atom" xsi:schemaLocation="http://www.w3.org/2005/Atom http://www.w3.org/2005/atom/xsd/atom20.xsd">
+  <feed xml:lang="fr">
+    <title>Actualité</title>
+    <link href="http://example.com/" rel="self"/>
+    <updated>2023-03-15T14:30:00Z</updated>
+    <id>http://example.com/rss</id>
+    <author>
+      <name>Daniel Sciamma</name>
+      <uri>http://example.com/author/</uri>
+    </author>
+    <subtitle>Actualité</subtitle>
+    <description xml:lang="fr">Actualité</description>
+    <tag>
+      <term>actu</term>
+      <term>actualité</term>
+      <term>info</term>
+    </tag>
+    <item>
+      <title>Vincent Cassel</title>
+      <link href="http://example.com/vincent-cassel/" rel="self"/>
+      <updated>2023-03-15T14:40:00Z</updated>
+      <id>http://example.com/vincent-cassel/rss</id>
+      <author>
+        <name>Vincent Cassel</name>
+        <uri>http://example.com/author/vincent-cassel/</uri>
+      </author>
+      <summary xml:lang="fr">Titre</summary>
+    </item>
+  </feed>
+</SyndicationFeed>

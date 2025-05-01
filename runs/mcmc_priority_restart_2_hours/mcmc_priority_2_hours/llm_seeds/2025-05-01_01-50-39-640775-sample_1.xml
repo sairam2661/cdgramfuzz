@@ -1,0 +1,12 @@
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (author, title, copyright, books) >
+  <!ELEMENT author (name, nationality) >
+  <!ELEMENT title (#PCDATA)*
+ ><!-- Notation declaration for CD -->
+<!NOTATION CD PUBLIC "-//W3C//DTD CD 3.2//EN" "http://www.w3.org/TR/CDTF/">
+<!ELEMENT books (book | book+) >
+  <!ELEMENT book (title, price, author) >
+  <!ELEMENT author (name) >
+  <!ELEMENT title (#PCDATA)*
+ ><!-- Notation declaration for year -->
+<!NOTATION year PUBLIC "-//W3C//DTD year 1.0//EN" "http://www.w3.org/TR/1999/XSL/Type—

@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+  <genre entity ="YesNo"/>&amp;tld;tag
+  <description>&lt;i&gt;Inventor&lt;/i&gt; of the theoretical flight simulator.</description>
+  <name>Samuel Flight</name>
+  <year>1982</year>
+  <price>39.95</price>
+  <company>
+    <country>USA</country>
+    <street>1000 Innovation Drive</street>
+    <city>Albuquerque</city>
+    <state>New Mexico</state>
+    <zip>87123</zip>
+  </company>
+</catalog>

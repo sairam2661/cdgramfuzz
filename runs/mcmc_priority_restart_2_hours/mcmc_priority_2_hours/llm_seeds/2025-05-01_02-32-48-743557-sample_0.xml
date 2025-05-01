@@ -1,0 +1,8 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<addressBook xmlns:xsi =  "http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation  ="/schema/address_schema.xsd">
+  <person id ="{http://www.example.com/}personId"  xmlns:address =  "http://www.example.com/address">
+    <name>John Doe</name>
+    <telephoneNumber type ="{http://www.example.com/}home" >1234567890</telephoneNumber>
+    <email address ="{http://www.example.com/}home" >johndoe@example.com</email>
+  </person>
+</addressBook>

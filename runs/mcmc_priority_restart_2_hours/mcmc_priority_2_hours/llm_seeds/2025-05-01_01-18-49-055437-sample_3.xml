@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding="UTF-8" standalone = yes?>
+<!DOCTYPE library SYSTEM "bookshelf.dtd">
+<library>
+    <book genre="fiction">
+        <title>The Great Gatsby</title>
+        <author>Robert Cormier</author>
+        <year>1974</year>
+        <pages>173</pages>
+        <description>An classic American novel about the corrupting influence of wealth and the lose of the American Dream.</description>
+    </book>
+    <book genre="non-fiction">
+        <title>1984</title>
+        <author>George Orwell</author>
+        <year>1949</year>
+        <pages>328</pages>
+        <description>A dystopian novel depicting a totalitarian future society where independent thought is discouraged.</description>
+    </book>
+</library>

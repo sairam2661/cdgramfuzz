@@ -1,0 +1,18 @@
+<?xml version = 		1.0	encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+<!ELEMENT book (title, author, price) >
+<!ELEMENT title (#PCDATA)*
+>
+<!ELEMENT author (#PCDATA)*
+>
+<!ELEMENT price (#PCDATA)*
+>
+]>
+<book>
+    <title xml:lang="en">Pride and Prejudice</title>
+    <author xml:lang="en">Jane Austen</author>
+    <price xml:lang="en">15.99</price>
+    <chapters>
+        <chapter><heading xml:lang="en">Chapter 1</heading><summary xml:lang="en">An introduction to the Bennet family</summary></chapter>
+    </chapters>
+</book>
