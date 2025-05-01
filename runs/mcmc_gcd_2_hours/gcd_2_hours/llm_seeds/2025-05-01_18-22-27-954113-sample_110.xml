@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE note [
+<!ELEMENT note ( sender | recipient | subject | message | priority | reference)>
+<!ELEMENT sender (#PCDATA)*
+>
+<!ELEMENT recipient (#PCDATA)*
+>
+<!ELEMENT subject (#PCDATA)*
+>
+<!ELEMENT message (#PCDATA)*
+>
+<!ELEMENT priority (#PCDATA)*
+>
+<!ELEMENT reference (#PCDATA)*>
+]>
+<note>
+  <sender>John</sender>
+  <recipient>Toby</recipient>
+  <subject>The Project Report</subject>
+  <message>Our project is complete, please review.</message>
+  <priority>medium</priority>
+  <reference>Page 3</reference>
+</note>

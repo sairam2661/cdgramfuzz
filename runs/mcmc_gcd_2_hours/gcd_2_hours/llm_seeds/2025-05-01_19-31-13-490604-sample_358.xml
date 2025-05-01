@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<doc>
+<author>
+<name>John Doe</name>
+<adresse>
+<street>123 Main St</street>
+<city>New York</city>
+<state>NY</state>
+<zip >10001</zip>
+</adresse>
+<phone extension="123">555-555-5555</phone>
+<contract type="standard">Active</contract>
+</author>
+<company>
+<name>Sun Microsystems</name>
+<department>
+<name>Research and Development</name>
+<description>This is a description of research and development department</description>
+</department>
+<contact>
+<email type="personal">john.doe@sun.com</email>
+<phone type="office">555-555-5555</phone>
+</contact>
+</company>
+</doc>

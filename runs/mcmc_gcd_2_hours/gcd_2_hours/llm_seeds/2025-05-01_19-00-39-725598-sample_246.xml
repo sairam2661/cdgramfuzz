@@ -1,0 +1,122 @@
+<?xml version =1.0 encoding="UTF-8"?>
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+           xmlns:rmt = "http://www.example.com/relationships"
+           targetNamespace ="http://www.example.com/relationships"
+           xmlns:tns = "http://www.example.com/relationships"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           xml:lang="en">
+    <element name="organization">
+        <complexType>
+            <sequence>
+                <element name="address" type="rmt:street"/>
+                <element name="phone" type="rmt:phoneNumber"/>
+            </sequence>
+        </complexType>
+    </element>
+    <namespace alias="rmt" uri="http://www.example.com/relationships"/>
+    <attribute name="email" type="xs:string"/>
+</xs:schema>
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+  
+
+ 
+
+  
+
+ 
+
+  
+
+ 
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
+
+ 
+
+   
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+

@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "US-ASCII"?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publicationDate>2000-10-01</publicationDate>
+    <description>An in-depth look at creating applications with XML.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title getXmlFileName="book2.xml">XML for Advanced Users</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publicationDate>2001-05-01</publicationDate>
+    <description>A detailed look at creating complex applications with XML.</description>
+  </book>
+  <book id="bk103">
+    <author>Richard Newton</author>
+    <title>XML Programming</title>
+    <genre>Computer</genre>
+    <price>29.95</price>
+    <publicationDate>1999-03-01</publicationDate>
+    <description>Discover the power of XML programming.</description>
+  </book>
+</catalog>

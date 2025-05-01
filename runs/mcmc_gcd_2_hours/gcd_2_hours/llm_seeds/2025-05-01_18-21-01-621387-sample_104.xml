@@ -1,0 +1,14 @@
+<?xml version =4.0  encoding="UTF-8" standalone =yes?>
+<notation xmlns:sd = "http://www.example.com/schemas">
+    <note id="note123">
+        <to xml:lang="fr">Pierre</to>
+        <from xml:lang="fr">Marie</from>
+        <subject>Reunion</subject>
+        <message xml:space="preserve">N'oubliez pas notre reunion qui doit avoir lieu a 18h!</message>
+        <priority level ="{http://example.com Priorities}High"/>
+        <image href="meeting.jpg"/>
+    </note> 
+    <external-notation id="math-notation" name="Mathematical Notation">
+        <notation-xml>
+          <sqrt> 
+            <xi:math xmlns:xi="http://www.w3.org/2001/XMLSchema-instance">√

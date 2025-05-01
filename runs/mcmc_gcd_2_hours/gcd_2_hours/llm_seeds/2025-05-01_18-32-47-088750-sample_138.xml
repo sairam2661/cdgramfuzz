@@ -1,0 +1,53 @@
+<?xml version = 
+    1.0 
+    encoding = 
+    "UTF- 
+    8" 
+    standalone = 
+     yes 
+?>
+ 
+<catalog xmlns:xsi = 
+    "http:// 
+    www.w3.org/ 
+    2001/XMLSchema-instance" 
+    xsi:schemaLocation ="
+     http:// 
+     www.example.com 
+     catalog.xsd 
+     catalog.xsd 
+    " 
+>
+    <book id =""book1="" 
+        style =""coutlure="" 
+        xml:lang =""en="" 
+    >
+        <title>A
+            th 
+            n 
+            i
+            n 
+            e</title>
+        <author>John
+            Smith</author>
+        <price>20.00</price>
+        <publishDate>2004-02-06
+            </publishDate>
+        <description>An 
+            in
+            e
+            h
+            a 
+        n
+        t 
+        e</description>
+        <perenge>
+        <uri>uri 
+        of 
+        the 
+        book</uri> 
+        </perenge>
+        <pubId>123456789</pubId>
+        <exclusive>true</exclusive>
+    </book> 
+</catalog>

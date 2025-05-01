@@ -1,0 +1,55 @@
+<?xml version = 1.0 encoding = "utf-8"?>
+<catalog category="books" itemscope="item">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "ProductCatalog",
+      "name": "My Books",
+      "description": "A catalog of my favorite books."
+    }
+  </script>
+  <meta property="og:title" content="My Books Catalog" />
+  <header xmlns="http://www.w3.org/ns/rss/1.0">
+    <title>My Books Catalog</title>
+    <link rel="self" type="application/rss+xml" title="my-books" />
+  </header>
+  <body>
+    <h1>My Book List</h1>
+    <ul itemType="menu">
+      <li><a href="#">Introduction</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="#">Myths</a></li>
+      <li><a href="#">Biographies</a></li>
+      <li><a href="#">Fiction</a></li>
+    </ul>
+    <section>
+      <h2>My Favorite Books</h2>
+      <table summary="My books list">
+        <tr>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>Published Date</th>
+          <th>Rating</th>
+        </tr>
+        <tr>
+          <td>1984</td>
+          <td>George Orwell</td>
+          <td>1949</td>
+          <td four="positive"/>
+        </tr>
+        <tr>
+          <td>The Great Gatsby</td>
+          <td>F. Scott Fitzgerald</td>
+          <td>1925</td>
+          <td four="negative"/>
+        </tr>
+        <tr>
+          <td>To Kill a Mockingbird</td>
+          <td>Harper Lee</td>
+          <td>1960</td>
+          <td four="positive"/>
+        </tr>
+      </table>
+    </section>
+  </body>
+</catalog>

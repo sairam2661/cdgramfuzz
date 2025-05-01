@@ -1,0 +1,40 @@
+<?xml version =13.0  encoding="UTF-8" standalone =yes?>
+<!-- The root element of the entire document -->
+<catalog xmlns="urn:isbn:0-486-27557-4" xml:lang="en">
+    <!-- The ISBN identifier of the catalog -->
+    <catalog identifier="9780060056563">
+        <!-- The title of the catalog -->
+        <title lang="en">Jenny Lives! Example Domain</title>
+        <identifier type="ISBN">9780060056563</identifier>
+        <!-- The description of the catalog -->
+        <description xml:lang="en">This is a catalog</description>
+        
+        <record identifier="00000001-1111-1111-1111-111111111111">
+            <!-- The author of the catalog -->
+            <author lang="en">John Smith</author>
+            <!-- The edition of the catalog -->
+            <edition>1</edition>
+            <!-- The subject of the catalog -->
+            <subject lang="en">Computer Science</subject>
+            
+            <identifier type="ISBN">
+                <!-- The ISBN of the catalog -->
+                <identifier>9780060056563</identifier>
+                <!-- The copyright information of the catalog -->
+                <copyright>
+                    <!-- The copyright holder of the catalog -->
+                    <copyright_holder lang="en">John Doe</copyright_holder>
+                    <!-- The year of copyright of the catalog -->
+                    <year>2023</year>
+                </copyright>
+            </identifier>
+            
+            <content type="html">
+                <!-- The HTML content of the catalog -->
+                <description id="url_00000001-1111-1111-1111-111111111111">
+                    <p>This book is a wonderful catalog!</p>
+                </description>
+            </content>
+        </record>
+    </catalog>
+</catalog>

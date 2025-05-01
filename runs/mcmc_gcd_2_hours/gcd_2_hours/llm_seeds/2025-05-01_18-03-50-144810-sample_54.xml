@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<product catalog ="{http://www.example.com/catalog}">
+
+  <title>Product Information</title>
+  <author>
+    <name>John Smith</name>
+    <email>john.smith@example.com</email>
+  </author>
+
+  <description>
+    <type>Manufacturing</type>
+    <specifications>
+      <material>Steel</material>
+      <quantity>1000</quantity>
+    </Specifications>
+  </description>
+
+  <price level="retail">150.00</price>
+  <image source="imageURL"></image>
+
+</product>

@@ -1,0 +1,79 @@
+<?xml version = 1.0encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE person[
+<!ATTLIST person
+  id      (ID          )
+  #REQUIRED  name  (NCNAME        )
+  #REQUIRED  address  (URI         )
+  #REQUIRED  email   (URI         )
+  #REQUIRED  phone   (NCNAME       )
+  #REQUIRED
+  emailcheck CDATA   #REQUIRED
+  phoneregex CDATA   #REQUIRED
+  passwordcheck CDATA  #REQUIRED
+  password    CDATA   #REQUIRED
+  age        CDATA   #REQUIRED
+  occupation (NCNAME       )
+  #REQUIRED
+  creditcard CDATA
+  #REQUIRED
+  bankaccount CDATA
+  #REQUIRED
+  addressline1 (NCNAME        )
+  #REQUIRED
+  addressline2 (NCNAME        )
+  #REQUIRED
+  language  (NCNAME        )
+  #REQUIRED
+  country    (NCNAME        )
+  #REQUIRED
+  countrycode CDATA
+  #REQUIRED
+  dateofbirth (NCNAME        )
+  #REQUIRED
+  maritalstatus (NCNAME       )
+  #REQUIRED
+  nationality  (NCNAME        )
+  #REQUIRED
+  state     (NCNAME        )
+  #REQUIRED
+  occupationcode CDATA
+  #REQUIRED
+  addressline3 (NCNAME        )
+  #REQUIRED
+  dateofarrival (DATE        )
+  #REQUIRED
+  placeoforigin (NCNAME        )
+  #REQUIRED
+  dateofDeparture(DATE        )
+  #REQUIRED
+  modeoftravel (NCNAME        )
+  #REQUIRED
+  jobtype     (NCNAME        )
+  #REQUIRED
+  jobcategory  (NCNAME        )
+  #REQUIRED
+  company     (NCNAME        )
+  #REQUIRED
+  companytype  (NCNAME        )
+  #REQUIRED
+  companyindustry (NCNAME      )
+  #REQUIRED
+  companylocation (NCNAME      )
+  #REQUIRED
+  personname   (NCNAME        )
+  #REQUIRED
+  workplace    (NCNAME        )
+  #REQUIRED
+  salary      (NCNAME        )
+  #REQUIRED
+  bonuses     (NCNAME        )
+  #REQUIRED
+  raise_date   (DATE        )
+  #REQUIRED
+  jobbegin_date (DATE        )
+  #REQUIRED
+  jobend_date   (DATE        )
+  #REQUIRED
+  yearsatwork CDATA
+ 

@@ -1,0 +1,40 @@
+<harnessing-the-potential-of-XML-technology>
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <customer-data>
+        <header>
+            <version>3.2</version>
+            <timestamp current-time="2022-01-01 12:00:00"/>
+        </header>
+        <customer>
+            <information>
+                <name>John Doe</name>
+                <Address>
+                    <house-number>1</house-number>
+                    <street-name>Main Street</street-name>
+                    <city>New York</city>
+                    <state>NY</state>
+                    <zip-code>10001</zip-code>
+                    <country>USA</country>
+                </Address>
+                <phone-numbers>
+                    <phone-type>Home Phone</phone-type>
+                    <phone-number>123-456-7890</phone-number>
+                    <phone-type>Work Phone</phone-type>
+                    <phone-number>098-765-4321</phone-number>
+                </phone-numbers>
+                <emails>
+                    <email-type>Business Email</email-type>
+                    <email-address>john.doe@example.com</email-address>
+                    <email-type>Personal Email</email-type>
+                    <email-address>johndoe@gmail.com</email-address>
+                </emails>
+            </information>
+        </customer>
+        <payment-information>
+            <payment-method>credit-card</payment-method>
+            <transaction-id>txn001</transaction-id>
+            <payment-method>paypal</payment-method>
+            <transaction-id>txn002</transaction-id>
+        </payment-information>
+    </customer-data>
+</harnessing-the-potential-of-XML-technology>

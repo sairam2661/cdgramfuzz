@@ -1,0 +1,10 @@
+<Sales xmlns:sd="http://www.example.com/sales" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProductId>12345</ProductId>
+  <ProductDescription>Sample Product</ProductDescription>
+  <sd:SalesData>
+    <sd:SalesmanName>John Doe</sd:SalesmanName>
+    <sd:Region>North</sd:Region>
+    <xsi:SchemaLocation>http://www.example.com/schemas/sales.xsd</xsi:SchemaLocation>
+  </sd:SalesData>
+  <CustomerName>The Sample Customer</CustomerName>
+</Sales>

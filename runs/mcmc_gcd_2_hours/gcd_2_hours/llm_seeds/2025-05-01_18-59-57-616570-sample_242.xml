@@ -1,0 +1,32 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<?xml namespace uri = "http://example.org/namespace" prefix = "ex"?>
+<catalog xml:lang ="At-DE" xml:space="preserve">
+  <item xml:lang ="" id ="" category ="Books">
+    <title xml:lang ="" xml:space="default">Harry Potter and the Philosophers Stone</title>
+    <author xml:lang ="en">J.K. Rowling</author>
+    <subject xml:lang ="en">Fantasy</subject>
+    <description xml:lang ="en">Follows the adventures of a young boy who discovers he is...&quot;>
+    <date pubdate ="1997-06-26"/>
+    <price>10.99</price>
+    <publisher xml:lang ="en">Bloomsbury</publisher>
+  </item>
+  <item xml:lang ="fr " id =" ">
+    <title xml:lang ="fr " xml:space="default">Harry Potier et la Pierre Philoscope</title>
+    <author xml:lang ="fr ">J.K. Rowling</author>
+    <subject xml:lang ="fr "><span>Magie</span></subject>
+    <description xml:lang ="fr ">Suivre les aventures d'un jeune garçon qui découvre qu'il est...&quot;/>
+    <date pubdate ="1997-06-26"/>
+    <price>10.99</price>
+    <publisher xml:lang ="fr ">Bloomsbury</publisher>
+  </item>
+</catalog>  
+
+<?xml version = 1.0  encoding = "UTF-16" standalone =  yes?>
+<?xml namespace uri = "http://example.net/namespace" prefix = "ex"?>
+<image xmlns = "http://www.w3.org/1999/w3c/dtd xml1-19990615.dtd" description ="Landing Image" height="540" 
+width="960" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
+  <ex:image file="C:/files/main/large.jpg" 
+  xmlns:xlink = "http://www.w3.org/1999/xlink" 
+  xlink:href="C:/files/main/large.jpg" 
+  xlink:title="Main Image" />
+  <ex:image file="C:/files/main/large2.jpg" 

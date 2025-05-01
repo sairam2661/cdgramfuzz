@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<ns:portfolio xmlns:ns = "http://www.example.com/portfolio" version ="OnePointFive" xml:lang ="xxml">
+    <bookstore>
+        <book genre="fiction">
+            <title>1984</title>
+            <author>George Orwell</author>
+            <year>1949</year>
+            <price>10.99</price>
+        </book>
+        <book genre="non-fiction">
+            <title>The Great Gatsby</title>
+            <author>F Scott Fitzgerald</author>
+            <year>1925</year>
+            <price>12.99</price>
+        </book>
+    </bookstore>
+</ns:portfolio>

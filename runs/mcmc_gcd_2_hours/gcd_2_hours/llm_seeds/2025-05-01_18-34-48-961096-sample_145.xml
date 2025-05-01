@@ -1,0 +1,31 @@
+<?xml version=
+1.0
+encoding="ISO-8859-1"
+standalone=
+no?>
+<?xml:declaration
+version=
+"1.0"
+encoding=
+"UTF-8"?>
+<!DOCTYPE
+public
+SYSTEM
+"http://www.xml.org/ns/doctype	public">
+<html
+xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      XML Documentation
+    </title>
+  </head>
+  <body>
+    <h1>
+      XML Features
+    </h1>
+    <p>
+      This document demonstrates the usage of two XML features:
+      <b>XML Declaration</b> and <b>Prolog Comment</b>.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE employee [
+<!ELEMENT employee (address | phone | email) >
+<!ELEMENT address (street, city, state, zip) >
+<!ELEMENT street (#PCDATA)*
+><!ELEMENT city (#PCDATA)*
+><!ELEMENT state (#PCDATA)*
+><!ELEMENT zip (#PCDATA)*
+><!ELEMENT phone (#PCDATA)*
+><!ELEMENT email (#PCDATA)*
+><!ELEMENT employee 
+   name 
+   > 
+   <!ELEMENT name (#PCDATA)*
+   > 
+   <!ELEMENT employee 
+   salary 
+   > 
+   <!ELEMENT salary (#PCDATA)*> 
+   <!ELEMENT employee 
+   manager 
+   > 
+   <!ELEMENT manager 
+     reference 
+     > 
+     <!ELEMENT reference 
+         name 
+         > 
+         <!ELEMENT name (#PCDATA)*
+         > 
+         <!ELEMENT employee 
+         id 
+         > 
+         <!ELEMENT id (#PCDATA)*> 
+         <!ELEMENT employee 
+         department 
+         > 
+         <!ELEMENT department (#PCDATA)*
+         > 
+         <!ELEMENT employee 
+         date 
+         > 
+         <!ELEMENT date (#PCDATA)*
+         > 
+         <!ELEMENT employee 
+         position 
+         > 
+         <!ELEMENT position (#PCDATA)*
+         > 
+         <!ELEMENT employee 
+         job 
+         > 
+         <!ELEMENT job (#PCDATA)*
+         > 
+         <!ELEMENT employee 
+         experience 
+         > 
+         <!ELEMENT experience (#PCDATA)*
+         > 
+  ]> 
+
+<employee 
+ name ="" 
+> 
+ <name 
+  JohnDoe
+ =""> 
+ </name> 
+ <salary amount ="" currency ="" > $50000 </salary> 
+ <manager 
+  reference 
+  ="" 
+> 
+  <reference 
+   name 
+   ="" 
+> JohnSmith
+  </reference> 
+ </manager> 
+ <employee 
+  id 
+  ="" 
+> 101 
+ </employee> 
+ <department 
+  name 
+  ="" 
+> HR 
+ </department> 
+ <employee 
+  date 
+  ="" 
+> 2022-01-01 
+ </employee> 
+ <position 
+  name 
+  ="" 
+> Software Engineer 
+ </position> 
+ <employee 
+  job 
+  ="" 
+> Data Science

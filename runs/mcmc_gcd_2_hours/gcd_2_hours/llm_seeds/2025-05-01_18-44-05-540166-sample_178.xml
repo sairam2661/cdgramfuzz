@@ -1,0 +1,14 @@
+<personal-annotations version="1.2" xmlns:xi="http://www.w3.org/1999/XLink">
+  <pi-name>Personal Notes</pi-name>
+  <xi:include href="address.xml" xi:type="external" />
+  <person-info identifier="personalid">
+    <name full-name="John Doe">John Doe</name>
+    <date-of-birth year-month-day="1980-05-11" />
+    <address xmlns:ai="http://www.example.com/address-notation">
+      <street-name main="123 Main St" secondary="Apartment 101" />
+      <city>Anytown</city>
+      <state-state-province>CA</state-state-province>
+      <post-town-code>12345</post-town-code>
+    </address>
+  </person-info>
+</personal-annotations>

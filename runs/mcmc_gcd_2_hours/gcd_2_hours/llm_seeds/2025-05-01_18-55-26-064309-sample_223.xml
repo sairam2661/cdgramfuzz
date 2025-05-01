@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <title id="cat1">Catalog Product</title>
+    <description>Online product catalog</description>
+    <product id="prod1" category="Electronics" price="99.99"/>
+    <product id="prod2" category="Books" price="29.99"/>
+    <product id="prod3" category="Toys" price="19.99" discount =".10"/>
+</catalog>

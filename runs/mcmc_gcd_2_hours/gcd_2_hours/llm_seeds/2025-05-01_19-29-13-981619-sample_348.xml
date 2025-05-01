@@ -1,0 +1,28 @@
+<?xml version =1.0 encoding="UTF-16" standalone = no?>
+<!DOCTYPE document [
+<!ELEMENT document (title | text | image | table | list | div) >
+<!ELEMENT title (#PCDATA)*> 
+<!ELEMENT text (#PCDATA)*> 
+<!ELEMENT image (#PCDATA)*> 
+<!ELEMENT table (#PCDATA)*> 
+<!ELEMENT list (#PCDATA)*> 
+<!ELEMENT div (#PCDATA)*> 
+]> 
+<document xmlns="example.com">
+<title>Document Title</title>
+<text>This is a sample XML document, created using a specific XML declaration.</text>
+<image>image1.xml</image>
+<table>
+<row>
+<cell>Cell 1</cell>
+<cell>Cell 2</cell>
+<cell>Cell 3</cell>
+</row>
+</table>
+<list>
+<item>Item 1</item>
+<item>Item 2</item>
+<item>Item 3</item>
+</list>
+<div>Sample XML div, created using a specific XML declaration.</div>
+</document>

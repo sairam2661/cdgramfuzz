@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding="UTF-8" standalone = no?>
+
+<?xml element decl = ((name = "person"), (attributes = ("age", "city")), (content model = "text*"))"?>
+    <person age="30" city="New York">
+       John <name>John Doe</name> is <age>30</age> from <city>New York</city>.
+    </person>
+
+    
+
+  
+
+
+
+ 

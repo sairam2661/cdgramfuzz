@@ -1,0 +1,30 @@
+<?xml version = 
+    1.0 encoding = "UTF-8"?>
+<!DOCTYPE address [
+    <!ELEMENT city (zip)>
+    <!ELEMENT state (state_name)>
+    <!ELEMENT company (name, street, address)>
+    <!ELEMENT address (street, city, state, zip) >
+    <!ENTITY domain_name "example.com">
+    <!ENTITY company_name "Acme, Inc." >
+    <!ENTITY street_address "123 Main St">
+    <!ENTITY company_address "123 Company Dr">
+    <!ENTITY city "Anytown">
+    <!ENTITY state "US">
+    <!ENTITY zip "12345">
+]>
+<address>
+    <company>
+        <name>ABC Inc</name>
+        <street>456 Business Ave</street>
+        <address>
+            <domain_name>&domain_name;</domain_name>
+            <company_name>&company_name;</company_name>
+            <street_address>&street_address;</street_address>
+            <company_address>&company_address;</company_address>
+            <city>&city;</city>
+            <state>&state;</state>
+            <zip>&zip;</zip>
+        </address>
+    </company>
+</address>

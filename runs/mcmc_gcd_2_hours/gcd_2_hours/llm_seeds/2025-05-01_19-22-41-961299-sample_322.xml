@@ -1,0 +1,13 @@
+<?xml version=1.0 encoding="UTF-8" standalone= yes?>
+<catalog xmlns:prod="http://schemas.example.com/products" xmlns="http://www.w3.org/1999/XSL/Transform">
+  <prod:product id="PC-100">
+    <prod:name>Desktop</prod:name>
+    <prod:description>Computer with desktop display</prod:description>
+    <prod:price money="USD">$1000</prod:price>
+  </prod:product>
+  <prod:product id="Laptop-200">
+    <prod:name>Laptop</prod:name>
+    <prod:description>Portable Computer with built in display</prod:description>
+    <prod:price money="USD">$800</prod:price>
+  </prod:product>
+</catalog>

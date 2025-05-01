@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation ="http://mascot.xml/ 
+      http://mascot.xml/mascot.xsd" 
+         xmlns:m = "urn:mascot:2001" 
+         xmlns = "http://www.example.org/catalog" 
+         version ="I.0">
+    <product id ="{123}" category ="{123456}" name ="{Hello}">
+        <description href ="{test.txt}">Mascot Test</description>
+        <price currency ="{USD}" amount ="{19.000000}"/>
+        <availability date ="{2023-02-16T00:00:00-08:00}" days ="{60}"/>
+        <m:brand name ="{test品牌

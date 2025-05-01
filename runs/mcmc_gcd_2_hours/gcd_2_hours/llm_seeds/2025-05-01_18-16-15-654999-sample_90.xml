@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <define-entities>
+    <!-- Entities with different data types -->
+    <!--entity numeric-->
+    <!--entity ordinal-->
+    <!--entity date-->
+    <!--entity word-->
+    <!--entity symbol-->
+    <!--entity binary-->
+  </define-entities>
+
+  <root>
+    <!-- Data with entity references -->
+    <book>
+      <title>XML in 10 minutes</title>
+      <author>
+        <!---->
+          <!--entity public_entity-->
+          <!--entity public_entity'-->
+        <!---->>
+
+        <string xml:lang ="use-utf-8”—

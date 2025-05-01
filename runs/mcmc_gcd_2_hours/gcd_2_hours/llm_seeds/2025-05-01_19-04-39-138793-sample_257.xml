@@ -1,0 +1,23 @@
+<h:html xmlns:xs="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       version="1.0" encoding="UTF-8" standalone="yes">
+  <xsd:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             elementFormDefault="qualified">
+    <xsd:element name="customer">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element name="name" type="xs:string"/>
+          <xsd:element name="age" type="xs:int"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xs:integer" use="required"/>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <note>
+    <to>Alice</to>
+    <from>Bob</from>
+    <subject>Meeting</subject>
+    <message>Don't forget our meeting at 2pm!</message>
+    <priority level="high"/>
+  </note>
+</h:html>

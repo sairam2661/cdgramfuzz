@@ -1,0 +1,15 @@
+<?xml version =1.0 encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog xml:lang="en">
+ <!-- This catalog contains information about books -->
+  <book id="bk101">
+   <author>John Smith</author>
+   <title>X HTML &amp; CSS: The Definitive Visual Guide</title>
+   <genre>Computer</genre>
+   <price>49.95</price>
+   <publish_date>2002-10-22</publish_date>
+   <description>A visual guide to creating visually appealing web pages.</description>
+   <content type="html"></content>
+   <author_image url="http://example.com/image.jpg"/>
+  </book>
+</catalog>

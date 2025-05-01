@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+<description xml:lang ="" xml:space="preserve">A catalog of books</description>
+<country>USA</country>
+<language>English</language>
+<publisher>Alpha</publisher>
+<author>John Smith</author>
+<book id="bk101">
+<title>XML for Beginners</title>
+<subject>Computer</subject>
+<description>Book about XML</description>
+<guid>http://www.xml.com/book.html</guid>
+<link>http://www.xml.com/book.html</link>
+<media:content url="http://books.xml.com/bookcover.jpg" type="image/jpeg"  content-type="image/jpeg"/>
+<author>
+  <name>John Smith</name>
+  <mailing>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+  </mailing>
+</author>
+<price>39.95</price>
+<pubDate TueMay01                                                                                                                                                                                                                                                                                     

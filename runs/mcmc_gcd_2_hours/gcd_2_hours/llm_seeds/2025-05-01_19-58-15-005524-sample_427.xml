@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<imdb>
+  <movie id ="{movieId}" rating ="{rating}">
+    <title> Interstellar </title>
+    <year>2014</year>
+    <country>USA</country>
+    <language>English</language>
+    <directory>Christopher Nolan</directory>
+    <actor>Matthew McConaughey</actor>
+    <genre>Animated</genre>
+    <awards>
+      <award>
+        <year>2014</year>
+        <name>Academy Award for Best Visual Effects</name>
+      </award>
+      <award>
+        <year>2015</year>
+        <name>Golden Globe Award for Best Director</name>
+      </award>
+    </awards>
+  </movie>
+</imdb>

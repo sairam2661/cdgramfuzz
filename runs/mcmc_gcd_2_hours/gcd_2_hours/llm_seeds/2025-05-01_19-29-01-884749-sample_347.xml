@@ -1,0 +1,25 @@
+<?xml version = 1.0  encoding = "ISO-8859-1" standalone = no?>
+<document xmlns = "http://example.org/schema" version ="x1.2">
+    <header>
+        <creator>
+            <name>John Doe</name>
+            <position>Author</position>
+        </creator>
+        <date>2022-01-01</date>
+        <source language="English">
+            <title>Example Document</title>
+            <author>
+                <name>Jane Smith</name>
+                <affiliation>Example University</affiliation>
+            </author>
+        </source>
+    </header>
+    <content>
+        <section title="Introduction">
+            <paragraph>This is an example document.</paragraph>
+        </section>
+        <section title="Conclusion">
+            <paragraph>The document concludes here.</paragraph>
+        </section>
+    </content>
+</document>

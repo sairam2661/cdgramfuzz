@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:prod = "http://example.com/products"
+          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation ="
+
+        http://example.com/products/products.xsd
+        products.xsd">
+
+    <item>
+        <prod:name>Apple iPhone</prod:name>
+        <prod:description>Latest smartphone from Apple</prod:description>
+        <prod:price currency ="xsd:string">799.99</prod:price>
+        <prod:image url ="xsd:string">/path/to/image.jpg</prod:image>
+        <author>John Doe</author>
+        <contact-info>john@example.com</contact-info>
+    </item>
+
+    <item>
+        <prod:name>Samsung TV</prod:name>
+        <prod:description>4K smart TV from Samsung</prod:description>
+        <prod:price currency ="xsd:string">1999.99</prod:price>
+        <prod:image url ="xsd:string">/path/to/image.jpg</prod:image>
+        <author>Jane Smith</author>
+        <contact-info>jane@example.com</contact-info>
+    </item>
+
+</catalog>

@@ -1,0 +1,37 @@
+<?xml version = 
+    1.0  
+    encoding = "UTF-8"  
+    standalone = 
+    yes  
+   ?>
+
+
+<!DOCTYPE persons [
+  <!ELEMENT persons (name, age)>
+  <!ELEMENT name (#PCDATA)*> 
+  <!ELEMENT age (#PCDATA)*> 
+  <!ELEMENT gender (#PCDATA)*> 
+  <!ELEMENT address (
+       street | city | state | zip)> 
+  <!ELEMENT street (#PCDATA)*> 
+  <!ELEMENT city (#PCDATA)*> 
+  <!ELEMENT state (#PCDATA)*> 
+  <!ELEMENT zip (#PCDATA)*> 
+  <!ELEMENT person (
+       name 
+      , age 
+      , gender 
+      , address)>
+  <!ELEMENT name (#PCDATA)*>
+  <!ELEMENT age (#PCDATA)*>
+  <!ELEMENT gender (#PCDATA)*>
+  <!ELEMENT street (#PCDATA)*>
+  <!ELEMENT city (#PCDATA)*>
+  <!ELEMENT state (#PCDATA)*>
+  <!ELEMENT zip (#PCDATA)*>
+  <!ATTLIST person 
+       id 
+       (ID)
+  "]>
+
+<persons id="pers1-1.8.2003-10-01-08-06-58-PM.xml.sql-13-04-24-13-26-04-24-15-13-29-28-32-35-34-30-29-27-29-30-32-24-04-24-27-33-33-29-32-30-29-30-26-31-26-29-27-29-29-27-32-33-30-30-30-32-33-31-29-31-33-29-29-31-30-28-35-29-29-33-32-31-31-27-31-32-27-33-27-27-29-33-31-33-32-37-29-35-34-29-29-25-31-37-26-26-32-33-32-29-39-38-28-29-27-20-13-29-27-27-28-30-27-29-30-29-27-37-25-20-36-27-27-28-27-27-39-26-33-30-25-26-30-14-32-33-22-28-21-18

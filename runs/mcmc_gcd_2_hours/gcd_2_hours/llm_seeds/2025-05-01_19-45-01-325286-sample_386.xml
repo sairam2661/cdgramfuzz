@@ -1,0 +1,13 @@
+<?xml version = 1.0  encoding = "UTF-16LE" standalone = no?>
+<catalog  xml:lang ="Some Special Language">
+  <description  xml:space ='preserve'>A collection of items</description>
+  <item>
+    <title  xml:id =""  id =""  xml:lang ="" >
+      <text>My Title</text>
+    </title>
+    <description>My description</description>
+    <link  xml:linktype ="" rel =""  xml:link ="" >My link</link>
+    <media:content  url ="" type ="" />
+    <contributor type ="">My contributor</contributor>
+  </item>
+   </catalog>

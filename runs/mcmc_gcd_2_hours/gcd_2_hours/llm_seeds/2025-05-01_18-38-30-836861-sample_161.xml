@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8" 
+ standalone =  yes?>
+<?import name = "system" namespace= "http://www.w3.org/TR/xpath functions" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"?>
+ <!DOCTYPE person SYSTEM "person.dtd">
+
+<person>
+<name>John</name>
+<address>
+<street>123 Main Street</street>
+<city>New York</city>
+<state>NY</state>
+<zip>10001</zip>
+</address>
+</person>

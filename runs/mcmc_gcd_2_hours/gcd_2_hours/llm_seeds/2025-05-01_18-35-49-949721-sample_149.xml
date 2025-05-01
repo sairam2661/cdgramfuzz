@@ -1,0 +1,55 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<!--XML Declaration Documentation for Customer Information System-->
+<!DOCTYPE customer-info [
+  <!--Data Types and Validation Rules**
+   <xs:element name="name" type="xs:string"/>
+   <xs:element name="phone" type="xs:string"/>
+   <xs:element name="address" type="addressInfo"/>
+  ]>
+<customer_info version="1.0">
+  <user_id>12345</user_id>
+  <name>John Doe</name>
+  <phone>123--><!--Phone Number Validation: 10 digits required, numeric only-->
+  				
+  <!--Prolog Documentation for address elements: -->
+  <!--Address fields can contain US, UK, etc. country codes -->
+  <!--city, state/province, and postal code must be specified to complete address -->
+  <!--Full address line should contain all three pieces -->
+  <!--street_number, street_name, (such as apt, unit#, floor#) and last name -->
+  <!--Use XML schema with relevant validation rules for required fields and constraints -->	
+  <!-- Country Code -->
+  <!--State/Province (2 char code; such as NY or ON) -->
+  <!--Zip/Postal code (such as 10021 or M4W 1L1) -->
+  <!--City -->
+  <!--State/Province Abbreviation/Code (for display), e.g. NY, ON -->
+  <!--Country Name -->
+  <!--Region/Postal Code Area -->
+  <!--Country Name -->
+  <!--Phone Number, (such as -->
+  
+  <!--Country Abbreviation -->
+  
+  
+  <!--State/Province Name-->
+  <!--Full Address Information -->
+  <!--Customer's Profile Completed, Validate using schema -->
+  <!--Street Name -->
+  <!--Province or Region Codes in two or four characters -->
+  <!--Phone Number Validation: 10 digits required, numeric only-->
+  <!--State/Province Abbreviation/Code -->
+  <!--Zip/Postal Code -->
+  <!--Country Code -->
+  <!--Name -->
+  <!--Address -->
+  <!--City -->
+  <!--Street Number -->
+  <!--Region/Postal Area -->
+  <!--Full Address -->
+  <!--State/O Province --> 
+  <!--Country Name -->
+  
+  <!--Address Line -->
+  <!--Default Display Name -->
+  <!--Default Phone Number, e.g. 1234567890 -->
+  <!--Phone Number -->
+ 

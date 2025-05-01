@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "ISO-8859-7"?>
+<?-version 1.0?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog publisher ="" copyright="&copy; 2023" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <book id="bk101" xmlns="urn:isbn:0-486-27557-1" title="Think and Grow Rich"
+                  link="http://example.com">
+      <author>Robert Collier</author>
+      <subject>Self-Help</subject>
+      <description>An action-packed, easy-to-read version of the time-tested principles from the original 1937 book.</description>
+      <language>enUS</language>
+      <pub_date>2001-10-22</pub_date>
+      <price >20.99</price>
+      <pub_date>2001-10-22</pub_date>
+      <author>Robert Collier</author>
+      <subject>Self-Help</subject>
+      <description>An action-packed, easy-to-read version of the time-tested principles from the original 1937 book.</description>
+      <language>enUS</language>
+      <pub_date>2001-10-22</pub_date>
+      <price >24.99</price> 
+   </book>
+</catalog>

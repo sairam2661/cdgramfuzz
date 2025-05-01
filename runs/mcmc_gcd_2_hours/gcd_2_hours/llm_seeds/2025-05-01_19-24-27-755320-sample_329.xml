@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<person xmlns:tb = "http://www.example.com/trainee">
+   <tb:id>1</tb:id>
+   <tb:traineeName>John Doe</tb:traineeName>
+   <address>
+      <street>123, Main St.</street>
+      <city>Anytown</city>
+      <state>US</state>
+      <zip>12345</zip>
+   </address>
+   <TB:experience level="Junior"/>
+   <TB:Courses>
+      <TB:Course>
+         <TB:Edition>2</TB:Edition>
+         <TB:Title>Java</TB:Title>
+      </TB:Course>
+      <TB:Course>
+         <TB:Edition>1</TB:Edition>
+         <TB:Title>Python</TB:Title>
+      </TB:Course>
+   </TB:Courses>
+</person>

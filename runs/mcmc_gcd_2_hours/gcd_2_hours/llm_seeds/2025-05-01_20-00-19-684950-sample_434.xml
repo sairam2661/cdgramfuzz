@@ -1,0 +1,24 @@
+<?xml version =   1.0  encoding = "UTF-8"?>
+<catalog xml:lang ="
+US" xmlns:xsi ="
+http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation ="
+bookstore.xsd">
+  <description lang ="
+en"
+us ="
+US">This is an English book for the continental United States.</description>
+  <company name ="
+Duckware"
+country ="
+USA">Our headquarter is located in Portland, Oregon, USA.</company>
+  <contact mailingaddress ="
+1 4501 SW Bellwether  Drive
+Corvallis,OR99044
+US">
+  <phone type ="
+voice">503.766.7000  </phone>
+  <emailaddress type ="
+unsupported">support@duckware.com</emailaddress>
+  </contact>
+  </catalog>

@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = no?>
+<catalog>
+<description>Collection of books</description>
+<author>
+<name>John DOE</name>
+<address>
+<street>123 Main St</street>
+<city>Anytown</city>
+<state>CA</state>
+<zip>12345</zip>
+</address>
+</author>
+<book id ="" ISBN ="" category ="" title ="" price ="" description ="" author ="" publisher ="" image ="" />
+<book id="" ISBN="" category="" title="" price="" description="" author="" publisher="" image="" />
+<country name ="" code ="" continent ="" region ="" population ="" currency ="" />
+<person>
+<name>Eve</name>
+<age>25</age>
+<city>Los Angeles</city>
+<country code ="" name ="" continent ="" region ="" population ="" currency ="" />
+</person>
+</catalog>

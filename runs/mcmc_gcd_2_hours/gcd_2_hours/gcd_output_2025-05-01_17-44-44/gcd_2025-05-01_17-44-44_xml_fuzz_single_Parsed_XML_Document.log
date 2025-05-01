@@ -1,0 +1,121 @@
+2025-05-01 19:31:50,681 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 0: <xml-stylesheet type="text/xsl" href="style.xsl">
+<version history="1.0 2005-04-23T08:37:52Z johnDoe...
+2025-05-01 19:31:50,682 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-31-50-681867-sample_360.xml. Generation time: 31.47s
+2025-05-01 19:32:00,918 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 1: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+<book id="BK-101">
+<category>CHILDRENS</category>...
+2025-05-01 19:32:00,918 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-32-00-918637-sample_361.xml. Generation time: 10.24s
+2025-05-01 19:32:13,450 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 2: <xml-stylesheet type="text/xsl" href="style.xsl"/>
+  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+...
+2025-05-01 19:32:13,450 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-32-13-450223-sample_362.xml. Generation time: 12.53s
+2025-05-01 19:32:33,030 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 3: <xml version="1.0" encoding="UTF-8" standalone="no">
+  <books>
+    <book>
+      <title>Norse Mytholo...
+2025-05-01 19:32:33,031 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-32-33-031109-sample_363.xml. Generation time: 19.58s
+2025-05-01 19:33:04,790 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 4: <?xml version = 1.0  encoding = "ISO-8859-15" standalone = yes?>
+<?xml-stylesheet type = "text/xsl" ...
+2025-05-01 19:33:04,791 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-33-04-790889-sample_364.xml. Generation time: 31.76s
+2025-05-01 19:33:07,387 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 5: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <description xml:lang ="Tamil"...
+2025-05-01 19:33:07,387 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-33-07-387303-sample_365.xml. Generation time: 2.60s
+2025-05-01 19:33:38,728 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8"?>
+<Manifest>
+  <ProductInfo>
+    <Version >3.4</Version>
+    ...
+2025-05-01 19:33:38,728 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-33-38-728528-sample_366.xml. Generation time: 31.34s
+2025-05-01 19:34:11,547 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 7: <?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (ti...
+2025-05-01 19:34:11,547 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-34-11-547660-sample_367.xml. Generation time: 32.82s
+2025-05-01 19:34:42,691 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 8: <!DOCTYPE catalog [
+  <!ELEMENT catalog (book)>
+  <!ELEMENT book (title, author, publisher)>
+  <!ELE...
+2025-05-01 19:34:42,692 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-34-42-691926-sample_368.xml. Generation time: 31.14s
+2025-05-01 19:35:13,776 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 9: <?xml version = 1.0 encoding = "UTF-8"?>
+<html xmlns = "http://www.w3.org/1999/xhtml">
+  <head>
+    ...
+2025-05-01 19:35:13,777 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-35-13-776996-sample_369.xml. Generation time: 31.08s
+2025-05-01 19:35:44,845 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 10: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+<description xml:lang ="" xml:space="preserve">A ...
+2025-05-01 19:35:44,846 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-35-44-845872-sample_370.xml. Generation time: 31.07s
+2025-05-01 19:36:15,906 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 11: <pre>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<catalog root="root_value" version="1.0" xml:lang=...
+2025-05-01 19:36:15,906 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-36-15-906606-sample_371.xml. Generation time: 31.06s
+2025-05-01 19:36:32,183 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 12: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+  <library>
+    <book id ="{UUI...
+2025-05-01 19:36:32,183 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-36-32-183604-sample_372.xml. Generation time: 16.28s
+2025-05-01 19:37:03,944 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 13: <?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE library [
+<!ELEMENT category (n...
+2025-05-01 19:37:03,945 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-37-03-945034-sample_373.xml. Generation time: 31.76s
+2025-05-01 19:37:37,542 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 14: <xml version="1.0" encoding="UTF-8" standalone="yes" byteorder="little">
+<root>
+<record id="record12...
+2025-05-01 19:37:37,542 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-37-37-542230-sample_374.xml. Generation time: 33.60s
+2025-05-01 19:38:10,857 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 15: <?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!DOCT...
+2025-05-01 19:38:10,857 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-38-10-857745-sample_375.xml. Generation time: 33.32s
+2025-05-01 19:38:43,710 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 16: <?xml version=1.0 encoding="UTF-8"?>
+<catalog>
+<country name="France" region="Europe"/>
+<country nam...
+2025-05-01 19:38:43,710 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-38-43-710731-sample_376.xml. Generation time: 32.85s
+2025-05-01 19:39:17,031 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 17: <?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE library [
+<!ELEMENT library (book, author)>
+<!ELE...
+2025-05-01 19:39:17,031 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-39-17-031557-sample_377.xml. Generation time: 33.32s
+2025-05-01 19:39:41,370 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 18: <?xml version = 1.0 encoding = "UTF-8"?>
+<books>
+
+  <book genre="fiction" 
+      price="10.99"
+
+    ...
+2025-05-01 19:39:41,370 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-39-41-370677-sample_378.xml. Generation time: 24.34s
+2025-05-01 19:40:14,418 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 19: <h:xml version="1.0" encoding="UTF-8" xmlns:h="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://...
+2025-05-01 19:40:14,419 - gcd_xml_fuzz_single_Parsed_XML_Document - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-40-14-419054-sample_379.xml. Generation time: 33.05s

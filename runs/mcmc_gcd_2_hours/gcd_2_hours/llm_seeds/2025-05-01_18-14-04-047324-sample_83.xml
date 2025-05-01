@@ -1,0 +1,88 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<catalog xml:lang ='"English"' xmlns:media = '"http://www.w3.org/1997/06/rdf#"' xmlns:ppt = '"http://www.oasis-open.org/2004/07/oafPresentation/20070808"' xml:base ='"http://example.com"' xml:space ='"preserve"'>
+  <document typename ='"description"' xml:id ='"doc-1"' xmlns:xsi = '"http://www.w3.org/2001/XMLSchema-instance"'>
+    <title>Document Example</title>
+    <h1>XSLT Stylesheet Generator</h1>
+    <![CDATA[<pre>
+      &amp; &lt;person xmlns="http://www.w3.org/1999/xlink">
+        <title>John</title>
+        <href>http://example.com/john</href>
+      </person>
+    ]]>
+      &quot;Test&quot;
+    </pre></CDATA> 
+
+
+
+
+
+   
+
+
+
+   
+
+
+
+
+
+   
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+

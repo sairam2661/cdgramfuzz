@@ -1,0 +1,20 @@
+<?xml version = 1.0
+encoding = "UTF-8"
+standalone = yes?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+    </book>
+    <book id="bk102">
+        <title>Pride and Prejudice</title>
+    </book>
+    <book id="bk103">
+        <title>The Great Gatsby</title>
+        <reviewer>Emily Davis</reviewer>
+    </book>
+    <book id="bk104">
+        <subject>English Literature</subject>
+    </book>
+</catalog>
+ 
+ 

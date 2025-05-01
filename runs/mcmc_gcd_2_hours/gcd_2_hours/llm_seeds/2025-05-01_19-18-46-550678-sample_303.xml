@@ -1,0 +1,21 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+ <catalog xml:lang ="x-alt" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation ="
+             http://www.example.org/books 
+             /path/to/example.xsd 
+             http://xspf.org/2003/recipe 
+             /path/to/recipe.xsd" 
+          targetNamespace ="
+        http://www.example.com/catalog 
+        "
+          xmlns = "
+      http://www.example.com/catalog
+      ">
+   <book id="bk101" genre="cooking">
+   <author>Author1-1</author>
+   <copyright>Copyright1-1</copyright>
+   <title>The Art of Cooking</title>
+   <genre>meat</genre>
+   <price>24.99</price>
+   <publishDate>2003-02-21</publishDate>
+   <description Anionicororororosetofcokbookforbeginners.Usedbookeventuallytorent.Usedexchangestrategy:priceisirrelevant.Useduntil2005-09-25asrecommendedbythegassethesis.Usedforfirsttime2003-05-24-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.Usedforfirsttime2005-09-25-00-12-25.

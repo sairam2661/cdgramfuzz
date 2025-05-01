@@ -1,0 +1,36 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE book [
+  <!ENTITY copyright "Copyright &copy; 2023">
+  <!ENTITY author "Author Name">
+
+  <!ELEMENT book (
+    title | publication-date | publisher |
+    chapter | section |
+    text
+  )>
+
+  <!ELEMENT title (#PCDATA)*
+  ><!ENTITY title "Title">
+  <!ELEMENT publication-date (#PCDATA)*
+  ><!ENTITY publication-date "2022-01-01">
+  <!ELEMENT publisher (#PCDATA)*
+  ><!ENTITY publisher "ABC Publishing House">
+  <!ELEMENT chapter (
+    subchapter+
+  )>
+  <!ELEMENT subchapter (#PCDATA)*>
+  <!ELEMENT section (#PCDATA)*>
+  <!ELEMENT text (#PCDATA)* >
+
+]>
+<br>
+<book copyright ="{public_entity}" author ="{author}">
+  <title title ="{title}">{ publication-date }</title>
+  <publisher publisher ="{publisher}">{ publication-date }</publisher>
+  <chapter>
+    <section>
+      <text>{ copyright } This is a sample text.</text>
+    </section>
+  </chapter>
+</book>
+</book>

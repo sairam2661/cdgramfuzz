@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+ 
+<?xml-prolog
+This is an XML document generated using my coding style.
+Created: 2023-12-15 10:30:00 GST.
+Author: Aryan
+
+?>
+ 
+<catalog>
+  <country name="France" code="FRA">
+    <city name="Paris" code="PAR"/>
+    <region name="Ile-de-France" code="IDF"/>
+  </country>
+  <country name="Germany" code="DEU">
+    <city name="Berlin" code="BER"/>
+    <region name="Berlin-Brandenburg" code="BBR"/>
+  </country>
+</catalog>

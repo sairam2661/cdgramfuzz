@@ -1,0 +1,24 @@
+<?xml version =   
+    1.0  encoding = "UTF-16"  
+    standalone =  no  ?>
+  
+<catalog>
+   <description xml:lang ="_en"_de ="_de_">
+      XML catalog documentation
+   </description>
+   <product id ="_prod_1"_int ="_prod_1"   country ="_us"_ca ="_ca"_au ="_au"_gb ="_gb"_ch ="_ch"_fr ="_fr"_je ="_je"_ca ="_ca"_ch ="_ch"_at ="_at" >
+      <name>Product A</name>
+      <price>10.00</price>
+      <size>20</size>
+   </product>
+   <product id ="_prod_2"_int ="_prod_2"   country ="_us"_ca ="_ca"_au ="_au"_gb ="_gb"_ch ="_ch"_fr ="_fr"_je ="_je"_ca ="_ca"_ch ="_ch"_at ="_at" >
+      <name>Product B</name>
+      <price>20.00</price>
+      <size>30</size>
+   </product>
+   <product  id ="_prod_3"_int ="_prod_3"   country ="_us"_ca ="_ca"_au ="_au"_gb ="_gb"_ch ="_ch"_fr ="_fr"_je ="_je"_ca ="_ca"_ch ="_ch"_at ="_at" >
+      <name>Product C</name>
+      <price>30.00</price>
+      <size>40</size>
+   </product>
+</catalog>

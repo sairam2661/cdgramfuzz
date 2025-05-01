@@ -1,0 +1,19 @@
+<personal-identity-info>
+  <?xml version="1.0" encoding="UTF-16" standalone="no"?>
+  <identification-info>
+    <name>John Doe</name>
+    <date-of-birth>1990-01-01</date-of-birth>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <emergency-contact>
+      <name>Jane Doe</name>
+      <relationship>mother</relationship>
+      <phone-number>(123) 456-7890</phone-number>
+      <email>jane.doe@example.com</email>
+    </emergency-contact>
+  </identification-info>
+</personal-identity-info>

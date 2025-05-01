@@ -1,0 +1,22 @@
+<personal-xml-document>
+<xml-structure version="1.1" encoding="ISO-8859-1">
+<character-reference>&lt;/</character-reference>
+<entity-reference>&middot;</entity-reference>
+<bookstore country="USA">
+<book category="COOKING">
+<title lang="en">Everyday Italian</title>
+<author>Giada De Laurentiis</author>
+</book>
+<book category="BI cookbooks">
+<title lang="en">Larousse Gastronomique</title>
+<author>Fantine Imori</author>
+</book>
+</bookstore>
+<chapter number="1">
+<p title=" &middot;Introduction">
+<a name="intro">Introduction to French Cooking</a>
+<image source="image1.jpg" alt=" French Cooking Image"/>
+</p>
+</chapter>
+</personal-xml-document> 
+</xml-structure>

@@ -1,0 +1,29 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:geo = "http://example.com/geographic-info"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation ="
+         http://example.com/inventory-styles inventory.xsd
+         http://example.com/geographic-info
+         http://example.com/locations.xsd
+         http://www.w3.org/2001/XMLSchema"
+
+          xmlns = "http://example.com/inventory catalogue"
+          xsi:noNamespaceSchemaLocation ="OurInventory.xsd">
+<catalog-name>The Electronic Library</catalog-name>
+
+<geographic-area>
+<iso-country code =""country_code=""iso-3-country-code=""geo-name="United States"></geo-country>
+<region-name code =""region_code=""iso-3-region-code="" geo-name="North America"></region-name>
+<city-name code =""city_code=""iso-3-city-code=""geo-name="" />
+</geographic-area>
+
+<book-style>
+<inventory-style name =""style_name=""inventory_id=""
+
+       isbn =""isbn_value="" publisher =""isbn_value=""inventory_id=""
+       author =""author_first_name=""author_last_name=""inventory_id=""genre=""isbn_value=""inventory_id=""
+       publication-date=""last-name=""inventory_id=""price="">
+
+</inventory-style></book-style>
+
+<author last-name =""author_last_name=""first-name =""author_first_name=""inventory_id =""isbn_value =""isbn_value =""genre =""author_last-name =""inventory_id =""isbn_value =""isbn_value =""inventory_id =""isbn_value =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""isbn_value =""inventory_id =""isbn_value =""inventory_id =""isbn_value =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""inventory_id =""isbn_value =""inventory_id =""isbn_value =""isbn_value =""isbn_value =""inventory_id =""isbn_value =""isbn_value =""isbn_value =""inventory_id =""isbn_value =""ISBN-13 =""isbn-13_13 =""isbn-13_12 =""isbn-13_11 =""ISBN  =""isbn-13_9 =""isbn-13_7 =""isbn-13_5 =""isbn

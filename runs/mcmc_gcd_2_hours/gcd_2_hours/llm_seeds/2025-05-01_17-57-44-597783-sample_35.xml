@@ -1,0 +1,80 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE catalog SYSTEM "books.dtd">
+
+<catalog language ="" country="USA">
+  <book unique-id="BK001">
+    <author>John Smith</author>
+    <title>XML for Dummies</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>There's nothing for beginners to worry about.</description>
+  </book>
+  <book unique-id="BK002">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A comprehensive resource.</description>
+  </book>
+</catalog>
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+   
+
+ 
+
+ 
+
+ 
+ 
+
+  
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+

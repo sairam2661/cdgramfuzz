@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone  =  yes?>
+<catalog xml:lang="English">
+  <description>
+    <title>Example Catalog</title>
+    <creator>
+      <firstName>Alice</firstName>
+      <lastName>Bob</lastName>
+    </creator>
+  </description>
+  <provider xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <supportContact>
+      <name>Support Team</name>
+      <url>https://example.com/support</url>
+    </supportContact>
+  </provider>
+  <datastore href="data.xml"/>
+</catalog>

@@ -1,0 +1,21 @@
+<?xml version = 1.0  encoding = "ISO-8859-15" standalone = yes?>
+<?xml-stylesheet type = "text/xsl" href = "style.xsl"?>
+<catalog xmlns = "http://books.example.com/catalog">
+  <description xml:lang ="My Language">Description</description>
+  <publisher>ABC Publishing Company</publisher>
+  <address city ="" countryCode ="" postalCode ="" regionCode ="" streetAddress ="" suite ="">
+    <country>Country Name</country>
+  </address>
+  <copyright year ="" copyrightHolder ="" entityref =""/>
+  <systemId href ="/catalogue.xsd"/>
+  <title xml:lang ="" level ="" sortkeys ="" sortkey ="" sortindex ="" sortorder ="" sortoption ="" sortoptionType ="" sortindextype ="" sortindexpriority ="" index ="" indextype ="" sortindexpriority ="" priority ="" />
+  <book id ="" category ="" editionIndex ="" identifier ="" publisherId ="" type ="" edition ="" editionNumber ="" editionType ="" publicationNumber ="" publicationYear ="" publisher ="" authorEmail ="" authorId ="" authorName ="" authorUrl ="" editionNumber ="" isdn ="" mediaType ="" bookDescription ="" catalogLevel ="" catalogNumber ="" ean ="" etag ="" geodeticCoord ="" price ="" isbn ="" isbn10 ="" language ="" lastModified ="" lastPublisher ="" publicationMethod ="" publisherName ="" publisherStreet ="" publisherUrl ="" publisherVersion ="" publicationDateOffset ="" publicationMethod ="" publicationName ="" publicationType ="" publicationOrder ="" publicationUnit ="" lastModified ="" />
+  <author id ="" name ="">
+    <namePart main ="" xml:lang ="" usageSort ="" usageSortType ="" usageSortDirection ="" />
+    <namePart type ="" usageSort ="" usageSortType ="" usageSortDirection ="" />
+  </author>
+  <address addressLine ="" postalCode ="" postalCodeSortSequence ="" streetAddress ="" xml:lang ="" usageSort ="" usageSortType ="" usageSortDirection ="" />
+
+
+<catalog xmlns = "http://books.example.com/catalog">
+  <description xml:lang ="" en-US ="" langSwitch ="" lang ="" lang

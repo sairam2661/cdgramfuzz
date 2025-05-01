@@ -1,0 +1,88 @@
+2025-05-01 18:49:55,985 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 0: <?xml version =1.0 encoding = "UTF-8"?>
+<catalog xml:lang="en-US">
+    <genre>Opera</genre>
+    <tit...
+2025-05-01 18:49:55,985 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-49-55-985186-sample_200.xml. Generation time: 12.39s
+2025-05-01 18:50:25,894 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 1: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE library SYSTEM "library.dtd">
+...
+2025-05-01 18:50:25,895 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-50-25-894811-sample_201.xml. Generation time: 29.91s
+2025-05-01 18:50:51,612 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 2: <?xml version =    1.0   encoding="UTF-8" standalone =    yes   ?>
+<catalog xml:lang="en">
+    <desc...
+2025-05-01 18:50:51,613 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-50-51-613022-sample_202.xml. Generation time: 25.72s
+2025-05-01 18:51:01,149 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 3: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<library>
+     <book genre =""  ISBN =""...
+2025-05-01 18:51:01,149 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-51-01-149383-sample_203.xml. Generation time: 9.54s
+2025-05-01 18:51:31,141 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 4: <?xml version = 1.0  encoding = "UTF-8"  standalone =  yes?>
+<catalog>
+<book  id="bk101"  coverEd="e...
+2025-05-01 18:51:31,142 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-51-31-141881-sample_204.xml. Generation time: 29.99s
+2025-05-01 18:51:35,345 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 5: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<book store="online">
+  <book detail ="" p...
+2025-05-01 18:51:35,345 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-51-35-345487-sample_205.xml. Generation time: 4.20s
+2025-05-01 18:51:41,505 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<catalog>
+  <cd>
+    <title>Empire Burlesqu...
+2025-05-01 18:51:41,505 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-51-41-505313-sample_206.xml. Generation time: 6.16s
+2025-05-01 18:51:50,131 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 7: <?xml version = 1.0  encoding = "ISO-8859-1"?>
+<!DOCTYPE catalog
+       SYSTEM "catalog.dtd">
+
+<cata...
+2025-05-01 18:51:50,132 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-51-50-132148-sample_207.xml. Generation time: 8.63s
+2025-05-01 18:51:57,859 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 8: <billing>
+  <invoice>
+    <invoice-number>INV001</invoice-number>
+    <invoice-date>2023-03-01</invo...
+2025-05-01 18:51:57,859 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-51-57-859393-sample_208.xml. Generation time: 7.73s
+2025-05-01 18:52:29,518 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 9: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE employee [
+<!ELEMENT employee (a...
+2025-05-01 18:52:29,519 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-52-29-518799-sample_209.xml. Generation time: 31.66s
+2025-05-01 18:52:41,700 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 10: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog name ="" xml:lang="EN" xmlns:xs...
+2025-05-01 18:52:41,701 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-52-41-700835-sample_210.xml. Generation time: 12.18s
+2025-05-01 18:53:00,031 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 11: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog type="books">
+    <book id="bk101">
+        <autho...
+2025-05-01 18:53:00,032 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-53-00-031865-sample_211.xml. Generation time: 18.33s
+2025-05-01 18:53:08,468 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 12: <personal-data>
+  <contact-info xml:version="1.0" encoding="ISO-8859-1" standalone="yes">
+    <name>...
+2025-05-01 18:53:08,469 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-53-08-468992-sample_212.xml. Generation time: 8.44s
+2025-05-01 18:53:16,331 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 13: <?xml version =   
+1.0 encoding = "ISO-8859-1" standalone = no?>
+<catalog>
+  <book id="bk101">
+    <...
+2025-05-01 18:53:16,331 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-53-16-331333-sample_213.xml. Generation time: 7.86s
+2025-05-01 18:53:26,454 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 14: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <book id="bk101">
+    <name>XML for Beginners</...
+2025-05-01 18:53:26,454 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-53-26-454257-sample_214.xml. Generation time: 10.12s
+2025-05-01 18:53:41,560 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 15: <BirthdayParty>
+  <PartyDetails>
+    <PartyName>Johns Birthday</PartyName>
+    <PartyDate>2024-02-27...
+2025-05-01 18:53:41,560 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-53-41-560501-sample_215.xml. Generation time: 15.11s
+2025-05-01 18:53:52,034 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 16: <banking_data>
+  <customer_id>12345</customer_id>
+  <account_number>789012</account_number>
+  <accou...
+2025-05-01 18:53:52,034 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-53-52-034452-sample_216.xml. Generation time: 10.47s
+2025-05-01 18:54:04,956 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 17: <personal-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="...
+2025-05-01 18:54:04,956 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-54-04-956425-sample_217.xml. Generation time: 12.92s
+2025-05-01 18:54:34,977 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 18: <?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<catalog>
+    <description language ="" soa...
+2025-05-01 18:54:34,977 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-54-34-977769-sample_218.xml. Generation time: 30.02s
+2025-05-01 18:54:44,062 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 19: <TempData version="2.5" encoding="ISO-8859-1" standalone="yes">
+  <Products>
+    <Product ID="PROD00...
+2025-05-01 18:54:44,063 - gcd_xml_fuzz_single_Element_Closing_Tag - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-54-44-063086-sample_219.xml. Generation time: 9.09s

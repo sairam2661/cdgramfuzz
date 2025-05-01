@@ -1,0 +1,37 @@
+<?xml version = 
+          1.0 encoding = "UTF-16" 
+        standalone = 
+           yes?>
+ 
+<person>
+  <name PI ="%p"/>
+  <age variable="x"  convert-to="int"/>
+  <phoneBook>
+    <con contacts ="[&phoneBook1; &phoneBook2; &phoneBook3; &phoneBook4; &phoneBook5;]" />
+  </phoneBook>
+</person>
+
+ 
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+ 
+  
+ 
+  

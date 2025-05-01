@@ -1,0 +1,13 @@
+<?xml version =1.0  encoding="UTF-8"?>
+<catalog>
+  <book id ="{xxx#123}">  "Book&amp;Price
+    <title>Book Title</title>
+  </book>
+  <book id ="xxx#456">
+    "Book Title"
+    <title>Book Title</title>
+  </book>
+  <author>John Smith</author>
+  <link href="#xxx#123" title="xx"/>
+  <description>This is a book.</description>
+</catalog>

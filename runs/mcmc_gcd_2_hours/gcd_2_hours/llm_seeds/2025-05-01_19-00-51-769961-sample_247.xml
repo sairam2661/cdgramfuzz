@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+ <myns:catalog xmlns:myns = "http://localhost/catalog" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation ="http://localhost/catalog catalog.xsd">
+  <book id="bk101">
+   <myns:title>History of Programming</myns:title>
+   <author>John Smith</author>
+   <mysubtitle>Programming Concepts</mysubtitle>
+   <price currency="USD">39.95</price>
+   <date published="2021-07-14"/>
+  </book>
+  <book id="bk102">
+   <myns:title>Discrete Math</myns:title>
+   <author>Jane Doe</author>
+   <mysubtitle>Math for Computer Science</mysubtitle>
+   <price currency="USD">49.95</price>
+   <date published="2021-08-05"/>
+  </book>
+</myns:catalog>

@@ -1,0 +1,76 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE person [
+<!ELEMENT book title   >
+<!ELEMENT book author >
+<!ELEMENT author name >
+<!ATTLIST book language NMTOKEN #REQUIRED >
+<!ENTITY lang1 "English">
+<!ENTITY lang2 "Spanish">
+<!ELEMENT person (
+  name,
+  book*,
+  address
+)>
+<!ELEMENT address (
+  street,
+  city,
+  state,
+  zip
+)>
+<!ELEMENT address (
+  street,
+  city,
+  state,
+  zip
+)>
+<!ELEMENT street (#PCDATA)*> <!-- declare street as character data -->
+<!ELEMENT person example >
+ 
+ <!ATTLIST person language NMTOKEN #REQUIRED>
+  <!ELEMENT name (#PCDATA)*> 
+  <!ELEMENT book title   > 
+  <!ELEMENT book author >
+  <!ELEMENT author name >
+  <!ELEMENT address (
+    street,
+    city,
+    state,
+    zip)>
+  <!ELEMENT book language  > 
+  <!ELEMENT book attribute  > 
+  <!ELEMENT book element  > 
+  <!ELEMENT address (
+    street,
+    city,
+    state,
+    zip)>
+  <!ELEMENT address tag    > 
+  <!ELEMENT address value    > 
+  <!ELEMENT address content   > 
+  <!ELEMENT street (#PCDATA)*> <!-- declare street as character data -->
+  <!ELEMENT address name    > 
+  <!ELEMENT book address    > 
+  <!ELEMENT person xmlversion 
+     >
+  <!ELEMENT person  encoding   > 
+  <!ELEMENT person attributes 
+  > 
+  <!ELEMENT address   number  > 
+  <!ELEMENT address   title  > 
+  <!ELEMENT address   zip   > 
+  <!ELEMENT name     > 
+  <!ELEMENT address     tag  > 
+  <!ELEMENT xml  > 
+  <!ELEMENT person  entity  > 
+  <!ELEMENT attribute   > 
+  <!ELEMENT address      name    > 
+  <!ELEMENT attribute   description> 
+  <!ELEMENT person     example  > 
+  <!ELEMENT book name  > 
+  <!ELEMENT address    element  > 
+  <!ELEMENT name     xmlversion  > 
+  <!ELEMENT person     attribute  > 
+  <!ELEMENT person xml   > 
+  <!ELEMENT person attributes  > 
+  <!ELEMENT address number   > 
+  <!ELEMENT person

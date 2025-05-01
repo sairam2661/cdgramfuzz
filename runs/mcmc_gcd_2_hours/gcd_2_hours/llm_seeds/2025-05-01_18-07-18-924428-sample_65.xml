@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "ISO-8732-1" standalone = yes?>
+<!DOCTYPE catalog [
+  <!ATTLIST catalog address (street|road|avenue) "# required" >
+  <!ATTLIST catalog city (north|south) "# required" >
+]>
+<catalog address="123 Main St" city="New York" province="NY" country="USA">
+  <region north="Long Island" south="Brooklyn" />
+  <local-government>
+    <borough name="Staten Island" zip="10306" />
+  </local-government>
+</catalog>

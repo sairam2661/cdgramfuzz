@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = 'UTF-8' standalone = yes?>
+
+<!-- Prolog Comment -->
+<!-- This is a sample XML document for demonstration purposes only -->
+
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+    <product id ="P01">
+        <name>Macintosh</name>
+        <description>Computer</description>
+        <price>1295.00</price>
+        <image>macintosh.jpg</image>
+    </product>
+    <product id ="P02">
+        <name>Windows</name>
+        <description>Operating System</description>
+        <price>200.00</price>
+        <image>windows.jpg</image>
+    </product>
+</catalog>

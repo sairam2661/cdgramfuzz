@@ -1,0 +1,64 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE person [
+  <!ELEMENT person (name, age) >
+  <!ELEMENT address (street, city, country) >
+  <!ELEMENT phone (
+    type, number 
+   , email 
+  ) >
+]>
+<person>
+  <name>David</name>
+  <age>30</age>
+  <address>
+    <street>123 Main St</street>
+    <city>New York</city>
+    <country>USA</country>
+  </address>
+  <phone type ="" number ="" email ="></phone>
+</person><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+Solution 3:
+
+<?xml version="xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" encoding="UTF-8" xsi:noNamespaceSchemaLocation="schema.xsd" standalone="yes">
+<catalog>
+  <!-- Define root element -->
+  <class>
+    <!-- Define element -->
+    <!-- Element declaration: specify instance of class */
+    <product id="" name="">
+      <!ELEMENT name (price) >
+      <!ELEMENT price (description) >
+      <name price="19.99" description="Sony 32\" 4K Smart TV"/>
+    </product>
+  </class>
+</catalog> 
+ <Schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="catalog">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="class" type="xsd:string"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:string"/>
+      <xsd:attribute name="schemaLocation" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="product">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="name" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="price" maxOccurs="1">
+                <xsd:complexType>
+                  <xsd:simpleContent>
+                    <xsd:extension base="xsd:string">
+                      <xsd:attribute name="description" type="xsd:string"/>
+                    </xsd:extension>
+                  </xsd:simpleContent>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="

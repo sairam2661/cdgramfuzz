@@ -1,0 +1,47 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xml:lang="english" xmlns:oai="http://www.openarchives.org/oai/">
+    <oai:Record id="oai.abc-1">
+        <oai:Definition>
+            <title>ABC Book</title>
+            <subject>Computer Science</subject>
+            <creator>
+                <name>John Smith</name>
+                <affiliation>ABC University</affiliation>
+            </creator>
+            <publisher>OAI Publishers</publisher>
+            <date>2003-12-12</date>
+            <format>application/pdf,application/postscript</format>
+            <setSpec>1</setSpec>
+        </oai:Definition>
+        <prolog>
+            <meta xmlns="http://www.oaiset.org/schemas/aggregated-dc/0.3">
+                <title>a</title>
+                <creator>g</creator>
+                <date>11</date>
+                <contributor>
+                    <contributorName name="1" primary="yes">1</contributorName>
+                </contributor>
+                <subject>
+                    <subject Term="s" Value="oai:abc"/>
+                </subject>
+                <description Text="m">
+                    <abstract Text="n">
+                        <description Text="b">
+                            <subject>
+                                <subject Term="s" Value="oai:abc">
+                                                    <subjectTerm Term="x" Name="y"/>
+                                                    </subject>
+                            </subject>
+                        </description>
+                    </abstract>
+                </description>
+                <subject>
+                    <subject Term="oai:abc" Value="oai:abc"/>
+                </subject>
+                <contributor>
+                    <contributorName name="2" primary="no">2</contributorName>
+                </contributor>
+            </meta>
+        </prolog>
+    </oai:Record>
+</catalog>

@@ -1,0 +1,46 @@
+<?xml version = 
+    1.0 
+    encoding = "UTF-8" 
+    standalone = 
+        no
+       ?>
+<!DOCTYPE person[
+    <!ELEMENT person (name, email, address)>
+
+    <!ELEMENT name (#PCDATA)*
+
+    ><!ENTITY special_character '&lt;'>
+    <!ELEMENT address (street, city, state, zip)> 
+]>
+
+<person>
+   <name>&nbsp; 
+   <special_character>
+      John 
+   </special_character> 
+   Doe 
+   </name>
+   <email>&nbsp; 
+   <special_character> 
+      john.doe@example.com 
+   </special_character> 
+   </email>
+   <address>
+    <street>&nbsp; 
+    <special_character> 1234 Broadway 
+   </special_character> 
+   </street>
+    <city>&nbsp; 
+    <special_character> Los Angeles 
+   </special_character> 
+   </city>
+    <state>&nbsp; 
+    <special_character> CA 
+   </special_character> 
+   </state>
+    <zip>&nbsp; 
+    <special_character>90001 
+   </special_character> 
+   </zip>
+   </address>
+ </person>

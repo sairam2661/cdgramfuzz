@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding="UTF-8" standalone = yes?>
+<catalog xml:lang="en-us">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <Publisher>Ada Books</Publisher>
+    <pubdate>2000-10-01</pubdate>
+    <description>An introduction to the world of XML.</description>
+    <condition condition-type="used">Good</condition>
+    <attributes book_id ="" ISBN ="" Dewey ="" Library =""/>
+    <category>Computer Books</category>
+    <subject>Miscellaneous</subject>
+    <keywords>XML, Beginner, Book</keywords>
+    <chapter order="first">Chapter 1</chapter>
+    <section order="first">Section 1</section>
+  </book>
+</catalog>

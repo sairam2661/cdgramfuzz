@@ -1,0 +1,51 @@
+<?xml version =   1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+<product id="prod1">
+<name>Hard Drive</name>
+<description>1TB Hard Drive</description>
+<price currency="USD">$99.99</price>
+<status approved="yes"/>
+<category category_name="Computers">Computers</category>
+</product>
+<product id="prod2">
+<name>Graphics Card</name>
+<description>NVIDIA GeForce GTX 1060</description>
+<price currency="USD">$299.99</price>
+<status approved="no"/>
+<category category_name="Electronics">Electronics</category>
+</product>
+</catalog>
+
+        
+        
+
+
+
+    
+   
+
+
+    
+    
+
+
+
+    
+ 
+  
+
+
+
+
+    
+    
+     
+
+
+ 
+     
+    
+    
+    
+   
+       

@@ -1,0 +1,40 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE library [
+<!ELEMENT category (name, description)>
+<!ELEMENT category_list category >
+<!ELEMENT title (author, genre, publication_date, price) >
+<!ELEMENT title_list category_list >
+<!ELEMENT book title >
+<!ELEMENT book_list title_list >
+<!ELEMENT author (#PCDATA)*> 
+<!ELEMENT book_author book >
+<!ATTLIST category attribut5  (value5  |  value6)  "value5" >
+<!ATTLIST title attribut7  (value8  |  value9)  "value8">
+<!ATTLIST title attribut10  (value8  |  value11)  "value11">
+<!ATTLIST book attribut12 (value13 | value14)  "value13">
+<!ENTITY lang_entity "&quot; en&quot;">
+<!NOTATION entity_ref   PUBLIC  "http://www.example.org/entity_ref"  "Public Entity Reference">
+<!ELEMENT currency (#PCDATA)*> 
+<!ELEMENT product title >
+<!ELEMENT product_list title_list >
+<!ELEMENT order book >
+<!ELEMENT order_list book_list >
+<!ELEMENT shipping (address, payment_method) >
+<!ELEMENT payment_info (credit_card_number, ccv) >
+<!ELEMENT product_price title >
+<!ATTLIST product attribut15  (value16  |  value17)  "value16">
+<!ATTLIST product attribut18  (value19  |  value20)  "value20">
+<!ATTLIST shipping attribut21 (value22  |  value23)  "value22">
+<!ATTLIST shipping attribut24 (value25  |  value26)  "value25">
+<!ATTLIST product attribut27  (value28  |  value29)  "value28">
+<!ENTITY company_entity "Company Entity">
+<!ENTITY lang2 "&quot; fr&quot;">
+
+<!ENTITY lang2b "&quot; es&quot;" >
+<!ENTITY lang3 "&quot; de&quot;">
+
+<!NOTATION currency_notation  PUBLIC "http://www.example.org/currency_notation" "Currency Notation"> 
+
+<!NOTATION shipping_notation  PUBLIC "http://www.example.org/shipping_notation" "Shipping Notation">
+<!NOTATION payment_info_notation  PUBLIC "http://www.example.org/payment_info_notation" "Payment Info Notation"> 
+<!ELEMENT address (#PCDATA)*> 

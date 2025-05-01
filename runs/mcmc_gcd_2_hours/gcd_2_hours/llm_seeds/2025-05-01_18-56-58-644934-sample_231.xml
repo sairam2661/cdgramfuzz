@@ -1,0 +1,10 @@
+<?xml version = 1.0  encoding = "utf-8"  standalone =  yes?>
+<catalog>
+  <country name ="Ireland"  description =""  id =""/>
+  <city name ="{city}"  id="1"/>
+  <movie genre =""  id ="{movie-id}"  lang =""  title ="{movie-title}"  year ="{year}">
+    <actor gender =""  id =""  href =""  name ="{actor-name}"/>
+    <address street =""  id =""  person =""  title =""/>
+  </movie>
+  <game date =""  id =""  inventory =""  price =""  reviewer =""  title =""/>
+</catalog>

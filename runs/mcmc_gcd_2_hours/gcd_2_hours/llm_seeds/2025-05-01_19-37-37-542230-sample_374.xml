@@ -1,0 +1,61 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes" byteorder="little">
+<root>
+<record id="record123">
+<field name="field1">value1</field>
+<field name="field2">value2</field>
+</record>
+<database>
+<file name="file1.db">
+<table name="table1">
+<column name="column1" index="index1">
+<constraint type="unique" condition="column1 = 'value3'"/>
+<constraint type="foreign key" reference="table2" column="column2"/>
+</column>
+</table>
+</file>
+</database>
+</root>
+<schema version="1.0">
+<object name="object1">
+<attribute name="attribute1" type="integer"/>
+<attribute name="attribute2" type="datetime"/>
+</object>
+<object name="object2">
+<attribute name="attribute3" type="boolean"/>
+<attribute name="attribute4" type="character"/>
+</object>
+</schema>
+<notation PUBLIC="http://example.com/public_notation">
+<notation PUBLIC="#"
+public_entity="Public Entity"
+entityref="&public_entity;"
+/>
+</notation>
+<xi:include href="#document2.xml"/>
+<xi:include href="#table3.xml"/>
+<xi:include href="#image4.bmp"/>
+<xi:include href="#document5.xml"/>
+<xsl:value-of select="document:///document1.xml"/>
+<xsl:value-of select="document:/user.xml"/>
+<xsl:value-of select="doc('user.xml')"/>
+<math:math xmlns:math="http://www.w3.org/1998/Math/MathML">
+  <math:mi>x</math:mi>
+  <math:param name="y">
+    <math:mi>y</math:mi>
+  </math:param>
+  <math:apply math:func="sqrt">
+    <math:arg name="x">x^2+y^2</math:arg>
+  </math:apply>
+</math:math> 
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<p>
+<xsl:value-of select="//book[position()=1]"/>
+</p>
+</xsl:template>
+<xsl:template match="*">
+<p>
+<xsl:value-of select="name()"/>
+</p>
+<xsl:apply-template/>
+</xsl:template

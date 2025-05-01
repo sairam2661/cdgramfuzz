@@ -1,0 +1,22 @@
+<TodoList version="2.0" encoding="iso-8859-1" standalone="no">
+  <todoListHeader>
+    <title>To-Do List</title>
+    <description>A list of tasks to be completed</description>
+  </todoListHeader>
+  <task>
+    <id>1</id>
+    <title>Buy milk</title>
+    <description>Don't forget the milk</description>
+    <priority level="high"/>
+    <dueDate>2024-03-18</dueDate>
+    <done>false</done>
+  </task>
+  <task>
+    <id>2</id>
+    <title>Walk dog</title>
+    <description>The dog needs walking</description>
+    <priority level="high"/>
+    <dueDate>2024-03-19</dueDate>
+    <done>false</done>
+  </task>
+</todoList>

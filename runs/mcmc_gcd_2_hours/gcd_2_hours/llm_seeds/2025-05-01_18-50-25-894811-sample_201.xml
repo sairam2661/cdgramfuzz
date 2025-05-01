@@ -1,0 +1,38 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library xmlns:bk = "http://www.example.org/book" xmlns:pub = "http://www.example.org/publisher">
+  <book bk:id ="Yeah_01">
+    <title>Harry Potter and the Philosopher's Stone</title>
+    <author bk:name =">J.K. Rowling"
+          bk:biography =">British author renowned for her fantasy novels."
+          bk:awards ="(2001 National Book Award nominee)"
+          bk:publisher =">Bloomsbury"
+          bk:edition =">First edition, published 1997."
+    >
+      <subject>Children</subject>
+      <description>
+        <brief>A boy discovers he is a wizard and enrolls in a magical school.</brief>
+        <longer>In a hidden world of wizards and magic, a young boy learns that he is the son of two powerful wizards and begins attending a school for magic.</longer>
+        <category>Fantasy</category>
+      </description>
+      <review bk:rating =">5/5</bk:rating>
+      <rating scale =">(5)"
+      />
+      <price units =">USD)</price>
+      <publisher bk: imprint =">Bloomsbury Publishing Ltd.
+              bk:website =">www.bloomsbury.com""
+              bk:address =">8 Soho Square, London, WB 1HB
+              bk:phone =">+44 (0)203 608 0455
+              bk:fax =">+44 (0)203 610 0160
+              bk:email =">hello@bloomsbury.co.uk
+              bk:post =">4th floor, North Building, Bloomsbury
+                      sq. GB 1YR
+                      bk:hk =">+852 2552 0888
+                      bk:cn =">+86 21 68898888
+                      bk:au =">+61 7 3850 7676
+                      bk:ie =">+353 1 687 8577
+                      bk:ca =">+1 416 961 0105
+                      bk:nz =">+64 4 801 0068
+              bk:isbn =">9780688111625
+              bk:isbn2 =">9780747532744
+              bk

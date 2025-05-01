@@ -1,0 +1,25 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE document [
+<!ENTITY img "image1.png"
+         ><!-- Notation Declairation -->
+          <!NOTATION pic PUBLIC "-//Example//DTD Picture 1.0//EN"
+          "__image1.png">
+]>
+<body>
+<title>Mathematical Equation</title>
+<math xmlns = "http://www.w3.org/1998/Math/ML"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation ="http://www.w3.org/1998/Math/ML http://www.w3.org/Tr/xhtml1/DTDmath/xhtml-math1.dtd">
+  &nbsp;
+  <mrow>
+   <mi>x^2+y^2</mi>
+   <mo>=</mo>
+   <msup>
+    <mrow>
+     <mi>0</mi>
+    </mrow>
+    <mn>2</mn>
+   </msup>
+  </mrow>
+</math>
+</body>

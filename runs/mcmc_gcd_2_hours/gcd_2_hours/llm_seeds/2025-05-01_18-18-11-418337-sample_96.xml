@@ -1,0 +1,25 @@
+<?xml version =  1.0  encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE note [
+  <!ELEMENT note (title, message, contact, terms)>
+  <!ELEMENT title (#PCDATA)*
+  ><!ELEMENT message (#PCDATA)*
+  ><!ELEMENT contact (#PCDATA)*
+  ><!ELEMENT terms (#PCDATA)*
+  ><!ENTITY public_entity "Public Entity">
+  ]>
+
+<note xmlns:pub = "http://example.com/publicEntity">
+  <pub:public_entity>&public_entity;</pub:public_entity>
+  <title>The Conference in Vancouver</title>
+  <message>Join us for our annual conference in beautiful Vancouver, BC.</message>
+  <contact>
+    <name>Kathy Bannister</name>
+    <organization>EastCoast Software</organization>
+    <niche>HTML 4.0 DTD</niche>
+  </contact>
+  <terms>
+    <term>Kansas</term>
+    <term>Texas</term>
+  </terms>
+</note>

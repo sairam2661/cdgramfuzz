@@ -1,0 +1,19 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<!DOCTYPE person[
+<!ELEMENT name (first, last)>
+<!ELEMENT first (#PCDATA)*
+  >
+]>
+<person xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="person.xsd">
+  <name>
+    <first>John</first>
+    <last>Doe</last>
+  </name>
+  <address>
+    <street>123 Main St</street>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+  </address>
+  <phone>555-555-5555</phone>
+</person>

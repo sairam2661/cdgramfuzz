@@ -1,0 +1,33 @@
+<?xml version = 1.0 encoding = "utf-8"?>
+<?prolog
+    This is a complex XML document for a library management system.
+    It contains multiple entities and is used for validation purposes.
+    The document is written in the XML 1.0 standard with the UTF-8 encoding.
+?>
+<catalog>
+    <author >
+        <firstname >(Max)</firstname >
+        <lastname >Eisenhower</lastname >
+        <dateOfBirth >1890-01-08</dateOfBirth >
+    </author >
+    <book id ="(1)" category ="(reference)">
+        <title >The Philosophy of Computing</title >
+        <author >
+            <firstname >(Max</firstname >
+            <lastname >Eisenhower</lastname >
+        </author >
+        <genre >computation</genre >
+        <publishingLocation >Newport Beach, CA, USA</publishingLocation >
+        <yearPublished >1963</yearPublished >
+    </book >
+    <book id ="(2)" category ="(reference)">
+        <title >The Art of Computer Programming</title >
+        <author >
+            <firstname >&quot; Donald </firstname >
+            <lastname >Knuth, Jr. </lastname >
+        </author >
+        <genre >computer science</genre >
+        <publishingLocation >Addison-Wesley Publishing Company, Inc.,</publishingLocation >
+        <yearPublished >1977</yearPublished >
+    </book >
+</catalog>

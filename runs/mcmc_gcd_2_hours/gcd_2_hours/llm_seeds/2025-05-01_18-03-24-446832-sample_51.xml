@@ -1,0 +1,24 @@
+<?xml version = 1.0
+     encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE books [
+   <!ELEMENT books (book*)>
+   <!ELEMENT book (title, author, publisher, ISBN)>
+   <!ELEMENT title (#PCDATA)*
+   ><!ELEMENT author (#PCDATA)*>
+   <!ELEMENT publisher (#PCDATA)*
+   ><!ELEMENT ISBN (#PCDATA)*> 
+]>
+<books>
+    <book>
+        <title>Pride and Prejudice</title>
+        <author>Jane Austen</author>
+        <publisher>HarperCollins</publisher>
+        <ISBN>9780261100325</ISBN>
+    </book>
+    <book>
+        <title>The Great Gatsby</title>
+        <author>F. Scott Fitzgerald</author>
+        <publisher>Charles Scribner's Sons</publisher>
+        <ISBN>9780684848564</ISBN>
+    </book>
+</books>

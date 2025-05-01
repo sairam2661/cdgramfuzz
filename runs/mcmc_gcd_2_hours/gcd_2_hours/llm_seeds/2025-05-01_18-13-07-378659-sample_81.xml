@@ -1,0 +1,83 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<document>
+  <title>Business Intelligence Report</title>
+  <page xmlns:fb="http://www.facebook.com/2008/fbml">
+    <fb:namespace definition="namespace1 http://www.example.com/">
+      <name>John Doe</name>
+      <age>30</age>
+    </fb:namespace>
+    <fb:fql query="SELECT name FROM user WHERE uid=1234567890">
+      <fb:result>John Doe</fb:result>
+    </fb:fql>
+  </page>
+  <footer>&amp;&lt;&amp;&lt;copyright symbol&gt; 2023&amp;&lt;&amp;&lt;;/copyright symbol&amp;&lt;&lt;&lt; null character&gt;&lt;&lt;&lt; forwardslash&gt; John Doe&amp;&lt;&lt;&lt; forwardslash&gt; ABC Corporation&amp;&lt;&lt;&lt; forwardslash&gt; All rights reserved&amp;&lt;&lt;&lt; forwardslash&gt;.</footer>
+  <entity>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+ !ENTITY public_entity "Public Entity">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!

@@ -1,0 +1,18 @@
+<TempData version="2.5" encoding="ISO-8859-1" standalone="yes">
+  <Products>
+    <Product ID="PROD001">
+      <ProductName>Product A</ProductName>
+      <ProductDescription>Short description of Product A</ProductDescription>
+      <Weight>0.5</Weight>
+      <Price>10.99</Price>
+      <Quantity>5</Quantity>
+    </Product>
+    <Product ID="PROD002">
+      <ProductName>Product B</ProductName>
+      <ProductDescription>Short description of Product B</ProductDescription>
+      <Weight>1.0</Weight>
+      <Price>19.99</Price>
+      <Quantity>10</Quantity>
+    </Product>
+  </Products>
+</TempData>

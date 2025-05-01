@@ -1,0 +1,43 @@
+<xml version="1.0" encoding="UTF-8" standalone="no">
+  <books>
+    <book>
+      <title>Norse Mythology</title>
+      <author>Neil Gaiman</author>
+      <publisher>
+        <address>
+          123 Main St
+          <city>Anytown</city>
+          <state>CA</state>
+          <zip>12345</zip>
+        </address>
+        <contact>
+          <phone>555-555-5555</phone>
+          <email>info@example.com</email>
+        </contact>
+      </publisher>
+      <edition>
+        <number>1st Edition</number>
+        <date>2017-01-01</date>
+      </edition>
+      <notation>
+        <notation-name>PubNote</notation-name>
+        <notation-def>Public Notation</notation-def>
+      </notation>
+      <entities>
+        <entity-ref>&pubNote;</entity-ref>
+        <!-- Public Entity -->
+        <public-entity>Public Entity</public-entity>
+      </entities>
+    </book>
+  </books>
+  <!--list of books --> 
+  <book-list>
+    <book-ref>&book1;</book-ref>
+  </book-list>  
+
+  <!-- External Entity -->   
+  <!--  -->
+  <!--entity reference -->   
+  <!--type definition --> 
+  <!--parameter declaration --> 
+</xml>

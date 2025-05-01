@@ -1,0 +1,61 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE addressbook [
+<!ELEMENT addressbook (person*)>
+<!ELEMENT person (name, phone, email)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT phone (#PCDATA)*> 
+<!ELEMENT email (#PCDATA)*> 
+<!ATTLIST addressbook 
+  creator  CDATA  "John Doe" 
+  edition  CDATA  "1.0" 
+  language  CDATA  "en_US">
+<!ATTLIST person 
+  id  CDATA  "1" 
+  birthdate CDATA  "1990-01-01"> 
+
+
+
+
+<?xml version = "1.0" encoding = "UTF-8" standalone = no?>
+
+<!ATTLIST addressbook 
+  mailnot 
+    CDATA  "[ mailto:john.doe@example.com ]">
+  
+  <!ELEMENT mailnot (text)> 
+  <!ELEMENT text (#PCDATA)*> 
+  <?!
+
+<addressbook 
+  creator = "John Doe" 
+  edition = "1.0" 
+  language = "en_US"> 
+  <person id = "1" birthdate = "1990-01-01"> 
+    <name >David</name>
+    <phone >1234567890</phone>
+    <email >john.doe@example.com</email> 
+  </person>
+</addressbook>
+  <mailnot 
+    mailto = "[ mailto:john.doe@example.com ]"> 
+    <text>This is a test email.</text> 
+  </mailnot> 
+</addressbook> 
+?> 
+
+<!NOTATION SYSTEM PUBLIC "-//Company//DTD addressbook 1.0//EN"
+            "http://example.com/addressbook.dtd" 
+            > 
+<!NOTATION SYSTEM PUBLIC "-//W3C//DTD XML 1.0 Transitional//EN"
+            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" 
+            > 
+<!ELEMENT addressbook (person*, address*, event*)>
+<!ELEMENT event (name, description)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT address (#PCDATA)*> 
+<!ELEMENT description (#PCDATA)*> 
+<!ATTLIST addressbook 
+  founder  CDATA  "-//Company//DTD founder 1.0//EN" 
+  logo  CDATA  "-//W3C//DTD logo 1.0//EN">
+<!

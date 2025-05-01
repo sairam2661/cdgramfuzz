@@ -1,0 +1,21 @@
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title lang="en">XML for Beginners</title>
+        <genre>computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An in-depth look at creating applications with XML.</description>
+        
+        <keywords>
+            <keyword>XML</keyword>
+            <keyword>Beginner</keyword>
+            <keyword>For</keyword>
+            <keyword>Dummies</keyword>
+        </keywords>
+        
+        <copyright>
+            <copyright>Copyright 2001. All Rights Reserved.</copyright>
+        </copyright>
+    </book>
+</catalog>

@@ -1,0 +1,10 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog species ="On-line product" version ="{major version} - {minor version}">
+    <description>
+        <name>On-line shopping catalog</name>
+        <brand>Goods N' Gifts</brand>
+    </description>
+    <product ID ="{product number}" description ="{brief description}"/>
+    <product type ="{product type}" quantity ="{number of units}" price ="{list price}"/>
+    <customer country ="{customer's country}" city ="{city of sale}"/>
+</catalog>

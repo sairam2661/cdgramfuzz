@@ -1,0 +1,133 @@
+2025-05-01 18:54:58,317 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 0: <?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<book id="bk101" genre="cooperative" publ...
+2025-05-01 18:54:58,317 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-54-58-317226-sample_220.xml. Generation time: 14.25s
+2025-05-01 18:55:06,653 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 1: <?xml version = 1.0 encoding = "UTF-8"?>
+<address addresstype ="Yeah" personname ="\nMary Jane" stre...
+2025-05-01 18:55:06,654 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-55-06-653899-sample_221.xml. Generation time: 8.34s
+2025-05-01 18:55:20,326 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 2: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<contract date ="@2022-01-01" version ="...
+2025-05-01 18:55:20,326 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-55-20-326462-sample_222.xml. Generation time: 13.67s
+2025-05-01 18:55:26,064 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 3: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+    <title id="cat1">Catalog Product</title>
+    ...
+2025-05-01 18:55:26,064 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-55-26-064309-sample_223.xml. Generation time: 5.74s
+2025-05-01 18:55:34,366 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 4: <?xml version =1.0 encoding="UTF-8" standalone =no?>
+<catalog xml:lang ="en">
+  <description xml:ico...
+2025-05-01 18:55:34,367 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-55-34-367006-sample_224.xml. Generation time: 8.30s
+2025-05-01 18:55:47,428 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 5: <?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+  <book id="bk101" genre="roma...
+2025-05-01 18:55:47,428 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-55-47-428461-sample_225.xml. Generation time: 13.06s
+2025-05-01 18:56:02,470 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <collection country="USA">
+   ...
+2025-05-01 18:56:02,471 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-56-02-471061-sample_226.xml. Generation time: 15.04s
+2025-05-01 18:56:32,361 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 7: <?xml version=
+1.0
+encoding="ISO-8859-1"
+standalone=
+no?>
+
+<address book="Employee">
+    <name>
+    ...
+2025-05-01 18:56:32,361 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-56-32-361732-sample_227.xml. Generation time: 29.89s
+2025-05-01 18:56:38,651 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 8: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+      <product id="P01" description="Laptop">
+   ...
+2025-05-01 18:56:38,651 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-56-38-651721-sample_228.xml. Generation time: 6.29s
+2025-05-01 18:56:43,918 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 9: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <product xml:id ="a125" url ="/product_a125.htm...
+2025-05-01 18:56:43,919 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-56-43-918956-sample_229.xml. Generation time: 5.27s
+2025-05-01 18:56:49,713 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 10: <?xml version = 1.0  encoding = "UTF-8"?>
+<catalog species="Canis lupus familiaris" xml:id='ID1' xml...
+2025-05-01 18:56:49,714 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-56-49-714026-sample_230.xml. Generation time: 5.80s
+2025-05-01 18:56:58,644 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 11: <?xml version = 1.0  encoding = "utf-8"  standalone =  yes?>
+<catalog>
+  <country name ="Ireland"  d...
+2025-05-01 18:56:58,645 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-56-58-644934-sample_231.xml. Generation time: 8.93s
+2025-05-01 18:57:04,365 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 12: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+  <description language ="" x...
+2025-05-01 18:57:04,365 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-57-04-365355-sample_232.xml. Generation time: 5.72s
+2025-05-01 18:57:15,821 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 13: <?xml version = 1.0 encoding="UTF-8" standalone = yes?>
+<catalog xml:lang="en-us">
+  <book id="bk101...
+2025-05-01 18:57:15,821 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-57-15-821263-sample_233.xml. Generation time: 11.46s
+2025-05-01 18:57:25,972 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 14: <?xml version = 1.0 encoding = 'UTF-8' standalone =  yes?>
+<!DOCTYPE itemCatalog SYSTEM "catalog.dtd...
+2025-05-01 18:57:25,972 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-57-25-972691-sample_234.xml. Generation time: 10.15s
+2025-05-01 18:57:55,953 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 15: <b Solution  
+                    
+                 		
+		
+     
+
+
+        
+
+
+
+ 
+                    ...
+2025-05-01 18:57:55,954 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-57-55-954136-sample_235.xml. Generation time: 29.98s
+2025-05-01 18:58:25,875 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 16: <b>Solution 1: Using XML Declaration</b>
+
+     	
+	
+        
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+        
+
+ 
+...
+2025-05-01 18:58:25,875 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-58-25-875367-sample_236.xml. Generation time: 29.92s
+2025-05-01 18:58:57,253 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 17: <?xml version = 
+1.0 
+encoding = 
+"UTF-8" 
+standalone = 
+ yes 
+?>
+
+<?xml version = 
+1.0 
+encoding = ...
+2025-05-01 18:58:57,253 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-58-57-253217-sample_237.xml. Generation time: 31.38s
+2025-05-01 18:59:06,530 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 18: <division id="government" department="interior">
+    <title>Ministry of Home Affairs</title>
+    <da...
+2025-05-01 18:59:06,531 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-59-06-531113-sample_238.xml. Generation time: 9.28s
+2025-05-01 18:59:14,594 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 19: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+    <product id=" prod103" name=...
+2025-05-01 18:59:14,595 - gcd_xml_fuzz_single_Attribute_Specification - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-59-14-594917-sample_239.xml. Generation time: 8.06s

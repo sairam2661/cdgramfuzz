@@ -1,0 +1,27 @@
+<?xml version = 
+        
+            1.0      
+            encoding="ISO-8859-1"?>
+ 
+<!DOCTYPE product SYSTEM  "product.dtd">
+ 
+<product id="PROD001" name="Smart Phone" category="Electronics"
+ 
+         manufacturer="Samsung" condition="New"
+ 
+         countryoforigin="Korea" serialnumber ="\xd4\x93\x9b\x8c\x10\x5e"
+ 
+         productcode="SPH-L600F">
+ 
+  <specification specs ="\u00a2\u0099\u00ae\u00a7\u00b0 \u00b0 \u00c0\u00b7 \u00b0">
+  </specification>
+ 
+  <accessories>
+ 
+   <accessory name="case" description="Standard case for Smart Phone" />
+ 
+   <accessory name="screen protector" description="High quality screen protector for Smart Phone" />
+ 
+   </accessories>
+ 
+  </product>

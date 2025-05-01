@@ -1,0 +1,28 @@
+<hello xmlns="urn:example:person" xml:stylesheet="value-to-external-package">
+
+  <person xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="person-123" xsi:type="personType">
+    <Name>
+      <First>John</First>
+      <Last>Jones</Last>
+    </Name>
+    <Contact>
+      <Address>123 Main Street, New York City</Address>
+      <Phone>123-456-7890</Phone>
+      <Email>john.jones@example.com</Email>
+    </Contact>
+    <WorkExperience>
+      <Workplace>
+        <Name>ABC Corporation</Name>
+        <JobTitle>Software Engineer</JobTitle>
+        <Duration>2010-2022</Duration>
+        <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Description>
+      </Workplace>
+      <Workplace>
+        <Name>XYZ Inc.</Name>
+        <JobTitle>Lead Engineer</JobTitle>
+        <Duration>2012-2020</Duration>
+        <Description>Nulla facilisi. Vitae dictum neque vel sapien imperdiet bibendum.</Description>
+      </Workplace>
+    </WorkExperience>
+  </person>
+</hello>

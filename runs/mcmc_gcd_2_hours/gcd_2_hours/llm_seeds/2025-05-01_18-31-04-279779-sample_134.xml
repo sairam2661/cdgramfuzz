@@ -1,0 +1,46 @@
+<?xml version = 1.0 
+encoding = "UTF-8" 
+standalone = yes?>
+
+<?xml-stylesheet type="text/xsl" 
+href="style.xsl"?>
+
+<catalog xml:lang="en">
+  <description xml:lang="en" xml:space="preserve">
+    <source xml:lang="en">
+      <title/>
+      <lastupdate>
+        <date>2001-12-12</date>
+        <timestamp>100080000</timestamp>
+      </lastupdate>
+      <author xml:role="aut" xml:link="http://www.example.com">
+        <full-name>
+          <name xml:lang="en">
+            <first-name>John</first-name>
+            <last-name>Doe</last-name>
+          </name>
+          <email>john.doe@example.com</email>
+        </full-name>
+      </author>
+    </source>
+  </description>
+  <product xml:lang="en">
+    <name xml:lang="en">Book</name>
+    <description xml:lang="en">
+      <p xml:lang="en">Add a book</p>
+      <p xml:lang="en">Buy the book</p>
+    </description>
+    <price>
+      <value type="float">10.99</value>
+      <currency xml:code="USD">USD</currency>
+    </price>
+    <availability>
+      <availability-date xml:lang="en" xml:role="replace">
+        <day>10</day>
+        <month>12</month>
+        <year>2001</year>
+        <weekday xml:code="Mon">Mon</weekday>
+      </availability-date>
+    </availability>
+  </product>
+</catalog>

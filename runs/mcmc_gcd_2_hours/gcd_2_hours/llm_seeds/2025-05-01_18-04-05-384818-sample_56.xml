@@ -1,0 +1,11 @@
+<hello-world xmlns:xf="http://example.com/XMLSchema">
+  <xf:product name="Product A" color="Red" size="L">
+    <price currency="USD">100</price>
+    <xf:description>This is a product description</xf:description>
+  </xf:product>
+  <product>
+    <name>Product B</name>
+    <price currency="AUD">200</price>
+    <description>This is another product description</description>
+  </product>
+</hello-world>

@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<document xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation ="/>
+    
+<metadata>
+    <character-ref>&#169;</character-ref>
+    <author>John Doe</author>
+    <translator>Jane Doe</translator>
+    <copyright>2022 &gt; All Rights Reserved.</copyright>
+    <description> 
+        This is a complex document containing reference to copyright symbol (  &copy;) and other metadata.&#x00A0;
+    </description>
+</metadata>    
+<text> 
+    &#160;This is a formatted character reference.&#x00A0; The character &#169; represents the copyright symbol. 
+</text> 
+</document>  
+</encoding> 
+</xs:schema> 
+</xml> 
+(&amp; &#8801;)  (  &copy;  ) (&#169;)  (&#120;)  (&#160;) 
+(  &deg;  ) (.  &#33;  )  (&#8804;)  (&x26;;) (  &#128522; ) ('  &#34;  )..) [&lt;)&gt;) ('&quot;)(')&amp;='  &#8229;)  &#8594; (&#8599;)&#x21A9; )  &#8230; )..)  &#8209; )&#8228;)  &#8592;  &#8598;)&#x202a; )&#x202b;  &#x202d;..)&#x202e;). &#x202f;)..)&#x2028;..)..)&#x2029;..&#xa0;&#x00a0; &#x08;..&#xa1;..&#x0c;..)&#13;&#x0c;..&#x0c;&#13;..&#x0c;..&#xa0; &#x08;..&#xa1;..&#x0c;..)&#13;&#x0c;..&#x0c;&#13;..&#x0c;..&#xa0; &#x08;..&#xa1;..&#x0c;..)&#13;&#x0c;..&#x0c;&#13;..&#x0c;..&#xa0;  

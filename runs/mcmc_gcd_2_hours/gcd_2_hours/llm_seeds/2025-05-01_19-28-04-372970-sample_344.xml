@@ -1,0 +1,19 @@
+<?xml version =   1.0 
+  encoding = "UTF-8" 
+  standalone =  yes?>
+ 
+<ProductInventory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="productInventory.xsd">
+  <product details="product1">
+    <sku>PROD1</sku>
+    <name>Mobile Phone</name>
+    <price currency="USD">$200.00</price>
+    <quantity>20</quantity>
+  </product>
+  
+  <product details="product2">
+    <sku>PROD2</sku>
+    <name>Laptop</name>
+    <price currency="USD">$1000.00</price>
+    <quantity>10</quantity>
+  </product>
+</ProductInventory>

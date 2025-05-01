@@ -1,0 +1,74 @@
+<h:xml version="1.0" encoding="UTF-8" xmlns:h="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ns2:parsedDocument xmlns:ns2="http://www.example.com/ns2">
+<buch>
+<titel>Xml-Beispiel</titel>
+<autor>Xml-Uebung</autor>
+<verlag>
+<verlagseitengr=">2"
+  verlagstischeneinrichtung="Tisch"
+  belegseiten="100"
+  verlagssitz="Berlin"
+  verlagssonstichtag="2018-01-01"
+  verlagsspezifikation="ISO 21085/2"
+  verlagsschlachtsieg="nicht gewonnen"
+  verlagsfach="Technik"
+  verlagsstatus="aktiv"
+  verlagnummer="1234567890"
+/>
+
+<parsedDocument version="1.0" source="input.xml" validationStatus="success">
+<result code="0" message="No errors found"/>
+<div elementCount="6"/>
+<s elementCount="3"/>
+</parsedDocument>
+</buch>
+</nsparedDocument>
+
+ Features List:
+
+1. XML Declaration - 
+2. Parsed XML Document 
+
+ XML Declaration Feature Description: 
+
+ - XML Declaration is included at the top of the file to specify the version and character encoding of the document.
+ - It also includes any additional metadata that may be used by the parser.
+
+ Parsed XML Document Feature Description: 
+
+ - Parsed XML document is the final result of parsing an XML file.
+ - The parsed document includes validation status, element count and result code for further analysis.
+ - It can have different types of result codes and values for analysis. 
+
+<!--schema reference-->
+
+<!--.NET--> 
+
+<!--.sql--> 
+
+<!--.xml-->
+
+
+
+<!--.csv--> 
+
+<!--.pdf-->
+
+
+
+<!--.xsl--> 
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</book>
+
+ XML Schema Document Feature Description: 
+
+ - XML Schema Document is used to define the structure and content of an XML document.
+ - It is

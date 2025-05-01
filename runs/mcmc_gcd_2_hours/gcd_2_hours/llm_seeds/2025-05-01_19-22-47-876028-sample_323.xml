@@ -1,0 +1,9 @@
+<t:meeting xmlns:t="http://www.example.org/Meeting">
+<note xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/Meeting http://www.example.org/Meeting.xsd">
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting Reminder</subject>
+<message>We have scheduled a mandatory meeting on Friday.</message>
+<priority xml:lang="en">High</priority>
+</note>
+</t:meeting>

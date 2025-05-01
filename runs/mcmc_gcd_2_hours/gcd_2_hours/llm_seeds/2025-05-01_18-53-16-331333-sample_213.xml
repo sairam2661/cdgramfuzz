@@ -1,0 +1,15 @@
+<?xml version =   
+1.0 encoding = "ISO-8859-1" standalone = no?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating XML documents.</description>
+    <country>USA</country>
+    <company>ABC Inc.</company>
+    <email>support@abcinc.com</email>
+    </book>
+  </catalog>

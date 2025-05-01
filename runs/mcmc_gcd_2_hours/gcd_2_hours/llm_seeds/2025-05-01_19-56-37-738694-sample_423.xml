@@ -1,0 +1,40 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<addressBook xmlns = "http://example.com/addressbook" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:noNamespaceSchemaLocation ="http://example.com/addressbook.xsd" 
+             xmlns:fn = "http://example.comfunctions"  
+             xmlns:ad = "http://example.com/addressdata"  
+             xmlns:emp = "http://example.com/employees">
+
+  <addressBookInfo ad:description="Employee Address Book" ad:version="1.0"/>
+  <employee id="E1" ad:employeeID="E001"> 
+    <name>John Doe</name>
+    <title>Manager</title>
+    <department>Manufacturing</department>
+    <email>john.doe@example.com</email>
+    <phone>555-1234</phone>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+      <country>USA</country>
+    </address>
+  </employee>
+
+  <addressBookInfo ad:description="Manager Address" ad:version="1.1"/>
+  <employee id="E2" ad:employeeID="E002"> 
+    <name>Alice Smith</name>
+    <title>Employee</title>
+    <department>Marketing</department>
+    <email>alice.smith@example.com</email>
+    <phone>555-5678</phone>
+    <address>
+      <street>456 Broadway</street>
+      <city>Newyork</city>
+      <state>NY</state>
+      <zip>10001</zip>
+      <country>USA</country>
+    </address>
+  </employee>
+</addressBook>

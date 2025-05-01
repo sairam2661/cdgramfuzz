@@ -1,0 +1,9 @@
+<?xml version = 1.0  encoding = "UTF-16le" standalone =  no?>
+<catalog>
+<book id ="" ISBN=""  description ="" language ="" publisher ="">
+<author>author_name</author>
+<title>title</title>
+<price>3.5</price>
+<image>image_url</image>
+</book>
+</catalog>

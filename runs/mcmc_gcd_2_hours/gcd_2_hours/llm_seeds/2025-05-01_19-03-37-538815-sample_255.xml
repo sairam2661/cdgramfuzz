@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<?xml namespace-declaration xmlns:xi = "http://www.w3.org/2001/xi" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/1999/XMLSchema" xmlns:ns1 = "http://schemas.example.com" xmlns:ns2 = "http://schemas.example.org"?>
+<root>
+<xi:include schemaLocation="file.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+<ns1:data>
+<ns2:element1>
+<xs:complexType>
+<xs:sequence>
+<xs:element name="attr1" type="xs:string"/>
+<xs:element name="attr2" type="xs:integer"/>
+</xs:sequence>
+</xs:complexType>
+<attr1> Test Data </attr1>
+<attr2> 123 </attr2>
+</ns2:element1>
+</ns1:data>
+</root>

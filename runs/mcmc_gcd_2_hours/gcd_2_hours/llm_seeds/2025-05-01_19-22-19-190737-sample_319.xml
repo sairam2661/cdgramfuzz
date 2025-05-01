@@ -1,0 +1,18 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+  <vendor id ="{Vendor ID}" name ="{Vendor Name}">
+    <product id ="{Product ID}" name ="{Product Name}">
+      <manufacturer name ="{Manufacturer Name}"/>
+      <product-number>12345</product-number>
+      <description>This is a test product.</description>
+    </product>
+    <product id ="{Product ID2}" name ="{Product Name2}">
+      <manufacturer name ="{Manufacturer Name2}"/>
+      <product-number>67890</product-number>
+      <description>This is another test product.</description>
+    </product>
+  </vendor>
+</catalog>
+
+ 

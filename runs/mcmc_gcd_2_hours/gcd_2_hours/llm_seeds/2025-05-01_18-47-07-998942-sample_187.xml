@@ -1,0 +1,36 @@
+<?xml version = 
+    1.0 encoding = 
+    "UTF-8" standalone = 
+    yes?>
+<Notebook title ="" type ="" opened ="" status ="" version ="">
+    <Table 
+        header ="" 
+        rows ="" 
+        columns ="" 
+        caption ="" summary ="">
+        <PageHeader title ="" subtitle ="" content ="" image =""/>
+        <Page 
+            title ="" 
+            content ="" 
+            links ="" 
+            meta ="" 
+            id ="" />
+        <Content 
+            type ="" 
+            format ="" 
+            display ="" 
+            container ="" 
+            source ="" 
+            target ="" 
+            link ="" />
+    </Table>
+    <Section header ="" contents ="" group ="" level ="" image ="" links ="" id ="" />
+    <Entry 
+        type ="" 
+        title ="" 
+        content ="" 
+        date ="" 
+        sources ="" 
+        id ="" 
+        keywords ="" />
+</Notebook>

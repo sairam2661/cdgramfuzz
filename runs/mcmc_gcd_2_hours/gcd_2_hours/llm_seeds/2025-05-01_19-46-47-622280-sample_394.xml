@@ -1,0 +1,23 @@
+<?xml version = 
+    1.0
+    encoding = "ISO-8859-1"
+    standalone = 
+    yes
+   ?>
+
+<person>
+ <name>John D.</name>
+ <age>32</age>
+ <address>
+  <street>42 Wall St</street>
+  <city>New York</city>
+  <state>NY</state>
+  <zip>10005</zip>
+  <country>North America</country>
+ </address>
+ <phone type="home">212-791-1234</phone>
+ <phone type="office">212-791-5678</phone>
+ <phone type="cell">212-791-9012</phone>
+ <phone type="fax">212-791-1111</phone>
+ <email>john.d@example.com</email>
+</person>

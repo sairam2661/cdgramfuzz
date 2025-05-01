@@ -1,0 +1,13 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<bookstore>
+    <book id ="" isbn ="" author ="" title ="" price =""/>
+    <book id="" isbn="" author="" title="" price=""/>
+    <description>&amp;lt;sport&amp;gt; football &amp;amp;</description>
+    <contact>
+        <person>
+            <name>John Doe</name>
+            <email>johndoe@example.com</email>
+        </person>
+        <title>Contact Us</title>
+    </contact>
+</bookstore>

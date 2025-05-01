@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+    <book id ="My Book">
+        <title>Harry Potter</title>
+        <author>JK Rowling</author>
+        <price>14.99</price>
+    </book>
+    <book id ="{My Book}">
+        <title>JK Rowling's Wizard Secrets</title>
+        <author>Harry Potter</author>
+        <price>19.99</price>
+    </book>
+    <book id ="{another book}">
+        <title>Albus Dumbledore's Guide</title>
+        <author>Ron Weasley</author>
+        <price>7.99</price>
+    </book>
+</catalog>

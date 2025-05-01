@@ -1,0 +1,15 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog name ="" xml:lang="EN" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema instance.dtd" version="1.0">
+    <description>Electronic catalogue</description>
+    <company name="ABC Inc." street="123 Main St" city="NY" country="USA"/>
+    <product version="2.0" id="PROD001">
+        <name>Widgets</name>
+        <description>This is a widget</description>
+        <price currency="USD">19.99</price>
+    </product>
+    <product version="2.0" id="PROD002">
+        <name>Gadgets</name>
+        <description>This is a gadget</description>
+        <price currency="USD">9.99</price>
+    </product>
+</catalog>

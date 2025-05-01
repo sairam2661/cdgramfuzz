@@ -1,0 +1,46 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog id="catalog_123" xml:lang="en">
+    <book genre="cohort">
+        <title>Think and Grow Rich</title>
+        <author>Napoleon Hill</author>
+        <price>15.99</price>
+        <publish_date>1937</publish_date>
+        <description>An introduction to the law of attraction.</description>
+        <country>USA</country>
+        <language ISO="enUS">English</language>
+        <page_count>217</page_count>
+    </book>
+    <book genre="other">
+        <title>Super Sensitive Skin</title>
+        <author>Joanna Cole</author>
+        <price>12.00</price>
+        <publish_date>1995</publish_date>
+        <description>A novel about the problems and solutions for people who have sensitive skin.</description>
+        <country>UK</country>
+        <language ISO="enCA">English (Canada)</language>
+        <page_count>183</page_count>
+    </book>
+</catalog>
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+   

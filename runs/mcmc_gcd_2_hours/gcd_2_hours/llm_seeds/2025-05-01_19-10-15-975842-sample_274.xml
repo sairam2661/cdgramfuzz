@@ -1,0 +1,18 @@
+<?xml version = 
+            	1.0 
+            	encoding = "UTF-8" 
+            	standalone = 
+                        			yes 
+                        			?>  
+               <product>
+               <name>&space;&lt;b&gt;Product &lt;/b&gt;&lt;/name&gt;
+                <description> Entity test &amp;lt;Product&gt; </description> 
+                <price>20.50£</price>
+                <category>Electronics</category> 
+                </product>  
+                 <person> 
+                   <name> Entity Test &lt;Test&gt; </name> 
+                   <age>40</age> 
+                 </person> 
+               <punctuation>!!!</punctuation>
+              </xml>

@@ -1,0 +1,25 @@
+<?xml version =1.0 encoding = "UTF-8"?>
+<catalog xml:lang="en-US">
+    <genre>Opera</genre>
+    <title>The Marriage of Figaro</title>
+    <artist>Christian Cannella
+          Salome Mayer
+          Domenico Serventi
+          Luigi Trevi</artist>
+    <concertDate>14 February 2019</concertDate>
+    <price currency="USD">$39.00</price>
+    <tracks>
+        <track xml:id="track1">
+            <name>Act 1</name>
+            <duration>3 minutes 30 seconds</duration>
+            <artist>La Finta Semplice Orchestra
+                      Puccini Opera Festival Youth Orchestra</artist>
+        </track>
+        <track xml:id="track2">
+            <name>Act 2</name>
+            <duration>2 hours 30 minutes</duration>
+            <artist>La Finta Semplice Orchestra
+                      Puccini Opera Festival Youth Orchestra</artist>
+        </track>
+    </tracks>
+ </catalog>

@@ -1,0 +1,22 @@
+<?xml version = 1.0
+encoding = "UTF-8"
+standalone =  yes?>
+<!DOCTYPE catalog
+ SYSTEM "catalog.dtd">
+<catalog>
+  <description> Sample catalog entry </description>
+  <provider name ="xero">
+    <url>https://xero.com</url>
+  </provider>
+  <item>
+    <title>Xero Accounting Software</title>
+    <author>Accounting Industries</author>
+    <genre>Financial Software</genre>
+    <price currency ="$">99.99</price>
+    <pubDate>March 14, 2022</pubDate>
+    <availability status ="Not Available">
+      <description>Out of stock</description>
+    </availability>
+  </item>
+  <date>2022</date>
+</catalog>

@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <collection country="USA">
+    <book genre="cooking">
+      <title lang="en">Everyday Italian</title>
+      <author>Giada De Laurentiis</author>
+      <year>2005</year>
+      <price currency="USD">30.00</price>
+      <pubDate style="alt">Feb 6 2005</pubDate>
+      <catalogItem url="http://www everydayitalian.com">
+        <image format="jpeg" width="100" height="100"/>
+      </catalogItem>
+    </book> 
+    <book genre="puzzle">
+      <title lang="de">Alles über die Kunst des Kochens</title>
+      <author>tiny kramris</author>
+      <year>2005</year>
+      <price currency="EUR">25.00</price>
+      <pubDate style="alt">Oct 11 2005</pubDate>
+      <catalogItem url="http://www everydayitalian.de">
+        <image format="jpeg" width="100" height="100"/>
+      </catalogItem>
+    </book>
+  </collection>
+</catalog>

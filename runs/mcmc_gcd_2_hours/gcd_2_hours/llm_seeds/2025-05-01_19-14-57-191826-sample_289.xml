@@ -1,0 +1,22 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+ <book id ="{123}" title ="{&quot;A&quot;}&apos;&#60;&#62;Inventor&#62;&#60;&#62;&#60;&#39;c&#39;&#62;&#60;&#39;Invention&lt;&#62;&#60;&#39;a&#39;&#62;&#60;&#39;i&#39;&#62;&#60;&#39;n&#39;&#62;&#60;&#39;t&#39;&#62;&#60;&#39;u&#39;&#62;&#60;&#39;r&#39;&#62;&#60;&#39;o&#39;&#62;&#60;&#39;i&#39;&#62;&#60;&#39;n&#39;&#62;&#60;&#39;t&quot;}"
+     isbn ="{0-306-40615-2}"
+   author ="{&quot;Stephen&quot;}&apos;King&quot;"
+  publisher ="{Back Bay Books}"
+        lang ="{eng}"
+  copyright ="{&quot;1992&quot;}&apos; Stephen King}"
+      currency ="{USD}"
+        price ="{24.95}"
+      description ="{A horror novel}"
+   image ="{King.jpg}"
+     reviews ="{4.5/5}"
+  categories ="{Horror, Fiction}">
+</catalog> 
+
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<address>
+ <street address ="{&#x202A;&#x202B;&#x2022;&#x2020;&#x2021;&#x2022;&#x2020;&#x2021;&#x2023;&#x2022;&#x2021;&#x2020;&#x2021;&#x2023;&#x2020;&#x2020;&#x2020;&#x2021;&#x2022;&#x2020;&#x2020;&#x2022;&#x2020;&#x2022;&#x2020;&#x2021;&#x2022;&#x2021;&#x2020;&#x2022;&#x2021;&#x2022;&#x2020;&#x2021;&#x2020;&#x2022;&#x2021;&#x2021;&#x2022;&#x2020;&#x2022;&#x2020;&#x2021;&#x2022;&#x2023;&#x2022;&#x2022;&#x2021;&#x2020;}" 
+   city ="{&amp;

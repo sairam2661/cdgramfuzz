@@ -1,0 +1,20 @@
+<?xml version=
+1.0 
+encoding="ISO-8859-1" 
+standalone=
+no?>
+<catalog>
+  <book id="bk101">
+    <author>
+      <first name="John&quot;> Doe</first>
+      <last name="Doe=""/>
+    </author>
+    <title>XHTML: The Definitive Guide</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating applications 
+    using XHTML 
+    and CSS.</description>
+  </book>
+</catalog>

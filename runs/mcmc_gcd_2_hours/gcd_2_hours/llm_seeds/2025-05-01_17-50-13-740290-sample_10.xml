@@ -1,0 +1,17 @@
+<?xml version=1.0 encoding= "UTF-8"?>
+<kite>
+<tailNumber>AA201</tailNumber>
+<cargoBayDoor status="open"/>
+<engines>
+<engine status="operational"/>
+<engine status="underMaintenance"/>
+</engines>
+<cockpit>
+<pilotName>John Doe</pilotName>
+<coPilotName>Jane Smith</coPilotName>
+<altitude>35000</altitude>
+<airspeed>500</airspeed>
+<heading>270</heading>
+<time>2023-04-15T14:30:00Z</time>
+</cockpit>
+</kite>

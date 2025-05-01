@@ -1,0 +1,20 @@
+<RoadTripPlan xmlns:trip="http://schemas.example.com/trip" xmlns:route="http://schemas.example.com/route" xmlns:hotel="http://schemas.example.com/hotel" version="2.0" encoding="UTF-8" standalone="yes">
+  <trip:Route tripId="RT001">
+    <trip:Start location="New York"/>
+    <trip:Destination location="Los Angeles"/>
+    <route:RouteSection tripRoute="RT001">
+      <route:StartPoint lat="37.7749" lon="-122.4194"/>
+      <route:EndPoint lat="34.0522" lon="-118.2437"/>
+    </route:RouteSection>
+    <hotel:Hotel tripId="H001">
+      <hotel:Name>Hotel California</hotel:Name>
+      <hotel:Address>123 Main St, Los Angeles, CA 90012</hotel:Address>
+    </hotel:Hotel>
+  </trip:Route>
+  <trip:Stop tripId="S001" tripName="Night 1">
+    <trip:Description>Night 1 of Road Trip</trip:Description>
+  </trip:Stop>
+  <trip:Stop tripId="S002" tripName="Night 2">
+    <trip:Description>Night 2 of Road Trip</trip:Description>
+  </trip:Stop>
+</RoadTripPlan>

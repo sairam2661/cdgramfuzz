@@ -1,0 +1,94 @@
+<pre>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+    Document Type Definition for Notes
+    ==============
+-->
+
+<!--
+    DTD for Notes
+    ==============
+-->
+
+<!--
+    Note DTD
+    ==============
+-->
+
+<!--
+    Element: to
+    ==============
+-->
+&lt;to&gt;
+
+&lt;/to&gt;
+
+<!--
+    Element: from
+    ==============
+-->
+&lt;from&gt;
+
+&lt;/from&gt;
+
+<!--
+    Element: subject
+    ==============
+-->
+&lt;subject&gt;
+
+&lt;/subject&gt;
+
+<!--
+    Element: message
+    ==============
+-->
+&lt;message&gt;
+
+&lt;/message&gt;
+
+<!--
+    Element: priority
+    ==============
+-->
+&lt;priority&gt;
+
+&lt;!--
+    Attribute: level
+    ==============
+-->
+
+&lt;level&gt;
+
+&lt;/level&gt;
+
+&lt;/priority&gt;
+
+<!--
+    Element: note
+    ==============
+-->
+&lt;note&gt;
+
+&lt;!--
+
+    Note Element
+
+-->
+&lt;to&gt;Alice&lt;/to&gt;
+
+&lt;from&gt;Bob&lt;/from&gt;
+
+&lt;subject&gt;Meeting&lt;/subject&gt;
+
+&lt;message&gt;Don't forget our meeting at 2pm!.
+
+&lt;/message&gt;
+
+&lt;priority level="high"&gt;
+
+&lt;/priority&gt;
+
+&lt;/note&gt;
+
+</pre>

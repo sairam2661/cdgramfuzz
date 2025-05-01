@@ -1,0 +1,43 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <book id =">&#8211; Technical Reference &#8486; 20th Edition &#8594; ISBN 0-13-790345-7&#x2008;</book>
+  <book id =">&amp; Advanced Text Editor &lt; 5.0 &amp; 10/12/2020 &amp; ISBN 978-0-13-850271-0 &amp; 120-123 &amp; 144.50 &amp; DVD &amp; 0201633612 &amp; />
+</catalog> 
+
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<contract>
+  <party name =">&#169; First National Bank &#128; 123 Main St, Anytown, USA 12345&#1234;</party>
+  <term>
+    <start>2000-01-01&#8592;</start>
+    <end>2005-01-01&#8595;</end>
+    <payment>120/month&#123;</payment>
+  </term>
+  <fine>10.0% per month&#100;</fine>
+</contract> 
+
+<?xml version = 1.0 encoding = "UTF-8plementarystandalone="> 
+<color>
+  <name>Dark Blue&#138;&#38;</name>
+  <hex>000087&#167;</hex>
+  <rgb>0,0,139,&#38;/rgb>
+</color> 
+<color>
+  <name>Maroon&#174;&#123;</name>
+  <hex>800000&#194;</hex>
+  <rgb>255,0,0,&#141;</rgb>
+</color> 
+<color>
+  <name>Light Blue&#131;</name>
+  <hex>ADD8E6&#206;</hex>
+  <rgb>168,220,230,&#46;</rgb>
+</color> 
+<color>
+  <name>Navy Blue&#146;</name>
+  <hex>03055B&#206;</hex>
+  <rgb>3,5,91,&#38;</rgb>
+</color> 
+<color>
+  <name>Crimson&#132;</name>
+  <hex>DC143C&#194;</hex>
+  <rgb>220,20,60,&#141;</rgb>
+</color> 

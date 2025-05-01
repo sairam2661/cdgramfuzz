@@ -1,0 +1,30 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog xml:lang ="" xmlns = "http://www.w3.orgTR/1999/02/xml-catalog#"
+          xmlns:xlink = "http://www.w3.org/1999/xlink"
+          xsi:schemaLocation ="
+            catalog http://www.w3.org/TR/1999/02/xml-catalog/catalog.xsd"
+          version ="">
+
+    <processingInstructions />
+    <hyperlink href ="" rel ="" type ="" />
+    <index>
+
+        <doc>
+            <title xml:lang ="" xml:space ="" href ="" />
+            <file name ="" href ="" format ="" lastmod ="" />
+        </doc>
+
+        <book>
+            <title xml:lang ="" xml:space ="" link ="" />
+            <author>John Doe</author>
+            <subject xml:lang ="" />
+            <pubdate xml:lang ="" days ="" weeks ="" months ="" years ="" />
+            <price currency ="" amount ="" />
+            <language xml:lang ="" xml:space ="" href ="" />
+            <review xml:lang ="" href ="" rating ="" review ="" />
+        </book>
+
+        <masterpiece author ="" created ="" published ="" subject ="" title ="" work ="" image ="" href ="" />
+    </index>
+
+</catalog>

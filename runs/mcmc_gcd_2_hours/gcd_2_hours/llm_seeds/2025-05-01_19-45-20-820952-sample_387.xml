@@ -1,0 +1,32 @@
+<h:document xmlns:h="https://www.xmlbeans.org" version="1.0" encoding="UTF-8" standalone="yes">
+  <catalog>
+    <book id="bk101">
+      <author>John Smith</author>
+      <title>XML Documentation</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2009-10-01</publish_date>
+      <description>An in-depth look at creating and working with XML documents.</description>
+      <h:bookInfo>
+        <h:title>XML Documentation</h:title>
+        <h:author>John Smith</h-author>
+        <h:translator>Nancy Drew</h-translator>
+        <h:rights>Copyright 2023 by John Smith</h:rights>
+      </h:bookInfo>
+    </book>
+    <book id="bk102">
+      <author>Jane Doe</author>
+      <title>XSLT Documentation</title>
+      <genre>Computer</genre>
+      <price>29.95</price>
+      <publish_date>2010-11-01</publish_date>
+      <description>A guide to using XSLT for document transformation.</description>
+      <h:bookInfo>
+        <h:title>XSLT Documentation</h:title>
+        <h:author>Jane Doe</h-author>
+        <h:translator>Bob Smith</h-translator>
+        <h:rights>Copyright 2023 by Jane Doe</h:rights>
+      </h:bookInfo>
+    </book>
+  </catalog>
+</h:document>

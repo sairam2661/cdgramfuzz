@@ -1,0 +1,22 @@
+<?xml version = 
+1.0 
+encoding = "UTF-16"
+standalone = 
+yes
+?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <titlelang="en">XML Declaration</title>
+        <publicationDate>2000-10-01</publicationDate>
+        <ISBN>978-1-89663-808-7</ISBN>
+        <description>"XML Declaration is a mandatory prologue that begins with the XML keyword and is followed by the version number, encoding, and standalone attribute."</description>
+    </book>
+    <book id="bk102">
+        <author>John Smith</author>
+        <titlelang="en">XML in Action</title>
+        <publicationDate>2002-05-01</publicationDate>
+        <ISBN>978-1-89663-833-3</ISBN>
+        <description>"XML has opened up new possibilities in the world of computing...</description>
+    </book>
+</catalog>

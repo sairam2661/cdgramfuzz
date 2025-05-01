@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = yes?>
+<Tournament name ="Our Championship" id="T001">
+  <Team name ="" id="T001_1">Team A</Team>
+  <Team name ="" id="T001_2">Team B</Team>
+  <Match id="M001" vsTeamOneId="T001_1" vsTeamTwoId="T001_2" date="2022-01-01">
+    <WinTeam vsTeamOneId="T001_1" />
+    <WinTeam vsTeamTwoId="T001_2" />
+  </Match>
+</Tournament>

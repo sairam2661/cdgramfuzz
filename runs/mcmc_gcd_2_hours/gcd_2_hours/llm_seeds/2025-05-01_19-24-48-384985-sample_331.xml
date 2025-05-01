@@ -1,0 +1,21 @@
+<?xml version = 
+    1.0 
+    encoding="ISO-8859-1" 
+    standalone = yes?>
+<catalog xmlns:books="http://example.com/books">
+    <book id="bk101" books:author="John Smith">
+        <books:title>XML for Beginners</books:title>
+        <books:author>John Smith</books:author>
+        <books:publisher>Amazon</books:publisher>
+        <price>39.95</price>
+        <books:summary>Book one of the best books you have ever read. It is the second book written by John Smith.</books:summary>
+        <books:mreview rating="4" books:title="Best Book Ever"/>
+        <books:genre>computer</books:genre>
+    </book>
+    <book id="bk102" books:author="John Smith">
+        <comments>
+            <comments:user>John Smith</comments:user>
+            <comments:content>Best book ever written.</comments:content>
+        </comments>
+    </book>
+</catalog>

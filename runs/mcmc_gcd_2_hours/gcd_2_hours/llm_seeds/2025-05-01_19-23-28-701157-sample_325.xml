@@ -1,0 +1,16 @@
+<?xml version = 1.0  encoding = "ISO-8859-1"?>
+<address bookxmlns:p ="Yes,  this  is  a  person" xmlns:a = "http://addressbook.com/prefix"  xmlns:xsi= "http://www.w3.org/2001/XMLSchema_INSTANCE">
+  <a:person p:ID ="{123456789}">
+    <a:name> Jane  Doe </a:name>
+    <a:gender p:ValidValues ="{Male Female}" > Female </a:gender>
+    <p:sAddress p:ID ="{98765}">
+      <p:street> 1234  Main   St </p:street>
+      <p:city> Anytown </p:city>
+      <p:state> USA </p:state>
+      <p:zip> 12345 </p:zip>
+      <p:country> USA </p:country>
+    </p:sAddress>
+  </a:person>
+</address  >
+ 
+ 

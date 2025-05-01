@@ -1,0 +1,21 @@
+{
+  "XML Declaration": "An XML declaration is a mandatory prologue that begins with the XML keyword and is followed by the version number, encoding, and standalone attribute.\n\nExample: `<?xml version=\"1.0\" encoding=\"UTF-8\"?>`",
+  "Document Type Definition": "A document type definition (DTD) is a construct that allows authors to specify the structure of an XML document.\n\nExample: `<!DOCTYPE book [... ]>`",
+  "Element Declaration": "An element declaration specifies the name, attributes, and content model of an entity.\n\nExample: `<!ELEMENT book (title, author, publisher)>`",
+  "Attribute List Declaration": "An attribute list declaration defines the names of attributes that can be used by elements.\n\nExample: `<!ATTLIST book attribut1=\"value1\" attribut2=\"value2\">`",
+  "Entity Declaration": "An entity declaration is used to define entities that can be referenced in the document.\n\nExample: `<!ENTITY public_entity \"Public Entity\">`",
+  "Notation Declaration": "A notation declaration is used to define",
+  "PEReference": "A PEReference is a construct used to reference a public entity declaration.",
+  "Prolog Comment": "A prolog comment is a comment that can be used to provide additional information about the document.",
+  "Prolog PI": "A prolog PI is a construct used to reference a parameter entity.",
+  "Element Opener": "An element opener is the first part of an element declaration, which includes the opening angle bracket and the element name.",
+  "Element Closing Tag": "An element closing tag is the second part of an element declaration, which includes the closing angle bracket and the element name.",
+  "Attribute Specification": "An attribute specification is the name of an attribute followed by its value.",
+  "Namespace Declaration": "A namespace declaration is used to specify the namespace prefix and its corresponding URI.",
+  "Entity Reference": "An entity reference is a construct used to reference an entity declared in the document.",
+  "Character Reference": "A character reference is a construct used to reference a specific character.",
+  "Content Model": "The content model of an element specifies the allowed content types of the element.",
+  "Qualified Name": "A qualified name is a construct used to specify the namespace prefix and its corresponding local part.",
+  "XML Declaration End": "The XML declaration end is the closing tag of the XML declaration.",
+  "Parsed XML Document": "A parsed XML document is the final result of parsing an XML file.\n\nNote: I'll make sure to focus on structural aspects only, avoiding semantic aspects of the XML syntax. I'll also provide examples to illustrate each feature. \n\nHere is a sample XML document to illustrate some of these features:\n```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE book [\n  <!ELEMENT book (title, author, publisher)>\n  <!ELEMENT title (#PCDATA)>\n  <!ELEMENT author (#PCDATA)>\n  <!ELEMENT publisher (#PCDATA)>\n\n  <!ATTLIST book attribut1=\"value1\" attribut2=\"value2\">\n  <!ATTLIST publisher attribut3=\"value3\" attribut4=\"value4\">\n\n  <!ENTITY public_entity \"Public Entity\">\n  <!ENTITY entityref \"&public_entity;\">\n\n  <!NOTATION public_notation \"http://example.com/public_notation\">\n  <book>\n    <title>Example Title</title>\n    <author>John Doe</author>\n    <publisher>\n      <attribut3 value3=\"value3\"/>\n      <attribut4 value4=\"value4\"/>\n    </publisher>\n  </book>\n</xml>\n```\nPlease note that the XML declaration is included in the document to provide a clear example of the features. \n\nPlease provide the final list of distinct technical features. \n\nI'll ensure that each feature has a corresponding example. \n\nHere is the list so far:"
+}

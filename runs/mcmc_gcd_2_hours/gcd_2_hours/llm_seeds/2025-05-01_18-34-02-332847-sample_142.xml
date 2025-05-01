@@ -1,0 +1,31 @@
+<?xml version=
+    1.0 encoding= "UTF-8"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+ 
+
+<catalog> 
+
+    <library id="1">
+        <title>Alice</title>
+    </library>
+
+    <library id="2">
+        <title>Bob</title>
+        <author>John</author>
+    </library>
+
+    <document> </document> 
+
+    <book category="reference" 
+         author=""
+          title="XML Documentation">
+        <chapter name="Beginner">
+            <section>Introduction </section>
+            <section>Choosing an XML Processor </section>
+            <section>Using a Parser </section>
+        </chapter>
+    </book>
+
+    <preformat> </preformat> 
+
+</catalog>

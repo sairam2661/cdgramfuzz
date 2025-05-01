@@ -1,0 +1,67 @@
+<Solutions>
+  <Solution1>
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <catalog xml:lang="en">
+   <catalog-name>Book Catalog</catalog-name>
+   <description>This is a sample book catalog.</description>
+   <genre>Novel</genre>
+   <author>John Smith</author>
+   <title>The Great Gatsby</title>
+   <publication-date>1925</publication-date>
+   <price currency="USD">19.95</price>
+   <page-count>180</page-count>
+  </catalog>
+  </Solution1>
+  
+  <Solution2>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!-- 
+  Document Type Definition for Library Catalog
+  -->
+  <!---->
+  <element-library-catalog>
+    <DTD name="library-catolog.dtd">
+      <!--
+         The element catalog is the root element of the document.
+        It has the attributes catalog_name and description.
+      -->
+      <element-catalog>
+        <attribute name="catalog_name"/>
+        <attribute name="description"/>
+        <element-book>
+            <attribute name="title"/>
+            <attribute name="author"/>
+            <attribute name="publication-date"/>
+            <attribute name="genre"/>
+        </element-book>
+      </element-catalog>
+    </DTD>
+  </element-library-catalog>
+  </Solution2> 
+
+  <Solution3>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <library-system>
+    <catalog name="Fiction">
+      <book>
+        <title>1984</title>
+        <authorGeorge Orwell
+       ="#"><author xml:lang='en' data-mid="author_id">George Orwell</author></author
+        >
+      <book>
+        <title>The Handmaid's Tale</title>
+        <author xml:lang='en' data-mid="author_id_2" >Margaret Atwood</author>
+        ><book/>
+      )}
+    <catalog name="Non-Fiction">
+      <book>
+        <title>In Cold Blood</title>
+        <author xml:lang='en' data-mid="author_id_3" >Truman Capote<author/>
+      <book>
+  </library-system>
+  </Solution3>
+
+  <Solution4>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!--
+    Document

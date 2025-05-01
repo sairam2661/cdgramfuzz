@@ -1,0 +1,14 @@
+<?xml version =1.0 encoding="ISO-8859-1" standalone =no?>
+
+<nationality status="active">
+<countryName>United States of America</countryName>
+<cityName>New York City</cityName>
+<continentName>North America</continentName>
+<languageName>English</languageName>
+<populationNumber>323383204</populationNumber>
+<geographicAreaCode>0100</geographicAreaCode>
+<timeZoneName>America/New_York</timeZoneName>
+<currencyCode>$</currencyCode>
+<iataCityCode>JFK</iataCityCode>
+<fipsRegionCode>01</fipsRegionCode>
+</nationality>

@@ -1,0 +1,99 @@
+2025-05-01 19:48:44,280 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 0: <?xml version = 
+1.0 encoding = "UTF-8"?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note id="n1">
+  <to>Ali...
+2025-05-01 19:48:44,281 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-48-44-280846-sample_400.xml. Generation time: 29.72s
+2025-05-01 19:49:14,097 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 1: <D ocumentationSet
+   
+  
+ 		 	 				="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
+ 	   ...
+2025-05-01 19:49:14,097 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-49-14-097342-sample_401.xml. Generation time: 29.82s
+2025-05-01 19:49:18,940 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 2: <?xml version=1.0 encoding="UTF-8" standalone = no?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note>
+ <to>A...
+2025-05-01 19:49:18,941 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-49-18-941105-sample_402.xml. Generation time: 4.84s
+2025-05-01 19:49:30,757 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 3: <?xml version=1.0 encoding="UTF-8"?>
+<notes>
+  <note id="N001">
+    <title>First Meeting</title>
+   ...
+2025-05-01 19:49:30,757 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-49-30-757169-sample_403.xml. Generation time: 11.82s
+2025-05-01 19:50:00,642 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 4: <?xml version = 1.0  encoding = "UTF-8"?>
+<catalog>
+    <book id="bk101">
+    <author>John Smith</au...
+2025-05-01 19:50:00,642 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-50-00-642705-sample_404.xml. Generation time: 29.89s
+2025-05-01 19:50:09,580 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 5: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE catalog
+         SYSTEM "catalo...
+2025-05-01 19:50:09,580 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-50-09-580391-sample_405.xml. Generation time: 8.94s
+2025-05-01 19:50:39,206 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns = "http://www.example.com">
+  <book id ="{ht...
+2025-05-01 19:50:39,206 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-50-39-206711-sample_406.xml. Generation time: 29.63s
+2025-05-01 19:51:09,319 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 7: <?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns = "http://example.com/catalog.dtd">
+    <boo...
+2025-05-01 19:51:09,320 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-51-09-319856-sample_407.xml. Generation time: 30.11s
+2025-05-01 19:51:16,078 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 8: <note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting ...
+2025-05-01 19:51:16,078 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-51-16-078658-sample_408.xml. Generation time: 6.76s
+2025-05-01 19:51:30,136 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 9: <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="ap...
+2025-05-01 19:51:30,136 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-51-30-136214-sample_409.xml. Generation time: 14.06s
+2025-05-01 19:52:00,655 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 10: <?xml version = 
+1.0 encoding = 
+"UTF-8" 
+standalone = 
+ yes?>
+
+<!DOCTYPE catalog SYSTEM 
+"catalog.d...
+2025-05-01 19:52:00,655 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-52-00-655706-sample_410.xml. Generation time: 30.52s
+2025-05-01 19:52:21,525 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 11: <harnessing-the-potential-of-XML-technology>
+    <?xml version="1.0" encoding="UTF-8" standalone="ye...
+2025-05-01 19:52:21,526 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-52-21-526023-sample_411.xml. Generation time: 20.87s
+2025-05-01 19:52:32,175 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 12: <?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog xml:lang ='"en"' xml:version ='"...
+2025-05-01 19:52:32,176 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-52-32-176081-sample_412.xml. Generation time: 10.65s
+2025-05-01 19:52:52,814 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 13: <?xml version = 
+    1.0 
+    encoding = "UTF-8" 
+    standalone = 
+    yes 
+?>
+<!DOCTYPE note-syste...
+2025-05-01 19:52:52,814 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-52-52-814596-sample_413.xml. Generation time: 20.64s
+2025-05-01 19:53:42,061 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 14: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE collection [
+<!ELEMENT collectio...
+2025-05-01 19:53:42,062 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-53-42-062037-sample_414.xml. Generation time: 49.25s
+2025-05-01 19:53:48,766 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 15: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<?xml-stylesheet href = "style.css"?>
+<!...
+2025-05-01 19:53:48,767 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-53-48-766788-sample_415.xml. Generation time: 6.70s
+2025-05-01 19:54:07,165 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 16: <pre>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+    Document Type Definition for ...
+2025-05-01 19:54:07,165 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-54-07-165580-sample_416.xml. Generation time: 18.40s
+2025-05-01 19:54:22,360 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 17: <hello xmlns="urn:example:person" xml:stylesheet="value-to-external-package">
+
+  <person xmlns:xsi="...
+2025-05-01 19:54:22,361 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-54-22-360773-sample_417.xml. Generation time: 15.20s
+2025-05-01 19:54:34,631 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 18: <?xml version = 1.0encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE person [
+    <!ELEMENT person (na...
+2025-05-01 19:54:34,631 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-54-34-631526-sample_418.xml. Generation time: 12.27s
+2025-05-01 19:54:43,721 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 19: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<c...
+2025-05-01 19:54:43,721 - gcd_xml_fuzz_single_Document_Type_Definition_(DTD) - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-54-43-721453-sample_419.xml. Generation time: 9.09s

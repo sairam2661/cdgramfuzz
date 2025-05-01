@@ -1,0 +1,33 @@
+<?xml version = 
+1.0 
+encoding="ISO-8859-1" 
+standalone = 
+no
+ 
+?>
+ 
+<catalog>
+   <book id="bk101">
+      <author >John Smith</author>
+      <title>XML for Beginners</title>
+      <genre>Computer</genre>
+      <price>39.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>An in-depth look at creating applications using XML.</description>
+      <course id="bk101" 
+      description="A short course on building applications with XML">
+      </course>
+   </book>
+   <book id="bk102">
+      <author >John Smith</author>
+      <title>XSLT for Busy Developers</title>
+      <genre>Computer</genre>
+      <price>49.95</price>
+      <publish_date>2001-05-01</publish_date>
+      <description >Mastering XSLT to write effective documents.</description>
+      <course id="bk102" 
+      description="Learn the basics of XSLT to solve your XSLT problems">
+      </course>
+   </book>
+ 
+</catalog>

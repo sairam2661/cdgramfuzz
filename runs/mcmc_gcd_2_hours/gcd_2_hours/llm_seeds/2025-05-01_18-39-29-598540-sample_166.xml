@@ -1,0 +1,43 @@
+<?xml version=1.0 encoding="ISO-8859-1"?>
+<!DOCTYPE doc [ 
+  <!ELEMENT doc (header, body)>
+  <!ELEMENT header (title, date)>
+  <!ELEMENT title (#PCDATA)*>  
+  <!ELEMENT date (#PCDATA)*> 
+  <!ELEMENT body (section+
+
+  )>
+  <!ELEMENT section (#PCDATA)*> 
+  <!ENTITY para-entity "Prolog PI paragraph">
+  <!ENTITY para-entity-ref "&para-entity;">
+
+  <!-- header section with title and date -->
+  <?>
+    <title>New XML Example</title>
+    <date>25 January 2024</date>
+ ?>
+  
+  <!-- body section with multiple paragraphs -->
+  <?>
+    <section>
+      <para>This is a paragraph of text that will be rendered.</para>
+      <para>&para-entity-ref;</para>
+    </section>
+
+    <section>
+      <para>This is another paragraph of text.</para>
+      <para>This paragraph will also reference the para-entity.</para>
+    </section>
+
+ ?>
+  
+  <!-- closing of DOCTYPE and XML declaration -->
+]>
+<doc>
+  <header>
+    <title>New Title</title>
+    <date>26 January 2024</date>
+  </header>
+  <body>
+  </body>
+</doc>

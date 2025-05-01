@@ -1,0 +1,8 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<ns:catalog xmlns:ns = "http://example.com/catalog" namespace ="https://w3.org/2001/XMLSchema">
+    <ns:xitem>
+        <ns:itemid>12345</ns:itemid>
+        <ns:price>19.99</ns:price>
+        <ns:product name =""  description =""  category =""/>
+    </ns:xitem>
+</ns:catalog>

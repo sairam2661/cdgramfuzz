@@ -1,0 +1,19 @@
+<i>
+
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <AddressBook xmlns:ad="http://schema.adressbook.com"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:noNamespaceSchemaLocation="AddressBook.xsd">
+        <Contact ad:id="123" ad:name="John Doe">
+            <Address>
+                <Street>123 Main St</Street>
+                <City>Anytown</City>
+                <State>US</State>
+                <Zip>12345</Zip>
+            </Address>
+            <Email contacts:email="johndoe@example.com"/>
+            <Phone contacts:tel="+1-555-123-4567"/>
+        </Contact>
+    </AddressBook>
+
+</i>

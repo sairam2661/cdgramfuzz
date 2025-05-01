@@ -1,0 +1,17 @@
+<?xml version =1.0  encoding="ISO-8859-1"?>
+<catalog  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/catalog catalog.xsd"
+          xmlns:db="http://www.example.com/db"
+          db:catalog-type="public"
+          db:catalog-name="Shopping CART">
+  <product db:id="P1" db:description="T-Shirts">
+  <name>Red T-Shirt</name>
+  <price currency="USD">15.99</price>
+  <description>This is a red t-shirt.</description>
+  </product>
+  <product db:id="P2" db:description="Black T-Shirts">
+  <name>Black T-Shirt</name>
+  <price currency="USD">19.99</price>
+  <description>This is a black t-shirt.</description>
+  </product>
+  </catalog>

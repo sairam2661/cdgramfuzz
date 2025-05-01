@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+  <?import system = "http://www.w3.org/2001/XMLSchema-instance"?>
+  <?import namespace = "example"?>
+  <?system schemaLocation = "schema.xsd"?>
+  <Note>
+    <Prolog PI="file('parameter.Entity')"/>
+    <Author xml:lang="en-US">Author Name</Author>
+    <Title xml:space="preserve">Example.xml</Title>
+    <Note>
+      <Para>Prolog PI construct used to reference parameter entity </Para>
+      <Para>Schema is being referenced within an instance document</Para>
+    </Note>
+  </Note>

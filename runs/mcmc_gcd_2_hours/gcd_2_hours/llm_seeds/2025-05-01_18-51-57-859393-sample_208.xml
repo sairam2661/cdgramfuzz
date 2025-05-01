@@ -1,0 +1,15 @@
+<billing>
+  <invoice>
+    <invoice-number>INV001</invoice-number>
+    <invoice-date>2023-03-01</invoice-date>
+    <customer>
+      <customer-name>John Doe</customer-name>
+      <customer-address>123 Main St</customer-address>
+    </customer>
+    <total-cost>$1000.00</total-cost>
+    <payment-method>American Express</payment-method>
+  </invoice>
+  <shipping-cost>$50.00</shipping-cost>
+  <handling-fee>$20.00</handling-fee>
+  <tax-rate>8.25%</tax-rate>
+</billing>

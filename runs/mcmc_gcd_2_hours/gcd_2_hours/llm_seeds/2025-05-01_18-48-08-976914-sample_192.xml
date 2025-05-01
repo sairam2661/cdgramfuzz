@@ -1,0 +1,24 @@
+<TodoList Version="2.0">
+    <XmlDeclaration xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <characteristic>
+            <uniqueID xsi:type="xs:string">12345</uniqueID>
+            <priority>high</priority>
+        </characteristic>
+    </XmlDeclaration>
+    <notes>
+        <note>
+            <to>Alice</to>
+            <from>Bob</from>
+            <subject>Meeting</subject>
+            <message>Don't forget our meeting at 2pm!</message>
+            <priority>high</priority>
+        </note>
+        <note>
+            <to>Bruno</to>
+            <from>Ronald</from>
+            <subject>Tech Support</subject>
+            <message>Server is down, please investigate.</message>
+            <priority>low</priority>
+        </note>
+    </notes>
+</TodoList>

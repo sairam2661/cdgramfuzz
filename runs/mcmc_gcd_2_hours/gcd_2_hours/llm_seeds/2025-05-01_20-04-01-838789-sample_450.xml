@@ -1,0 +1,18 @@
+<?xml version = 1.0  encoding  =  "UTF-8"  standalone  =  yes?>
+
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation="schema catalogs.xsd">
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <description>covers XML in depth</description>
+        <publisher>ABC Books</publisher>
+        <status>active</status>
+        <priority level="high"/>
+        <note to="Jane Doe" from="John Smith" subject="Note" message="Could not find book"/>
+        <reviewer>Joe Smith</reviewer>
+        <ISBN>0-486-27557-4</ISBN>
+    </book>
+</catalog>

@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-16L" standalone = yes?>
+<catalog xml:lang ="TAF" xml:space="preserve">
+  <book id ="/books/hardcover">
+    <author>Marcy</author>
+    <title>HTML and CSS: Design and Build Websites</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish date="2021-03-21"/>
+    <description>An in-depth look at the design aspects of the web</description>
+  </book>
+  <book id ="/books/softcover">
+    <author>Joy</author>
+    <title>XHTML and CSS: The Definitive Guide</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish date="2000-10-15"/>
+    <description>A comprehensive guide to building websites using XHTML and CSS</description>
+  </book>
+</catalog>

@@ -1,0 +1,7 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog xml:lang ='"en"' xmlns ='"http://example.com/catalog"' version =".9" standalone ='"yes"' encoding ='"UTF-8"'>
+  <country name ='"USA"' />
+  <country name ='"UK"' />
+  <product name ='"Desk"' />
+  <product name ='"Lamp"' />
+</catalog>

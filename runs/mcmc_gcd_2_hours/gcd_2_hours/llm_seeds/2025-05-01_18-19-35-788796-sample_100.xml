@@ -1,0 +1,21 @@
+<SalesData version="4.0" encoding="ISO-8859-1" standalone="no">
+    <Sales>
+        <Quarter1>
+            <Product A="Product A" B="Product B"/>
+            <Revenue amount="100000"/>
+        </Quarter1>
+        <Quarter2>
+            <Product C="Product C" D="Product D"/>
+            <Revenue amount="120000"/>
+        </Quarter2>
+    </Sales>
+    <Taxonomy>
+        <Company ABC="ABC Inc." DEF="ABC Inc."/>
+    </Taxonomy>
+    <Notations>
+        <Svg>
+            <XmlVersion version="1.0" encoding="UTF-8" standalone="yes"/>
+            <XmlSchemaLocations href="https://example.com/schema.xml"/>
+        </Svg>
+    </Notations>
+</SalesData>

@@ -1,0 +1,62 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<library>
+  <book id ="-1">
+    <title> &apos;1984&apos; by George Orwell
+    <annotation>&ldquo;Warning: dystopian novel&quot;
+    <price>15.99$
+  </book>
+  <book id ="-2">
+    <title> &lt;Wuthering Heights&lt;
+    <annotation>&ldquo;Classic romance novel&quot;
+    <price>10.99$
+  </book>
+</library> 
+
+Solution 3:
+
+<?xml version="1.0" encoding="UTF-16"?>
+
+<holiday-trip>
+  <trip-id>001</trip-id>
+  <trip-name>
+   &amp;Summer Vacation&amp;
+  </trip-name>
+  <destination>Paris</destination>
+  <trip-date>Jul 4-8</trip-date>
+  <travel-document>
+   &quot;&lt;s&amp;</travel-document>
+  </travel-document>
+  <accommodation>
+   £10,000
+  </accommodation>
+</holiday-trip> 
+Solution 4:
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<international-code>
+    <language-code>enGB</language-code>
+    <alpha-code>eng</alpha-code>
+    <numeric-code>44</numeric-code>
+    &amp;<symbol> £ </symbol>
+    <character-ref>é</character-ref>
+    <currency-code>GBP</currency-code>
+    <country-name>&lt;United Kingdom&lt;</country-name>
+    <currency-name>British Pound</currency-name>
+</international-code> 
+Solution 5:
+
+<?xml version="1.0" encoding="ISO-1026"?>
+<music-sheet>
+  <title> &amp;  My Song &lt;
+  <composer>John Doe</composer>
+  <arranger>&apos;Saxophone solo&apos;</arranger>
+  <instruments>
+   &lt;Guitar&gt;
+    &lt;Violin&gt;
+    <!-- and so on... -->
+  </instruments>
+  <mood> &quot;joyful&quot;
+  <genre>&amp; jazz&amp;
+  <tempo> 128 BPM
+</music-sheet> 
+Note: The chosen encodings ISO-1026, UTF-16 and ISO-8859-1 were chosen to not match the others. Is there anything else

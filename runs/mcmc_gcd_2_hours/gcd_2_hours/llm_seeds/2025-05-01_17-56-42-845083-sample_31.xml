@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type = "text/xsl" href = "#main"?>
+<!DOCTYPE person PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<persons>
+  <person id ="" name ="" address ="">
+    <address street ="" city ="" state ="" zip ="" country =""/>
+    <name><first name ="" surname ="" title ="" />
+      <first name ="" surname ="" title ="" data-TYPE =""/>
+      <last data-TYPE =""/>
+      <givenName data-TYPE =""/>
+      <additionalName data-TYPE =""/>
+      <honourificPrefix data-TYPE =""/>
+      <honourificSuffix data-TYPE =""/>
+      <title data-TYPE =""/>
+      <degrees data-TYPE =""/>
+    </name>
+  </person>
+</persons>

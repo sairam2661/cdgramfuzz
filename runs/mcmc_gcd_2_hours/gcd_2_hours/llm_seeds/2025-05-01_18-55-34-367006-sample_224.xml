@@ -1,0 +1,13 @@
+<?xml version =1.0 encoding="UTF-8" standalone =no?>
+<catalog xml:lang ="en">
+  <description xml:icon ="/catalog.png">
+    Product List
+  </description>
+  <product xml:id ="{A106E84F-34F8-4BD4-A5B2-E8C8073E7DE2}">
+    <author xml:name ="{3E441EC3-5B93-47EA-BF5E-FB5D84D20C2F}">
+      Acme Inc.
+    </author>
+    <year>1994</year>
+    <price currency ="$">19.99</price>
+  </product>
+</catalog>

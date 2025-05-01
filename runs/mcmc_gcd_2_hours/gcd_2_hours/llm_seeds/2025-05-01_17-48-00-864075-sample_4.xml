@@ -1,0 +1,26 @@
+<catalog >
+  <description>
+    Product catalog for Alpha Online
+  </description>
+  <?xml version="1.0" encoding="ISO-8859-1"?>
+  <product id="P01">
+    <name>Aerodynamic Notebook</name>
+    <price currency="USD">45.50</price>
+    <stock status="true">40</stock>
+    <barcode>0147529300596</barcode>
+    <image src="image.jpg"/>
+    <vendor>
+      <company>Alpha Online</company>
+    </vendor>
+  </product>
+  <product id="P02">
+    <name>Webcam Software</name>
+    <price currency="USD">69.95</price>
+    <stock status="false">0</stock>
+    <barcode>0288131596549</barcode>
+    <image src="image2.jpg"/>
+    <vendor>
+      <company>Alpha Online</company>
+    </vendor>
+  </product>
+</catalog>

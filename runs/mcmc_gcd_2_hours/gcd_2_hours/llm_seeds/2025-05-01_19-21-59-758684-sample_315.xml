@@ -1,0 +1,44 @@
+<?xml version =1.0 encoding="UTF-8" standalone = no?>
+<catalog>
+<book id="bk101">
+<title>XML for Beginners</title>
+<subject>Computer</subject>
+<description>An introduction to XML.</description>
+<price>39.95</price>
+<language id="eng">English</language>
+<author>
+  <first Name ="' John'/>
+  <last>Smith</last>
+</author>
+<publisher id="P1502="/">Foo Bar Ltd</publisher>
+<copyright>2001</copyright>
+<rating>
+<rating total ="" high="5"/>
+  <rating total ="" high="2"/>
+</rating>
+<Image>image002.jpg</Image>
+<review>
+<comments count ="" email="" rating=""
+        message="good, nice example" 
+        created ="">
+<person name ="' John '/'
+  <reviewer name = " Smith 
+  =" Jan 20, 2009"/>
+</comments>
+</review>
+<language>
+<language name ="French">French</language>
+<language name ="German">German</language>
+<language name ="En  "English
+  =">en</</</language>
+<category id = "A00.02.03.C009.06.01.001.00.00.0000.1000.00000.00.0.00.00.0000.00.00000000000000.00000.000000000000000.0.0.0.0.0.00.00.00.00.00.00.00.00.0.00.000000000.00000000.00.00.00000.00000000.00000000.00000000000.00000000000000000000000.00000000.00000000000000000.00000000000000000.00000000000000000000000.000000000000000000000000001.0000.00000000.00000.00000000000000000000.00000000000000000000000000000000.00000.00.00000.00000000000000000000000000000000.00000000000000000000000000000000.00.00.00
+    =">A</</</category>
+
+</catalog> 
+          </book>            
+           </catalog>             
+
+
+
+Question 3:
+Generate a short but

@@ -1,0 +1,40 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+  <library>
+    <book id ="{UUID(12345-1234-1234-1234-123456789012)}">
+      <title>{Title}</title>
+      <author>{Author}</author>
+      <publisher>{Publisher}</publisher>
+      <price>{Currency}19.99</price>
+    </book>
+  </library>
+  <database>
+    <table id ="{UUID(98765-8765-8765-8765-987654321098)}">
+      <column1>{Column1}</column1>
+      <column2>{Column2}</column2>
+    </table>
+  </database>
+  <document>
+    <section id ="{UUID(54321-5432-5432-5432-543216789012)}">
+      <title>{Title}</title>
+      <paragraph>{Paragraph}</paragraph>
+      <figure id ="{UUID(98765-8765-8765-8765-987654321098)}">
+        <caption>{Caption}</caption>
+      </figure>
+    </section>
+  </document>
+</catalog>
+
+ 
+ 
+  
+
+
+
+
+
+  
+
+
+ 

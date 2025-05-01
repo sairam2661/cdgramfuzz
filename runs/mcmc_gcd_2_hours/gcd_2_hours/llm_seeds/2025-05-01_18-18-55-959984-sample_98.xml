@@ -1,0 +1,53 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE product_catalog SYSTEM "product_catalog.dtd">
+<product_catalog>
+    <entities>
+        <!-->
+        <!ENTITY public_entity "Public Entity">
+        <!ENTITY public_category "Category 1">
+        <!ENTITY public_subcategory "Subcategory 1">
+        <!ENTITY public_product "Product 1">
+        <!ENTITY product_image URL = "https://example.com/products/1.jpg">
+        <!ENTITY product_price DECIMAL = "49.99">
+        <!ENTITY product_description TEXT = "This is a product description">
+        <!ENTITY company_name TEXT = "Example Inc.">
+        <!ENTITY company_address TEXT = "123 Main St, Anytown, USA">
+        <!ENTITY company_phone TEXT = "123-->$">
+        <!--){
+    </entities>
+    <products>
+        <product>
+            <id>1</id>
+            <name>Product A</name>
+            <description longtext="This is a long product description">
+            <images>
+                <image src="product_image" alt="Product Image">
+            </images>
+            <price currency="USD"> product_price </price>
+            <category category="public_category"> public_category </category>
+            <subcategory subcategory="public_subcategory"> public_subcategory </subcategory>
+            <product_name name=" public_product"> public_product </product_name>
+            <info>
+                <!entities>
+                    <public_entity> public_entity </public_entity>
+                    <product_image> product_image </product_image>
+                    <product_price> product_price </product_price>
+                    <product_description> product_description </product_description>
+                    <company_name> company_name </company_name>
+                    <company_address> company_address </company_address>
+                    <company_phone> company_phone </company_phone>
+                </info>
+            </description>
+        </product>
+    </products>
+</product_catalog> 
+
+<!ENTITY company_address "123 Main St, Anytown, USA"> 
+<!ENTITY company_phone "123-->$"> 
+<!--[ENTITY public_entity "Public Entity">]--> 
+<!--[ENTITY product_image URL = "https://example.com/products/1.jpg">]--> 
+<!--[ENTITY public_category "Category 1">]>]--> 
+<!--[ENTITY public_subcategory "Subcategory 1">]>]--> 
+<!--[ENTITY public_product "Product 1">]>]--> 
+<!--[entity public_subcategory "Subcategory 1">]>]--> 
+<!

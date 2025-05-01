@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<?xml-notation xmlns = "http://www.example.com/mynotation" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
+<product id = "12345">
+  <name>Sample Product</name>
+  <description>This is a sample product for testing</description>
+  <model>Sample Model</model>
+  <price currency = "USD">19.99</price>
+  <country region = "US"/>
+</product>
+
+<?><!--Notation --><?xml-notation xmlns = "http://www.example.com/mynotation" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"?>
+<product id ="T12345">
+  <name>Test Product ABC</name>
+  <description>This is a test product for XML notation</description>
+  <model>Demo Model</model>
+  <price currency ="$">9.99</price>
+  <country region ="\&quot;US&quot;\&quot;"/>
+</product>
+ 

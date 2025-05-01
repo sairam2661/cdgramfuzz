@@ -1,0 +1,36 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE person [
+  <!ELEMENT person (name, address, phone)>
+  <!ELEMENT name (#PCDATA)*>  
+  <!ELEMENT address (street, city, state, zip)>
+  <!ELEMENT street (#PCDATA)*>   
+  <!ELEMENT city (#PCDATA)*>    
+  <!ELEMENT state (#PCDATA)*>     
+  <!ELEMENT zip (#PCDATA)*>      
+  <!ELEMENT phone (type, number)>
+  <!ELEMENT type (#PCDATA)*>       
+  <!ELEMENT number (#PCDATA)*>        
+  <!ELEMENT currency (code)>
+  <!ELEMENT code (#PCDATA)*>         
+  <!ELEMENT email (address)>
+  <!ELEMENT address (#PCDATA)*>         
+]>
+<person>
+  <name>John Doe</name>
+  <address>
+    <street>123 Main St</street>
+    <city>Anytown</city>
+    <state>CA</state>
+    <zip>12345</zip>
+  </address>
+  <phone>
+    <type>home</type>
+    <number>555-1234</number>
+  </phone>
+  <currency>
+    <code>USD</code>
+  </currency>
+  <email>
+    <address>john.doe@example.com</address>
+  </email>
+</person>

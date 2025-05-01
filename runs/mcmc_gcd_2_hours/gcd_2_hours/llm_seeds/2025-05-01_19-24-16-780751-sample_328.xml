@@ -1,0 +1,23 @@
+<?xml version = 
+    1.0
+    encoding = 
+      "UTF-8"
+    standalone = 
+      yes
+   ?>
+
+
+<note
+ xmlns:ns1 
+    = "http://example.com/ns1"
+ xmlns:ns2 
+    = "http://example.com/ns2"
+>
+<ns1:recipient>
+<to>Alice</to>
+</ns1:recipient>
+<from>Bob</from>
+<ns2:status level="high"/>
+<ns2:subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+</note>

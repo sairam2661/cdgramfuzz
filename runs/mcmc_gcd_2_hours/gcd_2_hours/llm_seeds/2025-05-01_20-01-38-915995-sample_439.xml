@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog>
+   <description>
+      <type>Technical</type>
+      <purpose>Information</purpose>
+   </description>
+   <book id="bk101">
+      <author>John Smith</author>
+      <title lang="en">XML for Beginners</title>
+      <genre>Computer</genre>
+      <price currency="USD">39.95</price>
+      <publish_date>2000-10-01</publish_date>
+      <description>
+         <title lang="en">A great introduction to XML.</title>
+         <author lang="en">John Smith</author>
+      </description>
+      <company name="ABC Inc." />
+      <language lang="en">English</language>
+   </book>
+</catalog>

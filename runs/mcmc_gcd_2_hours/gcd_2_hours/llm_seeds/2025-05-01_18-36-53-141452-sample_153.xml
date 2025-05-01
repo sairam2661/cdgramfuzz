@@ -1,0 +1,117 @@
+<?xml version = 
+     1.0 
+     encoding = 
+     "ISO-8859-1" 
+     standalone = 
+     yes?>
+
+<?prolog?>
+ 
+       <?myns:import 
+           href = 
+           "mydata.xml" 
+           xmlns:myns = 
+           "http://www.example.com/
+             namespaces"?>
+
+<note>
+<to>John
+      DOE</to>
+<row>
+<key name="Item number 1">11</key>
+<key name="Description"> This is the first item</key>
+<key name="Price">12.50</key>
+</row>
+<row>
+<key name="Item number 2">22</key>
+<key name="Description"> This is the second item</key>
+<key name="Price">13.25</key>
+</row>
+</note>
+ 
+ 
+
+
+
+
+
+
+
+ 
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+

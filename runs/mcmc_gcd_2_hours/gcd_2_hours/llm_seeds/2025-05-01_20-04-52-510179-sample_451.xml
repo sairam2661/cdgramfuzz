@@ -1,0 +1,264 @@
+<!DOCTYPE person [
+  <!ELEMENT name (first, last) >
+  <!ELEMENT first (#PCDATA)*
+ ><!-- attribute list declarations -->
+  <!ATTLIST person 
+          address
+            (street  | house  | apt.) "string"  default  ( street  |
+            house  |
+            apt.)
+          "
+            name     name  required
+  -->
+]>
+
+
+<person name="John  
+    (Doe)" 
+    address="  street:Main  (
+            house:House  )
+    "
+    priority="low   (high|
+            normal|
+     middle)"
+>
+
+  <name first="John  (
+    Doe)" last="Doe    (smith)"   >
+    <name first="first1   (John   )   "
+          last="last1  (Doe   )"/>
+  </name>
+</person> 
+
+<!ELEMENT student (
+    id  | name  | marks  ) > 
+<!ELEMENT name (#PCDATA)* >
+<!ELEMENT id (#PCDATA)* >
+<!ELEMENT marks (#PCDATA)* > 
+
+<!ELEMENT student id # > 
+<!ELEMENT student name # >
+<!ELEMENT student marks # >
+
+<!ATTLIST student
+   marks
+     ( math | science | hindi) "anyURI 
+
+
+  (none|
+
+   default )"  
+
+
+<student id="S1    (   ID001  )"
+    name="John   (Raj)"
+    marks="math   (math     |
+
+    science |
+     hindi )"   
+  >   
+
+  <marks>
+    <math   math   (math    
+
+    ) 8  |
+     9  |
+     10  />
+    <science science  (science
+
+     ) 7  |
+     8  |
+     9  />
+    <hindi hindi (hindi ( |
+
+     7  |
+    )/>
+  </marks> 
+
+
+
+<!ELEMENT products (
+  product  | brand  ) > 
+<!ELEMENT brand (#PCDATA)> 
+<!ELEMENT product (#PCDATA)* > 
+
+<!ATTLIST brand
+  price
+    "decimal
+
+
+     ( none |
+      min | max )" 
+default("min 
+
+
+
+    
+
+
+
+  
+
+  ( 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+  
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+  
+
+  
+
+ 
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+ 
+
+
+
+  
+
+
+
+  
+    
+ 
+  
+ 
+
+
+
+ 
+
+
+
+  
+
+ 
+
+
+
+  
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+  
+
+
+
+   
+
+
+
+
+
+
+
+     
+  
+
+
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+   
+ 
+
+
+
+ 
+
+
+
+
+ 
+
+
+

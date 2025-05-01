@@ -1,0 +1,28 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<contract date ="@2022-01-01" version ="@1.0">
+  <supplier>
+    <name>Xenon</name>
+    <address>
+      <street>1430 Walnut St</street>
+      <city>Knoxville</city>
+      <state>TN</state>
+      <zip>37902</zip>
+    </address>
+    <contact>
+      <email>support@xenon.co</email>
+      <phone>(865) 252-3000</phone>
+    </contact>
+  </supplier>
+  <order history ="@yes">
+    <item id ="@12345">
+      <partnumber>PF44A-001</partnumber>
+      <description>Motor Control Unit</description>
+      <quantity>10</quantity>
+    </item>
+    <item id ="@67890">
+      <partnumber>EF12C-002</partnumber>
+      <description>Sensor Module</description>
+      <quantity>20</quantity>
+    </item>
+  </order>
+</contract>

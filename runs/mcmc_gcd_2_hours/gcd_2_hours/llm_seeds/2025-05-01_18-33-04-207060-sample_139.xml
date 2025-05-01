@@ -1,0 +1,37 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+  <?museum
+  xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation = "http://museum.com/museum.xsd  
+  Museum.xsd
+  http://schema.org/ItemName  
+  http://schema.org/Person  
+
+<Gallery xmlns="http://example.com/galleries.xsd">
+<exhibition Name="Art Show"
+         Date="23 Jan 2025"
+         duration="6 days"/>
+<Artist xmlns="http://example.com/artists.xsd"
+      xsi:schemaLocation = "http://example.com/artists.xsd  
+      Artists.xsd
+      http://schema.org/Location  
+      http://schema.org/DateCreated  
+      http://schema.org/Event"/>
+  </Gallery>
+?> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <?per-entity 
+    xmlns="http://books.com/entity.xsd" 
+    xsi:schemaLocation="http://books.com/entity.xsd  
+    Entity.xsd
+    http://schema.org/Book   
+    http://schema.org/Author ?>
+  <book>
+    <title>Example</title>
+    <author>John</author>
+    <subject>Computer Science</subject>
+    <publisher>ABC Press</publisher>
+    <price>19.99</price>
+  </book>
+</catalog>

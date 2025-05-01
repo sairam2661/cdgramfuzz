@@ -1,0 +1,20 @@
+<?xml version = 
+      1.0 
+      encoding= "UTF-8"
+      standalone= 
+      yes?>
+ 
+<note>
+ <to>Alice</to> 
+ <from>Bob</from> 
+ <subject>Meeting</subject> 
+ <message>Don't forget our meeting at 2pm!</message> 
+ <priority level="high"/> 
+ <date>2022-07-25</date> 
+ <location>Conference Room</location> 
+ <organizer>John Doe</organizer> 
+ <notes> 
+  <note detail="urgent">Reminder!</note> 
+  <note detail="important">Follow-up meeting!</note> 
+ </notes> 
+</note>

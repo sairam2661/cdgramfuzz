@@ -1,0 +1,22 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd" >
+<catalog xml:lang="en" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <bibliography country="USA">
+        <address>
+            <street>123 Main St</street>
+            <city>Anytown</city>
+            <state>CA</state>
+            <zip>12345</zip>
+            <country>USA</country>
+            <email>info@town.org</email>
+            <phone>123-456-7890</phone>
+        </address>
+        <author>
+            <forename>Jane</forename>
+            <surname>Doe</surname>
+        </author>
+        <title>Book Title</title>
+        <price currency="USD">29.95</price>
+        <date pubdate="2001-03-01"/>
+    </bibliography>
+</catalog>

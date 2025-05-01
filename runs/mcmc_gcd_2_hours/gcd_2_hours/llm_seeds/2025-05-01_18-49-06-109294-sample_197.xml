@@ -1,0 +1,36 @@
+<?xml version = 1.0 encoding="ISO-8859-1"?>
+<catalog>
+  <book idrow="bk101">
+    <aut href="http://www-author-city.com/I/IAuthorI.html">
+      <name>John Smith</name>
+      <title>XML for Beginners</title>
+    </aut>
+    <pubDate>2000-10-01</pubDate>
+    <description>An introduction to XML</description>
+    <price>39.95</price>
+    <pubLocation>Anytown</pubLocation>
+    <image src="images/123.jpg"/>
+  </book>
+  <book idrow="bk102">
+    <aut href="http://www-author-city.com/M/MAuthorM.html">
+      <name>Jane Doe</name>
+      <title>XSLT: The Ultimate Guide</title>
+    </aut>
+    <pubDate>2001-05-01</pubDate>
+    <description>A comprehensive resource on XSLT</description>
+    <price>49.95</price>
+    <pubLocation>Othertown</pubLocation>
+    <image src="images/456.jpg"/>
+  </book>
+  <book idrow="bk103">
+    <aut href="http://www-author-city.com/J/JAuthorJ.html">
+      <name>John Smith</name>
+      <title>XML Schema Tutorial</title>
+    </aut>
+    <pubDate>2002-11-01</pubDate>
+    <description>A step-by-step guide to XML Schemas</description>
+    <price>29.95</price>
+    <pubLocation>Anytown</pubLocation>
+    <image src="images/234.jpg"/>
+  </book>
+</catalog>

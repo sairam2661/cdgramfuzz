@@ -1,0 +1,51 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes">
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>Pride and Prejudice</title>
+    <genre>Romance</genre>
+    <price>19.99</price>
+    <publish_date>2005-01-01</publish_date>
+    <description>An adaptation of Jane Austen's novel.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>Clean Code</title>
+    <genre>Computer</genre>
+    <price>22.99</price>
+    <publish_date>2009-10-01</publish_date>
+    <description>A book on writing clean code.</description>
+  </book>
+</catalog> 
+
+<catalog xml:lang="en" xml:version="1.0" encoding="UTF-8" standalone="no">
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>Pride and Prejudice</title>
+    <genre>Romance</genre>
+    <price>19.99</price>
+    <publish_date>2005-01-01</publish_date>
+    <description>An adaptation of Jane Austen's novel.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>Clean Code</title>
+    <genre>Computer</genre>
+    <price>22.99</price>
+    <publish_date>2009-10-01</publish_date>
+    <description>A book on writing clean code.</description>
+  </book>
+</catalog> 
+
+<catalog>
+  <book id="bk101">
+    <author xml:id="author-Smith">John Smith</author>
+    <title xml:lang="en">Pride and Prejudice</title>
+    <genre xml:lang="en">Romance</genre>
+    <price xml:currency="USD">19.99</price>
+    <publish_date xml:date="creation">2005-01-01</publish_date>
+    <description xml:lang="en">An adaptation of Jane Austen's novel.</description>
+  </book>
+  <book id="bk102">
+    <author xml:id="author-Doe">Jane Doe</author>
+    <title xml:lang

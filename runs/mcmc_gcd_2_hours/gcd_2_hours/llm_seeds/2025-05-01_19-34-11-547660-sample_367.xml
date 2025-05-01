@@ -1,0 +1,63 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (title, description)>
+<!ELEMENT title (#PCDATA)*
+  >
+  <!ELEMENT description (#PCDATA)*
+  >
+<!NOTATION ntp-time
+  PUBLIC "-//NTP Working Group//DTD NTP Time//EN"
+  "http://www.iana.org/assignments/ntp-time.dtd">
+<!ATTLIST catalog namespace
+  NMTOKEN #IMPLIED>
+<!ATTLIST catalog version
+  NMTOKEN #REQUIRED
+  >
+<!ATTLIST catalog format
+  NMTOKEN #IMPLIED
+  >
+<!ENTITY doc-format "W3C">
+<!ENTITY doc-version "1.0">
+<!ENTITY doc-namespace "http://www.example.org/catalog">
+<!ENTITY ntp-time-element
+  PUBLIC "-//W3C//DTD NTP Time 1.0//EN"
+  "http://www.w3.org/1998/02/ntp-time.dtd">
+<!ENTITY doc-time-format
+  PUBLIC "http://www.w3.org/1999/02/05/ntptime.dtd"
+  "http://www.w3.org/1999/02/05/ntptime.dtd">
+
+<!ELEMENT time (#PCDATA)*> 
+<!ELEMENT value (#PCDATA)*> 
+ <!ELEMENT datetime (#PCDATA)*> 
+ <!ELEMENT timezone (#PCDATA)*> 
+<!ELEMENT auth (#PCDATA)*> 
+<!ELEMENT product (#PCDATA)*> 
+<!ELEMENT software (#PCDATA)*>
+<!ELEMENT hardware (#PCDATA)*> 
+<!ELEMENT manual (#PCDATA)*> 
+<!ELEMENT notes (#PCDATA)*> 
+<!ELEMENT version (#PCDATA)*> 
+<!ELEMENT copyright (#PCDATA)*> 
+<!ELEMENT license (#PCDATA)*> 
+<!ELEMENT warranty (#PCDATA)*> 
+<!ELEMENT description (#PCDATA)*>
+<!ELEMENT summary (#PCDATA)*> 
+<!ELEMENT keywords (#PCDATA)*> 
+<!ELEMENT category (#PCDATA)*>
+<!ELEMENT subcategory (#PCDATA)*>
+<!ELEMENT document (#PCDATA)*> 
+<!ELEMENT file (#PCDATA)*> 
+
+<!ATTLIST document
+  id
+  NMTOKEN #REQUIRED
+  >
+<!ATTLIST software
+  vendor
+  NMTOKEN #IMPLIED
+  >
+<!ATTLIST hardware
+  type
+  NMTOKEN #IMPLIED
+  >
+<!ATTLIST

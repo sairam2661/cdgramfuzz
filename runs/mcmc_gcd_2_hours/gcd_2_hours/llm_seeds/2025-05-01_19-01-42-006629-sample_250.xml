@@ -1,0 +1,13 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog xmlns:prod = "http://www.example.org/catalog/products"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+         xsi:schemaLocation =""
+         targetNamespace ="http://www.example.org/catalog"
+        elementFormDefault ="xsi:noPrefix">
+  <productinfo productid ="{12345}">
+    <brand>Dell</brand>
+    <model>Dimension 90</model>
+    <price currency ="{USD}" amount ="{199.99}"/>
+  </productinfo>
+</catalog>

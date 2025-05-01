@@ -1,0 +1,23 @@
+<Solutions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://example.com/schema 
+                               http://example.com/schema.xsd">
+    <solution>
+        <problem description="Incorrect XML structure"/>
+        <solutionDescription>Use <b>correct <u>(XML structure)</u></b> to specify the <i>encoding</i>.</solutionDescription>
+        <solutionCode>
+            <?xml version="1.0" encoding="UTF-8"?>
+            <solutions>
+                <solution>
+                    <part>
+                        <name>Introduction</name>
+                        <description>This is an example introduction.</description>
+                    </part>
+                    <part>
+                        <name>Evaluation</name>
+                        <description>This is an example evaluation.</description>
+                    </part>
+                </solution>
+            </solutions>
+        </solutionCode>
+    </solution>
+</Solutions>

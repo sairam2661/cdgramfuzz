@@ -1,0 +1,63 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes">
+<catalog>
+  <!-- This is an XML catalog for book information -->
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An introduction to XML.</description>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Guide</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A comprehensive guide to XSLT.</description>
+  </book>
+</catalog> 
+
+<!---->
+
+<catalog version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="schema catalog.xsd">
+  <description>The XML catalog</description>
+  <country>USA</country>
+  <company>ABC Inc.</company>
+  <phone>123-456-7890</phone>
+  <email>support@example.com</email>
+  <language>English</language>
+</catalog> 
+
+<catalog xmlns="http://www.example.com/catalog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="schema/catalog.xsd">
+  <description>Multi-lingual catalog</description>
+  <country>
+    <usa />
+  </country>
+  <company>
+    <name>ABC Inc.</name>
+  </company>
+  <phone>
+    <system>voice</system>
+    <number>123-456-7890</number>
+  </phone>
+  <email>
+    <address>support@example.com</address>
+  </email>
+  <language>
+    <name>English</name>
+    <code>en</code>
+  </language>
+</catalog> 
+<catalog xmlns="http://example.com/cATALOG">
+  <entry>
+    <title>Example</title>
+    <url>http://example.com</url>
+    <id>12345</id>
+  </entry>
+  <entry>
+    <title>The</title>
+    <url>http://example.com/the

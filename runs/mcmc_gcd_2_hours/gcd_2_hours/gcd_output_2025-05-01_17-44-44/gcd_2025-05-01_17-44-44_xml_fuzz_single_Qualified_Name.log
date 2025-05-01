@@ -1,0 +1,78 @@
+2025-05-01 19:22:24,990 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 0: <?xml version =1.0 encoding="UTF-8"?>
+<ns:AjaxRequest xmlns:ns="http://example.com/ns">
+        <ns:...
+2025-05-01 19:22:24,990 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-22-24-990231-sample_320.xml. Generation time: 5.80s
+2025-05-01 19:22:33,067 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 1: <?xml version =1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xmlns:prod = "http://example.com/c...
+2025-05-01 19:22:33,067 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-22-33-067787-sample_321.xml. Generation time: 8.08s
+2025-05-01 19:22:41,961 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 2: <?xml version=1.0 encoding="UTF-8" standalone= yes?>
+<catalog xmlns:prod="http://schemas.example.com...
+2025-05-01 19:22:41,961 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-22-41-961299-sample_322.xml. Generation time: 8.89s
+2025-05-01 19:22:47,875 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 3: <t:meeting xmlns:t="http://www.example.org/Meeting">
+<note xmlns:xsi="http://www.w3.org/2001/XMLSche...
+2025-05-01 19:22:47,876 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-22-47-876028-sample_323.xml. Generation time: 5.91s
+2025-05-01 19:23:17,184 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 4: <table xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xs...
+2025-05-01 19:23:17,184 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-23-17-184634-sample_324.xml. Generation time: 29.31s
+2025-05-01 19:23:28,700 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 5: <?xml version = 1.0  encoding = "ISO-8859-1"?>
+<address bookxmlns:p ="Yes,  this  is  a  person" xml...
+2025-05-01 19:23:28,701 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-23-28-701157-sample_325.xml. Generation time: 11.52s
+2025-05-01 19:23:40,972 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 6: <?xml version=1.0 encoding="UTF-8"?>
+<catalog xmlns="http://www.books.com/catalog"
+     xmlns:xsi="h...
+2025-05-01 19:23:40,973 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-23-40-973005-sample_326.xml. Generation time: 12.27s
+2025-05-01 19:24:09,910 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 7: <Solution1 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.o...
+2025-05-01 19:24:09,910 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-24-09-910597-sample_327.xml. Generation time: 28.94s
+2025-05-01 19:24:16,780 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 8: <?xml version = 
+    1.0
+    encoding = 
+      "UTF-8"
+    standalone = 
+      yes
+   ?>
+
+
+<note
+ xm...
+2025-05-01 19:24:16,780 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-24-16-780751-sample_328.xml. Generation time: 6.87s
+2025-05-01 19:24:27,755 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 9: <?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<person xmlns:tb = "http://www.example.c...
+2025-05-01 19:24:27,755 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-24-27-755320-sample_329.xml. Generation time: 10.97s
+2025-05-01 19:24:36,455 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 10: <?xml version=1.0 encoding="UTF-8" standalone=no?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSch...
+2025-05-01 19:24:36,455 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-24-36-455466-sample_330.xml. Generation time: 8.70s
+2025-05-01 19:24:48,384 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 11: <?xml version = 
+    1.0 
+    encoding="ISO-8859-1" 
+    standalone = yes?>
+<catalog xmlns:books="ht...
+2025-05-01 19:24:48,385 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-24-48-384985-sample_331.xml. Generation time: 11.93s
+2025-05-01 19:25:17,376 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 12: <bubble> elements used in the xml file</b>
+
+             					
+                
+
+                 ...
+2025-05-01 19:25:17,376 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-25-17-376404-sample_332.xml. Generation time: 28.99s
+2025-05-01 19:25:24,847 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 13: <?xml version = 1.0  encoding = "UTF-8" standalone  =  yes?>
+<catalog xml:lang="English">
+  <descrip...
+2025-05-01 19:25:24,847 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-25-24-847145-sample_333.xml. Generation time: 7.47s
+2025-05-01 19:25:30,595 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 14: <?xml version = 1.0  encoding = "UTF-8"?>
+<ns:catalog xmlns:ns = "http://example.com/catalog" namesp...
+2025-05-01 19:25:30,595 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-25-30-595515-sample_334.xml. Generation time: 5.75s
+2025-05-01 19:25:39,303 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 15: <?xml version = 1.0 encoding = "ISO-8859-1"?>
+<ns:portfolio xmlns:ns = "http://www.example.com/portf...
+2025-05-01 19:25:39,304 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-25-39-304055-sample_335.xml. Generation time: 8.71s
+2025-05-01 19:25:44,621 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 16: <?xml version = 1.0 encoding = "UTF-8"?>
+<ns0:library xmlns:ns0 = "http://example.com/library">
+    ...
+2025-05-01 19:25:44,621 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-25-44-621219-sample_336.xml. Generation time: 5.32s
+2025-05-01 19:25:59,894 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 17: <SchoolData xmlns:i="http://schemas.microsoft.com/2008/09/schema-name" xmlns:p="http://schemas.micro...
+2025-05-01 19:25:59,895 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-25-59-895094-sample_337.xml. Generation time: 15.27s
+2025-05-01 19:26:28,776 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 18: <?xml version =1.0 encoding = "UTF-16" standalone = yes?>
+<catalog xmlns:store = "http://www.example...
+2025-05-01 19:26:28,776 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-26-28-776373-sample_338.xml. Generation time: 28.88s
+2025-05-01 19:26:46,806 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 19: <xml version="1.0" encoding="UTF-8" standalone="yes">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/...
+2025-05-01 19:26:46,806 - gcd_xml_fuzz_single_Qualified_Name - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-26-46-806757-sample_339.xml. Generation time: 18.03s

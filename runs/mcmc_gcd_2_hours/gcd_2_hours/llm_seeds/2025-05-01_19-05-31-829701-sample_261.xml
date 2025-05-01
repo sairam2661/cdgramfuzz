@@ -1,0 +1,9 @@
+<BankingInformation>
+  <CustomerID>&customerID;</CustomerID>
+  <Name>&lt;name&gt;</Name>
+  <Address>&amp;address&amp;</Address>
+  <ContactInfo>
+    <PhoneNumber>1234567890</PhoneNumber>
+    <Email>example@example.com</Email>
+  </ContactInfo>
+</BankingInformation>

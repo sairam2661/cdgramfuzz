@@ -1,0 +1,12 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+  <description language ="" xml:space="preserve" 
+               xml:lang ="" 
+               xmlns:xsi ="" xmlns:xs ="" 
+               version =""  encoding ="">
+    <company>Acme</company>
+    <Contact title ="" phone ="" fax=""
+             address =""  email ="" />
+  </description>
+</catalog>

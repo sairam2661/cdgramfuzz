@@ -1,0 +1,22 @@
+<banking_data>
+  <customer_id>12345</customer_id>
+  <account_number>789012</account_number>
+  <account_holder>
+    <name>John Doe</name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <phone>
+      <home_phone>555-555-5555</home_phone>
+      <mobile_phone>555-555-1234</mobile_phone>
+    </phone>
+  </account_holder>
+  <deposit_account>
+    <account_balance>1000.00</account_balance>
+    <interest_rate>2.5%</interest_rate>
+    <withdrawal_limit>5000.00</withdrawal_limit>
+  </deposit_account>
+</banking_data>

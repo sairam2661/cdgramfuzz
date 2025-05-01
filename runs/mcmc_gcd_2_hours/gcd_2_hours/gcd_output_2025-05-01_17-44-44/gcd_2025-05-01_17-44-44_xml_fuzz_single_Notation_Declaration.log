@@ -1,0 +1,100 @@
+2025-05-01 18:19:35,788 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 0: <SalesData version="4.0" encoding="ISO-8859-1" standalone="no">
+    <Sales>
+        <Quarter1>
+     ...
+2025-05-01 18:19:35,788 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-19-35-788796-sample_100.xml. Generation time: 9.58s
+2025-05-01 18:20:07,746 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 1: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<?xml-notation xmlversion="1.0"?>
+<!DOCTY...
+2025-05-01 18:20:07,747 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-20-07-746872-sample_101.xml. Generation time: 31.96s
+2025-05-01 18:20:35,875 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 2: <?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<document>
+  <head>
+    <title>Mathematic...
+2025-05-01 18:20:35,876 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-20-35-875850-sample_102.xml. Generation time: 28.13s
+2025-05-01 18:20:48,664 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 3: <?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<?xml-notation xmlns = "http://www.exampl...
+2025-05-01 18:20:48,664 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-20-48-664496-sample_103.xml. Generation time: 12.79s
+2025-05-01 18:21:01,621 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 4: <?xml version =4.0  encoding="UTF-8" standalone =yes?>
+<notation xmlns:sd = "http://www.example.com/...
+2025-05-01 18:21:01,621 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-21-01-621387-sample_104.xml. Generation time: 12.96s
+2025-05-01 18:21:09,191 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 5: <personal-notations xmlns:math="http://www.w3.org/1998/Math/MathML">
+  <notation name="radian" xmlns...
+2025-05-01 18:21:09,192 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-21-09-192038-sample_105.xml. Generation time: 7.57s
+2025-05-01 18:21:38,961 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?xml notation version = 1.1 encoding = "I...
+2025-05-01 18:21:38,961 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-21-38-961353-sample_106.xml. Generation time: 29.77s
+2025-05-01 18:21:43,969 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 7: <?xml version =  1.0 encoding = "UTF-8" standalone =  yes?>
+<notations>
+  <notation name ="My Notati...
+2025-05-01 18:21:43,970 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-21-43-970000-sample_107.xml. Generation time: 5.01s
+2025-05-01 18:22:13,601 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 8: <b>Solution 1: XML Declaration Feature</b>
+
+   				   
+ 
+       
+
+     
+
+   
+
+  
+ 
+
+
+
+
+
+   
+
+
+
+
+
+...
+2025-05-01 18:22:13,601 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-22-13-601708-sample_108.xml. Generation time: 29.63s
+2025-05-01 18:22:19,561 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 9: <?xml version = 1.0 encoding = "UTF-8"?>
+<?notation xmlns:notation = "http://www.example.com/notatio...
+2025-05-01 18:22:19,561 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-22-19-561190-sample_109.xml. Generation time: 5.96s
+2025-05-01 18:22:27,953 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 10: <?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE note [
+<!ELEMENT note ( sender | recipient | subj...
+2025-05-01 18:22:27,954 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-22-27-954113-sample_110.xml. Generation time: 8.39s
+2025-05-01 18:23:00,751 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 11: <?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE addressbook [
+<!ELEMENT addres...
+2025-05-01 18:23:00,751 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-23-00-751385-sample_111.xml. Generation time: 32.80s
+2025-05-01 18:23:30,731 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 12: <?xml version = 1.0  encoding = "UTF-8" standalone =  no?>
+ <bookstore xmlns:xsi = "http://www.w3.or...
+2025-05-01 18:23:30,731 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-23-30-731745-sample_112.xml. Generation time: 29.98s
+2025-05-01 18:23:43,302 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 13: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE document [
+<!ENTITY img "image...
+2025-05-01 18:23:43,302 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-23-43-302406-sample_113.xml. Generation time: 12.57s
+2025-05-01 18:23:51,888 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 14: <hello world:mathxmlns="http://example.com/math" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instanc...
+2025-05-01 18:23:51,888 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-23-51-888207-sample_114.xml. Generation time: 8.59s
+2025-05-01 18:24:21,514 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 15: <?xml version=1.0 encoding="UTF-8" standalone= yes?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"...
+2025-05-01 18:24:21,514 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-24-21-514719-sample_115.xml. Generation time: 29.63s
+2025-05-01 18:24:51,435 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 16: <b>Solution 1: XML Declaration with Embedded Schema</b>
+
+        			
+  		  				
+    	       
+ 		 			...
+2025-05-01 18:24:51,436 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-24-51-435873-sample_116.xml. Generation time: 29.92s
+2025-05-01 18:24:57,561 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 17: <personal-notation>
+  <!-- notation -->
+    <xs:simpleType xmlns:xs="http://www.w3.org/2001/XMLSchem...
+2025-05-01 18:24:57,562 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-24-57-562031-sample_117.xml. Generation time: 6.13s
+2025-05-01 18:25:27,593 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 18: <?xml version=1.0 encoding="UTF-8" standalone = yes?><!DOCTYPE image [<!ELEMENT image ( alt, title, ...
+2025-05-01 18:25:27,593 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-25-27-593296-sample_118.xml. Generation time: 30.03s
+2025-05-01 18:25:41,028 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 19: <?xml version = 
+  1.0 encoding = "ISO-8859-1" 
+  standalone =  yes?>
+ 
+<xs:schema xmlns:xs = "http:...
+2025-05-01 18:25:41,029 - gcd_xml_fuzz_single_Notation_Declaration - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-25-41-028943-sample_119.xml. Generation time: 13.44s

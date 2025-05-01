@@ -1,0 +1,86 @@
+<?xml version = 1.0  encoding="UTF-8"?>
+<!DOCTYPE book [
+<!ELEMENT book (title, author, publisher, year, reviews) >
+<!ELEMENT title (#PCDATA)*
+  >
+<!ELEMENT author (name, birthdate) >
+<!ELEMENT name (#PCDATA)*
+  >
+<!ELEMENT birthdate (#PCDATA)*
+  >
+<!ELEMENT publisher (address) >
+<!ELEMENT address (street, city, state, zip) >
+<!ELEMENT street (#PCDATA)*
+  >
+<!ELEMENT city (#PCDATA)*
+  >
+<!ELEMENT state (#PCDATA)*
+  >
+<!ELEMENT zip (#PCDATA)*
+  >
+<!ENTITY decimal.one "0.5">
+<!ENTITY decimal.zero "1">
+<!ENTITY amp "&amp;">
+<!ENTITY nbsp "&nbsp;">
+<!ENTITY copyright "&copy;">
+<!ENTITY credit "&trademark;">
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+ 
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+ 
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+ 
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+ 
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+ 
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+ 
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>  
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book>
+  
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book> 
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book> 
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT book> 
+
+<!ELEMENT reviews (review+) >
+<!ELEMENT review (#PCDATA)* >
+<!ELEMENT

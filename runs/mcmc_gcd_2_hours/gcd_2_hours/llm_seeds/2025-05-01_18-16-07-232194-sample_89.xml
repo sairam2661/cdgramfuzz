@@ -1,0 +1,20 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE product_catalog SYSTEM "catalog.xsd">
+<product_catalog xmlns:geo = "http://www.example.com/geo">
+  <product>
+    <name>Desk Lamp</name>
+    <description>
+      <para>This is a desk lamp with a shade.</para>
+      <para>Please contact us for pricing.</para>
+    </description>
+    <price currency ="EUR">$ 49.99</price>
+    <geo:location lat =".5" lon =".5"/>
+  </product>
+  <entity>
+    <public_entity>
+      <!-- Public Entity -->
+      <countryName>USA</countryName>
+      <cityName>New York</cityName>
+    </public_entity>
+  </entity>
+</product_catalog>

@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE person [
+<!ENTITY personEntity "\n Person entity: ">
+<!ENTITY nameEntity "John &amp; Doe;">
+<!ENTITY ageEntity "30">
+]>
+
+<person entity ="One Line Person Entity">
+  <name>&personEntity; Alice's Name</name>
+  <age>&ageEntity;</age>
+  <address entity ="MultiLine Entity">
+    <firstLine>123 St</firstLine>
+    <secondLine>Road</secondLine>
+    <thirdLine>&personEntity; 
+              Full Name is &nameEntity;</thirdLine>
+  </address>
+</person>

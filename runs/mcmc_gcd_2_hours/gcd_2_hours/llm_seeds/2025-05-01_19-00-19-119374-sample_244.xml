@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd = "http://www.w3.org/2001/XMLSchema" xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xsi:schemaLocation ="http://www.w3.org/2001/XMLSchema-instance http://example.com/catalog.xsd"
+         xmlns = "http://example.com/catalog"
+         xmlns:product = "http://example.com/product"
+         xmlns:supplier = "http://example.com/supplier"
+         exclude-content="pi">
+    <description>Catalog entry for products.</description>
+    <product identifier="product1">
+        <name>Wine I</name>
+        <description>Rich Cabernet Sauvignon wine</description>
+        <supplier>
+            <name>Merlot Wine Co.</name>
+        </supplier>
+    </product>
+</catalog>

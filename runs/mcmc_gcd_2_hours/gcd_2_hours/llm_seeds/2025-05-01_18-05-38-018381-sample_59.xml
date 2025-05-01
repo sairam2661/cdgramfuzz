@@ -1,0 +1,59 @@
+<?xml version = 1.0 encoding = "UTF-8"
+standalone = yes?>
+
+<!DOCTYPE catalog [
+<!ELEMENT catalog (product* | supplier*)>
+<!ELEMENT product (name, price, description*)>
+<!ELEMENT supplier (name, price, description*)>
+<!ELEMENT name (#PCDATA)*
+><!ELEMENT description (#PCDATA)*>
+<!ELEMENT product-name (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+<!-- at least one product or supplier is required -->
+<!ELEMENT description-list (product | supplier)*>
+<!ELEMENT product (product-name, price, description-list)>
+<!ELEMENT supplier (name, description-list)>
+<!ELEMENT product-name (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+<!ELEMENT description (#PCDATA)*>
+<!ELEMENT description-list (product | supplier)*>
+<!ELEMENT product-name (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*>
+<!ELEMENT description (#PCDATA)*>
+<!ELEMENT description-list (product | supplier)*>
+
+<!ELEMENT catalog (product* | supplier*)>
+<!ELEMENT product (name, price, description*)>
+<!ELEMENT supplier (name, description*)>
+<!ELEMENT name (#PCDATA)*
+><!ELEMENT description (#PCDATA)*>
+
+<!ELEMENT catalog (product | supplier*)>
+<!ELEMENT product (name, price)>
+<!ELEMENT supplier (name)>
+<!ELEMENT product-name (#PCDATA)*
+><!ELEMENT price (#PCDATA)*>  
+<!ELEMENT name (#PCDATA)*
+><!ELEMENT description (#PCDATA)*>
+<!ELEMENT product (name, price)>
+<!ELEMENT supplier (name)>
+<!ELEMENT name (#PCDATA)*
+><!ELEMENT description (#PCDATA)*>
+<!ELEMENT product-name (#PCDATA)*>
+<!ELEMENT price (#PCDATA)*> 
+<!ELEMENT description (#PCDATA)*>
+<!ELEMENT description-list (product | supplier)*>
+<!ELEMENT product (name, price, description-list)>
+<!ELEMENT supplier (name, description-list)>
+<!ELEMENT book (name, description)>
+<!ELEMENT catalog (book)>
+<!ELEMENT product (name, description)>
+<!ELEMENT supplier (name, description)>
+<!ELEMENT name (#PCDATA)*>  
+<!ELEMENT description (#PCDATA)*>  
+<!ELEMENT book (name, description)>
+<!ELEMENT catalog (product | supplier)>
+<!ELEMENT catalog (book)>
+<!ELEMENT product (name, description)>
+<!ELEMENT supplier (name, description)>
+<!

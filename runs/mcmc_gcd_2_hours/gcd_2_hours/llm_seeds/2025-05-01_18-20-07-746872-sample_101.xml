@@ -1,0 +1,54 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<?xml-notation xmlversion="1.0"?>
+<!DOCTYPE picture [
+    <!ELEMENT picture (image)>
+    <!ELEMENT image (#PCDATA)*>  
+    <!ATTLIST image (alt   
+                        )
+
+   ']?> 
+<picture xmlns="http://example.com/bookmarks">
+    <image alt="Example Image"></image>
+</picture> 
+<!ENTITY photo " Photo Description ">
+<!ENTITY image-alt &photo;"> 
+<!ENTITY picture-type public "-//company//picture-type" "picture-type"> 
+<!ELEMENT image (#PCDATA) * > 
+<!ELEMENT doc (#PCDATA).* > 
+
+<?xml-notation xmlversion="1.0"?>
+<!DOCTYPE image [
+    <!ELEMENT image #PCDATA |
+    <!ELEMENT image (#PCDATA | <!ELEMENT attr (#PCDATA) | <!ATTLIST image (#PCDATA) | 
+    <!ATTLIST attr (#PCDATA) |
+    <!ELEMENT attr (*) > 
+    <!ATTLIST image (#PCDATA) |
+    <!ELEMENT xsl-stylesheet (#PCDATA) | 
+    <!ATTLIST xsl-stylesheet (version (#PCDATA) ).
+    ]?> 
+
+<picture xmlns="http://example.com/bookmarks">
+    <image alt="Example Image"></image>
+</picture> 
+<!ENTITY photo " Photo Description ">
+<!ENTITY image-alt &photo;"> 
+<!ENTITY picture-type public "-//company//picture-type" "picture-type"> 
+<!ELEMENT image (#PCDATA) * > 
+<!ELEMENT doc (#PCDATA).* > 
+<picture-type xmlns="http://example.com/bookmarks" picture-type="picture-type"></picture-type> 
+<! ELEMENT math xmlns="http://www.w3.org/1998/Math/MathML">
+<! ATTLIST image (x, y (#PCDATA) 
+      <! ATTLIST attr (#PCDATA) 
+<! ELEMENT formula (#PCDATA)>
+!</math> 
+<!ELEMENT picture (#PCDATA) * > 
+<i>Photo Title</i> 
+<picture x="100" y="200"  xmlns="http://example.com/bookmarks">
+    <!-- image description -->
+    <image attr:alt="Example Image">
+        <!-- image content -->
+        <![CDATA[<img src="image.jpg" alt="alt text">
+   <!ENTITY image-alt &photo;"> 
+<!ENTITY picture-type public "-//company//picture-type" "picture-type">
+   <i>Photo Title</i>

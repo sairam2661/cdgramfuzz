@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?php This is a sample XML file generated using a PHP function?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+  <description>
+    The main documentation page.
+  </description>
+  <company>ABC Inc.</company>
+  <street>123 Main St</street>
+  <city>Anytown</city>
+  <state>CA</state>
+  <zip>12345</zip>
+  <phone>555-555-5555</phone>
+  <fax>555-555-1234</fax>
+  <email>info@abcinc.com</email>
+</catalog>
+  

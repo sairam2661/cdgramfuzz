@@ -1,0 +1,18 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<!DOCTYPE product_catalog SYSTEM "product_catalog.dtd">
+<product_catalog XML:ID="catalog-123">
+  <entity>
+    <!-- Entity declaration -->
+    <!--
+    <?xml:namespace prefix = "xsd" href = "http://www.w3.org/2001/XMLSchema"?>
+    -->
+    <!--
+    <?xml:namespace prefix = "msxsl" href = "msxsl.xsl"?>
+    -->
+    <product name ="?>
+    <price currency = />
+    <description />
+  </entity>
+</product_catalog>  
+
+<!ENTITY product_entity_product "Product_0078_3D_Printer_KL45K_1234_aeaa_c00c_6b95_5e1d_kfca_d42d_9f6c_9d5f_3b98_98ed_42b6_ae49_8d3a_00f2_3f98_56df_60c7_8c62_33d4_40b4_44ed_4f8c_98d3_oosb_11ac_4c00_88c6_7c46_ac00_4e4d_5e41_3f88_99a9_0c4e_5e4f_80c0_5d74_3c28_3ea7_1df1_6f4c_3ce6_3aea_3bfa_3b8c_35f4_29cc_3d50_35c1_3c5f_3b78_7bf3_5fc5_5d5f_55dd_9d28_35dc_35f9_3b60_6d24_oosb_5d4f_9d7f_4f55_4f98_34f4_34f3_42fa_42f6_58e0_5ca5_5c6a_5ca6_64cc_6d33_6de9_6ec8_66d3_7a1a_7b6a_7c21_7c42_81cc_81fa_85a3_86d8_8822_8e43_9386_8e3a_98f1_e20a

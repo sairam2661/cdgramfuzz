@@ -1,0 +1,27 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+    <country name ="" soapenc:rootnode =""/>
+    <genre> Rock</genre>
+    <name>Unchained Saxopants</name>
+    <artist>White Castle</artist>
+    <image>image001.jpg</image>
+    <year>1989</year>
+    <labels>
+        <label>
+            <name>Es Paradox</name> 
+            <address>Rue Payen</address>
+            <city>10007</city>
+            <country>France</country>
+            <phone></phone>
+            <fax>01 47 20 84 32</fax>
+            <email>blabla@es-paradox.com</email>
+            <cataloguetype>catcatalog</cataloguetype>
+            <validfrom>1988-01-01</validfrom>
+            <validto></validto>
+        </label>
+    </labels>
+    <price>12.99</price>
+    <pages>12</pages>
+    <categories>Music</categories>
+    <rating>4</rating>
+    </catalog>

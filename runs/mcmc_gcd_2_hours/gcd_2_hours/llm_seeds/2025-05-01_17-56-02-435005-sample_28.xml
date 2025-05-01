@@ -1,0 +1,34 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE catalogue [
+  <!ELEMENT catalogue (book|author|publisher) >
+  <!ELEMENT book (title, author, publisher, year) >
+  <!ELEMENT author (firstname, lastname) >
+  <!ELEMENT publisher (name, city) >
+  <!ELEMENT title (#PCDATA)*
+  ><!ELEMENT author (#PCDATA)* >
+  <!ELEMENT publisher (#PCDATA)* >
+  <!ELEMENT book (#PCDATA)* >
+  <!ELEMENT catalogue (#PCDATA)* >
+]>
+  <catalogue>
+        <book>
+            <title>A Computer Science Book</title>
+            <author>
+                <authorfirstname>John</authorfirstname>
+                <authorlastname>Doe</authorlastname>
+            </author>
+            <publisher>
+                <publishername>ABC Publisher</publishername>
+                <city>New York</city>
+            </publisher>
+            <year>2020</year>
+        </book>
+        <author>
+            <authorfirstname>Jane</authorfirstname>
+            <authorlastname>Doe</authorlastname>
+        </author>
+        <publisher>
+            <publishername>ABC Publisher</publishername>
+            <city>New York</city>
+        </publisher>
+        </catalogue>

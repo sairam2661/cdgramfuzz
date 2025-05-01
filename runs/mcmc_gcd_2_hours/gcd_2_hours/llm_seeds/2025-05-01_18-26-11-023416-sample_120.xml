@@ -1,0 +1,63 @@
+<?xml version = 
+    1.0?>
+
+     <?xml-stylesheet type="text/xsl" 
+                 href="complex.xsl"?>
+
+     <?xmppartial2public 
+         xmlns="http://www.xmpp.org/ns/xmpp">
+ 
+          <entity name="#entity1">ENTITY-DOC</entity>
+          <public 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://www.w3.org/2001/xmlns.xsd 
+             href="complex.xsd"/>
+ 
+          <private 
+               xmlns:urn="urn:private:namespace": 
+               xmlns:priv="urn:private:priv-namespace"> 
+   
+   
+               <type>entity</type>
+               <content>Private Content</content> 
+
+          </private>
+
+</xmppartial2public> 
+
+And the XSD Schema used by the above XML:
+
+ <?>
+
+      <xs:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+         targetNamespace="http://www.xmpp.org/ns/xmpp"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         elementFormDefault="qualified"
+         attributeFormDefault="unqualified"
+         xmlns:xmppartial2public="http://www.xmpp.org/ns/xmpppartial2public">
+
+      <xs:element name="xmppartial2public">
+         <xs:complexType>
+            <xs:sequence>
+               <xs:element name="entity" type="entityType"/>
+               <xs:element name="public" type="publicType">
+                  <xs:complexType>
+                     <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                           <xs:attribute name="schema" type="xs:string"/>
+                        </xs:extension>
+                     </xs:simpleContent>
+                  </xs:complexType>
+               </xs:element>
+               <xs:element name="private" type="privateType"/>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:element>
+
+      <xs:element name="entity" type="entityType"/>
+      <xs:complexType name="entityType">
+         <xs:simpleContent>
+            <xs:extension base="xs:string">
+               <xs:attribute name="name" type="xs:string"/>
+            </

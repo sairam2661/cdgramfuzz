@@ -1,0 +1,42 @@
+<?xml version = 1.0 
+encoding = "UTF-8" 
+standalone = yes?>
+
+<entities xmlns:xlink="http://www.w3.org/1999/xlink" 
+xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns="http://www.example.com/standard">
+
+    <entity ref="person"/>
+    <entity ref="address"/>
+    <entity>
+        <id value="id123"/>
+        <title>John Doe</title>
+        <description>An example entity</description>
+        <elements>
+            <element name="phone">
+                <type>string</type>
+            </element>
+            <element name="email">
+                <type>string</type>
+            </element>
+        </elements>
+        <perref xlink:href="#per123"/>
+        <perref xlink:actuate="onLoad"/>
+    </entity>
+
+    <ds:element name="address" type="ds:structuredAddress"/>
+    <ds:element name="organization" type="dt:organization"/>
+    <ds:element name="jobTitle" type="xs:string"/>
+    <ds:element name="phone" type="xs:string"/>
+    <ds:element name="fax" type="xs:string"/>
+    <ds:element name="email" type="xs:string"/>
+    <ds:perref xlink:href="#per456"/>
+
+    <ds:XLink href="#per123"/>
+    <ds:XLink xlink:actuate="onLoad" xlink:role="dynamic"/>
+
+    <per xmlns="http://www.example.com/per">
+        <id value="id123"/>
+    </per>
+
+</entities>

@@ -1,0 +1,16 @@
+<?xml version =1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xmlns:prod = "http://example.com/catalog/products">
+    <producer id ="http://example.com/catalog/products#ABC200">
+      <name>ABC Inc.</name>
+      <address>123, Main St.</address>
+    </producer>
+    <product id ="http://example.com/catalog/products#XYZ100">
+      <title>XYZ</title>
+      <description>Xylophone</description>
+      <prod:features>
+         <prod:Sound>
+             <prod:Frequency>200</prod:Frequency>
+         </prod:Sound>
+      </prod:features>
+    </product>
+</catalog>

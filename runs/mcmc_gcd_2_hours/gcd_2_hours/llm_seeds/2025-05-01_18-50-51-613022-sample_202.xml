@@ -1,0 +1,53 @@
+<?xml version =    1.0   encoding="UTF-8" standalone =    yes   ?>
+<catalog xml:lang="en">
+    <description>
+        <title>Electronic Catalog</title>
+        <subject>Electronics</subject>
+        <description>Descriptions of the products</description>
+        <contenttype>product</contenttype>
+        <author>
+            <name>John Smith</name>
+            <email>john.smith@example.com</email>
+        </author>
+        <publisher>
+            <company>ABC Corporation</company>
+            <street>123 Main St</street>
+            <city>New York</city>
+            <state>NY</state>
+            <zip>10001</zip>
+            <country>USA</country>
+        </publisher>
+    </description>
+    <product id="1234">
+        <name>Book</name>
+        <price>25.99</price>
+        <description>Regular priced book</description>
+        <image>book.jpg</image>
+        <views>
+            <view>book.jpg</view>
+            <view>book2.jpg</view>
+        </views>
+        <ratings>
+            <rating rating="1">2.0</rating>
+            <rating rating="2">4.0</rating>
+            <rating rating="3">6.0</rating>
+        </ratings>
+        <list price="10.99">Special Offer</list>
+    </product>
+    <product id="5678">
+        <name>Laptop</name>
+        <price>999.99</price>
+        <description>Advanced laptop</description>
+        <image>laptop.jpg</image>
+        <views>
+            <view>laptop.jpg</view>
+            <view>laptop2.jpg</view>
+        </views>
+        <ratings>
+            <rating rating="1">3.0</rating>
+            <rating rating="2">5.0</rating>
+            <rating rating="3">7.0</rating>
+        </ratings>
+        <list price="699.99">Special Offer</list>
+    </product>
+</catalog>

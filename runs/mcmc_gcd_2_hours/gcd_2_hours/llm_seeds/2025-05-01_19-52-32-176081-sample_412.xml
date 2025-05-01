@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog xml:lang ='"en"' xml:version ='"1.0"' xmlns = "http://www.w3schools.com/xml/cd_catalog.dtd">
+    <genre>
+        <name>XYZ Company</name>
+    </genre>
+    <title>Basic Catalog</title>
+    <author>John Smith</author>
+    <publish_date>2002-10-22</publish_date>
+    <price>$30.00</price>
+    <page_count>150</page_count>
+    <country>Bern, Switzerland</country>
+    <language>German</language>
+    <description>book</description>
+</catalog>
+
+      
+   
+        

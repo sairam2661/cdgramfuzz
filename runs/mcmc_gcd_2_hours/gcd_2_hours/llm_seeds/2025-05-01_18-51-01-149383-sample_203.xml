@@ -1,0 +1,13 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<library>
+     <book genre =""  ISBN ="" title="" author ="John Smith"> 
+          <publication_date>2000-10-01</publication_date> 
+          <reader_rating avg ="" num_votes ="3 5 32 8">4.8</reader_rating>
+           <book_reviews> 
+            <review text ="This book was very good" rating ="5"/></book_reviews> 
+     </book>  
+    <author id ="" name ="John  Smith"> 
+     <nationality usa ="/"> usa</nationality> 
+          <age birth_year ="1975 8 11" death_year ="null">50</age>
+       </author> 
+</library>

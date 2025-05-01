@@ -1,0 +1,114 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE collection [
+<!ELEMENT collection (book | book*)>
+<!ELEMENT book (title, publisher, year)>
+<!ELEMENT title (#PCDATA)*
+><!-- No books added in this example -->
+<!-- Adding 3 books to the collection -->
+<!ELEMENT author (#PCDATA)*>
+<!ELEMENT book (
+   title
+  , publisher
+  , year
+  , author
+)>
+<!ELEMENT publisher (#PCDATA)*>
+<!ELEMENT year (#PCDATA)*>
+<!ELEMENT title (#PCDATA)*>
+<!ELEMENT author (#PCDATA)*>
+<!ELEMENT collection (book | book*)>
+<!ELEMENT book ( 
+   title
+  , publisher
+  , year
+  , author
+)>
+<!ENTITY authorEntity "&lt;&lt;/book&gt;&lt;/author&gt;">
+<!ENTITY publicationInfoEntity "&lt;&lt;/book&gt;&lt;/publisher&gt;&lt;/year&gt;">
+
+<!ENTITY authorEntity "&lt; &lt;/book&gt; &lt;/author&gt;">
+
+<!ENTITY publicationInfoEntity "&lt; &lt;/book&gt; &lt;/publisher&gt; &lt;/year&gt;">
+
+<!ENTITY referenceEntity "&lt; &lt;/collection&gt;" >
+
+<!ELEMENT book (
+   title
+  , publisher
+  , year
+  , author
+)>
+
+
+
+
+
+
+<!ELEMENT collection (#PCDATA)*>
+
+<!ELEMENT publisher (#PCDATA)*>
+
+
+
+
+<!ELEMENT book (
+   title
+  , author
+)>
+<!ELEMENT title (#PCDATA)*>
+
+
+
+
+
+<!ELEMENT year (#PCDATA)*>
+
+<!ELEMENT author (
+            title
+           , publisher
+            )
+>
+
+<!ELEMENT collection (book | book*)>
+
+<!ELEMENT book (title,description)>
+
+<!ELEMENT title (#PCDATA)*>
+
+<!ELEMENT description (#PCDATA)*>
+
+
+
+<!ELEMENT year (#PCDATA)*>
+
+<!ELEMENT publisher (#PCDATA)*>
+
+<!ELEMENT author (#PCDATA)*>
+
+<!ELEMENT authorDetails (#PCDATA)*>
+
+<!ELEMENT title (#PCDATA)*>
+
+<!ELEMENT bookdetails(
+       author
+      , description
+      , year
+      , publisher
+       )>
+
+
+
+
+
+
+
+
+
+
+
+
+<!ENTITY authorNameEntity "&lt;&lt;/author&gt;">
+
+<!ENTITY titleEntity "&lt;&lt;/title&gt;">
+
+<!ENTITY descriptionEntity "&lt;&lt;/description&gt

@@ -1,0 +1,118 @@
+<?xml version =1.0 encoding="UTF-8" standalone =yes?>
+<?xml-stylesheet type="text/xsl" href="document.xsl"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.example.com/ns"
+ elementFormDefault="qualified">
+<xs:element name="document">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="header" type="xs:string"/>
+<xs:element name="body" type="note"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="note">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="to" type="xs:string"/>
+<xs:element name="from" type="xs:string"/>
+<xs:element name="subject" type="xs:string"/>
+<xs:element name="message" type="xs:string"/>
+<xs:element name="priority" type="priority"/>
+</xs:sequence>
+<xs:attribute name="level" type="xs:string"/>
+</xs:complexType>
+</xs:element>
+<xs:element name="priority">
+<xs:simpleType>
+<xs:restriction base="xs:string">
+<xs:enumeration value="low"/>
+<xs:enumeration value="medium"/>
+<xs:enumeration value="high"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+</xs:schema>
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+    
+   
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  

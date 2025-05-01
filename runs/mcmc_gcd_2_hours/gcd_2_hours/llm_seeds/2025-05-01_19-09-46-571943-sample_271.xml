@@ -1,0 +1,43 @@
+<?xml version = 
+    1.0 
+    encoding = "UTF-16"
+    standalone = 
+    yes 
+   ?>
+
+<address book 
+    ="Differential Names"
+    version="" 
+    urrent ="" 
+    >
+<entry name="Home"
+        addressline-1 ="
+        John &quot
+        ;">
+    <phone type ="
+        Office"
+        >123-456-7890
+    </phone>
+    <phone type ="
+        Residential"
+        >098-765-4321
+    </phone>
+</entry>
+<entry name="Work"
+        addressline-1 ="
+        Jane &quot
+        ;">
+    
+    <phone type ="
+        Office"
+        >111-222-3333
+    </phone>
+    
+    <email> 
+        email@example.com
+    </email>
+    
+    <fax>555-123-4567</fax>
+</entry>
+</address 
+     >

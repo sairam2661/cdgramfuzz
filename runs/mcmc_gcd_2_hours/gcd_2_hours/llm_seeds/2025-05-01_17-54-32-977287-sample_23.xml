@@ -1,0 +1,8 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE library_catalog SYSTEM "catalog.dtd">
+<library_catalog>
+  <book id ="'BK001'" title ="'To Kill a Mockingbird'" author ="'Harper Lee'" publication_date ="'1960-07-11'" genre ="'Classic'" status ="'Available'" quantity ="'10'" price ="'10.99'" />
+  <book id ="'BK002'" title ="'1984'" author ="'George Orwell'" publication_date ="'1949-06-08'" genre ="'Dystopian'" status ="'Checked Out'" quantity ="'5'" price ="'9.99'" />
+  <book id ="'BK003'" title ="'Pride and Prejudice'" author ="'Jane Austen'" publication_date ="'1813-01-28'" genre ="'Classic'" status ="'Available'" quantity ="'8'" price ="'8.99'" />
+</library_catalog>

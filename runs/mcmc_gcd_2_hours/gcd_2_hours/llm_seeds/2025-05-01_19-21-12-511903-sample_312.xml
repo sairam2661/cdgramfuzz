@@ -1,0 +1,15 @@
+<hibernate_mapping version="5.0" encoding="UTF-8" standalone="no" xmlns:hibernate="http://www.hibernate.org/xml/dtd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hibernate.org/xml/dtd
+          http://www.hibernate.org/backward/compatible/5_0_8.dtd">
+
+    <class name="com.example.model.Entity" table="table_name" schema="schema_name" package="com.example.model">
+        <field name="id">
+            <column name="column_name" type="integer" length="10"/>
+        </field>
+
+        <one-to-one name="child" entity-name="ChildEntity" column="column_name"/>
+        <many-to-one name="parent" entity-name="ParentEntity" column="column_name"/>
+        <many-to-many name="parents" table="parent_table" join-column="parent_table_key" element="children" column="children_table_key"/>
+    </class>
+
+</hibernate_mapping>

@@ -1,0 +1,11 @@
+<personal-notations xmlns:math="http://www.w3.org/1998/Math/MathML">
+  <notation name="radian" xmlns:r="http://www.example.org/radian">
+    <description>A unit of angle measurement</description>
+    <symbol>&rad;</symbol>
+    <math:apply math:associativity="yes" math:computation="rad(a) = 2*PI*a" />
+  </notation>
+  <notation name="pi" xmlns:pi="http://www.example.org/pi">
+    <description>A mathematical constant</description>
+    <symbol>&pi;</symbol>
+  </notation>
+</personal-notations>

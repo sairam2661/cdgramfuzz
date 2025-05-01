@@ -1,0 +1,25 @@
+<?xml version = 
+1.0
+encoding = 
+"UTF-8"
+standalone = 
+yes?>
+<bibliography>
+  <reference id=" bib1 " type="book">
+    <title>a</title>
+    <author>John Smith </author>
+    <year>2020</year>
+    <publisher>ABC </publisher>
+    <price>100 </price>
+  </reference>
+  <reference id="bib2" type="article">
+    <title>b</title>
+    <author>Jane Doe</author>
+    <year>2022</year>
+    <title>of A and B </title>
+    <journal>MJM</journal>
+    <volume>20</volume>
+    <pages>1-10</pages>
+  </reference>
+  <reference id="bib3" type="book" />
+</bibliography>

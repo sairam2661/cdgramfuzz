@@ -1,0 +1,7 @@
+<hello-world version="1.8" encoding="ISO-8859-1">
+    <?xml prolog-projection="author" creation-date="2020-01-15"?>
+    <catalog>
+        <product id="BK101" description="A Book"/>
+        <product id="BK102" description="Another Book"/>
+    </catalog>
+</hello-world>

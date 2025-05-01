@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE library [
+  <!ELEMENT book (title, author, publisher, pages) >
+  <!ELEMENT title (#PCDATA)*
+  ><!ELEMENT author (#PCDATA)* > 
+  <!ELEMENT publisher (#PCDATA)* > 
+  <!ELEMENT pages (#PCDATA)* >
+]>
+<library>
+<book>
+<author>John Smith</author>
+<publisher>Random House</publisher>
+<title>"To Kill a Mockingbird""</title>
+<pages>281</pages>
+</book>
+</library>

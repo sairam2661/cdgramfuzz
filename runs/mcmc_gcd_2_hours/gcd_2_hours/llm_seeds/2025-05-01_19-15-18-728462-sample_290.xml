@@ -1,0 +1,42 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+    <genre>Novel&amp;amp;&quot;}
+    <title>Book</title>
+    <author>Author Name</author>
+    <price>19.99</price>
+    <publish>
+        <date>2000-10-01</date>
+        <address>
+            <street>123, Test Avenue</street>
+            <city>New York</city>
+            <country>USA</country>
+        </address>
+    </publish>
+</catalog> 
+
+<?xml version = "1.0" encoding = "UTF-16"?>
+<bookstore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="bookstore.xsd">
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+            <char-ref>&amp;</char-ref>
+    </book>
+    <book id="bk102">
+        <title>HTML for Beginners</title>
+        <author>Jane Doe</author>
+        <price>24.99</price>
+        <pages>250</pages>
+    </book>
+</bookstore> 
+
+<?xml version = 1.0 encoding = "ISO-8859-2"?>
+<address version="10">
+    <street name="Main Street">Some Street</street>
+    <city name="Anytown">Anytown</city>
+    <state name="US">US</state>
+    <zip code="12345">12345</zip>
+    <char-ref>&amp;</char-ref>
+    <phone number="1234567890">1234567890</phone>
+</address> 
+<?xml version = "1.0" encoding = "UTF-8"?>
+<page name="front页

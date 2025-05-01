@@ -1,0 +1,15 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<note xmlns = "http://example.org/note" xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation ="http://example.org/note note.xsd">
+<to name ="{urn:uuid:123456-7890-1a23-b45c-6789abcdef0}>Alice</to>
+<from name =">{http://www.w3.org/2001/XMLSchema}string">Bob</from>
+<subject>Meeting</subject>
+<note-body>
+<heading>Agenda</heading>
+<punctuating>
+<item>Discussion on project X</item>
+<item>Roadmap development</item>
+</punctuating>
+</note-body>
+<priority level ="{http://www.w3.org/2001/XMLSchema}integer" priority ="{http://www.w3.org/2001/XMLSchema}string">High</priority>
+</note>

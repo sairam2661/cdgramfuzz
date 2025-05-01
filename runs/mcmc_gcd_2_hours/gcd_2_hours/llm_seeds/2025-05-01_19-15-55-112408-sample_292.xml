@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xml:lang ="" xmlns ="urn:isbn:978-0-13-850002-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:isbn:978-0-13-850002-5 catalog.xsd">
+    <description>
+        This is a demonstration of character reference in XML file
+    </description>
+    <publisher>ABC</publisher>
+    <price>19.99</price>
+    <character_reference>&copy;</character_reference>
+</catalog>

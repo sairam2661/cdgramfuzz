@@ -1,0 +1,43 @@
+<?xml version = 
+    1.0 
+    encoding = "UTF-8" 
+    standalone = 
+    yes 
+?>
+<!DOCTYPE note-system PUBLIC "-//W3C//DTD Note System v1.0//EN" 
+  "http://www.w3.org/Tryst/2000/01 note.dtd">
+<note-system>
+    <note>
+        <to>Alice</to>
+        <from>Bob</from>
+        <subject>Meeting</subject>
+        <message>Don't forget our meeting at 2pm!</message>
+        <priority level="high"/>
+        <attachments>
+            <attachment type="pdf">Meeting Minutes</attachment>
+            <attachment type="docx">Meeting Notes</docx>
+        </attachments>
+    </note>
+    <note>
+        <to>Charlie</to>
+        <from>Dave</from>
+        <subject>Task Completion</subject>
+        <message>Confirm task completion by 5pm today!</message>
+        <priority level="medium"/>
+        <attachments>
+            <attachment type="jpg">Task Progress</jpg>
+            <attachment type="pdf">Task Report</pdf>
+        </attachments>
+    </note>
+    <note>
+        <to>Eve</to>
+        <from>Fran</from>
+        <subject>Event Reminder</subject>
+        <message>Don't miss our seminar on Friday!</message>
+        <priority level="low"/>
+        <attachments>
+            <attachment type="mp3">Reminder Reminder</mp3>
+            <attachment type="txt">Reminder Text</txt>
+        </attachments>
+    </note>
+</note-system>

@@ -1,0 +1,20 @@
+<personal-data>
+  <?xml version="1.0" encoding="UTF-8"?>
+  <record-set>
+    <record>
+      <name>John Doe</name>
+      <identification.Number>12345</identification.Number>
+      <identification.Licence-State>New York</identification.Licence-State>
+      <identification.Issue-Date>2020-01-01</identification.Issue-Date>
+      <identificationExpiration-Date>2023-01-01</identificationExpiration-Date>
+      <address>123 Main St</address>
+      <address>Apartment 4</address>
+      <address>NY 10001</address>
+      <phone-Type>Residence</phone-Type>
+      <phone-Value>123-456-7890</phone-Value>
+      <email-Address>john.doe@example.com</email-Address>
+      <birth-Date>1990-01-01T00:00:00Z</birth-Date>
+      <sex>Male</sex>
+    </record>
+  </record-set>
+</personal-data>

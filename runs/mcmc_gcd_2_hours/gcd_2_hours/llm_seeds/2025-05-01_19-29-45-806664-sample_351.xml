@@ -1,0 +1,29 @@
+<helloworld version="1.9.4">
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An introduction to XML.</description>
+        <country>USA</country>
+        <company>ABC Inc.</company>
+        <contact person="John Smith" email="johnsmith@example.com" phone="858-555-5555"/>
+        <currency>USD</currency>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT for Dummies</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>A guide to XSLT.</description>
+        <country>USA</country>
+        <company>DEF Inc.</company>
+        <contact person="Jane Doe" email="janedoe@example.com" phone="900-555-5555"/>
+        <currency>USD</currency>
+    </book>
+</catalog>
+</helloworld>

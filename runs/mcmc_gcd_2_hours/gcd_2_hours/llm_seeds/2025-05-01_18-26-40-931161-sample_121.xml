@@ -1,0 +1,154 @@
+<Schema xmlns="http://www.w3.org/2001/XMLSchema"
+       targetNamespace="http://example.com/note"
+       elementFormDefault="qualified"
+       version="2.0"
+       encoding="UTF-8">
+  <element name="note" type="noteType"/>
+  <type name="noteType">
+    <complexType mixed="true">
+      <sequence>
+        <element name="to" type="string"/>
+        <element name="from" type="string"/>
+        <element name="subject" type="string"/>
+        <element name="message" type="string"/>
+        <element name="priority" type="integer"/>
+      </sequence>
+      <attribute name="id" type="integer" use="required"/>
+    </complexType>
+  </type>
+  <per:data xmlns:per="http://example.com/notation">
+    <per:publicEntity xmlns="http://www.w3.org/2001/XMLSchema">
+      <per:parameter name="ns" type="xsd:string" value="http://example.com/notation"/>
+    </per:publicEntity>
+    <per:notation xmlns="http://www.w3.org/2001/Drafts/NS/Note NS-1.0">
+      <per:notationValue xmlns="http://www.w3.org/2001/XMLSchema">
+        <per:parameter name="value" type="xsd:string" value="Version 1.0"/>
+      </per:notationValue>
+      <per:notationValue xmlns="http://www.w3.org/2001/XMLSchema">
+        <per:notationRef xmlns="http://www.w3.org/2001/XMLSchema" name="#noteType"/>
+      </per:notationValue>
+    </per:notation>
+  </per:data>
+</Schema>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+   

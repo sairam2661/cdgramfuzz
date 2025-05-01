@@ -1,0 +1,20 @@
+<?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<?xml-stylesheet type="text/xsl" href="#main"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+  <?php /* A comment in PHP */?>
+  <book lang="English">
+    <title>XML for Beginners</title>
+    <author>John Smith</author>
+    <description>A book about XML</description>
+    <price>29.99</price>
+    <pubdate>2022-01-01</pubdate>
+  </book>
+  <book lang="French">
+    <title>Morceaux de philosophie</title>
+    <author>Jean Doe</author>
+    <description>Un livre sur les philosophies</description>
+    <price>39.99</price>
+    <pubdate>2022-01-15</pubdate>
+  </book>
+</catalog>

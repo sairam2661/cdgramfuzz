@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<bookstore xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation ="
+   bookstore xsd/bookstore.xsd">
+  <description xmlns = "http://www.w3.org/2000/01/xml_data_types"
+  xsi:type ="xsd:string">
+  A great bookstore
+  </description>
+  <bookstoreInfo>
+  <title xmlns = "http://www.w3.org/2000/01/xml_data_types"
+  xsi:type ="xsd:string">Books Inc</title>
+  </bookstoreInfo>
+  <book categories ="http://schemas.xmlschematool.org categorizations/2002"
+  xsi:type ="xsd:string" xmlns:cat = "http://www.adjectivix.com/cat xmlns:xsd = "http:www.w3.org2001_schema.xmlscheme.xmlschemas.netcdom2xsd0c8cd7d98c34e3a7b01c4bde3b2a1f9e5d9aaab98c6b4fd8a2dce38f55f8b0c4ae4fa74bd5f3cdebd7cbab7c5f9d8c4a1c4d7ca6c7d2d2b13ec4b1e1d8e32adfa0d89f3e5e41e4a15e4d1ca7d9a0b97e15bd14c3ef5a2e4f8f2e1ac7c2ab1f6b7d3d6dc37ad98e32a15c6bb2d4f8f4c9ab0c7c3df9ce3bd9ad84bf2bf3ad74ad78afbe2cda5f4f2f7a1dfb6f3ad3ca2d9dbd1ca8a3b4cdd9ab2a8c3af8e4dabdbd3d3c1ad14cd8abfa76fa3f1ba6d2f17a9decdab0d8bdca7dce5bf1a75db2af2e5ae8ab3dabebfa5af2

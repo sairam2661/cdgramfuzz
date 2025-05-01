@@ -1,0 +1,41 @@
+<?xml version = 
+  1.0  encoding = "UTF-8" 
+  standalone = 
+
+  yes?>
+
+<!DOCTYPE library [
+  <!ELEMENT library (author, book* ) >
+  <!ELEMENT author (name, dob) >
+  <!ELEMENT book (title, publicationDate, ISBN, authors) >
+  <!ELEMENT authors (author+) >
+  <!ELEMENT title (#PCDATA)*>  
+  <!ELEMENT publicationDate (#PCDATA)*>  
+  <!ELEMENT ISBN (#PCDATA)*>  
+  <!ELEMENT name (#PCDATA)* >
+  <!ELEMENT dob (#PCDATA)* >
+]>
+
+<library>
+  <author>
+    <name>John Doe</name>
+    <dob>1990-02-12</dob>
+  </author>
+  <book>
+    <title>Python Programmer</title>
+    <publicationDate>2022-01-01</publicationDate>
+    <ISBN>978-1-56959-917-6</ISBN>
+    <authors>
+      <author>Harry Potter</author>
+      <author>J.K. Rowling</author>
+    </authors>
+  </book>
+  <book>
+    <title>Javascript Developer</title>
+    <publicationDate>2021-06-01</publicationDate>
+    <ISBN>978-1449350524</ISBN>
+    <authors>
+      <author>Steve Harper</author>
+     </authors>
+  </book>
+</library>

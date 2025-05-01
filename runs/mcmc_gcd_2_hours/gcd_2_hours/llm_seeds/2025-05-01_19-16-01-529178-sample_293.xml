@@ -1,0 +1,11 @@
+<Timeline>
+  <Version>Alpha 4 Beta 3</Version>
+  <ProjectType>Software Development</ProjectType>
+  <CreationDate>1999-02-15T14:30:00+1100<![CDATA[<img src="icon.gif">]]></CreationDate>
+  <ProjectName>My Project</ProjectName>
+  <Priority>&amp;&gt;</Priority>
+  <Categories>
+    <Category>General</Category>
+    <Category>&lt;image src="image.jpg"&gt;</Category>
+  </Categories>
+</Timeline>

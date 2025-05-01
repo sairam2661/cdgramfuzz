@@ -1,0 +1,9 @@
+<?xml version =1.0 encoding="UTF-8"?>
+<ns:AjaxRequest xmlns:ns="http://example.com/ns">
+        <ns:Username>admin</ns:Username>
+        <ns:Password hash="12345"/>
+        <ns:LoginDetails>
+                <ns:UserIP>192.168.1.1</ns:UserIP>
+                <ns:UserAgent>Mozilla/5.0</ns:UserAgent>
+        </ns:LoginDetails>
+</ns:AjaxRequest>

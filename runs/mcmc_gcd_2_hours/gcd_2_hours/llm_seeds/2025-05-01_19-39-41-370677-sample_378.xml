@@ -1,0 +1,57 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<books>
+
+  <book genre="fiction" 
+      price="10.99"
+
+       publicationDate="2005" 
+       author="J.K. Rowling"
+       title="Harry Potter and the Goblet of Fire">
+ 
+    <editorialReviews>
+      <review
+        rating="5"
+        text="A fantastic read!"/>
+      <review
+          rating="4"
+          text="A great addition to the series"/>
+    </editorialReviews>
+
+    <keywords>magic, adventure</keywords>
+    <description>
+      In this fourth installment of the beloved Harry Potter series, Harry is unexpectedly selected as a participant in a triwizard tournament.
+    </description>
+
+    <coverImage
+      filename="harry_potter_and_the_goblet_of_fire.jpg" 
+      width="15" height="20"
+      type="jpeg"/>
+  </book>
+
+  <book genre="non-fiction" 
+    price="9.99" 
+    publicationDate="2010" 
+    author="Steve Jobs"
+    title="Steve Jobs">
+ 
+    <editorialReviews>
+      <review
+        rating="5"
+        text="A biography that inspires"/>
+      <review
+          rating="4"
+          text="A must-read for any tech enthusiast"/>
+    </editorialReviews>
+
+    <keywords technologyleadershipinnovation
+    				="" />
+    <description>
+      A biography of the man behind Apple Computers, covering his early life, career, and impact on the world of technology.
+    </description>
+
+    <coverImage
+      filename="steve Jobs BIO.jpg" 
+      width="10" height="12"
+      type="jpeg"/>
+  </book>
+</books>

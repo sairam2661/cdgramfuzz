@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+    <vendor id="VT1">
+        <model name="Gull W1">
+            <description>Modern single-engine, three-seat, lightweight, two-piece aluminum airfield-ready aircraft</description>
+            <cost currency="USD">Pricing info not found </cost>
+            <specifications>see website for updated information</specifications>
+            <powerplant type="rotary" make="Hirth">
+                <model name="F-31">
+                    <horsepower>80</horsepower>
+                    <engine-type>gasoline</engine-type>
+                </model>
+            </powerplant>
+        </model>
+    </vendor>
+</catalog>

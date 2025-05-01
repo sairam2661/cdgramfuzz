@@ -1,0 +1,102 @@
+2025-05-01 18:33:35,160 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 0: <?xml version=
+    1.0 
+    encoding="UTF-8"
+    standalone =   
+        yes?>
+
+  
+<!-- This is a pr...
+2025-05-01 18:33:35,161 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-33-35-161168-sample_140.xml. Generation time: 30.95s
+2025-05-01 18:33:53,539 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 1: <?xml version = 1.0  encoding = "ISO-8859-7"?>
+<?-version 1.0?>
+<!DOCTYPE catalog SYSTEM "catalog.dt...
+2025-05-01 18:33:53,539 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-33-53-539630-sample_141.xml. Generation time: 18.38s
+2025-05-01 18:34:02,332 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 2: <?xml version=
+    1.0 encoding= "UTF-8"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+ 
+
+<catalog> 
+
+  ...
+2025-05-01 18:34:02,333 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-34-02-332847-sample_142.xml. Generation time: 8.79s
+2025-05-01 18:34:31,782 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 3: <xml version="1.0" encoding="UTF-8" standalone="yes">
+<catalog>
+  <!-- This is an XML catalog for bo...
+2025-05-01 18:34:31,783 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-34-31-783092-sample_143.xml. Generation time: 29.45s
+2025-05-01 18:34:40,106 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 4: <?xml version = 1.0 encoding = 'UTF-8' standalone = yes?>
+
+<!-- Prolog Comment -->
+<!-- This is a sa...
+2025-05-01 18:34:40,107 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-34-40-106969-sample_144.xml. Generation time: 8.32s
+2025-05-01 18:34:48,960 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 5: <?xml version=
+1.0
+encoding="ISO-8859-1"
+standalone=
+no?>
+<?xml:declaration
+version=
+"1.0"
+encoding=...
+2025-05-01 18:34:48,961 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-34-48-961096-sample_145.xml. Generation time: 8.85s
+2025-05-01 18:34:57,434 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+ 
+<?xml-prolog
+This is an XML document gen...
+2025-05-01 18:34:57,435 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-34-57-435202-sample_146.xml. Generation time: 8.47s
+2025-05-01 18:35:12,160 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 7: <?xml version = 1.0 encoding = "UTF-8"?>
+<!-- XML documentation for a library of scientific papers -...
+2025-05-01 18:35:12,161 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-35-12-160946-sample_147.xml. Generation time: 14.73s
+2025-05-01 18:35:19,871 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 8: <?xml version = 1.0 encoding = "UTF-8"?>
+ 
+<?prolog 
+    Author = "John Doe"
+    DocumentVersion = "...
+2025-05-01 18:35:19,872 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-35-19-871873-sample_148.xml. Generation time: 7.71s
+2025-05-01 18:35:49,949 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 9: <?xml version = 1.0  encoding = "UTF-8"?>
+<!--XML Declaration Documentation for Customer Information...
+2025-05-01 18:35:49,949 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-35-49-949721-sample_149.xml. Generation time: 30.08s
+2025-05-01 18:36:19,853 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 10: <?xml version = 1.0 encoding = "utf-8"?>
+<xsl:stylesheet xmlns:xsl = "http://www.w3.org/1999/XSL/Tra...
+2025-05-01 18:36:19,854 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-36-19-854198-sample_150.xml. Generation time: 29.90s
+2025-05-01 18:36:36,845 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 11: <?xml version = 1.0 encoding = "utf-8"?>
+<?prolog
+    This is a complex XML document for a library m...
+2025-05-01 18:36:36,846 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-36-36-845821-sample_151.xml. Generation time: 16.99s
+2025-05-01 18:36:41,287 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 12: <hello-world version="1.8" encoding="ISO-8859-1">
+    <?xml prolog-projection="author" creation-date...
+2025-05-01 18:36:41,287 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-36-41-287284-sample_152.xml. Generation time: 4.44s
+2025-05-01 18:36:53,141 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 13: <?xml version = 
+     1.0 
+     encoding = 
+     "ISO-8859-1" 
+     standalone = 
+     yes?>
+
+<?prol...
+2025-05-01 18:36:53,141 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-36-53-141452-sample_153.xml. Generation time: 11.85s
+2025-05-01 18:37:01,677 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 14: <?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<!DOCTYPE person[
+<!ELEMENT name (first, last)>
+...
+2025-05-01 18:37:01,678 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-37-01-677857-sample_154.xml. Generation time: 8.54s
+2025-05-01 18:37:12,311 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 15: <?xml version=1.0 encoding="UTF-8" standalone=yes?>
+<?xml-stylesheet type="text/xsl" href="#main"?>
+...
+2025-05-01 18:37:12,311 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-37-12-311786-sample_155.xml. Generation time: 10.63s
+2025-05-01 18:37:20,438 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 16: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?php This is a sample XML file generated ...
+2025-05-01 18:37:20,438 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-37-20-438363-sample_156.xml. Generation time: 8.13s
+2025-05-01 18:37:28,890 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 17: <?xml version =1.0 encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog xml:lang="en"...
+2025-05-01 18:37:28,890 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-37-28-890471-sample_157.xml. Generation time: 8.45s
+2025-05-01 18:37:42,235 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 18: <?xml version=1.0 encoding="UTF-8"?>
+<!-- XML validation and encoding settings -->
+<!-- 
+  This docu...
+2025-05-01 18:37:42,235 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-37-42-235365-sample_158.xml. Generation time: 13.34s
+2025-05-01 18:37:54,207 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 19: <?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?prolog>
+ XML documentation for product specification...
+2025-05-01 18:37:54,208 - gcd_xml_fuzz_single_Prolog_Comment - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-37-54-207855-sample_159.xml. Generation time: 11.97s

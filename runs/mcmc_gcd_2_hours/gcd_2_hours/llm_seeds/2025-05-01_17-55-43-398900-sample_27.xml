@@ -1,0 +1,33 @@
+<?xml version =  1.0 encoding = "UTF-8"?>
+<!DOCTYPE productCatalog [
+<!ELEMENT productCatalog (product*)>
+<!ELEMENT product (name, description, price)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT description (#PCDATA )*   
+    >
+<!ELEMENT price (#PCDATA)*> 
+<!ELEMENT productCategory (name, description, products)>
+<!ELEMENT productCategoryName (#PCDATA)*>                
+<!ELEMENT description (#PCDATA)*    
+    >
+<!ELEMENT productCategoryProducts (product*)>         
+<!ELEMENT productItems (priceItem*)>
+<!ELEMENT priceItem (price, item)>
+<!ELEMENT price (#PCDATA)*>           
+<!ELEMENT item (#PCDATA)*    
+    >
+<!ELEMENT productItemPrice (#PCDATA)*
+    > 
+]>
+<productCatalog>
+  <productCategory name="Electronics" description="Electronic products."
+  products="ElectronicProducts"/>
+  <product name="Test"
+  description="Test product"
+  price="50.00"/>
+  <productCategoryName>Test</productCategoryName>
+  <productCategoryProducts>
+    <productItemPrice>20.00</productItemPrice>
+    <productItemPrice>30.00</productItemPrice>
+  </productCategoryProducts>
+</productCatalog>

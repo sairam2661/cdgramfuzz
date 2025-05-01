@@ -1,0 +1,27 @@
+<hybridDocument xmlns:fb="http://schemas.openxmlformats.org/foundation/2007/primary"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://schemas.openxmlformats.org/foundation/2007/primary http:// schemas.openxmlformats.org/foundation/2007/primary.xsd">
+  <documentType xml:lang="en-US">
+    <title>XML Sample</title>
+    <author>
+      <fb:authorInfo>
+        <fb:name>John Doe</fb:name>
+        <fb:email>john.doe@example.com</fb:email>
+      </fb:authorInfo>
+    </author>
+    <date>2022-01-01</date>
+    <media:title xml:lang="en-US">Sample Article</media:title>
+    <media:content url="http://example.com/article" mimeType="video/mp4" duration="300"/>
+    <summary xml:lang="en-US">This is a sample article.</summary>
+    <extension>
+      <fb:extensionKey>sample Article</fb:extensionKey>
+    </extension>
+    <note>
+      <to>Alice</to>
+      <from>Bob</from>
+      <subject>Meeting</subject>
+      <message>Don't forget our meeting at 2pm!</message>
+      <priority level="high"/>
+    </note>
+  </documentType>
+</hybridDocument>

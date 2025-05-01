@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="note styles.css"?>
+<note timestamp="2023-03-15T15:30:00+00:00" version="1.0">
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</note>
+ 
+ 

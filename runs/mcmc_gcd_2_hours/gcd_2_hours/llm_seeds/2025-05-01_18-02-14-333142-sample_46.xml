@@ -1,0 +1,53 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <!--
+        Element Declaration for the Book Element
+    -->
+    <!--
+        Element Declaration for the Author Element
+    -->
+    <!--
+        Element Declaration for the Publisher Element
+    -->
+    <!--
+        Element Declaration for the Book Title
+    -->
+    <!--
+        Element Declaration for the Book Author
+    -->
+    <!--
+        Element Declaration for the Book Publisher
+    -->
+    <!--
+        Element Declaration for the Book Description
+    -->
+    <!--
+        Element Declaration for the Book Price
+    -->
+    <!--
+        Element Declaration for the Book Isbn
+    -->
+    ->
+    <book>
+        <title>1984</title>
+        <author>
+            <name>George Orwell</name>
+            <birth-date>1903-01-25</birth-date>
+        </author>
+        <publisher>Penguin</publisher>
+        <description>A dystopian novel.</description>
+        <price currency ="" amount ="" tax ="" currency-code ="" />
+        <isbn>0-395-41042-1</isbn>
+    </book>
+    <book>
+        <title>The Hate U Give</title>
+        <author>
+            <name>Angie Thomas</name>
+            <birth-date>1982-05-03</birth-date>
+        </author>
+        <publisher>Titan</publisher>
+        <description>A contemporary novel.</description>
+        <price currency ="" amount ="" tax ="" currency-code ="" />
+        <isbn>0062462437</isbn>
+    </book>
+</catalog>

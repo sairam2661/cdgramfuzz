@@ -1,0 +1,59 @@
+<?xml version = 
+    1.0 
+    encoding = 
+    "UTF-8" 
+    standalone = 
+    yes?>
+
+<catalog xml:lang="en" xml:stylesheet="http://stylez.css" xml:namespace="http://www.w3.org/1998/06/abs/dtd">
+  <document id="ref1">
+    <title> Reference Document </title>
+    <section id="ref4">
+      <person ref="ref3"/>
+      <name>
+        &lt;name&gt;John Doe&lt;/name&gt;
+      </name>
+      <address>
+        <street>123 Main St&lt;/street&gt;
+        <city>New York&lt;/city&gt;
+        <state>NY&lt;/state&gt;
+        <zip>10110&lt;/zip&gt;
+      </address>
+      <phone type="home">123-456-7890&lt;/phone&gt;
+      <phone type="work">098-765-4321&lt;/phone&gt;
+      <email>john.doe@example.com&lt;/email&gt;
+    </section>
+    <person id="ref3">
+      <name>
+   &lt;name&gt;Jane Roe&lt;/name&gt;
+      </person>
+    </section>
+    <section id="ref5">
+      <title>Another Section</title>
+      <table border="1" summary="Test">
+        <tr><td>Header 1</td></tr>
+        &lt;tr&gt;
+
+        &lt;td&gt;Header 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;Header 3&lt;/td&gt;
+        &lt;/tr&gt;
+      </table>
+    </section>
+  </document>
+</catalog> 
+
+  <keywords>
+    <item xml:lang="en">XSLT</item>
+    <item xml:lang="fr">XSL</item>
+    <item xml:lang="en">Transformations</item>
+    <item xml:lang="fr">Transformations</item>
+</keywords> 
+<author>Andrew Green</author> 
+<copyrights>
+&lt;&lt;copyrigths&gt; &lt;copy&gt; 2003 World Wide Web Consortium, (c) 2003 World Wide Web Consortium (&lt;/copy&gt; )&lt;/copyrigths&gt; 
+</copyrights> 
+
+?> 
+ <!

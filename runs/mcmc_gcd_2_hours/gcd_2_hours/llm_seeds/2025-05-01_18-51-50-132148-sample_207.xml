@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "ISO-8859-1"?>
+<!DOCTYPE catalog
+       SYSTEM "catalog.dtd">
+
+<catalog>
+   <book id="bk101" catalog="catalog">
+      <author>John Smith</author>
+      <title>XML for Beginners</title>
+      <genre>Computer</genre>
+      <publish_date>2000-10-01</publish_date>
+      <description>An in-depth look at creating databases with XML.</description>
+      <price>39.95</price>
+      <pages>300</pages>
+      <pub_id>1234</pub_id>
+      <barcode>9780429187316</barcode>
+   </book>
+</catalog>

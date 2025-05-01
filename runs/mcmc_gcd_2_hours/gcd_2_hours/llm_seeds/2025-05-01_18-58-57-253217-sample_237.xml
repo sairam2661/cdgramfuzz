@@ -1,0 +1,124 @@
+<?xml version = 
+1.0 
+encoding = 
+"UTF-8" 
+standalone = 
+ yes 
+?>
+
+<?xml version = 
+1.0 
+encoding = 
+"UTF-8"?>
+<catalog>
+    <book id ="At001" title ="
+Chitty"
+author ="
+Dickens, Charles"
+publisher ="
+Piggy French, Hatchards and Witherings"
+address ="
+B. H. Pub. 17, Strand, London"
+published ="
+1836"
+
+genre ="
+novel"
+description ="
+A novel about characters called Peggotty and...
+">
+
+
+<author>
+    <name>Dickens, Charles</name>
+</author>
+
+<bookstore country ="
+in"
+name ="
+BSB The Bookshop">
+    <city>c**
+B**
+
+    <book>
+        <title>Chitty</title>
+        <genre>novel</genre>
+        <price>10.99</price>
+        <pubDate>2003-10-22</pubDate>
+        <description>
+A very short story
+</description>
+    </book>
+    <book id ="
+AT002" title ="
+Oliver Twist"
+author ="
+Dickens, Charles"
+publisher ="
+Piggy French, Hatchards and Witherings"
+address ="
+B. H. Pub. 17, Strand, London"
+published ="
+1838"
+genre ="
+novel"
+description ="
+A novel about characters called...
+">
+
+
+</bookstore>
+</catalog> 
+
+ 
+ <?xml version = 
+1.0 
+encoding = 
+"UTF-8"?>
+<person>
+    <name>John</name>
+    <address street ="
+12 Whitehall"
+city ="
+London"
+state ="
+London"
+postalCode ="
+EC2A 3PT"
+country ="
+GB"
+phone ="
+020 7125 1251"
+fax ="
+020 7163 1299"
+
+email ="
+john@example.com"
+>
+</person> 
+
+ 
+ <client>
+   
+   <personalDetails>
+     <name>Jane</name>
+     <age>33</age>
+   </personalDetails>
+   
+   <order><product name ="
+Laptop" price ="
+1500.00"/>
+            
+</order>
+   
+</client> 
+
+ 
+<?xml version = 
+1.0 
+encoding = 
+UTF-8"?>
+<productList>
+    <product>
+        <name>Bicycles</name>
+        <price>

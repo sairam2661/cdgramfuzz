@@ -1,0 +1,26 @@
+<?xml version = 
+  1.0 encoding = "ISO-8859-1" 
+  standalone =  yes?>
+ 
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+  targetNamespace ="http://example.com"
+  xmlns:tns = "http://example.com"
+  elementalContentModel ="Italactic"
+  elementFormDefault ="That">
+  <xs:element name ="+-">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name ="a" maxOccurs ="*"/>
+        <xs:element name ="+-">
+          <xs:complexType mix ="{xs:extension,tns:Z}">
+            <xs:attribute name ="_b" type ="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name ="c" maxOccurs ="*"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:notation name ="-+">
+    <xs:location xpath ="./_-c"/>
+  </xs:notation>
+</xs:schema>

@@ -1,0 +1,57 @@
+<S:Envelope xmlns:S="http://docs.oasis-open.org.wssoap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"> 
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns="http://schemas.xmlsoap.org/wsdl/soap/">
+  <xml:lang xml:lang="en"> 
+  <XBRL:Document xmlns:XBRL="http://www.xbrl.org/2002/xbrl">
+    <XBRL:DocumentMeta>
+      <XBRL:Issuer>Example 
+      <XBRL:TaxonomyReference>Financial Reporting Council</XBRL:TaxonomyReference>
+      <XBRL:Location>Example</XBRL:Location>
+    </XBRL:DocumentMeta>    
+  </XBRL:Document>
+  </XBRL:Document>
+  </soap:Body>
+</soap:Envelope> 
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+  <card>
+    <title>Chicken Nugget</title>
+    <type>Food</type>
+    <description>Fast Food</description>
+  </card>
+  <card>
+    <title>Apple</title>
+    <type>Food</type>
+    <description>Munchies</description>
+  </card>
+</catalog> 
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+  <person>
+    <name>John</name>
+    <age>30</age>
+    <city>New York</city>
+  </person>
+  <person>
+    <name>Jane</name>
+    <age>25</age>
+    <city>Los Angeles</city>
+  </person>
+</root> 
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<d:catalog xmlns:d="http://data.net">
+  <d:card>
+    <d:title>Chicken Nugget</d:title>
+    <d:type>Food</d:type>
+    <d:description>Fast Food</d:description>
+  </d:card>
+  <d:card>
+    <d:title>Apple</d:title>
+    <d:type>Food</d:type>
+    <d:description>Munchies</d:description>
+  </d:card>
+</d:catalog>

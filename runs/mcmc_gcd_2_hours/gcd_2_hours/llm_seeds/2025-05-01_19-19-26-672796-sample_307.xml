@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <country code ="D" name="Denmark">
+        <region_code name="North" />
+        <city name="Copenhagen" />
+        <company name="IT consulting" />
+        <contact>
+            <name>Mike</name>
+            <email>miike@gte.net</email>
+            <phone>45 7020 0334</phone>
+            <address>
+                <street>Snægerupgade 21</street>
+                <postcode>2560 Gladsaxe</postcode>
+                <country name="Denmark" />
+                <city name="Gład

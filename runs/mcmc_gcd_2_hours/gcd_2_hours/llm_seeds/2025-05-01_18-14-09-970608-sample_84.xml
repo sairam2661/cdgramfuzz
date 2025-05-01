@@ -1,0 +1,11 @@
+<?xml version = 1.0 
+encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE person [
+<!ENTITY name "John">
+<!ENTITY age "30">
+<!ENTITY person_description "&name; years old">
+]>
+<person>
+<name>(&person_description;</name>)
+<age>(&age;</age>)
+</person>

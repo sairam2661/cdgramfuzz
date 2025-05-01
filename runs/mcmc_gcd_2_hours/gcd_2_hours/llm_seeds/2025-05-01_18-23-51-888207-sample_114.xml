@@ -1,0 +1,9 @@
+<hello world:mathxmlns="http://example.com/math" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <math xmlns="http://example.com/math" xsi:schemaLocation="http://example.com/math math.xsd">
+      <num:sum xmlns:num="http://example.com/num">
+         <num:term1>10</num:term1>
+         <num:term2>20</num:term2>
+         <num:result>30</num:result>
+      </num:sum>
+   </math>
+</hello>

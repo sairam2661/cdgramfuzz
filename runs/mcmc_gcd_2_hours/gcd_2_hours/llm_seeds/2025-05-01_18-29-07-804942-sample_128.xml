@@ -1,0 +1,30 @@
+<?xml version = 
+ 1.0 
+ encoding = "UTF-8" 
+ standalone = 
+
+  yes 
+?>
+
+<?import 
+  schemas="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns = "http://www.w3.org/1999/xhtml" 
+  schemaLocation = 
+  "http://www.w3.org/2001/XMLSchema-instance.xsd" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"?>
+<ns1:bookstore xmlns:ns1="urn:bookstore">
+  <ns1:book genre="fiction">
+    <ns1:title>1984</ns1:title>
+    <ns1:author>Aldous Huxley</ns1:author>
+    <ns1:price currency="USD">10.99</ns1:price>
+    <ns1:rating total="3" count="1"/>
+  </ns1:book>
+  <ns1:book genre="non-fiction">
+    <ns1:title>Don Quixote</ns1:title>
+    <ns1:author>Gentile Bellini</ns1:author>
+    <ns1:price currency="USD">12.99</ns1:price>
+    <ns1:rating total="4" count="2"/>
+  </ns1:book>
+</ns1:bookstore>
+
+    

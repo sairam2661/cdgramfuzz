@@ -1,0 +1,18 @@
+<personal>
+    <!--PI Reference -->
+    %prolog.pi{pi_value="3.14" name="pi_constant"};
+    
+    <personal-info>
+        <name>John Doe</name>
+        <age>30</age>
+        <city>New York</city>
+    </personal-info>
+    
+    <!--XML Declaration -->
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    
+    <contact>
+        <email address=".johndoe@example.com"/>
+        <phone-number>123-456-7890</phone-number>
+    </contact>
+</personal>

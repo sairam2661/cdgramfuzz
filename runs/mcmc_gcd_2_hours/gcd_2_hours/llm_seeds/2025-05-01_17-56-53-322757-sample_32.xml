@@ -1,0 +1,19 @@
+<?xml version =    1.0 encoding   = "UTF-8" standalone   =   yes?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+  <title>Library Catalog</title>
+  <vendor>Limited Editions</vendor>
+  <year>2023</year>
+  <book genre="informative">
+    <author>John Smith</author>
+    <title>XML: A Comprehensive Tutorial</title>
+    <price currency="USD">29.99</price>
+    <pub-date month="June" year="2022"/>
+  </book>
+  <book genre="entertainment">
+    <author>Jane Doe</author>
+    <title>The Ultimate Guide to World Domination</title>
+    <price currency="USD">14.99</price>
+    <pub-date month="December" year="2023"/>
+  </book>
+</catalog>

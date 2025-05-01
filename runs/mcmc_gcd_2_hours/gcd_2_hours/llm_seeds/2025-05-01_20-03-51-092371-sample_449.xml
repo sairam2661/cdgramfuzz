@@ -1,0 +1,15 @@
+<TypedCurrencyDefinition xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                        xsi:schemaLocation="http://example.com/typedefs 
+                        http://example.com/typedCurrency.xsd">
+  <Element1 currency="USD" currencyUnit="USD" value="10.50" 
+             dataFormat="general" decimalSeparator=","/>
+  <Element2 currency="EUR" currencyUnit="EUR" value="11.75" 
+             dataFormat="currencySymbolOnly" decimalSeparator="."/>
+  <AttributeList>
+    <Attrib1>USD</Attrib1>
+    <Attrib2>EUR</Attrib2>
+    <Attrib3 value="USD 10.50"/>
+    <Attrib4 value="10.50"/>
+  </AttributeList>
+</TypedCurrencyDefinition>

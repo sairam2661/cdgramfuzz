@@ -1,0 +1,12 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE book [
+<!ATTLIST book attribut1 CDATA #REQUIRED attribut2 CDATA #IMPLIED attribut3 CDATA #IMPLIED attribut4 NMTOKEN #IMPLIED>
+]>
+
+<book attribut1="data1" attribut2="data2" attribut3="data3">
+<title>My Book</title>
+ Chapters
+ Chapter1
+ Chapter2
+ Chapters
+</book>

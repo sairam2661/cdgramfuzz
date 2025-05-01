@@ -1,0 +1,106 @@
+2025-05-01 19:11:58,866 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 0: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<bookstore>
+    <book id ="" isbn ="" au...
+2025-05-01 19:11:58,867 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-11-58-867232-sample_280.xml. Generation time: 6.85s
+2025-05-01 19:12:27,806 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 1: <?xml version = 1.0 encoding = "UTF-8"?>
+  <catalog>
+    <book id =">&lt;a&gt;</book>
+    <book id =...
+2025-05-01 19:12:27,807 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-12-27-807085-sample_281.xml. Generation time: 28.94s
+2025-05-01 19:12:56,673 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 2: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<product catalogue 
+        
+ 
+        ...
+2025-05-01 19:12:56,673 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-12-56-673647-sample_282.xml. Generation time: 28.87s
+2025-05-01 19:13:03,155 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 3: <?xml version=1.0 encoding="UTF-16" standalone=no?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchem...
+2025-05-01 19:13:03,155 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-13-03-155752-sample_283.xml. Generation time: 6.48s
+2025-05-01 19:13:09,192 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 4: <?xml version =1.0  encoding="UTF-8"?>
+<catalog>
+  <book id ="{xxx#123}">  "Book&amp;Price
+    <titl...
+2025-05-01 19:13:09,192 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-13-09-192595-sample_284.xml. Generation time: 6.04s
+2025-05-01 19:13:41,484 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 5: <?xml version = 1.0  encoding = "UTF-8"?>
+<library>
+  <book id ="-1">
+    <title> &apos;1984&apos; b...
+2025-05-01 19:13:41,484 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-13-41-484574-sample_285.xml. Generation time: 32.29s
+2025-05-01 19:14:10,868 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 6: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+  <book id =">&#8211; Technical ...
+2025-05-01 19:14:10,868 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-14-10-868440-sample_286.xml. Generation time: 29.38s
+2025-05-01 19:14:16,922 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 7: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <description.xml>Book</des...
+2025-05-01 19:14:16,922 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-14-16-922298-sample_287.xml. Generation time: 6.05s
+2025-05-01 19:14:28,115 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 8: <?xml version = 
+        
+            1.0      
+            encoding="ISO-8859-1"?>
+ 
+<!DOCTYPE prod...
+2025-05-01 19:14:28,116 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-14-28-116024-sample_288.xml. Generation time: 11.19s
+2025-05-01 19:14:57,191 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 9: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+
+<catalog>
+ <book id ="{123}" title ="{&...
+2025-05-01 19:14:57,192 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-14-57-191826-sample_289.xml. Generation time: 29.08s
+2025-05-01 19:15:18,728 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 10: <?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+    <genre>Novel&amp;amp;&quot;}
+    <title>...
+2025-05-01 19:15:18,728 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-15-18-728462-sample_290.xml. Generation time: 21.54s
+2025-05-01 19:15:47,958 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 11: <?xml version = 
+    1.0  
+    encoding = "UTF-8"  
+    standalone = 
+    yes  
+   ?>
+
+
+<!DOCTYPE pe...
+2025-05-01 19:15:47,959 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-15-47-959191-sample_291.xml. Generation time: 29.23s
+2025-05-01 19:15:55,112 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 12: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xml:lang ="" xmlns ="urn:isbn:978...
+2025-05-01 19:15:55,112 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-15-55-112408-sample_292.xml. Generation time: 7.15s
+2025-05-01 19:16:01,529 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 13: <Timeline>
+  <Version>Alpha 4 Beta 3</Version>
+  <ProjectType>Software Development</ProjectType>
+  <...
+2025-05-01 19:16:01,529 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-16-01-529178-sample_293.xml. Generation time: 6.42s
+2025-05-01 19:16:06,973 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 14: <?xml version = 1.0  encoding = "UTF-8"?>
+ <address>
+  <title>
+   &nbsp;Apotheon Ltd.&nbsp;
+  </titl...
+2025-05-01 19:16:06,973 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-16-06-973513-sample_294.xml. Generation time: 5.44s
+2025-05-01 19:16:35,843 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 15: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<document xmlns:xsi = "http://www.w3.org/2...
+2025-05-01 19:16:35,844 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-16-35-844025-sample_295.xml. Generation time: 28.87s
+2025-05-01 19:16:48,501 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 16: <personal-xml-document>
+<xml-structure version="1.1" encoding="ISO-8859-1">
+<character-reference>&lt...
+2025-05-01 19:16:48,502 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-16-48-501824-sample_296.xml. Generation time: 12.66s
+2025-05-01 19:17:02,052 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 17: <?xml version =1.0?>
+<catalog>
+  <cd>
+    <title>Emmenu - 2000</title>
+    <artist>Milli Vanilli</ar...
+2025-05-01 19:17:02,052 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-17-02-052721-sample_297.xml. Generation time: 13.55s
+2025-05-01 19:17:09,652 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 18: <?xml version=
+1.0 
+encoding="ISO-8859-1" 
+standalone=
+no?>
+<catalog>
+  <book id="bk101">
+    <autho...
+2025-05-01 19:17:09,652 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-17-09-652596-sample_298.xml. Generation time: 7.60s
+2025-05-01 19:17:21,529 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 19: <Ttlement>
+
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  
+  <Library catalogue="main"...
+2025-05-01 19:17:21,529 - gcd_xml_fuzz_single_Character_Reference - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_19-17-21-529576-sample_299.xml. Generation time: 11.88s

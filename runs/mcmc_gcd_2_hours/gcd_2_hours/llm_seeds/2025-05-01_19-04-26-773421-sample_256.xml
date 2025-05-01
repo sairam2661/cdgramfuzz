@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title>Settings</title>
+  </head>
+  <body>
+    <h1>Settings</h1>
+    <form action="/save/user" method="post">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"><br><br>
+      <input type="submit" value="Save Changes">
+    </form>
+  </body>
+</html> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<cxf:annotation-driven>
+  <beans xmlns="http://www.springframework.org/schema/beans"
+         xmlns:jaxrs="http://jax.rs.annotation.handler"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://jax.rs.annotation.handler
+         http://java.sun.com/jsr-311 xmlNS="http:jax.rs.annotation.handler
+         ="/">
+    <cxf:jaxrs provider="cxf-jaxrs-provider"></cxf:jaxrs>
+    <bean id="resource" class="com.example.Resource">
+      <cxf:property name="url" value="http://localhost:8080/service"></cxf:property>
+    </bean>
+  </beans>
+</cxf:annotation-driven> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="http://example.com catalogs">
+  <record>
+    <name>Hard Cover Book</name>
+    <author>John Smith</author>
+    <description>This is a hard cover book.</description>
+    <price>39.95</price>
+  </record>
+  <record>
+    <name>Soft Cover Book</name>
+    <author>Jane Doe</author>
+    <description>This is a soft cover book.</description>
+    <price>29.95</price>
+  </record>
+</catalog> 
+
+<?xml version="1.0" encoding="utf-8"?>
+<tbd:TBD xmlns:tbd="http://www.test.org

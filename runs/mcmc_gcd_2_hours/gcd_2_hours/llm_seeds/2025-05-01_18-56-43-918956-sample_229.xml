@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <product xml:id ="a125" url ="/product_a125.html"/>
+  <product title ="" price ="$12.99"/>
+  <product xml:lang ="" isbn ="" rating =".00"/>
+  <author name ="$12.99">Peter Davis</author>
+  <category xml:id ="" uri ="/category_c123/"/>
+</catalog>

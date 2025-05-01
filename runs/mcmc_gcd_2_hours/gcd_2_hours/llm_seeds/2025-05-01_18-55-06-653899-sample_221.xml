@@ -1,0 +1,7 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<address addresstype ="Yeah" personname ="\nMary Jane" street ="\n123\n 2nd Street" city ="\nNew York" country ="\nUSA" postalcode ="\n10021">
+
+<contractor contractorid ="\nCC-1234" name ="\nJohn Doe" contractorlicense ="\nNY12345" paymentstatus ="\nPAID"/>
+
+<payment paymentmethodid ="\nDMT-001" paymentamount ="\n1000.00" paymentstatus ="\nPAID" taxamount ="\n10.00" taxrate ="\n.10"/>
+</address>

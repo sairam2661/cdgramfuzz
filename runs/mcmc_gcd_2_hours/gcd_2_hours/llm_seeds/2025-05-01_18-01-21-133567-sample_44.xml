@@ -1,0 +1,17 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE library [
+<!ELEMENT library (author, publisher)>
+<!ELEMENT author (name, years_active)>
+<!ELEMENT name (#PCDATA)*
+><!ELEMENT publisher (#PCDATA)*>
+]>
+<library>
+    <author>
+        <name>Fred Wilson</name>
+        <years_active>2005 - 2012</years_active>
+    </author>
+    <publisher>
+        <name>O'Reilly Media</name>
+        <address>Main Street, Sebastopol, CA</address>
+    </publisher>
+</library>

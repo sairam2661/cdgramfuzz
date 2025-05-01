@@ -1,0 +1,6 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<ns0:library xmlns:ns0 = "http://example.com/library">
+    <ns0:book genre ="" isbn ="" author ="" title ="" price ="" />
+    <ns0:book genre ="" isbn ="" author ="" title ="" price ="" />
+    <ns0:review rating ="" review ="" book ="" />
+</ns0:library>

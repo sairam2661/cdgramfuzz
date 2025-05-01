@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog>
+    <product id=" prod103" name="Men's Soccer Jerseys" description="The official jersey of the Men's National Team"
+              price="45.95" quantityInStock="21" brand="Nike" class="Casual"
+              creationDate="2021-01-01" changeDate="2021-08-01"/>
+    <product author ="" description ="" />
+    <product id="prod102" name="Men's Basketball Jerseys" price="53.95" quantityInStock="15" brand="Adidas"
+              class ="" creationDate ="" />
+</catalog>

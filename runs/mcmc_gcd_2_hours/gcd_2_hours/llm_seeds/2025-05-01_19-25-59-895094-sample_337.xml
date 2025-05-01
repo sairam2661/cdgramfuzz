@@ -1,0 +1,33 @@
+<SchoolData xmlns:i="http://schemas.microsoft.com/2008/09/schema-name" xmlns:p="http://schemas.microsoft.com/2009/09/school-data">
+  <SchoolName>Springfield Elementary</SchoolName>
+  <StudentNamespaces>
+    <Namespace1>
+      <StudentName>John Doe</StudentName>
+      <GradeLevel>3</GradeLevel>
+    </Namespace1>
+    <Namespace2>
+      <StudentName>Jane Smith</StudentName>
+      <GradeLevel>4</GradeLevel>
+    </Namespace2>
+  </StudentNamespaces>
+  <FacultyNamespaces>
+    <Namespace3>
+      <TeacherName>Mr. Simpson</TeacherName>
+      <Subject>Math</Subject>
+    </Namespace3>
+    <Namespace4>
+      <TeacherName>Ms. Krabappel</TeacherName>
+      <Subject>English</Subject>
+    </Namespace4>
+  </FacultyNamespaces>
+  <CourseNamespaces>
+    <Namespace5>
+      <CourseName>Springfield Elementary Algebra</CourseName>
+      <GradeLevel>9</GradeLevel>
+    </Namespace5>
+    <Namespace6>
+      <CourseName>Springfield Elementary Geometry</CourseName>
+      <GradeLevel>10</GradeLevel>
+    </Namespace6>
+  </CourseNamespaces>
+</SchoolData>

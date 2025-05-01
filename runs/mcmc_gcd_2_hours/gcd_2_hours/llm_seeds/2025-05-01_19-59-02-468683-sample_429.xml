@@ -1,0 +1,61 @@
+<Solution1>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Library xmlns="http://example.com/library"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/library Library.xsd"
+          version="1.2"
+          lastupdated="2022-02-15T12:00:00-06:00"
+          outputformat="xml">
+
+  <document id="001">
+    <title>Business Plan</title>
+    <author>Jane Doe</author>
+    <category>Main</category>
+    <tags>strategic, management</tags>
+    <priority level="high"/>
+    <versions>
+      <version number="2.0">
+        <description>Initial release</description>
+        <release date="2021-01-01-06:00:00-06:00"/>
+      </version>
+      <version number="3.0">
+        <description>Minor updates</description>
+        <release date="2021-07-01-06:00:00-06:00"/>
+      </version>
+    </versions>
+    <versions>
+      <version number="2.5">
+        <description>Major changes</description>
+        <release date="2021-09-01-06:00:00-06:00"/>
+      </version>
+    </versions>
+    <file>
+      <extension>pdf</extension>
+      <size>1MB</size>
+      <filename>BusinessPlan_v2.0.pdf</filename>
+    </file>
+    <file>
+      <extension>docx</extension>
+      <size>2MB</size>
+      <filename>BusinessPlan_v3.0.docx</filename>
+    </file>
+  </document>
+
+  <document id="002">
+    <title>Marketing Strategy</title>
+    <author>John Smith</author>
+    <category.Main>
+      <subsubcategory>Digital</subsubcategory>
+    </category>
+    <tags>digital, marketing</tags>
+    <priority level="medium"/>
+    <versions>
+      <version number="1.0">
+        <description>Initial release</description>
+        <release date="2021-05-01-06:00:00-06:00"/>
+      </version>
+    </versions>
+    <file>
+      <extension>pdf</extension>
+      <size>500KB</

@@ -1,0 +1,32 @@
+<?xml version = 1.0 
+  encoding = "UTF-8" 
+  standalone =  yes 
+ ?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog version="1.0" entity-set="entities">
+  <database id="example">
+    <url>http://www.example.com/databases</url>
+    <name>Example Database</name>
+  </database>
+  <library id="mylib" catalog="example">
+    <description>This is my library.</description>
+    <copyright>Copyright 2003 O'Reilly &amp; Associates</copyright>
+    <language id="eng">English</language>
+  </library>
+  <entity id="p147" type="book">
+    <title>IP Networking: The Art of Solar Design</title>
+    <author id="a1">Kevin Fallin</author>
+    <pubdate>2002-04-16</pubdate>
+    <subject category="computer Books">Computer Books</subject>
+    <publisher id="p1">O'Reilly &amp; Associates</publisher>
+    <price currency="USD">34.95</price>
+  </entity>
+  <entity id="p148" type="book">
+    <title>IP Networking: The Art of Solar Design</title>
+    <author id="a2">Kevin Fallin</author>
+    <pubdate>2002-04-16</pubdate>
+    <subject category="computer Books">Computer Books</subject>
+    <publisher id="p2">O'Reilly &amp; Associates</publisher>
+    <price currency="USD">34.95</price>
+  </entity>
+</catalog>

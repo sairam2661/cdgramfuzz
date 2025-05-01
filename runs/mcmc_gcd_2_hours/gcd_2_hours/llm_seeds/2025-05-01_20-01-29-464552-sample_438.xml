@@ -1,0 +1,392 @@
+<TITLE OFDOC
+  ="
+  lang="en-GB
+  ="
+  version="V1.0.0.1
+  ="
+  encoding="UTF-8
+  ="
+  standalone="yes
+  ="
+>
+  <DOCTYPE BOOK
+    PUBLIC
+    -"EN-US
+    ="
+    "PROFESSIONAL
+    ="
+  >
+    <BOOK INFORMATION
+      ="
+      author="John Doe
+      ="
+      title="Introduction to XML
+      ="
+      publisher="XML Press
+      ="
+      publication-date="2022-01-01
+      ="
+      price="39.99
+      ="
+    >
+      <CHAPTER CHAPTER  
+        ="
+        subtitle="Understanding
+        ="
+        chapter-number="Chapter   
+        ="
+        author="JaneSmith
+        ="
+      >
+        <SECT sect="Section  
+          ="
+          subtitle="In
+          ="
+        >
+          <TEXT xml:lang="en-GB
+          ="
+          >Understanding the importance of XML stands at the heart of any modern data storage solution. XML uses a self-descriptive approach for exchanging data between applications.
+          ="
+          >
+            <EXAMPLE example="Example
+              ="
+              description="This is a
+              ="
+            >
+              XML stands for
+              ="
+              eXtensible
+              ="
+              Mark-up
+              ="
+            >
+              Language.
+              ="
+            >X
+              ="
+            >
+              <SUBSUBSENT sentence="This
+              ="
+              >is an example of
+              ="
+              text.
+              ="
+            >X
+              ="
+            >
+             .
+              ="
+            >
+          </TEXT>
+        </SECT>
+      </CHAPTER>
+    </BOOKInformation>
+     	
+ 	 
+
+ 	
+
+
+
+ 	
+
+
+
+  
+ 	
+
+
+
+ 
+  
+
+
+
+ 
+ 	
+
+
+
+ 
+
+ 	
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+  
+
+
+  
+ 	
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+  
+ 	
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+  
+
+ 
+ 
+
+
+
+  
+    
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+	
+	
+	
+	
+	
+ 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+ 
+ 
+
+ 
+ 
+
+
+
+
+	
+
+		
+
+
+
+
+		
+
+
+
+
+
+
+
+ 
+
+	
+
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+	
+	
+			
+ 
+ 
+
+	
+	
+ 
+
+ 	 
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+	
+	

@@ -1,0 +1,39 @@
+<BirthdayParty>
+  <PartyDetails>
+    <PartyName>Johns Birthday</PartyName>
+    <PartyDate>2024-02-27</PartyDate>
+    <PartyTime>10:00 PM</PartyTime>
+  </PartyDetails>
+  <GuestList>
+    <Guest>
+      <Name>John</Name>
+      <Relation>Host</Relation>
+    </Guest>
+    <Guest>
+      <Name>Jane</Name>
+      <Relation>Friend</Relation>
+    </Guest>
+  </GuestList>
+  <GiftRegistry>
+    <Gift>
+      <Product>Cash</Product>
+      <Quantity>200</Quantity>
+    </Gift>
+    <Gift>
+      <Product>Dinner</Product>
+      <Quantity>2</Quantity>
+    </Gift>
+  </GiftRegistry>
+  <ExpenseTracking>
+    <Expense>
+      <Date >2024-02-27</Date>
+      <Category>Flowers</Category>
+      <Amount>100</Amount>
+    </Expense>
+    <Expense>
+      <Date >2024-03-01</Date>
+      <Category>Treasure</Category>
+      <Amount>50</Amount>
+    </Expense>
+  </ExpenseTracking>
+</BirthdayParty>

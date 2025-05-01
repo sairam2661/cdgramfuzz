@@ -1,0 +1,43 @@
+<meta xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <xhtml:metadata>
+    <xhtml:name type="text">Product Information</xhtml:name>
+    <xhtml:description type="text">Electronic Components</xhtml:description>
+    <xhtml:product type="text">CPU</xhtml:product>
+    <xhtml:category type="text">Computer Hardware</xhtml:category>
+    <xhtml:price currency="USD">199.99</xhtml:price>
+    <xhtml:delivery type="text">Free Shipping</xhtml:delivery>
+  </xhtml:metadata> 
+
+Question 1 XML file - Answer to Solution 1 remains the same as it was provided.
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<note>
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</note> 
+
+Question 2 XML file - Answer to Solution 2:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <movie id="movie1">
+    <title>Movie1</title>
+    <actor>Tom Hanks</actor>
+    <description>Coffee</description>
+  </movie>
+  <movie id="movie2">
+    <title>Movie2</title>
+    <actor>Tom Cruise</actor>
+    <description>Coffee</description>
+    <rating  min="0" max="5" />
+  </movie>
+</catalog> 
+
+In the above solution, the content model for movie and actor is defined. In addition to text content for the title, actor, and description, a rating is defined with a minimum of 0 and a maximum of 5, in the movie element. Without this model, the XML may contain extra content not defined for actor that is required in movie element as such, a movie will not have actor and rating. For example, in movie with id'movie1',
+<actor/>
+ which is invalid.
+
+In XML, when the structure of a document is more complex, Content Model is used to define the structure of the document

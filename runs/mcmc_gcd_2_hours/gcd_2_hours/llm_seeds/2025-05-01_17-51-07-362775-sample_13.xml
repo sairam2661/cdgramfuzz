@@ -1,0 +1,54 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<document>
+<person id ="That guy" name ="'Reboot of sorts'" description ='"Cyber entity rebooting networks' />
+<topic keywords ="'reboot','networks', 'cyber security'" title ="'Rebooting Cyber Networks'">
+<para>Our team will thoroughly review all sensitive data networks and reboot them securely.</para>
+<para>Using cutting-edge security protocols the entire process will be smooth and swift.</para>
+<author id ="'admin'" name =">John Doe</author>
+<create-date>2024-03-15</create-date>
+</topic>
+</document> 
+
+<?xml version=" xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance' 
+           xsi:schemaLocation ="
+           http://www.w3.org/xml/xlink/xlink.xsd 
+           http://www.w3.org/2000/10/attr-escape/ 
+           http://www.w3.org/1999/02/0224/ 
+           http://www.w3.org/2001/XMLSchema 
+           my.xsd"
+encoding="UTF-8">
+<root xsi:type="my:Data">
+    <id>1</id>
+    <type>book</type>
+</root> 
+</xml>  
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xml:lang="en-us">
+<description>A treatise on information architecture.</description>
+ cataloguing system version="2".3" date="2005-08-22">
+<record>
+<author>John Bachelet</author>
+<title>Information Architecture
+</title>
+<pubDate>Thu, 08 Sep 2005 18:41:48 GMT</pubDate>
+<link>
+<loc>urn:magic:book:101</loc>
+</link>
+<subject>Information architecture; cataloging and classification</subject>
+</record>
+<record>
+<description>Information architecture has evolved significantly over the past four years.</description>
+<author>Jeanine Bell</author>
+<title>The Essential Guide to
+</title>
+<pubDate>Fri, 20 Oct 2006 01:30:54 +0000</pubDate>
+<link>
+<loc>urn:magic:book:102</loc>
+</link>
+<subject>information resources management</subject>
+</record>
+</catalog> 
+?>  
+
+<?

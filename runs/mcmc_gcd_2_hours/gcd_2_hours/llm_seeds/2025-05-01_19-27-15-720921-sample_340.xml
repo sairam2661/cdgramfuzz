@@ -1,0 +1,41 @@
+<?xml version = 
+  1.0 encoding = "ISO-8859-1" 
+  standalone =    yes?>
+ <catalog 
+     xmlns:prod = "http://www.example.com Prod" 
+     xmlns:cat = "http://www.example.com Cat" 
+     xml:lang ="
+    en"
+    UTF-8 
+     ="? 
+   = yes
+    >
+    <description xml:lang = "en-US.UTF-8 
+  ="?  >
+    <title xml:lang = "fr-FR.UTF-8 
+    ="?  >
+        Catalog
+    </title>
+    <product id = "prod10101 
+    ="? >
+       <name xml:lang = "en-NZ.UTF-8
+     ="?  >
+   Book
+      </name>
+       <price xml:lang = "en-AU.UTF-8
+      ="?  >
+   $20.00
+       </price>
+       <availability xml:lang = "en-GB.UTF-8 
+       ="?  >
+        In stock
+        </availability>
+       </product>
+    </description>
+</catalog>?> 
+
+Note: This XML file incorporates different aspects of the XML declaration such as version, encoding, standalone attribute, and character encoding for XML elements. The XML declaration end is implicitly closed with the closing tag of the root element. 
+
+Also, the second part of the XML declaration is not strictly necessary, but it makes the XML declaration end more explicitly. It explicitly sets the character encoding for XML elements within a specific XML namespace and specifies the XML namespace prefixes and their corresponding URIs. However, using a standalone 'no' would be equivalent and simpler. 
+
+The first feature included in this solution is the standalone attribute which is set to 'yes', indicating the document is an independent, self-contained unit which can be viewed or processed without reference to an external DTD or schema. The second featured includes the character encoding for an XML document, the encoding being specified both at the document level and for all XML elements. The character encoding is specified as ISO-8859-1. The third feature includes a named character set which was previously undocumented in XML-NG, this was corrected in the August 2006 version of the spec. Also the fourth feature includes XML namespace declarations with specific prefixes, these could be explicitly omitted from the DTD for the purpose of this exercise. The fifth feature includes a declaration at the end of the document with details such as the character

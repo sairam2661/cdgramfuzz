@@ -1,0 +1,84 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE company
+[
+<!ELEMENT company (name, address, contact)>
+<!ELEMENT name (#PCDATA)*
+>
+<!ELEMENT address (street, city, state, zip)>  
+<!ELEMENT street (#PCDATA)*
+>
+<!ELEMENT city (#PCDATA)*
+>
+<!ELEMENT state (#PCDATA)*
+>
+<!ELEMENT zip (#PCDATA)*
+>
+<!ELEMENT contact (type, email, phone)>
+<!ELEMENT type (#PCDATA)*
+>
+<!ELEMENT email (#PCDATA)*
+>
+<!ELEMENT phone (#PCDATA)*
+>
+<!ELEMENT department (name, manager)>
+<!ELEMENT manager (#PCDATA)*
+>
+
+<!ELEMENT department-name (#PCDATA)*>
+
+<!ELEMENT employee (name, department, position)>
+<!ELEMENT name (#PCDATA)*
+>
+
+<!ELEMENT position (#PCDATA)*
+>
+
+<!ELEMENT employee-id (#PCDATA)*>  <!-- Introduced new element -->
+
+<!ELEMENT employee-name (#PCDATA)*>   <!-- Introduced new element -->
+ 
+
+<!ELEMENT employee-position (#PCDATA)*>    <!-- Introduced new element -->
+
+<!ELEMENT employee-email (#PCDATA)*>     <!-- Introduced new element -->
+    
+<!ELEMENT employee-phone (#PCDATA)*>     <!-- Introduced new element -->
+
+
+<!ELEMENT company (name, address, contact)>
+<!ELEMENT company-id (#PCDATA)*>
+
+<!ELEMENT company-name (#PCDATA)*>
+
+<!ELEMENT company-email (#PCDATA)*>
+
+<!ELEMENT company-phone (#PCDATA)*>
+
+<!ELEMENT company-price (#PCDATA)*>
+
+<!ELEMENT sale (product, customer, date)>
+<!ELEMENT sale-id (#PCDATA)*>
+<!ELEMENT product (#PCDATA)*>
+<!ELEMENT product-name (#PCDATA)*>
+<!ELEMENT product-price (#PCDATA)*>
+<!ELEMENT customer (#PCDATA)*>
+<!ELEMENT customer-name (#PCDATA)*>
+<!ELEMENT customer-email (#PCDATA)*>
+<!ELEMENT customer-phone (#PCDATA)*>
+<!ELEMENT sale-date (#PCDATA)*>
+<!ELEMENT sale-product (#PCDATA)*>
+
+
+<!ELEMENT product-image (#PCDATA)*>    <!-- Introduced new element -->
+
+<!ELEMENT customer-role (#PCDATA)*>     <!-- Introduced new element -->
+
+<!ELEMENT customer-status (#PCDATA)*>    <!-- Introduced new element -->
+
+
+<!ELEMENT sale-price (#PCDATA)*>
+
+<!ELEMENT sale-date>
+<!ELEMENT customerEmail>
+<!ELEMENT deliveryMethod

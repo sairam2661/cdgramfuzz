@@ -1,0 +1,29 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<?parameter- entities 
+     parameter-name = "price-expression" 
+     parameter-entity = "#product-price"?>
+
+<catalog>
+<description lang="en-us">
+  <product id="bk101">
+    <book>
+      <title >   Learning XML </title> 
+      <author >   Ed Burnette-Jonson </author> 
+      <indentation>
+        <first-letter> L </first-letter>
+        <letter-pattern>  .  </letter-pattern>
+      </indentation>
+      <subject >   computer books </subject>  
+      <description> A thorough introduction to the elements of XML. </description>
+      <language > en-us </language>  
+      <content-type >   text/html </content-type>
+      <keywords >   xml, xslt, xquery, xml-schema, xml-blueprint, xml-document </keywords>  
+      <author-email >   editor@xml.com </author-email>  
+      <primary-links >  
+        <link href="chapter1.htm">Chapter 1: xml to html</link>  
+        <link href="chapter2.htm">Chapter 2: xslt to html</link>  
+        <link href="chapter3.htm">Chapter 3: xquery to html</link>  
+      </primary-links>  
+    </book></product>
+  </catalog>
+</description>

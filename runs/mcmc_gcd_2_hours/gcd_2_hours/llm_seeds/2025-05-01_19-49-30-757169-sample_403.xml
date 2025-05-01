@@ -1,0 +1,53 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<notes>
+  <note id="N001">
+    <title>First Meeting</title>
+    <from>CEO</from>
+    <to>Alice</to>
+    <date>2022-01-01</date>
+    <message>
+      <p>Hello, this is our first meeting.</p>
+      <p>See you at 9am.</p>
+    </message>
+  </note>
+  
+  <note id="N002">
+    <title>Second Meeting</title>
+    <from>Bob</from>
+    <to>Bob</to>
+    <date>2022-01-02</date>
+    <message>
+      <p>Hello, this is our second meeting.</p>
+      <p>See you at 2pm.</p>
+    </message>
+  </note>
+</notes>
+
+ 
+
+ 
+
+ 
+
+  
+
+  
+  
+
+  
+
+  
+ 
+
+  
+  
+
+  
+
+ 
+
+  
+
+  
+
+ 

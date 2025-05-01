@@ -1,0 +1,21 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<catalog>
+<description language="en-us">
+    <license>Terms of Service</license>
+    <productList>
+        <product>
+            <name>Smart Phone</name>
+            <description>This is a new smart phone</description>
+            <price currency="USD">599.95</price>
+            <color color="red">Red</color>
+        </product>
+        <product>
+            <name>Laptop</name>
+            <description>This is a new laptop</description>
+            <price currency="USD">999.95</price>
+            <color color="blue">Blue</color>
+        </product>
+    </productList>
+</description>
+</catalog>

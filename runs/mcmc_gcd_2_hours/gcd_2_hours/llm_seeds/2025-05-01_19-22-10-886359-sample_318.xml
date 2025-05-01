@@ -1,0 +1,7 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+  <country code ="{@ ISO2 }">
+    <city name ="{@ CITY_NAME }"/>
+    <population count ="{ @Population@ }"/>
+  </country>
+</catalog>

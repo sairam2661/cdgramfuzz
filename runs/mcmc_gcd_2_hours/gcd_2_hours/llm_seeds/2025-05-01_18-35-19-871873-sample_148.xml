@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+ 
+<?prolog 
+    Author = "John Doe"
+    DocumentVersion = "1.0"
+    CreationDate = "2022-01-01"
+?>
+<catalog>
+    <title>Electronic Catalog</title>
+    <description>This is an electronic catalog for our company.</description>
+    <company>
+        <name>The Company Inc.</name>
+        <address>123 Main St.</address>
+    </company>
+    <product>Product 1</product>
+    <price>19.99</price>
+    <stockQuantity>100</stockQuantity>
+</catalog>

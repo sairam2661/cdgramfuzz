@@ -1,0 +1,34 @@
+<?xml version = 
+    1.0 encoding = "UTF-8" 
+    standalone  =  yes   
+?>
+<!DOCTYPE person [
+    <!ELEMENT person (name,gmail,number,phone) >
+    <!ELEMENT name (#PCDATA)*
+    >
+    <!ELEMENT gmail (#PCDATA)*
+    >
+    <!ELEMENT number (#PCDATA)*
+    >
+    <!ELEMENT phone (#PCDATA)*
+    >
+    <!ATTLIST person
+        id  CDATA  "#"
+        email  CDATA  "#"
+    >
+    <!ELEMENT person (name,gmail,number,phone) >
+]>
+<person id="123" email="abc@xyz.com">
+    <name>
+        John Doe
+    </name>
+    <gmail>
+        abcxyz@gmail.com
+    </gmail>
+    <number>
+        1234567890
+    </number>
+    <phone>
+        9876543210
+    </phone>
+</person>

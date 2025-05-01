@@ -1,0 +1,34 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <description>Exhibit Catalog</description>
+    <data>
+        <exhibit name="Gallery 1">
+            <item name="Painting 1">
+                <artist>Leonardo da Vinci</artist>
+                <title>Girl with a Pearl Earring</title>
+                <medium>Oil on canvas</medium>
+                <date>1665</date>
+            </item>
+            <item name="Sculpture 2">
+                <artist>Michelangelo Buonarroti</artist>
+                <title>Moonlight</title>
+                <medium>Marble</medium>
+                <date>1519</date>
+            </item>
+        </exhibit>
+        <exhibit name="Gallery 2">
+            <item name="Painting 3">
+                <artist>Vincent van Gogh</artist>
+                <title>Starry Night</title>
+                <medium>Oil on canvas</medium>
+                <date>1889</date>
+            </item>
+            <item name="Sculpture 4">
+                <artist>"Unknown Artist"</artist>
+                <title>Neckless Statue</title>
+                <medium>Copper</medium>
+                <date>1685</date>
+            </item>
+        </exhibit>
+    </data>
+</catalog>

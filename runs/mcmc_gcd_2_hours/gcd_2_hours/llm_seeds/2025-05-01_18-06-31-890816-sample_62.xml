@@ -1,0 +1,149 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE database [
+<!ATTLIST database (
+name_NCdata			                              
+  	            
+    )
+ 
+  "db_version"        attribute            
+                
+  (
+     value       			
+  	)
+      
+ 
+  "db_format" 	     attribute 	   
+           	 	
+     (
+   
+      value          		
+  	)
+   
+  "username" 	        attribute         
+ 	    		   
+      (
+     	  value    	  
+	    )
+    
+  "password"          attribute
+      	           
+
+      (
+     	  value    	  
+	    )
+    
+  	  			
+  "connection" 	   attribute 
+                 	   		
+      (
+	 	 	  value    	  
+	    )
+    	
+      	               
+   
+  
+  "cursor" 	   attribute 	       
+ 	    		
+      (
+     	  value      		
+  	)
+
+  "timeout" 	            attribute 	
+         	 		
+
+      (
+
+     	 	  value 	
+  	)	
+	
+  "logging" 	            attribute 	
+         	 		
+
+      (
+     	 	 	 	  value 	
+  	)	
+ 
+  "auth" 	            attribute 	  
+       	 	
+
+     (
+     	 	  value 	
+  	)	
+	
+  
+  "ssl" 	            attribute 	   
+        				  
+
+      (
+     	 	 	  value 	
+  	)
+  
+  "debug" 	            attribute 	   
+         	 
+
+      (
+     	 	   value 	
+  	)	
+          	
+  
+  "database" 	            attribute 	   
+         	 
+
+      (
+     	 	 	  value 	
+  	)	
+	
+  "host" 	            attribute 	  	    
+        		
+      (
+     	 	 	 	  value	    
+  	)	
+	
+  
+  "port" 	            attribute 	   	 	  		
+
+      (
+
+     	 	 	  value	    
+  	)	
+	
+  
+  "name" 	            attribute 	  		 	  	
+	
+      (
+
+     	 	 	 	  value	
+  	) 
+	
+  "type" 	            attribute 	     
+        	 	
+
+      (
+     	 	 	 	  value  
+  	)
+ 
+ 
+  
+  "version" 	            attribute 	    
+         	 		
+
+      (
+     	 	 	 	  value  
+  	)	
+	
+  
+  "url" 	            attribute 	  	
+	
+      (
+     	 	 	 	  value	
+  	)	
+	
+  "keyFile" 	            attribute 	  	 
+         	 		
+
+      (
+     	 	 	 	  value 	
+  	)	
+   
+  
+  "path" 	            attribute 	

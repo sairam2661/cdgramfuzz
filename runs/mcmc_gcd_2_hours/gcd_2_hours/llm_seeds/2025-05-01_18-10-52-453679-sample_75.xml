@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE books [
+<!ATTLIST Book attribut1 CDATA #IMPLIED attribut2 NMTOKEN #IMPLIED attribut3 NMTOKENS #IMPLIED >
+]>
+
+<books>
+<book attribut1="value1" attribut2="value2">
+    <title>Example Book</title>
+    <author>John Doe</author>
+    <category> informativo </category>
+    <lang set="en" xml:lang="en-US">america</lang>
+</book>
+</books>
+           

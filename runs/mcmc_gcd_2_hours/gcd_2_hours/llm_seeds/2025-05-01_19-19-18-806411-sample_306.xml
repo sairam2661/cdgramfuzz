@@ -1,0 +1,15 @@
+<Skills>
+    <Skill name="Python" level="Advanced"/>
+    <Skill name="Java" level="Beginner"/>
+    <Skill name="C++" level="Expert"/>
+    <Skill name="Python">
+        <Level name="Beginner">3 months</Level>
+        <Level name="Intermediate">6 months</Level>
+        <Level name="Advanced">1 year</Level>
+    </Skill>
+    <Skill name="JavaScript">
+        <Level name="Basic">1 month</Level>
+        <Level name="Intermediate">3 months</Level>
+        <Level name="Advanced">6 months</Level>
+    </Skill>
+</Skills>

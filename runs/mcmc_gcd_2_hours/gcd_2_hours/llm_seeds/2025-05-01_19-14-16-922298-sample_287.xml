@@ -1,0 +1,10 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <description.xml>Book</description.xml>
+    <isbn>1-56422-393-1</isbn>
+    <title>XML for Beginners</title>
+    <author>&amp;lt;John Smith&amp;gt;</author>
+    <publisher>XSL Associates</publisher>
+    <price>39.95</price>
+    <pubdate>2000-10-22</pubdate>
+</catalog>

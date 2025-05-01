@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<?prolog>
+ XML documentation for product specifications
+ for XML schema version 1.1
+ written by developer123
+<?>
+
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An in-depth look at creating documents with XML.</description>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>A detailed guide to working with XSLT.</description>
+    </book>
+</catalog>

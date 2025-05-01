@@ -1,0 +1,48 @@
+<?xml version = 1.0  encoding = "UTF-8"  standalone =  yes?>
+<catalog>
+<book  id="bk101"  coverEd="ed1">
+    <author>John Smith  <address>1234  Kalamazoo  Michigan,USA</address></author>
+    <title>XML for Beginners</title>
+    <copyright>2001  Pearson Education,Inc.</copyright>
+    <edition>1</edition>
+    <publisher>Pearson Education,Inc.</publisher>
+    <price>39.95</price>
+    <description>An introduction to XML programming</description>
+    <image>xmlcover.jpg</image>
+    <category> Mineral  
+    <subCategory> Mineral</subCategory>
+    <keywords>Mineral, Mineral, Mineral</keywords>
+    </book>
+    <book  id="bk102"  coverEd="ed2">
+    <author>Jane Doe  <address>1234  New York  NY,USA</address></author>
+    <title>XSLT for Professionals  <address>1234  New York  NY,USA</address></title>
+    <copyright>2002  Pearson Education,Inc.</copyright>
+    <edition>1</edition>
+    <publisher>Pearson Education,Inc.</publisher>
+    <price>49.95</price>
+    <description>A book on XSLT programming</description>
+    <image>xmlcover.jpg</image>
+    <category> Mineral  
+    <subCategory> Mineral</subCategory>
+    <keywords>Mineral, Mineral, Mineral</keywords>
+    </book>
+</catalog> 
+
+ <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+     <address>
+  <addressLine1>yandex  </addressLine1>
+  <addressLine2>ul. Lva Tolstogo   </addressLine2>
+  <city>kiev   </city>
+  <country>Ukraine  </country>
+  <zip> 1   </zip>
+    </address> 
+
+     
+<?xml version = 1.0  encoding = "UTF-8"  standalone =  yes?>
+    <d:person>
+ <xsi:type="d:Person">
+  <d:name>John
+        Doe</d:name>
+    <d:address>
+      <x:Apt>Appartment 101</x:Apt>
+      <x:City>New York

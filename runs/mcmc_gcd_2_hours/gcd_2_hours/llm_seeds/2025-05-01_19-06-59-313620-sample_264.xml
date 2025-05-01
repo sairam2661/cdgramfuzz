@@ -1,0 +1,102 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE note [
+<!ELEMENT note (to,from,subject,message,priority) >
+<!ELEMENT to (#PCDATA)*
+><!ELEMENT from (#PCDATA)*>
+<!ELEMENT subject (#PCDATA)*>
+<!ELEMENT message (#PCDATA)*>
+<!ELEMENT priority (#PCDATA)*> <!--  --> 
+
+<!ATTLIST note 
+name CDATA #REQUIRED
+type (meeting|followup) #REQUIRED>
+ 
+
+<!ELEMENT entity (
+  entityref,
+  name,
+  reference )
+>
+ 
+<!ELEMENT entityref (#PCDATA)*> <!--  -->
+ 
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT reference (#PCDATA)*> 
+
+ 
+<!ENTITY company "ABC Inc." >
+ 
+ 
+<!ENTITY projectname "New Project" > 
+<!ENTITY projectcode "PR-001" >
+ 
+<!ENTITY time "10:00" >
+ 
+<!ENTITY unit "hours" >
+ 
+<!ELEMENT name0 entityref:name>
+ 
+<!ELEMENT company0 entityref:reference>
+ 
+<!ELEMENT company0 company>
+ 
+<!ELEMENT time0 entityref:reference>
+ 
+<!ELEMENT message0 entityref:name0>
+ 
+<!ELEMENT message0 time0>
+ 
+<!ELEMENT message0 company0>
+ 
+<!ATTLIST note0 
+event CDATA #REQUIRED
+source CDATA #REQUIRED
+>
+
+ 
+<!ELEMENT note0 
+(name0,company0,time0,source) 
+>
+
+ 
+ 
+<!ELEMENT source (#PCDATA)*> 
+<!ELEMENT event (#PCDATA)*> 
+ 
+
+<!ELEMENT to (#PCDATA)* >
+<!ELEMENT from (#PCDATA)* >
+<!ELEMENT subject (#PCDATA)* >
+<!ELEMENT message (#PCDATA)* >
+<!ELEMENT priority (#PCDATA)* > 
+ 
+
+<!ELEMENT note0 name0>
+ 
+<!ELEMENT name0 company>
+ 
+<!ELEMENT note0 company0>
+ 
+<!ELEMENT note0 time0>
+ 
+<!ELEMENT note0 time0>
+ 
+<!ELEMENT event0 source>
+ 
+<!ELEMENT event0 source>
+ 
+<!ELEMENT time0 time>
+ 
+<!ELEMENT time0 time>
+ 
+<!ELEMENT name0 message0>
+ 
+<!ELEMENT name0 message0>
+ 
+<!ELEMENT company0 projectname>
+ 
+<!ELEMENT company0 reference>
+ 
+<!ELEMENT reference projectcode>
+ 
+<!ELEMENT message0

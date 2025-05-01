@@ -1,0 +1,9 @@
+<?xml version = 
+      1.01 encoding = "ISO-8859-1" 
+      standalone = 
+      yes?>
+ <catalogs>
+    <product id="P01">Product1</product>
+  <product id="P02">Product2</product>
+  <product id="P03">Product3</product>
+</catalogs>

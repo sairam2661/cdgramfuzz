@@ -1,0 +1,12 @@
+<BillingDetails>
+    <InvoiceDate dateStyle="MM/dd/yyyy"/>
+    <DueDate >2024-03-16</DueDate>
+    <Total><Amount currencyCode="USD">100.00</Amount></Total>
+    <Items>
+        <Product name="Product A"/>
+        <Product name="Product B"/>
+        <Product name="Product C"/>
+    </Products>
+    <Discount type="percent">10</Discount>
+    <PaymentMethod>PayPal</PaymentMethod>
+</BillingDetails>

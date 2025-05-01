@@ -1,0 +1,8 @@
+<SchoolDetails>
+  <StudentEntity name="John &quot;The Great&quot; Doe" altText="#d0edf0"/>
+  <CourseDetail code="CS101" name="Introduction to Programming" description="First course in the programming sequence"/>
+  <StudentRecord id="sr1234">
+    <StudentName>John &quot;The Great&quot; Doe</StudentName>
+    <GradeEntity value="B+" symbol="+"/>
+  </StudentRecord>
+</SchoolDetails>

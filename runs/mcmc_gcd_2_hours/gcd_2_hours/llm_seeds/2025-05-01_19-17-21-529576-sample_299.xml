@@ -1,0 +1,22 @@
+<Ttlement>
+
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  
+  <Library catalogue="main" sort="alphabetical">
+  <Book titleref="#book001">Harry Potter</titleref>
+  <Book idref="#book002" authorref="#author001">To Kill a Mockingbird</idref>
+  <Book isbn="978-0-618-95232-4">1984</Book>
+  
+  <Author idref="#author001" first="Harper" last="Lee" date="1919-02-28"/>
+  <Author idref="#author002" first="Fyodor" last="Dostoevsky"/>
+  <Author idref="#author003" first="Jane" last="Austen"/>
+  
+  <Bookref href="#book001" title="Harry Potter"/>
+  <Bookref href="#book002" title="To Kill a Mockingbird"/>
+  <Bookref href="#book003" title="1984"/>
+  
+  </Library>
+
+</Town>
+ 
+ 

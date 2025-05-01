@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = no?>
+<book store="north-branch">
+  <title>Harry Potter and the Philosopher's Stone</title>
+  <substring title ="{book Title}, {volume} of {series}" name ="{book Author}"/>
+  <paragraph style ="{paragraph Style}">
+    Lord Voldemort, who used the alias Tom Marvolo Riddle, was born in 1926 to a witch mother and a Muggle father and lived in a cupboard under the stairs until the age of 11 when his Muggle relatives decided to send him to Hogwarts School of Witchcraft and Wizardry, his mother meanwhile, used protection spells to keep the cupboard below, and was killed in the summer after his 11th birthday.
+  </paragraph>
+  <picture src="https://example.com/Illustration_1.jpg" alt ="{book Title}, {volume} of {series}">
+    <legend >Harry Potter</legend>
+  </picture>
+  <substring attribute ="{book Title}" value ="{book Title}"/>
+  <substring name ="{book Author}" value ="{book Author}, English author"/>
+  <substring title ="{book Title}" value ="{book Title}, {volume} of {series}"/>
+</book>

@@ -1,0 +1,8 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE addressLIST [<!ATTLIST address attribut1 (typeOfAddress) "unaddressed" attribut2 (cityStatus) "unlisted" >] >
+<addressLIST>
+  <address typeof ="" attribut1 ="" attribut2 ="" countryCode ="" streetAddress ="" localName ="" postalCode ="" addressLocation ="" addrName ="" postalCodeExt ="">
+    <adrString xmlns:geo ="" geocode ="" />
+    <postalCode xmlns:ext ="" ext:addressLine2 ="" />
+  </address>
+</addressLIST>

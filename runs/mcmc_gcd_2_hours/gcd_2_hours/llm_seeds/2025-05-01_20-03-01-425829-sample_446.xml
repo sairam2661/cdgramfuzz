@@ -1,0 +1,27 @@
+<SchoolData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://example.com/school.xsd"
+     version="1.0" encoding="UTF-8" standalone="yes">
+
+  <Year>
+    <Term>
+      <Student>
+        <Name>John Doe</Name>
+        <Age>12</Age>
+        <Subjects>
+          <Math grade="A"/>
+          <Science grade="B"/>
+          <English grade="A"/>
+        </Subjects>
+      </Student>
+      <Student>
+        <Name>Jane Doe</Name>
+        <Age>11</Age>
+        <Subjects>
+          <Math grade="B"/>
+          <Science grade="C"/>
+          <English grade="B"/>
+        </Subjects>
+      </Student>
+    </Term>
+  </Year>
+</SchoolData>

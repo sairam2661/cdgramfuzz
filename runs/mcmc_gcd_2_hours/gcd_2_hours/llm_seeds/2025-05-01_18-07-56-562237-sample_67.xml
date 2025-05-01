@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <book id ="The Great Gatsby" genre =".NET" />
+  <book id =".NET Dictionary" genre =".NET" attributes ="{Author, Publisher, Publication-Year}">
+    <author>Michael Collins</author>
+    <publisher>Microsoft Research</publisher>
+    <publication-year>2004</publication-year>
+  </book>
+  </catalog>

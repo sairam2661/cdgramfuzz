@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<catalog>
+    <description>&apos;Great deals on electronics.&apos;</description>
+    <company name ="(International) Inc." />
+    <employee name ="[John] Smith"/>
+    <contact email ="
+        [john]smith
+        [john]@company.com
+        +1-800-MIKE-8-99
+    "/>
+</catalog>

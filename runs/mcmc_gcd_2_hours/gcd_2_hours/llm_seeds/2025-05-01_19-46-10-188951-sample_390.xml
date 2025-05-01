@@ -1,0 +1,10 @@
+<?xml
+ version  =  1.0
+  encoding=  "ISO-8859-1"
+ standalone=  yes?>
+
+<namedEntity>
+    <characteristic Name  =''   CharacterName    =''    CharacterAge    =''   YearsOld     =''>
+        <physicalAttribute Name =''EyeColor    =''    Height    =''  Meters     =''  Centimeters  =''  HeightInFeet   =''  UnitsOfHeight  =''  MetersPerFeet  =''  HeightPerMeter  =''  FeetPerMeter   =''  CentimetersPerFeet =''  FeetPerCentimeter =''  CentimetersPerInch =''  InchesPerCentimeter =''  CentimetersPerInch =''  InchesPerMeters =''  MetersPerInches  =''  CentimetersPerInches =''  InchPerCentimeter =''  MetersPerInch=''  CentimetersPerMeters =''  InchesPerCentimeters ='' CentimeterPerInch
+        =''   Weight  =''   ounds  =''  Kilograms   =''  Pound       =''  PoundsPerKg     =''  PoundPerKgGross   =''  KilogramsPerPound =''  PoundsPerKgNet   =''  KilogramsPerPounds =''  KilogramPerPound=''  PoundsPerKilograms =''  KilogramsPerKilog  =''  PoundsPerKilog   =''  KilogramPerPoundsGross =''  PoundPerKilog  =''  KilogramPerPoundsNet =''  KilogramPerPounds =''  KilogramsPerPoundGross =''  KilogramsPerPoundsNet =''  KilogramPerPoundsGross =''  KilogramPerPoundsNet =''  PoundPerKilogramGross =''  PoundPerKilogram =''  PoundsPerKilo        =''  PoundPerKilo  =''   Kilograms =''   Pounds  =''      Year      =''>
+        <historicalData Name =''   Marriage  =''  FirstName  =''    PartnerFirstName  =''   PartnerLastName   =''  PartnerLastName  =''  Spouse  =''    RelationshipType   =''  StartDate       =''    Start

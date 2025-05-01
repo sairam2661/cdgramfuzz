@@ -1,0 +1,16 @@
+<?xml version = 1.0
+encoding = "ISO-8859-1" standalone = yes?>
+<catalog>
+  <book idol ="I-12345">
+    <author>First Last</author>
+    <title>Normal Title</title>
+    <genre>General Fiction</genre>
+    <price>19.90</price>
+    <publish_date>1999-11-16</publish_date>
+    <description>An example book!</description>
+    <keywords>
+      <keyword>General Fiction</keyword>
+      <keyword>Classic</keyword>
+    </keywords>
+  </book>
+</catalog>

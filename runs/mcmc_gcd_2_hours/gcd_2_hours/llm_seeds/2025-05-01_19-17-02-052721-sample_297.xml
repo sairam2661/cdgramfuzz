@@ -1,0 +1,19 @@
+<?xml version =1.0?>
+<catalog>
+  <cd>
+    <title>Emmenu - 2000</title>
+    <artist>Milli Vanilli</artist>
+    <genre>Pop</genre>
+    <price>10.90</price>
+    <photo>&amp;lt;i&gt; picture1.jpg&amp;lt;/i&gt; &amp;lt;i&gt; picture2.jpg&amp;lt;/i&gt; &amp;lt;i&gt; picture3.jpg&amp;lt;/i&gt; </photo>
+    <company>Nokia</company>
+  </cd>
+  <cd>
+    <title>Harry Potter and the Chamber of Secrets</title>
+    <artist>Nick Cave and the Bad Seeds</artist>
+    <genre>Rock</genre>
+    <price>12.50</price>
+    <photo>&amp;lt;i&gt; picture4.jpg&amp;lt;/i&gt; &amp;lt;i&gt; picture5.jpg&amp;lt;/i&gt; &amp;lt;i&gt; picture6.jpg&amp;lt;/i&gt; </photo>
+    <company>Eagle Eye Cherry</company>
+  </cd>
+</catalog>

@@ -1,0 +1,24 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<catalog xmlns="http://www.books.com/catalog"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.books.com/catalog catalog.xsd"
+     xml:lang="en">
+    <author xmlns="http://www.authors.com">John Smith</author>
+    <book>
+        <title>XML Elements</title>
+        <abstract>
+            <Para>Qualified names are used...</Para>
+            <Para> to disambiguate elements by their namespace...</Para>
+        </abstract>
+        <topic>XML Elements</topic>
+    </book>
+    <author xmlns="http://www.authors.com">Jane Doe</author>
+    <book>
+        <title>XML Attributes</title>
+        <abstract>
+            <Para>XML attribute can be defined in 2 ways...</Para>
+            <Para> using XML element and attributes...</Para>
+        </abstract>
+        <topic>XML Attributes</topic>
+    </book>
+</catalog>

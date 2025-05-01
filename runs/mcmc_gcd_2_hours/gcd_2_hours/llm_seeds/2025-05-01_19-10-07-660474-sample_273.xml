@@ -1,0 +1,29 @@
+<PizzaOrder version="2.0" encoding="ISO-8859-1">
+  <?xml:lang='en'?>
+  <customer>
+    <name xmlns:address='http://example.com/address'>John Doe</name>
+    <address:street>123 Main St</address:street>
+    <address:city>New York</address:city>
+    <address:state>NY</address:state>
+    <address:zip>10001</address:zip>
+    <phone numtype="domestic">123-456-7890</phone>
+    <amount currency="USD">$100.00</amount>
+  </customer>
+  <items>
+    <item>
+      <name>Pepperoni</name>
+      <quantity>2</quantity>
+      <unit price="10.00" unittype="dollar"/>
+    </item>
+    <item>
+      <name> mushrooms</name>
+      <quantity>1</quantity>
+      <unit price="3.00" unittype="dollar"/>
+    </item>
+  </items>
+  <payment method="credit card">
+    <creditCard cardType="Visa" cardNumber="1234-5678-9012-3456" expiryMonth="02" expiryYear="2025">
+      <verificationValue>123</verificationValue>
+    </creditCard>
+  </payment>
+</PizzaOrder>

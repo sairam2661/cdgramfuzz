@@ -1,0 +1,32 @@
+<?xml version =3.0 encoding="ISO-8859-5"?>
+<Library>
+    <Book id="bk101">
+        <Author>John Smith</Author>
+        <Title>XML for Beginners</Title>
+        <Genre>Computer</Genre>
+        <Price>39.95</Price>
+        <PublicationDate>2000-10-01</PublicationDate>
+        <Publisher>ABC</Publisher>
+        <Description>An in-depth look at creating applications with XML.</Description>
+        <Condition>New</Condition>
+    </Book>
+    <Book id="bk102">
+        <Author>Jane Doe</Author>
+        <Title>XSLT: The Ultimate Guide</Title>
+        <Genre>Tech</Genre>
+        <Price>49.95</Price>
+        <PublicationDate>2001-05-01</PublicationDate>
+        <Publisher>DEF</Publisher>
+        <Description>A comprehensive guide to XSLT.</Description>
+        <Condition>Used - Good</Condition>
+    </Book>
+    <Journal id="jo101">
+        <Title>XML User Magazine</Title>
+        <Issue>3</Issue>
+        <Volume>10</Volume>
+        <PublicationDate>2000-08-01</PublicationDate>
+        <Price>29.95</Price>
+        <Description>A monthly magazine all about XML.</Description>
+        <Condition>New</Condition>
+    </Journal>
+</Library>

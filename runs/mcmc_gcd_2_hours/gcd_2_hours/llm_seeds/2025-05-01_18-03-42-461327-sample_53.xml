@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE citySystem [
+ <!ELEMENT city (name, population, language)>
+ <!ELEMENT name (area, region)>
+ <!ELEMENT region (capital, border)>
+ <!ELEMENT border (neighbors)>
+ <!ELEMENT neighbors (city, country)>
+]>
+<city name="Paris">
+<area>600 km²</area>
+<region capital="Paris" border="Loire Valley"/>
+<border neighbors="City of London, Berlin, Moscow">
+<city>City of London</city>
+<country>England</country>
+</border>
+</city>

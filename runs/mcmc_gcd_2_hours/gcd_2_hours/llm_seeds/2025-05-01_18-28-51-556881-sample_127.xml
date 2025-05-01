@@ -1,0 +1,19 @@
+<TargetNamespace xmlns="http://example.com/ns" 
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:per="http://example.com/ns/per" 
+                xmlns:per="http://example.com/ns/per" 
+                version="1.0" encoding="UTF-8" standalone="yes">
+  <per:targetNamespace per:alias="ns1"/>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="person">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+          <xs:element name="age" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:attribute name="per:targetNamespace-ref" type="per:publicId"/>
+  </xs:schema>
+</TargetNamespace>

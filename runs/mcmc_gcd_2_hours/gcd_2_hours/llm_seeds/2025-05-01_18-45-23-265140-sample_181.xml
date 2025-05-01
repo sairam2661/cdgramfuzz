@@ -1,0 +1,40 @@
+<billing>
+    <customer-info>
+        <name>John Doe</name>
+        <address>
+            <street>123 Main St</street>
+            <city>Anytown</city>
+            <state>CA</state>
+            <zip>12345</zip>
+            <country>USA</country>
+        </address>
+        <phone-numbers>
+            <phone-number type="home">
+                <number>555-1234</number>
+            </phone-number>
+            <phone-number type="mobile">
+                <number>555-5678</number>
+            </phone-number>
+        </phone_numbers>
+    </customer-info>
+    <bill-to>
+        <name>Jane Doe</name>
+        <title_MR_MR_MS_Title>Mr Ms Mr Mrs Title</title>
+        <address>
+            <street>125 Elm St</street>
+            <city>Othertown</city>
+            <state>NY</state>
+            <zip>67890</zip>
+            <country>USA</country>
+        </address>
+        <phone-numbers>
+            <phone-number type="home">
+                <number>555-9012</number>
+            </phone-number>
+            <phone-number type="work">
+                <number>555-1111</number>
+            </phone-number>
+        </phone_numbers>
+    </bill-to>
+
+</billing>

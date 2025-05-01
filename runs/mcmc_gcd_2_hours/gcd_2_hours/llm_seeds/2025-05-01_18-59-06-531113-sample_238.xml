@@ -1,0 +1,18 @@
+<division id="government" department="interior">
+    <title>Ministry of Home Affairs</title>
+    <date>31/05/2024</date>
+    <office-address>
+        <street>Block 101, Sector 28</street>
+        <city>Minneapolis</city>
+        <state>Minnesota</state>
+        <country>USA</country>
+        <zip>55413</zip>
+    </office-address>
+    <chairman title="Honourable Minister" name="Rajesh Kumar Jha"/>
+    <officers>
+        <name>Ali Haque</name>
+        <role>Joint Secretary</role>
+        <position>Additional Charge of Deputy Secretary</position>
+        <phone>011-98765432</phone>
+    </officers>
+</division>

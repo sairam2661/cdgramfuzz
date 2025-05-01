@@ -1,0 +1,23 @@
+<?xml version = 1.0 encoding = "ISO-8859-1" standalone = no?>
+<catalog>
+    <?xml:stylesheet type="text/xsl" href="catalog.xsl"?>
+    <root xmlns = "http://example.com catalog">
+        <book id="bk101">
+            <author>John Smith</author>
+            <title>XML for Beginners</title>
+            <genre>Computer</genre>
+            <price>39.95</price>
+            <publisher>O'Reilly &amp; Associates</publisher>
+            <description>An in-depth look at creating applications with XML.</description>
+            <author xml:lang="en">John Smith</author>
+        </book>
+        <book id="bk102">
+            <author>Jane Doe</author>
+            <title>XSLT: The Ultimate Guide</title>
+            <genre>Computer</genre>
+            <price>49.95</price>
+            <publisher>Wiley Publishing</publisher>
+            <description>Learn the intricacies of XSLT and elevate your skills.</description>
+        </book>
+    </root>
+</catalog>

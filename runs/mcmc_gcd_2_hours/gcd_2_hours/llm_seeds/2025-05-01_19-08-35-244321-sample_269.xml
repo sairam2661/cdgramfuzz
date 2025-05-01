@@ -1,0 +1,28 @@
+<?xml version =1.0  encoding="UTF-8" standalone =yes?>
+ <!DOCTYPE book [
+<!ENTITY book-title "The Art of XML">
+<!ENTITY author "John Doe">
+]>
+<book id="xyz123" xmlns:xf="http://example.com/xf">
+    <title>&book-title;</title>
+    <author>&author;</author>
+    <xf:year>2022</xf:year>
+    <book-image>cover.jpg</book-image>
+    <chapter><title>Introduction</title></chapter>
+    <chapter><title>&xf:title;</title></chapter>
+    <section id="introduction">
+        <title>What is XML?</title>
+        <paragraph>&amp;lt;xml&gt; is&amp;lt;/xml&gt; a markup language used for storing and transporting data.</paragraph>
+    </section>
+    <section>
+        <title>Advantages of XML</title>
+        <listitem>
+            <title>&amp;lt;ul&gt;&amp;lt;li&gt;Advantage 1&amp;lt;/li&amp;gt;&amp;lt;/ul&gt;</title>
+            <description>&amp;lt;description&gt;Advantage 1)&lt;/description&gt;</description>
+        </listitem>
+        <listitem>
+            <title>&amp;lt;ul&gt;&amp;lt;li&gt;Advantage 2&amp;lt;/li&amp;gt;&amp;lt;/ul&gt;</title>
+            <description>&amp;lt;description&gt;Advantage 2)&lt;/description&gt;</description>
+        </listitem>
+    </section>
+</book>

@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation ="
+ catalogXSD
+file://C:/catalogXSD.xsd >
+ <description>Online Catalog</description>
+ <company>
+  <name>ABC Corporation</name>
+  <address>
+   <street>123 Main St</street>
+   <city>Anytown</city>
+   <state>CA</state>
+   <zip>12345</zip>
+  </address>
+  <phone type = "business="/">123-456-7890</phone>
+   
+   
+
+ 

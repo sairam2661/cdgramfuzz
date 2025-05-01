@@ -1,0 +1,33 @@
+<?xml version = 
+         1.0 encoding = "UTF-8" 
+         standalone = 
+              yes 
+             ?>
+
+<!DOCTYPE
+  collection 
+  SYSTEM 
+       "catalog.DTD" 
+  >
+
+<collection 
+    xmlns = 
+         "http://example.com/collection"
+    xmlns:xlink 
+       = 
+           "http://www.w3.org/1999/xlink"
+>
+   <item> <title>Book One</title> </item>
+   <item> <title>Book Two</title> </item>
+   <item> 
+       <author> John Doe </author> 
+       <publisher> 
+           <address> 
+               <street>123 Main St</street>
+               <city>Anytown</city>
+               <state>CA</state>
+               <zip>12345</zip>
+           </address>
+       </publisher>
+   </item>
+</collection>

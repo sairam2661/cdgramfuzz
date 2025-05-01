@@ -1,0 +1,14 @@
+<?xml version=1.0 encoding="UTF-8" standalone=no?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="catalog.xsd">
+    <book id="BK-1233">
+        <title xml:lang="en">XML for Beginners</title>
+        <author xmlns="http://www.example.com">John Smith</author>
+        <country>
+            <city>London</city>
+            <region>England</region>
+        </country>
+        <price currency="GBP">25.50</price>
+        <pubDate>Wed, 21-Jan-2003 15:19:21GMT</pubDate>
+        <image href="image1.jpg"/>
+    </book>
+</catalog>

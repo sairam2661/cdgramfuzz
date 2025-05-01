@@ -1,0 +1,13 @@
+<html:math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml">
+  <html:root xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+        <msup>
+          <mi>a</mi>
+          <mexp>
+            </mexp>
+          </msup>
+        </mrow>
+      </math>
+    </html:root>
+  </html:math>

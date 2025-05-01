@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<?xml-include href="header.xml"?>
+<!DOCTYPE library [
+ <!ELEMENT book (title, author, price) >
+  <!ELEMENT title (#PCDATA)*
+  ><!ELEMENT author (#PCDATA)*
+  ><!ELEMENT price (#PCDATA)*
+  ><!ATTLIST book
+  id CDATA #REQUIRED
+  genre CDATA #IMPLIED
+  >
+]>
+<library>
+  <book id="bk103" genre="General Fiction">
+    <title>HTML and XML: The difference between</title>
+    <author>John Smith</author>
+    <price>39.95</price>
+  </book>
+  <book id="bk104" genre="Thriller">
+    <title>XML Parsing</title>
+    <author>Jane Doe</author>
+    <price>29.95</price>
+  </book>
+</library>

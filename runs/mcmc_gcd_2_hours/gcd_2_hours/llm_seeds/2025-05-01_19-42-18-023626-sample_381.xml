@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+<region>North</region>
+<country>USA</country>
+<city>New York</city>
+<company>
+<name>Acme Inc.</name>
+<address>
+<street>120 Wall Street</street>
+<state>NY</state>
+<city>New York</city>
+<zip>10001</zip>
+</address>
+<phone>212-499-7777</phone>
+<fax>212-499-1111</fax>
+<email>info@acme.com</email>
+</company>
+</catalog>

@@ -1,0 +1,13 @@
+<holiday_list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://holiday_list schema.holiday_list.xsd"
+         version="2.0" encoding="UTF-8" standalone="yes">
+  <holiday_list_description>
+    <list_start_date>2024-06-01</list_start_date>
+    <list_end_date>2024-07-15</list_end_date>
+    <holiday_types>
+      <holiday_type name="spring_break" start_date="2024-03-01" end_date="2024-03-31"/>
+      <holiday_type name="summer_vacation" start_date="2024-06-01" end_date="2024-09-01"/>
+      <holiday_type name="spring_holiday" start_date="2024-04-01" end_date="2024-04-30"/>
+    </holiday_types>
+  </holiday_list_description>
+</holiday_list>

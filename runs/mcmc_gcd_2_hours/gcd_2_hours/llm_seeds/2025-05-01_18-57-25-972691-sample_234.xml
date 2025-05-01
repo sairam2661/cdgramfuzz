@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = 'UTF-8' standalone =  yes?>
+<!DOCTYPE itemCatalog SYSTEM "catalog.dtd">
+<itemCatalog xmlns = "http//book.nuix.com catalogs">
+  <catalogInfo language ='Irish' version ='.2'>
+    <!--warning: Do not distribute or share-->
+  </catalogInfo>
+  <title>Test Catalog</title>
+  <keywords id ='' name =''/>
+  <author xmlns = "http://www.gutenberg.org">
+    <authorName lang ='' country ='' date ='^/?/??/'>
+      <firstName>John</firstName>
+      <lastName>Seymour</lastName>
+    </authorName>
+  </author>
+  <subject xml:lang ='' href =''/> 
+  <description xml:lang ='' href =''/>
+</itemCatalog>

@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE catalog [
+<!ATTLIST product 
+     price CDATA #REQUIRED
+     color NMTOKEN
+     #IMPLIED>
+]>
+<catalog>
+  <product 
+  name ="The Cat"
+  price ="$14.99"
+  color ="{red}"/>
+  <product 
+  name ="{Feliway Pet Store}"
+  price ="$24.99"
+  color ="{black}"/>
+</catalog>

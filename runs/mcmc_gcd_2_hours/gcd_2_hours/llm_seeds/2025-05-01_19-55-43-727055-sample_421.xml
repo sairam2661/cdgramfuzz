@@ -1,0 +1,39 @@
+<?xml version = 
+    1.0  encoding = "ISO-8859-1" 
+    standalone =  yes?>
+<catalog
+    xmlns = "urn:opml :catalog" 
+    xmlns:ompts = "urn :ompts :opml :parts"
+    xmlns:xsi = "http : xsi : schema-instance"
+    xsi:_schemaLocation =""
+    lastModified ="{http :ompts :opml:xsd 
+        part-0.0.1}"
+    version ="{http :ompts :opml:xsd 
+        doc-20010101}"
+    title ="{http :ompts :opml:xsd 
+        part-0.0.1}News 2001-10-22"
+    link ="{http :ompts :opml:xsd 
+        part-0.0.1}http ://news.bbc.co.uk/ 
+    copyright =[{http :ompts :opml:xsd 
+        part-0.0.1}Copyright 2001 BBC News Ltd]"
+    language ="{http :ompts :opml:xsd 
+        part-0.0.1}en"
+    calcdate ="{http :ompts :opml:xsd 
+        part-0.0.1}Mon,18 Oct 2001 10:53 :49 GMT"
+    creator ="{http :ompts :opml:xsd 
+        part-0.0.1}John Doe"
+    updated ="{http :ompts :opml :xsd 
+        doc-20010101}Sun,15 Oct 2001 15 :52 :01 GMT"
+>
+  <item
+    priority ="{http :ompts :opml :xsd 
+      doc-20010101}high"
+    published ="{http :ompts :opml :xsd 
+      doc-2001-10-22}Sun,15 Oct 2001 15 :52 :01 GMT"
+    updated ="{http :ompts :opml :xsd 
+    doc-2001-10-22}Sun,16 Oct 2001 13 :21 :22 GMT"
+    author ="{http :ompts :opml :xsd 
+    doc-2001-10-22}John Doe"
+    id ="{http :ompts :opml :xsd 
+  doc-2001-10-22}item123"
+    title ="{

@@ -1,0 +1,86 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE address_list [
+<!ATTLIST address 
+    street  CDATA '"'
+    city   CDATA '"'
+    state  CDATA '"'
+    zip
+   (country)
+   '>
+address
+    street  "#123 Main St"
+    city   "Anytown"
+    state  "CA"
+    zip   "12345"
+    country  "USA"
+    phone  555-555-1234
+    email  "example@example.com"
+/>
+
+address
+    street  "#456 Oak St"
+    city   "Othertown"
+    state  "NY"
+    zip   "67890"
+    country  "Canada"
+    phone  555-555-5678
+    email  "example2@example.com"
+/> 
+
+address
+    street  "#789 Pine St"
+    city   "Thistown"
+    state  "FL"
+    zip   "34567"
+    country  "Mexico"
+    phone  555-555-9012
+    email  "example3@example.com"
+/> 
+
+address
+    street  "#111 Maple St"
+    city   "Fourtown"
+    state  "TX"
+    zip   "11111"
+    country  "France"
+    phone  555-555-1111
+    email  "example4@example.com"
+/> 
+
+address
+    street  "#222 Cedar St"
+    city   "Fivetown"
+    state  "IL"
+    zip   "22222"
+    country  "Germany"
+    phone  555-555-2222
+    email  "example5@example.com"
+/> 
+
+address
+    street  "#333 Walnut St"
+    city   "Sixtown"
+    state  "Oh"
+    zip   "33333"
+    country  "Italy"
+    phone  555-555-3333
+    email  "example6@example.com"
+/> 
+
+address
+    street  "#444 Cherry St"
+    city   "Seventowntown"
+    state  "IA"
+    zip   "44444"
+    country  "Spain"
+    phone  555-555-4444
+    email  "example7@example.com"
+/> 
+
+address
+    street  "#555 Hickory St"
+    city   "Eighertown"
+    state  "KS"
+    zip   "55555"
+    country  "Poland"
+    phone  555-555

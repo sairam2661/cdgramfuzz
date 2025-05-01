@@ -1,0 +1,25 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE person [
+  <!ELEMENT name (first, last)>
+  <!ELEMENT first (#PCDATA)*> 
+  <!ELEMENT last (#PCDATA)*> 
+  <!ELEMENT address (street, city, state, zip)>
+  <!ELEMENT street (#PCDATA)*>
+  <!ELEMENT city (#PCDATA)*>
+  <!ELEMENT state (#PCDATA)*>
+  <!ELEMENT zip (#PCDATA)*>
+  <!ELEMENT phone (#PCDATA)*>
+]>
+<person>
+  <name>
+    <first>John</first>
+    <last>Doe</last>
+  </name>
+  <address>
+    <street>123 Main St</street>
+    <city>New York</city>
+    <state>NY</state>
+    <zip>10001</zip>
+  </address>
+  <phone>123-456-7890</phone>
+</person>

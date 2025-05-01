@@ -1,0 +1,32 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE person [
+<!ELEMENT name (address?)>
+<!ELEMENT address (city, state, zip)>
+<!ELEMENT city (#PCDATA)*
+>
+]>
+<note version="1.0">
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>
+<!-- Entity Declaration -->
+<!-- 
+  Entity: currency 
+  Entity reference: $ 
+-->
+<!-- Entity type declaration for currency -->
+<!--
+  Entity name: United States Dollar
+-->
+<!-- 
+  Entity reference using entity name
+-->
+$<price>20.99</price>
+<!-- 
+  Entity reference using entity number
+-->
+&exch;TSE &exch;NYSE
+</message>
+<priority level="high"/>
+</note>

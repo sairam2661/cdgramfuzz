@@ -1,0 +1,5 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<catalog xmlns:prod = "http://example.com/products" xmlns:cat = "http://example.com/catalog">
+    <product name ="" price="" cat:ID ="" prod:Name ="" prod:Price ="" cat:Description ="" />
+    <product cat:ID ="" prod:Name ="" prod:Price ="" cat:Description ="" />
+</catalog>

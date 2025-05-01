@@ -1,0 +1,44 @@
+<?xml version = 
+  1.0 
+  encoding="UTF-8"
+  standalone = 
+   yes 
+  ?>
+<document>
+ <metadata>
+  <title>Report Data</title>
+  <author>John Doe</author>
+  <date>2023-04-01</date>
+ </metadata>
+ <data>
+  <table>
+   <column1 />
+   <column2 />
+  </table>
+  <table>
+   <column1>Value 1</column1>
+   <column2>Value 2</column2>
+  </table>
+ </data>
+ <stylesheet type="text/xsl">
+  <xsl:template match="/">
+   <html>
+    <body>
+     <h1>Report Data</h1>
+     <table>
+      <tr>
+       <th>Column 1</th>
+       <th>Column 2</th>
+      </tr>
+      <xsl:for-each select="data/table[column1]">
+       <tr>
+        <td><xsl:value-of select="column1"/></td>
+        <td><xsl:value-of select="column2"/></td>
+       </tr>
+      </xsl:for-each>
+     </table>
+    </body>
+   </html>
+  </xsl:template>
+ </stylesheet>
+</document>

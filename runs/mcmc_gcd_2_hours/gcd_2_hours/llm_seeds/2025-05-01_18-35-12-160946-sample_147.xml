@@ -1,0 +1,31 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!-- XML documentation for a library of scientific papers -->
+<!DOCTYPE library [ 
+  <!-- List of document types -->
+  <!ELEMENT library (document+)> 
+  <!-- Document type -->
+  <!ELEMENT document (title, author, date, content)> 
+  <!-- Title of the paper -->
+  <!ELEMENT title (#PCDATA)*> 
+  <!-- Author of the paper -->
+  <!ELEMENT author (#PCDATA)*> 
+  <!-- Date of the paper -->
+  <!ELEMENT date (#PCDATA)*> 
+  <!-- Content of the paper -->
+  <!ELEMENT content (#PCDATA)*> 
+]>
+<library>
+  <!-- List of documents -->
+  <document>
+    <title>Quantum Mechanics</title>
+    <author>John Smith</author>
+    <date>2022-01-01</date>
+    <content>This is a sample paper on quantum mechanics.</content>
+  </document>
+  <document>
+    <title>Particle Physics</title>
+    <author>Jane Doe</author>
+    <date>2021-01-01</date>
+    <content>This is a sample paper on particle physics.</content>
+  </document>
+</library>

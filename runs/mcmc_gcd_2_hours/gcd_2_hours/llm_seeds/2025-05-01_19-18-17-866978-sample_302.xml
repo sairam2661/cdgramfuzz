@@ -1,0 +1,53 @@
+<?xml version = 
+1.0  encoding = "UTF-8" 
+standalone = 
+
+yes?>
+
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+    </book>
+    <book id="bk102">
+        <author>Jane Doe</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>This is a book about XSLT.</description>
+    </book>
+    <book id="bk103">
+        <author>Bob Johnson</author>
+        <title>XQuery Tutorial</title>
+        <genre>Computer</genre>
+        <price>29.95</price>
+        <publish_date>2002-03-01</publish_date>
+    </book>
+    <book id="bk104">
+        <author> Alice Brown</author>
+        <title>XML Schema</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2003-10-01</publish_date>
+        <description>This is a book about XML schema.</description>
+    </book>
+    <book id="bk105">
+        <author> Charlie Davis</author>
+        <title>XSLT: The Ultimate Guide</title>
+        <genre>Computer</genre>
+        <price>59.95</price>
+        <publish_date>2004-10-01</publish_date>
+        <description>This is a book about XSLT.</description>
+    </book>
+    <book id="bk106">
+        <author> David Lee</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2005-03-01</publish_date>
+    </book>
+</catalog>

@@ -1,0 +1,55 @@
+<scripting>
+document.write("<!----><script type='text/xml'><xml version='1.0' encoding='UTF-8' standalone='yes'><library><story mode='chapter'><section location='intro'><title>Epic Quest</title><text>To boldly go where no one has gone before.</text><audio><track src='intro.mp3' loop='/'></audio></section></story></library></xml></script>")
+</scripting>
+ 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog>
+    <book id="bk101">
+        <author>John Smith</author>
+        <title lang="en">XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An introduction to the basics of XML.</description>
+        <chapter>
+            <title>Chapter 1: Fundamentals</title>
+            <text xml:lang="en">In this chapter, we will cover the basics of XML...</text>
+            <image src="chapter1.jpg"/>
+        </chapter>
+        <chapter>
+            <title>Chapter 2: DTDs</title>
+            <text xml:lang="en">In this chapter, we will cover...</text>
+            <image src="chapter2.jpg"/>
+        </chapter>
+    </book>
+</catalog> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+<name> Alice </name>
+<address>
+<street> 123 Main </street>
+<city> Anytown </city>
+<state> CA </state>
+<zip> 12345 </zip>
+</address>
+<sibling>
+<name> Bob </name>
+<age> 32 </age>
+</sibling>
+<parent>
+<name> Karen </name>
+<age> 45 </age>
+</parent>
+</person> 
+
+<?xml version="1.0" encoding="UTF-8"?>
+<order total="120.00">
+<item>
+<cats category="electronics" price="25.00" />
+<cats category="books" price="40.00" />
+</item>
+<payment>
+<method>credit</method>
+<card type="VISA" num="1234-5678-9012-3456">
+<expire date="12/2025" ccv="123" />

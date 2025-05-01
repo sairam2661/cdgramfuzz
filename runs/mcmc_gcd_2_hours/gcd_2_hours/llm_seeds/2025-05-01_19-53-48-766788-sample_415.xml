@@ -1,0 +1,10 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+<?xml-stylesheet href = "style.css"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+    <description>This is a sample catalog.</description>
+    <vendor>Acme Inc.</vendor>
+    <product name ="" price ="" quantity ="" />
+    <product name ="" price ="" quantity ="" />
+    <product name ="" price ="" quantity ="" />
+</catalog>

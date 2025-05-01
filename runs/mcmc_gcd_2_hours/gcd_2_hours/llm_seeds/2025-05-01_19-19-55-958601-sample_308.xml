@@ -1,0 +1,60 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <cd id="CD001">
+    <title>Emmental 2000</title>
+    <artist>ZZ Top</artist>
+    <country>USA</country>
+    <company>COLUMBIA</company>
+    <price>10.90</price>
+    <year>1999</year>
+    <genre>Rock</genre>
+    <label>EMI</label>
+    <catalogType>single</catalogType>
+    <tracks>
+      <track>
+        <number>1</number>
+        <title>La Grange</title>
+        <duration>317</duration>
+        <unitPrice>6.59</unitPrice>
+      </track>
+      <track>
+        <number>2</number>
+        <title>Sharp Dressed Man</title>
+        <duration>299</duration>
+        <unitPrice>6.29</unitPrice>
+      </track>
+    </tracks>
+  </cd>
+  <cd id="CD002">
+    <title>Sympathy for the Devil</title>
+    <artist>THE ROLLING STONES</artist>
+    <country>UNIQUE</country>
+    <company>COLUMBIA</company>
+    <price>9.95</price>
+    <year>1968</year>
+    <genre>Rock</genre>
+    <label>ABKCO</label>
+    <catalogType>album</catalogType>
+    <tracks>
+      <track>
+        <number>1</number>
+        <title>SYMPATHY FOR THE DEVIL - I</title>
+        <duration>298</duration>
+        <unitPrice>6.59</unitPrice>
+      </track>
+      <track>
+        <number>2</number>
+        <title>SYMPATHY FOR THE DEVIL - II</title>
+        <duration>247</duration>
+        <unitPrice>6.29</unitPrice>
+      </track>
+      <track>
+        <number>3</number>
+        <title>SYMPATHY FOR THE DEVIL - III</title>
+        <duration>281</duration>
+        <unitPrice>6.59</unitPrice>
+      </track>
+      <track>
+        <number>4</number>
+        <title>SYMPATHY FOR THE DEVIL - IV</title>
+        <duration>

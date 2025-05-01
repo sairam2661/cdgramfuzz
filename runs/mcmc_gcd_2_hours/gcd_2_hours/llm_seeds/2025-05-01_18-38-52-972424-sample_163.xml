@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "ISO-8859-1"?>
+<catalog xmlns:xi="http://www.w3.org/1999/XLink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <xi:simpleLink xi:type="link" xlink:href="#book1"/>
+  <xi:simpleLink xi:type="link" xlink:href="#book2"/>
+  <xi:link type="simple" xmlns:xi="http://www.w3.org/2001/XMLSchema-instance" xlink:title="Introduction to XML"
+           xlink:href="intro-xml.xml"/>
+  <!--
+  <!-->
+  <!--?>
+  <!-->
+  <?xml:namespace xmlns:map="http://schemas.xmlsoap.org/wsdl/mapping/">
+  <?>
+  <book id="book1" xsi:locale="#loca1">
+    <author>John Smith</author>
+    <title>XML Programming</title>
+    <price>39.95</price>
+  </book>
+  <book id="book2" xsi:locale="#locb">
+    <author>Jane Doe</author>
+    <title>Java Programming</title>
+    <price>49.95</price>
+  </book>
+</catalog>

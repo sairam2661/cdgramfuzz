@@ -1,0 +1,44 @@
+<?xml version = 1.0  encoding = "UTF-16" standalone =  no?>
+<catalog>
+    <description xml:lang ="]="English=""/>
+    <company>
+        <name>Acme</name>
+        <address>
+            <city>Florence</city>
+            <country>Italy</country>
+            <zip>50121</zip>
+        </address>
+        <phone>055 1234567</phone>
+        <fax>055 1234568</fax>
+    </company>
+    <product name="Giraffe"
+         quantity="150">
+        <description xml:lang ="]="English=""/>
+        <price>11/2</price>
+        <color>Black and White</color>
+        <avainting>Spot</avainting>
+        <specification>
+            <size>
+                <width>1 m 90 cm</width>
+                <length>2 m 35 cm</length>
+                <depth>10</depth>
+            </size>
+            <weight>120 kg</weight>
+            <material>Soft and Thick</material>
+        </specification>
+        <image>man_in_torn_clothingUX1.jpg</image>
+    </product>
+    <product name =""quantity =""price =""color =""avainting =""specification =""image ="">
+        <description xml:lang ="]="French=""/>
+        <size>
+            <width>40 in</width>
+            <length>55 in</length>
+            <depth>10 in</depth>
+        </size>
+        <colour>green</colour>
+        <material>Wood</material>
+        <pattern>stripes</pattern>
+        <specification>no packaging</specification>
+        <image>small_woman_wearing_turban.jpg</image>
+    </product>
+</catalog>

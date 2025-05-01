@@ -1,0 +1,50 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<!DOCTYPE library [
+<!ATTLIST book
+title NMTOKEN
+       #REQUIRED
+author NMTOKEN
+       #REQUIRED
+price NMTOKEN
+       #REQUIRED
+publisher NMTOKEN
+       #IMPLIED
+       DEFAULT  (
+                publishers
+                )
+
+       #IMPLIED
+       PROCESS
+       (replace
+        )
+
+       #IMPLIED
+       ENCODING
+       (lower)
+
+       #IMPLIED
+       TYPE
+       (token)
+       #REQUIRED
+       FIXED
+       (
+    authors
+    )
+
+       #IMPLIED
+       ENCODING
+       (lower)
+
+      #REQUIRED
+    >
+]>
+
+<library>
+<book title="Harry Potter" author="J.K. Rowling" price="19.99" publisher="Bloomsbury" />
+<book title="The Hitchhiker's Guide to the Galaxy"
+        author="Douglas Adams"
+        price="14.99"
+        publisher="Pan Macmillan"
+        authors="Eleanor McEwan Douglas"
+        />
+</library>

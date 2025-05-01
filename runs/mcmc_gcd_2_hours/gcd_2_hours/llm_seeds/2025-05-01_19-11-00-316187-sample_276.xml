@@ -1,0 +1,19 @@
+<SchoolData xmlns="http://example.com/school" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/school school.xsd">
+  <SchoolName>&lt;B&gt;Bright High School&lt;/B&gt;</SchoolName>
+  <Location>123 Academic Way, Anytown, USA</Location>
+  <Established>2000</Established>
+  <Enrollment>
+    <Undergraduate>2100</Undergraduate>
+    <Graduate>800</Graduate>
+    <Professional>100</Professional>
+  </Enrollment>
+  <AthleticTeams>
+    <Football>Winners of the 2019 championship</Football>
+    <Basketball>2-time NCAA champions</Basketball>
+  </AthleticTeams>
+  <Sustainability>
+    <RenewableEnergy>40% of energy comes from solar power</RenewableEnergy>
+    <WasteReduction>50% of waste is recycled</WasteReduction>
+  </Sustainability>
+  <EntireSchool>Every student has access to a laptop, including students with special needs.</EntireSchool>
+</SchoolData>

@@ -1,0 +1,12 @@
+<SchoolData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://SchoolDataModel.xsd http://example.com/SchoolDataModel.xsd" version="2.0" encoding="UTF-8" standalone="yes">
+  <Schools>
+    <School name="High School">
+      <Location city="New York" state="USA" country="USA" postalCode="10001"/>
+      <Population max="5000" min="1000" type="integer"/>
+    </School>
+    <School name="Middle School">
+      <Location city="Los Angeles" state="USA" country="USA" postalCode="90210"/>
+      <Population max="2000" min="500" type="integer"/>
+    </School>
+  </Schools>
+</SchoolData>

@@ -1,0 +1,11 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE country [
+<!ELEMENT country (name, isoCode, capital)>
+<!ELEMENT name (#PCDATA)*>  
+<!ELEMENT isoCode (#PCDATA)*>  
+<!ELEMENT capital (#PCDATA)*>  
+]>
+<country name="United States of America">
+<isoCode>US</isoCode>
+<capital>Washington D.C.</capital>
+</country>

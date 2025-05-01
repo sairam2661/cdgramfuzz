@@ -1,0 +1,22 @@
+<personal-info version="2.0" encoding="ISO-8859-1" standalone="no">
+  <contact-type type="home">
+    <name>John Doe</name>
+    <address>
+      <street>123 Main St</street>
+      <city>New York</city>
+      <state>NY</state>
+      <zip>10001</zip>
+    </address>
+    <phone-number type="home">123-456-7890</phone-number>
+  </contact-type>
+  <contact-type type="work">
+    <name>Jane Smith</name>
+    <address>
+      <street>456 Wall St</street>
+      <city>New York</city>
+      <state>NY</state>
+      <zip>10005</zip>
+    </address>
+    <phone-number type="work">234-567-8901</phone-number>
+  </contact-type>
+</personal-info>

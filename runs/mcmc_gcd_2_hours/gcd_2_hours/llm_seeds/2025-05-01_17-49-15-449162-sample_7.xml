@@ -1,0 +1,37 @@
+<SchoolYear xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.dtd">
+    <SchoolYearType>
+        <Year>2023-2024</Year>
+        <Semester>Fall</Semester>
+        <StartDate>09/13/2023</StartDate>
+        <EndDate>12/15/2023</EndDate>
+        <Courses>
+            <Course>
+                <CourseCode>MATH 101</CourseCode>
+                <CourseName>High School Algebra 1</CourseName>
+                <Credits>3</Credits>
+            </Course>
+            <Course>
+                <CourseCode>SCI 102</CourseCode>
+                <CourseName>High School Biology 1</CourseName>
+                <Credits>3</Credits>
+            </Course>
+        </Courses>
+        <Teachers>
+            <Teacher>
+                <TeacherID>101</TeacherID>
+                <Name>Ms. Johnson</Name>
+                <Subjects>
+                    <Subject>MATH</Subject>
+                    <Subject>SCI</Subject>
+                </Subjects>
+            </Teacher>
+            <Teacher>
+                <TeacherID>102</TeacherID>
+                <Name>Mr. Smith</Name>
+                <Subjects>
+                    <Subject>MATH</Subject>
+                </Subjects>
+            </Teacher>
+        </Teachers>
+    </SchoolYearType>
+</SchoolYear>

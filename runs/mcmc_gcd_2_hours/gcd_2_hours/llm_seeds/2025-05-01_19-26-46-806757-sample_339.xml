@@ -1,0 +1,37 @@
+<xml version="1.0" encoding="UTF-8" standalone="yes">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="library">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="book" maxOccurs="unbounded">
+                    <xsd:complexType mixed="true">
+                        <xsd:sequence>
+                            <xsd:element name="title" type="xsd:string"/>
+                            <xsd:element name="author" type="xsd:string"/>
+                            <xsd:element name="price" type="xsd:decimal"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="isbn" type="xsd:decimal"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:integer"/>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
+<library id="lib1">
+    <title>Book One</title>
+    <author>J.K. Rowling</author>
+    <price>9.99</price>
+    <book>
+        <title>Alice in Wonderland</title>
+        <author>Nicholas Flamel</author>
+        <price>10.99</price>
+        <isbn>1234567890</isbn>
+    </book>
+    <book>
+        <title>Book Two</title>
+        <author>J.R.R. Tolkien</author>
+        <price>29.99</price>
+    </book>
+</library>       
+</xml>

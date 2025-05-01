@@ -1,0 +1,94 @@
+2025-05-01 18:38:24,214 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 0: <?xml version = 
+      1.0  encoding = "UTF-8"  standalone = yes?>
+ 
+
+<!DOCTYPE catalog SYSTEM "cata...
+2025-05-01 18:38:24,214 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-38-24-214326-sample_160.xml. Generation time: 30.01s
+2025-05-01 18:38:30,836 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 1: <?xml version = 1.0 encoding = "UTF-8" 
+ standalone =  yes?>
+<?import name = "system" namespace= "ht...
+2025-05-01 18:38:30,837 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-38-30-836861-sample_161.xml. Generation time: 6.62s
+2025-05-01 18:38:38,030 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 2: <personal>
+    <!--PI Reference -->
+    %prolog.pi{pi_value="3.14" name="pi_constant"};
+    
+    <pe...
+2025-05-01 18:38:38,030 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-38-38-030559-sample_162.xml. Generation time: 7.19s
+2025-05-01 18:38:52,972 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 3: <?xml version = 1.0  encoding = "ISO-8859-1"?>
+<catalog xmlns:xi="http://www.w3.org/1999/XLink" xmln...
+2025-05-01 18:38:52,972 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-38-52-972424-sample_163.xml. Generation time: 14.94s
+2025-05-01 18:39:06,239 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 4: <?xml version = 1.0 encoding = "ISO-8859-1" standalone = no?>
+<catalog>
+    <?xml:stylesheet type="t...
+2025-05-01 18:39:06,240 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-39-06-239980-sample_164.xml. Generation time: 13.27s
+2025-05-01 18:39:14,362 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 5: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+  <?import system = "http://www.w3.org/200...
+2025-05-01 18:39:14,362 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-39-14-362343-sample_165.xml. Generation time: 8.12s
+2025-05-01 18:39:29,598 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 6: <?xml version=1.0 encoding="ISO-8859-1"?>
+<!DOCTYPE doc [ 
+  <!ELEMENT doc (header, body)>
+  <!ELEME...
+2025-05-01 18:39:29,598 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-39-29-598540-sample_166.xml. Generation time: 15.24s
+2025-05-01 18:39:54,823 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 7: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<catalog xml:lang="english" xmlns:oai="htt...
+2025-05-01 18:39:54,823 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-39-54-823684-sample_167.xml. Generation time: 25.23s
+2025-05-01 18:40:24,713 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 8: <PersonalDocument xmlns:xi="http://www.w3.org/2001/XLink"
+ xmlns:fo="http://www.w3.org/1999/XSL/Form...
+2025-05-01 18:40:24,714 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-40-24-714041-sample_168.xml. Generation time: 29.89s
+2025-05-01 18:40:54,556 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 9: <?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE person [
+<!ELEMENT book title   >
+<!ELEMENT book ...
+2025-05-01 18:40:54,556 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-40-54-556541-sample_169.xml. Generation time: 29.84s
+2025-05-01 18:41:24,736 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 10: <?xml version = 
+    1.0 
+    encoding = 
+      "UTF-16" 
+     ?>
+<?include param-entity "pi-namespa...
+2025-05-01 18:41:24,736 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-41-24-736462-sample_170.xml. Generation time: 30.18s
+2025-05-01 18:41:41,533 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 11: <?xml version = 1.0 encoding = "UTF-8"?>
+<?parameter- entities 
+     parameter-name = "price-express...
+2025-05-01 18:41:41,533 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-41-41-533346-sample_171.xml. Generation time: 16.80s
+2025-05-01 18:42:05,919 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 12: <?xml version = 1.0 encoding="UTF-8" standalone = yes?>
+<?processing-instruction  person = "John Doe...
+2025-05-01 18:42:05,919 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-42-05-919372-sample_172.xml. Generation time: 24.39s
+2025-05-01 18:42:15,028 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 13: <?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE product_catalog SYSTEM "product_catalog.xsd">
+<pr...
+2025-05-01 18:42:15,029 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-42-15-028833-sample_173.xml. Generation time: 9.11s
+2025-05-01 18:42:44,574 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 14: <?xml version = 1.0  encoding = "UTF-8"?>
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog>
+  <!-- P...
+2025-05-01 18:42:44,574 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-42-44-574754-sample_174.xml. Generation time: 29.55s
+2025-05-01 18:43:17,920 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 15: <?xml version = 
+    1.0 encoding = "UTF-8" 
+    standalone = 
+        yes 
+   ?> 
+
+  <!DOCTYPE cata...
+2025-05-01 18:43:17,921 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-43-17-920863-sample_175.xml. Generation time: 33.35s
+2025-05-01 18:43:24,099 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 16: <?xml version = 
+          1.0 encoding = "UTF-16" 
+        standalone = 
+           yes?>
+ 
+<person...
+2025-05-01 18:43:24,100 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-43-24-099901-sample_176.xml. Generation time: 6.18s
+2025-05-01 18:43:55,136 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 17: <?xml version = 
+      1.0 encoding="UTF-8" 
+      standalone = 
+      yes?>
+ 
+ <note note-type ="Fo...
+2025-05-01 18:43:55,136 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-43-55-136627-sample_177.xml. Generation time: 31.04s
+2025-05-01 18:44:05,539 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 18: <personal-annotations version="1.2" xmlns:xi="http://www.w3.org/1999/XLink">
+  <pi-name>Personal Not...
+2025-05-01 18:44:05,540 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-44-05-540166-sample_178.xml. Generation time: 10.40s
+2025-05-01 18:44:36,348 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 19: <?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<catalog xmlns:xsi="http://www.w3.org/20...
+2025-05-01 18:44:36,348 - gcd_xml_fuzz_single_Prolog_PI - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-44-36-348600-sample_179.xml. Generation time: 30.81s

@@ -1,0 +1,113 @@
+2025-05-01 18:26:11,023 - gcd_xml_fuzz_single_PEReference - INFO - Sample 0: <?xml version = 
+    1.0?>
+
+     <?xml-stylesheet type="text/xsl" 
+                 href="complex.xs...
+2025-05-01 18:26:11,023 - gcd_xml_fuzz_single_PEReference - INFO - Sample 0 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-26-11-023416-sample_120.xml. Generation time: 29.99s
+2025-05-01 18:26:40,930 - gcd_xml_fuzz_single_PEReference - INFO - Sample 1: <Schema xmlns="http://www.w3.org/2001/XMLSchema"
+       targetNamespace="http://example.com/note"
+  ...
+2025-05-01 18:26:40,931 - gcd_xml_fuzz_single_PEReference - INFO - Sample 1 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-26-40-931161-sample_121.xml. Generation time: 29.91s
+2025-05-01 18:27:11,128 - gcd_xml_fuzz_single_PEReference - INFO - Sample 2: <?xml version = 1.0 encoding =  "UTF-8" standalone =  yes?>
+<!DOCTYPE article [
+<!ELEMENT article (a...
+2025-05-01 18:27:11,129 - gcd_xml_fuzz_single_PEReference - INFO - Sample 2 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-27-11-129181-sample_122.xml. Generation time: 30.20s
+2025-05-01 18:27:30,206 - gcd_xml_fuzz_single_PEReference - INFO - Sample 3: <?xml version = 1.0 
+encoding = "UTF-8" 
+standalone = yes?>
+
+<entities xmlns:xlink="http://www.w3.or...
+2025-05-01 18:27:30,206 - gcd_xml_fuzz_single_PEReference - INFO - Sample 3 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-27-30-206514-sample_123.xml. Generation time: 19.08s
+2025-05-01 18:28:00,101 - gcd_xml_fuzz_single_PEReference - INFO - Sample 4: <?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<bookstore xmlns:xsi = "http://www.w3.org/...
+2025-05-01 18:28:00,101 - gcd_xml_fuzz_single_PEReference - INFO - Sample 4 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-28-00-101801-sample_124.xml. Generation time: 29.90s
+2025-05-01 18:28:30,042 - gcd_xml_fuzz_single_PEReference - INFO - Sample 5: <?xml version = 
+0010.0 
+encoding = "UTF-8" 
+standalone = 
+yes  
+
+   ?>
+   
+<catalog xml:lang="en" x...
+2025-05-01 18:28:30,043 - gcd_xml_fuzz_single_PEReference - INFO - Sample 5 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-28-30-043210-sample_125.xml. Generation time: 29.94s
+2025-05-01 18:28:38,079 - gcd_xml_fuzz_single_PEReference - INFO - Sample 6: <?xml version = 1.0 encoding='UTF-8' standalone = yes?>
+<catalog>
+  <description>
+  &apos;
+    <titl...
+2025-05-01 18:28:38,079 - gcd_xml_fuzz_single_PEReference - INFO - Sample 6 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-28-38-079372-sample_126.xml. Generation time: 8.04s
+2025-05-01 18:28:51,556 - gcd_xml_fuzz_single_PEReference - INFO - Sample 7: <TargetNamespace xmlns="http://example.com/ns" 
+                xmlns:xs="http://www.w3.org/2001/XML...
+2025-05-01 18:28:51,557 - gcd_xml_fuzz_single_PEReference - INFO - Sample 7 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-28-51-556881-sample_127.xml. Generation time: 13.48s
+2025-05-01 18:29:07,804 - gcd_xml_fuzz_single_PEReference - INFO - Sample 8: <?xml version = 
+ 1.0 
+ encoding = "UTF-8" 
+ standalone = 
+
+  yes 
+?>
+
+<?import 
+  schemas="http://w...
+2025-05-01 18:29:07,805 - gcd_xml_fuzz_single_PEReference - INFO - Sample 8 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-29-07-804942-sample_128.xml. Generation time: 16.25s
+2025-05-01 18:29:25,729 - gcd_xml_fuzz_single_PEReference - INFO - Sample 9: <?xml version =1.0 encoding="UTF-8" standalone =yes?>
+<?xml-stylesheet type="text/xsl" href="documen...
+2025-05-01 18:29:25,729 - gcd_xml_fuzz_single_PEReference - INFO - Sample 9 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-29-25-729512-sample_129.xml. Generation time: 17.92s
+2025-05-01 18:29:54,970 - gcd_xml_fuzz_single_PEReference - INFO - Sample 10: <?xml version = 
+1.0 
+encoding = 
+"ISO-8859-1" 
+standalone = 
+	no?>
+
+<catalog xmlns:xsi="http://www....
+2025-05-01 18:29:54,970 - gcd_xml_fuzz_single_PEReference - INFO - Sample 10 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-29-54-970237-sample_130.xml. Generation time: 29.24s
+2025-05-01 18:30:24,548 - gcd_xml_fuzz_single_PEReference - INFO - Sample 11: <?xml version = 
+ 1.0 encoding = "ISO-8859-15" standalone = 
+  yes?>
+
+  <xsd:schema xmlns:xsd = "htt...
+2025-05-01 18:30:24,548 - gcd_xml_fuzz_single_PEReference - INFO - Sample 11 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-30-24-548479-sample_131.xml. Generation time: 29.58s
+2025-05-01 18:30:39,369 - gcd_xml_fuzz_single_PEReference - INFO - Sample 12: <?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE catalogue [
+<!ELEMENT catalogue...
+2025-05-01 18:30:39,369 - gcd_xml_fuzz_single_PEReference - INFO - Sample 12 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-30-39-369518-sample_132.xml. Generation time: 14.82s
+2025-05-01 18:30:43,474 - gcd_xml_fuzz_single_PEReference - INFO - Sample 13: <?xml version =1.0 encoding="UTF-8" standalone = no?>
+
+<!DOCTYPE catalog SYSTEM "catalog.xsd">
+
+<cat...
+2025-05-01 18:30:43,474 - gcd_xml_fuzz_single_PEReference - INFO - Sample 13 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-30-43-474725-sample_133.xml. Generation time: 4.11s
+2025-05-01 18:31:04,279 - gcd_xml_fuzz_single_PEReference - INFO - Sample 14: <?xml version = 1.0 
+encoding = "UTF-8" 
+standalone = yes?>
+
+<?xml-stylesheet type="text/xsl" 
+href=...
+2025-05-01 18:31:04,280 - gcd_xml_fuzz_single_PEReference - INFO - Sample 14 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-31-04-279779-sample_134.xml. Generation time: 20.80s
+2025-05-01 18:31:33,662 - gcd_xml_fuzz_single_PEReference - INFO - Sample 15: <?xml version=1.0 encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetN...
+2025-05-01 18:31:33,662 - gcd_xml_fuzz_single_PEReference - INFO - Sample 15 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-31-33-662337-sample_135.xml. Generation time: 29.38s
+2025-05-01 18:32:03,072 - gcd_xml_fuzz_single_PEReference - INFO - Sample 16: <?xml version =1.0  encoding="UTF-8"  standalone =  yes?>
+    <personages  xmlns:pub = "http://examp...
+2025-05-01 18:32:03,072 - gcd_xml_fuzz_single_PEReference - INFO - Sample 16 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-32-03-072693-sample_136.xml. Generation time: 29.41s
+2025-05-01 18:32:32,451 - gcd_xml_fuzz_single_PEReference - INFO - Sample 17: <?xml version =        1.0     encoding="UTF-16"?>
+<xs:schema xmlns:xs = "http://www.w3.org/2001/XML...
+2025-05-01 18:32:32,451 - gcd_xml_fuzz_single_PEReference - INFO - Sample 17 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-32-32-451433-sample_137.xml. Generation time: 29.38s
+2025-05-01 18:32:47,088 - gcd_xml_fuzz_single_PEReference - INFO - Sample 18: <?xml version = 
+    1.0 
+    encoding = 
+    "UTF- 
+    8" 
+    standalone = 
+     yes 
+?>
+ 
+<catal...
+2025-05-01 18:32:47,088 - gcd_xml_fuzz_single_PEReference - INFO - Sample 18 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-32-47-088750-sample_138.xml. Generation time: 14.64s
+2025-05-01 18:33:04,206 - gcd_xml_fuzz_single_PEReference - INFO - Sample 19: <?xml version = 1.0  encoding = "UTF-8" standalone =  yes?>
+  <?museum
+  xmlns:xsi = "http://www.w3....
+2025-05-01 18:33:04,207 - gcd_xml_fuzz_single_PEReference - INFO - Sample 19 saved to /data/saiva/libxml_gcd_2_test/llm_seeds/2025-05-01_18-33-04-207060-sample_139.xml. Generation time: 17.12s

@@ -1,0 +1,49 @@
+<root version="2.0">
+  <xml:decl language="en-us" encoding="utf-8"/>
+  <bookstore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="bookstore.xsd">
+    <book genre="novel" xmlns:taxon="http://www.example.com/taxon/">
+      <title>Harry Potter and the Philosopher's Stone</title>
+      <publishDate>1997-06-26</publishDate>
+      <author xmlns:aixref="http://www.example.com/aixref/">
+        <name>J.K. Rowling</name>
+        <aixref:aix="id123"/>
+      </author>
+      <publisher>Bloomsbury Publishing</publisher>
+      <description xml:space="preserve">...
+      <coveredImage ref="image1.jpg"/>
+      <taxon:taxonTerm taxonName="Children&amp;quot;s Literature"/>
+    </book>
+  </bookstore>
+</root> 
+
+Solution 2:
+<!---->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <description xmlns:xi="http://www.w3.org/2001/xi">Product catalog for XYZ Corporation.</description>
+  <product id="PID123">
+    <name>Apple Smartphone</name>
+    <price>599.00</price>
+    <brand>
+      <name>Xiaomi</name>
+      <aixref:aix="brand123"/>
+    </brand>
+    <detail xmlns:aixref="http://www.example.com/aixref/">...
+    <image ref="image2.jpg"/>
+    <xi:include xmlns:xi="http://www.w3.org/2001/xi" href="../product.xsd"/>
+  </product>
+</catalog> 
+
+Solution 3:
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="library.xsd">
+  <book>
+    <title>Wuthering Heights</title>
+    <author>Emily Brontë</author>
+    <yearPublished>1847</yearPublished>
+    &amp;copy; 1837  (Entity reference for copyright symbol)
+    <editor>Elizabeth Gaskell</editor>
+    <review>
+      <rating>4</rating>
+      <reviewer>Shakespeare</reviewer

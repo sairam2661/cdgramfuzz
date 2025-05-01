@@ -1,0 +1,10 @@
+<personal-notation>
+  <!-- notation -->
+    <xs:simpleType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:restriction base="xs:string">
+        <xs:pattern value="[0-9]+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  <xs:notation name="PersonID" public="Identification" system="http://www.example.org/notation/"/>
+  <person details="1" id="123"/>
+</personal-notation>

@@ -1,0 +1,23 @@
+<personal-data xmlns="http:// schemas.xmlsoap.org/wns/20/2003/05/personal-data/20030516">
+    <name>
+        <given-names>John</given-names>
+        <family-names>Doe</family-names>
+    </name>
+    <address>
+        <street>123 Main St</street>
+        <city>New York</city>
+        <state>NY</state>
+        <postal-code>10001</postal-code>
+        <country>USA</country>
+    </address>
+    <contact>
+        <phone-number>123-456-7890</phone-number>
+        <email>john.doe@example.com</email>
+    </contact>
+    <credit-card>
+        <account-number>1234-5678-9012-3456</account-number>
+        <expiration-month>12</expiration-month>
+        <expiration-year>2025</expiration-year>
+        <security-code>123</security-code>
+    </credit-card>
+</personal-data>

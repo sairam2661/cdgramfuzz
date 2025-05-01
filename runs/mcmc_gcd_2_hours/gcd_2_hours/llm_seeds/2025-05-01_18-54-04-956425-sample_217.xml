@@ -1,0 +1,16 @@
+<personal-data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.personal-data.org/v1.0/personal-data schema.xsd" version="1.0" encoding="UTF-8" standalone="yes">
+    <contact-info>
+        <address street="123 Main St" city="Anytown" state="CA" zip="12345"/>
+        <phone-number type="home">555-123-4567</phone-number>
+        <phone-number type="work">555-901-2345</phone-number>
+    </contact-info>
+    <identification>
+        <identification-number format="passport">USA123456789</identification-number>
+        <identification-number format="social-security-number">123-45-6789</identification-number>
+    </identification>
+    <emergency-contact>
+        <name>John Doe</name>
+        <relationship>Spouse</relationship>
+        <phone-number type="emergency">555-112-2334</phone-number>
+    </emergency-contact>
+</personal-data>

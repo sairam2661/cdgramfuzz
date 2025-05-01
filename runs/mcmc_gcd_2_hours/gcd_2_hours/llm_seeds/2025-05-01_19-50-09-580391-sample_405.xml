@@ -1,0 +1,30 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+
+<!DOCTYPE catalog
+         SYSTEM "catalog.dtd">
+
+<catalog>
+    <edition id ="" publisher ="" country ="" price ="">
+
+        <language id ="" name ="" />
+        <author id="" name="" />
+        <title>Book Title</title>
+
+        <subject id="" />
+        <description id="" />
+        <chapter id="" title="" />
+        <page-count hours ="" number ="" />
+
+
+        <price currency ="" unit-price="" total-price="" />
+
+
+        <customer id="" name="" />
+        <book id="" title="" price="" number="" />
+
+
+        <reviews id="" rating="" comment="" />
+
+
+    </edition>
+</catalog>

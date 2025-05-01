@@ -1,0 +1,46 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE product
+       SYSTEM "product.dtd"
+
+       [
+       <!ENTITY book.title "Title">
+       <!ENTITY book.author "Author">
+       <!ENTITY book.publisher "Publisher">
+
+       <!ELEMENT product(
+       name,
+       category,
+       description,
+       book*
+       )
+   
+      >
+
+       <!ELEMENT name (#PCDATA)*
+       >
+       <!ELEMENT category (#PCDATA)*
+       >
+       <!ELEMENT description (#PCDATA)*
+       >
+       <!ELEMENT book (#PCDATA)*
+       >
+       <!ELEMENT product-name(#PCDATA)*
+       >
+       <!ELEMENT product-description (#PCDATA)*
+       >
+       ]>
+
+<product
+name="<product-name> Electronic Gadgets</product-name>"
+category="<product-description>Electronics</product-description>"
+description="A store containing various gadgets"
+><book>
+       <title><book.title>Smartwatch</book.title></book>
+       <author><book.author>John Doe</book.author></book>
+       <publisher><book.publisher>ABC Inc.</book.publisher></book>
+       </book>
+       <book>
+       <title><book.title>Headphones</book.title></book>
+       <author><book.author>Jane Doe</book.author></book>
+       <publisher><book.publisher>XYZ Corp.</book.publisher></book>
+       </book></product>

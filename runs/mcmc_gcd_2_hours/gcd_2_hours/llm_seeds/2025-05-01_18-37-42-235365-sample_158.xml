@@ -1,0 +1,29 @@
+<?xml version=1.0 encoding="UTF-8"?>
+<!-- XML validation and encoding settings -->
+<!-- 
+  This document is part of a larger XML schema 
+  for representing appointment records
+ -->
+<?xml-stylesheet type="text/xsl" href="appointment.xsl"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,subject,message,priority)>
+  <!ELEMENT to (#PCDATA)*
+  ><!ELEMENT from (#PCDATA)*
+  ><!ELEMENT subject (#PCDATA)*
+  ><!ELEMENT message (#PCDATA)*
+  ><!ELEMENT priority (#PCDATA)*
+  ><!ATTLIST note
+  attributename
+  (type              | name              | value          )
+    #REQUIRED attributename
+    (type   | name    | value 
+      | id)    #REQUIRED 
+    >
+  ]>
+<note attributename="id" type="appointment" value="001">
+<to>John Doe</to>
+<from>Jane Smith</from>
+<subject>Scheduling</subject>
+<message>We have scheduled your meeting for</message>
+<priority level="medium"/>
+</note>

@@ -1,0 +1,64 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<!DOCTYPE libe [
+<!ATTLIST book attribut1 CDATA #IMPLIED attribut2 CDATA #IMPLIED>
+<!ELEMENT libe (title, author, publisher)>
+<!ELEMENT title (#PCDATA)*
+><!--
+<!ELEMENT publisher (#PCDATA)* 
+-->
+<!ELEMENT author (name, national) >
+<!ELEMENT name (#PCDATA)*
+><!ELEMENT national (#PCDATA)* >
+<!ELEMENT libe book >
+
+
+
+<!ATTLIST item attribut3 CDATA #IMPLIED attribut4 CDATA #IMPLIED attribut5 CDATA #IMPLIED >
+<!ELEMENT item (#PCDATA)* >
+
+
+<!ELEMENT title (#PCDATA)* >
+<!ELEMENT author (#PCDATA)* >
+
+
+<!ELEMENT libe book > 
+<!ELEMENT book (item, name) >
+<!ELEMENT item (date, author)> 
+
+<!ELEMENT item date >
+<!ELEMENT date (#PCDATA)* >
+<!ELEMENT item author > 
+ <!ELEMENT author name >
+ <!ELEMENT name (#PCDATA)* >
+
+<!ELEMENT libe book > 
+<!ATTLIST book attribut1 CDATA #IMPLIED attribut2 CDATA #IMPLIED> 
+
+  <!ELEMENT book author > 
+   <!ELEMENT item (#PCDATA)* > 
+   <!ELEMENT author (name)> 
+   <!ELEMENT name (#PCDATA)* > 
+   <!ELEMENT title (#PCDATA)* > 
+   <!ATTLIST book attribut1 CDATA #IMPLIED> 
+  <!ELEMENT author author > 
+  <!ELEMENT item item > 
+  <!ELEMENT book book > 
+   <!ELEMENT item attribut3  > 
+   <!ELEMENT date (#PCDATA)* > 
+   <!ELEMENT date attribut4  > 
+   <!ELEMENT title title > 
+   <!ELEMENT author author > 
+   <!ELEMENT name (#PCDATA)* > 
+   <!ELEMENT book book > 
+   <!ATTLIST book attribut5 CDATA #IMPLIED> 
+   <!ELEMENT library (#PCDATA)* > 
+   <!ELEMENT authorship (#PCDATA)* > 
+   <!ELEMENT title (#PCDATA)* > 
+   <!ELEMENT author (name)> 
+   <!ELEMENT name (#PCDATA)* > 
+   <!ELEMENT title book > 
+   <!ELEMENT libe book > 
+  <!ATTLIST author attribut2 CDATA #IMPLIED> 
+  <!ELEMENT book (#PCDATA)* > 
+  <!ELEMENT item attribut3  > 
+  <!ELEMENT author (name)> 

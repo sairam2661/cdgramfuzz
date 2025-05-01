@@ -1,0 +1,15 @@
+<?xml version = 1.0 encoding = "UTF - 8" standalone = yes?>
+             <xmldocument xmlns:xsd = "http://www.w3.org/2001chemas"
+             xmlns:xs = "http://www.w3.org/2001/XMLSchema"
+
+             xmlns:tns = "http://www.example.com/2017 "
+             xmlns:m = "http://mynamespace.com/members "
+             xsi:schemaLocation ="http://mynamespace.com/members members.xsd"
+             xmlns:p = "http://www.example.com/properties ">
+          <memberdetails>
+          <name>John Doe</name>
+          <gender> male</gender>
+          <age>35</age>
+          </memberdetails>
+
+</xmldocument>

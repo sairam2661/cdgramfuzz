@@ -1,0 +1,9 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+      <product id="P01" description="Laptop">
+       <brand name="Lenovo" model="I5-1000" price="999.99" release-date="01/01/2020"/>
+     </product>
+      <product id="k01"  price="499.99"  title="Smartwatch">
+         <brand name="Apple" model="Watch" rating="4.8"/>
+       </product>
+</catalog>

@@ -1,0 +1,31 @@
+<?xml version = 
+    	1.0  encoding = "UTF-8" 
+    	standalone =   yes 
+   ?>
+            
+            <catalog>
+         <title>
+          <name>Electronic Products</name>
+          <subTitle>Components and Accessories</subTitle>
+          </title>
+
+        <vendorName>XYZ</vendorName>
+
+        <vendorAddress>
+         <street1>123 Main St.</street1>
+         <city>Anytown</city>
+         <state>CA</state>
+         <zipCode>12345</zipCode>
+         </vendorAddress>
+
+        <vendorPhoneNumber>(555) 123-4567</vendorPhoneNumber>
+
+        <vendorContactInfo>
+         <title>Technical Support</title>
+         <department>Support Team</department>
+         <specialty>Electronics</specialty>
+         <primary contactName="Jim Brown">jimbrown@xyzcorp.com</primary>
+         <secondary contactName="Sue White">swhite@xyzcorp.com</secondary>
+         </vendorContactInfo>
+
+        </catalog>

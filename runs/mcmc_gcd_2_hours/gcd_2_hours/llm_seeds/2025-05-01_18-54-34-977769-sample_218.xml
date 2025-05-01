@@ -1,0 +1,40 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = no?>
+<catalog>
+    <description language ="" soapEnc ="" xml:lang ="" xmlns:xsi ="" xmlns:sql ="" xmlns:ds ="" xmlns:soapEnvelopex ="" xmlns:tm ="" xsi:schemaLocation ="" xmlns:xsd ="" xmlns:xquery ="" schemaLocation ="" version =">
+        <concept>
+            <TaxonId>someId</TaxonId>
+            <rank>Unranked</rank>
+            <author>J. Smith</author>
+            <status>Invalid</status>
+            <name>someConcept</name>
+            <definition xml:lang =''>some definition</definition>
+            <ul>
+                <li><a href =''#'> some link</a></li>
+            </ul>
+            <conceptHistory>
+                <conceptHistoryEntry date =''><revisionNumber>1</revisionNumber><previousRevision text =''/>
+                <revisionNumber>1</revisionNumber><previousRevision text ='''/conceptHistoryEntry>
+                <conceptHistoryEntry date =''><revisionNumber>1</revisionNumber><previousRevision text =''/>
+                <revisionNumber>1</revisionNumber><previousRevision text =''/>
+            </conceptHistory>
+        </concept>
+    </description>
+    <product name =''Product 1'' xml:lang ='' currency ='' id =''>
+        <description xml:lang =''>Product description</description>
+        <longDescription xml:lang =''>Product long description</longDescription>
+        <shortDescription xml:lang =''>Product short description</shortDescription>
+        <status>Active</status>
+        <date/>
+        <image xml:lang =''/>
+        <keywords xml:lang =''/>
+        <keyword xml:lang ='' category'' id ='' />
+        <brand xml:lang =''>Brand name</brand>
+        <color xml:lang =''>Color name</color>
+        <model xml:lang =''>Model name</model>
+        <minPrice xml:lang ='' currency''>Price in currency</minPrice>
+        <category xml:lang =''>Category name</category>
+    </product>
+</catalog> 
+
+ <?xml version = 1.0 encoding = "UTF-8standalone ="" xml:space="preserve" standalone ="" encoding ="" version ="?>
+ <data

@@ -1,0 +1,45 @@
+<?xml version = 1.0 encoding="UTF-8" standalone = yes?>
+<?processing-instruction  person = "John Doe"?>
+<catalog xml:lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://catalog.example.com
+  http://catalog.example.com/catalog.xsd"
+  xmlns="http://catalog.example.com">
+
+  <book ISBN="978-0-13-680042-6"   name="JDBC API" category="Databases">
+    <author>
+      <first-name>William C.</first-name>
+      <last-name>Gallimore</last-name>     
+    </author>
+    <genre>Computer</genre>
+    <price>60.00</price>
+    <publish_date>2001-06-22</publish_date>
+    <!-- <review rating="4"/> -->
+  </book>
+
+  <book 
+  ISBN="978-0-13-760518-1"
+  name="JDBC 4.0 Programmer's Guide" category="Databases">
+    <author>
+      <first-name>William C.</first-name>
+      <last-name>Gallimore</last-name>
+    </author>
+    <genre>Computer</genre>
+    <price>80.00</price>
+    <publish_date>2010-05-17</publish_date>
+    <!-- <review rating="5"/> -->
+  </book>
+
+  <book 
+  ISBN="978-0-13-706969-7"
+  name="JDBC 3.0 Programmer's Guide"  category="Databases">
+    <author>
+      <first-name>Larry>first-name>William C.</first-name>
+      <last-name>Gallimore</last-name>
+    </author>
+    <genre>Computer</genre>
+    <price>65.00</price>
+    <publish_date>2003-04-15</publish_date>
+    <!-- <review rating="4"/> -->
+  </book>
+
+</catalog>

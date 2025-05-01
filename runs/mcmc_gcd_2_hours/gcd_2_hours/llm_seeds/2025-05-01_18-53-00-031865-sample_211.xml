@@ -1,0 +1,35 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog type="books">
+    <book id="bk101">
+        <author>John Smith</author>
+        <title>XML for Beginners</title>
+        <genre>Computer</genre>
+        <price>39.95</price>
+        <publish_date>2000-10-01</publish_date>
+        <description>An introduction to XML.</description>
+        <publisher>O'Reilly &amp; Sons</publisher>
+        <address>
+            1 Canada Square
+            London, W1B 5UV
+            UK
+        </address>
+        <phone>020 7124 5000</phone>
+        <email>support@oreilly.com</email>
+    </book>
+    <book id="bk102">
+        <author>John Smith</author>
+        <title>XSLT Programming</title>
+        <genre>Computer</genre>
+        <price>49.95</price>
+        <publish_date>2001-05-01</publish_date>
+        <description>A comprehensive guide to XSLT.</description>
+        <publisher>O'Reilly &amp; Sons</publisher>
+        <address>
+            1 Canada Square
+            London, W1B 5UV
+            UK
+        </address>
+        <phone>020 7124 5000</phone>
+        <email>support@oreilly.com</email>
+    </book>
+</catalog>

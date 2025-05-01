@@ -1,0 +1,16 @@
+<?xml version=10.0 encoding= "UTF-16" standalone=
+        yes?>
+<catalog>
+    <description>Library catalog</description>
+    <records>
+        <record id="rec1">
+            <author>X. Y. Z</author>
+            <title>Example Book</title>
+            <genre>Example</genre>
+            <price>$19.95</price>
+            <publish_date>1984-05-10</publish_date>
+            <description>General description here...</description>
+            <language>English</language>
+        </record>
+    </records>
+</catalog>

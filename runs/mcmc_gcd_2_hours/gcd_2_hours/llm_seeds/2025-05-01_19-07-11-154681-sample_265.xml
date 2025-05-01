@@ -1,0 +1,24 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<?import xsd = 'http://www.w3.org/2001/XMLSchema'?>
+<catalog>
+   <book id ="{xsd:integer} 123}">
+      <title>XML for Beginners</title>
+      <author>Alice</author>
+      <publishDate>XSD</publishDate>
+      <price>4.5</price>
+      <description>
+         <para>This book is the best</para>
+         <para>We think.</para>
+      </description>
+   </book>
+   <book id ="{xsd:integer} 124">
+      <title>xsd</title>
+      <author>Bob</author>
+      <publishDate>{http://www.w3.org/2001/XMLSchema}date</publishDate>
+      <price>5.5</price>
+      <description>
+         <para>This book is the best</para>
+         <para>We think.</para>
+      </description>
+   </book>
+</catalog>

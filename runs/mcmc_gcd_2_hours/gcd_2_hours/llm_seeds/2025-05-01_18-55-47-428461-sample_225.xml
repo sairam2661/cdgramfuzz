@@ -1,0 +1,23 @@
+<?xml version = 1.0  encoding = "UTF-8" standalone = yes?>
+
+<catalog>
+  <book id="bk101" genre="romance"  area="History"    format="PDF">
+    <author>Richard Bach</author>
+    <title>The Runaway Ranch</title>
+    <publisher>Putnam Publishing Group</publisher>
+    <weight>6.8</weight>
+    <price>11.95</price>
+    <description>An enchanting story about the power of love."></description> 
+    <author-sort>bach</author-sort>
+  </book>
+
+  <book id="bk102" genre="Non-Fiction"   area="Poetry"    format="Kindle">
+    <author>Aristotle</author>
+    <title>Politics</title>
+    <publisher>Aristotle Press</publisher>
+    <weight>5.5</weight>
+    <price>21.95</price>
+    <description>A book about moral philosophy."></description> 
+    <author-sort>aristotle</author-sort>
+  </book>
+</catalog>

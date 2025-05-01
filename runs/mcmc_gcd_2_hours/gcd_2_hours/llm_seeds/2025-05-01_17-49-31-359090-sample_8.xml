@@ -1,0 +1,31 @@
+<?xml version = 1.0 encoding="ISO-8859-1"?>
+<catalog>
+  <title>Library Catalog</title>
+  <description>This is a library catalog system.</description>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML Tutorial</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating XML documents.</description>
+    <image>image.jpg</image>
+    <author>
+      <first-name>John</first-name>
+      <last-name>Smith</last-name>
+    </author>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT Tutorial</title>
+    <genre>Computer</genre>
+    <price>29.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>A detailed look at using XSLT documents.</description>
+    <image>image2.jpg</image>
+    <author>
+      <first-name>Jane</first-name>
+      <last-name>Doe</last-name>
+    </author>
+  </book>
+</catalog>

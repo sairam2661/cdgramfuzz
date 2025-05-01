@@ -1,0 +1,46 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<document>
+  <head>
+    <title>Mathematical Formulae</title>
+    <notation>
+  <notations>
+      <notationRef id ="" xml:lang="" xmlns:xlink ="" base="mathML" format="inline" 
+      viewBox="0 0 500 500">
+                  <mrow xmlns:math ="" xmlns:xlink=""
+                  style="display:inline;vertical-align:top">
+                    <mrow align="left">
+                        <mi math:displaystyle="false">x</mi>
+                        <mo>+</mo>
+                        <mi math:displaystyle="false">y</mi>
+                    </mrow>
+                    <mrow align="left">
+    
+                        <mi math:displaystyle="true">z</mi>
+                        <mo>+</mo>
+                        <mi math:displaystyle="true">k</mi>
+                    </mrow>
+                  </mrow>
+            </notationRef>
+      </notations>
+    </notation>
+    <pageNumber>1</pageNumber>
+    <abstract>This document is about mathematical formulae.</abstract>
+    <identifier>ISBN-999-999-999-9</identifier>
+  </head>
+  <body>
+    <chapter>
+      <title>Chapter 1: Introduction to Math</title>
+      <section>
+        <title>Section 1: Basic Algebra</title>
+        <table>
+          <tbody>
+            <tr>
+              <td>Equation 1</td>
+              <td>x&amp;=1</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </chapter>
+  </body>
+</document>

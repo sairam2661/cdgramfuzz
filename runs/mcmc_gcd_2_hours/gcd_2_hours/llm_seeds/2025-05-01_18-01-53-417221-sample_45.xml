@@ -1,0 +1,87 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library xmlns:lib = "http://www.example.org/library">
+    <book xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation ="
+
+    <!ELEMENT book (title, author, publisher, edition, price)>
+    <!ELEMENT title (#PCDATA)>
+    <!ELEMENT author (#PCDATA)>
+    <!ELEMENT publisher (#PCDATA)>
+    <!ELEMENT edition (#PCDATA)>
+    <!ELEMENT price (#PCDATA)>
+    <!ATTLIST book
+        ISBN CDATA #PCDATA
+        publicationDate CDATA #PCDATA
+        authorNotes CDATA #PCDATA
+    >
+    <book>
+        <title>War and Peace</title>
+        <author>The Great</author>
+        <publisher>Random House</Publisher>
+        <edition>1</edition>
+        <price>19.99</price>
+        <ISBN>978-0061120086</ISBN>
+        <publicationDate>2000-01-01</publicationDate>
+        <authorNotes>This is a classic book.</authorNotes>
+    </book>
+    </library><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+Note that library.dtd and the schema location could be modified, or any element attribute could be added, which would affect the book data. This example serves to make the element declaration and the DTD prominent while describing the book and its elements. It could be made different by changing the book data. For example, adding a bibliography element or changing the publication date to a range rather than a single date. 
+
+For an alternative, the DTD and schema could be more complex. For example:
+
+``` xml
+<!ENTITY library-name "Books-Database-2002.DTDSystemsLibrary.xsdSystemsLibraryXML-Schema-Generated-2003-12-Raw-CodedXML.htmlhttpwwwW3CWXSDTDSystemsLibrary20001203T21:AD0-05.00.01-02-26-0  		     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+

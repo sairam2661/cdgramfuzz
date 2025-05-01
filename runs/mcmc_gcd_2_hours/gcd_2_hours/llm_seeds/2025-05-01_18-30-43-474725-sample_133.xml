@@ -1,0 +1,12 @@
+<?xml version =1.0 encoding="UTF-8" standalone = no?>
+
+<!DOCTYPE catalog SYSTEM "catalog.xsd">
+
+<catalog xml:lang="en">
+    <books>
+        <?include xquery "book.xqm"?>
+    </books>
+    <authors>
+        <?include xquery "author.xqm"?>
+    </authors>
+</catalog>

@@ -1,0 +1,85 @@
+<?xml version = 1.0 encoding = "UTF-16" standalone =  yes?>
+<bookstore 
+   vendor ="At The Store"
+   description ="@see http://store.example.com"
+   
+   catalog.xml 
+   ="$CatalogXML$"
+   image.xml 
+   ="$ImageXML$"
+   author.xml 
+   ="$AuthorXML$"
+   book ="/catalog/book"
+   price ="/price"
+   currency ="/currency"
+   customer 
+       ="/customer[1]"
+       description="Regular customer"
+   
+>
+  <catalog id ="$CatalogID$" name ="$CatalogName$">
+    <book 
+      id ="/book/@id"
+      title ="/title"
+      author ="/author"
+      price ="/price" 
+       > 
+        <title>Example Book</title>
+        <price>39.95</price>
+      </book>
+  </catalog>
+
+  <customer id ="/customer/@id" name ="/customer[@name="RegularCustomer-1st-visit-to-Any-branch-2005-12-07-01.00.00.0001.2158.3.12.3.29.0002="/>
+  <date>2005-12-07</date>
+  </customer>
+
+</bookstore> 
+<!ATTLIST book 
+    title "title
+        ="" 
+    authorname 
+      ="" 
+    image 
+      ="" 
+    price 
+      ="" 
+    date   ="" 
+    ISBN 
+       ="" 
+>
+<!---->
+<catalog> 
+  <book title ="Sample Book Title" 
+       authorname ="" 
+       image ="" 
+       price ="" 
+       date ="" 
+       ISBN ="" 
+  ></book> 
+</catalog> 
+<!---->
+<author > 
+  <authorname >"Robert Bemis"
+</author>
+<!---->
+<catalog>
+    <book 
+        title ="Book Title " 
+        authorname="Bemis, Robert"
+        image=""
+        price=""
+        date=""
+        ISBN=""
+      >
+       <date>
+        2004-05-01
+       </date>
+       </book> 
+</catalog> 
+<!---->
+<image>
+   <imageURL ="" url ="" 
+         date ="" > 
+    <img 
+         height ="" width ="" alt ="Example Image" 
+         src ="$IMAGEURL$ "/

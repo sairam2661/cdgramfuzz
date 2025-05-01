@@ -1,0 +1,62 @@
+<xml-stylesheet type="text/xsl" href="style.xsl">
+<version history="1.0 2005-04-23T08:37:52Z johnDoe">
+<xml declaration  
+  ="<!DOCTYPE document ["  
+ 	><!-- DOCTYPE declaration -->"  
+ 	<!-- parsed element (root) -->"  
+ 	<doc type="document" vocab="http://example.com/vocab" xml:lang="en">
+ 	<author name="John Doe"
+ 	        pubdate="03/14/1999"/>
+ 
+ 	<docname kind="html">Introduction toXML</docname>  
+  </doc>
+</xml-stylesheet> 
+
+<bookstore catalog="books catalog.xml" xml:lang="en">
+  <book>   
+    <title>HTML</title>
+    <genre>Computer</genre>    
+    <author>
+      <first name="Harry"
+            lastname="Potter"/>
+    </author>    
+    <publisher>
+      <country>United Kingdom</country>     
+      <address>
+        <street>Godric's Hollow</street>
+        <city>Durham</city>
+        <state>Co. Durham</state>
+        <zip>HR9 7PA</zip>
+      </address>     
+      <phone tel="01325 599111"/>
+      <fax>08705 600240</fax>
+    </publisher>    
+    <price currency="GBP">12.99</price>    
+    <description>Regular edition.</description>
+  </book>  
+</bookstore> 
+
+<student>
+  <name>John Smith</name> 
+  <gpa>
+    <grade symbol="A"/>
+    <grade symbol="B "/>
+  </gpa>
+  <classes>
+    <class name="Math"/>
+    <class name="Science"/>
+    <class name="English"/>
+  </classes>
+</student> 
+
+<membership level="bronze" start="2020-04-01" end="2022-03-31">
+ <benefits>
+   <benefit benefitType="health">Comprehensive health insurance coverage</benefit>
+   <benefit benefitType="travel">Travel discounts</benefit>
+ </benefits>
+  <fee currency="USD" tax="0.06">10.00</fee>
+ 
+</membership> 
+
+<calendar start="2021-08-15" period="month">
+ <list weekDay

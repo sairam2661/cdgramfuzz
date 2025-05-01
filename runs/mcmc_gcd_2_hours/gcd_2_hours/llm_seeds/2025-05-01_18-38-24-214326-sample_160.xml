@@ -1,0 +1,62 @@
+<?xml version = 
+      1.0  encoding = "UTF-8"  standalone = yes?>
+ 
+
+<!DOCTYPE catalog SYSTEM "catalog.xsd">
+ 
+<catalog xmlns:prod="http://example.com/prod" 
+         xmlns:cat="http://example.com/cat"
+         xmlns:i18n="http://www.example.net/i18n"
+         version="2.10">
+ 
+  <description xml:lang="en-US">Product Catalog</description>
+  
+  <producer product-id="ABC012" 
+            name="ABC Corporation"
+            phone="+91-1234567890"
+            address="ABC Corporation, 123 Rajaji Marg, Delhi, India"/>
+  
+  <category category-id="CAT123" 
+             name="Electronics" 
+             description="Our collection of electronics products"/>
+  
+  <product product-id="PROD567" 
+            category-id="CAT123"
+            name="Laptop"
+            manufacturer="HP"
+            model="HPLaptop10"
+            product_id="HPLAP10"
+            release_date="2022-01-01"
+            list_price="85000">
+ 
+    <attribute attribute-name="Weight"  value="2"/>
+    
+    <shipping info="Free Shipping" price="0"/>
+   
+</catalog>
+ 
+ 
+<catalog xmlns:i18n="http://www.example.net/i18n" 
+         xmlns:prod="http://example.com/prod"
+         version="2.10">
+ 
+  <description xml:lang="en-US" i18n:variant="en-GB">Product Catalog</description>
+ 
+  <producer product-id="ABC012" 
+            i18n:name="ABC Corporation (India)"
+            i18n:address="ABC Corporation, 123 Rajaji Marg, Delhi, India"/>
+ 
+  <category category-id="CAT123" 
+             i18n:name="Electronics" 
+             i18n:description="Our collection of electronics products"/>
+ 
+  <product product-id="PROD567" 
+            category-id="CAT123"
+            i18n:name="Laptop"
+            i18n:manufacturer="HP (global)"
+            i18n:model="HP-Laptop10"
+            i18n:product_id="HP-LAP10GB"
+            i18n:release_date="2022-01-01T00:00:00+05:30"
+            i18n:list_price="85000" i18n:currency="INR">
+ 
+   

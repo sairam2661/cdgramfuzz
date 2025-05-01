@@ -1,0 +1,22 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+<book id="BK-101">
+<category>CHILDRENS</category>
+<title >Harry Potter </title>
+<author >J.K. Rowling</author>
+<j pubDate="2000-10-01">2000-10-01</j>
+
+<person>
+<name>Harry Potter </name>
+<address>
+<street > Godric's Hollow </street>
+<city >Hogwarts</city>
+<state >UK</state>
+<zip >UK</zip>
+
+<fax >-43 345 345 65</fax >
+<tel >+44 345 354 555 999</tel>.
+</address> 
+</person>
+</book>
+</catalog>

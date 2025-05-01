@@ -1,0 +1,88 @@
+<?xml version = 1.0 encoding =  "UTF-8" standalone =  yes?>
+<!DOCTYPE article [
+<!ELEMENT article (author, publisher, address, date, section, text)?>
+<!ELEMENT author (name, title)>
+<!ELEMENT name (#PCDATA)*> 
+<!ELEMENT title (#PCDATA )*>
+
+<!ELEMENT publisher (#PCDATA )*>
+<!ELEMENT address (street, city, state, zip)>
+<!ELEMENT street (#PCDATA)*>
+<!ELEMENT city (#PCDATA)*>
+<!ELEMENT state (#PCDATA)*>
+<!ELEMENT zip (#PCDATA)*>
+
+<!ELEMENT date (#PCDATA)*>
+<!ELEMENT section (#PCDATA)*>
+<!ELEMENT text (#PCDATA)*> 
+
+<!ATTLIST article  
+author NMTOKEN
+       "author" NMCdata
+       IDREFS 
+       "publisher" NMCdata
+       IDREFS 
+       "> 
+<article  
+       author="Smith
+       CDATA"
+       IDREFS=" Jones 
+ IDREFS
+       "> 
+ <author  
+         IDREF=" Jones 
+ IDREF
+         " 
+          TITLE=" Jour
+         NMTOKEN">
+  <name>
+     <title > 
+     > 
+     > 
+     >
+ <publisher  
+        IDREFS=" Smith 
+ IDREF
+        "> 
+    <publisher NMCdata="Newspaper
+        NMTOKEN
+       " 
+     IDREFS=" Jones 
+ IDREFS
+       "> 
+            <author  
+             NMTOKEN="  Smith
+            IDREFS
+ 
+          "  
+      </author> 
+   <address > 
+   <street NMCdata="Ludwig 
+   IDREFS 
+   " 
+    <city NMCdata="Oxford
+   IDREFS
+   " 
+   <state NMCdata="Oxford
+   IDREFS
+   " 
+   <zip NMCdata="OX1   
+   IDREFS
+   " 
+       > 
+      <date NMCdata ="  
+  IDREFS
+       IDREF
+       "> 
+       <text NMCdata="Science 
+       IDREFS 
+       " 
+       > 
+  </article> 
+  <!ENTITY xmlns:xlink="http:www.w3.org 
+
+  			     	   
+      			     	   
+           			     IDREFS  "  
+  4 "> 
+  <

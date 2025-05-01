@@ -1,0 +1,32 @@
+<?xml version =	1.0 encoding = "UTF-8" standalone =	yes?>
+<!DOCTYPE note SYSTEM "note.dtd">
+<note xml:lang ="S">
+<title>Meeting Notes</title>
+<!--[Entities]--><!--[Paragraphs]-->
+
+<!--[Entity]--><!----> 
+<!--[Paragraph]--><![CDATA[
+The meeting discussed the new project and the deadline is June 15th.
+]]>
+
+<!--[Entity]--><!----> 
+<!--[Paragraph]--><![CDATA[
+The project team consists of John, Alice, and Bob.
+]]>
+
+<!--[Entity]--><!---->  
+<!--[Paragraph]--><![CDATA[
+The action item is assigned to John and Alice.
+]]>
+
+<!--[Entity]--><!---->  
+<!--[Paragraph]--><![CDATA[
+The meeting will be held at 2 pm on June 15th.
+]]>
+
+<!--[Entity]--><!---->  
+<!--[Paragraph]--><![CDATA[
+The meeting will be conducted via video conference.
+]]>
+
+</note>

@@ -1,0 +1,32 @@
+<?xml version = 1.0 encoding="ISO-8859-1"?>
+<catalog xml:lang="en">
+    <description xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2003/01/geo/wgs84_pos#
+                                                  geo.xsd">
+        <title>Example Catalog</title>
+        <geo:point latitude="48.8566" longitude="2.3508"/>
+    </description>
+    <producer>Ex Libris</producer>
+    <language>English</language>
+    <subject>General</subject>
+    <subject>Mathematics</subject>
+    <subject>CALCULEUR</subject>
+
+    <contribution xmlns:ed="http://www.w3.org/ns/educational">
+        <title>Author Title</title>
+        <author>Author Name</author>
+        <publisher>ABC Publisher</publisher>
+    </contribution>
+
+    <contribution xmlns:ed="http://www.w3.org/ns/educational">
+        <title>Author Title</title>
+        <author>Author Name</author>
+        <publisher>XYZ Publisher</publisher>
+    </contribution>
+</catalog>
+
+  
+  
+
+  
+ 

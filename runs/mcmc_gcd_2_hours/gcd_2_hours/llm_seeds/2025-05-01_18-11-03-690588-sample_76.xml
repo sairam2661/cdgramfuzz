@@ -1,0 +1,18 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone =  yes?>
+
+<!DOCTYPE catalog SYSTEM "catalog.dtd">
+<catalog name="Northland">
+  <provider providerID="NORTHLAND"/>
+  <description>Northland catalog information</description>
+  <address>1234 Main St</address>
+  <!-- ATTLIST for catalog -->
+  <!--
+   ATTRIBUT1 --> catalogueName
+  <!--
+   ATTRIBUT2 --> catalogueDescription
+  <!--
+   ATTRIBUT3 --> catalogueImage
+  <catalogueName> Northland Catalog</catalogueName>
+  <catalogueDescription>This is a retail catalogue for Northland</catalogueDescription>
+  <catalogueImage source="image.jpg"/>
+</catalog>

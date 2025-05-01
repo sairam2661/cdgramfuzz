@@ -1,0 +1,64 @@
+<?xml version =1.0 encoding = "UTF-16" standalone = yes?>
+<catalog xmlns:store = "http://www.example.com/store">
+    <bookstore>
+        <genre> Fiction</genre>     
+        <date>2023-05-01</date>     
+        <author>
+            <firstName>John</firstName>
+            <lastName>Doe</lastName>               
+        </author>              
+        <title store:format ="" >Book Title</title>
+        <publisher>Example Publisher</publisher>        
+        <description store:publisher ="" >
+            This is a book to store information about publishing.
+        </description> 
+        <price currency =">USD" currencytype =">
+            29.99
+        </price>
+        <rating store:category =)>
+            4
+        </rating>
+        <isbn store:keyword =">
+            978-3-124-37150-5
+        </isbn>          
+        <barcode store:version =">Barcode</barcode>
+    </bookstore>
+</catalog> 
+
+<?xml version = "  ionic   =", "UTF-  ="/">
+<catalog>
+    <note to ="" from ="" subject ="" message ="/>
+        <to>John Doe</to>
+        <from>Alice</from>
+        <subject>Alice </subject>
+        <message>Hi John </message>
+        <priority level ="/>
+            <level>high</level>
+        </priority>    
+</note> 
+<?xml version = "1.0" =", encoding = "UTF-8", standalone = "/>
+<catalog>
+    <note to ="" from ="" subject ="" message ="/>
+        <to>John Doe</to>
+        <from>Alice</from>
+        <subject>Alice </subject>
+        <message>Hi John </message>
+        <priority level ="/>
+            <level>high</level>
+        </priority>    
+</note> 
+</catalog> 
+<?>();xml version ("1.0")] 
+
+<catalog xmlns = "http://example.com/xmlns)>
+    <note to =">Alice</note>
+    <note to =">Bob</note>
+</catalog> 
+</catalog><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+Solution 1:
+
+<?xml version="  ionic  =", "UTF- ="/"> 
+<catalog>
+    <note to ="" from ="" subject ="/>
+        <to>A

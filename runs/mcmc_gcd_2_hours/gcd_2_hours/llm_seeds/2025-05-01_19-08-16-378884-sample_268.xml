@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+<description>Products catalog</description>
+<entity name =">
+    <code>12345</code>
+    <name>&lt;p&gt;Product 1&lt;/p&gt;</name>
+    <price>19.99</price>
+</entity>
+<entity name =">
+    <code>67890</code>
+    <name>&lt;q&gt;Product 2&lt;/q&gt;</name>
+    <price>9.99</price>
+</entity>
+</catalog>

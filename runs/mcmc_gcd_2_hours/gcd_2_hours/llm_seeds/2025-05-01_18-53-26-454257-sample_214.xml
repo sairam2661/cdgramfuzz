@@ -1,0 +1,19 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<catalog>
+  <book id="bk101">
+    <name>XML for Beginners</name>
+    <genre> Computer</genre>
+    <author>John Smith</author>
+    <publisher>O'Reilly &amp; Associates</publisher>
+    <price>39.95</price>
+    <description>An in-depth look at creating applications with XML.</description>
+  </book>
+  <book id="bk102">
+      <name>XML for Programmers</name>
+      <genre>Computer</genre>
+      <author>Jane Doe</author>
+      <publisher>Wiley Publishing</publisher>
+    <price>49.95</price>
+    <description>Exercises and examples for creating applications with XML.</description>
+  </book>
+</catalog>

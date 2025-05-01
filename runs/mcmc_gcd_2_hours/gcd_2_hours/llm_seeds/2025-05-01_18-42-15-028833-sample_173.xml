@@ -1,0 +1,17 @@
+<?xml version = 1.0 encoding = "UTF-8"?>
+<!DOCTYPE product_catalog SYSTEM "product_catalog.xsd">
+<prolog PI="my:system" xmlns:my="http://example.com/my">
+  <catalog>
+    <product name="Laptop" description="A laptop computer with USB ports and Wi-Fi">
+      <price>499.99</price>
+      <category>Electronics</category>
+      <brand>Apple</brand>
+    </product>
+    <product name="Smartphone" description="A smartphone with touchscreen interface">
+      <price>599.99</price>
+      <category>Electronics</category>
+      <brand>Samsung</brand>
+    </product>
+  </catalog>
+  <xi:include href ="MyHeader.xml" />
+</prolog>

@@ -1,0 +1,16 @@
+<?xml version = 1.0 encoding = "ISO-8859-1"?>
+<catalog>
+    <description>list of available books</description>
+    <genre selection ="YesNo" xml:lang="en-US"></genre>
+    <author xml:space="preserve">
+        <family >Smith</family>
+        <firstname>J.K.</firstname>
+        <initials> smithj</initials>
+    </author>
+</catalog>
+  
+ 
+    
+   
+        
+        

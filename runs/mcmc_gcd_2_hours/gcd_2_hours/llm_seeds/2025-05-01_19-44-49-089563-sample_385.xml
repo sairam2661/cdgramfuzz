@@ -1,0 +1,35 @@
+<?xml
+version = 1.0
+encoding = "UTF-8"
+standalone = yes
+?>
+<catalog>
+  <book id="bk101">
+    <author>John Smith</author>
+    <title>XML for Beginners</title>
+    <genre>Computer</genre>
+    <price>39.95</price>
+    <publish_date>2000-10-01</publish_date>
+    <description>An in-depth look at creating documents with XML.</description>
+    <condition>Good</condition>
+    <cover_IMAGE>image.jpg</cover_IMAGE>
+    <notes>
+      <note>Special introductory pricing. </note>
+      <note>Our bookkeeper has some concerns about the pricing. </note>
+    </notes>
+  </book>
+  <book id="bk102">
+    <author>Jane Doe</author>
+    <title>XSLT: The Ultimate Worksheet Tool</title>
+    <genre>Computer</genre>
+    <price>49.95</price>
+    <publish_date>2001-05-01</publish_date>
+    <description>XSLT is an incredibly useful tool for creating worksheets. </description>
+    <condition>Very Good</condition>
+    <cover_IMAGE>image2.jpg</cover_IMAGE>
+    <notes>
+      <note>Suggest that the author proof read the book before publication. </note>
+      <note>Special introductory pricing. </note>
+    </notes>
+  </book>
+</catalog>

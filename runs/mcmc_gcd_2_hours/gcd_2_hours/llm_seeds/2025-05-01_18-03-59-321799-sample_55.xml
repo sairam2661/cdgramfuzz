@@ -1,0 +1,28 @@
+<?xml version=
+1.0 
+encoding=
+"UTF-8" 
+standalone=
+
+ yes?>
+<!DOCTYPE productcatalog
+SYSTEM
+ 
+"https://example.com/catalog.dtd">
+<productcatalog>
+<product id="P001">
+<name> 
+  laptop
+</name>
+<description> A powerful laptops with a 13-inch display.</description>
+<price currency="USD">999.99</price>
+<categories>
+<category name="Electronics" category="Electronics" />
+<category name="Computers" category="Electronics" />
+</categories>
+<images>
+<image src="laptop.jpg" alt="Laptop Image" />
+<image src="laptop1.jpg" alt="Laptop Image 1" />
+</images>
+</product>
+</productcatalog>

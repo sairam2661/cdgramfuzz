@@ -1,0 +1,60 @@
+<?xml version =  1.0  encoding = "UTF-8" standalone =  yes?>
+<!DOCTYPE article [
+<!ENTITY heading ">Heading</ENTITY>
+<!ENTITY body >Body</entity>
+<!ENTITY code >Code</entity>
+]> 
+<article entity:heading="        
+        
+         
+      
+         
+   >
+        
+          
+            
+         
+      
+        
+          
+                
+      
+      <!ENTITY section1 "Section 1: Introduction">
+      <!ENTITY section2 "Section 2: Methodology">
+      <!ENTITY img "Image">
+      
+      <?xml version='1.0' encoding='UTF-8'?>
+      <!ENTITY figuras "[ FIGURA 1: Gráfico 1]" >
+      
+      <!ENTITY subsecciones "[SUBSECCIÓN 1: Introducción 1]" >
+      
+      <!ENTITY tittle "Figure 1">
+      
+      <!ENTITY fig "Figure 1">
+      <!ENTITY table "[TABLE 1]" >
+      <!ENTITY figurasb "[ FIGURA 2: Gráfico 2]" >
+      
+      <!ENTITY subseccionesb "[SUBSECCIÓN 2: Introducción 2]" >
+      <!ENTITY tittleb "Figure 2">
+      <!ENTITY figb "Figure 2">
+      
+      <!ENTITY tableb "[TABLE 2]" >
+      <!ENTITY imgb "[ IMÁGEN 1: Imagen 1]" >
+      <!ENTITY sections "[ SECCIÓN 1]" >
+      <!ENTITY info "[INFÓRMACION]" >
+      
+      <!ENTITY tittlee "Figure 3">
+      
+      <!ENTITY fige "Figure 3">
+      <!ENTITY tablee "[TABLE 3]" >
+      <!ENTITY figuras "[ FIGURA 3: Gráfico 3]" >
+      <!ENTITY subsecciones "[SUBSECCIÓN 2: Introducción 2]" >
+      <!ENTITY tittlee "[TÍTULO 1]" >
+      <!ENTITY fige "[ FIGURA 4: Gráfico 4]" >
+      
+      <!ENTITY subsecciones "[SUBSECCIÓN 1]" >
+      <!ENTITY tittle "[TÍTULO]" >
+      <!ENTITY fig "[ FIGURA 5: Gráfico5]" >
+      
+      <!ENTITY subsecciones "[SUBSECCIÓN 2]" >
+      <!ENTITY subseccionesb "[SUBSECCIÓN 

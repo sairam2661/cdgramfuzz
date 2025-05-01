@@ -1,0 +1,11 @@
+<?xml version =1.0 encoding="UTF-8" standalone=no?>
+<!DOCTYPE note [
+<!ATTLIST note attribut1 CDATA #IMPLIED attribut2 CDATA #IMPLIED attribut3 CDATA #IMPLIED>
+]>
+<note attribut1="value1" attribut2="value2">
+<to>Alice</to>
+<from>Bob</from>
+<subject>Meeting</subject>
+<message>Don't forget our meeting at 2pm!</message>
+<priority level="high"/>
+</note>

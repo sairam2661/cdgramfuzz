@@ -1,0 +1,18 @@
+<personal-data>
+  <contact-info xml:version="1.0" encoding="ISO-8859-1" standalone="yes">
+    <name>
+      <first-name>John</first-name>
+      <last-name>Doe</last-name>
+    </name>
+    <address>
+      <street>123 Main St</street>
+      <city>Anytown</city>
+      <state>CA</state>
+      <zip>12345</zip>
+    </address>
+    <communication>
+      <phone-number>555-555-5555</phone-number>
+      <email>john.doe@example.com</email>
+    </communication>
+  </contact-info>
+</personal-data>

@@ -1,0 +1,18 @@
+<?xml
+version = 1.0
+encoding = "UTF-8"
+standalone = yes
+?>
+<bibliography>
+  <bookstore>
+    <book author="John Smith" title="XML Programming" publication-date="2022-02-22" price="39.99"/>
+    <book author="Jane Doe" title="Data Analysis" publication-date="2021-07-26" price="49.99"/>
+  </bookstore>
+  <directory>
+    <bookstore location="new york"/>
+    <bookstore location="london"/>
+  </directory>
+  <museum>
+    <bookstore location="rome"/>
+  </museum>
+</bibliography>

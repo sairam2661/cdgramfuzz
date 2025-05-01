@@ -1,0 +1,14 @@
+<?xml version = 1.0 encoding = "UTF-8" standalone = yes?>
+<!DOCTYPE Library SYSTEM "catalog.dtd">
+<Library xmlns = "http://example.com/Library">
+    <Book ID ="{123456}">
+        <Title>Harry Potter</Title>
+        <Author>JK Rowling</Author>
+        <Publisher>PickUp Publishing</Publisher>
+    </Book>
+    <Book ID ="{789012}">
+        <Title>Sky Walker</Title>
+        <Author>G F Lucas</Author>
+        <Publisher>New York Times</Publisher>
+    </Book>
+</Library>

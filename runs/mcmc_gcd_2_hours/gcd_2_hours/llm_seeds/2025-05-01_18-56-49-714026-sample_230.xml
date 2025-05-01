@@ -1,0 +1,6 @@
+<?xml version = 1.0  encoding = "UTF-8"?>
+<catalog species="Canis lupus familiaris" xml:id='ID1' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <dbItem vendor="Oxford University Press" productCode="\P01146E"/>
+    <dbItem vendor="Dent &amp; Ebert" productCode="\P01187D"/>
+    <keyword>dog</keyword>
+</catalog>
