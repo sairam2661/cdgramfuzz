@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY % param "%param;[%dtdparam;]">
+  <!ENTITY % dtdparam "param CDATA #IMPLIED"
+                    >
+]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml">
+  <html xmlns:fb="http://www.facebook.com/2008/fbml"
+        xmlns:schema="http://www.w3.org/2001/XMLSchema">
+    <head>
+      <title>Test of Schema and Entities</title>
+      <meta name="generator" content="XML Generator" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { color: blue; }
+        ]]></style>
+    </head>
+  <body>
+    <section fb:namespace="fb">
+      <fb:article>
+        <paragraph>XML is a markup language.</paragraph>
+      </fb:article>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <schema:include href="xsd:schema" />
+    <author>John Doe</author>
+    <date>2025-05-10</date>
+    <fb:metadata>
+      <name>test</name>
+    </fb:metadata>
+  </metadata>
+</document>

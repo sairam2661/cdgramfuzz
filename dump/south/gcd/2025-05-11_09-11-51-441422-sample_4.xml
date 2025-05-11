@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY xinclude SYSTEM "external.xml">
+  <!ENTITY date "2022-07-25">
+  <!ENTITY percent80 "%80">
+  <!ENTITY percent21 "%21">
+  <!ENTITY space "%20">
+]>
+<document xml:lang="en-US"
+          xmlns:math="http://www.w3.org/1998/Math/MathML"
+          xmlns="http://example.com/documents"
+          xml:base="file:///home/user/documents.xml"
+          xml:id="doc123"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          lang="en">
+  <html xmlns:fb="http://www.facebook.com/2008/fbml">
+    <head>
+      <title>Example Document</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style>
+        <![CDATA[
+          table {
+            border-collapse: collapse;
+            width: 500px;
+          }
+          th, td {
+            border: 1px solid black;
+            padding: 8px;
+            vertical-align: top;
+          }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <div>
+      <p>Example text with a &percent80; character.</p>
+      <p>Example text with a &note; entity.</p>
+      <p>Example text with a &date; entity: &date;</p>
+      <p>Example text with a CDATA section: <![CDATA[&space;]]>.</p>
+    </div>
+    <p xmlns:math="http://www.w3.org/1998/Math/MathML">Math example: <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></math></p>
+    <table xmlns="http://www.example.com/tables" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="table.xsd">
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </tr>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 2.0 Frameset//EN"
+ "http://www.w3.org/TR/xhtml2/DTD/xhtml2-frameSetDtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+        xml:lang="en" xml:space="preserve">
+    <head>
+      <title>Fruit Salad</title>
+    </head>
+    <body>
+      <frameset cols="50%,50%">
+        <frame src="banana.html" />
+        <frame src="orange.html" />
+      </frameset>
+    </body>
+  </html>
+  <declaration>
+    <version>1.0</version>
+    <author>John Smith</author>
+  </declaration>
+  <comment>This is a test comment.</comment>
+</document>

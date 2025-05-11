@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document SYSTEM "vegetables.dtd" [
+  <!ENTITY apple "A juicy red fruit from Kazakhstan">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:base="https://example.com">
+    <head prefix="xhtml: http://www.w3.org/1999/xhtml">
+      <title xml:lang="en-US">{Bananas are delicious}</title>
+      <meta name="keywords" content="{&apple;, Carrots}" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Verdana, Arial; }
+          h1 { color: #FF0000; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <p>Carrots are popular for eye-sight. &apple;</p>
+  </body>
+  </html>
+  <metadata>
+    <author xmlns:x="http://example.com/x">Emily</author>
+    <date>2023-07-17</date>
+  </metadata>
+</document>

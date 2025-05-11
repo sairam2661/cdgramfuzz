@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE document [
+  <!ENTITY percent "%">
+  <!ELEMENT document ANY>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta charset="ISO-8859-1"/>
+      <title xml:lang="en">XML Parsers Are Crazy</title>
+      <style type="text/css">
+        <![CDATA[
+          @import url("style.css");
+          body { width: 100%; height: 100%; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <h1>Testing Nested XML Entity References</h1>
+    <p>How can entity references be nested? &amp; &apos; &quot; &apos;&apos; &amp;&apos; &apos;&quot;&apos; &quot; &apos;&apos; &apos;&apos;&apos; &apos;&apos; &apos;&apos; &apos;&apos; &apos; &apos;&apos; &apos;&apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos; &apos;</p>
+  </body>
+</html>
+</document>

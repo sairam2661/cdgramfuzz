@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % foo SYSTEM "local://foo">%foo;
+]>
+<document xmlns="http://example.com/ns" xmlns:bar="http://example.org/ns">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace" xml:lang="en">
+    <head>
+      <title>Hello World!</title>
+      <meta charset="UTF-8" />
+      <style type="text/css"> 
+        <![CDATA[@import "external://script.css";
+        body { background-color: #FF0000; }
+      ]]></style>
+    </head>
+  <body>
+    <p>Testing, 1, 2, 3...</p>
+  </body>
+  </html>
+  <metadata bar:id="meta1">
+    <author>John Doe</author>
+    <date>2024-05-15</date>
+  </metadata>
+  <section>
+    <paragraph>Foo bar baz!</paragraph>
+  </section>
+</document>

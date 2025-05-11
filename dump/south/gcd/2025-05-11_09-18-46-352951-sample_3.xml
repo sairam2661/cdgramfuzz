@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!ENTITY title "Sapiens: A Brief History of Humankind">
+  <!ENTITY section-number "%number; Chapter">
+]>
+<document xmlns="http://example.org/xmlns/" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="books.xsd">
+  <html>
+    <head>
+      <title xml:lang="en-US$xml:base="en-GB.dtd  = "<!ENTITY example 'Example'>&note;" >Sapiens: A Brief History of Humankind</title>
+      <meta name="description" content="A book on human history." />
+      <style xmlns:gds="http://graphfoundation.com/dtd" gds:module="styles">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { color: #FF0000; }
+          @charset "ISO-8859-1";
+        ]]></style>
+    </head>
+  <body>
+  <table border="1" width="100%">
+    <tbody>
+    <tr>
+        <th>Author</th>
+        <th>Release Date</th>
+        <th>Publisher</th>
+        </tr>
+      <tr>
+        <td>Yuval Noah Harari</td>
+        <td>2014-12-17</td>
+        <td>Spiegel &amp; Grau</td>
+      </tr>
+    </tbody></table>
+  </body>
+</html>
+  <metadata>
+    <author>
+      <name>Yuval Noah Harari</name>
+    </author>
+    <date>2014-12-17</date>
+    <publisher>Spiegel &amp; Grau</publisher>
+    <notes> &example;</notes>
+  </metadata>
+  <section>
+    <heading>&section-number; 1</heading>
+    <paragraph>&title;</paragraph>
+    <list type="disc">
+      <item>Bananas are yellow in color.</item>
+      <item>Bananas are oval in shape.</item>
+      <item>&note; </item>
+    </list>
+  </section>
+</document>

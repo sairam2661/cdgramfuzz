@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY % general "ENTITYs &parameter1; &parameter2; &parameter3;">
+  <!ENTITY parameter1 "1st parameter">
+  <!ENTITY parameter2 "2nd parameter">
+  <!ENTITY parameter3 "3rd parameter">
+  <!ENTITY note "Note">
+]>
+<document xmlns="http://example.com/Namespace"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:math="http://www.w3.org/1998/Math/MathML"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:lang="en-US"
+          xml:base="http://example.com/Document"
+          xml:space="preserve">
+  <html math:display="block" math:size="large">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+        math { font-size: 24px; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <paragraph xmlns:fb="http://www.facebook.com/ns/fbml"
+                    xmlns:a="urn:isbn:1-931456-33-9">
+          Bananas are very nutritious. &note;
+          <anchor xlink:href="#anchor">
+            <fb:profile-pic user_id="1234567890" />
+            <a:identifier>123456789</a:identifier>
+          </anchor>
+        </paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious.
+      <xsd:element name="note">Note</xsd:element>
+    </paragraph>
+  </section>
+</document>

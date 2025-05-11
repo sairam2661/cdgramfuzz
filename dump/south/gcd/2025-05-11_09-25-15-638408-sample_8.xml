@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document ANY>
+]>
+<document xmlns="http://example.com/ns"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/ns fruits.xsd"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>XML Fuzz Test</title>
+      <meta name="encoding" content="UTF-8"/>
+      <style type="text/css">
+        <![CDATA[
+          body { background-color: #C0C0C0; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <paragraph>Hello &amp; world!</paragraph>
+    <image source="http://example.com/image.jpg" format="image/jpeg"/>
+  </body>
+  </html>
+  <metadata><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/></metadata>
+  <inlineSvg>SVG data: <svg width="50" height="50"><circle cx="25" cy="25" r="20" fill="red"/></svg></inlineSvg>
+</document>

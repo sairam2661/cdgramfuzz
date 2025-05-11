@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd">
+<document>
+  <html xmlns:fb="http://www.w3.org/ns/xforms"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="https://xml.org/base"
+        xml:lang="eng">
+    <head>
+      <title>Quadratic equations are awesome</title>
+    </head>
+    <body dir="ltr">
+      <math>
+        <mtable columnalign="center" columnspacing="2ex">
+          <mtr>
+            <mtd>2x^2 + 5x - 3 = 0</mtd>
+            <mtd>&quot;A simple quadratic&quot;</mtd>
+          </mtr>
+        </mtable>
+      </math>
+    </body>
+  </html>
+  <rdf>
+    <RDF>
+      <Description rdf:about="">
+        <title>Quadratic equations</title>
+        <subject>Mathematics</subject>
+      </Description>
+    </RDF>
+  </rdf>
+  <section>
+    <paragraph>This is an example &quot;paragraph&quot; of &note; text.</paragraph>
+  </section>
+</document>

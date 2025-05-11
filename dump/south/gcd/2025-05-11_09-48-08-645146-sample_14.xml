@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "vegetables.dtd" [
+  <!ENTITY entity1 "Entity 1">
+  <!ENTITY entity2 "Entity 2">
+]>
+<document>
+  <html xmlns:fb="http://www.facebook.com/2008/fbml"
+        xml:space="preserve">
+    <head>
+      <title>Root Vegetable</title>
+      <meta name="language" content="en"/>
+      <meta name="keyword" content="carrot, potato, parsnip"/>
+      <meta name="creator" content="Jane Doe"/>
+      <meta name="pubdate" content="2024-03-15"/>
+    </head>
+    <body>
+      <p>Text 1 &entity1;.</p>
+      <p>Text 2 &entity2;</p>
+    </body>
+  </html>
+  <section>
+    <sub-section>
+      <inline-images>
+        <picture url="https://example.com/picture.jpg"/>
+        <picture url="https://example.com/picture.jpg"/>
+      </inline-images>
+    </sub-section>
+  </section>
+</document>

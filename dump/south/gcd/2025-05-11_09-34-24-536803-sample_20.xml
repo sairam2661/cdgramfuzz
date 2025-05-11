@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+  <!ATTLIST document xmlns CDATA #FIXED "http://www.w3.org/1999/xhtml">
+  <!ENTITY para "A paragraph.">
+]>
+<document xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+  <html>
+    <head>
+      <title>Multiple Content Models</title>
+    </head>
+    <body>
+      <p>To test the parser, use the document type definition (DTD) below:</p>
+      <metadata>
+        <author>John Doe</author>
+        <date>2024-07-26</date>
+      </metadata>
+      <section>
+        <metadata>
+          <author>Jane Doe</author>
+          <date>2023-12-31</date>
+        </metadata>
+        <para>&note; This is the second paragraph.</para>
+        <para>&para;</para>
+      </section>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section+)>
+  <!ELEMENT html (#PCDATA|head|body|xml:lang|namespace-declaration)*>
+  <!ELEMENT head (#PCDATA|title|meta|style|namespace-declaration)*>
+  <!ELEMENT meta (#PCDATA|content)*>
+  <!ELEMENT style (#PCDATA|processing-instruction)*>
+  <!ELEMENT metadata (author, date+)>
+  <!ELEMENT section (paragraph+|note|image)*>
+  <!ELEMENT paragraph (#PCDATA|note)*>
+  <!ELEMENT author (#PCDATA|name|url)*>
+  <!ELEMENT date (#PCDATA|month|day|year)*>
+  <!ELEMENT name (#PCDATA|first-name|last-name)*>
+  <!ELEMENT image (#PCDATA|source|alt-text)*>
+  <!ELEMENT first-name (#PCDATA|given-name)*>
+  <!ELEMENT last-name (#PCDATA|family-name)*>
+  <!ELEMENT source (#PCDATA|href|title)*>
+  <!ELEMENT alt-text (#PCDATA|text)*>
+  <!ELEMENT given-name (#PCDATA|pref-name)*>
+  <!ELEMENT family-name (#PCDATA|surname)*>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="fr">
+    <head>
+      <title xml:lang="en">Apples and Bananas</title>
+      <meta name="description" content="A blog on fruits." />
+      <meta name="keywords" content="fruits, bananas, apples, health" />
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #0000FF; }
+        p { text-align: center; }
+      ]]></style>
+    </head>
+  <body>
+  <p>A healthy diet is the key to a healthy life.</p>
+  <p xml:lang="en">Eat more fruits and vegetables.</p>
+  </body>
+  </html>
+  <metadata>
+    <author>
+      <name>
+        <first-name>John</first-name>
+        <last-name>Doe</last-name>
+        <url>https://www.example.com</url>
+      </name>
+    </author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph xml:lang="fr">Les bananes sont très nutritives.</paragraph>
+    <note>Note</note>
+    <image src="https://www.example.com/banana.jpg" alt-text="A banana" />
+  </section>
+  <section>
+    <paragraph>Apples are also good for you.</paragraph>
+  </section>
+</document>

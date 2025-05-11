@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY num1 "0" ><!ENTITY num2 "1" >
+  <!ENTITY pi "3.1415926" >
+]>
+<document version="0.1">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xml:lang="en-US">
+    <head>
+      <title>Math Functions</title>
+      <meta name="keywords" content="sin, cos, tan" />
+      <style type="text/css">
+        <![CDATA[
+          body { background-color: #66CCFF; }
+          h1 { color: #0000FF; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <apply>
+        <times/>
+        <cn xmlns="http://www.w3.org/2000/10/XMLSchema#" > &pi; </cn>
+        <cn xmlns="http://www.w3.org/2000/10/XMLSchema#" > &num1; </cn>
+      </apply>
+    </math>
+  </body>
+  </html>
+  <section>
+    <paragraph>FYI: &num2; x &num1; = &pi; </paragraph>
+  </section>
+  <reference uri="https://example.org">
+    <title>Example Reference</title>
+  </reference>
+</document>

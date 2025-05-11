@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "music.dtd" [
+  <!ENTITY eacute "&#233;">
+  <!ENTITY ndash "&#8211;">
+]>
+<document xmlns:xyz="http://www.example.org/xmlns-attributes"
+          xml:lang="en" xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+      <title>Les bananes sont délicieuses!</title>
+      <meta name="creator" content="Jane Doe" />
+      <meta name="date" content="2024-03-16" />
+      <style type="text/css"><![CDATA[
+        @media not print {
+          body { font-size: 10pt; }
+        }
+        &#xyz;div { border: 1px solid #FF0000; }
+      ]]></style>
+    </head>
+  <body><h1>Hello World</h1></body>
+  </html>
+  <metadata>
+    <author xmlns:x="http://www.example.org xmlns-attributes">
+      <name>Jane Doe</name>
+      <address>
+        <street>123 Main St</street>
+        <city>Anytown</city>
+      </address>
+    </author>
+    <date>2024-03-16</date>
+  </metadata>
+  <section>
+    <paragraph xml:lang="en">Bananas &eacute;re delicious!&ndash;</paragraph>
+  </section>
+</document>

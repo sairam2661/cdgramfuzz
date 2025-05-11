@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "structure.dtd" [
+  <!ENTITY p "Para 3">
+  <!ENTITY p2 "Para 4 created by <?xml:namespace prefix=“

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "library.dtd" [
+  <!ENTITY copyright "Copyright &copy; 2020 All Rights Reserved."
+   >
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "&lt;">
+  <!ENTITY gt "&gt;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xml:lang="en">
+    <head>
+      <title>About Us</title>
+      <meta name="description" content="Learn more about our team."/>
+      <meta name="keywords" content="team, members, profile,&amp; info"/>
+      <style type="text/css"><![CDATA[
+        @import url("style.css");
+        @media only screen and (max-width: 768px) {
+            body { background-color: #F5F5DC; }
+            h1 { color: #0056B3; }
+          }
+      ]]></style>
+    </head>
+    <body>
+      <svg width="100" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="80" height="80" rx="10" fill="#0073A9"/>
+      </svg>
+      <h1>About Our Team</h1>
+      <p>Meet our team and read their stories.</p>
+      <p>&lt;span&gt;Our story starts here...&lt;/span&gt; &copy; &amp; <xsl:value-of select="$name"/></p>
+      <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        <!-- empty transformation template, just to demonstrate -->
+        <xsl:template match="/">
+          <output>
+            <title>About Us</title>
+          </output>
+        </xsl:template>
+      </xsl:stylesheet>
+      <script type="application/javascript">
+        function doSomething() {
+         alert('Hello World!');
+        }
+      </script>
+    </body>
+  </html>
+  <section>
+    <subsection>A Brief History</subsection>
+  </section>
+</document>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "custom.dtd" [
+  <!ENTITY xref "External Reference">
+  <!ELEMENT document ANY>
+]>
+<document xmlns:mystuff="http://example.com/my-namespace"
+          xml:lang="en-GB"
+          xml:base="http://example.org/">
+  <html>
+    <head prefix="&mystuff;">
+      <title>Complex XML example</title>
+    </head>
+    <body>
+      <section>
+        <p xml:space="preserve">This is a &xref; to an external file.</p>
+      </section>
+    </body>
+  </html>
+  <chapter>
+    <title>Introduction</title>
+    <preface>
+      <abstr>Summary of the chapter.</abstr>
+    </preface>
+  </chapter>
+</document>

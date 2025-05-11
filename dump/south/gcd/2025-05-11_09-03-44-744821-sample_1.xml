@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+  <!ELEMENT html (#PCDATA|head|body)*>
+  <!ELEMENT head (#PCDATA|title|meta|style)*>
+  <!ATTLIST head
+    xml:lang CDATA #IMPLIED
+  >
+  <!ELEMENT title (#PCDATA)*>]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head xml:lang="en-US">
+      <title>Good</title>
+      <meta name="description" content="Nice" />
+    </head>
+    <body>
+      <p>This is a paragraph!</p>
+      <p>Here is another.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>Caitlin</name>
+      <email>caitlin@example.com</email>
+    </author>
+  </metadata>
+  <section>
+    <paragraph xml:lang="fr-CA">Voici une autre paragraphe.</paragraph>
+  </section>
+</document>

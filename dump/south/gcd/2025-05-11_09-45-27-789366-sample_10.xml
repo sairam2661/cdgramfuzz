@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "bibliography.dtd" [
+  <!ENTITY amp "&#38;">
+  <!ENTITY ref "Ref.">
+]>
+<document xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:math="http://www.w3.org/1998/Math/MathML"
+          xml:lang="fr-BE"
+          xml:space="default">
+  <html>
+    <head>
+      <title>La vie en rose</title>
+      <meta name="robots" content="noindex" />
+    </head>
+    <body>
+      <math:math xmlns:math="http://www.w3.org/1998/Math/MathML">
+        <math:mrow>
+          <math:mn>42</math:mn>
+        </math:mrow>
+      </math:math>
+    </body>
+  </html>
+  <chapter>
+    <figure>
+      <graphic xlink:href="image1.jpg" xlink:title="Image 1" />
+    </figure>
+    <bibliography>
+      <references>
+        <reference>
+          <author>John Smith</author>
+          <year>2024</year>
+          <title>My book</title>
+          <citetitle>&ref;</citetitle>
+        </reference>
+      </references>
+    </bibliography>
+  </chapter>
+</document>

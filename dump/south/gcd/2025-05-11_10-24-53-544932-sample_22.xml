@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/foods.dtd" [
+  <!ENTITY food "food&#128293;">
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="food.xsd"
+          version="1.1">
+  <html>
+    <head prefix="vocabulary http://www.example.com/vocab">
+      <title>Delicious Meals</title>
+      <meta name="keywords" content="chocolate cake, pizza, sushi" />
+      <style type="text/css">
+        <![CDATA[body { font-family: Courier, monospace; }
+        h1 { background-image: url("image1.jpg"); }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p> &food; like chocolate cake &food; like sushi</p>
+    </body>
+  </html>
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:cc="http://creativecommons.org/ns#">
+    <dc:creator>Unknown User</dc:creator>
+    <dc:date>2024-07-26</dc:date>
+    <dc:subject>Food and Drink</dc:subject>
+    <cc:license rdf:resource="http://example.org/licenses/by-sa/3.0/"/>
+  </metadata>
+  <section>
+    <topic>
+      <subsection>Important Ingredients</subsection>
+      <item key="ingredient1">Sushi rice</item>
+      <item key="ingredient2">Wasabi mayonnaise</item>
+    </topic>
+  </section>
+</document>

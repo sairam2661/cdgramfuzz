@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY tau "3.1415926535897932384626">
+  <!ENTITY pi "&#x3C0;">
+]>
+<document xmlns:xi="http://www.w3.org/2001/XInclude"
+          xml:lang="en-GB"
+          xsi:noNamespaceSchemaLocation="http://example.com/schema.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:svg="http://www.w3.org/2000/svg">
+    <head>
+      <title>Mathematical constants</title>
+    </head>
+    <body>
+      <p>Compute <span xmlns:math="http://www.w3.org/1998/Math/MathML">
+        <math:math display="block">
+          <math:mrow>
+            <math:mtext>π

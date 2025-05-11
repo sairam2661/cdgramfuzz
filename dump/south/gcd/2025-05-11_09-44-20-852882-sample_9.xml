@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % ent "ENTITY">
+]>
+<document xmlns:xyz="http://example.com/">
+  <html>
+    <head>
+      <title>Nested document fragments</title>
+      <meta name="description" content="Experimental testing for XML parsers." />
+      <style xlink:href="style.css" type="text/css" xyz:style="bold" media="screen" title="screen" xml:space="preserve">
+ <![CDATA[
+ h1 { font-size: 24pt; }
+ p { text-align: center; }
+  ]]>
+</style>
+    </head>
+    <body>
+      <xml:if test="count(section)>1">Here are some sections.</xml:if>
+      <xsl:apply-templates select="document('script.xml')"/>
+    </body>
+  </html>
+  <other xmlns="http://example.org/">
+    <sub xmlns:abc="http://example.org/abc">
+      <content>Sample content.</content>
+    </sub>
+  </other>
+</document>

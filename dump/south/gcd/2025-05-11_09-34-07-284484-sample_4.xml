@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//Example//DTD Document 1.0//EN"
+           "http://example.com/dtd/doc.dtd" [
+  <!ENTITY fruit "Apple">
+]>
+<document>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <style type="text/css">
+        <![CDATA[
+          @namespace xul "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+          body { font-family: Tahoma, sans-serif; }
+          h1 { xul:include "#header-nav-bar"; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h1>Example</h1>
+      <section>
+        <metadata>
+          <author xml:lang="et">Teele Ahtela</author>
+          <date>2008-12-17</date>
+        </metadata>
+      </section>
+    </body>
+  </html>
+  <annotation xml:lang="fr">Note</annotation>
+  <section>
+    <paragraph>&fruit;<note/></paragraph>
+  </section>
+</document>

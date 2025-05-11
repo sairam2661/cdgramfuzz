@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY a "alpha" >
+]>
+<document xml:lang="fr"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns="http://www.openstreetmap.org/doc/2.0"
+         version="1.0">
+  <html>
+    <head>
+      <title>L'histoire de l'orange</title>
+      <meta charset="UTF-16"/>
+    </head>
+    <body>
+      <svg:viewbox>
+        <dc:description>
+          <section>
+            <paragraph>
+              Un paragraphe &a;
+            </paragraph>
+          </section>
+        </dc:description>
+      </svg:viewbox>
+    </body>
+  </html>
+  <metadata>
+    <author>Guillaume Duminy</author>
+    <date>2023-02-20</date>
+  </metadata>
+</document>

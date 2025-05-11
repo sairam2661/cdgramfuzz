@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY pi "3.141592653589793">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Geometry and Algebras</title>
+      <meta name="keywords" content="Maths,Circles,Spirals" />
+      <style type="text/css">
+        <![CDATA[
+          @import url("http://example.com/styles.css");
+          body { font-family: Arial, sans-serif; }
+          h1 { font-size: 20pt; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <sect1 xmlns="http://www.w3.org/1999/xhtml">
+      <title>Geometry</title>
+      <p>The &pi; constant is essential in geometry.</p>
+    </sect1>
+    <metadata>
+      <author>Alex Smith</author>
+      <date>2022-08-21T14:30:00Z</date>
+    </metadata>
+  </body>
+</html>
+</document>

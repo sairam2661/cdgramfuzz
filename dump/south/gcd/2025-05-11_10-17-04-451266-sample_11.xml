@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE document SYSTEM "math.dtd" [ <!ENTITY % decimal-point "." > ]>
+<document xmlns:fb="http://ns.eurobank.bg/xml/factories/">
+  <html>
+    <head profile="http://www.w3.org/TR/WD-HTML4.0">
+      <title>XML Fuzz Test</title>
+      <title xmlns="uri:http://example.org/" xmlns:html="http://www.w3.org/1999/xhtml"
+      >Another XML title</title>
+      <style type="text/css">
+        <![CDATA[
+          @import url(http://example.org/style.css);
+          body { background-color: #cc33cc; }
+        ]]>
+      </style>
+    </head>
+  <body lang="en" dir="ltr">
+    <root xml:lang="en-UK" xml:space="preserve" xml:base="'http://test.example.com'">
+      <name>Bob Smith</name>
+      <fb:creditCardNumber>1234-5678-9012-3456</fb:creditCardNumber>
+      <fb:expirationDate>2017-02</fb:expirationDate>
+    </root>
+  </body>
+</html>
+<xml:attribute xml:id="x">value</xml:attribute>
+<section>
+  <title>Test Section</title>
+  <title xml:lang="fr">Titre de section test</title>
+</section>
+</document>

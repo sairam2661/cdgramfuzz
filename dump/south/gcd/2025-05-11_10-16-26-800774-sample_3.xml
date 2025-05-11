@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-32"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<document xmlns:fn="http://www.w3.org/2005/xpath-functions"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xml:base="http://example.org/">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="es-ES">
+    <head>
+      <title>Fruit Salad</title>
+      <meta name="DC.Identifier" content="123456" />
+      <meta name="keywords" content="apple, banana, orange" />
+    </head>
+  <body>
+    <section>
+      <metadata>
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                 xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <rdf:Description rdf:about="#fruit_sals">
+            <dc:title xml:lang="es-ES">Salad de frutas</dc:title>
+          </rdf:Description>
+        </rdf:RDF>
+      </metadata>
+      <paragraph>This is a sample description of a fruit salad.&fn:concat;</paragraph>
+    </section>
+  </body>
+</html>
+</document>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.org/doc.dtd" [
+  <!ELEMENT document (#PCDATA)*> <!-- incorrect but it's a test -->
+]>
+<document xml:space="preserve" xmlns="http://example.org/xmlns"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en-CA"
+          xsi:noNamespaceSchemaLocation="schema.xsd">
+  <html xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:math="http://www.w3.org/1998/Math/MathML"
+        xml:base="https://example.org/base" xml:lang="fr-CA">
+    <head>
+      <title>Tests</title>
+      <meta name="keywords" content="test xml, xml-parser" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style xml:lang="fr-CA">
+        <![CDATA[
+          body { font-family: Arial, serif; }
+          h1 { color: #CC33FF; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <h1>XML fuzzer test</h1>
+        <meta charset="UTF-16" />
+      </section>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mtable columnalign="left left" columnspacing="10px">
+          <mtr>
+            <mtd>
+              <mstyle displaystyle="false" scriptlevel="0">z = </mstyle>
+            </mtd>
+            <mtd>
+              <mn>5</mn>
+            </mtd>
+          </mtr>
+        </mtable>
+      </math>
+      <comment xml:lang="fr">test du comment</comment>
+    </body>
+  </html>
+  <section xml:lang="en-CA">
+    <meta name="author" content="test" />
+    <author>Tester &amp;</author>
+  </section>
+</document>

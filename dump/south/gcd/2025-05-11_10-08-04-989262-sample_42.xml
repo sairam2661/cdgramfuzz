@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (node1, node2, node3)>
+  <!ELEMENT node1 (a, b, c)>
+  <!ELEMENT node2 (#PCDATA | a | b | c)*>
+  <!ELEMENT node3 (a, b)>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+    <head>
+      <title>This should parse ok</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <style type="text/css"><![CDATA[
+        body { font-family: courier, monospace; }
+      ]]></style>
+    </head>
+    <body>
+      <node1>
+        <a>First some text</a>
+        <b>Second item</b>
+        <c>Third paragraph</c>
+      </node1>
+      <!-- mixed content -->
+      <node2>
+        Some text for mixed content.
+        <a>Just some element</a>
+        Not some element.
+        <a>Some element too</a>
+        Even more text.
+        <b>Maybe this b has some text</b>
+        More text still.
+        <c>Element three, one, one two and <c>yay!</c> one three
+        more text and another <a>this time just an [a]</a> some <b>bold</b> here one</c>
+      </node2>
+      <node3>
+        <a>This time we start</a>
+        <b>with b</b>
+      </node3>
+      <!-- End node3 -->
+    </body>
+  </html>
+</document>

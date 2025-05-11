@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="shift-jis"?>
+<!DOCTYPE document SYSTEM "special.dtd" [<!ENTITY x "extremely long substring...">]>
+<document xmlns:p1="http://example.org/namespaces/p1"
+          xmlns:p2="http://example.org/namespaces/p2"
+          p1:root-doc="true"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Fruit Catalog</title>
+    </head>
+    <body>
+      <section>
+        <header>
+          <h1>Fruits of the Caribbean</h1>
+          <p p1:text="This is some p1 text."/>
+        </header>
+        <article>
+          <content>
+            <para>No <b> XML entities </b> here: &amp;#62; but only <x/>.</para>
+          </content>
+        </article>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <title>Fruit Catalog</title>
+    <authorGroup>
+      <author>John Smith</author>
+      <author>Jane Doe</author>
+    </authorGroup>
+  </metadata>
+  <section num="2">
+    <title>Coconuts have many shells.</title>
+  </section>
+</document>

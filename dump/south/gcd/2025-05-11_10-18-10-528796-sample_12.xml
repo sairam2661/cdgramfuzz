@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "music.dtd" [
+  <!ENTITY bar "Bar 123" ><!ENTITY key "C-Major" >
+  <!ELEMENT music (section+)>
+  <!ELEMENT section (phrase | group)*>
+  <!ELEMENT phrase (#PCDATA | staff)*>
+  <!ELEMENT staff (note+)>
+  <!ELEMENT note (pitch, duration)>
+  <!ATTLIST staff num CDATA #REQUIRED>
+]>
+<document>
+  <html prefix:lang="en" xml:space="preserve" xmlns="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title>Classical Music</title>
+      <style><![CDATA[
+        body { font-family: Cambria, serif; }
+        h1 { color: #FF0000; }
+      ]]></style>
+    </head>
+  <body>
+    <p>&bar; in &key;</p>
+  </body>
+  </html>
+  <music>
+    <section>
+      <group>
+        <phrase>High</phrase>
+      </group>
+      <phrase>Low</phrase>
+    </section>
+    <section>
+      <staff num="1">
+        <note>
+          <pitch>40</pitch>
+          <duration>2</duration>
+        </note>
+      </staff>
+      <staff num="2">
+        <note>
+          <pitch>40</pitch>
+          <duration>2</duration>
+        </note>
+      </staff>
+    </section>
+  </music>
+  <metadata>
+    <author>John Smith</author>
+    <date>2022-01-01</date>
+  </metadata>
+</document>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-32'?>
+<!DOCTYPE document [
+  <!ENTITY % entity1 "<!ENTITY note 'Note'>">
+  %entity1;
+]>
+<document xmlns:doc="http://example.com/document"
+          doc:namespace-version="1"
+          xml:id="Doc1"
+          version="1.0">
+  <html
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fo="http://www.w3.org/1999/XSL/Format"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xml:lang="en-US"
+      xml:space="preserve"
+      fo:inline-proximity-space="strict">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+    </head>
+    <body>
+      <p>Bananas are very nutritious.</p>
+      <link rel="stylesheet" href="#style" type="text/css"/>
+    </body>
+  </html>
+  <data>
+    <entry>
+      <key>key</key>
+      <value>value</value>
+    </entry>
+  </data>
+  <section>
+    <paragraph>&note;</paragraph>
+  </section>
+</document>

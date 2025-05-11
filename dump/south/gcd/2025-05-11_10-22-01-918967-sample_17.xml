@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/doctype.dtd" [
+  <!ENTITY ns "http://example.com/namespace">
+  <!ELEMENT document (html|metadata)>
+  <!ELEMENT html (#PCDATA|head|body)*>
+  <!ELEMENT metadata (#PCDATA|author|date)*>
+  <!ELEMENT author (#PCDATA)*>]>
+<document xmlns:t="http://example.com/types">
+  <html xml:lang="fr">
+    <head>
+      <title lang="en">The best fruit!</title>
+      <meta charset="UTF-8" content="text/html; charset=UTF-8" />
+      <style type="text/css"><![CDATA[
+        @namespace ns;
+        ns|body { font: normal 10pt Arial, sans-serif; }
+        *[translate]]>
+      </style>
+    </head>
+    <body>
+      <section xml:space="preserve">
+        <p>Un excellent fruit est <i>le poire</i>!</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author email="jane@example.com">Jane Doe</author>
+  </metadata>
+</document>

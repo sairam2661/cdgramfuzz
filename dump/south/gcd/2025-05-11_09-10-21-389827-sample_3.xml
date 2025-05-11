@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY fruit "<banana><apple></apple></banana>">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title xml:space="preserve"> Bananas are the best fruit! </title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; font-variant: small-caps; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+    </head>
+  <body>
+    <p>Let's discuss the &note; on fruit consumption. The correct answer is: &fruit;.</p>
+  </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <h2 xml:base="https://fruits.com/bananas">Bananas</h2>
+    <paragraph>Bananas are very nutritious.</paragraph>
+    <figure>
+      <image src="banana.jpg" />
+    </figure>
+  </section>
+</document>

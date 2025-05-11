@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % f "foo">
+  <!ATTLIST section
+    id   ID  #REQUIRED
+    nav  CDATA #IMPLIED
+  >
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+          @import url("example.css");
+        ]]>
+      </style>
+    </head>
+  <body>
+
+    <section id="id1">
+      <nav>Bread crumbs</nav>
+      <section>
+        <note>&f;</note>
+        <p>
+          Bananas are very nutritious.
+          <meta name="keywords" content="bananas, fruit" />
+        </p>
+      </section>
+    </section>
+
+    <metadata>
+    <author>Jane Doe</author>
+  <date>2025-05-10</date>
+    </metadata>
+</body>
+</html>
+</document>

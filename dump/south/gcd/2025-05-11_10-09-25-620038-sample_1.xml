@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "structure.dtd" [
+  <!ENTITY symbol "<">
+  <!ATTLIST symbol type CDATA #REQUIRED>
+]>
+<document xml:space="preserve">
+  <html xmlns:svg="http://www.w3.org/2000/svg" role="presentation">
+    <head>
+      <title>Overview</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+      <p>Element names can be &quote;</p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+        <rect x="50" y="30" width="80" height="50" fill="red" />
+        <g>
+          <text x="10" y="70" font-size="24" font-weight="bold">Sample</text>
+          <text xml:lang="en-US" x="20" y="90">Element</text>
+        </g>
+      </svg>
+    </body>
+  </html>
+  <summary>
+    <note>This is a summary</note>
+  </summary>
+</document>

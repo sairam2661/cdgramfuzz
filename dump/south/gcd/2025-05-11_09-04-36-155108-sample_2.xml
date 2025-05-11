@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "shapes.dtd" [
+  <!ENTITY frac "½">
+  <!ENTITY name "Max">
+]>
+<document xml:lang="en-GB">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Angles and Shapes</title>
+      <meta name="keywords" content="# angles and geometry" />
+      <style><![CDATA[
+        @import url("styles.css");
+        body { font-family: Arial, sans-serif; }
+       .shape { border: 1px solid #000000; }
+      ]]></style>
+    </head>
+  <body>
+    <p>Triangles have <xsl:value-of select="frac"/></p>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="50" r="40"/>
+    </svg>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+      <xsl:apply-templates select="/catalog/item"/>
+    </table>
+  </body>
+</html>
+<misc>
+  <custom xmlns="http://example.org">
+    <customtag>Hello, <name/></customtag>
+  </custom>
+</misc>
+<note>Reminder to call Max</note>
+</document>

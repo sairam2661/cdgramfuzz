@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY foo " Foo">
+  <!NOTATION XHTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                        >
+  <!ENTITY baz "<bar>Bar</bar>">
+]>
+<document xmlns:foo="urn:example:foo">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="fr-CA">
+    <head>
+      <title>Bananas</title>
+      <style type="text/css">
+        <![CDATA[
+          body {font-family: Georgia,serif}
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <metadata>
+          &foo;
+        </metadata>
+        <bar>&baz;</bar>
+        &note;
+      </section>
+    </body>
+  </html>
+  <foo:embedded-fragment xmlns:embedded="urn:example:embedded"
+                          content="Embedded fragment content"/>
+</document>

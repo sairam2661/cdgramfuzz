@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+]>
+<document xmlns="http://example.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com fruits.xsd">
+  <html>
+    <head>
+      <title>Complex Fruit Document</title>
+    </head>
+    <body>
+      <h1>Introduction</h1>
+      <section>
+        <subsection>
+          <para>Some notes on apples:</para>
+          <itemizedlist>
+            <item>Apples are nutritious</item>
+            <item>They are also tasty</item>
+          </itemizedlist>
+        </subsection>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-GB">John Smith</author>
+    <date>2025-06-15</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious. &note;</paragraph>
+  </section>
+  <![CDATA[<
+  <script language="JavaScript">
+    function doMath(x, y) {
+      return x + y;
+    }
+  </script>
+  ]]>
+</document>

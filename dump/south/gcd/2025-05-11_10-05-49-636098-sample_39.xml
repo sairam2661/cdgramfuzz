@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "complex.dtd" [
+  <!ENTITY % p "paragraph">
+  <!ENTITY note "Note">
+  <!ELEMENT ext:extra SYSTEM_ITA_2008_document.dtd>
+  <!ELEMENT int:inside SYSTEM_internal.dtd>
+]>
+<document xmlns:ext="http://example.org/XMLSchema/extra">
+  <html xmlns:old="http://example.org/XMLSchema/oldschema"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-GB"
+        old:root="yes">
+    <head>
+      <title xml:space="preserve">Mangoes are the best fruit!</title>
+      <meta name="genre" content="blog-entry"/>
+      <style><![CDATA[
+        @import url(http://example.org/styles.css);
+        body { background-color: #C0C0C0; }
+        h1 { color: #333333; }
+      ]]></style>
+    </head>
+    <body xmlns="http://www.w3.org/1999/xhtml" old:body="yes">
+      &p; <ext:extra>Extra data</ext:extra>
+      <div>&int:inside;</div>
+      <div xml:id="div-one">Hello, World!</div>
+      &note;
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en" name="John Smith">
+      <company>XYZZ corporation</company>
+      <mailing address="123 Main St" />
+    </author>
+    <date>2023-03-01</date>
+  </metadata>
+  <section>
+    <title xml:lang="fr" >Les Bananes sont délicieuses!</title>
+    <paragraph xml:lang="es">Bananas are very nutritious. &note;</paragraph>
+  </section>
+</document>

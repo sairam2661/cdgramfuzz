@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document PUBLIC "-//My XML Schema//DTD Document//EN"
+      "document.dtd" [
+        <!ENTITY exclamation "!" >
+        <!ELEMENT document (html, metadata, comment, section+)>
+        <!ELEMENT html (head, body)>
+        <!ELEMENT metadata (#PCDATA|author|date)*>
+        <!ELEMENT comment (#PCDATA|comment)*>
+        <!ELEMENT section (#PCDATA|paragraph|section)*>
+        <!ELEMENT head (title, meta*, style*)>
+        <!ELEMENT meta EMPTY>
+        <!ELEMENT title (#PCDATA)*>]>
+<document>
+  <html xmlns:my="http://www.example.org/my" xml:lang="fr-CA">
+    <head>
+      <title>Les meilleures fruits : les bananes!</title>
+      <meta name="description" content="Un blog sur les bananes" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #000000; }
+        ]]>
+      </style>
+      <meta name="keywords" content="bananes,fruit,aliment" />
+    </head>
+  <body>
+    <p>
+      Les bananes sont très nutriment. &exclamation;
+    </p>
+  </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-US">Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <comment xml:space="preserve">
+    Les bananes sont le meilleur fruit, c'est un fait avéré!&exclamation;
+  </comment>
+  <section>
+    <paragraph xml:lang="de-DE">
+      Bananas sind sehr nährstoffreich. &note;
+    </paragraph>
+    <section xml:lang="es-MX">
+      <paragraph>
+        Las bananas son muy nutritivas.
+      </paragraph>
+    </section>
+  </section>
+  <section>
+    <paragraph xml:lang="fr-BE">
+      Les bananes sont très saines.
+    </paragraph>
+  </section>
+</document>

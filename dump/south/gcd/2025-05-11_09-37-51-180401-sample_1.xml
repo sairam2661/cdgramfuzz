@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!DOCTYPE document SYSTEM "schema.dtd" [
+  <!ENTITY pi "/*<?processing instruction*/?>">
+  <!ENTITY name "<name>Roger</name>">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head profile="http://www.w3.org/TR/html4/profile">
+      <title xml:lang="fr" xml:space="default">Les pommes sont délicieux!</title>
+      <meta name="keywords" content="#Apple" />
+      <style><![CDATA[
+        body { font-family: "Times New Roman", serif; }
+        h1 { color: #FF0000; }
+      ]]></style>
+    </head>
+  <body>
+    <p xml:lang="en-US"><name>&name;</name> loves to eat apples.</p>
+  </body>
+  </html>
+  <metadata>
+    <author>Roger</author>
+    <date>2045-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Apples are very healthy. &pi; <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"></xsl:stylesheet> </paragraph>
+  </section>
+</document>

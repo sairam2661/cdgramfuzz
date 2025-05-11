@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!-- Entity definitions -->
+  <!ENTITY % entity "%">
+  <!ENTITY num "123">
+  <!ENTITY dec ".456">
+  <!ENTITY percent "&#37;">
+  <!ENTITY note "Note on &num;&dec;">
+  <!ENTITY name "John Smith">
+  <!ENTITY address "123 Main St.">
+  <!ENTITY phone "555-555-5555">
+  <!ENTITY email "jsmith@example.com">
+  <!ELEMENT document EMPTY>
+  <!ELEMENT html EMPTY>
+  <!ELEMENT head EMPTY>
+  <!ELEMENT meta EMPTY>
+  <!ATTLIST document 
+    xmlns:fb CDATA #IMPLIED
+    xmlns:schema CDATA #IMPLIED>
+  <!ATTLIST html 
+    xmlns CDATA #IMPLIED
+    xmlns:xml CDATA #IMPLIED>
+  <!ATTLIST meta 
+    name CDATA #IMPLIED
+    content CDATA #IMPLIED
+    scheme CDATA #IMPLIED>
+]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+          xmlns:schema="http://www.w3.org/2001/XMLSchema"
+          fb:id="123">
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <meta name="keywords" content="&note;&num;&dec;"/>
+      <meta name="author" content="&name;&address;/&phone;"/>
+      <meta name="copyright" content="&name;" />
+      <meta name="description" content="A book by &name;.&address;"/>
+      <meta http-equiv="refresh" content="30; URL=http://www.example.com"/>
+    </head>
+  <body><title>Book Title</title>
+    <metadata>
+      <author>&name;</author>
+      <date>&num;-&dec;-2025</date>
+    </metadata>
+    <section>
+      <paragraph>&note;<p>Book description: &name; &address; &phone; &email;</p></paragraph>
+      <paragraph>More information can be found at &name;. See &address; and call &phone;.</paragraph>
+    </section>
+  </body>
+  </html>
+</document>

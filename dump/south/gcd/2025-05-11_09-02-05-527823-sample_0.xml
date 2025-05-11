@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document xmlns="http://example.com/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/xsd/document.xsd">
+  <html xmlns:fb="http://www.facebook.com/2008/follow" lang="en">
+    <head prefix="xml: " lang="en-US">
+      <title>Complex document example</title>
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Arial, Helvetica; }
+          fb:like { color: #0000FF; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section><h1>Test Section</h1><paragraph>Testing complex document</paragraph></section>
+      <metadata>
+        <date>2024-07-26</date>
+        <author>
+          <name>John Doe</name>
+          <contact-info>
+            <phone>+1 123 456 7890</phone>
+            <email>john@example.com</email>
+          </contact-info>
+        </author>
+      </metadata>
+    </body>
+  </html>
+</document>

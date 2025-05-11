@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY % entity "100">
+  <!ATTLIST note
+      xml:lang CDATA #IMPLIED
+      xmlns:xml CDATA #IMPLIED
+  >
+  <!ELEMENT note-children (#PCDATA | note-children)*>
+]>
+
+<document>
+  <html xml:lang="en-GB" xmlns:foo="http://example.com/attrs"
+        xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Fruit Salad Bar</title>
+      <meta name="description" content="Fresh fruit in season." />
+      <meta name="keywords" content="summer, outdoor, fun" />
+      <style><![CDATA[
+        body {
+            font-family: Calibri, Arial, sans-serif;
+        }
+        h1 {
+            font-size: 3em;
+            color: #FF0000;
+            text-align: center;
+        }
+      ]]></style>
+    </head>
+    <body>
+      <p xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+        Ce qui suit est une suite de paragraphes qui provoqueront l'erreur.
+      </p>
+      <section>
+        <!-- Déclencher une erreur  <!-->
+        &note;
+        <!-- Utiliser un caractère invalid dans l'attribut, comme des carrés de souligné : -->
+        <foo:bar bar="%_État%"/>
+      </section>
+      <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        <xsl:template match="/">
+          <!-- Template vide : ceci ne fera rien -->
+        </xsl:template>
+      </xsl:stylesheet>
+    </body>
+  </html>
+  <note>&note;</note>
+  <metadata>
+    <author>Jane <foo:foo /> Doe</author>
+    <date>2004-12-20 -- 2004-12-20</date>
+  </metadata>
+  <note-children>&note;</note-children>
+</document>

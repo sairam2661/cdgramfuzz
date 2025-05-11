@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 2.0 Strict//EN" "http://www.w3.org/TR/xhtml2/DTD/xhtml2-strict.dtd">
+<document>
+  <html>
+    <head>
+      <title>Delicious Apples</title>
+    </head>
+    <body>
+      <p>A juicy apple a day keeps the doctor away!</p>
+      <element name="item">
+        <element xmlns="http://example.com/special-namespaces" name="gift">
+          <other>
+            <any
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xlink:href="https://example.com/image"
+              xmlns="http://www.w3.org/2000/svg">
+              <use xlink:href="#myImage"/>
+            </any>
+          </other>
+        </element>
+      </element>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>John Smith</name>
+      <email>john.smith@example.com</email>
+    </author>
+    <date>2025-05-10</date>
+  </metadata>
+</document>

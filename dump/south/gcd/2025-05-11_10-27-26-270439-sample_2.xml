@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "schema.dtd">
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Tasty Fruits</title>
+      <meta name="keywords" content="apple, banana, orange, grape" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { color: #FF0000; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <section xmlns="http://www.example.com/schemas">
+      <title>Seasonal Fruits</title>
+      <paragraph xmlns:ex="http://www.example.com/extensions">
+        Apples are <ex:highlight>juicy</ex:highlight> fruit.
+      </paragraph>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <note>NB. Excerpts taken to demonstrate XML elements.</note>
+  </metadata>
+</document>

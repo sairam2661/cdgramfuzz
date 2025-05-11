@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//foo//DTD Document 1.0//EN"
+           "http://example.com/document1.dtd">
+<document
+  xmlns="http://example.org"
+  xmlns:foo="http://example.org/foo"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://example.org example.xsd">
+  <html>
+    <head>
+      <title>Test Title</title>
+    </head>
+    <body>
+      <foo:section>
+        <foo:paragraph>This is a paragraph of text.</foo:paragraph>
+        <foo:item>
+          <foo:itemAttribute attr1="value1" attr2="value2" />
+        </foo:item>
+      </foo:section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">
+      <name>Jean Dupont</name>
+    </author>
+  </metadata>
+  <root element="yes" />
+</document>

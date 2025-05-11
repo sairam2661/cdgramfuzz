@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/mydtd.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY percent "&#37;">
+]>
+<document xml:space="preserve"
+          xml:lang="en-GB"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="mySchema.xsd">
+  <html>
+    <head>
+      <title>Complex XML Document</title>
+      <style type="text/css" media="all">
+        <![CDATA[
+          body { background-image: url("image.jpg")!important; }
+        ]]></style>
+      <meta name="__myMeta" content="value" />
+    </head>
+    <body preserveWhitespace="yes">
+      <p>Paragraph 1 with &amp; and %&percent;.</p>
+      <p>Paragraph 2 with <b>bold text</b> and <strong>strong text</strong>.</p>
+    </body>
+  </html>
+  <references>
+    <reference xlink:href="http://example.com" xlink:title="Example" />
+  </references>
+  <notes>
+    <note>Some notes.</note>
+  </notes>
+</document>

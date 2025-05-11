@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY nbsp  "&#160;">
+]>
+<document xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+          xml:space="preserve"
+          xml:lang="en-US">
+  <html>
+    <head>
+      <title xml:lang="fr">Fruits et légumes sont bons pour toi!</title>
+      <meta name="keywords" content="#fruits,#légumes" />
+      <meta name="description" content="Un article sur les fruits." />
+      <style type="text/css" media="all" xml:lang="en-GB">
+        <![CDATA[
+          body { font-family: "Helvetica", "Arial", sans-serif; }
+          h1 { color: #336699; }
+          section { display: block; position: relative;}
+        ]]>
+      </style>
+    </head>
+  <body>
+    <h1>Bell peppers</h1>
+    <section xmlns="http://mynamespace.com" attrib="true" />
+    <p>They are sweet and crunchy.</p>
+    <p xml:lang="es">Están dulces y crujientes.</p>
+  </body>
+  </html>
+  <metadata>
+    <author xml:lang="de">Hans Mueller</author>
+    <date>2023-12-31</date>
+  </metadata>
+  <document-part>
+    <part id="id101">One part</part>
+    <part id="id102">Another part</part>
+  </document-part>
+</document>

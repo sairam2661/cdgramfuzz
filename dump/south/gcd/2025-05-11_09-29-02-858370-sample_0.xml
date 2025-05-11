@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "test.dtd" [
+  <!ENTITY name "John">
+  <!ENTITY desc "This is a test document.&name;">
+]>
+<document xml:lang="fr-CA"
+          xmlns:custom="http://example.com/custom"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:math="http://www.w3.org/1998/Math/MathML">
+    <head>
+      <title>Document en français</title>
+      <meta name="author" content="&name;" />
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #00FFFF; }
+        @import url("custom.css");
+      ]]></style>
+    </head>
+  <body>
+    <custom:person rdf:about="#item1">
+      <custom:name>John</custom:name>
+    </custom:person>
+    <section>
+      <paragraph xml:id="p1">&desc;</paragraph>
+      <p>&math;E=mc^2</math></p>
+      <note>This is a note.</note>
+    </body>
+  </html>
+  <metadata>
+    <creation-date>2024-07-26</creation-date>
+  </metadata>
+</document>

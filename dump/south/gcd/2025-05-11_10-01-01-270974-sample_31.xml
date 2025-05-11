@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|html|metadata|comment|pi|processing-instruction)*>
+  <!ELEMENT html (#PCDATA|img)*>
+  <!ELEMENT metadata (#PCDATA|author|date)*>
+  <!ELEMENT author (#PCDATA)*>
+  <!ELEMENT date (#PCDATA)*>
+]>
+<document>
+  <html>
+    <header-profiles
+      ="namespace1" namespace1:attr="value1" namespace1:prefix="namespace1prefix"
+      xmlns="namespace1" xmlns:namespace2="namespace2">
+      <metadata
+        ="inline-note" type="inline-note" />
+      <metadata
+        ="mixed-type" type="mixed-type"
+        xmlns="http://www.w3.org/XML/1998/namespace"
+        namespace3:attr1="value2" namespace3:attribute="value3"
+        namespace4:attr2="value4"
+        xmlns:namespace3="namespace3"
+        xmlns:namespace4="namespace4"
+        namespace5:prefix="prefix5"
+        xmlns:namespace5="http://example.org/namespace5"
+        xmlns:ns6="http://example.org/namespace6"
+        namespace6:attr2="value6"
+        attribute2="value7"
+        attr3="value8"
+        attr4="value9"
+        attr5="value10"
+        attr6="value11"
+        attr7="value12"
+        attr8="value13"
+        attr9="value14"
+        type="multiple"
+        other-attr="value15"
+        other-attr2="value16"
+        other-attr3="value17"
+        title="metadata"
+        mixed-types="true"
+        xmlns:namespace6="namespace6"
+        xmlns:other-namespace="http://example.org/other-namespace"
+        namespace7:prefix="prefix7"
+        xmlns:namespace7="http://example.org/namespace7"
+        namespace8:prefix="prefix8"
+        xmlns:namespace8="http://example.org/namespace8"
+        attribute3="value18"
+        attribute4="value19"
+        attr10="value20"
+        attr11="value21"
+        attr12="value22"
+        attr13="value23"
+        attr14="value24"
+        type="inline"
+        namespace9:prefix="prefix9"
+        xmlns:namespace9="http://

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "root.dtd" [
+  <!ENTITY year "2000" >
+  <!ENTITY amp "&amp;" >
+]>
+<document xmlns:fb="http://www.facebook.com/XML"
+          xml:space="preserve"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="fr-CH"
+        version="-//W3C//DTD XHTML 1.1//EN">
+    <head>
+      <title>Apple</title>
+      <meta name="keywords" content="Apple,Banana" />
+      <style type="text/css"><![CDATA[
+        body { font-family: "Times New Roman", serif; }
+        h1 { background-color: #FF0000; font-size: 18pt; }
+      ]]></style>
+    </head>
+    <body>
+      <p xml:lang="de-DE">
+        Das ist ein Beispiel für eine <b>Apfel.</b>
+      </p>
+      <p> The example includes an &amp; entity reference. The year is: <xsi:valueSelect select="entity(year)"/>.</p>
+      <fb:list>
+        <fb:item>Item 1</fb:item>
+        <fb:item>Item 2</fb:item>
+      </fb:list>
+    </body>
+  </html>
+  <note>
+    <![CDATA[
+      This is part of a CDATA section.
+      A paragraph with some XML markup: <p>  with a <b>bold</b> tag.
+    ]]>
+  </note>
+  <metadata xmlns="http://example.com/ns/metadata">
+    <author xmlns:fb="http://www.facebook.com/XML">John Doe</author>
+  </metadata>
+</document>

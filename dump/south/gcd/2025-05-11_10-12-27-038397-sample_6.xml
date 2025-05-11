@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+<!ENTITY % f1 SYSTEM "http://example.com">
+%f1;
+<!ELEMENT document (html, metadata, section+)>
+<!ATTLIST document lang CDATA #REQUIRED>
+<!ATTLIST html xmlns CDATA #REQUIRED>
+<!ELEMENT html (head, body)>
+<!ELEMENT head (title, meta*, style)>
+<!ELEMENT body (p|div|span)*>
+<!ELEMENT metadata (author, date)>
+<!ELEMENT author (#PCDATA)*
+  >
+<!ELEMENT title (#PCDATA)*
+  >
+<!ELEMENT meta EMPTY>
+<!ELEMENT date (#PCDATA)*
+  >
+<!ELEMENT style (#PCDATA)*
+  >
+<!ELEMENT p (#PCDATA)*
+  >
+<!ELEMENT div (#PCDATA|div)*>
+<!ATTLIST div xmlns CDATA #REQUIRED>
+<!ELEMENT section (paragraph)*>
+<!ELEMENT paragraph (#PCDATA | note)*>
+<!ATTLIST paragraph xmlns CDATA #REQUIRED>
+<!ENTITY note "This is a note.">
+]>
+<document lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Fruit</title>
+      <meta name="category" content="Fruits" />
+      <style><![CDATA[
+        div { display: none; }
+        p { font-size: 36px; }
+      ]]></style>
+    </head>
+    <body>
+      <div xmlns="http://example.org" xml:lang="ja">Bananas are delicious.</div>
+      <p>And nutritious.</p>
+      <span style="font-weight: bold">You should eat more.</span>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2023-02-20</date>
+  </metadata>
+  <section>
+    <paragraph>&note;</paragraph>
+  </section>
+</document>

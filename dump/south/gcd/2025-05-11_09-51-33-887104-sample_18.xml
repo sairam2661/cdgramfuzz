@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:base="https://www.example.com" xml:lang="en">
+    <head>
+      <meta charset="UTF-16LE"/>
+      <meta name="author" content="John Smith"/>
+      <meta name="keywords" content="xml, html, fruit, &fruits;"/>
+    </head>
+  <body>
+    <h1 xml:lang="fr">Les &fruits;</h1>
+    <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="fruit.xsd"> <![CDATA[
+      &fruits; are good for you.
+      More <i>on the subject&fruits;</i> in another file.
+    ]]></p>
+  </body>
+</html>
+  </document>

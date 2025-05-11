@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "<">
+  <!ENTITY gt ">">
+]>
+<document xmlns:math="http://www.example.com/math"
+          xml:lang="fr"
+          xml:space="preserve"
+          xmlns:xsi="http://www.example.org/xsd"
+          xsi:schemaLocation="colors.xsd"
+          >
+  <html>
+    <head>
+      <title>XML Fuzz Test</title>
+      <style type="text/css" xmlns="http://www.w3.org/1999/XSL/Format">
+        <![CDATA[
+          @namespace math $math:;
+          @media print { font-size: 14pt; }
+        ]]>
+      </style>
+      <meta name="keywords" content="XML, Fuzz Testing, Document Type Definition" />
+    </head>
+    <body>
+      <p>Colorful &note; <math:expression math:pi="3.1415926535897932"></math:expression>!</p>
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" />
+        <rect x="10" y="10" width="20" height="20" />
+      </svg>
+    </body>
+  </html>
+  <metadata>
+    <version>1.0</version>
+  </metadata>
+</document>

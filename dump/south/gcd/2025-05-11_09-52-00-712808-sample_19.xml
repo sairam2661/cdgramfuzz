@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ATTLIST section xmlns:xlink CDATA #IMPLIED>
+  <!ENTITY % sectionEntity "<section xlink:href='#section1'/>&sectionEntity;">
+]>
+<document>
+  <html>
+    <head>
+      <title>Types of Fruits</title>
+    </head>
+    <body>
+      <h1>Fruit Varieties</h1>
+      <ul>
+        <li>&fruit;</li>
+        <li>&sectionEntity;</li>
+      </ul>
+      <p>
+        There are many different types of fruits. These include &fruit; and other many different fruits.
+        There are even different species within the &fruit; fruit!
+        <img src="banana.jpg" alt="Banana"/>
+      </p>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2001-01-01</date>
+    <link xlink:href="https://en.wikipedia.org/wiki/Fruits">Learn More</link>
+  </metadata>
+</document>

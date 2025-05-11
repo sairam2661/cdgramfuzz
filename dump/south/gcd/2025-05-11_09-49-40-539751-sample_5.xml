@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY note "Note">
+  <!ELEMENT document (html, metadata?, section*)>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT head (title, meta*, style?)>
+  <!ELEMENT title (#PCDATA)*>  
+  <!ELEMENT style (#PCDATA)*>
+  <!ATTLIST meta
+    name CDATA #REQUIRED
+    content CDATA #REQUIRED
+  >
+  <!ELEMENT body (div*, p+, section+)*>
+  <!ELEMENT div (#PCDATA)*>
+  <!--<!ENTITY % x "abc">  -->
+  <!ENTITY % attlist-decl "attlist-decl" >
+  <!ELEMENT section (paragraph+, section+, note)>
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT author (#PCDATA)*>  
+  <!ELEMENT date (#PCDATA)*>  
+  <!ELEMENT paragraph (#PCDATA | note)*>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+    </head>
+    <body>
+      <div>
+        <paragraph>Bananas are very nutritious.</paragraph>
+      </div>
+      <div>
+        <paragraph>&note;</paragraph>
+      </div>
+      <section>
+        <paragraph>Few things are more enjoyable to eat.</paragraph>
+        <paragraph>Bananas are definitely one of them!</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>But did you know that they contain no &note; cholesterol?</paragraph>
+  </section>
+</document>

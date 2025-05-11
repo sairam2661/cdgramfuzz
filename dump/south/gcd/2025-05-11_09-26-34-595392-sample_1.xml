@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % entities SYSTEM "entities.ent">
+  <!ENTITY note "Note">
+  %entities;
+  <!ENTITY pi SYSTEM "entities.ent">
+  <!ELEMENT document (metadata|html|section)*>
+  <!ELEMENT paragraph (#PCDATA|note|hi|sub|sup)*>
+  <!ATTLIST document xml:lang CDATA #REQUIRED>
+  <!ATTLIST html xmlns CDATA #REQUIRED>
+  <!ATTLIST html xmlns:xml CDATA #REQUIRED>
+  <!ATTLIST html xmlns:xlink CDATA #IMPLIED>
+  <!ATTLIST metadata xmlns:xi CDATA #IMPLIED>
+  <!ATTLIST section xmlns:fbjs CDATA #IMPLIED>
+  <!ENTITY % comment "-- comments can start here
+  <!-- this block is parsed (by XQDS) --&gt; ">
+  %comment;]>
+<document xml:lang="fr-BE" xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:xml="http://www.w3.org/XML/1998/namespace"
+               xmlns:fbjs="http://www.xml.com/fbjs"
+               xmlns:xlink="http://www.w3.org/1999/xlink"
+               xmlns:xi="http://www.w3.org/2001/XMLSchema-instance">
+  <html>
+    <head>
+      <title>Bananas are delicious!</title>
+      <meta name="description" content="A blog on bananas." />
+      <meta name="creator" content="John Doe" />
+      <style type="text/css"
+            xmlns="http://www.w3.org/1999/xhtml">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <p>Bananas come in a variety of sizes. &note;<xsl:comment>Comment</xsl:comment></p>
+    <section xml:lang="en-GB" xmlns:fbjs="http://www.xml.com/fbjs">
+      <xi:schema xmlns:xi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                   xsi:schemaLocation="xs.xsd
+http://www.w3.org/2001/XMLSchema" targetNamespace="

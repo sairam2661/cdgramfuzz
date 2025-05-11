@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "garden.dtd" [
+  <!ENTITY garden "gardening"
+          >
+  <!ELEMENT note (#PCDATA)*>]>
+<document xml:lang="fr"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="garden.xsd"
+          defaultAttributeValues="short" >
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Gardening</title>
+      <meta name="generator" content="notepad++"/>
+    </head>
+    <body>
+      <note>Not your average garden.</note>
+    </body>
+  </html>
+  <metadata>
+    <author xsi:type="string">Jane Doe</author>
+    <date>2025/10/25</date>
+  </metadata>
+  <garden>&garden;</garden>
+</document>

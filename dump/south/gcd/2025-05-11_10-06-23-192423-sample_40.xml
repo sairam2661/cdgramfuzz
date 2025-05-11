@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "characters.dtd" [
+  <!ENTITY amp "&amp;" >
+]>
+<document xml:lang="es-ES">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:base="http://en.wikibooks.org">
+    <head>
+      <title>XML: Escaping Characters</title>
+      <meta name="keywords" content="XML, Escaping, Characters, Entities" />
+      <style type="text/xml"><![CDATA[
+        @import "styles.css";
+      ]]></style>
+    </head>
+  <body xmlns:svg="http://www.w3.org/2000/svg"
+        lang="en">
+    <h1>XML Entity Ex<entity name='amp'/>cape</h1>
+    <p>&note; &amp; &apos;</p>
+  </body>
+  </html>
+  <bibliography>
+    <reference>
+      <author>John Smith</author>
+    </reference>
+  </bibliography>
+</document>

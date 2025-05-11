@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!ENTITY nbsp "&#160;">
+]>
+<document xml:space="preserve" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:lang="en" xmlns="http://purl.org/dc/elements/1.1/"
+          xml:base="http://example.com/books">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Book Reviews</title>
+      <meta name="keywords" content="ficiton, non-ficiton" />
+      <style xmlns="http://www.w3.org/1999/XSL/Format">
+        <![CDATA[
+          @namespace r 'http://purl.org/dc/terms/';
+          @namespace dc 'http://purl.org/dc/elements/1.1/';
+          @namespace fb 'http://www.freebxml.org/ns/fb';
+          body { font-family: Courier, monospace; }
+          h1 { color: #FF00FF; }
+        ]]>
+      </style>
+    </head>
+  <bodystyle="border:1px solid black;padding:5px">Book reviews &nbsp;here</body>
+  </html>
+  <metadata>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"></xs:schema>
+    <created>/date/18-Oct-2004 14:30:00 GMT</created>
+  </metadata>
+  <section>
+    <title>Bold title &nbspp;</title>
+    <h1>Subheading with <i>italic</i> text</h1>
+    <p>Some very ordinary <b>bold</b> text and <sub>subscript</sub> text with <sup>superscript</sup> and <strike>strike-through</strike> text.
+    Some <u>underlined</u> text and <big>large</big> text.</p>
+  </section>
+</document>

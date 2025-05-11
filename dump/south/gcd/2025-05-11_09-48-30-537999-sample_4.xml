@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY quot "'"><!-- single quote entity -->
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "<" >
+  <!ENTITY gt ">" >
+]>
+<document xml:lang='en-US' xmlns='urn:oasis:names:tc:opendocument:xmlns:office:1.0' 
+          xmlns:style='urn:oasis:names:tc:opendocument:xmlns:style:1.0' 
+          xmlns:text='urn:oasis:names:tc:opendocument:xmlns:text:1.0' 
+          xmlns:table='urn:oasis:names:tc:opendocument:xmlns:table:1.0' 
+          xmlns:draw='urn:oasis:names:tc:opendocument:xmlns:drawing:1.0' 
+          xmlns:fo='urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0' 
+          xmlns:xlink='http://www.w3.org/1999/xlink' 
+          xmlns:math='http://www.w3.org/1998/Math/MathML' 
+          xmlns:framework='urn:oasis:names:tc:opendocument:xmlns:framework:1.0' 
+          xmlns:dc='http://purl.org/dc/elements/1.1/' 
+          xmlns:calibri= 'http://www.w3.org/1998/Math/mathml'>
+  <html><head>
+    <title>Document</title>
+    <meta charset='UTF-8'/>
+    <meta content='application/xml' name='Content-Type'/>
+    <meta name='generator' content='My Generator'/><meta name='created' content='2020-01-01T00:00:00+00:00'/><meta name='creator' content='John Doe'/>
+    <meta content='test document' name='description'/><meta content='#12345678' name='color'/>
+    <meta content='#FF0000' name='background-color'/>
+    <style xmlns='http://www.w3.org/1999/XSL/Format'>
+      <![CDATA[
+        @namespace svg 'http://www.w3.org/2000/svg';
+        @font-face {
+          font-family: serif;
+          src: url('serif.ttf') format('truetype');
+        }

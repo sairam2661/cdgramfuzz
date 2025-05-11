@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE document
+  SYSTEM "doc.dtd" [<!ENTITY p "paragraph"><!ATTLIST metadata xmlns:custom CDATA #IMPLIED>]
+>
+<document xml:base="https://example.com" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          xml:lang="fr-BE">
+  <html lang="en-US">
+    <head>
+      <title>Rich and complex XML document</title>
+      <meta charset="ISO-8859-1"/>
+      <style>
+        <![CDATA[
+          @font-face {
+            src: url(font.ttf);
+            font-family: Monospace;
+          }
+          body {
+            font-family: Arial, sans-serif;
+            width: 100%;
+          }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section id="start">
+        <aside>
+          <nav role="navigation">
+            <ul>
+              <li>
+                <a href="#top">Top</a>
+              </li>
+              <li>
+                <a href="#bottom">Bottom</a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <main>
+          <h1 xml:lang="en">Well-formed XML example</h1>
+          <h2 xml:lang="fr">Example de XML bien formé</h2>
+        </main>
+      </section>
+    </body>
+    </html>
+  <metadata custom:href="https://example.com" type="text/plain">
+    <author>John Smith</author>
+    <date>2024-01-01</date>
+  </metadata>
+  <section>
+    <p>This is a great example.</p>
+    <p xml:prefix="custom">&p;</p>
+  </section>
+</document>

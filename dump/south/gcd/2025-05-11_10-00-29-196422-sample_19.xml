@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document PUBLIC "-//YourOrganization//DTD Fruit Catalog Document V1.0//EN"
+ "http://www.example.org/dtd/fruit_catalog.dtd" [
+  <!ENTITY note "Note">
+]>
+<document xml:space="preserve" xml:id="DOC001" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.example.org/namespace#fruits">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <section xml:lang="fr">
+      <p xml:base="http://example.org/base"> &note; Bananas are yummy. </p>
+      <aside>
+        <table>
+          <caption>Banana Statistics</caption>
+          <tr>
+            <th>Color</th>
+            <th>Weight (g)</th>
+          </tr>
+          <tr>
+            <td>Yellow</td>
+            <td>120</td>
+          </tr>
+        </table>
+      </aside>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10T14:30:00</date>
+  </metadata>
+</document>

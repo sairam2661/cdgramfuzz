@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE documentSYSTEM "books.dtd"[
+  <!ENTITY % comment "%comment;  %percent; ">
+  <!ENTITY comment "This is a comment.">
+  <!ENTITY percent "%">
+]>
+<document xmlns:schema="http://schema.example.com"
+          xml:lang="en"
+          xml:space="preserve">
+  <html xmlns:html="http://www.w3.org/1999/xhtml"
+        xml:base="/home/user">
+    <head>
+      <title xml:lang="fr">Les livres favoris</title>
+      <meta name="keywords" content="books, reading" />
+      <style><![CDATA[
+        body, html { height: 100%; }
+       .indent { text-indent: 2em; }
+      ]]></style>
+    </head>
+    <body>
+      <h1 xml:lang="en">Favourite Books</h1>
+      <h2 xml:lang="en">Non-Fiction</h2>
+      <paragraph>
+        Here are my favourite books: &comment; &percent;
+      </paragraph>
+    </body>
+  </html>
+  <summary>
+    <quote xml:lang="en">"The world is a book, and those who do not travel read only one page." - Saint Augustine</quote>
+    <list>
+      <item>Book Title 1</item>
+      <item>Book Title 2</item>
+    </list>
+  </summary>
+</document>

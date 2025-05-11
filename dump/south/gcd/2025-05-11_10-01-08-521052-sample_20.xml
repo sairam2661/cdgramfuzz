@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY % entity "Entity Reference">
+  <!ENTITY text "Hello, World!">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:lang="en" xml:space="preserve">Fruit Salad</title>
+    </head>
+  <body>
+    <p>&text;</p>
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+      <xsl:template match="/">
+        <h1>Transformed Document</h1>
+      </xsl:template>
+    </xsl:stylesheet>
+  </body>
+</html>
+<metadata>
+  <author xml:lang="en-US" xml:base="//example.org">John Doe</author>
+  <date>2022-02-20</date>
+</metadata> 
+<note>&entity;</note> 
+</document>

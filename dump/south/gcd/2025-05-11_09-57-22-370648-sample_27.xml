@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.org/fruit.dtd" [
+  <!ENTITY num "0123456789">
+  <!ENTITY amp "&amp;">
+]>
+<document xmlns="http://example.com/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="fruit.xsd">
+  <html xml:space="preserve">
+    <head xml:lang="en">
+      <title xml:base="http://example.org">Fruits</title>
+      <meta name="keywords" content="Fruits Apples Oranges Bananas" />
+      <style type="text/css">
+        <![CDATA[
+        * { margin: 0; padding: 0; }
+        body { line-height: 1.6; font-size: 14px; }
+        h1 { font-size: 24px; color: #FF0000; }
+        pre { font-family: Courier, monospace; white-space: pre-wrap; }
+        ]]></style>
+    </head>
+  <body>
+    <section>
+      <p>Apples, like <xref target="banana">bananas</xref>, are delicious.</p>
+      <xhtml:X html:lang="fr">
+        Un exemple
+      </xhtml:X>
+    </section>
+  </body>
+</html>
+  <metadata entity-set="#fruit-entities"/>
+</document>

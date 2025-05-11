@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "test.dtd" [
+  <!ENTITY note "Note">
+  <!ATTLIST author id ID #REQUIRED>
+  <!ELEMENT sections (section)*>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Complex Structure</title>
+      <meta name="description" content="A complex document." />
+    </head>
+    <body>
+      <h1>XML Structure Test</h1>
+      <map name="map1">
+        <area xlink:href="http://www.example.com" />
+      </map>
+      <pre>&note;</pre>
+      <section>
+        <paragraph>Test paragraph with entity expansion: &note;</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author id="123" xmlns:xlink="http://www.w3.org/1999/xlink">John Doe</author>
+    <date>2024-07-26</date>
+  </metadata>
+  <sections>
+    <section>
+      <paragraph>This is the first section paragraph.</paragraph>
+    </section>
+    <section>
+      <paragraph>This is the second section paragraph.</paragraph>
+    </section>
+  </sections>
+</document>

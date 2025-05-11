@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY note "Note:">
+  <!ENTITY fruit "Apple-&note;">
+]>
+<document xml:lang="en-US" xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="document.xsd">
+  <html>
+    <head>
+      <title>Fruit Colors</title>
+      <meta name="keywords" content="red, green, yellow, banana, apple" />
+      <stylesheet
+        					  					  	=
+        "http://www.w3.org/StyleSheets/Sample/styles.css"
+        type="text/css"
+      title='Style Sheet' >
+    <![CDATA[
+      body { font-family: Helvitica; }
+      h1 { font-size: 24pt; }
+     .green { color: #00FF00; }
+    ]]>
+      </style>
+    </head>
+  <body>
+    <p xml:space="preserve">Fruits come in a variety of colors:</p>
+    <ul xml:lang="fr">
+      <li> <span class="green">Yellow</span> for banana
+        &note;    </li>
+      <li> <span class="red">Red</span> for &fruit;  </li>
+    </ul>
+  </body>
+  </html>
+  <metadata>
+    <title xml:lang='en'>Fruit Colors</title>
+    <metadata>
+      <author>John Doe</author>
+      <date>2025-05-10</date>
+      <edition>1</edition>
+    </metadata>
+  </metadata>
+</document>

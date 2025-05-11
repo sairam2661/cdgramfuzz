@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/validation.dtd" [
+  <!ENTITY name "John Doe">
+  <!ENTITY desc "Software engineer.&name;">
+]>
+<document xml:base="file://C:/example">
+  <html xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:math="http://www.w3.org/1998/Math/MathML"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsql="urn:ietf:params:xml:ns:xsql">
+    <head>
+      <title>XQuery is powerful!</title>
+      <meta name="version" content="5.1.0" />
+      <style type="text/css">
+        <![CDATA[
+          @namespace :default "http://www.w3.org/1999/xhtml";
+          @namespace math "http://www.w3.org/1998/Math/MathML";
+          math:math { font-style: italic; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <svg:svg xmlns:svg="http://www.w3.org/2000/svg">
+        <svg:circle cx="50" cy="50" r="40" />
+      </svg:svg>
+      <div xmlns="http://www.example.com/namespace" name="root">
+        <data>
+          <member xml:lang="fr">Value</member>
+        </data>
+      </div>
+    </div>
+  <p>XQuery is quite&desc; effective.</p>
+  <p>&name;</p>
+  </body>
+</html>
+  <metadata>
+    <author>&name;</author>
+    <date>2025-05-10</date>
+  </metadata>
+</document>

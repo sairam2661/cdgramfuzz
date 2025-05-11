@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ENTITY example "Example">
+  <!ENTITY ent "&example;">
+]>
+<document xmlns="http://example.org/"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:lang="en-US"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:html="http://www.w3.org/1999/xhtml">
+  <html lang="en">
+    <head>
+      <title>Testing the Limits</title>
+      <meta name="keywords" content="XML, Fuzz Testing" />
+      <style type="text/css">
+        <![CDATA[
+          @namespace x "http://example.org/";
+          @namespace xs "http://www.w3.org/2001/XMLSchema";
+          body { font-family: Arial, sans-serif; }
+          h1 { color: green; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <paragraph>XML is a flexible markup language. &ent;</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2025-05-15</date>
+  </metadata>
+</document>

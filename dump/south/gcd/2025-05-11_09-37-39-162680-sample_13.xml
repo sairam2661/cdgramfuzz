@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section?)>
+  <!ELEMENT html (#PCDATA | style | meta | title)*>
+  <!ATTLIST html 
+    xmlns CDATA #IMPLIED
+    xmlns:xml CDATA #IMPLIED>
+  <!ELEMENT style (#PCDATA)*> <!ENTITY % xmlns-extension "%unparsed-entity;\"><!ENTITY note "%unparsed-entity;">
+]>
+<document>
+  <html xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:local="http://example.org/localNs">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="&note;"/>
+      <meta name="keywords" content="bananas, nutritious, delicious"/>
+      <meta charset="UTF-8"/>
+      <meta http-equiv="refresh" content="10; URL=https://example.org/"/>
+      <style>
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+          span.local { color: #F00000; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <local:p>This is a paragraph in a custom namespace.</local:p>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>
+      Bananas are very nutritious. 
+      &note;
+      &lt;custom&gt;
+        <custom-content/>
+      &gt;
+    </paragraph>
+  </section>
+</document>

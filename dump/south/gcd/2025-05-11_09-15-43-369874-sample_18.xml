@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document SYSTEM "http://example.com/document.dtd" [
+  <!ENTITY fruit "apple">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head prefix="dc: http://purl.org/dc/elements/1.1/ owl: http://www.w3.org/2002/07/owl#">
+      <title>Overview</title>
+      <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+      <section xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="schema.xsd">
+        <h1>Hello XML!</h1>
+        <p>There are different types of fruit such as <b>&fruit;</b></p>
+      </section>
+    </body>
+  </html>
+  <copyright notice="Copyright 2022"/>
+  <toc>
+    <item><link href="#sec1"/><label>Section 1</label></item>
+  </toc>
+</document>

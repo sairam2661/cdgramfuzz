@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document SYSTEM "schemas.dtd" [
+  <!ENTITY year "2001">
+]>
+<document xmlns="http://example.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xml:lang="fr" xml:space="preserve" xml:base="https://example.com/base">
+  <html lang="fr-CH"
+        xmlns:prefix="http://prefix.com"
+        xmlns:noPrefix="http://prefix.com/no-prefix"
+        xml:lang="fr-CH">
+    <head prefix:attr="value">
+      <title xml:lang="es">L'histoire de la pomme</title>
+      <style type="text/css" media="all">
+        <![CDATA[
+          /* comment */
+          body { font-family: Arial, "Helvetica" }
+          h1 { color: red; }
+          ]]>
+      </style>
+    </head>
+  <body>
+    <p xmlns="" prefix:abc="def">Bonjour!</p>
+  </body>
+  </html>
+  <metadata xmlns="http://www.example.com">
+    <author xml:lang="en">John Doe</author>
+    <date>2001-01-01</date>
+  </metadata>
+  <section name="main">
+    <paragraph>L'&note; est un fruit très utile.</paragraph>
+  </section>
+</document>

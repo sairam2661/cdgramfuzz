@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-32"?>
+<!DOCTYPE document [
+  <!ENTITY % foo SYSTEM "fiddle.dtd">
+  <!ENTITY one "One">
+  <!ELEMENT para (#PCDATA|para)*>
+  <!ELEMENT text (#PCDATA|text)*>
+  <!ATTLIST para id ID #REQUIRED>
+  <!ATTLIST text lang CDATA #IMPLIED>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>Integer.</title>
+    </head>
+  <body>
+    <para id="p1">One. &one;</para>
+    <text xml:lang="fr-CH">Two.</text>
+    <para id="p2"><text>Three.</text></para>
+  </body>
+</html>
+</document>

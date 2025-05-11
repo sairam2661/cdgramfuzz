@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-9"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+  <!ENTITY fubar "bar">
+  <!ENTITY reference "<ref>https://example.com</ref>">
+]>
+<document xml:lang="en"
+  xmlns:myprefix="http://my.namespace.org/xs"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xsi:schemaLocation="http://example.com/schema.xsd">
+  <html>
+    <head>
+      <title>Complex Document</title>
+      <meta name="keywords" content="&fubar; &amp; &reference;"/>
+    </head>
+    <body>
+      <myprefix:section>
+        <myprefix:paragraph>Text element with a mixed content: <xs:decimal>42</xs:decimal> and more.</myprefix:paragraph>
+      </myprefix:section>
+    </body>
+  </html>
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <mi>E</mi>
+      <mo>=</mo>
+      <msup>
+        <mi>m</mi>
+        <mrow data-mjx-texclass="ORD"><mn>2</mn></mrow>
+      </msup>
+    </mrow>
+  </math>
+</document>

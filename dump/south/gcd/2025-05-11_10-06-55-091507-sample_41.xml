@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title xml:lang='fr'>Quel est le meilleur fruit?</title>
+    </head>
+  <body>
+    <style type='text/css'>body { font-family: "Lucida Sans Unicode", sans-serif; }</style>
+    <section>
+      <h2 xml:space='preserve'>Les différentes variétés de bananes</h2>
+      <p>Les bananes sont disponibles en différentes couleurs et tailles.</p>
+    </section>
+  </body>
+  </html>
+  <attachments>
+    <attachment mimeType="text/plain">
+      <filename>banana.txt</filename>
+    </attachment>
+  </attachments>
+  &fruits;
+</document>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd">
+<document xmlns="urn:example" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/schema.xsd">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="fr-FR" xml:space="preserve">
+    <head>
+      <title xml:lang="en-CA">Oranges are juicy!</title>
+      <meta name="keywords" content="#AABBCCDD" />
+      <style type="text/css"><![CDATA[
+        @media print {
+          @page {
+            size: 11in 8.5in;
+            margin: 0.5in 0.5in;
+          }
+        }
+      ]]></style>
+    </head>
+  <body>
+    <img src="image.jpg" alt="Orange"></img>
+  </body>
+  </html>
+  <metadata>
+    <note xml:lang="ja-JP">Note</note>
+    <date>2023-07-26</date>
+  </metadata>
+  <section>
+    <paragraph xml:lang="es-ES">Oranges are full of vitamin C. &entity;</paragraph>
+    <entity name="entity" value="#12345"/>
+  </section>
+</document>

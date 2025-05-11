@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY ns "http://example.com/namespaces">
+  <!ATTLIST document
+    id ID #REQUIRED
+    xmlns:dc CDATA #IMPLIED
+    xml:base CDATA #IMPLIED
+  >
+]>
+<document id="doc1" dc:language="EN">
+  <html xmlns="" xml:lang="en">
+    <head>
+      <title>Sample Title</title>
+    </head>
+    <body>
+      <section><para>Some <b>bold</b> text</para></section>
+      <metadata xmlns:dc="&ns;">
+        <dc:creator>John Smith</dc:creator>
+        <dc:date>2022-02-15</dc:date>
+      </metadata>
+    </body>
+  </html>
+  <note>Some extra note info</note>
+</document>

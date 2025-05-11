@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "maths.dtd"[
+  <!ENTITY pi "3.14159">
+  <!ELEMENT document ANY>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xml:lang="en-AU"
+        xml:space="preserve">
+    <head>
+      <title>Calculating Circumference of a Triangle</title>
+      <meta name="keywords" content="circumference triangle" />
+      <style><![CDATA[
+        body { font-family: Impact, sans-serif; }
+        h1 { text-align: center; }
+      ]]></style>
+    </head>
+    <body>
+      <p>The answer is <xs:decimal value="2.25"/>.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>Alice</author>
+    <date>2047-07-15</date>
+  </metadata>
+  <section>&pi;</section>
+</document>

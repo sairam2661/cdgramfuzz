@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT metadata (author, date, content)*>
+]>
+<document xmlns="http://example.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="example.xsd">
+  <html>
+    <head>
+      <title>Test</title>
+    </head>
+  <body>
+    <section xml:lang="en-US">
+      <paragraph>&fruit;</paragraph>
+    </section>
+    <metadata>
+      <author>John Smith</author>
+      <date>2022-01-01</date>
+      <content>Bananas are good for you.</content>
+    </metadata>
+  </body>
+</html>
+</document>

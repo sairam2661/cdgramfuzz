@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/fruits.dtd" [
+  <!ENTITY fruit "< &name; >">
+  <!ATTLIST note 
+    lang CDATA #IMPLIED 
+    title CDATA #IMPLIED>
+]>
+<document xml:lang="en" xml:base="https://xmldata.com/">
+  <html xmlns:myAttrs="http://example.com/myNamespace">
+    <head>
+      <style type="text/css">
+        <![CDATA[
+          myAttrs:external { display: none; }
+          @namespace xmlns uri "http://w3.org/1999/xhtml";
+        ]]>
+      </style>
+      <title>The Perfect Fruit Salad</title>
+    </head>
+  <body>
+    <p>Hello world! &fruit;</p>
+    <note lang="fr">Note fr</note>
+  </body>
+</html>
+<metadata>
+    <author xml:lang="en-Uk">Jane</author>
+    <date>2024-12-26</date>
+</metadata>
+<section xml:id="sec1">
+  <p>Some text</p>
+</section> 
+&amp;fruits; 
+</document>

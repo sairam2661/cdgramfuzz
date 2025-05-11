@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-32"?>
+<!DOCTYPE document SYSTEM "plants.dtd" [
+  <!ENTITY article "Scientific Article">
+  <!ENTITY title "Journal of Botany">
+]>
+<document version="1.0.1" xsi:noNamespaceSchemaLocation="xsd/xmldocument.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title xml:lang="fr-CA">#title;</title>
+      <meta name="author" content="#article;" />
+      <style><![CDATA[
+        body { font-family: Verdana, sans-serif; padding: 1em;
+               background-image: url(images/background.png);
+               background-repeat: no-repeat; }
+      ]]></style>
+    </head>
+  <body>
+    <h1 xml:lang="en-AU">#title;</h1>
+    <figure>
+      <img src="images/image.png" alt="illustration" />
+      <figcaption>
+        <metadata>
+          <author xml:lang="de-DE">E. T. Neumeister</author>
+          <date>2027-10-14</date>
+        </metadata>
+        <p>A nice picture.</p>
+      </figcaption>
+    </figure>
+  </body>
+  </html>
+  <data>
+    <items>
+      <item id="101" category="#article;" />
+      <item id="102" />
+      <item id="103" category="#title;" />
+    </items>
+  </data>
+</document>

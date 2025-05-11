@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+]>
+<document xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        version="XHTML 1.0 Strict" lang="en-US"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head profile="http://goland.sun.com/JavaWebStart">
+      <title>
+        </title>
+        <title>Apples are the best fruit!</title>
+      </head>
+    <body>
+      <p>Some text without a space</p>
+      <p>&note;&note;,&note;</p>
+      <script type="text/javascript">void("alert(\"Hello, World!\");");</script>
+      <table border="1">
+        <tr>
+          <td>Header 1</td>
+          <td>Header 2</td>
+          <td>Header 3</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+        </tr>
+        <tr>
+          <td>Cell 4</td>
+          <td>Cell 5</td>
+          <td>Cell 6</td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <info>
+    <name>John</name>
+    <date>2024-07-15</date>
+  </info>
+  <section>
+    <p>This is a paragraph with a space character: </p>
+  </section>
+</document>

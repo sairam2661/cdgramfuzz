@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "math-problem.dtd" [
+  <!ENTITY pi "3.141592653589793238463">
+  <!ELEMENT pi EMPTY>
+]>
+<document xml:lang="en"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="math-problem.xsd"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema"
+      xml:space="preserve"
+      expand-entity-ref="#pi"
+      entity-ref-map="#pi pi">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:base="https://example.com/">
+    <head>
+      <title>Math Problem</title>
+    </head>
+    <body>
+      <section xml:lang="fr" xml:space="default">
+        <xs:element name="number" type="xs:integer"/>
+        <xs:element name="operation" type="xs:string"/>
+      </section>
+      <content>
+        <pi/> <!-- ENTITY REFERENCE -->
+        <number>10</number>
+        <operation>+</operation>
+        <number>5</number>
+      </content>
+    </body>
+  </html>
+</document>

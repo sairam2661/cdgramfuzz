@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//Example//DTD Document 1.0//EN"
+  "http://example.org/dtds/document.dtd">
+<document xmlns:dbns="http://www.example.org/dbns"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <html xml:lang="en" xml:space="preserve">
+    <head>
+      <title xml:lang="fr">Les mejores manzanas</title>
+      <meta name="creator" content="John Doe" />
+      <style type="text/css">
+        <![CDATA[
+          @import url("styles.css");
+          /* selectors, properties, values, etc. */
+          table { border-collapse: separate; border-spacing: 2px; }
+        ]]>
+      </style>
+    </head>
+    <body xmlns:fb="http://www.example.org/fbns">
+      <p xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://example.org/dbns myDbns.xsd"
+         dbns:author="Mary Smith">Some text with entities: &amp; &lt; &gt; &apos; &quot;.</p>
+    </body>
+  </html>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.org/sn">
+    <xs:element name="snippet" type="xs:string"/>
+  </xs:schema>
+  <section>
+    <paragraph dbns:note="Note: this is a note">Some random data.</paragraph>
+  </section>
+</document>

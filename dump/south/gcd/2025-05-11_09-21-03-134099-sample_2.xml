@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XML Schemas - XML Document//EN" "document.xsd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="fr">
+    <head prefix="xs: <http://www.w3.org/2001/XMLSchema#" xml:space="preserve">
+      <title>Les mangues sont délicieux?</title>
+      <meta name="description" content="A blog on mangos." />
+      <style><![CDATA[
+        @import "mangos.css";
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #FF0000; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <paragraphe>Mangos sont très nutritifs. &quot;note&quot;.</paragraphe>
+      </section>
+    </body>
+  </html>
+  <content xmlns="http://example.com/content-schema" version="1.0">
+    <text>Les mangues sont délicieux?</text>
+  </content>
+</document>

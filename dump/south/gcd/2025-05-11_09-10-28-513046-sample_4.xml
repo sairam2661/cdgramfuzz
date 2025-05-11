@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-32"?>
+<!DOCTYPE document PUBLIC "-//XML//DTD XML 1.0//EN"
+  "http://www.w3.org/TR/REC-xml.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xml:lang="en-US">
+    <head>
+      <title xml:lang="fr">Bananes sont le meilleur fruit!</title>
+      <meta name="keywords" content="bananes, fruit, nutriment" />
+      <style><![CDATA[
+        body { font-family: &quot;Times New Roman&quot;, serif; }
+        h1 { font-size: 12pt; }
+        h2 { text-align: center; }
+        h3 { margin-top: 2.5cm; }
+      ]]></style>
+    </head>
+  <body>
+    <section>
+      <figure>
+        <table border="1">
+          <tr>
+            <th>Rank</th>
+            <th>Fruit</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Banana</td>
+          </tr>
+        </table>
+      </figure>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-GB">John Smith</author>
+    <date>2010-10-15</date>
+  </metadata>
+  <comment>&document;</comment>
+</document>

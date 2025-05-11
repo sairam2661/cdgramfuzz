@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (header, metadata, html, inlineDTD, comments) >
+  <!ELEMENT header (#PCDATA)*> 
+  <!ELEMENT metadata (author, date, entity) >
+  <!ELEMENT author (#PCDATA)*> 
+  <!ELEMENT date (#PCDATA)*> 
+  <!ELEMENT entity (#PCDATA)*> 
+  <!ELEMENT html (#PCDATA)*> 
+  <!ELEMENT inlineDTD CDATA> 
+  <!ELEMENT comments (comment+, CDATA?)> 
+  <!ELEMENT comment (#PCDATA)*> 
+]>
+<document>
+  <html>
+    <head><style type="text/css" media="all"> 
+    	<![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+        <title>Welcome</title>
+        <meta name="description" content="A blog on bananas." />
+    </head>
+  <body> 
+    Bananas are very nutritious. 
+    <p>
+      &entity; was defined as <entity>This is a defined entity</entity>. 
+      <paragraph>Bananas are very nutritious. &note;</paragraph>
+    </p>
+    <footer>
+      Foot note - see note in head. 
+      <paragraph>This can be a paragraph with some &note; and other information..</paragraph>
+    </footer>
+  </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <![CDATA[
+  	<!-- This is a comment in an XML document with a CDATA section. -->
+  ]]>
+  <section> 
+  	<!-- A comment inside a mixed content element -->
+  	<p>Something happened &note; and I didn't remember.
+  	<div>Here is a nested container containing a &note;
+  	</div>
+  	</p>
+  </section>
+  <![CDATA[
+	<!-- Another CDATA section in this document. -->
+	]]>
+</document>

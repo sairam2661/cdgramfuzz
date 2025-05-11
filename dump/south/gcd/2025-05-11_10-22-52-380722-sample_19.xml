@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % temp SYSTEM "local.dtd">
+  %temp;
+]>
+<document xml:lang='en-US'>
+  <html xmlns='http://www.w3.org/1999/xhtml'>
+    <head prefix='xml:lang'>
+      <title>Hello</title>
+      <meta attribute='value'/>
+      <style type="text/css">
+        <![CDATA[
+          h1 {font-family:monospace}
+        ]]>
+      </style>
+    </head>
+  <body>
+    <section>
+      <paragraph>Hello World!
+        &note;
+        <!-- Nested comment -->
+        <!--
+          This is a test of a
+          nested comment with
+          multiple lines
+        -->
+      </paragraph>
+    </section>
+  </body>
+</html>
+</document>

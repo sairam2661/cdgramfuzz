@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY apple "Apple" >
+  <!ENTITY ref SYSTEM "image.jpg" NDATA jpg>
+]>
+<document>
+  <html xmlns:custom="http://www.example.com/custom"
+        xml:lang="fr-CA"
+        xml:space="preserve">
+    <head>
+      <title>Favorite Fruits and Veggies</title>
+      <meta name="keywords" content="apples oranges carrots" />
+      <style type="text/css">
+        <![CDATA[
+          span.custom {
+            font-family: Arial, sans-serif;
+          }
+          h2::before {
+            content: Counter(my-counter);
+          }
+        ]]>
+      </style>
+      <style type="text/xsl">
+        <![CDATA[
+          <xsl:template match="/">
+            <h1>Hello, World!</h1>
+          </xsl:template>
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h2 id="fruits">Fruits</h2>
+      <p>Good fruit includes: <span custom:href="#veggies" class="custom">carrots</span> and <span>&amp;apple;</span> &apple;.</p>
+      <img src="image.jpg" xmlns:svg="http://www.w3.org/2000/svg" svg:width="20" />
+      <a href="#fruits">Go back to fruits</a>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2025-05-13</date>
+  </metadata>
+  <document2>
+    <note>&ref;</note>
+  </document2>
+  <data:items>
+    <item id="item1">This is item 1</item>
+    <item id="item2">This is item 2</item>
+  </data:items>
+</document>

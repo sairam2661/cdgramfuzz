@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "test.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>Bananas are a type of fruit.</title>
+      <meta name="description" content="blog" />
+      <style type="text/css" media="screen">
+        <![CDATA[body { font-family: Arial, sans-serif; }
+        h1 { color: #FF0000; }
+        table { border-collapse: collapse; }
+        tbody { border-width: 1px; border-style: solid; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h1>Bananas are delicious!</h1>
+      <p>A &lt;para&gt; containing some text.</p>
+      <ul>
+        <li>First item</li>
+      </ul>
+    </body>
+  </html>
+  <metadata xml:lang="fr-CA">
+    <author>John Smith</author>
+    <date>2010-10-15</date>
+  </metadata>
+</document>

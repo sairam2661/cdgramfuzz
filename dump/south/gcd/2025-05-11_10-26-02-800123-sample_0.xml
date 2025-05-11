@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//example-//DTD Document 1.0//EN"
+ "file:///example.dtd">
+<document xmlns:s="http://example.com/schemas" xml:space="preserve"
+          xml:lang="fr" xml:base="base_url">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.w3.org/1999/xhtml
+         http://www.w3.org/1999/xhtml/xhtml1-transitional.xsd">
+    <head>
+      <title xml:lang="en">Example Document</title>
+      <meta name="DC.identifier" scheme="DC"/>
+      <meta name="Author" scheme="DC"/>
+      <style type="text/css">
+        <![CDATA[
+          @media print {
+            body { font-family: Times, serif; }
+            h1 { color: #FF0000; }
+          }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <p>Paragraph 1 &amp; 2.</p>
+    <address>
+      See:
+      <a rel="help" href="http://www.example.com">Example website</a>
+    </address>
+  </body>
+  </html>
+  <metadata>
+    <revision>
+      <version>1.2</version>
+      <changes>
+        <change xml:lang="en">Added metadata section.</change>
+      </changes>
+    </revision>
+  </metadata>
+</document>

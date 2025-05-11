@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document PUBLIC "-//Jazzed Development//DTD example 1.0//EN"
+                         "https://example.com/file.dtd" [
+  <!ENTITY foo "bar">
+  <!ENTITY baz '<para>Qux</para>'>
+]>
+<document xmlns="http://example.org/doc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://example.org/doc http://example.org/doc.xsd"
+        xml:lang="fr"
+        xml:space="preserve"
+        xml:base="https://example.com">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Complex Document</title>
+      <meta name="description" content="This is a descriptive content." />
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #008000; }
+        h1 { background-color: #FF0000; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <p>Entities: &foo; &baz;</p>
+        <p>CDATA section: <![CDATA[This is a CDATA section &amp; entities &para;]]></p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en">Bla Bla</author>
+    <date>2020-01-01</date>
+  </metadata>
+</document>

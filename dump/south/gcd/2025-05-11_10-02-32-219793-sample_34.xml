@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "document.dtd" [
+  <!ENTITY date "<time>2023-12-25</time>">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:space="preserve"
+        xml:lang="fr-CA">
+    <head profile="http://www.example.com/profile">
+      <title>Airports</title>
+      <meta name="keywords" content="Paris airport Charles de Gaulle" />
+      <style><![CDATA[
+        {color:black;}
+        table {border-collapse: collapse; }
+          h2 {font-family:Verdana,Gothic}
+      ]]></style>
+    </head>
+    <body>
+      <section style="background-color:white">
+        <metadata><text xml:lang="de-DE">Berlin Airport &date;</text></metadata>
+      </section>
+    </body>
+  </html>
+</document>

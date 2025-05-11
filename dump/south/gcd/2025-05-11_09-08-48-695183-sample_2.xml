@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="SHIFT-JIS"?>
+<!DOCTYPE document[
+  <!ENTITY % entities SYSTEM "entities.ent">
+  <!ENTITY fruit "Apple">
+]>
+<document xmlns="http://www.w3.org/2002/06_simple/">
+  <html xml:space="preserve"
+        xml:lang="en-AU">
+    <head>
+      <title>Alexandria</title>
+      <meta name="author" content="Homer" />
+      <meta name="subject" content="#{&fruit;}" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: sans-serif; }
+          #root { background-image: url(logo.png); }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <table>
+      <tr>
+        <td>Row 1, Column 1</td>
+        <td>&lt;</td>
+        <td>Entities &foo; &BAR;</td>
+      </tr>
+    </table>
+  </body>
+</html>
+</document>

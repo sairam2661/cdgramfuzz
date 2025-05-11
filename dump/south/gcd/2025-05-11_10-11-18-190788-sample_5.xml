@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US"
+        xml:space="preserve"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="XHTML+RDFa 1.0">
+    <head prefix="dc: http://purl.org/dc/terms/">
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <meta name="keywords" content="bananas, fruit, nutrition" />
+      <meta name="generator" content="XML Fuzz-Test Generator" />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+      <style type="text/css">
+        <![CDATA[
+          body { font-size: 12pt; }
+          h1 { font-weight: bold; }
+        ]]>
+      </style>
+    </head>
+  <body xmlns:fo="http://www.w3.org/1999/XSL/Format"
+        xmlns:svg="http://www.w3.org/2000/svg">
+    <h1>Benefits of Bananas</h1>
+    <p>
+      Bananas are rich in vitamins and minerals. &note;
+      <span style="font-size: xx-large; font-weight: bold;">
+        <svg:svg width="100" height="50">
+          <svg:rect x="0" y="10" width="100" height="20"
+                    style="fill: #FF0000; stroke: #000000; stroke-width: 2"/>
+        </svg:svg>
+      </span>
+      <a href="#anchor1">Learn more</a>
+    </p>
+    <p>
+      Bananas are also a good source of fiber. Here is a footnote<a href="#footnote1"><sup>1</sup></a>
+    </p>
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+      <fo:layout-master-set>
+        <fo:simple-page-master master-name="my-master">
+          <fo:region-body/>
+        </fo:simple-page-master>
+      </fo:layout-master-set>
+    </fo:root>
+  </body>
+  </html>
+  <metadata>
+    <author xmlns:dc="http://purl.org/dc/elements/1.1/"
+            dc:creator="Jane Doe">
+      jane.doe@example.com
+    </author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious.</paragraph>
+    <figure>
+      <image xmlns:src="http://exslt.org/image" src:srcset="banana.jpg"
+              src:mipmap="banana_min.jpg"/>
+      <figcaption>Image of a banana</figcaption>
+    </figure>
+  </section>
+  <section>
+    <subsection>Subsection Title</subsection>
+    <paragraph>
+      Bananas come in different sizes.
+      <a xlink:href="#banana-link">
+        <span style="color: blue">Learn more</span>
+        <annotation href="banana-link"><text>Annotation text</text></annotation>
+      </a>
+    </paragraph>
+  </section>
+</document>

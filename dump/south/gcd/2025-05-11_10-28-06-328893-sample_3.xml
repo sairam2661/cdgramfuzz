@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "bibliography.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Exploring the Depths of XML</title>
+      <meta name="DC.title" content="XML Document" />
+      <meta content="#AACCDD"
+        name="DC.description"/>
+      <style xml:space="preserve">
+        <![CDATA[
+          @import "bibliography.css";
+          h3 { text-decoration: underline; }
+        ]]>
+      </style>
+    </head>
+    <body preserveSpace="1" xml:lang="en">
+      <metadata xmlns:dc= "http://purl.org/dc/elements/1.1/"
+        xmlns:xlink= "http://www.w3.org/1999/xlink">
+        <author dc:date="2020-01-01">John Smith</author>
+        <title xml:id= "title">XML Explorer</title>
+      </metadata>
+    </body>
+  </html>
+  <section xslt:prefix="prefix-">
+    <item>Apples</item>
+    <item>Oranges</item>
+  </section>
+</document>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd">
+<document xmlns:fb="http://www.facebook.com/2008/xmpp/msg/">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Your Favorite Colors</title>
+      <style type="text/css" media="all">
+        <![CDATA[
+          body { background-color: #C0C0C0; }
+         .color { font-weight: bold; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <fb:friend:name.il8n="en_US">John Doe</fb:friend>
+  </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2020-01-01</date>
+    <xsl:stylesheet version="2.0"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+      xmlns:dxp="http://www.example.org/elements/namespaces/dxp"
+      exclude-result-prefixes="dxp"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.example.org/elements/namespaces/dxp
+      http://www.example.org/elements/namespace/dxp.xsd"
+      schemaLocation="http://www.w3.org/1999/XSL/Transform"
+      version="1.0">
+      <xsl:text>Color Palette</xsl:text>
+    </xsl:stylesheet>
+  </metadata>
+  <section>
+    <color red="#FF0000" green="#008000" blue="#0000FF" />
+  </section>
+</document>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!ENTITY content "Content">
+]>
+<document xmlns:book="http://www.example.com/book"
+          book:xmlns="http://www.w3.org/1999/xhtml"
+          xml:lang="en" xml:space="preserve">
+  <html>
+    <head profile="http://motive.example.com/profile">
+      <title xml:base="books.xml">On a Hill of Pure Fiction</title>
+      <meta name="rating" content="PG" />
+      <style type="text/css">
+        <![CDATA[
+          @namespace book "http://www.example.com/book";
+          body { font-family: sans-serif; }
+          h1 { color: #FF0000; }
+          @book\:def color { color: #FFFF00; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <h1 xml:id="cover">The Epic Voyage</h1>
+    <section>
+      <title></title>
+      <note>&content;</note>
+      <section xmlns="" book:ignore="ignore">
+        <title xml:space="preserve" xml:lang="fr">Un Voyage Eternel</title>
+        <book:editor>Anna Koval</book:editor>
+      </section>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <author>Xaiomara Smith</author>
+    <date>2023-07-20</date>
+    <version>0.1</version>
+  </metadata>
+</document>

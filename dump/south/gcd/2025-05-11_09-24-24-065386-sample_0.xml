@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document SYSTEM "complex.dtd" [
+  <!ELEMENT fruits (fruit+)>
+  <!ELEMENT fruit (#PCDATA | banana | apple)*>
+  <!ELEMENT banana (#PCDATA | segment)*>
+  <!ELEMENT segment (#PCDATA | peel)*>
+  <!ELEMENT apple (#PCDATA | seeds)*>
+  <!ENTITY name "John Smith">
+  <!ENTITY date "2024-07-26">
+  <!ENTITY address "123 Main St, Anytown USA">
+  <!ENTITY note "Note about fruits...">
+]>
+<document xmlns="http://example.com/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/XMLSchema complex.xsd">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="fr-FR">
+    <head>
+      <title>Catalogue des fruits</title>
+      <meta name="keywords" content="fruits, bananes, pommes"/>
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #FF0000; }
+      ]]></style>
+    </head>
+  <body>
+    <h1>Les principales familles de fruits</h1>
+    <p> Cette section présente les principales familles de fruits.</p>
+  <metadata>
+    <author entity-ref="#{name}"/></metadata>
+  <fruit><banana>
+      <segment peel="#peel"/>
+      <segment peel="#peel2"/>
+    </banana>
+  </fruit>
+  <fruit entity-ref="#{note}"><apple>
+    <seeds quantity="#2"/>
+    <seeds quantity="#3"/>
+  </apple></fruit>
+  </body>
+</html>
+<metadata>
+  <date entity-ref="#{date}"/></metadata>
+<location entity-ref="#{address}"/>
+</document>

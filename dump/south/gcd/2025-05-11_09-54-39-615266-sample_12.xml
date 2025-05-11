@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/test.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>XML Punctuality</title>
+    </head>
+    <body>
+      <p>Today is <time>2025-07-26 08:00:00 GMT</time> in <city>New York</city>.</p>
+      <figure>
+        <graphic xmlns:A="http://www.example.com" A:role="logo" xlink:href="logo.png" xlink:title="Apple Logo" xlink:type="simple"/>
+        <alt>Apple logo</alt>
+      </figure>
+    </body>
+  </html>
+  <metadata>
+    <metadata:author ref="author-123-456-7890"/>
+    <date>2025-05-10</date>
+    <link title="Home" href="home.html" type="application/xhtml+xml"/>
+  </metadata>
+  <section xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:aside>Adjacent paragraph: The XML code above...</html:aside>
+    <paragraph>Main paragraph: A complex web of elements...</paragraph>
+  </section>
+</document>

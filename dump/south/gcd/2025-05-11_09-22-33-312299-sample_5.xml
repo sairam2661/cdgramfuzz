@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://www.example.com/schemas/fruits.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY pound "#">
+]>
+<document xml:lang="en-GB">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:fb="http://www.facebook.com/ontology#"
+        fb:profile-id="1234567890" fb:context="public"
+        lang="fr">
+    <head>
+      <title>Les meilleures friutiers</title>
+      <meta name="keywords" content="fruits &amp; produits locaux" />
+      <style type="text/css">
+        <![CDATA[
+          body { background: #99CCFF; }
+          h1 { font-size: larger; }
+         .important { color: &#x60;red&#x60;; }
+        ]]>
+      </style>
+      <meta name="generator" content="My Web Publisher" />
+    </head>
+  <body>
+    <main>
+      <article>
+        <h1>Les meilleures options pour les &fruit;</h1>
+        <p>Il existe tant d'alternatives sur le marché.</p>
+      </article>
+    </main>
+  </body>
+  </html>
+  <metadata>
+    <creator>John Doe</creator>
+    <date>2020-01-01T00:00:00Z</date>
+  </metadata>
+  <section>
+    <paragraph>Votre &pound;10 est un investissement dans la qualité!</paragraph>
+  </section>
+</document>

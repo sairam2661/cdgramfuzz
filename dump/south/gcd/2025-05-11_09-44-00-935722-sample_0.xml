@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % special " &special; ">
+  <!ENTITY % quote "<!ENTITY special '&quot;']]&gt;">
+  %quote;
+  <!ENTITY note "Note &amp;&quot;">
+]>
+<document xmlns="http://example.com"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          xml:version="1.0" xml:space="preserve"
+          xml:lang="en">
+  <html xml:base="/base">
+    <head><title>Example Document</title></head>
+    <body>
+      <p>Text within a <span style="color:blue">blue</span> span.</p>
+      <xml:attributeAtt value="Test"/>
+      <comment>This comment will be ignored by the parser.</comment>
+    </body>
+  </html>
+  <metadata xmlns:xlink="http://www.w3.org/1999/xlink"><xlink:resource xlink:href="linked.doc"/></metadata>
+  <section>&special;</section>
+</document>
