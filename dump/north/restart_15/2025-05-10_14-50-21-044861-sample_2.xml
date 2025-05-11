@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd"[<!ENTITY year "2024" > <!ENTITY e "e" > <!ENTITY pi "3.141592653589793238462643383279502884197...">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema" namespace="" xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="dc.title" content="Bananas are the best fruit!" />
+    </head>
+    <body>
+      <p>He said &note; to himself.</p>
+      <section>
+        <h2>Bananas: A Nutrient-Rich Food</h2>
+        <p>Bananas are a good source of &e;g; potassium &e;g;</p>
+        <metadata>
+          <author xml:lang="fr">Jane Doe</author>
+          <date xml:lang="es">&year;</date>
+        </metadata>
+      </section>
+    </body>
+  </html>
+</document>

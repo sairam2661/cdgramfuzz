@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM
+ "http://example.com/dtd/complex.dtd" [ <!ENTITY amp "&amp;"> ]>
+<document xml:space="preserve"
+ xmlns="http://www.example.org/complicatednamespace"
+ xml:base="file:///home/username/this/is/the/parent/directory">
+  <html xml:lang="en">
+    <head>
+      <title>Complex Parse Case</title>
+      <meta name="#name" content="#content" />
+    </head>
+    <body>
+      <section>
+        <h3>This is a test of CDATA sections</h3>
+        <![CDATA[
+          <foo>bar <baz>qux</baz></foo>
+        ]]>
+      </section>
+    </body>
+  </html>
+</document>

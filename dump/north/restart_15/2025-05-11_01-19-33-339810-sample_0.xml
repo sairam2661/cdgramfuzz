@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY note "Note">
+  <!ENTITY entref "reference entity for a different reason">
+]>
+<document xml:lang="en-US">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:svg="http://www.w3.org/2000/svg">
+    <head>
+      <title>Fruits and Vegetables</title>
+      <meta name="keywords" content="bananas, apples, carrots" />
+      <style>
+        <![CDATA[
+          svg { fill: #000000; }
+          h2 { font-size: 24pt; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p>Fruits are sweet and healthy!</p>
+      <svg:svg width="100" height="100">
+        <svg:rect x="20" y="20" width="60" height="60" />
+      </svg:svg>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>&date;</date>
+  </metadata>
+  <section>
+    <paragraph>This is a reference to &note; &entref;.</paragraph>
+  </section>
+</document>

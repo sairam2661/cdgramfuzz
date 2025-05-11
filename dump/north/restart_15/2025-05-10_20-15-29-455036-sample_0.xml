@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ELEMENT document (html, metadata, section+)>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+    </head>
+    <body>
+      <table border="1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        <tr>
+          <td><p>Good</p></td>
+          <td xmlns="http://example.com/skill"><xml:space>preserve</xml:space></td>
+          <td><xhtml:p xmlns:xlink="http://www.w3.org/1999/xlink">Excellent</xhtml:p></td>
+        </tr>
+      </table>
+      <h2>Why Bananas are the best</h2>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious. &note;</paragraph>
+  </section>
+</document>

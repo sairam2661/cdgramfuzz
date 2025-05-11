@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY num "123">
+  <!ENTITY pi  "3.14159265358979323846">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="fr-CH">
+    <head>
+      <title>Maths and Statistics</title>
+      <meta name="keywords" content="trigonometry,statistics"/>
+    </head>
+    <body>
+      <formula>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/> 
+            <cn>&num;</cn>
+            <cn>&pi;</cn>
+          </apply>
+        </math>
+      </formula>
+      <statistics>
+        <data xml:id="values">
+          <value>20</value>
+          <value>10</value>
+          <value>30</value>
+        </data>
+      </statistics>
+    </body>
+  </html>
+  <bibliography>
+    <book>
+      <author xml:lang="en">John</author>
+      <title>Maths for Dummies</title>
+      <date>2020-01-01</date>
+    </book>
+  </bibliography>
+</document>

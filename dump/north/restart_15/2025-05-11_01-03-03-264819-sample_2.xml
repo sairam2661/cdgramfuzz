@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document PUBLIC "-//Example-//DTD document 1.0//EN"
+  "example.dtd" [
+  <!ENTITY % ent SYSTEM "external.ent">
+  %ent;
+]>
+<document xmlns="http://example.org"
+          xmlns:my="http://example.com"
+          my:xml="example"
+          xml:lang="en-GB">
+  <html>
+    <head prefix="xhtml: http://www.w3.org/1999/xhtml">
+      <title>Parser Challenge</title>
+      <meta name="description" content="XML example" />
+      <style>
+        <![CDATA[
+          body { font-family: Verdana, sans-serif; }
+          h1 { color: #FF0000; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <paragraph>XML is a markup language &note;</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2024-12-25</date>
+  </metadata>
+</document>

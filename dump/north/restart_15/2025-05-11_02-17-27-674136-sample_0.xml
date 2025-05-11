@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-32"?>
+<!DOCTYPE document [
+  <!ENTITY foo "Foo">
+  <!ELEMENT document (#PCDATA | html | metadata | section)*>
+]>
+<document xml:lang="en-GB"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+  <html xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <head>
+      <title xml:space="preserve">Grapes are the king.</title>
+      <meta name="keywords" content="xml, parsing, test" />
+      <style type="text/css" media="all"><![CDATA[
+        body { font-family: Times New Roman, monospace; }
+        h1:empty { color: #00FFFF; }
+      ]]></style>
+    </head>
+    <body>
+      <table>
+        <tr>
+          <td>
+            <p>Apples are delicious.</p>
+            <ul>
+              <li><a href="#link">Link!</a></li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <metadata>
+    <contributor>John Doe</contributor>
+    <rights>Copyright 2001-2025</rights>
+  </metadata>
+  <section>
+    <description>&foo;</description>
+  </section>
+</document>

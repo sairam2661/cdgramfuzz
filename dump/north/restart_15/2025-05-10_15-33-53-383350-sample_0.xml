@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY a "alpha" >
+  <!ELEMENT document (html, metadata, section*)>
+  <!ATTLIST document xmlns CDATA #REQUIRED>
+]>
+<document xmlns="http://example.org/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.org/XMLSchema schema.xsd">
+  <html>
+    <head>
+      <title>Entity Resolution Demonstration</title>
+      <meta name="description" content="A test document with ampersands; &amp;&amp; &#38; &#x26;" />
+    </head>
+    <body>
+      <p>This is a long text, containing some special characters such as <b>&amp;#169;</b> and <b>&a;</b>.</p>
+    </body>
+  </html>
+  <metadata>
+    <title>Entity Resolution</title>
+  </metadata>
+  <section>
+    <subsection>This is a section with a nested element.</subsection>
+  </section>
+</document>

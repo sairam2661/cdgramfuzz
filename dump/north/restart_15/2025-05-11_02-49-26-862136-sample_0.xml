@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY nbsp "&#160;">
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schemas/DocumentSchema.xsd"
+          xml:lang="es-ES"
+          xml:space="preserve">
+  <html lang="fr">
+    <head>
+      <title>Rare Tropical Fruits</title>
+    </head>
+    <body>
+      <metadata>
+        <author>Jack Smith</author>
+      </metadata>
+      <section>
+        <p>Fruits sont de délicieux! &nbsp;</p>
+        <p>La mangue est super bon.</p>
+      </section>
+      <section>
+        <item>Apple</item>
+        <item>Pear</item>
+        <item>Banana</item>
+      </section>
+    </body>
+  </html>
+  <section>
+    <list>
+      <item1>One</item1>
+      <item2>Two</item2>
+      <item3>Three</item3>
+    </list>
+  </section>
+</document>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd" [
+  <!ENTITY ent1 "Entity 1">
+  <!ENTITY ent2 "Entity 2">
+]>
+<document xml:base="http://example.com">
+  <html xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve">
+    <head>
+      <title>Example Document</title>
+      <meta name="keywords" content="key1,key2" />
+    </head>
+    <body>
+      <svg:svg xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg:text xml:lang="en" xml:space="preserve ">Fruit &ent1; and &ent2;</svg:text>
+      </svg:svg>
+    </body>
+  </html>
+  <metadata type="example">
+    <author>John Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section xmlns:m="http://example.com/m">
+    <paragraph xml:lang="fr">Les pommes sont très goûteuses.</paragraph>
+    <m:metadata>
+      <m:date>2025-06-10</m:date>
+      <m:author>Mary Doe</m:author>
+    </m:metadata>
+  </section>
+</document>

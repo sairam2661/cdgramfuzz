@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html|metadata|note)*>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT body (#PCDATA|title)*>
+  <!ATTLIST html xmlns CDATA #REQUIRED>
+  <!ATTLIST body xmlns:svg CDATA #IMPLIED>
+  <!ENTITY note "A special note!">
+]>
+<document xmlns="http://example.com/prefix"
+          xml:lang="en-US"
+          version="1.0">
+  <html xml:space="preserve">
+    <head>
+      <title xml:lang="en-GB">Best Fruits</title>
+      <meta name="keywords" content="fruits,best,choice"/>
+    </head>
+    <body xmlns:svg="http://www.w3.org/2000/svg">
+      <h1>Best Fruits</h1>
+      &note;
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2024-07-26</date>
+  </metadata>
+</document>

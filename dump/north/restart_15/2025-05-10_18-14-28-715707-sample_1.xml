@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+  <!ENTITY fruit "apple &banana;">
+]>
+<document xml:lang="en-GB">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>A Fruit Catalog</title>
+    </head>
+    <body>
+      <table xmlns:a="http://example.org/attributes">
+        <tr>
+          <th>a:href</th>
+          <th>a:alt</th>
+          <th>fruit</th>
+        </tr>
+        <tr>
+          <td>http://example.com/fruit1.jpg</td>
+          <td>A juicy red apple</td>
+          <td>&fruit;</td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>Jane Doe</name>
+    </author>
+    <date>2023-02-20</date>
+  </metadata>
+  <section xml:space="preserve">
+    <paragraph>
+      &fruit; 
+      <note>
+        <id>1</id>
+        <text>This is a note.</text>
+      </note>
+    </paragraph>
+  </section>
+</document>

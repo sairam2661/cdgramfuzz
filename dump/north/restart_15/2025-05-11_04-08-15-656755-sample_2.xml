@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd" [
+  <!ENTITY note "Note">
+]>
+<document xml:lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve">
+    <head>
+      <title>Top 5 Fruits:</title>
+      <meta charset="ISO-8859-1"/>
+      <meta name="description" content="Fruit review!" />
+    </head>
+    <body>
+      <!-- comment -->
+      <h1>Apples</h1>
+      <p>Bananas are delicious!</p>
+      <table border="1">
+        <tr>
+          <th>Rank</th>
+          <th>Fruit</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Oranges</td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <section xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="fruit.xsd">
+    <paragraph xml:lang="fr">Les fraises sont très bonnes.</paragraph>
+  </section>
+</document>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "file.dtd" [
+  <!ENTITY entity "Entity">
+  <!ATTLIST note
+    attribute1 CDATA #REQUIRED
+    attribute2 (option1|option2) "option1">
+]>
+<document e="f">
+  <html xmlns:g="http://example.org/g">
+    <head>
+      <title xml:lang="en-GB">Oranges are a tasty fruit!</title>
+      <meta name="http-equiv" content="Application/PDF" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Verdana, sans-serif; }
+          h1 { font-style: oblique; }
+        ]]></style>
+    </head>
+    <body>
+      <p>Bananas are good for you, but oranges are too sweet.&entity;</p>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <fn>&note;</fn>
+      <org>Company Inc.</org>
+    </author>
+    <date>2024-07-26T00:00:00Z</date>
+  </metadata>
+  <section>
+    <paragraph xml:space="preserve">
+      <sup>1</sup> Some people do not like bananas.
+    </paragraph>
+  </section>
+</document>

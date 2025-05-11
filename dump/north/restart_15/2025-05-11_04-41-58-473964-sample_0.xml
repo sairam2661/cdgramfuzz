@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ATTLIST document id CDATA #REQUIRED>
+  <!ENTITY % ent "%document;">
+  <!ENTITY document "This is a document!">
+  <!ENTITY % document "%document;">
+]>
+<document id="abc123">
+  <html><head><title>A Complex XML Document</title></head><body>
+    <metadata entity-value="%document;"/>
+    <section xmlns="http://example.com/ns">
+      <subsection>&document;</subsection>
+    </section>
+    <note>&ent;</note>
+  </body></html>
+  <document>&document;</document>
+</document>

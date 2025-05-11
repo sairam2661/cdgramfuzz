@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "garden.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY color "#800080">
+  <!ENTITY style "italic">
+  <!ENTITY ref SYSTEM "bibliography.xml" NDATA XML>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>Birdhouses</title>
+    </head>
+    <body>
+      <h1 style="${style}">Fruit of the Month</h1>
+      <p>The fruit we will feature this month is a <span style="font-size: 24pt; color:${color}">${fruit}</span>, which is very juicy.</p>
+      <p>&note;</p>
+      <p>&ref;</p>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">Jean Dupont</author>
+    <date>2020-02-29</date>
+  </metadata>
+  <section xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link xlink:href="garden.bib" xlink:title="Bibliography"/>
+    <paragraph xml:base="http://example.org">This is a paragraph with an external reference.</paragraph>
+  </section>
+</document>

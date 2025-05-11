@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+ [<!ENTITY fruit "Apple">
+  <!ENTITY p1 "This is paragraph 1. &fruit;">
+  <!ENTITY p2 "This is paragraph 2. &p1;">]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+      <title>Les Fruits</title>
+      <style><![CDATA[
+        body { font-family: Verdana, Geneva, sans-serif; }
+        h1 { color: #FF00FF; }
+        h2 { color: #00FF00; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <title>Les Fruits Exotiques</title>
+        <p>&p2;</p>
+        <ul>
+          <li>Ale&amp;ga</li>
+          <li>Orange</li>
+        </ul>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith &amp; Jane Doe</author>
+    <date>2024-06-17</date>
+  </metadata>
+</document>

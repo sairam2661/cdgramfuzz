@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY color "Red">
+  <!ENTITY percent "100%">
+]>
+<document xmlns="http://example.com"
+        xml:lang="fr-CA"
+        version="3.0"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://example.com schema.xsd">
+  <html>
+    <head>
+      <title>Couleurs</title>
+    </head>
+    <body>
+      <div>
+        <p>Les couleurs de l'arctique &color; incluent également le &percent; gris!</p>
+      </div>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>François LaFleur</name>
+      <email>flafl@colorfulspaces.com</email>
+    </author>
+    <date>2020-02-20</date>
+  </metadata>
+  <entities>
+    <entity>
+      <color>&color;</color>
+      <percent>&percent;</percent>
+    </entity>
+  </entities>
+</document>

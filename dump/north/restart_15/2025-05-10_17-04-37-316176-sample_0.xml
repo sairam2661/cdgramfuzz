@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+]>
+<document xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xml:lang="en-US"
+          xmlns:xlink="http://www.w3.org/1999/xlink" 
+          xmlns:cdata-section="http://example.com/cdata-section">
+  <html>
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style xlink:href="#internal-style" type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]></style>
+    </head>
+    <body>
+      <p>Some text here!
+      <xml:attribute id="attr-1"/>
+      and in a different CDATA block 
+      <![CDATA[
+        more text in the document
+        <!-- another comment here -->
+      ]]></p>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">Jean Dupont</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph xml:lang="es">Bananas son muy nutritivos. &note;</paragraph>
+  </section>
+</document>

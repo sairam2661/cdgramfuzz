@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.org/test.dtd" [
+  <!ENTITY fruit "Apple">
+]>
+<document xmlns:math="http://example.org/math"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          xml:lang="en-AU">
+  <html xml:base="http://example.org/home">
+    <head prefix="dc: http://purl.org/dc/elements/1.1/">
+      <title xml:space="preserve">The Fruit Shop</title>
+    </head>
+    <body>
+      <section class="product">
+        <p>Here is a &fruit;!</p>
+        <math:expression>4 * 5</math:expression>
+      </section>
+    </body>
+  </html>
+</document>

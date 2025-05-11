@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "document.dtd" [
+  <!ELEMENT document ANY>
+  <!ENTITY foo "bar">
+]>
+<document xmlns="http://example.com/ns"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="document.xsd">
+  <html>
+    <head>
+      <title>XML Fuzz Test</title>
+    </head>
+    <body>
+      <p>This is a paragraph: <span>&foo;</span></p>
+    </body>
+  </html>
+  <root xmlns:custom="http://example.com/custom">
+    <custom:rootElement>Multiple Namespaces</custom:rootElement>
+  </root>
+  <comment>This is a comment</comment>
+</document>

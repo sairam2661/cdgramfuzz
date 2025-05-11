@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" [
+  <!ENTITY fruit "apples">
+  <!ENTITY desc "A short and sweet description.">
+]>
+<document xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <html xmlns:fb="http://www.facebook.com/2008/fbml">
+    <head>
+      <title>Best Fruit Ever!</title>
+      <meta name="fb:visible-to-app-users" content="True" />
+    </head>
+    <body>
+      <paragraph>There are many great types of fruit - such as &fruit;.
+        <span>But the best is, of course, &desc;.</span>
+      </paragraph>
+    </body>
+  </html>
+  <note><fb:like-button/></note>
+</document>

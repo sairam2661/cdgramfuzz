@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document [
+  <!ENTITY celsius "°C">
+  <!ENTITY fahrenheit "°F">
+]>
+<document xmlns:fb="http://example.com/fb"
+          fb:schema="http://example.org/schema">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="sv-SE">
+    <head>
+      <title>Bananas are the best fruit!</title>
+    </head>
+    <body>
+      <table fb:header="true">
+        <tr>
+          <td>Temperatur</td>
+          <td><span xml:space="preserve">20</span>&celsius;</td>
+        </tr>
+      </table>
+      <section>
+        <p> Temperatur i vattnet är <span xml:space="preserve">40</span>&fahrenheit;</p>
+      </section>
+    </body>
+  </html>
+</document>

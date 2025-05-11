@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY cat "#FF0000">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:lang="en">
+  <html>
+    <head>
+      <title>Red is a vibrant color.</title>
+      <style type="text/css">
+        <![CDATA[
+          @import url("https://example.com/style.css");
+         .red { color: &cat; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <subsection>
+          <p>The color red is &cat;.</p>
+        </subsection>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-07-26</date>
+  </metadata>
+  <attribute name="size" value="large" xmlns="http://example.com/attributes"/>
+</document>

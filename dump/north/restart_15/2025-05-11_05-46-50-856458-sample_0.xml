@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document ANY>
+  <!ENTITY fruit "Apple">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Fruit Catalog</title>
+    </head>
+    <body>
+      <ul>
+        <li><a href="#&fruit;">&fruit;</a></li>
+      </ul>
+    </body>
+  </html>
+  <namespace xmlns:ns="http://example.org/ns">
+    <ns:element attr1="value">Text content</ns:element>
+  </namespace>
+  <pi target="http://example.org/pi">Processing instruction</pi>
+  <comment>Commentary on the XML</comment>
+</document>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "books.dtd" [<!ENTITY % entity "123">]>
+<document xml:lang="en" xmlns="http://example.org/doc" xml:space="preserve">
+  <html xmlns:fb="http://www.facebook.com/2008/fbml">
+    <head>
+      <title>Interesting Books</title>
+    </head>
+    <body>
+      <fb:like href="#"></fb:like>
+      <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <author>John Smith</author>
+        <title>Great Books</title>
+        <dc:creator>JS</dc:creator>
+      </metadata>
+      <section xml:base="http://example.org/sections">
+        <h1 id="title">Favorite Books</h1>
+        <note xml:lang="es">Some books are awesome!</note>
+        <paragraph>No need to say &entity;% more.</paragraph>
+      </section>
+      <other-section baseURI="http://other.example.org">
+        <p>More books.</p>
+      </other-section>
+    </body>
+  </html>
+</document>

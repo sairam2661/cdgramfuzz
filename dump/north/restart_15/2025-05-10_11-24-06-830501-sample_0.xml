@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY percent "%">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Red is the favorite color</title>
+      <meta name="charset" content="UTF-8" />
+      <style> 
+        <![CDATA[body { font-family: Arial, sans-serif; }]]> 
+      </style>
+    </head>
+    <body xmlns:xlink="http://www.w3.org/1999/xlink">
+      <section>
+        <h1>Red</h1>
+        <p xml:space="preserve">
+          Colors like &percent;20 red are vibrant and appealing.
+          <a xlink:href="#blue">Blue</a> and <a href="#green">green</a> are also popular.
+        </p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <modified date="2024-01-01"/>
+    <creator>John</creator>
+  </metadata>
+</document>

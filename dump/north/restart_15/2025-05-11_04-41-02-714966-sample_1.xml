@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "recipes.dtd" [
+  <!ENTITY apple "Red Delicious">
+  <!ENTITY pear "<p>This is a nested entity!</p>">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-GB">
+    <head>
+      <title>The Best Fruit Pie Recipe</title>
+      <meta name="keywords" content="recipe fruits desserts" />
+    </head>
+    <body>
+      <p>This recipe uses a delicious mix of &apple; and &pear;.</p>
+      <section>
+        <h1>Fruit Salad Ingredients</h1>
+        <ul>
+          <li>&apple;</li>
+          <li>&pear;</li>
+        </ul>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <person>
+      <name>John Smith</name>
+      <role>Recipe Author</role>
+    </person>
+    <date>2024-03-20</date>
+  </metadata>
+</document>

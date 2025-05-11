@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML Modularization 1.0//EN"
+                           "http://www.w3.org/TR/xhtml-modularization/DTD/xhtml-modularization.dtd">
+<document xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:foo="http://www.example.com/foo"
+          xml:lang="en"
+          xml:space="preserve"
+          ex:attribute="value"
+          xmlns:ex="http://www.example.com/ex"
+          extensionElement="extensionAttribute">
+  <html>
+    <head>
+      <title>Complex XML Document</title>
+    </head>
+    <body>
+      <foo:element foo:attr="value">Content</foo:element>
+      <p xmlns=""><span>Content in non-declared namespace</span></p>
+    </body>
+  </html>
+  <not-in-xhtml xmlns="http://example.com/nixinxhtml">
+    <attribute attr="value">Content</attribute>
+  </not-in-xhtml>
+  <documentFragment>
+    <foo:element attr="value">Content</foo:element>
+  </documentFragment>
+  <section xmlns="http://www.example.com/XMLSchema">
+    <title>Section title</title>
+  </section>
+  <comment>This is a comment</comment>
+</document>

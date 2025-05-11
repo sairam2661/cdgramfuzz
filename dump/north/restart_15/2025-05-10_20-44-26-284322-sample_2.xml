@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ENTITY entity "<value>test</value>">
+  <!ELEMENT section (paragraph) >
+]>
+<document xmlns:math="http://www.example.com/math"
+          math:notation="1.0">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="fr-FR">
+    <head><title>Entities and Elements in XML</title></head>
+    <body>
+      <section>
+        <para>Testing entities: &amp;&percnt;&lt;&gt;&quot;&apos;&amp;note;&amp;fruit;&amp;entity;</para>
+      </section>
+      <math:math xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="math.xsd"> 
+        <math:expression>1 + 1 = 2</math:expression>
+      </math:math>
+    </body>
+  </html>
+</document>

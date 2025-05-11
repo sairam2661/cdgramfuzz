@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "colors.dtd">
+<document xmlns:html="http://www.w3.org/1999/xhtml" xml:space="preserve">
+  <html>
+    <head>
+      <title>Colorful World</title>
+      <style>
+        <![CDATA[
+          @namespace html "http://www.w3.org/1999/xhtml";
+          html|* { font-size: 12pt; }
+          span { color: #008000; }
+        ]]></style>
+    </head>
+    <body>
+      <section>
+        <p>A world full of <span>colors</span>.</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2020-03-12T14:30:00Z</date>
+  </metadata>
+</document>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!ENTITY year "1975">
+  <!ELEMENT list EMPTY>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://example.com/schema"
+        xml:lang="fr-FR">
+  <head>
+    <title>Libellum Virtutis</title>
+  </head>
+  <body>
+    <h2>Table of Contents</h2>
+    <section>
+      <h3>Introduction</h3>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p>&year;</p>
+    </section>
+    <list />
+  </body>
+  </html>
+  <metadata>
+    <author id="aut-001">Jean Dupont</author>
+    <date>2022-08-25</date>
+  </metadata>
+</document>

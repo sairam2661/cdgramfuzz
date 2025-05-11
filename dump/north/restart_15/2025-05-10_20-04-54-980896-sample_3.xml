@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY desc "A delicious, yet unhealthy snack.">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:lang="es-LA"
+          xslt:version="1.0">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title xmlns:xlink="http://www.w3.org/1999/xlink">Bananas</title>
+      <meta name="keywords" content="fruits" />
+      <style type="text/css">
+<![CDATA[
+  @import url("styles.css");
+  h1 { color: #FFFF00; }
+]]>
+</style>
+    </head>
+    <body>
+      <p>This is a paragraph of text.</p>
+    </body>
+  </html>
+</document>

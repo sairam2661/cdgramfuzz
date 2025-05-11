@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-10646-UCS-2" standalone="no"?>
+<!DOCTYPE document [
+  <!ENTITY amp "&amp;">
+  <!ENTITY ref "<ref>Reference</ref>">
+  <!ENTITY ns "http://example.com)">
+]>
+<document xmlns:ex="http://example.org"
+          xmlns:dc="http://purl.org/dc/elements/1.1/"
+          xml:basedir="."
+          xml:lang="fr-CA"
+          ex:stylesheet="xsldoc.css">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Best Fruits</title>
+    </head>
+    <body>
+      <section>
+        <h1><ex:para>Top 5</ex:para> Fruit</h1>
+        <ul>
+          <li>1. Apples</li>
+          <li>2. &amp; Oranges</li>
+        </ul>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <dc:creator>Jane</dc:creator>
+    <dc:date>2024-05-10</dc:date>
+  </metadata>
+  <section>
+    <paragraph>&ref;</paragraph>
+  </section>
+</document>

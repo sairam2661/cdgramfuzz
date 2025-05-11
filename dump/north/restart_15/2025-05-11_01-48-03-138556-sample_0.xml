@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "vehicles.dtd" [
+  <!ENTITY desc "A high-performance vehicle">
+]>
+<document
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xml:base="https://example.com"
+  xml:lang="en-US">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Electric Cars</title>
+    </head>
+    <body>
+      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:element name="vehicle" type="xs:string"/>
+      </xs:schema>
+      <xlink:href="https://example.com/vehicles.pdf">View vehicles catalog</xlink:href>
+      <metadata>
+        <author>John Smith</author>
+        <date>2023-01-01</date>
+      </metadata>
+    </body>
+  </html>
+  <note><content>This is a test &desc;</content></note>
+</document>

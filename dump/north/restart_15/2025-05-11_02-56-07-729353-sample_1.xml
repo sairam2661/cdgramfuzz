@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % entities "entities">
+  %entities;
+]>
+<document xmlns="http://example.com" xsi:schemaLocation="schemalocation.xsd"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xml:base="http://example.com/base">
+  <html>
+    <head>
+      <title xml:lang="en-US">XML Parsers are Amazing!</title>
+    </head>
+    <body>
+      <p> This is a paragraph with a <b>bold</b> text, and a <i>italic</i> text. </p>
+      <script type="text/xml"><![CDATA[
+        <query>
+          <search> XML </search>
+          <results> <result> 42 </result> </results>
+        </query>
+      ]]></script>
+    </body>
+  </html>
+  <other>
+    <name><greeting>Hello!</greeting></name>
+  </other>
+</document>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "cities.dtd" [
+  <!ENTITY address "123 Main St, Anytown, USA">
+  <!ENTITY xref SYSTEM "external.xml">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="fr-FR">
+    <head>
+      <title>Villes de France</title>
+      <meta name="lang" content="fr" />
+      <meta name="copyright" content="&xref;" />
+    </head>
+    <body>
+      <nav>
+        <ul xlink:href="#about" xlink:title="About">
+          <li>Accueil</li>
+        </ul>
+        <ul xlink:href="#cities" xlink:title="Cities">
+          <li>Paris</li>
+          <li>Paris&nbsp;</li>
+        </ul>
+      </nav>
+    </body>
+  </html>
+  <metadata>
+    <title xmlns="http://purl.org/dc/elements/1.1/">French Cities</title>
+    <relation xmlns="http://purl.org/dc/elements/1.1/">&xref;</relation>
+  </metadata>
+  <section>
+    <title>Paris</title>
+    <p>La capitale de la France, &address;.</p>
+  </section>
+</document>

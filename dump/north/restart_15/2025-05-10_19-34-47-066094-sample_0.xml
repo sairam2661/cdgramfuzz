@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!ENTITY pound "&#163;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:base="http://example.org/">
+    <head>
+      <title xml:lang="fr">Livres de poche sont amusants!</title>
+      <meta name="keywords" content="books novel fiction" />
+    </head>
+    <body>
+      <section xml:space="preserve">
+        <h1 xml:lang="en" dir="ltr">Pocket Books Are Fun!</h1>
+        <p xml:lang="en" xml:space="default">Price: <phrase><entityref name="pound"/> 10.99</phrase></p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <creator>
+      <person>
+        <given>John</given>
+        <surname>Doe</surname>
+        <date-born>1990-01-01T12:00:00Z</date-born>
+      </person>
+    </creator>
+    <date>2025-05-13</date>
+  </metadata>
+</document>

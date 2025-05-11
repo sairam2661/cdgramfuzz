@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-10646-UCS-4"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd" [
+  <!ENTITY a "alpha">
+  <!ENTITY b "bravo">
+]>
+<document xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:space="preserve"
+          xmlns="http://www.example.com/namespace"
+          xml:lang="en-GB">
+  <html>
+    <head profile="http://www.example.com/profil">
+      <title>Test Title</title>
+    </head>
+    <body>
+      Hello, world!
+      &a; &b;
+      <section>
+        <subsection xlink:href="#anchor">
+          <subsubsection>
+            <p>Para 1.</p>
+            <p>Para 2.</p>
+          </subsubsection>
+        </subsection>
+      </section>
+    </body>
+  </html>
+</document>

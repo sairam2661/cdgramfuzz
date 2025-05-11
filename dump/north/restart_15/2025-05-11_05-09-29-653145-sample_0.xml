@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doc.dtd" [
+  <!ENTITY % xml.ent SYSTEM "http://example.com/xml.ent">
+  <!ELEMENT document EMPTY>
+]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+          xml:base="http://example.com/base"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/schema.xsd"
+          fb:profile-id="123456">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Complex Document</title>
+    </head>
+    <body>
+      <div>
+        <p>Hello World!</p>
+        <img src="http://example.com/image.jpg" />
+        <fb:like href="http://example.com/page" />
+      </div>
+    </body>
+  </html>
+  <metadata>
+    <author>Alice Smith</author>
+    <date>2020-01-01</date>
+    <language XML:lang="en-US">English</language>
+  </metadata>
+</document>

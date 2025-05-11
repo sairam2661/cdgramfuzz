@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "trees.dtd" [
+  <!ENTITY root "root">
+  <!ENTITY branch "branch">
+]>
+<document xml:lang="fr"
+         xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+      <title>Le monde des arbres!</title>
+    </head>
+    <body>
+      <metadata>
+        <author>René Dupont</author>
+        <date>2010-10-12</date>
+      </metadata>
+      <section>
+        <paragraph>
+          &root; &branch; &root;
+        </paragraph>
+      </section>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY note "Note">
+]>
+<document xmlns="http://example.com/document"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="document.xsd"
+          extension="xsd">
+  <html>
+    <head>
+      <title xml:lang="fr">Les bananas sont les meilleures baies!</title>
+      <meta charset="UTF-8" />
+    </head>
+    <body>
+      <metadata>
+        <schema version="1.0"></schema>
+      </metadata>
+      <section>
+        <div>
+          <section>
+            <paragraph>Hello, &note; world!</paragraph>
+            <paragraph>Hello, &note; world!</paragraph>
+          </section>
+        </div>
+      </section>
+    </body>
+  </html>
+</document>

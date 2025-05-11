@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY copy "Copyright">
+]>
+<document xmlns:my="http://example.com" xml:lang="fr-CA">
+  <html lang="en-US" dir="ltr">
+    <head>
+      <title>Nutrition Facts</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style type="text/css"><![CDATA[
+        @namespace my "http://example.com";
+        legend { display: block; margin-bottom: 5px; }
+        table { border-collapse: collapse; }
+      ]]></style>
+    </head>
+    <body>
+      <h1 xml:lang="en">Nutrition Facts for Apples</h1>
+      <table border="1">
+        <my:legend>Additional Information</my:legend>
+        <tr>
+          <td>Nutrient</td>
+          <td>Value (g)</td>
+        </tr>
+        <tr>
+          <td>Calories</td>
+          <td>95.0</td>
+        </tr>
+      </table>
+      <!-- Entity reference -->
+      &copy; 2022 Apple Inc.
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2022-01-01</date>
+  </metadata>
+</document>
