@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+  <!ENTITY name "John">
+]>
+<document xmlns="http://example.org/ns"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.org/ns http://example.com/schema.xsd"
+          xml:base="http://example.org">
+  <html>
+    <head>
+      <meta charset="UTF-16"/>
+      <title xml:lang="fr">Les Bananes sont les Meilleures!</title>
+    </head>
+    <body>
+      <section>
+        <paragraph xml:space="preserve">Bananas are very nutritious. &name;</paragraph>
+        <section prolog=" <!-- this is a section prolog -->">
+          <paragraph>
+            Some fruits are even more nutritious!
+          </paragraph>
+        </section>
+      </section>
+    </body>
+  </html>
+  <nested-elements>
+    <element1>Value 1</element1>
+    <element2>Value 2</element2>
+  </nested-elements>
+</document>

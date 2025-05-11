@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//My Company//DTD Document 1.0//EN"
+ "document.dtd"
+  [ <!ENTITY amp "&amp;">
+    <!ENTITY lt "&lt;">
+    <!ENTITY gt "&gt;">
+  ]>
+<document xmlns:fb="http://example.com/fb">
+  <html fb:lang="en-US">
+    <head>
+      <meta fb:name="desc" content="XML is fun" />
+      <title>Test XML</title>
+    </head>
+    <body>
+      <p>This is a test paragraph.&amp;lt;p>, &amp;gt;p&amp;lt;/p&amp;gt;</p>
+    </body>
+  </html>
+  <xsl:stylesheet version="1.1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+      <result>
+        <xsl:value-of select="." />
+      </result>
+    </xsl:template>
+  </xsl:stylesheet>
+  <section fb:section-id="12345">
+    <title>This is a section</title>
+  </section>
+</document>

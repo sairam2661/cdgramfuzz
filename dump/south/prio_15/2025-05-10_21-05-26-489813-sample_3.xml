@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY nbsp "&#160;">
+]>
+<document xmlns:fn="http://www.w3.org/2005/xpath-functions"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.w3.org/2001/XMLSchema"
+          xml:lang="fr">
+  <html>
+    <head>
+      <title>Les Couleurs</title>
+    </head>
+    <body xml:space="preserve">
+      <p>La couleur des roses est &nbsp;rouge.</p>
+      <fn:expand-text select="//title" />
+      <xlink:href hreflang="fr">Page d'accueil</xlink:href>
+    </body>
+  </html>
+  <metadata>
+    <year>2023</year>
+    <version>1.0</version>
+  </metadata>
+</document>

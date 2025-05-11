@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "&lt;">
+  <!ENTITY gt "&gt;">
+  <!ENTITY quot "&quot;">
+  <!ENTITY apos "&#x27;">
+]>
+<document xmlns="http://example.com/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="myschema.xsd"
+          xml:base="http://example.com"
+          xml:lang="en"
+          xml:space="preserve"
+          version="1.0">
+  <html lang="en">
+    <head>
+      <title>Example</title>
+      <meta charset="utf-8" />
+    </head>
+    <body>
+      <section>
+        <h1>Header</h1>
+        <p>This is a paragraph &note; with entities: {&amp;lt;&amp;gt;&amp;quot;&amp;apos;}.</p>
+      </section>
+    </body>
+  </html>
+  <metadata>&lt;author&gt;John Doe&lt;/author&gt;</metadata>
+</document>

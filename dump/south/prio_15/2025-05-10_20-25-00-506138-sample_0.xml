@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document PUBLIC "-//Example//DTD Document 1.0//EN"
+          "file:///example.dtd" [
+  <!ENTITY fruit "Pineapple">
+]>
+<document xsi:schemaLocation="http://www.example.com/XMLSchema.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:math="http://www.example.com/Mathematics">
+  <html xmlns="" xml:lang="en-GB">
+    <head>
+      <title>Bananas contain a lot of potassium!</title>
+    </head>
+    <body>
+      <math:equation>
+        <mtable>
+          <mtr>
+            <mtd>Energy (KJ)</mtd>
+            <mtd>270</mtd>
+          </mtr>
+        </mtable>
+      </math:equation>
+    </body>
+  </html>
+  <content-type>text/html</content-type>
+  <comment xml:lang="fr">&fruit;</comment>
+</document>

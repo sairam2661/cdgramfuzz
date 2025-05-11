@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "mathematics.dtd" [
+  <!ENTITY fraction "1/2 or 2/5">
+  <!ENTITY operator "+">
+]>
+<document xmlns="http://example.org" xml:lang="en" xmlns:math="http://www.mathml.org/data/200003/namespace">
+  <html xml:space="preserve">
+    <head>
+      <title>Mathematics is Fun</title>
+      <meta name="keywords" content="math, fun" />
+    </head>
+    <body>
+      <math:mrow>
+        <math:mn>2</math:mn>
+        <math:o>&operator;</math:o>
+        <math:mfraction>
+          <math:mrow>
+            <math:mn>3</math:mn>
+            <math:mo>×</math:mo></math:mrow>
+          <math:mn>5</math:mn>
+        </math:mfraction>
+        <math:mo>=</math:mo>
+        <math:mo>&fraction;</math:mo>
+      </math:mrow>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doctype.dtd" [
+  <!ENTITY % entity "foo">
+  <!ENTITY foo "<!ENTITY bar 'Foobar'>">
+]>
+<document xml:version="1.1" xml:language="fr" xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:base="http://example.com"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="en">
+    <head>
+      <title>Foobar</title>
+    </head>
+    <body xmlns:js="http://example.org/js">
+      <script><![CDATA[
+        let foo = '%foo;';
+        let bar = 'bar';
+      ]]></script>
+    </body>
+  </html>
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document"/>
+  </xs:schema>
+</document>

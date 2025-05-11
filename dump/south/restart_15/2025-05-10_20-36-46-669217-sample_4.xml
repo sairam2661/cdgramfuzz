@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<document xml:lang="en-GB" xmlns:foo="http://example.org/foo">
+  <html xmlns="" lang="en-GB"
+        xmlns:xi="http://www.w3.org/2001/XInclude">
+    <head>
+      <title>A collection of fruit trees</title>
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+      <h2>Oranges</h2>
+      <section xmlns="http://www.w3.org/1999/xhtml">
+        <paragraph>Oranges are a favourite fruit among many people.</paragraph>
+        <paragraph xml:lang="fr">Les oranges sont un fruit très populaire.</paragraph>
+      </section>
+      <xi:include href="image.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    </body>
+  </html>
+  <metadata xmlns="http://example.org/metadata">
+    <created>2030-10-25</created>
+    <author>John Smith</author>
+  </metadata>
+  <document-within-document>
+    <document>
+      <title>Sub-document</title>
+      <content>Sub-document content.</content>
+    </document>
+  </document-within-document>
+</document>

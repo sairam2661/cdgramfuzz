@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "saxes.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT document (html+, metadata*, section*)>
+  <!ATTLIST document lang CDATA #REQUIRED>
+]>
+<document lang="es">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="es-ES"
+        xml:base="https://example.com">
+    <head>
+      <title>La fruta más deliciosa</title>
+      <meta name="description" content="Un blog sobre frutas." />
+    </head>
+    <body>
+      <section>
+        <h1>Las mejores frutas:</h1>
+        <ul>
+          <li>Manzanas</li>
+          <li>Plátanos</li>
+          <li>
+            &fruits;<value>Orange</value>
+          </li>
+        </ul>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Juan Hernández</author>
+    <date>2023-01-01</date>
+  </metadata>
+  <commentary>¡Esto es un comentario!</commentary>
+</document>

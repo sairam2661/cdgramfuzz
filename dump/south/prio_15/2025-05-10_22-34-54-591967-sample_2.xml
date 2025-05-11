@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "test.dtd" [<!ELEMENT document ANY>]>
+<document xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:math="http://www.w3.org/1998/Math/MathML"
+          xml:lang="fr-CA">
+  <html>
+    <head>
+      <title>Lorem ipsum</title>
+      <style><![CDATA[
+        body { margin: 2em; font: 1.2em Arial, sans-serif; }
+      ]]></style>
+    </head>
+    <body>
+      <section xmlns="http://www.w3.org/2003/01/soap-envelope/">
+        <p>
+          <math:math display="block">
+            <math:mfrac>
+              <math:mn>1</math:mn>
+              <math:mi mathvariant="normal">x</math:mi>
+            </math:mfrac>
+          </math:math>
+        </p>
+        <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+          <circle cx="10" cy="10" r="5" />
+        </svg>
+      </section>
+    </body>
+  </html>
+  <person>
+    <name>John Smith</name>
+  </person>
+</document>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-16"?><!DOCTYPE document [
+  <!ENTITY foo "<a foo='bar'/>">
+  <!ENTITY bar "<b>baz</b>">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xml:lang="en"
+        xml:space="preserve">
+    <head>
+      <title>Using Entities and Namespaces</title>
+    </head>
+    <body>
+      <p>A paragraph with &foo; and &bar;</p>
+    </body>
+  </html>
+  <metadata>
+    <version>1.0</version>
+    <contributor>
+      <name>John Doe</name>
+      <email><mail>john.doe@example.com</mail></email>
+    </contributor>
+  </metadata>
+  <section xml:id="sec1">
+    <subsection>Bananas are very nutritious.</subsection>
+  </section>
+</document>

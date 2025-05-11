@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "math-formulas.dtd" [
+  <!ENTITY pi "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679">
+]>
+<document xmlns="http://example.org"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:my="http://example.org/my"
+          xml:lang="fr">
+  <html><head><title>Geometrie</title></head><body>
+    <p>Le périmètre d'un triangle rectangle dont les longueurs de branches sont a et b est donné par la formule:</p>
+    <math><mtable><mtr><mtd><mtext>a</mtext></mtd><mtd><mtext>b</mtext></mtd><mtd><msup><mtext>c</mtext><mrow><mo>=</mo><mn>2</mn><mo>+</mo><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msup></mtd></mtr></mtable></math>
+  </body></html>
+  <metadata>
+    <author xlink:href="#John Doe" xlink:title="The Author"/>
+    <date>2023-12-31T23:59:59Z</date>
+  </metadata>
+  <section>
+    <para>&pi;</para>
+  </section>
+</document>

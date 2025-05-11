@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % html PUBLIC "ISO/IEC 15445:1999//DTD HyperText Markup Language 2.0//EN"
+    "http://www.w3.org/TR/REC-html40/strict.dtd">
+  <!ENTITY % xml PUBLIC "-//W3C//DTD XML 1.0//EN" "http://www.w3.org/TR/xml">
+  <!ENTITY note "Note">
+  <!ATTLIST document
+    xmlns CDATA #REQUIRED
+    xmlns:xlink CDATA #IMPLIED
+  >
+]>
+<document
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/TR/REC-html40/strict.dtd schema.xsd"
+>
+  <html>
+    <head>
+      <title>Test Case</title>
+    </head>
+    <body>
+      <section>
+        <p>&note;</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">Pierre Dupont</author>
+  </metadata>
+</document>

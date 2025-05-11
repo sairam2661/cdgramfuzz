@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY attribute "color">
+]>
+<document xmlns="http://example.com"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="fruit.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en"
+        lang="en">
+    <head>
+      <meta name="author" content="John Doe" />
+      <title>Colorful Fruits</title>
+      <meta name="created" content="2019-01-09" />
+    </head>
+    <body>
+      <section>
+        <h1><span xml:space="preserve"> Color: </span>&attribute;</h1>
+        <h2>&fruit;</h2>
+        <section xml:base="/colors/">
+          <p>&fruit; is a &note; fruit!</p>
+        </section>
+        <link rel="alternate" type="text/html" title="Colors" href="colors.xml"/>
+      </section>
+    </body>
+  </html>
+</document>

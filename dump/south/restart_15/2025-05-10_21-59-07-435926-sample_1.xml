@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE document [
+  <!ENTITY % entity "Entity Declaration">
+  %entity;
+  <!ATTLIST document id ID #REQUIRED>
+]>
+<document id="root">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+      <title>This is a complex XML document</title>
+      <meta name="keywords" content="Complex | XML | Features" />
+    </head>
+    <body>
+      <p>An example of well-formed XML</p>
+      <p>&num;</p>
+      <!-- CDATA section -->
+      <p><![CDATA[This element contains 
+        multiple lines of text]]></p>
+    </body>
+  </html>
+  <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <author>
+      <name>John Smith</name>
+      <email>john.smith@example.com</email>
+    </author>
+  </metadata>
+  <notes>
+    <note>Some notes about this XML document.</note>
+  </notes>
+</document>

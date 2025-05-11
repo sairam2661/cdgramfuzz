@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document [
+  <!ENTITY note "<note/>">
+  <!ATTLIST author ID #REQUIRED>
+  <!ELEMENT section (paragraph+, metadata, note*)>
+  <!ELEMENT document (html, metadata, note*)>
+]>
+<document>
+  <html xmlns="" prefix="xsi: http://www.w3.org/XML/Schema-instance">
+    <head>
+      <title>Apple</title>
+    </head>
+    <body prefix="xsi: http://www.w3.org/XML/Schema-instance">
+      <xsi:schema location="apple.xsd" targetNamespace="http://example.com/apple"/>
+    </body>
+  </html>
+  <metadata>
+    <author ID="jd">Jane Doe</author>
+    <date>2024-05-12T14:30:00</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious.</paragraph>
+  </section>
+  <note>&note;</note>
+</document>

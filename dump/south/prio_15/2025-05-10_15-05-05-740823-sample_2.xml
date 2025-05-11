@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section+)>
+  <!ELEMENT html (#PCDATA | a | img | br)*>
+  <!ELEMENT metadata (#PCDATA | author | date)*>
+  <!ELEMENT section (#PCDATA | paragraph)*>
+  <!ELEMENT paragraph (#PCDATA | note | table | ul | ol | li)*>
+  <!ENTITY note "Note">
+]>
+<document>
+  <html>
+    <head>
+      <title>Nested lists</title>
+    </head>
+    <body><p>Fruits:</p>
+    <ul>
+      <li><a href="#1">Apples</a>
+        <ul>
+          <li>Red</li>
+          <li>Green</li>
+        </ul>
+      </li>
+      <li><a href="#2">Bananas</a>
+        <ol>
+          <li>Yellow</li>
+          <li>Ripe</li>
+        </ol>
+      </li>
+    </ul>
+  </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2023-06-15</date>
+  </metadata>
+  <section>
+    <paragraph>Fruits are the best! &note;</paragraph>
+    <table>
+      <tr>
+        <th>Fruit</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>Apple</td>
+        <td>5.00</td>
+      </tr>
+      <tr>
+        <td>Banana</td>
+        <td>0.50</td>
+      </tr>
+    </table>
+  </section>
+</document>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "schema.dtd" [
+    <!ENTITY num1 "1">
+    <!ENTITY num2 "2">
+    <!ENTITY num3 "3">
+]>
+<document>
+    <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <title>Linking and Locators</title>
+        </head>
+        <body>
+            <a xlink:href="#ref1">Reference 1</a>
+            <a href="http://example.com">Example.com</a>
+            <ref refID="ref1">Referenced</ref>
+        </body>
+    </html>
+    <metadata>
+        <author>
+            <full-name>Jane Doe</full-name>
+            <uri>https://jane.doe@example.com</uri>
+        </author>
+    </metadata>
+    <section>
+        <subsection>
+            <paragraph>
+                <span style="font-weight: bolder">Stronger Text</span>
+            </paragraph>
+        </subsection>
+    </section>
+</document>

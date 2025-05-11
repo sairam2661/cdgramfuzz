@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "example.dtd" [
+  <!ENTITY % ent SYSTEM "entities.ent">
+  <!ENTITY note "Note">
+  <!ENTITY amp "&amp;" >
+]>
+<document xml:lang='fr'>
+  <html xmlns:fb="http://www.facebook.com/2008/fbml" xml:space='preserve'>
+    <head prefix="dc: http://purl.org/dc/elements/1.1/">
+      <title>Un fruit délicieux</title>
+      <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+    </head>
+    <body>
+      <h1><b>Hello</b></h1>
+      <p>&note; &amp; ;</p>
+    </body>
+  </html>
+  <metadata>
+    <author id='Jane Doe'>
+      <name> John</name>
+    </author>
+    <date>2025-12-12</date>
+  </metadata>
+</document>

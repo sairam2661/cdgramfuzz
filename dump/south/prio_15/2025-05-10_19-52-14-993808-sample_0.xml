@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "cities.dtd" [
+  <!ENTITY city "Paris">
+  <!ENTITY author "John Smith">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve"
+        xml:lang="en-US">
+    <head>
+      <title>The Eiffel Tower</title>
+    </head>
+    <body>
+      <p>Built in 1889, the Eiffel Tower in &city; is a famous landmark.</p>
+      <section>
+        <subsection>
+          <h2>History</h2>
+          <p>It was designed and constructed by Gustave Eiffel.</p>
+        </subsection>
+        <section xml:base="maps.com">
+          <a href="#image">Eiffel Tower Image</a>
+        </section>
+      </section>
+      <notable-contributors>
+        <person>
+          <name>&author;</name>
+          <date>2023-09-01</date>
+        </person>
+      </notable-contributors>
+    </body>
+  </html>
+  <section>
+    <paragraph>&author; designed the structure.</paragraph>
+  </section>
+</document>

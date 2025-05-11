@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/custom_doctype.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY ref SYSTEM "reference1.xml">
+  <!ENTITY ref2 "&#92;ref1.xml">
+]>
+<document xmlns="http://example.com/myXML"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/myXML myXML.xsd"
+          xml:lang="en-US"
+          xml:space="preserve"
+          >
+  <html>
+    <head>
+      <title xml:lang="fr">Un document avec accents!</title>
+      <meta name="description" content="Une description avec des accents!" />
+    </head>
+    <body>
+      <p xml:base="http://example.com/base">Bonjour, &ref; &note;! Dernière modification: &ref2;.</p>
+    </body>
+  </html>
+</document>

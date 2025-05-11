@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % ent SYSTEM "http://example.org/dtd">
+  %ent;
+]>
+<document xmlns:custom="http://example.org/custom" xml:space="preserve">
+  <html>
+    <head>
+      <title>Fruit salad!</title>
+    </head>
+    <body>
+      <p>This is some text&note;</p>
+    </body>
+  </html>
+  <metadata>
+    <revision>
+      <revision-date>2024-07-26</revision-date>
+    </revision>
+  </metadata>
+  <section>
+    <custom:element>This is an attribute declaration!</custom:element>
+  </section>
+</document>

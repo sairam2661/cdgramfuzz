@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-16'?>
+<!DOCTYPE document SYSTEM "http://example.com/document.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY entity "&fruit;" >
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:lang="en-US">
+  <html xml:space="preserve">
+    <head>
+      <title>My Favourite Fruit</title>
+      <meta name="created" content="${2024-06-15}" />
+      <style type="text/css"><![CDATA[
+        @import url("styles.css");
+        body { font-family: "Arial", sans-serif; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <title>Introduction</title>
+        <paragraph>
+          Eating <entity /> is extremely beneficial for our health.
+        </paragraph>
+      </section>
+      <metadata>
+        <author>John Smith</author>
+        <date>2024-06-20</date>
+      </metadata>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/document.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY ref SYSTEM "http://example.com/ref.xml">
+]>
+<document xmlns:schema="http://www.w3.org/2001/XMLSchema"
+          schema:attributeFormDefault="qualified"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/schema.xsd"
+          xml:base="http://example.com/base">
+  <html>
+    <head>
+      <title>A complex fruit</title>
+    </head>
+    <body>
+      <section>
+        <item>There are &fruit; and other &ref;.
+          <comment>This is a note</comment>
+        </item>
+      </section>
+      <metadata>
+        <note>This is the last part</note>
+      </metadata>
+    </body>
+  </html>
+</document>

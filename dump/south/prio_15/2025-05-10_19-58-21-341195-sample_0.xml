@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY amp "&amp;">
+]>
+<document xmlns="http://example.com/doc-namespace"
+          xml:lang="en-GB"
+          xml:space="preserve"
+          version="1.0">
+  <html xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="fr">
+    <head>
+      <title>Complex XML Document</title>
+      <meta name="DC.creator" content="John Smith" />
+      <meta name="DC.publisher" content="Acme Corporation" />
+    </head>
+    <body>
+      <section id="abstract" xml:id="sec-abstract">
+        <title xml:lang="en">Abstract</title>
+        <abstract>Abstract content.&amp;</abstract>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>&note;</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <section>
+      <paragraph>Bananas are very nutritious. &note; &amp;</paragraph>
+    </section>
+  </section>
+</document>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "bookstore.dtd" [
+  <!ENTITY fruit "apple">
+  <!ENTITY name "John Doe">
+]>
+<document xml:lang="en" xmlns="http://www.example.com/ns"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://example.com/schemas/bookstore.xsd"
+  xmlns:bk="http://www.bookstore.com/ns">
+  <html xml:space="preserve">
+    <head profile="http://www.w3.org/TR/html4/">
+      <title>Best Store Ever!</title>
+      <meta name="author" content="&name;"/>
+      <style>
+        <![CDATA[b { color: red; }]]>
+      </style>
+    </head>
+    <body>
+      <bk:catalog>
+        <item>
+          <bk:title>Book title 1</bk:title>
+          <bk:subtitle>Subtitle</bk:subtitle>
+        </item>
+      </bk:catalog>
+    </body>
+  </html>
+  <metadata>
+    <created>&fruit;</created>
+  </metadata>
+  <content>
+    <section>
+      <paragraph>This is a paragraph with a nested element: <sub>&name;</sub>!</paragraph>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns:fb="http://www.facebook.com/2008/xmpp/msg/types"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="document.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head profile="http://gmpg.org/xfn/11">
+      <title>Complex XML Document</title>
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { text-align: center; background-color: #F0F0FF; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section xml:lang="fr">
+        <h1>Étude des fruits</h1>
+        <p>Les fruits sont les meilleurs!</p>
+      </section>
+    </body>
+  </html>
+  <image src="banana.jpg" fb:like="yes" />
+  <metadata>
+    <creationDate>2020-12-25</creationDate>
+    <modifiedDate>2025-02-01</modifiedDate>
+  </metadata>
+</document>

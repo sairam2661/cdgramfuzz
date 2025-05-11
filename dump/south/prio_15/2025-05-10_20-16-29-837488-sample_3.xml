@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://example.com/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="schema.xsd"
+         xml:lang="en" xml:space="preserve">
+  <html>
+    <head>
+      <title>Complex XML Document</title>
+      <meta name="keywords" content="XML, parser, testing" />
+    </head>
+    <body>
+      <p>Testing the <b>parser's</b> limits...</p>
+    </body>
+  </html>
+  <section>
+    <paragraph>This is another paragraph.</paragraph>
+    <attributes>
+      <name>id</name>
+      <value>value</value>
+    </attributes>
+  </section>
+  <data>
+    <sequence>
+      <item>First</item>
+      <item>Second</item>
+      <item>Third</item>
+    </sequence>
+    <attributes>
+      <name>purpose</name>
+      <value>for testing</value>
+    </attributes>
+  </data>
+</document>

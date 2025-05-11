@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruit.dtd">
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          xml:lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve">
+    <head>
+      <title>Tempting Fruits</title>
+      <meta name="keywords" content="apples, bananas, mangoes" />
+      <style xmlns="http://www.w3.org/1999/XSL/Format"
+             type="text/style">
+        <![CDATA[
+          h2 { text-color: #0065BD; }
+          li { display: list-item; font-size: 12pt; }
+          img { float: left; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h1>Delectable Fruits</h1>
+      <h2>Our Special Offers</h2>
+      <ul>
+        <li>Apples: $5/each</li>
+        <li>Mangoes: $10/dozen</li>
+        <li>Bananas: $0.50/dozen</li>
+      </ul>
+      <p>Please call (123) 456-7890 for more information.</p>
+      <img src="image.jpg" width="100" height="100" alt="Pineapple" />
+    </body>
+  </html>
+  <section>
+    <para>This is a complex <strong>test</strong> document.</para>
+  </section>
+</document>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/doctype.dtd" [
+  <!ENTITY pear "<fruit><name>Pear</name></fruit>">
+]>
+<document xml:lang="es" xmlns:xb="http://www.w3.org/1999/XSL/Transform">
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title>XML Testing</title>
+      <meta name="author" content="John Smith" />
+    </head>
+    <body>
+      <h1 xml:space="preserve">XML Parsers and Documents are cool!</h1>
+      <p>&pear;</p>
+    </body>
+  </html>
+  <elementList>
+    <element attr="val" />
+    <element>
+      <elementList>
+        <element attr2="val2" />
+      </elementList>
+    </element>
+  </elementList>
+</document>

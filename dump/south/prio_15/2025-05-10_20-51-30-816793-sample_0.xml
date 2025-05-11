@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % fruit "fruit">
+  <!ENTITY % ref "&fruit;">
+]>
+<document>
+  <html xmlns:p="http://example.com"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>The best %ref;</title>
+    </head>
+    <body>
+      <p:p id="fruit1" xml:base="/"
+           xlink:href="#fruit2">%ref;</p:p>
+      <p:p id="fruit2">%fruit;</p:p>
+    </body>
+  </html>
+  <metadata>
+    <date xmlns="http://example.org"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.org fruit.xsd">
+      2025-05-10</date>
+    <author xml:lang="fr">Jean Dupont</author>
+  </metadata>
+</document>

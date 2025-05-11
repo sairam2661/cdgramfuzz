@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY apples "apples">
+  <!ENTITY oranges "oranges">
+  <!ELEMENT document (#PCDATA | html | metadata | section)*>
+  <!ELEMENT html (#PCDATA | head | body)*>
+  <!ATTLIST html
+    id ID #REQUIRED
+    type CDATA #IMPLIED
+  >
+]>
+<document id="main" type="blogpost">
+  <html lang="en" xmlns:svg="http://www.w3.org/2000/svg">
+    <head>
+      <title>Comparing Fruits and Vegetables</title>
+    </head>
+    <body>
+      <metadata>
+        <author>John Smith</author>
+        <date>2020-12-25</date>
+        <category>Health</category>
+      </metadata>
+      <section>
+        <h1>&apples;</h1>
+        <p>&oranges;</p>
+      </section>
+      <svg width="200" height="100">
+        <circle cx="50" cy="50" r="40" fill="#00FF00"></circle>
+      </svg>
+      <section>
+        <p>&apples; and &oranges; have different flavor profiles.</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Some people prefer eating apples and oranges together.</paragraph>
+  </section>
+</document>

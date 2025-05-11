@@ -1,0 +1,28 @@
+<?xml version="1.1" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % ent SYSTEM "entities.txt">
+  %ent;
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:lang="fr"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:math="http://www.example.com/mathml">
+    <head>
+      <title>Nous comparons les fruits</title>
+    </head>
+    <body>
+      <p>Les bananes sont meilleures que les pommes!</p>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mfrac><mn>5</mn><mn>2</mn></mfrac>
+      </math>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en">John Smith</author>
+    <date>2024-03-15T14:30:00Z</date>
+  </metadata>
+  <section id="section1">
+    <h2 xml:base="base.html#section1" xml:space="default">Section 1</h2>
+  </section>
+</document>

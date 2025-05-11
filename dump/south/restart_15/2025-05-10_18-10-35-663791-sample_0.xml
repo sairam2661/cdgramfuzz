@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+         "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+         [
+<!ENTITY % ent SYSTEM "entities.xml">
+%ent;
+ ]>
+<document xmlns:ns1="http://mynamespace.org/">
+  <html>
+   <head>
+     <title>Example Document</title>
+     <meta name="keywords" content="test, xml"/>
+   </head>
+   <body>
+    <ns1:para>
+      This is an example document.
+      &lt; -- test for entity serialization
+    </ns1:para><p>This is another paragraph.</p>
+    <img src="photo.jpg" alt="My Photo"/>
+  </body>
+  </html>
+  <metadata>
+    <author xmlns:ns2="http://anothernamespace.org/">
+      <ns2:given>John</ns2:given>
+      <ns2:family>Doe</ns2:family>
+    </author>
+    <date>2022-12-25</date>
+  </metadata>
+</document>

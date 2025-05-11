@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document PUBLIC "-//Fuzzy//DTD Fruit Catalogs//EN"
+  "http://example.com/fuzzy.dtd" [
+    <!ENTITY fruit "apple">
+    <!ENTITY attribute "size:1, shape:round">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-GB">
+    <head>
+      <title>A Catalog of Fruits</title>
+      <meta name="author" content="John Fig" />
+    </head>
+    <body>
+      <p>Fruits are delicious and nutritious fruits including {{&fruit;}}.</p>
+      <figure>
+        <img src="fruit.jpg" alt="A {{&fruit;}}." />
+        <figcaption>
+          <h2>{{&fruit;}} Facts</h2>
+          <ul>
+            <li>Origin: {{&attribute;}}</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </body>
+  </html>
+  <bibl>
+    <author xml:lang="fr">Jean Fruit</author>
+  </bibl>
+</document>

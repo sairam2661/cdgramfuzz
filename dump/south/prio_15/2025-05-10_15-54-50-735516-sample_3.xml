@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY fruit SYSTEM "banana.jpg" NDATA JPEG>
+  <!ENTITY percent "#2525">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:atom="http://www.w3.org/2005/Atom">
+    <head>
+      <title>Top 5 Fruits</title>
+      <meta name="keywords" content="apple&#38; banana"/>
+      <style><![CDATA[
+        @namespace fruitPrefix "%20";
+        foo:bar { color: #003300 }
+      ]]></style>
+    </head>
+    <body>
+      <article>
+        <h1>Fruit #1:&ent; Apple.</h1>
+        <atom:entry>
+          <atom:author>
+            <atom:uri>http://author.example.com</atom:uri>
+            <atom:name>John Doe</atom:name>
+          </atom:author>
+          <atom:title>Fruit Review</atom:title>
+        </atom:entry>
+        <img src="https://example.com&ent;blob" alt="Fresh banana" usemap="#bmap"/>
+      </article>
+    </body>
+  </html>
+  <catalog>
+    <item>
+      <name>Fruit #2: Banana</name>
+      <price>&percent;20.00</price>
+    </item>
+  </catalog>
+</document>

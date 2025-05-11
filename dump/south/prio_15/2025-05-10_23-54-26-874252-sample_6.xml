@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT fruitSet (fruit+, price)>
+  <!ATTLIST fruit id ID #REQUIRED>
+]>
+<document xmlns:fb="http://www.facebook.com/fbml"
+          fb:fbml="on"
+          xmlns:a="http://example.org/xmlns"
+          a:nil="notset">
+  <html>
+    <head>
+      <title>Most Costly Fruits</title>
+    </head>
+    <body>
+      <fruitSet>
+        <fruit id="1">Granny Smith</fruit>
+        <fruit id="2">Apples &a:nil;</fruit>
+        <price>5.99 USD</price>
+      </fruitSet>
+    </body>
+  </html>
+</document>

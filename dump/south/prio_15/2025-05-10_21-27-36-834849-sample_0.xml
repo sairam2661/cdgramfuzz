@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY entityRef "Entity Reference">
+  <!ENTITY % entityRefDefine "%entityRef;">
+]>
+<document xml:lang="en" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+  <html>
+    <head>
+      <title>Entities</title>
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Verdana; }
+          span { color: blue; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <p>&entityRef;</p>
+      </section>
+    </body>
+  </html>
+</document>

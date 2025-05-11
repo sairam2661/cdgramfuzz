@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schemas/dtd"
+  [ <!ELEMENT document (html|metadata)*>
+    <!ELEMENT html (#PCDATA | meta | style | title)*>
+    <!ELEMENT metadata (author, date)>
+    <!ELEMENT author (#PCDATA | title)*>
+    <!ELEMENT date (#PCDATA | title)*>
+    <!ELEMENT section (paragraph)*>
+    <!ELEMENT paragraph (#PCDATA | entity)*>
+    <!ENTITY title "Title">
+    <!ATTLIST document id ID #REQUIRED>
+    <!ATTLIST html xml:lang CDATA #IMPLIED>
+    <!ATTLIST section id ID #IMPLIED>
+    <!ATTLIST paragraph style CDATA #IMPLIED>
+  ]>
+<document id="doc1" xmlns="http://example.com/xmlns">
+  <html id="html3" xml:lang="en-US">
+    <head>
+      <meta name="keyword" content="Banana, Fruit" />
+      <style><![CDATA[
+        body { font-family: Courier, monospace; }
+        h1 { text-decoration: underline; }
+      ]]></style>
+    </head>
+    <body>
+      <title>Title of the page</title>
+      <section id="sect2">
+        <paragraph style="normal">&title;</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author title="Doe">John Doe</author>
+    <date title="date_of_publication">2020-05-12</date>
+  </metadata>
+</document>
