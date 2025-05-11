@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (root, root, subdoc)>
+  <!ELEMENT root (#PCDATA)*><!ELEMENT subdoc (p, p)>
+  <!ATTLIST root id ID #REQUIRED>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>fuzz testing</title>
+    </head>
+    <body xmlns:p="http://example.com/p">
+      <root id="r1">root 1</root>
+        <root id="r2" lang="en">root 2</root>
+        <root id="r3">root 3</root>
+      <p:root id="r4">p:root 1</p:root>
+      <subdoc>
+        <p>p 1</p>
+        <p namespace="" id="p2">p 2</p>
+      </subdoc>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY xref SYSTEM "http://example.org/xref.htm" NDATA htm>
+  <!ENTITY note "Note">
+]>
+<document xml:base="http://example.org">
+  <html>
+    <head>
+      <title>Color Wheel</title>
+      <meta charset="Windows-1252" />
+      <meta name="keywords" content="red, blue, green" />
+      <style type="text/css">
+        <![CDATA[
+          body { background-color: #FFFFFF; }
+          h1 { color: #0000FF; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <metadata xmlns="http://www.example.org/metadata">
+        <author>John Smith</author>
+        <date>2024-02-14</date>
+        <section>
+          <paragraph>Colors are all around us. &note;<xref /></paragraph>
+        </section>
+      </metadata>
+    </body>
+  </html>
+  <section xmlns="http://www.example.org/section">
+    <title>Important Colors</title>
+    <list>
+      <entry>Red</entry>
+      <entry>Blue</entry>
+      <entry>Green</entry>
+    </list>
+  </section>
+</document>

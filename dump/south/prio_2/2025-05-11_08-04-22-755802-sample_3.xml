@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "fruits4.dtd" [
+  <!ELEMENT choice (option*, optgroup+)>
+  <!ELEMENT option (caption, suboption*)>
+  <!ELEMENT suboption (#PCDATA)*>]>
+<document xml:version="1.0" xml:charset="Windows-1252">
+  <html xmlns:fb="http://www.facebook.com/2008/fbml"
+        xmlns:fb-ns="http://www.facebook.com/2008/fbml/fbml-ns"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+        xml:lang="es-US">
+    <head>
+      <title>Zapatos de nieve</title>
+      <meta href="#target" name="target"/>
+      <style>
+<![CDATA[
+        :focus { background-color: #FFFF99; }
+       .center { text-align: center; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <p xml:space="preserve">La nieve es muy colorida.</p>
+        <p>La nieve cae con suavidad.</p>
+        <p xml:space="preserve">
+          <italic><bold>La nieve es</bold> muy bonita.
+            <footnote><p>Hace muy frío.</p></footnote>
+          </italic>
+        </p>
+        <p>&lt;script&gt;alert(&quot;Hola&quot;)&lt;/script&gt;</p>
+        <p>Me &amp; gusta ver el paisaje.</p>
+        <table border="1" frame="hsides" rules="groups">
+          <tbody>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Edad</th>
+            </tr>
+            <tr>
+              <td xml:lang="es-LA">Juan</td>
+              <td xml:lang="fr-CA">Pérez</td>
+              <td>45</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+       <choice xml:id="select-4" mode="sequential">
+        <option>Uno</option>
+        <option>dos</option>
+        <option>tres</option

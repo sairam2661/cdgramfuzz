@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ATTLIST document
+    src CDATA #REQUIRED
+    type (text|image|video) "text"
+  >
+  <!ENTITY fruit "Apple">
+]>
+<document src="data.xml" type="image">
+  <html xml:space="preserve" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES">
+    <head>
+      <title>¡Las frutas son deliciosas!</title>
+      <meta charset="UTF-8" />
+      <meta http-equiv="expires" content="Fri, 01 Dec 2029 01:59:59 GMT" />
+      <style type="text/css">
+        <![CDATA[
+          @import url("styles.css");
+          h3 { margin-bottom: 30px; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <h1 id="heading">Frutas saludables</h1>
+        <p>La <var>fruit</var> es una delicia!</p>
+        <p>&copy; 2025</p>
+        <link rel="stylesheet" type="text/css" href="additional.css" />
+        <script type="text/javascript" src="script.js"></script>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <title>Document title</title>
+    <identifier>urn:doc:12345</identifier>
+    <rights>
+      <license>CC-BY-4.0</license>
+    </rights>
+  </metadata>
+</document>

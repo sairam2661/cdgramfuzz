@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % entity "Content Set">
+  %entity;
+]>
+<document xml:lang="fr" xmlns="http://example.com"
+         xmlns:math="http://www.example.org/math">
+  <html math:mathcontent="Equation">
+    <head>
+      <title>Mathematical Formulas</title>
+      <meta name="rating" content="General" />
+      <metadata:DITA-OT-output-format

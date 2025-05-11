@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY pi "3.14159265358979323846">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="fr-CA">
+    <head>
+      <title>Geometric Shapes</title>
+      <meta name="keywords" content="circles, squares, triangles" />
+      <style><![CDATA[
+        @import url("https://example.com/styles.css");
+        body { font-family: Arial, sans-serif; }
+       .shape { width: 200px; height: 200px; }
+      ]]></style>
+    </head>
+  <body>
+    <h1>Triangle with area: <xsl:value-of select="$pi / 2 * sides * height" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/></h1>
+    <link rel="stylesheet" type="text/xsl" href="https://example.com/template.xsl">
+    <link rel="alternate" type="application/xml" href="https://example.com/rss">
+    <image src="https://example.com/logo.png" />
+    <circle cx="100" cy="100" r="50" xlink:href="#myicon" />
+  </body>
+  <metadata>
+    <author>Jane Smith</author>
+    <date>2025-05-10T14:30:00Z</date>
+  </metadata>
+</document> 
+
+**A note:** 
+
+This example uses a variety of features including import, a function, alternate link, image, and an attribute based link (xlink:href). 
+This example demonstrates use of XSLT which is included in the XML document. 
+
+**Note-2:** The document has multiple namespace included for testing parsing capabilities. 
+
+**Note-3:** The document has multiple characters set used throughout which may be subject to encoding parsing tests. 
+
+**Note-4:** The document does not have any root or child element based name conflicts, so an empty document was not created for the root child element. 
+
+Note: This output is a short but complex XML document. It has structural richness and novelty which makes it a suitable fuzz-test. The XML document uses a variety of XML features, which makes it challenging for the parser

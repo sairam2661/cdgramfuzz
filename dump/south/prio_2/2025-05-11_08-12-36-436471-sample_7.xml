@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY apple "The delicious apple fruit">
+  <!ENTITY ent "<!ENTITY abc &apple;>">
+]>
+<document xmlns="http://example.com/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://example.com/schema.xsd"
+          xml:base="https://example.com"
+          xml:lang="fr"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>Colors of the Rainbow</title>
+      <meta charset="UTF-16" name="description" content="A colorful world" />
+      <style><![CDATA[
+        @namespace fo="http://example.org/fn";
+        @namespace svg="http://www.w3.org/2000/svg";
+        svg{ width:100px;height:100px; }
+        svg circle{
+          cx:50px;
+          cy:50px;
+          r:40px;
+        }
+      ]]></style>
+    </head>
+    <body>
+      <section>&ent;</section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-03-22</date>
+  </metadata>
+</document>

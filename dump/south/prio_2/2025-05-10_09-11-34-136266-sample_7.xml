@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE document SYSTEM "https://example.com/public.dtd">
+<document xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://example.com/schema.xsd">
+    <head>
+      <title>Top Ten Fruits</title>
+      <meta name="keywords" content="banana, mango, citrus" />
+      <style type="text/css">
+        <![CDATA[
+          @import "styles.css";
+          @import url("https://example.com/external.css");
+        ]]>
+      </style>
+    </head>
+  <body>
+    <h2>Our Favourite Fruits</h2>
+    <ul>
+      <li>Apple</li>
+      <li>Orange</li>
+    </ul>
+  </body>
+</html>
+  <properties>
+    <property name="version">1.0</property>
+    <property name="author">John Smith</property>
+  </properties>
+</document>

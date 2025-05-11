@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "garden.dtd" [
+  <!ENTITY color "Magenta">
+  <!ENTITY entity "&color;">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:lang="es">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Fragrant Flowers</title>
+      <meta name="keywords" content="garden flowers fragrance" />
+      <style xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+        <![CDATA[
+          @import url("https://example.com/style.css");
+          body { background-image: url(&entity;) }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <title xml:space="preserve"> Roses are red... </title>
+        <paragraph xml:lang="fr"> Les roses sont rôses...</paragraph>
+        <metadata>
+          <author>John Smith</author>
+          <date>2010-11-22</date>
+        </metadata>
+      </section>
+    </body>
+  </html>
+</document>

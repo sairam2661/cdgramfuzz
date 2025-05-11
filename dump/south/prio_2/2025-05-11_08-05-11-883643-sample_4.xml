@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "<">
+  <!ENTITY gt ">"
+  ><!ENTITY quot "&quot;">
+]>
+<document>
+  <html xmlns:math="http://www.w3.org/1999/math"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xml:space="preserve"
+        xml:lang="en-US">
+    <head>
+      <title>Funky Colors</title>
+      <meta name="description" content="A colorful blog." />
+      <style>
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FF0000; }
+          math:math xmlns="" math:xlink="" math:content="" />
+        ]]></style>
+    </head>
+    <body>
+      <section>
+        <subsection>
+          <svg:svg width="100" height="100">
+            <svg:circle cx="50" cy="50" r="45" xlink:href="#redCircle" />
+          </svg:svg>
+        </subsection>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author><![CDATA[Jane Doe]]></author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>This paragraph contains &lt; and &amp; and &quot;.</paragraph>
+  </section>
+  <section>
+    <paragraph>Math: 2 + 3 &amp;lt; 5</paragraph>
+  </section>
+</document>

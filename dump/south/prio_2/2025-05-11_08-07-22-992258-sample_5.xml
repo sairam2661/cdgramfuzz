@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!-- Use any encoding you want -->
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+                  [
+                   <!ELEMENT document ANY>
+                   <!ATTLIST document xmlns CDATA #FIXED "http://example.comxmlns">
+                   <!ENTITY % entity-def SYSTEM "http://example.com/entity.dtd">
+                   %entity-def;
+                   ]>
+<document xmlns="http://example.com/defaultnames" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/defaultnames.xsd"
+          xml:lang='en'>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>A complex title</title>
+      <meta name="keywords"
+            content="A test, with, multiple, words."/>
+      <style type="text/css"> 
+        <![CDATA[
+        body { font-family: Times New Roman, sans-serif; }
+        h1 { color: #008000; }
+        ]]>
+      </style>
+      <style type="text/text"> 
+        <![CDATA[
+        Another style. 
+        ]]>
+      </style>
+      <style type="text/xsl"> 
+        <![CDATA[
+        Yet another style!
+        ]]>
+      </style>
+    </head>
+  <body>
+    <section>
+      <paragraph>This is a paragraph.</paragraph>
+    </section>
+  <section>
+     <p>This is a paragraph within a paragraph.</p>
+   </section>
+</body></html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2024-02-28</date>
+  </metadata>
+</document>

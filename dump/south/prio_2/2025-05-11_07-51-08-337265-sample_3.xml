@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document SYSTEM "http://example.com/catalog.dtd" [
+  <!ENTITY exclaim "!!!">
+  <!ELEMENT fruits (fruit+, fruit*)>
+  <!ATTLIST fruit
+    id CDATA #REQUIRED
+    type (apple|banana|orange) #REQUIRED
+  >
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:abc="http://example.com"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="fr-CA">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style type="text/css" media="all"> 
+        <![CDATA[
+          body {/* Inline style */
+            font-family: Arial;
+            line-height: 1.4;
+            text-align: left;
+          }
+          h1 {color: rgb(255,0,0) }
+          @import url("http://example.com/fancy.css");
+        ]]></style>
+    </head>
+  <body>
+    <abc:h1>Les Bananes</abc:h1>
+    <section xmlns:svg="http://www.w3.org/2000/svg">
+      <paragraph>Bananas are very nutritious. <b>Example</b> &exclaim;</paragraph>
+      <figure id="id1" title="A tasty banana" xlink:href="image.jpg">
+        <svg:circle cx="50" cy="50" r="40" />
+      </figure>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <author>
+      <firstname>Jane</firstname>
+      <lastname>Doe</lastname>
+    </author>
+    <date>2025-05-10</date>
+  </metadata>
+  <foo/>
+  <bar xml:space="preserve">This is a piece of text containing some nasty characters like
+    <xml:comment> <!-- a comment -->
+    &amp; and &lt; and &gt; and &quot; and &apos; too -->
+    </xml:comment>
+  </bar>
+</document>

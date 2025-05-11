@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section*)>
+]>
+<document>
+  <html xmlns:g="http://example.com/xmlns" lang="en-GB">
+    <head prefix="v: http://schemas.microsoft.com/vcal/1/">
+      <title>XML Fuzz</title>
+      <meta name="DC.Title" content="Meta Test" />
+    </head>
+    <body>
+      <p xml:lang="fr">&ValeurNote;</p>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author><date>2020-08-15</date>
+    <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+         version="1.1"></xsl:stylesheet>
+  </metadata>
+  <section id="s1">Section One</section>
+  <section id="s2">Section Two</section>
+</document>

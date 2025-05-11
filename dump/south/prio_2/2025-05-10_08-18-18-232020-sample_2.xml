@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % gen "1">
+  <!ENTITY % ent SYSTEM "entities.ent">
+  %ent;
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:space="preserve"
+          xml:lang="en-GB"
+          xmlns="http://example.org/doc"
+          id="doc123"
+          lang="en-GB"
+          >
+  <html xmlns:html="http://www.w3.org/1999/xhtml"
+        datatypeLibrary="http://example.org/datatypeLibrary">
+    <head>
+      <title>XML Fuzz Test</title>
+      <meta name="description" content="A random blog." />
+    </head>
+  <body>
+    <p>This is a paragraph with &note; and &foo;. The text should wrap to the next line.</p>
+  </body>
+</html>
+  <metadata>
+    <author>X &amp; Y</author>
+    <date>2020-05-20T14:30:00</date>
+  </metadata>
+  <annotation>
+    <annotation-body>This is an annotation.</annotation-body>
+  </annotation>
+</document>

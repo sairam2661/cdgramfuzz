@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY pi "3.1415926535897932384626433832795028841971693993751">
+]>
+<document xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+  <html>
+    <head>
+      <title>Interesting Calculus Facts</title>
+      <meta name="keywords" content="calculus, integration, differentiation" />
+    </head>
+    <body>
+      <section>
+        <h2>Derivatives</h2>
+        <p>The derivative of x^2 is &pi;.</p>
+        <list>
+          <item><math type='inline'>f'(x)=\sum_{n=1}^\infty \frac{1}{n^2}</math></item>
+          <item><math type='inline'>g'(x)=\int_{-\infty}^\infty \sin^2(x) dx</math></item>
+        </list>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Emma P.&entity;Smith</author>
+    <date>2022-07-01</date>
+  </metadata>
+</document>

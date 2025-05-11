@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ENTITY amp "&amp;">
+  <!ENTITY gt "&gt;">
+]>
+<document xmlns:foo="http://example.com/foo"
+  xmlns:bar="http://example.org/bar"
+  xml:lang="fr">
+  <html xml:base="http://example.com" xml:space="preserve">
+    <head>
+      <meta charset="UTF-16"/>
+      <title>(1,2,3)</title>
+      <style><![CDATA[
+        @import url(http://example.org/style.css);
+        :root {  /* foo */   }
+      ]]></style>
+    </head>
+  <body xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:mml="http://www.w3.org/1998/Math/MathML">
+    <foo:section>Section</foo:section>
+    <mml:mrow>
+      <mml:mrow>One <foo:span>Two</foo:span></mml:mrow>
+    </mml:mrow>
+  </body>
+  </html>
+  <metadata>
+    <author xml:id="JD">Jane Doe</author>
+    <date>&amp;gt;2025-05-10</date>
+    <foo:annotation xml:lang="es">Nota</foo:annotation>
+  </metadata>
+</document>

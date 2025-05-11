@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE document PUBLIC "-//MyDoc//DTD Example 1.0//EN"
+ "http://example.org/myschema.dtd">
+<document xml:lang="en-AU" xmlns:fb="http://www facebook.com">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Test Document</title>
+      <meta name="keywords" content="xml,fuzz,testing" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Courier, monospace; }
+          h2 { font-size: 18pt; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section fb:like="true">
+        <h1>Test Section 1</h1>
+        <paragraph xml:space="preserve">This is a test paragraph with some &amp; and &grave;
+          entities.
+        </paragraph>
+        <metadata>
+          <author>John Doe</author>
+          <date>2022-04-25</date>
+        </metadata>
+      </section>
+    </body>
+  </html>
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>x</mi>
+        </mtd>
+        <mtd>
+          <mo>=</mo>
+        </mtd>
+        <mtd>
+          <msqrt>
+            <msup>
+              <mi>x</mi>
+              <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <mi>y</mi>
+          </msqrt>
+        </mtd>
+      </mtr>
+    </mtable>
+  </math>
+</document>

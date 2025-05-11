@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE document SYSTEM "https://www.example.com/dtd.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY amp "&amp;">
+  <!ELEMENT document (html|metadata|section)>
+  <!ELEMENT html (head, html, metadata?)>
+  <!ELEMENT metadata (author|date)>
+  <!ELEMENT section (paragraph)>]>
+<document xmlns="http://purl.org/net/well-defined-elements"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://www.example.com/xsd.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xml:lang="en-US"
+      xml:space="preserve">
+    <head>
+      <title xml:lang="es">Fragatas </title>
+      <meta name="description" content="A blog on bananas. &amp;" />
+      <style type="text/css" media="screen">
+        <![CDATA[
+          body { font-family: Georgia, serif; white-space: pre-wrap; }
+          h1 { color: #FFFF00; }
+          body { margin: 10px; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h1>H1 Title</h1>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious. &note; &amp; &quot;quote&quot;.</paragraph>
+  </section>
+</document>

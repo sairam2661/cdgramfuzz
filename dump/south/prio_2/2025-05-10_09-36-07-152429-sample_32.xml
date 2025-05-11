@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY name "John">
+  <!ELEMENT document (html, metadata*, section+)>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT head (#PCDATA|title|meta|style)*>
+  <!ELEMENT body (#PCDATA|p|div)*>
+  <!ATTLIST body
+    id CDATA #REQUIRED
+    style CDATA #IMPLIED
+  >
+]>
+<document id="doc1">
+  <html xml:lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>Example Document</title>
+      <meta name="description" content="A sample XML document." />
+      <style type="text/css">
+        <![CDATA[
+          body { background-color: #FFFFFF; }
+        ]]>
+      </style>
+    </head>
+  <body id="body1" style="font-family: Arial, sans-serif;">
+    <p>Paragraph 1.</p>
+    <div>Paragraph 2.</div>
+  </body>
+  </html>
+  <metadata id="meta1">
+    <author entity-reference="#&name;" />
+    <date>2022-01-01</date>
+  </metadata>
+  <section id="sect1">
+    <title>Section 1.</title>
+    <p>Paragraph 1.</p>
+    <p>Paragraph 2.</p>
+  </section>
+  <section id="sect2">
+    <title>Section 2.</title>
+    <p>Paragraph 1.</p>
+  </section>
+</document>

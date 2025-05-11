@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE document [
+  <!ELEMENT document ANY>
+  <!ELEMENT html ANY>
+  <!ENTITY % note "Note">
+]>
+<document>
+  <html>
+    <head>
+      <title xml:lang="fr">Les bananes sont les meilleures fruits!</title>
+      <meta charset="UTF-8" />
+      <meta property="og:title" content="Bananas" />
+      <style type="text/css">
+        <![CDATA[
+          @namespace h "http://www.w3.org/1999/xhtml";
+          @namespace xml "http://www.w3.org/XML/1998/namespace";
+        ]]></style>
+    </head>
+    <body>
+      <p xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">Bananas &note; are yellow.</p>
+    </body>
+  </html>
+  <link rel="stylesheet" type="text/css" href="style.xsl" />
+  <root xmlns="http://example.org/root">
+    <info>
+      <copyright>2020</copyright>
+    </info>
+  </root>
+</document>

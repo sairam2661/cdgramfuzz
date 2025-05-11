@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "data.dtd" [
+  <!ENTITY % ent SYSTEM "entities.ent" > %ent;
+]>
+<document xml:lang="en-US">
+  <html xmlns:math="http://www.w3.org/1998/Math/MathML"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>A Simple Math Problem</title>
+      <meta name="creator" content="John Smith" />
+      <meta name="date" scheme="ISO 8601" content="2022-07-25T14:30:00+08:00" />
+      <title>E=mc²</title>
+    </head>
+  <body>
+    <p>This is the first line</p>
+    <p>&MathML;
+      <mrow>
+        <mstyle scriptlevel="1">
+          <mspace width="2em"/>
+          <mtext>Mass
+            <mstyle displaystyle="true">
+              <mo>=</mo>
+            </mstyle>
+            <mi>E</mi>
+          </mtext>
+        </mstyle>
+      </mrow>
+    </p>
+  </body>
+  </html>
+  <notes>
+    <entry>This is a note</entry>
+  </notes>
+</document>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % entity "ENTITY&entity;%entity;%entity;ENTITY">
+  <!ENTITY note "Note"
+          >
+]>
+<document xmlns:gml="http://www.opengis.net/gml"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          xml:lang='en'
+          xml:space='"preserve"'
+          xml:base='"http://example.org"'>
+  <html>
+    <head>
+      <title> RDF and GML Test</title>
+      <meta name="genre" content="Science Fiction" />
+      <style xmlns="http://www.w3.org/1999/XSL/Transform"><![CDATA[
+        body {
+          font: x-large sans-serif;
+          xml:space: preserve;
+        }
+        h1 {
+          text-align: center;
+        }
+
+      ]]></style>
+    </head>
+    <body>
+      &note;
+      <p>Test of entity substitution: &entity; </p>
+    </body>
+  </html>
+  <note>Sample Note</note>
+</document>

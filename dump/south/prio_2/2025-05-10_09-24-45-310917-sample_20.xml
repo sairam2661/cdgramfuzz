@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "styles.dtd" [
+  <!ENTITY fruit "apple">
+  <!ENTITY desc SYSTEM "description.xml">
+]>
+<document xml:lang='en'>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>XML Fruit Catalog</title>
+    </head>
+    <body>
+      <p>&desc;</p>
+      <xml:attributeList xml:id='attrlist'>
+        <favourite>&fruit;</favourite>
+      </xml:attributeList>
+    </body>
+  </html>
+  <stylesheet href='#/styles.xml'/>
+  <section>
+    <item>Oranges</item>
+    <item>Mangoes</item>
+  </section>
+  &fruit;
+</document>

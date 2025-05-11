@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY hex "#FF0000">
+]>
+<document>
+  <html xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="fr-FR">
+    <head>
+      <title>Mon fruit préféré!</title>
+      <meta name="description" content="Un billet sur les bananas." />
+      <style><![CDATA[
+        body { font-family: "Times New Roman", serif; }
+        h1 { color: var(--color); }</style>
+    </head>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <content-type application="text/html+xml" type="text/html">
+      <mime-version>1.0</mime-version>
+    </content-type>
+    <date>2025-05-10</date>
+  </metadata>
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mmath>
+      <msup>
+        <mi>x</mi>
+        <mn>2</mn>
+      </msup>
+      <mo>=</mo>
+      <mn>4</mn>
+    </mmath>
+  </math>
+  <section>
+    <paragraph>Les bananas sont très nutritives. &hex;</paragraph>
+  </section>
+</document><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+This document uses various XML features such as DOCTYPE with SYSTEM identifier, ENTITY references, custom namespaces (SVG, XLink, custom), various text encoding aspects, entity reference, mathml, application metadata, and custom styling. It's a complex document that could potentially stress-test an XML parser. 
+
+Please note, document type declaration is not required in modern and most xml parsers.  colors.dtd is not shown but should be created separately to match the above declaration. Also mime version usage as shown may be different in real scenario. Here used to test. Also entity reference here is hex and is not needed in any real world scenario for parsing testing hence left as is to keep original intention of the problem unaffected. 
+
+For practical purposes and to simplify things, if one didn't have to match this exact output for testing a given xml parser, he/she would not use document type declaration, system identifier with a custom file or even entity references. Those are additional testing

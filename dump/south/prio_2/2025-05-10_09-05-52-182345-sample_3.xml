@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document PUBLIC "-//example//DTD Document.dtd//EN" "Document.dtd" [
+  <!ENTITY para "Paragraph">
+  <!ENTITY amp "&amp;">
+]>
+<document xmlns="urn:schemas-microsoft-com:office:smarttags"
+          xmlns:dvb="urn:dvb:namespace:x-vrml92"
+          xml:lang="fr-FR">
+  <html>
+    <head>
+      <title>Rich and Complex Document</title>
+    </head>
+    <body>
+      <dvb:widget>
+        <script language="text/iso-8859-1"
+                xmlns:script="http://www.example.com/script">
+          #document.write(\'Hello, world!\');
+        </script>
+      </dvb:widget>
+      <paragraph>&para;&para;&amp;
+        This is a sentence with entities and multiple paragraphs: &para;&para;&amp;
+      </paragraph>
+    </body>
+  </html>
+  <metadata>
+    <dvb:taglang>en-US</dvb:taglang>
+    <date>2025-05-10T14:44:22</date>
+  </metadata>
+</document>

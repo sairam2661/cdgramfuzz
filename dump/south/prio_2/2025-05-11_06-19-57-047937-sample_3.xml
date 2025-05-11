@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ATTLIST note
+    id CDATA #IMPLIED
+    type (note|summary) "note"
+  >
+  <!ENTITY % fruits "apples | bananas">
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="fruits.xsd"
+         id="fruitDoc"
+         version="1.0">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>A fruit salad</title>
+      <meta name="genre" content="%fruits;" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Courier, monospace; }
+          h1 { color: #00FFFF; }
+        ]]>
+      </style>
+    </head>
+  <body>    
+    <section>
+      <note id="n1" type="summary">This is a summary.</note>
+      <note>&note;</note>
+      <metadata>
+        <author xml:lang="en-GB">John Smith</author>
+        <date>2024-08-20</date>
+      </metadata>
+    </section>
+  </body>
+</html>
+<section>
+  <title xml:lang="fr">Les bananes sont les meilleures!</title>
+  <paragraph>
+    <sub>&note;</sub>
+  </paragraph>
+</section>
+<metadata>
+  <createdBy>Some tool</createdBy>
+  <date>2015-09-01</date>
+</metadata>
+</document>

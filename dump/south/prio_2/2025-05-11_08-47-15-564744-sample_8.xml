@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section*)>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT head (#PCDATA|meta|style)*>
+  <!ELEMENT body (#PCDATA|p|h1|h2|h3|img)*>
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT author (#PCDATA|address)*>
+  <!ELEMENT address (#PCDATA|street|city|state|country)*>
+  <!ELEMENT date (#PCDATA|day|month|year)*>
+  <!ELEMENT day (#PCDATA|digits)*>
+  <!ELEMENT month (#PCDATA|name)*>
+  <!ELEMENT year (#PCDATA|digits)*>
+  <!ELEMENT section (paragraph+)>
+  <!ELEMENT paragraph (#PCDATA|b|i|em|strong|u|s|big|small|sub|sup|code)*>
+]>
+<document xmlns="http://www.example.com/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.example.com/ schema.xsd"
+          xml:lang="en-US">
+  <html>
+    <head>
+      <title>Complex Document</title>
+      <meta name="description" content="This is a test document." />
+      <style type="text/css">
+        <![CDATA[
+          body { background-color: red; }
+          h1 { color: #FF0000; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h1>Complex Document</h1>
+      <p>This is a <b>test</b> document with a variety of <i>elements</i> and <em>attributes</em>.</p>
+      <img src="image.jpg" alt="An image" />
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <address>
+        <street>123 Main St</street>
+        <city>New York</city>
+        <state>NY</state>
+        <country>USA</country>
+      </address>
+      <email address="jane.doe@example.com" />
+    </author>
+    <date>
+      <day>
+        <digits>15</digits>
+      </day>
+      <month>
+        <name>September</name>
+      </month>
+      <year>
+        <digits>202

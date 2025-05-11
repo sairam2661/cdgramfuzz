@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA | html | metadata | section | comment)*>
+  <!ELEMENT html (#PCDATA | meta | link | title | comment)*>
+  <!ATTLIST html
+   xml:lang CDATA #IMPLIED
+   xmlns CDATA #FIXED "http://www.w3.org/1999/xhtml"
+   xmlns:xlink CDATA #IMPLIED
+  >
+  <!ELEMENT metadata (#PCDATA | author | date | comment)*>
+  <!ELEMENT section (#PCDATA | paragraph | ul | li | comment)*>
+  <!ELEMENT paragraph (#PCDATA | span | a | comment)*>
+  <!ELEMENT span (#PCDATA | b | strong | comment)*>
+  <!ELEMENT a (#PCDATA | comment)*>
+  <!ELEMENT comment (#PCDATA | b | em | strong | comment)*>
+]>
+<document>
+  <html xml:lang="fr-CP1252">
+    <head>
+      <meta name="encoding" content="ISO-8859-1" />
+      <title>Les Fruits Preferés</title>
+      <meta name="keywords" content="bananas,mangoes,oranges" />
+    </head>
+    <body>
+      <section>
+        <paragraph>Les Bananes, magnifiques fruits!<a href="#a">[1]</a></paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-11</date>
+  </metadata>
+</document>

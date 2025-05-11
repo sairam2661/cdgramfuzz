@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document [
+  <!ENTITY % xmlns SYSTEM "namespaces.dtd">
+  <!ENTITY % entity SYSTEM "entities.dtd">
+  <!ENTITY % attribs SYSTEM "attributes.dtd">
+]>
+<document xmlns:svg="http://www.w3.org/2000/svg">
+  <html 
+    xmlns="http://www.w3.org/1999/xhtml" 
+    LANG="es-ES" 
+    xml:space="preserve">
+    <head>
+      <title>Interesting Stuff</title>
+      <meta name="keywords" content="felines, dogs, and birds" />
+      <style> 
+        <![CDATA[
+          svg { fill: red; }
+          rect { stroke: blue; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <svg 
+      width="100" height="50"
+      viewBox="0 0 10 5"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+      <rect x="5" y="2" xmlns="http://www.w3.org/2000/svg">
+      </rect>
+    </svg>
+  </body>
+</html>
+<metadata>&attribs; &entity; </metadata>
+<references>
+  <bibliography>Books and Articles</bibliography>
+  <links>&xmlns;</links>
+  <images>
+    <figure>Images Description</figure>
+  </images>
+</references>
+<documentInfo xmlns="http://example.org/XML/Schema/DocumentInfo"> </documentInfo>
+</document>

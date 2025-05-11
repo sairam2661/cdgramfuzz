@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- &#8364; is the character entity for the Euro sign -->
+<!DOCTYPE document [
+  <!ENTITY special "&amp;&lt;&gt;&apos;&quot;&#8364;">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xs:noNamespaceSchemaLocation="script.xsd">
+  <html>
+    <head>
+      <title>Complex XML Document</title>
+    </head>
+    <body>
+      <h1>Hello, World!</h1>
+      <xs:annotation>
+        <xs:documentation>This is a schema annotation.</xs:documentation>
+      </xs:annotation>
+      <image height="100" width="200">Picture of a cat</image>
+    </body>
+    </html>
+    <elementDeclaration>Sample</elementDeclaration>
+    &special;
+</document>

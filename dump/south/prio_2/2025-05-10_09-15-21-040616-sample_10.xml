@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ [
+  <!ENTITY % ent SYSTEM "ent.xml">
+  %ent;
+ ]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+    <head>
+      <title xml:lang="en-AU">Tasty Fruits</title>
+    </head>
+    <body>
+      <table border="1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="zh-CN">Zhang San</author>
+    <date>2023-09-18</date>
+  </metadata>
+  <section>
+    <paragraph>&lt;HTML&gt;</paragraph>
+  </section>
+</document>

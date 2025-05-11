@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "music.dtd" [
+  <!ENTITY chord "C Major">
+  <!ENTITY note "E Flat">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US"
+        dir="LTR">
+    <head>
+      <title>Musical Theory for Beginners</title>
+      <meta name="description" content="A guide to music theory" />
+      <style type="text/css">
+        <![CDATA[
+          @import "music.css";
+        ]]>
+      </style>
+    </head>
+  <body>
+    <metadata>
+      <author>John Smith</author>
+      <date>2022-02-20</date>
+    </metadata>
+    <section>
+      <subsection>
+        <heading level="4">Chords</heading>
+        <paragraph>Chords are groups of notes played together.</paragraph>
+        <note>
+        <music xmlns="http://www.w3.org/2003/04/musicxml">
+          <note>
+            <pitch>
+              <step>&chord;</step>
+              <octave>3</octave>
+            </pitch>
+            <duration>4</duration>
+          </note>
+        </music>
+      </note>
+    </subsection>
+  </section>
+</body>
+</html>
+</document>

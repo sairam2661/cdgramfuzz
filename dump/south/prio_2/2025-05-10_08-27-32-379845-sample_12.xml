@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "trees.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY nut "<para>Walnut falls under this category.</para>" >
+  <!ATTLIST section ID CDATA '#REQUIRED' >
+  <!ENTITY tree "Pine">
+]>
+<document xmlns:xi="http://www.w3.org/2001/XInclude"
+          xi:include
+          ="href=flowers.xml">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="fr-FR">
+    <head>
+      <title>Forests</title>
+      <meta name="date" content="2022-01-01"/>
+      <style><![CDATA[ ul { list-style-type:square; }]]></style>
+    </head>
+    <body>
+      <metadata>
+        <title>Tree identification keys</title>
+      </metadata>
+      <document xmlns="urn:isbn:0-13-118328-7">
+        <section ID="sect1">
+          <h1 Tree1:Text="<xi:include href='#sect2' />" >
+             This is a heading!
+          </h1>
+          <para>&fruit;&nut;</para>
+          <para>&tree;</para>
+          <section>
+            <h2 xml:lang="en">The best part about the tree is...</h2>
+          </section>
+        </section>
+      </document>
+    </body>
+  </html>
+</document>

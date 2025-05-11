@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "carnivores.dtd" [
+  <!ENTITY bird "Bird">
+  <!ELEMENT note (#PCDATA|bird)*>
+  <!ATTLIST note
+    type (fruit|meat|note) "note"
+    id ID #REQUIRED
+  >
+]>
+<document xmlns="http://example.com" xml:lang="en"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/xsd/example.xsd"
+          xml:base="/book-store/"
+>
+  <html>
+    <head>
+      <title>Carnivores</title>
+      <meta name="author" content="&note;"/>
+      <meta name="date" content="2022-01-20" scheme="urn:ietf:rfc:860" />
+      <style xmlns="http://www.w3.org/1999/XSL/Format">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { color: #666666; }
+        ]]></style>
+    </head>
+    <body>
+      <!-- external reference -->
+      <a href="http://www.carnivores.com" target="_blank" xlink:type="simple">
+        <note type="meat" id="m01">Cheetahs are carnivores.</note>
+      </a>
+      <!-- comment -->
+      <!-- inline reference -->
+      <a href="#m01" target="_blank" xlink:type="simple">
+        <note type="note" id="n01" />
+      </a>
+    </body>
+  </html>
+  <metadata>
+    <author xlink:href="http://example.com">John Doe</author>
+    <date>2022-01-20</date>
+  </metadata>
+</document>

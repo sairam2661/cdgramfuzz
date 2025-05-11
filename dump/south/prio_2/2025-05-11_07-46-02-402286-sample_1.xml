@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY apple "Apple">
+  <!ENTITY colors SYSTEM "colors.xml" NDATA XML>
+  <!NOTATION XML SYSTEM "http://www.w3.org/XML/1998/notation">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="document.xsd"
+          xml:version="1.1"
+          xml:space="preserve"
+          xml:base="index.html">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-US" xml:langalternate="#en-US" xml:langsupplemental="#ar-SA">
+    <head>
+      <title style="font-weight:bold">Fruits are delicious! </title>
+      <meta name="keywords" content="fruits, health, nutrition" />
+      <meta charset="utf-8" />
+    </head>
+  <body>
+    <style type="text/css">
+      @namespace xsl url"http://www.w3.org/1999/XSL/Transform";
+      @import url("/stylesheets/fruits.css") xsl;
+      body { font-family: Verdana, sans-serif; }
+      h1 { color: #00FF00; }
+      xsl:fallback { color: #FFFFFF; }
+    </style>
+    <section>
+      <paragraph>Bananas are very nutritious. &apple;</paragraph>
+      <para xml:lang="en-GB">Oranges are juicy!</para>
+    </section>
+    <image href="banana.jpg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="orange.jpg" />
+  </body>
+</html>
+<metadata>
+  <author>John Doe</author>
+  <date xsi:type="xs:date">2025-06-15</date>
+  <version>1.1</version>
+</metadata>
+<annotations>
+  <note>Jane added this annotation</note>
+  <authorannotation>John added this author annotation</authorannotation>
+</annotations>
+</document>

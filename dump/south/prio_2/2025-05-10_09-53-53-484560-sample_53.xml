@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY entity SYSTEM "https://www.example.com/entity.txt">
+  <!ENTITY percent "&amp;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xmlns:xlink="http://www.w3.org/1999/xlink">
+        xlink:href="#anchor1">Text</title>
+      <meta name="description" content="A blog on bananas." />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]></style>
+      <style type="application/mathml+xml">
+        <![CDATA[
+          <math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><mo>×</mo><mn>3</mn></mrow></math>
+        ]]>
+      </style>
+    </head>
+  <body>
+    <p>Paragraph 1 with <span>span 1</span> and <span>span 2</span>.</p>
+    <p>Paragraph 2 with <a href="#anchor1">anchor 1</a> and <a href="https://www.example.com/link">anchor 2</a>.</p>
+    <p>
+      Entity reference: &note;&entity;&percent;
+    </p>
+  </body>
+</html>
+<metadata xmlns="urn:org:date">
+  <author>Jane Doe</author>
+  <date>2025-05-10</date>
+</metadata>
+<section xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="#included-file" parse="xml" hreflang="en"/>
+  <paragraph>Bananas are very nutritious.</paragraph>
+</section>
+<included-file>
+    Included file contents.
+</included-file>
+</document>

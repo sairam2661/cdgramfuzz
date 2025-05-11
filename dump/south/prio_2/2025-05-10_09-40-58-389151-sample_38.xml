@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document PUBLIC "-//MySchema//DTD Fruit XML Schema//EN" 
+  "http://example.com/fruits.dtd">
+<document xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-GB">
+    <head>
+      <title xml:lang="es">Manzanas son el mejor fruto!</title>
+      <meta name="keywords" content="bananas, fruit, nutritious" />
+      <meta name="robots" content="index, follow" />
+      <style type="text/css"><![CDATA[
+        @import url("style.css");
+        h1 { font-weight: bold; }
+        body { font-family: "Times New Roman", serif; }
+      ]]></style>
+    </head>
+  <body>
+    <p>Some text with entities: &lt; &gt; &amp; &quot; &apos;</p>
+  </body>
+  </html>
+  <metadata xmlns="http://www.w3.org/1999/xhtml">
+    <author xmlns="">
+      <dc:title>John Doe</dc:title>
+    </author>
+    <date>2020-01-01</date>
+  </metadata>
+  <section>
+    <note xml:lang="fr"> Les bananes sont très nutritives..</note>
+    <img src="banana.jpg" alt="A banana" />
+  </section>
+</document>

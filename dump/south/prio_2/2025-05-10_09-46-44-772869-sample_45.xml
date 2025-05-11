@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve"
+        xml:lang="fr-CA"
+        xml:base="https://example.com">
+    <head prefix="xml:xsd=http://www.w3.org/2001/XMLSchema">
+      <title xml:lang="en">Fruits</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style type="text/css">
+        <![CDATA[body { font-family: Courier, monospace; }
+        h1 { color: #008000; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <p>Fruits are delicious.
+      <span xml:lang="ja" xml:id="jpn" xml:lang="id">Buah-buahan</span>
+      <span xml:lang="id" xml:id="idn">Buah</span>
+      <span xml:id="eng" xml:lang="en">Fruit</span>
+    </p>
+  </body>
+  </html>
+  <metadata>
+    <author xml:lang="id">John Doe</author>
+    <date>2024-07-26T00:00:00+08:00</date>
+  </metadata>
+  <section>
+    <paragraph xml:lang="en" xml:space="preserve">Fruits are very nutritious.</paragraph>
+  </section>
+</document>

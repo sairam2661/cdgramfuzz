@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY percent "%">
+  <!ELEMENT document (html, metadata+, section+)> 
+  <!ATTLIST document
+   id ID #REQUIRED
+   lang CDATA #IMPLIED
+   xml:lang CDATA #IMPLIED>
+]>
+<document id="doc101" lang="en-US" xml:lang="en-US">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit! </title>
+    </head>
+    <body>
+      <h1>Bananas are very nutritious.&percent;</h1>
+    </body>
+  </html>
+  <metadata>
+    <author group="admin">Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <title>Benefits of Bananas</title>
+    <abstract>This is an abstract for a blog on the health benefits of bananas.</abstract>
+    <paragraph>Bananas are very nutritious.</paragraph>
+  </section>
+</document>

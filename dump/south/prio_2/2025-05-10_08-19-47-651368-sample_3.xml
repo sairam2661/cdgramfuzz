@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % general-public "INCLUDE">
+  <!ENTITY % parser-internal "%general-public;">
+  <!ENTITY note "Note">
+]>
+<document xmlns:user="http://example.com/user"
+          xmlns:app="http://example.org/app"
+          xml:lang="fr-CA">
+  <html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+      <section>
+        &note;<emphasis> Emphasis </emphasis>
+      </section>
+      <metadata>
+        <author>
+          <name>
+            <given>Jane</given>
+            <family>Doe</family>
+          </name>
+        </author>
+      </metadata>
+      <processing-instruction target="app">App PI</processing-instruction>
+    </body>
+  </html>
+  <section>
+    <info>
+      <docstatus> draft </docstatus>
+      <revision> v1.2 </revision>
+    </info>
+  </section>
+</document>

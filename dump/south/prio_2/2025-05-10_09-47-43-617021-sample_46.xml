@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "document.dtd" [
+  <!ENTITY pear SYSTEM "pear.xml">
+  <!ENTITY orange SYSTEM "orange.xml">
+  <!ENTITY entity "Entity">
+]>
+<document>
+  <html xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:math="http://www.w3.org/1998/Math/MathML">
+    <head>
+      <title>Fruits and Crops</title>
+      <meta name="creator" scheme="RFC1766" content="en-US" />
+      <style type="text/css">
+        <![CDATA[
+            body { font: 10pt Arial, sans-serif; }
+          ]]></style>
+    </head>
+    <body>
+      <p>&pear;</p>
+      &entity;&entity;&entity;
+      <svg:svg width="100" height="100">
+        <svg:rect x="10" y="10" width="40" height="40" />
+      </svg:svg>
+      <math:math display="block">
+        <math:mrow>
+          <math:mfrac>
+            <math:mrow>
+              <math:mo>&minus;</math:mo><math:mi mathvariant="normal">1</math:mi>
+            </math:mrow>
+            <math:mrow>
+              <math:mi mathvariant="normal">2</math:mi><math:mo>+</math:mo><math:mn>3</math:mn>
+            </math:mrow>
+          </math:mfrac>
+        </math:mrow>
+      </math:math>
+      <img src="image.jpg"  alt="Image unavailable" />
+      <hr xmlns="http://www.w3.org/1999/xhtml" />
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2024-03-20T14:30:00-05:00</date>
+  </metadata>
+  <note><p>&orange;</p></note>
+</document>

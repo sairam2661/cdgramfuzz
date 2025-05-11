@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "shapes.dtd" [
+  <!ENTITY symbol "#" >
+  <!ENTITY pattern "(?=<[^>]*|>[^<]*<[a-zA-Z]+[^>]*>)" >
+]>
+<document xml:lang='fr' xmlns="http://www.w3.org/1999/xhtml" xml:space='preserve'>
+  <html xml:base='file:///C:/example/' xmlns:xlink='http://www.w3.org/1999/xlink'>
+    <head profile='http://gmpg.org/xfn/11'>
+      <title xml:lang="fr-CA" xml:space='preserve'>Espace de travail de Mathéo </title>
+      <meta name='author' content='Raphaël' />
+      <style><![CDATA[
+        body { text-align: center; font-size: 10pt; }
+        h1 { font-family: sans-serif, monospace }
+        @import 'external.css'; 
+      ]]></style>
+    </head>
+  <body>
+    <h2 id="mathéo-title"><span id="xlink-title" title="Espace de travail de Mathéo">Les coordonnées plan et sphérique</span>
+      <sub>1</sub><sup>2</sup></h2>
+  </body>
+  </html>
+  <metadata>
+    <author>Cyrus Wei</author>
+    <date>2025-05-10T10:30:01+08:00</date>
+  </metadata>
+  <section xml:lang='en'>
+    <h3>Mathéo's works in math</h3>
+    <paragraph>&symbol;&pattern;</paragraph>
+  </section>
+  </document>

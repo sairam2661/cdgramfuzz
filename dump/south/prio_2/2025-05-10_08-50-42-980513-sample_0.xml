@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/schema.dtd">
+<document xml:lang="fr-CA" xmlns:m="http://www.example.com/model">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Les bananes sont les meilleures!</title>
+      <meta name="description" content="Un blog sur les bananes" />
+      <style type="text/css">
+        <![CDATA[body { font-family: "Times New Roman", serif; }
+        h1 { color: #FF0000; }]]>
+      </style>
+    </head>
+  <body>
+    <p xml:space="preserve">Les bananes sont très nutritives.</p>
+    <m:section xml:lang="de">
+      <m:paragraph> &num; Les bananes sind großartig! &amp;note; </m:paragraph>
+    </m:section>
+  </body>
+  </html>
+  <metadata>
+    <author xmlns:y="http://www.example.com/yang">Jane Doe</author>
+    <date>2025-05-11</date>
+  </metadata>
+  <foo:section xmlns:foo="http://www.example.com/foo">
+    <foo:item>Item 1</foo:item>
+    <foo:item>Item 2</foo:item>
+  </foo:section>
+</document>

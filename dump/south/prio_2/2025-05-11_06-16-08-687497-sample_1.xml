@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [<!ENTITY book SYSTEM "book.xml" >]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head><title>Books</title></head>
+    <body>
+      <p>We have &book;</p>
+    </body>
+  </html>
+  <book>
+    <title>Book Title</title>
+    <page>
+      <section>
+        <para>This is a paragraph in a book.</para>
+      </section>
+      <section>
+        <para>This is another paragraph in the same book.</para>
+      </section>
+    </page>
+  </book>
+  <metadata>
+    <createdBy>John Doe</createdBy>
+  </metadata>
+</document>

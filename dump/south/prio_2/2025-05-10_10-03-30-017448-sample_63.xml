@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY name "John">
+  <!ENTITY year "2023">
+]>
+<document xmlns="http://example.org" 
+          xml:lang="no" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.org colors.xsd">
+  <html>
+    <head>
+      <title>Red is a beautiful color!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style type="text/css">
+        <![CDATA[
+        @import url("styles.css");
+        body { font-family: Arial, sans-serif; color: #000000; }
+        h1 { color: #FF0000; }
+      ]]></style>
+    </head>
+    <body>
+      <p> Colors red #FF0000  <ENAMESPACE name="RED"/> </p>
+      <metadata>
+        <author>
+          <ENAMESpaceItem name="jane"/>
+          &name;
+        </author>
+        <date>
+          <day>&year;</day>
+        </date>
+      </metadata>
+      <section>
+        <para>
+          Red is the color of love, but yellow is sunshine! &year;!
+        </para>
+        <image>
+          <link href="https://example.com/image.jpg" />
+          <caption>An image of a red apple.</caption>
+        </image>
+      </section>
+    </body>
+  </html>
+</document>

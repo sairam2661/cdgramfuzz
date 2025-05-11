@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<!DOCTYPE document [
+  <!ENTITY % ent SYSTEM 'ent.dtd'><!ENTITY % ent ''>
+  <!ENTITY % pub "Public Entity">
+  <!ENTITY % sys  SYSTEM'system-entity.ent'>
+]>
+<document><html
+xmlns="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+xml:lang="fr-FR" xml:space="preserve">
+<head>
+<title>Paris</title>
+<meta name="description" content="Le Louvre &amp; Champ de Mars!&amp;" />
+<style type="text/css" media="all">
+<![CDATA[
+body { color: #0000FF; }
+h1 { text-indent: 0.8em; }
+]]>
+</style>
+</head>
+<body>
+<metadata>
+<author>John Doe</author>
+<date>2023-06-01</date>
+<person><name>Bob Smith</name></person>
+</metadata>
+<section>
+<p>Enjoy the beauty of Paris at any time!<b>&nbsp;</b></p>
+</section>
+</body>
+</html>
+<metadata><author>Jane Doe</author><date>2025-05-10</date></metadata></document>

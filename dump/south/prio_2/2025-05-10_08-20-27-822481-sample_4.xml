@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.org/dtd.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve"
+        xml:lang="es-ES">
+    <head prefix="math: http://www.example.org/math">
+      <title>
+        </title>
+        <title xml:lang="fr">Bananes sont les meilleurs fruits!</title>
+      </head>
+      <body xmlns:xlink="http://www.w3.org/1999/xlink">
+        <p>xlink:href="https://example.org" title="External link"/></p>
+    </body>
+  </html>
+  <metadata>
+    <metadata>
+      <author>John
+    </author>
+      <date>-1000-01-01</date>
+    </metadata>
+  </metadata>
+</document>

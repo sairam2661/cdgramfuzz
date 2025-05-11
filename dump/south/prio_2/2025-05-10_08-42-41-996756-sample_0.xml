@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<!DOCTYPE document [
+  <!ENTITY % foo SYSTEM 'entities.xml'>
+  %foo;
+  <!ENTITY note "Note">
+  <!ELEMENT document ANY>
+  <!ATTLIST document
+      id         ID  #REQUIRED
+      xml:lang  (en|fr|es) #IMPLIED>
+]>
+<document id="doc" xml:lang="fr">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+        xs:noNamespaceSchemaLocation="schema.xsd">
+    <head>
+      <title>Les bananes</title>
+      <meta name="description" content="Article sur les bananes." />
+    </head>
+  <body><p>Les bananes sont un fruit très nutritif.</p></body>
+  </html>
+  <metadata>&note;</metadata>
+</document>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XMLSchema 1.1 document//EN" 
+         "http://www.w3.org/2001/XMLSchema.dtd" [
+  <!ENTITY note "Note: A useful observation!">
+  <!ELEMENT note (#PCDATA)*>]>
+<document xmlns="http://example.com/documents"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:math="http://www.w3.org/1998/Math/MathML"
+         xml:lang="en"
+         xml:id="example"
+         xml:base="file:///home/user/document.xml"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://example.com/documents file:///home/user/schema.xsd">
+  <html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+    </head>
+  <body>
+    <p xml:space="preserve">Some mathematical formula: <math:math display="block">
+      <math:mn>3</math:mn>
+      <math:mo>+</math:mo>
+      <math:mi>x</math:mi>
+      <math:mo>=</math:mo>
+      <math:mrow>
+        <math:mi>y</math:mi>
+        <math:mo>+</math:mo>
+        <math:mi>x</math:mi>
+      </math:mrow>
+    </math:math>
+    </p>
+  </body>
+</html>
+<metadata>
+  <author>
+    <fn xml:lang="en">John Smith</fn>
+    <fn xml:lang="fr">Jean DuPont</fn>
+  </author>
+  <date>2025-05-10</date>
+</metadata>
+<section>
+  <h1>Section Title</h1>
+  <paragraph>Bananas are very nutritious. <note/></paragraph>
+  <xlink:href xlink:title="Related Resources"
+              xlink:href="/resources/related.xml"
+              xlink:type="simple">See more information</xlink:href>
+</section>
+</document>

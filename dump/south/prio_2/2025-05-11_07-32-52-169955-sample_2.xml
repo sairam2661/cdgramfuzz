@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!DOCTYPE document PUBLIC "-//W3C//DTD SVG 2008//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [ 
+<!ENTITY fruit_name "Pineapple"> 
+<!ENTITY year "2022" > 
+<!ENTITY copyright "All rights reserved"> 
+<!ATTLIST document 
+  id        CDATA #REQUIRED 
+  version   CDATA #REQUIRED 
+> 
+ ]> 
+<document xmlns:svg="http://www.w3.org/2000/svg" id="2022" version="1.0"> 
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es"> 
+    <head> 
+      <title>Types of Fruits</title> 
+      <meta name="title" content="Fruits"/> 
+      <style media="screen"><![CDATA[
+        body {
+          background-color: LightGoldenRodYellow;
+        }
+        h1 {
+          text-align: center;
+        }
+      ]]></style> 
+    </head> 
+    <body> 
+      <h1>Types of Fruits</h1> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="700" height="600"> 
+        <circle cx="100" cy="50" r="50" fill="red"/> 
+        <rect width="50" height="50" fill="#4CAF50"/> 
+      </svg> 
+      <section id="sectionid"> 
+        <h2>Fruits that are High in Fiber</h2> 
+        <ul> 
+          <li>&fruit_name;</li> 
+        </ul> 
+      </section> 
+    </body> 
+  </html>  
+  <metadata> 
+    <author name="John"> 
+      <email>john@example.com</email> 
+      <phone>123-456-7890</phone> 
+    </author> 
+    <date>&year;</date> 
+  </metadata> 
+</document>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "strawberry">
+  <!ENTITY note "Note which has been &fruit;-tastic!">
+]>
+<document xmlns:fb="http://www.facebook.com/XML"
+          xml:lang="fr-CA"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head fb:profile="http://www.example.com">
+      <title xml:lang="es-ES">Los mejores frutos!</title>
+      <meta name="description" content="Blog sobre frutas." />
+    </head>
+    <body>
+      <section>
+        <p xml:lang="fr">Les bananes sont très nutritives. &note;</p>
+      </section>
+      <metadata>
+        <author fb:verified="1">Jean Dupont</author>
+        <date>2026-09-11</date>
+      </metadata>
+    </body>
+  </html>
+</document>

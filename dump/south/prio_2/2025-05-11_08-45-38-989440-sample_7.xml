@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/document.dtd" [
+  <!ELEMENT document ANY>
+  <!ATTLIST document xmlns CDATA #FIXED 'http://www.w3.org/2000/svg'
+                    xmlns:xlink CDATA #FIXED 'http://www.w3.org/1999/xlink'
+                    lang CDATA #REQUIRED>
+  <!ENTITY % entity 'The quick brown fox jumps over the lazy dog'>
+  <!ENTITY fruit "Apple">
+  <!ENTITY section SYSTEM "section.xml">
+]>
+<document xml:lang="fr" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg">
+  <html>
+    <head>
+      <title>XML Fuzz Test</title>
+      <meta http-equiv="Content-Style-Type" content="text/css" />
+      <meta http-equiv="Content-Language" content="fr" />
+    </head>
+    <body>
+      <section>&section;</section>
+      A&nbsp;&amp;{{!}}&quot;&amp;,&amp;<!--'&amp;-->.
+      {% entity; %}
+      [% fruit %]
+    </body>
+  </html>
+  <xsl:stylesheet version="1.0"
+                   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                   xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                   exclude-result-prefixes="fo"
+                   extension-element-prefixes="fo"
+                   xsl:output
+                   = "http://www.w3.org/1999/XSL/Format"
+                   indent="yes">
+    <xsl:param name="foo"></xsl:param>
+    <xsl:template match="/">
+      <fo:root>
+        <fo:layout-master-set>
+          <fo:simple-page-master master-name="main"
+                                  page-height="29.7cm"
+                                  page-width="21cm">
+            <fo:region-body region-name="xsl-region-body"
+                            width="17cm"
+                            margin-top="2.5cm"
+                            margin-bottom="2.5cm"
+                            margin-left="2.5cm"
+                            margin-right="2.5cm"/>
+          </fo:simple-page-master>
+        </fo:layout-master-set>
+        <fo:page-sequence master-reference="main">
+          <fo:flow flow-name="xsl-region-body">
+            <fo:block-container>
+              <fo:block-container height="1in"
+                                  width="1in"
+                                  background-color="gray"/>
+            </fo:block-container>
+            <fo:block>
+              <fo:inline-container height="2cm"
+                                  width="6cm"
+                                  border-style="solid"
+                                  border-color="black">
+                <fo:block-container vertical-align="bottom"
+                                  height="2.4cm"
+                                  width="5.8cm">
+                  <fo:block-container background-color="blue"
+                                      height="0.8cm"
+                                      width="5.8cm">
+                  </fo:block-container>
+                </fo:block-container>
+              </fo:inline-container>
+            </fo:block>
+          </fo:flow>
+        </fo:page-sequence>
+      </fo:root>
+    </xsl:template>
+  </xsl:stylesheet>
+</document>

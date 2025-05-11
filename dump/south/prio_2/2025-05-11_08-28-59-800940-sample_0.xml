@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-16"?><!-- &#x9;&#x0A;&#x0D; -->
+<!DOCTYPE document SYSTEM "schemas.dtd" [
+  <!ENTITY percent90 "&#x25;90">
+  <!ENTITY note "Note: &percent90;">
+  <!ELEMENT comment ANY>
+  <!ATTLIST document
+      id  CDATA #IMPLIED
+      version CDATA #IMPLIED
+  >
+]>
+<document
+  id="doc1"
+  version="1.0">
+  <html xmlns:fb="http://www.facebook.com/2008/fbml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="ja-JP"
+        xml:space="preserve">
+    <head xmlns:og="http://ogp.me/ns#">
+      <title>Bananas - A brief summary</title>
+      <meta charset="ISO-2022-JP" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body onUnload="">
+      <h1 style="font-family: Courier;">Bananas are tasty</h1>
+      <script><![CDATA[
+        // Scripting with CDATA for unescaped characters
+        alert("You are awesome!");
+      ]]></script>
+      <h2>&nl;)Note 1</h2>
+      <p>Sample Text
+        <comment>
+          <!-- comment content -->
+        </comment>
+        (Note that XML comments do not display)
+      </p>
+    </body>
+  </html>
+  <metadata>
+    <created>1995-03-01</created>
+    <lastmodified>2001-05-25T14:30:00Z</lastmodified>
+    <revID>123</revID>
+    <creator>John Doe</creator>
+    <contributor>Jane Smith</contributor>
+  </metadata>
+  <element>
+    <group>
+      <item><name>Item #1</name></item>
+      <item><name>Item #2</name></item>
+    </group>
+  </element>
+</document>

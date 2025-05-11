@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY f1 "F1">
+  <!ENTITY att1 "Att1" >
+  <!ENTITY att2 "Att2">
+  <!ENTITY att3 "Att3">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xml:lang="en-US"
+          xml:base="http://example.org/"
+          xml:space="preserve">
+  <html>
+    <head prefix="xhtml: http://www.w3.org/1999/xhtml">
+      <title xml:lang="fr">Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+    </head>
+    <body>
+      <p>Bananas are very nutritious. &note; &f1;</p>
+    </body>
+  </html>
+  <metadata xmlns:db="http://example.org/db">
+    <author>John Doe</author>
+    <date>2025-05-10</date>
+    <db:creator db:version="1.0">
+
+      <db:metadata>
+        <db:name>Example</db:name>
+      </db:metadata>
+    </db:creator>
+  </metadata>
+  <section>
+    <paragraph xml:space="collapse" xml:lang="es">Bananas are very nutritious. &note;</paragraph>
+  </section>
+</document>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (title,meta,section,comment)>
+  <!ELEMENT title (#PCDATA)*> 
+  <!ATTLIST document xmlns CDATA #REQUIRED>
+  <!ATTLIST section xmlns:xlink CDATA #IMPLIED>
+  <!ENTITY note "Note">
+]>
+<document xmlns="http://example.com/"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xml:lang="en-GB"
+  lang="en"
+  version="2.0">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:lang="fr">Les Bananes sont les Fruits les meilleurs</title>
+      <meta name="description" content="A blog on bananas." />
+      <style type="text/css">
+        <![CDATA[
+          @page { size: A4 landscape; }
+          @media all { @page { size: letter portrait; } }
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]>
+      </style>
+      <meta name="keywords" content="bananas,fruits,xml"/>
+      <metadata

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "<">
+  <!ENTITY gt ">">
+  <!ENTITY copy "&#x000A;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:space="preserve"
+        xml:lang="fr-CA">
+  <head>
+    <title>Xml Fuzz Tests</title>
+  </head>
+  <body xmlns:xlink="http://www.w3.org/1999/xlink">
+    <h1 xml:lang="en-US">Sample XML Document</h1>
+    <p>&note; &amp; &lt; &gt; &copy;</p>
+    <hr xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <p xmlns:c="http://www.example.com">This is a complex paragraph with an external link.</p>
+    <p><a xlink:href="http://example.org">External Link</a></p>
+  </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  </document>

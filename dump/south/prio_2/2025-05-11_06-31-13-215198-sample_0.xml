@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY semicolon "&#59;">
+  <!ENTITY entity "Entity">
+  <!ENTITY ref SYSTEM "ref.dtd" NDATA ref-type>
+]>
+<document xml:comment="Documentation for document element begins here."
+          xml:lang="en-US">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:base="ftp://example.com/xml/">
+    <head>
+      <title>Fruit Salad Recipes</title>
+      <meta name="description" content="A collection of fruit salad recipes.&note;"/>
+      <style type="text/css" xml:space="preserve">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { background-color: #CCCC00; }
+        ]]>
+      </style>
+    </head>
+  <body>
+    <p><span xml:lang="fr">Fruit salad is delicious!</span></p>
+  </body>
+  </html>
+  <metadata baseURI="http://example.com">
+    <author>
+      <name>Jane Doe</name>
+      <email>jane.doe@example.com</email>
+    </author>
+  </metadata>
+  <section xml:space="collapse">
+    <info>
+      <meta name="author" content="Jane Doe"/>
+    </info>
+    <paragraph>
+      Bananas are very nutritious.
+      &note;
+      <!-- &amp; will be replaced by & because it's a CDATA -->
+        &lt;&gt;
+      &entity;
+      <!-- &ref; would reference the'ref.dtd' external document with MIME type -->
+        &ref;
+        <!-- This will not appear in the document tree, as &ref; references an external document -->
+      &semicolon;
+    </paragraph>
+  </section>
+</document>

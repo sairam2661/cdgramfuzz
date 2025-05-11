@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "numbers.dtd" [
+  <!ENTITY decimal_1 "1.0">
+  <!ENTITY decimal_2 "2.0">
+]>
+<document>
+  <html xmlns:math="http://www.w3.org/1998/Math/MathML" lang="en" xml:lang="en">
+    <head>
+      <title>Maths are Fun!</title>
+    </head>
+    <body>
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mroot>
+          <munder>
+            <msqrt>&decimal_1;</msqrt>
+            <mrow>
+              <mo stretchy="false">(</mo><msup>10</msup><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow><mo stretchy="false">)</mo><mo>+</mo><msup>10</msup><mrow data-mjx-texclass="ORD"><mn>3</mn></mrow></mrow>
+            </munder>
+          </mroot>
+        </math>
+    </body>
+  </html>
+  <section>
+    <metadata>
+      <author>Jane Doe</author>
+      <date>2025-05-10</date>
+    </metadata>
+  </section>
+  <note>
+    <title>Important Note!</title>
+    <text>This is a note.</text>
+  </note>
+</document>

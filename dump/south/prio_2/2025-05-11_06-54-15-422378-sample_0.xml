@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY ref SYSTEM "reference.txt">
+]>
+<document xml:lang="en-US" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <html lang="en">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta charset="UTF-8" />
+      <style>
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]>
+      </style>
+    </head>
+    <body xmlns:ev="http://www.w3.org/2001/xml-events">
+      <section>
+        <p> <!--  CDATA section -->
+          <![CDATA[
+            Bananas are very nutritious.
+          ]]>
+        </p>
+        <p>
+          This is a long paragraph with a reference: <a href="#anchor" xlink:href="#anchor" />
+          <xref target="#anchor" />
+          and a link to an external document: <a class="external-link" xlink:href="https://www.example.com">Example website</a>.
+        </p>
+      </section>
+      <section id="anchor" svg:eventPool="small">
+        <h2>Section Title</h2>
+        <table xmlns:fo="http://www.w3.org/1999/XSL/Format">
+          <tr><td>Cell 1</td><td>Cell 2</td></tr>
+        </table>
+      </section>
+      <metadata>
+        <author>Jane Doe</author>
+        <date>2025-05-10</date>
+      </metadata>
+    </body>
+  </html>
+  <data>
+    <items>
+      <item>
+        <value type="integer">123</value>
+        <value type="date">2024-12-24</value>
+      </item>
+    </items>
+  </data>
+  <sub-document xml:base="base.xml" xlink:href="sub.xml">
+    <external>
+      <ref xlink:href="reference.txt"/>
+    </external>
+  </sub-document>
+</document>

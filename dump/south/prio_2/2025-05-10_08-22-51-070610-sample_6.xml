@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "shapes.dtd" [
+  <!ENTITY cat "Meow"
+           >
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xi="http://www.w3.org/2001/XInclude">
+    <head>
+      <title>Greetings from the Cat</title>
+      <meta name="creator" content="Ableton Live 10" />
+      <style>
+        <![CDATA[
+          @namespace ns1 "http://www.w3.org/1999/xlink";
+          body { font-family: Arial; }
+          h1 { background-image: url(ns1:_hrefOf("cat.jpg")); }
+        ]]></style>
+    </head>
+  <body>
+    <section
+      id="headings"
+      xxs:expanded="true"
+      xmlns:xxs="http://www.oasis-open.org/office/ns/office-1.1.xsd">
+      <h1 id="top" xml:lang="en-GP" xml:space="preserve">
+        <span>Hi there! </span>
+      </h1>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2023-02-20</date>
+  </metadata>
+</document>

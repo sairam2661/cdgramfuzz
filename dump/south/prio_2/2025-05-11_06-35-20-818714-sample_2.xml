@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata+, section+)>
+  <!ELEMENT html (#PCDATA | meta | link | style | noscript | script | title | base | br | p | img | hr | table | tr | td | th | col | area)*> 
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT section (paragraph | h1 | h2 | h3 | h4 | h5 | h6 | ul | ol | li | table | tr | td | th)*>
+  <!ELEMENT paragraph (#PCDATA | br | link | style | noscript | script | img | table | tr | td | th | hr | ul | ol | li)*>
+  <!ELEMENT author (#PCDATA | sup | sub | span | i | b | strong | em | p)*>
+  <!ELEMENT date (#PCDATA | sup | sub | span | i | b | strong | em | p)*>
+  <!ELEMENT title (#PCDATA)*>  
+  <!ENTITY note "Note">
+]>
+<document>
+  <html lang="en-US" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:xml="http://www.w3.org/XML/1998/namespace"
+       xml:lang="en-US">
+    <head>
+      <title>Bananas</title>
+      <meta charset="UTF-8" content="A blog on bananas"/>
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+          p span { color: #FF0000; }
+        ]]>
+      </style>
+    </head>
+    <body xml:space="preserve">
+      <p>Bananas are very nutritious.</p>
+        &note;
+      <p>Bananas are the best fruit!</p>
+      <section>
+        <h2>Did you know?</h2>
+        <ul>
+          <li>They have a lot of potassium.</li>
+          <li>They are good for your eyes.</li>
+        </ul>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Some text... and some <i>italic text</i>.</paragraph>
+  </section>
+</document>

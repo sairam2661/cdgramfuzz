@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY num "123">
+]>
+<document xml:lang="en-US">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title>Bananas are the tastiest fruit!</title>
+      <meta name="description" content="A blog on delicious bananas!" />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+        span { display: inline-block; width: 50%; }
+      ]]></style>
+    </head>
+    <body xmlns:xlink="http://www.w3.org/1999/xlink">
+      <p xlink:type="simple"><b>Hello World!</b></p>
+    </body>
+  </html>
+  <metadata>
+    <author xlink:href="jane@example.com">Jane Doe</author>
+  </metadata>
+  <section>
+    <note>&num;</note>
+  </section>
+</document>

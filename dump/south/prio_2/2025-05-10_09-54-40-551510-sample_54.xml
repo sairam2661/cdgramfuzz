@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+  <html xmlns:fb="http://www.facebook.com/2008/fbml"
+        xmlns:schema="http://www.w3.org/2001/XMLSchema#">
+    <head>
+      <title xml:lang="hu">Banány a legjobb gyümölcs!</title>
+      <meta name="content-type" content="application/xml" />
+      <meta charset="utf-8" />
+      <title>Secondary title</title>
+    </head>
+    <body>
+      <!-- CDATA section -->
+      <script language="javascript">
+        <![CDATA[
+          function myFunction() 
+          {
+            alert("Hello, World!");
+          }
+        ]]>
+      </script>
+    </body>
+  </html>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about="#document">
+      </rdf:Description>
+    </rdf:RDF>
+    <person>
+      <name>Jane Doe</name>
+      <address>
+        <street>123 Main St</street>
+        <city>New York</city>
+        <country>USA</country>
+      </address>
+    </person>
+  </metadata>
+</document>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT document (html, metadata, section+)>
+  <!ELEMENT html EMPTY>
+  <!ATTLIST html
+    lang (en|fr|de) "en"
+  >
+  <!ELEMENT metadata EMPTY>
+  <!ATTLIST metadata
+    version CDATA #IMPLIED
+  >
+  <!ELEMENT section EMPTY>
+  <!ATTLIST section
+    id CDATA #IMPLIED
+  >
+]>
+<document lang="fr">
+  <html id="rootElement">
+  <header

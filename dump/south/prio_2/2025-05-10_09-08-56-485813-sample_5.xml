@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "recipes.dtd" [
+  <!ENTITY nut "Hazelnut">
+  <!ENTITY oil "Olive oil">
+]>
+<document xmlns="http://example.com"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="recipes.rng"
+          xml:base="/path/to/documents"
+          xml:lang="en">
+  <html><head></head>
+  <body xmlns:math="http://www.w3.org/1998/Math/MathML"
+        math:id="math1">
+    <section><p>Try <name><given>John</given><family>Doe</family></name>,</p>
+    <p>who loves baking with <entity refid="oil"/>.</p>
+    <p>His favorite <gourmet><name><given>Emma</given><family>Stone</family></name></gourmet> has provided some excellent <entity refid="nut"/>.</p>
+  </section>
+  </body>
+</html>
+<note xml:lang="fr" xmlns:x="http://example/fr" xml:id="example">Une petite note.</note>
+</document>
