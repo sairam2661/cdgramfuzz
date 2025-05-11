@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE document SYSTEM "maths.dtd" [
-  <!ENTITY pi "3.14159265358979323846">
-  <!ATTLIST author  ID ID #REQUIRED>
-]>
-<document>
-  <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
-    <head>
-      <title>Area of a Circle: π
