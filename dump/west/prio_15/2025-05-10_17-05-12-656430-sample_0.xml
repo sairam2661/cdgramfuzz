@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/xml.dtd" [
+  <!ENTITY fruit "apple">
+]>
+<document xmlns="http://example.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.org example.xsd">
+  <html xml:space="preserve">
+    <head>
+      <title>This is a title</title>
+      <meta name="description" content="Here &amp; is a meta tag" />
+      <style type="text/css">
+        <![CDATA[
+          h1 { color: blue; font-weight: bold; }
+          body { font-family: Times New Roman; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section xml:lang="fr">
+        <p>Hello, how are you today?</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <person>
+      <name>John</name>
+      <position>Manager</position>
+    </person>
+    <date>1999-10-10</date>
+  </metadata>
+  <comment>This is a single comment</comment>
+</document>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY % html SYSTEM "https://w3.org/TR/html5/syntax">
+  <!ENTITY note "Note on some fruit">
+]>
+<document xml:space="preserve"
+         xmlns="urn:oasis:names:tc:opendocument:xmlns:container"
+         xpacket:schemaLocation="urn:oasis:names:tc:opendocument:xmlns:container http://opendocument.openoffice.org/schemas/nc/container.xsd"
+         xsi:schemaLocation="http://xmlns.openoffice.org/urn:xmlns:calc odc:calc.xsd"
+         xmlns:odc="urn:oasis:names:tc:opendocument:xmlns:container"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xml:lang="en-US"
+         xmlns:xpacket="urn:oasis:names:tc:opendocument:xmlns:container"
+         xpacket:init='1.0'>
+  <html xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+      <title>Fruits</title>
+    </head>
+    <body>
+      <section>
+        <item1>Text</item1>
+        <item2><!-- A comment --></item2>
+        <item3>
+          <item31>Text</item31>
+        </item3>
+        <item4 attribute1="true" attribute2="false">Text with attributes</item4>
+      </section>
+    </body>
+  </html>
+</document>

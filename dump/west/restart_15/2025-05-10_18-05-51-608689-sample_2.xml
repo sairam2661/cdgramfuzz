@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY entity "Entity">
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+]>
+<document>
+  <html xmlns:fb="http://www.facebook.com/2008/fbml"
+        xmlns:m="http://www.w3.org/2000/10/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        fb:profile-page="false"
+        xsi:schemaLocation="http://www.example.com doc.xsd">
+    <head>
+      <title>XML is fun!</title>
+      <style type="text/css" xml:space="preserve"><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #008000; }
+      ]]></style>
+    </head>
+    <body>
+      <metadata>
+        <author xml:lang="en-GB">John Doe</author>
+        <date>2025-03-02</date>
+      </metadata>
+      <section>
+        <p xml:space="preserve">XML &entity; is used for markup.</p>
+      </section>
+    </body>
+  </html>
+  <metadata attr="value">Extra metadata</metadata>
+</document>

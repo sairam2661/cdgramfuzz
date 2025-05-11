@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+ [<!ENTITY foo "bar">]>
+<document xml:lang="fr">
+  <html xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve">
+    <head>
+      <title xml:lang="es">Árboles frutales</title>
+      <meta name="generator" content="XML generator" />
+    </head>
+    <body>
+      <section xml:id="sec1">
+        <h1>Frutas exóticas</h1>
+      </section>
+      <section xml:id="sec2">
+        <p>La &foo; es una fruta muy común.</p>
+      </section>
+    </body>
+  </html>
+  <annotation>
+    <author>John Smith</author>
+    <date>2030-07-15</date>
+  </annotation>
+</document>

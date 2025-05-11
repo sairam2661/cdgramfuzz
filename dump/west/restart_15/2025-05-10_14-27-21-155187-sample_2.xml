@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<document xmlns:fb="http://www.facebook.com/XML/2008" xml:lang="fr">
+  <html xml:space="preserve" xmlns="http://www.w3.org/1999/xhtml">
+    <head prefix="dc: http://purl.org/dc/terms/">
+      <title>XQuery is Fun!</title>
+      <meta charset="utf-8" />
+    </head>
+    <body>
+      <p>&lt;p&gt;This is a paragraph on XQuery.&lt;/p&gt;</p>
+      <section fb:name="section1">
+        <item order="1" id="item1">First item</item>
+        <item order="2" id="item2">Second item</item>
+      </section>
+    </body>
+  </html>
+  <annotations>
+    <annot id="A1" type="error" start="10" end="15">Invalid syntax</annot>
+  </annotations>
+  <footnote>1 This is a footnote.</footnote>
+</document>

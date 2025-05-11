@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" [
+  <!ENTITY eacute "&#233;">
+  <!ENTITY amp "&#38;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:fb="http://www.facebook.com/2008/fbml"
+        xml:lang="fr-CA">
+    <head>
+      <title>Les Bananes sont les Meilleures Fruits!</title>
+      <meta name="author" content="John Doe" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: "Arial", "Helvetica", serif; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p>Les bananes sont très saines. <fb:xfbml version="1.0"></fb:xfbml></p>
+    </body>
+  </html>
+  <annotations>
+    <annotation id="1"><ref>Section 1 <i>par Jane</i></ref></annotation>
+    <annotation id="2"><ref>Section 2 <b>par John</b></ref></annotation>
+  </annotations>
+  <references>
+    <reference refid="1">Banana Facts</reference>
+    <reference refid="2">Nutritional Value of Bananas</reference>
+  </references>
+  <section>
+    <title>Les Bananes</title>
+  </section>
+</document>

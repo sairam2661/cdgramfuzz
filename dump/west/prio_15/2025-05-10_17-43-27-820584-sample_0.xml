@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <html xml:lang="fr">
+    <head>
+      <title xml:space="preserve">Fruits are delicious!</title>
+      <meta charset="ISO-8859-1" />
+      <style type="text/css">
+        <![CDATA[ body { margin: 10% 20%; font-family: Courier, monospace; }
+          h2 { font-size: large; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <p>XML is a markup language.</p>
+        <p xml:lang="en">It is used to store data.</p>
+      </section>
+      <metadata>
+        <author>John Smith</author>
+        <date >2024-06-15</date>
+      </metadata>
+    </body>
+  </html>
+  <image source="https://example.com/banana.jpg" />
+  <section xmlns="http://jabber.org/protocol/muc">
+    <user>admin</user>
+    <room>my_room</room>
+  </section>
+</document>

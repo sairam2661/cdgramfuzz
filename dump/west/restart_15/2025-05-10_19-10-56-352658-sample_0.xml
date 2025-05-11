@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+         "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+      <title>XML Testing Document</title>
+      <meta name="author" content="Generator Application" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Arial, sans-serif; }
+          h1 { color: #008000; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <h1>Section 1</h1>
+        <p>This is a paragraph of text.</p>
+      </section>
+      <section>
+        <h1>Section 2</h1>
+        <p>This is another paragraph of text.</p>
+      </section>
+    </body>
+  </html>
+  <metadata><![CDATA[<author>John Smith</author><date>2020-01-01</date>]]></metadata>
+</document>

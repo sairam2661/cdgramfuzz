@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY symbol "&#9678;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:math="http://www.w3.org/1998/math"
+        math:version="1.1"
+        xml:lang="fr-FR">
+    <head>
+      <title>Geometrical shapes</title>
+      <meta name="keywords" content="circle, square, triangle" />
+    </head>
+    <body>
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="#FF0000" />
+        <svg:xlink xmlns:xlink="http://www.w3.org/1999/xlink" href="#square">
+          <rect x="60" y="60" width="40" height="40" />
+        </svg:xlink>
+      </svg>
+      <section>
+        <math:math xmlns="http://www.w3.org/1998/math">
+          <math:apply math:style="mathvariant:multiply">
+            <math:apply math:style="mathvariant:divide">
+              <math:ci data-type="integer">10</math:ci>
+              <math:ci data-type="integer">2</math:ci>
+            </math:apply>
+            <math:mo>&symbol;</math:mo>
+          </math:apply>
+        </math:math>
+      </section>
+    </body>
+  </html>
+  <footnote>
+    <p>This is a footnote.</p>
+  </footnote>
+</document>

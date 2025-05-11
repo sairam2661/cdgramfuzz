@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//Example//DTD Example Document 1.0//EN"
+ "example.dtd" [
+  <!ENTITY banana "Bananas are delicious!">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xml:lang="en-US"
+  xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-US">
+    <head>
+      <title>Example of XML Fuzz Test</title>
+      <meta name="author" content="John Doe" />
+      <meta name="copyright" content="&copy; 2025 John Doe" />
+      <style type="text/css">
+        <![CDATA[
+          p { text-align: justify; }
+          h1 { color: #FF0000; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="#include1"
+                    xpointer="foo:bar"/>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2025-01-15</date>
+  </metadata>
+  <section id="include1">
+    <p>&banana;</p>
+  </section>
+</document>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY entity1 "Entity 1">
+  <!ENTITY entity2 "Entity 2">
+  <!ENTITY % entity3 "<!ENTITY entity3-value 'Entity 3 Value'>">
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xs:noNamespaceSchemaLocation="schema.xsd"
+          xsi:noNamespaceSchemaLocation="schema.xsi.xsd"
+          xml:space="preserve"
+          xml:lang="en-GB"
+          xml:base="http://example.org/base">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Complex XML Document</title>
+      <meta name="xlink" content="&entity1; &entity2; &entity3;" />
+    </head>
+    <body>
+      <section>
+        <xs:element name="xsi:schemaLocation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="xs:element" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </section>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "document.dtd" [
+  <!ENTITY percent80 "&#37;80;">
+]>
+<document xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+      <style type="text/css">
+        <![CDATA[
+          @import url("styles.css") percent80;
+          @media screen and (max-width: 640px) { body { font-size: 12px; } }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section xml:lang="en">
+        <h2>A Fruity Introduction</h2>
+        <metadata>
+          <author xml:lang="it">Paolo Giannelli</author>
+          <date>2024-12-25</date>
+        </metadata>
+        <paragraph>Fruits are sweet and juicy. &percent80;</paragraph>
+      </section>
+    </body>
+  </html>
+  <references>
+    <reference xml:lang="es" publication-date="2023-06-01">#John Smith, "The Fruity Benefits of Bananas"</reference>
+  </references>
+  <figure data-id="fruit-101">
+    <title>An image of a banana</title>
+    <graphic>image01.jpg</graphic>
+  </figure>
+</document>

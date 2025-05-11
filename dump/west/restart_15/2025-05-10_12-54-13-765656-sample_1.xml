@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-16'?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+<!ENTITY note "Note">
+<!ENTITY % macros SYSTEM "macros.xml">
+%macros;
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US"
+        xml:space="preserve">
+  <head>
+    <title>Bananas are the best fruit!</title>
+    <meta name="description" content="&note;" />
+    <style type="text/css">
+      <![CDATA[
+        body { font-size: 2.0mm; }
+        h1 { font-family: &quot;Arial&quot; }
+    ]]>
+  </style>
+  </head>
+  <body>
+    <metadata>
+      <author id="jane">Jane Doe</author>
+      <date>2024-07-26T14:00:00</date>
+    </metadata>
+  </body>
+</html>
+<namespace uri="urn:my:ns">My XML namespace</namespace>
+</document>

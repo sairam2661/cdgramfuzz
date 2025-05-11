@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % ent "ENTITIES">
+  <!ENTITY % ext "% ent;">
+  <!ENTITY num1 "1">
+  <!ENTITY num2 "2">
+]>
+<document xml:lang="en.UTF-8">
+  <html xml:space="preserve" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+      <title xml:lang="fr">Fruits sont délicieux!</title>
+    </head>
+    <body>
+      <p xml:lang="es" xmlns:xlink="http://www.w3.org/1999/xlink">Los &num2;&num1; mejores frutos son los bananos.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>
+        <first>Jane</first>
+        <last>Doe</last>
+      </name>
+      <email>jane@example.com</email>
+    </author>
+    <date>2025-05-10</date>
+  </metadata>
+</document>

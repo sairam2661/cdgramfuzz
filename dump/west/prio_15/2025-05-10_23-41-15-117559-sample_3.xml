@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY pi "3.141592653589793">
+  <!ENTITY E "2.718281828459045">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:math="http://www.w3.org/1999/Math/MathML">
+    <head>
+      <title>Maths are Fun!</title>
+      <meta name="keywords" content="pi, E, mathematics" />
+      <style><![CDATA[
+        body { font-family: Verdana, sans-serif; }
+        h2 { color: #FF0000; }
+      ]]></style>
+      <meta charset="iso-8859-1" />
+      <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    </head>
+  <body>
+    <div xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xhtml">
+      <p><math:math display="block"><math:mrow><math:mo>&pi;</math:mo><math:mrow class="MJX-TeXAtom-ORD"><math:mo>,</math:mo><math:mi EMath:moMathOperatorMathOperatorMathSpacingSpace2MathSpacingSpaceSpacingMathTextSpace2SpaceMathSpacingMathBaseMath2Style1Style1Style1Style1SpanStyle2SpanSpacingSpacingMathSpacingSpanMath2Style1Style1Style2Style1Style1MathSpacingSpacing2Spacing1SpacingStyle3MathSpanSpacing3Style1Style1Style2Style1Style2TextSpacing2TextSpacingTextMath2StyleMath2MathSpacing1MathSpacing1MathSpacing1Text1Style1Style2Style1Style2Text2Spacing2SpacingSpacing1Space2Spacing1Style2Text2Math1Spacing1Spacing2Text2Math1Spacing2Text2Text2Spacing2SpacingText1Text2TextTextSpacing1Space1Text1Text2Spacing1SpacingText11SpacingText2SpacingSpacing7Text1SpacingSpacing11Spacing1Spacing1Spacing2Text11Text1Text1Text1Text1Text1Spacing1SpacingText7Text1Text1Spacing11Text2Text1Spacing1Text1Spacing2Text11Text1Text11SpacingText1SpacingText11Spacing7Text11Text1Text1Spacing11Spacing7Text11Text1Text1Text1Text1Text1Spacing7Spacing1Spacing1Spacing11Spacing1Text11Text1Text1Text11Spacing11Spacing11Spacing2Text11Text1Spacing1Spacing1Spacing1Text11Spacing1Text11Text1Text11Text1Text11Text1Spacing1Text1Spacing11Text11Text1Text11Text1Text1Spacing1Text11Text1Spacing11Text11Text11Spacing1Text11Spacing11Text11Text7Spacing2Text11Text11Text11Text1Text1Spacing7Text11Text11Text11Spacing11Text1Text11Text1Spacing11Spacing11Text1Text11Text1Spacing11Text7Spacing1SpacingText1Spacing11Spacing1Spacing7Spacing11Text1Text7SpacingText1Spacing7Spacing1SpacingText11Spacing7Spacing11Text11Text7Spacing2Text11SpacingText11Spacing11Spacing11Text1Spacing11Text11Text11Spacing1111Spacing11Spacing1Text1Text1Spacing11Text11Spacing7Text11SpacingText1111Text11Text11Text11Text11Text11Spacing1Text1Spacing1Text11Spacing11Text11Text11Spacing11Text11Text11Spacing11SpacingText11Text1Spacing11SpacingText11Text1Text7Spacing11SpacingText7Text11Spacing1Spacing11Spacing7Spacing1Text11Spacing

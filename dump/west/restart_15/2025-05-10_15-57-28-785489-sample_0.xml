@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<document xmlns:p="http://example.com/poetry">
+  <html xmlns:x="http://example.org" lang="en-US">
+    <head>
+      <title>A poetic comparison of apples and oranges</title>
+      <meta name="keywords" content="poetry, apples, oranges" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Cambria, monospace; }
+          h1 { color: #66CC00; }
+          x:p { font-style: italics; }
+        ]]></style>
+    </head>
+    <body>
+      <p:poem>
+        <verse>
+          <p>Apples shine like golden suns,</p>
+          <p>while oranges glow like fiery orbs.</p>
+        </verse>
+      </p:poem>
+    </body>
+  </html>
+  <metadata xml:lang="fr-FR">
+    <creator>Unknown Author</creator>
+    <date>2023-12-25</date>
+  </metadata>
+</document>

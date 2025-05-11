@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "recipes.dtd" [
+  <!ENTITY fruit "&#x1F346;">]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        xml:lang="fr" xml:space="preserve">
+    <head>
+      <title>La recette de crêpe</title>
+      <meta name="author" content="Pierre Dupont" />
+      <style type="text/css"><![CDATA[
+        span{ background-color: silver; padding: 5px; }
+       .recipe{ font-weight: bold; }
+      ]]></style>
+    </head>
+    <body>
+      <p>Faites-le en suivant cette recette:</p>
+      <recipe xlink:href="#id1">
+        <id xlink:type="simple">id1</id>
+        <step>Préparez la pâte à crêpe.</step>
+        <ingredient amount="2" unit="cuillères">Saler</ingredient>
+      </recipe>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-GB">John Smith</author>
+    <date>2023-07-17</date>
+  </metadata>
+  <note xml:lang="en-GB">Note</note>
+</document>

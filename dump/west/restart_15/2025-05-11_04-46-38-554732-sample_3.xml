@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ELEMENT section ANY>
+  <!ATTLIST section id CDATA #IMPLIED>
+]>
+<document xmlns="http://mynamespace/doc"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://mynamespace/doc doc.xsd"
+          xml:lang="en"
+          xmlns:myAttr="http://mynamespaceAttr">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title>This is a title</title>
+      <meta name="description" content="A simple document." />
+    </head>
+    <body>
+      <p>This is a paragraph.</p>
+    </body>
+  </html>
+  &note;
+  <metadata>
+    <author id="author1">John Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section id="sec1">
+    <title>Section 1</title>
+    <p>This is a paragraph in section 1.</p>
+  </section>
+  <section id="sec2">
+    <title>Section 2</title>
+    <p>This is a paragraph in section 2.</p>
+  </section>
+</document>

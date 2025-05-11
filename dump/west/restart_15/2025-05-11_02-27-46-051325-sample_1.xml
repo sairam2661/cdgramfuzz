@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<!DOCTYPE document [ <!ENTITY fruit 'Apple' > ]>
+<document xmlns="http://www.example.com/ns" xml:space="preserve">
+  <html xmlns:gml="http://www.opengis.net/gml" xml:lang="de-DE">
+    <head>
+      <title>XML Fuzz Test</title>
+    </head>
+    <body>
+      <p> This is a &quote; &fruit; &quote;.</p>
+    </body>
+  </html>
+  <gml:location>
+    <gml:Point>
+      <gml:coordinates> 45.0 120.0 </gml:coordinates>
+    </gml:Point>
+  </gml:location>
+</document>

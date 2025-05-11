@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY name "John Doe">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US"
+        xml:space="preserve"
+        xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/1999/xhtml/xhtml1-transitional.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <head>
+      <title>Novel XML Fuzz Test</title>
+      <meta name="keywords" content="XML, Fuzz Test, Document" />
+    </head>
+    <body>
+      <section>
+        <h1>An Example Fragment: &fruit;</h1>
+        <p>The information below is about &name;.</p>
+        <p>Author: <author>Andrew Smith</author></p>
+      </section>
+    </body>
+  </html>
+  <metadata xml:base="https://example.com">
+    <date>2024-07-26T00:00:00Z</date>
+  </metadata>
+  <document xmlns:html="http://www.w3.org/1999/xhtml">
+    <html:section>
+      <html:p>This element will be treated as an instance of the declared document element.</html:p>
+    </html:section>
+  </document>
+</document>

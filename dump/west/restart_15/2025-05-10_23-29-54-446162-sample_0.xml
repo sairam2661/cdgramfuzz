@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY quot "&#x22;">
+]>
+<document xml:lang="en-GB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="fruits.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Bananas are the best fruit! @ $123</title>
+      <meta name="description" content="A blog on bananas. &quot;" />
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <h1>Introduction</h1>
+        <metadata>
+          <author>John Doe</author>
+          <date>2025-05-10</date>
+        </metadata>
+      </section>
+    </body>
+  </html>
+</document>

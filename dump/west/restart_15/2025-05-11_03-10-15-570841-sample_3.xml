@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY red "#FF0000">
+  <!ENTITY blue "#0000FF">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve">
+    <head>
+      <title xml:lang="fr">Les différentes nuances de bleu.</title>
+    </head>
+    <body typeof="PersonalBlog">
+      <section>
+        <h2 property="DC.title">Une liste des couleurs.</h2>
+        <ul xmlns="http://purl.org/dc/elements/1.1/" 
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+          <li about="#red">
+            <span property="DC.contributor">Violet</span> - 
+            <span property="FOAF.primaryTopic">Un bel échantillon de rouge.</span>
+          </li>
+          <li resource="#blue">
+            <span property="DCTerms.rights">La propriété d'un bleu pur.</span> 
+            <link xmlns:xlink="http://www.w3.org/1999/xlink" rel="license" xlink:href="https://en.wikipedia.org/wiki/Copyright" />
+          </li>
+        </ul>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author><![CDATA[Bruno]]></author>
+    <date>2015-08-15</date>
+  </metadata>
+</document>

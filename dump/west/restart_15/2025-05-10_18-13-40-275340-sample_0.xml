@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html|metadata|section)+>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT section (paragraph)*>
+  <!ELEMENT paragraph (#PCDATA | note)*>
+  <!ENTITY note "Note">
+]>
+<document>
+  <html>
+    <head>
+      <title>XML Fuzz Test</title>
+    </head>
+    <body>
+      <metadata>
+        <author>John Doe</author>
+        <date>2024-07-26</date>
+      </metadata>
+      <section>
+        <paragraph>Hello world!</paragraph>
+      </section>
+      <section>
+        <paragraph>&note;</paragraph>
+      </section>
+    </body>
+  </html>
+</document>

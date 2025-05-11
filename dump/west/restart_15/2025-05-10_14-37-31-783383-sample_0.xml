@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % ent SYSTEM "entity.ent">
+  %ent;
+]>
+<document xmlns="http://www.example.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.example.org/ schema.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xmlns="http://www.w3.org/XML/1998/namespace" xml:lang="en-US">Bananas</title>
+    </head>
+    <body>
+      <section xml:space="preserve">
+        <paragraph xml:lang="fr">Les bananes sont très nutritives. &note;</paragraph>
+      </section>
+    </body>
+  </html>
+  <data>
+    <item><id>1</id><value>10</value></item>
+  </data>
+</document>

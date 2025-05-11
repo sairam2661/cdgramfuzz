@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE document [<!ENTITY % test SYSTEM "file:///test.xml">%test;]>
+<document xml:lang="fr" xmlns:po="urn:ietf:rfc:3066">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve" media="all">
+    <head>
+      <style><![CDATA[
+        body { font-family: Courier, monospace; }
+        h1 { color: #00FFFF; }
+      ]]></style>
+      <meta name="dcterms.title" content="La banane"/>
+      <meta name="dc.title" content="Banane"/>
+      <title xml:lang="es ">Bananas</title>
+    </head>
+    <body>
+      <section>
+        <p xml:lang="de">Bananas sind sehr gesund!&note;</p>
+        <p xml:lang="es">Las bananas son muy nutricionallas&note;</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <date>2007-11-20</date>
+    <author>Jane Doe</author>
+  </metadata>
+</document>

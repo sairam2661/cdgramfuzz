@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "numbers.dtd" [
+  <!ENTITY pi "3.141592653589793238462643383279">
+  <!ENTITY e "2.71828182845904523536028747135266250">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://www.example.com/schema.xsd">
+    <head prefix="urn:mynamespace: math">
+      <title>Mathematical Functions</title>
+      <meta name="category" content="calculus" />
+    </head>
+    <body>
+      <xsl:apply-templates select="."/>
+    </body>
+  </html>
+  <comments>
+    <note>This is a test.</note>
+    <note>This is another test.</note>
+  </comments>
+  <section>
+    <title>Mathematical Constants</title>
+    <item>
+      <name>PI</name>
+      <value>&pi;</value>
+    </item>
+    <item>
+      <name>E</name>
+      <value>&e;</value>
+    </item>
+  </section>
+</document>

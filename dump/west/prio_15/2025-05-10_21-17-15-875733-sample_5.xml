@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE document SYSTEM "data.dtd" [
+  <!ELEMENT document (meta+, body+)>
+  <!ELEMENT head (title, meta+)>]>
+<document>
+  <html xmlns:e="urn:example:e" xml:lang="fr" xml:space="preserve">
+    <head>
+      <title>Example of XML</title>
+      <meta name="author" content="Your Name"/>
+    </head>
+    <body>
+      <h1 e:direction="ltr">Introduction in French</h1>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>John Doe</name>
+      <title>Author</title>
+    </author>
+  </metadata>
+  <section>
+    <paragraph>This is an XML paragraph</paragraph>
+    <paragraph>&lt;p&gt;And this one too!&lt;/p&gt;</paragraph>
+  </section>
+</document>

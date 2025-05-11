@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY xslt "XSLT transformation">
+]>
+<document xmlns="http://example.org" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>Colorful World</title>
+    </head>
+    <body>
+      <style type="text/css">
+        <![CDATA[
+          /* CSS comment */
+          body { font-family: Arial, sans-serif; }
+          table { border-collapse: collapse; }
+        ]]>
+      </style>
+      <table>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   targetNamespace="http://example.org">
+          <xs:element name="color" type="xs:token"/>
+        </xs:schema>
+        <tr>
+          <td><xs:element name="color">Red</xs:element></td>
+          <td><xs:element name="color">Green</xs:element></td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2020-07-25</date>
+  </metadata>
+  <section>
+    <xs:element name="description">
+      A color can have any value. &xslt;
+    </xs:element>
+  </section>
+</document>

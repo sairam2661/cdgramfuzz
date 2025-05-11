@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % entities "ENTITIES">
+  %entities;
+]>
+<document xmlns="http://www.example.com/document"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="document.xsd"
+          xml:lang="en">
+  <html>
+    <head>
+      <title xml:space="preserve">This is a preserved space</title>
+      <meta name="description" content="A &amp; very &amp; interesting &amp; blog!"/>
+    </head>
+    <body><p>Hello, world!</p></body>
+  </html>
+</document>

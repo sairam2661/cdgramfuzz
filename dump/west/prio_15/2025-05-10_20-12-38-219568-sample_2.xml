@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/my.dtd" [ <!ENTITY % x " x "> ]>
+<document xmlns:custom="http://example.com/my-schema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:math="http://www.w3.org/1998/Math/MathML"
+    xsi:noNamespaceSchemaLocation="my.xsd"
+    xml:lang="en">
+  <html>
+    <head>
+      <title>Math Problem</title>
+    </head>
+    <body>
+      <custom:math-equation>
+        <math:mrow>
+          <math:mi>x</math:mi> &custom;x;
+          <math:mrow>
+            <math:mo>=</math:mo>
+            <math:msup>
+                <math:mn>7</math:mn>
+                <math:mrow>
+                    <math:mo>-</math:mo>
+                    <math:msup>
+                        <math:mn>4</math:mn>
+                        <math:mrow>
+                            <math:mo>+</math:mo>
+                            <math:mn>2</math:mn>
+                        </math:mrow>
+                    </math:msup>
+                </math:mrow>
+            </math:msup>
+          </math:mrow>
+        </math:mrow>
+      </custom:math-equation>
+    </body>
+  </html>
+</document>

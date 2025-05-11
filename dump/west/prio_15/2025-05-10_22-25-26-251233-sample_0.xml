@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY cap "CAPS">
+  <!ENTITY amp "&amp;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:space="preserve"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xml:lang="en-CA">
+    <head>
+      <title>Bananas are the best fruit!</title>
+    </head>
+    <body>
+      <section>
+        <svg:svg width="40" height="40">
+          <svg:rect x="10" y="10" width="20" height="20" />
+        </svg:svg>
+        <p>Bananas are very nutritious. &note; &cap; <greeting>Hello, World!</greeting></p>
+      </section>
+    </body>
+  </html>
+  <annotations>
+    <annotation>
+      An XML annotation.
+    </annotation>
+  </annotations>
+  <metadata>
+    <author>Jane Doe</author>
+  </metadata>
+</document>

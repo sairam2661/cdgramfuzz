@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "music.dtd" [
+  <!ENTITY chord "G7">
+  <!ENTITY note "Sharp">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:base="https://example.com/"
+        xml:lang="en-GB">
+    <head prefix="math:"
+          xmlns:math="http://www.example.com/math">
+      <title>Music Composition</title>
+      <meta name="copyright" content="2020" />
+      <style xmlns=""><![CDATA[
+        body { font-size: 1.5em; }
+        h1 { text-decoration: underline; }
+      ]]></style>
+    </head>
+  <body>
+    <section>
+      <subsection>
+        <paragraph>Composition techniques can involve multiple layers:
+          <math:equation>&chord; chord is used in the key</math:equation>.</paragraph>
+      </subsection>
+    </section>
+    <metadata>
+      <author>Alice Smith</author>
+      <date>2020-06-25</date>
+    </metadata>
+  </body>
+</html>
+  <document-fragment>
+    <p>This text uses XInclude:</p>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fragment.xml"/>
+  </document-fragment>
+</document>

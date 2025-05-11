@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/example.dtd" [
+  <!ENTITY fruit "Apples">
+]>
+<document xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xml:lang="en-US" xml:space="preserve"
+          expandEntities="yes">
+  <html>
+    <head>
+      <title>Oranges are good for you!</title>
+      <meta name="description" content="A tutorial on citrus fruits." />
+      <style type="text/css">
+        <![CDATA[body { font-family: Arial, Helvetica; }
+          h1 { color: #008000; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <metadata>
+        <author>John Smith</author>
+        <date>2024-07-27</date>
+      </metadata>
+      <section xml:id="section-1">
+        <h1>Interesting Facts</h1>
+        <paragraph>&fruit; are a good source of fiber.</paragraph>
+      </section>
+    </body>
+  </html>
+</document>

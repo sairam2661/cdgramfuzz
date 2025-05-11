@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+  <!ENTITY % entity "entity content">
+  <!ENTITY % ref "%entity;">
+]>
+<document xml:lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:space="preserve">XML is fun!</title>
+      <meta name="keywords" content="xml xhtml"/>
+    </head>
+    <body>
+      <p>Talking about &refs;.</p>
+      <pre>
+        <![CDATA[
+          The following is preformatted text which 
+          &won't be wrapped;
+        ]]>
+      </pre>
+      <style type="text/css">/*<![CDATA[*/
+        h1 { font-size: 16pt; }
+      /*]]>*/</style>
+    </body>
+  </html>
+  <metadata>
+    <author>&ent;</author>
+    <date>2024-07-26</date>
+  </metadata>
+  <section>
+    <paragraph>This is a very complex document</paragraph>
+  </section>
+</document>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+  <!ELEMENT html (#PCDATA|head|body)*>
+  <!ATTLIST html xml:space (default|preserve) #IMPLIED>
+]>
+<document>
+  <html xml:space="preserve">
+    <head>
+      <title>Test</title>
+    </head>
+    <body>
+      <metadata>
+        <author>John</author>
+        <date>2022</date>
+      </metadata>
+      <section>
+        <p xml:lang="en" xml:base="baseurl">Test</p>
+        <p>A Test</p>
+      </section>
+    </body>
+  </html>
+</document>

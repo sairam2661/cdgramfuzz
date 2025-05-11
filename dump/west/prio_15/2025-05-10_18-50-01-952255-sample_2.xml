@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document PUBLIC "-//example//DTD Document 1.0//EN" "document.dtd" [
+  <!ENTITY desc "A testing document.">
+  <!ELEMENT description (#PCDATA)*>]>
+<document xmlns:cmt="http://www.example.com/comment"
+          cmt:comment="This document is a test case.">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Testing Document</title>
+      <meta name="&desc;" content="Document is being tested. "/>
+    </head>
+    <body>
+      <p>This document is a test case.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>John Smith</name>
+      <title>Software Developer</title>
+    </author>
+    <date>2024-07-26</date>
+  </metadata>
+  <section>
+    <h2>Section Heading</h2>
+    <p>This is a paragraph inside a section.</p>
+  </section>
+</document>

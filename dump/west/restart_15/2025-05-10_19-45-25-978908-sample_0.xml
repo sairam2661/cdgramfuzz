@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+  %html;
+]>
+<document xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Tropical Fruits</title>
+      <meta name="content-language" content="en-us"/>
+    </head>
+    <body>
+      <p>This is a special paragraph.</p>
+      <section>
+        <xsl:stylesheet version="1.0">
+          <xsl:template match="/document">
+            <p>Hello, World!</p>
+          </xsl:template>
+        </xsl:stylesheet>
+      </section>
+    </body>
+  </html>
+</document>

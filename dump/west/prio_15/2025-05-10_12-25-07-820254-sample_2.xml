@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "&#x1F34C;">
+  <!ENTITY amp "&amp;">
+]>
+<document xml:lang="en">
+  <html xmlns:svg="http://www.w3.org/2000/svg">
+    <head>
+      <title>XML Document</title>
+      <meta xmlns="" name="description" content="A short and sweet XML document."/>
+    </head>
+    <body>
+      <p>Try parsing this document: &amp; &note; &fruit;</p>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-07-26</date>
+  </metadata>
+</document>

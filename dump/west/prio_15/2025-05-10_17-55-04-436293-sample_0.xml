@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "tree.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY gt "&gt;">
+  <!ENTITY lt "&lt;">
+]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML">
+  <html xml:lang="fr" xmlns:frame="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Complex Mathematical Operations</title>
+      <style type="text/css"><![CDATA[
+        p { font-family: Courier; }
+        h2 { color: #009900; }
+      ]]></style>
+    </head>
+    <body>
+      <math:math>
+        <math:mrow>
+          <math:munder>
+            <math:mo>&sum;</math:mo>
+            <math:mrow>
+              <math:mo>&macr;</math:mo>
+              <math:mi>x</math:mi>
+              <math:mo>&le;</math:mo>
+              <math:mn>2</math:mn>
+            </math:mrow>
+          </math:munder>
+        </math:mrow>
+      </math:math>
+      <p>This example explains the importance of proper <xsl:apply-templates select="/nodes" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>.</p>
+      <paragraph>This is <var>nested</var> text <inline>between</inline> tags.</paragraph>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <license>CC-BY-SA 4.0</license>
+  </metadata>
+</document>

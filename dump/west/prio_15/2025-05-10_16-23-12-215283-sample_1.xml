@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section+)>
+  <!ELEMENT html (#PCDATA | meta | style | title)*>
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT author (#PCDATA | note)*>
+  <!ELEMENT date (#PCDATA | year | month)*>
+  <!ELEMENT section (paragraph)*>
+  <!ELEMENT paragraph (#PCDATA | entity | note)*>
+  <!ELEMENT note (#PCDATA | space | attribute | nbsp | b | font)*>
+  <!ELEMENT space (#PCDATA | space)*>
+  <!ELEMENT attribute (#PCDATA | space)*>
+]>
+<document xmlns="http://www.w3.org/1999/xhtml"
+          xml:lang="fr-CA"
+          xml:base="https://example.com"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="fruits.xsd fruits.xsd">
+  <html>
+    <head>
+      <title>Paris</title>
+      <meta name="language" content="fr" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style><![CDATA[
+        body { font-family: &quot;Times New Roman&quot; sans-serif; }
+        h1 { font-style: italic; color: #0000ff; }
+      ]]></style>
+    </head>
+    <body>
+      <h1>Visitez Paris</h1>
+    </body>
+  </html>
+  <metadata xmlns:date="http://www.example.org/date"></metadata>
+  <section>
+    <quote><![CDATA[Paris  est  la  capitale  de  la  France]]></quote>
+  </section>
+  <section>
+    <paragraph>La  réputation  de  Paris  la  dépend</paragraph>
+  </section>
+</document>

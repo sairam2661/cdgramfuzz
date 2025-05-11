@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE document SYSTEM "schemalocation.dtd" [
+  <!ENTITY entity1 "Value1">
+  <!ENTITY entity2 "Value2&quot;">
+]>
+<document xmlns:local="http://example.org/local"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xml:lang="en"
+          xml:base="baseurl">
+  <html xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xml:space="preserve">
+    <head>
+      <title>Ridiculously Long Title That Should Be Cut Off By The Parser.</title>
+      <style type="text/css">
+        <![CDATA[
+          body { font-family: Palatino, serif; }
+          h1 { color: #FF0000; }
+          local:tag { color: #FFFF00; }
+        ]]>
+      </style>
+      <meta name="description" content="A blog on &amp;.&amp;. " />
+    </head>
+    <body>
+      <section>
+        <section><p>Value with entity replacement:
+           <![CDATA[&entity1; &entity2;
+            ]]>
+          </p></section></section>
+    </body>
+  </html>
+  <metadata>
+    <author>Marcus Me.</author>
+    <date>2099-05-10</date>
+  </metadata>
+</document>

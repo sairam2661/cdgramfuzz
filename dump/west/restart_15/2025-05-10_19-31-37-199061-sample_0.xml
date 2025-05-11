@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "schema.dtd" [
+  <!ENTITY cat "Cat">
+  <!ENTITY dog "Dog">
+  <!ENTITY cat-and-dog "&cat; and &dog;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>XML Fuzz Test</title>
+      <meta name="author" content="John Doe" />
+    </head>
+    <body>
+      <h1 xml:lang="fr">Mon <b>chien</b> est un &cat;</h1>
+      <p>My <cite>friend</cite> has a &cat-and-dog;.</p>
+      <style type="text/css">pre{font-size: 24pt;}</style>
+      <pre>&dog;</pre>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <modified>2023-12-31T23:59:59</modified>
+  </metadata>
+</document>

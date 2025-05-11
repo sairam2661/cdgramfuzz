@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "document" "document.dtd" [
+  <!ENTITY num "1">
+  <!ENTITY string "Hello, world!">
+]>
+<document version="5">
+  <html xml:base="https://example.org" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title>Test Document</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+      <p xml:lang="en">The &string; number is &num;.</p>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+    </body>
+  </html>
+  <metadata xmlns:g="http://example.org/extension">
+    <author g:id="A-1000">John Smith</author>
+    <date>2024-07-26</date>
+  </metadata>
+</document>

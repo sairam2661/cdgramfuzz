@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "data.dtd" [
+  <!ENTITY num "42">
+  <!ENTITY str "<strong>Hello World</strong>">
+]>
+<document xmlns:my="http://example.com/ns"
+          xml:space="preserve"
+          xml:lang="en-US">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-US">
+    <head>
+      <title xmlns="http://www.w3.org/1999/xhtml">XML is fun!</title>
+      <meta name="description" content="A blog on XML." />
+      <style type="text/css">
+        <![CDATA[
+          html { font-family: Verdana, Arial, sans-serif; }
+          body { background: #F0F0F0; }
+        ]]></style>
+    </head>
+    <body>
+      <section>
+        <h1 xml:lang="fr">Bonjour!</h1>
+        <p>XML has many features &num; &str;</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-CA">Michael Smith</author>
+    <date>2025-07-20</date>
+  </metadata>
+</document>

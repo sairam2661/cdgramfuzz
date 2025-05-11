@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY fruit "<choice>Apple</choice>">
+]>
+<document xml:id="example">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:foo="http://example.com/foo"
+        xml:lang="en-US">
+    <head>
+      <title>XML and Fruits</title>
+      <meta name="description" content="A blog on fruits." />
+      <style type="text/css">
+        <![CDATA[
+          body { display: block; }
+          h1 { font-family: inherit; }
+      ]]></style>
+    </head>
+  <body>
+    <h1 xml:space="preserve">Fruits are Delicious!&fruits;</h1>
+  </body>
+</html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2024-01-01</date>
+  </metadata>
+  <section id="sec1">
+    <paragraph>Bananas are very nutritious.</paragraph>
+  </section>
+</document>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//FOO//DTD Document V1.0//EN" 
+    "http://example.com/document.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-GB"
+        xml:space="preserve">
+    <head>
+      <title>§Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas. &quot;" />
+      <style>
+        <![CDATA[
+          @import "styles.css";
+          h1 { color: #0AE;}
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p xml:base="http://www.example.com">Bananas are very nutritious.</p>
+    </body>
+  </html>
+  <metadata>
+    <author xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:type="Author">
+      <name>Jane Doe</name>
+    </author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>Bananas are very nutritious. &amp;note;</paragraph>
+  </section>
+</document>

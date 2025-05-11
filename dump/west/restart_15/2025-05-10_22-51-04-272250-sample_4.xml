@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ENTITY amp "&#38;">
+  <!ENTITY ndash "&#8211;">
+  <!ENTITY quot "&#34;">
+
+]>
+<document xmlns="http://example.org/ns" 
+          xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+          xml:lang="en"
+          version="2.0"
+          charset="ISO-8859-1"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>XML Document</title>
+    </head>
+    <body>
+      <section>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.org/ns">
+          <xs:elements name="element">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="child" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:elements>
+        </xs:schema>
+        <element>
+          <child>Value 1</child>
+          <child>Value 2 &amp; &ndash; &quot;Value 3&quot;</child>
+        </element>
+      </section>
+    </body>
+  </html>
+</document>

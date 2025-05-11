@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doc.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY quot "&quot;">
+]>
+<document xml:lang="en" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.example.com/ns"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.example.com/ns schema.xsd">
+  <html>
+    <head><title>Math</title></head>
+    <body>
+      <equation xmlns:math="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mtable columnalign="left right">
+            <mtr>
+              <mtd><mrow><msup><mi>x</mi><mrow><mo>+</mo><mn>2</mn></mrow></msup><mo>=</mo></mrow></mtd>
+              <mtd><mrow><msup><mn>4</mn><mrow><mo>+</mo><mn>1</mn></mrow></msup></mrow></mtd>
+            </mtr>
+          </mtable>
+        </math>
+      </equation>
+      <section>
+        <paragraph>&quot;I love numbers&quot; said Bob. &amp; He was right.</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-07-20</date>
+    <category>Science</category>
+  </metadata>
+</document>

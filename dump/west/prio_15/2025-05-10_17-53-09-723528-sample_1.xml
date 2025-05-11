@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document SYSTEM "catalog.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "&#60;">
+  <!ENTITY gt "&#62;">
+]>
+<document xmlns:fb="http://www.facebook.com/schemas/og/"
+          xml:lang="en-US" xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:m="http://www.w3.org/1999/xhtml/mason"
+        lang="en">
+    <head>
+      <title>Complex XML Document</title>
+      <title xml:lang="fr">Document XML complexe</title>
+      <meta name="og:title" content="Document XML complexe" />
+    </head>
+    <body fb:app_id="1234567890">
+      <h1>Heading 1 <fb:xfbml version="true" /></h1>
+      <p>This is a paragraph with an entity: &amp;lt; entity: &amp;gt;</p>
+    </body>
+  </html>
+  <metadata>
+    <section>
+      <info>
+        <author>John Doe</author>
+      </info>
+    </section>
+  </metadata>
+</document>

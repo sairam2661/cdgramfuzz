@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE document [
+  <!ENTITY percent99 "&#37;"> 
+  <!ELEMENT document (#PCDATA)*> 
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title> Fruit Salad </title>
+      <style>
+        <![CDATA[
+        body { font-family: Arial, sans-serif; }
+        div > p { padding: 0.5em 1em; }
+        span { background-color: lightblue; font-weight: bold; }
+        ]]></style>
+    </head>
+    <body>
+      <p>Main Ingredients: <span>pineapple<sub>&percent99;</sub>, kiwi, and strawberries</span></p>
+    </body>
+  </html>
+</document>

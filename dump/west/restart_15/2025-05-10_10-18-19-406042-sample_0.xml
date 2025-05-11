@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY amp "&amp;">
+  <!ENTITY num "123">
+]>
+<document>
+  <html version="XHTML 1.1"
+        xml:base="https://example.com/html"
+        xmlns="http://www.w3.org/1999/xhtml">
+    <head profile="http://example.com/profile">
+      <title>Math Problem</title>
+      <meta name="keywords" content="math, education, learning" />
+    </head>
+    <body>
+      <script>
+        <![CDATA[
+          var x = 10;
+          var y = 20;
+          console.log( x + &num; &amp; y );
+        ]]>
+      </script>
+    </body>
+  </html>
+</document>

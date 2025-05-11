@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "folding.dtd" [
+  <!ENTITY alpha "Alpha">
+  <!ENTITY beta "Beta">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+        xml:base="https://example.com"
+        xml:space="preserve">
+    <head>
+      <title xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="schema.xsd"
+              prefix="title">Beta</title>
+    </head>
+    <body>
+      <table xmlns:xi="http://www.w3.org/2001/XInclude">
+        <tr>
+          <td>
+            <figure>
+              <legend>Alpha</legend>
+              <xi:include href="//beta.xml"/>
+            </figure>
+          </td>
+        </tr>
+      </table>
+      <comment>&beta;</comment>
+    </body>
+  </html>
+  <metadata>
+    <author xml:id="jane">Jane Doe</author>
+    <date>2025-12-31</date>
+  </metadata>
+</document>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "vocabulary.dtd" [
+  <!ENTITY percent "100%">
+  <!ATTLIST document deprecated CDATA #IMPLIED>
+]>
+<document xmlns:foo="http://example.com"
+  xml:lang="en-US"
+  foo:prefix="xyz">
+  <html>
+    <head>
+      <title>Complex nested structure</title>
+    </head>
+    <body>
+      <!-- Entity reference -->
+      <span>&percent;</span>
+      <!-- Namespace and attribute -->
+      <foo:element foo:attribute="value">
+        <!-- Mixed content -->
+        <p>Text content<sup>1</sup><foo:reference>entity</foo:reference>more text</p>
+        <!-- CDATA section -->
+        <section><![CDATA[<foo:element>]]></section>
+      </foo:element>
+    </body>
+  </html>
+</document>

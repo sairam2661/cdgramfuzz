@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+  <!ATTLIST document
+    id ID #REQUIRED
+    xml:lang CDATA #REQUIRED
+  >
+]>
+<document xml:lang="fr-FR" id="mydoc">
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:math="http://www.w3.org/1998/Math/MathML">
+    <head>
+      <title>XML is fun!</title>
+    </head>
+    <body>
+      <p>Try the MathML element: <math:math
+          displaystyle="true">
+        <math:mi>&pi;</math:mi>
+        <math:mo>=</math:mo>
+        <math:mrow data-mjx-texclass="ORD"><math:mn>22</math:mn><math:mo>/</math:mo><math:mn>7</math:mn></math:mrow>
+      </math:math></p>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-US">John Smith</author>
+    <date>2023-07-26</date>
+  </metadata>
+  <section>
+    <p>Example of <i>italic</i> text.</p>
+  </section>
+</document>

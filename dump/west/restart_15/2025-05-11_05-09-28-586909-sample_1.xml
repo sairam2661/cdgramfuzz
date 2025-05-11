@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "books.dtd">
+<document xmlns="http://example.com" xml:lang="fr">
+  <html xmlns:x="http://example.org">
+    <head prefix="x:">
+      <title xml:lang="en">The Meaning of Life</title>
+      <meta name="author" value="John Doe" scheme="urn" />
+    </head>
+    <body>
+      <p>Non, <x:link href="https://example.org">c'est ici que je mets mon texte</x:link>!</p>
+    </body>
+  </html>
+</document>

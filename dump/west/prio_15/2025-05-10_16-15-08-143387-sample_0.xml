@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % general-public "public">
+  <!ELEMENT document (#PCDATA)*>]>
+<document xml:space="preserve">
+  <html xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="nl-BE">
+    <head>
+      <title>XML Test of various things</title>
+    </head>
+    <body>
+      <xi:include href="included_data.xml" xpointer="xpointer()">
+        <xi:fallback xmlns:xi="http://www.w3.org/2001/XInclude">
+          <p>No included data.</p>
+        </xi:fallback>
+      </xi:include>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2024-06-15</date>
+  </metadata>
+</document>

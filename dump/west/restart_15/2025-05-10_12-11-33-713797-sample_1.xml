@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY color1 "Red">
+  <!ENTITY color2 "Green">
+]>
+<document>
+  <html xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Color Chart</title>
+      <meta name="description" content="A chart of colors." />
+      <style type="text/css" media="screen">
+        <![CDATA[
+          @import url("style.css");
+          @namespace xs "http://www.w3.org/2001/XMLSchema";
+          xs:simpleType name="color" final="#FF0000";
+        ]]>
+      </style>
+    </head>
+    <body>
+      <xs:element name="color" type="xs:string"/>
+      <xs:attribute name="color" type="xs:string"/>
+      <section>
+        <paragraph>Colors are very beautiful: <xs:element name="color" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Red</xs:element> and <xs:element name="color" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Green</xs:element>.</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata xml:base="https://example.com">
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+    <item rdf:ID="item1">
+      <title>Color Chart</title>
+    </item>
+  </metadata>
+</document>

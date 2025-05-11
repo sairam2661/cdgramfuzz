@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "https://www.example.com/schema.dtd" [
+  <!ENTITY % data "ENTITIES">
+  <!ENTITY % ext-attrs "EXT-ATTRS">
+]>
+<document>
+  <html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xml:lang="en-US"
+    xml:space="preserve">
+    <head>
+      <title xmlns="http://www.w3.org/1999/xhtml">Coconuts are tasty!</title>
+      <meta
+        name="description"
+        content="A blog on coconuts and &foo;"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xlink:href="#id"
+        xml:base="http://example.org" />
+    </head>
+  <body>
+    <style xmlns="http://www.w3.org/1999/xhtml">
+      <![CDATA[
+        p { font-size: 12px; }
+      ]]></style>
+    <section>
+      <p>Bananas are a great source of potassium.</p>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <element xmlns="http://example.org" attribute="value"/>
+  </metadata>
+</document>

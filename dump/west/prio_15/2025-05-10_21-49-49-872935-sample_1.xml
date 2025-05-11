@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % f "foo">
+  <!ENTITY % g "%f%g">
+  <!ENTITY g "bar">
+  <!ENTITY % h "&g;">
+  <!ENTITY % i "%h">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.w3.org/2001/XMLSchema">
+    <head xml:lang="en-US">
+      <title>Testing Entities</title>
+    </head>
+    <body>
+      <p>Value of entity %i; is &i;</p>
+    </body>
+  </html>
+</document>

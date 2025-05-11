@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % xml-entity-set "IGNORE">
+  <!ENTITY fruit "Apple">
+]>
+<document version="1.0" xmlns="http://example.com/ns"
+         xsi:noNamespaceSchemaLocation="http://example.com/schema.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-AU">
+    <head><title>Apple Pie Recipe</title></head>
+    <body>
+      <section>
+        <h1>Ingredients:</h1>
+        <ul>
+          <li>&fruit;</li>
+          <li>Flour</li>
+        </ul>
+      </section>
+      <metadata>
+        <author>John Doe</author>
+        <revision>1.1</revision>
+      </metadata>
+      <annotation xml:lang="fr">Note</annotation>
+    </body>
+  </html>
+  <extension xmlns:ex="http://example.com/extension">
+    <ex:element/>
+  </extension>
+  <comment>&note;</comment>
+</document>

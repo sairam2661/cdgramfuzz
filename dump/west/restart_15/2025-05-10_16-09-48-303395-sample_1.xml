@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE document SYSTEM "http://example.com/doctype.dtd" [
+  <!ENTITY fruit "Banana">
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/xsd.xsd"
+          xml:base="http://example.com/base">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Testing the parser!</title>
+    </head>
+    <body>
+      <p>Some text: <b>bold</b> and <i>italic</i>!</p>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2025-02-14</date>
+  </metadata>
+  <section>
+    <paragraph>
+      I &fruit; love reading
+      <span style="color:#FFFF00">about the history of XML</span>.
+    </paragraph>
+  </section>
+</document>

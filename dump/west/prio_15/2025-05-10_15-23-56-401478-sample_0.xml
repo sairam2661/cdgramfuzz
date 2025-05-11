@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html+)>
+  <!ELEMENT html (mixed-content)>
+  <!ELEMENT mixed-content (p|img|script)*>
+  <!ELEMENT p (#PCDATA|note)*>
+  <!ELEMENT note (#PCDATA|note)*>
+  <!ELEMENT img EMPTY>
+  <!ELEMENT script EMPTY>
+]>
+<document>
+  <html>
+    <head>
+      <title>XML Test</title>
+    </head>
+    <body>
+      <p>This is a paragraph.
+        <note>This is a note.</note>
+        This is the rest of the paragraph.</p>
+      <img src="image.jpg" alt="A test image" />
+      <script>console.log('Hello World!');</script>
+    </body>
+  </html>
+</document>

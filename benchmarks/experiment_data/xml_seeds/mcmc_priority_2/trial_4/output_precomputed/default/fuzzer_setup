@@ -1,0 +1,7 @@
+# environment variables:
+AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
+AFL_KILL_SIGNAL=9
+AFL_NO_UI=1
+AFL_SKIP_CPUFREQ=1
+# command line:
+'afl-fuzz' '-i' '/data/saiva/experiment_data/xml_seeds/mcmc_priority_2/llm_seeds' '-o' '/data/saiva/experiment_data/xml_seeds/mcmc_priority_2/trial_4/output_precomputed' '-V' '3600' '--' '/data/saiva/harness' '--valid' '@@'

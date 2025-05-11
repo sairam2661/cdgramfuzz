@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/document.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY ent "&#160;">
+]>
+<document xml:space="preserve" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <html xmlns:svg="http://www.w3.org/2000/svg">
+    <head>
+      <title>XML is fun</title>
+      <style>
+        <![CDATA[
+          @media (max-width: 600px) { h1 { font-size: 10pt; } }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <title>Section Title</title>
+        <para>&entity;</para>
+        <item>
+          <name>Item 1</name>
+          <description>&note;</description>
+        </item>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane &amp; John</author>
+  </metadata>
+</document>

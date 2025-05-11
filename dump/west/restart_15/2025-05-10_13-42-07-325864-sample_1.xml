@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "https://example.com/schemas/fruits.dtd" [
+  <!ENTITY fruit "strawberry">
+]>
+<document xmlns:foo="http://example.com/foo"
+          xml:space="preserve"
+          xml:lang="en-US"
+          version="0.2"
+          id="example-document"
+          foo:attr="bar"
+          foo:other-attr="baz">
+  <html xmlns="">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+    </head>
+    <body>
+      <p>Bananas are very nutritious</p>
+      <section>
+        <table><tr><td>Table cell</td></tr></table>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="es">Juan Sánchez</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <foo:custom foo:another-attribute="qwerty">
+    &fruit;
+  </foo:custom>
+</document>

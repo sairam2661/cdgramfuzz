@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (xml-stylesheet, html)>
+  <!ELEMENT xml-stylesheet EMPTY>
+  <!ATTLIST xml-stylesheet href CDATA #REQUIRED>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT head EMPTY>
+  <!ELEMENT body EMPTY>
+]>
+<document xml:lang="en"
+    xml:base="http://example.org">
+  <html>
+    <head>
+      <title>Complex XML</title>
+      <meta charset="ISO-8859-1" />
+    </head>
+    <body>
+      <p lang="fr">Bonjour</p>
+      <script type="text/javascript">
+        console.log('Hello World');
+      </script>
+    </body>
+  </html>
+</document>

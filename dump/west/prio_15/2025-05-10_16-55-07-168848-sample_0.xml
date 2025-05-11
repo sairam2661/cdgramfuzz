@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XMLSCHEMA 1.1//EN"
+"http://www.w3.org/2001/XMLSchema.dtd">
+<document xmlns="http://example.com/document"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="document.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:lang="fr">Les bananes sont délicieuses!</title>
+    </head>
+    <body>
+      <p xml:space="preserve">Bananas are very nutritious. &ndash;</p>
+      <custom xmlns="http://example.com/custom">
+        <param name="value">12345</param>
+      </custom>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>Jane</name>
+      <address>
+        <street>123 Main Street</street>
+        <city>New York</city>
+        <country>USA</country>
+      </address>
+    </author>
+  </metadata>
+</document>

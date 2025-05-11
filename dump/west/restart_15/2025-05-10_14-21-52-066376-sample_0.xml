@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd">
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+      <title xml:lang="de">Apfelsorten im Vergleich</title>
+      <meta name="keywords" content="#F0F" />
+    </head>
+    <body>
+      <p> 
+        <span xml:lang="es">Me gustan los platano. </span> &amp;
+        <foo xmlns="http://example.org/xmlns"></foo>
+      </p>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">Jean Dupont</author>
+    <date>2024-02-18T10:00:00Z</date>
+  </metadata>
+  <namespace xmlns:c="http://example.org/namespace">c</namespace>
+</document>

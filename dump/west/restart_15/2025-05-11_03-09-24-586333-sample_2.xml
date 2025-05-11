@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY foo "bar">
+  <!ENTITY baz "<p> baz </p>">
+]>
+<document xml:space="preserve"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xml:lang="de-CH"
+         xml:base="http://example.com">
+  <html>
+    <head>
+      <title>Hello, World!</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <style>
+        <![CDATA[
+          p { font-size: 18pt; }
+          @namespace xs "http://www.w3.org/2001/XMLSchema";
+          @import "style.xsl";
+        ]]>
+      </style>
+    </head>
+    <body>
+      <metadata>
+        <author>Alice Smith</author>
+        <date>&foo;</date>
+      </metadata>
+      <section>
+        &baz;
+      </section>
+    </body>
+  </html>
+</document>

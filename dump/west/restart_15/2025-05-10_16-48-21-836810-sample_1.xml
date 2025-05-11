@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "example.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT fruit-list EMPTY>
+]>
+<document xmlns:foo="http://example.com/foo"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta charset="UTF-8" />
+      <title>XML test</title>
+    </head>
+    <body>
+      <h1>XML Fruit List</h1>
+      <foo:paragraph>
+        The fruit list contains:
+        <fruit-list>
+          <item>&fruit;</item>
+          <item>Orange</item>
+        </fruit-list>
+      </foo:paragraph>
+      <pre>Hello
+      World!</pre>
+    </body>
+  </html>
+  <metadata>
+    <author xmlns="http://example.com/ns/author">John Doe</author>
+    <date>2022-01-01</date>
+  </metadata>
+</document>

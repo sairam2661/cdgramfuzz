@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD MathML 3.0//EN" "http://www.w3.org/Math/DTD/mathml3/mathml3.dtd" [
+  <!ENTITY pi "3.14">
+]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML" xml:lang="en-GB">
+  <html>
+    <head>
+      <title>Math Fun!</title>
+      <meta name="author" content="John"/>
+    </head>
+    <body>
+      <math:math>
+        <math:mrow>
+          <math:mi>x</math:mi>
+          <math:mo>+</math:mo>
+          <math:mi>y</math:mi>
+        </math:mrow>
+      </math:math>
+    </body>
+  </html>
+  <data>
+    <values>
+      <value>10</value>
+      <value>20</value>
+    </values>
+  </data>
+  <comments xml:lang="fr">Ce document est utile.</comments>
+</document>

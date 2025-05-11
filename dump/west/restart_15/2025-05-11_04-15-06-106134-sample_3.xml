@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc SYSTEM "schema.dtd">
+<document xmlns:svg="http://www.w3.org/2000/svg"
+          xml:lang="en"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Example Document</title>
+      <meta charset="UTF-8" />
+      <style type="text/css">
+        <![CDATA[
+          @import url("style.css");
+          p { font-size: 12pt; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <h1>Section Title</h1>
+        <p>This is an example paragraph with a little math: 1 + 2 = 3.</p>
+      </section>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 100 100">
+        <rect x="20" y="20" width="60" height="60" />
+      </svg>
+    </body>
+  </html>
+  <meta2>
+    <key>author</key>
+    <value>John Doe</value>
+  </meta2>
+  <note>&entity1; and &entity2;</note>
+  <document2>
+    <tag>sample</tag>
+  </document2>
+</document>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "&#60;">
+  <!ENTITY gt "&#62;">
+  <!ENTITY quot "&#34;">
+  <!ENTITY apos "&#39;">
+]>
+<document xmlns="http://example.com"
+  xsi:noNamespaceSchemaLocation="http://example.com/schema.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <html xmlns:gml="http://www.opengis.net/gml"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>This is a long title with multiple lines:</title>
+      <style type="text/css" media="all">
+        <![CDATA[
+          body { font-family: Arial Black, impact ; }
+        ]]>
+      </style>
+    </head>
+    <body xml:lang="fr">
+      <article>
+        <h1 xml:lang="en" xml:space="preserve">A test article</h1>
+        <section>
+          <para>This is a para element with special character &amp;!</para>
+        </section>
+      </article>
+    </body>
+  </html>
+</document>

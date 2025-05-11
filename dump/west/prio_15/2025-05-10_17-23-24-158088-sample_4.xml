@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE document SYSTEM "https://example.com/schema.dtd" [
+  <!ENTITY fruit "Apple">
+  <!ENTITY num "42">
+  <!ATTLIST fruit color CDATA #IMPLIED>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" version="XHTML 1.0" lang="en">
+    <head>
+      <title>Fruit Varieties</title>
+    </head>
+    <body style="<style>body { font-family: Tahoma, sans-serif; }</style>">
+      <h1>&fruit;</h1>
+      &num;
+      <p>&note;</p>
+      <metadata>
+        <author xml:lang="en" xml:space="preserve">John Doe</author>
+      </metadata>
+      <section>
+        <paragraph xml:base="https://example.com/" xml:space="preserve">Fruit is delicious. &lt;foo/&gt;</paragraph>
+      </section>
+    </body>
+  </html>
+</document>

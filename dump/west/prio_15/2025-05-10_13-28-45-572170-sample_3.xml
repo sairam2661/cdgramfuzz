@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "products.dtd" [
+  <!ENTITY article "A product">
+  <!ENTITY product-code "P123">
+  <!ENTITY phone-number "+1-800-555-5555">
+]>
+<document xmlns="http://example.com/document"
+          xmlns:a="http://example.com/attribute">
+  <html>
+    <head>
+      <title>Products</title>
+    </head>
+    <body>
+      <h2>a:style="Arial"xml:lang="en-CA">Product Listing</h2>
+      <section>
+        <article>
+          <span>&article;</span>
+          <product>
+            <code>&product-code;</code>
+            <name>Sample Product</name>
+            <category>
+              <option>Electronics</option>
+              <option>Electronics</option>
+            </category>
+            <description>Sample product description</description>
+            <price>$99.99</price>
+          </product>
+          <p>This item is available for shipping.</p>
+        </article>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <date>2022-07-20</date>
+    <address>
+      <street>123 Main St</street>
+      <city>Toronto</city>
+      <zip>ON M5A 1E2</zip>
+      <phone>
+        <digits>&phone-number;</digits>
+      </phone>
+    </address>
+  </metadata>
+</document>

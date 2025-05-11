@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-16'?>
+<!DOCTYPE document SYSTEM "shapes.dtd">
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Fuzzy Shapes!</title>
+    </head>
+    <body>
+      <svg xmlns:xlink="http://www.w3.org/1999/xlink">
+        <a xlink:href="#shapes">
+          <circle id="shapes" cx="100" cy="100" r="50" style="stroke:black;fill:none" />
+          <metadata>
+            <creator>
+              <name>John Doe</name>
+              <contact>
+                <email>john@example.com</email>
+              </contact>
+            </creator>
+          </metadata>
+        </a>
+      </svg>
+    </body>
+  </html>
+  <bibl>
+    <author>John Smith</author>
+    <title>Fuzzy Shapes in XML</title>
+    <date>2024-06-15</date>
+  </bibl>
+  <notations>
+    <notation name="°C" value="22.5" />
+  </notations>
+</document>

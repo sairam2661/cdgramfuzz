@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY fruit "Apple" >
+  <!ENTITY note "&#160;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
+  xml:lang="en-US">
+    <head>
+      <title>Best Fruits List</title>
+      <meta name="description" content="Information about good fruits" />
+      <style><![CDATA[
+        @media screen{
+          h1 { font-style: italic; }
+          h2 { background-color: #00FF00; }
+        }
+        body { font-family: Arial, sans-serif; }
+      ]]></style>
+    </head>
+    <body>
+      <section>
+        <h1>The fruit list includes {{#fruit}}.</h1>
+        <p>Information about fruit may be added in the future.&note;</p>
+        <p>Fruits are good for you.</p>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn>1</mn>
+            <mo>+</mo>
+            <mn>2</mn>
+          </mrow>
+        </math>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Author John</author>
+    <date>2025-05-15</date>
+  </metadata>
+</document>

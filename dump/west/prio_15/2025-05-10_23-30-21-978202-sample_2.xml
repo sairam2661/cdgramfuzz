@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://example.org/fruit.dtd" [
+  <!ENTITY % i "include"> %i;
+]>
+<document xmlns:svg="http://www.w3.org/2000/svg"
+         xs:schemaLocation="http://www.example.org/document.xsd document.xsd"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>A Fruit Salad</title>
+    </head>
+    <body>
+      <p>Hello, <span>world</span>!</p>
+    </body>
+  </html>
+  <metadata>
+    <xs:element name="author" type="xs:string"><xs:annotation><xs:documentation>This is an author element.</xs:documentation></xs:annotation></xs:element>
+    <metadata>
+      <year>2024</year>
+    </metadata>
+  </metadata>
+</document>

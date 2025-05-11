@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+  <!ENTITY x "Extended Entity">
+  <!ENTITY ns-uri "http://example.com/ns">
+  <!ENTITY name SYSTEM "name.txt">
+]>
+<document xmlns:fn="http://www.w3.org/2005/xpath-functions"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:lang="fr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head profile="profile URL">
+      <title>This is a title</title>
+    </head>
+    <body>
+      <p>Paragraph with &x; content</p>
+      <p xml:lang="en">This paragraph has &name; attribute</p>
+      <p xlink:href="http://example.com/ref">Reference link</p>
+    </body>
+  </html>
+  <section>
+    <fn:unordered-sequence>
+      <xs:dateTime>2025-01-01T00:00:00</xs:dateTime>
+      <xs:date>2025-01-01</xs:date>
+    </fn:unordered-sequence>
+  </section>
+</document>

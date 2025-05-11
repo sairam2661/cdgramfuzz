@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//Document Type Definition//DTD Document 1.0//EN"
+       "http://example.com/dtds/document.dtd">
+<document version="1.0">
+  <html xmlns:foo="http://example.com/foo">
+    <head>
+      <title xml:lang="es">Plátanos son la mejor fruta!</title>
+    </head>
+    <body>
+      <metadata xml:space="preserve">
+        <author>John Smith</author>
+        <date>
+          <year>2025</year>
+          <month>05</month>
+          <day>10</day>
+        </date>
+      </metadata>
+      <section>
+        <para xml:base="/fruits/bananas">
+          <style>color: green;</style>Plátanos frescos son deliciosos.
+        </para>
+        <figure>
+          <foaf:maker xmlns:foaf="http://xmlns.com/foaf/0.1">John Smith</foaf:maker>
+        </figure>
+      </section>
+    </body>
+  </html>
+  <annotation xml:lang="">
+    &gt;&lt;
+  </annotation>
+</document>

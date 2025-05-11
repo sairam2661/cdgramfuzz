@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY figlet SYSTEM "figlet.xml">
+]>
+<document xmlns="http://example.org/schemas/document"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:lang="en"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>My Document</title>
+    </head>
+    <body>
+      <div_svg>
+        <svg:svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+          <svg:g>
+            <svg:title>My Title</svg:title>
+            <svg:desc>Hello World!</svg:desc>
+            <svg:rect x="10" y="10" width="30" height="30" />
+            <svg:text x="40" y="60">SVG</svg:text>
+          </svg:g>
+        </svg:svg>
+      </div_svg>
+      <div>
+        &figlet;
+        <a href="http://example.org">Visit our website</a>
+        <section>
+          <h1>My title</h1>
+          <p>Hello World!</p>
+        </section>
+      </div>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2022-01-01T12:00:00</date>
+    <categories>
+      <category>XML</category>
+      <category>Fuzz testing</category>
+    </categories>
+  </metadata>
+</document>

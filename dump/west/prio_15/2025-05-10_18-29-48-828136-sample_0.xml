@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "products.dtd" [<!ENTITY nbsp "&#160;">]>
+<document xml:lang="fr" xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:tbs="http://www.ingentaselect.com/XLinks/">
+  <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+    <head>
+      <title>Tablettes graphiques</title>
+      <meta charset="ISO-8859-15"/>
+    </head>
+  <body>
+    <section xml:base="catalogue" id="tablettes">
+      <h1>&nbsp;Produits</h1>
+      <p xmlns:g1="http://www.genesis.com/G1/XMLSchema"
+      xlink:type="simple"
+      xlink:href="#produit_1">Notre gamme de tablettes</p>
+    </section>
+  </body>
+</html>
+</document>

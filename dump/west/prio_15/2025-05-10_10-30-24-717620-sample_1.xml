@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % dtd "">
+  <!ENTITY % ref SYSTEM "entities.dtd">
+  %ref;
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-GB">
+    <head>
+      <title>A Complex XML Document</title>
+      <meta name="keywords" content="XML, document, test"/>
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #0000FF; }
+      ]]></style>
+    </head>
+    <body>
+      <div>
+        <p>Hello world!</p>
+        <xsl:apply-templates xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/>
+      </div>
+    </body>
+  </html>
+  <metadata>
+    <creator>&dtd;</creator>
+  </metadata>
+  <section>
+    <paragraph>&note;</paragraph>
+  </section>
+</document>

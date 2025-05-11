@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % p "Paragraph">
+  <!ENTITY % d "Date: %date%; %author%">
+  <!ENTITY note "&p; note, %d;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+        xml:space="preserve">
+    <head>
+      <meta name="generator" content="XML Fuzz Test Generator" />
+    </head>
+    <body>
+      <h2 xml:lang="fr" xml:space="default">&note;</h2>
+      <section>
+        <a href="#anchor">Linked text</a>
+        <p>%p; content with entity</p>
+      </section>
+    </body>
+  </html>
+  <metadata>&d;</metadata>
+</document>

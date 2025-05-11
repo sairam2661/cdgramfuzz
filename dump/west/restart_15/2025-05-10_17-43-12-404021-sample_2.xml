@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT xhtml ANY>
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xsi:noNamespaceSchemaLocation="schema.xsd">
+  <html>
+    <head prefix="schema">
+      <title xml:space="preserve">Bananas are the best fruit</title>
+      <meta charset="UTF-8" />
+    </head>
+    <body>
+      <p xml:lang="en-GB">
+        Banana (&fruit;)
+      </p>
+    </body>
+  </html>
+</document>

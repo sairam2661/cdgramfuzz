@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/mydtd.dtd" [
+  <!ENTITY % a "a">
+  <!ATTLIST document
+    xmlns:xyz CDATA #FIXED "http://example.org/xmlns"
+  >
+]>
+<document xmlns:xyz="http://example.org/xmlns" xyz:lang="en-US">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+    </head>
+    <body>
+      <pre>&a;<note>Foo</note></pre>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+</document>

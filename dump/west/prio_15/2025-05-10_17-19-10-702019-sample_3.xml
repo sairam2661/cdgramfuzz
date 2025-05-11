@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY eacute "&#xC3;&#xB8;" >
+  <!ENTITY amp "&amp;" >
+]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+  xmlns:w3c-xml-schema-instance="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:fbhtml="http://www.facebook.com/2008/fbml">
+  <html xml:lang="fr">
+    <head>
+      <title>Espace personnel</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <style><![CDATA[
+        body { background-color: #B0C4DE; }
+        h1 { font-family: Verdana, Arial, sans-serif; }
+      ]]></style>
+    </head>
+    <body>
+     <section id="profile">
+      <paragraph>Informations personnelles :</paragraph>
+      &eacute;
+    </section>
+    <metadata xmlns:fbml="http://www.facebook.com/2008/fbml">
+      <author xmlns="http://www.w3.org/2001/XMLSchema-instance"
+        xlink:type="simple" xlink:href="#profile">
+        John Doe
+      </author>
+      <date>2025-05-10</date>
+    </metadata>
+  </body>
+</html>
+</document>

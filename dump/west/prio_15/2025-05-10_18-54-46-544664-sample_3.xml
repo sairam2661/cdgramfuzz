@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY num1 "1">
+  <!ENTITY num2 "2">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are Delicious!</title>
+      <meta name="description"
+            content="A blog on &num1; and &num2; fruits."/>
+      <style type="text/css">
+        <![CDATA[
+          @namespace xmlns "http://www.w3.org/1999/xhtml";
+          @namespace link "http://www.w3.org/1999/xlink";
+          body {font-family: Helvetica, sans-serif;}
+          h2 {font-size: large;}
+          p {background-image: url("banana.png");
+             background-position: center;
+             background-repeat: no-repeat;
+             text-indent: -50px;}
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h2>Important Information</h2>
+      <p>A banana is typically 6-7 inches long.</p>
+      <link href="banana.jpg" title="Banana" xlink:href="banana.xml" />
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2022-07-12</date>
+  </metadata>
+</document>

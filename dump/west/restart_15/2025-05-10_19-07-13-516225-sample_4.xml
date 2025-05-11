@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+]>
+<document xmlns="http://example.com/document/1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/document/1.0 fruits.xsd">
+  <html xmlns:math="http://www.w3.org/1998/Math/MathML"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="DC.title" content="Bananas" schemeURI="http://purl.org/dc/terms/" />
+      <style type="text/css">
+        <![CDATA[
+          @namespace math "http://www.w3.org/1998/Math/MathML";
+          body { font-family: Georgia, serif; }
+          h1 { color: #FFFF00; math:displaystyle="block"; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p>Bananas are very nutritious. &note;</p>
+      <math:math>
+        <math:apply><math:plus><math:ci>x</math:ci><math:cn>2</math:cn></math:plus></math:apply>
+      </math:math>
+    </body>
+  </html>
+  <metadata>
+    <author xmlns:m="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            m:resource="http://example.org/JaneDoe"/>
+    <date>2025-05-10</date>
+  </metadata>
+</document>

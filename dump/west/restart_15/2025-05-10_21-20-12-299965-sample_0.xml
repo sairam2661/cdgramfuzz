@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 2.0//EN" "http://www.w3.org/TR/xhtml2/DTD/xhtml2.dtd">
+<document xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemaLocation.com document.xsd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Test Title</title>
+      <style type="text/css"><![CDATA[ body { font-family: serif; } ]]></style>
+    </head>
+    <body>
+      <section>
+        <section>
+          <section>
+            <p>This is a simple paragraph.</p>
+          </section>
+        </section>
+        <section>
+          <p>This is a complex paragraph with an entity reference &amp; entity reference.</p>
+        </section>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <info lang="en">
+      <name>Tester</name>
+      <telephone>123-456-7890</telephone>
+    </info>
+  </metadata>
+</document>

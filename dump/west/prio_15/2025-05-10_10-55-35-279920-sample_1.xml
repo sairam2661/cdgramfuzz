@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "&#x26;">
+  <!ENTITY desc "&note; A simple &note;">
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="fruits.xsd"
+          xml:base="/fruits">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>Bananas!</title>
+      <meta name="title" content="Bananas" />
+    </head>
+    <body>
+      <p><b>Bananas</b></p>
+    </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2025-05-10</date>
+  </metadata>
+  <section>
+    <paragraph>&desc;</paragraph>
+  </section>
+</document>

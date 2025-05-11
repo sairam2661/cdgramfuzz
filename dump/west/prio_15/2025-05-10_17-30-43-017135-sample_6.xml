@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section*)>
+  <!ELEMENT html (#PCDATA|meta|style|span|div)*>
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT section (paragraph+)>
+  <!ELEMENT paragraph (#PCDATA|note)*>
+  <!ELEMENT note (#PCDATA)*>]>
+<document>
+  <html> 
+    <head>
+      <meta name="author" content="John Doe" />
+    </head>
+    <body> 
+      <style><![CDATA[
+        body { background-color: #0000FF; }
+        h1 { text-align: center; }
+      ]]></style> 
+    </body> 
+  </html>
+  <metadata>
+    <author>Michael Brown</author>
+    <date>2022-06-17</date>
+  </metadata>
+  <section>
+    <paragraph>Hello World!</paragraph>
+    <paragraph>This is a test <note>Note</note>!</paragraph>
+  </section>
+</document>

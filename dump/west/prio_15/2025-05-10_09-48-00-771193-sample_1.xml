@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+<!ELEMENT document (html, metadata, declaration)>
+<!ELEMENT html (#PCDATA | head | style | body)*>
+<!ELEMENT metadata (#PCDATA | author | date)*>
+<!ELEMENT author (#PCDATA | entity)*>
+<!ELEMENT date (value, format)>
+<!ELEMENT declaration (#PCDATA | section)*>
+<!ELEMENT section (#PCDATA | paragraph)*>
+<!ELEMENT paragraph (#PCDATA | footnote)*>
+<!ELEMENT footnote (#PCDATA | reference)*>
+<!ELEMENT reference (#PCDATA | link)*>
+<!ELEMENT link (#PCDATA | url)*>
+<!ATTLIST declaration id ID #REQUIRED>
+<!ATTLIST link href CDATA #IMPLIED>
+<!ENTITY note "Note">
+<!ELEMENT value (#PCDATA | entity)*>
+<!ELEMENT format (#PCDATA | entity)*>
+]>
+<document>
+  <html>
+    <head>
+      <title>Fruit Stand</title>
+    </head>
+    <body>
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+      ]]></style>
+      Foobar &note; <author>John Doe</author>
+    </body>
+  </html>
+  <metadata>
+    <date>
+      <value>2024</value>
+      <format>YYYY</format>
+    </date>
+  </metadata>
+  <declaration id="ID123">
+    This is a footnote: <footnote>
+      &note; 
+      <reference><link href="https://example.com">External Link</link></reference>
+    </footnote>
+  </declaration>
+</document>

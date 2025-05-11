@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "custom.dtd">
+<document>
+  <html xml:lang="fr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xsi:noNamespaceSchemaLocation="#local"
+        xml:base="file://example.org">
+    <head>
+      <title xml:lang="es">Plátanos son el mejor fruto</title>
+      <meta name="keywords" content="yellow fruit, tropical, delicious" />
+      <style><![CDATA[body { font-family: 'Palatino Linotype', serif; }
+        h2 { color: #A9A9A9; text-align: center; }
+      ]]></style>
+    </head>
+    <body>
+      <p xml:space="preserve">Bananas are excellent source of potassium and good source of fiber.</p>
+    </body>
+  </html>
+  <information>
+    <creator>Jane &amp; John Doe</creator>
+    <modificationDate>2024-09-23</modificationDate>
+  </information>
+</document>

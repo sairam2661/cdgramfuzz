@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "apple">
+  <!NOTATION SYSTEM-DEPENDENT SYSTEM "" >
+]>
+<document xml:space="preserve"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="fruit.xsd"
+  xml:lang="en-GB" xml:base="https://example.com">
+  <html>
+    <head profile="http://example.org/docs">
+      <title>Favorite Fruits</title>
+    </head>
+    <body>
+      <section>
+        <h1>Hello, World!</h1>
+        <p>My favorite fruit is <b>&fruit;</b>.</p>
+        <note>&note;</note>
+      </section>
+    </body>
+  </html>
+</document>

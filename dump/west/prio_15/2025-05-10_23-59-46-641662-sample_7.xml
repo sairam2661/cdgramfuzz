@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document [
+  <!ENTITY num "42">
+  <!ENTITY str "Hello, World!">
+  <!ENTITY list "1 2 3 4 5">
+  <!ENTITY param "param1 param2 param3">
+]>
+<document>
+  <html xmlns="" xml:space="preserve" xml:lang="fr">
+    <head>
+      <title>Einstein's Theory of Relativity</title>
+      <meta name="author" content="Albert Einstein" />
+      <style type="text/css">
+        <![CDATA[
+          :root { font-family: sans-serif; }
+          h1 { background-color: #999; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <article>
+        <h1>General Theory of Relativity</h1>
+        <p>&num;</p>
+        <p>&str;</p>
+        <ul>
+          <li>&list;</li>
+        </ul>
+        <p>&param;</p>
+      </article>
+    </body>
+  </html>
+  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+      <html>
+        <body>
+          <h1>Hello, World!</h1>
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
+  <comments>
+    <commenter>Someone</commenter>
+    <date>2022-09-01</date>
+  </comments>
+</document>

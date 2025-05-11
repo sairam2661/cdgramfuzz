@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|body|script)*>
+  <!ELEMENT body EMPTY>
+  <!ELEMENT script (#PCDATA|style)*>
+  <!ELEMENT style CDATA>
+  <!ENTITY note "Note">
+]>
+<document>
+  <html>
+    <head>
+      <title>Fruit Salad</title>
+      <style type="text/css">
+        <![CDATA[
+          :root { font-family: 'Open Sans', sans-serif; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <body>
+        <h1>Fruit Salad Recipe</h1>
+        <script>
+          This script will change the color of the text.
+        </script>
+      </body>
+      Recipe includes &note; apples and bananas...
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>Jane Doe</name>
+      <country>USA</country>
+    </author>
+  </metadata>
+</document>

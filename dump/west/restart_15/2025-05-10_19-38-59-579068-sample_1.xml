@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<!DOCTYPE document PUBLIC "-//example//fruit inventory.dtd" "fruit inventory.dtd" [
+  <!ENTITY name "Apple">
+  <!ENTITY quantity "10">
+  <!ENTITY unitPrice "5.99">
+]>
+<document xmlns:gml="http://www.opengis.net/gml">
+  <html>
+    <head>
+      <title>Best Apples</title>
+    </head>
+    <body>
+      <h1>Best Apples</h1>
+      <p>Best quality apples available in the market.</p>
+    </body>
+  </html>
+  <gml:boundedBy>
+    <gml:Envelope srsName="http://www.opengis.net/def/crs/OGC/1.3/CRS84">
+      <gml:lowerCorner>42.0 72.0</gml:lowerCorner>
+      <gml:upperCorner>44.0 74.0</gml:upperCorner>
+    </gml:Envelope>
+  </gml:boundedBy>
+  <metadata>
+    <item>
+      <itemID>123</itemID>
+      <itemValue>Item Value</itemValue>
+    </item>
+  </metadata>
+  <section>
+    <summary><entity refid="#name"/></summary>
+  </section>
+</document>

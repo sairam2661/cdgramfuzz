@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY amp "&amp;" >
+]>
+<document xmlns:gpx="http://www.google.com/gpx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://example.com/schemas/doc"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xsi:schemaLocation="http://example.com/schemas/doc doc.xsd">
+  <html>
+    <head>
+      <title>Colorful World</title>
+      <meta name="keywords" content="red green blue yellow orange pink purple black white" />
+    </head>
+    <body>
+      <p xmlns:a="http://www.w3.org/1999/xhtml" xmlns:b="http://example.com/XHTML/b">
+        <span>&amp;</span>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow> <mi>X</mi> <mo>+</mo> <mi>Y</mi> <mo>=</mo> <msup> <mrow data-mjx-texclass="ORD">Z</mrow> <mrow data-mjx-texclass="ORD">2</mrow> </msup> </mrow>
+        </math>
+      </p>
+    </body>
+  </html>
+</document>

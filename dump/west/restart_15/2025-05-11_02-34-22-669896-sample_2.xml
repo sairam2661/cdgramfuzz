@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY num "12345">
+  <!ENTITY str "Hello, World!">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+    <head>
+      <title>Colors</title>
+      <meta name="keywords" content="red, blue, green, yellow" />
+    </head>
+    <body>
+      <style>/* CSS styles here */</style>
+      <p>&num;</p>
+      <p xml:lang="en-GB">This is another paragraph:&str;</p>
+    </body>
+  </html>
+  <root xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <group>
+      <item>apple</item>
+      <item orange="true"/>
+    </group>
+  </root>
+</document>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-16"?><!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section*)>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT head (meta, title, style?)>
+  <!ELEMENT body (p+)>
+  <!ELEMENT metadata (author, date)>
+  <!ELEMENT author (#PCDATA)*><!ELEMENT date (#PCDATA)*><!ELEMENT section (metadata, paragraph+)>
+  <!ELEMENT paragraph (#PCDATA|note)*><!ENTITY note "Note">
+]>
+<document>
+  <html>
+    <head>
+      <meta name="description" content="A blog on fruits." />
+      <title>Fruit Salad recipe</title>
+    </head>
+    <body>
+      <p>This is a sample paragraph.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>John</author>
+    <date>2024-07-26</date>
+  </metadata>
+  <section>
+    <metadata>
+      <author>Jane</author>
+      <date>2024-07-27</date>
+    </metadata>
+    <paragraph>&note;</paragraph>
+  </section>
+</document>

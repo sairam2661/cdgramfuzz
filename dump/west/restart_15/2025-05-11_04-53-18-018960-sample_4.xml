@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "Apple">
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+  <!ATTLIST document xmlns CDATA #FIXED "http://www.w3.org/1999/xhtml" id ID #REQUIRED>
+]>
+<document xmlns="http://www.w3.org/1999/xhtml" id="doc">
+  <html>
+    <head>
+      <title>XML Fruit</title>
+    </head>
+    <body>
+      <section>
+        &fruit;
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">Jean Dupont</author>
+    <date>2001-09-17</date>
+  </metadata>
+</document>

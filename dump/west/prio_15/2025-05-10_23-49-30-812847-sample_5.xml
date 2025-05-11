@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % general "Yes">
+  <!ENTITY % specific "%general;ly true">
+  <!ELEMENT document (html|metadata-section)>
+  <!ATTLIST document id ID #REQUIRED>
+]>
+<document id="doc001">
+  <html xmlns:foo="http://example.org/foo">
+    <head>
+      <title>Example HTML Title</title>
+    </head>
+    <body>
+      <p>Hello, <b>%specific;</b> world!</p>
+    </body>
+  </html>
+  <metadata-section>
+    <author>John Doe</author>
+    <date>2024-06-15</date>
+  </metadata-section>
+</document>

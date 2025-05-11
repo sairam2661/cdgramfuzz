@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "animals.dtd" [
+<!ENTITY cat "Furry creature"
+  >
+]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML"
+  math:display="block">
+  <html xmlns:f="http://www.example.com"
+        f:lang="en" xml:lang="fr">
+    <head>
+      <meta name="author" content="John"/>
+      <title xml:lang="es">Majestic Lions</title>
+    </head>
+    <body>
+      <script language="javascript">
+        document.write("Hello World!");
+      </script>
+      <p>&cat;</p>
+    </body>
+  </html>
+  <metadata>
+    <date>2023-07-25</date>
+    <time>14:30:00</time>
+  </metadata>
+</document>

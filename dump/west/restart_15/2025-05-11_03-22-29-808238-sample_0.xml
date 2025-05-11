@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY pi "3·14159265358979323846">
+]>
+<document xmlns:gml="http://www.opengis.net/gml"
+          xml:space="preserve"
+          xml:lang="en-US"
+          xml:base="https://example.com">
+  <html>
+    <head>
+      <title>Mathematical Proof</title>
+    </head>
+    <body>
+      <pre>
+        <math xmlns="http://www.w3.org/1998/Math/MathML"><mtable columnalign="right"><mtr><mtd><mfrac><mrow><msub><mn>3</mn><mrow data-mjx-texclass="ORD"><mn>2</mn></mrow></msub></mrow><mrow><mn>2</mn><mo>+</mo><mn>3</mn></mrow></mfrac></mtd></mtr><mtr><mtd><mfrac><msqrt><mn>13</mn></msqrt><mn>5</mn></mfrac></mtd></mtr></mtable></math>
+      </pre>
+      <metadata>
+        <author>Max Power</author>
+        <date>2022-06-25</date>
+      </metadata>
+    </body>
+  </html>
+</document>

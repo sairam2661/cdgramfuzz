@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-16"?><!DOCTYPE document SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" [
+  <!ENTITY x1 "&#x1F600;">
+  <!ATTLIST document id CDATA #REQUIRED>
+]>
+<document id="xyz123">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:space="preserve">Apples are a better fruit
+!</title>
+    </head>
+    <body>
+      <section>
+        <p>Yay!  <x1>Smile</x1></p>
+      </section>
+    </body>
+  </html>
+  <comment xml:lang="es"><!-- Esta es una nota --></comment>
+</document>

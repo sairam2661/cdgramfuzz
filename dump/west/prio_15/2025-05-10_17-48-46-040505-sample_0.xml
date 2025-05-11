@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://example.com/schema.dtd" [
+  <!ENTITY pi SYSTEM "public id 'public id'">
+]>
+<document xml:lang="en-US"
+          xml:space="preserve"
+          xmlns="http://example.org/doc"
+          xmlns:foo="http://example.org/foo"
+          xml:base="file:///path/to/root">
+  <html xmlns:html="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:lang="fr">Fruits en général</title>
+      <meta name="description" content="Fruits" />
+      <style type="text/css"><![CDATA[
+        body { font-family: Courier, monospace }
+        h1 { background-color: gray }
+      ]]></style>
+    </head>
+    <body>
+      <section foo:element="section">
+        <foo:element name="test">Hello!</foo:element>
+        <element name="test">World!</element>
+        &pi;
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <metadata>
+      <author>Jane Doe</author>
+    </metadata>
+  </metadata>
+</document>

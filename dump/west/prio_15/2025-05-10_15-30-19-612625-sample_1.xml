@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY percent90 "%90">  
+  <!ENTITY amp "&amp;">  
+]>
+<document xmlns="http://example.org/xml">
+  <html lang="fr-CA">
+    <head>
+      <title>Kelly's Colors!</title>
+    </head>
+    <body>
+      <p> Colors like &percent90;red and &amp; blue are very common.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-06-25</date>
+  </metadata>
+  <section xml:lang="ja-JP">
+    <h2 style="color: #FFFFFF; font-style: italic">Favorite Colors</h2>
+  </section>
+</document>

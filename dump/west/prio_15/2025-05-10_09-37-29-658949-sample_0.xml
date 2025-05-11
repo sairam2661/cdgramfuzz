@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "vegetables.dtd" [
+  <!ENTITY note "&lt;&gt;&amp;&quot;&#39;&quot;&amp;&apos;&apos;">
+]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML" xml:lang="fr" standalone="no">
+  <html xmlns:svg="http://www.w3.org/2000/svg" xml:space="preserve">
+    <head>
+      <title>Fruits and Vegetables</title>
+      <meta name="version" content="1.0"/>
+    </head>
+    <body>
+      <section>
+        <h1 math:alttext="Apples">Apples</h1>
+        <math:math display="block">
+          <math:mrow>
+            <math:mn>2</math:mn>
+            <math:mo>+</math:mo>
+            <math:mn>3</math:mn>
+          </math:mrow>
+        </math:math>
+      </section>
+    </body>
+  </html>
+  <bibl>
+    <author>John</author>
+    <date>2020-10-10</date>
+    <title>Vegetables</title>
+  </bibl>
+  <section>
+    <paragraph>Vegetables are very &note; nutritious.</paragraph>
+  </section>
+</document>

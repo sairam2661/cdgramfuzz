@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "example.dtd" [
+  <!ENTITY % ent "Entity">
+  <!ATTLIST document
+    id ID #REQUIRED
+  >
+]>
+<document xlink:href="http://example.com" xml:space="preserve" xml:lang="fr"
+         id="myDocument">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head profile="http://example.com/profile">
+      <title>Complex Document</title>
+    </head>
+    <body>
+      <section>
+        <title>Entity</title>
+        <p>This is a complex document: %ent;</p>
+      </section>
+    </body>
+  </html>
+</document>

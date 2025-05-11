@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document[
+  <!ELEMENT document (#PCDATA | html | metadata | section)*>
+  <!ELEMENT html (#PCDATA | head | style)*>
+  <!ELEMENT head (#PCDATA | title | meta)*>
+  <!ELEMENT style (#PCDATA | body)*>
+  <!ELEMENT body (#PCDATA | h1)*>
+  <!ELEMENT h1 (#PCDATA)*>
+  <!ENTITY fruit "Apple">
+]>
+<document>
+  <html>
+    <head>
+      <title>XHTML Document</title>
+      <meta name="generator" content="XML Fuzz Tester" />
+      <style><![CDATA[
+        h1 {color:red;}
+      ]]></style>
+    </head>
+    <body>
+      <h1>&fruit;</h1>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2024-01-01</date>
+  </metadata>
+  <section>
+    <paragraph>XHTML is more readable than HTML.</paragraph>
+  </section>
+</document>

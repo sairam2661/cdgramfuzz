@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>XML Fuzzer</title>
+    </head>
+    <body>
+      <section xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xs:noNamespaceSchemaLocation="example.xsd">
+        <xs:element name="test">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:ID"/>
+          </xs:complexType>
+        </xs:element>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <rdf:Description xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                     rdf:about="#root">
+      <dc:title>XML Fuzzer</dc:title>
+    </rdf:Description>
+  </metadata>
+  <section>
+    <section>
+      <para>Hello world!</para>
+    </section>
+  </section>
+</document>

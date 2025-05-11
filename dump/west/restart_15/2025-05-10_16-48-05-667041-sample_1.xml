@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ATTLIST document
+    id CDATA #REQUIRED
+    lang (en|fr|es) "en"
+  >
+]>
+<document xml:lang="es" id="doc123">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Título del documento</title>
+    </head>
+    <body>
+      <section id="sect1">
+        <h1>Parrafo principal</h1>
+        <p>Este es el contenido del parrafo uno. &amp;</p>
+        <section>
+          <p>Este es el contenido del segundo parrafo.</p>
+          <p>Este es contenido adicional.</p>
+        </section>
+      </section>
+      <div xmlns:math="http://www.w3.org/1998/Math/MathML">
+        <math:math display="block">
+          <math:mrow>
+            <math:mfrac>
+              <math:mn>4</math:mn>
+              <math:mn>2</math:mn>
+            </math:mfrac>
+            <math:mo>=</math:mo>
+            <math:mn>2</math:mn>
+          </math:mrow>
+        </math:math>
+      </div>
+    </body>
+  </html>
+  <metadata>
+    <author>Juan Pérez</author>
+    <date>2025-01-01</date>
+  </metadata>
+</document>

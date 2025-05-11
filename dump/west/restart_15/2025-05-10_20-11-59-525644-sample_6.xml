@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE document [
+  <!ENTITY name "John">
+  <!ENTITY entity "&#10;">
+]>
+<document xmlns="http://example.com/schema"
+          id="myDocument"
+          version="1.0"
+          xml:lang="fr"
+          xsi:noNamespaceSchemaLocation="mySchema.xsd">
+  <html>
+    <head>
+      <title>La vie est belle!</title>
+    </head>
+    <body>
+      <p>&name;a nice guy&amp;entity;&note;&amp;&entity;</p>
+      <section>
+        <subsection>
+          <paragraph>Some text, lots of it... &entity;&note;&amp;&entity;1.</paragraph>
+        </subsection>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>&name;</author>
+    <date>2024-03-16</date>
+  </metadata>
+  <sect3>
+    <sect1 id="sect1">Some text here...</sect1>
+  </sect3>
+</document>

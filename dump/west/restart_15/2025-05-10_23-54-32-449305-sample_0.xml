@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "example.dtd" [
+  <!ENTITY fruit "Apple">
+]>
+<document xml:lang="en"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="example.xsd example.xsd">
+  <html>
+    <head>
+      <title>xlink and xsi Example</title>
+    </head>
+    <body>
+      <para>&fruit;</para>
+      <link xlink:href="https://example.com" xlink:title="Link">Click me!</link>
+      <section>
+        <metadata>
+          <xsi:element name="author">John Smith</xsi:element>
+          <xsi:element name="date">2023-07-26</xsi:element>
+        </metadata>
+      </section>
+    </body>
+  </html>
+</document>

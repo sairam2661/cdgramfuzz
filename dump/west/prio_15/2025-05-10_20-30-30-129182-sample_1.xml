@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "<">
+  <!ENTITY gt ">"
+  >
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xs:noNamespaceSchemaLocation="colors.xsd"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+    <html>
+        <head>
+            <title>Colors</title>
+        </head>
+        <body>
+            <xsl:stylesheet version="1.0"
+                            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                            xmlns:fo="http://www.w3.org/1999/XSL/Format">
+                <xsl:template match="/">
+                    <fo:block-container>
+                        <fo:block>
+                            <xsl:element name="color">
+                                <xsl:value-of select="rgb(255,0,0)"/>
+                            </xsl:element>
+                        </fo:block>
+                    </fo:block-container>
+                </xsl:template>
+            </xsl:stylesheet>
+            <table>
+                <tr>
+                    <td>
+                        <link xlink:href="#red" xlink:title="Red">
+                            <red></red>
+                        </link>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    </html>
+    <styles>
+        <category>primary</category>
+        <primary-color>#FF0000</primary-color>
+    </styles>
+</document>

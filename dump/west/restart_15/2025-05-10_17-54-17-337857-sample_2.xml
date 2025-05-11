@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % xinclude SYSTEM "xinclude.dtd">
+  %xinclude;
+]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd"
+          id="doc-id"
+          xml:lang="en"
+          xml:space="preserve"
+          version="1.0">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Example Document</title>
+    </head>
+    <body>
+      <section>
+        <annotation xml:lang="fr">Note</annotation>
+        <section xml:space="preserve">
+          <item>Item 1</item>
+          <item>Item 2</item>
+        </section>
+      </section>
+    </body>
+  </html>
+</document>

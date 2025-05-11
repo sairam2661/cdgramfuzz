@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "math.dtd" [
+  <!ENTITY pi "3.14159">
+  <!ENTITY name "John Doe">
+]>
+<document xmlns="http://example.com"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://example.com math.xsd"
+            xml:base="http://example.com">
+  <html xml:lang="fr"><head><title>Fuzzy Math</title></head><body>
+    <section xmlns:fbt="http://fbt.org">
+      <xsl:stylesheet version="2.0" 
+                      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                      exclude-result-prefixes="xsl fbt">
+        <xsl:template match="/">
+          <h2>Math is Hard!</h2>
+        </xsl:template>
+      </xsl:stylesheet>
+    </section>
+    <metadata>
+      <date>&name;</date>
+    </metadata>
+  </body></html>
+  <metadata xml:lang="en">
+    <author>Someone Else</author>
+    <date>2022-01-01</date>
+  </metadata>
+  <commentary>
+    <text>Hello World!</text>
+  </commentary></document>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ATTLIST document lang CDATA #IMPLIED>
+  <!ENTITY amp "&#38;#38;#38;#38;">
+]>
+<document xml:lang="fr" lang="en">
+  <html xmlns="" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>§</title>
+    </head>
+    <body>
+      <p xml:space="preserve">Test&nbsp;&amp;&amp; <b>bold</b> <i>italic</i> text.</p>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document PUBLIC "-//Example/DTD Example Document//EN" "example.dtd" [
+  <!ENTITY name "John Doe">
+  <!ENTITY number "123-456-7890">
+]>
+<document xmlns:my="http://example.com/my-namespace"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="schema.xsd">
+  <html>
+    <head>
+      <title>Example Document</title>
+    </head>
+    <body>
+      <my:person>
+        <name>&name;</name>
+        <phone>&number;</phone>
+        <address>
+          <street>123 Main St</street>
+          <city>Anytown</city>
+          <state>CA</state>
+          <zip>12345</zip>
+        </address>
+        <note>This is a test</note>
+      </my:person>
+      <section>
+        <h1>Heading</h1>
+        <p>This is a sample paragraph.</p>
+      </section>
+    </body>
+  </html>
+</document>

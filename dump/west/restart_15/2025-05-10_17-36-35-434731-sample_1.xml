@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+  <!ENTITY num "01234">
+  <!ATTLIST document attr1 CDATA #IMPLIED>
+  <!ATTLIST document attr2 (red|green|blue) "red">
+]>
+<document attr1="value" attr2="green">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-GB">
+    <head>
+      <title>XML Fuzz Test</title>
+      <meta name="description" content="A test file." />
+      <style><![CDATA[
+        body { font-family: Courier, monospace; }
+        h1 { font-weight: bold; color: #&num;000; }
+      ]]></style>
+    </head>
+  <body>
+    <section>
+      <paragraph>Hello, world! &num;</paragraph>
+    </section>
+  </body>
+  </html>
+  <metadata>
+    <author>Jane Smith</author>
+    <date>2024-03-01</date>
+  </metadata>
+</document>

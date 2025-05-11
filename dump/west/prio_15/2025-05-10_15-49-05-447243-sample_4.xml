@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.org/schema.dtd" [
+  <!ELEMENT document (html, metadata, section*)>
+  <!ELEMENT html (head, body)>
+  <!ELEMENT head (title, meta, style)>
+  <!ELEMENT body (#PCDATA | p | h1)*>
+  <!ATTLIST html
+              xml:lang CDATA #IMPLIED
+              xmlns CDATA #IMPLIED
+              xmlns:xlink CDATA #IMPLIED
+  >
+  <!ATTLIST meta
+              name CDATA #REQUIRED
+              content CDATA #IMPLIED
+  >
+]>
+<document>
+  <html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml" style="overflow: hidden;">
+    <head>
+      <title>Un article sur la pomme</title>
+      <meta name="abstract" content="Un article sur la pomme" />
+      <style type="text/css"><![CDATA[
+        html, body {
+          margin: 0;
+          padding: 0;
+        }
+        h1 {
+          background-color: #0099CC;
+        }
+      ]]></style>
+    </head>
+    <body>
+      <p>Pourquoi la pomme est le meilleur fruit?</p>
+      <h1>La réponse!</h1>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>John Doe</name>
+    </author>
+  </metadata>
+  <section>
+    <paragraph>La pomme est très nutritive et savoureuse.</paragraph>
+  </section>
+</document>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % param "some value">
+  <!ENTITY fruit "Apple">
+  <!ENTITY name "John">
+  <!ENTITY desc "Friend">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xml:lang="ja-JP"
+        xml:space="preserve">
+    <head>
+      <title>The Greatfruit</title>
+      <meta name="keywords" content="fruits&amp;vegetables"/>
+      <style>
+        <![CDATA[
+          @import url("https://example.com/styles.css");
+          body { background-color: #666; }
+         .fruit { fill: #0FF; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p>Entity Reference: &fruit;!-- and --></p>
+      <script><![CDATA[
+        var node = document.createElement("some:element");
+        node.textContent = "&name; is my &desc;";
+        document.body.appendChild(node);
+      ]]></script>
+    </body>
+  </html>
+  <metadata>
+    <author>&name;</author>
+    <date>2022-01-01</date>
+  </metadata>
+  <section>
+    <item>
+      <item>&param;</item>
+    </item>
+  </section>
+</document>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://example.com/dtd.dtd" [
+  <!ENTITY eacute'&#xC3;&#xA9;'>
+]>
+<document xmlns:fb='http://www.facebook.com/2008/fbml'>
+  <html fb:xfbml='1' xmlns="http://www.w3.org/1999/xhtml"
+        xml:lang="en-CA"
+        xml:space="preserve">
+    <head>
+      <title>Laughter is the best medicine</title>
+      <meta name="description" content="A blog on health!" />
+    </head>
+    <body lang="es">
+      <p>¡Sonreír es lo mejor!</p>
+    </body>
+  </html>
+  <note><text>This is a note.</text></note>
+</document>

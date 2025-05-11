@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "../../xml.dtd" [  
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>  
+  <!ELEMENT html (#PCDATA|head|body)*>  
+  <!ELEMENT head (#PCDATA|meta|title|style|script|object|map|iframe|noscript)*>  
+  <!ELEMENT meta (#PCDATA|content|scheme)*>  
+  <!ELEMENT style (#PCDATA|font|body|h1)*>  
+  <!ELEMENT script (#PCDATA|code|h1)*>  
+  <!ATTLIST script   
+    src CDATA #IMPLIED   
+    type CDATA #IMPLIED   
+  >  
+  <!ELEMENT object (#PCDATA|param|embed|applet|script)*>  
+  <!ELEMENT map (#PCDATA|area)*>  
+  <!ELEMENT iframe (#PCDATA|frame|html|head|body)*>  
+  <!ELEMENT noscript (#PCDATA|object|map|iframe)*>  
+  <!ELEMENT document (head|html|metadata|section)*>  
+  <!ELEMENT metadata (#PCDATA|author|date)*>  
+  <!ELEMENT section (#PCDATA|paragraph|section)*>  
+  <!ELEMENT paragraph (#PCDATA|section)*>  
+  <!ENTITY x "X" >  
+  <!ELEMENT head (#PCDATA|title|meta|style)*>  
+  <!ELEMENT meta (#PCDATA|scheme|content)*>  
+  <!ELEMENT image (#PCDATA|alt|src)*>  
+  <!ELEMENT body (#PCDATA|object|h1|h2|h3|h4|h5|h6|a|b|i|font)*>  
+  <!ELEMENT scheme (#PCDATA|uri)*>  
+  <!ELEMENT html (#PCDATA|head|body)*>  
+  <!ELEMENT title (#PCDATA|x|x|x|x|x|x|x|x|x)*>  
+  <!ELEMENT date (#PCDATA|x|X|x|x|x|x|x|x|x)*>  
+  <!ELEMENT style (#PCDATA|font|body)*>  
+  <!ELEMENT h1 (#PCDATA|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x)*>  
+  <!ELEMENT a (#PCDATA|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x|x)*>  
+  <!ELEMENT noscript (#PCDATA|x|x|x|x|x|x|x)*>  
+  <!ENTITY f "false" >  
+  <!ELEMENT section (#PCDATA|x|x

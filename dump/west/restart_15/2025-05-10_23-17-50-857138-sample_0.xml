@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE document [
+  <!ELEMENT document (html, metadata, section)*>
+  <!ATTLIST document
+    id (abc|def) #REQUIRED
+    version CDATA #IMPLIED>
+]>
+<document id='abc' version='2.0'>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/MarkUp/WMF01/xhtml.w3c">
+    <head>
+      <title>Interesting Fruits</title>
+      <meta name="author" content="John" />
+    </head>
+    <body>
+      <p>A &quot;fruit&quot; is a type of food.</p>
+    </body>
+  </html>
+  <metadata>
+    <creator><name>John Doe</name></creator>
+  </metadata>
+  <section1><sectionName>Apples</sectionName></section1>
+</document>

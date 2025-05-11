@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://example.com/document.dtd" [
+  <!ENTITY % note "Note">
+  <!ELEMENT document (html, data)*>
+]>
+<document xmlns:custom="http://example.org/custom">
+  <html custom:lang="fr" xml:lang="en">
+    <head>
+      <title>French Document</title>
+    </head>
+    <body>
+      <p>Custom content: <custom:tag>This is custom content.</custom:tag></p>
+      <data>
+        <data>
+          <data>Even more nested data...</data>
+          <data>
+            <![CDATA[This is a CDATA section...]]>
+            <data>Some more content...</data>
+          </data>
+        </data>
+      </data>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document [
+  <!ENTITY pi "Copyright 2025">
+  <!ENTITY ref SYSTEM "http://example.com/resource">
+]>
+<document xml:lang="en-US"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://example.com/schema.xsd">
+  <html>
+    <head>
+      <title>A complex document</title>
+    </head>
+    <body>
+      <section>
+        <paragraph>
+          This is a paragraph with a named reference: 
+          <xsl:apply-templates select="$ref"/>
+        </paragraph>
+      </section>
+      <comment>This is a comment in the XML</comment>
+      <pi>&pi;</pi>
+    </body>
+  </html>
+  <image href="image.jpg" width="200" height="100"/>
+  <metadata>
+    <author>John Doe</author>
+  </metadata>
+</document>

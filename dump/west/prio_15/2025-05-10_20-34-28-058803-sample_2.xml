@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "data.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY lt "&lt;">
+  <!ENTITY gt "&gt;">
+]>
+<document xml:space="preserve">
+  <html lang="fr-CH" dir="ltr">
+    <head>
+      <title>Taxation of Foreign Earnings</title>
+      <style>
+        <![CDATA[
+          h1 { border: 1px solid #FF0000; }
+          p { color: #00FF00; font-style: italic; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p>Résumé en français:</p>
+      <section>
+        <metadata>
+          <author>Jean Martin</author>
+          <date>2022-02-15</date>
+        </metadata>
+        <paragraph> &amp; &lt; information &gt; </paragraph>
+        <footnote>
+          <body>
+            Footnote data here
+          </body>
+        </footnote>
+      </section>
+    </body>
+  </html>
+</document>

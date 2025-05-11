@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ENTITY en "English">
+  <!ENTITY date "2024-07-26">
+]>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://example.com/schema.xsd">
+  <html><head></head><body>
+    <section>
+      <p>&en;</p>
+      <p>Created on:<xs:decimal xmlns:xs="http://www.w3.org/2001/XMLSchema">{{ 8 }}</xs:decimal>
+      &date;</p>
+    </section>
+  </body></html>
+  <metadata>
+    <author>AUTHOR1</author>
+    <date><![CDATA[(2024-07-26 12:00:00)]]></date>
+  </metadata>
+  <section>
+    <text>Bananas!</text>
+  </section>
+</document>

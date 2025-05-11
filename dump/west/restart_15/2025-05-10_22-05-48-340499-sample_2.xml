@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY copy "&#169; 2001">
+  <!ELEMENT document (html)>
+  <!ELEMENT html (head, body)>
+]>
+<document>
+  <html>
+    <head>
+      <title>Fruit Store</title>
+      <meta http-equiv="refresh" content="5;URL=http://www.example.com" />
+      <style type="text/css">
+        <![CDATA[
+          @page { size: 11in 8.5in; }
+          body { font-family: Helvetica, sans-serif; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <h1>Fruit</h1>
+      <section>
+        <figure>
+          <image xlink:href="banana.jpg" width="100" height="100" />
+          <figcaption>Banana</figcaption>
+        </figure>
+        &nbsp;Apples
+      </section>
+    </body>
+  </html>
+  &copy; <author>John Doe</author> 2001-2005. All Rights Reserved. &nbsp;
+</document>

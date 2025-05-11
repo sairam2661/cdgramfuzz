@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % fruit "<!ENTITY note 'Note'>">
+  %fruit;
+  <!ENTITY percent-entity "&percent-entity;">
+  <!ENTITY double-amp "&amp;&amp;">
+]>
+<document>
+  <html xmlns:fb="http://www.facebook.com" xmlns:fb2="http://www.facebook2.com">
+    <head>
+      <style type="text/css"><![CDATA[
+        @media (min-width: 750px) {
+          body { margin-left: 20% }
+        }
+      ]]></style>
+      <meta name="keywords" content="apple, banana, cherry" lang="en"/>
+    </head>
+    <body>
+      <section>
+        <paragraph>&note;&note;</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr-CA"> John</author>
+    <comments>Jane Doe's comments: &percent-entity;</comments>
+  </metadata>
+</document>

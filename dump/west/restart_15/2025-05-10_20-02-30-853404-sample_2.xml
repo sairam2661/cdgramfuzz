@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA|html|metadata|section)*>
+  <!ELEMENT html (#PCDATA|xlink:locator|html|head|body)*>
+  <!ATTLIST html xmlns CDATA #IMPLIED
+                  xmlns:xlink CDATA #IMPLIED
+                 >
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>XML Fuzz Test</title>
+    </head>
+    <body>
+      <p xml:lang="en-GB">Fuzz testing is a software testing technique.</p>
+    </body>
+  </html>
+  <metadata>
+    <author xlink:href="http://example.com">John Doe</author>
+  </metadata>
+  <section>
+    <xlink:locator href="http://example.com/page/1" role="current"/>
+  </section>
+</document>

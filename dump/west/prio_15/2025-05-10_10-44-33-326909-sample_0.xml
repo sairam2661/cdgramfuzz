@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY % dtdref "REFERENCE DTD">
+  %dtdref;
+]>
+<document xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="document.xsd">
+  <html>
+    <head>
+      <title>Apple</title>
+    </head>
+    <body>
+      <xi:include href="included.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+      <xlink:href="http://example.org">Visit website</xlink:href>
+      <section xml:base="http://example.com">
+        <paragraph>This is a paragraph.</paragraph>
+      </section>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "nuts.dtd" [
+  <!ENTITY apple "<nuts>
+    &nuts;
+  </nuts>">
+]>
+<document xml:lang="en-US" xmlns:foo="http://example.com/foo">
+  <html xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <head>
+      <title>Crunchy Snacks</title>
+    </head>
+    <body>
+      <metadata>
+        <author>John Smith</author>
+        <date>2024-06-20</date>
+      </metadata>
+      <foo:section xml:id="fooID">
+        <paragraph xml:space="preserve">Apple &apple; crunchy snack. It keeps me going.</paragraph>
+      </foo:section>
+    </body>
+  </html>
+</document>

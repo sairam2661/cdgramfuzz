@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % html PUBLIC "-//W3C//DTD HTML 4.0//EN"
+    "http://www.w3.org/TR/REC-html40/strict.dtd">
+ <!ENTITY % html SYSTEM "html.dtd">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xml:base="https://example.com"
+        xml:lang="en-US">
+    <head>
+      <title xml:id="title">Fruits are delicious!</title>
+    </head>
+    <body dir="ltr">
+      <h1 about="#title">Fruits</h1>
+      <div xmlns:pic="http://example.com/pic"
+            xmlns:svg="http://www.w3.org/2000/svg">
+        <p>Apples are &pic:favorite; and &amp; tasty.</p>
+        <svg viewBox="0 0 100 100">
+          <rect x="20" y="20" width="50" height="50" fill="#FF0000" />
+        </svg>
+      </div>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2022-06-15</date>
+    <contributor xml:lang="fr">Pierre Dupont</contributor>
+  </metadata>
+</document>

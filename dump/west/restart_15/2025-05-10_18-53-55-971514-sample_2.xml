@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "shapes.dtd" [
+  <!ENTITY example "Example">
+]>
+<document>
+  <html xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:math="http://www.w3.org/1998/Math/MathML"
+        math:display="inline"
+        svg:width="100" svg:height="100">
+    <head>
+      <title>Geometric shapes</title>
+    </head>
+    <body>
+      <math:math>
+        <math:semantics>
+          <mrow>
+            <mtable>
+              <mtr>
+                <mtd><math:matrix>1 0 0</math:matrix></mtd>
+                <mtd><math:matrix>0 1 0</math:matrix></mtd>
+                <mtd><math:matrix>0 0 1</math:matrix></mtd>
+              </mtr>
+            </mtable>
+          </mrow>
+        </math:semantics>
+      </math:math>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-07-26</date>
+  </metadata>
+  <section>
+    <paragraph>&example;</paragraph>
+  </section>
+</document>

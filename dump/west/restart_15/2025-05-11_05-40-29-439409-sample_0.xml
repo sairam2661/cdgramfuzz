@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+]>
+<document xmlns="http://www.example.com/XMLSchema"
+          xml:base="file:///C:/Documents"
+          xml:lang="fr-CA"
+          xml:space="preserve"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace">
+  <html xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>Les fruits sont délicieux</title>
+      <meta name="description" content="Une présentation sur les fruits." />
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #FF0000; }
+      ]]></style>
+    </head>
+    <body>
+      <p xml:space="default">Les <b>bananes</b> sont une excellente source de <i>magnésium</i>.</p>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-US">John Smith</author>
+    <date>2024-07-26</date>
+  </metadata>
+</document>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ENTITY fruitlet "banana">
+  <!ENTITY note "Note">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="&fruitlet; fruit benefits." />
+      <style lang="css" type="text/css">
+        <![CDATA[
+          body { font-family: Arial; }
+          @import url("https://example.com/style.css");
+        ]]></style>
+    </head>
+    <body>
+      <section>
+        <metadata>
+          <author xml:lang="fr">Pierre Dupont</author>
+          <date>2025-05-10T14:30:00-05:00</date>
+        </metadata>
+        <paragraph>Bananas are very nutritious. &note;&note;</paragraph>
+      </section>
+    </body>
+  </html>
+</document>

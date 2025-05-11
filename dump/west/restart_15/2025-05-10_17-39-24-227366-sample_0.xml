@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ENTITY amp "&#038;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+        span { font-size: 120%; }
+      ]]></style>
+    </head>
+    <body>
+      <h1>Hello, World!</h1>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="fr">Jean Dupont</author>
+    <date>2025-05-01</date>
+    <extraMetadata>
+      <info>
+        <key>foo</key>
+        <value>bar&note;baz</value>
+      </info>
+    </extraMetadata>
+  </metadata>
+  <declaration>
+    <paragraph>Bananas&amp;#39;s are very nutritious.</paragraph>
+  </declaration>
+</document>

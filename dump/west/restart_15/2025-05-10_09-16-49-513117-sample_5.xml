@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "apple">
+  <!ENTITY fruittype "a">
+]>
+<document xmlns="http://example.com/document" xml:lang="en"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="schema.xsd">
+  <html>
+    <head>
+      <meta charset="UTF-8"/>
+    </head>
+    <body>
+      <section>
+        <content>&fruit;</content>
+        <info xmlns="http://example.com/info" xmlns:info="http://example.com/info">
+          <info:details>
+            <rank>1</rank>
+            <note>Apples are tasty</note>
+          </info:details>
+        </info>
+      </section>
+    </body>
+  </html>
+</document>

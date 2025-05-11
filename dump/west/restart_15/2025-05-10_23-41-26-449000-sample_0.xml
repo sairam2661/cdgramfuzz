@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY fruit "apple">
+  <!ENTITY entity "&fruit;">
+]>
+<document xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-AR">
+    <head>
+      <title>Un ejemplo de documentación</title>
+    </head>
+    <body>
+      <metadata>
+        &entity;
+      </metadata>
+      <section>
+        <element name="&entity;"/>
+      </section>
+    </body>
+  </html>
+  <decl>
+    <decl-name>foo</decl-name>
+    <decl-type>int</decl-type>
+  </decl>
+  <comment>Este es un comentario</comment>
+</document>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "trees.dtd" [
+  <!ENTITY nut "Nut">
+  <!ATTLIST tree id CDATA #REQUIRED>
+]>
+<document>
+  <html xmlns:html="http://www.w3.org/1999/xhtml"
+        xml:lang="fr" xml:space="preserve">
+    <head>
+      <title>Exploring Trees</title>
+      <meta name="viewport" content="width=device-width" />
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { font-weight: bold; }
+      ]]></style>
+    </head>
+    <body>
+      <h1>Trees</h1>
+      <section>
+        <paragraph>&nut;</paragraph>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith &amp; Jane Doe</author>
+    <date>2025-05-07</date>
+  </metadata>
+  <tree id="Oak">
+    <branch/>
+  </tree>
+</document>

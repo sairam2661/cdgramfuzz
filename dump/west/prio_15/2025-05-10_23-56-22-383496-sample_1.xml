@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "animals/XMLSchema.dtd" [
+  <!ENTITY foo "Bar">
+  <!ENTITY bar "Foo">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US">
+    <head>
+      <title>Foobar</title>
+      <meta name="description" content="Baz, qux." />
+      <style><![CDATA[
+        body { font-family: Arial, sans-serif; }
+        h1 { color: #33CC00; }
+      ]]></style>
+    </head>
+    <body>
+      &foo; &bar;
+    </body>
+  </html>
+  <metadata>
+    <author>Alice Smith</author>
+    <date>2025-05-15</date>
+    <date>2020-01-01</date>
+  </metadata>
+  <section>
+    <image src="image.jpg" />
+    <link href="http://example.com"/>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="alternate" hreflang="en" href="http://example.com/en/"/>
+  </section>
+</document>

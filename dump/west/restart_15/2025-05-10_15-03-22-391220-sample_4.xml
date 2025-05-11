@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "recipes.sed" [
+  <!ENTITY nutmeg "<![CDATA[ freshly grated ]]>" >
+]>
+<document xmlns:fn="http://www.w3.org/2005/xpath-functions"
+          xml:lang="fr-CA"
+          xmlns="http://www.example.com/documents"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.example.com/documents recipes.xsd">
+    <html>
+        <head>
+            <title>Delicious Quiche</title>
+            <meta name="description" content="A simple quiche recipe from France." />
+        </head>
+        <body>
+            <section>
+                <paragraph>Quiche ingredients: &nutmeg;
+                    <ul>
+                        <li>6 eggs</li>
+                        <li>1 1/2 cups heavy cream</li>
+                        <li>1/2 cup grated cheese</li>
+                    </ul>
+                </paragraph>
+            </section>
+            <metadata>
+                <creator>John Smith</creator>
+                <copyright>Copyright 2022 John Smith</copyright>
+                <lastUpdated>2022-07-15T17:30:00+02:00</lastUpdated>
+            </metadata>
+        </body>
+    </html>
+</document>

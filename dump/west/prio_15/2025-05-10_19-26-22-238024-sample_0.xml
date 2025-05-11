@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE document SYSTEM "trees.dtd" [
+  <!ENTITY cat "cat">
+  <!ENTITY dog "dog">
+  <!ENTITY note "Note">
+  <!ATTLIST author idCDATA #REQUIRED>
+]>
+<document xmlns:fb="http://www.facebook.com" xml:space="preserve">
+  <html lang="en-US">
+    <head>
+      <title>Favorite Pets</title>
+      <meta name="author" content="#author::id"/>
+      <meta name="date" content="2024-01-01"/>
+    </head>
+    <body>
+      <p>This is a paragraph with entities: &cat; and &dog;.</p>
+    </body>
+  </html>
+  <author id="JohnDoe" xml:lang="en-GB">John Doe</author>
+  <section fb:like="true">
+    <note>&note;</note>
+  </section>
+  <metadata>
+    <date>2025-05-10</date>
+  </metadata>
+</document>

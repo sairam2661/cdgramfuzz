@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/local.dtd" [
+  <!ENTITY nbsp "&#160;">
+  <!ELEMENT document (html, metadata, section)*>
+  <!ATTLIST document xmlns CDATA #FIXED "http://example.com/local">
+]>
+<document
+  xmlns="http://example.com/local"
+  xml:lang="en-US"
+  xml:space="preserve"
+  xml:base="/base-uri">
+  <html>
+    <head>
+      <title>Test Document</title>
+      <meta name="author" content="Jane Doe" />
+      <meta name="description" content="A sample document." />
+    </head>
+    <body>
+      <p>Paragraph with &nbsp; entity.</p>
+    </body>
+  </html>
+  <metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <item xsi:type="xsd:string">Item 1</item>
+    <item xsi:type="xsd:integer">Item 2</item>
+  </metadata>
+  <section>
+    <subsection>Subsection with content.</subsection>
+  </section>
+</document>

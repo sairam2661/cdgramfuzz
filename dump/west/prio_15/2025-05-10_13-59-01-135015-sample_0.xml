@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY frac "&#x2215;">
+]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML"
+        math:version="2.0"
+        xml:lang="en">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xml:space="preserve">
+    <head>
+      <title>The Beauty of Math!</title>
+    </head>
+    <body>
+      <p>Did you know that <xsl:value-of select="frac(1+&frac;)/(1-&frac;)" /> is a rational number?</p>
+      <section>
+        <h2 xml:lang="fr">Étiquettes</h2>
+        <h3>1. Tag <span style="color:blue">xml:space</span></h3>
+        <p><b>Value:</b> preserve</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>Example User</author>
+    <date>2024-01-15</date>
+  </metadata>
+</document>

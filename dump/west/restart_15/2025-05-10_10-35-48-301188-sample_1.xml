@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % entity "content">
+  <!ENTITY note "Note about &entity;.">
+]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+    xml:lang="en" xml:space="preserve"
+    expand-entity="yes" NMTOKENS="#test">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title>Sample Document</title></head>
+    <body>
+      &note;
+      <section xmlns:my="http://www.example.com/myNS" fb:require="canvas">
+        <para>This is a sample &entity; text.</para>
+        <para>This is a <my:italic>sample</my:italic> italic text.</para>
+      </section>
+    </body>
+  </html>
+</document>

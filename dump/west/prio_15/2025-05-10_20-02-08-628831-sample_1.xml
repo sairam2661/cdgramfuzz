@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schemas/doc.dtd"
+ [
+   <!ENTITY % local "#default">
+   <!ELEMENT document (#PCDATA | html | metadata | section)* >
+   <!ATTLIST document
+    xmlns:xmlspace CDATA #IMPLIED
+    id ID #IMPLIED
+    xml:space (preserve|default) "default"
+   >
+ ]>
+<document xml:space="preserve" xmlns:xmlspace="http://example.com/schemas/xmlspace"
+          id="root" xmlns="http://example.com/schemas/doc">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>A very long title that exceeds the maximum allowed length.</title>
+      <meta name="description"
+            content="A blog on very long topic that exceeds the maximum allowed content length." />
+      <style type="text/css">
+        <![CDATA[        
+          body { font-family: Courier, monospace; }
+          h1 { color : #33CC33; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <p xml:lang="fr">Bananas are very nutritious.</p>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2024-07-26</date>
+  </metadata>
+  <section xml:base="https://www.example.com/documents/">
+    <paragraph>Bananas are very nutritious.</paragraph>
+  </section>
+  <section xml:lang="de">
+    <paragraph xml:lang="en">Bananas are very nutritious.</paragraph>
+  </section>
+</document>

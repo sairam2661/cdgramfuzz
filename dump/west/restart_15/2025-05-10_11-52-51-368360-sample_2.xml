@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % ent SYSTEM "entities.ent">
+  <!ENTITY amp "&amp;">
+  <!ENTITY quot "&quot;">
+  <!ENTITY apos "&apos;">
+  <!ENTITY lt "&lt;">
+  <!ENTITY gt "&gt;">
+]>
+<document xml:lang="fr" xmlns="http://www.example.com/1999/document"
+         exclude-content-type="yes" standalone="yes">
+  <html xmlns:math="http://www.w3.org/1998/Math/MathML">
+    <head>
+      <title>The Best Apples</title>
+    </head>
+    <body>
+      &ent;
+      <p>Bananas are very nutritious. <a href="#id">Jump to summary</a></p>
+    </body>
+  </html>
+  <metadata>
+    <author>Jean Dupont</author>
+    <date>2023-01-01</date>
+  </metadata>
+</document>

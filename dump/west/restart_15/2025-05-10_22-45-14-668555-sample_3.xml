@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA | html | metadata | section | comment)*>
+  <!ELEMENT html (#PCDATA | head | meta | style | body)*>
+  <!ELEMENT metadata (#PCDATA | author | date)*>
+]>
+<document xmlns:fb="http://www.facebook.com/2008/xhtml"
+         xml:space="preserve"
+         xmlns="http://www.w3.org/1999/xhtml">
+  <html>
+    <head>
+      <meta charset="ISO-8859-5"/>
+      <meta name="generator" content="Test Generator"/>
+    </head>
+    <body>
+      <metadata>
+        <author>Test Author</author>
+        <date>2022-02-20</date>
+      </metadata>
+    </body>
+  </html>
+</document>

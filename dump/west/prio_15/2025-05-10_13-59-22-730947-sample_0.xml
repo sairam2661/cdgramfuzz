@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="shift-jis"?>
+<!DOCTYPE document SYSTEM "http://example.org/namespaces.dtd" [
+  <!ENTITY amp "&amp;">
+  <!ENTITY dec ">">
+]>
+<document
+  xmlns:my="http://example.org/my-namespace"
+  xml:lang="ja-JP"
+  xml:space="preserve"
+  xml:base="/base/uri">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title xml:lang="fr">Fruits!</title>
+      <meta name="rating" content="R" />
+    </head>
+    <body>
+      <section my:attr="test">
+        <image src="example.jpg" />
+        <p>This is a <span xml:lang="es">text</span> example.</p>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2 &dec;</li>
+        </ul>
+      </section>
+    </body>
+  </html>
+</document>

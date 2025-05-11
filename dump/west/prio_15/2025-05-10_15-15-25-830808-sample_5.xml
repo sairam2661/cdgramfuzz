@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY percent25 "&#37;">
+  <!ENTITY copy "&#169;">
+]>
+<document xmlns="http://www.example.com/ns"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.example.com/ns fruits.xsd"
+          xml:lang="en">
+  <html>
+    <head>
+      <title>Parser Test</title>
+    </head>
+    <body>
+      <section>
+        <p> Test 1: &copy; 2024 &amp; &note; &percent25; </p>
+        <p>Test 2:<![CDATA[<![CDATA[&]]>]]></p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Doe</author>
+    <date>2024-07-26</date>
+  </metadata>
+</document>

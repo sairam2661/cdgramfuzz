@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE document [
+  <!ENTITY foo "bar">
+  <!ELEMENT fruit ANY>
+]>
+<document xmlns:doc="http://example.org" xmlns="http://www.w3.org/1999/xhtml"
+          xml:lang="en" xml:space="preserve"
+          doc:index="main" doc:description="a document">
+  <html>
+    <head>
+      <title>The Ultimate Guide to Fruits!</title>
+      <meta name="xml:lang" content="en-gb" />
+    </head>
+    <body>
+      <p>Some text with <entity name="foo"/>.</p>
+      <fruit>
+        &foo;
+      </fruit>
+    </body>
+  </html>
+</document>

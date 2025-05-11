@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [<!ENTITY % ent SYSTEM "entities.ent">%ent;]>
+<document xmlns:xml="http://www.w3.org/XML/1998/namespace" xml:lang="en-US">
+  <html>
+    <head>
+      <title>Fruit Salad</title>
+    </head>
+    <body>
+      <section xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+          <xs:element name="description" type="xs:string"/>
+        </xs:schema>
+        <description>This is a delicious fruit salad!</description>
+      </section>
+      <metadata>
+        <created><date>2024-02-12</date></created>
+        <author id="1"><name>Jane Doe</name></author>
+      </metadata>
+    </body>
+  </html>
+</document>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "plants.dtd" [
+  <!ENTITY xref "Fig. X-1">
+]>
+<document xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:lang="fr-FR"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>Les plantes</title>
+      <meta name="author" content="John Smith" />
+    </head>
+    <body>
+      <section id="intro">
+        <h2>Plantes utiles</h2>
+        <p>&svg; &xref;</p>
+      </section>
+      <section id="herbs">
+        <h2>Les fines herbes</h2>
+        <p>Thyme et romarin.</p>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <contributor type="translator">Pierre Dupont</contributor>
+    <date>2020-12-25</date>
+  </metadata>
+</document>

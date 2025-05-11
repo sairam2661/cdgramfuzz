@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:fo="http://www.w3.org/1999/XSL/Format"
+        xml:lang="en-AU">
+    <head>
+      <title>XML Fuzz-Test</title>
+      <meta name="title" content="XML Fuzz Test Demo" />
+    </head>
+    <body>
+      <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" font-size="24pt">Hello!</fo:block>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name><given name="John"/><family name="Doe"/></name>
+      <email type="private">test@example.com</email>
+    </author>
+    <date>2024-12-25</date>
+  </metadata>
+  <section>
+    <paragraph>XML fuzz-test generator producing complex output.</paragraph>
+    <link href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <description>XHTML 1.0 Transitional DTD</description>
+    </link>
+  </section>
+</document>

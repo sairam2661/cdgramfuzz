@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+  <!ENTITY aacute "á" >
+]>
+<document xml:lang="en" xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xml:space="preserve">
+  <html>
+    <head>
+      <title>Mixing Languages</title>
+      <meta name="keywords" content="svg, maths, xml" />
+      <stylexmlns="http://www.w3.org/1999/XSL/Transform">
+        <![CDATA[
+          @import url("style.css");
+          h1 { color: #A9A9A9; }
+        ]]></style>
+    </head>
+    <body xml:base="https://example.com">
+      <section>
+        <p>Bananas are very nutritious. &aacute;</p>
+        <p>1 + 2 = <svg width="30px" height="30px"><circle cx="15" cy="15" r="14"/></svg></p>
+      </section>
+    </body>
+  </html>
+  <math>
+    <matrix>
+      <mtable columnalign="right left">
+        <mtr>
+          <mn>1</mn> <mstyle scriptlevel="1"> <mfrac><mrow><mn>2</mn></mrow><mrow><mn>3</mn></mrow></mfrac></mstyle> <mn>0</mn>
+        </mtr>
+      </mtable>
+    </matrix>
+  </math>
+</document>

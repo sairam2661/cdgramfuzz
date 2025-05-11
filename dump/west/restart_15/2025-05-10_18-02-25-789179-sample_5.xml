@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//FOO//DTD MyDoc 1.0//EN"
+  "http://example.com/mydoc.dtd"
+  [<!ENTITY % f SYSTEM "fruits.xml">
+   <!ENTITY note "Note!">
+   %f;]>
+<document xmlns:xi="http://www.w3.org/2001/XInclude"
+          xml:lang="en"
+          exclude-feature="xml:space"
+          xml:id="doc-123">
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xml:space="preserve">
+    <head>
+      <title>Bananas are best</title>
+      <meta name="dc:creator" content="Jane Doe" />
+    </head>
+    <body>
+      <section xmlns:svg="http://www.w3.org/2000/svg"
+               xml:base="http://example.com/">
+        <svg:xlink xmlns:xlink="http://www.w3.org/1999/xlink" />
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mi>x</mi>
+          <mo>=</mo>
+          <mfrac>
+            <msup><mo>-</mo>1<msup><mo>+</mo> 1<msup><mo>+</mo> 22<msup><mo>/</mo>22</msup></msup></msup></msup><msup><mo>+</mo> 2<msup></msup></msup>
+          </mfrac>
+        </math>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <dc:date>2025-05-10</dc:date>
+    <section>
+      <item>Item 1</item>
+      <item>Item 2</item>
+    </section>
+  </metadata>
+</document>

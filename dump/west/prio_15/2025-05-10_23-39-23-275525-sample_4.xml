@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ELEMENT document (html | metadata | section)*>
+  <!ELEMENT metadata (#PCDATA | author | date)*>
+  <!ELEMENT section (#PCDATA | paragraph)*>
+  <!ELEMENT html (head)>
+  <!ELEMENT head (#PCDATA | title | meta)*>
+  <!ELEMENT title (#PCDATA | xmlns | xml:lang)*>
+  <!ELEMENT xmlns EMPTY>
+  <!ELEMENT xml:lang EMPTY>
+]>
+<document>
+  <html>
+    <head>
+      <title xml:lang="en-US">Pears are a tasty apple!</title>
+      <meta xml:space="preserve" name="description" content="A blog on fruit." />
+    </head>
+  <body>
+  </body>
+  </html>
+  <metadata>
+    <author>Jane Doe</author>
+    <date>2022-05-10</date>
+  </metadata>
+  <section>
+    <paragraph xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">Poires sont délicieuses!</paragraph>
+  </section>
+</document>

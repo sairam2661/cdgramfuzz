@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document xmlns="uri:example"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="no-schema.xsd"
+          xml:base="http://example.com">
+  <html xmlns:htmllang="http://example.org/htmllang">
+    <head>
+      <title>XML Fuzz Testing</title>
+      <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+      <table border="1">
+        <tbody>
+          <tr>
+            <td>Row 1, Cell 1</td>
+            <td>Row 1, Cell 2</td>
+          </tr>
+        </tbody>
+      </table>
+    </body>
+  </html>
+  <other>
+    <section title="Other Section" level="toc-level">
+      <para>This is other content.</para>
+      <figure><img src="image.jpg" alt="an image" /></figure>
+    </section>
+  </other>
+</document>

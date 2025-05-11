@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "tree.dtd" [
+  <!ENTITY apple SYSTEM "http://fruits.com">
+  <!ELEMENT fruit EMPTY>
+]>
+<document xmlns="http://www.w3.org/2003/01/XMLSchema-instance"
+          xsi:schemaLocation="http://www.example.com/structure.xsd"
+          version="1.0"
+          lang="en">
+  <html xmlns:fb="http://www.facebook.com/2008/xmppextensions/fb.php">
+    <head>
+      <title>Exotic Fruits</title>
+    </head>
+    <body>
+      <table xmlns="">
+        <metadata>
+          <fb:friends>10</fb:friends>
+        </metadata>
+        <tr>
+          <th>Rank</th>
+          <th>Fruit Name</th>
+          <th>Scientific Name</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><![CDATA[Papaya]]></td>
+          <td>Carica papaya</td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  <section xml:space="preserve">
+    <paragraph>XSLT transform: &apple;</paragraph>
+  </section>
+</document>

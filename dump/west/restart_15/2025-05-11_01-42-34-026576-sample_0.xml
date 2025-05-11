@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % xml-entities SYSTEM "entities/entities.ent">
+  %xml-entities;
+]>
+<document xmlns="http://example.com/docs"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../validation.xsd"
+          xml:space="preserve">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Bananas are the best fruit!</title>
+    </head>
+    <body>
+      <section>
+        <p>Bananas are very nutritious.</p>
+        &note;
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>
+      <name>
+        <first>Jane</first>
+        <last>Doe</last>
+      </name>
+    </author>
+  </metadata>
+</document>

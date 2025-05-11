@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "currencies.dtd" [
+  <!ENTITY pound "&#163;">
+  <!ENTITY exchange-rate "1.3">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:csv="http://example.org/csv"
+        xml:lang="en-GB"
+        xml:space="preserve">
+    <head>
+      <title>Currency Rates</title>
+      <meta name="author" content="John Smith" />
+      <style><![CDATA[
+        table { border: 1px solid black; }
+        th, td { border: 1px solid black; padding: 5px; }
+      ]]></style>
+    </head>
+    <body>
+      <table>
+        <csv:header>
+          <th>Currency</th>
+          <th>Rate</th>
+        </csv:header>
+        <tr><td>GBP</td><td>&pound;</td></tr>
+        <tr><td>US$</td><td>&pound; * &exchange-rate;</td></tr>
+      </table>
+    </body>
+  </html>
+  <metadata>
+    <creator>John Smith</creator>
+    <date>2024-02-12</date>
+    <copyright>&copy; 2024 John Smith</copyright>
+  </metadata>
+  <section>
+    <figure><image href="currency-image.png"/></figure>
+    <paragraph>Current currency rates.</paragraph>
+  </section>
+</document>

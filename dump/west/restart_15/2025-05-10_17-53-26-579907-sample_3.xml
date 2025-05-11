@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+  <!ENTITY note "Note">
+  <!ELEMENT section (#PCDATA|paragraph|section)*>
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
+        xml:lang="en-US"
+        xml:base="https://example.com">
+    <head>
+      <title>Bananas are the best fruit!</title>
+      <meta name="description" content="A blog on bananas." />
+      <style><![CDATA[
+        body { font-family: Georgia, serif; }
+        h1 { color: #FFFF00; }
+      ]]></style>
+    </head>
+    <body>
+      <p>Bananas are delicious!</p>
+    </body>
+  </html>
+  <metadata>
+    <author xml:lang="en-GB">John Smith</author>
+    <date>2022-05-10</date>
+    <section>
+      <paragraph>This is a paragraph.</paragraph>
+      <section>
+        <paragraph>This is another paragraph.</paragraph>
+      </section>
+    </section>
+  </metadata>
+  <commentary> <!-- This is a comment -->
+    &note;
+  </commentary>
+</document>

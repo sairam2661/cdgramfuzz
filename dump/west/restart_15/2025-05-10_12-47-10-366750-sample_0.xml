@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY % entity PUBLIC "sample entidad" "entities.dtd">
+  %entity;
+]>
+<document xml:lang="en"
+          xmlns="http://example.com/docs"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com/docs docs.xsd">
+  <html xmlns:moz="http://www.mozilla.org/2003/dtd">
+    <head>
+      <title>Fruits and Veggies</title>
+    </head>
+    <body>
+      <h1>Apples and Carrots</h1>
+      <section>
+        <p>They're good for you!</p>
+        <svg:xlink xmlns:svg="http://www.w3.org/2000/svg"
+                    title="XML is a great language!"
+                    xlink:href="http://www.example.org">
+          <svg:rect x="10" y="20" width="50" height="30" />
+          <svg:text x="100" y="90" font-size="20">Hello!</svg:text>
+        </svg:xlink>
+      </section>
+    </body>
+  </html>
+</document>

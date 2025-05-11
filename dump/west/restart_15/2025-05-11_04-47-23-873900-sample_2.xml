@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+  <!ENTITY quot "&quot;">
+  <!ENTITY amp "&amp;">
+]>
+<document>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <title>Books of the World!</title>
+    </head>
+    <body>
+      <h1>A Collection of Famous Novels</h1>
+      <ul>
+        <li>
+          <xlink:title href="#1">To Kill a Mockingbird</xlink:cover>
+          <a href="#2" xlink:href="#3" xlink:title="The Catcher in the Rye"></a>
+          <span>This is a test of entity replacement: <xsl:value-of select="entity quot"/>.</span>
+        </li>
+        <li>
+          <xlink:title href="#4">Pride and Prejudice</xlink:author>
+          <xlink:href="#5" xlink:title="The Great Gatsby" xlink:arcrole="http://www.w3.org/1999/xlink/properties/arc-role"></xlink:image>
+        </li>
+      </ul>
+    </body>
+  </html>
+  <metadata>
+    <author xlink:title="A fiction writer">John Doe</author>
+    <date>2010-05-10</date>
+  </metadata>
+</document>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/beans.dtd" [
+  <!ENTITY apples "Apples and Pears">
+]>
+<document xmlns="http://example.org/documents">
+  <html>
+    <head>
+      <title>Kiwi is a fruit.</title>
+      <meta charset="UTF-8" />
+      <style type="text/css">
+        <![CDATA[
+          @import url("style.css") screen;
+          body { font-size: 12pt; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <metadata>
+          <author xmlns:dc="http://purl.org/dc/elements/1.1/">John Smith</author>
+          <date>2022-02-10</date>
+        </metadata>
+        <p>Cherries are a favorite among many children.</p>
+        <p>&apples;</p>
+      </section>
+    </body>
+  </html>
+  <data><row id="R123"><field>2</field><field>3</field></row></data>
+</document>

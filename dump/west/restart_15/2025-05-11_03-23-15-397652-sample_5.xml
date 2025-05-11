@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<document xmlns="http://example.com"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://example.com schema.xsd"
+          xml:lang="en">
+  <html xmlns:math="http://www.w3.org/1998/Math/MathML">
+    <head profile="compact">
+      <style type="text/css">
+        <![CDATA[
+          @import url("stylesheet.css");
+          h2 { font-variant: small-caps; }
+        ]]>
+      </style>
+    </head>
+    <body>
+      <section>
+        <h1>Mathematical Proof</h1>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <eq/>
+            <apply><plus/><cn>123</cn><cn>456</cn></apply>
+            <apply><times/><cn>100</cn><cn>1</cn></apply>
+          </apply>
+        </math>
+      </section>
+    </body>
+  </html>
+  <metadata>
+    <author>John Smith</author>
+    <date>2023-06-01</date>
+  </metadata>
+</document>

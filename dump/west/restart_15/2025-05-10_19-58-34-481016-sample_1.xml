@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "solutions.dtd" [
+  <!ENTITY xslt "XSLT">
+  <!ENTITY xml "XML">
+  <!ENTITY xsi "xsi:schemaLocation">
+  <!ENTITY xsd "xsd:dateTime">
+]>
+<document xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../noNamespace.xsd"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <html>
+    <head>
+      <title>XML Document</title>
+    </head>
+    <body>
+      <xi:include href="../file.xml"/>
+      <a xlink:href="https://www.google.com">Google</a>
+      <element-with-attributes type="text" lang="en" />
+    </body>
+  </html>
+  <metadata>
+    <author>Author Name</author>
+    <date><xsd:dateTime>2024-07-26T11:00:00</xsd:dateTime></date>
+  </metadata>
+  <section>
+    <paragraph>This is a paragraph of text. &xslt; &xml;
+    Another paragraph.
+    <empty-element/>
+  </paragraph>
+</section>
+</document>
