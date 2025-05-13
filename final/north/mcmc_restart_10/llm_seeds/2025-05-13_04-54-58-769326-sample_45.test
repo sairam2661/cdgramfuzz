@@ -1,0 +1,44 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix data
+set db data
+
+proc data_proc {} {
+  db eval {SELECT * FROM data}
+  expr {$::x}
+}
+
+do_execsql_test data-1.1 {
+  CREATE TABLE data(x);
+  INSERT INTO data VALUES(1);
+  INSERT INTO data VALUES(2);
+}
+{1 2}
+
+do_execsql_test data-1.2 {
+  SELECT count(*) FROM data;
+} {2}
+
+do_test data-2.1 {
+  execsql {
+    BEGIN;
+    INSERT INTO data VALUES(3);
+    COMMIT;
+  }
+  set datacount
+} {3}
+
+do_execsql_test data-3.1 {
+  PRAGMA integrity_check;
+} {ok}
+
+ifcapable fts3 {
+  do_execsql_test data-5.1 {
+    CREATE TABLE fts(x, y);
+    INSERT INTO fts VALUES(1, 'apple');
+    INSERT INTO fts VALUES(2, 'banana');
+    CREATE INDEX idx ON fts(x);
+  }
+  {0 {}}
+}
+finish_test

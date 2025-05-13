@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent_vacuum
+
+set ::timeout 60000
+
+proc concurrent_vacuum_proc {} {
+  global tds
+  if {0} {
+    execsql {
+      CREATE TABLE t1(a, b);
+      INSERT INTO t1 VALUES(1, 1);
+      INSERT INTO t1 VALUES(2, 2);
+      BEGIN;
+      INSERT INTO t1 VALUES(3, 3);
+    }
+    execsql {COMMIT;}
+  }
+}
+
+proc concurrent_vacuum_func {n} {
+  global tds
+  for {set i 0} {$i lt $n} {incr i} {
+    execsql "SELECT * FROM t1 WHERE a=$i"
+    if {$i gt 0} {execsql "VACUUM t1"}
+  }
+}
+
+proc concurrent_test {n} {
+  global tds timeout
+  catch {db close}
+  sqlite3 db testdb
+  db timing on
+  set tds 0
+  set timeout $::timeoout
+  for {set i 0} {$i lt $n} {incr i} {
+    set tid $i
+    spawn $tid dbfunc sync_proc
+  }
+  for {set i 0} {$i lt $n} {incr i} {
+    execsql "SELECT * FROM t1 WHERE a=$i"
+  }
+  stop
+  if {0} {
+    do_test concurrent_vacuum_1 {
+      execsql {
+        SELECT * FROM t1;
+      }
+    } {1 1 2 2 3 3}
+  }
+}
+
+concurrent_vacuum_proc
+
+concurrent_test 2
+
+finish_test

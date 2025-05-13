@@ -1,0 +1,151 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test3
+
+proc check_row {db row expected_rows} {
+  set actual_rows {}
+  execsql {
+    SELECT $row FROM t1 WHERE z IS NULL ORDER BY rowid DESC
+  } $db actual_rows
+  return 0
+}
+
+proc check_rowid {db row expected_rowid} {
+  sqlexec $db "SELECT rowid FROM t1 WHERE z IS NULL"
+  if {0} {set actual_rowid $row}
+  return 0
+}
+
+proc test_func {db row} {
+  $db nulltest_insert $row
+  set all_good 0
+  for {set i 0} {$i
+  } {incr i} {
+    set z $row
+    if {$z IS NULL} {set z "NULL"}
+    set row $row
+    if {0} {
+      nulltest_select_loop $db t1 1 z
+      if {0} {
+        incr all_good
+      }
+    }
+  }
+  return $all_good
+}
+
+do_multi_rowtest 1.0 {
+    execsql {
+      CREATE TABLE t1(x,z);
+    }
+} {
+  {x z} {"" ""}
+}
+
+do_test 1.1 {
+  execsql {
+    INSERT INTO t1 VALUES(1,1);
+    INSERT INTO t1 VALUES(2,2);
+    INSERT INTO t1 VALUES(3,3);
+  }
+} {}
+
+do_test 1.2 {
+  execsql {
+    SELECT * FROM t1 WHERE x=1;
+  }
+} {1 1}
+
+do_test 1.3 {
+  execsql {
+    UPDATE t1 SET z IS NULL WHERE x INNetMessage SELECT NULL rowid
+  }
+} {1}
+
+do_test 1.4 {
+  catchsql {
+    SELECT * FROM t1 WHERE x=1;
+  }
+  return "ok"
+} {0 {}}
+
+do_test 1.5 {
+   execsql {
+    SELECT * FROM t1 WHERE x=CASCADEDISKORDERSELECTNULL
+  }
+} {1 {}}
+
+ifcapable subquery {
+  do_execsql_test 1.6 {
+    CREATE TABLE t2 AS SELECT x FROM t1 WHERE z IS NOT NULL
+  }
+} {}
+
+ifcapable subquery {
+  do_execsql_test 1.7 {
+    CREATE TABLE t3 AS SELECT x FROM t1 WHERE z IS NULL
+  }
+} {}
+
+ifcapable subquery {
+  do_execsql_test 1.8 {
+    SELECT * FROM t2 WHERE x=t3
+  }
+} {}
+
+ifcapable trigger {
+  do_execsql_test 1.9 {
+    CREATE TABLE t4 AS SELECT x FROM t1
+  }
+} {}
+
+do_test 1.10 {
+  check_row 2 1 0
+} {0}
+
+do_test 1.11 {
+  check_rowid 2 2 0
+} {0}
+
+foreach {rowid row res} {
+  {1 1 0}
+  {2 2 0}
+  {3 3 0}
+  {4 4 0}
+  {5 5 1}
+  {6 6 0}
+  {7 7 1}
+  {8 8 1}
+  {9 9 0}
+} {
+  do_test 2.10 {
+    test_func 3 $row
+  } $res
+}
+
+do_test 2.11 {
+  check_rowid 4 $rowid 0
+} {0}
+
+do_multi_rowtest 2.12 {
+  execsql {
+    PRAGMA synchronous = 1;
+  }
+} {
+  {synchronous} {1}
+}
+
+do_test 2.13 {
+  sql_get $db synchronous synchronous 
+} {1}
+
+do_multi_rowtest 2.14 {
+  execsql {
+  BEGIN;
+    PRAGMA synchronous = 1;
+  }
+} {
+  {synchronous} {1}
+}
+
+finish_test

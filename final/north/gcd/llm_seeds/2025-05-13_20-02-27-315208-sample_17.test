@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set testcase2db {}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE b(x, y);
+  INSERT INTO b VALUES(1, 4);
+}
+
+{{} {1 {not an error}}}
+
+foreach {tn cmd r1 r2} {
+  2 {SET x 10} x x
+  3 {lappend r1 z} {10 z} x
+} {
+  do_test complex2.3 $tn {
+    uplevel $cmd
+    if {$r1 eq  $r2} {lappend result $r1}
+  } {}
+}
+set result
+do_execsql_test complex-2.4 {
+  CREATE TABLE c(x, y);
+  INSERT INTO c VALUES(4, 5);
+}
+
+{{} {1 {not an error}}}
+
+list $result {5 5}
+
+do_execsql_test complex-3.1 {
+  SELECT * FROM b;
+  SELECT * FROM c;
+}
+
+{{1 4} {4 5}}
+
+unset testcase2db
+
+set tcl_precision 15.2
+set tcl_int_precision 12
+set n 0
+for {set i 0} {$i le $n} {incr i} {
+  do_test complex4.3$i {
+    sqlite3 db testdb
+    db eval {SELECT * FROM sqlite_master}
+    unset db
+    unset result
+    set result {}
+  } {}
+}
+
+set tcl_precision 10
+
+do_execsql_test complex5.1 {
+  CREATE TABLE d(a, b);
+  INSERT INTO d VALUES(22, 23);
+}
+
+list {}
+lappend tcl_precision 1
+set result 23
+proc p2 {a b c} {lappend tcl_precision 2 lappend tcl_precision 3 }
+p2 1 5 9
+
+do_execsql_test complex5.3 {
+  PRAGMA page_size = 8192;
+  SELECT count(*) FROM d;
+}
+
+{{} {1 {not an error}}}
+set n $tcl_precision
+unset tcl_precision
+
+finish_test

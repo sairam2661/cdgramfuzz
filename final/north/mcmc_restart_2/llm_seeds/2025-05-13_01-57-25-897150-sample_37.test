@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fiddle3
+do_catchsql_test fiddle3.1 {
+  SELECT x FROM t1 WHERE x NOT IN 
+    SELECT x FROM t2 WHERE y NOT IN 
+      SELECT y FROM t3 WHERE x NOT IN 
+        SELECT x FROM t4
+} {1 {database or disk I full}}
+
+proc fiddle_proc {} {
+  for {set i 0} {$i 100} {incr i} {
+    execsql {INSERT INTO t1 VALUES('data')}
+    execsql {INSERT INTO t2 VALUES('data')}
+    execsql {INSERT INTO t3 VALUES('data')}
+    execsql {INSERT INTO t4 VALUES('data')}
+  }
+}
+
+ifcapable journalMode {
+  set wal_mode journal
+  if {$global_journal_mode_wal} {
+    set wal_mode wal
+  }
+  set sync_mode normal
+  if {$global_sync_mode_fullsync} {
+    set sync_mode full
+  }
+  if {0} {
+    catchsql "PRAGMA journal_mode = $wal_mode"
+  }
+}
+
+do_execsql_test fiddle3.2 {
+  CREATE TABLE t1(x);
+  CREATE TABLE t2(y);
+  CREATE TABLE t3(z);
+  CREATE TABLE t4(w);
+} {}
+
+do_catchsql_test fiddle3.3 {
+  SELECT x FROM t1 WHERE x NOT IN 
+    SELECT x FROM t2 WHERE y NOT IN 
+      SELECT y FROM t3 WHERE x NOT IN 
+        SELECT x FROM t4
+} {1 {database or disk I full}}
+
+do_execsql_test fiddle3.4 {
+  DELETE FROM t1 WHERE x NOT IN 
+    SELECT x FROM t2
+} {}
+
+do_execsql_test fiddle3.5 {
+  DELETE FROM t2 WHERE y NOT IN 
+    SELECT y FROM t3
+} {}
+
+do_execsql_test fiddle3.6 {
+  DELETE FROM t3 WHERE x NOT IN 
+    SELECT x FROM t4
+} {}
+
+do_execsql_test fiddle3.7 {
+  DELETE FROM t4 WHERE w NOT IN 
+    SELECT w FROM t3
+} {}
+
+finish_test

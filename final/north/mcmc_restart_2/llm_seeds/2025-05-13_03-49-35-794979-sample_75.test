@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+proc complex_sql {} {
+  foreach {name} {
+    "TableA" "PersonID INT PRIMARY KEY" "Name VARCHAR(50)"
+    "TableB" "OrderID INT PRIMARY KEY" "OrderDate DATE" "CustomerREF INT"
+    "TableC" "OrderItemID INT PRIMARY KEY" "ProductID INT" "Quantity INT"
+  } {
+    execsql "CREATE TABLE $name ($name ($name))"
+
+    if { $name eq "TableB" } {
+      lappend TableBlist "INSERT INTO TableB (OrderID, OrderDate, CustomerREF) VALUES (1, $date(2020,1,1), 1)"
+      lappend TableBlist "INSERT INTO TableB (OrderID, OrderDate, CustomerREF) VALUES (2, $date(2020,2,1), 2)"
+    }
+
+    if { $name eq "TableC" } {
+      lappend TableBlist "INSERT INTO TableC (OrderID, ProductID, Quantity) VALUES (1, 1, 1)"
+      lappend TableBlist "INSERT INTO TableC (OrderID, ProductID, Quantity) VALUES (1, 2, 1)"
+      lappend TableBlist "INSERT INTO TableC (OrderID, ProductID, Quantity) VALUES (2, 1, 1)"
+      lappend TableBlist "INSERT INTO TableC (OrderID, ProductID, Quantity) VALUES (2, 2, 1)"
+    }
+  }
+  join $TableBlist "\n"
+}
+
+set date 2020
+
+do_execsql_test 1 {
+  BEGIN;
+  CREATE TABLE TableA(PersonID, Name);
+  CREATE TABLE TableB(OrderID, OrderDate, CustomerREF);
+  CREATE TABLE TableC(OrderItemID, ProductID, Quantity);
+  COMMIT;
+  SELECT * FROM TableA;
+  SELECT * FROM TableB;
+  SELECT * FROM TableC;
+} ""
+do_test 2 {
+  execsql {
+  SELECT * FROM TableA
+  }
+  complex_sql
+  execsql {
+    SELECT * FROM TableA;
+  }
+} {1 1 2 2}
+do_test 3 {
+ execsql {
+  INSERT INTO TableA VALUES(5, 'Hello')
+ }
+ execsql {
+  SELECT * FROM TableA;
+ }
+} {1 1 2 2 5 5}
+execsql { 
+  PRAGMA synchronous = 0
+}
+do_test 4.1 {
+  do_catchsql_test 5 {
+    execsql {
+      INSERT INTO TableA VALUES(6, 'CATCH ME');
+      SELECT * FROM TableA;
+    }
+  } {1 {database or disk is full}}
+} {1 {database or disk is full}}
+finish_test

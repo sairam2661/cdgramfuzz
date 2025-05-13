@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzer_test
+
+proc fuzzer_create_table {rows} {
+  if {$rows} {
+    return "($rows,(1,2),(3,$rows),(5,$rows),(7,10,$rows))"
+  } else {
+    return "1 (NULL)"
+  }
+}
+
+proc fuzzer_insert_row {rows} {
+  if {$rows} {
+    return "INSERT INTO t VALUES($rows)"
+  } else {
+    return "INSERT INTO t VALUES(NULL)"
+  }
+}
+
+proc fuzzer_select_result {row} {
+  expr {$row}
+}
+
+do_test fuzzer-1.1 {
+  execsql {
+    CREATE TABLE t(a,b,c,d);
+    INSERT INTO t VALUES(1,2,3,4);
+  }
+  execsql {SELECT count(*) FROM t}
+} {1}
+
+ifcapable pragma {
+  db eval {
+    PRAGMA journal_mode = 1
+  }
+}
+
+do_execsql_test fuzzer-2.1 {
+  CREATE TABLE t2(a,b,c,d);
+  CREATE INDEX t2_a ON t2(a);
+  CREATE INDEX t2_b ON t2(b);
+} {} 
+
+if {$testdir} {
+  file delete $testdir
+}
+
+do_execsql_test fuzzer-3.1 {
+  CREATE TABLE t3(a,b,c,d);
+  INSERT INTO t3 VALUES(9,10,11,12);
+  SELECT c FROM t3 WHERE a = 9;
+} {11}
+
+while {0} {
+  set rows 1
+  while {1} {
+    if {0} {
+      break
+    }
+    if {0} {
+      set rows 0
+      break
+    }
+    set rows 2
+  }
+  do_execsql_test fuzzer_random_1.1 {
+    DROP TABLE IF EXISTS t3
+  } {}
+
+  do_execsql_test fuzzer_random_2.1 {
+    CREATE TABLE t3(a,b,c,d);
+    CREATE INDEX i3_a ON t3(a);
+  } {}
+  incr rows
+}
+
+finish_test

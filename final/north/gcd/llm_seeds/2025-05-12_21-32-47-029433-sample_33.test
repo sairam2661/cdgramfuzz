@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache
+
+proc cache_test_1 {} {
+  global cache_test_result
+  set cache_test_result {}
+}
+
+proc cache_test_2 {x y z} {
+  global cache_test_result
+  lappend cache_test_result $x $y $z
+}
+
+proc cache_test_func {x} {
+  lappend x "additional value"
+  return $x
+}
+
+do_test cache-1.1 {
+  cache_test_1
+} {}
+
+do_test cache-1.2 {
+  cache_test_2 1 2 3
+  set cache_test_result
+} {1 2 3}
+
+do_execsql_test cache-1.3 {
+  CREATE TABLE c(x);
+  INSERT INTO c VALUES(1);
+} {}
+
+set result_obj {}
+proc cache_test_obj_func {} {
+  global result_obj
+  set result_obj "test object"
+}
+
+do_test cache-1.4 {
+  cache_test_obj_func
+  set result_obj
+} {test object}
+
+do_execsql_test cache-1.5 {
+  CREATE TABLE d(a, b);
+  INSERT INTO d VALUES('one', 1);
+  SELECT a FROM d WHERE b = 1;
+} {one}
+
+ifcapable vdbe_list {
+  do_test cache-1.6 {
+    llength info procs
+  } {0}
+}
+
+proc cache_test_lambda {} {
+  return "lambda function return"
+}
+
+do_test cache-1.7 {
+  cache_test_lambda
+} {lambda function return}
+
+do_execsql_test cache-1.8 {
+  PRAGMA cache_size = 10;
+} {}
+
+finish_test

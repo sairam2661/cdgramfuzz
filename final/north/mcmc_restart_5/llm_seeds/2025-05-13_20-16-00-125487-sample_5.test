@@ -1,0 +1,106 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_complex
+
+set ::timeout 60000
+
+proc sqlite_error {error} {
+  lappend error_message "$error\n"
+}
+
+proc setup_db {} {
+  global db
+  db eval {
+    PRAGMA foreign_keys = 1;
+    PRAGMA synchronous = 0;
+  }
+}
+
+proc cleanup_db {} {
+  global db
+  execsql {ALTER TABLE IF EXISTS a DROP CONSTRAINT ifexists pk_a}
+  execsql {DROP TABLE IF EXISTS a}
+  execsql {DROP TABLE IF EXISTS b}
+  close db
+  unset db
+}
+
+do_test test-1.1 {
+  setup_db
+  execsql {CREATE TABLE a(id PRIMARY KEY);}
+  execsql {CREATE TABLE b(id UNIQUE);}
+  execsql {CREATE TABLE c(id);}
+} {}
+
+do_test test-1.2 {
+  setup_db
+  set ret_value {}
+  for {set i 1} {$i le 10} {incr i} {
+    catch sql {
+      execsql {INSERT INTO b VALUES(1)}
+      if { $ret_value ne {} } {
+        do_test test1.1 { $ret_value } {INSERT INTO table c is not a valid statement}
+      }
+      do_test test1.2 { $ret_value } {}
+    }
+  }
+} {}
+
+do_test test-1.3 {
+  setup_db
+  execsql {
+    SELECT COUNT(*) FROM a
+  }
+} {0}
+
+do_test test-1.4 {
+  execsql {
+    INSERT INTO a VALUES(1)
+  }
+} {}
+
+do_execsql_test test-1.5 {
+  BEGIN;
+  INSERT INTO a VALUES(1)
+} {}
+
+do_execsql_test test-1.6 {
+  ROLLBACK;
+  SELECT * FROM a
+} {1}
+
+do_test test-2.1 {
+  setup_db
+  execsql {SELECT * FROM a}
+} {1}
+
+do_execsql_test test-2.2 {
+  ROLLBACK;
+  INSERT INTO c VALUES(1)
+} {}
+
+ifcapable incremental_vacuum {
+  do_test test-3.1 {
+    setup_db
+  } {}
+  do_test test-3.2 {
+    execsql {
+      PRAGMA auto_vacuum = 1
+    }
+  } {}
+  do_test test-3.3 {
+    execsql {
+      PRAGMA incremental_vacuum
+    }
+  } {1 1}
+  do_execsql_test test-3.4 {
+    PRAGMA stats
+  } {8 120 9 3}
+}
+
+do_test test-4.1 {
+  cleanup_db
+  unset testdir
+} {}
+
+finish_test

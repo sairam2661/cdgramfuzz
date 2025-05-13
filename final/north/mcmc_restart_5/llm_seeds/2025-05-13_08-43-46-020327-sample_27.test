@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+set sqlite_limit_int 100000
+
+do_test locking-1.1 {
+  execsql {
+    CREATE TABLE t1(x PRIMARY KEY);
+    CREATE TABLE t2(x PRIMARY KEY);
+  }
+  db eval {SELECT name FROM sqlite_master WHERE type='table' } {
+    db eval "DELETE FROM $sqlite_db/main/$name WHERE 1"
+  }
+} {}
+
+do_test locking-1.2 {
+  set STV3 ""
+  set STV2 ""
+  for {set i 0} {$i le 10000} {incr i} {
+    foreach {file mode} {t1 x t2 x t1 1 t2 2} {
+      set cmd "INSERT INTO $file VALUES($mode)"
+      if {$mode eq 1} {
+        set STV3 "3"
+      } else {
+        set STV3 "2"
+      }
+      set STV2 ""
+      execsql $cmd
+      check_sqlite3_log
+    }
+    uplevel do_journal_mode_test
+  }
+  check_sqlite3_log
+  set STV3
+} {}
+
+do_test locking-1.3 {
+  execsql {
+    SELECT x FROM t1;
+  }
+} {}
+
+ifcapable locking_mode {
+  do_execsql_test locking-1.4 {
+    PRAGMA locking_mode
+  } {
+    NORMAL
+  }
+}
+
+proc check_sqlite3_log {} {
+  execsql {SELECT sqlite_log FROM sqlite_log}
+}
+
+proc do_journal_mode_test {} {
+  set STV1 "1"
+  set STV2 "2"
+}
+
+finish_test

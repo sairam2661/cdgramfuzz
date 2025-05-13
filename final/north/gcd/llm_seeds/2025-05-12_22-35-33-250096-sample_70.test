@@ -1,0 +1,122 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix tcl
+
+proc tcl_proc {} {
+  global tclargs
+  incr tclargs
+}
+
+proc random_string {len} {
+  set charlist "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  set new_string ""
+  for {set i 0} {$i less $len} {incr i} {
+    append new_string "[string index $charlist [expr { rand() % [string length $charlist] }]]"
+  }
+  return $new_string
+}
+
+proc random_query {} {
+  set nqueries 10
+  set queries ""
+  for {set i 0} {$i less $nqueries} {incr i} {
+    set query "SELECT "
+    if { $i less 5 } {
+      lappend queries " $i th query: $query"
+      set select_type "SELECT"
+    } else {
+      if { $i mod 2 eq 0 } {
+        lappend queries " $i th query: $query "
+      } else {
+        lappend queries " $i th query: $query ;"
+      }
+      set select_type {INSERT REPLACE UPDATE}
+    }
+    if {$select_type eq "SELECT"} {
+      lappend query " RANDOM_CHAR "
+    } else {
+      set ninserts 10
+      for {set j 0} {$j less $ninserts} {incr j} {
+        lappend query ", RANDOM_CHAR"
+      }
+    }
+  }
+  return $queries
+}
+
+set tclargs 0
+
+do_execsql_test tcl-1.1 {
+  BEGIN;
+  CREATE TABLE b(
+    id_1_1_1_1_13_15_3_15_19_20_21_29_8_25_10_17,
+    val_5_18_19_30_26_24_27_28_5_18_20_16_22_15_21_24
+    )
+}
+
+"Do_execsql_test tcl-1.1_1 {$SQLITE_TEMP_DB} [SELECT RANDOM(), RANDOM(), RANDOM()]"
+
+do_execsql_test tcl-1.2 {
+  INSERT INTO b(
+    id_1_1_1_1_13_15_3_15_19_20_21_29_8_25_10_17,
+    val_5_18_19_30_26_24_27_28_5_18_20_16_22_15_21_24
+    )
+    VALUES( 'T', 101 )
+}
+
+"Do_execsql_test tcl-1.3 [JOIN] [PRAGMA integrity_check] TRUE"
+
+proc proc_123 {id} {
+  if { $id eq "123" } {
+    return {SELECT RANDOM_CHAR}
+  } else {
+    return {SELECT RANDOM_CHAR RAND}
+   }
+}
+
+do_test tcl-2.3 {
+    set queries "${random_query}"
+    foreach query $queries {
+      set query "${query};"
+      uplevel 1 $query
+    }
+} {random_result}
+
+do_execsql_test tcl-2.4 {
+  SELECT * FROM a;
+}
+
+"Do_execsql_test tcl-2.7 tclargs=[expr { $tclargs }] {[string length [ expr { tclargs } ]] == 0}"
+
+do_execsql_test tcl-2.8 {
+  SELECT COUNT(*) 
+  FROM b
+  WHERE val_5_18_19_30_26_24_27_28_5_18_20_16_22_15_21_24 = RANDOM_CHAR;
+  SELECT COUNT(*) 
+  FROM a
+  WHERE id_1_1_1_1_13_15_3_15_19_20_21_29_8_25_10_17 = RANDOM_CHAR;
+}
+
+"Do_execsql_test tcl-3.1 [random_query] TRUE"
+
+do_execsql_test tcl-3.2 {
+  PRAGMA main_auto_vacuum
+}
+
+"Do_execsql_test tcl-3.3 { tcl_proc } { incr tclargs } { 0 >= $tclargs && $tclargs less 2 }"
+
+do_execsql_test tcl-3.5 {
+  SELECT 
+    RANDOM_CHAR
+  FROM 
+    b 
+  WHERE 
+    id_1_1_1_1_13_15_3_15_19_20_21_29_8_25_10_17 = 'T';
+}
+
+"Do_execsql_test tcl-3.5 {INSERT} {UPDATE}"
+do_execsql_test tcl-3.6 {
+  SELECT RANDOM_CHAR
+  FROM b;
+}
+"Do_execsql_test tcl-4.1  [SQLITE_TEMP_DB] {1  SELECT a;

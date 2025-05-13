@@ -1,0 +1,140 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_tests
+
+set ::timeout 60000
+set SQLITE_TESTCTRL_CHECKPOINT 1
+
+proc checkpoint_proc {} {
+  global sqlite_db_name
+  execsql "PRAGMA wal_checkpoint(full)"
+}
+
+proc init_db {} {
+  execsql {
+    CREATE TABLE a(x,y);
+    CREATE TABLE b(x,y);
+    CREATE INDEX i_a ON a(x);
+    CREATE INDEX i_b ON b(y);
+    INSERT INTO a VALUES(1,2);
+    INSERT INTO a VALUES(3,4);
+    INSERT INTO b VALUES(5,6);
+  }
+}
+
+proc test_query {sql} {
+  set result "NOT OK"
+  set db $sqlite_db_name
+  execsql {
+    PRAGMA journal_mode = 'wal'
+  } $db
+  set before_mem_stats {}
+  lappend before_mem_stats "SELECT value FROM sqlite3_stat1"
+  lappend before_mem_stats "SELECT value FROM sqlite3_stat2"
+  lappend before_mem_stats "SELECT value FROM sqlite3_stat3"
+  lappend before_mem_stats "SELECT value FROM sqlite3_status"
+  lappend before_mem_stats "PRAGMA page_size"
+  lappend before_mem_stats "PRAGMA cache_size"
+  execsql {
+    PRAGMA stat1_basic
+    PRAGMA stat2_basic
+    PRAGMA stat3_basic
+    SELECT status FROM sqlite3_status
+  }
+  execsql {
+    $sql
+  }
+  lappend after_mem_stats {}
+  lappend after_mem_stats "SELECT value FROM sqlite3_stat1"
+  lappend after_mem_stats "SELECT value FROM sqlite3_stat2"
+  lappend after_mem_stats "SELECT value FROM sqlite3_stat3"
+  lappend after_mem_stats "SELECT value FROM sqlite3_status"
+  lappend after_mem_stats "PRAGMA page_size"
+  lappend after_mem_stats "PRAGMA cache_size"
+  set result "OK"
+  check_memory_stats $before_mem_stats $after_mem_stats
+  return $result
+}
+
+proc check_memory_stats {before after} {
+  global stats_output
+  foreach from $before from_list to $after to_list {
+    foreach pair $from {
+      set key $pair
+      set i $pair
+      set j $pair
+      if { $key eq "SELECT value FROM sqlite3_stat1"} {
+        set m 7
+      } elseif { $key eq "SELECT value FROM sqlite3_stat2"} {
+        set c 7
+      } elseif { $key eq "SELECT value FROM sqlite3_stat3"} {
+        set c 35
+      } elseif { $key eq "SELECT value FROM sqlite3_status"} {
+        set c 3
+      } elseif { $key eq "PRAGMA page_size"} {
+        set c 1024
+      } elseif { $key eq "PRAGMA cache_size"} {
+        set c 2000
+      } else {
+        set c 0
+      }
+      if { $from_list eq "before_mem_stats" } {
+        incr stats_output $c
+      } elseif { $from_list eq "after_mem_stats" } {
+        if {$c eq 0} { set c 0 }
+        if {$i eq $j} {
+          set c $j
+        }
+        if {$j eq "PRAGMA page_size"} {
+          if { $i eq "SELECT value FROM sqlite3_stat3"} { set c 256 }
+        }
+        set stats_output $stats_output$i $c
+      }
+    }
+  }
+  if {$stats_output eq 0} {
+    return
+  }
+
+  foreach from before to after {
+    switch $from {
+      before { set stats $before_mem_stats }
+      after { set stats $after_mem_stats }
+      default { return }
+    }
+
+    foreach line $stats {
+      lappend line "status "
+      lappend line $stats_output
+      lappend line "expected $stats_output"
+      puts stderr $line
+    }
+  }
+}
+
+proc memory_stats_test {sql} {
+  uplevel test_query $sql
+}
+
+memory_stats_test {
+  SELECT sum(   *
+                 ) FROM  a
+         }
+do_test check1 {
+  execsql "
+    DELETE FROM a;
+    INSERT  INTO a SELECT 1;
+    SELECT sum(  *  ) FROM  a    "
+} 1
+init_db
+memory_stats_test {
+  with  r AS  SELECT 1 FROM  a UNION ALL
+         SELECT 2 FROM  a UNION ALL
+         SELECT 2 FROM  a UNION ALL
+         SELECT 2 FROM  a UNION ALL
+         SELECT 2 FROM  a
+  SELECT sum  r  FROM  r JOIN r AS l ON  r  BETWEEN  l  AND l  1
+}
+memory_stats_test {
+  DELETE FROM  a
+  SELECT sum  1  FROM

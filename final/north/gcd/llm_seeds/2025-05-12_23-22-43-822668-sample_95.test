@@ -1,0 +1,113 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+proc complex_proc {} {
+  global complexargs error
+  lappend complexargs
+  set var 10
+  if { $var } {
+    incr var
+  }
+  set var
+  if { $var } {
+    set error "Unexpected value"
+    return
+  }
+}
+
+do_execsql_test complex-1.1 {
+  BEGIN;
+  CREATE TABLE b(y, z);
+  INSERT INTO b VALUES(1, 2);
+  INSERT INTO b VALUES(3, 4);
+  COMMIT;
+  SELECT * FROM b
+} {1 2 3 4}
+
+do_test complex-1.2 {
+  execsql {
+    SELECT sum(  *) FROM b;
+  }
+} 10
+
+do_execsql_test complex-1.3 {
+  BEGIN;
+  INSERT INTO b VALUES(5, 6);
+  COMMIT;
+  SELECT * FROM b
+} {1 2 3 4 5 6}
+
+do_test complex-1.4 {
+  execsql {
+    SELECT max(  * ) FROM b;
+  }
+} {6}
+
+ifcapable blob_io_error {
+  execsql {
+    UPDATE b SET y 1.0
+  }
+} {
+  UPDATE failed on blob
+}
+
+do_execsql_test complex-2.1 {
+  BEGIN;
+  CREATE TABLE c(x, y, z);
+  INSERT INTO c VALUES(11, 1.0, 'a');
+  INSERT INTO c VALUES(22, 2.0, 'cc');
+  COMMIT;
+  SELECT * FROM c;
+} {11 1.0 a 22 2.0 cc}
+
+ifcapable journalMode {
+  set journal_mode WAL
+  execsql {
+    PRAGMA journal_mode
+  } {
+    WAL
+  }
+}
+
+file delete complex_blob
+do_test complex-4.5 {
+  ifcapable {blob_io_error}
+  file exists complex_blob
+} {1}
+try {
+  set fd2 {}
+  set fd3 {}
+  try {
+    execsql {
+      CREATE TABLE complex_blob_test(a);
+      INSERT INTO complex_blob_test VALUES('Hello world');
+    }
+  } catch { list res $error_info} {
+    if {$res ne "SQLITE_DONE" } {
+      set res
+    } else {
+      set res 
+    }
+    set res
+  }
+  set res
+  close $fd2
+  close $fd3
+  file open complex_blob w
+  file append complex_blob 0 $::res
+  puts stderr $::res
+  file size complex_blob
+} {34}
+try {
+  execsql {
+    CREATE TABLE complex_blob_test2(a);
+  }
+} catch { res $::error_info} {
+  if {$::res ne "SQLITE_MISUSE" } {set res } {set res }
+}
+close $fd2
+close $fd3
+file exists complex_blob
+
+finish_test

@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+file delete complex_test_1
+file delete complex_test_2
+
+proc complex_func {} {
+  global complex_list
+  lappend complex_list
+  set length_crlf $::tcl_rcatch_error_info
+  if { $length_crlf eq "empty string" } {
+    set flag true
+  } else {
+    set flag false
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(5);
+    SELECT count(*) FROM b;
+  }
+} {1}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES('hello');
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+ifcapable fault {
+  execsql {
+    CREATE TABLE c(y);
+  }
+  catchsql {
+    ALTER TABLE c RENAME TO z
+  }
+} {1 {table c does not exist}}
+
+ifcapable subquery {
+  db func sq func {param {args} {set sq "SELECT $args"}}
+  do_execsql_test complex-1.3 {
+    CREATE TABLE d(t);
+    INSERT INTO d VALUES('world');
+    SELECT d FROM d
+  } {world}
+
+  do_execsql_test complex-1.4 {
+    SELECT sq( * ) FROM d
+  } {world}
+
+  catchsql {
+    CREATE TABLE d AS SELECT 1 FROM d
+  }
+} 
+
+finish_test

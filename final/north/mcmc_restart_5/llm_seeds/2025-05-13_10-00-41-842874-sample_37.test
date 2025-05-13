@@ -1,0 +1,132 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_commit
+
+set ::timeout 60000
+set db test_Db
+set testnamemulti_commit test_name
+set testnamemulti_commit2 test_name2
+
+proc test_db {} {
+  global db testnamemulti_commit
+  set testnamemulti_commit test_name_multi_commit
+  execsql {
+    CREATE TABLE test_table(
+      first_name,
+      last_name,
+      address
+    );
+  }
+}
+
+proc test_execsql_test {sql {result {}}} {
+  global db
+  set result_from_db $result
+  catchsql $sql
+  lappend tests $db errcode $result_from_db
+}
+
+proc test_step_execsql_test {sql {result {}}} {
+  global db testnamemulti_commit tests
+  execsql {
+    BEGIN;
+  }
+  set result_from_db $result
+  catchsql $sql
+  lappend tests $db errcode $result_from_db
+}
+
+proc test_multi_commit {} {
+  global db tests testnamemulti_commit
+  execsql {
+    INSERT INTO test_table VALUES('John', 'Doe', 'Address 1');
+  }
+  set errcode "0"
+  set result_from_db "First Query: 1 row inserted"
+  test_execsql_test {
+    SELECT first_name FROM test_table WHERE last_name='Doe'
+  } $result_from_db
+  set testnamemulti_commit test_name_2
+  execsql {
+    INSERT INTO test_table VALUES('Jane', 'Davis', 'Address 2');
+  }
+  set errcode "0"
+  set result_from_db "Second Query: 1 row inserted"
+  test_execsql_test {
+    SELECT last_name FROM test_table WHERE first_name='Jane'
+  } $result_from_db
+  execsql {
+    COMMIT;
+  }
+  set errcode "0"
+  set result_from_db "Two rows inserted"
+  test_execsql_test {
+    SELECT count(*) FROM test_table
+  } $result_from_db
+}
+
+proc test_multi_commit_step {} {
+  global db tests testnamemulti_commit
+  set id test_name_3
+  execsql {
+    BEGIN;
+  }
+  set errcode "21"
+  set result_from_db "UNIQUE constraint failed"
+  test_step_execsql_test {
+    INSERT INTO test_table VALUES('John', 'Doe', 'Address 2');
+  } $result_from_db
+  set errcode "0"
+  set result_from_db "Three rows inserted"
+  test_step_execsql_test {
+    SELECT count(*) FROM test_table
+  } $result_from_db
+  execsql {
+    ROLLBACK;
+  }
+  set errcode "0"
+  set result_from_db "First Query: 1 row inserted"
+  test_execsql_test {
+    SELECT first_name FROM test_table WHERE last_name='Doe'
+  } $result_from_db
+}
+
+do_test multi_commit-1.1 {
+  db eval {
+    PRAGMA journal_mode = "WAL"
+  }
+} {}
+do_test multi_commit-1.2 {
+  db eval {
+    PRAGMA synchronous = 0
+  }
+} {}
+
+file mkdir test_temp_files
+proc test_file_is_link {filename} {
+  global test_temp_files
+  set file_path $filename
+  foreach temp_file $test_temp_files {
+    if { $filename eq $temp_file } {
+      catch { file delete $filename }
+      return 1
+    }
+  }
+  file link $filename test_temp_files
+  return 1
+}
+
+set db_file temp_file
+file delete temp_file
+file touch temp_file
+test_file_is_link temp_file
+
+test_db
+test_multi_commit
+test_multi_commit_step
+test_step_execsql_test {
+  INSERT INTO test_table VALUES('John', 'Doe', 'Address 3');
+}
+end_test
+
+finish_test

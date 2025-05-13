@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbfile
+
+proc dbfile_proc {} {
+  global dbfile_path
+  lappend dbfile_path
+  expr {
+    4
+  }
+}
+
+do_test dbfile-1.1 {
+  set dbfile_path {}
+  dbfile_proc
+  llength $dbfile_path
+} {4}
+
+ifcapable {vdbe}
+
+do_test dbfile-1.2 {
+  execsql {
+    CREATE TABLE p(x);
+    INSERT INTO p VALUES(1);
+  }
+  execsql {
+    SELECT * FROM p;
+  }
+  expr {1}
+} {1}
+
+ifcapable vdbe {
+  setup_fuzztest dbfile
+  append_configured_fuzztest dbfile "pagecache_page_size 4096"
+  run_fuzztest dbfile
+}
+
+do_execsql_test dbfile-1.4 {
+  PRAGMA page_size
+} {4096}
+
+do_execsql_test dbfile-1.5 {
+  PRAGMA shrink_memory
+} {}
+
+do_test dbfile-1.6 {
+  execsql {
+    PRAGMA synchronous=1;
+  }
+} {}
+
+do_test dbfile-1.7 {
+  execsql {
+    CREATE TABLE p1(x);
+    CREATE TABLE p2(y);
+  }
+} {}
+
+do_execsql_test dbfile-1.8 {
+  SELECT name FROM sqlite_master
+} {p1 p2}
+
+do_test dbfile-1.9 {
+  execsql {
+    DROP TABLE p1
+  }
+} {}
+
+do_execsql_test dbfile-1.10 {
+  SELECT name FROM sqlite_master
+} {p2}
+
+do_execsql_test dbfile-1.11 {
+  PRAGMA journal_mode
+} {}
+
+do_test dbfile-1.12 {
+  execsql {
+    DELETE FROM p2
+  }
+} {}
+
+ifcapable wal {
+  set_journal_mode wal
+} else {
+  set_journal_mode delete
+}
+
+do_test dbfile-1.13 {
+  execsql {
+    PRAGMA journal_mode
+  }
+} {wal}
+
+ifcapable wal {
+  do_test dbfile-1.14 {
+    execsql {
+      VACUUM
+    }
+  } {}
+}
+
+set_journal_mode delete
+
+finish_test

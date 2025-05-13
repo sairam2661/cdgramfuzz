@@ -1,0 +1,37 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlfuzzer
+proc sqlfuzzer_test {} {
+  set sql "SELECT * FROM "
+  for {set i 1} {$i le 1000} {incr i} {
+    lappend sql "tableName-$i"
+    if {$i ne 1000} {
+      lappend sql ","
+    }
+  }
+  set sql $sql " WHERE condition;"
+  return $sql
+}
+
+do_test sqlfuzzer-1.1 {
+  execsql {
+    CREATE TABLE tableName1(x);
+  }
+  execsql $sqlfuzzer_test
+} 1
+
+do_execsql_test sqlfuzzer-1.2 {
+  CREATE TABLE tableName2(y);
+  BEGIN;
+  INSERT INTO tableName2 VALUES('a');
+  COMMIT;
+  SELECT count(*) FROM tableName2;
+} {1}
+
+ifcapable tempdb {
+  catchsql {
+    SELECT rowid FROM tempTableName;
+  }
+} {0 {}}
+
+finish_test

@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix memdb
+
+set ::timeout 60000
+
+proc memdb_check {} {
+  global memdb_out
+  foreach line $memdb_out {
+    puts "MemDB $line"
+  }
+}
+
+proc memdb_proc {} {
+  set memdb_ret "MemDB output"
+  lappend memdb_out "$thread $memdb_ret"
+}
+
+proc memdb_exec {} {
+  set memdb_ret "Executed query"
+  set tmp $::SQL
+  set SQL {}
+  if {$tmp ne {}} {
+    execsql $tmp
+  }
+  lappend memdb_out "$thread $memdb_ret"
+}
+
+proc memdb_get {} {
+  global memdb_out
+  lappend memdb_out "Retrieved result"
+}
+
+do_test memdb-1.1 {
+  sqlite3 DB memdb
+  proc DB memdb_proc
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {INSERT INTO a VALUES(2)}
+  execsql {INSERT INTO a VALUES(3)}
+  execsql {
+    SELECT count(*) FROM a
+  }
+} {3}
+do_test memdb-1.2 {
+  sqlite3 DB memdb
+  proc DB memdb_check
+  memdb_get
+  lappend memdb_out {Thread 1 executed query}
+  execsql {
+    UPDATE a SET x
+  }
+  execsql {
+    SELECT x FROM a
+  }
+} {1}
+
+do_execsql_test memdb-1.3 {
+  INSERT INTO a VALUES(4)
+} {4}
+do_execsql_test memdb-1.4 {
+  CREATE TABLE b(y);
+  BEGIN;
+  INSERT INTO b VALUES(1);
+  COMMIT;
+} {}
+
+finish_test

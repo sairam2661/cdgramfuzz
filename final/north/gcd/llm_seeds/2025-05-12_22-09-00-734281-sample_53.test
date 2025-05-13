@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix tcl
+
+proc tcl_func {} {
+  global func_args
+  lappend func_args
+  string repeat 1 2
+}
+
+proc tcl_func1 {} {
+  global func_args
+  lappend func_args
+  expr {2}
+}
+
+proc tcl_func2 {} {
+  global func_args
+  lappend func_args
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+    SELECT count(*) FROM b
+  }
+}
+
+if 0 {
+  do_test tclfunc1 {
+    set arg
+  } {}
+} else {
+  do_execsql_test tclfunc1 {
+    SELECT 1
+  } {1}
+}
+
+do_execsql_test tclfunc2 {
+  SELECT 1
+} {1}
+
+proc test_func {args} {
+  global test_args
+  lappend test_args $args
+  execsql {
+    PRAGMA main wal_checkpoint
+  }
+}
+
+lappend test_args
+execsql {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(6);
+  SELECT count(*) FROM c
+}
+
+finish_test

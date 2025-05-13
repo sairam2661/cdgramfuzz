@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+proc sync_func {} {
+  lappend sync_variables
+}
+
+proc sync_cmd {args} {
+  lappend sync_commands $args
+}
+
+proc sync_func_test {} {
+  do_execsql_test sync_func_test_1 {
+    SELECT * FROM sqlite_master;
+  } {1 1 0 0 1 1}
+  
+
+  set sync_variables {}
+  do_execsql_test sync_func_test_2 {
+    CREATE TABLE x(a, b, c);
+    INSERT INTO x VALUES(1, 2, 3);
+  } {}
+  lappend sync_variables a b c
+  do_execsql_test sync_func_test_3 {
+    CREATE TABLE x(a, b, c);
+    INSERT INTO x VALUES(1, 2, 3);
+  } {}
+  lappend sync_variables 1 2 3
+
+  set sync_commands {}
+  do_catchsql_test sync_func_test_4 {
+    CREATE TABLE x(a, b, c);
+    INSERT INTO x VALUES(1, 2, 3);
+    PRAGMA synchronous=0;
+  } {1 {synchronous must be enabled in WAL mode}}
+  lappend sync_commands CREATE TABLE x
+  do_catchsql_test sync_func_test_5 {
+    COMMIT;
+  } {1 {unused name 'x'}}
+  lappend sync_commands CREATE INDEX
+  do_execsql_test sync_func_test_6 {
+    ROLLBACK;
+  } {}
+  do_execsql_test sync_func_test_7 {
+    SELECT * FROM x;
+  } {1 2 3 ""}
+}
+
+execsql {
+  CREATE TABLE y(a, b, c);
+  INSERT INTO y VALUES(4, 5, 6);
+}
+
+do_execsql_test sync-1.1 {
+  SELECT * FROM y;
+} {4 5 6 ""}
+  
+ifcapable auto_vacuum {
+  catchsql {PRAGMA auto_vacuum=1}
+} {0 {}}
+ifcapable journalMode {
+  execsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+} {journal_mode}
+set sync_variables
+set sync_commands
+
+finish_test

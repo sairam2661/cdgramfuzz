@@ -1,0 +1,90 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+
+proc locking_proc {} {
+  global lockargs
+  lappend lockargs
+}
+
+do_test locking-1.1 {
+  execsql {
+    CREATE TABLE b(x UNIQUE,y);
+    INSERT INTO b VALUES(1,'a');
+    INSERT INTO b VALUES(2,'b');
+    INSERT INTO b VALUES(3,'c');
+  }
+  execsql {SELECT y FROM b}
+} {a b c}
+
+do_execsql_test locking-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(4,'d');
+  COMMIT;
+  SELECT y FROM b;
+} {a b c d}
+
+ifcapable WalMode {
+  do_catchsql_test locking3.1 {
+    PRAGMA wal_checkpoint
+  } {0 {}}
+}
+ifcapable MemDB {
+  do_execsql_test locking3.2 {
+    ATTACH '(:memory:)' AS tmpdb
+    PRAGMA mainjournal_mode
+  } {DELETE}
+
+  do_execsql_test locking3.3 {
+    BEGIN;
+    SELECT * FROM sqlite_master;
+  } {}
+
+  finish_test
+
+  do_execsql_test locking4.1 {
+    PRAGMA max_page_count = 100;
+  } {}
+
+  do_execsql_test locking4.2 {
+    PRAGMA synchronous = 0;
+    PRAGMA default_cache_size = 2000;
+  } {}
+
+  do_execsql_test locking4.3 {
+    db close
+  } {}
+
+  finish_test
+
+  ifcapable shared_cache {
+    do_execsql_test locking5.1 {
+      ATTACH 'test.db1' AS db1
+      PRAGMA shared_cache_enabled
+    } 1
+
+    do_execsql_test locking5.2 {
+      BEGIN;
+      SELECT * FROM sqlite_master;
+    } {}
+  }
+
+  finish_test
+
+  proc isnull_func {x} $x
+  proc isnotnull_func {x} $x
+  proc stringmatch_func {x y} {
+    SELECT $x LIKE $y
+  }
+
+  finish_test
+}
+
+do_test locking-10.0 {
+  set lockargs {}
+  locking_proc
+} {}
+
+finish_test

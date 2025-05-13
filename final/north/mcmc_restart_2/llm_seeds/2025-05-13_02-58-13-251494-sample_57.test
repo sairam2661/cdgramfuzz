@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_fuzz
+
+proc test_fuzz_proc {} {
+  set fd_c1 1000000
+  set fd_c2 3
+  if {$fd_c1 ne $fd_c2} {
+    incr fd_c1 $fd_c2
+    return $fd_c1
+  }
+}
+
+proc test_fuzz_proc2 {} {
+  global test_fuzzargs
+  lappend test_fuzzargs random_value
+  return $test_fuzzargs
+}
+
+proc test_fuzz_proc3 {} {
+  catch {execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    SELECT rand(   *) FROM a;
+  }}
+  return "Success"
+}
+
+do_test test_fuzz-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(2);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_execsql_test test_fuzz-1.2 {
+  BEGIN;
+      INSERT INTO b(y) VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {1}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'MEMORY'}
+} {0 {}
+}
+
+do_test test_fuzz-1.3 {
+  test_fuzz_proc2
+} {random_value}
+do_test test_fuzz-1.4 {
+  set ret 3
+  incr ret $testdir
+  incr ret $fd_c1
+  test_fuzz_proc
+  return $ret
+} {1001004}
+do_test test_fuzz-1.5 {
+  test_fuzz_proc3
+} {Success}
+
+do_execsql_test test_fuzz-1.6 {
+  CREATE TABLE temp(
+    key PRIMARY KEY, value, row_id
+  );
+  CREATE INDEX i ON temp(key);
+  PRAGMA main_page_size;
+  INSERT INTO temp VALUES("A", "ABC", "C");
+  PRAGMA main_page_size=4096;  PRAGMA wal_checkpoint;
+  SELECT * FROM temp;
+} {4096 1 A ABC C}
+
+finish_test

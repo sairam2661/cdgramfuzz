@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_config
+
+set ::timeout 60000
+
+proc db_config_proc {} {
+  global dbconfigargs
+  lappend dbconfigargs
+  expr {1000000}
+}
+
+proc db_config_func {x y} {
+  global dbconfigfuncargs
+  lappend dbconfigfuncargs $x $y
+  expr {1}
+}
+
+do_execsql_test db_config-1.1 {
+  CREATE TABLE t1(i);
+  INSERT INTO t1 VALUES(1);
+  SELECT * FROM t1;
+} {1}
+
+do_test db_config-1.2 {
+  list
+} {}
+
+set dbconfigargs {}
+db_config_proc
+
+do_test db_config-1.3 {
+  expr {50}
+} {}
+
+set dbconfigfuncargs {}
+db_config_func 1 2
+
+ifcapable sqlite3vserver {
+  do_execsql_test db_config-1.4 {
+    CREATE TABLE t2(x);
+    INSERT INTO t2 VALUES(1);
+    SELECT * FROM t2;
+  } {}
+}
+
+do_test db_config-1.5 {
+  list
+} {}
+
+finish_test

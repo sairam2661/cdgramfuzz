@@ -1,0 +1,32 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix testcase
+
+proc callback {data users} {
+  return $users
+}
+
+lappend testprocs callback
+
+proc callback2 { } {
+  proc testproc {arg1 arg2} {
+    upvar $arg1 user1
+    upvar $arg2 user2
+    return $user1$user2
+  }
+  return testproc
+}
+
+proc callback3 {arg} {
+  lappend result $arg
+  if { $result eq {3 2 1} } { return callback3_result }
+}
+set callback3_result 0
+
+set array_name {a {} b {} c {}}
+
+test_all_fresh {
+  db eval { CREATE TABLE b(x PRIMARY KEY, y UNIQUE) }
+  execsql { SELECT name FROM sqlite_master }
+} {main b}
+finish_test

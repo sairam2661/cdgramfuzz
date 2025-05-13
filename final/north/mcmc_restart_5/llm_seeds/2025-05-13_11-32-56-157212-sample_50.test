@@ -1,0 +1,80 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test3
+
+set ::timeout 60000
+
+proc set_table {} {
+    global db
+    execsql {
+        CREATE TABLE b(x,y);
+        INSERT INTO b VALUES(1,2);
+        INSERT INTO b VALUES(3,4);
+    } $db
+}
+
+do_test 1.1 {
+    set_table
+    execsql {SELECT * FROM b}
+} {1 2 3 4}
+
+do_execsql_test 1.2 {
+    BEGIN;
+    INSERT INTO b VALUES(5,6);
+    COMMIT;
+    SELECT * FROM b
+} {1 2 3 4 5 6}
+
+set db2 {}
+proc reopen_db {} {
+    global db
+    if {$db eq ""} {
+        set db2 "test.db"
+        sqlite3 db $db2
+        execsql {
+            PRAGMA foreign_keys = 0;
+        } $db
+    }
+}
+
+do_test 1.3 {
+    reopen_db
+    execsql {
+        PRAGMA foreign_keys = 1;
+        SELECT name FROM sqlite_master;
+    }
+} {db2}
+
+proc execsql_or_die {sql} {
+    global db
+    set rc
+    if { $rc eq {} } {
+        execsql $sql
+    } else {
+        error "SQL error: $rc"
+    }
+}
+
+do_execsql_test 1.4 {
+    BEGIN;
+    CREATE TABLE c(x,y);
+    SELECT * FROM c;
+} {}
+
+set_table
+do_execsql_test 1.5 {
+    INSERT INTO c SELECT y FROM b ORDER BY x LIMIT 2
+} {}
+
+ifcapable {wal} {
+    do_execsql_test 1.6 {
+        ALTER TABLE c ADD CONSTRAINT z FOREIGN KEY
+        REFERENCES b ON UPDATECASCADE  ON DELETE NO ACTION
+    }
+}
+
+catchsql {
+    INSERT INTO c VALUES(10,20)
+}
+error_info
+finish_test

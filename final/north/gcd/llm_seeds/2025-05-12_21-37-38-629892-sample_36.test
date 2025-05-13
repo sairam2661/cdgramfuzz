@@ -1,0 +1,192 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix thread_priority
+set testprefix sync_test
+
+proc thread_priority {} {
+  global thread_priority_val
+  threads priority exec {
+    puts "Thread priority is $::tcl_thread::cpu_id"
+    incr thread_priority_val
+  } $thread_priority_val
+}
+
+proc sync_test {} {
+  global sync_val
+  threads reset
+  threads priority 2
+  threads thread test_thread exec sync_thread_proc
+  threads wait_for_child test_thread
+  unset sync_val
+}
+
+proc sync_thread_proc {} {
+  global sync_val
+  do_test sync_test1 {
+    execsql {
+      CREATE TABLE b(y);
+      INSERT INTO b VALUES(1);
+    }
+    execsql {SELECT count(*) FROM b}
+  } {1}
+  do_execsql_test sync_test2 {
+    BEGIN;
+    INSERT INTO b VALUES(2);
+    COMMIT;
+    SELECT count(*) FROM b;
+  } {2}
+  set sync_val 1
+  threads cancel test_thread
+}
+
+proc execsql_test_prefix {tn arg {options {}} {db {}}} {
+  do_test $tn {
+    if {$db eq {}} {set db db}
+    foreach {onecmd onefile} $options break
+    if $onecmd {
+      set cmd $db $arg
+      return "$db $cmd"
+    } else {
+      set cmd $arg
+      return "$cmd"
+    }
+  }
+}
+
+proc do_execsql_test {tn sql {db {}}} {
+  execsql_test_prefix $tn 1 $sql $db
+}
+
+proc do_test {tn cmd {db {}}} {
+  execsql_test_prefix $tn 0 $cmd $db
+}
+
+set sqlite_open_file_cache_enabled 1
+sqlite3 db test_wal_file
+do_execsql_test 1.1 {
+  PRAGMA journal_mode = 'WAL';
+}
+db eval {
+  BEGIN;
+  INSERT INTO b VALUES(3);
+}
+db eval {
+  COMMIT;
+}
+execsql {
+ SELECT count(*) FROM b
+}
+do_test 1.2 {
+  set n 0
+  while {1} {
+    incr n
+    if {catch {execsql {SELECT * FROM b WHERE y=1}} result} {
+      execsql {SELECT * FROM b}
+      set n
+      break
+    } else {
+      set result
+    }
+  }
+} {1}
+set test_var a
+set test_var b
+ifcapable thread {
+
+  set sync_val 0
+  thread_priority
+  finish_test
+}
+
+if {0} {
+    finish_test
+}
+set test_var b
+proc sqllogictest {arg} { do_test sqllogictest1.1 {
+  execsql_test {INSERT INTO b VALUES('tcl', 'the')
+  } {INSERT INTO b VALUES('tcl', 'the')}
+} {INSERT INTO b VALUES('tcl', 'the')}
+return $arg
+}
+
+do_sqllogictest 1.2 {SELECT id FROM b WHERE id IS NULL}
+
+proc sqltest {arg {db db}} {
+   if {db eval {SELECT rowid from c}} {
+      sqllogictest 2
+   } else {
+      do_test sqltest2 {
+         lsort $db eval {c}
+      } {}
+   }
+}
+
+set test_file test_db1
+set db1 file exists $test_file
+if { $db1 } {
+
+  if {0} {
+    finish_test
+  }
+
+  catch {db1 close}
+}
+if { $db1 } {
+
+  set db1 file mkdir $test_file
+  db1 open $test_file
+  set sqltest2 "SQLTEST_DATABASES=$test_file"
+  sqlite3 db test2_wal_file $sqltest2
+  db eval {
+    PRAGMA journal_mode = 'WAL';
+  }
+  do_execsql_test 2.1 {
+    CREATE TABLE b(s);
+    INSERT INTO b VALUES('abc');
+  }
+  do_execsql_test 2.2 {
+    SELECT s FROM b;
+  } {abc}
+}
+
+set test_var c
+do_test sqltest2.3 {
+  execsql_test {
+    COMMIT TRANSACTION
+  $test_file
+  }
+} {1}
+
+set test_var d
+do_test sqltest2.3 {
+  execsql_test {
+    COMMIT TRANSACTION
+  }
+} {1}
+
+do_test sqltest3 {
+    catchsql {
+       COMMIT TRANSACTION
+  if {
+      sqlite3_open $test_var file2 
+   }  {
+   set rc error
+   return $rc
+}
+catchsql {
+       COMMIT TRANSACTION
+  }
+   COMMIT TRANSACTION
+ } 
+} {1 0}
+sqlite3 db file2
+
+sqlite3 db temp_file
+sqlite3 db temp_file
+
+set test_file1 temp_file
+
+if {0} {
+  finish_test
+}
+set sqlite

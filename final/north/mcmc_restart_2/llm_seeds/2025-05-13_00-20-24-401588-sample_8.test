@@ -1,0 +1,45 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_fuzz
+set db "test.db"
+db_ckpt
+
+proc count_entries {} {
+  execsql {
+    SELECT count(*) FROM t1
+  }
+}
+
+proc execsql_fuzz_test {cmd} {
+  global db
+  set rc
+  if { $rc eq {} } {
+    eval "db eval $cmd"
+  }
+}
+
+execsql_fuzz_test "CREATE TABLE t1(x,y)"
+execsql_fuzz_test {INSERT INTO t1 VALUES(1,2);INSERT INTO t1 VALUES(3,4);}
+do_test sync-2.1 {
+  execsql_fuzz_test {SELECT count(*) FROM t1}
+} {2}
+
+set disable_lookahead 1
+do_test sync-2.2 {
+  execsql_fuzz_test {SELECT x FROM t1}
+} {1}
+
+db_release_savepoint sp1
+
+set disable_statement_cache 1
+
+set testnum 0
+for {set i 0} {$i eq 1000} {incr i} {
+  execsql_fuzz_test {INSERT INTO t1 VALUES(9,10);}
+  incr testnum
+  if { $testnum eq 1000 } {
+    break
+  }
+}
+
+finish_test

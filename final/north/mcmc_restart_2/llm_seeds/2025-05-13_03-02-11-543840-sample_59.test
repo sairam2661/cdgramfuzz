@@ -1,0 +1,50 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+create_encryption_key
+
+proc decrypt_func {args} {
+  db eval {SELECT * FROM encrypted_table}
+}
+
+do_test encryption-1.1 {
+  execsql {
+    CREATE TABLE encrypted_table(x);
+    INSERT INTO encrypted_table VALUES('hello');
+    SELECT x FROM encrypted_table;
+  }
+} {hello}
+
+do_execsql_test encryption-1.2 {
+  BEGIN;
+  INSERT INTO encrypted_table VALUES('world');
+  COMMIT;
+  SELECT x FROM encrypted_table;
+} {hello world}
+
+ifcapable {wal_journal} {
+  db eval {
+    PRAGMA journal_mode = 1;
+    PRAGMA wal_autocheckpoint = 1000;
+    PRAGMA synchronous = 1;
+    PRAGMA write_sync = 0;
+    PRAGMA vacuum_mode = 'full';
+  }
+  catchsql {PRAGMA wal_checkpoint = 1;}
+} {0 {}}
+
+do_test encryption-2.3 {
+  set result {}
+  lappend result "test_result_1"
+  lappend result "test_result_2"
+  lappend result "test_result_3"
+  set result
+} {test_result_1 test_result_2 test_result_3}
+
+sqlite3 db2 test encrypted_database
+do_test encryption-2.4 {
+  catchsql {SELECT x FROM encrypted_table}
+} {1 {database or disk I full}}
+
+finish_test

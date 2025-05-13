@@ -1,0 +1,73 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+
+proc wal_mode {} {
+  global DB
+  execsql {PRAGMA journal_mode = 'wal'}
+}
+
+proc wal_mode_normal {} {
+  global DB
+  execsql {PRAGMA journal_mode = 'DELETE'}
+}
+
+proc set_up_transactions {} {
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(1, 1);
+    INSERT INTO t1 VALUES(2, 2);
+    INSERT INTO t1 VALUES(3, 3);
+    COMMIT;
+    BEGIN;
+  }
+}
+
+do_test transactions-1.1 {
+  set_up_transactions
+  execsql {
+    UPDATE t1 SET x1 WHERE 1
+  }
+} {}
+
+do_test transactions-1.2 {
+  wal_mode
+  execsql {
+    DELETE FROM sqlite_master WHERE type IN {'table'}
+  }
+} {}
+
+do_test transactions-1.3 {
+  set_up_transactions
+  execsql {
+    COMMIT
+  }
+} {}
+
+do_execsql_test transactions-2.1 {
+  PRAGMA journal_mode
+} {wal}
+
+do_execsql_test transactions-2.2 {
+  SELECT * FROM t1;
+} {1 1 2 2 3 3}
+
+wal_mode_normal
+do_test transactions-3.1 {
+  set_up_transactions
+  execsql PRAGMA integrity_check
+} {ok}
+
+do_test transactions-3.2 {
+  wal_mode
+  execsql PRAGMA integrity_check
+} {ok}
+
+do_test transactions-4.1 {
+  set_up_transactions
+  wal_mode
+} {}
+
+finish_test

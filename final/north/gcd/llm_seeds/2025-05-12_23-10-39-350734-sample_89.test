@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+proc insert_proc {} {
+  global lockargs
+  for {set i 1} {$i le 5} {incr i} {
+    execsql "INSERT INTO t1 VALUES($i)"
+  }
+}
+
+do_test lock-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  execsql {
+    SELECT count(*) FROM t1;
+  }
+} {0}
+
+do_execsql_test lock-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(1);
+  COMMIT;
+  SELECT count(*) FROM t1;
+} {1}
+
+ifcapable lock_proxy_1 {
+  catchsql {
+    PRAGMA lock_proxy_name=123456
+  }
+} {0 {}}
+
+proc delete_proc {} {
+  global lockargs
+  execsql "DELETE FROM t1"
+}
+
+set test 4
+while {$test} {
+  set test 0
+  do_execsql_test lockv 2.1 {
+    CREATE TABLE t1(x);
+    BEGIN;
+    INSERT INTO t1 VALUES(10);
+    COMMIT;
+  }
+  set test  $test
+  if { 0} {finish_test}
+  do_test lockv 2.12 {
+    set lockargs
+  } {123456 1}
+  set test 4
+  do_execsql_test lockv 3.1 {
+    PRAGMA in_transaction;
+  } {1}
+  set test 0
+  do_execsql_test lockv 3.2 {
+    PRAGMA in_transaction;
+    COMMIT;
+  } {0}
+  set test 4
+  do_test lockv1 4.1 {
+    set lockargs
+  } {123456}
+  set test 0
+  do_test lockv1 4.2 {
+    delete_proc
+  } {}
+  set test 4
+  do_test lockv1 5.1 {
+    execsql {
+      CREATE TABLE t1(x);
+      INSERT INTO t1 VALUES(10);
+      PRAGMA in_transaction;
+    }
+  } {0}
+  set test 4
+  do_test lockv1 5.2 {
+    execsql {
+      PRAGMA in_transaction;
+      INSERT INTO t1 VALUES(10);
+    }
+  } {0}
+  set lockargs {}
+  delete_proc
+}
+
+finish_test

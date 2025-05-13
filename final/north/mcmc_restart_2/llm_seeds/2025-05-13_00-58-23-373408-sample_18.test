@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_insert
+
+db eval {
+  CREATE TABLE t1(a, b);
+  CREATE INDEX i1 ON t1(b);
+}
+
+db eval {
+  BEGIN EXCLUSIVE;
+}
+
+do_test wal-1.1 {
+  execsql {
+    INSERT INTO t1(a, b) VALUES(1, 'apple');
+    INSERT INTO t1(a, b) VALUES(2, 'banana');
+  }
+  execsql {
+    SELECT * FROM t1;
+  }
+} {1 apple 2 banana}
+
+do_test wal-1.2 {
+  sqlite3 db2 $DB
+  db2 eval {
+    SELECT * FROM t1;
+  }
+} {1 apple 2 banana}
+
+do_test wal-1.3 {
+  catchsql {
+    UPDATE OR IGNORE t1 SET a WHERE a SET a TO 7
+  }
+} {1 {integer value 7 is out of range for column a}}
+
+do_test wal-1.4 {
+  catchsql {
+    PRAGMA synchronous=0
+  }
+} {0 {}}
+
+do_test wal-1.5 {
+  set sqlite_max_memory 1
+  set sqlite_max_page_count 1
+  execsql {
+    TRUNCATE TABLE t1
+  }
+} {}
+
+ifcapable journalMode {
+  set res {}
+  set sqlite_max_memory 0
+  set sqlite_max_page_count 1
+  db eval {PRAGMA journal_mode = 0}
+  execsql {
+    UPDATE OR IGNORE t1 SET b WHERE a SET b TO 7
+  }
+}
+
+finish_test

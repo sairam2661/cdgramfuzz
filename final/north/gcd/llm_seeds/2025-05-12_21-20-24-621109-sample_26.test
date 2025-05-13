@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc query_func {} {
+  global dbargs
+  set dbargs
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(11);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_sql_test query_open {
+  do_sql_core_start
+  do_sql_core_start
+  do_sql_core_start
+} {
+  execsql {
+    CREATE TABLE c(y);
+    INSERT INTO c VALUES(1,2,3);
+    SELECT * FROM c
+  }
+  execsql {SELECT * FROM c}
+}
+
+proc query_proc {} {
+  lappend queryargs
+  if {$queryargs} {
+    set len5_3_eq2_3 {llength $queryargs eq 5}
+  } else {set len5_3_eq2_3 {expr {1} }}
+}
+
+ifcapable {fts5} {
+  do_sql_test query_fts5_open  {
+    execsql {
+      CREATE VIRTUAL TABLE d USING fts5
+    }
+  } {
+    execsql { SELECT name FROM d WHERE rowid = 1 }
+  }
+}
+
+if { Have_Vacuum { SELECT 1 FROM sqlite_options WHERE IsVACUUM } } {
+    set vacuum_result {}
+    do_test vacuum_test {
+      execsql {
+        CREATE TABLE e(x);
+        INSERT INTO e VALUES(5,4,2);
+        INSERT INTO e VALUES(5,4,2);
+        INSERT INTO e VALUES(6,7,8);
+        INSERT INTO e VALUES(6,7,8);
+        INSERT INTO e VALUES(6,7,8);
+        INSERT INTO e VALUES(6,7,8);
+
+        CREATE TABLE f(x);
+        INSERT INTO f VALUES(6);
+
+      }
+      execsql COMMIT
+      execsql VACUUM
+      set vacuum_result
+    }
+}
+
+finish_test

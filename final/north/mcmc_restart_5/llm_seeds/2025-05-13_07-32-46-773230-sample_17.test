@@ -1,0 +1,130 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix large_test
+
+set ::timeout 60000
+
+proc large_db {} {
+  set db 1
+  set sql {
+    CREATE TABLE t1(
+      rowid PRIMARY KEY,
+      c1,
+      c2,
+      c3,
+      c4,
+      c5,
+      c6,
+      c7,
+      c8,
+      c9,
+      c10,
+      c11,
+      c12,
+      c13,
+      c14,
+      c15,
+      c16,
+      c17,
+      c18,
+      c19,
+      c20
+    );
+  }
+  for {set i 1} {$i le 100000} {incr i} {
+    for {set j 1} {$j le 1000} {incr j} {
+      set db "[expr rand() * 100]"
+      set sql {INSERT INTO t1 VALUES(1,1,"$db",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)}
+      execsql $sql
+    }
+  }
+}
+
+do_test large-1.0 {
+  db close
+  set res1 {}
+  set res2 {}
+  for {set i 0} {$i le 100000} {incr i} {
+    if {$i eq 0} {set res1 "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"}
+    set res1 "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 $res1"
+  }
+  execsql {
+    CREATE TABLE t1(
+      rowid PRIMARY KEY,
+      c1,
+      c2,
+      c3,
+      c4,
+      c5,
+      c6,
+      c7,
+      c8,
+      c9,
+      c10,
+      c11,
+      c12,
+      c13,
+      c14,
+      c15,
+      c16,
+      c17,
+      c18,
+      c19,
+      c20
+    );
+  }
+  for {set i 1} {$i le 100000} {incr i} {
+    for {set j 1} {$j le 1000} {incr j} {
+      set sql {INSERT INTO t1 VALUES(1,1,"[expr rand() * 100]",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)}
+      execsql $sql
+    }
+  }
+  set db2 2
+  execsql {
+    SELECT c1 FROM t1
+  } db2
+  lassign $db2 res2
+  set res2
+} {0}
+
+ifcapable wal {
+  set wal 1
+} else {
+  set wal 0
+}
+
+ifcapable temp_tables {
+  set temp_tables 1
+} else {
+  set temp_tables 0
+}
+
+do_execsql_test large-2.0 {
+  PRAGMA vdbe_debug = 10
+  }
+  {1 0}
+do_test large-3.0 {
+  set res {}
+  foreach row {
+    "1 [string repeat 1 20]"
+    "1 [string repeat 1 20]"
+    "1 [string repeat 1 20]"
+    "1 [string repeat 1 20]"
+    "1 [string repeat 1 20]"
+    "1 [string repeat 1 20]"
+  } {
+    append res "$row "
+    execsql "INSERT INTO t1 VALUES(1,1,$row)"
+  }
+  execsql {SELECT SUM(*) FROM t1}
+} 2000
+
+if {$temp_tables} {
+  do_execsql_test large4.0 {
+    BEGIN;
+    CREATE TABLE temp1(x);
+  }
+  {1 {}}
+}
+
+finish_test

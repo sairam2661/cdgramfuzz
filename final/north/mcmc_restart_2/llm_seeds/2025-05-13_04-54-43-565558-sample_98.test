@@ -1,0 +1,79 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix  transaction
+
+proc get_data {} {
+  global conn result
+  db eval {SELECT * FROM t1} $result
+}
+
+proc transaction_proc {} {
+  global conn
+  db transaction {
+    INSERT INTO t1 VALUES('test')
+    }
+  db eval {SELECT * FROM t1}
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+  }
+  execsql {
+    INSERT INTO t1 VALUES('old', 'old');
+  }
+} {old old}
+
+do_execsql_test transaction-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES('new', 'new');
+  COMMIT;
+  SELECT * FROM t1;
+} {old old new new}
+
+ifcapable {journal_mode} {
+  do_catchsql_test transaction2.1 {
+    PRAGMA journal_mode = 'WAL'
+  } {0 {journal_mode set to 'wal'}}
+}
+
+do_execsql_test transaction2.2 {
+  ROLLBACK;
+  SELECT * FROM t1;
+} {old old}
+
+set conn sqlite3
+
+do_execsql_test transaction-3.1 {
+  CREATE TABLE t2(a, b);
+  COMMIT;
+} {}
+
+do_execsql_test transaction-3.2 {
+  BEGIN;
+  INSERT INTO t2 VALUES('x1', 'y1');
+  INSERT INTO t2 VALUES('x2', 'y2');
+}
+
+ 2
+set result {}
+execsql {
+  SELECT * FROM t2;
+} $result
+lappend result {x1 y1}
+lappend result {x2 y2}
+do_list compare {x2 y2} $result {ok}
+
+do_catchsql_test transaction3.1 {
+  INSERT INTO t2 VALUES(1, 2)
+} {1 {ERROR}}
+
+set result {}
+execsql {
+  SELECT * FROM t2;
+} $result
+lappend result {x1 y1}
+lappend result {x2 y2}
+do_list compare {} $result {error}
+
+finish_test

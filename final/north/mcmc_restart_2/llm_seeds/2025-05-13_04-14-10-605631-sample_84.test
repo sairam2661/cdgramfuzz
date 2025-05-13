@@ -1,0 +1,47 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix vtab
+
+proc vtab_proc {arg1 arg2 arg3} {
+  set result ""
+  set result "[info commands $arg1]"
+  set result "$result [info vars $arg2]"
+  set result "$result [info frame]"
+  expr {$result eq "vtab_module::main"}
+}
+
+do_fuzz_test vtab1 {
+  CREATE VIRTUAL TABLE t1 USING sqlite_vtab AS SELECT x FROM a
+  CREATE TABLE a AS SELECT 1 x UNION ALL SELECT 2 UNION ALL SELECT 3
+}
+
+do_fuzz_test vtab2 {
+  CREATE VIRTUAL TABLE t2 USING sqlite_vtab SELECT x FROM a
+  CREATE TABLE a AS SELECT 1 x UNION ALL SELECT 2 UNION ALL SELECT 3
+}
+
+do_test vtab-3.1 {
+  execsql {
+    PRAGMA table_info = 't1'
+  }
+} {1 0 x 0  {} t1 0}
+
+do_test vtab-3.2 {
+  execsql {
+    PRAGMA table_info = 't2'
+  }
+} {1 0 x 0  {} t2 0}
+
+do_test vtab-4.1 {
+  catchsql {
+    DROP TABLE t1
+  }
+} {0 {}}
+
+do_test vtab-4.2 {
+  catchsql {
+    DROP TABLE t2
+  }
+} {0 {}}
+
+finish_test

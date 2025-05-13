@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+test_begin
+
+proc test_proc {} {
+  global testargs
+  lappend testargs
+  expr {$testargs eq {val1 val2 val3}}
+}
+
+proc test_func {x y z} {expr {$x eq "val1" and $y eq "val2" and $z eq "val3"}}
+test_func val1 val2 val3
+
+test do_test test-1.1 {
+  set testargs {}
+  test_proc
+  llength $testargs
+} {0}
+
+test do_test test-1.2 {
+  set testargs {}
+  proc test_outer {x y z} {
+    set testargs {}
+    test_proc
+    upvar 1 testargs outer_testargs
+    lappend outer_testargs $x $y $z
+  }
+  test_outer val1 val2 val3
+  llength $testargs
+} {3}
+
+test do_execsql_test test-1.3 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(1);
+} {0 {}}
+
+ifcapable trigger {
+  test do_execsql_test test-1.4 {
+    CREATE TABLE b(x);
+    CREATE TABLE c(x);
+    CREATE TABLE d(x);
+    CREATE TABLE f(x);
+    CREATE TABLE g(x);
+    CREATE TABLE h(x);
+    CREATE TABLE e(x,y);
+    CREATE TABLE i(x,y);
+    CREATE TABLE j(x,y);
+    CREATE TABLE k(x,y);
+    CREATE TABLE l(x,y);
+    CREATE TABLE m(x,y);
+    CREATE TABLE n(x,y);
+    CREATE TABLE o(x,y);
+    CREATE TABLE p(x,y);
+    CREATE TABLE q(x,y);
+    CREATE TABLE r(x,y);
+    CREATE TABLE s(x,y);
+    CREATE TABLE t(x,y);
+    CREATE TABLE u(x,y);
+    CREATE TABLE v(x,y);
+    CREATE TABLE w(x,y);
+    CREATE TABLE z(x,y);
+    CREATE TABLE x(x,y);
+    INSERT INTO e VALUES(10,20);
+    CREATE TABLE y(x,y)
+  } {0 {}}
+} 
+
+finish_test
+
+set testdir2  "test folder"
+file mkdir $testdir2
+source "$testdir2/teste.tcl"
+set testprefix test2
+
+proc test_func2 {} {
+  global testargs
+  lappend testargs
+  expr {$testargs eq {val4 val5 val6}}
+}
+
+test do_test test-2.1 {
+  set testargs {}
+  test_func2
+  llength $testargs
+} {0}
+
+test do_execsql_test test-2.2 {
+  CREATE TABLE b2(x);
+  INSERT INTO b2 VALUES(11);
+} {0 {}}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'wal'}
+} {0 {}}
+
+finish_test

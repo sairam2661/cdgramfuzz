@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+puts HDR
+puts "      async-1.0  1      journal_mode = WAL     {1 1}"
+puts "      async-2.1  1      auto_vacuum = 1     {1 1}"
+puts "      async-3.1  1      data = NULL     {1 1}"
+puts "      async-4.0  1      defer_foreign_keys = 0     {1 1}"
+puts "      async-5.1  1      encoding = NULL     {1 1}"
+puts "      async-6.0  1      foreign_keys = 1     {1 1}"
+
+proc async_func {args} {
+  global sqlite_db_name
+  if { $sqlite_db_name eq "" } { lappend args "example.db" }
+  execsql {
+    SELECT * FROM sqlite_master;
+  }
+  return $args
+}
+
+proc foreign_keys {} {
+  global sqlite_db_name
+  if { $sqlite_db_name eq "" } { lappend sqlite_db_name "example.db" }
+  execsql {
+    CREATE TABLE t1(a, b PRIMARY KEY, c);
+    INSERT INTO t1 VALUES(1, 'two', 3);
+    INSERT INTO t1 VALUES(1, 'two', 4);
+  }
+}
+
+do_test async-1.0 {
+  async_func
+  file exists testvfs_examplevfs_001
+} {1}
+
+do_test async-2.1 {
+  foreign_keys
+  execsql {
+    PRAGMA auto_vacuum = 1;
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(1, 'two', 5);
+    COMMIT;
+  }
+  execsql {
+    PRAGMA auto_vacuum
+  }
+} {1}
+
+sqlite3 db testvfs_examplevfs_001
+do_test async-3.1 {
+  db close
+  execsql {
+    SELECT * FROM t1
+  }
+} {1 two 4}
+
+do_test async-4.0 {
+  file delete testvfs_examplevfs_001
+  sqlite3 db testvfs_examplevfs_001
+}
+{1}
+
+do_test async-5.1 {
+  db close
+  execsql {
+    SELECT * FROM tmp_t1
+  }
+} {1 two 4}
+
+do_test async-6.0 {
+  foreign_keys
+  execsql {
+    PRAGMA defer_foreign_keys = 1;
+  }
+  catchsql {
+    INSERT INTO t1 VALUES(2, 'three', 1);
+  }
+} {0 {}}
+finish_test

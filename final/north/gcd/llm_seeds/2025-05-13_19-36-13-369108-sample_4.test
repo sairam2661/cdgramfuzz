@@ -1,0 +1,137 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc timeout_test {} {
+  catch {
+    set result 1
+    while {$result} {
+      set result 0
+      after 250
+      set result 1
+      if 0 {set result 0}
+    }
+  }
+}
+
+proc large_value {} {
+  binary format x4 z30 b2 H4 a1 j2 a15 i4 d2 a17 a5 d2 a10
+}
+
+proc drop_tables {} {
+  execsql {
+    DROP TABLE IF EXISTS t1
+    DROP TABLE IF EXISTS t2
+    DROP TABLE IF EXISTS t3
+  }
+  return
+}
+
+db close
+drop_tables
+
+do_test complex-1.0 {
+  forcedef large_value
+  execsql {
+    CREATE TABLE t1(a);
+    CREATE TABLE t2(b);
+    CREATE TABLE t3(c);
+    CREATE INDEX t1_idx ON t1(a);
+    CREATE INDEX t2_idx ON t2(b);
+    INSERT INTO t1 VALUES(0);
+    INSERT INTO t2 VALUES(0);
+  }
+} {0}
+
+ifcapable auto_vacuum {
+  do_test complex-1.1 {
+    db close
+    drop_tables
+    set DB handle new
+    set handle2 new
+    set handle3 new
+    execsql {
+      CREATE TABLE IF NOT EXISTS t1 AS SELECT a FROM t1 ORDER BY a DESC LIMIT 1
+      SELECT rowid FROM t1 ORDER BY a DESC LIMIT 1
+    } $handle2
+    execsql {
+      SELECT rowid FROM t1 ORDER BY a DESC LIMIT 2
+    } $handle3
+  } {}
+}
+
+ifcapable thread{yes} {
+  set my_connection new
+  set global_connection ""
+  set tid new
+}
+
+execsql {
+  INSERT INTO t1 VALUES(1);
+}
+
+do_test complex-1.3 {
+  sqlite3 db new
+  do_execsql_test complex3.5 {
+    PRAGMA locking_mode
+  } {ormal}
+}
+
+         
+
+ 00
+do_execsql_test complex-1.5 {    
+        CREATE TABLE t2(a,c,x);
+    CREATE TABLE t3(b,y,z)
+} {}
+do_test complex-1.6 {        
+    execsql {
+	INSERT INTO t2 SELECT * 
+       	    	}
+} {}
+
+do_test complex-2.1 {
+  set t2handle new
+  do_test complex2.7 {
+      execsql {
+        CREATE TABLE t4 AS SELECT a FROM t4
+    } $t2handle
+      execsql {
+    SELECT rowid FROM t4;
+}
+  } {}
+do_test complex2.9 {
+do_execsql_test complex2.6 {
+        CREATE INDEX t4_idx ON t4(a);
+  BEGIN;      
+  COMMIT;
+  SELECT rowid FROM t4;  
+  } {}
+execsql {
+     SELECT rowid FROM t4
+  } $t2handle
+  } {0}
+
+do_execsql_test complex2.10 {    
+    CREATE INDEX t4_idx ON t4(a);
+} {}
+   execsql {
+     SELECT rowid FROM t4
+  } $t2handle
+  } {0}
+        
+do_test complex-2.3 {
+  sqlite_limit t4 max b
+  } {}
+
+if { 1 } {
+   set my_db new
+  set  my_db2 new
+  execsql {
+    SELECT * FROM t4;
+} $t2handle
+  }
+
+ finish_test

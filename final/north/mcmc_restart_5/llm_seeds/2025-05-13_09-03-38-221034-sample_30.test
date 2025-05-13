@@ -1,0 +1,159 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set sqlite_config 150
+set sqlite_config_pagecache 1000
+
+proc setup_db {} {
+  global DB
+  execsql { Vacuum }
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b, c);
+    INSERT INTO t1 SELECT 1
+    }
+  execsql {
+    CREATE INDEX i1 ON t1(b);
+    CREATE INDEX i2 ON t1(c);
+  }
+}
+
+proc execsql_with_count {sql} {
+  execsql $sql
+  set result_size
+  execsql "PRAGMA integrity_check"
+  puts stderr "Integrity Check Result: $result_size"
+}
+
+proc drop_tables {} {
+  execsql {
+    DROP TABLE t1
+  }
+}
+
+do_test complex-1.1 {
+  setup_db
+  execsql_with_count {SELECT * FROM t1}
+} {1}
+
+ifcapable journalMode {
+
+  do_execsql_test complex-2.1 {
+    PRAGMA journal_mode = 'wal';
+    SELECT name FROM sqlite_master
+  } {wal}
+
+  do_execsql_test complex-3.1 {
+    BEGIN;
+    INSERT INTO t1(a, b, c) VALUES (2,'string2', 2.5);
+    COMMIT;
+    SELECT * FROM t1
+  } {1 {string1} 1.0 1 2 string2 2.5}
+
+  do_test complex-4.1 {
+    drop_tables
+  } {}
+
+  ifcapable auto_vacuum {
+
+    do_execsql_test complex-5.1 {
+      PRAGMA auto_vacuum = 0;
+    }
+
+    "
+
+"PRAGMA callback_depth"
+
+  } 0
+
+  catchsql {
+    PRAGMA synchronous = OFF
+  }
+} {1 SQLITE_ERROR}
+do_execsql_test complex-6.1{
+drop table IF EXISTS a;
+CREATE TABLE a(x PRIMARY KEY,x UNIQUE(x));
+ drop TABLE a
+}  {}
+ifcapable trigger {
+
+  do_test complex-7.1 {
+    execsql {
+      CREATE TABLE t1(
+        y,
+        x DEFAULT (lower(hex(x))),
+        PRIMARY KEY(y)
+      );
+    }
+  } {}
+
+  do_execsql_test complex-8.1 {
+    INSERT INTO t1 (x) VALUES (1),
+    (2,'string2'),
+    ('string3','string 4');
+    SELECT * FROM t1
+  } {{} {2 string2} {string3 string 4 string3} {}}
+
+  do_test complex-9.1 {
+    catchsql {
+      ALTER TABLE t1
+      RENAME TO t2;
+    }
+  } {1 {table t1 has no column named i}}
+}
+
+do_test complex-10.1 {
+  execsql {
+    WITH RECURSIVE t AS (
+      SELECT 1 AS x, 0 AS y
+      UNION ALL
+      SELECT x+1, 0 FROM t WHERE x < 10
+      UNION ALL
+      SELECT 11, 1
+    )
+    SELECT * FROM t
+  }
+} {1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 1}
+
+do_execsql_test complex-11.1 {
+    WITH RECURSIVE t AS (
+      SELECT 1 AS x, 0 AS y
+      UNION ALL
+      SELECT x+1,
+      CASE
+        WHEN x > 10 THEN 0
+        ELSE 0
+      END FROM t
+    )
+    SELECT * FROM t
+} {1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0}
+
+do_execsql_test complex-12.1 {
+  SELECT
+  1 as a
+} {1}
+
+do_execsql_test complex-13.1 {
+  DROP TABLE IF EXISTS sqlite_sequence;
+  DROP TABLE IF EXISTS a;
+  CREATE TABLE IF NOT EXISTS a (name TEXT PRIMARY KEY);
+  INSERT INTO a VALUES('a');
+  SELECT name FROM a WHERE 1 == NOT 1
+} {}
+
+do_execsql_test complex-14.1 {
+  -- https://www.sqlite.org/draft/vacuumtable.html
+  CREATE TABLE old_name (c1, c2);
+  BEGIN;
+  ALTER TABLE old_name RENAME TO new_name;
+  COMMIT;
+} {new_name 3}
+
+do_execsql_test complex-15.1 {
+  SELECT 1 AS column1;
+} {1}
+
+finish_test
+
+Solution 2 is an example of a complex SQLite.test file that includes multiple test cases. It covers various SQLite operations, data types, and

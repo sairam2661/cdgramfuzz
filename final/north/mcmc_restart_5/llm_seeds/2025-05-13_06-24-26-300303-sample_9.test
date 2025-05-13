@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_case
+
+set ::timeout 60000
+db close
+forcedelete testdb
+sqlite3 db testdb
+catch {db author} author
+if { $author eq "" } { set author "SQLite" }
+db function abs abs
+sqlite_options default_wal
+
+proc do_sql_test {test_name sql} {
+  uplevel do_test $test_name {
+    execsql $sql
+  }
+}
+
+proc do_select_test {test_name sql expected} {
+  uplevel do_test $test_name {
+    set result {}
+    execsql $sql get result
+    list $result
+  }
+}
+
+do_sql_test test_case_1.1 {
+  CREATE TABLE t1(x);
+  INSERT INTO t1 VALUES(1);
+  INSERT INTO t1 VALUES(2);
+  INSERT INTO t1 VALUES(3);
+}
+{1 {1 2 3}}
+
+do_sql_test test_case_1.2 {
+  SELECT x FROM t1
+  UNION ALL
+  SELECT x FROM t1
+  ORDER BY 1
+}
+
+do_select_test test_case_1.3 {
+  SELECT x FROM t1
+  ORDER BY 1
+} { {1 2 3} }
+
+do_sql_test test_case_2.1 {
+  CREATE TABLE t2(x);
+  INSERT INTO t2 VALUES(4);
+  INSERT INTO t2 VALUES(5);
+}
+{2 {4 5}}
+
+do_execsql_test test_case_2.2 {
+  SELECT x FROM t2
+  UNION ALL
+  SELECT x FROM t2
+  ORDER BY 1 DESC
+}
+
+do_sql_test test_case_3.1 {
+  DROP TABLE t1
+  DROP TABLE t2
+}
+{}
+finish_test

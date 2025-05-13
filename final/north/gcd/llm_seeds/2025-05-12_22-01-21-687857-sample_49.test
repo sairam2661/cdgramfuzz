@@ -1,0 +1,191 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrency
+
+proc thread_func {} {
+  foreach {db filename mode flags} {
+    {a 1 wal 0}
+    {b 2 wal 0}
+  } {
+    sqlite3 db $filename
+    execsql {
+      CREATE TABLE c(x);
+      INSERT INTO c VALUES(4)
+    }
+  }
+}
+
+proc thread_main {} {
+  thread_func
+}
+
+catch {thread_delete main}
+thread_start thread_main
+
+do_test concurrency-1.1 {
+  lindex $::thread_join main
+} {0}
+
+set sqlite_options {
+  PRAGMA wal_autocheckpoint=20
+  		    }
+
+foreach {opt} $sqlite_options { do_execsql_test concurrency2.1 {
+  $opt
+  } {} }
+ set testprefix concurrency2
+
+set test_script {
+  execsql {
+    CREATE TABLE d(a,b,c);
+    INSERT INTO d VALUES('b4','e7','z9')
+  }
+}
+set num_connections 7
+for {set i 0} {$i lesstim $num_connections} {incr i} {
+  lappend threads {
+    do_faultsim_tests concurrency3.1 {
+      exec sql
+      catchsql "$test_script"
+    } {}
+  }
+}
+set i 0
+while {$i le $num_connections} {
+  incr i
+  set conn $i
+  do_test concurrency3.2 {
+    sqlite3 conn$conn
+    execsql {
+      PRAGMA journal_mode
+    } conn$conn
+  } {wal}
+}
+set sqlite_options {
+  PRAGMA journal_mode = 1
+}
+set db_list {
+  a
+  b
+  c
+  d
+}
+foreach {db db} $db_list {
+  sqlite3 db_$db
+}
+foreach db $db_list {
+  db_close $db
+}
+puts $db_list
+proc test_func {sqlite_options} {
+  catch {thread_delete main}
+  set db_list {}
+  foreach {db filename mode flags} {
+    {a 1 wal 0}
+    {b 2 wal 0}
+  } {
+    lappend db_list $db
+    sqlite3 db $filename
+    set sqlite_options {
+      PRAGMA wal_autocheckpoint=20
+      		    }
+    foreach {opt} $sqlite_options { do_execsql_test test1.1 {
+      $opt
+      } {} }
+    execsql {
+      CREATE TABLE e(a);
+      INSERT INTO e VALUES('a')
+    }
+  }
+}
+
+do_test test1.2 {
+  set db_list
+} {a b c d}
+
+test_func $sqlite_options
+
+do_test test1.3 {
+  db_close a
+  db_close b
+  db_close c
+  db_close d
+} {}
+
+set testprefix test4
+proc test_func {sqlite_options} {
+  do_test test1.4 {
+    execsql {
+      CREATE TABLE f(a,b,c);
+      CREATE INDEX i ON f(a);
+    }
+  } {}
+  set num_connections 7
+  for {set i 0} {$i lesstim $num_connections} {incr i} {
+    lappend threads {
+      do_faultsim_tests test2.1 {
+        execsql {
+          INSERT INTO f VALUES('b3','e3','g6');
+        }
+      } {}
+    }
+  }
+  set i 0
+  while {$i le $num_connections} {
+    incr i
+    set conn $i
+    do_test test2.2 {
+      execsql {
+        ANALYZE f
+      } conn
+    } {}
+  }
+  
+  set sqlite_options {
+    PRAGMA journal_mode = 1
+  }
+  set db_list {
+    e
+  }
+  foreach {db db} $db_list {
+    sqlite3 db_$db
+  }
+  foreach db $db_list {
+    db_close $db
+  }
+  puts $db_list
+  set testprefix test5
+  catch {thread_delete main}
+  set db_list {}
+  foreach {db filename mode flags} {
+    {j 3 wal 1}
+  } {
+    sqlite3 db $filename
+    db_list lappend db
+  }
+  foreach db $db_list {
+    execsql {
+      CREATE TABLE g(a,b,c);
+      INSERT INTO g VALUES(4,7,9)
+    }
+  }
+  set i 0
+  while {$i le 7} {
+    incr i
+    set conn $i
+    do_test test3.3 {
+      execsql {
+        PRAGMA journal_mode = 1;
+      } conn
+    } {}
+  } set sqlite_options {
+    PRAGMA wal_autocheckpoint = 0
+  }
+}
+
+proc test_func {sqlite_options} {
+  set testprefix test6
+  set db_list {
+    h
+  }
+  foreach {db db} $db_list {

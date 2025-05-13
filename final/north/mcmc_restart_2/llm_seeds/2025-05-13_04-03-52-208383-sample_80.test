@@ -1,0 +1,112 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+set sqlite_version 3.40.0
+set sqlite_testdir $testdir
+
+proc create_table_sql {name num_cols} {
+  set sql "CREATE TABLE $name ("
+  for {set i 0} {$i less $num_cols} {incr i} {
+    lappend sql "c$i INTEGER, "
+  }
+  regsub "\ $sql { }
+  regsub {\ $sql {
+  return $sql
+}
+
+proc generate_sql {num_rows} {
+  set sql ""
+  for {set i 0} {$i less $num_rows} {incr i} {
+    append sql "INSERT INTO a VALUES"
+    for {set j 0} {$j less 5} {incr j} {
+      append sql " $j"
+    }
+    append sql " OR "
+  }
+  regsub "OR $sql {
+  return $sql
+}
+
+proc generate_indexes {name columns} {
+  set sql "CREATE INDEX ix$columns ON $name ("
+  append sql "$columns"
+  return $sql
+}
+
+do_execsql_test test1 {
+  CREATE TABLE a(c0, c1, c2, c3, c4);
+  INSERT INTO a VALUES
+       	(1, 1, 1, 1, 1)
+   	} 1
+  BEGIN TRANSACTION
+  INSERT INTO a VALUES
+   	7 	   7 	7 	7 	7
+   	} 2
+  COMMIT TRANSACTION
+  SELECT c2 FROM a WHERE c4 IS NULL
+  SELECT c3 FROM a WHERE c3 IS NOT NULL AND c4 IS NULL
+  SELECT c0 FROM a WHERE c0 IS NOT NULL AND c3 IS NULL
+  SELECT c0 FROM a
+  SELECT c0 FROM a WHERE c0 IS NOT NULL
+  SELECT c4 FROM a WHERE c2 IS NOT NULL
+  SELECT c1 FROM a WHERE c2 IS NOT NULL
+  SELECT c0 FROM a WHERE c1 IS NOT NULL
+  SELECT c2 FROM a WHERE c3 IS NOT NULL
+  SELECT c0 FROM a WHERE c1 IS NOT NULL AND c4 IS NULL
+  SELECT c1 FROM a
+  SELECT c0 FROM a WHERE c0 IS NOT NULL AND c2 IS NULL
+  SELECT c3 FROM a ORDER BY c0
+  SELECT c4 FROM a ORDER BY c1
+  SELECT c2 FROM a ORDER BY c0
+  SELECT c3 FROM a ORDER BY c0
+  SELECT c0 FROM a ORDER BY c4
+  SELECT c0 FROM a ORDER BY c2
+  SELECT c2 FROM a ORDER BY c4
+  SELECT c3 FROM a ORDER BY c1
+  CREATE INDEX ix_a_c1 ON a c1
+  PRAGMA index_xinfo
+  PRAGMA index_list
+  PRAGMA index_info
+  PRAGMA index_list
+  PRAGMA index_xinfo
+  PRAGMA index_list
+  SELECT c3 FROM a WHERE c1 IS NULL
+  DROP TABLE a
+  SELECT c0 FROM a
+  CREATE TABLE b LIKE a
+  INSERT INTO b VALUES
+   	7 	   7 	7 	7 	7
+   	0
+  SELECT c4 FROM b
+  SELECT c0 FROM a WHERE c0 IS NOT NULL AND c3 IS NOT NULL
+  SELECT c0 FROM a WHERE c2 IS NOT NULL AND c4 IS NOT NULL
+  DROP TABLE b
+  SELECT c0 FROM a WHERE c4 IS NOT NULL
+  DROP TABLE a
+  PRAGMA integrity_check
+  SELECT c2 FROM a
+  CREATE TABLE c CREATE TYPE t1 AS INTEGER
+  DROP TABLE c
+  SELECT c1 FROM a WHERE c4 IS NOT NULL
+  SELECT c0 FROM a WHERE c0 IS NOT NULL AND c1 IS NOT NULL
+  SELECT c4 FROM b
+  DROP TABLE a
+  CREATE TABLE d CREATE INDEX ix_c_c0 ON c c0
+  DROP TABLE c
+  PRAGMA integrity_check
+  PRAGMA integrity_check
+  PRAGMA integrity_check
+  SELECT c3 FROM a
+  PRAGMA index_list
+  SELECT c3 FROM a
+  DROP TABLE d
+  PRAGMA integrity_check
+  SELECT c4 FROM b
+  SELECT c2 FROM a WHERE c1 IS NOT NULL AND c4 IS NOT NULL
+  SELECT c1 FROM a WHERE c0 IS NOT NULL AND c4 IS NULL
+  SELECT c0 FROM a WHERE c0 IS NOT NULL AND c3 IS NOT NULL
+  SELECT c2 FROM a WHERE c0 IS NULL AND c1 IS NULL
+  SELECT c3 FROM b
+  SELECT c3 FROM a
+  SELECT c4 FROM b WHERE c1 IS NOT NULL
+  SELECT c0 FROM

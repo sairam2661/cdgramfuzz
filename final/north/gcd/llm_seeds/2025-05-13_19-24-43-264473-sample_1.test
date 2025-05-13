@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complextest
+
+set ::timeout 60000
+
+proc count_rows {} {
+  global db
+  execsql {SELECT count(*) FROM a} $db
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+    CREATE TABLE c(id, data);
+  }
+  execsql {PRAGMA auto_vacuum = 1}
+} {}
+
+do_execsql_test complex-1.2 {
+  CREATE INDEX idx_a_x ON a(x);
+  CREATE INDEX idx_b_y ON b(y);
+  CREATE TABLE IFEXISTSNOT(d) 	
+	
+  }
+  {1 {}}
+do_execsql_test complex-1.3 {
+  INSERT INTO c VALUES (1, 'a');
+  INSERT INTO c VALUES (2, 'b');
+  INSERT INTO c VALUES (3, 'c');
+  SELECT id FROM c WHERE data='a' 
+}   {1}
+do_execsql_test complex-1.4 {
+    PRAGMA page_size = 1024;
+    BEGIN;
+    INSERT INTO a VALUES(4);
+    INSERT INTO b VALUES ('hello');
+    COMMIT;
+} { }
+do_execsql_test complex-1.5 {
+    BEGIN;
+    SELECT * FROM c;
+    ROLLBACK;
+} { }
+do_execsql_test complex-1.6 {
+    BEGIN;
+    INSERT INTO c VALUES (4, 'world');
+    ROLLBACK;
+} { }
+do_execsql_test complex-1.7 {
+    INSERT INTO b(y) VALUES('hello 2');
+  INSERT INTO c VALUES (5, 'world 2');
+  SELECT * FROM c;
+} { 1 a 2 b 3 c 5 world 2 }
+do_execsql_test complex-1.8 {
+  PRAGMA journal_mode = 'persisten';
+} {
+ 1
+  PRAGMA journal_mode
+}
+do_execsql_test complex-1.9 {
+   PRAGMA jounral_mode = 'WAL';
+   SELECT count(*) FROM sqlite_master;
+} {1}
+ifcapable {fts5} {
+  do_execsql_test complex1.10 {
+    CREATE VIRTUAL TABLE t2 USING fts5
+    CREATE TABLE t6 AS SELECT rowid AS x FROM t2 LIMIT 100
+  }
+}
+do_execsql_test complex-1.11 {
+  CREATE TABLE IFEXISTS(d)  				
+  }
+{1 {}}
+
+
+finish_test

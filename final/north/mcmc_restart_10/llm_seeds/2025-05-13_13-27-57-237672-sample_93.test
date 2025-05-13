@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix complex_query
+
+proc count_rows {} {
+  global db
+  expr {
+    SELECT count(*) 
+    FROM sqlite_master 
+    WHERE type='table' 
+  }
+}
+
+proc count_views {} {
+  global db
+  expr {
+    SELECT count(*) 
+    FROM sqlite_master 
+    WHERE type='view' 
+  }
+}
+
+proc create_and_check_table {} {
+  global db
+  set id {}
+  do_execsql_test 1.1 {
+    CREATE TABLE test_table(a, b, c);
+    INSERT INTO test_table VALUES('1', '2', '3');
+    SELECT * FROM test_table;
+  } {1 2 3}
+  do_test 1.2 {
+    db eval {SELECT * FROM temp_table}
+  } {}
+}
+
+proc create_and_check_view {} {
+  global db
+  do_execsql_test 2.1 {
+    CREATE TABLE temp_view(a, b, c);
+    INSERT INTO temp_view VALUES('4', '5', '6');
+    SELECT * FROM temp_view;
+  } {4 5 6}
+}
+
+proc drop_table {} {
+  global db
+  do_execsql_test 3.1 {
+    DROP TABLE test_table
+    SELECT type FROM sqlite_master WHERE name LIKE 'test_table'
+  } {{view} {table}}
+}
+
+proc drop_view {} {
+  global db
+  do_execsql_test 4.1 {
+    DROP VIEW temp_view
+    SELECT type FROM sqlite_master WHERE name LIKE 'temp_view'
+  } {{view} {table}}
+}
+
+do_execsql_test 0.1 {
+  CREATE TABLE temp_table(a, b, c);
+  INSERT INTO temp_table VALUES('7', '8', '9');
+}
+do_execsql_test 0.2 {
+  SELECT * FROM temp_table;
+}
+do_test 0.3 {count_rows} 2
+do_test 0.4 {count_views} 0
+
+create_and_check_table
+
+create_and_check_view
+
+drop_table
+
+drop_view
+
+do_test 4.2 {count_rows} 1
+do_test 4.3 {count_views} 1
+
+finish_test

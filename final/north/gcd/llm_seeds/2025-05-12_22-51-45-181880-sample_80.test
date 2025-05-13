@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_constraints
+
+proc check_proc {arg1 arg2} {
+  expr {$arg1 eq $arg2}
+}
+
+do_dml_test db_constraints1 {
+  CREATE TABLE b(y);
+} {
+  INTEGER NOT NULL
+  CHECK y IN
+}
+IF {$sqlite_options_fuzztest} {
+  CHECK y NOT IN
+  }{
+  CHECK y IS y
+} END IF
+
+do_execsql_test db_constraints-1.2 {
+  CREATE TABLE c(
+    x PRIMARY KEY, y UNIQUE NOT NULL, z
+  );
+  INSERT INTO c VALUES('a','b', 1);
+  INSERT INTO c VALUES('b','c', 2);
+  INSERT INTO c VALUES('a','c', 3);
+}
+{ 1}
+
+do_execsql_test db_constraints-1.3 {
+  CREATE TABLE d(
+    x PRIMARY KEY,
+    CHECK  											
+		NOT NULL
+  )
+}
+{ 0}
+
+do_execsql_test db_constraints-1.4 {
+  CREATE TABLE e(
+	x,
+    PRIMARYKEY
+)
+}
+{ 0}
+
+
+do_execsql_test db_constraints-1.5 {
+  CREATE TABLE f(
+	primarykey,
+    y
+  )
+}
+{ 0}
+
+finish_test

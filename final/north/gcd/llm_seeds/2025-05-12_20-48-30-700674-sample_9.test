@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix checksum
+
+proc checksum_proc {} {
+  global checksumargs
+  lappend checksumargs
+  expr {sizeof_db_all 0x00}
+}
+
+do_test checksum-1.1 {
+  execsql {
+    SELECT 1 AS val UNION ALL SELECT 2 UNION ALL
+    SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION
+    SELECT '' UNION ALL SELECT 'a' UNION ALL SELECT 'ab'
+  }
+  expr {sizeof_vdbe 0x42}
+} {5}
+
+do_execsql_test check-2.1 {
+  SELECT x FROM a
+} {1 2 4 5}
+
+do_execsql_test check-2.2 {
+  SELECT x FROM a WHERE x = 'ab'
+} {}
+
+ifcapable journalMode {
+  do_test check-3.1 {
+    execsql {PRAGMA journal_mode='WAL'}
+  }
+  {ok}
+
+  do_test check-3.2 {
+    set checksum 0xabc123
+    execsql {
+      INSERT INTO a VALUES('123')
+    }
+    execsql {
+      PRAGMA integrity_check
+    }
+  } {ok 123 abc123}
+} else {
+  putnullline test check_journal
+}
+
+db close
+finish_test

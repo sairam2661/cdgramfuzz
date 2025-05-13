@@ -1,0 +1,86 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+proc complex_proc {} {
+  global complexargs
+  sqlite3 db complex
+  execsql db {
+    CREATE TABLE complex_table(a,b);
+    INSERT INTO complex_table VALUES(1,2);
+  }
+  lappend complexargs {db complex_table}
+  execsql db {SELECT * FROM complex_table;}
+  catchsql db {DROP TABLE complex_table}
+}
+
+proc complex_error {cmd} {
+  if { $cmd eq "CREATE UNIQUE INDEX" } {
+    return {Error in line 1 near "[END OF STATEMENT]"}
+  }
+  return ""
+}
+
+proc setup_indexes {} {
+  sqlite3 db setup
+  execsql db {
+    CREATE TABLE setup_table(a);
+  }
+  do_test setupindexes { execsql db { CREATE UNIQUE INDEX index_setup ON setup_table } } {1 Error in line 1 near "[END OF STATEMENT]"}
+}
+
+proc execsql_with_index {db stmt} {
+  setup_indexes
+  do_execsql_test $db "$stmt;SELECT 1" {1 {}}
+}
+
+proc catch_sql_with_index {args} {
+  execsql_with_index args
+  set result
+  catch {result} args
+  return "Result $result"
+}
+
+do_test complex-1.1 {
+  execsql_with_index {CREATE TABLE t1(a);}
+} {Result {1 {}}}
+
+do_test complex-1.2 {
+  execsql_with_index {CREATE UNIQUE INDEX i1 ON t1} 
+} {Result 0 {}}
+
+do_test complex-1.3 {
+  execsql_with_index {INSERT INTO t1 VALUES(1)}
+  execsql_with_index {INSERT INTO t1 VALUES(2)}
+  execsql_with_index {INSERT INTO t1 VALUES(1)}
+} {Result 1 {}}
+
+proc complex_sqlite3cmd {args} {
+  sqlite3cmd $args
+}
+
+do_test complex-2.1 {
+  complex_sqlite3cmd {db main}
+  execsql_with_index {CREATE TABLE t2(b,c);}
+} {Result {1 {}}}
+
+do_test complex-2.2 {
+  execsql_with_index {CREATE VIEW t2_v AS SELECT b FROM t2 WHERE c IS NULL}
+} {Result {1 {}}}
+
+do_execsql_test complex-2.3 {PRAGMA page_size} 1024
+
+do_test complex-3.1 {
+  sqlite3cmd {PRAGMA busy_timeout = 2000}
+  set result
+  catch_sql_with_index { execsql_with_index {INSERT INTO setup_table VALUES(1)} } result
+  set result
+  if { $result eq "Result 0" } {
+   puts "execsql db {INSERT INTO setup_table VALUES(1)}"
+   execsql db {INSERT INTO setup_table VALUES(1)}
+  }
+} {Result {0 {}}}
+
+set testprefix complex
+
+finish_test

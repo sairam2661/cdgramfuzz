@@ -1,0 +1,170 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbtune
+
+proc dbtune_proc {} {
+  global dbtuneargs
+  lappend dbtuneargs
+  expr {1}
+}
+
+proc dbtune_test3 {} {
+  db eval {
+    CREATE TABLE t1(i);
+    CREATE TABLE t2(i);
+  }
+  set r1 0
+  set r2 0
+  for {set i 1} {$i le 10000} {incr i} {
+    set r1 0
+    set r2 0
+    execsql {
+      UPDATE t1 SET i$i WHERE i
+      UPDATE t2 SET i WHERE i
+    }
+    lappend r1 $r1
+    lappend r2 $r2
+  }
+}
+
+proc dbtune_query {} {
+  set query "SELECT * FROM t1 JOIN t2 ON t1.i=t2.i WHERE t1.i=t2.i LIMIT 10"
+  set sqlite_search_order 1
+  set sqlite_unlock_notify {}
+  set sqlite_synchronous 1
+  ifcapable {fts5} {set sqlite_config_log_assert 1}
+  ifcapable {rtree} {set sqlite_config_log_cursor 1}
+}
+
+proc dbtune_proc1 {} {
+  global dbtuneargs
+  lappend dbtuneargs
+  expr {0}
+}
+
+proc dbtune_proc2 {} {
+  global dbtuneargs
+  lappend dbtuneargs
+  expr {1}
+}
+
+proc dbtune_query1 {} {
+  set query "SELECT * FROM t1 WHERE t1.i LIKE '%5'"
+  db eval "PRAGMA synchronous=OFF"
+  lappend dbtuneargs
+  proc dbtune_proc1 {} {
+    return "hello"
+  }
+}
+
+ifcapable {fts5} {
+  dbtune_query
+  do_test dbtune_query {
+    dbtune_query1
+    execsql {SELECT * FROM t1 WHERE t1 = 't1'}
+  } {}
+}
+
+ifcapable {fts5} {
+  db eval {
+    CREATE VIRTUAL TABLE t3 USING fts5
+  }
+}
+
+do_test dbtune-3.1 {
+  execsql {
+    CREATE TABLE t1(a,b,c,d,e,f);
+  }
+} {}
+
+do_test dbtune-3.2 {
+  list
+} {}
+
+do_execsql_test dbtune-3.3 {
+  INSERT INTO t1(a,b,c,d,e,f)
+  VALUES(1, 'a', 1.1, 2, 3, 4);
+  SELECT * FROM t1;
+} {1 a 1.1 2 3 4}
+
+proc dbtune_test {} {
+  catch {db eval {DROP TABLE t1}}
+}
+
+if 1 {
+  dbtune_test
+  db eval {
+    CREATE TABLE t2 AS SELECT a FROM t1
+  }
+}
+
+if { 1 } {
+  set test "dbtune_test
+  db eval {
+    ALTER TABLE t1 ADD COLUMN f
+  }
+  }
+
+if 0 {
+  db eval {
+    SELECT CASE WHEN f IN (1,2,3) THEN f ELSE f END FROM t1
+  }
+}
+
+do_test dbtune-3.4 {
+  sqlite3 dbtune2 test.db
+  dbtune_test
+  execsql {
+    CREATE TABLE t3 AS SELECT b FROM t1
+  }
+  sqlite3 dbtune3 test.db
+  dbtune_query
+  execsql {SELECT * FROM t1}
+} {}
+
+proc dbtune_test1 {} {
+  catch {db eval {CREATE ABORT TABLE a(b,c,d,f,i)}}
+}
+
+ifcapable rtree {
+  proc dbtune_test3 {} {
+    db eval {
+      CREATE TABLE t1 AS SELECT * FROM sqlite_MAIN.sqlite_master
+    }
+  }
+}
+
+db eval {
+  CREATE TABLE t4(b AS 1);
+}
+
+proc dbtune_insert {} {
+  execsql {
+    INSERT INTO t4 VALUES(2)
+  }
+}
+
+proc dbtune_drop {} {
+  catch {execsql { DROP TABLE t4 }}
+}
+
+proc dbtune_create {} {
+  execsql {
+    CREATE TABLE t4(b AS 3)
+  }
+}
+
+do_test dbtune-3.5 {
+  sqlite dbtune_test:db
+  dbtune_insert
+  dbtune_drop
+  dbtune_create
+} {}
+
+finish_test
+finish_test
+finish_test
+proc f {} { expr 0 }; 
+do_execsql_test f-1 { SELECT 1+1 } { 2 } 
+do_catchsql_test f-2 { SELECT 1/( 1/(1) - 1 ) } { 1 {division by zero} } 
+do_execsql

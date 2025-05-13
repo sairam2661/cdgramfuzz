@@ -1,0 +1,107 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+register_fuzz_test fuzzer1 $testprefix
+register_fuzz_test fuzzer2 $testprefix
+
+proc foo {} {
+  global fooargs
+  lappend fooargs
+  expr {$fooargs}
+}
+
+proc bar {} {
+  global barargs
+  set barargs
+}
+
+proc baz {} {
+  global bazargs
+  lappend bazargs
+  execsql {
+    CREATE TABLE b(x);
+  }
+}
+
+proc execute_fuzz {sql} {
+  global result
+  set result $sql
+}
+
+do_execsql_test fuzzer1-1.1 {
+  CREATE TABLE t1(a, b, c);
+  INSERT INTO t1 VALUES('abc', 123, 4.56);
+  SELECT * FROM t1;
+} {abc 123 4.56}
+
+register_fuzz_func fuzzer1 proc {sql} {
+  set ret 0
+  if { $sql MATCH "{INSERT INTO t1 VALUES([^)]+)}" } {
+    execute_fuzz $sql
+    set ret 10
+  }
+  return $ret
+}
+
+do_fuzz_test fuzzer1 1000
+
+do_execsql_test fuzzer2-1.1 {
+  CREATE TABLE t2(a, b, c);
+  INSERT INTO t2 VALUES('def', 456, 7.89);
+  SELECT * FROM t2;
+} {def 456 7.89}
+
+register_fuzz_func fuzzer2 proc {sql} {
+  if { $sql MATCH "{SELECT * FROM t2}" } {
+    execute_fuzz $sql
+    return 5
+  }
+  return 0
+}
+
+register_fuzz_func fuzzer2 proc {sql} {
+  if { $sql MATCH "{UPDATE t2 SET a = 'ghi' Where a = 'def'}" } {
+    execute_fuzz $sql
+    return 1
+  }
+  return 0
+}
+
+do_fuzz_test fuzzer2 500
+
+do_execsql_test t-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(5);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {1}
+
+execsql {
+  DROP TABLE b
+}
+
+proc qqq {} {
+  set x 3
+  set y 4
+  return $x
+}
+
+foo
+foo
+foo
+
+ifcapable fts1 {
+  do_execsql_test fts-1.1 {
+    CREATE TABLE words(x);
+  }
+  {ok}
+  execsql {
+    INSERT INTO words VALUES(1.5);
+  }
+  {1.5}
+}
+
+bar
+
+finish_test

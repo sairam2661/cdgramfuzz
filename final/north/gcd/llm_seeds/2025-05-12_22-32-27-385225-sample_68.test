@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc query_proc {} {
+  global queryargs
+  lappend queryargs
+  expr {1}
+}
+
+proc query_func {args} {
+  return "SELECT * FROM $args;"
+}
+
+proc do_expr_test {name test} {
+  global expr_count
+  expr_count
+  uplevel do_test $name $test
+  expr_count
+}
+
+proc do_sqlite4_test {name args} {
+  global sqlite4_count
+  sqlite4_count
+  uplevel do_execsql_test $name $args
+  sqlite4_count
+}
+
+set expr_count 0
+set sqlite4_count 0
+
+do_expr_test query_expr_1.1 {
+  SELECT 1 WHERE 1
+} {1}
+
+set sqlite4_count 0
+do_sqlite4_test query_sqlite_2.1 {
+  CREATE TABLE t(x,y);
+  INSERT INTO t VALUES(1,2);
+}
+{0 {}}
+set sqlite4_count 0
+do_sqlite4_test query_sqlite_2.2 {
+  SELECT SUM a FROM t
+} {}
+set sqlite4_count 0
+do_sqlite4_test query_sqlite_2.3 {
+  SELECT y FROM t WHERE x = 1
+} {2}
+
+finish_test

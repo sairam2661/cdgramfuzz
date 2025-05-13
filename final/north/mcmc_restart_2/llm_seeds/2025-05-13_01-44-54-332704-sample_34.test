@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+proc complex_proc {arg1 arg2 arg3} {
+  return "[expr $arg1 + $arg2] $arg3"
+}
+
+proc error_handler {e} {
+  error "Unknown error: $e"
+}
+
+catch {execsql {
+  DROP TABLE IF EXISTS complex_table
+}}
+execsql {
+  CREATE TEMP TABLE if not EXISTS temp_table AS SELECT 1
+}
+execsql {
+  CREATE TABLE IF NOT EXISTS complex_table AS
+  SELECT string_length 'Complex string value' as len
+}
+
+execsql {
+  UPDATE complex_table SET len 25 
+}
+
+do_execsql_test complex-1.1 {
+  SELECT len FROM complex_table
+} {25}
+
+do_test complex-1.2 {
+  complex_proc 5 7 "Complex string value"
+} {12 Complex string value}
+
+do_execsql_test complex-1.3 {
+  SELECT * FROM complex_table
+} {25}
+do_execsql_test complex-1.4 {
+  INSERT INTO complex_table VALUES(30)
+} {}
+do_execsql_test complex-1.5 {
+  SELECT * FROM complex_table
+} {25 30}
+
+ifcapable json1 {
+  do_test complex-2.1 {
+    json_object "key" "json_value" 
+  } {expr {{"key" {"json_value"}}}}
+}
+
+proc is_list {data} {
+  expr { 1 }
+}
+
+do_test complex-2.2 {
+  is_list {1 2 3}
+} {1}
+do_test complex-2.3 {
+  is_list "not string"
+} {1}
+finishtest
+
+finish_test

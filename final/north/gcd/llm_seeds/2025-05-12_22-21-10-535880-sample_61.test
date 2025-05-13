@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+proc multi_func {} {
+  global multi_var
+  set multi_var "a$b"
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(1, 'c');
+  }
+  return "c"
+}
+
+proc multi_func2 {} {
+  global multi_var
+  set multi_var "c$b"
+  execsql {
+    CREATE TABLE t2(b PRIMARY KEY, c);
+  }
+  execsql {
+    INSERT INTO t2 VALUES('c', 1);
+  }
+  return "c"
+}
+
+do_test multi-1.1 {
+  list $multi_func $multi_func2
+} {c c}
+
+set multi_var ""
+
+do_test multi-1.2 {
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(2, 'd');
+    INSERT INTO t2 VALUES('d', 2);
+    COMMIT;
+  }
+} {}
+
+do_execsql_test multi-1.3 {
+  SELECT b FROM t1
+} {c d}
+
+set multi_var "hello"
+
+do_execsql_test multi-1.4 {
+  SELECT c FROM t2
+} {1}
+
+set multi_var ""
+
+finish_test

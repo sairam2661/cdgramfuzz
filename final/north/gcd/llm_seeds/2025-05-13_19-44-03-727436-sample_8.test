@@ -1,0 +1,237 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+
+proc timeout {} {
+  global to_close
+  if { $to_close } {
+    close_connection
+    return 1
+  }
+  return 0
+}
+
+proc set_timeout { timeout } {
+  global to_close to_close_t
+  set to_close 1
+  after $timeout {
+    set to_close_t 1
+    set to_close 0
+  }
+}
+
+proc close_connection {} {
+  global to_close
+  if { $to_close } {
+    set to_close 0
+    global db db2 db3
+    close_connection
+  }
+}
+
+db close
+
+do_execsql_test locking-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}
+
+             
+
+  {} do_execsql_test locking-1.2 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(1);
+}
+
+              
+
+  {} do_execsql_test locking-1.3 {
+  CREATE TABLE c(z);
+}
+
+              
+
+{} do_execsql_test locking-1.4 {
+  CREATE TABLE d(i, j);
+  INSERT INTO d VALUES(1, 'a');
+  CREATE INDEX i1 ON d(i);
+  CREATE INDEX i2 ON d(j);
+}
+
+{
+
+  CREATE TABLE e AS SELECT 1 x FROM a
+
+}
+
+  
+
+  do_execsql_test locking-1.6 {
+  BEGIN;
+  INSERT INTO e VALUES(2);
+  COMMIT;
+  SELECT count(*) FROM e
+}
+
+{2}
+
+  do_execsql_test locking-1.7 {
+  BEGIN;
+  INSERT INTO e VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM e
+}
+
+{3}
+
+  
+
+       do_test locking-9.0 {
+  if { $::gset_use_snapshot } {
+    return
+  }
+  set_time_out 2000
+  eval $::SQLITE_TEST_fixed_db
+  do_execsql_test locking_9 {
+    ATTACH 'test.db' AS test2
+    UPDATE t1 SET s1
+    SELECT s1 FROM test2
+    SELECT s1 FROM test2
+  }
+  finish_test
+  set_time_out 0
+} {}
+
+  
+
+do_execsql_test locking-10.1 {
+  CREATE TABLE f(x);
+  CREATE INDEX i_f1 ON f(x);
+  INSERT INTO f VALUES(1);
+  INSERT INTO f VALUES(2);
+}
+
+ 
+
+{} do_execsql_test locking-11.2 {
+  CREATE TABLE g(x);
+  CREATE INDEX i_g1 ON g(x);
+}
+
+ 
+
+{} do_execsql_test locking-11.3 {
+  CREATE TABLE h(x);
+  CREATE TABLE i(x);
+}
+
+ 
+
+{} do_execsql_test locking-11.4 {
+  CREATE TABLE k(
+  x,
+  y,
+  z
+  );
+}
+
+ 
+
+{} set_time_out 10000 do_execsql_test locking-11.5 {
+  CREATE TABLE l(x);
+  CREATE TABLE m(x);
+  CREATE TABLE n(x);
+  CREATE TABLE o(x);
+  CREATE TABLE p(x);
+  CREATE TABLE q(x);
+  CREATE TABLE r(x);
+  CREATE TABLE s(x);
+  CREATE TABLE t(x);
+  CREATE TABLE u(x);
+  CREATE TABLE v(x);
+  CREATE TABLE w(x);
+  CREATE TABLE x(x);
+  CREATE TABLE y(x);
+  CREATE TABLE z(x);
+}
+                
+
+
+
+  {} do_test locking-2.1 { expr 0 } 0
+  set_time_out 100000 do_execsql_test locking-2.2 {
+  CREATE TABLE t1(
+    s1,
+    s2
+  );
+  INSERT INTO t1 VALUES
+    (1, 'z');
+}
+
+{"1
+ z"}
+
+   if { $::gset_use_snapshot } {
+  set_time_out 5000
+  execsql {
+    PRAGMA journal_mode = 1;
+    PRAGMA synchronous = 1;
+  }
+  do_execsql_test locking_2_3 {
+    BEGIN;
+    INSERT INTO w VALUES(42);
+  }
+  set_time_out 10
+  do_execsql_test locking_2_4 {
+    SELECT w FROM test2
+  }
+ } else {
+ do_execsql_test locking_2_4 {
+    PRAGMA journal_mode
+ }
+}
+
+{DELETE}
+
+{DELETE}
+
+{DELETE}
+
+  
+
+  set_time_out 10000 do_execsql_test locking-2.4 {
+  CREATE TABLE A(a, b);
+}
+
+{a b}
+  
+
+  
+
+       do_execsql_test locking-2.6 {
+  CREATE TABLE B(
+  x,
+  y,
+  z
+  );
+  CREATE TABLE C(
+  m,
+  q
+  );
+  CREATE TABLE E(
+  c,
+  d,
+  r);
+  CREATE TABLE H(
+  x,
+  y,
+  z
+  )
+  }
+
+                   
+
+{} do_execsql_test locking-20.1 {
+  CREATE TABLE

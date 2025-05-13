@@ -1,0 +1,134 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc complex_func {} {
+  global complexargs
+  foreach {arg value} $::complexargs {
+    if {$arg eq "test_variable"} {
+      set test_var $value
+    }
+  }
+  set complexargs
+  expr {10}
+}
+
+proc complex_func2 {} {
+  global db
+  ifcapable wal {
+    execsql {
+      PRAGMA wal_checkpoint
+    }
+  }
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+}
+
+proc complex_func3 {} {
+  global db
+  execsql {
+    CREATE TABLE ifnotexists b3_newname_pname_yname_newname_yname_newvalue_newyvalue_new_oldname_yoldname_p_yname_oldvalue_old_yvalue_newname_new_oldname_old_p_yname_oldvalue_oldvalue_new_oldp_newoldname_newyvalue_newvalue_newyvalue_oldoldname_newoldvalue old_yolddddname_oldpvalue_newname_yolname_newvalue_newvalue_y_p_old_value_pvalue_yvalue_new_old_value_new_old_y_new_new_old_yvalue_y_new_oldname_newname_oldoldname_old_oldname_oldname_oldname_new_yvalue_oldname_old_old_y_old_y_old_oldold_oldname_new_old_pname_new_old pname_y_oldvalue_old_oldp_old_oldp_ync
+    CREATE TABLE ifnotexists b4_newname_newname_newname_newyvalue_new_old_oldname_new_oldname_new_oldyname_old_oldyvalue_old_new_oldvalue_new_oldvalue_old_newoldname_new_oldname_new_pname_new_old_pname_ync
+  }
+  execsql {
+    INSERT INTO b3_newname_pname_yname_newname_yname_newvalue_newyvalue_new_oldname_yoldname_p_yname_oldvalue_old_yvalue_newname_new_oldname_old_p_yname_oldvalue_oldvalue_new_oldp_newoldname_newyvalue_newvalue_newvalue_newyvalue_oldoldname_newoldvalue old_yolddddname_oldpvalue_newname_yolname_newvalue_newvalue_y_p_old_value_pvalue_yvalue_new_old_value_new_old_y_new_new_old_yvalue_y_new_oldname_newname_oldoldname_old_oldname_oldname_oldname_new_yvalue_oldname_old_old_y_old_y_old_oldold_oldname_new_old_pname_new_old pname_y_oldvalue_old_oldp_old_oldp_ync
+  }
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+}
+
+proc complex_func4 {} {
+  global db
+  do_catchsql_test 1.3 {
+   execsql {
+    SELECT * FROM doesnt_exist
+   }
+  } {}
+}
+
+proc complex_func5 {} {
+  global db
+  set r_id 2
+  execsql {
+    SELECT id FROM tbl1 ORDER BY id ASC LIMIT 1
+  }
+  set r_id
+  execsql {
+    SELECT * FROM tbl2
+  }
+}
+
+proc complex_func6 {} {
+  global db
+  uplevel execsql {
+      CREATE TEMP TABLE temp1 AS SELECT 1 AS v1
+  }
+  execsql {
+    DROP TABLE temp1
+  }
+  execsql {
+    DROP TABLE IF EXISTS temp2
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(10);
+  }
+  execsql {SELECT count(*) FROM c}
+} {1}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO c VALUES(11);
+  COMMIT;
+  SELECT count(*) FROM c;
+} {2}
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE d(x,y);
+  INSERT INTO d VALUES(20, 2000);
+  SELECT x FROM d WHERE y = 2000;
+} {20}
+
+ifcapable incremental_vacuum {
+  do_execsql_test complex-1.4 {
+    PRAGMA auto_increment_counter
+  } {}
+}
+
+ifcapable wal {
+  do_execsql_test complex-1.4 {
+    PRAGMA wal_checkpoint
+  } {}
+}
+
+do_execsql_test complex-1.5 {
+  CREATE TABLE e(x,y,x2);
+  BEGIN;
+    INSERT INTO e VALUES(21, 2001, 20100);
+    SELECT x FROM e WHERE x2 = 20100;
+  COMMIT;
+  SELECT x FROM e WHERE x2 = 20100;
+} {21}
+
+do_test complex-1.6 {
+  execsql {
+    CREATE TABLE f(x,y,x2);
+    INSERT INTO f VALUES(1, 101, 1000100);
+  }
+  execsql {
+    SELECT * FROM f
+  }
+} {1 101 1000100}
+
+ifcapable subquery {
+  do_test complex-1.7 {
+    db nullstep
+    catchsql {
+      CREATE TABLE g(id UNIQUE

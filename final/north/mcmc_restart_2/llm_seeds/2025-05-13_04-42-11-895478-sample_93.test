@@ -1,0 +1,44 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_threading
+
+proc multi_threading_func {} {
+  global multi_threading_lock
+  if { $multi_threading_lock eq 0 } {
+    set multi_threading_lock 1
+    set res 0
+    for {set i 10101} {$i le 100000} {incr i} {
+      execsql {INSERT INTO t1 VALUES('$i', '$i', '$i')}
+    }
+  }
+  return $multi_threading_lock
+}
+
+proc multi_threading_func2 {} {
+  global multi_threading_lock
+  if { $multi_threading_lock ne 0 } {
+    set multi_threading_lock 0
+  }
+  return $multi_threading_lock
+}
+
+sqlite_thread_procedure multi_threading_func
+sqlite_thread_procedure multi_threading_func2
+
+sqlite3 db ""
+
+do_execsql_test 1 {
+  CREATE TABLE t1(a,b,c);
+} {}
+
+set multi_threading_lock 0
+sqlite_start_transaction
+multi_threading_func
+multi_threading_func2
+sqlite_commit_transaction
+
+do_catchsql_test 2 {
+  DROP TABLE t1
+} {1 {database disk image is malformed}}
+
+finish_test

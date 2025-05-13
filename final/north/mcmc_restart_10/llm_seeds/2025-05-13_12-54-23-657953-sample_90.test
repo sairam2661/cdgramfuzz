@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix lock2
+
+proc my_sleep {msec} {
+  after $msec {}
+}
+
+proc my_insert {} {
+  set data "SELECT *, RANDOM()"
+  execsql "$data"
+}
+
+proc my_update {} {
+  set data "UPDATE t1 SET x = x + RANDOM()"
+  execsql "$data"
+}
+
+proc my_delete {} {
+  set data "DELETE FROM t1"
+  execsql "$data"
+}
+
+do_begin_test lock2_1 {
+  execsql {
+    BEGIN;
+    CREATE TABLE t1(x);
+  }
+}
+
+do_test lock2_1.1 {
+  my_insert
+  my_sleep 100
+  my_update
+  execsql "SELECT * FROM t1 ORDER BY rowid DESC"
+} {}
+
+do_test lock2_1.2 {
+  my_insert
+  my_sleep 100
+  my_delete
+  execsql "SELECT * FROM t1 ORDER BY rowid DESC"
+} {}
+
+do_test lock2_1.3 {
+  my_insert
+  my_sleep 100
+  my_update
+  my_sleep 100
+  my_delete
+  execsql "SELECT * FROM t1 ORDER BY rowid DESC"
+} {}
+
+do_end_test lock2_1
+
+do_begin_test lock2_2 {
+  execsql {
+    BEGIN;
+    CREATE TABLE t2(x);
+  }
+}
+
+do_test lock2_2.1 {
+  my_sleep 100
+  my_update
+  execsql "SELECT * FROM t2 ORDER BY rowid DESC"
+} {}
+
+do_test lock2_2.2 {
+  my_insert
+  my_sleep 100
+  my_update
+  execsql "SELECT * FROM t2 ORDER BY rowid DESC"
+} {}
+
+do_end_test lock2_2
+
+finish_test

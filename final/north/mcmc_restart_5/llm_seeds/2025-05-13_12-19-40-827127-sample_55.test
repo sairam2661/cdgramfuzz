@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+
+proc complex_proc {} {
+  global complexargs
+  lappend complexargs
+  set a 10
+  set b 20
+  set sum $a
+  set sum $sum $b
+  dict set complexargs sum $sum
+  expr {$sum}
+}
+
+proc drop_tables {} {
+  execsql {
+    DROP TABLE IF EXISTS a
+  }
+}
+
+do_test complex-1.0 {
+  eval "execsql {
+    CREATE TABLE a(x, y);
+    INSERT INTO a VALUES(1, 6);
+    INSERT INTO a VALUES(2, 7);
+    SELECT *, x*y FROM a;
+  }"
+  execsql {SELECT * FROM a WHERE x=1}
+} {1 6 6}
+
+do_test complex-2.0 {
+  drop_tables
+  execsql {
+    CREATE TABLE b(x, y);
+    INSERT INTO b VALUES(2, 2);
+    INSERT INTO b VALUES(3, 3);
+    SELECT b FROM b;
+  }
+} {2 3}
+
+do_execsql_test complex-3.0 {
+  CREATE TABLE temp_c(x);
+  CREATE INDEX idx_c_x ON temp_c(x);
+  INSERT INTO temp_c VALUES(1);
+  SELECT * FROM temp_c WHERE x=1;
+} {1}
+
+set disable_lookaside 1
+
+do_test complex-4.0 {
+  execsql {
+    PRAGMA incremental_vacuum;
+    PRAGMA temp_store;
+  }
+} {1 SQLITE_TEMP_STORE_DEFAULT}
+
+db close
+
+finish_test

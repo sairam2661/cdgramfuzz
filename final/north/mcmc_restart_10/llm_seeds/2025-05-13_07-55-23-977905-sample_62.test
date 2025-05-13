@@ -1,0 +1,34 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix fuzz
+
+proc fuzz_insert {} {
+  global fuzzargs
+  set blob 0
+  for {set i 1} {$i le 1000} {incr i} {
+    binary scan b $i $blob
+    lappend fuzzargs $blob
+  }
+}
+
+do_fuzztest fuzz_insert sync 1 2
+
+set testdir2 "fuzz-test"
+file mkdir $testdir2
+set sqlite_opts {
+  "-fuzz -dir=$testdir2"
+}
+testvfs tvfs $sqlite_opts
+set tvfs_options {
+  "-fuzz -testvfs tvfs"
+}
+ifcapable journalMode {
+  do_execsql_test fuzz-4.3 {
+    PRAGMA journal_mode = 'WAL';
+  } {wal}
+}
+do_execsql_test fuzz-4.2 {
+  PRAGMA wal_checkpoint
+} {}
+register_fuzz_procedure tvfs tvfs test
+finish_test

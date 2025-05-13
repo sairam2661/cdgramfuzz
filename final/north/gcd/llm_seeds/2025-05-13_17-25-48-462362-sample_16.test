@@ -1,0 +1,149 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query_parameters
+
+set ::timeout 60000
+file mkdir temp_dir
+set temp_dir temp_dir
+
+proc query_params {} {
+  global query_params_array
+  expr {0}
+}
+
+proc cleanup {} {
+  global temp_dir
+  execsql {
+    DROP TABLE IF EXISTS t1
+  }
+  file delete temp_dir
+}
+
+do_test params-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 'abc');
+    INSERT INTO t1 VALUES(2, 'def');
+  }
+  execsql {SELECT * FROM t1}
+} {1 abc 2 def}
+
+do_execsql_test params-1.2 {
+  CREATE TABLE t2(a, b);
+  INSERT INTO t2 VALUES(4, 'ghi');
+  SELECT * FROM t2;
+} {4 ghi}
+
+do_test params-1.3 {
+  execsql {
+    SELECT t1a FROM t2 NATURAL JOIN t1 WHERE t2b LIKE '%h' ORDER BY t1b DESC LIMIT 10
+  }
+} {abc}
+
+ifcapable attach {
+  attach "./temp_dir/temp1.db" temp1
+  do_execsql_test params-1.4 {
+    SELECT * FROM main_t1
+  } {1 abc 2 def}
+  dettach temp1
+}
+
+do_test params-1.5 {
+  execsql {
+    INSERT INTO t1 VALUES(3, 'jkl');
+  }
+} {}
+
+do_test "params-1.6" {
+  query_params
+  set expected 0
+  expr {$expected}
+} {$expected}
+
+ifcapable {trigger} {
+  do_execsql_test params1.7 {
+    CREATE TRIGGER t1_trigger BEFORE INSERT ON t1
+    FOR EACH ROW
+    WHEN old_id IS 'not present'
+    BEGIN
+      SELECT raise_rollback 'this is an error message'
+    END
+  } {}
+}
+
+cleanup
+
+do_test "params-1.8" {
+  catch {
+    execsql {
+      SELECT * FROM t1;
+    }
+  }
+} {SQL error or missing database
+no such column with name Id}
+
+do_test "params-1.9" {
+  query_params
+  set expected 9
+  expr {9}
+} {$expected}
+
+proc db_function {args} {
+  if { $args eq {a b c} } {
+    return hello
+  } else {
+    return world
+  }
+}
+
+do_execsql_test "params1.10" {
+  CREATE TABLE t3(val, func_name)
+ }
+do_test "params1.11" {
+  db_function {a b c}
+} {hello}
+
+cleanup
+
+do_test "params-1.12" {
+  expr {0}
+} {}
+
+do_test "params-1.13" {
+  proc proc1 {arg1 arg2 arg3} {
+    set arg1 {a}
+    set arg2 {b}
+    set arg3 false
+  }
+  proc1 abc def ghi
+  set arg1 {a}
+  set arg2 {b}
+  set arg3 {true}
+  expr {$arg1}
+} {a}
+
+proc proc2 {arg3} {
+  expr {$arg3}
+}
+
+do_test "params-1.14" {
+  proc2 true
+} {true}
+
+file mkdir temp2
+file copy $testdirLIBsqlite3tclsqlite3 temp2
+cd temp2
+do_test "params-1.15" {
+  lload libtclsqlite3
+} {}
+cd $testdir
+
+do_test "params-1.16" {
+  proc proc3 {} {
+    sqlite3_tcl_connection close
+  }
+  proc3
+  expr {0}
+} {SQLITE_OK}
+
+finish_test

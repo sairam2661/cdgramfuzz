@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_proc {} {
+  global fuzzargs
+  lappend fuzzargs abc
+  expr {1}
+}
+
+proc set_db_dir {} {
+  global db_dir
+  set db_dir "/tmp/fuzz_db"
+}
+
+proc test_setup {} {
+  global db
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+}
+
+proc test_tear_down {} {
+  global db
+  execsql {
+    DROP TABLE b
+  }
+}
+
+set_db_dir
+file mkdir $db_dir
+sqlite3 db $db_dir
+
+do_test fuzz-1.1 {
+  set_db_dir
+  test_setup
+  execsql {
+    SELECT y FROM b
+  }
+  test_tear_down
+  file delete $db_dir
+} {5}
+
+do_execsql_test fuzz-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  COMMIT;
+  SELECT y FROM b;
+} {6}
+
+ifcapable journalMode {
+  sqlite3 db2 $db_dir
+  catchsql {
+    PRAGMA journal_mode='WAL';
+  } $db2
+} {0 {}}
+
+finish_test

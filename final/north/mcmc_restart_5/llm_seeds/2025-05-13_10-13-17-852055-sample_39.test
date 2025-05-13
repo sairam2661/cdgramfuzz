@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000 	getProperty
+proc exec_dml {sql} {
+  uplevel $sql
+}
+
+do_test complex_test-1.1 {
+  execsql {
+    CREATE TABLE users(
+      id    PRIMARY KEY,
+      name  NOT NULL,
+      email NOT NULL
+    );
+  }
+} {}
+
+do_test complex_test-1.2 {
+  execsql {
+    CREATE TABLE orders(
+      id          PRIMARY KEY,
+      user_id     NOT NULL,
+      order_date  NOT NULL,
+      total       NOT NULL
+    );
+  }
+} {}
+
+do_execsql_test complex_test-1.3 {
+  BEGIN;
+  INSERT INTO users VALUES(1,'John Doe','john@example.com');
+  INSERT INTO users VALUES(2,'Jane Doe','jane@example.com');
+  INSERT INTO orders VALUES(1,1,'2022-01-01',100.0);
+  INSERT INTO orders VALUES(2,2,'2022-01-02',200.0);
+  COMMIT;
+} {1 1 John Doe johnexamplecom 2 2 Jane Doe janeexamplecom 1 1 2022 01 01 12 00 00 100.0 2 2 2022 01 02 12 00 00 200.0}
+
+do_execsql_test complex_test-1.4 {
+  BEGIN;
+  INSERT INTO orders VALUES(3,1,'2022-01-03',300.0);
+  COMMIT;
+} {3 1 1 2022 01 03 12 00 00 300.0}
+
+do_test complex_test-1.5 {
+  execsql {
+    SELECT * FROM users;
+  }
+} {1 John Doe johnexamplecom 2 Jane Doe janeexamplecom}
+
+do_test complex_test-1.6 {
+  execsql {
+    SELECT * FROM orders WHERE total = 100.0;
+  }
+} {1 1 1 2022 01 01 12 00 00 100.0}
+
+ifcapable vacuum {
+  do_test complex_test-1.7 {
+    exec_dml {
+      VACUUM
+    }
+  } {}
+}
+
+finish_test

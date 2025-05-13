@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc append_string {} {
+  global string
+  incr string
+  append string "Hello World"
+}
+
+proc remove_last_char {} {
+  global string
+  set string $string
+  string set string $string
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  append_string
+  execsql {SELECT y FROM b}
+} {5Hello World}
+do_execsql_test query-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES("insert");
+  COMMIT;
+  SELECT y FROM b;
+} {"insert"}
+do_execsql_test query-1.3 {
+  BEGIN;
+  INSERT INTO b VALUES("query");
+  COMMIT;
+  SELECT y FROM b;
+} {"insertquery"}
+ifcapable journalMode {
+  do_test query-1.4 {
+    set rc
+    lappend rc SqliteDb set database name
+    set v
+    set v expr 123
+    append_string
+    append_string
+    set v "Hello SQL"
+  } {123 Hello SQL}
+}
+
+do_test query-2.5 {
+  db close
+  db open main testdb
+ execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(6);
+ }
+ remove_last_char
+ execsql {SELECT z FROM c}
+} {6}
+do_execsql_test query-2.6 {
+  BEGIN;
+  INSERT INTO c VALUES("test");
+  COMMIT;
+  SELECT z FROM c;
+} {6}
+
+do_test query-2.7 {
+  set v
+  set v "Testing TCL"
+  append_string
+  append_string
+  set v "SQL"
+} {Testing TCL SQL}
+do_execsql_test query-2.8 {
+  BEGIN;
+  INSERT INTO c VALUES("update");
+  COMMIT;
+  SELECT z FROM c;
+} {6update}
+
+append_string
+
+finish_test

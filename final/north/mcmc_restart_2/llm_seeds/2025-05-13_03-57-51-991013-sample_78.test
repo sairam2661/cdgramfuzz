@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc get_random_select {n} {
+  set sql "SELECT "
+  for {set i 0} {$i lt $n} {incr i} {
+    lappend sql rnd_random
+    if {$i lt $n} {
+      append sql ","
+    }
+  }
+  append sql " FROM "
+  for {set i 0} {$i lt $n} {incr i} {
+    lappend sql rnd_table
+    if {$i lt $n} {
+      append sql ","
+    }
+  }
+  return $sql
+}
+
+proc run_query_test {sql} {
+  global db
+  return $db last_error
+}
+
+fuzztest query {
+  execsql {
+    CREATE TABLE t1(x,y);
+    CREATE TABLE t2(x,y);
+    INSERT INTO t1 VALUES(4,5);
+    INSERT INTO t2 VALUES(3,2);
+  }
+  set sql $rnd_sql
+  set result $db execsql $sql
+  if {$sql ne $result} {
+    set err $db last_error
+    error "$sql $result $err"
+  }
+  set sql $get_random_select 5
+  execsql $sql
+  set result $db last_error
+  if {$sql ne $result} {
+    set err $db last_error
+    error "$sql $result $err"
+  }
+  set sql {SELECT SUM RANDOM}
+  set result $run_query_test $sql
+  if {$sql ne $result} {
+    set err $db last_error
+    error "$sql $result $err"
+  }
+}
+
+finish_test

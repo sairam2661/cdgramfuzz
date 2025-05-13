@@ -1,0 +1,73 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_test {nCmd} {
+  uplevel "#$nCmd async_test_body"
+}
+
+proc async_wait {timeouts} {
+  foreach {type timeout} $timeouts {
+    switch $type {
+      db {
+        sqlite3_close_all
+      }
+      network {
+        after $timeout {
+          set timeout 1
+        }
+      }
+    }
+    if {$timeout} {
+      error "timeout: $type"
+    }
+  }
+  return
+}
+
+proc async_test_body {nCmd} {
+  global async_cmd
+  set cmd $nCmd
+  set async_cmd ""
+  set async_id ""
+  set async_err ""
+  catch {
+    set async_id "[sqlite3async_exec start -]"
+  }
+  set async_cmd ""
+  async_wait {{db 1000} {network 1000}}
+  return
+}
+
+do_test async-1.1 {
+  async_test 1
+  list $async_id $async_err
+} {async exec 0}
+
+do_execsql_test async-1.2 {
+  CREATE TABLE x(y);
+  INSERT INTO x VALUES(1);
+  SELECT y FROM x;
+} {1}
+
+ifcapable journalMode {
+  do_test async-1.3 {
+    async_test {
+      execsql {
+        PRAGMA journal_mode = 'wal'
+      }
+    }
+    list $async_id $async_err
+  } {async exec 0}
+}
+
+do_execsql_test async-1.4 {
+  CREATE TABLE i(x);
+  BEGIN;
+  ROLLBACK;
+  CREATE INDEX i1 ON i(x);
+} {}
+
+finish_test

@@ -1,0 +1,50 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fileio
+
+set ::timeout 60000
+set temp_path "/tmp"
+
+proc fileio_test {} {
+  global temp_path
+  file mkdir $temp_path
+}
+
+do_execsql_test fileio-1.1 {
+  CREATE TABLE fileio(a);
+  INSERT INTO fileio VALUES('file1.a');
+} {1}
+
+do_execsql_test fileio-1.2 {
+  SELECT value FROM fileio;
+} {file1}
+
+do_test fileio-1.3 {
+  execsql {
+    CREATE TABLE fileio2(a);
+    INSERT INTO fileio2 VALUES('file2.a');
+  }
+  lindex {file2}
+} {file2}
+
+ifcapable wal {
+  do_test fileio-2.1 {
+    execsql {
+      CREATE TABLE wal(a);
+      INSERT INTO wal VALUES('walfile1');
+    }
+    file exists "walfile1"
+  } {1}
+}
+
+set temp_dirs {}
+proc fileio_shutdown { } {
+  global temp_dirs
+  foreach dir $temp_dirs {
+    file delete $dir
+    file delete $dir tmpfile
+  }
+}
+
+fileio_test
+finish_test

@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix dbconfig
+
+proc fuzzer {} {
+  global fuzzerargs
+  foreach {arg value} $fuzzerargs {
+    eval execsql "PRAGMA $arg = $value"
+  }
+}
+
+proc dbconfig_proc {} {
+  global dbconfigargs
+  foreach {arg value} $dbconfigargs {
+    eval execsql "PRAGMA $arg = $value"
+  }
+}
+
+do_test dbconfig-1.1 {
+  dbconfig_proc
+  execsql {SELECT name FROM sqlite_master}
+} {}
+fuzzer
+do_test dbconfig-1.2 {
+  dbconfig_proc
+  execsql {SELECT name FROM sqlite_master}
+} {}
+
+do_execsql_test dbconfig-1.3 {
+  PRAGMA data_directory;
+  PRAGMA page_size;
+} {{} 1024 65536}
+
+ifcapable tempdb {
+  do_execsql_test dbconfig-1.4 {
+    PRAGMA main_temps_directory;
+  } {}
+  ifcapable wal {
+    do_execsql_test dbconfig-1.5 {
+      PRAGMA wal_checkpoint;
+    } {}
+  } else {
+    do_execsql_test dbconfig1.5 {
+      PRAGMA commit_comment;
+    } {}
+  }
+}
+
+ifcapable persistent { 
+  do_execsql_test dbconfig-2.1 {
+    PRAGMA data_version;
+  } {}
+}
+
+finish_test

@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithread
+set threadcount 2
+
+proc create_data {} {
+  global data
+  set n 100000
+  set data {}
+  for {set i 0} {$i $n} {incr i} {
+    lappend data $i
+  }
+}
+
+proc read_data {} {
+  global data
+  for {set i 0} {$i 10000} {incr i} {
+    lindex $data $i
+  }
+}
+
+proc update_data {} {
+  global data
+  for {set i 0} {$i 10000} {incr i} {
+    set data_$i 1
+  }
+}
+
+do_test multi-1.1 {
+  create_data
+  execsql {
+    CREATE TABLE data(x);
+    INSERT INTO data VALUES(1);
+    BEGIN;
+  }
+} {}
+
+do_test multi-1.2 {
+  read_data
+  execsql {
+    SELECT 1 FROM data;
+  }
+} {1}
+
+do_test multi-1.3 {
+  update_data
+  execsql {
+    COMMIT;
+    SELECT * FROM data;
+  }
+} {}
+
+thread {
+  do_test multi_thread1 {
+    read_data
+    execsql {
+      SELECT 1 FROM data WHERE x = 1;
+    }
+  } {}
+}
+
+thread {
+  do_test multi_thread2 {
+    update_data
+    execsql {
+      SELECT * FROM data;
+    }
+  } {}
+}
+
+finish_test

@@ -1,0 +1,103 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+proc test_proc {} {
+  global testargs
+  lappend testargs
+  expr {1}
+}
+
+proc fuzz_test {} {
+  set str "SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT 1 AS x UNION ALL SELECT 2 AS x UNION ALL SELECT 3 AS x);));"
+  set db {}
+  if {sqlite4_get_db} {
+    set db sqlite4
+  } else {
+    set db $::DB
+  }
+
+  do_catchsql_test test_fuzz1 {
+    $db eval {
+      with recursiverequire x as
+        SELECT 1 AS x UNION ALL SELECT 2 AS x UNION ALL SELECT 3 AS x
+      SELECT x FROM x AS T1 WHERE T1.1 IN WITH RECURSIVE x AS
+      SELECT x FROM x AS T2 WHERE T2.1 IN
+        WITH RECURSIVE y AS
+        SELECT x FROM y AS T3 WHERE T3.1 IN
+          WITH RECURSIVE z AS
+          SELECT x FROM z AS T4 WHERE T4.1 IN
+            WITH RECURSIVE u AS
+            SELECT x FROM u AS T5 WHERE T5.1 IN
+              WITH RECURSIVE v AS
+              SELECT x FROM v AS T6 WHERE T6.1 IN
+                SELECT x FROM $str WHERE x IN
+                  SELECT x FROM $str WHERE x IN
+                    WITH RECURSIVE w AS
+                    SELECT x FROM w AS T7 WHERE T7.1 IN
+                      WITH RECURSIVE z AS
+                      SELECT x FROM z AS T8 WHERE T8.1 IN
+                        WITH RECURSIVE x AS
+                        SELECT x FROM x AS T9 WHERE T9.1 IN
+                          WITH RECURSIVE y AS
+                          SELECT x FROM y AS T10 WHERE T10.1 IN
+                            WITH RECURSIVE z AS
+                            SELECT x FROM z AS T11 WHERE T11.1 IN
+                              WITH RECURSIVE w AS
+                              SELECT x FROM w AS T12 WHERE T12.1 IN
+                                WITH RECURSIVE z AS
+                                SELECT x FROM z AS T13 WHERE T13.1 IN
+                                  WITH RECURSIVE x AS
+                                  SELECT x FROM x AS T14 WHERE T14.1 IN
+                                    WITH RECURSIVE y AS
+                                    SELECT x FROM y AS T15 WHERE T15.1 IN
+                                      WITH RECURSIVE z AS
+                                      SELECT x FROM z AS T16 WHERE T16.1 IN
+                                        WITH RECURSIVE w AS
+                                        SELECT x FROM w AS T17 WHERE T17.1 IN
+                                          SELECT 1 FROM $str WHERE x IN
+                                            WITH RECURSIVE z AS
+                                            SELECT x FROM z AS T18 WHERE T18.1 IN
+                                              WITH RECURSIVE x AS
+                                              SELECT x FROM x AS T19 WHERE T19.1 IN
+                                                WITH RECURSIVE y AS
+                                                SELECT x FROM y AS T20 WHERE T20.1 IN
+                                                  WITH RECURSIVE z AS
+                                                  SELECT x FROM z AS T21 WHERE T21.1 IN
+                                                    WITH RECURSIVE w AS
+                                                    SELECT x FROM w AS T22 WHERE T22.1 IN
+                                                      SELECT x FROM $str WHERE x IN
+                                                        WITH RECURSIVE z AS
+                                                        SELECT x FROM z AS T23 WHERE T23.1 IN
+                                                          WITH RECURSIVE x AS
+                                                          SELECT x FROM x AS T24 WHERE T24.1 IN
+                                                            WITH RECURSIVE y AS
+                                                            SELECT x FROM y AS T25 WHERE T25.1 IN
+                                                              WITH RECURSIVE z AS
+                                                              SELECT x FROM z AS T26 WHERE T26.1 IN
+                                                                WITH RECURSIVE w AS
+                                                                SELECT x FROM w AS T27 WHERE T27.1 IN
+                                                                  SELECT x FROM $str WHERE x IN
+                                                                    WITH RECURSIVE z AS
+                                                                    SELECT x FROM z AS T28 WHERE T28.1 IN
+                                                                        SELECT x FROM $str WHERE x IN
+                                                                            SELECT x FROM $str WHERE x
+                }
+      }
+    }
+  do_catchsql_test test_fuzz2 {
+    $db eval {
+      WITH RECURSIVE t1 AS
+      SELECT 'hello'
+      UNION ALL SELECT 42
+    }
+  }
+  if {0} {
+    do_execsql_test test_fuzz3 {
+      WITH RECURSIVE t AS
+      SELECT i
+      WITH RECURSIVE t2 AS
+      WITH RECURSIVE x AS
+      WITH RECURSIVE y AS
+      WITH RECURSIVE z AS
+      WITH RECURSIVE a AS

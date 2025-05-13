@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+proc complex_query {db} {
+  global test_query
+  set test_query "SELECT t1.a, COUNT(*) FROM main.t1 LEFT JOIN main.t2 ON t1.a = t2.b GROUP BY t1.a HAVING COUNT(*) > 3"
+  execsql $test_query $db
+}
+
+proc insert_data {db} {
+  global test_data
+  set test_data {
+    INSERT INTO t1 VALUES(10, 100);
+    INSERT INTO t2 VALUES(10, 1000);
+    INSERT INTO t1 VALUES(10, 100);
+    INSERT INTO t2 VALUES(20, 200);
+    INSERT INTO t1 VALUES(30, 300);
+    INSERT INTO t2 VALUES(30, 3000);
+  }
+  foreach {sql} $test_data {
+    execsql $sql $db
+  }
+}
+
+proc check_result {result expected} {
+  if {$result ne $expected} {
+    puts "Result mismatch: $result instead of $expected"
+    return 1
+  }
+  return 0
+}
+
+do_test complex-1.1 {
+  sqlite3 db test_database
+  insert_data db
+  check_result 100 $result
+  close db
+} {0}
+
+do_test complex-1.2 {
+  sqlite3 db test_database
+  insert_data db
+  complex_query db
+  set result 100
+  check_result $result $result
+  close db
+} {0}
+
+do_multi_test complex_2 {
+  sqlite3 db test_database
+  execsql {
+    CREATE TABLE t2(b);
+    INSERT INTO t2 VALUES(1000);
+  }
+  check_result 0 {0 {}}
+  execsql {
+    COMMIT;
+  }
+  check_result 3 {0 {}}
+  close db
+} {0 {}}
+
+finish_test

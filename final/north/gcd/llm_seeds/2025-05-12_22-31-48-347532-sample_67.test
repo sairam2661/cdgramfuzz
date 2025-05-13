@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix  complex_sql
+
+proc complex_sql_proc {} {
+  global complex_sql_args
+  lappend complex_sql_args
+  expr {10 eq 10}
+}
+
+proc gen_complex_sql {} {
+  set result "SELECT * FROM "
+  set tableList {}
+  for {set i 1} {$i le 5} {incr i} {
+    set table "table_${i}"
+    set columnList {}
+    for {set j 1} {$j le 10} {incr j} {
+      lappend columnList "${table}_${j}"
+    }
+    lappend tableList "$table (${columnList})"
+  }
+  append result "[join $tableList,]"
+  return $result
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE table_1(table_1_1, table_1_2, table_1_3, table_1_4, table_1_5, table_1_6, table_1_7, table_1_8, table_1_9, table_1_10);
+  CREATE TABLE table_2(table_2_1, table_2_2, table_2_3, table_2_4, table_2_5, table_2_6, table_2_7, table_2_8, table_2_9, table_2_10);
+  CREATE TABLE table_3(table_3_1, table_3_2, table_3_3, table_3_4, table_3_5, table_3_6, table_3_7, table_3_8, table_3_9, table_3_10);
+  CREATE TABLE table_4(table_4_1, table_4_2, table_4_3, table_4_4, table_4_5, table_4_6, table_4_7, table_4_8, table_4_9, table_4_10);
+  CREATE TABLE table_5(table_5_1, table_5_2, table_5_3, table_5_4, table_5_5, table_5_6, table_5_7, table_5_8, table_5_9, table_5_10);
+  CREATE INDEX idx_1 ON a(table_1_1);
+  CREATE INDEX idx_2 ON a(table_1_2);
+  CREATE INDEX idx_3 ON a(table_1_3);
+  CREATE INDEX idx_4 ON a(table_1_4);
+  CREATE INDEX idx_5 ON a(table_1_5);
+  CREATE INDEX idx_6 ON a(table_1_6);
+  CREATE INDEX idx_7 ON a(table_1_7);
+  CREATE INDEX idx_8 ON a(table_1_8);
+  CREATE INDEX idx_9 ON a(table_1_9);
+  CREATE INDEX idx_10 ON a(table_1_10);
+  CREATE INDEX idx_11 ON table_2(table_2_1);
+  CREATE INDEX idx_12 ON table_2(table_2_2);
+  CREATE INDEX idx_13 ON table_2(table_2_3);
+  CREATE INDEX idx_14 ON table_2(table_2_4);
+  CREATE INDEX idx_15 ON table_2(table_2_5);
+  CREATE INDEX idx_16 ON table_2(table_2_6);
+  CREATE INDEX idx_17 ON table_2(table_2_7);
+  CREATE INDEX idx_18 ON table_2(table_2_8);
+  CREATE INDEX idx_19 ON table_2(table_2_9);
+  CREATE INDEX idx_20 ON table_2(table_2_10);
+  CREATE INDEX idx_21 ON table_3(table_3_1);
+  CREATE INDEX idx_22 ON table_3(table_3_2);
+  CREATE INDEX idx_23 ON table_3(table_3_3);
+  CREATE INDEX idx_24 ON table_3(table_3_4);
+  CREATE INDEX idx_25 ON table_3(table_3_5);
+  CREATE INDEX idx_26 ON table_3(table_3_6);
+  CREATE INDEX idx_27 ON table_3(table_3_7);
+  CREATE INDEX idx_28 ON table_3(table_3_8);
+  CREATE INDEX idx_29 ON table_3(table_3_9);
+  CREATE INDEX idx_30 ON table_3(table_3_10);
+} {}
+
+do_execsql_test complex-1.2 {
+   SELECT * FROM table_1
+  WHERE table_1_1 = table_2_10
+  } {}
+
+set complex_sql args
+complex_sql_proc
+do_execsql_test complex-1.3 {

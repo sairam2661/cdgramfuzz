@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix mytest
+
+proc do_sql_query {sql} {
+  set result {}
+  set dbHANDLE "connection"
+  if {$::SQLITE_HAVE_SHM} {
+    db_openSHM $dbHANDLE mydb
+  } else {
+    db_open $dbHANDLE mydb
+  }
+  execsql $dbHANDLE "$sql"
+  db_close $dbHANDLE
+}
+
+proc do_query_test {tn sql expected} {
+  do_sql_query $sql
+  set dbHANDLE "connection"
+  if {$::SQLITE_HAVE_SHM} {
+    set connPtr "mydb"
+  } else {
+    set connPtr "mydb (no shared cache)"
+  }
+  do_test $tn {
+    execsql $connPtr "SELECT $expected FROM mytable"
+  } {}
+  db_close $connPtr
+}
+
+do_execsql_test 1.1 {
+  CREATE TABLE mytable(a, b);
+}
+
+do_query_test 1.2 {
+  INSERT INTO mytable VALUES(1, 2);
+  SELECT a FROM mytable
+} {1}
+
+do_execsql_test 2.1 {
+  CREATE INDEX myindex ON mytable(a);
+}
+
+do_query_test 2.2 {
+  SELECT a FROM mytable WHERE a = 1
+} {1}
+
+do_query_test 3.1 {
+  CREATE VIEW myview AS SELECT a FROM mytable
+}
+
+do_execsql_test 4.1 {
+  DELETE FROM mytable WHERE a IS NULL
+}
+
+ifcapable legacy_sql_fileio {
+  set testdir2 "[execsql_fileio $dbHANDLE 'fileio_2']"
+  source $testdir2
+}
+
+catch {db close connection}
+db close mydb
+catch {db closeSHM connection}
+
+finish_test

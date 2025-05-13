@@ -1,0 +1,126 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix insert_large_blob
+set sqlite_search_order_debug 1
+
+proc insert_large_blob {blob_size} {
+  set blob_data ""
+  for {set i 0} {$i $blob_size} {incr i} {
+    lappend blob_data 0
+  }
+
+  db eval {
+    CREATE TABLE t(a, b);
+  }
+
+  set blob_sql ""
+  foreach i {1 2} {
+    append blob_sql "
+      INSERT INTO t VALUES(?,?)
+    "
+  }
+  set blob_stmts {}
+  for {set i 0} {$i $blob_size} {incr i} {
+    set blob_stmt ""
+    foreach j {1 2} {
+      append blob_stmt "
+        Blob: set blob_data $blob_data
+        if {$i>1} {  # do not replace for first iteration
+          set blob_stmt "
+            UPDATE t SET $j
+            WHERE a IN 
+              SELECT a FROM t WHERE NOT $j
+              UNION
+              VALUES $i
+          "
+        }
+        append blob_stmt $blob_sql
+      }
+    }
+    lappend blob_stmts $blob_stmt
+  }
+
+  db eval {
+    BEGIN;
+    db eval "PRAGMA cache spisize 1000"
+  }
+
+  do_test insert-1.1 $blob_stmts
+  do_test insert-1.2 { set ::done }
+  execsql {COMMIT}
+
+  do_test insert-1.3 {
+    execsql {SELECT EXISTS (SELECT * FROM sqlite_master WHERE name='t')}
+  } {1}
+  do_test insert-1.4 {
+    execsql {SELECT EXISTS (SELECT * FROM t WHERE b IS NOT NULL)}
+  } {1}
+  finish_test
+}
+set blob_size 500
+insert_large_blob $blob_size
+
+set sqlite_search_order_debug 0
+proc drop_table {table_name} { db eval "DROP TABLE $table_name" }
+drop_table "t"
+proc set_blob_data_blob {} {}
+proc set_blob_data {blob_data} { lset blob_data 1; }
+set_blob_data_blob
+set_blob_data "hello"
+proc get_blob_data {} { execsql {SELECT * FROM t} }
+
+proc set_row {row} { execsql {INSERT INTO t VALUES(?,?)} $row }
+execsql {CREATE TABLE t(a, b)}
+set_row {1, 2}
+set_row {3, 4}
+execsql {
+  SELECT EXISTS (SELECT * FROM t)
+}
+if { [execsql {
+  SELECT * FROM t ORDER BY a
+}]!= "$::done 1" } { lappend ::failList insert-large-blob-1.1.3 } unset ::done
+if { [execsql {
+  SELECT * FROM t WHERE a > 1 ORDER BY a
+}]!= "$::done 2" } { lappend ::failList insert-large-blob-1.1.5 } unset ::done
+if { [execsql {
+  SELECT * FROM t ORDER BY 0
+}]!= "$::done 4" } { lappend ::failList insert-large-blob-1.1.4 } unset ::done
+finish_test
+
+proc update_row {row} { execsql {UPDATE t SET a =?, b =? WHERE a =?} $row }
+update_row {5, 6, 1}
+update_row {7, 8, 3}
+execsql {
+  SELECT * FROM t
+}
+set ::done [db eval {INSERT INTO t VALUES(NULL, 9)}]
+if {![info exists ::done] } { lappend ::failList insert-large-blob-1.2.2 }
+lappend ::failList insert-large-blob-1.2.1
+if { [execsql {INSERT INTO t SELECT a*2, b FROM t}]!= "$::done" } { lappend ::failList insert-large-blob-1.2.3 } unset ::done
+execsql {DELETE FROM t}
+finish_test
+
+proc get_count {} {
+  execsql {
+    SELECT COUNT(a) FROM t
+  }
+}
+get_count
+execsql {DELETE FROM t}
+finish_test
+
+proc test_all {name} {
+  if { $name == "CREATE INDEX" || $name == "CREATE TABLE" } {
+    execsql {
+      PRAGMA synchronous=off
+    }
+  }
+  if { $name == "SELECT" || $name == "INSERT" || $name == "UPDATE" || $name == "DELETE" || $name == "CREATE INDEX" || $name == "CREATE TABLE" } {
+    execsql {
+      PRAGMA cache size=128
+      PRAGMA cache spisize=128
+      PRAGMA journal_mode=WAL
+      PRAGMA checkpoint=FULL
+    }
+  }
+  do_test $name.1 {

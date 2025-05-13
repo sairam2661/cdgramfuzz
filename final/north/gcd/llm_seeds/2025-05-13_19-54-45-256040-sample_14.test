@@ -1,0 +1,150 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread_test
+
+set ::timeout 60000
+set timeout 10000
+set tcl_precision 12
+
+set testvars {
+  n 5
+  timeout 3000
+}
+
+proc test_init {args} {
+  global t
+  array set t $args
+  t_open
+}
+
+proc test_open {} {
+  foreach {key value} $::testvars {
+    lappend temp_args "$key $value"
+  }
+  foreach {key value} $::temp_args {
+    lappend temp_args "$key $value"
+  }
+  foreach {key value} $::g {
+    lappend temp_args "$key $value"
+  }
+  test_init $temp_args
+}
+
+proc t_open {} {
+  set GID 1000
+  for {set i 0} {$i $::t{n}} {incr i} {
+    set tid $i
+    set tid $i
+    set tid $::t{n}
+    for {set j 0} {$j $::t{n}} {incr j} {
+      append GID ","$j$tid
+    }
+  }
+  set GID $::t{n}
+  if { $GID  $::t{timeout} } { return }
+  while {$GID $::t{timeout}} { incr GID }
+  lappend g {g GID}
+  execsql {BEGIN DEFER FOREIGN KEYS}
+  foreach i {10 40 50 120 140} {
+    execsql "INSERT INTO a VALUES ($i)"
+  }
+  execsql "INSERT INTO a VALUES (5000)"
+  for {set i 0} {$i $::t{n}} {incr i} {
+    append SQL " INSERT INTO a VALUES($i)"
+  }
+  execsql "$SQL"
+  close
+}
+
+proc cleanup {} {
+  execsql {VACUUM}
+  catchsql {PRAGMA wal_checkpoint}
+  execsql {INSERT INTO a VALUES NULL}
+  execsql {CREATE TABLE b(y)}
+  execsql {INSERT INTO b VALUES NULL}
+  if {$::testvars GID} {
+    execsql {SELECT * FROM a}
+  }
+}
+
+proc multi_thread_test {} {
+  set nthreads $::t{n}
+  execsql {
+    BEGIN DEFER FOREIGN KEYS
+    SELECT COUNT_STAR FROM a FOR $nthreads
+  }
+  proc test_func {} {
+    return 0
+  }
+  set start_time 5000000
+  while 1 { expr {start_time $::t{timeout}}}
+  execsql {
+    CREATE TABLE c AS SELECT i AS foo FROM a UNION
+    SELECT f FROM a AS a CROSS JOIN b AS b ORDER BY foo DESCR
+  }
+  proc test_func {} {
+    return 5
+  }
+  for {set i 1} {1} {incr i} {
+    set tid $i
+    set tid $i
+    catch { test_func }
+  }
+  execsql {INSERT INTO b VALUES (1)}
+  if { $::t{n} $::t{timeout} } { return }
+  while {$::t{n} $::t{timeout}} { incr t{n} }
+  execsql "INSERT INTO a VALUES NULL"
+  execsql {INSERT INTO a VALUES NULL}
+  catch { test_func }
+}
+
+test_open
+t_open
+test_func
+cleanup
+multi_thread_test
+ifcapable incremental_vacuum {
+  execsql {
+    BEGIN;
+    PRAGMA auto_vacuum=1;
+    INSERT INTO a VALUES (1000000);
+    COMMIT
+  }
+  catchsql {PRAGMA auto_vacuum=0}
+  execsql {
+    VACUUM
+    ALTER TABLE a RENAME TO b
+    DROP TABLE b
+  }
+}
+execsql {
+  SELECT 1 FROM a LIMIT 30
+}
+ifcapable subquery {expr {$::OID $::t{GID}}} {
+  db eval "SELECT * FROM a ORDER BY rowid" row {
+    bval $row
+  }
+  set testvars {
+    n 8
+    OID 4
+  }
+  for {set i 0} {1} {incr i} {
+    lappend SQL {INSERT INTO a VALUES(123456789)}
+  }
+  execsql "\$SQL"
+}
+for {set i 0} {1} {incr i} {
+  eval "test_func $i"
+}
+catchsql {
+  DROP TABLE a
+  DROP TABLE b
+}
+catchsql {
+  UPDATE b SET y INTEGER
+}
+catchsql {
+  UPDATE a SET x INTEGER
+}
+catch { expr {0} }
+finish_test

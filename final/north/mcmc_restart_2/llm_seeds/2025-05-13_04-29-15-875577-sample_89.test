@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema
+
+proc schema_proc {} {
+  global schemargs
+  lappend schemargs
+  expr {20}
+}
+
+proc check_schema {db} {
+  set result {}
+  foreach column $cols {
+    lappend result {$column value}
+  }
+  join $result ', '
+}
+
+proc populate_table {db table_name columns} {
+  set i 1
+  for {set i 1} {$i le $num_rows} {incr i} {
+    execsql {
+      INSERT INTO $table_name VALUES 
+    }
+  }
+}
+
+do_test schema-1.1 {
+  execsql {
+    CREATE TABLE b(x, y);
+    INSERT INTO b VALUES(1, 2);
+  }
+  execsql {SELECT * FROM b}
+} {{1 2}}
+
+do_execsql_test schema-2.1 {
+  SELECT name FROM sqlite_master WHERE type='table'
+} {b}
+
+set db main
+set num_rows 10
+set cols {x y}
+
+populate_table $db b "${cols}"
+
+ifcapable fts5 {
+  execsql {
+    CREATE VIRTUAL TABLE c USING fts5
+  }
+} else {
+  execsql {
+    CREATE TABLE c(x, y)
+  }
+}
+
+do_test schema-3.1 {
+  execsql {
+    SELECT * FROM c
+  }
+} {}
+
+set table1 b
+set table2 c
+
+append schemaargs $table1
+append schemaargs $table2
+
+finish_test

@@ -1,0 +1,159 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache_col
+
+set ::timeout 60000
+set testuser user123
+
+proc cache_col_func {} {
+  global test_sql_cache_col
+  set test_sql_cache_col {}
+  foreach {key value} {one 1 two 2 three 3} {
+    lappend test_sql_cache_col $value $value
+  }
+}
+
+do_test cache_col-1.1 {
+  execsql {
+    INSERT INTO cache_col VALUES(1,1);
+    INSERT INTO cache_col VALUES(2,2);
+    INSERT INTO cache_col VALUES(3,3);
+    SELECT * FROM cache_col;
+  }
+} {1 1 2 2 3 3}
+
+do_execsql_test cache_col-1.2 {
+  BEGIN;
+  INSERT INTO cache_col VALUES(4,4);
+  COMMIT;
+  SELECT * FROM cache_col;
+} {1 1 2 2 3 3 4 4}
+
+ifcapable trigger {
+  do_execsql_test cache_col-2.1 {
+    CREATE TABLE table1(idinteger,columntext);
+    CREATE TABLE table2(idinteger,columntext);
+  }
+  {}
+  catchsql {
+    CREATE TRIGGER trigger_name 
+    BEFORE INSERT ON table1
+    FOR EACH ROW
+    BEGIN
+      INSERT INTO table2 VALUESNULL';
+    END;
+  }
+} {0 {}}
+
+do_execsql_test cache_col-2.2 {
+  INSERT INTO table1(id,columntext) VALUES(NULL,'Null');
+} {}
+
+proc cache_col_test_func {} {
+  global cache_col_test_result
+  set cache_col_test_result NULL
+  ifcapable wal {
+    execsql {
+      INSERT OR ROLLBACK INTO cache_col VALUES(5,5);
+    }
+  } else {
+    execsql {
+      BEGIN;
+      INSERT OR ROLLBACK INTO cache_col VALUES(5,5);
+      COMMIT;
+    }
+  }
+  set cache_col_test_result [llast [llast ::cache_col]]
+}
+
+ifcapable {trigger&&wal} {
+  do_test cache_col-2.3 {
+    catchsql {
+      CREATE TRIGGER trigger_name 
+      INSTEAD OF INSERT ON table1
+      FOR EACH ROW
+      BEGIN
+        DELETE FROM cache_col
+        WHERE rowid NOT IN (SELECT rowid FROM table1);
+      END;
+    }
+  } {0 {}}
+}
+
+do_execsql_test cache_col-2.4 {
+  INSERT INTO table1(id,columntext) VALUES(NULL,'Null');
+} {}
+
+ifcapable wal {
+  proc wal_callback {} {
+    cache_col_test_func
+  }
+}
+do_test cache_col-2.3.1 {
+  set ::sqlite_handle2 wal
+  wal_callback
+  execsql {
+    SELECT * FROM cache_col;
+  }
+  set cache_col_test_result
+} {1 1 2 2 3 3 4 4 5 5}
+
+do_catchsql_test cache_col-3.1 {
+  PRAGMA legacy_alter_table
+} {0 legacy_alter_table NOT supported}
+ifcapable!trigger {
+  set ::cache_col {}
+}
+do_execsql_test cache_col-3.2 {
+  CREATE TABLE cache_col(c integer PRIMARY KEY, d integer);
+} {}
+
+proc test_func {} {
+  set ::cache_col_result (1 1 9999)
+  set ::test_sql_cache_col {one {1 1 9999} two {2 2 NULL}}
+  set ::cache_col 99
+
+}
+ifcapable trigger&&wal {
+  do_execsql_test cache_col-4.1 {
+    BEGIN;
+    INSERT INTO cache_col(c,d) VALUES(99,99);
+    COMMIT;
+    CREATE TEMP TRIGGER temp_trigger
+    INSTEAD OF UPDATE ON cache_col
+    FOR EACH ROW
+    BEGIN
+      UPDATE cache_col
+      SET d = 99 + NEW.c
+      WHERE rowid = NEW.rowid;
+    END;
+  }
+  {}
+  do_test cache_col-4.2 {
+    set ::test_sql_cache_col
+    execsql {
+      UPDATE cache_col
+      SET d = NEW.c
+      WHERE rowid = 2;
+      SELECT * FROM cache_col;
+    }
+  } {1 1 2 2 3 3 4 4 5 5 99 98}
+
+do_test cache-col-4.3 {
+  execsql {
+    DELETE FROM cache_col
+    WHERE rowid BETWEEN 2 AND 5;
+  }
+  execsql {
+    SELECT * FROM cache_col;
+  }
+} {99 98}
+
+do_execsql_test cache_col-4.5 {
+  SELECT 'func' AS col
+  FROM sqlite_master
+  WHERE name ='sys'
+} {}
+
+ifcapable {trigger&&wal&&!read_uncommitted} {
+  begin_db_transaction

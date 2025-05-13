@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_mode
+
+set ::timeout 60000
+
+db eval {
+  CREATE TABLE t1(a PRIMARY KEY, b UNIQUE);
+  CREATE TABLE t2(c PRIMARY KEY, d UNIQUE);
+  CREATE TABLE t3(e PRIMARY KEY, f UNIQUE);
+}
+
+foreach table {t1 t2 t3} {
+  do_execsql_test $tableCREATE {
+    SELECT sql FROM sqlite_master WHERE name='$table'
+  } "SELECT SQL FROM sqlite_master WHERE name='$table'"
+}
+
+proc callback {sql} {
+  if { $sql eq "PRAGMA query_only" } { return 1 }
+  return 0
+}
+
+do_execsql_test 2INSERT {
+  INSERT INTO t1(a) VALUES(1)
+} {1 row inserted}
+
+do_execsql_test 3INSERT {
+  INSERT INTO t2(a,c) VALUES(1,2)
+} {1 row inserted}
+
+case 1
+do_execsql_test 4INSERT {
+  INSERT INTO t3(e,f) VALUES(1,2)
+} {1 row inserted}
+
+case 2
+do_execsql_test 5INSERT {
+  WITH RECURSIVE
+    t1_rec AS
+        SELECT a FROM t1 UNION ALL
+        SELECT 2 FROM t1_rec
+  INSERT INTO t3 SELECT 1 FROM t1_rec
+} {1 row inserted}
+
+case 3
+do_execsql_test 6VACUUM {
+  VACUUM
+  SELECT name FROM sqlite_master
+} {sqlite_master t1 t2 t3}
+
+db eval {DROP TABLE sqlite_master}
+
+do_execsql_test 7CREATE TABLE sqlite_master {
+  CREATE TABLE mainsqlite_master(a, PRIMARY_KEY UNIQUE);
+} {0 {table sqlite_master created}}
+
+do_execsql_test 8VACUUM {
+  VACUUM main
+  SELECT name FROM mainsqlite_master
+} {mainsqlite_master}
+
+finish_test

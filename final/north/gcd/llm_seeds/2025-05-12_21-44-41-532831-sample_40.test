@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix unique_id
+
+proc select_row {db id} {
+  execsql {
+    SELECT rowid FROM t1
+    WHERE id = '$id';
+  } $db
+}
+
+proc insert_row {db id} {
+  execsql {
+    INSERT INTO t1(id) VALUES('$id');
+  } $db
+}
+
+proc drop_table {db} {
+  execsql {
+    DROP TABLE t1 IF EXISTS
+  } $db
+}
+
+do_test unique_id-1.1 {
+  execsql {
+    CREATE TABLE t1(id, data);
+    INSERT INTO t1(id, data) VALUES(1, 'test1');
+  }
+} {}
+
+do_execsql_test unique_id-1.2 {
+  SELECT id FROM t1;
+} {1}
+
+do_one test unique_id {
+  set r1 1
+  set n1 0
+  for {set i1 0} {$i1 le 3} {incr i1} {
+    insert_row sql1 $i1
+    set r1 $::SQLITEDB
+    lappend n1 $r1
+  }
+  for {set i1 0} {$i1 le 3} {incr i1} {
+    lappend res1 $::SQLITEDB
+  }
+  for {set i1 0} {$i1 le 3} {incr i1} {
+    select_row sql1 $i1
+  }
+}
+
+do_execsql_test unique_id-1.3 {
+  SELECT COUNT(*) FROM t1;
+} {4}
+
+drop_table sql1
+
+do_execsql_test unique_id-1.4 {
+  SELECT COUNT(*) FROM sqlite_master;
+} {0}
+
+proc create_table {db} {
+  execsql {
+    CREATE TABLE t2(a, b, c);
+  } $db
+}
+
+proc insert_id {db id} {
+  execsql {
+    INSERT INTO t2(a, b, c) VALUES('$id', 2, 3);
+  } $db
+}
+
+proc get_row {db id} {
+  execsql {
+    SELECT * FROM t2 WHERE a = '$id';
+  } $db
+}
+
+do_execsql_test unique_id-1.5 {
+  SELECT COUNT(*) FROM t2;
+} {0}
+
+do_execsql_test unique_id-1.6 {
+  CREATE TABLE t3(b, c, e)
+}
+
+  {r3 {SELECT COUNT(*) FROM t3;}}
+ifcapable dbconfig {
+  execsql {
+    PRAGMA data_version;
+  }
+  set r3 4
+  dbconfig {
+    data_version 4
+  }
+  expect {
+    uplevel "execsql {
+      SELECT COUNT(*) FROM t3;
+    }"
+
+    result $r3
+  }
+}
+
+finish_test

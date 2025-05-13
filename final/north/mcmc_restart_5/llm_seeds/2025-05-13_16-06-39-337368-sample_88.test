@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query_optimizer
+
+set ::timeout 60000
+
+proc query_optimizer_proc {} {
+  global result
+  db eval {
+    CREATE TABLE a(x);
+  }
+  set result ""
+}
+
+proc insert_func {} {
+  global result
+  set result "$result,(10,15,20)"
+}
+
+proc count_func {} {
+  global result
+  lassign $result a
+  set result $a
+  expr {$result eq "(10,15,20)"}
+}
+
+set result ""
+
+do_test query_optimizer-1.1 {
+  query_optimizer_proc
+  execsql {
+    INSERT INTO a VALUES
+    (1,2,3)
+  }
+  set result
+} {}
+
+do_test query_optimizer-1.2 {
+  insert_func
+  set result
+} {}
+
+do_execsql_test query_optimizer-1.2 {
+  INSERT INTO a SELECT 4;
+} {5 rows updated}
+
+do_execsql_test query_optimizer-2.1 {
+  SELECT * FROM a;
+} {1 2 3 10 15 20 4}
+
+do_execsql_test query_optimizer-2.2 {
+  SELECT * FROM a WHERE x=2;
+} {2 3 10 15 20}
+
+ifcapable explain {
+  set res2 {}
+  db eval EXPLAIN {
+    SELECT * FROM a WHERE x=2;
+  } res {
+    lappend res2 $res
+  }
+  set res2
+} {SCAN TABLE a}
+
+finish_test

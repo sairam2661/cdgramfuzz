@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_fuzz_test_1
+set testnum 1
+set fuzzer_max_io_errors 5
+fuzztest_init
+fuzztest_add_test {do_test $testnum {catchsql "SELECT * FROM sqlite_test"} 1} {1}
+do_test $testnum {catchsql "SELECT sqlite_compileoption_count()" } {0 {}}
+do_test $testnum {catchsql "SELECT sqlite_compileoption_get(1)" } {0 sqlite_compileoption_get}
+do_test $testnum {
+  set rc 0
+  if {$::fuzzer_enabled} {set rc 1}
+  if {$fuzzer_max_io_errors} {set rc $fuzzer_max_io_errors}
+  for {set i 1} {$i le $rc} {incr i} {
+    set sqlite_config_options "sqlite_config_option_no_write_xfer" "no_write_xfer" "$i"
+  }
+  catchsql "SELECT sqlite_options(sqlite_config_options)"
+} {0 sqlite_options}
+do_test $testnum {
+  if {$fuzzer_enabled} {
+    set sqlite_options_list {}
+    foreach option $sqlite_config_options {
+      lappend sqlite_options_list $option
+    }
+    set sqlite_options_list
+  }
+} {sqlite_config_option_no_write_xfer sqlite_options}
+
+set i 0
+while {$i lt $rc} {
+  incr i
+  fuzztest_make_sqlite3_config_error
+}
+
+set testnum 2
+do_test $testnum {
+  set rc 0
+  if {$::fuzzer_enabled} {set rc 1}
+  if {$fuzzer_max_io_errors} {set rc $fuzzer_max_io_errors}
+  for {set i 1} {$i le $rc} {incr i} {
+    set sqlite_sql_stmt "PRAGMA temp_store=" "1"
+    set sqlite_sql_stmt2 "PRAGMA temp_store=" "2"
+  }
+  sqlite3 db test
+  catch {exec sql "sqlite_config_optimization_level=$i"}
+  list $sqlite_sql_stmt $sqlite_sql_stmt2
+} {}
+do_test $testnum {
+  if {$::fuzzer_enabled} {
+    catchsql "SELECT sqlite_optimization_level(sqlite_config_options)"
+  } else {
+    catchsql "SELECT tmp_store(sqlite_config_options)"
+  }
+} {0 tmp_store}
+set a {}
+for {set i 1} {$i le $rc} {incr i} {
+  set t {{ }{ 1} { 2}}
+  lappend a "[expr {$t[$i%3]}]"
+}
+set b {}
+set c{}
+lappend b $a
+set c $b
+lappend c 5
+set sqlite_optimization_level {}
+foreach option $c {
+  lappend sqlite_optimization_level $option
+}
+set sqlite_optimization_level
+
+db close
+
+fuzztest_finalize
+finish_test

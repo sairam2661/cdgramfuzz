@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set testprefix testprefix
+
+execsql {
+  PRAGMA encoding='UTF-8';
+  PRAGMA auto_vacuum=1;
+  PRAGMA synchronous=0;
+  PRAGMA locking_mode='EXCLUSIVE';
+}
+
+proc test1 {} {
+  global DB
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b);
+    CREATE INDEX i1 ON t1(b);
+    INSERT INTO t1 VALUES('apple', 'dog');
+    INSERT INTO t1 VALUES('banana', 'tiger');
+    INSERT INTO t1 VALUES('cat', 'apple');
+    SELECT b FROM t1 WHERE a='apple';
+  } $DB
+}
+
+proc test2 {} {
+  global DB
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES('dog', 'tiger');
+    COMMIT;
+    SELECT b FROM t1 WHERE a='dog';
+  } $DB
+}
+
+proc test3 {} {
+  global DB
+  set res {}
+  execsql {
+    SELECT b FROM t1 WHERE a='cat';
+    SELECT a FROM t1 WHERE b='apple';
+  } $DB
+  return $res
+}
+
+proc test4 {} {
+  global DB
+  set res {}
+  execsql {
+    SELECT a FROM t1;
+    SELECT b FROM t1 WHERE a='banana';
+  } $DB
+  return $res
+}
+
+do_test test1.1 {
+  execsql {
+    CREATE TABLE t2(a PRIMARY KEY, b);
+    CREATE INDEX i2 ON t2(b);
+    INSERT INTO t2 VALUES('grape', 'tiger');
+    INSERT INTO t2 VALUES('pineapple', 'tiger');
+    INSERT INTO t2 VALUES('orange', 'apple');
+    SELECT b FROM t2 WHERE a='grape';
+  } 
+} {tiger}
+
+do_execsql_test test1.2 {
+  BEGIN;
+  INSERT INTO t2 VALUES('lemon', 'tiger');
+  COMMIT;
+  SELECT b FROM t2 WHERE a='lemon';
+} {tiger}
+
+do_test test2.1 {
+  test1
+  set res {}
+  foreach row $res {
+    set res {}
+  }
+  return $res
+} {}
+
+do_test test2.2 {
+  test2
+  execsql {
+    SELECT a FROM t2;
+  }
+  return {}
+} {}
+
+do_test test3.1 {
+  test3
+  return {}
+} {}
+
+do_test test4.1 {
+  test4
+  execsql {
+    SELECT b FROM t2;
+  }
+  return {}
+} {}
+
+finish_test

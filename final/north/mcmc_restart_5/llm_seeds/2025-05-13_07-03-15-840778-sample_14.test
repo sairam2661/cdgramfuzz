@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction_test
+
+set ::timeout 60000
+
+proc test_case_1 {} {
+  set id 1
+  do_execsql_test "transaction-1.$id" {
+    CREATE TABLE t1(x);
+    BEGIN;
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+    COMMIT;
+  } {1 2}
+}
+
+proc test_case_2 {} {
+  set id 2
+  set t1_data ""
+  set result 0
+  do_execsql_test "transaction-2.$id" {
+    CREATE TABLE t2(x);
+    INSERT INTO t2 VALUES(3);
+    BEGIN;
+    INSERT INTO t2 VALUES(4);
+    SELECT * FROM t2 WHERE x=3;
+    COMMIT;
+    SELECT * FROM t2 WHERE x=4;
+  } {3 {1 row} 4 {1 row}}
+}
+
+proc test_case_3 { timeout } {
+  set id 3
+  set result 0
+  do_execsql_test "transaction-3.$id" {
+    CREATE TABLE t3(x);
+    BEGIN;
+    INSERT INTO t3 VALUES(5);
+    INSERT INTO t3 VALUES(6);
+    COMMIT;
+  } {5 6}
+  if {$timeout} {
+    do_execsql_test "timeout-3.$id" {SELECT x FROM t3} {5 6}
+  } else {
+    do_test "timeout-3.$id" {expr 1} 1
+  }
+}
+
+proc finish_test {
+  do_execsql_test "finalize-1" {
+    PRAGMA journal_mode;
+    PRAGMA synchronous;
+    PRAGMA temp_store;
+    PRAGMA locking_mode;
+    PRAGMA cache_size;
+    PRAGMA page_size;
+    PRAGMA default_cache_size;
+    PRAGMA default_synchronous;
+    PRAGMA synchronous=0;
+    PRAGMA wal_autocheckpoint;
+    PRAGMA wal_checkpoint;
+  }
+  do_execsql_test "finalize-2" {
+    DROP TABLE t2 IF EXISTS
+    DROP TABLE t3 IF EXISTS
+    DROP TABLE t1 IF EXISTS
+  }
+  finish_test 0
+}
+
+test_case_1
+test_case_2
+test_case_3 0
+finish_test

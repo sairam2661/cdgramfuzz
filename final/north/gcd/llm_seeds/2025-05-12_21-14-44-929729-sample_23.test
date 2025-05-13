@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_test_5
+
+proc fileopen {} {
+  global file_data
+  set file_data ""
+  puts "Open file"
+}
+proc filewrite {data} {
+  global file_data
+  append file_data $data
+}
+proc fileread {} {
+  global file_data
+  set file_data ""
+  return $file_data
+}
+
+do_test journal_test_5_a {
+  execsql {
+    CREATE TABLE a(x);
+  }
+} {}
+
+do_test journal_test_5_b {
+  execsql {
+    INSERT INTO a VALUES(1);
+  }
+} {}
+
+do_test journal_test_5_c {
+  execsql {
+    SELECT * FROM a;
+  }
+} {1}
+
+do_test journal_test_5_d {
+  execsql {
+    COMMIT
+  }
+} {}
+
+ifcapable {wal} {
+  execsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+}
+ifcapable {journal_mode} {
+  do_execsql_test journal_test_5_e {
+    PRAGMA journal_mode;
+  } {WAL}
+}
+
+do_test journal_test_5_f {
+  fileopen
+  filewrite "Some data to write"
+  expr {1}
+} {}
+do_test journal_test_5_g {
+  filewrite "Some more data to write"
+  catch sql {SELECT * FROM badtable;}
+} {}
+
+set sqlite_os_error_message "file is encrypted"
+set sqlite_ioerr_errcode IOERR_READONLY
+ifcapable {wal} {
+  do_catchsql_test journal_test_5_h {
+    PRAGMA wal_checkpoint
+  } {1 {database is locked}}
+  set sql "PRAGMA wal_checkpoint"
+}
+
+proc db_is_locked {} {
+  global db
+  catch {execsql {SELECT 'db is locked'} $db}
+  expr {0}
+}
+
+ifcapable {wal} {
+  do_test journal_test_5_i {
+    execsql {
+      INSERT INTO a VALUES(2);
+      COMMIT;
+    }
+  } {}
+}
+
+finish_test

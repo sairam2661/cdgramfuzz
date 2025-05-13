@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+set sqlite_options {wal pager synchronous normal}
+
+proc complex_query {} {
+  global db
+  db eval {
+    BEGIN;
+    CREATE TABLE b(x, y);
+    INSERT INTO b VALUES(4, 5);
+    INSERT INTO b VALUES(6, 7);
+    CREATE TABLE c(x, y);
+    INSERT INTO c VALUES(8, 9);
+    COMMIT;
+  }
+}
+
+proc update_view {} {
+  global db
+  db eval {
+    CREATE VIEW v AS SELECT b FROM b
+  }
+  db eval {
+    UPDATE b SET x WHERE y IN c
+  }
+}
+
+do_test complex-1.1 {
+  expr {0}
+} {0}
+
+do_test complex-2.2 {
+  complex_query
+  execsql {SELECT count(*) FROM b}
+} {2}
+
+do_test complex-3.3 {
+  update_view
+  execsql {SELECT * FROM v WHERE x=y}
+} {5 5 7 7 9 9 9 9}
+
+do_execsql_test complex-4.4 {
+  BEGIN;
+  ROLLBACK;
+  SELECT * FROM c
+} {}
+
+do_test complex-5.5 {
+  for {set N 0} {$N 200} {incr N} {
+    db eval {INSERT INTO c VALUES(1, 2)}
+  }
+  execsql {SELECT * FROM c}
+  execsql {PRAGMA wal_checkpoint}
+} {1 2 1 2}
+
+catch {execsql {SELECT x FROM c WHERE 100 IN v}} msg
+
+
+db close
+
+finish_test

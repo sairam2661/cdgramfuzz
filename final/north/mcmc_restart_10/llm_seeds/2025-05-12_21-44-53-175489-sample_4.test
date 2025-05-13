@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+
+proc crash_func {} {
+  global crashargs
+  lappend crashargs
+  expr {$crashargs}
+}
+
+do_test crash-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+} {1}
+
+catch {execsql {CREATE TABLE c AS SELECT x FROM b}} result
+do_test crash-1.2 {
+  info exists result
+} {1}
+
+do_execsql_test crash-1.3 {
+  CREATE TABLE d(x UNIQUE);
+  CREATE TABLE e(x);
+  INSERT INTO d VALUES(1);
+  INSERT INTO e VALUES(1);
+} {0 { duplicate key value violates unique constraint of "d" }}
+
+do_execsql_test crash-1.4 {
+  BEGIN;
+  INSERT INTO d VALUES(2);
+  ROLLBACK;
+  SELECT x FROM d
+} {1}
+
+ifcapable vtab {
+  execsql {
+    ATTACH DATABASE ':memory:' AS 't1' vfs'sqlite_fuzzer_testvfs_1'
+    ATTACH DATABASE ':memory:' AS 't2' vfs'sqlite_fuzzer_testvfs_2'
+  }
+  do_execsql_test crash-1.5 {
+    PRAGMA journal_mode
+  } {wal}
+  do_execsql_test crash-1.6 {
+    PRAGMA synchronous
+  } {full}
+} 
+
+do_test crash-1.7 {
+  execsql {
+    PRAGMA secure_delete=1
+  }
+} {}
+
+do_test crash-1.8 {
+  execsql {
+    PRAGMA temp_store = 1
+  }
+} {}
+
+catch {file delete b}
+catch {file delete d}
+catch {file delete e}
+catch {file delete c}
+
+testvfs tf1
+set tf1_mode inmemoryfs
+testvfs tf2
+set tf2_mode inmemoryfs
+
+set testname test
+set filename test
+finish_test

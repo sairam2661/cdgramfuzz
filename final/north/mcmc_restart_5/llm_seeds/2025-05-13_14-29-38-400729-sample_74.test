@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_threading
+
+set ::timeout 60000
+proc sqlite_thread {args} {
+  if {$args eq "sleep"} {
+    return sleep
+  }
+}
+
+do_test multi_threading-1.1 {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+  }
+} {}
+
+if {HAVE_OS_WIN32} {
+  os_win32_support
+}
+
+set sqliteThreadObj nil
+set tcl_interactive 0
+
+proc test_finish {} {
+  db close
+  thread cleanup
+  exit
+}
+proc thread_setup {args} {
+  eval $args
+  uplevel $args
+}
+proc thread_main {args} {
+  global sqliteThreadObj
+  uplevel eval {
+    $sqliteThreadObj run {}
+  }
+}
+
+set upthreads ""
+set upthreads "thread_setup \\{ set sqliteThreadObj [thread create] \\}"
+set upthreads "thread_setup \\{ set tcl_interactive 0 \\}"
+set upthreads "thread_setup \\{ proc thread_cleanup {} \\{ thread_delete \$sqliteThreadObj \\} \\}"
+set upthreads "sqlite_thread exec - \"catch {} thread_sleep 0.0001""
+
+thread_setup $upthreads
+
+do_test multi_threading-1.2 {
+  execsql {
+    SELECT a FROM t1
+  }
+} {1 2}
+
+if {HAVE_MWIN32} {
+  after 15000 thread_cleanup
+} else {
+  after 5000 thread_cleanup
+}
+
+thread_cleanup
+set sqliteThreadObj nil
+unset tcl_interactive
+
+set sqliteThreadObj nil
+thread_setup {
+  sqlite_thread exec {execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(3);
+    COMMIT;
+  }}
+}
+
+do_test multi_threading-1.3 {
+  execsql {
+    SELECT a FROM t1
+  }
+} {1 2 3}
+
+thread_cleanup
+set sqliteThreadObj nil
+unset tcl_interactive
+finish_test

@@ -1,0 +1,173 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz_test
+
+proc set_fuzz_test_args {} {
+  global fuzz_test_args
+  lappend fuzz_test_args
+  expr {1}
+}
+
+proc fuzz_func {} {
+  if { $::fuzz_test_args_count eq 0 } {
+    set_fuzz_test_args
+  }
+}
+
+proc get_db {} {
+  set db connectable test_db
+  set db connectable {
+    db 0 0
+  }
+  execsql {
+    CREATE TABLE buzz(
+        a,
+        b,
+        c,
+        d,
+        e,
+        f,
+        g,
+        h,
+        i,
+        j
+    );
+  } $connection
+  execsql {
+    CREATE TABLE t1(
+        a,
+        b,
+        c,
+        d,
+        e
+    );
+    INSERT INTO t1 VALUES(
+        1,
+        2,
+        3,
+        4,
+        5
+    );
+    CREATE TABLE t2(
+        f,
+        g,
+        h,
+        i,
+        j
+    );
+    INSERT INTO t2 VALUES(
+        6,
+        7,
+        8,
+        9,
+        10
+    );
+  } $connection
+}
+
+proc do_fuzz_check {} {
+  get_db
+  set res 0
+  catch {
+    foreach query {
+        {SELECT a FROM t1 LIMIT 0 0 NULL IFNULL 1 24.5 10}
+        {SELECT a FROM t1 LIMIT 1 1 NULL IFNULL 9 ISNUM}
+        {SELECT a FROM t1 WHERE ISNULL LIKE 14 12.12 NULL}
+        {SELECT a FROM t1 WHERE COALESCE LIKE NULL WHERE ISNUM}
+        {SELECT a FROM t1 WHERE ISNULL IS NULL WHERE 1 COALESCE 10 LAG}
+        {SELECT a FROM t1 WHERE ISNULL IS NULL WHERE COALESCE LIKE 13 4 ISNUM}
+    } {
+      set recs {
+        execsql {
+          $query
+        } $connection
+      }
+      if { $recs eq "" } {
+        set result_string "SELECT $rec"
+      } elseif { $recs ne $result_string } {
+        set result_string "SELECT $rec"
+      }
+    }
+  } on { set result_string "TRY"
+  } on wrong {
+    set result_string "TRY"
+  }
+  if { $res ne 0
+    } {
+    puts "failed while checking query - results don't match:\nQuery: $recs"
+  }
+}
+
+proc fuzz_func {} {
+  get_db
+  if { $::fuzz_test_args_count eq 0 } {
+    set_fuzz_test_args
+  }
+  set db connectable test_db
+  set db connectable {
+    db 0 0
+  }
+  execsql {
+    CREATE TABLE t1(
+      a,
+      b
+    );
+    INSERT INTO t1 VALUES(1,2);
+    SELECT count(*) FROM t1;
+  } $connection
+  if { $::fuzz_test_args_count eq 1 } {
+    set_fuzz_test_args
+  }
+}
+
+proc do_fuzz_db {} {
+  set db connectable test_db
+  set db connectable {
+    db 0 0
+  }
+  execsql {
+    SELECT 1 FROM sqlite_master;
+  } $db
+  do_test {fuzz1} {
+     db null
+    expr {1}
+  } {1}
+}
+
+do_test fuzz2 {
+  do_fuzz_db
+  execsql {
+    DROP TABLE t1
+  }
+} {1}
+
+ifcapable journalMode {
+  db setwal journal_mode test_journal_mode
+}
+ifcapable journalMode {
+  db setwal journal_mode WAL
+}
+
+do_test check_journal_mode {
+  execsql {
+    PRAGMA journal_mode;
+  } $db
+} {wal}
+
+fuzz_func
+set_fuzz_test_args
+
+set fuzz_test_args_count 1
+
+db close
+set db connectable test_db
+
+do_fuzz_check
+
+do_fuzz_db
+set fuzz_test_args_count 2
+set_fuzz_test_args
+
+do_fuzz_check
+
+finish_test

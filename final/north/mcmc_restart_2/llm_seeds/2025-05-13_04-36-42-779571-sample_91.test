@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+proc create_table {} {
+  global db
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    CREATE TABLE t2(x, y);
+  }
+}
+
+proc insert_data {} {
+  global db
+  execsql {
+    INSERT INTO t1 VALUES(1, 2, 3);
+    INSERT INTO t2 VALUES('a', 'b');
+  }
+}
+
+proc select_data {} {
+  global db
+  do_test complex_select_1 {
+    execsql {
+      SELECT * FROM t1
+    }
+  } {1 2 3}
+}
+
+proc select_data_2 {} {
+  global db
+  do_test complex_select_2 {
+    execsql {
+      SELECT * FROM t2
+    }
+  } {a b}
+}
+
+proc complex_query {} {
+  global db
+  do_execsql_test complex_query_1 {
+    SELECT a FROM t1 WHERE b = 2
+    }
+  } {1}
+
+do_execsql_test complex_query_2 {
+  SELECT y FROM t2 WHERE x = 'a'
+} {b}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'WAL'}
+} {0 {}}
+
+create_table
+insert_data
+select_data
+select_data_2
+complex_query
+finish_test

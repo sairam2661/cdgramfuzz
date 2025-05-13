@@ -1,0 +1,107 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc complex_inserts {dbname} {
+  global db
+  set stmt 1
+  set n 5000
+  for {set i 0} {$i $n} {incr i} {
+    execsql {
+      INSERT INTO complex(i, c1, c2, c3, c4, c5, c6, c7, c8)
+      VALUES(1,2,3,4,5,6,7,8,9);
+    }
+  }
+}
+
+proc complex_selects {dbname} {
+  global db
+  execsql {
+    CREATE INDEX complex_i1 ON complex(i);
+  }
+  execsql {
+    SELECT * FROM complex WHERE i = 1;
+  }
+  set n 5000
+  for {set i 0} {$i $n} {incr i} {
+    execsql {
+      SELECT * FROM complex WHERE i = 1;
+    }
+  }
+}
+
+proc complex_drop {dbname} {
+  global db
+  execsql {
+    DROP TABLE complex_i1
+  }
+  execsql {
+    DROP TABLE complex
+  }
+}
+
+do_test complex-1.1 {
+  set dbname complex_test
+  set rc 0
+  catchsql {
+    DROP TABLE complex_test
+  }
+} {}
+do_execsql_test complex-1.2 {
+  CREATE TABLE complex(
+    i,
+    c1,
+    c2,
+    c3,
+    c4,
+    c5,
+    c6,
+    c7,
+    c8
+  );
+  CREATE INDEX complex_i1 ON complex(i);
+} {}
+
+do_test complex-1.3 {
+  set rc 0
+  catchsql {
+    INSERT INTO complex VALUES(1,2,3,4,5,6,7,8,9);
+  }
+} {}
+do_execsql_test complex-1.4 {
+  SELECT * FROM complex;
+} {1 2 3 4 5 6 7 8 9}
+
+complex_inserts complex_test
+do_test complex-1.5 {
+  set rc 0
+  catchsql {
+    SELECT * FROM complex WHERE i = 1;
+  }
+} {}
+
+set n 5000
+for {set i 0} {$i $n} {incr i} {
+  complex_selects complex_test
+}
+do_test complex-1.6 {
+  set rc 0
+  catchsql {
+    SELECT * FROM complex WHERE i = 1;
+  }
+} {}
+complex_drop complex_test
+do_execsql_test complex-1.7 {
+  SELECT * FROM complex_test;
+} {}
+
+ifcapable wal {
+  catchsql {PRAGMA journal_mode = 'WAL'}
+  ifcapable wal {
+    sqlite3_extended_errcode db
+  }
+}
+
+finish_test

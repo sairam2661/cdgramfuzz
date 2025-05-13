@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set Db db
+
+proc resetdb {} {
+  db close
+  set Db db
+  sqlite3 Db test2
+  execsql {PRAGMA auto_vacuum=0;}
+  execsql { CREATE TABLE tab0(c0, c1); }
+}
+
+do_test 1 {
+  set t1 10
+  set t2 20
+  expr {$t1 eq $t2} 
+} {0}
+do_test 2 {
+  set t1 10
+  set t2 20
+  expr {$t1 ne $t2}
+} {1}
+do_test 3 {
+  set t1 10
+  set t2 20
+  expr {$t1 gt $t2}
+} {0}
+do_test 4 {
+  set t1 20
+  set t2 10
+  expr {$t1 gt $t2}
+} {1}
+do_execsql_test test-1.1 {
+  SELECT 'one' FROM tab0
+}
+{one}
+
+resetdb
+do_test 5 {
+  execsql {SELECT * FROM tab0}
+} {}
+
+do_test 6 {
+  execsql {INSERT INTO tab0 VALUES('a', 1);}
+  execsql {INSERT INTO tab0 VALUES('b', 2);}
+  execsql {INSERT INTO tab0 VALUES('c', 3);}
+  execsql {INSERT INTO tab0 VALUES('d', 4);}
+} {}
+
+do_test 7 {
+  set l {}
+  set cur2 2001
+  for {set curx 1000} {$curx $cur2} {incr curx} {
+    lappend l $curx
+  }
+  lappend l 5000
+  lappend l 6000
+  lappend l 7000
+  lappend l 8000
+  lappend l 9000
+  lappend l end
+  lappend l {}
+  lsort $l
+  set a "SELECT rowid FROM db1main.sqlite_master WHERE name='t2' ORDER BY rowid"
+  set c {}
+  foreach i $l {
+    lappend c $i
+  }
+  puts stdout "$c"
+  if { 2001 $curx } {set iseq 1} {set iseq 0}
+  if { $c ne $l} {error "unexpected result"} {set iseq 1}
+  if {$iseq} {
+    do_execsql_test test1.101 {
+      PRAGMA page_size
+    } {1024}
+  } {puts stdout "list test failed"}
+} 1
+
+finish_test

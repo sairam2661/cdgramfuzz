@@ -1,0 +1,53 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz01
+
+proc fuzz_func {} {
+  global arg1 arg2 arg3
+  lappend arg1
+  lappend arg2
+  set arg3 0
+  expr {$arg1}
+}
+
+do_test fuzz-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    INSERT INTO t1 VALUES(1, 2, 3);
+  }
+  execsql {
+    SELECT t1_a FROM t1
+    INTERSECT
+    SELECT t1_b FROM t1
+    INTERSECT
+    SELECT t1_c FROM t1
+  }
+} {3}
+
+do_test fuzz-1.2 {
+  set db handle
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(4, 5, 6);
+    COMMIT;
+    SELECT a FROM t1 WHERE a = 4;
+  }
+  execsql {
+    CREATE INDEX i1 ON t1(b);
+  }
+  execsql {
+    SELECT * FROM t1
+    WHERE b = 5
+  }
+} {4 5 6}
+
+do_fuzz_test fuzz_test {
+  if { $arg2 } {
+    set result {}
+    foreach {arg} $arg1 {
+      lappend result $arg
+    }
+  }
+} {1 2 3 4 5 6}
+
+finish_test

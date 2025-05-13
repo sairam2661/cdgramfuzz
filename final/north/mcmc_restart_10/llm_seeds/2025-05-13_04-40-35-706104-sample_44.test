@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix index
+
+proc newdb {} {
+  forcedelete fuzzdb
+  sqlite3_fallback_test_db fuzzdb
+}
+
+proc config {} {
+  global sqlite_options
+  sqlite_options "-pagecache 128 131072"
+}
+
+proc setup {} {
+  global db
+  execsql "SELECT name" db
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE INDEX i1 ON t1(b);
+    INSERT INTO t1 VALUES(1, 'abc');
+    INSERT INTO t1 VALUES(2, 'def');
+  }
+}
+
+proc test {sql {tco 1}} {
+  set result ""
+
+  if {$tco} {
+    set csql "EXPLAIN QUERY PLAN $sql"
+  } else {
+    set csql $sql
+  }
+
+  set result "sqlite3_fuzzer_test $csql fuzzdb"
+
+  for {set i 0} {$i less than 5} {incr i} {
+    execsql $csql fuzzdb
+  }
+
+  puts "result: $result"
+}
+
+do_test index-1.1 {
+  set dbuffsize 16
+  newdb
+  config
+  setup
+  test "SELECT a FROM t1 ORDER BY b" 0
+  execsql "PRAGMA synchronous=0" fuzzdb
+  execsql "CREATE TABLE t2 AS SELECT * FROM t1" fuzzdb
+  execsql "DROP INDEX i1" fuzzdb
+} {1 0}
+
+do_test index-1.2 {
+  set dbuffsize 16
+  newdb
+  config
+  setup
+  test {SELECT a FROM t1 ORDER BY b} 0
+} {1 0}
+
+do_execsql_test index-1.3 {
+  CREATE TABLE t3(a, b);
+  CREATE TABLE t4(a, b);
+} {}
+
+ifcapable auto_vacuum {
+  do_execsql_test index-2.0 {
+    BEGIN;
+    INSERT INTO t4 VALUES(1, 'abc');
+    INSERT INTO t4 VALUES(2, 'def');
+    COMMIT;
+    PRAGMA integrity_check
+  } {}
+}
+
+finish_test

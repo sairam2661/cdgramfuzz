@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000
+
+proc multi_proc {} {
+  global multiargs
+  lappend multiargs
+  join $multiargs "\n"
+}
+
+proc random_string {n} {
+  for {set i 0} {$i $n} {incr i} {
+    lappend hex_chars "[format %02x [expr {$i % 256}]]"
+  }
+  join $hex_chars ""
+}
+
+proc create_random_table {} {
+  set name "table_${::random_string 10}"
+  execsql "CREATE TABLE $name(x $random_string 10, y $random_string 10)"
+}
+
+proc populate_random_table {} {
+  execsql "INSERT INTO table_${::random_string 10} VALUES('$random_string 10', '$random_string 10')"
+}
+
+do_execsql_test multi-1.1 {
+  CREATE TABLE t1(a, b);
+  CREATE TABLE t2(c, d);
+  INSERT INTO t1 VALUES(1, 2);
+  INSERT INTO t2 VALUES(3, 4);
+} {}
+
+do_execsql_test multi-1.2 {
+  SELECT * FROM t1;
+  SELECT * FROM t2;
+} {1 2 3 4}
+
+for {set i 0} {$i 10} {incr i} {
+  create_random_table
+  populate_random_table
+}
+
+do_cache_sql_test multi2.1 {
+  SELECT * FROM table_8a7c2f2c;
+} {
+  UPDATE table_89a7c2dc
+  SET x LIKE '89%'
+  WHERE column LIKE 'b'
+}
+
+do_execsql_test multi2.2 {
+  SELECT x FROM table_8a7c2f2c ORDER BY x DESC
+} {89a7c2df }
+
+finish_test

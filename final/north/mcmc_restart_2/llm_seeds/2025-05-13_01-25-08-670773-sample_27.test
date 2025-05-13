@@ -1,0 +1,141 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix  sync_test
+do_multi_test sync_test sync_test_begin  {   set sqlite_db ""  }   {   }
+unset sqlite_db
+proc sync_func_1 {} {
+global syncargs sync_db
+lappend syncargs "sync_func_1"
+if { $syncargs eq "sync_func_1 sync_func_2 sync_func_3" } {
+lappend syncargs
+}
+catch { db close }
+db open test1 test1
+unset syncargs
+}
+proc sync_func_2 {} {
+global syncargs sync_db
+lappend syncargs "sync_func_2"
+lappend syncargs
+lappend syncargs
+}
+proc sync_func_3 {} {
+global syncargs sync_db
+lappend syncargs "sync_func_3"
+eval db eval '
+    CREATE TABLE "abc"  (
+         col_1  "varchar"
+     )
+    '  "abc"  TRUE
+}
+
+sqlite_db "test1" "test1"
+sqlite_db "test2" "test2"
+do_test sync_test_begin-1.0 {   execsql { CREATE TABLE abc(col1 );  }   }  { {} }
+set syncargs ""
+set sync_db ""
+
+do_test sync_test_begin-1.1 {   sqlite3 db test1 }  { {} }
+do_test sync_test_begin-1.2 {   sync_func_1  }  { {} }
+set temp_result {}
+
+do_execsql_test sync_test_begin-1.3 {
+    CREATE TABLE t1(c);
+    INSERT INTO t1 VALUES( 1 );
+    CREATE TABLE t2(c);
+    INSERT INTO t2 VALUES( 2 );
+    SELECT * FROM t1;
+} {1}
+set syncargs {}
+
+do_execsql_test sync_test_begin-1.4 {
+    BEGIN;
+    PRAGMA journal_mode=0;
+    COMMIT;
+} {journal_mode 0}
+unset syncargs
+
+do_test sync_test_begin-1.5 {   sync_func_2  }  { {} }
+
+set temp_sql {}
+append temp_sql '
+CREATE TABLE t2(
+  cid    PRIMARY KEY  NOT NULL,
+  col_5       char(1),
+  col_4       char(9),
+  a     int,
+  c           char(10)
+)
+'
+append temp_sql ';'
+set temp_result  {}
+append temp_result { {} }
+do_execsql_test sync_test_begin-1.6 {   CREATE TABLE t2( cid, col_5, col_4, a, c  PRIMARY KEY  NOT NULL )  }  {1 {} {} {} {}}
+catch { db close }
+
+set temp_result ""
+append temp_result { {} } 
+set temp_result ""
+
+do_execsql_test sync_test_begin-1.7 {
+    SELECT * FROM t1
+} {1 {} {} {} {} }
+
+catch { db close }
+
+catch {  execsql { PRAGMA journal_mode="WAL" }  }
+
+proc sync_func_2 {} {
+global syncargs sync_db
+lappend syncargs "sync_func_2"
+eval db eval '
+CREATE TABLE t3 ( 
+  cid   PRIMARY KEY  NOT NULL,
+  abc   CHAR(4) ,
+  def   NUMERIC,
+  efg   REAL,
+  hi   TEXT,
+  ijm   INTEGER,
+  kno   BLOB,
+  col_3 int,
+  col_2 char(3)
+)
+'
+lappend syncargs
+set syncargs {}
+}
+catch {   execsql { PRAGMA journal_mode="WAL" } }
+set syncargs {}
+do_execsql_test sync_test_begin-1.8 {
+    CREATE TABLE t3(
+    c1   PRIMARY KEY  NOT NULL,
+    col_3 NOT NULL UNIQUE
+);
+    INSERT INTO t3(col_3) VALUES (1);
+}
+{1}
+set syncargs {}
+do_test sync_test_begin-1.9 {   sync_func_1  }  { {} }
+set syncargs {}
+set temp_sql {}
+append temp_sql "INSERT INTO t1 VALUES( 1 )"
+do_execsql_test sync_test_begin-1.98 {   INSERT INTO t1 VALUES(1) } {} 
+execsql {
+   DROP TABLE t3
+}
+
+execsql {
+DROP TABLE t1
+DROP TABLE t2
+DROP TABLE "abc"
+DROP TABLE a
+}
+set temp_result {}
+set temp_sql {}
+append temp_sql '
+PRAGMA table_info("abc")
+'
+append temp_sql ';'
+do_expr_test sync_test_begin2.0 { eval $temp_sql  } { {} { {} {} {} {} {} {} {}} 0 }
+sqlite3 db close
+finish_test

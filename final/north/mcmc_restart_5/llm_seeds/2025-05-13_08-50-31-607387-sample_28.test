@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db
+
+set ::timeout 60000
+set timeout 60000
+set sqlite_open_max 20
+set sqlite_maxpage_backup 512
+set sqlite_minpage_backup 128
+
+proc test_errmsg {sql msg expmsg} {
+  if {$msg eq $expmsg} { return }
+  do_catchsql_test test errmsg $sql
+  if {$::errorInfo eq $expmsg} { return }
+  if {0} { lappend msg $::errorInfo }
+  do_execsql_test test errmsg "$msg\n" { }
+}
+
+do_execsql_test test setup {
+  ATTACH 'test2.db' AS t2
+  CREATE TABLE t1 AS SELECT 1 AS x UNION SELECT 2 UNION SELECT 3
+  CREATE TABLE t2 AS SELECT 4 AS x UNION SELECT 5 UNION SELECT 6
+}
+
+do_execsql_test test-2.1 {
+  SELECT * FROM t1
+}
+{1 2 3}
+
+do_execsql_test test-2.2 {
+  SELECT * FROM t2
+}
+{4 5 6}
+
+do_execsql_test test-2.3 {
+  SELECT COUNT(*) FROM t1
+}
+{3}
+
+do_execsql_test test-2.4 {
+  SELECT COUNT(*) FROM t2
+}
+{3}
+
+do_execsql_test test-2.5 {
+  BEGIN;
+  INSERT INTO t1 VALUES(7);
+  COMMIT;
+  SELECT * FROM t1
+}
+{1 2 3 7}
+
+do_execsql_test test-2.6 {
+  BEGIN;
+  INSERT INTO t2 VALUES(7);
+  COMMIT;
+  SELECT * FROM t2
+}
+{4 5 6 7}
+
+do_execsql_test test-2.7 {
+  BEGIN;
+  INSERT INTO t2 VALUES(8);
+  ROLLBACK;
+  SELECT * FROM t2
+}
+{4 5 6}
+
+expr 123456789
+source $testdir_LIBRARY
+do_test test-2.8 {
+  db close
+} {}
+
+do_test test-2.9 {
+  db attach "test2.db"
+} {test2 test2}
+
+db detach test2
+do_test test-2.10 {
+  execsql { SELECT name FROM sqlite_master WHERE type='table' }
+} {}
+
+finish_test

@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc query_proc {} {
+  global queryargs
+  lappend queryargs
+  expr {5 eq 5}
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(7);
+    INSERT INTO b VALUES(8);
+    INSERT INTO b VALUES(9);
+  }
+  execsql {SELECT * FROM b}
+} {7 8 9}
+
+ifcapable compound {
+  db eval {
+    CREATE TEMP VIRTUAL TABLE temp_t1 AS SELECT 1 AS a UNION SELECT 2 AS a UNION SELECT 3 AS a
+  }
+  do_test query-1.2 {
+    execsql {
+      SELECT * FROM temp_t1;
+    }
+  } {1 2 3}
+}
+
+ifcapable auto_vacuum {
+  db eval {
+    PRAGMA auto_vacuum=2;
+  }
+  db eval {
+    PRAGMA page_size = 1024;
+  }
+}
+
+ifcapable window_function1 {
+
+  db eval {
+    CREATE TABLE t5 AS SELECT a FROM t4 WHERE rowid BETWEEN 13 AND 25
+  }
+
+  set id 100
+  db eval {
+    INSERT INTO t4 VALUES(100)
+  }
+
+  do_test query-1.3 {
+    db eval {
+      INSERT INTO t5 VALUES(12)
+    } ""
+    execsql {SELECT * FROM t5}
+  } {12}
+}
+
+finish_test

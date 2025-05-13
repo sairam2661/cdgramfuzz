@@ -1,0 +1,169 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000  TCL's timeout for operations in test.
+
+db dblink open -test db1
+
+proc dbtest_open {cmd arg} {
+  global dblink
+  catch {dblink close $arg}
+  dblink open -test db1
+}
+proc setup {} {
+  db eval {
+    DROP TABLE IF EXISTS t1;
+    DROP TABLE IF EXISTS t2;
+  }
+  for {set i 1} {$i <= 100} {incr i} {
+    db eval {
+      INSERT INTO t1(x) VALUES($i)
+    }
+  }
+}
+
+proc testcase {name} {
+  puts "Running $name..."
+  eval $name
+  if {[catch {uplevel #0 $name} res]} {
+    error "Error running $name: $res"
+  }
+  puts "Finished $name"
+}
+
+database close
+
+do_test sync-1.1 {
+  setup
+  db eval {SELECT count(*) FROM t1}
+} {100}
+
+do_execsql_test sync-1.2 {
+  BEGIN;
+  UPDATE t1 set x=x+1;
+  COMMIT;
+} {}
+
+ifcapable trigger {
+  do_test sync-1.3 {
+    db eval {
+      CREATE TRIGGER r1
+        AFTER UPDATE ON t1
+        FOR EACH ROW
+      BEGIN
+        UPDATE t2 SET x=x+1 WHERE x=NEW.x;
+      END;
+    }
+  } {}
+}
+
+db eval {PRAGMA synchronous=OFF}
+set ::t1 [db timeout]
+set ::t2 [db timeout]
+
+do_execsql_test sync-1.4 {
+  BEGIN;
+  COMMIT;
+  SELECT x FROM t2 LIMIT 5;
+} {}
+
+db eval {PRAGMA synchronous=FULL}
+
+do_test sync-1.5 {
+  execsql {
+    CREATE TABLE t3(x);
+    INSERT INTO t3 VALUES('abc');
+    SELECT x FROM t3 LIMIT 1;
+  }
+  set ::timeout [db timeout]
+  if {$timeout > 0} {db timeout $timeout}
+} {abc}
+
+do_test sync-1.6 {
+  set ::sqlite_trace [catch {db eval "SELECT x FROM t3 LIMIT 1"} result]
+} {0}
+
+do_test sync-1.7 {
+  setup
+  db eval {SELECT count(*) FROM t1}
+
+  set res [execsql {
+    SELECT x FROM t1 LIMIT 1 FOR UPDATE
+  }]
+  set res
+} {1}
+
+db eval {
+  DROP TABLE t1;
+  DROP TABLE t2;
+  DROP TABLE t3;
+}
+
+finish_test
+
+db dblink close -test db1
+ proc dblink_open {} {
+  global dblink
+  catch {dblink close all}
+  dblink open -test test
+ }
+
+proc dblink_exec {sql} {
+  global dblink
+  dblink eval -test db $sql
+}
+ proc dblink_open {} {
+  global dblink
+  catch {dblink close all}
+  dblink open -test test
+ }
+ do_execsql_test sync-1.8 {
+   PRAGMA foreign_keys=ON;
+ } {}
+ proc dblink_rollback {sql1 sql2} {
+  db eval $sql1
+  catch {db eval $sql2}
+  return [db eval {SELECT sql FROM sqlite_master WHERE name='abc'};
+   db eval {INSERT INTO a VALUES (4)}
+   db eval {INSERT INTO b VALUES (2)}
+ } {} 
+db dblink close -test test 
+proc dblink_open {} {
+  global dblink
+  catch {dblink close all}
+  dblink open -test test
+}
+ proc dblink_rollback {sql1 sql2} {
+  db eval $sql1
+  catch {db eval $sql2}
+  return [db eval {SELECT sql FROM sqlite_master WHERE name='abc'};
+}
+ proc dblink_exec {sql} {
+  return [catch {db eval $sql}]
+}
+ proc dblink_open {} {
+  global dblink
+  catch {dblink close all}
+  dblink open -test test
+}
+ db eval {INSERT INTO a VALUES (1)}
+ db eval {INSERT INTO b VALUES (1)}
+ do_execsql_test sync-1.9 {
+   PRAGMA page_size=1048576;
+   SELECT abs(random() % 1000000);
+ } {}
+ set ret {
+   INSERT OR IGNORE INTO b VALUES (2)
+ } finish_test
+ db eval {SELECT sql FROM sqlite_master WHERE name = t2}{} db unlink close-test test  
+ set f {
+     CREATE TABLE a(x INTEGER);
+     CREATE TABLE b(x INTEGER);
+     INSERT INTO a VALUES (1);
+     INSERT INTO b VALUES (2);
+     INSERT OR IGNORE INTO b VALUES (3);
+ }
+ proc dblink_rollback {sql1 sql2} {
+   db eval $sql1
+   catch {

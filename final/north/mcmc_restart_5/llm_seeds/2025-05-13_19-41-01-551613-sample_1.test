@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_test
+
+set ::timeout 60000
+
+proc wal_test_insert {} {
+  global db
+  for {set i 1} {$i le 50000} {incr i} {
+    execsql "INSERT INTO a VALUES($i)"
+  }
+  do_execsql_test wal_test_insert_done {SELECT count(*) FROM a} {50000}
+}
+
+proc wal_test_delete {} {
+  global db
+  for {set i 50000} {$i ge 1} {incr i} {
+    execsql "DELETE FROM a WHERE rowid=$i"
+  }
+  do_execsql_test wal_test_delete_done {SELECT count(*) FROM a} {1}
+}
+
+proc test Wal_insert {id} {
+  do_test waltest_$id {
+    execsql "INSERT INTO a VALUES($id)"
+    execsql "SELECT a FROM a"
+  } { $id }
+}
+
+proc test Wal_delete {id} {
+  do_test waltest_$id {
+    execsql "DELETE FROM a WHERE rowid=$id"
+    execsql "SELECT rowid FROM a"
+  } {}
+}
+
+set waltestid 1
+for {set i 1} {$i le 25} {incr i} {
+  test Wal_insert $i
+}
+for {set i 24} {$i le 1} {incr i} {
+  test Wal_delete $i
+}
+
+proc drop_all_tables {} {
+  global db
+  execsql {
+    DROP TABLE a
+    VACUUM
+  }
+}
+
+drop_all_tables
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'wal'}
+}
+
+do_test Wal_test-1.1 {
+  execsql {
+    PRAGMA journal_mode
+  }
+} {wal}
+
+do_execsql_test Wal_test-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(50);
+  COMMIT;
+  SELECT count(*) FROM a
+} {1}
+
+do_execsql_test Wal_test-1.3 {
+  PRAGMA wal_checkpoint
+} {1 1 0}
+
+finish_test

@@ -1,0 +1,163 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_example
+
+set ::timeout 60000 		 IDb2
+
+proc proc1 {args} {
+  global proc1args proc2args
+  set proc1args $args
+  set proc2args $args
+}
+
+proc proc2 {args} {
+  global proc2args proc1args
+  set proc2args $args
+  set proc1args $args
+  lappend proc1args
+}
+
+proc proc3 {args} {
+  global proc1args proc2args
+  execsql "SELECT $proc1args, $proc2args"
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE table1(a, b);
+}
+{} 
+
+do_test complex-1.2 {
+  proc1 {a b c}
+  proc2 {b c d}
+  proc3 {d e f}
+  execsql "SELECT * FROM table1 WHERE b = 'a'"
+} {a b c a}
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE table2(x, y);
+  CREATE TABLE table3(a, b);
+}
+{} 
+
+do_test complex-1.4 {
+  proc1 {a b c}
+  proc2 {c d e}
+  proc3 {e f g}
+  execsql "SELECT * FROM table3 WHERE b = 'f'"
+} {g f e f}
+
+do_execsql_test complex-1.5 {
+  PRAGMA synchronous = 0;
+}
+{} 
+
+set timeout_value 8000
+ifcapable trigger {
+
+  do_execsql_test complex-1.5 {
+    PRAGMA locking_mode = "EXCLUSIVE";
+  }
+  {} 
+
+  do_test complex-1.6 {
+    db transaction {
+      db eval {CREATE TABLE IF NOT EXISTS test_locks_lock_type1 AS SELECT 'i1' AS lock_type'}
+      db eval {INSERT INTO test_locks_lock_type1 DEFAULT VALUES}
+      db eval {INSERT INTO test_locks_lock_type1 DEFAULT VALUES}
+    }
+    set result 22
+    proc1 {a 'b c' d}
+    proc2 {\d e}
+    proc3 {\d }
+    set result $result
+    expr { $result == 24 }
+  } {1}
+  
+  do_execsql_test complex-1.8 {
+    PRAGMA locking_mode = NORMAL;
+  }
+} 
+
+do_execsql_test complex-1.7 {
+  CREATE TABLE test_locks_lock_type2 AS
+  SELECT 1 AS lock_type
+  FROM  ( SELECT 1 AS lock_type WHERE NOT 1 )
+  UNION
+  SELECT 2 AS lock_type
+  FROM  ( SELECT 2 AS lock_type WHERE NOT 1 )
+}
+{} 
+
+do_execsql_test complex-1.8 {
+  CREATE INDEX idx1 ON test_locks_lock_type2 (lock_type);
+}
+{} 
+
+
+
+set db_handle [sqlite3_open {:memory:}]
+sqlite3 db handle  IDb2
+sqlite3 db handle2  IDb1
+
+proc2 {1 2 3}
+proc1 {4 5 6 7 8}
+proc3 {9 10 11}
+execsql {
+  SELECT * FROM table3 WHERE b = '10'
+}
+sqlite3 db close
+
+db transaction {
+  db eval {
+    CREATE TRIGGER IF NOT EXISTS my_trigger 
+    BEFORE DELETE ON table2
+    FOR EACH ROW
+    BEGIN
+      DELETE FROM table3 WHERE b = old.x
+    END
+  }
+  execsql {INSERT INTO table2 VALUES(1,1)}
+  execsql {INSERT INTO table2 VALUES(2,2)}
+  execsql {INSERT INTO table3 VALUES(1,1)}
+  execsql {INSERT INTO table3 VALUES(1,2)}
+}
+execsql "INSERT INTO table2 VALUES(1,2)"
+
+set db [db]
+
+do_test complex-9.1 {
+  proc1 {a b c}
+  proc3 {e f}
+  proc2 {g h i}
+  set result [catch {
+    execsql "DELETE FROM table3"
+  } msg]
+  proc1 {i}
+  proc2 {j k}
+  proc3 {l}
+  set result    
+} {0}
+
+finish_test
+cdb 10
+:memory:
+IDb2
+IDb1
+proc2args {1 2 3}
+proc1args {a b c}
+proc1args {4 5 6 7 8}
+proc1args {a b c}
+proc2args {b c d}
+proc1args {a 'b c' d}
+proc2args {\d e}
+proc1args {a 'b c' d}
+proc2args {\d }
+IDb1
+IDb2
+1 
+1 
+6
+0
+1.0
+proc1args {a 'b c'

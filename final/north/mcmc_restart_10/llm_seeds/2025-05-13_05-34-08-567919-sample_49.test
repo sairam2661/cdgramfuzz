@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix delete
+set testnum 0
+set nTest 10
+
+proc test_delete {} {
+  global testdir testpfx testnum nTest tcl_interactive
+  if {$tcl_interactive} {
+    foreach fn {0 1 0 0 1 0 0 0 1 0} {
+      incr testnum
+      if {$fn} {
+        do_test delete $testnum {
+          execsql {
+            DROP TABLE a
+          }
+        } {}
+      } else {
+        do_test delete $testnum {
+          catchsql {
+            DROP TABLE foo
+          }
+        } {}
+      }
+    }
+  }
+}
+
+proc insert_data {} {
+  execsql {
+    BEGIN;
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+    INSERT INTO a VALUES(4);
+    INSERT INTO a VALUES(5);
+    COMMIT;
+  }
+}
+
+insert_data
+test_delete
+test_delete
+execsql {DROP TABLE a}
+insert_data
+test_delete
+test_delete
+execsql {DROP TABLE a}
+execsql {CREATE TABLE b(x)}
+execsql {INSERT INTO b VALUES(6)}
+insert_data
+test_delete
+finish_test

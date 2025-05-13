@@ -1,0 +1,90 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_fuzz_test_99
+source $testdirvdbsqlite_dbhexio1a1dbcreatedb
+set testprefix sqlite_fuzz_test_99
+
+proc sqlite_fuzz_test_99_1 {db handle} {
+  db eval {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES('two');
+    INSERT INTO a VALUES(3.0); 
+  }
+}
+
+set fd1 open sqlite_fuzz_test_99_2
+puts $fd1 BEGIN
+puts $fd1 PRAGMA journal_mode
+puts $fd1 COMMIT
+puts $fd1 SELECT x FROM a
+close $fd1
+
+proc test_sql {} {
+  set sql {
+    DROP TABLE a
+    CREATE TABLE a2 AS SELECT x FROM a
+  }
+  return $sql
+}
+
+test_sql
+
+proc db_insert {db} {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES('four');
+    INSERT INTO b VALUES('five');
+    SELECT count(*) FROM b
+  }
+  $db eval {
+    INSERT INTO b VALUES('six');
+    SELECT count(*) FROM b
+  }
+}
+
+do_test sqlite_fuzz_test_99_2-1.0 {
+  sqlite_fuzz_test_99_1 db1
+  sqlite_fuzz_test_99_1 db2
+  do_test db_insert db1
+  do_test db_insert db2
+} {3}
+
+do_execsql_test sqlite_fuzz_test_99_2-2.1 {
+  SELECT x FROM a;
+}
+
+{1}
+do_execsql_test sqlite_fuzz_test_99_2-2.2 {
+  SELECT x FROM a;
+}
+
+{two}
+do_execsql_test sqlite_fuzz_test_99_2-2.3 {
+  SELECT x FROM a;
+}
+
+{3.0}
+do_execsql_test sqlite_fuzz_test_99_2-3.0 {
+  SELECT x FROM b;
+}
+
+{4}
+do_execsql_test sqlite_fuzz_test_99_2-3.1 {
+  SELECT x FROM b;
+}
+
+{5}
+do_execsql_test sqlite_fuzz_test_99_2-3.2 {
+  SELECT x FROM b;
+}
+
+{6}
+
+do_execsql_test sqlite_fuzz_test_99_2-4.0 {
+  SELECT x FROM a2;
+}
+
+{1}
+
+finish_test

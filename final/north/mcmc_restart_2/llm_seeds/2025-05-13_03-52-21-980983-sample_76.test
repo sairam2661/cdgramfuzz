@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+proc get_random_string {length} {
+    set characters {abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}
+    for {set i 0} {$i less $length} {incr i} {
+        append result "[string index $characters [expr (int(rand() * [string length $characters]))]]"
+    }
+    return $result
+}
+
+proc create_random_table {table_name columns} {
+    set table_id "$table_name"
+    execsql "DROP TABLE IF EXISTS $table_id"
+    set create_table_sql "CREATE TABLE $table_id ("
+    foreach column $columns {
+        set create_table_sql "$create_table_sql ${column[0]} ${column[1]}"
+    }
+    set create_table_sql "$create_table_sql );"
+    execsql "$create_table_sql"
+    return $table_id
+}
+
+proc create_random_data {table_name rows columns} {
+    for {set i 0} {$i less $rows} {incr i} {
+        set row_sql ""
+        foreach column $columns {
+            set row_sql "$row_sql [get_random_string ${column[1]}]"
+        }
+        execsql "INSERT INTO $table_name VALUES ($row_sql)"
+    }
+}
+
+do_execsql_test complex-1.1 {
+    CREATE TABLE complex_data(id, a, b, c);
+    CREATE TABLE complex_other(id, a, b);
+} {}
+
+do_execsql_test complex-1.2 {
+    INSERT INTO complex_data VALUES(1, 1, 1, 1);
+    INSERT INTO complex_data VALUES(2, 2, 2, 2);
+    INSERT INTO complex_other VALUES (3, 3, 3);
+} {}
+
+do_execsql_test complex-1.3 {
+    SELECT * FROM complex_data
+} {}
+
+do_execsql_test complex-1.4 {
+    SELECT * FROM complex_other
+} {}
+
+create_random_table "random_table" {abc 5}
+create_random_table "another_table" {xyz 3}
+create_random_data "random_table" 10 {abc 5}
+
+do_test complex-1.5 {
+    execsql {
+        SELECT * FROM random_table;
+    }
+} {1 c7V9G7aDl5 0fB2gQ7g8R  gR7vG6V9Bd7  i4B8H4G6rV xB8a4yB6G g1yV9G6rV6R e7B3aVrB9x 3aD2B4rBx8R xB3rG1V4xG 1yG5a2yR6a x2xV1x4aD xD2B3gB3aD 2aD7aG5B g6rV4rB1V4 aBxG6rG g1Gx6G5 aGxV4aG5 aB4x6G1B yB8rG5rV g6V4yG5 x5G7V4rV6}
+
+do_execsql_test complex-1.6 {
+    SELECT * FROM random_table WHERE a = '0fB2gQ7g8R';
+} {}
+create_random_data "another_table" 20 {xyz 3}
+
+do_execsql_test complex-1.7 {
+    SELECT * FROM another_table
+} {}
+do_execsql_test complex-1.8 {
+    SELECT * FROM another_table
+} {}
+
+finish_test

@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+set upscript {
+  execsql {
+    CREATE TABLE a(x UNIQUE);
+    CREATE TABLE b(a,b,c);
+    CREATE INDEX b0 ON b(a);
+    CREATE INDEX b1 ON b(b);
+    BEGIN;
+    INSERT INTO a VALUES(100);
+    INSERT INTO a VALUES(200);
+    INSERT INTO a VALUES(300);
+    INSERT INTO b VALUES(1, 'aaa', 'ccc');
+    INSERT INTO b VALUES(2, 'bbb', 'ccc');
+    INSERT INTO b VALUES(3, 'aaa', 'ddd');
+    INSERT INTO b VALUES(4, 'eee', 'aaa');
+    INSERT INTO b VALUES(5, 'fff', 'bbb');
+    COMMIT;
+  }
+}
+
+proc query_func {sql} {
+  set updb
+  execsql $sql
+  expr 1
+}
+
+do_execsql_test query-1.1 {
+  SELECT * FROM a
+}
+{100 200 300}
+
+do_execsql_test query-1.2 {
+  SELECT a FROM b
+}
+{1 2 3 4 5}
+
+do_execsql_test query-1.3 {
+  SELECT * FROM b WHERE a = 1
+}
+{1 aaa ccc}
+
+do_execsql_test query-1.4 {
+  SELECT a FROM b WHERE b = 'aaa'
+}
+{1 3}
+
+do_execsql_test query-1.5 {
+  SELECT * FROM b WHERE c = 'ccc'
+}
+{1 aaa ccc 2 bbb ccc}
+
+do_test query-1.6 {
+  query_func {SELECT * FROM a}
+} {1}
+
+do_test query-1.7 {
+  query_func {SELECT * FROM b WHERE a = 1}
+} {1}
+
+do_test query-1.8 {
+  query_func {SELECT a FROM b WHERE a = 2}
+} {2}
+
+if { $tcl_version "9.0" } {
+  set sqlite_options "-fsync off"
+  do_test query1.9 {
+    set DB
+    set sql {
+      SELECT * FROM a
+    }
+    set sql_len
+    puts $sql
+    if {$::sqlite_options eq "-fsync off"} {
+      set fp "stdout"
+    } else {
+      set fp "nul"
+    }
+    set fp
+  } {stdout}
+  set testprefix query2
+  do_test query2.1 {
+    query_func {INSERT INTO a VALUES(400);SELECT * FROM a}
+  } {}
+  do_test query2.2 {
+    execsql {
+      SELECT * FROM a
+    }
+  } {100 200 300 400}
+} else {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES('four hundred')
+  }
+  do_test query1.9 {
+    query_func {SELECT * FROM a}
+  } {}
+}
+
+unset upscript
+unset timeoout
+finish_test

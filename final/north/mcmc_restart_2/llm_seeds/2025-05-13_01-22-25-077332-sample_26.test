@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix subqueries
+
+proc subqueries_func {} {
+  global subqueries_result
+  lappend subqueries_result
+}
+
+proc generate_table {} {
+  return {CREATE TABLE t10 AS SELECT 1
+           UNION ALL SELECT 2}
+}
+
+proc generate_queries {} {
+  return {WITH RECURSIVE
+    CTE1 AS
+      SELECT 1
+    UNION ALL SELECT 1
+    UNION ALL SELECT 1
+    UNION ALL SELECT 1
+  SELECT SUM
+  FROM CTE1 LIMIT 10
+  }
+}
+
+proc subqueries_test {} {
+  global subqueries_result
+  set subqueries_result {}
+  do_execsql_test subqueries {
+    $generate_table
+  } {1 2}
+  do_execsql_test subqueries {
+    $generate_queries
+  } {10}
+  llength $subqueries_result
+}
+
+do_execsql_test subqueries {
+  EXEC SQL WITH NO DATA
+  CREATE TABLE T1 AS SELECT 1
+  EXEC SQL WITH NO DATA
+  CREATE TABLE T2 AS SELECT 1
+} {}
+do_execsql_test subqueries {
+  EXEC SQL
+  DELETE FROM T2
+  EXEC SQL
+  COMMIT
+} {}
+
+do_execsql_test subqueries {
+  EXEC SQL
+  INSERT INTO T1 VALUES
+  1 2 3
+  EXEC SQL
+  INSERT INTO T1 VALUES
+  4 5 6
+  EXEC SQL
+  DELETE FROM T1 WHERE a1  BETWEEN 2 AND 5
+  EXEC SQL
+  COMMIT
+  SELECT a2 FROM T1
+} {3 6}
+
+finish_test

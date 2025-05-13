@@ -1,0 +1,39 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_test
+
+proc sync_test {} {
+  global sync_testargs
+  lappend sync_testargs
+  expr {1}
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE t(a PRIMARY KEY, b);
+    CREATE INDEX idx ON t(a);
+  }
+  execsql {INSERT INTO t VALUES(1, 'one')}
+} {1 one}
+
+do_execsql_test sync-1.2 {
+  INSERT INTO t VALUES(2, 'two');
+  SELECT a FROM t WHERE a = 2;
+} {2}
+
+do_coderestore_test sync{
+  sqlite3 db2 testdb
+  execsql db2 {SELECT count(*) FROM db; }
+} {1}
+
+do_codebackup_test sync{
+  sqlite3 db3 testdb
+  execsql db3 {SELECT count(*) FROM cdd; }
+} {3}
+
+do_fuzztest sync{
+  sqlite3 db4 testdb
+  execsql db4 {SELECT count(*) FROM db; }
+} {1}
+
+finish_test

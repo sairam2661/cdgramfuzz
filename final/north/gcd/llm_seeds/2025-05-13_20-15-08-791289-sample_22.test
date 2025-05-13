@@ -1,0 +1,80 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc tcl_insert_proc {table x} {
+  global db
+  execsql {
+    INSERT INTO $table VALUES
+      $x
+  }
+}
+
+proc tcl_select_proc {table x} {
+  global db
+  return $x
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(id, name);
+  }
+  list 1 1
+  tcl_insert_proc b 1
+  execsql {SELECT * FROM b}
+} {1 1}
+
+do_test complex-1.2 {
+  tcl_insert_proc b 2
+  execsql {SELECT * FROM b}
+} {1 1 2}
+
+do_test complex-1.3 {
+  set result
+  foreach row {1 1 2} {lappend result $row}
+  set result
+} {1 1 2}
+
+do_execsql_test complex-1.4 {
+  CREATE TABLE c(id, x, y);
+  CREATE TABLE d(id, name);
+  INSERT INTO c VALUES(1, 1, 2);
+  INSERT INTO c VALUES(2, 3, 4);
+  INSERT INTO d VALUES(1, 'John');
+  INSERT INTO d VALUES(2, 'Alice');
+  SELECT c1 FROM c
+  } {1 2}
+
+do_execsql_test complex-1.5 {
+  SELECT name
+  FROM d
+  WHERE id = '1'
+  } {John}
+
+ifcapablefts5 {
+  tcl_select_proc main 1 {1 {tcl_select_proc main 2 {1 2}}}
+  execsql {SELECT * FROM main}
+} {1 {1 2}}
+
+do_test complex-1.7 {
+  execsql {
+    CREATE TABLE e(x, y);
+    INSERT INTO e VALUES('a', 'c');
+    INSERT INTO e VALUES('d', 'e');
+  }
+  execsql {
+    SELECT e1 FROM e AS e1
+    JOIN e AS e2 ON e2 LIKE e1
+  }
+} {ace}
+
+ifcapablefts5 {
+  execsql {
+    CREATE TABLE f(y, x);
+  }
+  execsql {SELECT f1 FROM f JOIN a ON a LIKE f}
+} {a}
+
+finish_test

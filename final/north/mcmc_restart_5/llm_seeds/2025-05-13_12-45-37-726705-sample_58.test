@@ -1,0 +1,180 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbtune
+
+set ::timeout 60000
+set sqlite_encoding iso8859
+
+proc check_conn_limit {} {
+  set limit 100
+  for {set i 0} {$i $limit} {incr i} {
+    execsql "INSERT INTO test VALUES($i)"
+  }
+  execsql {SELECT count(*) FROM main WHERE rowid=101}
+  if {$::tcl_platform OS eq "windows"} {
+    set result 101
+  } else {
+    set result 100
+  }
+  return $result
+}
+
+proc close_conns {} {
+  db close_all
+  if {$::sqlite_encoding ne "utf8"} {
+    sqlite3 db test
+  } else {
+    sqlite3 db "" test
+  }
+}
+
+do_execsql_test dbtune-1.0 {
+  PRAGMA user_version = 100
+  }
+  {100}
+
+do_execsql_test dbtune-1.1 {
+  BEGIN;
+  INSERT INTO test VALUES(1);
+  COMMIT;
+  PRAGMA user_version;
+  } {100}
+
+do_execsql_test dbtune-1.2 {
+  PRAGMA user_version = 101
+  }
+  {101}
+
+do_execsql_test dbtune-1.3 {
+  BEGIN;
+  INSERT INTO test VALUES(2);
+  COMMIT;
+  PRAGMA user_version;
+  } {101}
+
+do_execsql_test dbtune-1.4 {
+  PRAGMA user_version = 102
+  }
+  {102}
+
+do_execsql_test dbtune-1.5 {
+  BEGIN;
+  INSERT INTO test VALUES(3);
+  COMMIT;
+  PRAGMA user_version;
+  } {102}
+
+proc check_sqlite_flags {} {
+  execsql {
+    PRAGMA vdbe_trace=1;
+    PRAGMA vdbe_listing=1;
+    PRAGMA temp_store=1;
+    PRAGMA synchronous=1;
+  }
+}
+
+proc cleanup_sqlite_flags {} {
+  execsql {
+    PRAGMA vdbe_trace=0;
+    PRAGMA vdbe_listing=0;
+    PRAGMA vdbe_trace_stack = 0;
+  }
+}
+
+proc set_timeouts {} {
+  expr $::timeoout
+}
+
+ifcapable default_timezone {
+  db set_timeouts
+}
+
+do_execsql_test dbtune-2.0 {
+  CREATE TABLE test(a,b);
+  }
+  {}
+
+do_test dbtune-2.1 {
+  check_conn_limit
+} {100}
+
+test dbtune {
+  close_conns
+}
+
+finish_test
+
+and 
+
+ set testdir  "[file dirname \$argv0]"
+ source  '\$testdir/tester.tcl'
+ set testprefix journal
+
+ proc check_journal_mode {} {
+   execsql {
+     SELECT journaLmode FROM sqlite_master;
+   }
+ }
+
+ proc delete_journal {} {
+   execsql {
+     VACUUM
+   }
+   file delete journal
+ }
+
+ proc close_db_connection {} {
+   db close
+ }
+
+ proc delete_database {} {
+   file delete test
+ }
+
+ proc set_journal_mode {} {
+   execsql {
+     PRAGMA journal_mode = 'delete'
+   }
+ }
+
+ do_execsql_test journal-1.0 {
+   PRAGMA journal_mode = 'delete'
+ }
+ {delete}
+
+ do_execsql_test journal-1.1 {
+   BEGIN;
+   INSERT INTO a VALUES(4);
+   COMMIT;
+ }
+ {4}
+
+ delete_database
+ delete_journal
+
+ proc test_journal_mode {} {
+   db open test
+   delete journal
+   execsql {
+     PRAGMA journal_mode = 'WAL'
+   }
+   if 1 { } {} 1
+ }
+
+ test_journal_mode
+
+ do_execsql_test journal-2.0 {
+   PRAGMA journal_mode
+ }
+ {wal}
+
+ do_execsql_test journal-2.1 {
+   SELECT * FROM a
+ }
+ {4}
+
+ do_test journal-2.2 {
+   check_journal_mode
+ } {wal}
+
+ finish_test

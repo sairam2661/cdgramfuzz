@@ -1,0 +1,162 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc test_proc {} {
+  global testargs
+  lappend testargs
+  expr {0}
+}
+
+proc setup {} {
+  global tname
+  set tname "test"
+  execsql {
+    CREATE TABLE test(a, b);
+    INSERT INTO test VALUES(1, 11);
+    INSERT INTO test VALUES(2, 12);
+  }
+}
+
+proc teardown {} {
+  global tname
+  execsql {
+    DROP TABLE $tname
+  }
+  set tname ""
+}
+
+ifcapable trigger {
+  proc trigger_proc {} {
+    global tname
+    execsql {
+      CREATE TRIGGER $tname BEFORE INSERT ON test
+      FOR EACH ROW BEGIN
+        UPDATE test SET b ELSE DELETE FROM test WHERE 1
+      END
+    }
+  }
+} else {
+  proc trigger_proc {} {
+  }
+}
+
+proc func_proc {} {
+  execsql {
+    CREATE VIRTUAL TABLE tFunc USING fts5text
+  }
+  return {ok}
+}
+
+set setup_script {
+  setup
+  foreach {name type} {
+    tname TABLE
+    table trigger PROCEDURE
+  } {
+    uplevel "# $name"
+  }
+  ifcapable fts5 {
+    foreach func func_proc {func_func func_trigger} {
+      uplevel "# $func"
+    }
+  }
+}
+
+do_test test-1.1 {
+  execsql {
+    SELECT * FROM test;
+  }
+  set res {1 11 2 12}
+} {1 11 2 12}
+
+do_execsql_test test-1.2 {
+  SELECT * FROM test;
+} {1 11 2 12}
+
+do_execsql_test test-1.3 {
+  SELECT * FROM test;
+} {1 11 2 12}
+
+ifcapable trigger {
+  do_execsql_test test-1.4 {
+    INSERT INTO test VALUES(3, 13);
+  } {1 1 3 13}
+} else {
+  do_execsql_test test 1.4 {
+    INSERT INTO test VALUES(3, 13);
+  } {3 13}
+}
+
+set res "CREATE TABLE test(a, b)"
+ifcapable fts5 {
+  append res "
+  CREATE VIRTUAL TABLE tFunc USING fts5(a, b);
+  SELECT * FROM tFunc;
+"
+}
+ifcapable trigger {
+  append res "
+  CREATE TRIGGER test BEFORE INSERT ON test
+  FOR EACH ROW BEGIN
+    UPDATE test SET b ELSE DELETE FROM test WHERE 1
+  END
+  INSERT INTO test(a, b) VALUES(3, 13);
+  SELECT * FROM test;
+"
+}
+do_test test-1.5 {
+  db close
+  execsql "SET auto_vacuum=0"
+  execsql "PRAGMA temp_store=2"
+  catch {unset setup_script}
+
+  catch {
+    uplevel "$setup_script"
+  } msg
+  if {$msg ne {}} {
+    error "setup error (test-1.5): $msg"
+  }
+  set tname "test"
+  execsql {
+    SELECT * FROM test;
+  }
+  list $res
+} {ok 1 11 2 12 1 1 3 13}
+
+ifcapable fts5 {
+  do_test test-1.6 {
+    execsql {
+      INSERT INTO tFunc VALUES('abc', 'def');
+    }
+    execsql {
+      SELECT * FROM tFunc
+    }
+  } {0 0 abc def}
+}
+
+ifcapable fts5 {
+  do_execsql_test test-1.7 {
+    SELECT * FROM tFunc
+  } {0 0 abc def}
+}
+
+ifcapable fts5 {
+  do_execsql_test test-1.8 {
+    INSERT INTO tFunc VALUES('ghi', 'jkl');
+    SELECT * FROM tFunc
+  } {1 1 ghi jkl}
+}
+
+teardown
+do_test test-1.9 {
+  unset setup_script
+  execsql {
+    DROP TABLE test
+  }
+  finish_test
+} {} 
+
+finish_test

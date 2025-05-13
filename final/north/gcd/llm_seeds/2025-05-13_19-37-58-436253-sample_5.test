@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_config
+
+set ::timeout 60000
+
+proc db_config_proc {} {
+  global db_configarg
+  lappend db_configarg
+  expr {0}
+}
+
+do_test db_config-1.1 {
+  set db_configarg {}
+  db_config_proc
+  llength $db_configarg
+} {1}
+
+do_test db_config-1.2 {
+  set db_configarg {}
+  db_config_proc
+  expr {0}
+} {1}
+
+ifcapable wal {
+  do_execsql_test db_config-2.1 {
+    PRAGMA journal_mode = "WAL";
+  } {}
+} else {
+  do_execsql_test db_config_2.1 {
+    PRAGMA journal_mode = "DELETE";
+  } {}
+}
+
+ifcapable fts3 {
+  do_execsql_test db_config-2.2 {
+    PRAGMA legacy_file_format = 1;
+  } {}
+} else {
+  do_noop db_config_2.2
+}
+
+ifcapable memdb {
+  do_execsql_test db_config-2.3 {
+    CREATE TABLE t1(a);
+    CREATE TABLE t2(b);
+  } {}
+} else {
+  do_execsql_test db_config_2.3 {
+    CREATE TABLE t1(a);
+    CREATE TABLE t2(b);
+    CREATE INDEX i1 ON t1(a);
+  } {}
+}
+
+finish_test

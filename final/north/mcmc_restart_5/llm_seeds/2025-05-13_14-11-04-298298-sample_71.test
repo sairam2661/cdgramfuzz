@@ -1,0 +1,93 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+unset db
+
+set sqlite_encoding ISO8859_1
+set sqlite_busy_timeout 500
+
+proc test_error {sql} {
+  do_test "complex-1.$sql" {
+    set ret {SELECT * FROM a}
+    set sqlite_db {}
+    catchsql "$sql" db
+    return $ret
+  } {1 {no such table}}
+}
+
+proc test_insert {table values} {
+  set result {}
+  eval do_test "complex-2.$values" {
+    set ret {}
+    db func random random
+    set sqlite_db {}
+    execsql "INSERT INTO $table VALUES ($values)" db
+    set ret {SELECT SQLITE_ROW FROM $table}
+    lappend result $ret
+    unset sqlite_db
+    return $result
+  } {}
+  expr {$result eq 1}
+}
+
+proc test_query {query} {
+  eval do_test "complex-3.$query" {
+    set db {}
+    catchsql "$query" db
+    return 0
+  } {}
+}
+
+proc test_update {table values} {
+  set result {}
+  eval do_test "complex-4.$values" {
+    set ret {}
+    set sqlite_db {}
+    execsql "UPDATE $table SET x = x + $values(1)" db
+    set ret {SELECT x FROM $table WHERE x BETWEEN 10 AND 100}
+    lappend result $ret
+    unset sqlite_db
+    return $result
+  } {}
+  expr {$result eq 1}
+}
+
+proc test_select {values} {
+  set result {}
+  eval do_test "complex-5.$values" {
+    set ret {}
+    set sqlite_db {}
+    execsql "SELECT * FROM a WHERE x BETWEEN $values(1) AND $values(2)" db
+    set ret {SELECT x FROM a WHERE x BETWEEN $values }
+    lappend result $ret
+    unset sqlite_db
+    return $result
+  } {}
+  expr {$result eq 1}
+}
+
+test_insert a {random between 1 and 20}
+test_insert b {random between 1 and 20}
+test_insert c {random between 1 and 20}
+
+ifcapable {fts5 expr} {
+  test_query {
+    CREATE VIRTUAL TABLE d USING fts5 
+    WITH d1 AS 'a(id NUMBER, contents STRING);
+          CREATE INDEX i1 ON d(id)'
+  }
+}
+ifcapable!=utf8 {
+  test_query {
+    CREATE TABLE d(x);
+    INSERT INTO d SELECT 1234; INSERT INTO d SELECT 5678;
+  }
+}
+
+test_update a {14}
+test_select {1 20}
+test_select {0 5}
+
+finish_test

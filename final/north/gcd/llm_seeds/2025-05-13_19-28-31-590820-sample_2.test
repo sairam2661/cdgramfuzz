@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+DBTuning 1
+
+proc sync_proc {} {
+  set syncargs {}
+  lappend syncargs
+  expr {1}
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1.0,2.0,3.0);
+    SELECT * FROM b;
+  }
+} {1.0 2.0 3.0}
+
+ifcapable vtab {
+  do_execsql_test sync-1.2 {
+    CREATE TABLE c(x) 
+    } {}
+  do_execsql_test sync-1.3 {
+    INSERT INTO c VALUES('a');
+  }
+  {INSERT c x
+   VALUES     'a'}
+}
+
+ifcapable explain {
+  set ExplainSQL {
+    EXPLAIN
+    SELECT x 
+    FROM c
+    WHERE x IS NULL
+  }
+  set ExplainQuery {
+    EXPLAIN QUERY PLAN
+    SELECT x 
+    FROM c
+    WHERE x IS NULL
+  }
+}
+do_execsql_test sync-1.4 {
+    SELECT x 
+    FROM c
+    WHERE x = 'a'
+} {a}
+ifcapable explain {
+  do_test sync-1.5 {
+    execsql $ExplainSQL
+  } {0 {EXPLAIN for SELECT statement}}
+  do_test sync-1.6 {
+    execsql $ExplainQuery
+  } {}
+}
+
+do_execsql_test sync-1.7 {
+  SELECT x 
+  FROM c
+  WHERE x = NULL
+} {}
+
+finish_test

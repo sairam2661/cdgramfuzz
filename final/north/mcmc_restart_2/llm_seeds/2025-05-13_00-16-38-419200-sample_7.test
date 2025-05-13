@@ -1,0 +1,40 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiquery
+
+proc multiquery_proc {} {
+  global multiqueryargs
+  lappend multiqueryargs
+  expr {0}
+}
+
+proc do_test_multiquery {name sql result} {
+  uplevel do_execsql_test "$name" "$sql" "$result"
+}
+
+do_test_multiquery multiquery1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  INSERT INTO a VALUES(2);
+  INSERT INTO a VALUES(3);
+} {3}
+do_test_multiquery multiquery1.1 {
+  SELECT * FROM a;
+} {1 2 3}
+
+do_test_multiquery multiquery1.2 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(4);
+  INSERT INTO b VALUES(5);
+  INSERT INTO b VALUES(6);
+} {3}
+do_test_multiquery multiquery1.2 {
+  SELECT * FROM b;
+} {4 5 6}
+
+ifcapable vacuum {
+  do_execsql_test multiquery1.3 {
+    VACUUM
+  }
+}
+finish_test

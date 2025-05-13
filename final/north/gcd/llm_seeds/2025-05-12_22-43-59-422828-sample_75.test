@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+proc complex_func {} {
+  global complexargs
+  lappend complexargs
+  expr {1}
+}
+
+proc do_complex_test {name sql expect} {
+  uplevel do_execsql_test $name $sql $expect
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE complex1(a, b);
+    INSERT INTO complex1 VALUES(1, 2);
+  }
+} {}
+
+do_complex_test complex1.2 {
+  BEGIN;
+  INSERT INTO complex1 VALUES(3, 4);
+  COMMIT;
+} {}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="PERSIST"}
+} {0 {}}
+
+do_execsql_test complex-3.1 {
+  SELECT * FROM complex1;
+} {1 2 3 4}
+
+set complexargs {}
+set complexargs2 {}
+proc test_func2 {} {
+  lappend complexargs2
+  uplevel complex_func
+  set complexargs
+}
+
+do_test complex-4.1 {
+  set complexargs2
+  test_func2
+  test_func2
+  set complexargs
+} {}
+
+set test_func2_complex_func_result {}
+proc test_func3 {} {
+  global test_func2_complex_func_result
+  uplevel {
+    if { $complexargs2 eq {} } {
+      set test_func2_complex_func_result 1
+    }
+  }
+}
+
+do_test complex-5.1 {
+  test_func3
+  test_func2
+  test_func3
+  set test_func2_complex_func_result
+} {}
+
+do_test complex-6.1 {
+  set test_func2_complex_func_result
+} {}
+
+finish_test

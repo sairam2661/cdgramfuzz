@@ -1,0 +1,49 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix check_sum
+
+proc check_proc {} {
+  global checkargs
+  lappend checkargs
+  expr {1}
+}
+
+do_test check-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT x FROM a ORDER BY x DESC}
+} {1}
+
+do_execsql_test check-1.2 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(2);
+  SELECT x FROM a;
+} {1}
+
+catchsql {CREATE TABLE c AS SELECT x FROM a} {1 {cannot start a transaction within a transaction}}
+catchsql {INSERT INTO a VALUES("hello world")} {1 {Cannot add a character string literal with a length of 13 to a column of type integer}}
+
+catchsql {
+  CREATE TABLE d AS SELECT x FROM a
+  WHERE x IN SELECT y FROM b
+} {1 {unknown column "y"}}
+do_execsql_test check-1.3 {
+  BEGIN;
+  SELECT x FROM a;
+  SELECT y FROM b;
+}
+{1}
+with contents of select Y
+ifcapable trigger {
+  catchsql {
+    CREATE TRIGGER check_trigger BEFORE INSERT ON a
+    FOR EACH ROW
+    WHEN new_x NOT IN SELECT y FROM b
+    BEGIN
+      SELECT x FROM a UNION SELECT y FROM b
+    END
+  }
+} {1 {cannot use SELECT or VALUES in trigger program}}
+finish_test

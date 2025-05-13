@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+proc open_db {} {
+  global db db_config
+  db_config "database = :memory:"
+  db set db_config
+  db open db
+  expr {0}
+}
+
+proc close_db {} {
+  global db db_config
+  db close db
+  expr {1}
+}
+
+proc query {sql} {
+  global db db_config
+  set res {}
+  db eval $sql db_config
+  lappend res $res
+  expr {0}
+}
+
+do_test multi-1.1 {
+  open_db
+  query {CREATE TABLE a(x, y)}
+  query {INSERT INTO a(x, y) VALUES(1, 2)}
+  query {INSERT INTO a(x, y) VALUES(3, 4)}
+  close_db
+} {0}
+
+do_test multi-1.2 {
+  open_db
+  query {CREATE TABLE b(x, y)}
+  query {INSERT INTO b(x, y) VALUES(5, 6)}
+  query {INSERT INTO b(x, y) VALUES(7, 8)}
+  close_db
+} {0}
+
+do_test multi-1.3 {
+  open_db
+} {0}
+
+ifcapable journalMode {
+  database_open "PRAGMA journal_mode=WAL"
+  database_close "journal_mode"
+  database_open "PRAGMA journal_mode=MEMORY"
+  database_close "journal_mode"
+  execsql "INSERT INTO a(x, y) VALUES(9, 10)"
+  execsql "INSERT INTO b(x, y) VALUES(11, 12)"
+}
+
+do_test multi-2.1 {
+  open_db
+  query {SELECT count(*) FROM a}
+  query {SELECT count(*) FROM b}
+  close_db
+} {2}
+
+do_test multi-2.2 {
+  open_db
+  query {CREATE INDEX i_a ON a(x)}
+  query {CREATE INDEX i_b ON b(y)}
+  close_db
+} {0}
+
+close_db
+do_test multi-3.1 {
+  open_db
+} {0}
+
+finish_test

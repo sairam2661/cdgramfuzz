@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix dbconfig
+
+proc open_db {config} {
+  global db
+  set db_config "[join $config \n]"
+  sqlite3 db $db_config
+  return $db
+}
+
+proc db_config_test {config} {
+  global db
+  if { $db eq "" } {
+    open_db $config
+  } else {
+    db eval {PRAGMA legacy_alter_table = 1}
+  }
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  return $db
+}
+
+do_execsql_test db-1.1 {
+  CREATE TABLE t2(y);
+} {}
+
+do_test db-1.2 {
+  db_config_test {key value}
+  execsql {
+    PRAGMA key = 'new_value'
+  }
+} {}
+
+ifcapable wal_journal {
+  db_config_test {journal_mode WAL}
+  do_catchsql_test db1.3 {
+    PRAGMA journal_mode=0
+  } {1 {error code 1}}
+} 
+
+proc drop_db {} {
+  global db
+  if { $db ne "" } {
+    close $db
+  }
+}
+
+ifcapable wal_journal {
+  drop_db
+  do_execsql_test db-1.4 {
+    WITH RECURSIVE_RENAME(t1) AS (
+      SELECT x FROM t1 UNION ALL
+      SELECT 1 FROM t1
+    )
+    SELECT name FROM sqlite_temp_master WHERE type='table' 
+    } {t1}
+
+  execsql {
+    DROP TABLE t2
+   }
+} 
+
+finish_test

@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db
+
+proc func1 {db} {
+  db eval {INSERT INTO a VALUES(4)}
+  set result {}
+  foreach row {a b c} {
+    execsql {
+      SELECT * FROM a
+      WHERE a = 1
+      } $result
+  }
+  return $result
+}
+
+proc func2 {db} {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(2)
+  }
+  execsql {
+    SELECT * FROM b
+  }
+}
+
+proc func3 {db} {
+  catch {execsql {BEGIN COMMIT} $db}
+}
+
+do_test db-1.1 {
+  execsql {
+    CREATE TABLE a(x,y);
+    INSERT INTO a VALUES(1,2);
+  }
+} {1}
+
+do_execsql_test db-1.2 {
+  INSERT INTO a VALUES(3,4);
+} {}
+
+do_test db-1.3 {
+  execsql {SELECT * FROM a}
+  set func3 $db
+  set r $func1 $db
+  set llength $r
+} {3}
+
+do_test db-1.4 {
+  execsql {SELECT * FROM b}
+  set func2 $db
+  set r $func1 $db
+  set llength $r
+} {3}
+
+do_test db-1.5 {
+  execsql {SELECT * FROM a}
+  set func3 $db
+  set r $func2 $db
+  set llength $r
+} {1}
+
+do_test db-1.6 {
+  execsql {SELECT * FROM a}
+  set func3 $db
+  set r $func2 $db
+  set llength $r
+} {1}
+
+finish_test

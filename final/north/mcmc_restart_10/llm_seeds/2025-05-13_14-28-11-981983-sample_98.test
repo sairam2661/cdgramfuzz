@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix fuzzer
+
+proc fuzzer_proc {} {
+  global fuzzerargs
+  lappend fuzzerargs
+  expr {randint 1 100}
+}
+
+proc do_fuzz_test_1 {arg} {
+  fuzzer_proc
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(0)
+  }
+  execsql {
+    SELECT * FROM b;
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO b VALUES(1);
+    COMMIT;
+  }
+  execsql {
+    SELECT * FROM b;
+  }
+  return $fuzzerargs
+}
+
+proc do_fuzz_test_2 {arg} {
+  fuzzer_proc
+  set sql "PRAGMA synchronous="
+  if {$fuzzerargs eq 1} {
+    append sql "OFF"
+  } elseif {$fuzzerargs eq 2} {
+    append sql "NORMAL"
+  } else {
+    append sql "FULL"
+  }
+  catchsql $sql
+  return $fuzzerargs
+}
+
+do_test fuzzer-1.1 {do_fuzz_test_1 a} {a}
+do_test fuzzer-1.2 {do_fuzz_test_2 a} {a}
+do_test fuzzer-1.3 {do_fuzz_test_1 b} {b}
+do_test fuzzer-1.4 {do_fuzz_test_2 b} {b}
+do_test fuzzer-1.5 {do_fuzz_test_1 c} {c}
+ifcapable uuid {
+  do_test fuzzer-1.6 {do_fuzz_test_1 d} {d}
+}
+do_execsql_test fuzzer-1.7 {
+  CREATE TABLE f(x);
+  INSERT INTO f VALUES(5);
+  SELECT count(*) FROM f;
+} {1}
+
+finish_test

@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000
+
+proc errorfunc args {
+  fault $argv
+}
+sqlite_signal_faulterror errorfunc
+
+proc main_func {db} {
+  global multiargs
+  lappend multiargs
+  execsql $db {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+}
+
+set dbname "test.db"
+sqlite3 db multi
+
+do_execsql_test multi-1.1 {
+  SELECT * FROM sqlite_master
+} {}
+
+do_test multi-1.2 {
+  set dbhandle $db
+  set result 1
+  catchsql {
+    DROP TABLE a
+  } $dbhandle result
+  set result
+} {0}
+
+do_execsql_test multi-1.3 {
+  SELECT * FROM a;
+} {}
+
+set sqlite_flags " -key my_key"
+
+do_test multi-1.4 {
+  set dbhandle $db
+  set result 1
+  catchsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(2);
+    CREATE TABLE c(z);
+    SELECT * FROM c;
+    SELECT * FROM b;
+  } $dbhandle result
+  set result
+} {0}
+
+finish_test

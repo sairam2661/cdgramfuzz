@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+proc complex_query_func {a b c} {
+  expr {$a eq ""}
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(x PRIMARY KEY);
+    CREATE TABLE c(y);
+  }
+  execsql {
+    INSERT INTO b VALUES('key');
+    INSERT INTO c VALUES('value');
+  }
+  list
+  execsql {
+    SELECT * FROM b
+  }
+} {{key} {1 {r TreeInsert zId 2 3}}}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO c VALUES('more_value');
+  COMMIT;
+  SELECT * FROM c
+} {value more_value}
+
+crash_test complex_crash {
+  execsql {
+    CREATE TABLE d(x);
+    CREATE TABLE e(y);
+  }
+  execsql {
+    INSERT INTO d VALUES(1)
+  }
+  complex_query_func "" "" 1
+  execsql {
+    SELECT * FROM d
+  }
+}
+
+ifcapable vacuum {
+  crash_test vacuum_crash {
+    execsql {
+      CREATE TABLE vacuum_test(x);
+      INSERT INTO vacuum_test VALUES('one');
+      INSERT INTO vacuum_test VALUES('two');
+      WITH RECURSIVE(
+        recursive_cte4_level_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0
+      ) AS (
+        SELECT x FROM vacuum_test
+      ) SELECT x
+      FROM recursive_cte4_level_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0
+    }
+    VACUUM
+  }
+  execsql {
+    PRAGMA integrity_check
+  }
+} {ok}
+
+finish_test
+do_ioerrTest complex_ioerr {
+  execsql {
+    CREATE TABLE complex_ioerr(x);
+    INSERT INTO complex_ioerr VALUES('test')
+    }
+} 5
+
+set up_crash_test3 test_complex_crash {
+  execsql {
+    CREATE VIRTUAL TABLE temp_complex_vtab AS fts5
+  }
+  do_test complex_crash_test3 {
+    catchsql {
+      SELECT rowid FROM temp_complex_vtab
+    }
+  } {1 {attempt to write a readonly database}}
+}
+
+set up_crash_test4 test_complex_crash {
+  execsql {
+    CREATE TABLE complex_crash1(x)
+  }
+  do_test complex_crash_test4 {
+    catchsql {
+      DROP INDEX complex_crash1_index ON complex_crash1
+    }
+  } {1 {attempt to write a readonly database}}
+}
+
+finish_test

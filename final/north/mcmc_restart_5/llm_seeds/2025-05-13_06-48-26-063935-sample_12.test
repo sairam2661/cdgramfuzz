@@ -1,0 +1,157 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_constraints
+
+set ::timeout 60000
+
+proc my_trigger {} {
+  global my_trigger_count
+  set my_trigger_count 0
+  set my_trigger_count
+}
+
+proc my_func {x} {
+  return $x
+}
+
+set db_constraints_testcase 0
+
+do_execsql_test db_constraints-1.1 {
+  CREATE TABLE a(x PRIMARY KEY, y UNIQUE, z NOT NULL);
+  BEGIN;
+  INSERT INTO a VALUES(1, 2, 3);
+  INSERT INTO a VALUES(1, 4, 4)  }');
+} {1 {UNIQUE constraint failed: a.y}}
+
+do_execsql_test db_constraints-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(5, 6, 7);
+  INSERT INTO a VALUES(5, 6, 7);
+  COMMIT;
+  SELECT * FROM a;
+} {5 6 7}
+
+do_execsql_test db_constraints-1.3 {
+  CREATE TABLE b(x, y);
+  BEGIN;
+  REPLACE INTO b VALUES(1, 2), (3, 4), (5, 6);
+  COMMIT;
+  SELECT * FROM b;
+} {1 2 3 4 5 6}
+
+do_execsql_test db_constraints-1.4 {
+  CREATE TABLE c(x);
+  BEGIN;
+  INSERT INTO c VALUES(1), (1), (1);
+  COMMIT;
+  SELECT * FROM c;
+} {1 1 1}
+
+do_execsql_test db_constraints-1.5 {
+  PRAGMA foreign_keys = OFF;
+  BEGIN;
+  CREATE TABLE d(x REFERENCES a(x));
+  COMMIT;
+  PRAGMA foreign_keys = ON;
+  PRAGMA foreign_key_list(a);
+} {1 {ON UPDATE NO ACTION} {NO ACTION}}
+
+do_execsql_test db_constraints-1.6 "BEGIN EXCLUSIVE; COMMIT EXCLUSIVE;"
+
+do_test db_constraints-1.7 {
+  list [catch {db eval {SELECT x FROM b}} msg] $msg
+} {0 {}}
+
+do_test db_constraints-1.8 {
+  set ::my_trigger_count
+} {}
+db eval {
+  CREATE TABLE e(x);
+  CREATE TRIGGER t1 AFTER INSERT ON e
+  FOR EACH ROW BEGIN
+    SELECT my_func(x) INTO @x FROM e;
+  END;
+} db_constraints-1.9 {
+  execsql {
+    BEGIN;
+    INSERT INTO e VALUES(1);
+    INSERT INTO e VALUES(2);
+    INSERT INTO e VALUES(3);
+    COMMIT;
+  }
+  execsql {
+    SELECT x FROM e
+  }
+} {1 2 3}
+
+do_execsql_test db_constraints-1.10 {
+  CREATE TABLE e(x);
+  CREATE TRIGGER t1 BEFORE INSERT ON e
+  FOR EACH ROW BEGIN
+    SELECT 1 INTO @c FROM e
+  END;
+} {1 {ON CONFLICT IGNORE}}
+
+do_test db_constraints-1.11 {
+  set ::my_trigger_count
+} {}
+
+ifcapable debug {
+  db eval {SELECT name FROM sqlite_master WHERE type='table'}
+}
+
+finish_test
+
+if {![info exists db_constraints_testcase] || $db_constraints_testcase==2} {
+  finish_test
+}
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_constraints_dbcfg
+
+proc my_func2 {x} {
+  return $x
+}
+
+proc check_collation {sql} {
+  set ret [catch {
+    execsql {
+      SELECT 1, $sql
+    }
+  } msg]
+  if {$ret==0} {
+    return
+  }
+  execsql {SELECT sql FROM sqlite_master}
+  set ret {}
+  for {set i 1} {$i <= $::sqlite_dbincfg_total} {incr i} {
+    rename sqlite_dbcfg_$i sqlite_dbcfg
+  }
+  rename sqlite_dbcfg sqlite_dbincfg
+  sqlite_dbincfg $msg
+}
+set check_collate 0
+
+do_test db_constraints-db-1.1 {
+  execsql {
+    PRAGMA foreign_keys = 0;
+    CREATE TABLE z(x COLLATE MY_COLLATION);
+    BEGIN;
+    INSERT INTO z VALUES(1);
+    INSERT INTO z VALUES(1);
+    COMMIT;
+    PRAGMA foreign_keys = 1;
+  }
+} {}
+
+do_execsql_test db_constraints-db-1.2 {
+  CREATE TABLE t1(a INTEGER, b TEXT,  c DATETIME,
+    CHECK(a<b AND b<c), CONSTRAINT check_me CHECK (a<b AND b<c),
+    PRIMARY KEY(c));
+  SELECT seq FROM sqlite_sequence WHERE name='t1'
+} 1
+
+do_execsql_test db_constraints-db-1.3 {
+  CREATE TABLE t2(x COLLATE MY_COLLATION);
+  INSERT INTO t2 VALUES('first',

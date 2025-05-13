@@ -1,0 +1,41 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_scenario
+
+set ::timeout 60000
+
+proc create_table {} {
+  global db
+  execsql {
+    CREATE TABLE users(id PRIMARY KEY, name, age);
+    CREATE TABLE orders(id PRIMARY KEY, user_id, order_date);
+  }
+}
+
+proc insert_data {} {
+  global db
+  execsql {
+    INSERT INTO users VALUES(1, 'John Doe', 30);
+    INSERT INTO users VALUES(2, 'Jane Doe', 25);
+    INSERT INTO orders VALUES(1, 1, '2020-01-01');
+    INSERT INTO orders VALUES(2, 1, '2020-01-15');
+    INSERT INTO orders VALUES(3, 2, '2020-02-01');
+  }
+}
+
+proc test_scenario {n} {
+  global db
+  set result {}
+  for {set i 1} {$i ne $n} {incr i} {
+    execsql {
+      INSERT INTO orders VALUES(1000, 1, '2020-01-$i');
+    }
+  }
+}
+
+set n 5
+test_scenario $n
+set result 100
+do_execsql_test complex-1.1 {
+  INSERT INTO orders VALUES(1000, 1, '2020-01-$n');
+  SELECT SUM(

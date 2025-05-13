@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+proc lock_proc {arg1 arg2} {
+  global lockargs
+  lappend lockargs $arg1
+  lappend lockargs $arg2
+  expr {$lockargs eq {a b c d e f g h i j k}}
+}
+
+do_test lock-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+    SELECT y FROM b
+  }
+} {5}
+
+do_execsql_test lock-1.2 {
+  BEGIN;
+  SELECT a FROM b;
+  INSERT INTO b VALUES(6);
+  COMMIT;
+  SELECT * FROM b WHERE y=6;
+} {6}
+
+do Execsql_test lock {
+  SAVEPOINT sp1
+  BEGIN
+    CREATE TABLE c AS SELECT y FROM b
+  END
+} {1 {}}
+
+ifcapable wal {
+  set timeout 300
+  set test_time 60
+  for {set i 1} {$i le 1000} {incr i} {
+    do_execsql_test lock {
+      ATTACH 'test.db' AS test2
+    }
+  }
+  do_execsql_test lock 'DETACH test2; COMMIT' {1 {}}
+  set timeout 30
+  set test_time 20
+}
+
+do_execsql_test lock-1.3 {
+  CREATE INDEX z ON b(y);
+  SELECT a FROM b;
+  SELECT * FROM c;
+} {}
+
+finish_test

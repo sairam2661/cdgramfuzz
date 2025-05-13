@@ -1,0 +1,38 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_fuzz
+
+proc sqlite_fuzz_proc {arg} {
+  set f1 test1_$arg
+  set f2 test2_$arg
+  lassign $f1 $f2
+  list $f1 $f2
+}
+
+sqlite_fuzztest 1 2 4 6 9 11 3 0 5 7 6 9 8 15
+for {set i 23} {$i le 50} {incr i} {
+  sqlite_fuzztest $i a $i y s 0
+}
+
+for {set i 9} {$i le 20} {incr i} {
+  sqlite_fuzztest 1 2 $i
+}
+
+do_test sqlite_fuzz-100.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES('apple', 'banana');
+  }
+} {1}
+
+do_execsql_test sqlite_fuzz-100.2 {
+  SELECT a FROM t1;
+} {apple}
+
+ifcapable truncate_vacuum {
+  do_execsql_test sqlite_fuzz-100.3 {
+    PRAGMA page_count;
+  } {2}
+}
+
+finish_test

@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzer
+
+proc fuzzer {} {
+  global test_sql 
+  set test_sql $::testname
+  db eval "SELECT * FROM sqlite_master" {}
+}
+
+proc fuzzer_proc {} {
+  set sql {}
+  set rand 123
+  for {set i 1} {$i le 5} {incr i} {
+    append sql "INSERT INTO tvalues VALUES "
+    for {set j 1} {$j le $i} {incr j} {
+      append sql "($rand),"
+      incr rand
+    }
+    append sql " ;"
+  }
+  return $sql
+}
+
+proc check_result {db val} {
+  set res {}
+  set res1 {}
+  db eval {SELECT * FROM tvalues} {lappend res $row}
+  db eval {SELECT * FROM tvalues} {lappend res1 $row}
+  set result {}
+  if { $val eq $res } {
+    set result "OK (1 $val $res)"
+  } elseif {  $val eq $res1 } {
+    set result "OK (1 $val $res1)"
+  }
+  return $result
+}
+
+do_test fuzzer-1.1 {
+  db eval {SELECT * FROM tvalues}
+} {}
+
+do_execsql_test fuzzer-2.1 {
+  BEGIN;
+  CREATE TABLE tvalues(a,b,c,d,e);
+} {}
+do_execsql_test fuzzer-2.2 {
+  INSERT INTO tvalues(a,b,c,d,e) VALUES (1,'c',3,4,5);
+} {}
+do_execsql_test fuzzer-2.3 {
+  INSERT INTO tvalues(a,b,c,d,e) VALUES ('a',2,3,4,5);
+} {}
+
+for {set i 3} {$i le 11} {incr i} {
+  set test_sql "fuzzer_test [fuzzer_proc]"
+  set result $test_sql
+  do_test fuzzer_$result {
+    set result $result
+    db eval {CREATE TABLE tvalues(a,b,c,d,e);}
+    db eval $::test_sql
+    set dbrow {}
+    set res1 {}
+    db eval {SELECT * FROM tvalues} {lappend res1 $row}
+    db eval {SELECT * FROM tvalues} {lappend res $row}
+    set result1 "OK (1 $res1 $res1)"
+    set ret 0
+    if { $result eq "" } {
+      set lres {}
+      foreach row $res {lappend lres $row}
+      if { $lres eq {1 d {1 c 4 5} {1 a 2 3 4} {1 a 2 3 4} {1 a 2 3 5} {1 a 2 3 5} {1 a 2 3 5} {1 a 2 3 6} {1 a 2 3 6} {1 a 2 3 7} {1 a 2 3 7}} } {
+      } else {
+        set ret 1
+      }
+    } elseif { $result eq $result1 } {
+      set ret 1
+    } else {
+      set ret 1
+    }
+    if { $ret eq 1 } { return $result1 }
+    return "wrong result"
+  } $result1
+}
+
+finish_test

@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+proc concurrency_test {tn} {
+  global db syncargs
+  set syncargs {}
+  foreach {tn sql expected} $sqls {
+    do_test $tn {
+      $::fuzz_sql $sql
+      db eval $sql
+      db eval $expected
+    } {}
+  }
+}
+
+proc test_sqls {args} {
+  global sqls
+  foreach arg $args {
+    lappend sqls $arg
+  }
+}
+
+do_execsql_test main-1.0 {
+  CREATE TABLE a(x);
+  CREATE TABLE b(c);
+  CREATE TABLE c(a, b);
+}
+
+"{INSERT INTO a VALUES('one')}"
+test_sqls "{INSERT INTO b VALUES(1)}"
+"{INSERT INTO c VALUES('a', 'c')}"
+test_sqls "{SELECT * FROM a}"
+"{UPDATE a SET x = 'two'}"
+test_sqls "{SELECT b FROM c}"
+
+test_sqls { 
+  SELECT x FROM a 
+  SELECT c FROM b 
+  SELECT a FROM c 
+  INSERT INTO b VALUES NULL 
+  INSERT INTO a VALUES NULL 
+  DELETE FROM a 
+  DROP TABLE a 
+  DROP TABLE b 
+}
+
+finish_test

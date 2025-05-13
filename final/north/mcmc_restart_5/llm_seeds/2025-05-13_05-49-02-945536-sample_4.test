@@ -1,0 +1,86 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_tests
+
+set ::timeout 60000
+set wal_mode 0
+set journal_mode auto
+
+proc wal_proc {} {
+  global wal_mode
+  set wal_mode 1
+}
+
+proc journal_mode {mode} {
+  global journal_mode
+  set journal_mode $mode
+}
+
+proc complex_func {args} {
+  global testvars
+  lappend testvars $args
+  expr {$::testvars ""}
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+  }
+  execsql {SELECT count(*) FROM t1}
+} {1}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE t2(y);
+  INSERT INTO t2 VALUES(1);
+  SELECT count(*) FROM t2;
+} {1}
+
+ifcapable wal {
+  set wal_mode 1
+  do_test complex-1.3 {
+    db busy 1
+    execsql {
+      PRAGMA wal_checkpoint
+      CREATE TABLE t3 AS SELECT 1 AS x
+    }
+  } {}
+  db busy 0
+}
+
+do_catchsql_test complex_2.1 {
+  EXECUTE TCL QUOTE $::kcmd $argv
+} {1 {undeclared variable kcmd}}
+  
+
+do_test complex-3.1 {
+  execsql {
+    SELECT name 
+    FROM sqlite_master 
+    WHERE type='table' 
+    } {
+      t1 t2 t3
+    }
+} {t1 t2 t3}
+
+set t1 {a b c}
+set t2 {1 2 3}
+do_execsql_test complex-3.2 {
+  INSERT INTO t1 VALUES(1,2,3);
+  SELECT * FROM t1 WHERE rowid = 1;
+  SELECT * FROM t1 WHERE rowid = 1;
+} {1 2 3}
+
+do_execsql_test complex-3.3 {
+  BEGIN;
+  INSERT INTO t2 VALUES(22,33,44);
+  ROLLBACK;
+  INSERT INTO t2 VALUES(55,66,77);
+  SELECT * FROM t2;
+} {55 66 77}
+
+ifcapable wal {
+  wal_proc
+}
+
+finish_test

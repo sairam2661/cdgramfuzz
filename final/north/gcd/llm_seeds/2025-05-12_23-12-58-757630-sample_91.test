@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+proc func1 a b { expr $a eq $b }
+proc func2 a b { expr $a ne $b }
+
+execsql {
+  CREATE TABLE t1(c1, c2);
+  CREATE TABLE t2(c3, c4);
+}
+
+do_execsql_test multi-1.1 {
+  INSERT INTO t1 VALUES('a', 'b');
+  INSERT INTO t1 VALUES('c', 'd');
+  SELECT * FROM t1;
+} {a b c d}
+do_execsql_test multi-1.2 {
+  INSERT INTO t2 VALUES('e', 'f');
+  INSERT INTO t2 VALUES('g', 'h');
+  SELECT * FROM t2;
+} {e f g h}
+
+set expected {
+  func1 t1 c1 t2 c3
+  func2 t1 c1 t2 c4
+  func1 t1 c2 t2 c3
+  func2 t1 c2 t2 c4
+}
+
+do_test multi-2.1 {
+  execsql {
+    SELECT func1 FROM t1 CROSS JOIN t2
+    WHERE func2
+  }
+} ""
+
+do_test multi-2.2 {
+  execsql {
+    SELECT func1 FROM t1 CROSS JOIN t2
+    WHERE func2 AND func1
+  }
+} ""
+
+set sqlite_options {
+  enable_fkey
+  enable_load_extension
+}
+
+do_execsql_test multi-3.1 {
+  CREATE INDEX i ON t1(c1);
+  CREATE INDEX i ON t2(c3);
+  SELECT c1 FROM t1 WHERE c1 = 'd'
+} {d}
+do_execsql_test multi-3.2 {
+  CREATE INDEX i ON t2(c4);
+  SELECT c4 FROM t2 WHERE c4 = 'h'
+} {h}
+
+finish_test

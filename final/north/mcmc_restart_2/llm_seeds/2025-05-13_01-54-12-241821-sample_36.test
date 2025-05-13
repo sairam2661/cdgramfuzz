@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc do_fuzz_test {tname} {
+  global fuzzargs
+  lappend fuzzargs
+  catchsql {
+    SELECT * FROM sqlite_master WHERE type='table' 
+    } $tname
+}
+
+set fuzzargs {}
+
+do_fuzz_test fuzz1.1 {
+  CREATE TABLE foo(x);
+  CREATE TABLE bar(y);
+}
+
+do_fuzz_test fuzz1.2 {
+  INSERT INTO foo VALUES('Hello');
+  SELECT * FROM bar
+}
+
+ifcapable trigger {
+  do_fuzz_test fuzz1.3 {
+    CREATE TRIGGER ftr AS DELETE ON foo
+  }
+}
+
+do_fuzz_test fuzz1.4 {
+  DROP TABLE foo
+}
+
+ifcapable view {
+  do_fuzz_test fuzz1.5 {
+    CREATE VIEW fnd AS SELECT foo FROM bar
+  }
+}
+
+do_fuzz_test fuzz1.6 {
+  SELECT * FROM fnd;
+  SELECT a FROM fnd;
+}
+
+finish_test

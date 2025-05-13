@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_checkpoint
+
+set ::timeout 60000
+proc my_step1 {} {
+  set db file_tester walnut
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 7);
+    SELECT * FROM t1 WHERE a=1;
+  } $db
+  execsql {
+    SELECT * FROM sqlite_master WHERE name='t1';
+  } $db
+}
+
+proc my_step2 {} {
+  set db file_tester walnut
+  execsql {
+    DELETE FROM t1 WHERE a IN
+      SELECT a FROM t1 WHERE b BETWEEN 7 AND 10
+    AND rowid BETWEEN 1 AND 7
+    AND a BETWEEN 1 AND 10
+    AND NOT EXISTS
+      SELECT x FROM t1 WHERE b BETWEEN 14 AND 17
+  } $db
+}
+
+do_test wal-1011.1 {
+  execsql "SELECT * FROM t1"
+} {}
+
+proc wal_step3 {} {
+  set db file_tester walnut
+  execsql {
+    INSERT INTO t1 VALUES(1, 1);
+  } $db
+}
+
+do_execsql_test wal-1011.2 {
+  SELECT * FROM t1;
+} {1 1}
+
+proc wal_step4 {} {
+  set db file_tester walnut
+  execsql {
+    BEGIN TRANSACTION isolation level DEFERRED
+  } $db
+  set tcl_prompt2 ": "
+}
+
+exec 60 {
+  foreach {step func} {
+    1 {my_step1}
+    2 {my_step2}
+    3 {wal_step3}
+    4 {wal_step4}
+  } {
+    $func
+    do_execsql_test $testprefix $step {
+      SELECT * FROM t1
+    } {}
+    flush
+  }
+}
+
+do_execsql_test wal-101.3 { PRAGMA journal_mode } { WAL }
+
+exec 20 { execsql { CHECKPOINT } }
+
+finish_test

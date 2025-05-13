@@ -1,0 +1,36 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzcheck
+
+proc row_value {} {
+  list "int" "char" "real"
+}
+
+proc row_data {} {
+  list 123 "abc" 45.67
+}
+
+proc row_error {} {
+  list "integer out of range" {}
+}
+
+do_fuzz_test fuzzcheck1 {
+  CREATE TABLE t1(a,b,c);
+  SELECT * FROM t1;
+}
+
+do_fuzz_test fuzzcheck2 {
+  DROP TABLE t1
+}
+
+do_execsql_test fuzzcheck3 {
+  CREATE TABLE t2(i DEFAULT 1, a);
+  SELECT i FROM t2;
+} {1}
+
+do_test fuzzcheck4 {
+  set test_type 0
+  expr {$test_type}
+} {0}
+
+finish_test

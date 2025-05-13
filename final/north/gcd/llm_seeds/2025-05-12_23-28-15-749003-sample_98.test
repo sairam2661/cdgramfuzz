@@ -1,0 +1,226 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix view
+
+proc view_create {} {
+  global viewargs
+  execsql {
+    CREATE VIEW v AS SELECT x FROM a WHERE x IS NOT NULL
+  }
+  lappend viewargs
+}
+
+proc view_insert {} {
+  global viewargs
+  execsql {
+    INSERT INTO a VALUES(5)
+  }
+  execsql {
+    SELECT * FROM v
+  }
+  lappend viewargs
+}
+
+proc view_update {} {
+  global viewargs
+  execsql {
+    UPDATE a SET x IS NULL
+  }
+  execsql {
+    SELECT * FROM v
+  }
+  lappend viewargs
+}
+
+proc view_delete {} {
+  global viewargs
+  execsql {
+    DELETE FROM a WHERE x IS NOT NULL
+  }
+  lappend viewargs
+}
+
+do_test view-1.1 {
+  set test_db v_test
+  cache_flush
+  forcedelete $test_db
+
+  set test_cmd {
+    CREATE TABLE a(x);
+  }
+  set retcode 0
+  set res1 {}
+  set res2 {}
+  set res3 {}
+  set res4 {}
+  eval {
+    db eval $test_cmd
+    do_test viewcheck {
+      execsql {
+        SELECT x FROM a
+      }
+    } {
+      NULL
+    }
+
+    execsql {
+      INSERT INTO a VALUES(1)
+    }
+
+    set retcode 0
+    set res1 {}
+    set res2 {}
+    set res3 {}
+    set res4 {}
+
+    execsql {
+      SELECT x FROM a
+    }
+    set res1 {1}
+    do_test viewcheck {
+      execsql {
+        SELECT * FROM a
+      }
+    } $res1
+
+  do_test viewcheck {
+    execsql {
+      UPDATE a SET x IS NOT NULL
+    }
+    execsql {
+      SELECT x FROM a
+    }
+  } $res1
+
+  do_test viewcheck {
+    execsql {
+      DELETE FROM a
+    }
+    execsql {
+      SELECT x FROM a
+    }
+  } {}
+  }
+  if { $retcode } {
+    do_test viewcheck {
+      set retcode
+    } "0"
+  }
+  lappend viewargs "view-1.1"
+}
+
+  {view_create}
+  do_test view-1.2 {
+    set retcode 0
+    set res {}
+    set test_cmd {
+      BEGIN;
+      INSERT INTO a VALUES(2);
+      COMMIT;
+      SELECT x FROM a;
+    }
+    set res {}
+    execsql $test_cmd
+    do_test viewcheck {
+      execsql {
+        SELECT x FROM a
+      }
+    } "2"
+    set res2 "2"
+    eval {
+      execsql {
+        PRAGMA journal_mode = 'WAL';
+      }
+      flush
+    }
+    set retcode 0
+    do_test viewcheck {
+      execsql {
+        PRAGMA journal_mode
+      }
+    } "WAL"
+    execsql {
+      INSERT INTO a VALUES(3)
+    }
+    set retcode 0
+    set res3 {}
+    set res4 {}
+    do_test viewcheck {
+      execsql {
+        UPDATE a SET x IS NOT NULL
+      }
+      SELECT x FROM a
+    } "3"
+  } "3 {WAL WAL}"
+
+  do_test view-1.3 {
+    set retcode 0
+    set res {}
+    set retcode 0
+    set res {}
+    set test_cmd {
+      SELECT x FROM v;
+    }
+    set res4 {}
+    execsql $test_cmd
+    do_test viewcheck {
+      execsql {
+        SELECT x FROM v
+      }
+    }
+    eval {
+      execsql {
+        BEGIN;
+        INSERT INTO a VALUES(4);
+        COMMIT
+      }
+    }
+ execsql{
+ PRAGMA auto_vacuum = 1
+ }
+ do_test viewcheck {
+        execsql {
+          SELECT x FROM a
+        }
+      }
+    "4 1"
+    eval {
+      execsql {
+        DROP TABLE a
+      }
+    }
+    do_test viewcheck {
+      execsql {
+        SELECT x FROM v;
+      }
+    }
+    "NULL"
+    execsql {
+      CREATE TABLE a(x)
+    }
+
+    do_test viewcheck {
+      execsql {
+        PRAGMA foreign_key_cnt;
+      }
+    } "0"
+  } "NULL 0"
+  eval {
+    do_test viewcheck {
+      execsql {
+        CREATE TABLE a(x UNIQUE);
+        INSERT INTO a VALUES("")
+      }
+    } {1 {not unique}}
+    set retcode 1
+    set test_cmd {
+      SELECT x FROM a;
+    }
+    set res {}
+    execsql $test_cmd
+    execsql {
+      PRAGMA integrity_check;
+    }
+  } "NOT UNIQUE INTCK {foreign key mismatch on delete cascade}"
+
+if 0 {

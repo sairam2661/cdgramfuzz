@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix vtab
+set vtab_module {}
+set vtab_module_file {}
+set vtab_module_contents {}
+
+do_test vtab-1.1 {
+  uplevel {set testdir}
+  append vtab_module_contents "
+    CREATE TABLE t1(x TEXT);
+    INSERT INTO t1 VALUES('A'),('B'),('C');
+  "
+  set vtab_module_contents
+} {}
+
+do_execsql_test vtab-1.2 {
+  CREATE TABLE t2(x, y);
+  SELECT x FROM t2;
+} {}
+
+eval $vtab_module_contents
+
+proc vtab_register {} {
+  global vtab_module
+  set vtab_module_file "/tmp/vtab.so"
+  sqlite3 db test
+  db eval {
+    CREATE VIRTUAL TABLE t3 using my_module
+          1 t1 x
+  }
+}
+
+execsql {SELECT * FROM t3 WHERE x = 'A'}
+
+do_test vtab-1.3 {
+  execsql {INSERT INTO t1 VALUES('D')}
+  execsql {SELECT * FROM t3 WHERE x = 'D'}
+} {D {}}
+
+ifcapable journalMode {
+  do_test vtab-1.4 {
+    catchsql {PRAGMA journal_mode="wal"}
+  } {0 {}}
+  do_execsql_test vtab-1.5 {
+    PRAGMA journal_mode
+  } {wal}
+}
+
+proc vtab_test {} {
+  set rc {}
+  catch {eval $vtab_module}
+  if { $rc } { execsql {SELECT sql FROM sqlite_master WHERE type='table' } }
+  finish_test
+}
+
+do_execsql_test vtab-1.6 {
+  INSERT INTO t1 VALUES('E')
+} {}
+
+do_execsql_test vtab-1.7 {
+  SELECT count(*) FROM t1
+} {5}
+
+finish_test

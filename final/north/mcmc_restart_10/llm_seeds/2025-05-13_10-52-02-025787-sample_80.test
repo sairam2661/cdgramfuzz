@@ -1,0 +1,91 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix thread_vacuum
+
+proc thread_vacuum_test1_db {} {
+  execsql {
+    BEGIN;
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)
+  }
+  return "a"
+}
+
+proc thread_vacuum_test1_init {db} {
+  execsql {
+    COMMIT;
+    SELECT * FROM a;
+  } $db
+}
+
+proc thread_vacuum_test2_db {} {
+  execsql {
+    BEGIN;
+    SELECT 1 FROM a;
+  }
+  return "a"
+}
+
+proc thread_vacuum_test2_init {db} {
+  execsql {
+    COMMIT;
+    SELECT * FROM a;
+  } $db
+}
+
+ifcapable vacuum {
+  do_test thread-1.1 {
+    thread_vacuum_test1_db
+    thread_vacuum_test1_init thread_vacuum_test1_db
+  } {1}
+
+  do_test thread-1.2 {
+    thread_vacuum_test2_db
+    thread_vacuum_test2_init thread_vacuum_test2_db
+  } {1}
+
+  do_test thread-1.3 {
+    execsql {
+      VACUUM
+    }
+  } {}
+
+  do_test thread-1.4 {
+    execsql {
+      INSERT INTO a VALUES(5)
+    }
+  } {}
+
+  do_test thread-1.5 {
+    execsql {
+      UPDATE a SET x NOTHING
+    }
+  } {}
+
+  proc thread_vacuum_test3_db {} {
+    execsql {
+      DELETE FROM a
+    }
+  }
+
+  proc thread_vacuum_test3_init {db} {
+    execsql {
+      INSERT INTO a VALUES(3);
+      SELECT * FROM a;
+    } $db
+  }
+
+  do_test thread-1.6 {
+    thread_vacuum_test3_db
+    thread_vacuum_test3_init thread_vacuum_test3_db
+  } {3}
+
+  unset thread_vacuum_test1_db
+  unset thread_vacuum_test1_init
+  unset thread_vacuum_test2_db
+  unset thread_vacuum_test2_init
+  unset thread_vacuum_test3_db
+  unset thread_vacuum_test3_init
+} 
+
+finish_test

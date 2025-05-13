@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+set enable_lookaside 1
+set nPagecache 100
+
+proc my_function {x y} {
+  expr {$x eq $y}
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(c, d);
+    CREATE TABLE t3(e, f);
+    INSERT INTO t1 VALUES(1, 1);
+    INSERT INTO t1 VALUES(2, 2);
+    INSERT INTO t2 VALUES(3, 3);
+    INSERT INTO t3 VALUES(4, 4);
+  }
+  sql2expr "t1.a == t1.b AND 1 == 2"
+} {0}
+
+do_execsql_test sync-2.1 {
+  CREATE TABLE t4(g, h);
+  INSERT INTO t4 VALUES(5, 5);
+  SELECT * FROM t4
+} {5 5}
+
+do_execsql_test sync-3.1 {
+  CREATE INDEX i5 ON t4(g);
+  SELECT * FROM t4
+} {5 5}
+
+ifcapable schema_pragmas {
+  do_execsql_test sync-4.1 {
+    PRAGMA schema_list;
+  } {{main {}
+ sqlite_autoindex_t4_1 1 1 t4 0 t4 1 t4 2}}
+}
+
+do_test sync-4.2 {
+  execsql {
+    CREATE TABLE t5(i, j);
+    CREATE TABLE t6(k, l);
+  }
+  db close
+  db open ":memory:"
+  execsql {
+    SELECT * FROM t5;
+    SELECT * FROM t6;
+  }
+} {{} {} {} {}}
+
+ifcapable lookaside {
+  do_test sync-5.1 {
+    db lookaside 1000 5000
+    expr 1
+  } {1}
+}
+
+do_test sync-5.2 {
+  db lookaside_clear
+  expr 0
+} {0}
+
+ifcapable pager_pragmas {
+  proc drop_file {filename} {
+    if {file exists $filename} {file delete $filename}
+  }
+
+  db_config pager_journal_modewal
+  file event $testdir test_shutdown {
+    drop_file test9wal file test9journal file test9cdb
+  }
+}
+
+finish_test

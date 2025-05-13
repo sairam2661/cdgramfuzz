@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix table
+
+proc create_table {} {
+  execsql {
+    DROP TABLE IF EXISTS table_foo
+  }
+  execsql {
+    CREATE TABLE table_foo(
+      id          NOT NULL,
+      name        NOT NULL,
+      position    NOT NULL,
+      department  NOT NULL,
+      join_date   NOT NULL,
+      salary      NOT NULL,
+      PRIMARY    , 
+      CHECK      ,
+      FULLTEXT   ,
+      UNIQUE     ,
+      INDEX      ,
+      FOREIGN    ,
+      CHECK      ,
+      REFERENCES
+    );
+  }
+}
+
+proc insert_data {} {
+  execsql {
+    INSERT INTO table_foo
+      VALUES
+      ( 1, 'John', 7.5, 'Sales', '2010-01-01', 50000.00, 
+      '1990-10-11', 1000, '1-4-10', 'Mia', 4, 'New York', 'A', '1-10-1991', 3, 'Downtown', '.', 5, 
+      10.50, 'B', 123.55, 1, 1, 4.20, 1, 'Y', '0', 100, 1, 
+      90000.00, 'London', '3rd December', '1991', 'Y', 'A', 1992, 1, 'London', 100.00, 2.10, 1, 
+      1, 'London', '1st December', 1500, 'A', 1000.00, 1, 'London', 2003.11, 2.10, 1200, 'Y', '3rd March', 
+      3500.00, 2.10, 'B', 4.50, 'Downtown', 1000.00, 7.5, 'Mia', '2002-02-20', 1, '1000-1200-1', 
+      1200.00, 0, '1997-07-25', 7.5, 1, '1991-12-17', 'A', 1000.00, '1999-07-20', 2.0, 2002, 'London', '3-15', 0, 3.00, 7, 11.00, 5.90, 500.00, 0, 1, 'Mia', 1.50, 0.5, 1, '4-15', 2.00, 2, 1997, 5.00, 1, 'A', 0.10)
+  }
+}
+
+proc test_insert {} {
+  set ans 0
+  set res1 "John John Downtown London Downtown"
+  set res2 "1990-10-11 1991-12-17 1991-12-17 1999-07-20"
+  set res3 "1997-07-25 2002-02-20 1991-12-17"
+  set res4 "New York London Downtown Downtown"
+  set res5 "50000.00 90000.00 1000.00 1200.00 1200.00"
+
+  do_execsql_test test_insert {
+    SELECT name FROM table_foo WHERE position='Downtown'
+  } $res1
+  do_execsql_test test_insert {
+    SELECT join_date FROM table_foo WHERE department='A'
+  } $res2
+  do_execsql_test test_insert {
+    SELECT salary FROM table_foo WHERE join_date LIKE '%1991%'
+  } $res3
+  do_execsql_test test_insert {
+    SELECT department FROM table_foo WHERE name IN 
+      SELECT DISTINCT name FROM table_foo
+  } $res4
+  do_execsql_test test_insert {
+    SELECT salary FROM table_foo WHERE salary BETWEEN 90000 AND 50000
+  } $res5
+  
+  set ans 0
+  return $ans
+}
+
+create_table
+insert_data
+set TESTNAME table
+list $TESTNAME
+set tcl_precision 17
+proc foo {} {
+  expr {0.1}
+}
+set foo 1
+test_insert
+proc insert_data {} {
+  insert_data
+}
+finish_test

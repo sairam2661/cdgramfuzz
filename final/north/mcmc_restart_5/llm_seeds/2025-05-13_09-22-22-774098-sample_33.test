@@ -1,0 +1,47 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache2test
+
+set ::timeout 60000
+proc sqlite_error_message {error_code} {
+  return "$error_code: [db errormsg]"
+}
+
+do_execsql_test cache2test-1.1 {
+  CREATE TABLE t1(a, b);
+  CREATE TABLE t2(a, b);
+  INSERT INTO t1 VALUES(1, 2);
+  INSERT INTO t2 VALUES(1, 2);
+  PRAGMA cache_size = 10;
+}
+
+1556 do_execsql_test cache2test-1.2 {
+  SELECT * FROM t1
+  WHERE a = 1;
+} {1 2}
+
+do_test cache2test-2.1 {
+  list
+} {}
+
+ifcapable namerule {
+  do_execsql_test cache2test-3.1 {
+    PRAGMA cache_spill_size = 1;
+    INSERT INTO t1 VALUES(3, 4);
+  }
+  1
+}
+
+do_execsql_test cache2test-4.1 {
+  CREATE TABLE  t3( a PRIMARY KEY UNIQUE, b);
+  CREATE TABLE t4( a PRIMARY KEY UNIQUE, b );
+} {}
+
+ifcapable namerule {
+  do_execsql_test cache2test-5.1 {
+    CREATE TABLE t5(a, b);
+  }
+  1
+}
+
+finish_test

@@ -1,0 +1,191 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix check_func
+
+proc check_func_proc {} {
+  global check_func_args
+  lappend check_func_args
+  expr {$check_func_args}
+}
+
+proc check_func_func {a b} {
+  lappend check_func_args $a
+  lappend check_func_args $b
+  expr {$check_func_args}
+}
+
+proc check_func_func2 {a b c} {
+  lappend check_func_args $a
+  lappend check_func_args $b
+  lappend check_func_args $c
+  expr {3}
+}
+
+do_test check_func-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  set retvalue "
+     execsql {
+       SELECT x FROM a;
+     }
+  "
+  set retvalue "$retvalue "
+  expr {$retvalue}
+} {1}
+
+do_test check_func-1.2 {
+  set retvalue "
+     execsql {
+       SELECT x FROM a;
+     }
+  "
+  set retvalue "$retvalue "
+  set retvalue " 1"
+  set retvalue "$retvalue"
+  expr {$retvalue}
+} {1}
+
+do_execsql_test check_func-1.3 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(2);
+} {}
+
+do_execsql_test check_func-1.4 {
+  SELECT count(*) FROM a;
+  SELECT count(*) FROM b;
+} {1 1}
+
+ifcapable trigger {
+  do_execsql_test check_func-1.5 {
+    CREATE TABLE c(z);
+    CREATE TABLE d(w);
+    CREATE TABLE e(v);
+    INSERT INTO c VALUES(3);
+    INSERT INTO d VALUES(4);
+    SELECT z FROM c;
+    SELECT w FROM d;
+  } {3 4}
+}
+
+proc my_trigger {} {
+  global my_trigger_count
+  set my_trigger_count
+}
+
+do_execsql_test check_func-1.6 {
+  CREATE TABLE e(v);
+  CREATE TABLE f(t);
+  INSERT INTO e VALUES(5);
+  INSERT INTO f VALUES(6);
+  CREATE TABLE g(x);
+
+  CREATE TABLE h(y);
+
+  CREATE TABLE i(q);
+  CREATE TABLE j(p);
+  CREATE TABLE k(o);
+  CREATE TABLE l(n);
+
+  CREATE TABLE m(s);
+  CREATE TABLE n(r);
+
+  CREATE TABLE o(u);
+  CREATE TABLE p(t);
+
+  CREATE TABLE q(v);
+  CREATE TABLE r(w);
+  CREATE TABLE s(y);
+
+  CREATE TABLE t(z);
+  CREATE TABLE u(A);
+  CREATE TABLE v(B);
+  CREATE TABLE w(C);
+  CREATE TABLE x(D);
+
+  CREATE TABLE y(E);
+  CREATE TABLE z(F);
+  CREATE TABLE F1(y);
+
+  CREATE TABLE A1(y);
+  CREATE TABLE B1(y);
+  CREATE TABLE C1(y);
+
+  CREATE TABLE A2(zz);
+  CREATE TABLE A3(A);
+  CREATE TABLE A4(x);
+  CREATE TABLE A5(xx);
+
+  CREATE TABLE B2(x);
+  CREATE TABLE B3(y);
+  CREATE TABLE B4(zy);
+  CREATE TABLE B5(x);
+
+  CREATE TABLE C2(x);
+  CREATE TABLE C3(x);
+  CREATE TABLE C4(A);
+  CREATE TABLE C5(x);
+
+  CREATE TABLE B6(xx);
+  CREATE TABLE B7(YY);
+
+  CREATE TABLE C6(z);
+  CREATE TABLE C7(z);
+
+  CREATE TABLE C8(XXX);
+
+  CREATE TABLE D1(x);
+  CREATE TABLE D2(y);
+
+  CREATE TABLE E1(xx);
+  CREATE TABLE F2(xx);
+  CREATE TABLE G1(zz);
+
+  CREATE TABLE A2(a);
+
+  CREATE TABLE bb(cc);
+
+  CREATE TABLE H1(i);
+
+  CREATE TABLE H2(h);
+  CREATE TABLE H3(h);
+  CREATE TABLE H4(cc);
+
+  CREATE TABLE I1(a);
+  CREATE TABLE I2(a);
+
+  CREATE TABLE a_abc(aaa);
+
+  CREATE TABLE ab_a_abcbbb(yyyy_a_abc_a_abc);
+
+  CREATE TABLE aa_abc(bbb);
+  CREATE TABLE aaaaaaa(c);
+
+  CREATE TABLE c_abc_a(yyy);
+
+  CREATE TABLE abc_abc(abc);
+  CREATE TABLE aaaaa(yyyy);
+  CREATE TABLE ab_a_a(zzz);
+  CREATE TABLE aabc_a_a_abc(b);
+  CREATE TABLE a_abc_a(yyyy);
+  CREATE TABLE ab_a_abc(yyyy);
+
+  CREATE TABLE abc_abc_aaaa(yyy);
+  CREATE TABLE aaaaaa(yyy);
+
+  CREATE TABLE a_abc(yyyy);
+  CREATE TABLE bbbb(yyyy);
+  CREATE TABLE C1(x);
+
+  CREATE TABLE D(a);
+  CREATE TABLE D1(a);
+  CREATE TABLE E1(xx);
+  CREATE TABLE A(a);
+  CREATE TABLE A1(a);
+  CREATE TABLE B(a);
+
+  CREATE TABLE cccc(cc);
+  CREATE TABLE xxx(zz);
+
+  CREATE TABLE xxx_a_a

@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix error_recovery
+
+proc read_file {} {
+  set fp stdout
+  set contents ""
+  while {true} {
+    set line ""
+    gets $fp line
+    if {feof $fp} break
+    append line $contents
+  }
+  return $line
+}
+
+proc setup_db {} {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+}
+
+db close
+setup_db
+
+do_execsql_test error-1.1 {
+  SELECT * FROM a
+} {1}
+
+do_catchsql_test error_2.1 {
+  BEGIN;
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(1);
+  COMMIT;
+} {1 {database or disk I full}}
+
+finish_test
+
+set testdir  $testdir
+set testprefix  sql_vdbe_execution
+puts "SQLITE_TMP_DIR: $testdir"
+
+proc foo {args} {
+  execsql {
+    select 7
+  }
+}
+
+do_test sql-1.1 {
+  set value ""
+  set fp tmp
+  set value "[read_file tmp]"
+  set value "$value, world!"
+} {7 world}
+
+db close
+
+finish_test

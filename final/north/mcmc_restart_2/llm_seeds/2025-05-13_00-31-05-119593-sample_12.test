@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+set testprefix query2
+
+proc query_proc {} {
+  global queryargs
+  lappend queryargs
+  expr {$queryargs}
+}
+
+proc query2_proc {} {
+  global query2args
+  lappend query2args
+  expr {$query2args}
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+} {1}
+
+do_execsql_test query-1.2 {
+  SELECT * FROM b
+} {5}
+
+ifcapable auto_vacuum {
+  catchsql {
+    CREATE TABLE c AS SELECT 5 AS z
+  }
+} {0 {}}
+
+do_test query-2.1 {
+  set queryargs {}
+  query_proc
+  expr {$queryargs eq {}}
+} {1}
+
+do_test query2-1.1 {
+  set query2args {}
+  query2_proc
+  set query2args "one two"
+  expr {$query2args eq "one two"}
+} {1}
+
+ifcapable truncate_opt {
+  catchsql {
+    DELETE FROM c WHERE 1
+  }
+} {0 {}}
+
+ifcapable window_function {
+  catchsql {
+    SELECT z FROM c AS OF 10
+  }
+} {0 {}}
+
+finish_test

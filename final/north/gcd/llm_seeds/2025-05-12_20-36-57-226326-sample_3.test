@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix check
+
+proc myfun {x y z} {
+  expr {$x eq $y}
+}
+
+proc myproc {} {
+  set testvar 123
+  set testvar foo
+  expr {$testvar eq foo}
+}
+
+do_test check-1.1 {
+  execsql {
+    CREATE TABLE test1(a);
+    INSERT INTO test1 VALUES(1);
+  }
+  execsql {SELECT a FROM test1}
+} {1}
+
+do_execsql_test check-1.2 {
+  BEGIN;
+  INSERT INTO test1 VALUES(2);
+  COMMIT;
+  SELECT a FROM test1;
+} {1 2}
+
+do_test check-1.3 {
+  set result 123
+  expr {$result eq 123}
+} {1}
+
+do_test check-1.4 {
+  set result foo
+  if { $result eq "foo" } {expr 1} else {expr 0}
+} {1}
+
+set dbhandle testdb
+
+try {
+  db dblink1 testdb1
+} on ok {}
+
+set testvar 5
+do_test check-1.5 {
+  set testvar
+} {5}
+
+do_test check-1.6 {
+  expr {1 2 3 eq 1}
+} {0}
+
+db dblink2 testdb2
+
+proc checkfunc {x y} {
+  expr {$x eq $y}
+}
+
+checkfunc 2 2
+
+finish_test

@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_fuzz
+
+proc sqlite_fuzz ProcName Args { foo $Args }
+
+do_test sqlite_fuzz-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1,'a');
+    INSERT INTO a VALUES(2,'b');
+  }
+  execsql {SELECT * FROM a WHERE x=1}
+} {1 a}
+
+do_execsql_test sqlite_fuzz-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(3,'c');
+  COMMIT;
+  SELECT * FROM a WHERE x=3;
+} {3 c}
+
+ifcapable journalMode {
+  do_execsql_test sqlite_fuzz-2.1 {
+    PRAGMA journal_mode;
+  } {WAL}
+
+  do_execsql_test sqlite_fuzz-2.2 {
+    PRAGMA journal_mode = 'DISABLE';
+    PRAGMA journal_mode;
+  } {DISABLE}
+
+  do_test sqlite_fuzz-3.1 {
+    llength sqlite_dbhandle
+  } {5}
+
+  do_test sqlite_fuzz-4.1 {
+    execsql {
+      SELECT sql FROM sqlite_master WHERE name='a';
+    }
+  } {CREATE TABLE a}
+
+  finish_test
+}
+
+do_execsql_test sqlite_fuzz-1.3 {
+  BEGIN;
+  INSERT INTO a VALUES(4,'d');
+  COMMIT;
+  SELECT * FROM a WHERE x=4;
+} {4 d}
+
+do_test sqlite_fuzz-2.3 {
+  list 2 3 4 1
+} {2 3 4 1}
+
+finish_test

@@ -1,0 +1,103 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix insert
+
+proc insert_proc {} {
+  global insertargs
+  lappend insertargs
+  expr {$insertargs eq "hello"}
+}
+
+proc drop_proc {} {
+  global dropargs
+  lappend dropargs
+  expr {$dropargs eq "table"}
+}
+
+proc select_proc {} {
+  global selectargs
+  lappend selectargs
+  expr {$selectargs eq "name"}
+}
+
+do_test insert-1.1 {
+  execsql {
+    CREATE TABLE users(id, name);
+    INSERT INTO users VALUES(1, 'John');
+    INSERT INTO users VALUES(2, 'Jane');
+  }
+  execsql {SELECT * FROM users}
+} {1 John 2 Jane}
+
+do_execsql_test insert-1.2 {
+  INSERT INTO users VALUES(3, 'Bob');
+  SELECT count(*) FROM users;
+} {3}
+
+do_execsql_test insert-1.3 {
+  INSERT INTO users(name) VALUES('Alice');
+  SELECT * FROM users;
+} {1 John 2 Jane 3 Bob 4 Alice}
+
+ifcapable tempdb {
+  do_test insert-1.4 {
+    sqlite3 db2
+    db2 eval {CREATE TABLE tempdb_table(a)}
+    sqlite3 db
+    execsql {
+      PRAGMA foreign_keys=1;
+      SELECT * FROM tempdb_table;
+    }
+  } {}
+}
+
+proc drop_table {} {
+  global dropargs
+  lappend dropargs
+  execsql {
+    drop_table
+  }
+}
+
+do_test drop-1.1 {
+  execsql {
+    CREATE TABLE users(id, name);
+    INSERT INTO users VALUES(1, 'John');
+    INSERT INTO users VALUES(2, 'Jane');
+  }
+  drop_table
+  execsql {SELECT * FROM users}
+} {}
+
+do_execsql_test select-1.1 {
+  SELECT name FROM users
+} {John Jane}
+
+do_execsql_test select-1.2 {
+  SELECT * FROM users;
+} {1 John 2 Jane}
+
+finish_test
+
+do_test set-1.1 {
+  set args "hello"
+  set args
+} {hello}
+
+do_test append-1.1 {
+  set args "hello"
+  append args " world"
+  set args
+} {hello world}
+
+do_test lappend-1.1 {
+  set args "hello"
+  lappend args "world"
+  set args
+} {hello world}
+
+do_test expr-1.1 {
+  expr {1}
+} {1}
+
+finish_test

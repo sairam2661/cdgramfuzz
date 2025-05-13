@@ -1,0 +1,42 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix temp
+
+proc exec_nolog {sql {db main}} {
+  set rc {}
+  set err {}
+  set sqlst {}
+  eval db_eval $db {
+    set sqlite_status {SQLITE_OK}
+    catchsql $sql
+    set sqlite_status
+  } {result $rc error $err sqlite_status $sqlite_status sql $sqlst}
+  return $sqlite_status
+}
+
+do_execsql_test temp-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+} {}
+
+do_execsql_test temp-1.2 {
+  SELECT * FROM a WHERE x='1' 
+} {}
+
+foreach {mode file} {
+  WAL waltest
+  DELETE deletetest
+  NONE inmemtest
+} {
+  ifcapable $mode {
+    do_execsql_test tempMODE3.1 {
+      PRAGMA journal_mode = '$mode';
+      PRAGMA synchronous = 'OFF'; 
+      PRAGMA temp_store = 'MEMORY';
+    } {}
+  } else {
+    finish_test
+  }
+}
+
+finish_test

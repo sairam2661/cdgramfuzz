@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+proc sync2_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {1}
+}
+
+do_ioerr_test sync2.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT x FROM a}
+} {1}
+
+do_execsql_test sync2.2 {
+  ATTACH 'test.db WAL' AS walddb
+  execsql {
+    SELECT rowid FROM main WHERE x = 1;
+  } walddb
+} {1}
+
+proc sync2_func {n} {
+  for {set i 0} {$i ne $n} {incr i} {
+    expr {$i}
+  }
+}
+
+do_execsql_test sync2.3 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b SELECT 3;
+  }
+  SELECT DISTINCT y FROM b
+} {3}
+
+do_execsql_test sync2.4 {
+  DELETE FROM b
+  execsql {SELECT DISTINCT y FROM b}
+} {}
+
+do_execsql_test sync2.5 {
+  execsql {
+    CREATE INDEX idx ON b(y);
+    SELECT count(*) FROM b;
+  }
+} {1}
+
+do_execsql_test sync2.6 {
+  INSERT INTO b VALUES(2);
+  SELECT y FROM b
+} {3 2}
+do_cleanup_test sync2.7 {
+  execsql {SELECT y FROM b}
+} {}
+finish_test

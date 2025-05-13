@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_db
+
+set ::timeout 60000
+
+proc create_complex_table {} {
+  execsql {
+    CREATE TABLE employee(
+      id         PRIMARY KEY,
+      name       NOT NULL,
+      salary     NOT NULL,
+      department NOT NULL,
+      address    NOT NULL,
+      email      NOT NULL
+    );
+  }
+}
+
+proc populate_complex_table {} {
+  execsql {
+    CREATE INDEX idx_employee_name ON employee(name);
+    CREATE INDEX idx_employee_department ON employee(department);
+    INSERT INTO employee(id, name, salary, department, address, email)
+    VALUES 
+    (1, 'John Doe', 50000.00, 'Sales', '123 Main St', 'john@example.com');
+    INSERT INTO employee(id, name, salary, department, address, email)
+    VALUES 
+    (2, 'Jane Doe', 60000.00, 'Marketing', '456 Elm St', 'jane@example.com');
+  }
+}
+
+proc query_complex_table {} {
+  do_execsql_test complex_db_query {
+    SELECT name FROM employee WHERE salary BETWEEN 50000 AND 60000
+  } {John Doe Jane Doe}
+}
+
+proc truncate_complex_table {} {
+  execsql {
+    DELETE FROM employee
+  }
+}
+
+proc drop_complex_table {} {
+  execsql {
+    DROP TABLE employee
+  }
+}
+
+create_complex_table
+populate_complex_table
+query_complex_table
+
+do_execsql_test complex_db_commit {
+  BEGIN;
+  INSERT INTO employee(id, name, salary, department, address, email)
+  VALUES 
+  (3, 'Jim Smith', 70000.00, 'IT', '789 Oak St', 'jim@example.com');
+  COMMIT;
+} {3 Jim Smith IT 789 Oak St jim}
+
+do_execsql_test complex_db_rollback {
+  BEGIN;
+  INSERT INTO employee(id, name, salary, department, address, email)
+  VALUES 
+  (4, 'Jill Johnson', 80000.00, 'Finance', '321 Cedar St', 'jill@example.com');
+  ROLLBACK;
+} {}
+
+drop_complex_table
+truncate_complex_table
+
+finish_test

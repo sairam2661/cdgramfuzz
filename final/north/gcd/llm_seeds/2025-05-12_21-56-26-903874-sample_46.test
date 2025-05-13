@@ -1,0 +1,102 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc count_rows {} {
+  set rows 0
+  foreach row $::db rows {
+    incr rows
+  }
+  return $rows
+}
+
+proc query_setup {} {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    INSERT INTO t1 VALUES(1, 2, 3);
+  }
+}
+
+do_test query-1.1 {
+  query_setup
+  set rows 0
+  set rows $::db rows
+  expr {$rows}
+} {1}
+
+do_execsql_test query-1.2 {
+  SELECT a FROM t1 WHERE a = 1
+} {1}
+
+do_test query-1.3 {
+  execsql {
+    CREATE TABLE t2(a, b, c);
+    INSERT INTO t2 VALUES(1, 2, 3);
+  }
+  execsql {SELECT * FROM t2}
+} {{1 2 3}}
+
+ifcapable wal {
+  do_execsql_test query-1.4 {
+    PRAGMA journal_mode = 'WAL';
+    PRAGMA synchronous = 0;
+  } {}
+}
+
+do_test query-1.5 {
+  execsql {
+    CREATE TABLE t3(a, b, c);
+    INSERT INTO t3 VALUES(4, 5, 6);
+  }
+  lindex $::db last_err
+} {}
+
+proc complex_query {} {
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(7, 8, 9);
+    ROLLBACK;
+  }
+}
+
+ifcapable trigger {
+  do_test query-1.6 {
+    query_setup
+    set tnames {}
+    foreach tn $::db trigger_list {
+      lappend tnames $tn
+    }
+    expr {$tnames}
+  } {t2_rowchange}
+
+  complex_query
+  do_execsql_test query-1.7 {
+    SELECT * FROM t1
+  } {{1 2 3}}
+
+  do_test query-1.8 {
+    query_setup
+    execsql {
+      CREATE TRIGGER t2_rowchange
+      BEFORE UPDATE ON t2
+      FOR EACH ROW
+      BEGIN
+        UPDATE t2 SET a ROW VALUES 10 WHERE old_rowid ROW VALUES current_rowid
+      END
+    }
+    execsql {
+      SELECT * FROM t2
+    }
+  } {{1 2 3}}
+
+  complex_query
+  do_execsql_test query-1.9 {
+    SELECT * FROM t1
+  } {{1 2 3}}
+
+  do_execsql_test query-1.10 {
+    SELECT * FROM t3
+  } {{}}
+}
+
+finish_test

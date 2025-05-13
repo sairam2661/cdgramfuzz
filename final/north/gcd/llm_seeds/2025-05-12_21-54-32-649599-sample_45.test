@@ -1,0 +1,41 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix viewupdate
+
+proc view_update_proc {} {
+  set db master
+  execsql "CREATE TABLE t1(a, b)"
+  execsql "CREATE VIEW v AS SELECT * FROM t1"
+  execsql {
+    INSERT INTO t1 VALUES('one', 'first');
+    INSERT INTO t1 VALUES('two','second');
+    INSERT INTO t1 VALUES('three', 'third');
+  }
+}
+
+do_test view-1.1 {
+  dbmaster eval {SELECT * FROM v}
+} {one first two second three third}
+
+do_test view-1.2 {
+  dbmaster eval {CREATE TABLE t2(c, d)}
+  dbmaster eval {INSERT INTO t2 VALUES('one', 'first')}
+  dbmaster eval {UPDATE t2 SET c 'new_one' WHERE c 'one' }
+  dbmaster eval {INSERT OR REPLACE INTO t2 VALUES 'new_one' 'new_first' }
+  dbmaster eval {SELECT * FROM v}
+} {new_one new_first two second three third}
+
+do_test view-1.3 {
+  dbmaster eval {CREATE VIRTUAL TABLE t3 USING fts3}
+  dbmaster eval {INSERT INTO t3(docid, token) VALUES(1, 'hello')}
+  dbmaster eval {INSERT INTO t3 VALUES(2, 200, 'world')}
+  dbmaster eval {INSERT INTO t3(docid, token) VALUES(3,'sqlite')}
+  dbmaster eval {SELECT * FROM v}
+} {new_one new_first two second three third}
+
+do_test view-1.4 {
+  dbmaster eval {CREATE TABLE IF NOT EXISTS tempdb2 AS SELECT t3 FROM t3 WHERE t3 LIKE 'hello'}
+  dbmaster eval {SELECT v FROM v}
+} {new_one new_first two second three third}
+
+finish_test

@@ -1,0 +1,147 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000
+ifcapable vtab {
+  set testprefix $testprefix"vtab_"
+}
+
+proc db_handle_parent {db} {
+  return $::DB
+}
+
+proc db_handle_child {db} {
+  return $::CHILDB
+}
+
+proc db_handle_slave {db} {
+  return $::SLAVE
+}
+
+proc test_multi {args} {
+  if { $args eq "start" } {
+    set syncargs {}
+    set CHILDB {}
+    set SLAVE {}
+    set DB {}
+  } elseif { $args eq "sync" } {
+    set syncargs {}
+    catch { db_release_unused_handles }
+    execsql {
+      PRAGMA journal_mode="WAL";
+      PRAGMA synchronous=2;
+      PRAGMA page_size=1024;
+      PRAGMA secure_delete=1;
+      PRAGMA memstat;
+      PRAGMA integrity_check;
+    }
+  } elseif { $args eq "slave" } {
+    set SLAVE sqlite3 CHILDB 
+  }
+}
+
+proc db_release_child {db} {
+  foreach child $::CHILD {
+    close $child
+  }
+  unset CHILD
+}
+
+do_execsql_test multi-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(2);
+}
+{0 {}}
+
+do_execsql_test multi-1.2 {
+  PRAGMA cache_size=1000;
+  PRAGMA temp_cache_size=1000;
+  PRAGMA page_size=1024;
+  PRAGMA cache_spill=10;
+}
+{}
+
+do_setup_test multi_2.1 {
+  set CHILDB sqlite3
+  set DB sqlite3
+}
+
+do_execsql_test multi-2.2 {
+  PRAGMA journal_mode=3;
+  PRAGMA synchronous=3;
+  PRAGMA temp_store=2;
+  CREATE TABLE t1(a, b);
+}
+{}
+
+do_test multi-3.1 {
+  llength $::CHILD
+} {0}
+
+do_test multi-3.2 {
+  set res 0
+  foreach {tid db} $::CHILD {
+    set res $res
+    set db timeout 60
+    set res $res
+    db eval {PRAGMA synchronous=2}
+  }
+  set res
+} {0}
+
+test_multi sync
+set res 0
+foreach {tid db} $::CHILD {
+    set res $res
+    set db timeout 60
+    db eval {PRAGMA synchronous=2}
+}
+
+do_execsql_test multi-4.1 {
+  INSERT INTO a VALUES(3);
+}
+{3}
+
+test_multi start
+ifcapable vtab {
+  do_test multi-4.2 {
+    catch { sqlite3 vtab_db WAL_test }
+  } {1}
+} else {
+  finish_test
+}
+
+for {set i 0} {$i 19} {incr i} {
+  execsql {
+    INSERT INTO b VALUES('a');
+  } SLAVE
+}
+
+test_multi sync
+set start_time {clock format $::glob NOW}
+set done 0
+
+do_test multi-5.1 {
+  set res 0
+
+  foreach {tid db} $::CHILD {
+    set res $res
+    db timeout 60
+    db eval {PRAGMA temp_store=2; CREATE TABLE t2(x)}
+  }
+  set res
+} {0}
+
+for {set i 0} {$i 3} {incr i} {
+  execsql {SELECT * FROM t2} SLAVE
+}
+
+do_test multi-5.2 {
+  puts stdout
+  finish_test
+} {} 
+
+finish_test

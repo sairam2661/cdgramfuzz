@@ -1,0 +1,171 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+set testprefix2 multi_conn
+set testprefix3 large_insert
+
+proc create_database {} {
+  global db
+  sqlite3 db testdb
+}
+
+proc delete_database {} {
+  execsql {DELETE FROM a} testdb
+  execsql {DELETE FROM sqlite_master} testdb
+  execsql {VACUUM} testdb
+  close testdb
+  unset testdb
+}
+
+proc execute_sql {sql args} {
+  uplevel $sql args
+}
+
+proc async_insert {} {
+  for {set i 0} {$i 10} {incr i} {
+    execute_sql {INSERT INTO a VALUES(1)}
+  }
+}
+
+proc execsql_multi {sql args} {
+  uplevel $sql args
+}
+
+do_test multi_thread-1.1 {
+  execute_sql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql_multi {SELECT count(*) FROM a}
+} {1}
+
+ifcapable threads {
+  ifcapable threadshared_data {
+    async_insert
+    execsql_multi {SELECT count(*) FROM a;}
+  }
+} else {
+  for {set i 0} {$i 10} {incr i} {
+    execute_sql {INSERT INTO a VALUES(1)}
+  }
+  execsql_multi {SELECT count(*) FROM a;}
+}
+
+do_execsql_test multi_conn-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+} {1}
+
+do_test multi_conn-1.2 {
+  set db1 {}
+  set db2 {}
+  foreach pid $::tcl_interpreter {
+    set db1_sql {
+      CREATE TABLE b(y);
+      INSERT INTO b VALUES(2);
+      SELECT count(*) FROM b;
+    }
+    set db2_sql {
+      CREATE TABLE c(z);
+      INSERT INTO c VALUES(3);
+      SELECT count(*) FROM c;
+    }
+    set db1 $pid
+    set db2 $pid
+    set result1 4
+    set result2 4
+    ifcapable threads {
+      exec $pid $db1_sql
+      exec $pid $db2_sql
+    } else {
+      global db
+      execsql $db1 $db1_sql
+      execsql $db2 $db2_sql
+    }
+    switch $pid {
+      "db1" {
+        set result3 $result1
+        set result4 $result2
+      }
+      "db2" {
+        set result3 $result2
+        set result4 $result1
+      }
+    }
+    if {$result3 eq 4} {unset pid}
+  }
+  llength $db1
+} 1
+
+set db1 {}
+set db2 {}
+foreach pid $::tcl_interpreter {
+  set db1_sql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(2);
+    SELECT count(*) FROM b;
+  }
+  set db2_sql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(3);
+    SELECT count(*) FROM c;
+  }
+  set db1 $pid
+  set db2 $pid
+  set result1 4
+  set result2 4
+  ifcapable threads {
+    set results1 $pid
+    set results2 $pid
+    set db2 $pid
+    exec $pid $db1_sql
+    set results2 $pid
+    set db1 $pid
+    switch $pid {
+      "db2" {
+        set db1 0
+        set results1 0
+      }
+      else {
+        set results1 $results2
+      }
+    }
+    exec $pid $db2_sql
+    set results1 $results1
+    set results2 $results2
+    set result1 $result2
+    set result2 $result1
+  } else {
+    global db
+    execsql $db1 $db1_sql
+    execsql $db2 $db2_sql
+  }
+  lappend results $results1
+  lappend results $results2
+  
+  set results2 0
+  set results 0
+
+  ifcapable threads {
+    switch $pid {
+      "db1" {
+        execsql $db2 $db2_sql
+      }
+      "db2" {
+        execsql $db1 $db1_sql
+      }
+    }
+  } 
+  set db1 42
+  set db1 $results
+  if {$db1 eq 42} {unset pid results db1}
+}
+
+do_execsql_test large_insert-1.1 {
+  CREATE TABLE d(x);
+  BEGIN;
+  INSERT INTO d VALUES(1);
+  INSERT INTO d SELECT x;  INSERT INTO d SELECT x; INSERT INTO d SELECT x;
+  COMMIT;
+  SELECT count(*) FROM d;
+} {10

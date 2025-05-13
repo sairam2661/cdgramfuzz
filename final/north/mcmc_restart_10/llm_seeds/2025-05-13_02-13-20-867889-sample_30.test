@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+proc transaction_proc {} {
+  global global_transaction
+  incr global_transaction
+}
+
+proc error_proc {} {
+  global last_execsql_err
+  return $last_execsql_err
+}
+
+proc cleanup {} {
+  global temp db
+  foreach x $temp {
+    db eval {DELETE FROM $x}
+  }
+}
+
+do_begin_test 1.1 {
+  cleanup
+  set temp {}
+  db eval {
+    CREATE TABLE foo(a, b);
+    CREATE TABLE bar(c, d);
+  }
+  lappend temp foo
+  lappend temp bar
+  set global_transaction 0
+  set global_db 0
+  set last_execsql_err 0
+}
+catchsql {
+  INSERT INTO foo VALUES(1, 2);
+  INSERT INTO bar VALUES(3, 4);
+  BEGIN;
+}
+error_proc
+
+do_test 1.2 {
+  execsql {
+    INSERT INTO bar VALUES(5, 6);
+    COMMIT;
+    SELECT * FROM foo;
+  }
+} {1 2}
+
+do_execsql_test 1.3 {
+  SELECT * FROM foo
+}
+{1 2}
+
+do_execsql_test 1.4 {
+  INSERT INTO bar VALUES(7, 8);
+}
+
+ifcapable journalMode {
+  execsql {
+    PRAGMA journal_mode = 'wal'
+  }
+}
+
+do_execsql_test 2.1 {
+  PRAGMA journal_mode
+}
+{wal}
+
+do_begin_test 3.1 {
+  set temp {}
+  execsql {
+    CREATE TABLE baz(a, b);
+  }
+  lappend temp baz
+}
+do_execsql_test 3.2 {
+  BEGIN;
+  INSERT INTO baz VALUES(10, 11);
+}
+{1 {table baz is being written by another process}}
+
+do_execsql_test 3.3 {
+  SELECT * FROM bar;
+}
+{3 4 5 6 7 8}
+
+cleanup
+finish_test

@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix extmisc
+
+proc extmisc_func {} {
+  global extmiscargs
+  lappend extmiscargs
+  expr {1}
+}
+
+do_test extmisc-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES('apple');
+    INSERT INTO b VALUES('banana');
+  }
+  execsql {SELECT * FROM b}
+} {apple banana}
+
+do_execsql_test extmisc-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES('cherry');
+  COMMIT;
+  SELECT * FROM b;
+} {apple banana cherry}
+
+do_test extmisc-1.3 {
+  execsql {
+    DROP TABLE b
+  }
+  execsql {SELECT * FROM b}
+} {}
+
+proc extmisc_func2 {} {
+  global extmiscargs2
+  lappend extmiscargs2
+  expr {1}
+}
+
+do_test extmisc-2.1 {
+  set extmiscargs2 {}
+  execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(1);
+  }
+  set extmiscargs2
+} {}
+
+do_execsql_test extmisc-2.2 {
+  BEGIN;
+  INSERT INTO c VALUES(2);
+  COMMIT;
+  SELECT * FROM c;
+} {1 2}
+
+ifcapable auth {
+  do_test extmisc-3.1 {
+    set res {}
+    set res 1
+    expr $res
+  } 1
+}
+
+finish_test

@@ -1,0 +1,40 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbtune
+
+proc dbtune_proc {} {
+  db eval {PRAGMA page_size=4096}
+  db eval {PRAGMA cache_size=100000}
+  db eval {PRAGMA synchronous=2}
+  db eval {PRAGMA journal_mode = 'persist' }
+}
+
+do_test dbtune-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  execsql {
+    CREATE INDEX i1 ON t1(x);
+  }
+  execsql {
+    ANALYZE t1
+    ANALYZE INDEX i1
+  }
+} {}
+
+do_execsql_test dbtune-1.2 {
+  SELECT sql FROM sqlite_master WHERE name='i1'
+} {}
+
+ifcapable fts3 {
+  do_execsql_test dbtune-1.3 {
+    CREATE TABLE t_a(a);
+    CREATE INDEX a2 ON t_a(a);
+    CREATE TABLE t_b(b);
+    SELECT sql FROM sqlite_master WHERE name='a2'
+  } {}
+}
+
+set sqlite_limit temp 10000000
+
+finish_test

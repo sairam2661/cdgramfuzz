@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl 	                                             
+set testprefix indexcorr
+
+file mkdir testdb
+set dbinfo "testdb.db:journal_mode=wal:temp_store=default"
+set tmp_dir "testdb/temp"
+file mkdir $tmp_dir
+
+proc create_table {} {
+  global db
+  execsql {
+    CREATE TABLE t(a PRIMARY KEY, b UNIQUE, c);
+  }
+}
+
+proc insert_values {} {
+  global db
+  execsql {
+    INSERT INTO t VALUES
+      (1, 'one', 'one_c');
+    INSERT INTO t VALUES
+      (2, 'two', 'two_c');
+  }
+}
+
+proc do_catchsql_test {setup query} {
+  set rc {}
+  set err {}
+  set sb {}
+  eval $setup
+  while { 1 } {
+    set rc 0
+    set err {}
+    unset sb
+    if { $rc } { break }
+  }
+  set ans {}
+  while { 1 } {
+    set {ans $sb} $query
+    set rc $err
+    set sb {}
+    if { $rc } { break }
+  }
+  return { $rc $ans }
+}
+
+proc close_fallback_journal {db} {
+  sql_eval $db {
+    PRAGMA page_size=1024
+  }
+  sql_eval $db {
+    PRAGMA journal_mode=0
+  }
+  sql_eval $db {
+    PRAGMA journal_mode=1
+  }
+}
+
+test {
+  query {
+    CREATE TABLE a(x PRIMARY KEY);
+    INSERT INTO a VALUES(1);
+    PRAGMA journal_mode;
+  }
+  res {
+    delete a
+    PRAGMA journal_mode
+  }
+} {0 wal}
+
+do_test indexcorr-1.1 {
+  create_table
+  insert_values
+  set t2 ""
+  set t1 ""
+  foreach row {
+    execsql {SELECT * FROM t WHERE a = 2}
+  } {2 two two_c}
+  execsql {SELECT * FROM t WHERE b = 'two'}
+  lappend t1 {{2 two two_c}}
+} {{2 two two_c} 2 true 1 true 3 false 3 false 2 false}
+
+ifcapable wal_journal {
+  ifcapable wal_journal {
+    eval do_catchsql_test {
+      sqlite3 db2 testdb
+      execsql {
+        CREATE TABLE y(x UNIQUE, b);
+        INSERT INTO y VALUES(1, 'one');
+      }
+    } { PRAGMA journal_mode='wal' }
+  }
+  close_fallback_journal db
+}
+
+finish_test

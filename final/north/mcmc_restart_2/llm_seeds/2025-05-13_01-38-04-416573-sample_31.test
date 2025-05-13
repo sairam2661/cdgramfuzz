@@ -1,0 +1,168 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc check_query {x} {
+  uplevel "do_execsql_test [concat $testprefix-$x { 1.1.1.1}] {$x}"
+}
+
+proc do_test_sql {x} {
+  uplevel "do_test $testprefix-$x {$x}"
+}
+
+proc setup_test {x} {
+  set db open Foley
+  do_execsql_test $testprefixSetup_$x {
+    PRAGMA journal_mode = 'delete';
+    PRAGMA synchronous='normal';
+    CREATE TABLE t1(k UNIQUE, c);
+  }
+}
+
+proc teardown_test {db x} {
+  do_execsql_test $testprefixTearDown_$x {
+    DROP TABLE t1
+  }
+  db close
+}
+
+proc do_test {x} {
+  setup_test $x
+  set db Foley
+  do_execsql_test $x {
+    INSERT INTO t1 VALUES('a', 1);
+    INSERT INTO t1 VALUES('b', 2);
+  }
+  ifcapable truncate_opt {
+    set z {
+      CREATE TABLE t2 AS SELECT c FROM t1
+      UNION ALL
+      SELECT 123 FROM t1
+    }
+  } else {
+    set z {
+      SELECT c FROM t1
+      UNION ALL
+      SELECT 123 FROM t1
+    }
+  }
+  do_execsql_test $x {
+    SELECT c FROM t1
+  }
+  do_test_sql $x
+  do_test_sql $x
+  execsql {
+    INSERT INTO t1 VALUES('test', 456)
+  }
+    do_test_sql "test case with select c from t1"
+  teardown_test Foley $x
+}
+
+proc finish_test {} {
+  do_test sync_commit_test_1 {
+    catchsql {
+      SELECT c FROM t1
+    }
+  } {1 {no such table t1}}
+}
+
+setup_test 1
+do_test_sql 2.3
+do_execsql_test sync-1.1 {
+  PRAGMA journal_mode = 'delete';
+  PRAGMA synchronous='normal'
+}
+   
+   
+   
+   
+  
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  
+
+   
+   
+   
+   
+   
+   
+ 
+
+   
+  
+   
+ 0.25  etsup
+
+
+  50.05 46 tsetups   ttest1     
+ 15.85 20 tteardown ttest2     
+ finish_tewt1
+ do_test sync_commit_test_1 {
+   
+  catchsql {
+    SELECT c FROM t2
+    DOme
+    SELECT a FROM t2
+  }
+} {1 {SQL error or missing database}}
+
+do_test sync_commit_test_2 {
+  catchsql {
+    SELECT * FROM t2
+    WHERE c ='missingrow'
+  }
+} {1 {SQL error or missing database}}
+
+catch {unset sqlite_db Foley}
+    
+do_test sync_commit_test_3 {
+  catchsql {
+    SELECT count(*) FROM t2
+  }
+} {1 {SQL error or missing database}}
+  
+do_test sync_commit_test_4 {
+  catchsql {
+    SELECT a FROM t1 WHERE k = 'test' 
+  }
+} {1 {SQL error or missing database}}
+finish_test

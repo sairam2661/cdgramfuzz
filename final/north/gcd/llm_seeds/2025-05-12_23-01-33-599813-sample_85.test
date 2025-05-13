@@ -1,0 +1,189 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_query {arg} {
+  regsub {SELECT} $arg EXPLAIN_PLAN noerr
+}
+
+proc check_indexes {db} {
+  set indexes {}
+  set stmt "PRAGMA index_list;"
+  set results {}
+  set results2 {}
+
+  try {
+    while {$db eval $stmt} {
+      set name "Prism_Index_[lindex [$db eval $stmt] 0]"
+
+      db eval "EXPLAIN $name EXPLAIN PLAN;" o  {}
+       foreach {a b c d} $o break
+      lappend indexes $name
+      try {
+        db eval "PRAGMA index_info($name);"
+        lappend results  $name
+      } on error {} {
+        if { $c ne ""} {
+        set results2 $c
+        }
+      } finally {
+        db eval "PRAGMA index_info($name);"
+      }
+
+    }
+  } on error {msg code} {
+    msg $code $msg
+    return
+  }
+  return $results $results2
+}
+
+proc fuzz_query {arg} {
+  regsub {SELECT} $arg EXPLAIN PLAN noerr
+}
+
+set sqlite_settings {
+  {
+    type query
+    value {
+      CREATE TABLE t1(
+        x1,
+        y1,
+        x2,
+        y2,
+        x3,
+        y3,
+        x4,
+        y4
+      );
+
+      CREATE INDEX i1 ON t1(x1);
+      CREATE INDEX i2 ON t1(y1);
+      CREATE INDEX i3 ON t1(x2);
+      CREATE INDEX i4 ON t1(y2);
+      CREATE INDEX i5 ON t1(x3);
+      CREATE INDEX i6 ON t1(y3);
+
+      CREATE TABLE t2(
+        x5,
+        y5,
+        x6,
+        y6
+      );
+
+      INSERT INTO t2 VALUES(10,2,20,4,30,6);
+
+      INSERT INTO t1
+      VALUES(1,2,3,4,5,6,7,8,10,10,30,40,50,60)
+    }
+  }
+}
+
+proc write_result {res error} {
+  if { $error eq "" } {
+    puts $res
+  } else {
+    puts "ERROR: $res $error"
+  }
+}
+
+proc run_test {data} {
+  set res {}
+  if { $data ne "" } {
+    set db sqlite_db
+    catch { sqlite3 db {memory}}
+
+    set results {}
+
+    set data "[execsql [set data]]"
+    try {
+      catchsql $data
+      execsql {SELECT * FROM t1;}
+      execsql {SELECT * FROM t2;}
+      set results $results
+    } on error {msg code} {
+      write_result $results $error
+      write_result $msg $code
+    } on Ok {$ok $res} {
+      write_result $results $error
+      write_result $res $code
+    } finally {
+      if { $ok ne "1" } {
+        close db
+      }
+    }
+  }
+} 
+
+run_test {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1,2,3);
+  }
+  execsql {
+    SELECT count(*) FROM a
+  }
+}
+
+run_test {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(4,5,6);
+    COMMIT;
+  }
+  execsql {SELECT count(*) FROM a}
+}
+
+do_test fuzz-1.1 {
+  uplevel run_test {
+    execsql {
+      BEGIN;
+      INSERT INTO a VALUES(7,8,9);    
+      COMMIT;
+    }
+    set syncargs {}
+    proc sync_proc {} {
+      global syncargs
+      lappend syncargs
+      expr {llength $syncargs}
+    }
+    call sync_proc
+  }
+} {3}
+
+do_test fuzz-1.2 {
+  uplevel run_test {
+    execsql {
+      DROP TABLE a
+    }
+    set syncargs {}
+    proc sync_proc {} {
+      global syncargs
+      lappend syncargs
+      expr {llength $syncargs}
+    }
+    call sync_proc
+  }
+} {0}
+
+do_catchsql_test fuzz{
+  2.1
+  1
+  {"SELECT * FROM t2"}
+  1 {"no such table: t2;"} 
+}
+
+proc execsql {cmd} {
+  uplevel "[list db eval $cmd]"
+}
+
+try {
+  db eval "PRAGMA journal_mode = WAL;set mainjournal_size_limit=700000000 "
+  check_indexes sqlite3
+} on error {msg code} {
+  msg $code $msg
+} finally {
+  try {
+    set sqlite_db database db
+    finish_test
+  } on error {msg code

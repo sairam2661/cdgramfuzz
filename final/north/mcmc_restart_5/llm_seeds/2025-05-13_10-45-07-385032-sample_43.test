@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+set ::timeout 60000
+
+proc run_test {name sql args} {
+  global db
+  do_execsql_test $name {
+    $sql
+  } $args
+}
+
+proc query_sql {name query args} {
+  global db
+  do_test $name {
+    query_func $db $query
+  } $args
+}
+
+proc func query_func {db query} {
+  db eval $query
+}
+
+proc exec_catchsql {name sql args} {
+  do_catchsql_test $name $sql $args
+}
+
+proc table_check {name sql args} {
+  do_test $name {
+    db eval $sql
+  } $args
+}
+
+ifcapable journalMode {
+  set journal_mode "WAL"
+} else {
+  set journal_mode "DELTA"
+}
+
+set wal_mode "wal"
+set pager_size 32768
+
+run_test sync2.1 {
+  SELECT name FROM sqlite_master;
+} {}
+run_test sync2.2 {
+  CREATE TABLE a(x);
+} {}
+run_test sync2.3 {
+  SELECT name FROM a;
+} {{}}
+run_test sync2_3.1 {
+  DROP TABLE a
+} {}
+do_test sync2.4 {
+  execsql {
+    CREATE VIRTUAL TABLE t1 USING fts5
+  }
+  execsql {
+    INSERT INTO t1(docid, rowid, doc)
+    VALUES(1, 1, 'a b c')
+  }
+  execsql {
+    INSERT INTO t1(docid, rowid, doc)
+    VALUES(2, 2, 'd e f')
+  }
+  db eval {
+    SELECT t1 FROM t1
+  }
+} {c a b d e f}
+do_test sync2.5 {
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+} {a t1}
+
+exec_catchsql sync2_6.1 {
+  INSERT INTO t1(docid, rowid, doc) VALUES(1000, 1000, 'This is the 1000th insertion')
+} {1 {table t1 is not empty}}
+exec_catchsql sync2_7.1 {
+  PRAGMA page_size = 4096
+} {0 {}}
+ifcapable journalMode {
+  run_test sync2.8 {
+    pragma journal_mode
+  } $journal_mode
+}
+run_test sync2.9 {
+  pragma synchronous
+} 2
+execsql sync2.10 {
+  pragma wal_checkpoint
+}
+do_test sync2.11 {
+  execsql {
+    SELECT * FROM t1
+  }
+} {1 1 a b c 2 2 d e f 1000 1000 This is the 1000th insertion}
+do_test sync2.12 {
+  execsql "
+    DROP TABLE t1;
+  "
+} {}
+finish_test

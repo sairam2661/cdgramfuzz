@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc run_query {db query} {
+  execsql $query $db
+}
+
+proc create_table {db table_name columns} {
+  execsql "CREATE TABLE \$table_name ($columns);" $db
+}
+
+proc add_data {db table_name data} {
+  execsql "INSERT INTO $table_name VALUES($data);" $db
+}
+
+proc delete_data {db table_name} {
+  execsql "DELETE FROM $table_name;" $db
+}
+
+proc count_data {db table_name} {
+  set result 0
+  foreach row {
+    execsql "SELECT * FROM $table_name;" $db
+  }
+  return $result
+}
+
+set db open
+
+set results {}
+do_test complex-1.1 {
+  create_table $db "my_table" "id INTEGER, value TEXT;"
+  add_data $db "my_table" "1 'a'"
+  add_data $db "my_table" "2 'b'"
+  add_data $db "my_table" "3 'c'"
+  count_data $db "my_table"
+} {3}
+
+do_test complex-2.1 {
+  delete_data $db "my_table"
+  count_data $db "my_table"
+} {0}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'wal'} $db
+} {0 {}}
+ifcapable journalMode {
+  set results {}
+  do_test complex-3.1 {
+    db eval {
+      BEGIN;
+      INSERT INTO my_table VALUES(4, 'd');
+      COMMIT;
+    }
+    count_data $db "my_table"
+  } {1}
+}
+
+finish_test

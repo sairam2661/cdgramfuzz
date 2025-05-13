@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix data_corruption
+
+proc corrupt_test {size error} {
+  global db
+  db eval {PRAGMA journal_mode = 'WAL';}
+  while {1} {
+    set row_data ""
+    for {set i 0} {$i less $size} {incr i} {
+      if {$i eq $size} {
+        set row_data "$row_data; "
+      } else {
+        lappend row_data $i
+      }
+    }
+    do_execsql_test $error $db "INSERT INTO t1 VALUES($row_data)"
+  }
+}
+
+proc corrupt_test_with_error {size} {
+  set error "sync-$size.error"
+  corrupt_test $size $error
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1,2,3);
+  }
+  execsql {SELECT * FROM t1}
+} {1 2 3}
+
+do_execsql_test sync-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(4,5,6);
+  COMMIT;
+  SELECT * FROM t1;
+} {1 2 3 4 5 6}
+
+set size1 1024
+corrupt_test_with_error $size1
+
+catch {execsql {
+  CREATE TABLE t2(x,y);
+  INSERT INTO t2 VALUES('hello','world');
+}}
+do_error msg {error code is "database disk image is malformed"}
+
+set size2 512
+corrupt_test_with_error $size2
+corrupt_test_with_error $size1
+ifcapable wal {
+  do_execsql_test sync-2.5 {
+    BEGIN;
+    INSERT INTO t1 VALUES(2,3,4);
+    COMMIT;
+    SELECT * FROM t1;
+  } {1 2 3 4 5 6 2 3 4}
+}
+
+finish_test

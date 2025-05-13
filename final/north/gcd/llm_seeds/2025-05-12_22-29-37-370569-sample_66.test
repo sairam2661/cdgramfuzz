@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzer
+
+proc fuzzer_test {} {
+  lappend fuzzer_data
+}
+
+proc run_fuzz_test {step} {
+  lappend step
+  execsql "CREATE TABLE fuzzer(t1 integer, t2 text)"
+  do_test $step {
+    lappend fuzzer_data
+    execsql {SELECT * FROM fuzzer}
+  }
+}
+
+proc fuzz_table name {
+  do_test "fuzz-$name-1.1" {
+    execsql "UPDATE $name SET t2 = (SELECT t2 FROM fuzzer)"
+  }
+}
+
+proc fuzz_text_column {step} {
+  execsql "CREATE TABLE t1(i integer, s text)"
+  set i 0
+  do_test $step {
+    db eval {
+      CREATE VIRTUAL TABLE t2 USING fts5
+    }
+    INSERT INTO t2 VALUES 1 'hello'
+    INSERT INTO t2 VALUES 2 'world'
+    INSERT INTO t2 VALUES 1 'h'
+    INSERT INTO t2 VALUES 2 'lo'
+  }
+  fuzzer_test
+  do_test $step {
+    execsql {DROP TABLE t2}
+    execsql {DROP TABLE t1}
+  }
+}
+
+proc fuzz_index {step} {
+  execsql {CREATE INDEX a on t1 i}
+  do_test $step {
+    execsql {INSERT INTO t1 VALUES(3, 'test')}
+    execsql {DROP INDEX a}
+    execsql {INSERT INTO t1 VALUES(4, 'test')}
+  }
+}
+
+do_execsql_test fuzzer-1.1 {
+  BEGIN;
+  CREATE TABLE t1(a,b);
+  INSERT INTO t1 VALUES(1,2);
+  INSERT INTO t1 VALUES(3,4);
+  COMMIT;
+}
+
+{fuzz_index fuzzer 1.2}
+fuzz_text_column fuzzer 1.3
+run_fuzz_test fuzzer 1.4
+fuzz_table fuzzer 1.5
+do_execsql_test fuzzer-1.6 {
+  CREATE TABLE fuzzer(c1,c2,c3);
+  INSERT INTO fuzzer VALUES (3, 2, 1);
+  SELECT count(*) FROM fuzzer;
+  BEGIN;
+  INSERT INTO fuzzer VALUES (5,6,7);
+  COMMIT;
+}
+{4}
+
+finish_test

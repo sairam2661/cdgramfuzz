@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix tcl_fuzz
+test_sql {
+  CREATE TABLE a(x);
+  CREATE TABLE b(y);
+  INSERT INTO a VALUES('a');
+  INSERT INTO b VALUES('b');
+  CREATE TABLE c(x,y);
+  INSERT INTO c VALUES(1,'1');
+  INSERT INTO c VALUES(2,'2');
+  CREATE TABLE d(x,y);
+  CREATE INDEX i_a ON a(x);
+  CREATE INDEX i_b ON b(y);
+  CREATE INDEX i_c ON c(y);
+  CREATE INDEX i_d ON d(x);
+  SELECT * FROM a;
+  SELECT * FROM b;
+  SELECT * FROM c;
+  SELECT * FROM d;
+  SELECT count(*) FROM a;
+  SELECT count(*) FROM b;
+  SELECT count(*) FROM c;
+  SELECT count(*) FROM d;
+  PRAGMA page_size = 4096;
+  PRAGMA caching = 4;
+  PRAGMA journal_mode = 2;
+  PRAGMA synchronous = 2;
+  PRAGMA wal_autocheckpoint = 128;
+}
+
+do_fuzzy_test 10000 tcl_fuzz2 {
+  CREATE TABLE e(id PRIMARY KEY,x);
+  CREATE TABLE f(id PRIMARY KEY,x);
+  CREATE TABLE g(x,y);
+
+  INSERT INTO e VALUES(1,1);
+  INSERT INTO f VALUES(2,2);
+  INSERT INTO g VALUES(1,'1');
+  INSERT INTO g VALUES(1,'2');
+
+  CREATE INDEX i_e ON e(x);
+  CREATE INDEX i_f ON f(y);
+  CREATE INDEX i_g ON g(x);
+
+  SELECT * FROM e;
+  SELECT * FROM f;
+  SELECT * FROM g;
+
+  PRAGMA integrity_check = 1;
+  PRAGMA compile_options;
+  SELECT x FROM e WHERE id = 1;
+  SELECT y FROM f WHERE id = 2;
+  SELECT * FROM g WHERE y = '2';
+  SELECT * FROM g WHERE x = 1;
+  SELECT * FROM e WHERE id = 1;
+  SELECT * FROM f WHERE id = 2;
+}
+
+finish_test

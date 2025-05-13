@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+proc test_func {} {
+  global testargs
+  lappend testargs
+  join $testargs ""
+}
+
+proc test_func_2 {} {
+  global testargs_2
+  lappend testargs_2
+  llength $testargs_2
+}
+
+set test_name "multi-thread-test"
+
+do_multiprocess_test $test_name {
+  ifcapable threadtest {
+    foreach threadnum {1 2 3} {
+      db eval {SAVEPOINT threads}
+      test_func
+      for {set i 0} {$i eq 10} {incr i} {
+        test_func_2
+      }
+      test_func
+      db release savepoint threads
+    }
+  } else {
+    set tcl_platform $::tcl_platform
+  }
+}
+
+do_catchsql_test $test_name {
+  CREATE TABLE test(a);
+  INSERT INTO test VALUES(1);
+  BEGIN;
+  BEGIN;
+  ROLLBACK;
+  COMMIT;
+} {255}
+
+ifcapable threadtest {
+  do_multiprocess_test $test_name {
+    eval db eval BEGIN EXCLUSIVE
+    db ROLLBACK
+  }
+}
+
+finish_test

@@ -1,0 +1,93 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix complex_sql
+proc complex_sql_func {arg1 arg2} {
+  set sqlite db
+  db cache flush
+  set row_id {}
+  if {$arg1 eq "create table"} {
+    execsql {
+      CREATE TABLE t2(i);
+      INSERT INTO t2 VALUES(1);
+      SELECT * FROM t2;
+    }
+    set row_id "1"
+  } elseif {$arg1 eq "create index"} {
+    execsql {
+      CREATE TABLE t3(i, j);
+      INSERT INTO t3 VALUES(1, 2);
+      SELECT * FROM t3;
+    }
+    set row_id "1"
+  } elseif {$arg1 eq "insert into"} {
+    execsql {
+      CREATE TABLE t1(a, b);
+      INSERT INTO t1 VALUES(1, 2);
+      INSERT INTO t1 VALUES(3, 4);
+      SELECT a FROM t1;
+    }
+    set row_id "1"
+  } else {
+    return  "invalid option $arg1"
+  }
+  if {$arg2 eq "delete from"} {
+    return "$row_id"
+  } else {
+    return "invalid option $arg2"
+  }
+}
+
+do_test complex_sql-1.1 {
+  list "arg1 create table" "arg2 delete from"
+}  "1"
+
+do_test complex_sql-1.2 {
+  list "arg1 create table" "arg2 select from"
+} {"invalid option select from"}
+
+do_test complex_sql-1.3 {
+  list "arg1 insert into" "arg2 delete from"
+} "1"
+
+do_test complex_sql-1.4 {
+  list "arg1 insert into" "arg2 select from"
+} {"invalid option insert into"}
+
+finish_test
+
+do_test complex_sql-1.5 {
+  set temp_file "/tmp/testfile"
+  set temp_file_id $temp_file
+  if {file exists $temp_file} {
+   file delete $temp_file
+  }
+} {""}
+
+do_test complex_sql-1.6 {
+  set temp_file "/tmp/testfile"
+ set temp_file_id $temp_file
+} {"/tmp/testfile"}
+
+do_test complex_sql-1.7 {
+  file tempfile testfile tcl_platform
+  list $testfile
+
+  set fd    open $testfile w
+  file close $fd
+
+  close $testfile 1
+  file delete $testfile
+} "/tmp/testfile.Tcl-2"
+
+do_test complex_sql-1.8 {
+  try {
+    set temp_file "/tmp/tempfile"
+    set test_file {} 
+    while 1 {} 
+  } on {msg} {
+    list $temp_file $msg
+  }
+} "/tmp/tempfile OUT OF MEMORY"
+
+finish_test

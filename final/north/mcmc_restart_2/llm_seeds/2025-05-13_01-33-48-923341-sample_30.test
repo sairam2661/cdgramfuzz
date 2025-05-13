@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_mode_mutex
+
+proc mutex_proc {} {
+  global mutexargs
+  lappend mutexargs
+  expr {0}
+}
+
+set mutexargs {}
+
+set testname {a b c d e f g h i j k l m n o p q r s t u v w x y z}
+set result1 {}
+set result2 {}
+set result3 {}
+
+do_test journal-1.1 {
+  db eval {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+  }
+  expr $testname
+} {a b c}
+
+do_execsql_test journal-1.2 {
+  SELECT count(*) FROM t1
+} {2}
+
+do_test journal-1.3 {
+  mutex_proc
+  db eval {
+    INSERT INTO t1 VALUES(3);
+    INSERT INTO t1 VALUES(4);
+  }
+  expr $result1
+} {a b c}
+
+do_test journal-1.4 {
+  mutex_proc
+  db eval {
+    INSERT INTO t1 VALUES(5);
+    INSERT INTO t1 VALUES(6);
+  }
+  expr $result2
+} {a b c}
+
+do_test journal-1.5 {
+  mutex_proc
+  db eval {
+    INSERT INTO t1 VALUES(7);
+    INSERT INTO t1 VALUES(8);
+  }
+  expr $result3
+} {a b c}
+
+do_test journal-1.6 {
+  set result4 {}
+  mutex_proc
+  set result4
+} {0 1}
+
+do_execsql_test journal-1.7 {
+  PRAGMA journal_mode
+} {}
+
+finish_test

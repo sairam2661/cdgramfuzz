@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix index
+
+proc test_index_func {{test_name} {test_sql}} {
+  global indexargs
+  lappend indexargs $test_name
+  uplevel $test_sql
+}
+
+do_test index-1.1 {
+  set indexargs {}
+  test_index_func "Create Table" {
+    execsql {
+      CREATE TABLE index_test(a, b);
+    }
+  }
+  test_index_func "Insert Records" {
+    for {set i 0} {$i 10} {incr i} {
+      execsql "INSERT INTO index_test VALUES($i, $i*2)"
+    }
+  }
+  set indexargs
+} {Create Table Insert Records}
+
+do_execsql_test index-1.2 {
+  SELECT b FROM index_test WHERE a = 5
+} {10}
+
+do_test index-1.3 {
+  db close
+  db open main index_test
+} {}
+
+proc test_index_view_func {{test_name} {test_sql}} {
+  global indexargs
+  lappend indexargs $test_name
+  uplevel $test_sql
+}
+
+do_execsql_test index-2.1 {
+  CREATE TABLE view_test(a, b);
+  CREATE INDEX idx_b ON view_test(b);
+}
+{index_view_func "Create Table" }
+
+do_execsql_test index-2.2 {
+  CREATE TABLE view_test_sub(c);
+}
+{index_view_func "Attach a Sub View" }
+
+do_query_trace index 1
+do_test index-2.3 {
+  execsql {
+    SELECT * FROM view_test
+  }
+} {1 2 3 4 6}
+do_test index-2.4 {
+  execsql {
+    SELECT c FROM view_test_sub
+  }
+} {10 20 30 40 60}
+
+finish_test
+finish_test

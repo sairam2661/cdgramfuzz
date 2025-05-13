@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set DBNAME test
+
+proc reset_DB {} {
+  file delete $DBNAME
+  testvfs tvfs
+  tvfs filter xWrite
+  tvfs filter xRead
+  set_property  {sector_size 4096}
+  register_vfs tvfs
+  sqlite3 db $DBNAME
+}
+
+proc create_table {name cols} {
+  execsql {
+    CREATE TABLE $name $cols
+  }
+}
+
+proc insert_random {table} {
+  set rows 10
+  set data ""
+  for {set i 0} {$i ne $rows} {incr i} {
+    set data ""
+    for {set j 0} {$j ne $cols} {incr j} {
+      append data "CAST(\$$i*2+rnd() AS INTEGER),'heLlo World',CAST($i+rnd() AS REAL)"
+    }
+    append data ";"
+  }
+  execsql {
+    INSERT INTO table VALUES$data
+  }
+}
+
+proc complex_test {} {
+  reset_DB
+  create_table 1 {A TEXT B INTEGER}
+  insert_random 1
+  execsql {
+    ANALYZE
+    EXPLAIN SELECT A FROM 1 ORDER BY B
+  }
+  do_execsql_test 2.1 {
+    SELECT A FROM 1 ORDER BY B LIMIT 3 OFFSET 3
+  } {{heLlo World} {heLlo World} {heLlo World}}
+  file delete $DBNAME
+  finish_test
+}
+
+complex_test
+
+finish_test

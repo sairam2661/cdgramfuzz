@@ -1,0 +1,126 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+set db2 ""
+
+proc lock_proc {lockmode db} {
+  set timeout 5000
+  while {1} {
+    if {$lockmode eq "WRITE" } {
+      catch { db eval {BEGIN EXCLUSIVE TRANSACTION} }
+      if {$db busy} { return 0 }
+    } else {
+      set r 0
+      if {$db transactions} {
+        eval "db eval {SET LOCKMODE $lockmode ON}"
+        set db2 $db
+        set r 1
+      }
+    }
+    set olock {}
+    eval "db status ocking olock $lockmode"
+    if {$r eq 1} {
+      break
+    } else {
+      after $timeout
+    }
+  }
+  return 1
+}
+
+proc unlock_proc {} {
+  catch {db eval COMMIT}
+  if {$db2 ne {}} {
+    set db $db2
+    set db2 {}
+  }
+}
+
+do_test locking-1.1 {
+  catchsql {
+    CREATE TABLE x(a, b)
+  }
+} {}
+testvfs tvfs
+
+tvfs filter t
+tvfs script tvfs_script
+tvfs filter t
+tvfs script tvfs_post_write_script
+
+do_execsql_test locking-1.2 {
+  CREATE TABLE y(a, b);
+  INSERT INTO y VALUES (1, 2);
+  SELECT b FROM y WHERE a=1
+} {2}
+
+tvfs filter ""
+tvfs script ""
+
+set lockmode WRITE
+set db file_control_locking
+if { $lockmode eq "WRITE" } {
+  set db {}
+}
+set db "/tmp/sqlite_test.db"
+
+if { $lockmode eq "WRITE" } {
+  set db {}
+}
+
+catch sql "PRAGMA locking_mode=WAL"
+
+if { $lockmode eq "WRITE" } {
+  execsql {
+    SELECT * FROM y
+  }
+}
+
+eval {
+  if { $lockmode eq "WRITE" } {
+    execsql {
+      INSERT INTO y VALUES(3, 4)
+    }
+  } else {
+    execsql {
+      SELECT b FROM y WHERE a AND a NOT EXISTS EXISTS EXISTS
+      SELECT a FROM y WHERE y a AND a OR a IN SELECT FROM w
+      a AND x AND o IN SELECT x FROM y AND a AND
+      x IN SELECT b FROM p AND w AND a FROM w
+      AND x NOT EXISTS SELECT a FROM x IN s
+    }
+  }
+}
+
+do_execsql_test locking-1.3 {
+  COMMIT;
+  SELECT count(*) FROM y
+} {2}
+
+set inlock {}
+after 55000 {
+  set inlock 1
+}
+
+testvfs tvfs2
+tvfs_filter t
+tvfs_script tvfs2_filter
+tvfs2 script ""
+tvfs2 filter ""
+
+do_execsql_test locking-1.4 {
+    WITH RECURSIVEtenv(name) AS (
+      SELECT 'A'
+      FROM sysgmte
+      UNION ALL
+      SELECT name
+      FROM tenenv
+      WHERE name = 'A'
+    )
+    SELECT COUNT(*) FROM tenv
+}
+{ 0}
+
+finish_test

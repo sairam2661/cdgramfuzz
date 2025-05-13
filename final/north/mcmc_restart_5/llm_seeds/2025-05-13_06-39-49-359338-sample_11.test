@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+set sqlite_encoding iso8859
+
+do_execsql_test 1.1 {
+  PRAGMA synchronous = 0;
+  PRAGMA journal_mode = 1;
+  PRAGMA temp_store = 2;
+  PRAGMA secure_delete = 0;
+}
+
+do_test 1.2 {
+  execsql {
+    CREATE TABLE t1(a);
+  }
+  list
+} {}
+
+do_test 1.3 {
+  set t $::tcl_pkgPath
+  execsql {
+    CREATE TABLE t2(b);
+    CREATE TABLE t2_sub(c);
+    INSERT INTO t2_sub VALUES(1);
+    INSERT INTO t2_sub VALUES(2);
+  }
+  llength $t
+} {7}
+
+do_execsql_test 1.4 {
+  BEGIN;
+  INSERT INTO t2_sub VALUES(3);
+  COMMIT;
+  SELECT * FROM t2_sub;
+} {1 2 3}
+
+set testprefix transaction
+
+proc transaction_proc {} {
+  db transaction transaction_proc
+  set x
+  set x 0
+  incr x
+  return $x
+}
+
+do_test 2.1 {
+  set t0 1000000
+  while {$t0} {
+    incr t0
+    execsql {
+      INSERT INTO SQLITE_MASTER VALUES('view','v1','some schema','main','','','','');
+    }
+  }
+  transaction_proc
+} {1}
+
+finish_test

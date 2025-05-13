@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread_test
+
+set ::timeout 60000
+set global_lock_vars {}
+proc global_lock {v} {
+  global global_lock_vars
+  lappend global_lock_vars $v
+}
+
+proc global_unlock {v} {
+  global global_lock_vars
+  set global_lock_vars {}
+}
+
+do_test multi_thread_test-1.1 {
+  execsql {
+    BEGIN;
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(c, d);
+  }
+} {}
+
+set sqlite_options "-fsync=OFF -journal_mode=MEMORY"
+
+do_execsql_test multi_thread_test-1.2 {
+  INSERT INTO t1 VALUES(1, 2);
+} {}
+
+ifcapable journalMode {
+
+  do_execsql_test multi_thread_test-1.3 {
+    INSERT INTO t2 VALUES(3, 4);
+  } {}
+}
+
+ifcapable wal {
+
+  do_test multi_thread_test-1.4 {
+    db close
+    set sqlite_options "-fsync=OFF -journal_mode=WAL"
+    Sqlite3 db testdb $sqlite_options
+    execsql {
+      INSERT INTO t1 VALUES(5, 6);
+      INSERT INTO t2 VALUES(7, 8);
+    }
+  } {}
+}
+
+finish_test

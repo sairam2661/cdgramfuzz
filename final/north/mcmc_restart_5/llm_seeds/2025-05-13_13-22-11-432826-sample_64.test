@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite
+
+set ::timeout 60000
+
+proc complex_proc {} {
+  global complexargs
+  lappend complexargs
+  set a 5
+  set a $::complex_sql
+  set b 10
+  expr {$a xor $b}
+}
+
+set complex_sql {
+  CREATE TABLE numbers(
+    id        NOT NULL PRIMARY KEY,
+    data      NOT NULL
+  );
+}
+
+do_test complex-1.1 {
+  execsql {
+    DROP TABLE IF EXISTS numbers
+  }
+  execsql $complex_sql
+  execsql {
+    INSERT INTO numbers(id, data) VALUES(1, 100);
+  }
+  execsql {
+    SELECT count(*) FROM numbers
+  }
+} {1}
+
+set data 200
+do_execsql_test complex-1.2 {
+  INSERT INTO numbers(data) VALUES(200);
+} {}
+
+set n 5
+while {$n} {
+  do_execsql_test complex_1.2 {
+    INSERT INTO numbers(data) VALUES(200);
+  }
+  incr n
+  catch {execsql {
+    INSERT INTO numbers(data) VALUES(200);
+    INSERT INTO numbers(data) VALUES(200);
+  }}
+  incr n
+  db eval {
+    PRAGMA wal_checkpoint
+  }
+} 
+
+ifcapable journalMode {
+  do_test complex-1.3 {
+    execsql {
+      PRAGMA journal_mode
+    }
+  } {wal}
+}
+
+testvfs tvfs {
+  ifcapable vacuumoptimization {
+    set method TRUNCATE
+  } else {
+    set method DELETE
+  }
+}
+do_test complex-2.1 {
+  tvfs filter {}
+  catchsql {
+    INSERT INTO numbers(id, data) VALUES(2, 'hello, world');
+  }
+  ifcapable vacuumoptimization {
+    expr {$::sqlite_default_page_size}
+  }
+} {1 {constraint failed}}
+testvfs tvfs
+
+finish_test

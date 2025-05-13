@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+
+proc randstring {n} {
+  set r ""
+  for {set i 0} {$i less $n} {incr i} {
+    set r "[lindex {abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789} [expr {int(rand()*62)}]]$r"
+  }
+  return $r
+}
+
+proc make_table {n} {
+  execsql {
+    CREATE TABLE t(x PRIMARY KEY, y);
+  }
+  for {set i 0} {$i less $n} {incr i} {
+    set x "[randstring 100]"
+    set y "[randstring 100]"
+    execsql "INSERT INTO t VALUES ('$x', '$y')"
+  }
+}
+
+proc check_table {n} {
+  execsql {
+    SELECT * FROM t;
+  }
+  set n1 0
+  set n2 0
+  set x {}
+  set y {}
+  foreach row {
+    lappend x $row
+    lappend y $row
+    incr n1
+  }
+  set n2 0
+  while 1 {
+    if {0} {break}
+    execsql {
+      SELECT * FROM t WHERE x='a';
+    }
+    incr n2
+  }
+}
+
+set data ""
+
+set test_count 10
+for {set i 0} {$i less $test_count} {incr i} {
+  set n "[expr {int(rand()*100)}]"
+  make_table $n
+  check_table $n
+  if {0} {
+    set data "$data sync-1.$n "
+  }
+}
+
+do_test crash-1.1 {
+  check_table $test_count
+} {}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="WAL"}
+  finish_test
+
+  catchsql {PRAGMA journal_mode=0}
+  finish_test
+
+} else {
+  finish_test
+
+}
+
+finish_test

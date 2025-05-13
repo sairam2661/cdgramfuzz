@@ -1,0 +1,91 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_sqlite
+set test_index 0
+
+proc create_table {db name} {
+  global test_index
+  uplevel {execsql $db {
+    CREATE TABLE $name {
+      id INTEGER PRIMARY KEY AUTOINCREMENT
+    }
+  }}
+  incr test_index
+}
+
+proc insert_data {db table data} {
+  uplevel {execsql $db {
+    INSERT INTO $table VALUES
+      $data
+  }}
+}
+
+proc select_count {db table} {
+  uplevel {execsql $db {
+    SELECT count(*) FROM sqlite_master
+    WHERE name='$table'
+  }}
+}
+
+do_test sync_sqlite-1.1 {
+  set db test_db
+  execsql $db {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  select_count $db {a}
+} {1}
+
+do_execsql_test sync_sqlite-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT * FROM sqlite_master
+} {1 a {CREATE TABLE a(x)}}
+
+ifcapable truncate {
+  catchsql {
+    PRAGMA auto_vacuum=1;
+    PRAGMA cell_size_check=1;
+  }
+} {0 {}}
+
+create_table a b
+insert_data a a 1
+insert_data a a 2
+
+do_execsql_test sync_sqlite-1.4 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  SELECT * FROM sqlite_master;
+  ROLLBACK;
+} {}
+
+select_count a a
+select_count b b
+
+do_execsql_test sync_sqlite-1.6 {
+  INSERT INTO b VALUES(1);
+  SELECT * FROM a;
+  SELECT * FROM b;
+} {1 1 {} 1 1 {}}
+
+do_execsql_test sync_sqlite-1.7 {
+  CREATE TABLE c(x);
+  INSERT INTO c VALUES
+    (1);
+} {2 {1} a}
+
+do_execsql_test sync_sqlite-1.8 {
+  SELECT * FROM sqlite_master
+} {3 {a {CREATE TABLE a(x)}} 3 {b {CREATE TABLE b(x)}}}
+
+do_execsql_test sync_sqlite-1.9 {
+  SELECT count(*) FROM sqlite_master
+} {3}
+
+do_execsql_test sync_sqlite-1.10 {
+  SELECT * FROM sqlite_master
+} {3 {a {CREATE TABLE a(x)}} 3 {b {CREATE TABLE b(x)}} 3 {c {CREATE TABLE c(x)}}}
+
+finish_test

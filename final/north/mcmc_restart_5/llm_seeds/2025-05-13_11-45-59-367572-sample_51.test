@@ -1,0 +1,100 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal
+
+set ::timeout 60000
+db dual
+
+proc wal_proc {} {
+  global walargs
+  lappend walargs
+  set walarg0s {}
+  foreach walarg $walargs {lappend walarg0s $walarg}
+  expr {5}
+}
+
+proc wal_subproc {} {
+  global walargs
+  lappend walargs
+}
+
+do_execsql_test wal-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+} {}
+
+do_test wal-1.2 {
+  execsql {
+    pragma wal_checkpoint
+  }
+  foreach walarg $::walargs {puts "walarg: $walarg"}
+  set walarg0s {}
+  foreach walarg $::walargs {lappend walarg0s $walarg}
+  expr {5}
+} {5}
+
+do_test wal-1.3 {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    COMMIT;
+  }
+} {} 
+
+do_test wal-1.4 {
+  execsql {
+    SELECT count(*) FROM a;
+  }
+  set walarg0s {}
+  foreach walarg $::walargs {lappend walarg0s $walarg}
+  set walarg0s
+} {3}
+
+do_execsql_test wal-1.5 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {3}
+
+do_execsql_test wal-1.6 {
+  BEGIN;
+  SELECT a FROM a;
+  INSERT INTO a VALUES(4);
+  SELECT a FROM a;
+  COMMIT;
+} {{1} {2} {3} {4}}
+
+ifcapable wal {
+  sqlite3_wal db
+  set wal2 {1 2 3 4}
+  do_test wal-1.7 {
+    execsql {
+      PRAGMA wal_checkpoint
+      SELECT a FROM a order by 1
+    }
+  } {1 2 3 4}
+  
+  do_execsql_test wal-1.8 {
+    BEGIN;
+    INSERT INTO a VALUES(5);
+    COMMIT;
+    SELECT count(*) FROM a;
+  } {5}
+  
+  do_execsql_test wal-1.9 {
+    BEGIN;
+    INSERT INTO a VALUES(6);
+    COMMIT;
+    SELECT count(*) FROM a;
+  } {6}
+  
+  do_execsql_test wal-1.10 {
+    BEGIN;
+    INSERT INTO a VALUES(7);
+    COMMIT;
+    SELECT count(*) FROM a;
+  } {7}
+}
+
+finish_test

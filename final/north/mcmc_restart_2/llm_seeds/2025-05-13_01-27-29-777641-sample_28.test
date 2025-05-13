@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix mytest
+set testprefix1 multi
+set testprefix2 waltest
+
+proc test_function {} {
+  global testvar
+  set testvar "value"
+  expr {1}
+}
+
+test_function
+test_function
+
+do_test1 "test1.1" {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(7);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_test2 "test2.2" {
+  execsql {
+    BEGIN;
+    INSERT INTO b VALUES(8);
+    COMMIT;
+  }
+  execsql {SELECT count(*) FROM b}
+} {2}
+
+ifcapable { journal_mode }
+
+do_execsql_test2 "test3.3" {
+  PRAGMA journal_mode
+} {0 {wal}}
+
+test_function1
+
+proc my_function {} {
+  set testvar "value1"
+}
+proc my_function2 {} {
+  set testvar "value2"
+}
+
+do_test1 "test1.4" {
+  execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(9);
+  }
+  execsql {SELECT count(*) FROM c}
+} {1}
+
+foreach func {my_function my_function2} {
+  do_test1 "test2.$func" {
+    $func
+    set testvar
+  } value$func
+}
+
+finish_test

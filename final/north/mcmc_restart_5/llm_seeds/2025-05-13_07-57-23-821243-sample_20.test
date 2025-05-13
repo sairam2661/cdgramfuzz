@@ -1,0 +1,144 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced_query
+
+set ::timeout 60000
+set testprefix advance_query_test
+
+proc is_same_rowid {} {
+  global db
+  if { $::sqlite_encryption } {
+    set rowid1 0
+    set rowid2 0
+    foreach table {t1 t2 t3} {
+      execsql "SELECT max(rowid) FROM $table"
+      set rowid1 $rowid1
+      set rowid2 $rowid2
+    }
+  } elseif { "[lsearch -glob [execsql {PRAGMA journal_mode}] \"tempdb"]!= -1" } {
+    execsql {
+      BEGIN;
+      CREATE TABLE t1(x);
+      INSERT INTO t1 VALUES('one');
+      COMMIT;
+      BEGIN;
+      CREATE TABLE t2(y);
+      INSERT INTO t2 VALUES('two');
+      COMMIT;
+    }
+  } elseif { $::sqlite_fts5_enable } {
+    execsql {
+      BEGIN;
+      CREATE TABLE t1(x);
+      INSERT INTO t1 VALUES('one');
+      COMMIT;
+      BEGIN;
+      CREATE TABLE t2(y);
+      INSERT INTO t2 VALUES('two');
+      COMMIT;
+    }
+  } else {
+    execsql {
+      BEGIN EXCLUSIVE TRANSACTION ON CONFLICT ROLLBACK
+      CREATE TABLE t1 AS SELECT 1 AS x UNION ALL SELECT 2 AS y UNION ALL SELECT 3 AS z
+      SELECT sql FROM sqlite_master
+      WHERE name LIKE'sqlite_directoy_hash%'
+    }
+    sqlite3_stmt_load_ext $db t2
+  }
+  set rowid1 0
+  set rowid2 0
+  foreach table {t1 t2 t3} {
+    set rowid1 $rowid1
+    set rowid2 $rowid2
+  }
+  return 1
+}
+
+proc sql_to_json {sql} {
+  execsql {SELECT sql FROM sqlite_master WHERE sql LIKE '%' "$sql"}
+  set cmd "SELECT GROUP_CONCAT(json_each(value)->'*' ORDER BY key) FROM (SELECT json_object($sql)) "
+  set result $cmd
+  execsql $result
+  set result {json}
+  return $result
+}
+
+proc validate_rowid {db} {
+  execsql {
+    SELECT name 
+    FROM sqlite_master 
+    WHERE type IN 'table'
+    AND sql NOT LIKE'sqlite_%'
+  }
+  set tables 0
+  foreach table {sqlite_master table_info} {
+    if { $tables } { set tables 0 }
+    foreach row {name column} {
+      execsql "SELECT name FROM $table order by $column"
+    }
+    set tables 1
+  }
+  set rowid 0
+  foreach table {sqlite_master table_info} {
+    if { $tables } { set tables 0 }
+    foreach row {name column} {
+      execsql "SELECT last_insert_rowid() FROM $table order by $column"
+    }
+    set tables 1
+  }
+  return $result
+}
+
+proc is_same_rowid {} {
+  global db
+  if { $::sqlite_encryption } {
+    set rowid1 0
+    set rowid2 0
+    foreach table {t1 t2 t3} {
+      execsql "SELECT max(rowid) FROM $table"
+      set rowid1 $rowid1
+      set rowid2 $rowid2
+    }
+  } elseif { "[lsearch -glob [execsql {PRAGMA journal_mode}] \"tempdb"]!= -1" } {
+    execsql {
+      BEGIN;
+      CREATE TABLE t1(x);
+      INSERT INTO t1 VALUES('one');
+      COMMIT;
+      BEGIN;
+      CREATE TABLE t2(y);
+      INSERT INTO t2 VALUES('two');
+      COMMIT;
+    }
+  } elseif { $::sqlite_fts5_enable } {
+    execsql {
+      BEGIN;
+      CREATE TABLE t1(x);
+      INSERT INTO t1 VALUES('one');
+      COMMIT;
+      BEGIN;
+      CREATE TABLE t2(y);
+      INSERT INTO t2 VALUES('two');
+      COMMIT;
+    }
+  } else {
+    execsql {
+      BEGIN EXCLUSIVE TRANSACTION ON CONFLICT ROLLBACK
+      CREATE TABLE t1 AS SELECT 1 AS x UNION ALL SELECT 2 AS y UNION ALL SELECT 3 AS z
+      SELECT sql FROM sqlite_master
+      WHERE name LIKE'sqlite_directoy_hash%'
+    }
+    sqlite3_stmt_load_ext $db t2
+  }
+  set rowid1 0
+  set rowid2 0
+  foreach table {t1 t2 t3} {
+    set rowid1 $rowid1
+    set rowid2 $rowid2
+  }
+  return 1
+}
+
+proc sql_to_json {sql} {
+  execsql {SELECT sql FROM sqlite_master WHERE sql LIKE '%' "$

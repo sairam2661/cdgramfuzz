@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+
+proc transaction_func {} {
+  global transactionargs
+  lappend transactionargs
+  uplevel "foreach {x y} $transactionargs list [expr { $x + $y }]"
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE b(x, y);
+    INSERT INTO b VALUES(1, 2);
+  }
+  execsql {SELECT * FROM b}
+} {1 2}
+
+ifcapable {wal} {
+  do_test transaction_2 {
+    execsql {
+      BEGIN;
+      INSERT INTO b VALUES(3, 4);
+      COMMIT;
+    }
+    execsql {SELECT * FROM b}
+  } {1 2 3 4}
+  set transactionargs {{1 2} {3 4}}
+} elseifcapable {journal_mode} {
+  do_test transaction_3 {
+    execsql {
+      BEGIN;
+      INSERT INTO b VALUES(3, 4);
+      COMMIT;
+    }
+    execsql {SELECT * FROM b}
+  } {1 2 3 4}
+  set transactionargs {{1 2} {3 4}}
+}
+
+do_test transaction-4.1 {
+  set res {}
+  foreach x {1 2 3 4} y {5 6 7 8} {
+    lappend res $x $y
+  }
+  set res
+} {1 5 2 6 3 7 4 8}
+
+proc transaction_func2 {} {
+  global transactionargs
+  set res {}
+  foreach {x y} $transactionargs {
+    lappend res $y
+  }
+  set res
+}
+
+ifcapable {wal} {
+  set transactionargs {{3 4} {5 6}}
+} elseifcapable {journal_mode} {
+  set transactionargs {{3 4} {5 6}}
+}
+set res2 {}
+foreach {x y} $transactionargs {
+  lappend res2 $y
+}
+set res2
+do_test transaction-5.1 {
+  transaction_func2
+} {5 6}
+
+proc transaction_func3 {} {
+  global transactionargs
+  set res {}
+  foreach {x y} $transactionargs {
+    lappend res $x
+  }
+  set res
+}
+
+ifcapable {wal} {
+  set transactionargs {{3 4} {5 6}}
+} elseifcapable {journal_mode} {
+  set transactionargs {{3 4} {5 6}}
+}
+set res3 {}
+foreach {x y} $transactionargs {
+  lappend res3 $x
+}
+set res3
+do_test transaction-5.1 {
+  transaction_func3
+} {3 5}
+
+finish_test

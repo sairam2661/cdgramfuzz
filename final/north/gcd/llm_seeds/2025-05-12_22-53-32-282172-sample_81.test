@@ -1,0 +1,38 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+proc complex_func {} {
+  global var1
+  set var1 "new value"
+}
+
+proc complex_func2 {} {
+  global var
+  set var 3
+}
+set var ""
+proc complex_func3 {} {
+  global var
+  return $var
+}
+set var ""
+
+ifcapable journal_mode {
+  proc exec_sql_with_journal_mode {sql} {
+    if { "[sqlite3 journal_mode]" eq "WAL" } {
+      set cmd "PRAGMA journal_mode=DELETE"
+      catchsql $cmd
+    }
+    execsql $sql
+    if { "[sqlite3 journal_mode]" eq "WAL" } {
+      set cmd "PRAGMA journal_mode=WAL"
+      catchsql $cmd
+    }
+  }
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}

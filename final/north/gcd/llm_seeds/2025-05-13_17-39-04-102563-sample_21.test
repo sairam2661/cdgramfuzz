@@ -1,0 +1,166 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+set temp_databases {test1 test2}
+
+proc test_query1 {} {
+  db eval "PRAGMA foreign_keys = OFF"
+  do_test 1.0 {
+    execsql {
+      CREATE TABLE a(y);
+      SELECT y FROM a
+    }
+  } {1 2 3}
+}
+
+proc test_query2 {db} {
+  do_test 2.0 {
+    execsql {
+      CREATE TABLE b(y);
+      SELECT count(*) FROM b
+    } $db
+  } {0}
+}
+
+proc test_query3 {arg} {
+  db eval "PRAGMA foreign_keys = ON"
+  set results {}
+  foreach {v} {1 2 3} {
+    lappend results $v
+  }
+  do_test 3.0 {
+    execsql {
+      INSERT INTO b VALUES(1);
+      SELECT count(*) FROM b
+    } $arg
+  } $results
+}
+
+proc test_query4 {db} {
+  do_test 4.0 {
+    execsql {
+      CREATE TABLE c(y);
+      SELECT count(*) FROM c
+    } $db
+  } {0}
+}
+
+proc test_query5 {arg} {
+  db eval {INSERT INTO c VALUES(1)}
+  set results {}
+  foreach {v} {1 2 3} {
+    lappend results $v
+  }
+  do_test 5.0 {
+    execsql {
+      SELECT count(*) FROM c
+    } $arg
+  } $results
+}
+
+proc test_query6 {db} {
+  do_test 6.0 {
+    execsql {
+      CREATE TABLE d(y);
+      SELECT count(*) FROM d
+    } $db
+  } {0}
+}
+
+proc test_query7 {arg} {
+  db eval {INSERT INTO d VALUES(1)}
+  set results {}
+  foreach {v} {1 2 3} {
+    lappend results $v
+  }
+  do_execsql_test 7.0 {
+    SELECT * FROM d;
+  } $results
+}
+
+proc do_test_query {} {
+  set db1 sqlite3 db1 "file:../../test.db?cache=shared&mode=rw&temp=1"
+  set db2 sqlite3 db2 "file:../../test.db?cache=shared&mode=rw&temp=1"
+  foreach db $db1 $db2 {
+    do_test 1.1 {
+      execsql {
+        CREATE TABLE e(y);
+      } $db
+    } ""
+    do_test 1.2 {
+      execsql {
+        INSERT INTO e SELECT y FROM d
+      } $db
+    } ""
+    do_test 1.3 {
+      execsql {
+        SELECT count(*) FROM e
+      } $db
+    } {3}
+    do_test 2.1 {
+      execsql {
+        DROP TABLE e
+      } $db
+    } ""
+  }
+  set results {}
+  foreach {db} $db1 $db2 {
+    foreach {v} {1 2 3} {
+      lappend results $v
+    }
+  }
+  set results
+}
+
+set results {}
+
+eval {
+  do_test query1 {test_query1} {3}
+  set db sqlite3 db "file:../../test.db?writemode=shared&temp=1"
+  do_test_query
+  set results
+} $results
+
+do_test query2 {
+  do_test query1
+} $results
+
+do_test query3 $temp_databases {
+  test_query3 $temp_databases
+} {1 2 3}
+
+test_query2 $temp_databases
+test_query4 $temp_databases
+test_query5 $temp_databases
+test_query6 $temp_databases
+test_query7 $temp_databases
+
+cleanup {
+  unset db
+  set temp_databases {1 2}
+  foreach db $temp_databases {
+    db close
+  }
+}
+
+eval {
+  do_test query4 {
+    test_query4 $temp_databases
+  } {}
+  do_test query5 {
+    test_query5 $temp_databases
+  } {}
+  do_test query6 {
+    test_query6 $temp_databases
+  } {}
+  do_test query7 {
+    test_query7 $temp_databases
+  } {}
+  do_test query8 {
+    test_query7 $temp_databases
+  } {}
+}
+
+finish_test

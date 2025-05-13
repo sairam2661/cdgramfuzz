@@ -1,0 +1,115 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+set ::timeout 60000
+
+proc db_prepare_test {name cmd} {
+  uplevel do_execsql_test $name {
+    $cmd
+  }
+}
+
+proc check_schema {} {
+  execsql {
+    SELECT type FROM sqlite_master
+  }
+}
+
+proc add_column {name table column} {
+  uplevel do_execsql_test $name {
+    ALTER TABLE $table ADD COLUMN $column
+  }
+}
+
+do_test encryption-1.1 {
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(1);
+  }
+  check_schema
+} {table schema}
+
+do_test encryption-1.2 {
+  set res {}
+  foreach item {
+    main
+    sqlite_master
+  } {
+    execsql {
+      SELECT name FROM $item
+    }
+    lappend res
+  }
+  $res
+} {c main sqlite_master}
+
+ifcapable encryption {
+  execsql {
+    PRAGMA key = 'key1234567890';
+    CREATE TABLE e(x);
+    INSERT INTO e VALUES(1);
+  }
+} {1}
+
+execsql {
+  DROP TABLE e
+}
+execsql {
+  CREATE VIRTUAL TABLE v5 USING fts5
+}
+execsql {
+  INSERT INTO v5(docid, item)
+  VALUES(1, 'hello world')
+}
+execsql {
+  SELECT term FROM fts3_view_get_vocab
+}
+
+proc fts3_view_insert {name table} {
+  execsql {
+    INSERT INTO $table OR IGNORE VALUES
+   	'1 a b c'
+  }
+  execsql {
+    COMMIT
+  }
+}
+
+fts3_view_insert encrpytion 1000 {
+  CREATE VIRTUAL TABLE fts3_view3 USING fts3
+}
+
+do_test encryption-12.1 {
+  execsql {
+    SELECT * FROM fts3_view3
+  }
+  execsql {
+    SELECT docid FROM fts3_view3
+  }
+} {1 0 1 a b c 1 1}
+
+proc fts3_view_insert2 {name table item} {
+  execsql {
+    INSERT INTO $table OR IGNORE VALUES
+   	'1 a b c'
+  }
+  execsql {
+    COMMIT
+  }
+}
+
+fts3_view_insert2 encrpytion 1002 {
+  CREATE VIRTUAL TABLE fts3_view4 USING fts4
+}
+
+do_test encryption-12.2 {
+  execsql {
+    SELECT * FROM fts3_view4
+  }
+  execsql {
+    SELECT docid FROM fts3_view4
+  }
+} {2 0 1 a b c 2 1}
+
+finish_test

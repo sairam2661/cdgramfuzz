@@ -1,0 +1,131 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+set temp_store_disk 1
+
+proc create_index {table column} {
+  execsql {
+    CREATE INDEX idx_$table ON $table $column
+  }
+}
+
+proc delete_index {table} {
+  execsql {
+    DROP INDEX idx_$table
+  }
+}
+
+proc run_test {setup args} {
+  uplevel $setup
+ foreach arg $args {
+    eval $arg
+  }
+  execsql {
+    SELECT * FROM sqlite_master
+  }
+}
+
+proc drop_tables {tables} {
+  foreach table $tables {
+    execsql {
+      DROP TABLE $table
+    }
+  }
+}
+
+set up {
+  execsql {
+    BEGIN;
+    CREATE TABLE t1(a, b, c);
+    CREATE TABLE t2(a, b, c);
+    COMMIT;
+  }
+}
+
+set test {
+  do_test complex_query_1.3 {
+    execsql {
+      BEGIN;
+      INSERT INTO t1 VALUES(1, 2, 3);
+      COMMIT;
+    }
+    run_test drop_tables {t1 t2}
+  } {}
+  do_test complex_query_1.4 {
+    set index_table t1
+    set index_column a
+    create_index $index_table $index_column
+    run_test drop_tables {t1 t2}
+    delete_index $index_table
+  } {}
+}
+
+set test2 {
+  do_test complex_query_2.1 {
+    set n 10000
+    execsql {
+      BEGIN;
+      CREATE TABLE t3(a, b, c);
+      COMMIT;
+    }
+    for {set i 0} {$i $n} {incr i} {
+      execsql {
+        INSERT INTO t3 VALUES(1, 2, 3)
+      }
+    }
+    execsql {SELECT count(*) FROM t3}
+  } {$n}
+  do_test complex_query_2.2 {
+    execsql {
+      DROP TABLE t3
+    }
+  } {}
+}
+
+set teardown {
+  drop_tables {t1 t2 t3}
+  delete_index t1
+}
+
+do_test complex_query_1.1 {
+  execsql {
+    INSERT INTO t1 VALUES(1, 2, 3)
+  }
+  execsql {
+    INSERT INTO t1 VALUES(4, 5, 6)
+  }
+  execsql {
+    SELECT * FROM t1
+  }
+} {1 2 3 4 5 6}
+do_test complex_query_1.2 {
+  execsql {
+    SELECT b FROM t1
+  }
+} {2 5}
+
+proc insert_into t1 {args} {
+  foreach arg $args {
+    execsql {
+      INSERT INTO t1 VALUES(1, 2, 3)
+    }
+  }
+}
+
+do_test complex_query_2.3 {
+  insert_into t1 {$n 10}
+  execsql {
+    SELECT count(*) FROM t1
+  }
+} {110}
+drop_tables {t1 t2 t3}
+
+drop_tables {t3 t1 t2}
+do_test complex_query_1.5 {
+  execsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+} {wal}
+finish_test

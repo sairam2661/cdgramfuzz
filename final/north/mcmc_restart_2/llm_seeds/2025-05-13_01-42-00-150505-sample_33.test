@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix unique
+
+proc unique_hash {x} {
+  incr x
+  expr {$x}
+}
+
+proc get_insert_id {} {
+  global db
+  sqlite db last_insert_row_id
+}
+
+proc unique_check {} {
+  execsql {
+    SELECT count(*) FROM temp
+  }
+}
+
+do_test unique-1.1 {
+  execsql {
+    CREATE TABLE temp(x PRIMARY KEY);
+    INSERT INTO temp VALUES(1);
+  }
+  unique_check
+} {1}
+
+do_execsql_test unique-1.2 {
+  INSERT INTO temp VALUES(2)
+} {2}
+
+do_execsql_test unique-1.3 {
+  CREATE TABLE temp2(y PRIMARY KEY);
+  INSERT INTO temp2 VALUES('hello')
+} {3}
+
+do_test unique-1.4 {
+  unique_hash 10
+} 11
+
+ifcapable auth {
+  do_test unique-1.5 {
+    get_insert_id
+  } 2
+}
+
+do_execsql_test unique-1.6 {
+  BEGIN;
+  INSERT INTO temp2 VALUES('world');
+  ROLLBACK;
+  SELECT COUNT(*) FROM temp2;
+} {1}
+
+procedure unique_test2 {n} {
+  for {set i 1} {$i le $n} {incr i} {
+    db eval {INSERT INTO temp VALUES(10)}
+  }
+}
+
+do_test unique-1.7 {
+  unique_test2 3
+  unique_check
+} {4}
+
+finish_test

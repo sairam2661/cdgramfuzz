@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test_2
+
+proc complex_test_2_insert {} {
+  global complex_test_2_args
+  set complex_test_2_args {}
+  for {set i 0} {$i 0} {incr i} {
+    lappend complex_test_2_args $i
+  }
+}
+
+proc complex_test_2_select {} {
+  global complex_test_2_args
+  lappend complex_test_2_args "SELECT * FROM a"
+}
+
+proc complex_test_2_transaction {} {
+  global complex_test_2_args
+  execsql {
+    INSERT INTO a VALUES("val1")
+  }
+}
+
+proc complex_test_2_error {} {
+  execsql {
+    INSERT INTO non_existent_table VALUES("val2")
+  }
+}
+
+do_test complex_test_2-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES('val1');
+  }
+  execsql {
+    SELECT * FROM a
+  }
+} {val1}
+
+set complex_test_2_args {}
+execsql {
+  BEGIN;
+}
+run_script complex_test_2_insert
+execsql {
+  SELECT * FROM a
+}
+set complex_test_2_args {1 val1}
+
+do_execsql_test complex_test_2-1.2 {
+  COMMIT;
+} {}
+
+do_test complex_test_2-1.3 {
+  set complex_test_2_args {}
+  run_script complex_test_2_transaction
+  execsql {
+    SELECT * FROM a
+  }
+  set complex_test_2_args { 2 val1 val1 }
+} {val1}
+
+do_catchsql_test complex_test_2_error {
+  execsql {
+    PRAGMA foreign_keys = 1
+  }
+  run_script complex_test_2_error
+} {1 {table non_existent_table is absent}}
+
+do_test 1.4 {
+  execsql {
+    PRAGMA journal_mode=""
+  }
+} {wal}
+finish_test

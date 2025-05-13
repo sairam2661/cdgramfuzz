@@ -1,0 +1,98 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+set ::timeout 60000
+ifcapable!=tk {
+  puts "WARNING: This test requires the TCL TK library"
+}
+
+proc sqlite_callback {args} {
+  global output
+  lappend output $args
+}
+
+proc run_sql {db sql} {
+  sqlite_db_connection_exec $db $sql
+}
+
+proc set_autocommit {mode} {
+  global db
+  if {$mode} {
+    execsql {PRAGMA auto_vacuum=0}
+  } else {
+    execsql {PRAGMA auto_vacuum=1}
+  }
+}
+
+proc start_transaction {db} {
+  execsql {BEGIN} $db
+}
+
+proc savepoint {db name} {
+  execsql {SAVEPOINT $name} $db
+}
+
+proc recover {db} {
+  execsql {RECOVER} $db
+}
+
+if {0} {
+  set test_counter1 0
+  set test_counter2 0
+}
+
+testcases {
+  main_1.1 {
+    do_execsql_test main_1.1 {
+      CREATE TABLE a(x);
+      INSERT INTO a VALUES(1);
+      SELECT * FROM a;
+    } {1}
+  }
+
+  main_1.2 {
+    do_execsql_test main_1.2 {
+      CREATE TABLE b(y);
+      INSERT INTO b VALUES(1);
+      SELECT * FROM b;
+    } {1}
+  }
+
+  main_2.1 {
+    set dbhandle1 ""
+    set dbhandle2 ""
+    sqlite3 dbhandle2 test_2_1_1
+    sqlite3 dbhandle1 test_2_1_2
+    do_test main_2.1 {
+      lrange $dbhandle1 test_2_1_1 test_2_1_2
+    } {test_2_1_2}
+  }
+
+  main_3.1 {
+    do_execsql_test main_3.1 {
+      CREATE TABLE c(z);
+      INSERT INTO c VALUES(1);
+      SELECT * FROM c;
+    } {1}
+  }
+}
+
+ifcapable!= {
+  do_test main_10.1 {
+    set output {}
+    set db test_10_1_1
+    set sqlite_callback output
+    db close
+    expr {$output eq ""}
+  } {1}
+}
+
+{
+  do_test main_11.1 {
+    set db test_11_1_1
+    sqlite3_db_connection_commit $db
+  } {0}
+}
+
+finish_test

@@ -1,0 +1,100 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_func {} {
+  global asyncargs
+  lappend asyncargs
+  expr {$asyncargs eq "async_func"}
+}
+
+proc async_error_func {} {
+  global asyncargs
+  lappend asyncargs
+  error "Error in async_func test"
+}
+
+set thread_count 10
+set thread_id {}
+
+for {set i 0} {$i $thread_count} {incr i} {
+  thread new thread_$i
+  thread start thread_$i
+}
+
+set thread_id {}
+for {set i 0} {$i $thread_count} {incr i} {
+  set thread_id $thread_$i
+  proc thread_$thread_id {} {
+    set cmd "execsql {SELECT 1;}"
+    $cmd
+  }
+}
+
+do_test async-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1);
+  }
+  set result {}
+  foreach tid $thread_id {
+    if {eval $tid} {lappend result $tid}
+  }
+  set result
+} {thread_0 thread_1 thread_2 thread_3 thread_4 thread_5 thread_6 thread_7 thread_8 thread_9}
+
+ifcapable json1 {
+  do_execsql_test async-1.2 {
+    PRAGMA threads=16;
+  } {}
+}
+
+do_execsql_test async-1.3 {
+  INSERT INTO b VALUES(2);
+} {2}
+
+set db_conn {}
+for {set i 0} {$i $thread_count} {incr i} {
+  set result {}
+  foreach tid $thread_id {
+    if {eval $tid} {
+      execsql {
+        SELECT * FROM b
+      }
+      lappend result 1
+    }
+  }
+  break
+}
+set result
+do_test async-1.4 {
+  foreach {id  result} $result {
+    if {$result} {lappend id 1}
+  }
+  set result
+} {1 1 1 1 1 1 1 1 1 1 1}
+
+ifcapable journalMode {
+  if {0} {
+    sqlite3 db sync_vacuum2
+    set default_wal false
+  } else {
+    db eval {PRAGMA journal_mode="WAL"}
+    set default_wal true
+  }
+}
+
+if {$default_wal} {
+  finish_test
+} elseif {0} {
+  do_test async {
+    db eval {PRAGMA journal_mode= "DELETE" }
+    finish_test
+  } {}
+} else {
+  finish_test
+} 
+
+finish_test

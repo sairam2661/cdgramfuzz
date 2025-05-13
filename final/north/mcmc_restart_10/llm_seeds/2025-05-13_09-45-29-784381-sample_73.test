@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix multiwaltests
+
+proc get_int {db sql} {
+  set result {}
+  db eval $sql get result
+  return $result
+}
+
+do_execsql_test 1.1 {
+  CREATE TABLE multiwal(a, b);
+  INSERT INTO multiwal VALUES(1, 10);
+}
+
+do_execsql_test 1.2 {
+  INSERT INTO multiwal VALUES(2, 20);
+  INSERT INTO multiwal VALUES(3, 30);
+}
+
+do_execsql_test 1.3 {
+  SELECT a FROM multiwal WHERE b = 20;
+} {2}
+
+do_execsql_test 1.4 {
+  SELECT b FROM multiwal WHERE a = 3;
+} {30}
+
+ifcapable journal_mode {
+  do_execsql_test 1.5 {
+    PRAGMA journal_mode = 'WAL';
+    CREATE INDEX idx_multiwal_a ON multiwal(a);
+  } {}
+}
+
+set dbhandle dummy_db
+do_foreach_test 2.1 {
+  execsql {
+    PRAGMA wal_checkpoint;
+    PRAGMA wal_checkpoint;
+  }
+  execsql {SELECT a FROM multiwal WHERE b = 20}
+} {2}
+set dbhandle dummy_db
+
+set dbhandle main
+do_catchsql_test 2.2 {
+  INSERT INTO multiwal VALUES(99, 100);
+} {1 {database disk image is malformed}}
+
+unset dbhandle
+
+set dbhandle sqlite_db
+do_execsql_test 3.1 {
+  PRAGMA in_transaction;
+  PRAGMA journal_mode;
+} {0 WAL}
+
+do_commit_and_checkpoints 3.2 {
+  INSERT INTO multiwal VALUES(5, 50);
+  PRAGMA wal_checkpoint;
+} {5 50}
+unset dbhandle
+
+finish_test

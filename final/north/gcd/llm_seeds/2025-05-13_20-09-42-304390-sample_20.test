@@ -1,0 +1,207 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+
+proc save_config {} {
+  global dbhandle dbconfig
+  execsql $dbhandle {
+    PRAGMA foreign_keys;
+    PRAGMA synchronous;
+    PRAGMA secure_delete;
+  }
+}
+
+proc restore_config {} {
+  global dbhandle dbconfig
+  execsql $dbhandle {
+    PRAGMA foreign_keys = 1;
+    PRAGMA synchronous=1;
+    PRAGMA secure_delete=1;
+  }
+}
+
+proc dbconfig_test {} {
+  global dbhandle dbconfig timeoout
+  execsql $dbhandle {
+    CREATE TABLE a(id, name, address);
+  }
+  set dbconfig 1
+  set timeoout 80000
+  ifcapable legacy_file_format {
+    do_test dbconfig_1.1 {
+      execsql {
+        FOREIGN KEY a_id REFERENCES a
+      }
+    } OK
+  }
+  set timeoout 5000
+  do_test dbconfig_1.2 {
+    execsql {
+      DELETE FROM a WHERE name IS 'a1'
+      WHERE rowid IS NOT 1
+    }
+  } {}
+  restore_config
+}
+
+set dbhandle "test1"
+do_execsql_test dbconfig-1.1 {
+  CREATE TABLE a(x);
+
+  SELECT * FROM sqlite_master;
+} {}
+
+do_test dbconfig-2.1 {
+  set ret_1 "test1"
+  execsql "ATTACH DATABASE 'test1.db' AS test1"
+  execsql "SELECT sql FROM sqlite_master WHERE name='sqlite_dbconfig' ORDER BY rowid;"
+  list $ret_1 $ret_1
+} {test1 test1}
+do_test dbconfig-3.1 {
+  execsql {
+    SELECT * FROM test1;
+    PRAGMA foreign_keys = 3;
+    PRAGMA secure_delete;
+  }
+} {}
+
+do_test dbconfig-4.1 {
+  execsql {
+    PRAGMA journal_mode;
+    PRAGMA synchronous;
+    PRAGMA temp_store;
+    PRAGMA secure_delete;
+  }
+} {WAL FULL NORMAL 1}
+
+do_execsql_test dbconfig-5.1 {
+  CREATE TABLE fks(id, fk);
+  INSERT INTO fks VALUES(1,11);
+  COMMIT;
+  PRAGMA foreign_keys = 2;
+  PRAGMA foreign_key_list = 4;
+  PRAGMA foreign_key_check = 0;
+  PRAGMA foreign_keys;
+  PRAGMA foreign_key_list;
+  PRAGMA foreign_key_check;
+} {{2 {2 4 1 fk}} {1 {1 2 4 fk}} {4 {1 2 1 0 fk}} {1 2 4 1}} 
+
+do_test dbconfig-6.1 {
+  set a {SQLITE_DB_CONFIG_DEFERRABLE FKid}
+  execsql {
+    PRAGMA foreign_key_list;
+    PRAGMA foreign_key_list = 0;
+    PRAGMA foreign_keys;
+    PRAGMA foreign_key_check;
+    PRAGMA synchronous;
+  }
+} {{SQLITE_FOREIGN_KEY a_1_sql} {3 {1 2 2 fk}} {1 fk 1} {}}
+
+do_execsql_test dbconfig-7.1 {
+  CREATE TABLE fks2(id, fk2);
+  INSERT INTO fks2 VALUES(1,12);
+  COMMIT;
+  PRAGMA secure_delete = 4;
+} {8}
+
+set dbhandle "test1"
+do_test dbconfig-8.1 {
+  set ret_1 "test_1"
+  execsql "PRAGMA cache_size = 6"
+  execsql "PRAGMA journal_mode="
+  execsql {
+    PRAGMA foreign_keys = 3;
+    PRAGMA synchronous;
+    PRAGMA temp_store;
+    PRAGMA secure_delete;
+    PRAGMA journal_mode;
+    PRAGMA cache_size;
+    PRAGMA auto_vacuum;
+  }
+  eval $ret_1
+} {test_1}
+
+set dbhandle "test1"
+do_test dbconfig-9.1 {
+  set ret_1 "test_1"
+  execsql "PRAGMA foreign_keys = 1"
+  execsql {
+    PRAGMA secure_delete;
+    PRAGMA foreign_keys = 3;
+    PRAGMA synchronous;
+    PRAGMA temp_store;
+  }
+  eval $ret_1
+} {test_1}
+
+set dbhandle "test1"
+do_test dbconfig-10.1 {
+  set ret_1 "test_1"
+  set timeoout 250000
+  execsql "PRAGMA journal_mode = WAL"
+  execsql "PRAGMA foreign_keys = 3"
+  execsql "PRAGMA synchronous = 3"
+  execsql "PRAGMA temp_store = 2"
+  execsql "PRAGMA temp_store = 3"
+  execsql {
+    PRAGMA secure_delete;
+    PRAGMA foreign_keys;
+    PRAGMA synchronous;
+    PRAGMA temp_store;
+    PRAGMA temp_store = 3;
+  }
+  set dbconfig 1
+  set timeoout 5000
+  restore_config
+  eval $ret_1
+} {test_1}
+
+do_execsql_test dbconfig-11.1 {
+  PRAGMA wal_autocheckpoint;
+  PRAGMA wal_checkpoint;
+  PRAGMA synchronous;
+  PRAGMA wal_autocheckpoint
+} {5 {} 1 5}
+
+do_execsql_test dbconfig-12.1 {
+  SELECT * FROM sqlite_master;
+  PRAGMA integrity_check;
+  PRAGMA page_size;
+  PRAGMA default_cache_size;
+  PRAGMA default_geometry;
+} {}
+
+do_execsql_test dbconfig-13.1 {
+  PRAGMA default_synchronous;
+} {1}
+do_execsql_test dbconfig-14.1 {
+  SELECT name FROM sqlite_master;
+  PRAGMA database_list;
+  PRAGMA main;
+  PRAGMA name;
+  PRAGMA user_version;
+  PRAGMA version;
+  PRAGMA wal_checkpoint;
+  PRAGMA temp_store;
+  PRAGMA synchronous;
+  PRAGMA user_version = 4;
+  PRAGMA name;
+} {main main {} sqlite_main {} 4 3 2 wal 2}
+
+do_execsql_test dbconfig-15.1 {
+  SELECT * FROM sqlite_master;
+  PRAGMA database_list;
+  PRAGMA main;
+  PRAGMA foreign_key_list;
+  PRAGMA name;
+  PRAGMA wal_checkpoint;
+  PRAGMA temp_store;
+  PRAGMA synchronous;
+  PRAGMA user_version;
+  PRAGMA user_version;
+  PRAGMA user_version = 1;
+} {main main {} {} sqlite_main {} 3 0 2 3 2 wal 1 1 1}
+
+finish_test

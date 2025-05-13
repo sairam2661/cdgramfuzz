@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix random_sql
+set explain_schema {} set explain_sql {}
+set enable_diagnostics 0
+set enable_db_config_tests 0
+set enable_databases 1
+set enable_vacuum_logic 0
+set enable_db_flags 0
+set enable_io_errors 1
+set enable_btree_io_errors 1
+set enable_mutex_tests 0
+set enable_fts3_multipass 0
+set enable_fts3_tokenizer2 0
+set enable_fts5_test 0
+load_lib fuzzcheck2
+set enable_distrib_test 0
+
+proc random_query {nsql nexplain} {
+  global explain_schema explain_sql enable_diagnostics enable_db_config_tests enable_databases enable_vacuum_logic enable_db_flags enable_io_errors enable_btree_io_errors enable_mutex_tests enable_fts3_multipass enable_fts3_tokenizer2 enable_fts5_test
+  if $nexplain {
+    if {$nsql} {set explain_sql "} else {set explain_schema "} }
+    lappend nexplain $explain_schema $explain_sql
+    set nexplain
+  } else {
+    set minsql 0
+    if {$enable_diagnostics} {set minsql 1}
+    if {$enable_db_config_tests} {set minsql 2}
+    if {$enable_databases} {set minsql 3}
+    if {$enable_vacuum_logic} {set minsql 4}
+    if {$enable_db_flags} {set minsql 5}
+    if {$enable_io_errors} {set minsql 6}
+    if {$enable_btree_io_errors} {set minsql 7}
+    if {$enable_mutex_tests} {set minsql 8}
+    if {$enable_fts3_multipass} {set minsql 9}
+    if {$enable_fts3_tokenizer2} {set minsql 10}
+    if {$enable_fts5_test} {set minsql 11}
+    if {$nsql} {set minsql $nsql}
+    if {$minsql} { 
+      if {$nsql} {set nsql $minsql} else {incr minsql}
+      set nexplain $minsql
+    } else {set nexplain "noop"}
+    set nexplain
+  }
+  set result {}
+  if {$nsql} {
+    foreach value {INSERT SELECT UPDATE DELETE} {
+      if {$nsql} {
+      } else {
+        if {$nsql} {set sql $value} else {incr nsql}
+      }
+      if {$minsql} {
+        append result "$value: $nsql;\n"
+      } else {
+        set random 100
+        set nsql 0
+        while {$nsql} {
+          if { $random } {incr nsql} else {break}
+          if { $random } {incr random} else {set random 100}
+        }
+      }
+    }
+    append result $nexplain
+    set sql $result
+  }
+  set result
+  if $nexplain {
+    set result $result
+  } else {
+    if {$minsql} {set db {}
+    if {$enable_databases} {db transaction
+      execsql { PRAGMA page_size=1024; }
+      }
+    if {$enable_db_config_tests} {execsql { PRAGMA synchronous=0; }
+    if {$enable_vacuum_logic} {execsql { ANALYZE a} }
+    if {$enable_io_errors} {db setting {sqlite_io_error_pending 1}}
+    if {$enable_btree_io_errors} {db eval { SELECT name FROM sqlite_master WHERE type='view'} 
+    }
+    if {$enable_mutex_tests} {db eval { SELECT name FROM sqlite_master WHERE type='trigger'} 
+    }
+    if {$enable_fts3_multipass} {execsql { VACUUM INTO a IN 'fts3_multipass_test'}}
+    if {$enable_fts3_tokenizer2} {execsql { VACUUM INTO a IN 'fts3_multipass_test'}}
+    if {$enable_fts5_test} {execsql { CREATE INDEX x ON a(y);}}
+    if {$enable_db_flags} {execsql { VACUUM INTO a IN 'fts3_multipass_test'}}
+    } else {set nsql 0
+    if {$enable_btree_io_errors} {db eval { SELECT 1 FROM sqlite_master } } else { db eval $sql}
+    db eval {
+    }
+    }
+  }
+  if $nexplain { return $result} else { execsql $result
+  return $result
+}
+
+do_execsql_test random_sql_1.1 {
+  CREATE TABLE a(x);
+} {}
+do_execsql_test random_sql_1.2 {
+  INSERT INTO a VALUES(1);
+  SELECT x FROM a;
+}

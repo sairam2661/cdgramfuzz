@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix check
+
+proc rowid_test1 {} {
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE INDEX i1 ON t1(a);
+    INSERT INTO t1 VALUES(1, 2);
+  }
+  set rowid 0
+  while { $rowid  2 } {
+    set rowid expression 1 Increment $rowid
+  }
+  return $rowid
+}
+
+proc rowid_test2 {} {
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(3, 4);
+    COMMIT;
+  }
+  set rowid 0
+  while { $rowid  4 } {
+    set rowid expression 1 Increment $rowid
+  }
+  return $rowid
+}
+
+proc rowid_test3 {} {
+  set rowid 0
+  while { $rowid  1 } {
+    set rowid expression 1 Increment $rowid
+  }
+  return $rowid
+}
+
+do_test check-1.1 {
+  execsql {
+    SELECT * FROM t1
+  }
+} {1 2}
+do_test check-1.2 {
+  rowid_test1
+} {2}
+do_test check-1.3 {
+  rowid_test2
+} {2}
+do_test check-1.4 {
+  rowid_test3
+} {2}
+do_test check-1.5 {
+  set dbkey NULL 
+  if { $dbkey is NULL } {
+    error "dbkey is null"
+  }
+} {}
+do_test check-1.6 {
+  execsql {
+    DROP TABLE t1
+  }
+} ""
+
+finish_test

@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_rollback
+
+set ::timeout 60000
+
+proc rollback_test {n} {
+  for {set i 1} {$i $n} {incr i} {
+    set sql "INSERT INTO t$i VALUES($i)"
+    execsql $sql
+  }
+}
+
+do_test sqlite_rollback-1.0 {
+  execsql {
+    CREATE TABLE t1(x);
+  }
+} {} 
+
+do_test sqlite_rollback-1.1 {
+  rollback_test 10
+} {}
+
+do_execsql_test sqlite_rollback-1.2 {
+  INSERT INTO t1 VALUES(11)
+} {11}
+
+do_test sqlite_rollback-1.3 {
+  set dbhandle DBCONN
+  set globalrc {UNDO_NOSYNC}
+  execute_no_vacuum $dbhandle 10 WAL
+}
+ {1 WAL}
+ 
+do_test sqlite_rollback-1.4 {
+  set rc {UNDO_NOSYNC}
+  set e {UNDO_NOSYNC}
+
+  ifcapable walnut {
+   rollback_test 20
+  } else { return }
+}
+{}
+
+do_execsql_test sqlite_rollback-1.5 {
+  INSERT INTO t1 VALUES(11)
+  			
+  }
+ {}
+ 
+   finish_test

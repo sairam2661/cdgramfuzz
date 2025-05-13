@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+set ::timeout 60000
+
+proc encryption_proc {} {
+  global encryptionargs
+  lappend encryptionargs
+}
+
+do_test encryption-1.1 {
+  execsql {
+    PRAGMA key = 'your_encryption_key';
+    PRAGMA kdf_iter = 4096;
+  }
+} {}
+
+do_execsql_test encryption-1.2 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+} {}
+
+do_test encryption-2.1 {
+  execsql {
+    BEGIN;
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(2);
+  }
+} {}
+
+do_execsql_test encryption-2.2 {
+  ROLLBACK;
+  SELECT name FROM sqlite_master;
+} {a}
+
+ifcapable auto_vacuum {
+  do_execsql_test encryption-3.1 {
+    PRAGMA auto_vacuum=0;
+  }
+  {0 {}}
+}
+
+ifcapable vacuum {
+  do_test encryption-3.2 {
+    execsql {
+      VACUUM
+    }
+  }
+  {}
+
+  ifcapable wal {
+    set masterkey_encrypted 0
+    if {$masterkey_encrypted} {
+      execsql {
+        PRAGMA wallet_location=':memory:';
+      }
+    }
+  }
+}
+
+finish_test

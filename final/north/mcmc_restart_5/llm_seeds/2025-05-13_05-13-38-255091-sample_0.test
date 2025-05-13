@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix unique
+
+set ::timeout 60000
+set sqlite_extension true
+
+proc unique_proc {x} {
+  global uniqueargs
+  lappend uniqueargs $x
+  global x2
+  set x2 $x
+}
+
+proc mytest {args} {
+  global x2
+  set x2 ""
+  global uniqueargs
+  unset uniqueargs
+  error_bar unique_proc 100
+  foreach arg $args {
+    error_bar unique_proc $arg
+  }
+  error_bar unique_proc $x2
+  set x2 ""
+  lappend uniqueargs $x2
+}
+
+set test_name "mytest-1"
+set test_procedure mytest
+
+do_test mytest-1.5 {
+  db eval {
+    DROP TABLE IF EXISTS t1
+  }
+  execsql {
+    CREATE TABLE t1(
+      x2,
+      v,
+      v2
+    );
+  }
+} {}
+
+do_execsql_test mytest-2.1 {
+  INSERT INTO t1 VALUES (1, 4, 5);
+  INSERT INTO t1 VALUES (2, 5, 6);
+  INSERT INTO t1 VALUES (3, 6, 7);
+  SELECT * FROM t1 WHERE x2 = '1';
+} {1 4 5}
+
+ifcapable subquery {
+  do_execsql_test mytest-3.1 {
+    SELECT v2
+    FROM t1
+    WHERE v = 5
+    }
+  {6}
+}
+set test_name "mytest-4"
+
+ proc mytest4 {} {
+  unset args
+}
+do_execsql_test mytest-4.1 {
+  SELECT v2 FROM t1
+} {}
+
+finish_test

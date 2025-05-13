@@ -1,0 +1,102 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_threading
+
+set ::timeout 60000
+
+proc multi_threading_func {} {
+  global result
+  set result 0
+}
+
+proc multi_threading_test1 {} {
+  sqlite3 db1 testDb1
+  sqlite3 db2 testDb2
+  set result 0
+  set tid 0
+  db2 eval {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+  }
+  do_after $::timout {
+    db1 eval {SELECT count(*) FROM t1}
+    error "Timeout occurred"
+  }
+  incr tid
+  db1 aftercancel $tid
+  db1 execsql {BEGIN EXCLUSIVE}
+  db1 execsql {
+    INSERT INTO t1 VALUES(2);
+    SELECT count(*) FROM t1
+  }
+  db1 execsql COMMIT
+  error "Exclusivity test should not succeed"
+}
+
+proc multi_threading_test2 {} {
+  global result
+  set testlist {
+    BEGIN TRANSACTION ISOLATION LEVEL DEFERRED
+    INSERT INTO t1 VALUES NULL NULL
+    END TRANSACTION
+    INSERT INTO t1 VALUES NULL NULL
+    BEGIN EXCLUSIVE
+    SELECT count FROM t1
+  }
+  for {set i 1} {$i le 100} {incr i} {
+    do_test multi_threading_test2_$i {
+      db eval $testlist
+      list $i
+    } {101}
+  }
+}
+
+proc multi_threading_test3 {} {
+  global result
+  set testlist {
+    CREATE TABLE x AS
+    SELECT T1A1 AS A1 T1B1 AS B1
+    FROM testable
+  }
+  for {set i 1} {$i le 100} {incr i} {
+    do_test multi_threading_test3_$i {
+      db eval $testlist
+      list $i
+    } {101}
+  }
+}
+
+proc multi_threading_test4 {} {
+  global result
+  set testlist {
+    CREATE TABLE x AS
+    SELECT T1A1 AS A1 T1B1 AS B1
+    FROM testa
+  }
+  for {set i 1} {$i le 100} {incr i} {
+    do_test multi_threading_test4_$i {
+      db eval $testlist
+      list $i
+    } {101}
+  }
+}
+
+ifcapable thread {
+  for {set i 1} {$i le 50} {incr i} {
+    after 1000 multi_threading_func
+  }
+  for {set i 1} {$i le 50} {incr i} {
+    do_test multi_threading_$i {
+      multi_threading_test1
+      multi_threading_test2
+    } {}
+  }
+  for {set i 1} {$i le 50} {incr i} {
+    do_test multi_threading_$i {
+      multi_threading_test3
+      multi_threading_test4
+    } {}
+  }
+}
+
+finish_test

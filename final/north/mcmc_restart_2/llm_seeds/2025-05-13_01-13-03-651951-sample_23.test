@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fts5
+
+proc fts5_proc {} {
+  global fts5args
+  fuzzer_add_arg fts5args $::argv1 $::argv2
+}
+
+do_test fts5-1.1 {
+  expr 1
+} {1}
+
+do_execsql_test fts5-1.2 {
+  CREATE TABLE doc(docid, text);
+  INSERT INTO doc(docid, text) VALUES(1, 'Document A');
+} {1}
+
+db eval {
+  CREATE VIRTUAL TABLE ft USING fts5 
+            docid               CONTENT text                CONTENTS 
+            text                content         content
+            docid               docid            docid
+}
+do_test fts5-1.3 {
+  execsql {
+    INSERT INTO ft(docid, text) VALUES(1, 'Document B');
+  }
+} {}
+
+
+ifcapable fts5 {
+  do_execsql_test fts5-1.4 {
+    SELECT docid FROM ft WHERE text='Document A'
+ } {1}
+
+ do_execsql_test fts5-1.5 {
+    SELECT docid FROM ft WHERE text='Document B'
+  } {}
+
+do_execsql_test fts5-1.6 {
+  SELECT docid FROM ft WHERE docid=1
+ } {1}
+
+ do_execsql_test fts5-1.7 {
+    SELECT docid FROM ft WHERE docid=2
+  } {}
+
+  do_execsql_test fts5-1.8 {
+    SELECT docid FROM ft WHERE content='Document A'
+ } {1}
+
+ do_execsql_test fts5-1.9 {
+    SELECT docid FROM ft WHERE content='Document B'
+  } {}
+  do_execsql_test fts5-1.10 {
+    SELECT docid FROM ft WHERE docid='1'
+ } {1}
+
+  do_execsql_test fts5-1.11 {
+    SELECT docid FROM ft WHERE docid='2'
+  } {}
+  do_execsql_test fts5-1.12 {
+    SELECT docid FROM ft WHERE docid=5
+  } {}
+ }
+
+finish_test

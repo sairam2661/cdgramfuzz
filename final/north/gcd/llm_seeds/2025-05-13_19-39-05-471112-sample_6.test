@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc query_callback { } {
+  set db_handle sqlite3_db_handle connection
+  set stmt handle
+  sqlite3_connection_trace $db_handle { sqlite3_commit_hook connection
+    { set handle sqlite3_prepare_v2 $connection "SELECT * FROM a"
+      sqlite3_step $handle
+      sqlite3_finalize $handle
+      break
+    } NO_ERROR
+  }
+}
+
+proc timer_callback { } {
+  set DBHANDLE sqlite3_db_handle connection
+  sqlite3_connection_status $DBHANDLE SQLITE_STMTSTATUS_VM_STEP $connection
+}
+
+set test_number 1
+do_execsql_test $test_number {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+} ""
+
+do_execsql_test $test_number {
+  SELECT COUNT(*) FROM a
+} {1}
+
+query_callback
+timeout $::timestruct
+sqlite3_db_config_enable_load_extension connection
+sqlite3_db_config_enable_load_extension connection
+timer_callback
+
+do_execsql_test $test_number {
+  SELECT name FROM sqlite_master
+} {a}
+
+reset_counts
+do_execsql_test $test_number {
+  CREATE TRIGGER b AFTER INSERT ON a
+  FOR EACH ROW
+  BEGIN INSERT INTO b SELECT name FROM sqlite_master WHERE name LIKE 'a_%' AND type IN
+  {'table' 'view'}
+  END
+} {0}
+
+do_execsql_test $test_number {
+  DROP TABLE a
+} {0}
+
+sqlite3_extended_result_codes connection 1
+
+finish_test

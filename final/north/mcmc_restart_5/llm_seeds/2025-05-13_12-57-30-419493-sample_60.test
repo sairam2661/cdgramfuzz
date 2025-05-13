@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+proc crash_proc {} {
+  global cmdcount
+  incr cmdcount
+  if {$cmdcount eq 3} {
+    return "$cmdcount"
+  } else {
+    execsql {
+      ABORT
+    }
+  }
+}
+
+do_test transactions-1.1 {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b);
+    INSERT INTO t1 VALUES(1, 11);
+    INSERT INTO t1 VALUES(2, 22);
+  }
+} {}
+
+ifcapable {atomic_write} {
+  db eval {PRAGMA journal_mode = "DELETE"}
+  crash_proc "failed: $cmdcount"
+
+  sqlite3 db2 123
+  crash_proc "failed: $cmdcount"
+
+  db eval {PRAGMA journal_mode = "wal"}
+  crash_proc "failed: $cmdcount"
+
+  crash_proc "failed: $cmdcount"
+  crash_proc "failed: $cmdcount"
+  db2 eval {INSERT INTO t1 VALUES(3, 33)}
+} else {
+  set cmdcount 0
+  crash_proc "unsupported"
+  crash_proc "unsupported"
+  crash_proc "unsupported"
+}
+
+do_execsql_test transactions-1.2 {
+  SELECT * FROM sqlite_master
+} {
+  a text 3 t1
+}
+
+finish_test

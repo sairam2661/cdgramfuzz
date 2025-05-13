@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix data_type_test
+
+set ::timeout 60000
+
+set testnumber 0
+
+proc inc_number {} {
+  global testnumber
+  incr testnumber
+}
+
+proc reset_number {} {
+  global testnumber
+  set testnumber 0
+}
+
+proc query_execute {sql} {
+  execsql $sql
+}
+
+query_execute {
+  CREATE TABLE t1(a, b, c);
+}
+query_execute {
+  INSERT INTO t1 VALUES('Test 1', 'Integer 1', 'String 1');
+  INSERT INTO t1 VALUES('Test 2', 2, 3.5);
+  INSERT INTO t1 VALUES(3, 'Test 3', 2);
+  INSERT INTO t1 VALUES(3.4, 3, 'Test 4');
+}
+
+do_test data_type_test-1.1 {
+  query_execute {SELECT typeof a FROM t1 WHERE a LIKE 'Te%' AND b LIKE '2%'}
+} {text}
+
+do_test data_type_test-1.2 {
+  query_execute {SELECT typeof a FROM t1 WHERE a LIKE '2%'}
+} {integer real}
+
+do_test data_type_test-1.3 {
+  query_execute {SELECT typeof a FROM t1 WHERE a LIKE '3%' AND b LIKE '3%'}
+} {real text}
+
+do_execsql_test data_type_test-1.4 {
+  BEGIN;
+  INSERT INTO t1 VALUES(5);
+  SELECT typeof  (  										
+             	*  																				  )																																																																		FROM t1;																																																		
+  COMMIT;
+} {integer}
+  
+query_execute {DROP TABLE t1}
+
+finish_test

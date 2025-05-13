@@ -1,0 +1,91 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock_hierarchy
+
+proc db1connect {} {
+  set db1 {}
+  ifcapable {temp_db} {
+    set db1 "file_control"
+    file_control enable {
+        test_control
+        file_control
+        rollback journals
+        auto_vacuum
+        fullfsync
+    }
+  }
+  return $db1
+}
+
+proc db2connect {} {
+  set db2 {}
+  ifcapable {temp_db} {
+    set db2 "file_control"
+    file_control enable {
+        test_control
+        file_control
+        rollback journals
+        auto_vacuum
+        fullfsync
+    }
+  }
+  return $db2
+}
+
+proc test_lock_hierarchy {} {
+  db2connect
+  db2 eval {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1)
+  }
+  db2 close
+  db1connect
+  catch {db1 eval {SELECT x FROM b}}
+  catchsql {
+    SELECT x FROM b
+  } {1 {no such table b}}
+  db1 close
+  do_test lock_hierarchy_1.1 {
+    db2connect
+    execsql {INSERT INTO b VALUES(2)}
+  } {}
+}
+
+do_test lock_hierarchy_1.2 {
+  db1connect
+  db1 eval {CREATE TABLE c(y)}
+  db2connect
+  db1 close
+  execsql {SELECT * FROM c}
+} {}
+
+db2connect
+do_execsql_test lock_hierarchy_1.3 {
+  UPDATE b SET x IS x
+} {}
+db2 close
+do_execsql_test lock_hierarchy_1.4 {
+  DELETE FROM b
+} {}
+db1connect
+do_execsql_test lock_hierarchy_1.5 {
+  SELECT x FROM b
+} {}
+db1 close
+db2connect
+catchsql {
+  CREATE TABLE b IS NOT NULL OR IS NOT NULL
+} {1 {cannot create table b}}
+db1connect
+do_execsql_test lock_hierarchy_1.6 {
+  PRAGMA incremental_vacuum
+} {0}
+
+db2connect
+execsql {SELECT ISNULL FROM c}
+db1connect
+do_execsql_test lock_hierarchy_1.7 {
+  PRAGMA incremental_vacuum
+} {0}
+
+finish_test

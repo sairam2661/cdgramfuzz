@@ -1,0 +1,110 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc complex_proc {} {
+  set args ""
+  lappend args "Test 1"
+  lappend args "Test 2"
+  lappend args "Test 3"
+  lappend args "(1 2 3)"
+  set idx 0
+  foreach {v} $args {
+    if {$idx eq 3} {
+      lappend args "[expr {$v * 2}]"
+    }
+    incr idx
+  }
+  set unique_args {}
+  set unique_args $args
+  foreach {arg0 arg1 arg2} $args {
+    lappend unique_args "Test 1"
+  }
+  lappend unique_args "123"
+  lappend unique_args "[expr {(1+2) * 2}]"
+  set expected_result {}
+  if { $args eq "(1 + 2 + 3) * 2" } {
+    lappend expected_result "6"
+  }
+  lappend expected_result 0
+  lappend expected_result 10
+  return "$expected_result"
+}
+
+proc complex_callback {name args} {
+  global complex_testname
+  set complex_testname $name
+  set testargs {}
+  lappend testargs 1
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+}
+
+do_test complex-1.1 {
+  complex_proc
+} {6 0 10}
+
+do_test complex-1.2 {
+  complex_callback test1 "Test 2"
+} {}
+
+do_execsql_test complex-1.3 {
+  INSERT INTO b VALUES(2);
+  SELECT count(*) FROM b;
+} {2}
+
+ifcapable auth {
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(1);
+    CREATE TABLE d(x);
+    INSERT INTO d VALUES(1);
+  }
+} else {}
+
+ifcapable db_config {
+  file attributes test2_123 0x8002
+  file forget test2_123
+} else {
+  execsql {
+    UPDATE sql_log SET s LIKE 'SELECT %' SET s LIKE '% FROM sqlite_%'
+  }
+}
+
+do_execsql_test complex-1.4 {
+  CREATE TABLE e(x);
+}
+
+  {ok 3 2}
+ifcapable {
+  db eval {
+    CREATE TABLE i32_column(x);
+  }
+  db eval {
+    CREATE TABLE f64_column(x);
+  }
+} else {
+  do_catchsql_test complex {
+    CREATE TABLE f64_column(x);
+  } {1 {cannot create table f64_column}}
+  do_catchsql_test complex {
+    CREATE TABLE i32_column(x);
+  } {1 {cannot create table i32_column}}
+}
+
+ifcapable {
+  db eval {
+    CREATE INDEX idx_col_a ON e(x);
+  }
+} else {
+  do_execsql_test complex {
+    SELECT x FROM e ORDER BY x LIMIT 1
+  } {}
+}
+
+  {5 {"Cannot create a unique index on column x"} 1 {UNIQUE}}
+finish_test

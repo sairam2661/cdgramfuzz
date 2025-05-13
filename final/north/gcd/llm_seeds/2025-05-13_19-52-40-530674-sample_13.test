@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+do_test multi-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+} {}
+
+register_shutdown_hook {
+  execsql {
+    SELECT count(*) FROM a
+  }
+}
+
+register_thread_start_hook {
+  set tid "[%MY_NS thread id]"
+  sqlite_log "Thread $tid started"
+}
+
+register_thread_exit_hook {
+  set tid "[%MY_NS thread id]"
+  sqlite_log "Thread $tid exited"
+}
+
+proc sync_proc {} {
+  global b
+  lappend b $::tname
+  expr {5}
+}
+
+proc do_multi_test {n} {
+  foreach thread {
+    do_test multi1_$n_1 {
+      set tname $::tname
+      global syncargs
+      catch {sync_proc}
+      set b
+    } {}
+    do_test multi1_$n_2 {
+      execsql {
+        INSERT INTO a VALUES(4);
+      }
+    } {}
+  }
+  set n1 "multi1_$n_1"
+  set n2 "multi1_$n_2"
+  do_test multi1_$n_3 {
+    db eval {SELECT count(*) FROM a}
+  } 5
+}
+
+do_multi_test 2
+do_multi_test 4
+
+register_thread_run_test 2 {
+  do_sync_test
+}
+
+proc do_sync_test {} {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  do_test multi1_5 {
+    execsql {
+      SELECT count(*) FROM a
+    }
+  } 5
+  do_test multi1_6 {
+    execsql {
+      SELECT count(*) FROM b
+    }
+  } 1
+}
+
+finish_test

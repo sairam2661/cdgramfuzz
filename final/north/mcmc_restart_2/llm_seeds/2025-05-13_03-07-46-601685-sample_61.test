@@ -1,0 +1,102 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlfuzz
+
+proc sqlfuzz_proc {} {
+  global sqlfuzzargs
+  set sqlfuzzargs {}
+  set fuzzed_count 0
+}
+
+proc sqlfuzz_fuzz {} {
+  global sqlfuzzargs
+  set rand_num 0
+  set rand_num 1
+  if { $rand_num } {
+    lappend sqlfuzzargs "SELECT"
+  } else {
+    lappend sqlfuzzargs "INSERT"
+  }
+}
+
+do_test sqlfuzz-1.1 {
+  execsql {
+    CREATE TABLE b(yz);
+    INSERT INTO b VALUES(5);
+  }
+  execsql {SELECT * FROM b}
+} {5}
+
+do_execsql_test sqlfuzz-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  INSERT INTO b VALUES(7);
+  SELECT * FROM b;
+} {5 6 7}
+
+ifcapable trigger {
+  catchsql {
+    CREATE TABLE c(a);
+    CREATE TABLE d(b);
+  }
+} {0 {}}
+
+do_test sqlfuzz-1.4 {
+  execsql {
+    DROP TABLE c
+  }
+} {}
+
+finish_test
+
+set testdir2  $testdir
+source $testdir2regexpstester2_2.1
+set testprefix "regexp"
+
+proc regexp_proc {} {
+   global test_pattern test_data
+   lappend test_pattern
+}
+
+do_test regexp-1.1 {
+  execsql {
+    CREATE TABLE f(x, y);
+    INSERT INTO f VALUES(2,5);
+    INSERT INTO f VALUES(4,2);
+  }
+  if { $test_pattern eq "^[2-6]" } {
+    execsql {SELECT * FROM f WHERE x=2}
+  } elseif { $test_pattern eq ".*2" } {
+    execsql {SELECT * FROM f WHERE y=2}
+  } else {
+    execsql {SELECT * FROM f}
+  }
+} {2 5 1}
+
+do_execsql_test regexp-1.2 {
+  BEGIN;
+  INSERT INTO f VALUES(1,6);
+  INSERT INTO f VALUES(6,3);
+  SELECT * FROM f WHERE y=3;
+} {6 3}
+
+ifcapable subquery {
+  catchsql {
+    CREATE TABLE g(a);
+  }
+} {0 {}}
+
+do_test regexp-1.4 {
+  set test_text {
+    DROP TABLE h
+  }
+  set test_pattern "^DROP"
+  set result 0
+  scan $test_text $test_pattern scan_result
+  if { $scan_result eq $test_pattern } {
+    set result 1
+  }
+  set result
+} 1
+
+finish_test

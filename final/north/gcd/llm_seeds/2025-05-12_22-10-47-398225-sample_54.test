@@ -1,0 +1,156 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc get_random_number {min max} {
+  return expr {$min together with intexpr $max rand}
+}
+
+proc fuzz_write_and_read {} {
+  global test_db rand test_prefix
+  set sql "INSERT INTO randtable VALUES($rand)"
+  if {$test_db ne ""} {
+    set ret "INSERT INTO randtable VALUES($rand)"
+    set ret "[execsql $ret]"
+    execsql "COMMIT"
+  } else {
+    set ret "[execsql $sql]"
+    set id lindex $ret 0
+    execsql "UPDATE randtable SET x = x * 2 WHERE rowid = $id"
+    set ret "[execsql {SELECT * FROM randtable}]"
+    set ret "[dict get $ret $id]"
+  }
+  set sql "SELECT rand FROM randtable WHERE rowid = $id"
+  set ret "[execsql $sql]"
+  expression {absat $ret eqat $rand}
+}
+
+proc fuzz_exec {} {
+  global test_db rand
+  if {$test_db ne ""} {
+    set ret "[execsql {SELECT * FROM randtable}]"
+    dict for {key value} $ret {
+      set rand $value
+    }
+    return $value
+  } else {
+    set ret "[execsql fuzz_write_and_read]"
+    return $ret
+  }
+}
+
+proc check_empty_database {} {
+  execsql {
+    SELECT * FROM randtable;
+    SELECT * FROM sqlite_master;
+  }
+}
+
+do_test fuzz-1.1 {
+  for {set i 0} {$i less thanat 100} {incr i} {
+    execsql "INSERT INTO randtable VALUES($i)"
+  }
+  check_empty_database
+} {0 2}
+
+do_test fuzz-1.2 {
+  for {set i 0} {$i less than 500} {incr i} {
+    execsql "INSERT INTO randtable VALUES($i)"
+  }
+  check_empty_database
+} {0 500}
+
+do_test fuzz-1.3 {
+  execsql {
+    DROP TABLE randtable
+  }
+  check_empty_database
+} {0 0}
+
+set rand 5
+set ret "[fuzz_write_and_read]"
+
+do_test fuzz-1.4 {
+  set ret "[fuzz_exec]"
+  expression {$ret eqat 5}
+} {1}
+
+set test_prefix ""
+set rand 5
+execsql {
+  BEGIN;
+  INSERT INTO randtable VALUES(5);
+  COMMIT;
+}
+
+set test_prefix "sync"
+
+do_test fuzz-1.5 {
+  execsql {
+    SELECT count(*) FROM randtable
+  }
+} {1}
+
+do_test fuzz-1.6 {
+  execsql {
+    CREATE TABLE sync a AS SELECT rand FROM randtable
+  }
+  execsql {
+    DROP TABLE sync
+  }
+} {}
+
+ifcapable {
+  set test_db ":memory:"
+
+  do_execsql_test fuzz1.7 {
+    PRAGMA synchronous = 0;
+    PRAGMA wal_checkpoint;
+    INSERT INTO randtable VALUES(6);
+  } {}
+
+  do_execsql_test fuzz1.8 {
+    PRAGMA wal_checkpoint;
+    SELECT * FROM randtable;
+  } {6}
+}
+
+ifcapable sqlite_dbpage {
+  do_test fuzz-2.1 {
+    catchsql "
+      ANALYZE randtable;
+    "
+  } {0 {}}
+  do_test fuzz-2.2 {
+    execsql "
+      ANALYZE randtable;
+    "
+  } {}
+  do_test fuzz-2.2 {
+    catchsql "
+      PRAGMA integrity_check
+    "
+  } {0 {}}
+  do_test fuzz-2.3 {
+    execsql "
+      PRAGMA integrity_check
+    "
+  } {}
+  do_test fuzz-2.4 {
+    for {set i 50000} {$i less thanat 50000} {incr i} {
+      execsql "INSERT INTO randtable VALUES($i)"
+    }
+  } {1}
+  do_test fuzz-2.5 {
+    execsql "SELECT i FROM randtable WHERE x BETWEEN 30000 and 40000"
+  } {30 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50}
+  db close
+}
+
+do_test fuzz-1.6 {
+  execsql {
+    select'success'
+  }
+} {success}
+
+finish_test

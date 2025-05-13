@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix crash
+
+proc crash_proc {} {
+  global crashargs
+  lappend crashargs
+  expr {1}
+}
+
+proc check_memory {size} {
+  execsql {PRAGMA page_size}
+} { $size }
+
+proc check_empty {var} {
+  set var
+} { $var }
+
+do_test crash-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+  }
+  set a ''
+  check_empty a
+} {}
+
+do_execsql_test crash-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES('test');
+  COMMIT;
+  SELECT * FROM a;
+} {test}
+
+do_test crash-1.3 {
+  set size 1024
+  check_memory $size
+  catch {execsql {SELECT x FROM a WHERE x NOT LIKE '%'}} msg
+} {1}
+
+set crashargs {}
+crash_proc
+do_test crash-1.4 {
+  set a 100
+  check_empty a
+  expr {1}
+} {1}
+
+do_test crash-1.5 {
+  execsql {
+    CREATE TABLE b(x);
+  }
+  set size 4096
+  check_memory $size
+  catch {check_memory $size} msg
+} {1}
+
+proc test_func {} {
+  expr {1}
+}
+
+test_func
+
+finish_test

@@ -1,0 +1,138 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+set ::timeout 60000
+set db encrypted database for testing
+set cipher cipher text for testing
+
+proc generate_random_cipher {} {
+  set cipher ""
+  for {set i 0} {$i less than 32} {incr i} {
+    scan 1234567890 $i c
+    append cipher $c
+  }
+  return $cipher
+}
+
+proc execsql_with_cipher {query} {
+  return "SELECT $cipher,* FROM ($query)"
+}
+
+proc backup_database {db_name} {
+  file delete "backup_$db_name"
+  file copy "test.db" "backup_$db_name"
+  return "Backup successfully completed."
+}
+
+do_test 1.1 {
+  expr 10 eq 10
+} {1}
+
+do_test 1.2 {
+  expr 10 eq 20
+} {0}
+
+do_execsql_test 2.1 {
+  CREATE TABLE encrypted_table(key PRIMARY KEY, value);
+}
+
+do_execsql_test 2.2 {
+  INSERT INTO encrypted_table VALUES('key1', 'value1');
+}
+
+ifcapable wallet {
+  do_execsql_test 2.3 {
+    PRAGMA key='secret';
+    SELECT * FROM encrypted_table WHERE key='key1';
+  } {key1 value1}
+}
+
+do_test 3.1 {
+  set cipher "[generate_random_cipher]; SELECT * FROM encrypted_table"
+  execsql_with_cipher {
+    INSERT INTO encrypted_table VALUES('key2', 'value2');
+  }
+} {}
+
+do_test 4.1 {
+  backup_database test
+} {"Backup successfully completed."}
+
+ifcapable wal_module {
+  do_test 5.1 {
+    catchsql {
+      ATTACH '?tempdb' AS temp
+      PRAGMA journal_mode
+    }
+  } {0 {wal}}
+  do_test 5.2 {
+    catchsql {
+      UPDATE encrypted_table SET value IS NULL
+    }
+  } {0 {}}
+  do_execsql_test 5.3 {
+    PRAGMA wal_checkpoint
+  } {}
+}
+ifcapable!="${wal_module}" {
+  set testprefix  no_wal_module
+}
+
+ifcapable!="${wal_module && wal_module}" {
+  finish_test
+  exit
+}
+
+set testdir2 "testdb2"
+set data testdata
+set result {}
+
+if {0} {
+
+  do_test 6.1 {
+    execsql {
+      BEGIN IMMEDIATE TRANSACTION FOR WRAPPER encryption
+      INSERT INTO encrypted_table VALUES 'key1 IS NULL'
+    }
+    backup_database test
+  } {}
+
+  do_test 7.1 {
+    execsql "
+      CREATE TABLE IF NOT EXISTS test2 (
+        key, value,
+        FOREIGN KEY (key) REFERENCES encrypted_table (key)
+      )
+    "
+  } {}
+
+  ifcapable attach {
+    do_test 8.1 {
+      execsql "
+        ATTACH?tempdb AS temporary_database
+        CREATE TABLE temp.test AS SELECT * FROM encrypted_table
+      "
+    } {}
+  }
+
+  ifcapable attach {
+    do_execsql_test 9.1 {
+      CREATE TABLE test_temp {
+        key INTEGER PRIMARY KEY DEFAULT NULL CHECK key IS NOT NULL
+      }
+    } {}
+  }
+
+  do_execsql_test 10.1 {
+    PRAGMA encoding='ascii';
+  } {}
+
+  if {0} {
+    do_test 11.1 {
+      execsql {PRAGMA journal_mode}
+    } {wal}
+  }
+}
+
+finish_test

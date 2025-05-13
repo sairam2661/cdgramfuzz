@@ -1,0 +1,87 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_rowid {} {
+  global sql
+  foreach line $sql {
+    set rowid 0
+    foreach token $line {
+      if {$token eq "("} {
+        lappend rowid random
+      } elseif {$token eq ":"} {
+        set rowid $rowid random
+      } else {
+        lappend rowid $token
+      }
+    }
+    lappend sql $rowid
+  }
+}
+
+catchsql {
+  CREATE TABLE t1(id PRIMARY KEY, data);
+  CREATE TABLE t2(id PRIMARY KEY, data);
+}
+
+do_test fuzz-1.1 {
+  catchsql {
+    INSERT INTO t1 VALUES(1, 'a');
+    INSERT INTO t1 VALUES(2, 'b');
+    INSERT INTO t2 VALUES(1, 'c');
+    SELECT * FROM t1;
+  }
+} {0 {{1 a} {2 b}}}
+
+do_test fuzz-1.2 {
+  execsql {
+    INSERT INTO t1 VALUES(3, 'c')
+  }
+  db changes
+} {1}
+
+fuzz_rowid
+do_test fuzz-1.3 {
+  execsql {
+    SELECT * FROM t1;
+  }
+} {1 c 2 b 3 random}
+
+set sql {
+  BEGIN;
+  INSERT INTO t1 VALUES(4, 'd');
+  INSERT INTO t2 VALUES(2, 'e');
+  COMMIT
+}
+
+fuzz_rowid
+do_test fuzz-1.4 {
+  execsql "$sql"
+  execsql {SELECT * FROM t1}
+} {4 random {2 b} {1 a} {3 random}  1 c}
+
+foreach n {1 2 3 4 5} {
+  do_test fuzz_$n {
+    execsql {
+      INSERT INTO t1 VALUES(10, 't$n');
+    }
+    db changes
+  } $n
+
+  do_test fuzz_$n {
+    execsql "SELECT * FROM t1 WHERE id = 10"
+  } {{10 t$n}}
+}
+
+catchsql {
+  DROP TABLE t2
+}
+
+do_test fuzz-13.1 {
+  catchsql {
+    INSERT INTO t1 VALUES(11, 'k')
+  }
+} {0}
+
+catch {db close}
+finish_test

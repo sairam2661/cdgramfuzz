@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+set numcrashes 0
+
+proc crash_func {} {
+  global numcrashes
+  set numcrashes $numcrashes
+  incr numcrashes
+  expr {$numcrashes}
+}
+
+set crash_tests {
+  crash1 {
+    do_test crash1.1 {
+      execsql {
+        CREATE TABLE a(x);
+      }
+    } {}
+  }
+
+  crash2 {
+    do_test crash2.1 {
+      execsql {
+        BEGIN TRANSACTION ISOLATION LEVEL DEFERRED
+      }
+      catchsql {
+        COMMIT TRANSACTION
+      }
+    } {1 {cannot commit readonly transaction}}
+  }
+
+  crash3 {
+    do_test crash3.1 {
+      execsql {
+        COMMIT; COMMIT;
+      }
+    } {0 {}}
+  }
+
+  crash4 {
+    do_execsql_test crash4.1 {
+      PRAGMA journal_mode = 0
+    } ""
+    do_execsql_test crash4.2 {
+      PRAGMA journal_mode
+    } {}
+    do_execsql_test crash4.3 {
+      PRAGMA journal_mode = "NOSync"
+    } {}
+  }
+
+  crash5 {
+    do_execsql_test crash5.1 {
+      SELECT 5 WHERE 1 IS
+    } {}
+    do_test crash5.2 {
+      execsql {
+        DROP TABLE a
+      }
+    } {}
+  }
+}
+
+do_test crash_all-1.1 {
+  set crash_tests
+} ""
+
+foreach {test} $crash_tests {
+  do_test crash_all $test {
+    uplevel $test
+  } ""
+  if { $crash_func } {
+    incr numcrashes
+  }
+}
+
+finish_test

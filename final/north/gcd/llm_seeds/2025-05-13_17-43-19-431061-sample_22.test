@@ -1,0 +1,146 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+
+proc add_elements {} {
+  for {set i 0} {$i 1000} {incr i} {
+    execsql "INSERT INTO t1 VALUES($i)"
+  }
+}
+
+proc check_elements {} {
+  uplevel execsql {SELECT count(*) FROM t1}
+}
+
+do_execsql_test 1.1 {
+  CREATE TABLE t1(x);
+  BEGIN;
+  INSERT INTO t1 VALUES(1);
+  COMMIT;
+}
+
+do_execsql_test 1.2 {
+  DO 5000 {
+    INSERT INTO t1 VALUES(1)
+  }
+  SELECT count FROM sqlite_master WHERE name LIKE 't1-%'
+  IFNULL 0
+}
+
+do_test 1.3 {
+  set thread_id 1
+  catch {sqlite3_analyzer_thread_set $thread_id create}
+  set ret 0
+  sqlite3_thread_procedure_set $thread_id {add_elements}
+  sqlite3_thread_procedure_run $thread_id {add_elements}
+  sqlite3_thread_procedure_set $thread_id {check_elements}
+  sqlite3_thread_procedure_run $thread_id {check_elements}
+  sqlite3_thread_delete $thread_id
+  set ret
+} 1000
+
+do_test 1.4 {
+  execsql {
+    DELETE FROM t1
+  }
+} {}
+
+do_test 1.5 {
+  execsql {
+    CREATE TABLE t2 AS SELECT 10 AS a
+  }
+} {CREATE TABLE t2(a)  }
+
+do_catchsql_test 1.6 {
+  CREATE TABLE x(a, b);
+} {1 {table x already exists}}
+
+do_execsql_test 1.7 {
+  SELECT * FROM t2
+} {10}
+
+do_execsql_test 1.8 {
+  SELECT * FROM t2
+  WHERE a = 10
+} {10}
+
+catch {execsql {
+  INSERT INTO t2 VALUES(10);
+  INSERT INTO t2 VALUES(20);
+}}
+if 0!= $::error_code {
+  set ret 0
+} else {
+  set ret 1
+}
+
+do_test 2.1 {
+  if { $ret } {
+    do_catchsql_test 2.1 {
+      INSERT INTO t2 VALUES(30)
+    } {0 {}}
+  } else {
+    set ret 8
+  }
+} 8
+
+do_test 3.1 {
+  execsql {
+    ALTER TABLE t2
+    RENAME COLUMN "a" "z"
+  }
+} {}
+
+do_execsql_test 3.2 {
+  CREATE TABLE t2(
+    a,
+    c DEFAULT 2
+  );
+} {CREATE TABLE t2(a,c)  }
+
+do_test 4.1 {
+  execsql {
+    CREATE TRIGGER tr_after_insert ON t1 AFTER INSERT
+    FOR EACH ROW BEGIN
+      INSERT INTO t2 VALUES NEW
+      VALUES OLD
+      VALUES NULL
+      VALUES 2
+      VALUES 3
+    END
+  }
+} {}
+
+foreach {mode file} {
+  "WAL" 0
+  "IN MEMORY" 1
+  "ROLLBACK" 2
+  "persist" 8
+  "DELETE" 16
+} {
+  do_execsql_test "4.2.$mode" {
+     PRAGMA journal_mode = "$mode";
+     CREATE TABLE t2(
+        x,
+        y,
+        z,
+        a,
+        c,
+        d,
+        e,
+        f,
+     DEFAULT ,
+        g,
+        h,
+        i
+     );
+  } {}
+}
+
+do_execsql_test 5.1 {
+  SELECT 10
+} {10}
+
+finish_test

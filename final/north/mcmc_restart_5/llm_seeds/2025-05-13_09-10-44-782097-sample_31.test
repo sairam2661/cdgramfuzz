@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent3
+
+set ::timeout 60000
+set disable_return leak2
+
+set testargs $testprefix
+set sqlite_options ""
+
+proc leak2_func {} {
+  global sqlite_options
+  lappend sqlite_options
+  expr {1}
+}
+
+proc sqlite3_vacuum {} {
+  global leak2_result
+  testvfs tv
+  set leak2_result 0
+  sqlite3_vacuum "test.db"
+  set tv 1
+  execsql "SELECT * FROM 'db'"
+  execsql "SELECT * FROM 't1'"
+  execsql "SELECT * FROM 't2'"
+  execsql "SELECT * FROM 't3'"
+  sqlite3 db2 "file:temp-readonly.test"
+  eval db2 "execsql {SELECT * FROM 't1'}"
+  db2 close
+  execsql "INSERT INTO 't4' VALUES (1)"
+  if {$leak2_result eq 1} {set leak2_result 0} else {set leak2_result 1}
+  unset tv
+}
+
+do_catchsql_test 1.0 {
+  PRAGMA journal_mode = 'wal'
+  } {1 {database schema has changed} }
+
+do_catchsql_test 1.1 {
+  PRAGMA journal_mode = 'wal'
+  } {1 {database schema has changed} }
+
+ifcapable journalMode {
+  do_test  2.0 {
+    catchsql {PRAGMA journal_mode = 'wal'}
+    execsql {
+      BEGIN;
+      CREATE TABLE t1(a);
+      INSERT INTO t1 VALUES('a');
+      INSERT INTO t1 VALUES('a');
+      COMMIT;
+      PRAGMA wal_checkpoint;
+      SELECT a FROM t1;
+    }
+  } {a a}
+  do_test  3.0 {
+    set timeout 30000
+    set leak2_result 0
+    do_test sqlite3_vacuum {
+      sqlite3_vacuum
+     } {24}
+  } {}
+}
+
+do_test 4.0 {
+  execsql {
+    CREATE VIRTUAL TABLE i LIKE 'fts4(a)'  KEEP SNIPPET KEEP SCORES
+    CREATE VIRTUAL TABLE u LIKE 'fts4(a)'  KEEP SNIPPET KEEP SCORES
+    }
+} {}
+finish_test

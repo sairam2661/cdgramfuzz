@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix tcltest
+
+proc tcl_test_proc {} {
+  global tcl_testargs
+  lappend tcl_testargs
+  expr {1}
+}
+
+proc tcl_test_proc2 {} {
+  global tcl_testargs2
+  lappend tcl_testargs2
+  expr {0}
+}
+
+do_test tcltest-1.1 {
+  set x 10
+  incr x
+  set x
+} {11}
+
+do_test tcltest-1.2 {
+  set y 20
+  lappend y 30
+  set y
+} {20 30}
+
+do_execsql_test tcltest-2.1 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(40);
+  SELECT count(*) FROM b;
+} {1}
+
+proc tcl_test_func2 {} {
+  global tcl_testargs
+  set tcl_testargs
+}
+
+do_test tcltest-3.1 {
+  set tcl_testargs {}
+  tcl_test_func2
+  set tcl_testargs
+} {{}}
+
+do_test tcltest-4.1 {
+  set tcl_testargs2 {}
+  tcl_test_proc2
+  set tcl_testargs2
+} {{}}
+
+set tcl_testargs {}
+set tcl_testargs2 {}
+
+finish_test

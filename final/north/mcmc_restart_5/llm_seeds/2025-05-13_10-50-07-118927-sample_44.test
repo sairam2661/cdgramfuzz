@@ -1,0 +1,79 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+proc transactions_db {n} {
+  global tid counter
+  set tid $n
+  set counter {}
+}
+
+proc transactions_proc {n} {
+  global counter
+  lappend counter $n
+  expr {$n}
+}
+
+do_test transactions-1.1 {
+  execsql {
+    CREATE TABLE transactions_table(id, value);
+    INSERT INTO transactions_table VALUES(1, 'one');
+  }
+  execsql {
+    SELECT id FROM transactions_table
+  }
+} {1}
+
+do_execsql_test transactions-1.2 {
+  BEGIN;
+  INSERT INTO transactions_table VALUES(2, 'two');
+  COMMIT;
+  SELECT id FROM transactions_table
+} {1 2}
+
+db func transactions_db transactions_db
+db func transactions_proc transactions_proc
+do_test transactions-1.3 {
+  transactions_db 5
+  transactions_proc 10
+  set transactions_table {
+    {id value} 
+    {2 two}
+    {1 one}
+  }
+  execsql {
+    SELECT * FROM transactions_table
+  }
+} {2 two 1 one}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="WAL"}
+} {0 {}}
+
+do_test transactions-1.4 {
+  execsql {
+    CREATE INDEX idx_transactions_table_value
+    ON transactions_table(value);
+  }
+} {}
+
+do_test transactions-1.5 {
+  execsql {
+    DROP TABLE transactions_table
+  }
+} {}
+
+do_test transactions-1.6 {
+  execsql {
+    CREATE TABLE transactions_table2(id, value);
+    INSERT INTO transactions_table2 VALUES(
+      3, 'three'
+    );
+  }
+  execsql {
+    SELECT id FROM transactions_table2
+  }
+} {3}
+
+finish_test

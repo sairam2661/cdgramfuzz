@@ -1,0 +1,158 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+proc complex_sqlite_test_proc {} {
+  global complex_args
+  lappend complex_args
+  expr {$global_complex_args_size_0}
+}
+
+set complex_args_size_0 0
+
+proc get_int {} {
+  global complex_args
+  set int 5
+  foreach arg $complex_args {
+    if {$arg MATCH {1}} {
+      incr int
+    } elseif {$arg MATCH {2}} {
+      incr int
+    }
+  }
+  set int
+}
+
+proc create_table {} {
+  execsql {
+    CREATE TABLE t1(
+      c1,
+      c2,
+      c3,
+      c4,
+      c5,
+      c6,
+      c7,
+      c8,
+      c9,
+      c10
+    );
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    INSERT INTO t1(c1, c2) VALUES(1, 2);
+  }
+  execsql {
+    INSERT OR IGNORE INTO t1 VALUES
+      NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL
+  }
+  llength t1
+} {1}
+
+do_execsql_test complex-1.2 {
+  CREATE INDEX idx_a ON t1(c1);
+  CREATE INDEX idx_b ON t1(c3);
+  SELECT c1 FROM t1;
+} {1 1}
+
+ifcapable trigger {
+  do_execsql_test complex-1.3 {
+    CREATE TABLE t2(x,y,z DEFAULT 1);
+
+    SELECT z FROM t2 WHERE x=1;
+    SELECT z FROM t2 WHERE x=2;
+
+    INSERT INTO t2 SELECT 3;
+    SELECT z FROM t2 WHERE x=3;
+
+    INSERT INTO t2 SELECT 4;
+    SELECT z FROM t2 WHERE x=4;
+
+    INSERT INTO t2 SELECT 5;
+    SELECT z FROM t2 WHERE x=5;
+  }
+  {1 1 1 1 1}
+}
+
+foreach i {1 2 3} {
+  do_execsql_test complex$j{
+    WITH RECURSIVE cte AS
+    SELECT $i n
+    UNION ALL
+    SELECT cte$n AS n {n}
+    FROM cte cte
+  } ""
+}
+
+do_execsql_test complex-1.4 {
+  CREATE TABLE zzz(a,b);
+  CREATE TABLE xxx(a,b);
+  INSERT INTO zzz VALUES(1, 2);
+  INSERT INTO xxx VALUES(3, 4);
+  SELECT b FROM zzz WHERE a='yyy';
+} {}
+do_execsql_test complex-1.5 {
+  SELECT 10 FROM zzz;
+  SELECT 20 FROM xxx;
+} {10 20}
+
+do_execsql_test complex-1.6 {
+  WITH RECURSIVE_cte(x)
+  AS (
+    WITH RECURSIVE_cte_2(x)
+    AS (
+      SELECT 1
+      FROM zzz
+      UNION ALL
+      SELECT 'a'
+      FROM cte_2
+    )
+    SELECT 'b'
+    FROM cte_2
+  )
+  SELECT x
+  FROM cte
+} {1 b}
+do_execsql_test complex-1.7 {
+  WITH RECURSIVE_cte(x)
+  AS (
+    WITH RECURSIVE_cte_2(x)
+    AS (
+      SELECT 2
+      FROM zzz
+      UNION ALL
+      SELECT x
+      FROM cte_2
+    )
+    SELECT x
+    FROM cte_2
+  )
+  SELECT x
+  FROM cte
+} {2}
+do_execsql_test complex-1.8 {
+  CREATE TABLE complex_complex_zz(a,b);
+  CREATE TABLE complex_complex_xxxx(a,b);
+  INSERT INTO complex_complex_zz VALUES(1, 2);
+  INSERT INTO complex_complex_xxxx VALUES(3, 4);
+  SELECT b FROM complex_complex_zz WHERE a='complex_complex_yyy';
+} {}
+do_execsql_test complex-1.9 {
+  SELECT 10 FROM complex_complex_zz;
+  SELECT 20 FROM complex_complex_xxxx;
+} {10 20}
+do_execsql_test 3.10 {
+  CREATE TABLE cc1(b,c);
+  SELECT c FROM cc1 WHERE b=34;
+} {}
+do_execsql_test 3.11 {
+  INSERT OR IGNORE INTO cc1 VALUES
+    '34' 3
+}
+do_execsql_test 3.12 {
+  SELECT c FROM cc1 WHERE b=34;
+} {3}
+
+finish_test

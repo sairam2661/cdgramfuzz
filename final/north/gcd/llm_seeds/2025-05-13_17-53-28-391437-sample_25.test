@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix foreign_key
+
+set ::timeout 60000
+set testing_module "foreignkey"
+
+proc ckout {db} {
+  db eval {
+    UPDATE main_user SET salary 1001 WHERE name LIKE '%kelly%'
+  }
+  execsql {
+    SELECT name FROM main_user
+  }
+}  {john smith jenny kelly kenny}
+
+proc start_test {} {
+  execsql {BEGIN}
+  set res {}
+}
+
+proc finish_test {} {
+  execsql COMMIT
+  global sqlite_open_file
+  incr sqlite_open_file
+}
+
+sqlite_open_tester
+sqlite_dbconfig {
+    wal true onconflict_replace
+  }
+
+do_test foreignkey-1.1 {
+  set res{}
+  execsql {
+    CREATE TABLE main_user(user_id PRIMARY KEY,
+                          surname,
+                          salary);
+    CREATE TABLE sec_user(user_id PRIMARY KEY,
+                         surname,
+                         salary,
+                         FOREIGN_KEY_CONSTRAINTS
+                         )  }
+} {}
+do_execsql_test foreignkey-1.2 {
+    PRAGMA foreign_key_list
+} {}
+start_test
+do_execsql_test foreignkey-1.3 {
+  INSERT INTO main_user VALUES("1", "smith", "2000.00");
+  INSERT INTO sec_user VALUES("1", "smith", "2000.00");
+} {}
+do_execsql_test foreignkey-1.4 {
+  SELECT user_id FROM main_user WHERE salary = 800
+} {}
+do_test foreignkey-1.5 {
+  set res {main_user sec_user user_id PRIMARY KEY 
+  user_id INTEGER}
+  execsql {
+   SELECT name TABLE_NAME sql
+  FROM sqlite_master WHERE name IN'main_user,sec_user' AND sql LIKE '%FOREIGNKEYCONSTRAINTS%'
+  }
+} "$res"
+
+finish_test

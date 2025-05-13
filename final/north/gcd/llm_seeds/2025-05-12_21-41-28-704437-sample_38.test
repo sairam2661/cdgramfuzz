@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sql_fuzz
+
+proc fuzz_test_one_line {} {
+  global fuzzdir fuzzdir_file current_filename
+  set sql {
+    SELECT *
+    FROM table_name
+    WHERE column_name = 'test_string'
+  }
+  db eval $sql
+  execsql {SELECT * FROM table_name}
+  catchsql {
+    UPDATE table_name 
+    SET column_name 1
+  }
+  expect 1
+  file delete $fuzzdir_file
+  file copy $current_filename $fuzzdir
+  return
+}
+
+proc fuzz_test {} {
+  global current_filename
+  set current_filename $fuzzdir_file
+  set sql_file $fuzzdir_file
+  foreach line {sql select from where group} {
+    set sql {
+      UPDATE table_name 
+      SET column_name '='
+      WHERE column_name like 'test_string%'
+    }
+    file copy $fuzzdir_file $current_filename
+    set start 1
+    for {set i $start} {
+      set word "[expr rand()] $sql_file"
+      incr i
+    } {$word eq $line} {
+      execsql $sql
+      continue
+    }
+    set start 2
+    for {set i $start} {
+      set word "[expr rand()] $sql_file"
+      incr i
+    } {$word eq $line} {
+      execsql {SELECT * FROM table_name}
+      continue
+    }
+    file delete $fuzzdir_file
+  }
+}
+
+proc fuzz_delete {} {
+  global fuzzdir fuzzdir_file
+  execsql {SELECT * FROM table_name}
+  catchsql {DROP TABLE table_name}
+  expect 1
+  execsql {CREATE TABLE new_table_name(id)}
+  catchsql {CREATE TABLE table_name LIKE new_table_name}
+  file delete $fuzzdir_file
+}
+
+do_test fuzz-1.1 {
+  set fuzzdir_file "[file tail $argv0]"
+  set fuzzdir "[file dirname $argv0]"
+  set db_name "[lindex $argv 0]"
+  set db_exec "execsqlite3 [set db_name]"
+  execsqlite3 $db_exec {SELECT count(*) FROM table_name}
+} {0}
+
+do_test fuzz-1.2 {
+  fuzzer $fuzz_test $db_name $fuzzdir $fuzzdir_file
+  catchsql {SELECT * FROM table_name}
+} {0 {}}
+
+do_test fuzz-1.3 {
+  fuzz_test_one_line $db_name
+  execsqlite3 $db_exec {SELECT * FROM table_name}
+} {0}
+
+do_test fuzz-1.4 {
+  fuzz_delete $db_name
+  catchsql {SELECT * FROM table_name}
+} {1 {no such table}}
+
+finish_test

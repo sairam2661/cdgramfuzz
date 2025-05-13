@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+db config default_rollback jornal
+db config default_rollback_level 1
+db config default_temp_store filesystem
+db config journal_mode WAL
+
+proc dbconfig_proc {args} {
+  global db
+  set dbopts "$dbopts $args"
+}
+
+set dbopts ""
+
+set test_list {
+  1
+  {2 {5 6}}
+  {3 {7}}
+}
+
+set expected {
+  {1 {a b c}}
+  {2 {d e f g h i}}
+  {3 {j k l m}}
+}
+
+foreach {test_num test_args expected_res} $test_list {
+  append sql "SELECT * FROM a WHERE "
+  foreach {test_arg res} $test_args {
+    append sql "$test_arg LIKE '$res' OR "
+  }
+  append sql "1=1;"
+  do_execsql_test sync_$test_num {
+    CREATE TABLE a(x, y);
+    INSERT INTO a VALUES('a');
+    INSERT INTO a VALUES('b c');
+    INSERT INTO a VALUES('d e f');
+    INSERT INTO a VALUES('g');
+    INSERT INTO a VALUES('h i');
+    INSERT INTO a VALUES('j k');
+    INSERT INTO a VALUES('l m');
+    BEGIN;
+    INSERT INTO a VALUES(4);
+
+    COMMIT;
+    SELECT * FROM a WHERE
+    setdb
+
+   ="$test_args"  }  "$expected_res"
+}
+
+do_catchsql_test sync_4 {
+  PRAGMA journal_mode = "WAL";
+} {0 WAL}
+
+ifcapable journalMode {
+  do_catchsql_test sync_5 {
+    PRAGMA journal_mode = "DELETE";
+  } {0 {journal_mode DELETE}}
+}
+
+finish_test

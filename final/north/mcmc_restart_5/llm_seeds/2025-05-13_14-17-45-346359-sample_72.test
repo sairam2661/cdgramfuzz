@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix tcl
+
+set ::timeout 60000
+
+proc tcl_sleep {ms} { after $ms {set tcl_sleep_done 1} }
+
+proc tcl_func {args} {
+  global tcl_sleep_done
+  if { $tcl_sleep_done } {
+    incr argcount
+  }
+  return $argcount
+}
+
+proc tcl_lambda {} {
+  after 2000 {incr lambda_count}
+  return lambda_count
+}
+
+proc tcl_eval {cmd} {
+  if { $cmd eq "sleep" } { tcl_sleep 2000 }
+  puts "Executing: $cmd"
+  return 0
+}
+
+proc tcl_func_argcheck {expected actual} {error "expected $expected, got $actual"}
+
+do_test 1.1 {
+  tcl_func 1 2
+} {0}
+
+set argcount 0
+set lambda_count 0
+
+after 4000
+do_test 1.2 {
+  set argcount
+  lambda_count
+} {0 0}
+
+after_cancel all
+do_test 1.3 {
+  catch {after 1000}
+} {1}
+
+eval tcl_eval sleep
+eval tcl_eval sleep
+do_test 1.4 {
+  eval tcl_func {tcl_eval sleep}
+  tcl_func_argcheck {1} 3
+} {0}
+
+eval tcl_sleep 4000
+eval tcl_eval sleep
+do_test 1.5 {
+  tcl_func {tcl_eval sleep} 3
+} {4}
+
+finish_test

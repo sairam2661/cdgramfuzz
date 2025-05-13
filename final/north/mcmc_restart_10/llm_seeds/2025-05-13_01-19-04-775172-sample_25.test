@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzer
+
+proc fuzzer_func args {
+  proc fuzzer {db} {
+    set args {}
+    set result 0
+    for {set i 0} {$i lt 10} {incr i} {
+      set x rand
+      execsql "INSERT INTO fuzzer values($x)"
+      lappend args $x
+      if {$result} { break }
+    }
+    execsql "DELETE FROM fuzzer"
+    return $args
+  }
+  return $fuzzer
+}
+
+proc fuzzer_func2 args {
+  proc fuzzer2 {db} {
+    set args {}
+    set result 0
+    for {set i 0} {$i lt 20} {incr i} {
+      set x ""
+      for {set j 0} {$j lt 15} {incr j} {
+        append x "[expr {int(rand()*100)}]"
+      }
+      execsql "INSERT INTO fuzzer values($x)"
+      lappend args $x
+      if {$result} { break }
+    }
+    execsql "DELETE FROM fuzzer"
+    return $args
+  }
+  return $fuzzer2
+}
+
+proc fuzzer_func3 args {
+  proc fuzzer3 {db} {
+    set result 0
+    for {set i 0} {$i lt 30} {incr i} {
+      set x ""
+      for {set j 0} {$j lt 25} {incr j} {
+        append x "[expr {int(rand() 0 35)}]"
+      }
+      execsql "INSERT INTO fuzzer values($x)"
+      if {$result} { break }
+    }
+    execsql "DELETE FROM fuzzer"
+  }
+  return $fuzzer3
+}
+
+do_test fuzzer-1.1 {
+  execsql {
+    CREATE TABLE fuzzer(x);
+  }
+  set result 0
+} {0}
+
+do_fuzzer_test fuzzer_func syncsyncsyncsyncsyncsyncsyncsyncsyncsyncsyncsync
+do_fuzzer_test fuzzer_func2 syncsyncsyncsyncsyncsyncsyncsyncsyncsyncsyncsync
+do_fuzzer_test fuzzer_func3 syncsyncsyncsyncsyncsyncsyncsyncsyncsyncsyncsync
+
+finish_test

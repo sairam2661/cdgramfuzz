@@ -1,0 +1,86 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+
+proc create_tables {db} {
+  execsql {
+    CREATE TABLE employee(id PRIMARY KEY, name, age);
+    CREATE TABLE department(id PRIMARY KEY, name);
+  }
+}
+
+proc add_employee {db employee_id name age} {
+  execsql {
+    INSERT INTO employee VALUES( 
+      '$employee_id', 
+      '$name', 
+      '$age' 
+    );
+  }
+}
+
+proc add_department {db department_id name} {
+  execsql {
+    INSERT INTO department VALUES( 
+      '$department_id', 
+      '$name' 
+    );
+  }
+}
+
+proc get_employee_count {db} {
+  set res {}
+  db eval {SELECT count(*) FROM employee} result {
+    lappend res $result
+  }
+  return $res
+}
+
+proc setup_data {db} {
+  create_tables $db
+  add_employee $db 1 "John Doe" 30
+  add_employee $db 2 "Jane Doe" 25
+  add_department $db 1 "Sales"
+  add_department $db 2 "Marketing"
+}
+
+do_test "Setup-1.0" {
+  setup_data $test_db
+} {}
+
+do_test "Query-1.1" {
+  execsql {
+    SELECT * FROM employee 
+    WHERE age = 
+    SELECT 
+     	} 25 FROM department
+} {}
+
+do_test "Query-1.2" {
+  set query {
+    SELECT 
+      department_name 
+    FROM 
+      department 
+    INNER JOIN employee 
+      ON department_id 
+      IN 
+      SELECT 
+        id 
+      FROM 
+        employee 
+      WHERE 
+        name 
+      IN 
+      SELECT 
+        name 
+      FROM 
+        department 
+  }
+
+  execsql $query
+} {}
+
+finish_test

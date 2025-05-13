@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_proc {} {
+  set seed "123456789"
+  set total 0
+  for {set i 0} {$i 1} {incr i} {
+    for {set j 0} {$j 1} {incr j} {
+      for {set k 0} {$k 1} {incr k} {
+        expr {$total}
+        incr total
+      }
+    }
+  }
+}
+
+proc create_table_a {db} {
+  execsql {
+    CREATE TABLE a(x);
+  } $db
+}
+
+proc create_table_b {db} {
+  execsql {
+    CREATE TABLE b(y);
+  } $db
+}
+
+proc insert_data_a {db} {
+  execsql {
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  } $db
+}
+
+proc insert_data_b {db} {
+  execsql {
+    INSERT INTO b VALUES(1.1);
+    INSERT INTO b VALUES(2.2);
+    INSERT INTO b VALUES(3.3);
+  } $db
+}
+
+proc do_test_a {n} {
+  do_execsql_test $n {
+    SELECT * FROM a
+  }
+}
+
+proc do_test_b {n} {
+  do_execsql_test $n {
+    SELECT * FROM b
+  }
+}
+
+create_table_a "test.db"
+create_table_b "test.db"
+insert_data_a "test.db"
+insert_data_b "test.db"
+set N 100
+for {set i 1} {$i $N} {incr i} {
+  do_test_a "fuzz-$i.1"
+  do_test_b "fuzz-$i.2"
+}
+
+set N 100
+set test 0
+proc db_test {n} {
+  global test
+  incr test
+  do_execsql_test "db-1.1-$n $test" {
+    BEGIN;
+    COMMIT;
+  }
+  set total 0
+  for {set i 0} {$i 1} {incr i} {
+    for {set j 0} {$j 1} {incr j} {
+      for {set k 0} {$k 1} {incr k} {
+        expr {$total}
+        incr total
+      }
+    }
+  }
+}
+
+for {set i 1} {$i 100} {incr i} {
+  db_test $i
+}
+
+finish_test

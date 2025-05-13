@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+testvfs vfs
+vfs vfs vfreelist
+do_test dbconfig-1.1 {
+  execsql {
+    CREATE VIRTUAL TABLE fts USING fts5 Dokumento title content docid_fts
+  }
+} {}
+proc fts_tcl {txt} {
+  execsql {
+    INSERT INTO fts(docid, title, content)
+    VALUES(1, '$txt', '$txt');
+  }
+}
+fts_tcl "This is a brief document that needs an update"
+
+vfs filter vfreelist {}
+do_test dbconfig-1.2 {
+  catchsql {
+    PRAGMA journal_mode = "MEMORY"
+  }
+} {1 {no such journal mode}}a
+vfs unfilter vfreelist
+
+do_execsql_test dbconfig-2.1 {
+  PRAGMA auto_vacuum
+} {0}
+do_execsql_test dbconfig-2.2 {
+  PRAGMA page_size
+} {1024}
+
+ifcapable memdb {
+  do_execsql_test dbconfig-3.1 {
+    PRAGMA temp_store = "MEMORY"
+  }
+  "PRAGMA temp_store"
+} MEMORY
+do_test dbconfig-4.1 {
+  execsql {
+    PRAGMA synchronous = "NORMAL";
+  }
+  set synchronous
+} {2}
+do_execsql_test dbconfig-5.1 {
+  PRAGMA locking_mode
+} {NORMAL}
+
+finish_test

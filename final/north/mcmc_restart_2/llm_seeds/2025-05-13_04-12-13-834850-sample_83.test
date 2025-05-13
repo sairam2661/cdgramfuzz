@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema
+set schema_db "schema_test"
+
+proc create_table {name columns} {
+  execsql "CREATE TABLE $name ($columns)"
+}
+
+proc delete_table {name} {
+  execsql "DROP TABLE IF EXISTS $name"
+}
+
+proc delete_db {} {
+  global schema_db
+  set retcode {}
+  catch { db close }
+  unset schema_db
+  set retcode $retcode
+  return $retcode
+}
+
+do_test schema-1.1 {
+  set retcode {}
+  delete_db
+  catch { db close }
+  unset schema_db
+  set retcode $retcode
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(c, d);
+  }
+  set retcode
+} {}
+
+do_test schema-1.2 {
+  execsql {
+    CREATE TABLE t3(e, f);
+    CREATE TABLE t4(g, h);
+  }
+} {}
+
+do_execsql_test schema-2.1 {
+  CREATE TABLE t5(i, j);
+  SELECT name FROM sqlite_master;
+} {t1 t2 t3 t4 t5}
+
+do_execsql_test schema-2.2 {
+  CREATE TABLE t6(k, l);
+  SELECT name FROM sqlite_master;
+} {t1 t2 t3 t4 t5 t6}
+
+do_execsql_test schema-2.3 {
+  CREATE TABLE IF_NOT_EXISTSt7(m, n);
+  SELECT name FROM sqlite_master;
+} {t1 t2 t3 t4 t5 t6}
+do_execsql_test schema-2.4 {
+      ROLLBACK;
+      SELECT name FROM sqlite_master;
+} {t1 t2 t3 t4 t5 t6}
+
+do_test schema-3.1 {
+  execsql {
+    INSERT INTO t1 VALUES('A', 'B');
+    INSERT INTO t2 VALUES('C', 'D');
+  }
+} {}
+
+do_test schema-3.2 {
+  execsql {
+    INSERT INTO t3 VALUES('E', 'F');
+    INSERT INTO t4 VALUES('G', 'H');
+  }
+} {}
+
+do_test schema-3.3 {
+  execsql {
+    INSERT INTO t5 VALUES('I', 'J');
+    INSERT INTO t6 VALUES('K', 'L');
+  }
+} {}
+
+ifcapable vacuum {
+  do_execsql_test schema-4.1 {
+    CREATE TABLE v1(x, y);
+    INSERT INTO v1 VALUES(5, 6);
+    INSERT INTO v1 VALUES(7, 8);
+    INSERT INTO v1 VALUES(9, 0);
+    SELECT * FROM v1;
+    ROLLBACK;
+    SELECT * FROM v1;
+  } {5 6 7 8 9 0}
+}
+
+finish_test

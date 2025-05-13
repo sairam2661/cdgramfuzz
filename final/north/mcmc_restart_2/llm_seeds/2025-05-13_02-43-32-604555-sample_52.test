@@ -1,0 +1,171 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+proc complex_insert {} {
+  global complex_insert_args
+  lappend complex_insert_args
+  expr {0}
+}
+
+proc complex_query {} {
+  global complex_query_args
+  lappend complex_query_args
+  sql "SELECT * FROM a"
+}
+
+proc complex_delete {} {
+  global complex_delete_args
+  lappend complex_delete_args
+  execsql {
+    DROP TABLE a
+  }
+}
+
+proc complex_drop_view {} {
+  global complex_drop_view_args
+  lappend complex_drop_view_args
+  execsql {
+    DROP VIEW b
+  }
+}
+
+proc complex_create_view {} {
+  global complex_create_view_args
+  lappend complex_create_view_args
+  execsql {
+    CREATE VIEW b AS SELECT a FROM a
+  }
+}
+
+proc complex_create_trigger {} {
+  global complex_create_trigger_args
+  lappend complex_create_trigger_args
+  execsql {
+    CREATE TRIGGER t AFTER INSERT ON a FOR EACH ROW
+      UPDATE a SET x
+  }
+}
+
+proc complex_delete_trigger {} {
+  global complex_delete_trigger_args
+  lappend complex_delete_trigger_args
+  execsql {
+    DROP TRIGGER t
+  }
+}
+
+proc complex_create_function {} {
+  global complex_create_function_args
+  lappend complex_create_function_args
+  sql {
+    CREATE FUNCTION f INTEGER 
+  }
+}
+
+proc complex_drop_function {} {
+  global complex_drop_function_args
+  lappend complex_drop_function_args
+  sql {
+    DROP FUNCTION f
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x,y);
+    INSERT INTO a VALUES(1,2);
+  }
+  llength $complex_insert_args
+} {1}
+
+do_execsql_test complex-1.2 {
+  SELECT * FROM a;
+  SELECT * FROM a;
+} {1 2}
+
+do_test complex-1.3 {
+  execsql {
+    SELECT * FROM b;
+    SELECT * FROM b;
+  }
+  llength $complex_query_args
+} {2}
+
+do_test complex-1.4 {
+  execsql {
+    SELECT x FROM a;
+    SELECT x FROM a;
+  }
+  llength $complex_delete_args
+} {2}
+
+do_test complex-1.5 {
+  execsql {
+    SELECT * FROM a;
+    SELECT * FROM a
+  }
+  llength $complex_drop_view_args
+} {1}
+
+do_test complex-1.6 {
+  execsql {
+    CREATE TABLE c(x);
+  }
+  llength $complex_create_view_args
+} {1}
+
+do_execsql_test complex-1.7 {
+  CREATE TABLE c(x);
+  CREATE TABLE d(y);
+  CREATE INDEX i ON d(y);
+
+  SELECT * FROM d;
+  SELECT * FROM d;
+
+  SELECT * FROM c;
+  SELECT * FROM c;
+} {}
+
+do_execsql_test complex-1.8 {
+  CREATE TABLE e(x);
+  CREATE INDEX i ON e(x);
+
+  SELECT * FROM e;
+  SELECT * FROM e;
+} {}
+
+do_test complex-1.9 {
+  llength $complex_delete_trigger_args
+} {1}
+
+do_test complex-1.10 {
+  llength $complex_create_trigger_args
+} {1}
+
+ifcapable json1 {
+  do_test complex-1.11 {
+    llength $complex_create_function_args
+  } {1}
+
+  do_test complex-1.12 {
+    llength $complex_drop_function_args
+  } {1}
+}
+
+do_execsql_test complex-1.13 {
+  BEGIN;
+  INSERT INTO a VALUES(4,5);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {2}
+
+do_execsql_test complex-1.14 {
+  SELECT count(*) FROM a;
+} {2}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'WAL'}
+} {0 {}}
+
+finish_test

@@ -1,0 +1,178 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix temp
+
+proc temp_func {x} {
+  set result 0
+  if {$x} {
+    set result 1
+  }
+  return $result
+}
+
+proc temp_func2 {x} {
+  set result 0
+  switch $x {
+    1 {
+      set result 1
+    }
+  }
+  return $result
+}
+
+proc callback {args} {
+  set res 0
+  foreach {a b} $args{
+    if {$b} {
+      set res $a
+      break
+    }
+  }
+  return $res
+}
+
+do_test temp-1.1 {
+  list 2 3 4
+} {2 3 4}
+
+do_execsql_test temp-1.2 {
+  CREATE TABLE temp_table1(c1, c2);
+  INSERT INTO temp_table1 VALUES(1, 1);
+  INSERT INTO temp_table1 VALUES(2, 3);
+}
+{1 1}
+  DONE
+
+do_execsql_test temp-2.1 {
+    CREATE TABLE temp_table2(
+      c1,
+      c2
+    );
+  }
+  {1}
+
+do_execsql_test temp-2.2 {
+  INSERT INTO temp_table2 VALUES(1, 'hello');
+}
+{0 {}}
+  DONE
+
+ifcapable trigger {
+  do_execsql_test temp-3.1 {
+    CREATE TABLE temp_table3(a, b);
+  }
+  {0 {}}
+  do_execsql_test temp-3.2 {
+    CREATE TABLE temp_table4(d, e);
+    CREATE TABLE temp_table5(f, g);
+    CREATE TABLE temp_table6(h, i);
+  }
+  {0 {}}
+  do_execsql_test temp-3.3 {
+    CREATE TABLE temp_table7(j, k);
+    CREATE TABLE temp_table8(l, m);
+    CREATE TABLE temp_table9(n, o);
+    INSERT INTO temp_table3(a, b) VALUES(1, 'hello');
+    CREATE TABLE temp_table10(p, q);
+  }
+  {0 {}}
+  do_execsql_test temp-3.4 {PRAGMA foreign_keys = 1;}
+  {0 {}}
+  do_execsql_test temp-3.5 {
+    CREATE TABLE temp_table11(r, s);
+    CREATE TABLE temp_table12(t, u);
+  }
+  {0 {}}
+  do_execsql_test temp-3.6 {
+    CREATE TABLE temp_table13(v, w);
+    CREATE TABLE temp_table14(x, y);
+  }
+  {0 {}}
+}
+
+ifcapable trigger {
+  proc callback2 {t} {
+    set t
+  }
+  proc callback3 {t} {
+    if {$t} {
+      return callback $t
+    }
+  }
+  proc callback4 {aa bb} {
+    return "CALLBACK:$aa:$bb"
+  }
+
+  do_execsql_test temp-4.1 {
+    CREATE TABLE callback_table4(
+      c1,
+      c2
+    )
+  }
+  {0 {}}
+  do_execsql_test temp-4.2 {CREATE TABLE callback_table5(
+      c1,
+      c2
+    )}
+  {0 {}}
+  ifcapable triggers {
+    do_execsql_test temp-4.3 {CREATE TABLE callback_table6(
+        c1,
+        c2
+      )}
+    {0 {}}
+    do_execsql_test temp-4.4 {
+      CREATE TABLE callback_table7(
+        c1,
+        c2,
+        c3
+      );
+      CREATE TABLE callback_table8(
+        c1,
+        c2,
+        c3,
+        c4
+      );
+      INSERT INTO callback_table7(c1, c2) VALUES(2, 2);
+      INSERT INTO callback_table8(c1, c2, c3, c4) VALUES(2, 3, 4, 5);
+      CREATE TABLE callback_table9(
+        c1,
+        c2,
+        c3,
+        c4
+      );
+    }
+    {0 {}}
+    do_execsql_test temp-4.5 {
+      CREATE TABLE callback_table10(
+        c1,
+        c2,
+        c3,
+        c4
+      );
+      CREATE TABLE callback_table11(
+        c1,
+        c2,
+        c3,
+        c4
+      );
+      INSERT INTO callback_table10(
+        c1,
+        c2,
+        c3,
+        c4
+      ) VALUES(2, 3, 4, 5);
+      INSERT INTO callback_table11(
+        c1,
+        c2,
+        c3,
+        c4
+      ) VALUES(2, 3, 4, 5);
+      CREATE TABLE callback_table12(
+        c1,
+        c2,
+        c3,
+        c4
+      );
+    }
+    {

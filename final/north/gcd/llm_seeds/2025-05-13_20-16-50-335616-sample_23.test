@@ -1,0 +1,123 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema2
+
+set ::timeout 60000
+set timeout_start "-t 5 -t 10"
+set disable_checkpoint 1
+
+proc mytest_one_row {} {
+  lappend mytest_one_row {}
+}
+
+do_test schema2-1.1 {
+  execsql {
+    DROP TABLE IF EXISTS t1
+  }
+  ifcapable vtab {
+    db eval {SELECT * FROM sqlite_master WHERE type='table' }
+  }
+} {}
+
+do_test schema2-1.2 {
+  set dbname test_schema2
+  sqlite3 db $dbname
+  execsql {
+    CREATE TABLE t1(a, b);
+    SELECT * FROM t1;
+  }
+} {}
+
+do_test schema2-1.3 {
+  execsql {
+    CREATE TABLE t2(c, d);
+  }
+  execsql {
+    SELECT * FROM t2;
+  }
+} {}
+
+do_test schema2-1.4 {
+  ifcapable vtab {
+    db eval {
+      DROP TABLE IF EXISTS t3
+    }
+  }
+} {}
+
+proc mytest_two_rows {} {
+  lappend mytest_one_row {}
+}
+
+do_test schema2-2.1 {
+  sqlite3 db schema2
+  execsql {
+    CREATE TABLE t4(a, b);
+    INSERT INTO t4 VALUES(1, 2);
+    INSERT INTO t4 VALUES(3, 4)
+  }
+} {}
+
+ifcapable rtree {
+  do_execsql_test schema2-3.1 {
+    CREATE TABLE t5(
+      x,
+      y,
+      xmin,
+      ymin,
+      xmax,
+      ymax
+    )
+  }
+  {CREATE TABLE t5
+	 x            integer NOT NULL
+	 y            integer NOT NULL
+	 xmin         integer NOT NULL
+	 ymin         integer NOT NULL
+	 xmax         integer NOT NULL
+	 ymax         integer NOT NULL
+	 PRIMARY KEY  t5
+	 t5_x           NOT NULL
+	 t5_y           NOT NULL
+	 USING INDEX  rtree
+  }
+
+  do_execsql_test schema2-3.2 {
+    CREATE TABLE idx5(
+      x,
+      y
+    )
+  }
+  {CREATE TABLE idx5
+	 x           integer NOT NULL
+	 y           integer NOT NULL
+	 PRIMARY KEY  idx5
+	 idx5_x     NOT NULL
+	 idx5_y     NOT NULL
+	 USING INDEX  btree
+
+  }
+
+  proc tcl_test_idx_t5_t1 {}
+  do_test schema2-3.3 {
+    execsql {
+      INDEX idx4 ON t5 USING btree
+    }
+  } {}
+
+  do_test schema2-3.4 {
+    execsql {
+      ANALYZE idx5
+    }
+    db string_complete $db "ANALYZE "
+    if { $::tcl_interactive } {
+      set tcl_test_idx_t5_t1 {}
+      db info trigger_list
+      db taillog
+    }
+  }
+  {}
+
+}
+
+finish_test

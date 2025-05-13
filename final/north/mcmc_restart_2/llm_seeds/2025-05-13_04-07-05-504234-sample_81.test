@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzztest
+do_test fuzztest-1.1 {
+  eval fuzzer_start
+  fuzzer_config
+} {}
+
+do_test fuzztest-1.2 {
+  set sql "CREATE TABLE b(x);"
+  sqlite_exec $::fuzzer_db $sql
+  set all_sqls {}
+  foreach row $::fuzzer_db {
+    lappend all_sqls $row
+  }
+  set all_sqls
+} {CREATE TABLE b x}
+
+do_test fuzztest-1.3 {
+  set sql "INSERT INTO b VALUES('hello');"
+  sqlite_exec $::fuzzer_db $sql
+  set all_sqls {}
+  foreach row $::fuzzer_db {
+    lappend all_sqls $row
+  }
+  set all_sqls
+} {CREATE TABLE b x INSERT INTO b VALUES hello}
+
+set fuzzer_config {
+  min_query_num 20
+  max_query_num 50
+  min_column_num 2
+  max_column_num 5
+  db_type 1
+  create_tab 0
+}
+
+do_test fuzztest-1.4 {
+  eval fuzzer_start
+  fuzzer_config $fuzzer_config
+  for {set i 0} {$i 10} {incr i} {
+    set sql "SELECT * FROM b;"
+    sqlite_exec $::fuzzer_db $sql
+    set all_sqls {}
+    foreach row $::fuzzer_db {
+      lappend all_sqls $row
+    }
+  }
+  set all_sqls
+} {}
+
+catch {
+  db close
+  unset fuzzer_db
+}
+
+finish_test

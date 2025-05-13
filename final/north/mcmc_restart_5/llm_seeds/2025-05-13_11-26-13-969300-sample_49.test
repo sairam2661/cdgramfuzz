@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_tests
+
+set ::timeout 60000
+
+proc setup_db {} {
+  global db
+  db function strftime date
+  db function abs abs
+}
+
+proc delete_table {name} {
+  db eval "DROP TABLE IF EXISTS $name"
+}
+
+setup_db
+
+do_test complex-1.1 {
+  db eval {
+    CREATE TABLE t1(x);
+    CREATE TABLE t2(y);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t2 VALUES(2);
+  }
+  db eval {
+    SELECT t1_rowid FROM t1 ORDER BY x
+  } {
+    set t1_rowids $rowid
+  }
+  db eval {
+    SELECT t2_rowid FROM t2 ORDER BY y
+  } {
+    set t2_rowids $rowid
+  }
+  llength $t1_rowids
+  llength $t2_rowids
+} {1 1}
+
+do_test complex-1.2 {
+  delete_table t1
+  delete_table t2
+  db eval {
+    SELECT name FROM sqlite_master WHERE type='table'
+  } {
+    set table_name $name
+  }
+  set table_name
+} {}
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE complex(a, b);
+  BEGIN;
+  INSERT INTO complex VALUES(1, 1);
+  INSERT INTO complex VALUES(2, 2);
+  INSERT INTO complex VALUES(3, 3);
+  COMMIT;
+  SELECT a FROM complex WHERE b = 2;
+} {2}
+
+do_execsql_test complex-1.4 {
+  SELECT a FROM complex WHERE b = 2
+} {2}
+
+ifcapable wal {
+  do_execsql_test complex-1.5 {
+    PRAGMA journal_mode;
+  } {wal}
+}
+
+do_test complex-1.6 {
+  setup_db
+  db eval {
+    CREATE VIEW v AS SELECT x FROM t1 UNION ALL SELECT y FROM t2
+  }
+  db eval {
+    SELECT * FROM v
+  } {
+    set expected_rowids {1 1}
+    lappend result_rowids $rowid
+  }
+  lsort $result_rowids
+  lsort $expected_rowids
+  lindex $result_rowids 0
+} {1}
+
+delete_table t1
+delete_table t2
+finish_test

@@ -1,0 +1,100 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set timeout 60
+
+proc create_db {} {
+  execsql {
+    DROP TABLE IF EXISTS customers
+    DROP TABLE IF EXISTS orders
+  }
+  execsql {
+    CREATE TABLE customers(
+      customer_id PRIMARY KEY,
+      name,
+      email
+    )
+  }
+  execsql {
+    CREATE TABLE orders(
+      order_id PRIMARY KEY,
+      customer_id,
+      order_date
+    )
+  }
+}
+
+proc create_customer {} {
+  set name "John Doe"
+  set email "john@example.com"
+  set customer_id 123
+  execsql {
+    INSERT INTO customers VALUES(
+      '$customer_id',
+      '$name',
+      '$email'
+    )
+  }
+}
+
+proc create_order {} {
+  set customer_id 123
+  set order_id 345
+  set order_date "2022-01-01"
+  execsql {
+    INSERT INTO orders VALUES(
+      '$order_id',
+      '$customer_id',
+      '$order_date'
+    )
+  }
+}
+
+create_db
+execsql {
+  BEGIN;
+}
+create_customer
+execsql {
+  UPDATE customers SET email WHERE email
+  SELECT email FROM customers WHERE email
+}
+execsql {
+  COMMIT;
+}
+create_order
+
+do_test complex-1.1 {
+  set order_id 345
+  execsql {
+    UPDATE orders SET customer_id WHERE order_id
+    SELECT customer_id FROM orders WHERE order_id
+  }
+  list $customer_id $order_id
+} {123 345}
+
+ifcapable wal {
+  catchsql {PRAGMA journal_mode = 'WAL';}
+} {0 {}}
+
+do_test complex-1.2 {
+  execsql {
+    DELETE FROM customers
+    WITH repeated_rows AS
+    SELECT name
+    FROM orders
+    GROUP BY name HAVING COUNT name 1
+    INSERT INTO customers VALUES
+      456
+     'some name'
+      'email@example.com'
+  }
+  catchsql {
+    CHECK CONSTRAINT customers_email
+  }
+  list 456'some name' 'email@example.com'
+} {456 some name email}
+
+finish_test

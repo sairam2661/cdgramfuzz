@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+set echo_level 3
+proc encryption_test {} {
+  global sqlite_encoding enc1 enc2 enc3
+  execsql {
+    CREATE TABLE t(a);
+    INSERT INTO t VALUES(12345)
+  }
+  execsql {
+    PRAGMA encoding = 'ISO8859-1';
+    PRAGMA page_size = 4051;
+  }
+  execsql {
+    INSERT INTO t SELECT 12345 AS a FROM t WHERE length CAST a AS TEXT
+  }
+  execsql {
+    PRAGMA page_size = 4050
+  }
+  db close
+  sqlite3 db "file:test?mode=ro;cache=shared;readonly=OFF; busy_timeout=5000"
+  execsql {
+    CREATE KEY t1 USING 'aes-256-cbc' 'k1'
+  }
+  execsql {
+    PRAGMA key = 'k1';
+    CREATE TABLE t2(h, g, e, i)
+  }
+  execsql {
+    PRAGMA page_size = 4069;
+    INSERT INTO t2 VALUES(1, 0, 0, 0)
+  }
+}
+
+proc encryption_test_fuzz {} {
+  global enc1 enc2 enc3
+  return sqlspeedtest fuzzer
+}
+
+do_test encryption-1.1 {
+  sqlspeedtest test
+} {1}
+
+do_execsql_test encryption-1.2 {
+  PRAGMA key = 'k1';
+  SELECT typeof( *) FROM t2
+} {real}
+
+do_execsql_test encryption-1.3 {
+  INSERT INTO t1 VALUES (10);
+  SELECT length(* )FROM t1;
+} {10}
+
+ifcapable fts3 {
+  error "fts3 not supported"
+}
+finish_test

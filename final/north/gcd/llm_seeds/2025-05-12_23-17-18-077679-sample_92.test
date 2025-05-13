@@ -1,0 +1,113 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite3
+
+proc check_schema {} {
+  global db schema 
+  set schema {
+    CREATE TABLE t1(a,b);
+    CREATE TABLE t2(id,j,k);
+    PRAGMA page_size = 8192
+  }
+  execsql $schema
+  set sql {
+    SELECT * FROM t1;
+    SELECT * FROM t2;
+    SELECT pragma_page_size FROM pragma_table_info;
+  }
+  set res {}
+  foreach line $sql {
+    set res "[ltrim [execsql --echo {SELECT * FROM t1}]] $res"
+    set res "[ltrim [execsql --echo {SELECT * FROM t2}]] $res"
+    set res "[ltrim [execsql --echo {SELECT pragma_page_size FROM pragma_table_info}]] $res"
+  }
+  set res $res
+}
+
+do_execsql_test check-1.2 {
+  BEGIN;
+  CREATE TABLE t1a(a,b);
+  INSERT INTO t1a(a) VALUES(1);
+  INSERT INTO t1a(b) VALUES(2);
+  COMMIT;
+}
+
+   {1   {}}
+
+ifcapable {shared_cache} {
+  do_execsql_test check1.21 {
+    CREATE TABLE t1d(a,b);
+    CREATE INDEX i1 ON t1d(a);
+    CREATE TABLE t2d(id,j,k);
+    CREATE INDEX i2 ON t2d(k);
+  }
+  do_execsql_test check1.22 {
+    ATTACH '[:memory:]' AS aux1 DB '[:memory:]' aux2
+    CREATE TABLE aux1Aux1d AS SELECT a FROM t1d
+  }
+  do_execsql_test check1.23 {
+    PRAGMARESETTABLE t2d
+  }
+  do_execsql_test check1.24 {
+    DROP TABLE aux1Aux1d
+  }
+  do_execsql_test check1.25 {
+    PRAGMA auxiliary;
+  }
+} {aux1Aux1d {} {t2d t2d} {table t2d}}
+
+do_execsql_test check1.26 {
+  CREATE TABLE t3(a,b);
+  INSERT INTO t3(a,b) VALUES(41,42);
+  SELECT b FROM t3;
+} {42 0}
+
+do_test check1.27 {
+  execsql {
+    SELECT b FROM t3;
+  }
+} {42}
+
+ifcapable {foreign key} {
+  do_execsql_test check1.28 {
+    CREATE TABLE c3t1(x);
+    CREATE TABLE c3t2(a,b);
+    CREATE TABLE c3t3(x);
+    CREATE TABLE c3t4(c,c,d,d,c,d,c);
+    CREATE TABLE c3t5(x);
+    CREATE TABLE c3t6(p,g,h,h,c);
+    CREATE TABLE c3t7(k,m,n,x);
+    CREATE TABLE c3t8(k,k,l,k);
+    CREATE TABLE c3t9(z,z);
+    CREATE TABLE c3t10(k,t,u);
+    CREATE TABLE c3t11(k,m,a,b);
+    CREATE TABLE c3t12(a,a,a,a,a);
+    CREATE TABLE c3t13(x);
+    CREATE TABLE c3t14(c);
+    CREATE TABLE c3t15(k,m,n,x,m,m,h,h,b,n,u);
+    CREATE TABLE c3t16(c,a,m);
+    CREATE TABLE c3t17(b,a,p,m,l,y,x,d,a);
+    CREATE TABLE c3t18(g,k,m,m,g,k,m,i,a,k,g);
+    CREATE TABLE c3t19(a,z,d,k,z,s,m,j,x);
+    CREATE TABLE c3t20(d,i,a,g,l,c,h);
+  }
+  do_execsql_test check1.29 {
+    CREATE TABLE c3t20i(k,m,t); 
+    SELECT * FROM c3t20;
+    SELECT * FROM c3t20i;
+    CREATE INDEX c3t20i_k ON c3t20i(k);
+    CREATE INDEX c3t20i_m ON c3t20i(m);
+    CREATE INDEX c3t20i_t ON c3t20i(t);
+    SELECT * FROM c3t20
+      WHERE c3t20i = c3t20i;
+  } {}
+}
+
+ifcapable {tempdb} {
+  do_execsql_test check1.30 {
+    CREATE TABLE t9(a,b);
+    SELECT * FROM t9;
+  } {42 42}
+}
+
+finish_test

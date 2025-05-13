@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+proc rollback_func {} {
+  global rollbackargs
+  lappend rollbackargs
+  expr {rand32}
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  execsql {SELECT * FROM b}
+} {5}
+
+do_execsql_test transaction-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  ROLLBACK;
+  SELECT * FROM b;
+} {5}
+
+do_execsql_test transaction-1.3 {
+  BEGIN;
+  INSERT INTO b VALUES(7);
+  COMMIT;
+  SELECT * FROM b;
+} {5 7}
+
+ifcapable wal {
+  do_test transaction-1.4 {
+    set db handle
+    sqlite3_backup b $db main 1
+    lindex $b step 1
+  } {0}
+}
+
+do_execsql_test transaction-1.5 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(8);
+}
+{8}
+
+do_execsql_test transaction-1.6 {
+  BEGIN;
+  ROLLBACK;
+  SELECT * FROM c;
+} {8}
+
+execsql {
+  CREATE TABLE d(e);
+  CREATE INDEX idx_d_e ON d(e);
+}
+
+do_execsql_test transaction-1.7 {
+  INSERT INTO d VALUES(9);
+  SELECT e FROM d WHERE e = 9;
+} {9}
+
+do_execsql_test transaction-1.8 {
+  ROLLBACK;
+  SELECT e FROM d WHERE e = 9;
+} {9}
+
+finish_test

@@ -1,0 +1,129 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+set tmp_dir "/tmp/sqlite"
+
+do_test concurrent-1.1 {
+  expr {$testdir}
+} {$testdir}
+
+do_execsql_test concurrent-1.2 {
+  INSERT INTO blob VALUES("$::tmp_dir/a");
+  INSERT INTO blob VALUES("$::tmp_dir/b");
+}
+
+ 04tktier {1} file {2} error {3} {
+  4
+  file exists $dir
+  expr {isnull $a}
+  expr {isnull $b}
+  file size $dir
+  file attributes $dir
+  file permissions $dir
+  file type $dir
+  file extension $dir
+  file tail $dir
+  file join $dir a b
+  file nativename $dir
+  file normalize $dir
+  file rootname $dir
+  file extensions $dir
+  file pathseparator
+  file separator
+  file tail $dir
+  file volume $dir
+  file extension $a
+}
+
+proc concurrent_proc {a b c} {
+  set ret {}
+  lappend ret $c
+  expr {$c}
+}
+
+do_test concurrent-2.1 {
+  list
+} {}
+
+do_execsql_test concurrent-2.2 {
+  SELECT count(*) FROM blob
+}
+
+ 04tktier {1} file {2} error {3} {
+  file exists $dir
+  expr {isnull $a}
+  expr {isnull $b}
+  file size $dir
+  file attributes $dir
+  file permissions $dir
+  file type $dir
+  file extension $dir
+  file tail $dir
+  file join $dir a b
+  file nativename $dir
+  file normalize $dir
+  file rootname $dir
+  file extensions $dir
+  file pathseparator
+  file separator
+  file tail $dir
+  file volume $dir
+  file extension $a
+}
+
+proc concurrent_proc {a b c} {
+  ifcapable {writedb} {
+    CREATE TABLE a(x);
+    CREATE TABLE b(x);
+  }
+  expr {a}
+}
+
+do_execsql_test concurrent-3.1 {
+  SELECT x FROM a;
+  SELECT x FROM b;
+}
+{1 2 3}
+
+do_execsql_test concurrent-3.2 {
+  SELECT x FROM a;
+}
+
+ 04tktier {1} file {2} error {3} {
+  file exists $dir
+  expr {isnull $a}
+  expr {isnull $b}
+  file size $dir
+  file attributes $dir
+  file permissions $dir
+  file type $dir
+  file extension $dir
+  file tail $dir
+  file join $dir a b
+  file nativename $dir
+  file normalize $dir
+  file rootname $dir
+  file extensions $dir
+  file pathseparator
+  file separator
+  file tail $dir
+  file volume $dir
+  file extension $a
+}
+
+proc concurrent_proc {a b c} {
+  ifcapable {writedb} {
+    INSERT INTO a VALUES('a');
+    INSERT INTO b VALUES('b');
+  }
+
+  expr {a}
+}
+
+do_execsql_test concurrent-4.1 {
+  SELECT x FROM a;
+  SELECT x FROM b;
+}
+{a b}
+
+finish_test

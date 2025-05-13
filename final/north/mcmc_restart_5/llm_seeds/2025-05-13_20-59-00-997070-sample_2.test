@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+set ::timeout 60000
+
+proc delete_rows {db tableid rows} {
+  set sql "DELETE FROM sqlite_master WHERE type='table' AND name='$tableid'"
+  execsql $sql $db
+  set nrow 0
+  foreach row $rows {
+    execsql "INSERT INTO $tableid VALUES($row)" $db
+    incr nrow
+  }
+}
+
+do_test complex-1.1 {
+  set db test_schema
+  execsql {
+    CREATE TABLE t1(a,b);
+    INSERT INTO t1 VALUES('one',1);
+    INSERT INTO t1 VALUES('two',2);
+  }
+  set r1 $db
+} {one 1 two 2}
+
+do_test complex-1.2 {
+  delete_rows $db t1 "$db rows"
+  execsql {
+    DELETE FROM t1
+  }
+  set r2 $db
+} {{} {}}
+
+do_execsql_test complex-1.3 {
+  BEGIN;
+  INSERT INTO t1 VALUES('three',3);
+  COMMIT;
+  SELECT * FROM t1;
+} {three 3}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode=0}
+} {0 {}}
+
+do_execsql_test complex-1.4 {
+  BEGIN;
+  INSERT INTO t1 VALUES('four',4);
+  ROLLBACK;
+  SELECT * FROM t1;
+} {{} {}}
+
+do_execsql_test complex-1.5 {
+  BEGIN;
+  INSERT INTO t1 VALUES('five',5);
+  COMMIT;
+  SELECT * FROM t1;
+} {five 5}
+
+do_test complex-1.6 {
+  set r3 $db
+} {five 5}
+
+do_execsql_test complex-1.7 {
+  CREATE TABLE t2(a,b);
+  INSERT INTO t2 VALUES('six',6);
+  SELECT a FROM t2;
+} {six}
+
+do_test complex-1.8 {
+  set r4 $db
+} {six}
+
+finish_test

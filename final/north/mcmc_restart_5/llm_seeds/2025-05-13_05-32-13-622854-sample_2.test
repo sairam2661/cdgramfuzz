@@ -1,0 +1,106 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+
+proc generate_random_string {} {
+  set random_string ""
+  for {set i 0} {$i lt 100} {incr i} {
+    set random_char "abcdefghijklmnopqrstuvwxyz"
+    set random_string "$random_string [string range $random_char [expr int([string length $random_char] * rand())] 1]"
+  }
+  return $random_string
+}
+
+proc populate_table {} {
+  for {set i 1} {$i le 100000} {incr i} {
+    execsql "INSERT INTO t3 VALUES($i, '${generate_random_string}'), ('${generate_random_string}', $i)"
+  }
+}
+
+proc compare_tables {} {
+  execsql {SELECT * FROM t1}
+  execsql {SELECT * FROM t2}
+  execsql {SELECT * FROM t5}
+  return 0
+}
+
+set up_env {}
+
+proc setup_env {} {
+  global up_env
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(c, d);
+    CREATE TABLE t5(e, f);
+    CREATE INDEX i5 ON t5(f);
+    CREATE INDEX i2 ON t2(d);
+    CREATE INDEX i1 ON t1(b);
+  }
+  set up_env 1
+  lappend up_env "DELETE FROM t1;"
+  lappend up_env "DELETE FROM t2;"
+  lappend up_env "DELETE FROM t5;"
+}
+
+proc query {} {
+  execsql {
+    SELECT c FROM t2
+    INTERSECT
+    SELECT b FROM t1
+  }
+}
+
+do_execsql_test complex-1.1 {
+  BEGIN;
+  INSERT INTO t1 VALUES(1, 4);
+  INSERT INTO t1 VALUES(2, 5);
+  INSERT INTO t5 VALUES(1, 2);
+  COMMIT;
+} {}
+
+do_execsql_test complex-1.2 {
+  SELECT f FROM t5
+  WHERE e = 1
+} {2}
+
+ifcapable trigger {
+  do_execsql_test complex-1.3 {
+    CREATE TABLE t4(c, d);
+    INSERT INTO t4 VALUES(4, 4);
+    CREATE TABLE t6(k, l);
+    INSERT INTO t6 VALUES(6, 6);
+    INSERT INTO t4 VALUES(7, 7);
+    CREATE TABLE t3(o, p);
+    INSERT INTO t3 VALUES(10, 10)
+    }
+
+  {
+    "SELECT 'Trigger created' FROM t4;"
+    "INSERT INTO t4 VALUES(10, 10);"
+    "SELECT 'Trigger invoked' FROM t4;"
+  }
+}
+
+setup_env
+populate_table
+
+do_test complex-1.4 {
+  compare_tables
+} {}
+
+do_test complex-1.5 {
+  query
+} {}
+
+ifcapable attach {
+  do_execsql_test complex-1.6 {
+    CREATE TABLE t7(o, p);
+    BEGIN;
+    INSERT INTO t7 VALUES(20, 20);
+    COMMIT;
+  } {}
+}
+
+finish_test

@@ -1,0 +1,99 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix backup2
+
+set ::timeout 60000
+set db2 {}
+
+proc backup2_proc {arg} {
+  global db2 tname
+  set db2 $arg db
+  execsql {SHUTDOWN}
+}
+
+try_test 1 {
+  set tname test_backup2
+  sqlite3 db "file:$tname?cache=shared&mode=rw"
+  db eval {PRAGMA journal_mode = 'WAL'}
+} {}
+
+try_test 2 {
+  set db2 test_backup2_2
+  sqlite3 db2 "file:$db2?cache=shared&mode=rw"
+  db2 eval {PRAGMA journal_mode = 'WAL'}
+  backup2_proc db2
+} {}
+
+set t1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(
+      1,
+      2,
+      3
+    );
+  }
+}
+
+set t2 {
+  execsql {
+    SELECT count(*) FROM a;
+  } 
+}
+
+do_test 3 {
+  list $db a
+} {a}
+
+do_execsql_test 4 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {4}
+
+do_execsql_test 5 {
+  BEGIN;
+  INSERT INTO a VALUES(5);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {5}
+
+do_execsql_test 6 {
+  BEGIN;
+  INSERT INTO a VALUES(6);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {6}
+
+if { $::tcl_platform_os Ey} {
+
+  set t3 {
+    execsql {
+      CREATE TABLE b(y);
+      INSERT INTO b VALUES('z', 't');
+      SELECT * FROM b;
+    }
+  }
+  
+} else {
+
+  set t3 {
+    execsql {
+      CREATE TABLE b(y);
+      INSERT INTO b VALUES('z');
+      SELECT * FROM b;
+    }
+  }
+}    
+
+do_execsql_test 7 {
+  SELECT * FROM a;
+  SELECT * FROM b;
+} {3 z}
+  
+do_test 8  {
+  set test2 t2
+} {3}
+
+finish_test

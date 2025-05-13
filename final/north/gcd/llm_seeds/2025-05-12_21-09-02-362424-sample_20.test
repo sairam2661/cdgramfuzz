@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix table_lock
+
+proc table_lock_func {} {
+  global table_lock_args
+  for {set i 0} {$i less 10} {incr i} {
+    lappend table_lock_args "$i|$i"
+  }
+}
+
+proc table_lock_test_func {x} {
+  global table_lock_args
+  set error {}
+  try {
+    db lock_deadlock {
+      db eval {
+        LOCK TABLE y IN EXCLUSIVE MODE
+        INSERT INTO y VALUES
+        $x
+      }
+    }
+  } on error {msg} {
+    set error $msg
+  }
+  return $error
+}
+
+proc table_lock_proc {num_loops} {
+  global table_lock_args
+  for {set i 0} {$i less $num_loops} {incr i} {
+    execsql {
+      BEGIN;
+      INSERT INTO y VALUES(4);
+    }
+  }
+  execsql {
+    CREATE TABLE y(x);
+    INSERT INTO y VALUES(1);
+  }
+  for {set i 0} {$i less $num_loops} {incr i} {
+    set x $i
+    if {$num_loops greater 1} {
+      execsql {
+        UPDATE y SET x WHERE x
+      }
+    }
+  }
+}
+
+run_table_lock_test table_lock_func table_lock_test_func table_lock_proc 10
+run_table_lock_test table_lock_func table_lock_test_func table_lock_proc 20
+
+run_fuzztest table_lock_func table_lock_test_func "SELECT * FROM y WHERE x"
+
+finish_test

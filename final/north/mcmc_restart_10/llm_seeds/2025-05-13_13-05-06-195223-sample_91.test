@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix lockdep
+
+proc lockdep_proc {} {
+  global lockargs
+  lappend lockargs
+  expr {1}
+}
+
+proc lockdep2_proc {} {
+  global lockargs2
+  lappend lockargs2
+  execsql {SELECT COUNT(*) FROM log}
+}
+
+do_test lockdep-1.1 {
+  execsql {
+    CREATE TABLE log(x, y, z);
+    INSERT INTO log VALUES(1, 2, 3);
+    INSERT INTO log VALUES(4, 5, 6);
+  }
+  execsql {SELECT count(*) FROM log}
+} {2}
+
+do_execsql_test lockdep-1.2 {
+  SELECT * FROM log WHERE x = 4
+} {4 5 6}
+
+set up {
+  execsql {
+    SELECT * FROM log WHERE y = 2
+  }
+}
+
+do_test lockdep-2.1 {
+  execsql {
+    DROP TABLE log
+  }
+}
+
+{
+  for {set i 0} {$i lt 50} {incr i} {
+    set result {}
+    db eval {
+      CREATE TABLE foo(bar);
+    } {} append result ok
+    db eval {
+      SELECT COUNT(*) FROM foo
+    } {} append result { $result $result}
+  }
+} 
+ifcapable {wal} {
+  eval "
+    do_execsql_test lockdep-2.2 {
+      PRAGMA journal_mode
+    } {wal}
+    do_execsql_test lockdep-2.3 {
+      PRAGMA wal_checkpoint
+    } {}
+    do_execsql_test lockdep-2.4 {
+      SELECT 'wal mode active' WHERE 0 = 0
+    } {wal mode active}
+  "
+}
+do_execsql_test lockdep-2.5 {
+  SELECT COUNT(*)
+  FROM log
+}
+{0}
+
+finish_test

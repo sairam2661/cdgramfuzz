@@ -1,0 +1,160 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+
+proc crash_proc {} {
+  db eval {INSERT INTO nonexistent_table VALUES('test')}
+}
+
+do_test crash-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT * FROM a}
+} {1}
+
+ifcapable tempdb {
+  do_execsql_test crash-1.2 {
+    CREATE TABLE IFNOTEXISTS_b(x);
+  } {}
+}
+
+catch {crash_rand_select 0}
+
+catch {db2 close}
+if {$testdir ne ""} {
+  catch {file delete $testdir}
+  catch {
+    file mkdir $testdir
+  }
+}
+
+do_execsql_test crash-2.1 {
+  SELECT * FROM sqlite_master
+} {}
+
+do_execsql_test crash-2.2 {
+  BEGIN;
+  CREATE TABLE crash_test_100_1(a);
+  COMMIT;
+  PRAGMA integrity_check;
+} {ok}
+
+do_execsql_test crash-3.1 {
+  CREATE TABLE crash_test_100_2(a);
+}
+
+{ 
+  lappend crash_rand_env TESTNAME crash_test_100_2
+} crash_rand_setup 2
+
+do_test crash-3.2 {
+  execsql {
+    INSERT INTO crash_test_100_2 SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master UNION ALL
+    SELECT name FROM sqlite_master 
+  }
+  list
+} {0000000000000001 sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master   sqlite_master sqlite_master sqlite_master   sqlite_master   sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master sqlite_master }
+
+set crash_count 0
+
+proc crash_test {n} {
+  global crash_count crash_env
+  if {$n eq 0} {
+    set crash_count 0
+    set crash_env env
+  }
+  incr crash_count
+  { 
+    lappend crash_env TESTNAME crash_test_$n
+  } crash_rand_setup $n
+  
+  for {set i 0} {$i lt 100} {incr i} {
+    do_test crash_$n   {
+      execsql {
+        BEGIN;
+        INSERT INTO crash_test_100_0 VALUES(
+          'crash_test_$n', 'crash_env',
+          0, 0, 0
+        );
+        SELECT * FROM crash_test_100_0;
+        ROLLBACK;
+      }
+    } {}
+  }
+  for {set j 1000} {$j lt 2000} {incr j} {
+    do_test crash_$n   {
+      set seed $j
+      execsql {
+        SELECT value FROM crash_env WHERE key='INSERT_A'
+      }
+    } {}
+  }
+  return $n
+}
+
+do_test crash-5.1 {
+  execsql {
+    CREATE TABLE crash_test_100_0(a PRIMARY KEY, b, c1, c2, c3);
+  }
+  crash_test 4
+} 4
+
+catch {
+  execsql {
+    CREATE TABLE crash_test_100_0(c);
+  }
+}
+crash_count 0
+
+catch {crash_env env}
+
+do_execsql_test crash-6.1 {
+  PRAGMA encoding;
+} {
+  UTF8
+}
+
+do_execsql_test crash-6.2 {
+  SELECT * FROM crash_test_100_0;
+} {
+   7   crash_test_4   crash_env  0   0    0
+}
+
+set crash_cnt 0
+
+proc crash_rand_select {x} {
+  global crash_cnt crash_env
+  incr crash_cnt
+  if {$x ge 0} {
+    execsql {
+      SELECT b FROM crash_test_100_2
+    }
+    return
+  }
+  set crash_env CRASH_CATCH $x
+  { 
+    lappend crash_env TESTNAME

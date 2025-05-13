@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_expr {} {
+  lappend expr_list expr 1 2
+}
+
+do_test fuzz-1.1  {
+  sqlite3 db testdb
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  expr_list
+} {expr 1 2 1}
+
+do_execsql_test fuzz-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT x FROM a;
+} {1 2}
+
+ifcapable wal_mode {
+  catchsql {PRAGMA journal_mode = 5}
+} {0 {}}
+
+proc fuzz_sql {} {
+  lappend sql_list 'CREATE TABLE b(y)'
+}
+
+do_execsql_test fuzz-1.3 {
+  SELECT * FROM a;
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT * FROM a;
+} {3}
+
+finish_test
+
+proc drop_tables {} {
+  execsql {
+    DROP TABLE b
+  }
+}
+
+do_test fuzz-1.4  {
+  close db
+} {}
+
+proc open_close_db {} {
+  sqlite3 db testdb
+  close db
+}
+
+do_test fuzz-1.5  {
+  expr_list
+} {}
+
+proc run_test {} {
+  catchsql {
+    PRAGMA schema_list
+  }
+} 
+
+do_execsql_test fuzz-1.6 {
+  SELECT * FROM a;
+  PRAGMA schema_list
+} {}
+finish_test

@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+ifcapable!=lock_proxy {
+  skip_test "lock_proxy is not supported"
+}
+ifcapable!=multiwrite {
+  skip_test "multiwrite is not supported"
+}
+
+proc set_read_conf {} {
+  global sqlite_readonly
+  set sqlite_readonly 1
+}
+
+proc set_write_conf {} {
+  global sqlite_readonly
+  set sqlite_readonly 0
+}
+
+proc get_read_conf {} {
+  return $sqlite_readonly
+}
+
+proc get_write_conf {} {
+  return $sqlite_readonly
+}
+
+proc test_journal_mode {} {
+  set mode wal
+  catchsql {PRAGMA journal_mode = 1}
+  if {$::sqlite3_connection journal_mode} { return }
+  if {$mode ne wal} { return }
+  execsql {PRAGMA journal_mode}
+}
+
+proc do_test1 {} {
+  do_execsql_test 1.1 {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT count(*) FROM a}
+  {1}
+}
+
+proc do_test2 {} {
+  do_execsql_test 1.2 {
+    DROP TABLE a
+  }
+  ifcapable subquery {
+    do_execsql_test 2.1 "SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * "
+  } {}
+}
+
+proc test_wal_mode {} {
+  set wal 0
+  catchsql {PRAGMA journal_mode = "WAL"}
+  if {$::sqlite3_connection journal_mode} { return }
+  if {$wal ne 0} { return }
+  execsql {PRAGMA journal_mode}
+}
+
+proc test_wal_reset {} {
+  catchsql {PRAGMA journal_mode = "wal" }
+  set sqlite_readonly 1
+}
+
+proc test_read_only {} {
+  execsql { PRAGMA read_uncommitted;}
+  set sqlite_readonly 0
+}
+
+proc test_commit {} {
+  execsql { COMMIT}
+  set sqlite_readonly 0
+}
+
+ifcapable subquery {
+  do_test1
+  do_test2
+}
+
+ifcapable subquery {
+  set_read_conf
+  test_journal_mode
+  test_wal_mode
+  test_wal_reset
+}
+set_write_conf
+test_read_only
+test_commit
+
+finish_test

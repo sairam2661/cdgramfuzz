@@ -1,0 +1,49 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix dbstat
+
+proc dbstat_check {} {
+  global dbstatresults
+  lappend dbstatresults
+  expr {1}
+}
+
+proc dbstat_calc {} {
+  set total 0
+  foreach result $dbstatresults {
+    incr total $result
+  }
+  return $total
+}
+
+do_test dbstat-1.1 {
+  execsql {
+    PRAGMA journal_mode = 'wal';
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    SELECT count(*) FROM a;
+  }
+  execsql {SELECT dbstat}
+} {1 0 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}
+
+do_execsql_test dbstat-2.1 {
+  INSERT INTO a VALUES(3);
+  SELECT dbstat FROM a;
+} {1 0 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}
+
+set dbstatresults {}
+dbstat_check
+do_test dbstat-3.1 {
+  dbstat_calc
+} {1}
+dbstat_check
+do_test dbstat-3.2 {
+  dbstat_calc
+} {2}
+
+set testprefix test
+do_execsql_test test-3.1 {
+  SELECT name FROM sqlite_master
+} {a}
+finish_test

@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+proc complex_sql_query {args} {
+  set db open_db
+  set query "SELECT * FROM (SELECT * FROM (SELECT * FROM ({$args}) AS b) AS c) AS d LIMIT 2"
+  set results execsql_no_error $db $query
+  return $results
+}
+
+proc complex_sql_trigger {args} {
+  set db open_db
+  execsql $db {
+    CREATE TABLE e(i, j)
+  }
+  for {set i 0} {$i 5} {incr i} {
+    execsql $db "INSERT INTO e VALUES($i, 2)"
+  }
+  set query "CREATE TRIGGER trigger_e AFTER INSERT ON e FOR EACH ROW BEGIN UPDATE e SET j = j + (SELECT SUM(k) FROM f WHERE i > NEW.i) WHERE i > NEW.i; END"
+  set results execsql_no_error $db $query
+  close_db $db
+  return $results
+}
+
+proc complex_sql_index {args} {
+  set db open_db
+  execsql $db {
+    CREATE TABLE g(i, j)
+    }
+  for {set i 0} {$i 10} {incr i} {
+    execsql $db "INSERT INTO g VALUES($i, 6)"
+  }
+  set query "CREATE INDEX i_g_i ON g(i); CREATE INDEX i_g_j ON g(j)"
+  set results execsql_no_error $db $query
+  close_db $db
+  return $results
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE h(a, b);
+    INSERT INTO h VALUES(5, 8);
+  }
+  execsql {SELECT count(*) FROM h}
+} {1}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO h VALUES(6, 9);
+  COMMIT;
+  SELECT count(*) FROM h;
+} {2}
+
+do_test complex-2.1 {
+  complex_sql_query "SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM h) AS e) AS f) AS g WHERE g.a > 5 LIMIT 2"
+} {}
+
+do_test complex-3.1 {
+  complex_sql_trigger "SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM e) AS g) AS h) AS i WHERE i.j > 10"
+} {}
+
+do_test complex-4.1 {
+  complex_sql_index "SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM g) AS j) AS k) AS l"
+} {}
+
+finish_test

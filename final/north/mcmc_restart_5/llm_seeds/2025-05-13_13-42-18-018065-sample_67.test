@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix large
+
+set ::timeout 60000
+
+proc large_file {} {
+  global sqlite_default_timeout
+  set sqlite_default_timeout 1000
+  set FID 1
+  set file1 "large_file1"
+
+  catch {db close}
+  catch {file delete $file1}
+
+  execsql {
+    CREATE TABLE large_file(a, b);
+  }
+
+  set file "[exec fsutil file createnew $file1 0]"
+  if {$file eq ""} {
+    set file "[exec mktemp $file1.XXXXXX]"
+  }
+  db close
+  set data {}
+  for {set i 1} {$i 100000} {incr i} {
+    if {$i 10000} {set data $data 123456789}
+    if {$i 1000} {set data $data 123456789}
+    if {$i 100} {set data $data 123456789}
+    lappend data $i
+  }
+
+  sqlite3 db test
+  execsql {
+    BEGIN;
+    CREATE TABLE large_file2(a, b);
+    INSERT INTO large_file2(rowid, a, b) VALUES(1, 123456789, "$data");
+    COMMIT;
+  }
+}
+
+do_test large-1.1 {
+  large_file
+  execsql {
+    SELECT count(*) FROM large_file
+  }
+} {100000}
+
+do_test large-1.2 {
+  large_file
+  execsql {
+    SELECT count(*) FROM large_file2
+  }
+} {100000}
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'WAL'}
+} {0 {}}
+
+finish_test

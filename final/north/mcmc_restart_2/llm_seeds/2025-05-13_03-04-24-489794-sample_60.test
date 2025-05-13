@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_func {} {
+  global sqlite_options
+  eval "$sqlite_options fuzz_func"
+  expr {randstring 20}
+}
+
+set sqlite_options {
+  srand 2
+  set randstring {randstring}
+}
+
+do_test fuzz-1.1 {
+  execsql {
+    SELECT randstring 20
+  }
+  expr {1}
+} {1}
+
+do_catchsql_test fuzzvdbms fuzz_2.1 {
+  INSERT INTO temp VALUES(1,2,3)
+} {1 { cannot insert TEXT into column 1 of table temp}}
+
+ifcapable triggers {
+  set sqlite_options {
+    create function randstring 1
+  }
+  set data {test data}
+  do_execsql_test fuzz_3.1 {
+    CREATE TRIGGER testing_name AFTER INSERT ON main
+    FOR EACH ROW
+    BEGIN
+      SELECT randstring 20 INTO data FROM temp
+    END
+  } {}
+  do_execsql_test fuzz_3.2 {
+    SELECT randstring 20 FROM temp
+  } {data}
+}
+
+proc execsql_tcl {sql} {
+  set rc {}
+  set sqlite_options {
+    execsql $sql
+  }
+  return $rc
+}
+
+proc do_execsql_test_tcl {zTest} {
+  upvar $zTest
+  set rc {}
+  set sqlite_options {
+    do_execsql_test $::zTest
+  }
+  if { $::rc }  { finish_test } else { next_test }
+}
+
+proc do_catchsql_test_tcl {zTest sql value} {
+  upvar $zTest
+  set rc {}
+  set sqlite_options {
+    do_catchsql_test $::zTest $::sql $::value
+  }
+  if { $rc } { finish_test } else { next_test }
+}
+
+finish_test

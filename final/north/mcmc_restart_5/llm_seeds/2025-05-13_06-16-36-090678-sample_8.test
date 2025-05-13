@@ -1,0 +1,96 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc create_table {db table_name columns} {
+  execsql "CREATE TABLE $table_name (${columns});"
+}
+
+proc insert_dummy_data {db table_name} {
+  execsql "INSERT INTO $table_name VALUES(1);"
+  execsql "INSERT INTO $table_name VALUES(2);"
+  execsql "INSERT INTO $table_name VALUES(3);"
+}
+
+proc check_data {db table_name} {
+  set result {}
+  db eval "SELECT * FROM $table_name" row {
+    lappend result $row
+  }
+  lappend result $result
+}
+
+proc delete_table {db table_name} {
+  execsql "DROP TABLE $table_name;"
+}
+
+proc complex_test1 {} {
+  global db
+  create_table $db t1 {c1 c2}
+  insert_dummy_data $db t1
+  set result {}
+  db eval "SELECT * FROM t1" row {
+    lappend result $row
+  }
+  set good_result {1 2 3}
+  if {$result eq $good_result} {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+proc complex_test2 {} {
+  global db
+  create_table $db t2 {c3 c4}
+  insert_dummy_data $db t2
+  set result {}
+  db eval "SELECT * FROM t2" row {
+    lappend result $row
+  }
+  set good_result {1 2 3}
+  if {$result eq $good_result} {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+do_test 1.1 {
+  execsql {
+    CREATE TABLE t3(x);
+    INSERT INTO t3 VALUES(1);
+  }
+} {}
+
+do_test 1.2 {
+  complex_test1
+} {1}
+
+do_test 1.3 {
+  check_data $db t1
+} {1 2 3 {1 2 3}}
+
+do_test 1.4 {
+  complex_test2
+} {1}
+
+do_test 1.5 {
+  check_data $db t2
+} {1 2 3 {1 2 3}}
+
+do_catchsql_test 1.6 {
+  DROP TABLE t1
+} {1 {no such table}}
+
+do_catchsql_test 1.7 {
+  DROP TABLE t2
+} {1 {no such table}}
+
+do_test 1.8 {
+  delete_table $db t3
+} {}
+
+finish_test

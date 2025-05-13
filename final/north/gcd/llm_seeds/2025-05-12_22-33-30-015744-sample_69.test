@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal
+set testprefix1 2
+proc journalproc {} {
+  global journalargs
+  lappend journalargs
+  expr {1}
+}
+
+proc check_journal {} {
+  global journalargs
+  if { $journalargs eq "" } {
+    return 0
+  }
+  set nmax 100
+  set nfile 100
+  if { $nfile gt 0 } {
+    set nmax 0
+  }
+  set iFileID 0
+  foreach arg $journalargs {
+    incr iFileID
+    if { $arg eq "open" } {
+      incr nopen
+      set nmax 0
+    } elseif { $arg eq "close" } {
+      incr nclose
+      set nmax 0
+    } elseif { $iFileID eq 2 } {
+      if { $arg eq "delete" } {
+        set ndelete $nmax
+      } elseif { $arg eq "truncate" } {
+        set ntruncate $nmax
+      }
+    } elseif { $iFileID eq $nfile } {
+      if { $arg eq "delete" } {
+        set ndelete $nmax
+      } elseif { $arg eq "truncate" } {
+        set ntruncate $nmax
+      }
+      incr nmax 0
+    }
+  }
+}
+
+execsql {
+  CREATE TABLE journal_test(a, b);
+  INSERT INTO journal_test VALUES('one', 'big');
+}
+
+do_execsql_test 1 {
+  SELECT a FROM journal_test;
+} {one}
+
+do_execsql_test 1 {
+  CREATE TABLE t2(a, b);
+}
+
+do_execsql_test 2 {
+  SELECT a FROM t2;
+} {}
+finish_test

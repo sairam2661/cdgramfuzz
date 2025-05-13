@@ -1,0 +1,53 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+
+proc check_crash {} {
+  global crashargs
+  if { $crashargs eq "" } { lappend crashargs } else { append crashargs }
+  expr { $crashargs eq "abcdef" }
+}
+
+if { 0 } {
+  set db master
+  do_execsql_test crash_1.1 {
+    SELECT 1 WHERE 1 OR sqlite_compileoption_defined
+  } 1
+}
+
+do_fake_io_error foo 1
+
+do_test crash-2.1 {
+  set fp1 "ab"
+  set fp2 "cd"
+  set fp3 "efg"
+} {ab cd efg}
+
+set fp_list 3
+do_test crash-2.2 {
+  set fp_list
+  set fp_list
+} {3}
+
+ifcapable auth {
+  proc crash_func {db} {
+    sqlite_open tmp1
+    sqlite_open tmp2
+    sqlite_close tmp1
+    sqlite_close tmp2
+  }
+}
+
+crash_func master
+
+set crashargs 1
+do_test crash-3.1 {
+  check_crash
+} {0}
+
+set crashargs 2
+do_test crash-3.2 {
+  check_crash
+} {1}
+
+finish_test

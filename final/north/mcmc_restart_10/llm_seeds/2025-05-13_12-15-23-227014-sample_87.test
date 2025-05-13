@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix fts5
+
+proc fts5_func {} {
+  global fts_args
+  lappend fts_args
+  fts5_available
+}
+
+proc fts5_available {} {
+  db function fts5_fts5_fts5 fts5_fts5
+}
+
+fts5_available
+set fts_args {}
+
+proc test_fts5_fn {} {
+  global fts_args
+  if { $fts_args } { 
+    set n  0
+    foreach a $fts_args {
+      set n     $n
+    }
+    free $fts_args
+  } 
+  foreach i {1 2} {
+    foreach r {1 2 3} { sqlite3 db2 file1 }
+    sqlite3 db1 file2
+    do_execsql_test fts5_fts5_$i 1 { VACUUM }
+    db1 eval  "CREATE VIRTUAL TABLE t1 USING fts5(key);"
+    db2 execsql { INSERT INTO t1 VALUES(1,5) }
+    do_test fts5_fts5_$i 2 { db1 eval "INSERT INTO t1 VALUES(2)" } {}
+    foreach v {a b c d e} { db1 eval "CREATE TRIGGER r$i BEFORE INSERT ON t1" }
+    foreach v {r s t} { db1 eval "EXEC sqlfunc r$i t1 i" }
+    catch { sqlite db3 }
+
+    eval  {
+      foreach d {0 1 2 3 4 5 6 7 8 9} {
+        db1 eval "SELECT quote(1)"
+        db2 eval "SELECT quote(2)"
+        set i 1
+        set q ""
+        foreach e {2 3} {
+          sqlite3 db$i a
+          db$i eval  {
+            execsql {
+              SELECT count(*) FROM t1;
+            }
+          }
+        }
+      }
+    } { free $db5 $db3 }
+  }
+  set fts_args {}
+}
+
+test_fts5_fn
+if { 0 } {
+   sqlite3 db2 abc
+}
+
+do_execsql_test fts5_fts5_10 1 {
+  PRAGMA journal_mode;
+} {wal}
+
+finish_test

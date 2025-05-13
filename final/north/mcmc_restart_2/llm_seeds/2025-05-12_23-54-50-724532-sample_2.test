@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite3_fuzzer_test
+
+proc sqlite3_fuzz_func {} {
+  global sqlite_settings fuzz_data
+  lappend sqlite_settings hello
+  set fuzz_data 0
+}
+
+proc setup {test} {
+  global sqlite_settings
+  if { {$test eq "sync-1.3"} } {
+    set sqlite_settings 1
+  } elseif { {$test eq "sync-1.4"} } {
+    set sqlite_settings {default setting}
+  }
+}
+
+proc teardown {test} {
+  global sqlite_settings fuzz_data
+  catch {unset fuzz_data}
+  if { {$test eq "sync-1.3"} } {
+    unset sqlite_settings
+  } elseif { {$test eq "sync-1.4"} } {
+    set sqlite_settings {default setting}
+  }
+}
+
+proc setup_global_errfunc {setup} {
+  global sql_error_callback
+  catch {unset sql_error_callback}
+  proc sql_error_callback {msg} {
+    global sqlite_error_action
+    uplevel $sqlite_error_action
+    set msg {SQLite error message}
+    error $msg
+    return
+  }
+  uplevel $setup
+}
+
+do_execsql_test sync-1.3 {
+  SELECT * FROM sqlite_master;
+} {}
+
+ifcapable memory_error {
+  catch {
+    sqlite3 db "ATTACH '{}':memory DB1; PRAGMA journal_mode=MEMORY"
+  }
+}
+
+ifcapable shared_cache {
+  setup_global_errfunc "PRAGMA journal_mode=WAL;"
+  setup sync
+  do_test sync-1.4 {
+    execsql {
+      CREATE TABLE b(y);
+      INSERT INTO b VALUES(5);
+      SELECT * FROM b;
+    } db b
+    proc set_fuzz_data {x} {
+      global fuzz_data
+      set fuzz_data $x
+    }
+  } {5 1}
+  teardown sync
+  finish_test
+}
+finish_test

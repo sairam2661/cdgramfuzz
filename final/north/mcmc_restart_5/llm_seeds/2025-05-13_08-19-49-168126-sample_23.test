@@ -1,0 +1,171 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc insert_data {} {
+  global sqlite_db
+  for {set i 0} {$i 1000} {incr i} {
+    execsql "INSERT INTO t1 VALUES($i)"
+  }
+}
+
+proc rollback_transaction {} {
+  execsql "ROLLBACK"
+}
+
+proc commit_transaction {} {
+  execsql "COMMIT"
+}
+
+proc delete_data {} {
+  execsql "DELETE FROM t1"
+}
+
+proc query_data {} {
+  execsql "SELECT * FROM t1"
+}
+
+proc rollback_commit {} {
+  set ret "0"
+  if { $::sqlite_db eq " WAL" } {
+    rollback_transaction
+    delete_data
+  } elseif { $::sqlite_db eq "MEMORY" } {
+    rollback_transaction
+    delete_data
+    set ret "1"
+  }
+  return $ret
+}
+
+proc check_data {} {
+  set ret 0
+  if { $::sqlite_db eq "WAL" } {
+    query_data
+    if { $ret eq 0 } { set ret 1 } else { set ret 0 }
+  } elseif { $::sqlite_db eq "MEMORY" } {
+    if { $ret eq 0 } { set ret 1 } else { set ret 0 }
+  }
+  return $ret
+}
+
+proc check_data_result {} {
+  if { check_data eq 0 } { 
+    return 1
+  } else {
+    return 0
+  }
+}
+
+do_test test-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+  }
+} {}
+
+do_execsql_test test-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(1);
+  COMMIT;
+} {1}
+
+set sqlite_db "WAL"
+ifcapable wal {
+  catchsql {PRAGMA journal_mode = 'wal'}
+} {0 {}}
+if { $::sqlite_db eq "wal" } {
+  do_execsql_test test1.3 {
+    INSERT INTO t1 VALUES(2);
+  } {}
+}
+
+if { $::sqlite_db eq "wal" } {
+  do_test test1.4 {
+    query_data
+  } {1 2}
+}
+
+if { $::sqlite_db eq "wal" } {
+  do_execsql_test test1.5 {
+    COMMIT;
+  } {}
+}
+
+do_execsql_test test1.6 {
+  SELECT * FROM t1
+} {1 2}
+
+if { $::sqlite_db eq "wal" } {
+  catchsql {
+    PRAGMA wal_checkpoint
+  }
+} {0 {}}
+
+if { $::sqlite_db eq "wal" } {
+  do_execsql_test test1.7 {
+    COMMIT;
+  } {}
+}
+
+set sqlite_db "MEMORY"
+ifcapable memory {
+  catchsql {PRAGMA journal_mode ='memory'}
+} {0 {}}
+if { $::sqlite_db eq "memory" } {
+  do_execsql_test test1.8 {
+    INSERT INTO t1 VALUES(3);
+  } {}
+}
+
+if { $::sqlite_db eq "memory" } {
+  do_test test1.9 {
+    query_data
+  } {1 2 3}
+}
+
+if { $::sqlite_db eq "memory" } {
+  do_execsql_test test1.10 {
+    DELETE FROM t1
+  } {}
+}
+
+if { $::sqlite_db eq "memory" } {
+  do_execsql_test test1.11 {
+    SELECT * FROM t1
+  } {}
+
+  if { rollback_commit eq 1 } {
+    do_test test1.12 {
+      check_data_result
+    } {1}
+  } else {
+    do_test test1.12 {
+      check_data_result
+    } {0}
+  }
+}
+
+set sqlite_db "WAL"
+ifcapable wal {
+  catchsql {PRAGMA journal_mode = 'wal'}
+} {0 {}}
+if { $::sqlite_db eq "wal" } {
+  rollback_transaction
+}
+
+set sqlite_db "MEMORY"
+ifcapable memory {
+  catchsql {PRAGMA journal_mode ='memory'}
+} {0 {}}
+if { $::sqlite_db eq "memory" } {
+  rollback_transaction
+  delete_data
+}
+
+do_test test-2.1 {
+  check_data_result
+} {1}
+
+finish_test

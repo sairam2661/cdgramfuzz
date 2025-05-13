@@ -1,0 +1,43 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_recovery
+
+proc wal_recovery_proc {} {
+  global wal_recoveryargs
+  lappend wal_recoveryargs
+  expr {1}
+}
+
+do_test wal_recovery-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)
+  }
+} {}
+
+do_execsql_test wal_recovery-1.2 {
+  INSERT INTO a VALUES(2);
+  INSERT INTO a VALUES(3);
+  SELECT count(*) FROM a
+} {3}
+
+ifcapable wal {
+  do_sqlfault {
+    SELECT * FROM a;
+    SELECT * FROM sqlite_master;
+    PRAGMA wal_checkpoint
+  } {
+    PRAGMA cache_size=1000000
+  }
+} {10}
+
+ifcapable wal_fault {
+  do_sqlfault {
+    PRAGMA wal_checkpoint;
+    PRAGMA wal_defect;
+  } {
+    PRAGMA wal_checkpoint
+  }
+} {0 {}}
+
+finish_test

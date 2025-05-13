@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiattach
+
+set ::timeout 60000
+set TESTDB1 "test.db"
+
+proc get_db1 {fn} {
+  eval $fn $TESTDB1
+}
+
+proc db1_commit {args} {
+  get_db1 "execsql {COMMIT TRANSACTION $args}"
+}
+
+proc db1_query {query} {
+  get_db1 "execsql $query"
+}
+
+execsql {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}
+
+set a_id1 1
+set a_id2 2
+set a_id3 3
+
+do_test multiattach-1.1 {
+  execsql {
+    ATTACH 'test.db' AS db2
+  }
+} {}
+
+do_test multiattach-1.2 {
+  execsql {
+    CREATE TABLE db2.3c AS SELECT x FROM db1.3c WHERE x IS NULL
+  }
+} {}
+
+do_test multiattach-1.3 {
+  db1_query {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(2);
+  }
+} {}
+
+do_test multiattach-1.4 {
+  db1_query {
+    SELECT * FROM a
+  }
+  list $a_id1
+} {1}
+
+do_test multiattach-1.5 {
+  db1_query {
+    SELECT * FROM b
+  }
+  lsearch $::DB b b 2
+} 1
+
+do_test multiattach-1.6 {
+  execsql {
+    INSERT INTO b VALUES(3);
+  }
+  lsearch $::DB b b 3
+} 1
+
+set a_id3 4
+
+ifcapable transaction {
+  do_test multiattach-1.7 {
+    execsql {
+      BEGIN;
+      INSERT INTO a VALUES(4);
+      COMMIT;
+    }
+  } {4}
+} else {
+  do_test multiattach1.7 {
+    execsql {
+      INSERT INTO a VALUES(4);
+    }
+  } {4}
+}
+
+if {0} {
+  do_test multiattach1.8 {
+    execsql {
+      CREATE TABLE temp AS SELECT x FROM db1.1c WHERE x NOT NULL
+    }
+  } {}
+}
+
+finish_test

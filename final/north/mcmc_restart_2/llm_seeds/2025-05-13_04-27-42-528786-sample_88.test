@@ -1,0 +1,90 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_data {} {
+  set sqlite_limit 100
+  if {$sqlite_limit} {
+    set db_name "fuzz_${sqlite_limit}_DB"
+  } else {
+    set db_name "fuzz_DB"
+  }
+
+  execsql {
+    CREATE TABLE t0(a,b,c);
+    CREATE TABLE t1(a,b,c);
+  }
+
+  do_test fuzz1.1 {
+    db close
+    sqlite3 $db_name
+    execsql {
+      INSERT INTO t0 VALUES(1,1,1)
+    }
+  } {}
+
+  do_execsql_test fuzz1.2 {
+    SELECT a FROM t0;
+  } {1}
+
+  set i 2
+  while {$i} {
+    unset t0
+    unset t1
+    do_test fuzz1.3 {
+      execsql {
+        CREATE TABLE t0(a,b,c);
+        CREATE TABLE t1(a,b,c);
+      }
+      execsql {
+        INSERT INTO t0 VALUES(1,1,1)
+      }
+    } {}
+    do_execsql_test fuzz1.4 {
+      SELECT a FROM t0;
+    } {1}
+    incr i
+  }
+}
+
+proc t2 {} {
+  do_test fuzz2.1 {
+    execsql {
+      SELECT * FROM t0 WHERE a = 1
+    }
+  } {1 1 1}
+
+  do_test fuzz2.2 {
+    execsql {
+      SELECT * FROM t1 WHERE a = 'a'
+    }
+  } {}
+
+  do_execsql_test fuzz2.5 {
+    SELECT * FROM t0
+    WHERE a = 1
+  } {}
+
+  do_test fuzz2.6 {
+    db close
+    db
+  } {}
+}
+
+ifcapable {
+  set db_name "fuzz_DB"
+  sqlite3 $db_name
+  do_test fuzz2.7 {
+    execsql {
+      INSERT INTO t0 VALUES(7,7,7)
+    }
+  } {}
+  do_test fuzz2.7 {
+    execsql {
+      SELECT * FROM t0 WHERE a = 7
+    }
+  } {7 7 7}
+}
+t2
+fuzz_data
+finish_test

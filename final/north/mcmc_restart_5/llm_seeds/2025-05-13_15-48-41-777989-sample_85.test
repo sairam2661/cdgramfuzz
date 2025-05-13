@@ -1,0 +1,141 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+set db none
+set temp_master 0
+
+proc create_test_db {} {
+  global db temp_master
+  set db none
+  catch {db close}
+  unset db
+  set temp_master 0
+  sqlite3 db temp_master
+}
+
+proc prepare_statement {sql} {
+  global db
+  execsql $sql $db
+}
+
+create_test_db
+
+do_test complex-1.1 {
+  prepare_statement {
+    CREATE TABLE a(x);
+    INSERT INTO a(x) VALUES(1);
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE b(x, y);
+  BEGIN;
+  INSERT INTO b VALUES(1, 2);
+  INSERT INTO b VALUES(3, 4);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+proc select_query {} {
+  global db
+  set rc {}
+  execsql {SELECT * FROM a} $db
+  while {$rc ne {} } {
+    set rc {}
+    execsql {SELECT * FROM b} $db
+  }
+}
+
+set timeout 5000
+do_test complex-1.3 {
+  select_query
+  execsql {PRAGMA busy_timeout}
+} 5000
+
+ifcapable vacuum {
+  do_execsql_test complex-1.4 {
+    CREATE TABLE c(x);
+    SELECT name FROM main WHERE name = 'c' 
+  } {c}
+
+  do_execsql_test complex-1.5 {
+    CREATE TABLE c(x);
+    SELECT name FROM main WHERE name = 'c' 
+    }
+  {c}
+  do_execsql_test complex-1.6 {
+    CREATE TABLE c(x);
+    SELECT name FROM main WHERE name = 'd' 
+    }
+  {no such table}
+  }
+
+ifcapable truncate {
+  do_execsql_test complex-1.7 {
+    CREATE TABLE d(x);
+    INSERT INTO d VALUES(1);
+    SELECT name FROM main 
+  } {d}
+  do_execsql_test complex-1.8 {
+    CREATE TABLE d(x);
+    SELECT name FROM main 
+    }
+  {d}
+  do_execsql_test complex-1.9 {
+    CREATE TABLE d(x);
+    SELECT name FROM main 
+    }
+  {d}
+  }
+
+ifcapable trigger {
+  do_execsql_test complex-1.10 {
+    CREATE TABLE e(x);
+    CREATE TABLE f(x);
+    CREATE TABLE g(x);
+    CREATE TABLE h(x);
+    CREATE TABLE i(x);
+    CREATE TABLE j(x);
+    CREATE TABLE k(x);
+    CREATE TABLE r(x);
+    CREATE TABLE s(x);
+    CREATE TABLE t(x);
+    CREATE TABLE u(x);
+    CREATE TABLE v(x);
+    CREATE TABLE w(x);
+    CREATE TABLE x(x);
+    CREATE TABLE y(x);
+    CREATE TABLE z(x);
+    CREATE TABLE a1(x);
+    CREATE TABLE a2(x);
+    CREATE TABLE a3(x);
+  } {}
+
+  do_execsql_test complex-1.11  {
+    CREATE TABLE e(y);
+    INSERT INTO e(y) VALUES(1);
+    SELECT * FROM e;
+  } {1}
+  do_test complex-1.12 {
+    set rc {}
+    db timeout 5000
+    execsql {
+      CREATE TRIGGER e_trigger 
+      AFTER INSERT ON e 
+      BEGIN
+        INSERT INTO f VALUES 101
+      END
+    } 
+    execsql {
+      INSERT INTO e(y) VALUES(1);
+    }
+    catch {execsql {
+      SELECT * FROM a1
+    }}
+  } {}
+
+}
+
+finish_test
