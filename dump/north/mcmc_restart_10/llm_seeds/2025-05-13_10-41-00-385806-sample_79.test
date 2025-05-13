@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix concurrent
+
+proc transaction {} {
+  global test_concurrent_args
+  lappend test_concurrent_args
+  execsql {
+    BEGIN;
+    INSERT INTO concurrent_a VALUES(1);
+  }
+}
+
+proc select {} {
+  execsql {
+    SELECT * FROM concurrent_a;
+  }
+}
+
+proc execute {sql} {
+  global test_concurrent_args
+  lappend test_concurrent_args $sql
+}
+
+proc final {} {
+  global test_concurrent_args
+  for {set i 0} {$i 10000} {incr i} {
+    transaction
+  }
+  for {set i 0} {$i 5000} {incr i} {
+    select
+  }
+}
+
+do_test concurrent-1.1 {
+  execsql {
+    CREATE TABLE concurrent_a(x);
+  }
+  db eval {PRAGMA synchronous=0}
+  db eval {PRAGMA journal_mode=0}
+  db eval {PRAGMA temp_store=0}
+  db eval {PRAGMA temp_journal_mode=0}
+  execute {
+    INSERT INTO concurrent_a VALUES(1);
+  }
+} {}
+
+do_test concurrent-1.2 {
+  final
+  array set arglist test_concurrent_args
+  set arglist
+} {}
+
+ifcapable wal {
+  ifcapable wal {
+    catchsql {
+      PRAGMA journal_mode=0
+      }
+  }
+}
+
+finish_test

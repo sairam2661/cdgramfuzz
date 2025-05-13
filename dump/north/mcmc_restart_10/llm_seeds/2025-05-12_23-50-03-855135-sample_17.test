@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database
+
+proc database_proc args {
+  foreach {op file} $args {
+    switch $op {
+      CREATE {
+        execsql "CREATE TABLE $file(x)"
+      }
+      INSERT {
+        execsql "INSERT INTO $file VALUES(1),(2),(3)"
+      }
+      SELECT {
+        execsql "SELECT count(*) FROM $file"
+      }
+    }
+  }
+}
+
+proc fuzzy_test {args} {
+  for {set i 0} {$i 100} {incr i} {
+    set cmd "do_test database-$i test-1.${i} {{$args}}"
+    set result ""
+    eval $cmd
+    if {$result eq "ok"} {return}
+  }
+  set code "fail"
+  set message "error on $code"
+  error $message
+}
+
+do_execsql_test test-1.0 {
+  BEGIN;
+  CREATE TABLE test(a,b);
+  INSERT INTO test VALUES(1,2);
+  INSERT INTO test VALUES(3,4);
+  COMMIT;
+  SELECT * FROM test;
+} {1 2 3 4}
+
+fuzzy_test {
+  execsql {
+    CREATE TABLE test(a,b);
+    INSERT INTO test VALUES(1,2);
+    INSERT INTO test VALUES(3,4);
+  }
+  execsql {
+    SELECT * FROM test;
+  }
+}
+
+do_execsql_test test-1.3 {
+  PRAGMA synchronous = 2
+} {}
+
+finish_test

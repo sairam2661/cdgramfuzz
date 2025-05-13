@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix locking
+
+proc locking_func {} {
+  global lockingdb
+  set lockingdb "mylocking"
+}
+
+proc locking_func2 {} {
+  global lockingdb
+  set lockingdb "lockingmutex"
+}
+
+do_test locking-1.1 {
+  forcing_code 1
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(6);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_test locking-1.2 {
+  forcing_code 1
+  set lockingdb {}
+  execsql {
+    CREATE TABLE d(q);
+    INSERT INTO d VALUES(7);
+  }
+  execsql {SELECT * FROM d}
+} {7}
+
+ifcapable fault {
+  do_execsql_test locking-1.3 {
+    PRAGMA locking_mode="EXCLUSIVE";
+  } {}
+}
+
+set lock_mode exclusive
+do_test locking-1.4 {
+  forcing_code 1
+  execsql {
+    CREATE TABLE e(r);
+  }
+} {}
+
+ifcapable vacuum {
+  do_execsql_test locking-1.5 {
+    BEGIN;
+    INSERT INTO e VALUES(8);
+    COMMIT;
+  } {}
+  do_execsql_test locking-1.6 {
+    BEGIN;
+    INSERT INTO e VALUES(9);
+    COMMIT;
+  } {}
+}
+
+finish_test

@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix large_insert
+set testprefix2 multi_column
+set testprefix3 error_code
+
+proc large_insert_proc {} {
+  global large_args
+  set size 10000
+  for {set i 0} {$iatto 10000} {incr i} {
+    execsql {INSERT INTO large(id, name, description) VALUES(10000, "name_$i", "description_$i")}
+  }
+  execsql {SELECT name FROM large WHERE id = 10000}
+}
+
+proc multi_column_proc {} {
+  execsql {
+    CREATE TABLE IF NOT EXISTS t1 AS 
+      SELECT 1 AS a FROM t1 UNION ALL 
+      SELECT 2 AS a FROM t2 
+  }
+}
+
+proc error_code_proc {} {
+  catchsql {
+    CREATE TABLE t2 AS SELECT '2014-09-05' DATETIME
+  }
+}
+
+do_test large-1.1 {
+  execsql {
+    CREATE TABLE large(id, name, description);
+    INSERT INTO large(id, name) VALUES(10000, "name");
+  }
+} {0}
+
+do_test large-1.2 {
+  execsql {
+    SELECT id FROM large ORDER BY id DESC LIMIT 1 OFFSET 1
+  }
+} {10000}
+
+do_test multi-1.1 {
+  multi_column_proc
+  execsql {SELECT a FROM t2}
+} {2}
+
+ifcapable json1 {
+  do_test error-1.1 {
+    error_code_proc
+    execsql {
+      SELECT * FROM t2
+    }
+  } {1 {date '2014-09-05' is not recognized}}
+}
+
+finish_test

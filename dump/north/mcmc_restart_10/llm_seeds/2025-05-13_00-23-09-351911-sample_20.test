@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+proc transaction_func {} {
+  set transaction_list {}
+  foreach item {1 2 3 4 5} {
+    lappend transaction_list $item
+  }
+  return $transaction_list
+}
+
+proc transaction_proc {item1 item2} {
+  return "$item1 $item2"
+}
+
+do_execsql_test transaction-1.1 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(1);
+  SELECT * FROM b;
+} {1}
+
+do_test transaction-1.2 {
+  set transaction_list_2 {}
+  foreach item {1 2 3 4 5} {
+    lappend transaction_list_2 $item
+  }
+  set transaction_list_2
+} {5 1 2 3 4 5}
+
+do_execsql_test transaction-1.3 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(2);
+  COMMIT;
+  SELECT * FROM c;
+} {2}
+
+do_test transaction-1.4 {
+  transaction_func
+} {1 2 3 4 5}
+
+do_execsql_test transaction-1.5 {
+  CREATE TABLE d(e);
+  INSERT INTO d VALUES(3);
+  PRAGMA synchronous=0;
+  SELECT * FROM d;
+} {3}
+
+do_execsql_test transaction-1.6 {
+  CREATE TABLE e(f);
+  INSERT INTO e VALUES(4);
+  SELECT * FROM e;
+} {4}
+
+do_execsql_test transaction-1.7 {
+  BEGIN;
+  INSERT INTO e VALUES(5);
+  SELECT * FROM e;
+} {4}
+
+do_test transaction-1.8 {
+  set result {}
+  foreach item {1 2 3 4} {
+    append result $item
+  }
+  append result transaction_proc 5 $result
+  $result
+} 1   transaction_proc 5 12345
+
+ finish_test

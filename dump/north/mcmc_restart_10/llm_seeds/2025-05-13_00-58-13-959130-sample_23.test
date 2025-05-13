@@ -1,0 +1,45 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix fileio
+
+set sql {
+  CREATE TABLE fileio( x );
+  SELECT count(*) FROM fileio;
+  CREATE INDEX idx1 ON fileio( x );
+  INSERT INTO fileio VALUES( 1 );
+  COMMIT;
+  INSERT INTO fileio VALUES( 2 );
+  CREATE TABLE t2( x );
+  INSERT INTO t2 VALUES( 3 );
+  SELECT * FROM fileio;
+  PRAGMA wal_checkpoint;
+  SELECT count(*) FROM t2;
+  PRAGMA journal_mode;
+  PRAGMA synchronous;
+  PRAGMA temp_store;
+  PRAGMA page_size;
+  PRAGMA database_list;
+  SELECT name FROM sqlite_master;
+}
+
+execsql_test fileio_1 {
+  execsql $sql
+} {1 1 3 3 6}
+
+proc fileio_func {} {
+  global fileioargs
+  lappend fileioargs 1
+  set fileioargs
+}
+
+file_execsql_test fileio_1_2 {
+  fileio_func
+  execsql {
+    CREATE TABLE fileio_new(x);
+    INSERT INTO fileio_new VALUES(4);
+    SELECT * FROM fileio_new;
+  }
+} {1 4}
+
+finish_test

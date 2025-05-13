@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix fuzz
+
+proc fuzz_proc {} {
+  global fuzzargs
+  set fuzzargs ""
+  expr {1}
+}
+
+do_test fuzz-1.1 {
+  catchsql {
+    CREATE TEMP TABLE t1 AS SELECT 'hello, world' AS s1 FROM sqlite_master LIMIT 2
+  }
+} {0 {}}
+
+set DB 1
+do_test fuzz-1.2 {
+  lappend DB 2
+  catchsql {
+    SELECT 'foo' OR 1 FROM t1
+  }
+} {0 {}}
+
+catch {db close}
+unset DB
+
+proc sqlite_fuzzer {} {
+  set SQL "SELECT 1"
+  if { $SQL ne "" } { return $SQL }
+  set SQL "SELECT 1 FROM t1 LIMIT 5 OFFSET 2"
+  if { $SQL ne "" } { return $SQL }
+}
+
+sqlite_fuzzer
+
+do_execsql_test fuzz-1.3 {
+  CREATE TABLE t2(x)
+} {}
+
+set fuzz_data1 "10,1.1,abc\n5,2"
+set fuzz_data2 "10,1.2,def\n7,3"
+
+fuzzcheck_file 1 fuzz_data1 "fuzz-1.4" {}
+fuzzcheck_file 3 fuzz_data2 "fuzz-1.5" {}
+
+finish_test
+
+proc sqlite_fuzzer {} {
+  set SQL "DROP TABLE t1"
+  if { $SQL ne "" } { return $SQL }
+  set SQL "INSERT INTO t2 VALUES(4)"
+  if { $SQL ne "" } { return $SQL }
+}
+
+sqlite_fuzzer
+
+do_execsql_test fuzz-1.6 {
+  SELECT * FROM t2
+} {4}
+
+finish_test

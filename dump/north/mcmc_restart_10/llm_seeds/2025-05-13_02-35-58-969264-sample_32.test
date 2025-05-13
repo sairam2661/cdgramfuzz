@@ -1,0 +1,49 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+proc transaction_func {} {
+  global transactionargs
+  lappend transactionargs
+  expr {1}
+}
+
+do_transaction_test transaction_1 {
+  execsql {
+    CREATE TABLE b(x);
+  }
+}
+
+do_soft_deletion_test transaction_2 {
+  execsql {
+    INSERT INTO b VALUES(5);
+  }
+}
+
+do_transaction_test transaction_3 {
+  execsql {
+    SELECT count(*) FROM b;
+  }
+}
+
+ifcapable {wal} {
+  set wal_var {
+    UPDATE b SET x 6 WHERE x 5
+  }
+} else {
+  set wal_var {
+    UPDATE b SET x 6 WHERE x 5 AND rowid IS NOT NULL
+  }
+}
+
+do_transaction_test transaction_4 {
+  execsql $wal_var
+}
+
+do_transaction_test transaction_5 {
+  execsql {
+    SELECT * FROM b;
+  }
+}
+
+finish_test

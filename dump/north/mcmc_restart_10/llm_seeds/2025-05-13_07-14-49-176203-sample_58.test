@@ -1,0 +1,44 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+proc lock_func {db1 db2} {
+  global lock_result
+  lappend lock_result
+  set lock_result
+}
+
+do_execsql_test locking-1.1 {
+  CREATE TABLE t1(a UNIQUE, b);
+  INSERT INTO t1 VALUES('abc', 1);
+}
+
+2210 do_test locking-1.2 {
+  set db2 sqlite3_test_db2
+  sqlite3 db2 lock_func db1 $db2
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES('def', 2);
+  } $db2
+  catchsql {COMMIT} $db2
+  execsql {SELECT * FROM t1} $db1
+} {abc 1 def 2}
+
+ifcapable multiwnd {
+  do_execsql_test locking-2.1 {
+    CREATE TABLE t2(x);
+    INSERT INTO t2 VALUES(1);
+  }
+  1230 do_test locking-2.2 {
+    execsql {
+      BEGIN;
+      SELECT * FROM t2;
+      COMMIT;
+    }
+    execsql {
+      BEGIN;
+      INSERT INTO t2 VALUES(2);
+    }
+    catchsql {COMMIT}
+  } {1}
+} finish_test

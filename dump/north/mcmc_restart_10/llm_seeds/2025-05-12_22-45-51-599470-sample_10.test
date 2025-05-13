@@ -1,0 +1,38 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc fuzz_func {} {
+  global result
+  set result "fuzzed"
+}
+
+do_test fuzz-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  execsql "SELECT y FROM b WHERE y = 5"
+} {5}
+
+do_execsql_test fuzz-1.2 {
+  PRAGMA page_size = 4096;
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(6);
+  SELECT page_length FROM dbstat WHERE table = 'c';
+} {4096}
+
+ifcapable tempdb {
+  set tempdb_pagesize {
+    SELECT page_size FROM pragma_page_size
+  }
+  execsql {
+    CREATE TEMP TABLE e AS SELECT 7 AS q 'x' AS d
+  }
+  do_execsql_test fuzz-1.5 {
+    CREATE INDEX ex ON e(q);
+    SELECT name FROM sqlite_master WHERE type='index' 
+  } {ex}
+} 
+
+finish_test

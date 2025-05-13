@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+proc counter {} {
+  global i
+  incr i
+  global count
+  set count $i
+  lappend res $i
+  return $res
+}
+
+proc insertdata {} {
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 'a');
+    INSERT INTO t1 VALUES(2, 'b');
+  }
+}
+
+set i 0
+set count 0
+set res {}
+do_test complex-1.1 {
+  insertdata
+  execsql {
+    CREATE TABLE t2(c, d);
+  }
+  list $res
+} {{}}
+
+do_test complex-1.2 {
+  set res
+  execsql {
+    INSERT INTO t2 VALUES(3, 'c');
+  }
+  list $res
+} {{3}}
+
+do_test complex-1.3 {
+  execsql {
+    DELETE FROM t1
+  }
+  set res
+  execsql {
+    SELECT * FROM t1;
+  }
+} {}
+
+set i 0
+set data ""
+
+do_execsql_test complex-2.1 {
+  CREATE TABLE t3(e, f);
+  INSERT INTO t3 VALUES(5, 10);
+  SELECT * FROM t3;
+} {5 10}
+
+do_execsql_test complex-2.2 {
+  BEGIN;
+  INSERT INTO t3 VALUES(6, 20);
+  COMMIT;
+  SELECT * FROM t3;
+} {5 10 6 20}
+
+proc complexproc {} {
+  global data
+  set data "Hello, World!"
+}
+
+set data "Initial Value"
+
+do_test complex-3.1 {
+  complexproc
+  set data
+} {Hello World}
+
+do_test complex-3.2 {
+  set data
+} {Hello World}
+
+do_test complex-3.3 {
+  complexproc
+  set data
+} {Hello World}
+
+finish_test

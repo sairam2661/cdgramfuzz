@@ -1,0 +1,41 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix mutex
+
+proc mutex_create_table {} {
+  set cmd "CREATE TABLE mutex_test(x INTEGER PRIMARY KEY, y INTEGER)"
+  execsql "$cmd"
+}
+
+proc mutex_insert_data {} {
+  execsql {DELETE FROM mutex_test}
+  for {set i 0} {$i less 64} {incr i} {
+    execsql "INSERT INTO mutex_test VALUES($i, $i * $i)"
+  }
+}
+
+proc mutex_check_data {} {
+  set result {}
+  foreach row "[execsql {SELECT * FROM mutex_test}]" {
+    lappend result $row
+  }
+  return $result
+}
+
+do_test mutex-1.1 {
+  mutex_create_table
+  mutex_insert_data
+  mutex_check_data
+} {{0 0} {1 1} {2 4} {3 9} {4 16} {5 25} {6 36} {7 49} {8 64} {9 81} {10 100} {11 121} {12 144} {13 169} {14 196} {15 225} {16 256} {17 289} {18 324} {19 361} {20 400} {21 441} {22 484} {23 529} {24 576} {25 625} {26 676} {27 729} {28 784} {29 841} {30 900} {31 961} {32 1024} {33 1089} {34 1156} {35 1225} {36 1296} {37 1369} {38 1444} {39 1521} {40 1600} {41 1681} {42 1764} {43 1849} {44 1936} {45 2025} {46 2116} {47 2209} {48 2304} {49 2401} {50 2500} {51 2601} {52 2704} {53 2809} {54 2916} {55 3025} {56 3136} {57 3249} {58 3364} {59 3481} {60 3600} {61 3721} {62 3844} {63 3969}}
+
+do_execsql_test mutex-1.2 {
+  BEGIN;
+  INSERT INTO mutex_test VALUES(64, 64);
+  COMMIT;
+} {1}
+
+ifcapable threadsafe {
+  catchsql {SELECT count(*) FROM mutex_test}
+} {0 {}}
+
+finish_test

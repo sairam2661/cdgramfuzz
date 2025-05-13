@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+set test_number 1
+
+proc test_async {} {
+  set test_number
+  incr test_number
+}
+
+do_test async-1.0 {
+  expr { $test_number }
+} {1}
+
+do_test async-1.1 {
+  execsql {
+    CREATE TABLE async_table1(a, b);
+    CREATE TABLE async_table2(c, d);
+  }
+} {}
+
+do_execsql_test async-1.2 {
+  INSERT INTO async_table1 VALUES(1, 2);
+  BEGIN;
+  INSERT INTO async_table2 VALUES(3, 4);
+  COMMIT;
+  SELECT * FROM async_table1
+} {1 2}
+
+do_execsql_test async-1.3 {
+  SELECT * FROM async_table2
+} {3 4}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="wal"}
+} {0 {}}
+
+set timeout 2
+do_execsql_test async-1.4 {
+  BEGIN;
+  INSERT INTO async_table1 VALUES(2, 3);
+  COMMIT;
+  SELECT * FROM async_table1;
+  SELECT * FROM async_table1;
+  SELECT * FROM async_table1;
+  SELECT * FROM async_table2;
+  SELECT * FROM async_table1;
+  SELECT * FROM async_table2;
+  SELECT * FROM async_table1;
+  SELECT * FROM async_table1;
+  SELECT * FROM async_table2;
+  SELECT * FROM async_table1;
+}
+{1 2 2 3 3 4}
+do TestAsync
+finish_test

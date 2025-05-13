@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+proc locking_func {} {
+  ifcapable lock_proxy {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+proc locking_test {} {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(123);
+  }
+  do_test locking_test_1.1 {
+    expr {$x eq 0}
+  } {0}
+  do_test locking_test_1.2 {
+    set x 1
+  }
+  do_test locking_test_1.3 {
+    execsql {
+      SELECT * FROM t1
+    }
+  } {123}
+  ifcapable lock_proxy {
+    do_test locking_test_1.4 {
+      execsql {
+        BEGIN;
+        SELECT * FROM t1;
+      }
+    } {}
+    do_test locking_test_1.5 {
+      execsql {
+        SELECT x FROM t1;
+      }
+    } {123}
+  }
+}
+
+locking_test
+
+catchsql {
+  REINDEX sqlite_master
+} {0 {}}
+
+do_execsql_test locking-2.4 {
+  PRAGMA busy_timeout = 5
+} {5}
+
+do_execsql_test locking-2.5 {
+  PRAGMA busy_timeout = 0
+} {0}
+
+do_execsql_test locking-2.6 {
+  PRAGMA busy_timeout = 0
+} {0}
+
+finish_test

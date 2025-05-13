@@ -1,0 +1,40 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+set sqlite_extension_dir $testdir
+
+proc crash_test {} {
+  global crashargs
+  lappend crashargs "crash test ${crashargs}"
+  expr {0}
+}
+
+proc crash_func {arg} {
+  set crashargs{}
+  crash_test
+  expr {0}
+}
+
+do_test crash-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  crash_func 
+} {0}
+
+do_execsql_test crash-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT * FROM a;
+  SELECT type FROM sqlite_master;
+} {1 {row} {table row} {table}}
+
+catchsql {
+  PRAGMA temp_store=2;
+  CREATE TABLE t1(c1);
+  CREATE TABLE t1(c1);
+} {1 {unusable table t1}}
+
+finish_test

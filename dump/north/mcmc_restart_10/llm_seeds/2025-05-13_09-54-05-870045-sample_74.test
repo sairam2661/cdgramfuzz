@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix extcode
+
+proc extcode_proc {} {
+  global extcodeargs
+  lappend extcodeargs
+  expr {1}
+}
+
+do_test extcode-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1);
+    INSERT INTO b VALUES(2);
+  }
+  sqlite3 db_extdb2 extdb2
+  check_sqlite_schema_integrity
+} {}
+
+set extcodeargs {}
+
+do_test extcode-2.1 {
+  sqlite3 db_extdb3 extdb3
+  execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(3);
+    SELECT count(*) FROM c;
+  }
+} {1}
+
+ifcapable tempdb {
+  sqlite3 db_extdb4 extdb4
+  do_execsql_test extcode-2.2 {
+    BEGIN;
+    CREATE TABLE d(aa);
+    INSERT INTO d VALUES(4);
+    COMMIT;
+  } {1}
+}
+
+set tempdir "$::TESTFIXTURE Database file"
+
+do_execsql_test extcode-1.2 {
+  PRAGMA synchronous = 0;
+  PRAGMA journal_mode = "MEMORY";
+} {}
+
+catch {delete_fuzzer_instance foo}
+
+finish_test

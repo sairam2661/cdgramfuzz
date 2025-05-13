@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix syncasync
+
+proc syncasync_proc {} {
+  global syncasyncargs
+  lappend syncasyncargs 1
+}
+
+do_test syncasync-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    SELECT x FROM a;
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+} {1}
+
+do_test syncasync-2.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(4);
+  }
+} {1}
+
+do_execsql_test syncasync-3.1 {
+  INSERT INTO a VALUES(5);
+} {1}
+
+do_execsql_test syncasync-4.1 {
+  CREATE INDEX a_index ON a(x);
+  SELECT * FROM a;
+} {x x x x x x}
+
+proc syncasync2_proc {} {
+  global syncasyncargs
+  set syncasyncargs {}
+  lappend syncasyncargs 2
+}
+
+do_execsql_test syncasync-5.1 {
+  BEGIN;
+  INSERT INTO b VALUES(7);
+  COMMIT;
+}
+
+        {4}
+do_execsql_test syncasync-6.1 {
+  CREATE TABLE c(z);
+
+  BEGIN;
+  INSERT INTO c VALUES(8);
+  INSERT INTO c VALUES(9);
+  COMMIT;
+}
+{8 9}
+
+ifcapable vacuum {
+  execsql {VACUUM}
+}
+
+ifcapable {mutex pager_wal} {
+  db eval {"PRAGMA locking_mode = EXCLUSIVE"}
+  db eval {"PRAGMA synchronous = OFF"}
+  db eval {"PRAGMA fullfsync = ON"}
+  set n 0
+  while {1} {
+    do_test syncasync {
+      execsql {
+        BEGIN;
+        INSERT INTO a VALUES(10);
+        INSERT INTO a VALUES(11);
+        INSERT INTO a VALUES(12);
+        COMMIT;
+      }
+      scan $n 10 tmp
+      execsql {SELECT x FROM a ORDER BY x WHERE x IS NOT NULL}
+    }
+    incr n
+  }
+} finish_test

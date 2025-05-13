@@ -1,0 +1,27 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix mytest
+
+proc myproc {} {
+  global myargs
+  lappend myargs
+  expr {1}
+}
+
+do_test my-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES('1');
+  }
+  execsql {SELECT * FROM b}
+} {{1} }
+
+do_execsql_test my-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES('2');
+  COMMIT;
+  SELECT * FROM b;
+} {{1} {2}}
+
+ifcapable {utf16} {
+  catchsql {SELECT '€

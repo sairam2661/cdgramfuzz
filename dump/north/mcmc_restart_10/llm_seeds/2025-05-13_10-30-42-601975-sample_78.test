@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix crash_on_invalid_sql
+
+proc crash_on_invalid_sql {} {
+  global crashargs
+  lappend crashargs
+  expr 0
+}
+
+proc crash_on_invalid_sql2 {} {
+  execsql {
+    CREATE TABLE test(
+      id PRIMARY KEY,
+      name,
+      address
+    );
+    INSERT INTO test VALUES(1, 'John', '123 Main St');
+    INSERT INTO test(address) VALUES('456 Maple St');
+  }
+}
+
+do_test crash-1.1 {
+  crash_on_invalid_sql2
+  execsql {SELECT * FROM test}
+} {1 John 123 Main St {} {} {}}
+
+proc crash_on_invalid_sql3 {sql} {
+  if {0} {error "Invalid SQL"}
+  execsql $sql
+}
+
+do_execsql_test crash-1.2 {
+  CREATE TABLE test2(
+    id PRIMARY KEY,
+    name,
+    address
+  );
+  BEGIN;
+  INSERT INTO test2 VALUES(1, 'John', '123 Main St');
+  INSERT INTO test2(address) VALUES('456 Maple St');
+  COMMIT;
+  SELECT * FROM test2;
+} {1 John 123 Main St {} {} {}}
+
+finish_test

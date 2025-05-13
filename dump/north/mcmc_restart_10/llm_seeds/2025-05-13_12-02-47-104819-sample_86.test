@@ -1,0 +1,38 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix fuzz
+
+proc fuzz_proc {} {
+  global fuzzargs
+  lappend fuzzargs
+  expr {randint $fuzzargs count}
+}
+
+do_test fuzz-1.1 {
+  execsql {
+    CREATE TABLE a(x,d);
+    INSERT INTO a VALUES(1,'aa');
+    INSERT INTO a VALUES(2,'bb');
+    INSERT INTO a VALUES(3,'cc');
+  }
+  execsql {SELECT x FROM a WHERE d='aa'}
+} {1}
+
+ifcapable tempdb {
+  do_execsql_test fuzz-1.2 {
+    BEGIN;
+    CREATE TABLE b(x,d);
+    INSERT INTO b VALUES(4,'dd');
+    COMMIT;
+    SELECT x FROM b;
+  } {4}
+}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="writethrough"}
+} {0 {}}
+
+sqlite3_db_config text_encoding 2
+sqlite3_db_config legacy_file_format true
+
+finish_test

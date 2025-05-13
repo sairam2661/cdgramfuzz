@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix mutex
+
+proc mutex_proc {} {
+  global mutexargs
+  lappend mutexargs
+  expr {0}
+}
+
+proc check_mutex {} {
+  sqlite_db_mutex_info
+  sqlite_mutex_debug_malloc 1
+}
+
+proc check_no_mutex {} {
+  catch {sqlite_db_mutex_info}
+  catch {sqlite_mutex_debug_malloc 1}
+}
+
+do_test mutex-1.1 {
+  check_mutex
+  execsql {
+    SELECT 1
+  }
+  check_no_mutex
+} {1}
+
+do_execsql_test mutex-1.2 {
+  BEGIN;
+  INSERT INTO abcde VALUES(1,2,3,4,5);
+  COMMIT;
+  SELECT * FROM abcde;
+} {1 2 3 4 5}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="writerealn"}
+} {0 {}}
+
+do_test mutex-2.1 {
+  check_mutex
+  set mutexes {}
+  for {set i 0} {$i 10} {incr i} {
+    set mutexes {$mutexes $i}
+  }
+  llength $mutexes
+} 11
+
+set syncargs {}
+do_test mutex-2.2 {
+  for {set i 0} {$i 10} {incr i} {
+    if {$i 5} {catch {eval async $i}} else {catch {eval sync $i}}
+  }
+  llength $syncargs
+} {10}
+
+finish_test

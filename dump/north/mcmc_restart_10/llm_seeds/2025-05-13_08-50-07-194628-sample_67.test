@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix dbstat
+
+set DBSTAT 1
+set WAL 1
+set DEFENSIVE 1
+
+proc dbstat_testcase {name proc} {
+  uplevel "[list do_test $name] [list $proc]"
+}
+
+dbstat_testcase dbstat1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+  execsql {SELECT count(*) FROM a}
+} {3}
+
+dbstat_testcase dbstat2.1 {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(4);
+    COMMIT;
+    SELECT count(*) FROM a;
+  }
+} {4}
+
+dbstat_testcase dbstat3.1 {
+  execsql {
+    SELECT x FROM a WHERE x = 1;
+  }
+} {1}
+
+dbstat_testcase dbstat4.1 {
+  execsql {
+    SELECT 1
+  }
+} {1}
+
+ifcapable dbstat {
+  dbstat_testcase dbstat5.1 {
+    PRAGMA dbstat
+  }
+} {ok}
+
+ifcapable journalMode {
+  ifcapable waljournal {
+    dbstat_testcase dbstat6.1 {
+      PRAGMA journal_mode = 'wal'
+    }
+  } else {
+    dbstat_testcase dbstat6.1 {
+      PRAGMA journal_mode = 'delete'
+    }
+  }
+} {ok}
+
+ifcapable DEFENSIVE {
+  dbstat_testcase dbstat7.1 {
+    PRAGMA defensiveness = 1
+  }
+} {ok}
+
+finish_test

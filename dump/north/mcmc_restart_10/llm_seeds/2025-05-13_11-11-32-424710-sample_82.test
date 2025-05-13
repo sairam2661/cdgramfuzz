@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix large
+
+proc large_proc {} {
+  for {set i 1} {$i le 10000} {incr i} {
+    global LargeData
+    set LargeData {}
+    for {set j 1} {$j le 100} {incr j} {
+      lappend LargeData $i$j
+    }
+  }
+}
+
+proc large_data {} {
+  set data {}
+  for {set i 1} {$i le 10000} {incr i} {
+    for {set j 1} {$j le 100} {incr j} {
+      lappend data $i$j
+    }
+  }
+  return $data
+}
+
+db close
+if { $tcl_platform OsId eq "win CE" } {
+  setup_fuzz_test 10kb
+} else {
+  setup_fuzz_test 64kb
+}
+
+do_test large-1.1 {
+  execsql {
+    CREATE TABLE large_table(x, y);
+    CREATE INDEX large_index ON large_table(x);
+  }
+  execsql {
+    INSERT INTO large_table VALUES(10000, 100);
+  }
+} {1}
+
+do_execsql_test large-1.2 {
+  COMMIT;
+  SELECT name FROM sqlite_master WHERE type='table';
+} {large_table}
+
+do_test large-1.3 {
+  query {SELECT * FROM large_table}
+  lsearch $LargeData 10000 100
+} {0}
+
+finish_test

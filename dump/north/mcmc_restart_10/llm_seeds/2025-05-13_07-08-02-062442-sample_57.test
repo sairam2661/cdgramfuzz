@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_database
+
+proc complex_database_func {} {
+  global complexarguments
+  lappend complexarguments
+  expr {4.0}
+}
+
+proc exec_multi_db_sql {dbids sql} {
+  foreach id $dbids {
+    db $id eval $sql
+  }
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE t1(a, b, c);
+  CREATE TABLE t2(d, e, f);
+}
+
+5 do_test complex-1.2 {
+  exec_sql {
+    INSERT INTO t1 VALUES('a', 'b', 'c');
+    INSERT INTO t2 VALUES('d', 'e', 'f');
+  } {1}
+} {integer 1}
+
+ifcapable dbconfig {
+  do_test complex-2.1 {
+    db eval {
+      pragma main_journal_mode
+    }
+  } {wal}
+}
+
+proc fuzztest_func {dbids} {
+  global complexarguments
+  set complexarguments {}
+  return 5
+}
+
+do_test complex-3.1 {
+  set dbids {1 2 3 4 5}
+  exec_multi_db_sql $dbids "INSERT INTO t1 VALUES('a', 'b', 'c');"
+} {}
+
+do_test complex-3.2 {
+  set dbids {1 2 3 4 5}
+  exec_multi_db_sql $dbids "SELECT * FROM t1;"
+} {{} {} {} {} {} {} a b c d e f}
+
+exec fuzzer_func
+
+finish_test

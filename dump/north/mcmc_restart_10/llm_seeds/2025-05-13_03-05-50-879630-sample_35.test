@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix subquery
+
+do_test subquery-1.1 {
+  set fd1 fd2
+  set fd2 fd1
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)
+  }
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1)
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO b VALUES(1);
+  }
+  list $fd1 $fd2
+} {fd2 fd1}
+
+do_execsql_test subquery-1.2 {
+  COMMIT;
+  SELECT * FROM a;
+} {1}
+
+ifcapable vacuum {
+  do_test subquery-1.3 {
+    execsql {
+      VACUUM INTO a FROM a ISOLATION LEVEL SERIALIZABLE AND REPLACE
+    }
+  } {}
+}
+
+do_test subquery-1.4 {
+  set rc {}
+  set rc "[expr { 1 + 1 == 2 }]"
+  if {$rc} { set rc 0 } else { set rc 1 }
+  list errorInfo $rc
+} {0 1 0}
+
+do_execsql_test subquery-1.5 {
+  CREATE TABLE c(z);
+  SELECT * FROM c WHERE z = 8;
+} {NULL}
+
+ifcapable windowfunc {
+  do_execsql_test subquery-1.6 {
+    CREATE TABLE d(e);
+    INSERT INTO d VALUES(5);
+    INSERT INTO d VALUES(6);
+    INSERT INTO d VALUES(7);
+    SELECT e FROM d WHERE e = ANY
+  } {7}
+}
+
+finish_test

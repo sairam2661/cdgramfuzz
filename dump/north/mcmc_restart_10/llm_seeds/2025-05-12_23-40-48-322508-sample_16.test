@@ -1,0 +1,43 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+proc main_func {} {
+  incr db_cantidad
+}
+
+proc other_func {value} {
+  set datos_values ""
+  append datos_values $value
+  set data_values $datos_values
+}
+
+db eval {CREATE TABLE users(id PRIMARY KEY, name, age)}
+db eval {INSERT INTO users VALUES(1, 'John Doe', 30)}
+
+proc final_func {} {
+  execsql {SELECT * FROM users}
+}
+
+register_fuzz_func main_func main_test
+register_fuzz_func other_func other_test
+do_test main-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+  }
+  execsql {SELECT name FROM sqlite_master WHERE type='table' }
+} {a}
+
+do_execsql_test main-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(5);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {1}
+
+register_fuzz_func final_func final_test
+set db_cantidad 0
+do_fuzz_test main_test 100
+set db_cantidad 5
+do_fuzz_test other_test 5
+finish_test

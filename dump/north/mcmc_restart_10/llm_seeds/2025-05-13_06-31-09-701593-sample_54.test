@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix corrupt
+set sqlite_db test CorruptionTest_0
+
+proc corrupt_test_func {} {
+  set db_open 1
+  set sqlite_db CorruptionTest_0
+  return $db_open
+}
+
+proc corrupt_test_func_2 {} {
+  global sqlite_db
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  $sqlite_db "PRAGMA cache_size=100"
+  execsql {
+    UPDATE a SET x WHERE x ISNULL
+  }
+  $sqlite_db "PRAGMA synchronous=NORMAL"
+  return 1
+}
+
+do_execsql_test corrupt-1.1 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES('a');
+}
+
+ 1024 do_io_err_test 1.2 corrupt_test_func_2 2
+
+do_io_err_test 2.1 corrupt_test_func_2
+do_io_test 2.2 {
+  execsql {
+    SELECT y FROM b;
+  }
+}
+do_execsql_test 2.3 {
+  DROP TABLE b
+  PRAGMA integrity_check
+} {ok}
+
+proc execsql_with_error {} {
+  execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(1);
+  }
+}
+
+do_io_err_test 3.1 {
+  execsql_with_error
+  return 1
+}
+
+do_io_test 3.2 {
+  execsql {
+    SELECT z FROM c;
+  }
+}
+
+finish_test

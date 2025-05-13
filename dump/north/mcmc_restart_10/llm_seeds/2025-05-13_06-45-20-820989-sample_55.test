@@ -1,0 +1,40 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiexec
+set db testdb
+
+proc query_executes {sql {result {}}} {
+  global db
+  set execsql "PRAGMA foreign_keys=OFF; PRAGMA synchronous=OFF; PRAGMA journal_mode=MEMORY; $sql"
+  uplevel do_execsql_test $result $execsql "$result"
+}
+
+query_executes {
+  CREATE TABLE t1(a, b);
+  CREATE INDEX i1 ON t1(a);
+  INSERT INTO t1 VALUES(1, 1);
+  INSERT INTO t1 VALUES(2, 2);
+  SELECT a FROM t1 WHERE b=1;
+} {2}
+
+query_executes {
+  DROP TABLE t1
+}
+
+query_executes {
+  CREATE TABLE t2(a, b);
+  CREATE INDEX i2 ON t2(a);
+  INSERT INTO t2 VALUES(1, 1);
+  INSERT INTO t2 VALUES(2, 2);
+  SELECT a FROM t2 WHERE b=2;
+} {2}
+
+query_executes {
+  DROP TABLE t2
+}
+
+query_executes {
+  SELECT * FROM sqlite_master
+} {}
+
+finish_test

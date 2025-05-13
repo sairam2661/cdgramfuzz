@@ -1,0 +1,50 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix index
+
+proc test_index_func {arg1 {arg2 ""}} {
+  global test_index_args
+  lappend test_index_args $arg1 $arg2
+  expr 1
+}
+
+do_execsql_test 1 {
+  CREATE TABLE t1(a, b, UNIQUEIndexed);
+  CREATE INDEX i1 ON t1(a);
+  INSERT INTO t1 VALUES(1, 2);
+  INSERT INTO t1 VALUES(3, 4);
+} {}
+
+do_execsql_test 2 {
+  CREATE TABLE t2(a, b, UNIQUEIndexed);
+  CREATE INDEX i2 ON t2(b);
+  INSERT INTO t2 VALUES(1, 2);
+  INSERT INTO t2 VALUES(3, 4);
+} {}
+
+ifcapable wal {
+  do_execsql_test 3 {
+    PRAGMA journal_mode = 'wal'
+  } {}
+  do_execsql_test 4 {
+    BEGIN;
+    CREATE TABLE t3(a PRIMARY KEY);
+    INSERT INTO t3(a) VALUES(1);
+    INSERT INTO t3(a) VALUES(2);
+    COMMIT;
+  } {}
+} else {
+  do_execsql_test 3 {
+    PRAGMA journal_mode = 'delete'
+  } {}
+}
+
+set query {SELECT * FROM t1}
+
+do_test 5.1 {
+  execsql {
+    CREATE TABLE t4 AS SELECT $query
+  }
+} {}
+
+finish_test

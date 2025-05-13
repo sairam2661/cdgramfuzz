@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multirow
+
+proc randstring {} {
+  return "[string range [uuid] -v {} 0 32] 000"
+}
+
+proc multirow_insert_x {} {
+  global multirow_data
+  set multirow_data {}
+  for {set i 0} {$i 10} {incr i} {
+    lappend multirow_data $randstring
+  }
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]'
+    );
+  }
+}
+
+proc multirow_insert_y {} {
+  global multirow_data
+  set multirow_data {}
+  for {set i 0} {$i 10} {incr i} {
+    lappend multirow_data $randstring
+  }
+  for {set i 0} {$i 10} {incr i} {
+    lappend multirow_data $randstring
+  }
+  for {set i 0} {$i 10} {incr i} {
+    lappend multirow_data $randstring
+  }
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]',
+      '[join $multirow_data,]'
+    );
+  }
+}
+
+proc multirow_test {} {
+  multirow_insert_x
+  do_execsql_test multirow1.1 {
+    SELECT count(*) FROM b
+  } {10}
+  do_execsql_test multirow1.2 {
+    SELECT count(*) FROM b
+  } {10}
+
+  multirow_insert_y
+  do_execsql_test multirow2.1 {
+    SELECT count(*) FROM c
+  } {30}
+  do_execsql_test multirow2.2 {
+    SELECT count(*) FROM c
+  } {30}
+
+  execsql {
+    SELECT count(*) FROM b
+  }
+}
+
+multirow_test
+
+finish_test

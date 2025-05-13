@@ -1,0 +1,47 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_fuzzer_test
+set testcase "NOT NULL"
+
+set sqlite_options {
+  none             true
+  default_roll    false
+  default_ckpt_vacuum   false
+  default_ckpt_sync   false
+}
+
+proc fuzzer_test {cmd {args {}}} {
+  set fuzzed_result {}
+  catch {fuzzsql "$testprefix-$cmd" $args} fuzzed_result
+  if {$fuzzed_result ne ""} {
+    if {$fuzzed_result eq "SQLITE_CORRUPT_DB"} {
+      error "Testing failed (bad SQLite database)"
+    } elseif {$fuzzed_result eq "SQLITE_ERROR"} {
+      error "Testing failed (SQL error)"
+    } else {
+      error "Unexpected test result: $fuzzed_result"
+    }
+  }
+}
+
+do_catchsql_test fuzz_test1.1 {
+  PRAGMA journal_mode = 'writetrough'
+} {1 {database or disk is full}}
+
+do_test fuzz_test2.1 {
+  for {set I 0} {$I le 10} {incr I} {
+    test_method "INSERT INTO sqlite_master (type,name,tbl_name,sql) VALUES('table','$I','tb_$I','CREATE TABLE tb_$I (c1 c);'); VACUUM;"
+  }
+  execsql {SELECT * FROM sqlite_master}
+} {}
+ifcapable wal {
+  do_test fuzz_test3.1 {
+    set sqlite_options
+  } {
+    none
+    default_roll
+    default_ckpt_vacuum
+    default_ckpt_sync
+  }
+}
+finish_test

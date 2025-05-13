@@ -1,0 +1,80 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal
+sqlite_shared_cache_enable 1
+
+proc wal_proc {} {
+  global walargs
+  lappend walargs
+}
+
+proc wal_callback {handle arg} {
+  global waldata
+  lappend waldata $arg
+  unset waldata
+}
+
+proc wal_trigger {} {
+  sqlite_db_config_wal wal 0
+}
+
+do_test wal-1.1 {
+  execsql {
+    CREATE TABLE waltbl(x);
+    INSERT INTO waltbl VALUES(1);
+    SELECT count(*) FROM waltbl;
+  }
+} {1}
+
+do_execsql_test wal-1.2 {
+  SELECT threadid FROM sqlite_master;
+} {1}
+
+do_execsql_test wal-1.3 {
+  PRAGMA wal_checkpoint
+} {}
+
+ifcapable journalMode {
+
+  catchsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+} {0 {}}
+
+set testdir2 $testdir
+set testname2 "wal-$testprefix-2"
+sqlite_db_config_wal 1
+set filename2 "$testname2.db"
+set walargs {}
+do_execsql_test wal-2.1 {
+  CREATE TABLE wal2tbl(x);
+  SELECT count(*) FROM wal2tbl;
+} {0}
+do_test wal-2.2 {
+  execsql {
+    INSERT INTO wal2tbl VALUES(1);
+  }
+  execsql {
+    PRAGMA wal_checkpoint
+  }
+} {}
+do_test wal-2.3 {
+  info exists db2
+  expr {0}
+} {1}
+do_execsql_test wal-2.4 {
+  PRAGMA wal_checkpoint
+} {}
+do_test wal-2.5 {
+  info exists walargs
+  expr {0}
+} {0}
+do_test wal-2.6 {
+  execsql {
+    ALTER TABLE wal2tbl ADD COLUMN y INTEGER
+  }
+  execsql {
+    PRAGMA wal_checkpoint
+  }
+} {}
+finish_test

@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix test2
+
+proc set_global {} {
+  global testvar
+  set testvar testvalue
+}
+
+proc set_expr {a b c} {
+  catch {unset testvar}
+  set testvar "($a + $b) * $c"
+}
+
+proc get_var {} {
+  set testvar2 $testvar
+}
+
+proc query_func {n} {
+  set a 1
+  set b 2
+  set c $n
+  set_expr $a $b $c
+  get_var
+}
+
+do_execsql_test 1.0 {
+  CREATE TABLE b(c, d);
+  INSERT INTO b VALUES('A', 7);
+}
+
+do_test 2.0 {
+  set_global
+  query_func 10
+  set testvar2
+} { 330 }
+
+do_execsql_test 3.0 {
+  CREATE VIRTUAL TABLE c USING fts3
+}
+ 
+ifcapable {
+  do_execsql_test 4.0 {
+    PRAGMA synchronous = 2 
+  }
+}
+
+finish_test

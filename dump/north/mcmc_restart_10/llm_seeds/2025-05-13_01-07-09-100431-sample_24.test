@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+proc complex_query {} {
+  db eval {
+    CREATE TABLE users(id PRIMARY KEY, name, email);
+    CREATE TABLE posts(id PRIMARY KEY, user_id, text);
+  }
+  db eval {
+    INSERT INTO users VALUES(1, 'John Doe', 'johndoe@example.com');
+    INSERT INTO users VALUES(2, 'Jane Doe', 'janedoe@example.com');
+  }
+  db eval {
+    INSERT INTO posts VALUES(1, 1, 'This is a post by John');
+    INSERT INTO posts VALUES(2, 2, 'This is a post by Jane');
+    INSERT INTO posts VALUES(3, 1, 'Another post by John');
+  }
+}
+
+proc complex_query2 {} {
+  db eval {
+    CREATE TABLE logs(time PRIMARY KEY, message);
+    CREATE TABLE stats(id, count, average);
+  }
+  db eval {
+    INSERT INTO logs VALUES('2022-01-01 00:00:00', 'System started');
+    INSERT INTO logs VALUES('2022-01-01 00:01:00', 'User logged in');
+    INSERT INTO logs VALUES('2022-01-01 00:02:00', 'User logged out');
+  }
+  db eval {
+    INSERT INTO stats VALUES(1, 10, 5.0);
+  }
+}
+
+do_test complex-1.1 {
+  complex_query
+  execsql {
+    SELECT name FROM users WHERE id = 1;
+  }
+} {John Doe}
+
+do_execsql_test complex-1.2 {
+  SELECT COUNT(*) FROM posts;
+} {3}
+
+do_test complex-2.1 {
+  complex_query2
+  execsql {
+    SELECT * FROM logs;
+  }
+} {2022 01 01 00 00 00 System started 2022 01 01 00 01 00 User logged in 2022 01 01 00 02 00 User logged out}
+
+do_execsql_test complex-2.2 {
+  SELECT * FROM stats WHERE id = 1;
+} {1 10 5.0}
+
+finish_test

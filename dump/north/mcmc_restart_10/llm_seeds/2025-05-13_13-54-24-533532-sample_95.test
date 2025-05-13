@@ -1,0 +1,42 @@
+set testdir [file dirname $argv0]
+source $testdir/fuzztester.tcl
+set testprefix fuzz
+
+proc setdb {} {
+  global db
+  sql {
+    BEGIN;
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 'Hello, World!');
+    INSERT INTO t1 VALUES(2, 3.14);
+    INSERT INTO t1 VALUES(3, '%');
+    INSERT INTO t1 VALUES(4, '\0' );
+    COMMIT;
+  }
+}
+
+proc run {args} {
+  set cmd "[lindex $args 0] [lrange $args 1 end]"
+  set ret "
+    $cmd
+    [list [catch {eval \$cmd} \
+       [list [set ret [sqlite3_expr $cmd {} {} {}]]] out err]
+          [expr {$out!= 0? $err : $out}]]
+  "
+  puts $ret
+}
+
+setsql 1 1 {
+  SELECT a FROM t1 WHERE b LIKE 'Hello,%'
+} {1}
+setsql 1 1 {
+  SELECT b FROM t1 WHERE a = 2
+} {3.14}
+setsql 1 1 {
+  SELECT b FROM t1 WHERE a = 3
+} {$::SQLnull }
+setsql 1 1 {
+  SELECT a FROM t1 WHERE b LIKE '\0%'
+} {4}
+
+finish_test

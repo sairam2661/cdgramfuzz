@@ -1,0 +1,38 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzer
+
+proc fuzzer {} {
+  for {set i 0} {$i le 10} {incr i} {
+    do_execsql_test fuzzertest1.1 "SELECT * FROM sqlite_master"
+    for {set j 0} {$j le 10} {incr j} {
+      do_execsql_test fuzzertest2.1 "SELECT sql FROM sqlite_master WHERE name='sqlite_master'"
+    }
+    do_test fuzzertest3.1 "expr $i + $j" $i
+  }
+}
+
+proc fuzzer2 {} {
+  for {set i 0} {$i le 10} {incr i} {
+    lappend result $i
+  }
+  lsort $result
+  do_test test1.1 $result 0 1 2 3 4 5 6 7 8 9 10
+}
+
+proc fuzzer3 {} {
+  for {set i 0} {$i le 10} {incr i} {
+    execsql "SELECT $i"
+  }
+}
+
+set db handle
+set result
+for {set i 0} {$i le 10} {incr i} {
+  set result "$result$i"
+}
+
+db close
+set result
+
+finish_test

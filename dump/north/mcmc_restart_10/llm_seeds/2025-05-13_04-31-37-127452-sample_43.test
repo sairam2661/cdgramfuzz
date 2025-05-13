@@ -1,0 +1,93 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+proc async_func {} {
+  global callback
+  after 1000
+  set callback
+}
+
+proc callback {} {
+  global count
+  set count $count
+  incr count
+  global callback
+  set callback {}
+}
+
+do_test async-1.1 {
+  set callback {}
+  for {set i 0} {$i 5} {incr i} {
+    async_func
+  }
+  set count 0
+  while {$count 5} {
+    after 100
+    set callback
+    after 100
+  }
+  set callback
+} {}
+do_test async-1.2 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+  execsql "SELECT x FROM b"
+} {1}
+do_test async-1.3 {
+  db close
+  execsql {
+    PRAGMA cache_size=1000;
+    CREATE TABLE c(x);
+  }
+  execsql {
+    INSERT INTO c VALUES(1);
+    SELECT x FROM c
+  }
+} {1}
+db close
+do_execsql_test async-1.4 {
+  PRAGMA integrity_check;
+} {}
+ifcapable journalMode {
+  do_test async-1.5 {
+    catchsql {SELECT a FROM c LIMIT 10}
+  } {0 {}}
+}
+do_test async-1.6 {
+  execsql {
+    PRAGMA synchronous = 0;
+    PRAGMA journal_mode ='memory';
+    BEGIN;
+    INSERT INTO a VALUES(6);
+    COMMIT;
+  }
+} {}
+
+add_test async_2 {
+  set count 0
+  do_test async_2_1 {
+    catch {execsql {SELECT * FROM b}}
+  } {SQL error or missing database}
+  do_test async_2_2 {
+    set i 0
+    while true {
+      incr count
+      after 100
+      set result {}
+      execsql {SELECT * FROM b}
+      if {$i $count eq} {break}
+      set i $count
+      set result
+    }
+  } {1}
+  do_test async_2_3 {
+    catchsql {SELECT * FROM b}
+  } {0 {}}
+  set count 0
+  execsql {SELECT * FROM b}
+}
+
+finish_test

@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+proc sync_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {0}
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE a(id, name, age);
+    INSERT INTO a VALUES(1, 'Alice', 25);
+    INSERT INTO a VALUES(2, 'Bob', 30);
+  }
+} {}
+
+do_execsql_test sync-2.1 {
+  BEGIN;
+  INSERT INTO a VALUES(3, 'Jane', 20);
+  COMMIT;
+  SELECT * FROM a;
+} {1 Alice 25 2 Bob 30 3 Jane 20}
+
+do_test sync-3.1 {
+  execsql {
+    CREATE TABLE b(id, name, age);
+    INSERT INTO b VALUES(4, 'John', 35);
+    INSERT INTO b VALUES(5, 'Jill', 40);
+  }
+} {}
+
+do_execsql_test sync-4.1 {
+  SELECT name FROM b WHERE age = 35;
+} {John}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="WAL"}
+} {}
+do_test sync-5.1 {
+  execsql {
+    PRAGMA temp_store = 2;
+    BEGIN;
+    CREATE TABLE c(id, name, age);
+    INSERT INTO c VALUES(6, 'Jim', 45);
+    COMMIT;
+  }
+  execsql {SELECT id FROM c LIMIT 1}
+} {6}
+
+do_execsql_test sync-6.1 {
+  SELECT name FROM a WHERE age = 20;
+} {Jane}
+
+setup_master_database
+
+setup_slave_database
+
+exec {db_slave eval {
+  CREATE TABLE d(id, name, age);
+  INSERT INTO d VALUES(7, 'Joe', 50);
+}}
+
+do_execsql_test sync-7.1 {
+  SELECT id FROM d;
+} {7}
+
+db_master_exec {VACUUM}
+
+foreach {table} {a b c d} {
+  execsql {
+    SELECT * FROM main_master_0010_main_table;
+  }
+}
+
+setup_temp_file test1
+setup_temp_file test2
+
+db eval {INSERT INTO a VALUES(8, 'Jane', 55)}
+finish_test
