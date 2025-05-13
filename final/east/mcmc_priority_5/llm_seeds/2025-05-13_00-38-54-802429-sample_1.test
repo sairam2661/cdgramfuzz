@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent_vacuum
+
+proc create_db {} {
+  global db
+  sqlite3 db testvfs
+}
+
+proc prepare_testcase {tn} {
+  global db
+  with_bd_backend db {
+    do_execsql_test $tn {
+      CREATE TABLE t1(a, b);
+      INSERT INTO t1 VALUES(1, 2);
+      CREATE INDEX i1 ON t1(a);
+    } {}
+  }
+}
+
+proc vacuum {tn} {
+  global db
+  execsql {
+    VACUUM
+  } $db
+  do_execsql_test $tn {
+    PRAGMA page_size;
+    PRAGMA auto_vacuum;
+  } {1024 1}
+}
+
+prepare_testcase test_concurrent_vacuum_1
+execsql {
+  INSERT INTO t1 VALUES(2, 3);
+} $db
+ifcapable wal {
+  vacuum test_concurrent_vacuum_1
+  vacuum test_concurrent_vacuum_1
+}
+do_execsql_test test_concurrent_vacuum_2 {
+  SELECT * FROM t1;
+  INSERT INTO t1 VALUES(3, 4);
+  SELECT * FROM t1;
+} {1 2 2 3 3 4 3 4}
+
+finish_test

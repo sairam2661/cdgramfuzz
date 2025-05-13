@@ -1,0 +1,128 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journaltest
+
+set ::timeout 60000
+
+proc insert_random_data {} {
+  global db
+  for {set i 0} {$i 10000} {incr i} {
+    execsql "INSERT INTO random_test VALUES($i, 'random_string_$i', $i)"
+  }
+}
+
+proc cleanup {} {
+  execsql "DELETE FROM random_test"
+}
+
+proc check_journal_mode {} {
+  set result {}
+  ifcapable journalMode {
+    if { $result eq {WAL} } {
+      return WAL
+    } else {
+      return {}
+    }
+  } else {
+    return {}
+  }
+}
+
+do_test journal-1.1 {
+  execsql {CREATE TABLE random_test(id, name, value)}
+} {}
+
+do_test journal-1.2 {
+  check_journal_mode
+} {}
+
+do_catchsql_test journal1.3 {
+  PRAGMA main_journal_mode = 'DELETE'
+} {1 {no such table or view main_journal_mode}}
+
+do_test journal-3.1 {
+  check_journal_mode
+} {}
+
+do_test journal-3.2 {
+  ifcapable journalMode {
+    catch {
+      set r1
+      execsql {SELECT pgid FROM dbfile} r1 r2
+    } msg
+  } else {
+    set result {}
+  }
+  set result
+} {}
+
+do_test journal-3.3 {
+   set r2
+   ifcapable journalMode {
+     catch {
+       set r1
+       execsql {SELECT state FROM dbfile} r1 r2
+     } msg
+   } else {
+     set result {}
+   }
+   set result
+} {}
+
+set x
+do_test journal-3.2 {
+  db close
+  ifcapable journalMode {
+    set r2
+    catch {
+      set r1
+      set r1
+      execsql {SELECT state FROM dbfile} r1 r2
+    } msg
+  } else {
+    set x
+  }
+  set x
+} {}
+ 
+do_test journal1.3 {
+  cleanup
+} {}
+
+do_execsql_test journal1.4 {
+  BEGIN;
+  INSERT INTO random_test VALUES(123, 'random_string_123', 123);
+  INSERT INTO random_test VALUES(456, 'random_string_456', 456);
+  COMMIT;
+  SELECT * FROM random_test WHERE value=456
+} {456 random_string_456 456}
+
+do_test journal1.5 {
+  check_journal_mode
+} {WAL}
+
+do_test journal1.6 {
+  execsql {SELECT COUNT(*) FROM dbfile}
+} {9}
+
+do_test journal1.7 {
+  cleanup
+} {}
+
+insert_random_data
+cleanup
+do_test journal1.8 {
+  check_journal_mode
+} {WAL}
+do_test journal1.9 {
+  execsql {SELECT COUNT(*) FROM random_test}
+} {10000}
+do_test journal1.10 {
+  execsql {SELECT COUNT(*) FROM dbfile}
+} {9}
+ 
+do_test journal1.11 {
+  check_journal_mode
+} {WAL}
+
+finish_test

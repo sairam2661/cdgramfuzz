@@ -1,0 +1,132 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc check_index {} {
+  global DB
+  set idx "temp.idx"
+  set sql "CREATE INDEX $idx ON temp(x);"
+  execsql $sql
+  set sql "SELECT name FROM sqlite_master WHERE type='index'"
+  set idxnames {}
+  set result {}
+  foreach row $result {
+    lappend idxnames $row
+  }
+  if {$idx ni $idxnames} {
+    error "Expected index $idx not found"
+  }
+}
+
+proc exec_sql_with_result {sql} {
+  set result {}
+  foreach row $result {
+    lappend result $row
+  }
+  return $result
+}
+
+proc check_rows {expected {table temp}} {
+  set result {}
+  set query "SELECT x FROM $table"
+  execsql $query
+  foreach {row} $result {
+    if {$row ni $expected} {
+      error "Row missing from result: $row"
+    }
+  }
+}
+
+proc check_columns {} {
+  set result {}
+  set query "PRAGMA table_info(temp)"
+  execsql $query
+  foreach {cid name type notnull dflt_value pk} $result {
+    if {$name ni {x}} {
+      error "Unexpected column found"
+    }
+  }
+}
+
+proc create_temp_table {} {
+  global DB
+  execsql "CREATE TABLE temp(x PRIMARY KEY)"
+}
+
+do_test complex-1.1 {
+  create_temp_table
+  exec_sql_with_result "INSERT INTO temp(x) VALUES(1),(2),(3)"
+} {1 2 3}
+
+do_test complex-1.2 {
+  exec_sql_with_result "PRAGMA table_info(temp)"
+} {1 {x} integer 0 NULL 0 1 4}
+
+ifcapable journalMode {
+  do_test complex-1.3 {
+    catchsql {PRAGMA journal_mode = 'wal'}
+  } {0 {}}
+}
+
+do_test complex-1.4 {
+  check_index
+} {}
+
+check_rows {1 2 3}
+
+do_test complex-1.5 {
+  execsql "INSERT INTO temp(x) VALUES(4,(SELECT x FROM temp WHERE x=1))"
+} {}
+
+do_test complex-1.6 {
+  set result {}
+  set query "SELECT x, x FROM temp"
+  foreach {col1 col2} $result {
+    if {$col1 ne $col2} {
+      error "Expected mismatch: $col1 vs $col2"
+    }
+  }
+} {}
+
+do_test complex-1.7 {
+  check_columns
+} {}
+
+do_test complex-1.8 {
+  check_rows {1 1 2 2 3 3 4}
+} {}
+
+do_test complex-2.1 {
+  create_temp_table
+  execsql "CREATE INDEX idx_x ON temp(x);"
+  check_index
+} {}
+
+do_test complex-2.2 {
+  set expected {1 2 3 4}
+  set result {}
+  set query "SELECT x FROM temp ORDER BY x"
+  foreach row $result {
+    if {$row ni $expected} {
+      error "Row missing from result: $row"
+    }
+  }
+} {}
+
+do_test complex-3.1 {
+  set result {}
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(5.1);
+    INSERT INTO b VALUES(5);
+  }
+  foreach row $result {
+    if {$row ne {5.1 5}} {
+      error "Unexptected result: $row"
+    }
+  }
+} {}
+
+finish_test

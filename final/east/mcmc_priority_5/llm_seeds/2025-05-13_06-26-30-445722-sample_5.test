@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_table
+
+set ::timeout 60000
+
+set up_schema {
+  execsql {
+    CREATE TABLE t1(a DEFAULT 0, b DEFAULT 0, c DEFAULT 0);
+    CREATE TABLE t2(a DEFAULT 0, b DEFAULT 0, c DEFAULT 0);
+    CREATE TABLE t3(a DEFAULT 0, b DEFAULT 0, c DEFAULT 0);
+    CREATE TABLE t4(a DEFAULT 0 PRIMARY KEY, b DEFAULT 0, c DEFAULT 0);
+    INSERT INTO t4 VALUES(1,2,3);
+  }
+}
+
+proc complex_proc {} {
+  global t1 t2 t3 x
+  for {set i 1} {$i le 10} {incr i} {
+    set y $i
+    foreach t $x {
+      uplevel db eval {
+        INSERT INTO t VALUES(0, 0, 0)
+      }
+    }
+  }
+}
+
+foreach row {
+     {t1 t2 t3 x all}
+     {t1 t2 t3 x none}
+} {
+  do_test complex{$row} {
+    set x $row
+    uplevel set up_schema
+    execsql {
+      BEGIN;
+      INSERT INTO t4 VALUES(1,2,3);
+      COMMIT;
+    }
+    set x
+    complex_proc
+  } {{t1 t2 t3 x all} {t1 t2 t3 x none}}
+}
+
+do_test complex-4.0 {
+  execsql {
+    DROP TABLE t1 t2 t3 t4
+  }
+} {}
+
+ifcapable truncate_opt {
+  do_execsql_test complex-5.0 {
+    PRAGMA legacy_file_format
+  } {0}
+}
+
+finish_test

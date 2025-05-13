@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+proc async_proc {} {
+  global asyncres
+  lappend asyncres
+}
+
+proc async_func {arg} {
+  set asyncres {}
+  set result ""
+  set sqlitecmd "SELECT $arg FROM a"
+  set dbhandle databasehandle
+  sqlite_eval_db "$sqlitecmd" async_func_db_callback
+  sqlite_close $dbhandle
+  $sqlitecmd
+}
+
+proc async_func_db_callback {result} {
+  set result "$result"
+  lappend asyncres "$result"
+  "async_func $asyncres"
+}
+
+do_execsql_test async-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES('value1');
+  INSERT INTO a VALUES('value2');
+  INSERT INTO a VALUES('value3');
+  SELECT * FROM a;
+} {value1 value2 value3}
+
+proc check_result {res} {
+  expr {$res eq "value1 value2 value3"}
+}
+
+do_test async-1.2 {
+  set asyncres {}
+  set sqlitecmd "SELECT x FROM a"
+  set dbhandle databasehandle
+  sqlite_eval_db "$sqlitecmd" async_func_callbacks
+  check_result $asyncres
+} {1}
+
+proc async_func_callbacks {result} {
+  lappend asyncres "$result"
+  check_result $asyncres
+}
+
+cleanup_test
+finish_test

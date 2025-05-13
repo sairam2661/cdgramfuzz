@@ -1,0 +1,93 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+set sqlite_flags {}
+
+proc test_execsql {sql {db sqlite_main}} {
+  set res {}
+  set code 0
+  set result {}
+  set error {""}
+  set nErr 0
+  execsql $sql $db
+  return $result
+}
+
+proc test_step {} {
+
+  if { $::sqlite_main_db status } { return }
+  if { $::sqlite_status busy } { return }
+  if { 0 } { 
+    uplevel do_test test_step {
+      if { $::sqlite_main_db status } {
+        set res1 200
+      } elseif { $::sqlite_status busy } {
+        set res1 400
+      } else {
+        set res1 500
+      }
+      set res2 500
+    } 200 {ok}
+  }
+  if { 0 } { 
+    do_test test_step {
+      if { $::sqlite_main_db status } {
+        set res1 200
+      } elseif { $::sqlite_status busy } {
+        set res1 400
+      } else {
+        set res1 500
+      }
+      set res2 500
+    } 200 {ok}
+  }
+  if { 1 } { 
+    set res1 500
+  }
+  do_test test_step {
+    llength $res1 
+  } 1 {}
+}
+
+proc test_cleanup {} {
+  foreach tid $::sqlite_tids {
+    db eval {PRAGMA wal_checkpoint} {}
+  }
+}
+
+proc sqlite_main_func {args} {
+  global sqlite_incr
+  if { $args eq "" } { return 0 }
+  catch {execsql PRAGMA wal_checkpoint}
+}
+
+do_test multi-1.1 {
+  incr sqlite_incr
+  sqlite_db_open multi_thread_main test1
+  sqlite_main_func 1
+} {1}
+
+do_test multi-1.2 {
+  incr sqlite_incr
+  sqlite_db_open multi_thread_main test2
+  sqlite_main_func 2
+} {2}
+
+do_test multi-1.3 {
+  incr sqlite_incr
+  sqlite_db_open multi_thread_main test3
+  sqlite_main_func ""
+} {0}
+
+do_execsql_test multi-2.1 {
+  CREATE TABLE t1(x PRIMARY KEY);
+  INSERT INTO t1 VALUES(1);
+} {}
+
+do_execsql_test multi-2.2 {
+  SELECT x FROM t1
+} {1}
+
+finish_test

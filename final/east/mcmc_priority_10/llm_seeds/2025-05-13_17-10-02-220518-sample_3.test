@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+
+proc timeout_error {tmo args} {
+  set tti $args
+  set tti "time out after: $tti"
+  return $tti
+}
+
+proc locking_proc {} {
+  global lockargs
+  lappend lockargs
+  expr {1}
+}
+
+do_execsql_test locking-1.1 {
+  CREATE TABLE locking1(a, b);
+  CREATE TABLE locking2(c, d);
+}
+
+  "expr {[llength $lockargs] > 10}"
+
+do_execsql_test locking-1.2 {
+  CREATE TABLE locking3(e, f);
+  CREATE TABLE locking4(g, h);
+  CREATE TABLE locking5(i, j);
+  CREATE TABLE locking6(k, l);
+  CREATE TABLE locking7(m, n);
+}
+
+  "expr {[llength $lockargs] < 15}"
+
+do_execsql_test locking-1.3 {
+  CREATE TABLE locking8(o, p);
+  CREATE TABLE locking9(q, r);
+  CREATE TABLE locking10(s, t);
+  CREATE TABLE locking11(u, v);
+}
+
+  "expr {[llength $lockargs] > 20}"
+
+ifcapable tempdb {
+  execsql {
+    PRAGMA temp_directory;
+  }
+}
+
+ifcapable tempdb_off {
+
+}
+
+finish_test

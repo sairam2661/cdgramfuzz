@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzy
+
+proc fuzzy_add {} {
+  lappend global_fuzzy_vals $fuzzrandom
+}
+
+proc fuzzy_set {} {
+  global fuzzy_results
+  set fuzzy_results {}
+  fuzzy_add
+  set fuzzy_results "$fuzzrandom"
+  return $fuzzrandom
+}
+
+do_test fuzzy-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_execsql_test fuzzy-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+do_test fuzzy-1.3 {
+  set res 5
+  fuzzy_set
+  expr {$res eq $fuzzy_results}
+} {0}
+
+do_test fuzzy-1.4 {
+  execsql {
+    CREATE TABLE c(z);
+    CREATE TABLE d(z);
+    SELECT sql FROM sqlite_master WHERE type = 'table' 	   
+  }
+} {{CREATE TABLE c(z)}}
+
+do_test fuzzy-1.5 {
+  execsql {
+    CREATE VIEW e AS SELECT z FROM c
+  }
+  execsql {
+    SELECT sql FROM sqlite_master WHERE name = 'e'
+  }
+} {{SELECT z FROM c}}
+
+finish_test
+
+proc fuzzy_drop {} {
+  execsql {DROP TABLE b}
+  execsql {DROP TABLE c}
+  execsql {DROP TABLE d}
+  execsql {DROP VIEW e}
+  execsql {
+    CREATE TABLE c(z);
+    CREATE TABLE d(z);
+    SELECT sql FROM sqlite_master WHERE type = 'table'  
+  }
+}
+
+do_test fuzzy-1.6 {
+  set res 2
+  fuzzy_set
+  set res
+} {2}
+
+do_test fuzzy-1.7 {
+  execsql {
+    DROP INDEX c_z_idx
+  }
+  execsql {
+    CREATE UNIQUE INDEX c_z_idx ON c z
+  }
+  execsql {
+    CREATE TABLE c2(z)
+  }
+  execsql {
+    CREATE UNIQUE INDEX c2_z_idx ON c2 z
+  }
+  fuzzy_drop
+  execsql {
+    SELECT name FROM sqlite_master WHERE type='index' 
+  }
+} {c_z_idx c2_z_idx}
+
+finish_test

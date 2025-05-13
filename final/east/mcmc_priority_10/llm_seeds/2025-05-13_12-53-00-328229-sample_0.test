@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema
+
+set ::timeout 60000
+
+proc schema_new_index {name table} {
+  set db master
+  execsql {
+    ATTACH $table AS tmp_table
+    CREATE INDEX idx_$name ON tmp_table ROWID
+  }
+}
+
+proc schema_drop_table {table} {
+  execsql {
+    DETACH tmp_table
+    DROP TABLE tmp_table
+  }
+}
+
+proc schema_drop_index {name table} {
+  execsql {
+    DROP INDEX idx_$name
+  }
+}
+
+do_execsql_test schema-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  CREATE TABLE b(y);
+  BEGIN;
+  INSERT INTO b VALUES(1);
+  COMMIT;
+  PRAGMA journal_mode;
+} {persist}
+
+do_execsql_test schema-2.1 {
+  PRAGMA foreign_keys=0;
+  SELECT name FROM sqlite_master;
+} {sqlite_master}
+do_execsql_test schema-2.2 {
+  PRAGMA foreign_keys=0;
+  CREATE TABLE c(
+    id NOT NULL PRIMARY KEY,
+    a_id NOT NULL DEFAULT 0,
+    a NOT NULL,
+    name
+  );
+} {}
+do_execsql_test schema-3.1 {
+  PRAGMA foreign_keys=1;
+  CREATE TABLE d(
+    id NOT NULL PRIMARY KEY,
+    a_id NOT NULL DEFAULT 555,
+    a NOT NULL,
+    name
+  );
+} {}
+do_execsql_test schema-3.2 {
+  PRAGMA foreign_keys=1
+} {on}
+do_execsql_test schema-4.1 {
+  PRAGMA foreign_keys=1;
+  BEGIN;
+  INSERT INTO c VALUES(3,0,"", "a new record");
+  COMMIT;
+  PRAGMA integrity_check;
+} {ok}
+do_execsql_test schema-4.2 {
+  PRAGMA foreign_keys=1;
+  INSERT INTO c VALUES(12,0,"", "a new record")
+} {}
+do_execsql_test schema-4.3 {
+  PRAGMA foreign_keys=1;
+  INSERT INTO d VALUES(10,0,"", "a new record");
+} {}
+
+ifcapable wal {
+  do_execsql_test schema-5.1 {
+    PRAGMA journal_mode
+  } {wal}
+}
+ifcapable!=journalMode {
+  finish_test
+}
+
+do_execsql_test schema-6.1 {
+  PRAGMA synchronous=0;
+  PRAGMA foreign_keys=1;
+  PRAGMA journal_mode;
+} {Persist}
+
+finish_test

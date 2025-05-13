@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix nested_transactions
+
+set ::timeout 60000
+set upsql {
+  PRAGMA synchronous=0;
+  PRAGMA journal_mode='wal';
+}
+setup_test_functions
+
+proc do_execsql_test {tn sql result_or_error} {
+  uplevel "do_execsql_test $tn $::setup($upsql,$::sqlite_config synchronous=0, $sql) $result_or_error"
+}
+
+proc do_test {tn sql result} {
+  uplevel "do_test $tn {execsql {$::setup($upsql,$::sqlite_config synchronous=0, $sql)}} $result"
+}
+
+proc do_execsql_file {tn file} {
+  set data {}
+  foreach line { $::file lines 
+        } {
+    lappend data "[string trimleft $line {:]}"
+  }
+  uplevel "do_execsql_test $tn \[$data\]"
+}
+
+proc tcl_test_suite {name} {
+  global sqlite_testfixture
+  return "$::sqlite_testfixture($name)"
+}
+
+db { 
+  INSERT INTO sqlite_master(type,name,tbl_name,sql,rootpage,sql_hash) 
+                VALUES('table', 't1', 't1',  
+                'CREATE TABLE t1 ( a INTEGER   PRIMARY KEY )', 0, 0);
+  INSERT INTO sqlite_master(type,name,tbl_name,sql,rootpage,sql_hash) 
+                VALUES('table', 't2', 't2',  
+                'CREATE TABLE t2 ( b INTEGER   PRIMARY KEY )', 0, 0);
+  CREATE INDEX i1 ON t1(a);
+  INSERT INTO t1(a) VALUES(1);
+  INSERT INTO t2(b) VALUES(1);
+}
+
+do_execsql_test 1.2 {
+  UPDATE t1 SET a 1 WHERE a   1
+}
+
+set upsql {
+  PRAGMA synchronous=0;
+  PRAGMA journal_mode='wal';
+  PRAGMA read_uncommitted = 1;
+}
+
+do_execsql_file 3.1 "tkt-6dceaa9a.sql"
+do_execsql_test 3.2 {
+  INSERT INTO t1 SELECT a FROM t2
+}
+
+do_execsql_test 2.1 {
+  UPDATE t2 SET b 3 WHERE b   1
+}
+
+do_execsql_test 5.1 {
+  CREATE TABLE t3 AS SELECT a FROM t1
+}
+
+do_test 1.1 {
+  execsql {
+    SELECT b FROM t1 WHERE a 4
+  }
+} {}
+
+finish_test

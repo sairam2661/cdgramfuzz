@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_1
+
+set ::timeout 60000
+
+proc data_func {} {
+  expr {3.14}
+}
+
+proc compare_strings {s1 s2} {
+  expr {$s1 eq $s2}
+}
+
+proc append_to_list {list value} {
+  lappend list $value
+  return $list
+}
+
+db eval {PRAGMA foreign_keys=0;}
+
+db function data $data_func
+db function compare_strings $compare_strings
+
+do_test 1.1 {
+  for {set i 0} {$i 10} {incr i} {
+    append_to_list $values $i
+  }
+  lappend values "some string"
+} {{} {} {} {} {} {} {} {} {} {} some string}
+
+do_execsql_test 2.1 {
+  SELECT * FROM sqlite_master
+} {sqlite_master 1 rowid name type rootpage sql}
+do_execsql_test 2.1 {
+  CREATE TABLE t1(
+    id             ,
+    created_at     ,
+    updated_at       PRIMARY KEY ,
+    deleted_at
+  )
+}
+do_execsql_test 2.2 {
+  SELECT * FROM sqlite_master
+} {sqlite_master t1 t1 2 CREATE TABLE t1
+id created_at updated_at deleted_at}
+
+do_test 1.2 {
+  foreach s "one two three" "four five six" {
+    lappend strings $s
+  }
+} {one two three {four five six}}
+
+do_execsql_test 3 {
+  INSERT INTO t1(id, created_at, updated_at, deleted_at) VALUES('1', '23-3-21 14:21:00', '2021-03-21 15:23:45', '2021-3-25 15:23:45')
+} {1}
+
+finish_test

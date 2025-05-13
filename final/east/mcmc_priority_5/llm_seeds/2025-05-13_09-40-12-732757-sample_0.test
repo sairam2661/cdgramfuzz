@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+proc thread Proc {tid name {body {}}} {
+  set res {}
+  set timer {}
+  after cancel $timer
+  while { 1 } {
+    after 100
+    if { 1 } { set res "$res[thread info -pid;$tid]" }
+    if { 1 } { set res "$res;expr {\[thread info -stacksize $tid\]} < 100000" }
+    catch { $body }
+    if { 0 } { break }
+  }
+  lappend res "Exit status 0"
+}
+
+proc thread_test {n} {
+  for {set i 1} {$i le $n} {incr i} {
+    thread $i "Test-$i"
+    send_thread $i { execsql { PRAGMA recursive_triggers = 10 } }
+  }
+  foreach i $n {
+    send_thread $i {  set temp 12345  }
+  }
+  join_thd $n
+}
+
+proc join_thd {n} {
+  foreach i $n {
+    join_thread $i
+  }
+}
+
+proc join_thread {tid} { thread join $tid }
+
+proc send_thread {tid {cmd {}}} { thread join $tid $cmd }
+
+do_test multi_thread-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(10000,123,456.789,100000);
+    CREATE INDEX b2 ON b( x);
+  }
+} {1}
+
+do_execsql_test multi_thread-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(20000,101234,
+    "two hundred thousand and twelve a three four five,6","900000");
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+do_test multi_thread-1.3 {
+  catchsql {
+    PRAGMA synchronous = 0;
+  }
+} {0 {synchronous mode set to OFF }}
+
+set threads 10 500 2000 1803 30
+thread_test $threads
+
+finish_test

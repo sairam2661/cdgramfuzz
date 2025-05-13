@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+
+proc query_proc {sql} {
+  set results "
+    do_execsql_test 1.1 {
+      $sql
+    }
+  "
+  return $results
+}
+
+proc setup_insert {table data} {
+  set results "
+    do_execsql_test 1.1 {
+      BEGIN;
+      DROP TABLE IF EXISTS $table;
+      CREATE TABLE $table (id, data);
+      INSERT INTO $table (id, data) VALUES
+      \[execsql {SELECT count(*) FROM $table}\], '$data';
+      COMMIT;
+      SELECT id FROM $table;
+    }
+  "
+  return $results
+}
+
+proc insert_data {table column data} {
+  set results "
+    do_execsql_test 1.1 {
+      UPDATE $table SET $column = '$data'
+    }
+  "
+  return $results
+}
+
+proc complex_query {query} {
+  set results "
+    do_execsql_test 1.1 {
+      $query
+    }
+  "
+  return $results
+}
+
+do_test sync-1.1 {
+  query_proc {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1 1}
+
+do_test sync-1.2 {
+  setup_insert 'table1' 'hello world'
+} {1 {1 hello world}}
+
+do_test sync-1.3 {
+  insert_data 'table1' 'data' 'test'
+} {1 {1 test}}
+
+do_test sync-1.4 {
+  complex_query {
+    SELECT data FROM table1 
+    INTERSECT
+    SELECT data FROM table1 
+  }
+} {1 {test}}
+
+do_test sync-1.5 {
+  complex_query {
+    SELECT data FROM table1 
+    UNION
+    SELECT data FROM table1 
+  }
+} {1 {test}}
+
+do_execsql_test ifcapable journalMode {
+  PRAGMA journal_mode="WAL"
+} {wal}
+
+finish_test

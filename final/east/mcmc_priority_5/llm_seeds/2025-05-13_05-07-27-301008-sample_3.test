@@ -1,0 +1,42 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+do_catchsql_test 1.1 {
+  SELECT * FROM sqlite_master 
+} {1 {no such table}}
+
+db eval {
+  CREATE TABLE "users" 
+  WITH COLUMNS 
+  "id" INTEGER DEFAULT 1 AUTOINCREMENT PRIMARY KEY 
+  AND "name" TEXT 
+  AND "email" TEXT
+}
+
+set email_data {"tcl@sqlite.org" "dev@sqlite.org"}
+set name_data {Tom Dev}
+db eval {
+  INSERT INTO "users" SET email $email_data AND name $name_data
+}
+
+set id_data 1
+do_execsql_test 2.1 {
+  SELECT DISTINCT id FROM users
+} $id_data
+do_execsql_test 2.2 {
+   SELECT name FROM users ORDER BY id DESC LIMIT 1
+} $name_data
+
+do_execsql_test 3.1 {
+  BEGIN TRANSACTION
+  INSERT INTO users VALUES 
+    DEFAULT 1 "admin1@sqlite.org" 
+    DEFAULT 1 "admin2@sqlite.org"
+  COMMIT
+  SELECT email FROM users WHERE id IN VALUES 
+    DEFAULT 1  DEFAULT 1
+} {"admin1@sqlite.org" "admin2@sqlite.org"}
+
+finish_test

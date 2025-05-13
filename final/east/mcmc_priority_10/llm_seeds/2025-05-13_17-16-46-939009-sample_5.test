@@ -1,0 +1,37 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async_io
+
+set ::timeout 60000
+
+proc test_async_io {} {
+  do_execsql_test async_io_1 {
+    WITH RECURSIVE T AS 
+      SELECT 1 AS i UNION ALL SELECT T1 FROM T 
+    CREATE TABLE b AS SELECT i FROM T LIMIT 100
+  }
+}
+
+proc test_async_io2 {} {
+  do_execsql_test async_io_2 {
+    PRAGMA synchronous = 0;
+  }
+}
+
+proc test_async_io3 {} {
+  do_execsql_test async_io_3 {
+    SELECT * FROM sqlite_master
+  }
+}
+
+proc test_async_io4 {} {
+  do_execsql_test async_io_4 {
+    DROP TABLE b
+  }
+}
+
+test_async_io
+test_async_io2
+test_async_io3
+test_async_io4
+finish_test

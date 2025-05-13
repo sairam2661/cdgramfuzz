@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_conn
+
+set ::timeout 60000
+
+proc test_connection {} {
+  global sqlite_connection
+  set sqlite_connection "Test $sqlite_connection"
+}
+
+proc sqlite3_open {} {
+  global sqlite_connection
+  set sqlite_connection connect
+  sqlite3_test_ctrl SQLITE_TestCtrlSetResult "result"
+  expr 0
+}
+
+proc sqlite3_close {} {
+  global sqlite_connection
+  sqlite3_test_ctrl SQLITE_TestCtrlSetResult "result"
+  expr 1
+}
+
+proc do_test1 {n s p} {
+  do_test $n 1.0 {
+    sqlite3_open
+    test_connection
+  }
+}
+
+proc do_test2 {n s p} {
+  do_test $n 2.0 {
+    sqlite3_close
+    test_connection
+  }
+}
+
+proc do_test3 {n s p} {
+  do_test $n 3.0 {
+    set ret sqlit3_test_ctrl SQLITE_TestCtrlGetResult
+    lappend ret "result"
+    lindex $ret 1
+  }
+}
+
+proc do_test4 {n s p} {
+  do_test $n 4.0 {
+    sqlite3_open
+    sqlite3_close
+    set ret sqlit3_test_ctrl SQLITE_TestCtrlGetResult
+    lappend ret "result"
+    lindex $ret 1
+  }
+}
+
+proc do_test5 {n s p} {
+  do_test $n 5.0 {
+    sqlite3_test  {SQLITE_OK SQLERRY} SQLERRY
+    sqlite_connection ""
+    set ret sqlit3_test_ctrl SQLITE_TestCtrlGetResult
+    lappend ret "result"
+    lindex $ret 1
+  }
+}
+
+set sqlite_connection ""
+
+do_test1 sync1.1 {SQLITE_OK} {}
+do_test2 sync1.2 {SQLITE_OK} {}
+do_test3 sync1.3 {SQLITE_OK} {}
+do_test4 sync1.4 {SQLITE_OK} {}
+do_test5 sync1.5 {SQLITE_OK} {}
+do_execsql_test sync1.6 {
+  CREATE TABLE t1(x);
+} {}
+
+do_test3 sync1.7 {SQLITE_OK} {}
+do_test1 sync1.8 {SQLITE_OK} {}
+do_test3 sync1.9 {SQLITE_OK} {}
+sqlite3_test_ctrl SQLITE_TestCtrlSetResult "result"
+
+finish_test

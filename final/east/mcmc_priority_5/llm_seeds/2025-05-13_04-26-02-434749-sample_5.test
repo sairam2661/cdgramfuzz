@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journalmode
+
+proc journalmode_proc {mode} {
+  global journalargs
+  lappend journalargs $mode
+  execsql "PRAGMA journal_mode = $mode"
+}
+
+proc execute_query {sql} {
+  execsql $sql
+}
+
+proc check_result {expected result} {
+  if {$expected ne $result} {
+    return "expected: $expected, but got: $result"
+  }
+  return ""
+}
+
+do_test journalmode-1.1 {
+  execute_query {
+    CREATE TABLE table1(id);
+    INSERT INTO table1 VALUES(1);
+    INSERT INTO table1 VALUES(2);
+  }
+} {}
+
+do_execsql_test journalmode-1.2 {
+  SELECT count(*) FROM table1
+} {2}
+
+do_execsql_test journalmode-1.3 {
+  BEGIN;
+  INSERT INTO table1 VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM table1
+} {3}
+
+journalmode_proc "WAL"
+do_test journalmode-2.1 {
+  check_result "wal" $journalmode_proc
+} {}
+
+do_execsql_test journalmode-2.2 {
+  SELECT name FROM pragma_journal_mode
+} {wal}
+
+journalmode_proc "DELETE"
+do_test journalmode-3.1 {
+  check_result "delete" $journalmode_proc
+} {}
+
+do_execsql_test journalmode-3.2 {
+  SELECT name FROM pragma_journal_mode
+} {delete}
+
+ifcapable journalMode {
+  journalmode_proc "MEMORY"
+  do_test journalmode-4.1 {
+    check_result "memory" $journalmode_proc
+  } {}
+}
+
+finish_test

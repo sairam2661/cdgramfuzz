@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+set journal_mode "WAL"
+
+proc insert_data {} {
+  global sqlite_db
+  for {set i 0} {$i 10000} {incr i} {
+    execsql "INSERT INTO main.t1 VALUES($i)"
+  }
+}
+
+proc set_timeout {} {
+  global sqlite_db
+  catch {$db timeout 10000}
+}
+
+proc create_backup {db1 db2} {
+  set rc {}
+  set in1 "[file open $db1 r]"
+  set out2 "[file open $db2 w]"
+  set rc "[stresstest {db eval {SELECT * FROM t1}} $in1 $out2]"
+  close $in1
+  close $out2
+  return $rc
+}
+
+do_execsql_test concurrent-1.1 {
+  CREATE TABLE t1(a, b);
+  INSERT INTO t1 VALUES(1, 2);
+} {}
+
+do_test concurrent-1.2 {
+  execsql "BEGIN"
+  foreach i {3 4 5} {
+    set_timeout
+    set res1 "[execsql {INSERT INTO t1 VALUES($i, $i)}]"
+  }
+  if {$res1 eq {4}} {
+    return {1}
+  } else {
+    return {0}
+  }
+} {0}
+
+ifcapable pragma {
+  do_catchsql_test concurrent2_5.3 {
+    SELECT name
+    FROM sqlite_db_file
+    WHERE type='wal'
+  } {1 {database WAL file}
+}
+}
+
+do_execsql_test concurrent-6.3 {
+  CREATE TABLE t2(a, b UNIQUE);
+} {}
+
+ifcapable multi_schema {
+  INSERT INTO db2_main_main_t1(a, b)
+  VALUES(1, 2);
+  SELECT sql
+  FROM db2_main_main_t2
+} {ALTER TABLE t2 RENAME TO i2}
+
+do_execsql_test main-4.5 {
+  SELECT name FROM sqlite_master WHERE type='table'
+} {"main.c1"}
+
+if {0} {
+  execsql {CREATE TABLE t5 AS SELECT 1}
+  execsql {SELECT * FROM main}
+  execsql {SELECT * FROM main;}
+  db eval {SELECT * FROM x}
+  db eval {INSERT INTO t7 VALUES('1',2)} t7
+  file event delete $db
+  execsql {SELECT * FROM t3}
+  db eval {SELECT * FROM t4}
+  set dbname "test/test.db"
+  execsql {SELECT * FROM t5}
+}
+execsql "BEGIN"
+set rc "[execsql {INSERT INTO t2(a)}]"
+if {$rc ne {5}} { error $rc }
+execsql {COMMIT}
+catchsql {
+  PRAGMA wal_checkpoint
+} {0 {}}
+
+ifcapable journalMode {
+  do_execsql_test main-4.1 {
+    PRAGMA journal_mode
+  } "$journal_mode"}
+ifcapable journalMode {
+  do_execsql_test main-4.10 {
+    PRAGMA journal_mode
+  } "$journal_mode"}
+
+finish_test

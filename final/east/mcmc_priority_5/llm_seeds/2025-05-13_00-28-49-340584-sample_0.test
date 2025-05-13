@@ -1,0 +1,73 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+proc complex_proc {} {
+  global complexargs
+  set complexargs {}
+  for {set i 1} {$i le 10} {incr i} {
+    lappend complexargs $i
+  }
+}
+
+proc simple_proc {} {
+  global complexargs
+  set complexargs {}
+  lappend complexargs 1 2 3
+}
+
+do_test complex-1.1 {
+  set result ""
+  for {set i 1} {$i le 10} {incr i} {
+    append result $i
+  }
+  set result
+} {12345678910}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(1);
+  SELECT x FROM b;
+} {1}
+
+do_test complex-1.3 {
+  execsql {
+    SELECT * FROM b;
+  }
+  complex_proc
+} {1}
+
+do_test complex-1.4 {
+  simple_proc
+  set complexargs
+} {1 2 3}
+
+do_execsql_test complex-1.5 {
+  CREATE TABLE c(x UNIQUE);
+  INSERT INTO c VALUES(4);
+  INSERT INTO c VALUES(4);
+} {1 {Duplicate entry for UNIQUE index}}
+
+do_test complex-1.6 {
+  complex_proc
+  set complexargs
+} {1 2 3 4 5 6 7 8 9 10}
+
+do_test complex-1.7 {
+  db close
+  db mode open 1
+  set complexargs {}
+} {}
+
+ifcapable tempdb {
+  execsql {
+    SELECT name FROM sqlite_temp_master WHERE type='table' 
+  }
+} {sqlite_temp1}
+
+do_test complex-1.8 {
+  complex_proc
+  set complexargs
+} {1 2 3 4 5 6 7 8 9 10}
+
+finish_test

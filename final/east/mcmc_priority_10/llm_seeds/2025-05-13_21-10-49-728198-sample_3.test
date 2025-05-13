@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+set ::timeout 60000
+set sqlite_limit_count 0
+set sqlite_limit_length 0
+set sqlite_limit_depth 0
+set sqlite_limit_length_pagecache 0
+
+proc sync2_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {2}
+}
+
+proc do_sync2_test {name cmd expected} {
+  uplevel do_test $name {
+    set res {}
+    set res $cmd
+    expr {$res eq $expected}
+  }
+}
+
+do_sync2_test sync2.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(9);
+  }
+} {1}
+
+do_execsql_test sync2.2 {
+  WITH RECURSIVE c AS
+  SELECT x FROM b UNION SELECT x FROM c
+  SELECT count DISTINCT x FROM c
+} {1}
+
+ifcapable journalMode {
+  if {0} {
+    db journalMode set WAL
+  } else {
+    execsql {PRAGMA journal_mode = "WAL"}
+  }
+}
+
+ifcapabilities triggers {
+  sqlite_sequence set sync_test 0
+  db TRIGGER new_trig AFTER UPDATE ON sync_test
+  set new_trigger {}
+  db EVAL {INSERT INTO sync_test VALUES (123)}
+
+  execsql {
+    SELECT * FROM sqlite_sequence;
+    SELECT count(*) FROM sync_test;
+  }
+
+  db TRIGGER new_trig DROP
+  catchsql {DROP TABLE sync_test}
+}
+
+finish_test

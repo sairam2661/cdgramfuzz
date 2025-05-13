@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+set temp_store 1
+
+proc generate_random_data {} {
+  set max 1000000
+  set data {}
+  for {set i 0} {$i $max} {incr i} {
+    lappend data $i$i$i
+  }
+  return $data
+}
+
+do_test concurrent-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 SELECT *   		
+		}
+} {999999999 999999999 999999999}
+
+proc check_table_content {} {
+  execsql {SELECT a FROM t1 LIMIT 10}
+  "1 1 1 1 1 1 1 1 1 1"
+}
+
+do_execsql_test concurrent-1.4 {
+  BEGIN;
+  INSERT INTO t1 SELECT *  	}
+  "1 1 1 1 1 1 1 1 1 1"
+  check_table_content
+  check_table_content
+  COMMIT
+  SELECT a FROM t1 LIMIT 10
+  "1 1 1 1 1 1 1 1 1 1"
+  check_table_content
+
+ifcapable tempdb {
+  sql1 {
+    VACUUM
+  }
+} ""
+
+finish_test

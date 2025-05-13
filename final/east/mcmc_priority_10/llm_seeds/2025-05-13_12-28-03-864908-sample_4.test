@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced_features
+
+set ::timeout 60000
+db close
+
+db readonly 0
+catch {db setauthorizer {}}
+catch {db setwalhooks {}}
+
+proc wal_hook {} {
+  global wal_callback
+  set wal_callback 1
+  expr {1}
+}
+
+proc test_callback {tbl} {
+  global callback_result
+  set callback_result $tbl
+  expr {1}
+}
+
+proc custom_func {x} {
+  expr {$x}
+}
+
+proc test_insert {x} {
+  execsql "INSERT INTO a VALUES($x)"
+}
+
+do_execsql_test 1.1 {
+  CREATE TABLE a(x);
+}
+
+do_execsql_test 1.2 {
+  CREATE TRIGGER tr_a_insert AFTER INSERT ON a
+    FOR EACH ROW BEGIN
+      INSERT INTO b SELECT NEW x
+  END
+}
+
+do_execsql_test 2.1 {
+  INSERT INTO a VALUES('timo');
+  SELECT count(*) FROM a;
+} {1}
+
+do_test 3.1 {
+  catchsql {
+    CREATE VIEW myview AS SELECT x FROM a
+  }
+} {1 {view already exists}}
+
+set wal_callback 0
+do_execsql_test 4.1 {
+  BEGIN;
+  INSERT INTO a VALUES(1)
+  }
+  ifcapable wal_mode {
+     wal_hook
+  }
+  COMMIT
+  SELECT count From a
+  PRAGMA wal_checkpoint
+  SELECT count From a
+  SELECT count From b
+  drop table b
+  VACUUM
+  SELECT count From a
+  SELECT count From b
+
+do_test 5.0 {
+  catchsql "SELECT custom_func(5)"
+} {0 {5}}
+ finish_test

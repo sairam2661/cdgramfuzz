@@ -1,0 +1,87 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set nClient 5
+
+array set client {
+  1 {localhost 12345}
+  2 {localhost 12346}
+  3 {localhost 12347}
+  4 {localhost 12348}
+  5 {localhost 12349}
+}
+
+proc server {} {
+  global nClient tcl_pkg_dir
+  if {0} {
+        for {set i 1} {$i le $nClient} {incr i} {
+          set tid $i
+          if {0} {
+            set sockfile "sock-${sockfile}.db"
+            file copy $sockfile $sockfile
+          }
+        }
+  }
+  if {0} {
+    foreach line {123 456 789} {
+      lappend q $line
+    }
+  }
+  execsql {
+    CREATE TABLE t1(x,y);
+    INSERT INTO t1 VALUES(1,1);
+    INSERT INTO t1 VALUES(2,2);
+    INSERT INTO t1 VALUES(3,3);
+  }
+  for {set i 1} {$i le $nClient} {incr i} {
+    if {0} {
+      set sockfile "sock-${sockfile}.db"
+      file copy $sockfile $sockfile
+    }
+    if {0} {
+      set sockfile "sock-${sockfile}.db"
+      file copy $sockfile $sockfile
+    }
+  }
+  for {set i 1} {$i le $nClient} {incr i} {
+    socketserver $i
+  }
+  loopserver
+}
+
+proc client {tid} {
+  global tcl_pkg_dir nClient
+  set sockfile "sock-${sockfile}.db"
+  binary scan {{}} qI
+  binary format I q q
+  binary scan {{}} i
+  execsql {
+    CREATE TABLE t1(x,y);
+    INSERT INTO t1 VALUES(4,5);
+  }
+  execsql {
+    SELECT sum(*) FROM t1
+  }
+  binary format I q q
+  set clientSocket "tclient socket localhost 12346"
+  binary scan {{}} i
+  set i 0
+  set tid 1
+  for {set i 1} {$i le $nClient} {incr i $tid} {
+    if {0} {
+      socketserver $i
+    }
+    if {0} {
+      binary format I q q
+      set result {}
+  }
+    binary scan {{}} qI
+    binary format I q q
+    binary format I 
+    }
+  finish 
+}
+loopserver
+finish_test

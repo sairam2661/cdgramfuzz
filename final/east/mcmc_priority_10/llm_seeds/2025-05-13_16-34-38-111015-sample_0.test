@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix nested_transactions
+
+set ::timeout 60000
+
+proc nested_transactions {} {
+  db function is_error { return 1 }
+}
+
+do_test nested_transactions-1.1 {
+  set a {}
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  db function inc { set a $a$inc }
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+  execsql {
+    SELECT count(*) FROM a;
+  }
+  execsql {
+    UPDATE a SET x  incr x limit 0 WHERE 1
+  }
+  lappend a 2
+} {5}
+
+do_execsql_test nested_transactions-2.2 {
+  COMMIT;
+  SELECT * FROM a
+} {1 2 2 2 5}
+
+do_execsql_test nested_transactions-3.3 {
+  CREATE TABLE b(y);
+  BEGIN;
+  INSERT INTO b VALUES(4);
+  INSERT INTO b VALUES(5);
+} {}
+
+ifcapable attach {
+  do_execsql_test "nested_transactions-4.4" {
+    ATTACH DATABASE ':memory:' AS attachdb
+    BEGIN EXCLUSIVE TRANSACTION
+    CREATE TABLE c AS SELECT y FROM b
+    SELECT type FROM sqlite_master
+  } {TABLE table}
+}
+
+do_execsql_test "nested_transactions-5.5" {
+  COMMIT
+  select type from sqlite_master
+} {table}
+
+finish_test

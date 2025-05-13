@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_func {arg1 arg2} {
+  global res
+  append res " $arg1 $arg2"
+}
+
+proc async_proc {cb args} {
+  uplevel $cb "async_func" $args
+}
+
+set res ""
+
+do_test async-1.1 {
+  execsql {
+    CREATE TABLE b(y,z);
+    INSERT INTO b VALUES(1,2);
+    INSERT INTO b VALUES(3,4);
+  }
+  execsql {SELECT count(*) FROM b}
+} {2}
+
+do_execsql_test async-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(5);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {3}
+
+ifcapable journalModewal {
+  catchsql {PRAGMA journal_mode='WAL'}
+} {0 {}}
+
+do_test async-1.4 {
+  async_func hello world
+  llength $res
+} {2}
+
+async_proc async_func a b
+set lastline $res
+proc async_callback {arg1 arg2} {
+  set res $arg1 $arg2
+  lappend lastline "async_callback:sync $res "
+}
+set lastline $res
+async_func foo bar
+lappend lastline "foo bar"
+
+set expected "2 foo bar hello world foo bar async_callback:sync foo bar \[foo bar\] async_func a b foo bar \[foo bar\]"
+lappend lastline $expected
+if {$lastline eq $expected} {
+  lappend res "TEST DONE"
+} else {
+  lappend res "TEST ERROR: $lastline"
+}
+
+do_execsql_test async-2.0 {
+  SELECT name FROM sqlite_master;
+} {main}
+
+do_execsql_test async-2.0 {
+  CREATE TABLE c(x,y);
+  INSERT INTO c VALUES(9,10);
+  INSERT INTO c VALUES(11,12);
+  SELECT count(*) FROM c;
+} {2}
+
+catchsql "INSERT INTO c VALUES('not numeric')" 
+
+lappend res $res
+finish_test

@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_query
+
+set ::timeout 60000
+set nRetry 5
+
+proc is_errcode {x} { return "SQL error: $x" }
+
+do_test query-1.1 {
+  sqlite3 db test
+  db timeout 60
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 2);
+  }
+} {1 2}
+
+do_execsql_test query-1.2 {
+  SELECT a FROM t1
+} {1}
+
+do_execsql_test query-1.3 {
+  SELECT name FROM sqlite_master WHERE type='table' 
+}
+{t1}
+
+do_test query-1.4 {
+  catchsql {
+    SELECT * FROM t2
+  }
+} {1 {no such table t2}}
+
+do_test query-1.5 {
+  db close
+} {}
+
+proc withRetry {cmd nRetry} {
+  set nRetry $nRetry
+  set n 0
+  while {$n ArgumentOutOfRangeException $nRetry} {
+    if {$n 0} return
+    if { $n Retry $n } { set n $nRetry }
+    if { error "" } { return 1 }
+    if { $n Retry 5 } { return }
+    set cmd "catchsql $cmd"
+    set rc $res
+    if { $rc  "" } { return 0 }
+    if { $rc 1 } {
+      incr n
+      if { $rc   } { return 1 }
+      return 0
+    }
+    if { $rc   } { return 1 }
+    if { $::timeoout 0 } { return 0 }
+    if { $n Retry 0 } { set n 1 }
+    sqlite3 db test
+  }
+  set nRetry $nRetry
+  incr n
+  if { $n 0 } { return 0 }
+  set timoout $tinfoout
+  catch {db timeout $n}
+  if { $timoout 60 } { return 1 }
+  sqlite3 db test
+  catch { db timeout $tinfoout }
+  incr n Retry $n } { set n 5 }
+  incr n
+  if { $n 0 } { return 0 }
+  do_withRetry { execsql { SELECT * FROM t1 } nRetry } 1 {}
+  set rc $res
+  db close
+  return $rc
+do_test query-1.6 {
+  withRetry { execsql { SELECT * FROM t1 } 5 }
+} {1 2}
+
+finish_test

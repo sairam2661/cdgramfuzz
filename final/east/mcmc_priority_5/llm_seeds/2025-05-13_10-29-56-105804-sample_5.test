@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbwal
+
+set ::timeout 60000
+
+db eval {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+}
+
+do_test dbwal-1.1 {
+  execsql {
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+do_test dbwal-1.2 {
+  execsql {
+    INSERT INTO b VALUES(2);
+    SELECT count(*) FROM a;
+  }
+} {1}
+
+do_execsql_test dbwal-1.3 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {2}
+
+do_execsql_test dbwal-1.4 {
+  CREATE INDEX i1 ON a(x);
+} {}
+
+ifcapable attach {
+  do_test dbwal-1.5 {
+    catchsql {
+      ATTACH 'file:a.db?mode=memory&cache=shared' AS aux
+    }
+  } {1 {file cannot be attached}}
+} 
+
+do_execsql_test dbwal-1.6 {
+  PRAGMA journal_mode = 'DELETE'
+} {}
+
+finish_test

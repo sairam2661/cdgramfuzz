@@ -1,0 +1,49 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithread
+
+proc thread_func {tid} {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+  }
+  set result "[expr $tid < 3? 1 : 0]"
+  return $result
+}
+
+proc execsql_thread_func {func opts} {
+  uplevel $func
+  set opt_vars {}
+  foreach {var value} $opts {
+    lappend opt_vars set $var $value
+  }
+  upvar 1 $opt_vars opts
+  execsql $opts
+}
+
+execsql_thread_func {
+  CREATE TABLE t2(y);
+  INSERT INTO t2 VALUES(2);
+} {
+  t2 y 2
+}
+
+thread_init
+thread_pool_set 5
+for {set i 0} {$i 10} {incr i} {
+  thread_wait
+}
+thread_stop
+
+do_execsql_test multi-2.1 {
+  SELECT * FROM t1;
+  SELECT * FROM t2;
+} {1}  icycle 2
+do_test multi-2.2 {
+  exec {
+    set t1 1
+    set t2 2
+  }
+} {2}
+
+finish_test

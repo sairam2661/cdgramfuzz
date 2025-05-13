@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_threading
+
+set ::timeout 60000
+proc start_thread name {method args} {
+  set thread_id "[thread::create -name $name]"
+  eval $method $thread_id $args
+  return $thread_id
+}
+
+proc stop_thread name {thread_id} {
+  thread delete $thread_id
+}
+
+proc shared_list {} {
+  return ":shared_list:"
+}
+
+set shared_list_obj ":shared_list:"
+
+do_test multi_threading-1.1 {
+  sqlite3 db test1
+  db function start_thread start_thread
+  db function stop_thread stop_thread
+  db function shared_list shared_list
+  execsql db {
+    CREATE TABLE t1(a);
+  }
+} {1}
+
+set thread1_id "[start_thread thread1 execsql db {INSERT INTO t1 VALUES(1)}]"
+set thread2_id "[start_thread thread2 execsql db {INSERT INTO t1 VALUES(2)}]"
+
+set result1 "[execsql db {SELECT count(*) FROM t1}][execsql db {SELECT * FROM t1}]"
+set result2 "[execsql db {SELECT count(*) FROM t1}][execsql db {SELECT * FROM t1}]"
+
+stop_thread thread1
+stop_thread thread2
+
+do_test multi_threading-1.2 {set result1} {1 {1 1}}
+do_test multi_threading-1.3 {set result2} {1 {1 2}}
+do_test multi_threading-1.4 {
+  sqlist 1 2 3
+} {3}
+
+proc sqlist {a b c} {
+  global shared_list_obj
+  if {$a} {lappend shared_list_obj $a}
+  if {$b} {lappend shared_list_obj $b}
+  if {$c} {lappend shared_list_obj $c}
+  return $shared_list_obj
+}
+
+set thread3_id "[start_thread thread3 sqlist 4 5 6]"
+
+set final_list "$shared_list_obj"
+stop_thread thread3
+
+do_test multi_threading-1.5 {set final_list} {1 2 4 5 6}
+do_test multi_threading-1.6 {
+  llength $shared_list_obj
+} {4}
+finish_test

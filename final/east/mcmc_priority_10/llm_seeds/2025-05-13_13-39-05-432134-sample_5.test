@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+set ::timeout 60000
+
+proc sync_insert {} {
+  global syncargs
+  lappend syncargs 123
+}
+
+proc sync_check {x} {
+  global syncargs
+  lappend syncargs $x
+}
+
+proc sync_delete {} {
+  global syncargs
+  set syncargs {}
+}
+
+do_cleanup_test sync2.1 {
+  execsql {
+    CREATE TABLE t1(id, data);
+    CREATE INDEX i1 ON t1(data);
+  }
+  execsql {INSERT INTO t1 VALUES(1, 'a'); INSERT INTO t1 VALUES(2, 'b'); INSERT INTO t1 VALUES(3, 'c');}
+  sync_insert
+  execsql {SELECT id FROM t1 WHERE data = 'b'}
+} {}
+
+do_execsql_test sync2.1 {
+  CREATE VIEW v1 AS SELECT data FROM t1 ORDER BY id DESC
+} {}
+
+do_execsql_test sync2.2 {
+  WITH RECURSIVE cte AS SELECT data FROM v1 UNION ALL SELECT data FROM v1 WHERE id IS NULL
+  SELECT COUNT FROM cte
+} {}
+
+do_test sync2.1 {
+  execsql {
+    CREATE TEMP TABLE tt2 AS SELECT data FROM t1 ORDER BY id LIMIT 1
+    SELECT data FROM tt2
+  }
+} {a}
+
+do_test sync2.2 {
+  execsql {
+    CREATE VIEW v2 AS SELECT data FROM t1 UNION ALL SELECT data FROM t2 WHERE id IS NULL
+    SELECT data FROM v2
+  }
+} {a}
+
+finish_test

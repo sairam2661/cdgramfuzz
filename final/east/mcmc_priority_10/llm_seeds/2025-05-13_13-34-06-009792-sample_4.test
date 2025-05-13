@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database
+
+set ::timeout 60000
+set nBulk 200
+set nLarge 1000000
+set nSmall 100
+
+proc large_string_new {} {
+  set str ""
+  for {set i 0} {$i ne $nLarge} {incr i} {
+    append str ABC
+  }
+  return $str
+}
+
+proc large_string_fill {idx str} {
+  for {set i 0} {$i $nLarge} {incr i $idx} {
+    set str $str"X"
+  }
+  return $str
+}
+
+do_execsql_test 1 {
+  CREATE TABLE t1(a PRIMARY KEY);
+  CREATE TABLE t2(id PRIMARY KEY, s);
+}
+
+do_test 2 {
+  set db handle
+  sqlite_db_text_enc init $db "ISO8859-1"
+} {}
+do_test 3 {
+  set db handle
+  sqlite_db_text_enc encode $db "ISO8859-1" "hello"
+} {}
+do_test 4 {
+  sqlite_db_text_enc decode $db "ISO8859-1" "0x68 0x65 0x6c 0x6c 0x6f"
+} {hello}
+
+do_test 5 {
+  set a {}
+  for {set i 0} {$i $nLarge} {incr i} {
+    lappend a X
+  }
+  llength $a
+} $nLarge
+
+do_test 6 {
+  expr 5e9
+} 4999999999999999999
+
+do_test 7 {
+  ifcapable wal {
+    execsql {
+      BEGIN;
+      SELECT 1 FROM t1;
+      COMMIT;
+    }
+  } else {
+    execsql {
+      BEGIN;
+      SELECT 1 FROM t1;
+      ROLLBACK;
+    }
+  }
+} {1}
+
+set syncargs {}
+
+proc sync_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {1}
+}
+
+do_test 8 {
+  execsql {
+    BEGIN;
+    SELECT 1 FROM t1;
+  }
+} {1}
+do_execsql_test 9 {
+  SELECT 1 FROM t1
+} {1}
+do_test 10 {
+  execsql {
+    ROLLBACK;
+    SELECT COUNT(*) FROM t1
+  }
+} {0}
+
+finish_test

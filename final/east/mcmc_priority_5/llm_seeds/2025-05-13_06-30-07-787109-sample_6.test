@@ -1,0 +1,98 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_proc {} {
+  global asyncargs
+  lappend asyncargs "Async"
+  after 100 {
+    foreach {arg} $asyncargs {
+      puts $arg
+      set result 
+      set result "ARG: [lindex $asyncargs 0]"
+      incr asyncargs
+    }
+  }
+}
+
+do_execsql_test async-1.1 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(5);
+}
+
+      ".sync on" test
+proc sync_on {} {
+  set syncargs
+  execsql {
+    PRAGMA synchronous=1;
+  }
+}
+
+ifcapable wal {
+  execsql {
+    PRAGMA journal_mode=1;
+  }
+  proc sync_on_wal {} {
+    execsql {
+      PRAGMA synchronous=1;
+      PRAGMA journal_mode=1;
+    }
+  }
+} else {
+  set synchronous 2
+  proc sync_on {} {
+    execsql {
+      PRAGMA synchronous=2;
+    }
+  }
+
+  proc sync_on_full {} {
+    execsql {
+      PRAGMA synchronous=2;
+    }
+  }
+}
+
+after 500 sync_on_wal
+
+      ".sync off" test
+proc sync_off {} {
+  set syncargs
+  execsql {
+    PRAGMA synchronous=0;
+  }
+
+  proc sync_off {} {
+    set syncargs
+    execsql {
+      PRAGMA synchronous=0;
+    }
+  }
+}
+
+do_test async-2.0 {
+  set result
+  set result 0
+  after 300
+  set result
+  set result 0
+} {0}
+
+execsql {
+  DELETE FROM b
+}
+
+ifcapable wal {
+  do_test async-3.0 {
+    execsql {
+      PRAGMA synchronous=1;
+    }
+  } {}
+}
+
+execsql {
+  PRAGMA integrity_check
+}
+finish_test

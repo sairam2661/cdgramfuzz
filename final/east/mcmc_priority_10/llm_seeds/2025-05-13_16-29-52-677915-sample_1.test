@@ -1,0 +1,149 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(x,y);
+    INSERT INTO b VALUES(1, 'a');
+    INSERT INTO b VALUES(2, 'b');
+    INSERT INTO b VALUES(3, 'c');
+  }
+  execsql {SELECT * FROM b WHERE x=2}
+} {2 b}
+
+do_test complex-2.1 {
+  db eval {
+    DROP TABLE b
+  }
+  execsql {
+    CREATE TABLE c(x,y);
+    INSERT INTO c VALUES(1, 'A');
+    INSERT INTO c VALUES(2, 'B');
+    INSERT INTO c VALUES(3, 'C');
+    CREATE INDEX c_idx ON c(y);
+  }
+  execsql {SELECT * FROM c WHERE y='B'}
+} {1 B}
+
+for {set i 1} {$i '<= 10} {incr i} {
+  do_test complex-{$i}.1 {
+    execsql {
+      CREATE TEMP TABLE t$i(x);
+      INSERT INTO t$i VALUES($i);
+    }
+  } {} }
+  for {set j {$i+1}} {$j <= 10} {incr j} {
+    do_test complex-{$i}.{$j} {
+      catcher {
+        execsql {
+          SELECT x FROM t$i,t$j
+        }
+      } {1 {SQL error or missing database}}
+    } {} }
+}
+
+do_execsql_test complex-11.1 {
+  CREATE TABLE d(x);
+  INSERT INTO d SELECT * FROM a;
+} {}
+do_execsql_test complex-11.2 {
+  SELECT * FROM d;
+} {1 2 3}
+
+ifcapable trigger {
+
+  do_execsql_test complex-12.1 {
+    CREATE TABLE e(x,y);
+    CREATE TRIGGER e_trg BEFORE INSERT ON e FOR EACH ROW BEGIN
+      SELECT CASE WHEN (SELECT count(*) FROM e) > 0 THEN RAISE(ABORT, 'test error')
+                  ELSE 'create'
+                  END
+    END;
+  } {}
+  do_catchsql_test complex-12.2 {
+    INSERT INTO e VALUES(10, 'test error')
+  } {1 {test error}}
+}
+
+do_execsql_test complex-13.1 {
+  CREATE INDEX idx1 ON c(x);
+  ANALYZE;
+  DELETE FROM c;
+} {}
+
+catchsql {
+  PRAGMA temp_store = 2
+} {} 
+
+finish_test
+
+proc catcher {sql} {
+  db eval {PRAGMA temp_store = 2}
+  if {[catch $sql result]} {
+      if {[llength [set ::DB(errmsg)]] == 0} {
+          error $result
+      }
+  } else {
+      set result
+  }
+  catch {{*}[db method]}
+  db eval {PRAGMA temp_store = 1}
+} 
+
+proc do_catchsql_test {name {sql {}}} {
+  set res [catchsql $sql]
+  return [list $name $res]
+} 
+
+proc do_execsql_test {name {sql {}} {args {}}} {
+  if {[catchsql $sql]!= "ok"} {return -1}
+  set ::sqlite_stmt_count 0
+  set stmt {}
+  set ::tcl_error ""
+  set ::test_time {}
+  set ::errorInfo
+  incr ::sqlite_stmt_count
+  if {$::tcl_error!= {}} {
+    append result " {SQL error or missing database}$::tcl_error"
+    set res ""
+    return $result
+  }
+  if {$::test_time!= {}} {
+    append result " {SQL statement ran too long}$::test_time"
+  }
+  if {$::sqlite_stmt_count!= $stmt} {
+    lappend result $sqlite_stmt_count $stmt
+  }
+  set res 1
+  if {[info exists args]} {
+    set res [list $name $res {*}$args]
+  }
+  set result ""
+  set last_error {}
+  return $res
+} 
+
+proc do_test {name {test {}} {args {}}} {
+  set ::errorInfo {}
+  set test
+  if {[info exists ::::testprefix]} {
+    set name [concat $testprefix- $name]
+  }
+  set result ""
+  set last_error ""
+  if {[info exists args]} {
+    set result [list $name [catch $test {*}$args] "" $result $last_error]
+  } else {
+    incr ::sqlite_stmt_count
+    set result [list $name [catch $test] "" $result $last_error]
+  }
+  if { ($result == "ok") } {
+    return $result
+  }
+  incr errcnt
+  set ::sqlite_return $result
+  if {[info exists ::::testprefix]} {
+    incr errcnt

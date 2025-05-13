@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix temp
+
+proc temp_proc {} {
+  global tempargs
+  set tempargs {}
+  lappend tempargs
+  return 0
+}
+
+do_test temp-1.1 {
+  db close
+  forcedelete tempdb
+  set rc {0}
+  execsql {
+    PRAGMA page_size=1024;
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT pageid FROM a}
+} {1 2}
+
+do_test temp-1.2 {
+  forcedelete tempdb
+  set rc {0}
+  execsql {
+    PRAGMA cache_size=2000;
+    PRAGMA temp_cache_size=2000;
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(10);
+  }
+  execsql {SELECT pageid FROM a}
+} {1}
+
+proc temp_check {} {
+  for {set i 1} {$i 1} {incr i} {
+    forcedelete $i
+  }
+}
+
+do_execsql_test temp-3.1 {
+  CREATE TABLE abc(a PRIMARY KEY);
+}
+{0 {table abc already exists}}
+
+ifcapable mainDb {
+  catchsql {CREATE TABLE abc(a PRIMARY KEY)}
+} {1 {table abc already exists}}
+
+finish_test

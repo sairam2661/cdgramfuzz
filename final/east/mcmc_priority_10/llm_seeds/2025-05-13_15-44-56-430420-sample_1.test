@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set tcl_precision 15
+
+proc async_func {} {
+  global asyncargs
+  lappend asyncargs
+  expr {$asyncargs}
+}
+
+proc execsql_or_assert {sql expected} {
+  set result {}
+  set result $::sqlite3_db_handle eval $::tcl_interpreter $sql
+  set error {}
+  if {$::sqlite3_db_handle errorinfo} {
+    set error $::sqlite3_db_handle errorinfo
+  }
+  catch {set result $expected}
+  error_check_good "result" $result $expected
+  error_check_good "exception" $error ""
+  return $result
+}
+
+proc error_check_good {label val expval} {
+  if {$val ne $expval} {
+    error "error: $label $val (expected: $expval)"
+  }
+}
+
+do_test async-1.1 {
+  execsql_or_assert {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+    INSERT INTO b VALUES(2);
+  }
+  execsql_or_assert {SELECT count(*) FROM b} {2}
+} {2}
+do_test async-2.1 {
+  SET res_a EXECSQL_OR_ASSERT {
+    INSERT INTO b VALUES (3);
+    BEGIN;
+  }
+  set res_b EXECSQL_OR_ASSERT {
+    COMMIT
+    SELECT count FROM b
+  }
+  expr {$res_a eq {} AND $res_b eq {3}}
+} {1}
+ifcapable journalMode {
+set result 0
+set error  {}
+set journalmode "wal"
+set {db} $sqlite3
+    $db eval "PRAGMA journal_mode = $journalmode"
+    set result $sqlite3
+    set result $journalmode
+    set error $sqlite3
+    lappend error $sqlite3
+set error {}
+  if {$error ne $sqlite3} {
+    lappend error "result" $result
+  } else {
+    error "PRAGMA journal_mode"
+  }
+  execsql_or_assert {PRAGMA journal_mode;} "$journalmode {}"
+} {1}
+finish_test

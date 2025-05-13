@@ -1,0 +1,181 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_rollback
+
+set ::timeout 60000
+set dbid 0
+
+proc rollback_proc {} {
+  global dbid
+  db close $dbid
+}
+
+do_test sqlite_rollback-1.1 {
+  sqlite3 db rollback_test
+  set dbid $db
+} {rollback_test}
+
+do_test sqlite_rollback-1.2 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    PRAGMA synchronous = 0;
+  }
+} {}
+
+set error_trap {}
+catch {execsql {
+  PRAGMA journal_mode = 'DELETE'
+}} error
+do_test sqlite_rollback-1.3 {
+  set error_info
+} {}
+
+do_test sqlite_rollback-1.4 {
+  do_execsql_test sqlite_rollback_4.4 {
+    ROLLBACK;
+    SELECT x FROM a;
+  } {}
+} {}
+
+ifcapable journalMode {
+  do_test sqlite_rollback-1.5 {
+    execsql {
+      PRAGMA journal_mode = 'WAL';
+      PRAGMA synchronous = 2;
+    }
+    for {set i 2} {$i '10} {incr i} {
+      execsql {
+       INSERT INTO a VALUES($i);
+      }
+    }
+    PRAGMA wal_checkpoint = 1;
+    SELECT x FROM a;
+  } {}
+}
+
+execsql {
+  ROLLBACK;
+  VACUUM;
+}
+
+rollback_proc
+
+finish_test
+
+and 
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+proc lock_test {} {
+  db eval {SELECT 0}
+}
+
+do_execsql_test lock-1.1 {
+  CREATE TABLE a1(x PRIMARY KEY);
+  CREATE TABLE b1(x INTEGER PRIMARY KEY);
+  CREATE TABLE c1(x INTEGER UNIQUE);
+  CREATE TABLE d1(x INTEGER UNIQUE);
+  CREATE TABLE e1(x INTEGER UNIQUE);
+  CREATE TABLE a2(b, c, d);
+  CREATE TABLE b2(q, w, e);
+  CREATE TABLE c2(a, c, t);
+}
+
+do_test lock-1.2 {
+  select_count $db 0
+} 1
+
+do_execsql_test lock-1.3 {
+  INSERT INTO a1 VALUES (0);
+  INSERT INTO b2 VALUES (0, 0, 0);
+}
+do_test lock-1.4 {
+  select_count $db 2
+} 2
+
+proc select_count {db N} {
+  set count 0
+  db eval {SELECT 1} {incr count}
+  set count
+}
+
+proc create_random_index {tbl n} {
+  set sql "CREATE INDEX "
+  append sql [$tbl _random_name]
+  for {set x 0} {$x < $n} {incr x} {
+    append sql [expr {_random_name $x}]
+  }
+  append sql ON $tbl ([lindex [$tbl PRKEY] 0])
+  eval $sql
+}
+
+do_test lock-2.1 {
+  set ::count 0
+  set id ($::count++)
+  execsql {
+    SELECT 1
+  }
+} {1}
+do_test lock-2.2 {
+  upvar #0 ::count count
+  incr count
+  set id ($::count++)
+  execsql {
+    SELECT 1
+  }
+} {1}
+
+ifcapable subquery {
+  do_execsql_test lock-2.3 {
+    CREATE TABLE i(a UNIQUE);
+    CREATE TABLE t(x);
+    WITH r AS (
+      SELECT * FROM t WHERE x=1
+      GROUP BY x
+      HAVING 1 = 1
+    )
+    INSERT INTO i SELECT * FROM r;
+    DROP TABLE t;
+    SELECT * FROM i;
+  } {}
+}
+
+do_test lock-2.4 {
+  db commit_transaction 
+  } {}
+
+do_execsql_test lock-2.5 {
+  BEGIN;
+  DROP TABLE b1;
+  SELECT type, name
+    FROM sqlite_master
+   WHERE type='table' AND name="b1"
+} {TABLE b1}
+
+do_test lock-2.6 {
+  execsql {
+    DROP TABLE c1;
+    CREATE TABLE c1(a INTEGER, b INTEGER UNIQUE);
+    CREATE VIEW c2 AS
+    SELECT b FROM c1;
+    PRAGMA table_info(c2);
+  }
+} {column b, type integer, notnull 0, dflt_value NULL, pk 0}
+
+do_execsql_test lock-2.7 {
+
+  BLOB IS a blob
+
+} {}
+
+for {set i 0} {$i < 5} {incr i} {
+  do_execsql_test lock-2.8.$i {
+    CREATE TABLE t$i (
+      s VARCHAR(6) DEFAULT 'default',
+      s2 TEXT,
+      r REAL,
+      d DATE,
+      t TIME

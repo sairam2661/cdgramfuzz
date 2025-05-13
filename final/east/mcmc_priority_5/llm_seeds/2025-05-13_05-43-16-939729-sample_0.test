@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+set dbid 0
+set name "example.com"
+
+proc get_db {} {
+  global dbid
+  return "db:$dbid"
+}
+
+proc drop_db {} {
+  global dbid
+  execsql "DROP TABLE x" $::get_db
+  execsql "DROP TABLE y" $::get_db
+  execsql "DROP TABLE z" $::get_db
+  incr dbid
+  catch { close $::get_db }
+}
+
+proc get_sql {args} {
+  set str ""
+  foreach arg $args {
+    append str $arg
+  }
+  return $str
+}
+
+proc execsql_test {name sql {sqlite_test_name $name}} {
+  uplevel do_test $sqlite_test_name { 
+    set db $get_db
+    while { "$db" eq "NULL" } { 
+      drop_db 
+      set db $get_db 
+    } 
+    uplevel catch { execsql $sql $db }
+  }
+}
+
+proc execsql {sql {db get_db}} {
+  set db $db
+  while { "$db" eq "NULL" } { 
+    drop_db 
+    set db $get_db 
+  } 
+  catch { eval $sql $db }
+}
+
+proc do_catchsql_test {nSql aRes} {
+  uplevel do_test $nSql {
+    set r2   1
+    set r3   0
+    execsql_test {wal1.10.2} {
+      SELECT rowid FROM t1
+    } {} {0}
+    execsql_test {wal1.10.3} {
+      INSERT INTO t1 VALUES('hello')
+    } {} {}
+    execsql_test {wal1.10.4} {
+      SELECT rowid FROM t1
+    } {0} {1}
+  }
+}
+set enable_load_extension 1
+execsql {
+  PRAGMA journal_mode = 'wal'
+  }
+execsql {
+  PRAGMA synchronous = 1;
+  }
+set auto_vacuum 0
+execsql {
+  PRAGMA wal_checkpoint;
+  }
+execsql_test {query1.1} {
+  CREATE TABLE t1(a);
+  INSERT INTO t1 VALUES('hello');
+  SELECT rowid FROM t1
+} {}
+execsql_test {query1.2} {
+  DELETE FROM t1
+} {}
+drop_db
+execsql_test {query1.3} {
+  SELECT name COLLATE nocase FROM sqlite_master
+} {} {
+  main
+}
+execsql_test {query1.4} {
+  CREATE TABLE t2 AS SELECT DISTINCT 1 UNION ALL SELECT DISTINCT 2 ORDER BY 1
+} {}
+finish_test

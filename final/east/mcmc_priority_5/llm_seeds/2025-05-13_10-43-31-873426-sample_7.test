@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set dbid 0
+set temp_store 1
+
+proc connect_db {mode} {
+  global dbid
+  db close $dbid
+  set dbid sqlite3 db ":memory:"
+  catch {db eval "PRAGMA journal_mode=$mode"}
+  sqlite3 dbid $dbid
+}
+
+proc create_table {name args} {
+  db eval "CREATE TABLE $name ($args)"
+}
+
+do_test complex-1.1 {
+  connect_db "WAL"
+  create_table a {x}
+  execsql {
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+  execsql {SELECT count(*) FROM a}
+} {3}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {4}
+
+do_test complex-1.3 {
+  connect_db "DELETE"
+  create_table b {x}
+  execsql {
+    INSERT INTO b VALUES(5);
+    INSERT INTO b VALUES(6);
+    INSERT INTO b VALUES(7);
+  }
+  execsql {SELECT count(*) FROM b}
+} {3}
+
+do_execsql_test complex-1.4 {
+  BEGIN;
+  INSERT INTO b VALUES(8);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {4}
+
+set sql {
+  CREATE TABLE c(x, y);
+  INSERT INTO c VALUES(10, 10);
+  INSERT INTO c VALUES(20, 20);
+}
+execsql $sql
+
+do_execsql_test complex-1.5 {
+  SELECT * FROM c WHERE x=10;
+} {10 10}
+
+do_execsql_test complex-1.6 {
+  SELECT x FROM c;
+} {10 20}
+
+do_execsql_test complex-1.7 {
+  SELECT x FROM c WHERE x=20;
+} {20}
+
+finish_test

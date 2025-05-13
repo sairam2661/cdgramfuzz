@@ -1,0 +1,116 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+set sqlite_master {}
+
+proc create_table {name} {
+  global sqlite_master
+  execsql {
+    CREATE TABLE $name
+         CREATE COLUMN IF NOT EXISTS "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+     CREATE COLUMN "name" TEXT NOT NULL DEFAULT 'Name'
+     CREATE COLUMN "email" TEXT NOT NULL DEFAULT ''
+  }
+  set sqlite_master $name
+}
+
+proc create_query_result {expected} {
+  do_execsql_test complex_sql_1.1 {
+    SELECT COUNT(*)
+  FROM   table_name;
+  } $expected
+}
+
+proc insert_data {table} {
+  execsql {
+    INSERT INTO $table
+      VALUEs
+        1 'John Doe' 'johndoe@example.com'
+      2 'Jane Smith' 'janesmith@example.com'
+  }
+}
+
+do_test complex_sql_1.1 {
+  create_table table_name
+} {}
+
+set test_count 0
+
+proc complex_sql_test proc {
+  incr test_count
+  execsql {
+    CREATE TABLE test_table(id, data)
+  }
+
+  for {set i 1} {$i le 3} {incr i} {
+    set data "Test $i"
+    select id id data $data
+  }
+
+  set res 3
+  do_execsql_test $::testprefix_$::test_count {
+    SELECT COUNT(*)
+  FROM   test_table;
+  } $res
+
+  do_execsql_test $::testprefix_$::test_count {
+    SELECT * FROM test_table;
+  } {
+    1 Test 1
+    2 Test 2
+    3 Test 3
+  }
+
+  catch {
+    do_execsql_test $::testprefix_$::test_count {
+      UPDATE test_table
+      SET data
+      WHERE id IS NOT NULL AND id IN
+        SELECT rowid FROM test_table
+      ORDER BY data DESC
+      LIMIT 1 OFFSET 1
+    }
+  } {}
+
+  set res {UPDATE test_table SET data WHERE id IS NOT NULL AND id IN}
+  do_execsql_test $::testprefix_$::test_count {
+    PRAGMA statement
+  } $res
+
+  do_execsql_test $::testprefix_$::test_count {
+    DELETE FROM test_table
+    WHERE id IS NOT NULL AND id IN
+      SELECT rowid FROM test_table
+    ORDER BY data DESC
+    LIMIT 1 OFFSET 1
+  }
+
+  if { $test_count eq 1 } {
+    do_execsql_test $::testprefix_$::test_count {
+      ALTER TABLE test_table
+      RENAME COLUMN name TO title
+    }
+  }
+  if { $test_count eq 3 } {
+    do_execsql_test $::testprefix_$::test_count {
+      DROP TABLE test_table
+    }
+  }
+  return
+}
+
+complex_sql_test
+
+do_test complex_sql_1.10 {
+  set test_count
+} 3
+do_test complex_sql_1.11 {
+  execsql {
+    PRAGMA journal_mode
+  }
+} {WAL}
+drop_table test_tab
+
+finish_test

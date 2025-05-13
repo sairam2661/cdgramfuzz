@@ -1,0 +1,96 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set nTest 13
+
+proc complex_proc {args} {
+  global nTest
+  lappend args "test arguments"
+  expr {$nTest}
+}
+
+set sqlite_temp_cache_size 1000
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x, y);
+    CREATE INDEX idx_a ON a(y);
+  }
+  set idx_idx_a_valid 1
+} {1}
+
+do_test complex-1.2 {
+  execsql {
+    INSERT INTO a VALUES('a', 1);
+    INSERT INTO a VALUES('b', 2);
+  }
+} {}
+
+do_test complex-2.1 {
+  set index_idx_a_not_used 0
+  execsql {
+    CREATE INDEX idx_y ON a(x);
+    SELECT name FROM sqlite_master WHERE type='index' 
+  } 
+} {idx_y idx_a idx_a}
+
+do_execsql_test complex-3.1 {
+  BEGIN;
+  INSERT INTO a VALUES('c', 3);
+  COMMIT;
+  SELECT name FROM sqlite_master WHERE type='index';
+} {idx_y idx_a idx_a}
+
+do_execsql_test complex-3.2 {
+  PRAGMA temp_store = 'MEMORY';
+  BEGIN;
+  INSERT INTO a VALUES('d', 4);
+  COMMIT;
+  SELECT name FROM sqlite_master WHERE type='index';
+} {idx_y idx_a idx_a}
+
+do_test complex-4.1 {
+  execsql {
+    SELECT * FROM a WHERE x='a'
+  }
+  set row_found 1
+} {a 1}
+
+do_execsql_test complex-5.1 {
+  BEGIN;
+  CREATE TABLE b(z, w);
+  COMMIT;
+  SELECT name FROM sqlite_master WHERE type='table';
+} {b a}
+
+do_execsql_test complex-6.1 {
+  SELECT name FROM sqlite_master WHERE type='table';
+} {b a}
+
+ifcapable {fts3} {
+  do_execsql_test complex7.1 {
+    PRAGMA foreign_keys = 'on';
+    CREATE TABLE c(wid1, wid2);
+    CREATE TABLE c2(wid1, val1);
+    CREATE INDEX idx_c2_wid1 ON c2(wid1);
+    CREATE TABLE c3(wid1, val2);
+    CREATE INDEX idx_c3_wid1 ON c3(wid1);
+  }
+}
+
+ifcapable {fts3} {
+  do_execsql_test complex7.2 {
+    INSERT OR IGNORE INTO c SELECT wid1 FROM c2 WHERE val1 LIKE 'a/%' LIMIT 5
+    INSERT OR IGNORE INTO c SELECT wid2 FROM c2 WHERE val1 LIKE 'a/%' LIMIT 5
+  }
+}
+
+ifcapable {fts3} {
+  do_execsql_test complex7.3 {
+    INSERT OR IGNORE INTO c3 SELECT DISTINCT wid1 FROM c2 
+  }
+}
+
+finish_test

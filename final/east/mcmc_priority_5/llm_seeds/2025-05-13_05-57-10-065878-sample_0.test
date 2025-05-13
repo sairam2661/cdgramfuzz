@@ -1,0 +1,121 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix replication
+
+set ::timeout 60000
+
+proc set_db_config {} {
+  global db
+  set db {wal mode}
+  execsql {
+    PRAGMA synchronous=1;
+    PRAGMA journal_mode=1;
+  }
+}
+
+proc add_data {} {
+  global data_vars
+  set data_vars 0
+  execsql {
+    INSERT INTO t1 VALUES(1, 'aa', 2);
+    INSERT INTO t2 VALUES(3, 'bb', 4);
+    INSERT INTO t1 VALUES(5, 'cc', 6);
+  }
+}
+
+proc get_count {} {
+  execsql {
+    SELECT count(*) FROM t1
+  }
+}
+
+proc test_start {} {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    CREATE TABLE t2(a, b, c);
+  }
+}
+
+proc test_finish {} {
+  lappend data_vars
+}
+
+proc get_vars {} {
+  set vars {}
+  foreach col {a b c} {
+    lappend vars "col=$col"
+  }
+  return $vars
+}
+
+proc get_data {} {
+  set query {
+    SELECT a FROM t1
+    UNION
+    SELECT a FROM t2
+  }
+  execsql $query
+}
+
+create_test_case replication {
+  test_start
+  do_execsql_test replication_1.1 {
+    SELECT a FROM t1
+  } {1}
+  do_execsql_test replication_1.2 {
+    SELECT a FROM t2
+  } {}
+  do_execsql_test replication_1.3 {
+    SELECT a FROM t1
+    UNION
+    SELECT a FROM t2
+  } {1}
+}
+
+create_test_case replication_2 {
+  set_db_config
+  test_start
+  do_execsql_test replication_2.1 {
+    INSERT INTO t1 VALUES(7, 'ee', 8);
+  }
+  do_execsql_test replication_2.2 {
+    SELECT a FROM t1
+  } {1 7}
+}
+
+create_test_case replication_3 {
+  test_start
+  do_execsql_test replication_3.1 {
+    DROP TABLE t2
+  }
+  do_execsql_test replication_3.2 {
+    SELECT count(*) FROM t1
+  } {1}
+}
+
+set data_vars {}
+
+foreach testcase {replication replication_2 replication_3} {
+  run_test_case $testcase
+  set_db_config
+  add_data
+}
+
+do_test replication_4.1 {
+  get_count
+} {3}
+
+set_vars $data_vars
+foreach var $data_vars {
+  do_execsql_test replication_4.2 $var {{}}
+}
+
+do_test replication_5.1 {
+  get_data
+} {1 5 7}
+
+foreach testcase {replication replication_2 replication_3 replication_4 replication_5} {
+  run_test_case $testcase
+}
+
+finish_test

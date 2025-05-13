@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix thread
+
+set ::timeout 60000
+
+function start_test {name {args}} {
+  global sqlite_max_stack_size
+  catch {sqlite3_db_config max_stack_size $sqlite_max_stack_size}
+  do_test $name $args
+}
+
+proc thread Proc {} {
+  global sqlite_max_stack_size
+  incr sqlite_max_stack_size 100
+  set sqlite3_db_config 1
+  ifcapable debug {
+    set sqlite3_trace
+  }
+}
+
+proc thread2 Proc {} {
+  global sqlite_max_stack_size
+  set sqlite3_db_config
+  ifcapable debug {
+    incr sqlite3_trace
+  }
+}
+
+start_test thread1 {
+  sqlite3 db file1
+  sqlite3 db2 file2
+  set file1 "file1"
+  set file2 "file2"
+  thread
+  thread
+  do_test 1 {
+    execsql {
+      CREATE TABLE a(x);
+    }
+  } {}
+  do_test 2 {
+    execsql {
+      INSERT INTO a VALUES(1)
+    }
+  } {}
+  do_test 3 {
+    expr {$file1 eq "file1"}
+  } {0}
+}
+
+start_test thread2 {
+  db eval {
+    PRAGMA synchronous = 0;
+    PRAGMA journal_mode = 'WAL';
+    INSERT INTO a(x) VALUES(2);
+    COMMIT;
+    SELECT x FROM a WHERE x = 2;
+  }
+  {2}
+}
+
+do_test 1 {
+  exec {open file1}
+  expr {$code eq {}}
+} {1}
+
+finish_test

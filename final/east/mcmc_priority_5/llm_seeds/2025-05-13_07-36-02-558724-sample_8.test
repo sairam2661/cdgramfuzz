@@ -1,0 +1,259 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set nbulkinsert 1000000
+
+proc complex_index {} {
+  set db $::db
+  execsql {
+    BEGIN;
+    CREATE TABLE test(a,b,c);
+    CREATE INDEX testi ON test(a);
+    COMMIT;
+  }
+  set idx a
+}
+
+proc complex_drop_index {} {
+  set db $::db
+  execsql {
+    DROP INDEX testi
+  }
+}
+
+proc complex_btree_limit {} {
+  set db $::db
+  set n 100000
+  for {set i 1} {$i}$n {incr i} {
+    execsql "INSERT INTO t1 VALUES($i)"
+  }
+  execsql {
+    SELECT i FROM t1
+  }
+  set v 2000000
+}
+
+proc complex_update {} {
+  set db $::db
+  if {sqlite_sourceid} {
+    return
+  }
+  execsql {
+    CREATE TABLE test(a PRIMARY KEY);
+  }
+  execsql {
+    INSERT INTO test VALUES('old');
+  }
+  execsql {
+    SELECT a FROM test;
+  }
+  execsql {
+    UPDATE test SET a WHERE a IS NULL
+  }
+  execsql {
+    SELECT a FROM test;
+  }
+  execsql {INSERT INTO test VALUES(2)}
+  execsql {INSERT INTO test VALUES('three')}
+  execsql {
+    SELECT a FROM test;
+  }
+  execsql {
+    UPDATE test SET a WHERE a BETWEEN 'old' AND 'three'
+  }
+}
+
+proc complex_transaction {} {
+  set db $::db
+  set v 400000
+  ifcapable rtree {
+    set n 500
+    execsql BEGIN
+    for {set i 1} {$i}$n {incr i} {
+      execsql "INSERT INTO rt1(col1) VALUES($i)"
+    }
+    execsql COMMIT
+  }
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE t1(a PRIMARY KEY);
+}
+
+              {0 {}}
+
+do_execsql_test complex-2.1 {
+  CREATE TABLE t2(a PRIMARY KEY);
+  CREATE TABLE t3(b PRIMARY KEY);
+}
+                {0 {} 0 {}}
+
+do_execsql_test complex-3.1 {
+  SELECT 1 FROM t1
+}
+  {1}
+
+do_execsql_test complex-4.1 {
+  SELECT 1 FROM t1
+}
+  {1}
+
+do_execsql_test complex-5.1 {
+  SELECT 1 FROM t2
+}
+  {1}
+
+do_execsql_test complex-6.1 {
+  CREATE TABLE t5(x PRIMARY KEY);
+}
+  {0 {}}
+
+do_execsql_test complex-7.1 {
+  CREATE INDEX i4 ON t3(b);
+  SELECT 1 FROM t2
+}
+  {1}
+
+do_execsql_test complex-8.1 {
+  CREATE TABLE t7(b);
+  CREATE TABLE t6(a UNIQUE);
+  SELECT 1 FROM t6
+}
+  {1}
+
+do_execsql_test complex-9.1 {
+  CREATE TABLE t8(a UNIQUE);
+  CREATE TABLE t9(a);
+  SELECT 1 FROM t8
+}
+  {1}
+
+do_execsql_test complex-10.1 {
+  INSERT INTO t1 VALUES(0);
+  INSERT INTO t3 VALUES(4);
+}
+  {4 0}
+
+do_execsql_test complex-11.1 {
+  SELECT 1 FROM t1
+}
+  {1}
+
+do_execsql_test complex-12.1 {
+  SELECT 1 FROM t3
+}
+  {1}
+
+do_execsql_test complex-13.1 {
+  CREATE TABLE t10(x);
+}
+  {0 {}}
+
+do_execsql_test complex-14.1 {
+  CREATE TABLE t11(b);
+}
+  {0 {}}
+
+do_execsql_test complex-15.1 {
+  CREATE TABLE t4(a, b);
+}
+  {0 {}}
+
+do_execsql_test complex-16.1 {
+  SELECT * FROM t4;
+}
+                      {0 {}}
+
+do_execsql_test complex-17.1 {
+  SELECT * FROM t3;
+}
+  {4}
+
+do_execsql_test complex-18.1 {
+  CREATE INDEX i3 ON t1(a);
+  INSERT INTO t11 VALUES('four');
+}
+  {four}
+
+do_execsql_test complex-19.1 {
+  SELECT * FROM t1;
+}
+  {0 4}
+
+do_execsql_test complex-20.1 {
+  BEGIN;
+}
+  {0 {}}
+
+do_execsql_test complex-21.1 {
+  CREATE TABLE tt1(x);
+  CREATE TABLE tt2(x);
+  SELECT * FROM tt1;
+}
+  {0 {}}
+
+do_execsql_test complex-22.1 {
+  CREATE TABLE tt1(y);
+  SELECT * FROM tt1;
+}
+  {0 {}}
+
+do_execsql_test complex-23.1 {
+  SELECT * FROM t4;
+}
+  {0 {}}
+
+do_execsql_test complex-24.1 {
+  CREATE TABLE t12(x)
+}
+  {0 {}}
+
+do_execsql_test complex-25.1 {
+  SELECT 1
+  FROM   complex_index;
+}
+  {1}
+
+do_execsql_test complex-26.1 {
+  SELECT * FROM t1;
+}
+{1 4}
+
+do_execsql_test complex-27.1 {
+  SELECT * FROM t4;
+}
+{0 {}}
+
+do_execsql_test complex-28.1 {
+  SELECT * FROM t3
+}
+  {4}
+
+do_execsql_test complex-29.1 {
+  SELECT * FROM t1
+}
+  {0 4}
+
+do_execsql_test complex-30.1 {
+  SELECT * FROM t4
+}
+  {0 {}}
+
+do_execsql_test complex-31.1 {
+  SELECT * FROM t7
+}
+{0 {}}
+
+do_execsql_test complex-32.1 {
+  SELECT * FROM t12
+}
+  {1}
+
+do_execsql_test complex-33.1 {
+  SELECT * FROM t9
+}
+  {0 {}}
+
+do_execsql_test complex-34.1 {

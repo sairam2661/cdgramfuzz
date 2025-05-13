@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+set default_ancestor 1
+set expected_result "expected result"
+
+proc custom_func {} {
+  return 1
+}
+
+proc error_func {} {
+  error "Something went wrong"
+}
+
+set db 1
+set sqlite_flags 2
+set mode 3
+
+do_test sync-2.1 {
+  execsql {
+    CREATE TABLE IF NOT EXISTS b{
+      c CHARACTER varying
+    }
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO b VALUES('a');
+    INSERT INTO b VALUES('b');
+    INSERT INTO b VALUES('c');
+    COMMIT;
+  }
+  list 3
+} {3}
+
+do_execsql_test sync-2.2 {
+  BEGIN;
+  INSERT INTO b VALUES('d');
+  ROLLBACK;
+  SELECT * FROM b;
+} {a b c}
+
+set testing_flag 1
+lappend testing_flag database
+
+do_test sync-2.3 {
+  error_func
+  list 5
+} {Something went wrong}
+
+ifcapable wal {
+  set journal_mode 2
+} else {
+  set journal_mode 1
+}
+
+finish_test

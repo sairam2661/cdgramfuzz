@@ -1,0 +1,134 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_data
+
+proc on_insert_row { } {
+  if { $::is_on_fuzz_mode } { lappend is_good_rows "inserted"}
+}
+
+proc on_update_row { } {
+  if { $::is_on_fuzz_mode } { lappend is_good_rows "updated"}
+}
+
+proc on_delete_row { row_id } {
+  if { $::is_on_fuzz_mode } { lappend is_good_rows "deleted"}
+}
+
+proc on_select_result { result } {
+  if { $::is_on_fuzz_mode } { 
+    set data "$result," 
+    set total_size ""
+    foreach item $data {
+      incr size
+      append total_size "$size"
+      set total_size "[append data $total_size]"
+    }
+  }
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE a(x, y);
+    INSERT INTO a VALUES(1, 2);
+    INSERT INTO a VALUES(3, 4);
+  }
+  execsql {SELECT count(*) FROM a}
+} {2}
+
+do_execsql_test sync-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(5, 6);
+  COMMIT;
+  SELECT * FROM a;
+} {1 2 3 4 5 6}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="PERSIST"}
+} {0 {}}
+
+ifcapable bloblit {
+  do_test sync-2.1 {
+    execsql {
+      CREATE TABLE b(id, x, y);
+      INSERT INTO b VALUES(1, 'X1BLOB', 'Y1BLOB' );
+    }
+  } {}
+}
+
+do_execsql_test sync-2.2 {
+  CREATE TABLE c(id PRIMARY KEY, x, y);
+  INSERT INTO c VALUES (1, 'a');
+} {}
+
+ifcapable tempdb {
+  ifcapable {trigger} {
+    do_test sync_data2.3 {
+      set tno { SELECT name FROM sqlite_temp_master WHERE type='%w' }
+      execsql "DROP TABLE c"
+
+      db eval "$tno('Trigger')" { expr { $sqlite_trigger_name } }
+    } {c}
+  } else {
+    finish_test
+  }
+}
+
+if {  1 } {
+
+  set testprefix on_fuzz_mode
+  db eval {
+    UPDATE a SET y 'Y2'
+  }
+} else {
+  execsql {
+    UPDATE a SET y 'Y2'
+  }
+}
+do_execsql_test sync-2.4 {
+    INSERT INTO a VALUES(7, 8)
+  } {7 8}
+
+db close
+
+on_fuzz_mode {}
+ifcapable altertable {
+  do_test sync-2.6 {
+    execsql {
+      ALTER TABLE a RENAME COLUMN x TO new_column_name
+    }
+  } {}
+}
+do_execsql_test sync-2.7 {
+  SELECT * FROM a
+} {1 2 3 4 5 6 7 8}
+
+ifcapable autoincrement {
+  do_test sync-2.8 {
+    execsql {
+      BEGIN;
+      CREATE TABLE d(a DEFAULT 4, b, UNIQUE DEFAULT 'u')
+      } 
+  } {}
+}
+
+do_execsql_test sync-2.9 {
+  CREATE TABLE e(id PRIMARY KEY)
+} {}
+
+do_execsql_test sync-2.10 {
+  CREATE TABLE f(a,m)
+} {}
+
+do_execsql_test sync-2.11 {
+  CREATE TABLE g(b)
+} {}
+  ifcapable altertable {
+  db close
+  finish_test
+} else {
+do_test sync_data2.55 {
+  db close
+} {}
+
+}
+ finish_test

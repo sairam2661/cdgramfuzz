@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix testprefix
+
+set ::timeout 60000
+
+proc crash_test {} {
+  global db
+  if { $::sqlite_version } {
+    catch { db close }
+  }
+}
+
+do_test test-1.1 {
+  catch { db close }
+  set db2 {}
+  set fd4 {}
+  set test_db {}
+  execsql { CREATE TABLE a(x) }
+  execsql {DROP TABLE a}
+  set db2 $db 
+  set db {}
+  execsql { SELECT * FROM a }
+} {1 error}
+
+set db2 {}
+set db {}
+set fd4 {}
+do_execsql_test test-2.1 {
+  PRAGMA journal_mode = 'wal'
+  } {}
+
+do_test test-2.2 {
+  set fd4 1
+  execsql { SELECT * FROM a }
+  catchsql { SELECT * FROM a }
+  execsql { SELECT count(*) FROM a }
+  execsql {SELECT count(*) FROM a}
+  } {0 1 3}
+
+do_test test-2.3 {
+  execsql { SELECT * FROM a }
+  catchsql { SELECT * FROM a }
+  execsql { SELECT count(*) FROM a }
+  execsql {SELECT count(*) FROM a}
+} {0 1 3}
+
+do_execsql_test test-3.1 {
+  PRAGMA wal_checkpoint
+} {}
+
+set fd {}
+do_execsql_test test-4.1 {
+  BEGIN;
+  INSERT INTO a VALUES ( 4 )
+  } {}
+
+finish_test

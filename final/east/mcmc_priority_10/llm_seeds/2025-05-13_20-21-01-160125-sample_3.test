@@ -1,0 +1,67 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_flags
+
+set ::timeout 60000
+
+proc check_result {expr expected_result} {
+  if {$expr ne $expected_result} {
+    error "result mismatch: expected '$expected_result' but got '$expr'"
+  }
+}
+
+proc get_column_count {db} {
+  set stmt $db
+  execsql $stmt {
+    SELECT COUNT(*) FROM sqlite_master
+  }
+}
+
+proc get_row_count {db} {
+  set stmt $db
+  execsql $stmt {
+    SELECT COUNT(*) FROM sqlite_master
+  }
+}
+
+set default_flags 5
+
+set db_file_name "test.db"
+execsql {
+  ATTACH 'test.db' AS test
+}
+set db_flags 10
+begin_test 1.1 {
+  if {0} {
+    catchsql {
+      DROP TABLE test1
+    }
+  }
+} {1 {}}
+
+do_execsql_test 1.2 {
+  CREATE TABLE test1(id PRIMARY KEY, name);
+  INSERT INTO test1 VALUES(1, 'test name');
+} {1 {table test1 already exists}}
+proc get_result {stmt} {
+  catchsql $stmt
+}
+proc check_condition {expr condition} {
+  if { $condition } {
+    check_result  $expr 42
+  } else {
+    check_result  $expr 12
+  }
+}
+
+proc set_test_prefix {prefix value} {
+  global testprefix
+  set testprefix $prefix$testprefix$testprefix$testprefix$testprefix$testprefix$testprefix$testprefix$prefix
+}
+
+set test_prefix "test_prefix_"
+set_test_prefix "1." "db_test"
+execsql {
+  DROP TABLE test
+}
+finish_test

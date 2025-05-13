@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+set ::timeout 60000
+set sqlite_options {
+  tmpdir dbdir sync_mode
+}
+
+proc connect_tester {db sqlite_options} {
+  set db_file "database-$thread.test.db"
+  sqlite3 $db $sqlite_options $db_file
+  return $db
+}
+
+do_test setup-1.1 {
+  foreach {var val} $sqlite_options {
+    set $var $val
+  }
+  file mkdir $tmpdir $dbdir
+} {}
+
+do_test setup-1.2 {
+  set db1 "[connect_tester db1]"
+  set db2 "[connect_tester db2]"
+  list $sync_mode $db1 $db2
+} {wal db1 db2}
+
+do_test main-1.1 {
+  set r "[execsql {PRAGMA synchronous = OFF} db1]"
+  list $r
+} {}
+
+do_test main-1.2 {
+  set r "[execsql {PRAGMA journal_mode = WAL} db1]"
+  list $r
+} {}
+
+do_test main-1.3 {
+  set r "[execsql {SELECT x FROM a} db1]"
+  list $r
+} {}
+
+do_execsql_test main-1.4 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT x FROM a;
+} {2}
+
+do_test main-2.1 {
+  set r "[execsql {PRAGMA synchronous = NORMAL} db1]"
+  list $r
+} {}
+
+finish_test

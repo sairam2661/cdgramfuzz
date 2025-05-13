@@ -1,0 +1,91 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+set ::timeout 60000
+
+proc insert_and_unlock {n} {
+  global db tname
+  db execsql "INSERT INTO $tname VALUES($n)"
+  db eval "UNLOCK"
+}
+
+proc lock_proc {} {
+  set tname test_lock
+  execsql {
+    CREATE TABLE test_lock(x);
+    INSERT INTO test_lock VALUES(1);
+  }
+  if {$::sqlite_options_journal_mode} {
+    execsql "PRAGMA journal_mode=DELETE"
+  }
+  set tname
+}
+
+proc unlock_proc {} {
+  global tname
+  db eval "UNLOCK"
+  execsql {
+    DELETE FROM $tname
+  }
+}
+
+do_test lock-1.1 {
+  set lock_proc
+  set result
+  execsql {
+    BEGIN;
+    INSERT INTO test_lock VALUES(2);
+  }
+  set result
+  set tname
+} {test_lock 1}
+
+do_execsql_test lock-1.2 {
+  BEGIN;
+  INSERT INTO test_lock VALUES(3);
+  COMMIT;
+  SELECT x FROM test_lock;
+} {1 2 3}
+
+do_execsql_test lock-1.3 {
+  INSERT INTO test_lock VALUES(4);
+  SELECT x FROM test_lock;
+} {1 2 3 4}
+
+do_test lock-2.1 {
+  set lock_proc
+  execsql {
+    INSERT INTO test_lock VALUES(5);
+  }
+  set result
+  set tname
+} {test_lock 5}
+
+ifcapable Waljournal {
+  do_test lock-3.1 {
+    set lock_proc
+    execsql {
+      INSERT INTO test_lock VALUES(6);
+      PRAGMA journal_mode = 'WAL'
+    }
+    execsql {
+      DELETE FROM test_lock
+    }
+    execsql {
+      INSERT INTO test_lock VALUES(7)
+    }
+    execsql {
+      SELECT x FROM test_lock
+    }
+    set tname
+  } {test_lock 7}
+}
+
+do_execsql_test lock-4.1 {
+  INSERT INTO test_lock VALUES(8);
+  COMMIT;
+  SELECT x FROM test_lock;
+} {1 2 3 4 5 7 8}
+
+finish_test

@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+proc check_column_count {db} {
+  set sql {
+    SELECT name FROM sqlite_master
+      WHERE type='table'
+      }
+  return $db eval $sql { $::tcl_platform_os }
+}
+
+do_test multi_thread-1.1 {
+  execsql {
+    CREATE TABLE t1(a,d);
+    CREATE TABLE t2(b,e);
+  }
+  execsql {
+    INSERT INTO t1 VALUES('one', 'a');
+    INSERT INTO t1 VALUES('two', 'b');
+    INSERT INTO t2 VALUES('three', 'd');
+    INSERT INTO t2 VALUES('four', 'e');
+  }
+  check_column_count sqlite_db
+} {2}
+
+do_execsql_test multi_thread-1.2 {
+  CREATE TABLE t3(f,g,c,d);
+  INSERT INTO t3 VALUES('1', 'five', 'one', 'a');
+  INSERT INTO t3 VALUES('2','six', 'two', 'b');
+  INSERT INTO t3 VALUES('3','seven', 'three', 'd');
+  INSERT INTO t3 VALUES('4', 'eight', 'four', 'e');
+  SELECT * FROM t3
+  } {1 five one a 2 six two b 3 seven three d 4 eight four e}
+
+proc multi_thread_proc {} {
+  db eval "INSERT INTO t1 VALUES('five', 'f')"
+}
+
+proc query_multi_thread {} {
+  db timeout 1000
+  db eval {SELECT a FROM t1}
+  db timeout 1000
+  db eval {SELECT a FROM t2}
+}
+
+ifcapable threads {
+  foreach threadid ThreadID {
+    set tid_ThreadId $threadid
+    if { $threadid } {
+      multi_thread_proc
+    } else {
+      exec query_multi_thread
+    }
+  }
+  finish_test
+}
+
+finish_test

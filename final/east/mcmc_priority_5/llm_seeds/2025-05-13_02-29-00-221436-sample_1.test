@@ -1,0 +1,109 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+proc sync2_select {} {
+  global res
+  return $res
+}
+
+proc sync2_count {} {
+  global res
+  return $res
+}
+
+proc sync2_eq {db value} {
+  global res
+  set res 0
+  while {1} {
+    set test $db
+    if { $test eq $value } {
+        set res 1
+        break
+    } elseif { $test ni $value } {
+        break
+    } else {
+        set test $db
+        set db incr $db
+    }
+  }
+  return $res
+}
+
+proc sync2_eq2 {db value} {
+  global res
+  set res 0
+  if { $db eq $value } {
+        set res 1
+  }
+  return $res
+}
+
+do_execsql_test sync-1.1 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(5);
+  SELECT count(*) FROM b;
+} {1}
+
+do_execsql_test sync-1.2 {
+  COMMIT;
+  INSERT INTO b VALUES(6);
+  INSERT INTO b VALUES(7);
+  COMMIT;
+  SELECT COUNT(*) FROM b
+} {3}
+
+do_execsql_test sync-2.2 {
+  BEGIN;
+  COMMIT;
+  COMMIT;
+  INSERT INTO b VALUES(8);
+  COMMIT;
+  SELECT * FROM b;
+} {5 {} 6 {} 7 {} 8 {}}
+
+do_execsql_test sync-3.2 {
+  SELECT x FROM b WHERE x = 9;
+} {}
+do_test sync-3.2 {sync2_select} {}
+do_test sync-4.2 {sync2_count {} } {}
+
+proc sync2_func {db} {
+  db eval {SELECT x FROM b WHERE x = 9} {
+    db eval {
+    CREATE TABLE c(c)
+  }
+    do_execsql_test sync4.2 {
+      SELECT * FROM c;
+    } {{} {} {} {}}
+  }
+}
+
+set db main
+set res 0
+
+do_test sync-4.1 {sync2_eq $db {}} 0
+do_test sync-4.2 {sync2_eq $db {}} 0
+do_test sync-4.3 {sync2_eq $db {} {} {} {}} 1
+do_test sync-4.4 {sync2_eq {} {}} 1
+
+do_test sync-5.1 {sync2_eq2 {a} 1} {1}
+do_test sync-5.2 {sync2_eq2 {a} 'a' } 1
+do_test sync-5.3 {sync2_eq2 {a} {a} } 1
+do_test sync-5.4 {sync2_eq2 {a} a } 1
+do_test sync-5.5 {sync2_eq2 {a} b } {1}
+do_test sync-5.6 {sync2_eq2 {a} 'b' } {1}
+do_test sync-5.7 {sync2_eq2 {a} 'c' } 0
+
+do_test sync-6.1 {sync2_eq2 {a} 4} 0
+do_test sync-6.2 {sync2_eq2 {a} '3 5' } 0
+do_test sync-6.3 {sync2_eq2 {a} {} } {0}
+do_test sync-6.4 {sync2_eq2 {a} {b c}} 0
+do_test sync-6.5 {sync2_eq2 {a} {d e 3} } 0
+
+execsql {
+  DROP TABLE c
+  DROP TABLE b
+}
+
+finish_test

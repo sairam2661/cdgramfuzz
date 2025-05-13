@@ -1,0 +1,106 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite
+
+set ::timeout 60000
+
+proc setup_db {} {
+  global db
+  execsql {
+    CREATE TABLE users(id PRIMARY KEY, name, email);
+    CREATE TABLE orders(order_id PRIMARY KEY, user_id, total);
+  }
+  execsql {
+    INSERT INTO users VALUES(1, 'John Doe', 'john@example.com');
+    INSERT INTO users VALUES(2, 'Jane Doe', 'jane@example.com');
+    INSERT INTO orders VALUES(1, 1, 100);
+    INSERT INTO orders VALUES(2, 1, 200);
+    INSERT INTO orders VALUES(3, 2, 50);
+  }
+}
+
+proc test_query {test_name query} {
+  do_test $test_name {
+    setup_db
+    execsql $query
+  } {1}
+}
+
+proc do_foreign_keys {} {
+  set db_file "test.db"
+  execsql {
+    PRAGMA foreign_keys=1;
+    CREATE TABLE orders2(
+      order_id PRIMARY KEY,
+      user_id,
+      total,
+      FOREIGN_KEY_ERROR_CHECKConstraintCHECK
+    ) 
+  }
+  execsql {
+    INSERT INTO orders2 VALUES(1, 1, 100);    
+  }
+}
+
+proc finish_test {args} {
+  do_test maincleanup {
+    catch {execsql COMMIT}
+    catch {db close}
+  } {}
+}
+
+do_execsql_test 1.1 {
+  SELECT * FROM users
+} {1 John Doe johnexamplecom 2 Jane Doe janeexamplecom}
+
+test_query 1.2 {
+  SELECT * FROM orders
+} {
+  1 1 100
+  2 1 200
+  3 2 50
+}
+
+do_foreign_keys
+do_test 2.1 {
+  catchsql {
+    INSERT INTO orders2 VALUES(4, 3, 500)
+  }
+} {1}
+
+do_test 3.1 {
+  db close
+  set fd 1
+  sqlite3 db $fd
+  execsql {
+    CREATE TABLE abc(id PRIMARY KEY);
+
+    SELECT * FROM abc;
+  }
+} {}
+ 
+do_test 4.1 {
+  execsql {
+    CREATE TABLE cde(id PRIMARY KEY)
+  }
+} {CREATE TABLE cde(id PRIMARY KEY)}
+
+do_execsql_test 5.1 {
+  SELECT 'foo'  AS baz  FROM abc
+} {foo}
+
+do_test 6.1 {
+  execsql {
+    SELECT 'foo' FROM sqlite_master
+  }
+} {foo}
+
+execsql {
+  PRAGMA journal_mode;
+}
+
+do_catchsql_test 7.1 {
+  DB DDL Trigger
+} {1 {DDL triggers are disabled}}
+
+finish_test

@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix table_create
+
+set ::timeout 60000
+set testprefix db_config
+
+proc table_create_proc {db name} {
+  global db_config
+  db set_option $db SUBJOUNIT 1
+  execsql {$db CREATE TABLE $name}  "sqlite_" "$::testdir"
+  execsql {$db SELECT name FROM sqlite_master WHERE name LIKE '$name'}
+}
+
+test_config db_config {
+  set sqlite_limit_memory_db 1
+  set sqlite_limit_memory_size 100
+}
+
+test_config timeoout {
+  set sqlite_timeout 60
+}
+
+do_test table_create-1.1 {
+  table_create_proc a a
+  execsql {
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT name FROM a}
+} {a}
+
+do_execsql_test timeoout-2.1 {
+  BEGIN;
+  SELECT name FROM a;
+  COMMIT;
+  SELECT * FROM a;
+} {a}
+
+do_execsql_test db_config-3.1 {
+  PRAGMA journal_mode;
+  PRAGMA synchronous;
+  PRAGMA secure_delete;
+  PRAGMA encoding;
+  PRAGMA page_size;
+} {WAL NORMAL ON UTF8 1024}
+
+ifcapable wal_master {
+  test_config db_config {
+    set sqlite_journal_mode WAL
+  }
+  db set_option db WAL
+  do_execsql_test db_config-4.1 {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    COMMIT;
+    SELECT * FROM a;
+  } {2 1}
+}
+
+test_config timeoout {
+  set sqlite_timeout 1
+}
+
+test_config db_config {
+  set sqlite_journal_mode WAL
+}
+
+db set_option db WAL
+do_execsql_test db_config-5.1 {
+  BEGIN;
+  SELECT * FROM a;
+  COMMIT;
+  SELECT * FROM a;
+} {2 1 1}
+
+do_execsql_test timeoout-6.1 {
+  BEGIN;
+  SELECT name FROM a;
+  SELECT name FROM a;
+  COMMIT;
+} {a}
+
+finish_test

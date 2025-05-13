@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000  sqlite_timeout
+
+proc async_proc {} {
+  global asyncargs
+  lappend asyncargs
+  expr {1}
+}
+
+do_test async-1.1 {
+  execsql {
+    DROP TABLE IF EXISTS async_1_a
+    CREATE TABLE async_1_a_1a
+      AS SELECT 1 AS a FROM main WHERE 1
+  }
+  catchsql {
+    BEGIN;
+  }
+} {1 {}}
+
+do_test async-1.2 {
+  execsql {
+    SELECT name
+    FROM sqlite_master
+    WHERE type='table'
+  }
+} {async_1_a_1a}
+
+do_test async-1.3 {
+  execsql {
+    DROP TABLE async_1_a_1a
+    CREATE TABLE a_3
+      AS SELECT 1 AS a1 FROM main WHERE 1
+  }
+  execsql {
+    SELECT name
+    FROM sqlite_master
+    WHERE type='table'
+  }
+} {a_3}
+
+proc thread_callback {} {
+  catchsql {
+    BEGIN;
+    INSERT INTO a_3 VALUES(2);
+    COMMIT;
+  }
+}
+
+thread start thread_callback
+
+set threadpid $tcl_thread_id
+thread wait $threadpid
+
+execsql {
+  DELETE FROM a_3
+}
+
+do_test async-1.4 {
+  execsql {
+    SELECT count(*) FROM a_3
+  }
+} {0}
+
+proc callback {} {
+  execsql {
+    SELECT count(*) FROM a_3
+  }
+}
+set callback_start 0
+set callback_finish 0
+catch {thread start callback}
+thread wait $threadpid
+
+do_test async-1.5 {
+  set callback_finish
+  if { $callback_finish eq 0 } {
+   error{Thread callback failed} error_info
+  }
+} {1}
+
+ifcapable icu {
+    sqlite3 icu_test busy_func set
+}
+finish_test

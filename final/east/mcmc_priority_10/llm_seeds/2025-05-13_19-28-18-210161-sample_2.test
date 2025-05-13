@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db
+
+set ::timeout 60000
+
+proc db_proc {} {
+  global dbargs
+  set dbargs "db1 db2"
+  set dbargs
+}
+
+do_test db-1.1 {
+  sqlite3 db dbfile
+  execsql {
+    CREATE TABLE b(id, name);
+  }
+  execsql {
+    INSERT INTO b VALUES(1, 'A');
+    INSERT INTO b VALUES(2, 'B');
+    INSERT INTO b VALUES(3, 'C');
+  }
+} {3}
+
+do_test db-1.2 {
+  execsql {
+    SELECT * FROM b WHERE id = 2;
+  }
+} {2 B}
+
+ifcapable wal {
+  catchsql {
+    PRAGMA journal_mode = 'wal';
+  }
+} {0 {}}
+
+do_execsql_test db-1.3 {
+  BEGIN;
+  INSERT INTO b VALUES(4, 'D');
+  COMMIT;
+  SELECT * FROM b;
+} {1 A 2 B 3 C 4 D}
+
+db_close db
+
+do_test db-1.4 {
+  execsql {
+    CREATE TABLE c(id, name);
+  }
+  execsql {
+    INSERT INTO c VALUES(5, 'E');
+  }
+  execsql {
+    CREATE VIEW v1 AS SELECT id FROM b WHERE name LIKE 'B%' AND name LIKE 'C%'
+  }
+  execsql {
+    SELECT * FROM v1;
+  }
+} {2}
+
+do_execsql_test db-1.5 {
+  SELECT name FROM b WHERE name = 'B';
+} {B}
+
+ifcapable vacuum {
+  do_execsql_test db-1.6 {
+    COMMIT;
+    SELECT name FROM b WHERE name = 'B';
+    SELECT name FROM c WHERE name = 'E';
+    SELECT name FROM v1;
+  } {B E}
+  execsql {
+    VACUUM
+  }
+}
+
+finish_test

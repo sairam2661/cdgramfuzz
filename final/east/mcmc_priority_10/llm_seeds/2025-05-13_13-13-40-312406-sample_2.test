@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithreaded
+
+set ::timeout 60000
+
+proc thread_func {id} {
+  global threads
+  set thread_id $id
+  threads_cleanup
+  set syncargs {}
+  proc sync_proc {} {
+    global syncargs
+    lappend syncargs
+  }
+  for {set i 1} {$i le 10} {incr i} {
+    db eval {INSERT INTO test valuesRAND}
+    execsql_async sync_proc
+    threadsleep 0.01
+  }
+  threads_leave $thread_id
+}
+
+set threads_start 10000
+foreach {n p} {100 100000 1000 10000 10 1000000 100000 1000000 10000000 100000000} {
+  foreach {r n} {YES NO} {
+    if {$p eq $threads_start} {
+      set threads_start $n
+      threads_cleanup
+    }
+    db eval {
+      CREATE TABLE test(a);
+      SELECT threadid FROM sqlite_threadid
+    }
+    db close
+    threads_init $p
+    set result {}
+    db eval {SELECT rowid FROM test}
+    for {set i 1} {$i le $n} {incr i} {
+      threads_new thread_func $result $i
+    }
+    threads_join
+    if {$r eq "YES"} {
+      lappend result NO
+    }
+    db eval {SELECT threadid FROM sqlite_threadid}
+    threads_cleanup
+  }
+}
+
+finish_test
