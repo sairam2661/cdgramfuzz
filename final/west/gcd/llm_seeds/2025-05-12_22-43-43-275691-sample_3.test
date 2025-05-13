@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock_contest
+do_execsql_test 1.0 {
+  CREATE TABLE a(id PRIMARY KEY);
+  CREATE TABLE b(id PRIMARY KEY);
+  CREATE TABLE c(id PRIMARY KEY);
+  CREATE TABLE d(a_id1, b_id2);
+  CREATE TABLE e(a_id1, b_id2);
+  CREATE TABLE f(a_id1, b_id2);
+  CREATE TABLE g(a_id1, b_id2);
+
+  CREATE INDEX i1 ON d(a_id1);
+  CREATE INDEX i2 ON d(b_id2);
+  CREATE INDEX i3 ON e(a_id1);
+  CREATE INDEX i4 ON e(b_id2);
+  CREATE INDEX i5 ON f(a_id1);
+  CREATE INDEX i6 ON f(b_id2);
+  CREATE INDEX i7 ON g(a_id1);
+  CREATE INDEX i8 ON g(b_id2);
+
+  CREATE TABLE h(a_id PRIMARY KEY, b_id);
+  CREATE TABLE i(a_id PRIMARY KEY, c_id);
+  CREATE TABLE j(a_id PRIMARY KEY, g_id);
+  CREATE TABLE k(a_id PRIMARY KEY, h_id);
+
+  INSERT INTO h VALUES(1, 2);
+  INSERT INTO i VALUES(1, 2);
+  INSERT INTO j VALUES(1, 2);
+  INSERT INTO k VALUES(1, 2);
+
+  CREATE TABLE l(a_id PRIMARY KEY, h_id);
+  CREATE TABLE v(a_id PRIMARY KEY, h_id);
+}
+
+set testprefix testprefix
+
+proc multi_test {args} {
+  global DB
+  uplevel do_execsql_test 1.0 {
+    SELECT $args
+  } $::DB
+}
+
+do_test 2.1 {
+  multi_test select h_id from h where a_id in select a_id from a intersect select a_id from b
+} {2}
+
+ifcapable wal {
+  sqlite3_test_control_wal 1
+}
+
+do_execsql_test 3.0 {
+  UPDATE b SET b_id1 IN 
+    DELETE FROM d
+    FOR i IN
+      SELECT max c_id FROM b 
+}
+
+set iwalckpt 0
+do_execsql_test 4.0 {
+  UPDATE j SET h_id IN 
+    UPDATE h SET a_id IN
+      FOR i IN
+        SELECT a_id FROM j WHERE a_id IN
+    SELECT c_id FROM i WHERE c_id IN
+} {2}
+
+finish_test

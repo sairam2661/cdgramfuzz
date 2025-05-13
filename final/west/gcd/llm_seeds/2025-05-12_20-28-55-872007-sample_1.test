@@ -1,0 +1,116 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix foreignkey
+db_close_all
+
+proc test_foreignkey_support {} {
+  global db
+  execsql {
+    CREATE TABLE parent(id PRIMARY KEY, data);
+    CREATE TABLE child(id PRIMARY KEY, data, parent_id,
+       FOREIGN_KEY_CHECKS_DEFERRABLE , FOREIGN_KEY_CONSTRAINTS
+    );
+    CREATE INDEX child_parent_idx ON child(parent_id);
+  }
+  set rowid_old_0 0
+  execsql {
+    INSERT INTO parent VALUES(1, 'parent1');
+    INSERT INTO child VALUES(10, 'child10', 1);
+    INSERT INTO child VALUES(20, 'child20', 1);
+    INSERT INTO parent VALUES(2, 'parent2');
+    INSERT INTO child VALUES(30, 'child30', 2);
+    INSERT INTO child VALUES(40, 'child40', 2);
+  }
+}
+
+do_test foreignkey-1.1 {
+  execsql {
+    SELECT * FROM child WHERE parent_id=1;
+  }
+} {10 child10 1 1 20 child20 1 2 30 child30 2 3 40 child40 2 4}
+
+do_test foreignkey-1.2 {
+  set rowid_old_0 0
+  execsql {
+    DROP TABLE child
+  }
+  set rowid_old_0
+} {21}
+
+do_test foreignkey-1.3 {
+  set rowid_old_0 0
+  execsql {
+    CREATE TABLE child_new(
+      id PRIMARY KEY, parent_id,
+      FOREIGN_KEY_CHECKS_DEFERRABLE ,
+      FOREIGN_KEY_CONSTRAINTS 
+    );
+    CREATE INDEX child_new_parent_idx ON child_new(parent_id);
+    CREATE TABLE parent(id PRIMARY KEY, data);
+    INSERT INTO parent VALUES(1, 'parent1');
+    INSERT INTO child_new VALUES(10, 1);
+    SELECT * FROM child_new WHERE parent_id=1;
+  }
+} {10 1 1 30 child30 2 3 40 child40 2 4}
+
+proc fuzz_test_foreignkey_support {} {
+  test_foreignkey_support
+  foreach {sql1 sql2} {
+    {INSERT INTO child VALUES(1000, 'child', 1000)}
+    {INSERT INTO child VALUES('a', 'b', 'c')}
+    {INSERT INTO child VALUES(10000000000000000000, 'child', 1)}
+    {INSERT INTO child VALUES(1, 2, 'c')}
+    {INSERT INTO child VALUES(60, 2.5, 'c')}
+    {INSERT INTO child VALUES('a', 3, 'c')}
+  } {
+    do_test foreignkey_1.5 {
+      catchsql $sql1
+    } {0 {}}
+    do_test foreignkey_1.6 {
+      catchsql $sql2
+    } {1 {foreign key constraint failed}}
+  }
+}
+
+fuzz_test_foreignkey_support
+
+do_test foreignkey-1.7 {
+  set rc
+  set rc
+  finish_test
+} 0
+
+
+If you need more complex SQL code you should implement a procedure with database execution and verify the return value using the correct commands
+
+If you want to implement many other complex SQL operations like the ones mentioned below you should modify the fuzz_test_foreignkey_support to generate a list of operations instead of the operations inside a loop you could also implement different functions for different operations 
+
+INSERT INTO child VALUES NULL 'child10' 1
+INSERT INTO child VALUES NOT 'child10' 1
+INSERT INTO child VALUES NULL NULL 1
+INSERT INTO child VALUES NULL NULL NULL NULL
+
+INSERT INTO parent VALUES NULL 'parent1'
+INSERT INTO parent VALUES NOT 'parent1'
+INSERT INTO parent VALUES NULL
+INSERT INTO parent VALUES NULL NULL NULL NULL
+
+UPDATE child SET id  1000 WHERE id  1
+UPDATE child SET  1000 WHERE id  1
+UPDATE child SET id  1000 WHERE id  'a'
+UPDATE child SET  1000 WHERE id  'a'
+
+DELETE FROM child WHERE  1  id
+DELETE FROM child WHERE 1  10000000000000000000
+DELETE FROM child WHERE 1  not exist
+DELETE FROM child WHERE 10000000000000000000  10000000000000000000
+DELETE FROM child WHERE 10000000000000000000  100000000000000000
+DELETE FROM child WHERE 1  id 2 id
+DELETE FROM child WHERE 1  id 2
+
+
+SELECT child_data FROM parent JOIN child ON child_parent_id
+SELECT parent_data FROM parent JOIN child ON child_parent_id
+SELECT child_data FROM parent JOIN child ON child_parent_id USING parent_id
+SELECT parent_data FROM parent JOIN child ON child_parent_id USING parent_id
+SELECT child_data FROM parent JOIN child ON child_parent_id

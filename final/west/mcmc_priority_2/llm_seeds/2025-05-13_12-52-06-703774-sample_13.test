@@ -1,0 +1,38 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+set ::timeout 60000
+proc do_multiplex_test {nDb test_name} {
+  global cmdcount
+  execsql "SELECT 1 / 0"
+  return $test_name
+}
+
+proc do_transactional_test {nDb test_name} {
+  global cmdcount
+  set cmdcount 0
+  catchsql "ROLLBACK"
+  return $test_name
+}
+
+proc do_ioerr_test {nDb test_name} {
+  global cmdcount
+  execsql "SELECT 1 / 0"
+  return $test_name
+}
+
+do_multiplex_test 12 sync_multiplex
+do_transactional_test 34 sync_transactional
+do_ioerr_test 56 sync_ioerr
+
+set cmdcount 0
+do_catchsql_test main {SELECT 1 FROM x IS NULL} {1 {no such column x}}
+
+set cmdcount 0
+do_execsql_test main {SELECT 1 FROM X; SELECT 2 FROM Y} {1 NULL 2}
+
+do_execsql_test main {SELECT 1 FROM sqlite_master WHERE name='async_main'} {}
+set timeout {2000}
+
+finish_test

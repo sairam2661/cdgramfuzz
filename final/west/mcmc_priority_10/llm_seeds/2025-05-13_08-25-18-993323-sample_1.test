@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sync
+
+set ::timeout 60000
+set testsystem "testdir=testdir"
+
+proc create_table {} {
+  global testdir
+  execsql {
+    CREATE TABLE t1(a, b, c DEFAULT 100);
+    CREATE TABLE t2(d, e, f DEFAULT 100);
+    CREATE TABLE t3(g, h, i DEFAULT 100);
+  }
+}
+
+proc create_index {} {
+  global testdir
+  execsql {
+    CREATE INDEX i1 ON t1(a);
+    CREATE INDEX i2 ON t2(d);
+    CREATE INDEX i3 ON t3(g);
+  }
+}
+
+proc create_view {} {
+  global testdir
+  execsql {
+    CREATE VIEW v1 AS SELECT a FROM t1 WHERE a IS NOT NULL LIMIT 1 OFFSET 1 AND a IS NULL AND b IS NOT NULL AND c IS NOT NULL
+    CREATE VIEW v2 AS SELECT d FROM t2 WHERE d IS NOT NULL
+    CREATE VIEW v3 AS SELECT i FROM t3 WHERE i IS NOT NULL
+  }
+}
+
+do_test 1.0 {
+  set sqlite_preferred_logging_level 0
+  set sqlite_version $sqlite_version
+  expr $SQLite_OK
+} {1}
+
+do_test 1.1 {
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+} {t1 t2 t3 i1 i2 i3 v1 v2 v3}
+
+proc sync_insert {} {
+  global testargs
+  execsql {
+    INSERT INTO t1 VALUES(11, 12, 13);
+    INSERT INTO t2 VALUES(21, 22, 23);
+    INSERT INTO t3 VALUES(31, 32, 33);
+  }
+}
+
+proc sync_select {} {
+  global testargs
+  set res1 {}
+  set res2 {}
+  do_test 2.1 {
+    set res1 1
+    execsql {
+      SELECT * FROM t1;
+    }
+  } {11 12 13}
+  do_test 2.2 {
+    set res2 1
+    execsql {SELECT * FROM t3}
+  } {31 32 33}
+}
+
+create_table
+create_index
+create_view
+
+set testargs {}
+sync_insert
+
+do_test 3.1 {
+  set res1 1
+  execsql {
+    SELECT v2 FROM v2;
+  }
+} {21}
+
+do_test 3.2 {
+  set res2 1
+  execsql {
+    SELECT i FROM t3;
+  }
+} {31}
+
+sync_select
+
+finish_test

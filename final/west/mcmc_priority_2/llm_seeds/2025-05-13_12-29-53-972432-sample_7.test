@@ -1,0 +1,191 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc check_select_result {db expected} {
+  set result {}
+  foreach row {column1 column2} {
+    lappend result $row
+  }
+  result
+}
+
+proc get_count {db table} {
+  execsql {SELECT count(*) FROM sqlite_master WHERE type='table'}
+  lindex $result 0
+}
+
+proc insert_random_data {db table n} {
+  for {set i 1} {$i le $n} {incr i} {
+    sqlite db db
+    execsql {INSERT INTO $table VALUES'}
+    execsql {
+      SELECT
+        randomblob(100),
+        randomblob(100),
+        randomblob(100)
+      FROM randomblob
+    }
+  }
+  delete_db
+}
+
+proc execute_multiple_times {db sql count} {
+  while {$count>0} {
+    set res [execsql $sql]
+    decrement count
+    if {$count>0} {
+      execsql ROLLBACK
+    }
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x,y);
+    INSERT INTO a VALUES(1,2),(3,4);
+  }
+} {1 2 3 4}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(5,6);
+  COMMIT;
+  SELECT * FROM a;
+} {1 2 3 4 5 6}
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE b(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    x TEXT NOT NULL,
+    y TEXT NOT NULL
+  );
+} {}
+
+set ::treq {
+  id x y
+}
+
+do_execsql_test complex-1.4 {
+  INSERT INTO b(x,y)
+  VALUES('one','two');
+} {}
+do_test complex-1.5 {
+  check_select_result $::treq [execsql {SELECT * FROM b}]
+} {1 one two}
+
+set ::treq {
+  id x y
+}
+
+do_execsql_test complex-1.6 {
+  BEGIN;
+  INSERT INTO b(x,y)
+  VALUES('three','four');
+} {}
+do_test complex-1.7 {
+  execsql {COMMIT}
+  check_select_result $::treq [execsql {SELECT * FROM b}]
+} {1 one two 2 three four}
+
+do_execsql_test complex-1.8 {
+  DROP TABLE b;
+} {}
+
+do_execsql_test complex-1.9 {
+  CREATE TABLE d(e int);
+  INSERT INTO d VALUES(10, 20, 30);
+  SELECT * FROM d;
+} {10 20 30}
+
+do_execsql_test complex-1.10 {
+  CREATE TABLE c(a int, b int);
+  INSERT INTO c VALUES(10, 20), (30, 40), (50, 60);
+  SELECT * FROM c;
+} {10 20 30 40 50 60}
+
+set ::treq_a {1 20}
+set ::treq_b {4 80}
+do_execsql_test complex-1.11 {
+  SELECT (a*b) FROM c ORDER BY b
+} {*}[$::treq_a $::treq_b]
+
+do_execsql_test complex-1.12 {
+  SELECT name FROM sqlite_master;
+} {sqlite_autoindex_d_1 a sqlite_autoindex_b_1 a sqlite_autoindex_c_1 a}
+
+do_execsql_test complex-1.13 {
+  CREATE TABLE q(a, b, c);
+  INSERT INTO q VALUES(1, NULL, 'text');
+} {}
+do_test complex-1.14 {
+  execsql {PRAGMA integrity_check}
+} {}
+
+do_execsql_test complex-1.15 {
+  INSERT INTO q VALUES(2, 'c', NULL);
+} {}
+do_test complex-1.16 {
+  execsql {PRAGMA integrity_check}
+} {}
+
+do_execsql_test complex-1.17 {
+  DROP TABLE q;
+} {}
+
+do_execsql_test complex-1.18 {
+  CREATE TABLE e (f INT, g TEXT PRIMARY KEY);
+  DROP TABLE e;
+} {}
+
+ifcapable journalMode {
+  do_execsql_test complex-1.19 {
+    PRAGMA journal_mode=WAL
+  } {}
+}
+
+set ::dbs {a b c}
+do_execsql_test complex-1.20 {
+  WITH RECURSIVE x AS (
+    SELECT *, 0 AS level FROM a
+    UNION ALL
+    SELECT a.x, b.y, level + 1
+    FROM x
+    JOIN b ON a.id = b.id
+  )
+  SELECT * FROM x ORDER BY level
+} {}
+
+do_execsql_test complex-1.21 {
+  WITH RECURSIVE y AS (
+    SELECT 'hello'
+    UNION ALL
+    SELECT 'world'
+  )
+  SELECT * FROM y
+} {hello world}
+
+execsql {
+  BEGIN;
+  INSERT INTO a VALUES(10, 20);
+}
+
+set ::treq_two {
+  id x y
+}
+do_execsql_test complex-1.22 {
+  SELECT * FROM a
+} {10 20}
+set ::treq_three {
+  sqlite_master_table_name 3
+}
+do_execsql_test complex-1.23 {
+  PRAGMA database_list
+} {*}[$::treq_three]
+db close
+
+do_execsql_test complex-1.24 {
+  CREATE VIEW v AS SELECT a, b FROM c;
+  SELECT *

@@ -1,0 +1,112 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_db
+
+set ::timeout 60000
+
+proc insert_data {table} {
+  for {set i 1} {$i le 10} {incr i} {
+    execsql {INSERT INTO $table VALUESAbsent $i}}
+}
+
+proc update_data {table} {
+  execsql {UPDATE $table SET value2 22 WHERE value1 12}
+  execsql {UPDATE $table SET value2 11 WHERE value1 11}
+}
+
+proc delete_data {table} {
+  execsql {DELETE FROM $table WHERE value1 20}
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE ifnotexists_3(a,b);
+  CREATE TABLE ifexists_4(c,d);
+  SELECT name FROM sqlite_master WHERE type='table';
+} {ifnotexists_3 ifexists_4}
+
+set data_inserted {}
+set data_updated {}
+
+do_test complex-1.2 {
+  set data_inserted
+  eval insert_data ifnotexists_3
+  execsql {PRAGMA integrity_check;}
+  uplevel set data_inserted
+} {1 2 3 4 5 6 7 8 9 10}
+
+do_test complex-1.3 {
+  set data_updated
+  eval update_data ifnotexists_3
+  execsql {PRAGMA integrity_check;}
+  uplevel set data_updated
+} {22 22 1 11}
+
+do_test complex-1.4 {
+  set data_inserted
+  eval insert_data ifexists_4
+  execsql {PRAGMA integrity_check;}
+  uplevel set data_inserted
+} {1 2 3 4 5 6 7 8 9 10}
+
+do_test complex-1.5 {
+  set data_updated
+  eval update_data ifexists_4
+  execsql {PRAGMA integrity_check;}
+  uplevel set data_updated
+} {22 22 1 11}
+
+do_execsql_test complex-2.1 {
+  CREATE TABLE abc(a,b,c);
+  INSERT INTO abc VALUES(15,20,25);
+  INSERT INTO abc VALUES(20,25,30);
+  INSERT INTO abc VALUES(25,30,35);
+} {}
+
+do_test complex-2.2 {
+  execsql {
+    CREATE VIEW abc_view AS SELECT a FROM abc WHERE b 25
+  }
+  execsql {
+    SELECT * FROM abc_view
+  }
+} {20 25 30}
+
+do_execsql_test complex-3.1 {
+  CREATE TABLE a2(a,b,c);
+  CREATE TABLE b2(b,c,a);
+} {}
+
+ifcapable trigger {
+  db eval {
+    CREATE TRIGGER delete_if_value_10_20 ON table_a
+      BEFORE DELETE
+      FOR EACH ROW WHEN old_a 10
+    BEGIN
+      DELETE FROM table_b WHERE new_a 20
+    END
+  }
+}
+
+do_test complex-4.1 {
+  execsql {
+    CREATE TABLE a_a_0(a,b);
+    CREATE TABLE b_b_0(b,c);
+  }
+  execsql {
+    INSERT INTO a_a_0 VALUES(10,20);
+    INSERT INTO b_b_0 VALUES(10,30);
+  }
+  db eval {DELETE FROM a_a_0}
+  db eval {SELECT * FROM b_b_0}
+} {10 30}
+
+ifcapable view {
+  catchsql {
+    DROP VIEW someview
+  }
+  finish_test
+} else {
+  finish_test
+} 
+
+finish_test

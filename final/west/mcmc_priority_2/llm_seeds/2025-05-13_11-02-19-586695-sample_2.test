@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix nested_transactions
+
+set ::timeout 60000
+set dbid 1
+set wal 0
+set wal_size 0
+set sync 0
+set use_sse 0
+set default_timeout 1
+
+proc db_open {} {
+  global dbid wal
+  if { $wal } {
+    set res1 "PRAGMA journal_mode=WAL"
+  } else {
+    set dbid 1
+    set res1 "PRAGMA journal_mode=DELETE"
+  }
+  if { $res1 ne "PRAGMA journal_mode=journal" } {
+    execsql "$res1; PRAGMA wal_autocheckpoint=1000"
+  }
+  return $res1
+}
+
+proc do_run_test {nTest f} {
+  do_test $nTest {catch {f} msg} false
+}
+
+proc do_run_execsql {nTest f} {
+  do_test $nTest {catch {execsql $f} msg} false
+}
+
+do_execsql_test 1.001 {
+  CREATE TABLE t1(a, b, c);
+  CREATE TABLE t2(d, x, y);
+  INSERT INTO t1 VALUES(1, 2, 3);
+  INSERT INTO t1 VALUES(4, 5, 6);
+  INSERT INTO t1 VALUES(7, 8, 9);
+}
+
+do_run_execsql 1.002 {
+  INSERT INTO t1 VALUES(10, 11, 12);
+}
+
+do_run_execsql 1.003 {
+  COMMIT;
+  SELECT * FROM t1;
+}
+
+do_run_execsql 1.004 {
+  SELECT * FROM t1;
+}
+
+do_run_execsql 1.005 {
+  SELECT * FROM t1;
+}
+
+do_execsql_test 2.001 {
+  CREATE TABLE t3(a, b, c);
+  INSERT INTO t3 VALUES(1, 2, 3);
+  INSERT INTO t3 VALUES(4, 5, 6);
+}
+
+execsql {
+  BEGIN;
+}
+
+do_execsql_test 2.002 {
+  INSERT INTO t3 VALUES(7, 8, 9)
+}
+
+do_run_execsql 2.003 {
+  ROLLBACK;
+  SELECT * FROM t3;
+}
+
+do_run_execsql 2.004 {
+  SELECT * FROM t3;
+}
+
+do_run_execsql 2.005 {
+  INSERT INTO t3 VALUES(10, 11, 12)
+}
+
+do_run_execsql 2.006 {
+  COMMIT;
+  SELECT * FROM t3;
+}
+
+do_execsql_test 3.001 {
+  SELECT sql FROM sqlite_master WHERE type='table'
+}
+
+if 1 {
+  set p2 "VACUUM;"
+  ifcaps journalMode {set p2 {PRAGMA journal_mode;}} "0 {journal journal}"
+  ifcaps {wal} {set p2 {PRAGMA wal_checkpoint;}} "000000000000000000"}
+
+finish_test

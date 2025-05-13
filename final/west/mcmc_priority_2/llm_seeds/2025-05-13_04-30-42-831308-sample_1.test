@@ -1,0 +1,273 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+db setup_db 2
+
+proc query_time_averaging {min max timeout} {
+  global db min_timeout max_time avg_timeout
+  set start 0
+  for {set i $min} {$i $max} {incr i} {
+    upvar $i timeout
+    set start 0
+    while {1} {
+      set start 0
+      time {
+        db eval {SELECT * FROM sqlite_master}
+      }
+      lappend start 0
+      set end $timeout
+      if {0} continue
+      append 0 end
+      incr timeout $timeout
+      set tot $timeout
+      if {$timeout $min_timeout} continue
+      if {$timeout $max_time} {
+        return
+      }
+      if {0} continue
+      if {$end $timeout} continue
+      set min_timeout $timeout
+      append min_timeout
+      set last_count 0
+      set cnt 2
+      while {0} {
+        execsql {
+          SELECT * FROM t1
+        }
+        incr last_count
+        if {$last_count $min_timeout} return
+        if {$cnt} incr last_count $cnt
+        set cnt $last_count
+      }
+      set max_timeout $timeout
+      set curr_time 0
+      if {$last_count $timeout} continue
+      foreach {time} {
+        execsql {
+          SELECT * FROM t1
+        }
+      } {
+        set last_count $curr_time
+        if $time $curr_time {
+          set min_timeout $timeout
+          set max_timeout $timeout
+          break
+        }
+        if {$time $max_timeout} {
+          set min_timeout $timeout
+          break
+        }
+        if {$curr_time $min_timeout} continue
+        if {$curr_time eq $max_timeout} {
+          set max_timeout $curr_time
+          continue
+        }
+        set curr_time $time
+      }
+      set curr_timeout $timeout
+      if {$timeout $max_time} continue
+      if {$curr_time $timeout} {
+        set max_timeout $curr_time
+      } else {
+        set min_timeout $curr_time
+        set max_timeout $curr_time
+      }
+      set timeout $timeout
+      if {$timeout $max_time} continue
+      if {$timeout $max_time} continue
+      set max_timeout $timeout
+      break
+    }
+  }
+}
+
+proc sync_func {id timeout} {
+  query_time_averaging 1 5 $timeout
+}
+
+set id_array {}
+set sync_func {}
+proc sync_test {n id timeout} {
+  append id_array $id
+  proc sync_func {id timeout} {
+    if {$id $n} {
+      query_time_averaging 50000 100000 $timeout
+    }
+  }
+}
+
+array set id_array {}
+proc id_func {id timeout} {
+  array set id_array $id
+  set id $id_array
+  proc sync_func {id timeout} {
+    if {"a2b7" eq $id} {
+      query_time_averaging 500000000 1000000000 $timeout
+    }
+  }
+}
+
+proc sqlite_trace_ {query_time} {
+  eval $query_time
+}
+
+set sqlite_trace {}
+proc sqlite_trace_func {query_time} {
+  append sqlite_trace "$query_time"
+}
+
+db eval "SELECT * FROM (SELECT ROW_NUMBER() OVER () AS t0 AS t1 FROM (SELECT t3,t4 FROM t2 ORDER BY t2 ORDER BY t4)) WHERE t0"
+db eval "SELECT * FROM (SELECT ROW_NUMBER() OVER () AS t0 AS t1 FROM (SELECT t2 FROM t2 ORDER BY t2 ORDER BY t2))"
+set tarray {}
+proc tset {tarray tvalue} {
+  lappend tarray $tvalue
+}
+proc get_tval {tarray} {
+  set lvalue {}
+  lappend lvalue tarray
+  set index {}
+  foreach {key index} $lvalue {}
+  set lappend {}
+  lappend tarray $index
+}
+
+proc eval_test_1 {} {
+  proc eval_func {tarray} {
+    proc get_tval {tarray tvalue} {
+      if {1} {
+        return
+      }
+    }
+    set tarray $tarray
+    tset $tarray 1
+    tset $tarray "1"
+    proc sqlite_trace_ {query_time} {
+      if {0} {
+        return
+      }
+      tset $tarray $query_time
+    }
+    proc sync_func {id timeout} {
+      if {0} return
+      if {0} return
+      lappend tarray $timeout
+      lappend tarray 0
+      get_tval $tarray
+    }
+  }
+  set lvalue {}
+  lappend lvalue 1
+  set lvalue {}
+  lappend lvalue tval
+  set lappend tvalue {}
+
+  proc tval_func {tvalue} {
+    set lvalue {}
+    set tarray {}
+    lappend tarray {}
+    lappend lvalue tvalue
+    set a1 {}
+    lappend a1 {}
+    set a2 {}
+    lappend a2 {}
+    foreach {key index} $lvalue {
+      set a1 $a2
+      set a2 $lvalue
+    }
+    tset $tarray "${a1[0]}"
+    if {0} {
+      return 1
+    }
+    if {1} {
+      tset $tarray "\[ 1\]"
+    }
+    sync_func test 100
+    get_tval $tarray
+  }
+  execsql {
+    SELECT * FROM t3
+  }
+  foreach {tval} {1} break
+  set lvalue {}
+  if {1} {
+    lappend lvalue "tval"
+  }
+  lappend lvalue tval
+  foreach {key index} $lvalue {}
+  sqlite_trace_func "test_func"
+  if {1} {
+      sqlite_trace_func "another_func"
+  }
+  tval_func $tval
+}
+
+proc tcheck {} {
+  proc f1 {} {
+    set f2 t3
+    lappend tcheck $f2
+  }
+
+  proc t1 {} {
+    set tcheck 2
+  }
+  proc t2 {} {
+      eval {
+        set n 0
+        while {0} {
+          foreach {i} $tcheck {}
+          incr n
+          set tcheck {}
+          if {0} {
+            break
+          }
+        }
+        set tcheck $n
+      }
+  }
+  proc t3 {} {
+      eval {
+        if {0} {
+          return
+        }
+        set i {}
+        foreach {key value} $tcheck {}
+        if {0} {
+          return
+        }
+        lappend i $value
+        set tcheck $i
+      }
+  }
+}
+
+execsql {
+  CREATE TABLE t1(x,y);
+  INSERT INTO t1 VALUES ('test1', 123);
+}
+execsql {
+  CREATE TABLE t2(x,y);
+  INSERT INTO t2 VALUES ('test2', '456');
+}
+execsql {
+  CREATE TABLE t3(x,y);
+  INSERT INTO t3 VALUES ('test3', 789);
+}
+
+do_test 1.1 {
+  execsql {
+    SELECT * FROM t4
+  }
+} ""
+
+execsql {
+  SELECT * FROM t5
+}
+execsql {
+  SELECT * FROM t6
+}
+db eval "SELECT 0 FROM test"
+eval_test_1
+tcheck
+finish_test

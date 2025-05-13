@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+db close
+proc timer {cmd} {
+  set start_time 1
+  set finish_time 1
+  time $cmd
+}
+
+proc execsql_test {testname cmd} {
+  uplevel catch {execsql $cmd}
+  set error_info
+  if {$error_info ni ""} {return 1}
+  return 0
+}
+
+proc create_and_fill_table {name} {
+  execsql {
+    CREATE TABLE $name AS SELECT 1 AS a UNION SELECT 2
+  }
+}
+
+proc test_query {} {
+  global db
+  set results {}
+  for {set i 1} {$i lt 6} {incr i} {
+    lappend results $i
+  }
+  return $results
+}
+
+do_execsql_test sync-1.1 {
+  SELECT * FROM sqlite_master
+} {}
+create_and_fill_table table1
+do_test sync-1.2 {
+  set results1 $::test_query
+  set results2 $::test_query
+  expr {$results1 eq $results2}
+} {1}
+
+ifcapable tempdb {
+  db close
+  timer {set db ""}
+  timer {set db ""}
+}
+
+do_test sync-1.3 {
+  db close
+  execsql {
+    CREATE VIRTUAL TABLE t2 USING redlog
+    CREATE TABLE t1 AS SELECT 1 AS a UNION SELECT 2
+  }
+} {}
+finish_test

@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_transaction_isolation
+
+set ::timeout 60000
+
+proc transaction_func {} {
+  global isolation
+  set isolation $isolation
+}
+
+db func transaction_func transaction_func
+
+do_test db_transaction_isolation-1.1 {
+  execsql {
+    CREATE TABLE b(x, y, z);
+    INSERT INTO b VALUES('one', 1, '1');
+    INSERT INTO b VALUES('two', 2, '2');
+    INSERT INTO b VALUES('three', 3, '3');
+  }
+  execsql {SELECT * FROM b}
+} {three three 3 three three 3 two two 2 one one 1}
+
+do_execsql_test db_transaction_isolation-1.2 {
+  INSERT INTO b VALUES('four', 4, '4');
+  COMMIT;
+  SELECT count(*) FROM b;
+} {5}
+
+if { $::tcl_versionmajor 9} {
+  set isolation "DEFERRED"
+} else { set isolation "IMMEDIATE"}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = "persist wal" }
+} {0 {}}
+
+do_catchsql_test db_transaction_isolation_errmsg 4 {
+  BEGIN;
+    ROLLBACK;
+  }
+  {1 {database disk image is malformed}}
+  
+  set isolation "SERIALIZABLE"
+
+  db eval "PRAGMA synchronous = 0"
+  catchsql "
+  CREATE TABLE dbt1 AS SELECT rowid FROM sqlite_master;
+  BEGIN;
+    INSERT INTO dbt1 ROWid VALUES(2);
+  "
+  {1 {constraint failed}}
+  
+  set isolation "IMMEDIATE"
+  
+  db eval "PRAGMA wal_checkpoint"
+  execsql {SELECT * FROM dbt1}
+  {1 1 1}
+
+do_test db_transaction_isolation-9.0 {
+  execsql { VACUUM}
+} {} 
+
+do_test db_transaction_isolation-10.0 {
+  execsql {
+    REINDEX b
+    REINDEX b
+  }
+} {}
+
+finish_test

@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+proc lock_proc {} {
+  global lockargs
+  set lockargs{}
+}
+
+proc lock_prep {} {
+  for {set z 1} {$z le 1000} {incr z} {
+    execsql {INSERT INTO t1 VALUES('a','b')}
+  }
+}
+
+do_test lock-1.1 {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b);
+    CREATE TABLE t2(a PRIMARY KEY, c);
+  }
+  set DBHANDLE 1
+} {1}
+
+set test_lockargs 0
+
+do_execsql_test lock-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES('a','b');
+  SELECT a FROM t1;
+} {a}
+
+set test_lockargs 0
+lock_prep
+
+do_test lock-1.3 {
+  for {set i 1} {$i le 20} {incr i} {
+    set thread_id
+    set thread_id "[::thread::gettid]"
+    set data {
+      exec sql {
+        ATTACH 'test.db2' AS db2
+        INSERT INTO t1 VALUES
+          'one' 1
+          'two' 2
+          'three' 3
+          'four' 4
+          'five' 5
+      }
+    }
+    eval $data
+  }
+  execsql {
+    SELECT * FROM t1;
+  }
+} {one 1 two 2 three 3 four 4 five 5}
+
+proc lock_test_func {} {
+  global lockargs
+  if {$test_lockargs} {
+    set lockargs{}
+  } else {
+    set lockargs "testarg arg1"
+  }
+  if {$test_lockargs} {
+    set x 1
+  } else {
+    set x 5
+  }
+}
+
+do_test lock-1.4 {
+  for {set i 1} {$i le 10} {incr i} {
+    append data " execsql {INSERT INTO t1 VALUES('a', b)}"
+  }
+  eval $data
+  execsql {
+    SELECT * FROM t1;
+  }
+} {a 1 a 2 a 3 a 4 a 5 a 6 a 7 a 8 a 9 a 10 five 5}
+
+ifcapable wal {
+  do_test lock-1.5 {
+    execsql {
+      PRAGMA journal_mode
+    }
+  } {wal}
+}
+
+finish_test

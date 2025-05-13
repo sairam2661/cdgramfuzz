@@ -1,0 +1,90 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_sync
+
+proc wal_sync_insert {} {
+  global wal_syncargs
+  db eval {INSERT INTO a VALUES(4)}
+  lappend wal_syncargs
+  expr {expr{randnumber} 2}
+}
+
+proc wal_sync_update {} {
+  global wal_syncargs
+  set id 3
+  db eval {UPDATE a SET x 4 WHERE rowid 5}
+  lappend wal_syncargs
+  expr {expr{randnumber} 1}
+}
+
+proc wal_sync_delete {} {
+  global wal_syncargs
+  db eval {DELETE FROM a WHERE rowid 3}
+  lappend wal_syncargs
+  expr {expr{randnumber} 3}
+}
+
+do_test wal_sync-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE INDEX a_idx ON a(x);
+    INSERT INTO a VALUES(1);
+    SELECT count(*) FROM a;
+  }
+} {1}
+
+do_execsql_test wal_sync-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {2}
+
+do_catchsql_test wal_sync1.3 {
+  PRAGMA synchronous = 0;
+} {1 {synchronous must be 1 to set synchronous to 0}}
+
+ifcapable journal_mode {
+  do_catchsql_test wal_sync1.4 {
+    PRAGMA journal_mode = 'WAL';
+  } {0 {}}
+
+  do_test wal_sync-1.5 {
+    wal_sync_insert
+    wal_sync_update
+  } {}
+
+  do_test wal_sync-1.6 {
+    db close
+  } {}
+
+  do_test wal_sync-1.7 {
+    lset wal_syncargs 1
+  } {}
+  finish_test
+
+} else {
+  do_execsql_test wal_sync1.5 {
+    PRAGMA journal_mode = 'DELETE'
+  } {0 DELETE}
+
+  finish_test
+}
+
+do_test wal_sync-1.8 {
+  execsql {
+    CREATE TABLE b(x,y);
+    INSERT INTO b VALUES(1,2);
+    SELECT sum ( * ) FROM b
+  }
+} {3}
+
+do_execsql_test wal_sync-1.9 {
+  SELECT x FROM b
+} {1}
+
+do_catchsql_test wal_sync1.10 {
+  PRAGMA in_memory = 1;
+} {1 {Cannot change sqlite_options while in a multiquery}}
+
+finish_test

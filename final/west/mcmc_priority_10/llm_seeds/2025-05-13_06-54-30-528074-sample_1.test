@@ -1,0 +1,91 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc test_proc {} {
+  global testargs
+  lappend testargs
+  execsql {
+    SELECT * FROM a;
+  }
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+}
+
+proc execsql_test1 {n s} {
+  uplevel "do_execsql_test $n $s"
+}
+
+proc execsql_test2 {n s} {
+  uplevel "do_execsql_test $n $s"
+}
+
+set testargs {}
+set b1 0
+set b2 0
+
+do_test test-1.1 {
+  set sqlite_options {}
+  execsql_test1 test_1.1 "
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1),(2),(3);
+  "
+  execsql_test2 test_1.2 "
+    BEGIN;
+    INSERT INTO a VALUES(4);
+    COMMIT;
+    SELECT count(*) FROM a;
+  "
+} {4}
+
+catchsql {
+  PRAGMA journal_mode = 'WAL';
+} {0 {wal}}
+
+
+set testargs {}
+execsql_test1 test_2.1 "
+  CREATE TABLE c(id INTEGER PRIMARY KEY,
+    type TEXT NOT NULL,
+    name TEXT UNIQUE ON CONFLICT IGNORE);
+"
+
+
+do_test test-3.1 {
+  execsql_test1 test_3.1 "
+    SELECT * FROM sqlite_master WHERE type='table';
+  "
+} 2
+
+proc execsql_test3 {n s} {
+  uplevel "do_execsql_test $n $s"
+}
+
+execsql_test3 test_4.2 "
+  CREATE TABLE d(i INTEGER,
+  PRIMARY KEY(d,k)
+  FOREIGN KEY(k) REFERENCES c(type)
+  );
+"
+
+set testargs {}
+execsql_test3 test_4.1 "
+  INSERT INTO a(b,c)
+  VALUES(34,43);
+"
+
+do_test test-5.1 {
+  info exists testargs
+} 1
+
+proc execsql_test4 {n s} {
+  uplevel "do_execsql_test $n $s"
+}
+
+execsql_test4 test_5.1 "SELECT * FROM a"
+
+finish_test

@@ -1,0 +1,73 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiquery
+
+set ::timeout 60000
+
+proc multiquery_proc {} {
+  global result
+  lappend result
+}
+
+proc multiquery_test {nQuery nRow} {
+  global result
+  set result {}
+  for {set i 0} {$i lt $nQuery} {incr i} {
+    do_execsql_test multiquery_$i {
+      SELECT * FROM randomblob3;
+    }
+  }
+  set actual_rows 0
+  foreach row $result {
+    lappend actual_rows $row
+  }
+  return $actual_rows
+}
+
+do_test multiquery-1.1 {multiquery_test 3 10} {1 1 1}
+do_test multiquery-1.2 {
+  catch {execsql {
+    DROP TABLE IF EXISTS t2
+  }}
+  execsql {
+    CREATE TABLE t2(x);
+  }
+} {}
+do_test multiquery-1.3 {
+  set btefore {}
+  for {set i 1} {$i le 100} {incr i} {
+    ifcapable temp_tables {
+      execsql {
+        CREATE TEMP TABLE t1 AS SELECT x FROM t2 WHERE x LIKE $i
+      }
+    } else {
+      execsql {
+        DELETE FROM t2 WHERE x NOT LIKE $i
+      }
+    }
+    set btefore $btefore t2
+  }
+  execsql {
+    SELECT count(*) FROM t2
+  }
+} {100}
+
+catch {execsql {
+  DROP TABLE IF EXISTS t3
+}}
+
+do_execsql_test multiquery-1.4 {
+  CREATE TABLE t3(x PRIMARY KEY);
+
+  INSERT INTO t3(x) VALUES
+        (1.0     )         
+
+     
+
+  }
+
+{
+  
+}
+
+finish_test

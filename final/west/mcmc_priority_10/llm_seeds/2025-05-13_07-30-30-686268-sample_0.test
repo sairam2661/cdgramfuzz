@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_2
+
+set ::timeout 60000  set timeout 60s
+set sqlite_options {wal2 cache shared_cache shared_cache_old cache_spill}
+
+proc shared_cache_test {n} {
+  set dbfile "test_$n.db"
+  db close
+  set cmd "DROP TABLE IF EXISTS t"
+  execsql "$cmd" $dbfile
+  execsql "CREATE TABLE t(x)"
+  execsql "PRAGMA shared_cache_size = $n"
+  if {n eq 0} {
+    execsql {SAVEPOINT sp}
+    lappend list 1
+    execsql {RELEASE savepoint sp}
+  } else {
+    lappend list 0
+  }
+  tputs "sharedcache_$n: $list"
+}
+
+set list1 {}
+set list2 {}
+foreach i $sqlite_options {
+  shared_cache_test $i
+  list1 append "1 "
+  list2 append "$list 1 "
+}
+
+tlog "shared_cache_1: $list1"
+tlog "shared_cache_2: $list2"
+set f {wal2 1 0 cache1 1 0 cache_shared1  1 0}
+foreach i $f {
+  do_execsql_test "$i" "PRAGMA $i" "1"
+}
+set f {journal_mode}
+do_execsql_test journal_mode "PRAGMA journal_mode" "wal"
+do_test sync-4.3 {
+  execsql {
+    BEGIN;
+    INSERT INTO t VALUES(123);
+    COMMIT;
+    SELECT count(*) FROM t;
+  }
+} {1}
+do_test sync-4.4 {
+  execsql {
+    BEGIN;
+    INSERT INTO t VALUES(123);
+    COMMIT;
+    SELECT count(*) FROM t;
+  }
+} {1}
+
+finish_test

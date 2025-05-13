@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_locking
+
+set ::timeout 60000
+
+proc timeout {} {
+  global timeoout
+  catch {test_t timeout $timeoout}
+}
+
+proc multi_locking_proc {} {
+  global multi_locking_args
+  lappend multi_locking_args
+  set a 0
+  set b 0
+  set c 0
+  foreach arg $multi_locking_args {
+    set a $arg
+    set b $a
+    incr c
+  }
+  expr {$a eq $c}
+}
+
+set multi_locking_args {}
+
+do_test multi_locking-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {}
+
+do_test multi_locking-1.2 {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    COMMIT;
+  }
+} {}
+
+ifcapable wal {
+  do_execsql_test multi_locking-1.3 {
+    PRAGMA journal_mode = 'wal';
+    SELECT name FROM sqlite_master
+  } {wal}
+
+  set multi_locking_args 1
+  set multi_locking_args 2
+  set multi_locking_args 3
+  set multi_locking_args 4
+  set multi_locking_args 5
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(10);
+    PRAGMA wal_checkpoint;
+  }
+} ingle
+
+do_test multi_locking-1.4 {
+  set multi_locking_args {}
+  execsql {
+    SELECT count(*) FROM sqlite_master
+  }
+} {2}
+
+set multi_locking_args 1 2 3 4 5
+
+do_test multi_locking-1.5 {
+  set multi_locking_args {}
+  execsql {
+    DROP TABLE a
+  }
+} {}
+
+do_test multi_locking-1.6 {
+  set multi_locking_args {}
+  execsql {
+    DROP TABLE b
+  }
+} {}
+
+finish_test

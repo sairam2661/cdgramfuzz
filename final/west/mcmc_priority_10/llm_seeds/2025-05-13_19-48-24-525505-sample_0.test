@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema
+
+set ::timeout 60000
+
+proc schema_create {} {
+  global dbhandle
+  execsql {
+    CREATE TABLE a(x);
+    CREATE INDEX a_idx ON a(x);
+    CREATE TABLE b(y);
+    CREATE TABLE c(q, r);
+    CREATE INDEX c_idx ON c(r);
+  }
+}
+
+proc schema_insert {} {
+  execsql {
+    INSERT INTO a VALUES(1000);
+    INSERT INTO b VALUES(1000);
+    INSERT INTO c VALUES('two thousand', 2000);
+  }
+}
+
+proc schema_query {} {
+  do_execsql_test schema_query_1.1 {
+    SELECT * FROM sqlite_master;
+  } {1 {table a} 1 {table a} {} {} 4 {index a_idx} 1 {index a_idx} {} {} 3 {table b} 1 {table b} {} {} 10 {table c} 1 {table c} {} {} 12 {index c_idx} 1 {index c_idx} {} {}}
+
+  do_execsql_test schema_query_1.2 {
+    SELECT * FROM a;
+  } {1}
+
+  do_execsql_test schema_query_1.3 {
+    SELECT * FROM b;
+  } {1000}
+
+  do_execsql_test schema_query_1.4 {
+    SELECT * FROM c;
+  } {two thousand 2000}
+
+}
+
+do_execsql_test schema-1.1 {
+  CREATE TABLE a(q, r);
+  CREATE INDEX a_idx ON a(r);
+  INSERT INTO a VALUES('one', 1);
+}
+{0 {}} 
+
+do_execsql_test schema-1.2 {
+  CREATE TABLE b(s);
+  INSERT INTO b VALUES('x');
+}
+{0 {}} 
+
+schema_create
+schema_insert
+schema_query
+finish_test

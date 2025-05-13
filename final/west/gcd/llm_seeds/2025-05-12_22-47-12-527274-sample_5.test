@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+proc async_func {n} {
+  global async_args
+  for {set i 0} {$i {$n}} {incr i} {
+    lappend async_args $i
+    after 100
+  }
+}
+
+proc do_async_test {name cmd args} {
+  global async_args
+  set async_args {}
+  uplevel $cmd
+  lappend async_args DONE
+  uplevel do_test $name {
+    set res $args
+  } $async_args
+}
+
+do_test async-1.1 {
+  execsql {
+    CREATE TABLE async_test(x);
+    INSERT INTO async_test VALUES(1);
+  }
+  execsql {SELECT * FROM async_test}
+} {1}
+
+do_async_test async2.2 {
+  BEGIN;
+  INSERT INTO async_test VALUES(4);
+  COMMIT;
+  SELECT * FROM async_test;
+} {} {2}
+
+do_async_test async3.1 {
+  INSERT INTO async_test VALUES('TEST-3');
+  SELECT * FROM async_test;
+} {1 1} {3}
+
+proc insert_multi {} {
+  for {set i 1} {$i 20} {incr i} {
+    execsql "INSERT INTO tab5 VALUES($i)"
+    lappend insert_results $i
+  }
+}
+
+do_test async3-2.1 {
+  db close
+  sqlite3 db testdb
+  execsql {
+    CREATE TABLE tab5(i);
+  }
+  execsql "SELECT count(*) FROM tab5"
+} {0}
+
+set insert_thread {}
+insert_multi
+
+after 100
+set res 0
+while 1 {
+  if {$insert_thread} return
+  after 1
+  set res 1
+}
+return $res
+
+set testdir2  $testdir
+file mkdir $testdir2
+set testdb "testdb-$testdir2"
+sqlite3 db $testdb
+do_test async4.1 {
+  execsql {
+    SELECT x FROM a UNION ALL SELECT 1 AS x FROM b UNION ALL SELECT 2 AS x FROM c
+  }
+} {1 1 2 2}
+
+finish_test

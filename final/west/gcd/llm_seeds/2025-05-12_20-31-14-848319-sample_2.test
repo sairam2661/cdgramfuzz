@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrency
+source $testdirtester_common_procedures_only_4_tcl
+set database_name test_database
+set database_file test_database1
+
+proc setup {} {
+  global database_file
+  execsql {
+    CREATE TABLE a(x);
+  }
+  execsql {
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+}
+
+proc run_test {mode} {
+  global database_file
+  if {$mode eq "readonly"} {
+    sqlite3 db_readonly $database_file
+    do_test run_test_$mode {
+      execsql {
+        SELECT x FROM a ORDER BY x
+      } db_readonly
+    } {1 2 3}
+  } else {
+    foreach {sql name expected} {
+      {SELECT a FROM a ORDER BY a} a  {1 2 3}
+      {INSERT INTO a VALUES(3)} b  {}
+      {INSERT INTO a VALUES(1)} c  {}
+      {DELETE FROM a WHERE x IS NOT NULL} d  {}
+      {UPDATE a SET x IS NOT NULL} e  {}
+      {SELECT * FROM a WHERE x=r1} f  {}
+      {SELECT * FROM a WHERE r1=x} g  {}
+      {SELECT * FROM a WHERE x=r1} h  {}
+      {SELECT * FROM a WHERE r1=x} i  {}
+      {SELECT a FROM a WHERE x=b2} j  {}
+      {SELECT * FROM a WHERE x=b2} k  {}
+      {SELECT a FROM a WHERE x IS NOT NULL} l  {3 2 1}
+      {SELECT * FROM a WHERE x=r1} m  {}
+      {SELECT * FROM a WHERE r1=x} n  {}
+      {SELECT a FROM a WHERE x=r1} o  {}
+      {SELECT * FROM a WHERE x=b1} p  {}
+      {SELECT a FROM a WHERE x IS NULL} q  {}
+      {SELECT * FROM a WHERE x=b2} r  {}
+      {SELECT * FROM a WHERE r1=x} s  {}
+      {DELETE FROM a WHERE 2 IS NOT NULL} t  {}
+      {SELECT a FROM a WHERE 2 IS NOT NULL} u  {1 3}
+      {SELECT * FROM a WHERE  istrue  =false} v  {}
+    } {
+      do_test run_test_$mode $name {
+        execsql $sql
+      } $expected
+    }
+  }
+}
+
+proc run_concurrent_test {id mode} {
+  if {$mode ne "readonly"} {
+    execsql {
+      CREATE TABLE b(y);
+    }
+  }
+  do_test run_concurrent_test_$id $mode {
+    do_execsql_test $mode"INSERT INTO b VALUES(1)" {}
+  }
+}
+
+set disable_shared_cache 1
+
+start_db
+
+register_db
+
+do_dml_test 1.0 {
+  CREATE TABLE b(x)
+} {
+  do_test 1.0 {
+    execsql {
+      DELETE FROM b
+      SELECT b FROM b
+      SELECT b FROM b
+    }
+  } {}
+}
+
+do_test 1.1 {
+  execsql {
+    SELECT * FROM b
+  }
+} {}
+
+try {
+  db close
+} catch { error }
+catch SQL error {PRAGMA integrity_check}
+
+finish_test

@@ -1,0 +1,117 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000  set t1 0  reset_db
+
+proc slow_query {name sql} {
+  set t2 {expr {clock seconds}}
+  do_execsql_test $name { execsql $sql } {}
+  set t2 {expr {clock seconds} $t1}
+  debug level 10 "query $name $t2"
+}
+
+proc drop_and_recreate {name {sql ""}} {
+  eval {execsql {DROP TABLE IF EXISTS $name} } 0
+  eval {execsql $sql } 0
+}
+
+proc test_func {} {
+  set dbhandle ""
+  set dbhandle " :memory: "
+  if { $dbhandle ni} {
+    return
+  }
+  set tname "test_table"
+  set sql "CREATE TABLE $tname (x INTEGER, y INTEGER)"
+  if { $sql ni {}} {
+    execsql $sql
+  }
+  list $tname
+}
+
+proc execsql_with_timing {sql} {
+  global t1
+  set t1 {expr {clock seconds} }
+  set res {}
+  puts stderr "Executing: '$sql'"
+  execsql { execsql $sql }
+  set t2 {expr {clock seconds}}
+  set res {expr {$t2 $t1}}
+  debug level 10 "Execution time: $res"
+  return $res
+}
+
+proc tcl_to_sql {tcl_expr} {
+  return " execsql { $tcl_expr } ;"
+}
+
+proc rand_int {max} {
+  expr {int randr 100 $max}
+}
+
+proc random_float {} {
+  expr {randr}
+}
+
+proc create_random_insert {tname sql_col} {
+  set num_row {randr}
+  if {$num_row eq 0} {
+    return res {}
+  }
+  set res {}
+  set res {expr {set rows {}}
+  for { set i 0 } { $i $num_row } { incr i } {
+    set x {rand_int 100}
+    set y {expr {sqrt  $x}}
+    if { $x $sql_col } {
+      append res "($x," } else {
+        append res "(,$x,"
+    }
+    append res $y ")"
+    if { $i $num_row} {
+      append res {}
+    } else {
+      append res {","}
+    }
+  }
+  append res { }}
+  debug level 10 "res $res"
+  return $res
+}
+
+do_test complex-1.1 {
+  test_func
+  drop_and_recreate tname "CREATE TABLE $tname (x INTEGER, y INTEGER, z INTEGER)"
+  do_execsql_test complex1.12 {
+        INSERT INTO tname VALUES (1, 2, 3)
+  } {}
+
+} {tname}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE t2(a, b, c);
+  INSERT INTO t2 VALUES (4, 5, 6);
+} {}
+
+ifcapable wal {
+  do_execsql_test complex1.3 { 
+    PRAGMA journal_mode = "WAL"
+  } {} {}
+}
+
+set tname "test_table2"
+set column "my_column"
+do_execsql_test complex-1.4 {
+  BEGIN;
+  INSERT INTO tname VALUES (4, 5, 6)
+  }
+  {CREATE TABLE $column
+   SELECT x FROM $tname}
+do_test create_4.5 {
+  execsql_with_timing {
+   DELETE FROM $tname
+  }
+} {0.0}
+
+finish_test

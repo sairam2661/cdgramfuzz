@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_sync
+
+set ::timeout 60000
+do_catchsql_test sync2.1 {
+  CREATE TABLE t1(b);
+} {1 {cannot commit from trigger or foreign key routine}}
+    
+proc sync_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {0}
+}
+
+do_execsql_test sync2.1a {
+  pragma temp_store_statistics
+} {0}
+
+do_execsql_test sync2.1b {
+  CREATE TEMP TABLE t2 AS SELECT b FROM t1
+} {}
+
+ifcapable temp_store {
+  do_test sync2.1c {
+    db close
+    proc sync_proc {}
+    set syncargs {}
+    db eval {
+      CREATE TABLE t3(x);
+      INSERT INTO t3 VALUES(1);
+    }
+  } {}
+}
+
+do_execsql_test sync2.1d {
+  pragma temp_store
+} {}
+
+do_test sync2.1e {
+  db close
+  catchsql {
+    CREATE TEMP TABLE t1 AS SELECT 1
+  }
+} {1 {cannot open temp file}}
+
+do_test sync2.1f {
+  set n 50
+  set fd 1
+  db eval {VACUUM}
+  db eval "PRAGMA cache_pressure=1"
+  while {$n} {
+    set n 0
+    db eval {VACUUM}
+    db eval {SELECT name FROM sqlite_master}
+    db eval {PRAGMA cache_pressure=0}
+    db eval {PRAGMA journal_mode=3}
+    db eval {PRAGMA cache_size=100000}
+    db eval {VACUUM}
+    db eval {PRAGMA cache_size=50000}
+    db eval {VACUUM}
+    db eval {PRAGMA cache_size=100000}
+    db eval {PRAGMA shrink_memory=1}
+  }
+} {}
+
+do_execsql_test sync2.1g {
+  PRAGMA shrink_memory
+} {0}
+
+finish_test

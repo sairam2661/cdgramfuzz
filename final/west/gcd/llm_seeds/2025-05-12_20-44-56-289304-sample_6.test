@@ -1,0 +1,126 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc query_proc {} {
+  global queryargs
+  lappend queryargs
+  expr {1}
+}
+
+proc start_logging {} {
+  global db
+  execsql {BEGIN;}
+  execsql {PRAGMA journal_mode = 'wal';}
+  execsql {PRAGMA synchronous = 1;}
+  execsql {PRAGMA wal_checkpoint;}
+  set dbwal 1
+}
+
+proc stop_logging {} {
+  global db
+  execsql {COMMIT;}
+  execsql {PRAGMA synchronous = 2;}
+  execsql {PRAGMA wal_checkpoint;}
+}
+
+proc enable_logging {} {
+  global db
+  if {$dbwal} {
+    stop_logging
+  }
+  start_logging
+}
+
+proc disable_logging {} {
+  global db
+  if {$dbwal} {
+    stop_logging
+  }
+}
+
+do_execsql_test query-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}
+
+"${::testdir}/fuzzcheck"  query_1_2 "query-1.2"
+set db {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(2);
+  SELECT 1 FROM b;
+}
+
+do_execsql_test query-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  INSERT INTO b VALUES(4);
+  SELECT * FROM a;
+} {1 3}
+
+start_logging
+
+execsql {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES (5);
+}
+
+"${::testdir}/fuzzcheck"  query_2_2 "query-2.2"
+
+execsql {
+  BEGIN;
+  CREATE TABLE d(t);
+  INSERT INTO d VALUES(6);
+  INSERT INTO d VALUES(7);
+  SELECT 1 FROM d;
+  COMMIT;
+  SELECT last_insert_rowid FROM d;
+}
+
+"${::testdir}/fuzzcheck"  query_3_2 "query-3.2"
+set db {
+  DROP TABLE a
+}
+
+execsql {
+  VACUUM
+}
+
+"${::testdir}/fuzzcheck"  query_2_2 "query-2.2"
+set db {
+  CREATE INDEX i ON a(x);
+}
+
+ifcapable stat4 {
+  execsql {
+    ANALYZE
+  }
+}
+
+ifcapable stats4 {
+  execsql {
+    VACUUM
+  }
+}
+
+"${::testdir}/fuzzcheck"  query_4_2 "query-4.2"
+do_execsql_test query-4.3 {
+  SELECT sqrt(  				    *) FROM a
+} {2 1 0}
+
+execsql {
+  SELECT * FROM a;
+
+  INSERT INTO a VALUES(10);
+}
+
+"${::testdir}/fuzzcheck"  query_5_2 "query-5.2"
+set db {
+  SELECT y FROM b;
+}
+"${::testdir}/fuzzcheck"  query_6_2 "query-6.2"
+"${::testdir}/fuzzcheck"  query_7_2 "query-7.2"
+"${::testdir}/fuzzcheck"  query_8_1 "query-8.1"
+"${::testdir}/fuzzcheck"  query_9_2 "query_9_2"
+
+finish_test

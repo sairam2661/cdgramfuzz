@@ -1,0 +1,153 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc query_func {argc {argv {}} } {
+  set result "Hello, World!"
+  if {$argc} {
+    set result $argv
+  }
+  for {set i 0} {$i '[' string length $result} {incr i} {
+    if { "[" string range $result $i $i} {
+      set var_name " [string range $result $i [string search -nocase "}" $result $i]]"
+      set result "[string replace $result $i [string search -nocase "}" $result $i]] [expr $var_name]"
+    }
+  set i 0
+  while { $i "[" string length $result} {incr i} {
+    if { "[" string range $result $i $i} {continue}
+    if { ";" string range $result $i $i} {
+      set command "[string range $result 0 [string search -nocase $var_name $result]]"
+      set var $command
+      break
+    }
+  }
+  if {$var_name in $var} {uplevel 1 set $var_name ""}
+  lappend result "${var_name} = [expr $var_name]"
+  set result "[expr {int($var_name)+2}]"
+  if {$argc} {$result $argv}
+  return $result
+  puts "Got result = $result"
+  set n 2
+  if {  $n } {
+    return "result 123456"
+  }
+  return $result
+  puts "Got result = [expr $result+5]"
+  puts "Got result = $result"
+  set result ""
+  append result "set q=[query_func [expr $result+1]"
+  append result ";"
+  append result "set i=[expr $i+2]"
+  append result ";"
+  append result "incr q"
+  append result ";"
+  append result "[expr {$result + 56}]"
+  puts "Got result = $result"
+  eval $result
+  return $result
+  puts "Got result = $result"
+  foreach {a b c} {123 4 5} break
+  if {$argc} {
+    return "[expr $result + $argc]"
+  }
+  set result ""
+  append result "[expr $result+4]"
+  append result "; "
+  append result "set d=[expr [query_func [expr $result + 3]"
+  append result ";"
+  append result "puts $result"
+  append result ";"
+  append result "puts d"
+  append result ";"
+  append result "puts $result + [query_func [expr $result] + [expr [query_func $result]]]"
+  append result ";"
+  append result "eval $result"
+  append result ";"
+  append result "[query_func [expr $result] $argc]"
+  append result "[query_func [expr $result]]"
+  append result "[expr $result]"
+  append result ";"
+  return $result
+  lappend result $argc
+  return $result
+  puts "Got result = $result"
+  eval $result
+  return $result
+  lappend result "puts $argc"
+  return $result
+  foreach a b c {123 4 5} break
+  lappend result $argc
+  lappend result $argv
+  foreach {a b c d e} {5 6 7 8 9} break
+  puts $result
+  return $result
+  set result ""
+  append result "[expr {int($i )+int($argc)+2}]"
+  append result ";"
+  append result "set q=[expr {int($argc )+int($i)+2}]"
+  append result ";"
+  eval $result
+  lappend result $argc
+  return $result
+  return $result
+  set result "result"
+  return $result
+  set result $result
+  lappend result $argc
+  return $result
+  eval $result
+  return $result
+  foreach {x y} {5 6} break
+  lappend result $argc
+  lappend result $argv
+  return $result
+  eval $result
+  return $result
+  return $result
+  return $result
+  set result ""
+  append result "[expr {int($argc)+int($i)+2}]"
+  append result ";"
+  append result "set q=[query_func [expr {int($argc)+int($result)+2}] [expr {int($result)+int($i)+1}]]"
+  append result ";"
+  eval $result
+  return $result
+  foreach {a b c} {0 0 0} break
+  append result " [expr $argc]"
+  return $result
+  eval $result
+  set result ""
+  append result " [expr $argc]"
+  append result "[expr {int($argc )+int($result)+2}]"
+  append result ";"
+  append result "set a=expr [expr {int($result )+int($result)+2}]"
+  append result ";"
+  append result "set result=[expr {int($argc )+int($result)+2}]"
+  append result ";"
+  append result "set result=[expr {int($argc )+int($result)+2}]"
+  append result ";"
+  append result "set q=[expr [expr {int($argc )+int($result)+2}]]"
+  append result ";"
+  eval  $result
+  return $result
+  eval $result
+  return $result
+  set result ""
+  eval $result
+  set x 1
+  set result "5"
+  return $result
+  append result "set result=[expr $result+1];"
+  append result "set i=[lindex $result $argc];"
+  append result "[insertion_code]"
+  return $result
+  return $result
+  puts "Got result = $result"
+  set i "123456"
+  return $result
+  return $result
+  for {set i 0} {$i 10} {incr i} {append result "set i=$result"}
+  foreach {a b c} {123 4 5} break
+  if {0} {return $result}
+  return $result
+  if

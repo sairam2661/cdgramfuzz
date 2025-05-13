@@ -1,0 +1,155 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+set master_conn con
+set master_db db
+
+proc insert_row {table args} {
+  $::master_db eval {
+    INSERT INTO $table $args
+  }
+}
+
+proc select_row {table args} {
+  set result {}
+  $::master_db eval {
+    SELECT $args FROM $table
+  } result
+  lindex $result 0
+}
+
+proc execsql {sql} {
+  $::master_db eval $sql
+}
+
+proc do_test {name script} {
+  if {$::tlog_level} {
+    log_$::tlog_level "TEST $name"
+  }
+  eval $script
+}
+
+if {0} {
+  set master_db {}
+  do_test setup {
+    set master_db sqlite3
+    $master_db busy_timeout 10000
+  }
+} else {
+  db eval {sqlite_db_config busy_timeout 10000}
+}
+
+do_test setup2 {
+  execsql {
+    SELECT 1
+  }
+} {1}
+
+do_test setup3 {
+  set con master_conn
+  execsql {
+    CREATE TABLE b(
+      x,
+      y,
+      z
+    );
+    CREATE INDEX i_b_y ON b(y);
+    CREATE INDEX i_b_z ON b(z);
+    INSERT INTO b(x,y,z)VALUES(4,25,3);
+    INSERT INTO b(x,y,z)VALUES(8,5,9);
+    INSERT INTO b(x,y,z)VALUES(11,2,8);
+  }
+  execsql {
+    COMMIT;
+  }
+} {1}
+
+do_test 1.1 {
+  execsql {
+    BEGIN;
+    SELECT * FROM b
+  }
+} {4 25 3 8 5 9 11 2 8}
+
+do_test 1.2 {
+  execsql {
+    SELECT y FROM b WHERE x=8;
+  }
+} {5}
+
+do_test 1.3 {
+  execsql {
+    SELECT z FROM b WHERE y=25;
+  }
+} {3}
+
+do_test 1.4 {
+  execsql {
+    SELECT x FROM b WHERE y=2;
+  }
+} {11}
+
+do_test 1.5 {
+  execsql {
+    UPDATE b SET y y
+  }
+} {4}
+
+do_test 2.1 {
+  execsql {
+    SELECT * FROM b;
+  }
+} {4 25 3 8 5 9 11 2 8}
+
+do_test 2.2 {
+  select_row b '*'
+} {4 25 3 8 5 9 11 2 8}
+
+do_test 3.1 {
+  execsql {
+    SELECT * FROM b
+  }
+} {4 25 3 8 5 9 11 2 8}
+
+do_test 3.2 {
+  select_row b y
+} {25 5 2}
+
+do_test 3.3 {
+  insert_row b 3 36 13
+}
+
+do_test 3.4 {
+  select_row b z
+} {3 9 13 8}
+
+do_test 4.1 {
+  execsql {
+    SELECT * FROM b
+  }
+} {4 25 3 8 5 9 11 2 8 3 36 13}
+
+do_test 4.2 {
+  select_row b '*'
+} {4 25 3 8 5 9 11 2 8 3 36 13}
+
+if {0} {
+  catch {execsql {DROP TABLE b}}
+} else {
+  DB eval {DROP TABLE b}
+}
+
+do_test teardown {
+  catch {execsql {SELECT 1}}
+  catch {execsql {VACUUM}}
+  $::master_conn close
+  unset master_conn
+  global master_db
+  unset master_db
+  db eval {sqlite_db_config busy_timeout 0}
+  finish_test
+} {} 
+
+finish_test

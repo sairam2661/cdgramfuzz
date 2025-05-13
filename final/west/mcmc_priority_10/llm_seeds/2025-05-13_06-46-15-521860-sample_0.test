@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_proc {} {
+  global asyncargs
+  after 1000
+  set asyncargs 0
+}
+
+create_prepared_query testprep sql "INSERT INTO b VALUES(?1)"
+
+do_test async-1.1 {
+  set db db
+  set dbHANDLE global db
+  eval $db prepare testprep
+  list sqlite3_errcode $db  0
+} {0}
+
+do_execsql_test async-1.2 {
+  INSERT INTO b VALUES(5);
+  SELECT * FROM b WHERE x = 5;
+} {5}
+
+proc async_run {} {
+  set db db
+  after 2000 {
+    set sqlite_busy_timeout $db 1000
+    execsql {
+      CREATE TABLE c(d);
+      CREATE TABLE e(g)
+    }
+  }
+}
+
+do_test async-1.3 {
+  set asyncargs 0
+  async_run
+  async_arg 1
+  async_run
+  while {1} {async_run}
+  list {c} {e}
+  ifcapable auto_vacuum {
+    list {auto_vacuum}
+  }
+} {{c} {e}}
+
+proc async_tcl {} {
+  eval $::global Tanner
+  list $::tcl_intercepted 0 async_ok
+}
+
+do_test async-1.4 {
+  after 3000
+  catch {async_tcl}
+  list $::tcl_intercepted async_ok
+} {0 async_ok}
+
+proc async_eval {} {
+  list sqlite3_errcode $::db  0 testdone
+}
+
+do_test async-1.5 {
+  after 4000
+  async_eval
+} {0 testdone}
+
+finish_test

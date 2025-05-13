@@ -1,0 +1,47 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix syncdb
+
+proc syncdb_proc {} {
+  global syncdbargs
+  lappend syncdbargs
+  list 2 2
+}
+
+proc syncdb_func {a b c d} {
+  for {set i 1} {$i $a} {incr i} {
+    for {set j 1} {$j$expr$bc} {incr j} {
+      execsql {
+          INSERT INTO table VALUES(1)
+      }
+    }
+  }
+  return "Success"
+}
+
+do_test syncdb-1.1 {
+  db close
+  if {$::sqlite_min_index_num} {
+    execsql {
+      CREATE INDEX i ON table(c);
+    }
+  }
+  execsql {
+    CREATE TABLE main(a, b, c, d, e);
+    SELECT * FROM main;
+  }
+} {}
+
+do_execsql_test syncdb-1.2 {
+  INSERT INTO main VALUES(1, 2, 3, 4, '(null)');
+  SELECT * FROM main;
+} {1 2 3 4 {none}}
+
+ifcapable wal_mode {
+  do_execsql_test syncdb-1.3 {
+    PRAGMA wal_checkpoint;
+    SELECT mame FROM main;
+  } {}
+}
+
+finish_test

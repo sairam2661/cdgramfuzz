@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc create_table {name} {
+  global db
+  execsql "CREATE TABLE $name(x, y)"
+}
+
+proc insert_values {name} {
+  execsql "INSERT INTO $name VALUES(1, 'one')"
+  execsql "INSERT INTO $name VALUES(2, 'two')"
+  execsql "INSERT INTO $name VALUES(3, 'three')"
+}
+
+proc execsql_func {sql {db master}} {
+  set res {}
+  if {$db ne master} {
+    lappend res "[lindex $::tcl_interactive 0] execsql $sql $db"
+  } else {
+    set res "[lindex $::tcl_interactive 0] execsql $sql"
+  }
+  eval $res
+}
+
+do_test complex-1.1 {
+  set db master
+  db function testexecsql execsql_func
+  create_table a
+  insert_values a
+  execsql {SELECT * FROM a}
+} {1 one 2 two 3 three}
+
+set sqlite_test_limit {
+  set sqlite_mem_limit 2000000
+  set sqlite_max_page_count 1000
+  set sqlite_page_size 1024
+}
+
+do_test complex-1.2 {
+  set db aux
+  set sqlite_test_limit
+  execsql {
+    CREATE TABLE b(x, y);
+    BEGIN;
+    INSERT INTO b VALUES(4, 'four');
+    INSERT INTO b VALUES(5, 'five');
+    INSERT INTO b VALUES(6,'six');
+    COMMIT;
+    SELECT * FROM b;
+  }
+} {4 four 5 five 6 six}
+
+proc do_multiconnection_test {sql args} {
+  global multi_test_counter
+  set res {}
+  foreach {db num} $args {
+    if {$num eq "both"} {
+      set idx both
+    } else {
+      set idx $db
+    }
+    lappend res "[lindex $::tcl_interactive 0] execsql $sql db($idx)"
+  }
+  set multi_test_counter $multi_test_counter
+  execsql_func $res
+}
+
+set multi_test_counter 0
+
+do_test complex-1.3 {
+  set db master
+  execsql {CREATE TABLE c(x, y)}
+  do_multiconnection_test {INSERT INTO c VALUES(7,'seven')} {master 1 aux 2}
+  do_multiconnection_test {INSERT INTO c VALUES(8, 'eight')} {master 1 aux both}
+  execsql {SELECT * FROM c}
+} {7 seven 8 eight}
+
+finish_test

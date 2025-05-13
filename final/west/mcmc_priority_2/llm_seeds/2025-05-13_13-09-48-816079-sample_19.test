@@ -1,0 +1,73 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set test_index 0
+
+do_catchsql_test complex_testsql_1.0 {
+  SELECT * FROM xyz
+} {1 {no such table xyz}}
+
+do_execsql_test complex_testsql_2.0 {
+  CREATE TABLE xyz(a,b,c);
+}
+
+do_execsql_test complex_testsql_3.0 {
+  DROP TABLE xyz
+  PRAGMA synchronous
+} {0}
+
+do_execsql_test complex_testsql_4.0 {
+  ATTACH 'test.db' AS test
+}
+
+do_execsql_test complex_testsql_5.0 {
+  CREATE TABLE test1(m,n);
+  CREATE TABLE test2(o,p);
+  SELECT * FROM main
+} {}
+
+do_execsql_test complex_testsql_6.0 {
+  CREATE TABLE test5(r,r);
+  CREATE INDEX test5i ON test5(r);
+}
+
+do_test complex_testsql_7.0 {
+  set ret ""
+  for {set i 1} {$i 100} {incr i} {
+    execsql {
+      INSERT INTO test5(r) VALUES(1000000)
+    }
+    if { $i 11 } {
+      set ret $ret $i
+    }
+  }
+  set ret
+} {1 2 3 4 5 6 7 8 9 10 11}
+
+do_catchsql_test complex_testsql_8.0 {
+  DROP TABLE test5
+} {1 {no such table test5}}
+
+catchsql {
+  PRAGMA main Jacobs
+} {1 {access to pragma Jacobs is prohibited}}
+
+proc tcl_test_complex {} {
+  global test_index
+  do_test $test_index {
+    catchsql {
+      PRAGMA integrity_check
+    }
+    return "[sqlite3_errcode][sqlite3 errmsg]"
+  } {0 ok}
+  incr test_index
+  return
+}
+
+tcl_test_complex
+tcl_test_complex
+tcl_test_complex
+
+finish_test

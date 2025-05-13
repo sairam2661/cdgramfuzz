@@ -1,0 +1,96 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000  set timeout 100000000000  set testdir  "/home/user/SQLTests/testdir"
+
+proc simple_func {} {
+  set result 0
+  for {set i 1} {$i le 10} {incr i} {
+    incr result
+  }
+  return $result
+}
+
+proc complex_query {} {
+  global db
+  execsql {
+    CREATE TABLE cities(c_id, c_name, state);
+    CREATE TABLE countries(c_name, iso);
+    CREATE TABLE city_state(id, city_id, country);
+  }
+
+  db eval {
+    INSERT INTO cities VALUES(1, 'New York', 'California');
+    INSERT INTO cities VALUES(2, 'Los Angeles', 'California');
+    INSERT INTO cities VALUES(3, 'Las Vegas', 'Nevada');
+    INSERT INTO countries VALUES('USA', 'US');
+    INSERT INTO city_state VALUES(1, 1, 'USA');
+    INSERT INTO city_state VALUES(2, 2, 'USA');
+    INSERT INTO city_state VALUES(3, 3, 'USA');
+  }
+
+  execsql {
+    SELECT c_name FROM cities
+    JOIN city_state USING c_id
+    JOIN countries ON city_state_country ISO IS countries_iso
+  }
+}
+
+proc count_rows {} {
+  set res 0
+  foreach row $::all_rows {
+    if {$res eq 0} {
+      lappend res 0
+    }
+    incr res
+  }
+  return $res
+}
+
+set up_query "CREATE TABLE temp_table (a int, UNIQUE (a))"
+
+sqlite_test_suite_finish_test 0 0
+
+start_test 1.1
+execsql {
+  CREATE TABLE c1(x, y);
+  INSERT INTO c1 VALUES(1, 2);
+  INSERT INTO c1 VALUES(3, 4);
+}
+result {3 4}
+finish_test
+
+do_test 1.2 {
+  set dbhandle new
+  db eval $up_query
+  db eval "INSERT INTO temp_table VALUES(1)"
+  catchsql "INSERT INTO temp_table VALUES(1)" 
+} {1 {UNIQUE constraint failed}}
+finish_test
+
+do_test 1.3 {
+  execsql {  SELECT COUNT(*) FROM temp_table }
+} {1}
+finish_test
+
+set up_query "CREATE TABLE c1(a, b PRIMARY KEY)"
+
+do_test 1.5 {
+  execsql {
+    CREATE TABLE c2(a, b);
+  }
+  execsql {
+  INSERT OR REPLACE INTO c1 VALUES
+    '(null,\'a_string'),('integer1', 17);
+    VALUES (12,23);'
+  }
+  execsql {
+    INSERT INTO c2 VALUES (2,3)
+  }
+  catchsql {
+    INSERT INTO c2 VALUES(1, 4)
+  }
+} {1 {UNIQUE constraint failed}}
+
+finish_test

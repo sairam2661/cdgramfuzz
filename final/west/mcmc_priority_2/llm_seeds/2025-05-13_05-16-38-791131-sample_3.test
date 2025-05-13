@@ -1,0 +1,134 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix vtab_complex
+
+set ::timeout 60000
+
+proc row_value_function {} {
+  global row_value_function_data
+  lappend row_value_function_data
+  return {}
+}
+
+proc rowid_function {} {
+  global rowid_function_rowid
+  lappend rowid_function_rowid
+  return {}
+}
+
+proc sqlite_vtab {reqtype} {
+  global sqlite_vtab_data sqlite_vtab_rowid
+  set res {}
+  if {$reqtype ne ""} {
+    set res {}
+  }
+  set sqlite_vtab_rowid {}
+  set sqlite_vtab_data {}
+  return $res
+}
+
+do_test vtab-1.1 {
+  execsql {
+    DROP TABLE IF EXISTS a
+  }
+  execsql {
+    CREATE VIRTUAL TABLE a USING sqlite_vtab
+  }
+  execsql {
+    INSERT INTO a VALUES(1,'string');
+    INSERT INTO a VALUES(2, 'another');
+  }
+  set sqlite_vtab_data {1 string 2 another}
+  execsql {SELECT rowid FROM a ORDER BY rowid}
+} {1 2}
+
+do_execsql_test vtab-1.2 {
+  INSERT INTO a(rowid, value) VALUES(3, 'third');
+  SELECT rowid FROM a;
+} {1 2 3}
+
+do_execsql_test vtab-1.3 {
+  SELECT rowid FROM a;
+} {1 2 3}
+
+do_test vtab-1.4 {
+  llength $sqlite_vtab_rowid
+} {0}
+
+set vtab_data {}
+do_execsql_test vtab-1.5 {
+  CREATE TABLE temp_b1(x);
+  CREATE TABLE temp_b2(x);
+  INSERT INTO temp_b1 VALUES(1);
+  INSERT INTO temp_b2 VALUES(2);
+  INSERT INTO a(rowid, value) VALUES(3, 'third');
+  SELECT b1x FROM a
+  WHERE b1x = 1;
+} {1}
+
+do_execsql_test vtab-1.6 {
+  SELECT value FROM a;
+} {string another third}
+
+do_execsql_test vtab-1.7 {
+  BEGIN;
+  INSERT INTO a(rowid, value) VALUES(4, 'fourth');
+  COMMIT;
+  SELECT rowid FROM a;
+} {1 2 3 4}
+
+do_execsql_test vtab-1.8 {
+  PRAGMA table_info = 'a';
+} {{1 rowid integer NOT NULL 0 0 0 0} {2 value text NOT NULL 0 0 0 0}}
+
+ifcapable composite_index {
+  execsql {
+    CREATE INDEX ix_a_rowid ON a(rowid);
+  }
+  set sqlite_vtab_data {}
+  do_execsql_test vtab-1.9 {
+    SELECT value FROM a
+    WHERE rowid = 2;
+  } {another}
+  do_execsql_test vtab-1.10 {
+    SELECT rowid FROM a
+    WHERE value ='string';
+  } {1}
+  drop_index a ix_a_rowid
+}
+
+do_execsql_test vtab-2.1 {
+  CREATE TABLE b(x);
+  CREATE TABLE c(y);
+  SELECT c1y FROM b
+  WHERE c1y = 1;
+} {}
+
+ifcapable view_with_check {
+  execsql {
+    CREATE VIEW b1 AS SELECT 1 AS y
+    WHERE 1 IS NOT NULL
+  }
+  do_execsql_test vtab-2.2 {
+    SELECT b1y FROM b
+    WHERE b1y = 1;
+  } {}
+}
+
+do_execsql_test vtab-2.3 {
+  CREATE TABLE c1(x, y);
+  SELECT c1x FROM a
+  WHERE c1y ='string';
+} {}
+
+ifcapable view_without_where {
+  execsql {
+    CREATE VIEW b2 AS SELECT 1 AS y
+  }
+  do_execsql_test vtab-2.4 {
+    SELECT b2y FROM a
+    WHERE b2y = 1;
+  } {}
+}
+
+finish_test

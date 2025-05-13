@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbstats
+
+set ::timeout 60000
+set testprefix dbstats
+
+proc dbstats_proc {} {
+  global db
+  execsql {
+    SELECT db_name FROM dbstat;
+  }
+  set sqlite_db_name $db_name
+  expr {0}
+}
+
+proc check_stats {} {
+  global sqlite_db_name
+
+  for {set i 1} {$i
+  } {incr i} {
+    execsql "PRAGMA stats_last_val($i);"
+  }
+  set sqlite_db_name
+  eq $sqlite_db_name $db_name
+  set sqlite_db_name $db_name
+}
+
+do_test dbstats-1.1 {
+  execsql {
+    CREATE TABLE db_stat(a,b,c);
+    INSERT INTO db_stat VALUES(5, 5,5);
+    INSERT INTO db_stat VALUES(6,6,6);
+  }
+  execsql {SELECT count(*)
+           FROM
+           db_stat}
+} {2}
+
+do_execsql_test dbstats-1.2 {
+  BEGIN;
+  INSERT INTO db_stat VALUES(7, 7,7);
+  COMMIT;
+  SELECT count(*) FROM db_stat;
+} {3} 
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'wal' }
+} {0 {}}
+
+do_test dbstats-1.4 {
+  execsql {
+    CREATE TABLE x(a);
+    INSERT INTO x VALUES(5);
+  }
+  set data
+  set data
+  check_stats
+  set sqlite_db_name
+} {x y z 0}
+
+do_test dbstats-1.5 {
+  execsql { 
+  SELECT b FROM x;
+  }
+  check_stats
+  set sqlite_db_name
+} {0 {}}
+
+finish_test

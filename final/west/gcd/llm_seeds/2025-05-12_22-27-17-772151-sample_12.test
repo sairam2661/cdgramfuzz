@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix complex_sql
+
+proc complex_sql_proc {} {
+  global complex_sqlargs
+  lappend complex_sqlargs
+  set complex_sqlresult 0
+}
+
+proc check_result {expr} {
+  if {$expr} {
+    set complex_sqlresult 1
+  } else {
+    set complex_sqlresult 2
+  }
+}
+
+do_test complex-1.1 {
+  set complex_sqlargs {}
+  db eval {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES('a','b','c');
+  }
+  check_result 3
+} {2}
+
+do_execsql_test complex-1.2 {
+  SELECT COUNT(*) FROM a
+} {3}
+
+ifcapable {journal_mode} {
+  set db_name test_complex_sql
+  if { "[sqlite3 -tclprep db_name]!= [sqlite3 -sqlprep \"PRAGMA journal_mode 2"]" } {
+    execsql {PRAGMA journal_mode = 2}
+  } else {
+    catchsql {PRAGMA journal_mode = 2}
+  }
+}
+
+finish_test
+
+proc test_complex_sql3 {} {
+  catchsql {SELECT * FROM test_complex_sql}
+}
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE complex(x PRIMARY KEY, value);
+} {}
+
+do_execsql_test complex-1.4 {
+  SELECT x FROM complex WHERE x=1
+} {}
+
+do_execsql_test complex-1.5 {
+  SELECT * FROM complex
+} {}
+
+finish_test

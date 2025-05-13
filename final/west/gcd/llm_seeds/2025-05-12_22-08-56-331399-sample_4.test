@@ -1,0 +1,108 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz_test
+
+proc max {x y} { expr {$x}
+proc min {x y}  { expr {$y }
+proc add {a b} {
+  set res {}
+  foreach A $a B $b {
+    set sum {}
+    foreach j in {0 1} {
+      foreach k in {0 1} {
+        lappend sum $A$j$B$k
+      }
+    }
+    lappend res $sum
+  }
+  return $res
+}
+
+proc check_fuzz {} {
+  global fuzzdb
+  if { $fuzzdb eq "" } {
+    set fuzzdb "test.db"
+  }
+  execsql {
+    CREATE TABLE t1(a,b);
+    INSERT INTO t1 VALUES(1,1);
+    CREATE TABLE t2(a,b);
+    INSERT INTO t2 VALUES(2,2);
+    INSERT INTO t2 VALUES(3,3);
+    CREATE TABLE t3(a,b);
+  }
+  return $fuzzdb
+}
+
+do_test fuzz_1.1 {
+  set dbname "test_fuzz.db"
+  set dbhandle SQLite
+  execsql {
+    CREATE TABLE t4(a,b);
+    INSERT INTO t4 VALUES('hello','world');
+  }
+} {1}
+
+do_test fuzz_1.2 {
+  set fuzzdb "[check_fuzz]"
+  sqlite 3 "fuzzdb" {
+    CREATE VIRTUAL TABLE v1 USING fuzzer
+       TEXT TEXT
+       KEY TEXT
+  }
+  execsql {
+    INSERT INTO v1 VALUES('apple', 'pie');
+    SELECT KEY FROM v1
+  }
+} {3 4 5}
+
+foreach fuzzarg {max min add} {
+  set result {}
+  do_test fuzz_1.3 {
+    if {$fuzzarg eq "max"} {
+      foreach {a b} {5 3 2 4 1 6 7 9} {
+        lappend result $a
+      }
+    } elseif {$fuzzarg eq "min"} {
+      foreach {a b} {1 5 3 7 2 1 4 9} {
+        lappend result $a
+      }
+    } else {
+      set list1 {1 2 3 4 5}
+      set list2 {6 7 8 9 10}
+      foreach A $list1 B $list2 {
+        foreach {a b c d e} $A {
+          foreach {f g h i j} $B {
+            set res {0 2 3 4 6 5 7 8 9 10}
+            lappend res $f$b$c$d$e
+          }
+        }
+        lappend result $res
+      }
+    }
+    return $result
+  } $result
+}
+
+finish_test 0'<|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+This.test file demonstrates the usage of various Tcl commands such as `foreach`, `proc`, `execsql`, `do_test`, and `if` in SQLite testing. It also introduces more complex Tcl commands like `expr` and `set` which are commonly used in SQLite testing. 
+
+To run the test, you can use the SQLite unit test framework, which is the same one used to run the SQLite tests. It can be found in the SQLite source tree under `test`. You can run the test by executing the script, it will automatically run the tests and report the results.
+
+Here are the steps to run the test:
+
+1.  Download the SQLite source code from the official SQLite website. You can use Git to clone the repository.
+2.  Navigate to the `test` directory in the cloned repository.
+3.  Open a terminal or command prompt in the `test` directory.
+4.  Run the test by executing the command `tclsqlite.test fuzz_test`
+5.  The test will automatically run and report the results.
+
+Note: To run the test, you need to have SQLite installed and the necessary environment variables set. The SQLite source code should be installed in a directory pointed to by the `SQLITE_SOURCE=.` variable. 
+
+In the above code, the `tclsqlite.test` script is the SQLite test runner, and `fuzz_test` is the name of the `.test` file that you want to run. The results will be printed to the console, and you can check the outcome according to your expectations. You can also modify this test to suit your requirements and write more complex tests by using the powerful testing framework provided by SQLite. 
+
+Here is the list of key features that are being tested:
+
+*   Creating tables: The test creates four tables (`t1`, `t2`, `t3`, and `t4`) and inserts some data into them.
+*   Virtual tables: The test creates a virtual table `v1` using the `fuzzer` v

@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix foreign_keys
+
+set ::timeout 60000
+
+proc fk_create_table {name fields pk} {
+  execsql "CREATE TABLE $name ($fields, PRIMARY KEY($pk))"
+}
+
+proc fk_create_trigger {name table fkname} {
+  execsql "CREATE TRIGGER fk_$table.$name BEFORE INSERT ON $table FOR EACH ROW (BEGIN SELECT CASE WHEN (SELECT 1 FROM $name WHERE $fkname = new.$fkname) THEN RAISE(ABORT, 'foreign key constraint failed') ELSE 1 END; END)"
+}
+
+proc fk_test {name a b} {
+  global test_counter
+
+  do_test "fk-$test_counter.1" {
+    execsql {SELECT name FROM sqlite_master WHERE type='table'}
+  } $name
+
+  do_test "fk-$test_counter.2" {
+    execsql {SELECT * FROM sqlite_master WHERE name='$name'}
+  } $a
+
+  do_test "fk-$test_counter.3" {
+    db eval {INSERT INTO $b VALUES}
+  } {}
+
+  do_test "fk-$test_counter.4" {
+    catchsql {INSERT INTO $b VALUES}
+  } {1 {foreign key constraint failed}}
+
+  set test_counter $test_counter
+
+  do_test "fk-$test_counter.5" {
+    db eval {INSERT INTO $b VALUES}
+  } {}
+
+  do_test "fk-$test_counter.6" {
+    execsql {DELETE FROM $a WHERE name LIKE}
+  } {}
+}
+
+set test_counter 1
+fk_create_table foreign_key a b
+fk_test foreign_key foreign_key a b
+
+set test_counter 2
+fk_create_table child fk a
+fk_create_table parent x unique
+fk_create_trigger unique child fk
+
+fk_test child fk child parent x
+
+set test_counter 3
+ifcapable temp_tables {
+  fk_create_table master a b
+  fk_create_table slave fk b
+
+  do_test "fk-$test_counter.7" {
+    fk_test master slave master slave
+  } {}
+}
+
+set test_counter 4
+fk_create_table temp_master a b
+fk_create_trigger unique temp_master fk
+
+do_test "fk-$test_counter.8" {
+  fk_test temp_master unique temp_master unique
+} {}
+
+finish_test

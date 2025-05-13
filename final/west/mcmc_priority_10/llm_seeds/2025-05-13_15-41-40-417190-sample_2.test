@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache
+
+set ::timeout 60000
+set temp_store 1
+if {0} { set temp_store 2 }
+
+foreach name { a b c } {
+  set $name ""
+}
+unset name
+
+proc cache_proc {} {
+  global testname
+  if {$testname eq ""} { set testname "sync" }
+  set testname "cache-$testname"
+}
+
+do_test cache-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT * FROM a}
+} {1}
+
+do_execsql_test cache-1.2 {
+  BEGIN;
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(2);
+  COMMIT;
+  SELECT * FROM b;
+} {2}
+
+ifcapable journalMode {
+  set r1 0
+  if { 1 } {
+    ifcapable wal_shm {
+      set walshm "ON"
+    } else {
+      set walshm "OFF"
+    }
+  } else {
+    set walshm "ON"
+  }
+  execsql "PRAGMA journal_mode = $walshm"
+  set r1 1
+}
+
+if { 0 } {
+  set r2 0
+  db eval {CREATE TEMP TABLE c AS SELECT 3 AS r }
+  set r2 1
+}
+
+finish_test

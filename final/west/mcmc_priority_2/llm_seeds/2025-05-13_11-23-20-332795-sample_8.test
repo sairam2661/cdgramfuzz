@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix queryoptimize
+
+set ::timeout 60000
+set timeoutms 60000
+
+proc test_func {} {
+  expr {1}
+}
+
+do_test queryoptimize-1.1 {
+  execsql {
+    CREATE INDEX i ON t1(x);
+    CREATE TABLE t1(x PRIMARY KEY, y);
+  }
+  list
+} {}
+
+set tests {} {
+  SELECT *
+  FROM t1
+  WHERE x = 5
+} {
+  set pTestOpts estimatedCost {} 
+}
+
+foreach test $tests {
+  do_execsql_test queryoptimize queryoptimize "$test" "$pTestOpts"
+  do_test queryoptimize queryoptimize {
+    execsql {
+      EXPLAIN QUERY PLAN $test
+    }
+    list
+  } {}
+}
+
+ifcapable {fts4} {
+  set tests {} {
+   'CREATE VIRTUAL TABLE b USING FTS4(x, y);'
+   'CREATE INDEX i ON b(x);'
+   'SELECT * FROM b WHERE x=4;'
+    }
+    set pTestOpts estimatedCost 0 
+
+    foreach test $tests {
+      do_execsql_test queryoptimize queryoptimize "$test" "$pTestOpts"
+      do_test queryoptimize queryoptimize {
+        execsql {
+          EXPLAIN QUERY PLAN $test
+        }
+        list
+      } {}
+    }
+  }
+
+set tname {} 
+set selcol {} 
+set idx {} 
+foreach {tname selcol idx} {
+  table b 
+  "SELECT x FROM $tname" 
+  UNIQUE 
+} {
+  do_execsql_test queryoptimize queryoptimize {
+    CREATE TABLE $tname $idx $selcol
+  }
+  do_test queryoptimize queryoptimize {
+    execsql {
+      EXPLAIN QUERY PLAN SELECT $selcol FROM $tname
+    }
+    list
+  } {}
+}
+
+finish_test

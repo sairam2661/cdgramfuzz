@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+source $testdir_common JournalModeTest
+
+proc test_transaction {} {
+  global txns
+  if {$txns eq ""} {
+    set txns 0
+  }
+  incr txns
+  return $txns
+}
+
+do_execsql_test transactions-1.4 {
+  BEGIN;
+  INSERT INTO d VALUES(4,5);
+  SELECT * FROM d;
+} {}
+do_test transactions-1.5 {
+  test_transaction
+} 1
+
+do_execsql_test transactions-2.1 {
+  PRAGMA journal_mode
+} {WAL}
+ifcapable wal { 
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(6);
+  }
+}
+
+proc test_check_journal_mode {} {
+  ifcapable journal_mode {
+    do_test transaction_journal_mode {
+      catch sql {PRAGMA journal_mode}
+    } {WAL}
+  }
+}
+
+proc test_check_savepoint {} {
+  do_test transactions_savepoint {
+    execsql {
+      BEGIN;
+      INSERT INTO c VALUES('savepoint','data');
+      COMMIT;
+    }
+    SELECT count FROM c WHERE data like'savepoint%'
+  } {1}
+}
+
+proc test_check_rollback {} {
+  ifcapable fts3 {
+    do_test transactions_rollback {
+      execsql {
+        SELECT docid FROM c;
+      }
+      INSERT INTO c VALUES
+        {'INSERT INTO c VALUES("rollback", "data");'}
+      execsql {
+        SELECT count FROM c WHERE data like 'rollback%'
+      }
+    } {1}
+  }
+}
+
+set testprefix dbconfig
+
+do_execsql_test transactions-3.1 {
+  PRAGMA journal_mode
+} {WAL}
+do_test dbconfig-1.0 {
+  execsql {
+    SELECT count(*) FROM a;
+  }
+} {3}
+
+do_test dbconfig-2.0 {
+  execsql {
+    INSERT INTO a VALUES(7);
+    SELECT count(*) FROM a;
+  }
+} {4}
+finish_test

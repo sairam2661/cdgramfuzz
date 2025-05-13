@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc queryproc {} {
+  global queryargs
+  set queryargs {}
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    CREATE TABLE t2(x, y, z);
+  }
+  execsql {SELECT name FROM sqlite_master}
+} {t1 t2}
+
+do_execsql_test query-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES('A', 'B', 'C');
+  INSERT INTO t2 VALUES(1, 2, 3);
+  COMMIT;
+  SELECT * FROM t2
+} {1 2 3}
+
+do_catchsql_test query1.3 {
+  SELECT * FROM t3
+} {1 {no such table t3}}
+
+ifcapable vacuum {
+  do_execsql_test query-1.4 {
+    CREATE TABLE t3(id, data);
+    INSERT INTO t3 VALUES(1, 'Hello, world!');
+    INSERT INTO t3(rowid, data) VALUES(2, 'Goodbye, cruel world!');
+    SELECT * FROM t3;
+    SELECT * FROM t2;
+  }
+  {1 {Hello world} 1 2 3}
+}
+
+ifcapable subquery {
+  do_execsql_test query-1.5 {
+    CREATE TABLE t4(k, v);
+    INSERT INTO t4 VALUES(1, 'one');
+    INSERT INTO t4 VALUES(2, 'two');
+    SELECT k FROM t4 WHERE k = 5
+  } {}
+}
+
+ifcapable tempdb {
+  do_execsql_test query-1.6 {
+    CREATE TABLE t5(a);
+    CREATE INDEX i5 ON t5(a);
+    BEGIN;
+    INSERT INTO t5 VALUES(10);
+    SELECT * FROM t5;
+  } {10}
+}
+
+finish_test

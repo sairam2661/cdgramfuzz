@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+do_fuzztest concurrent
+
+proc concurrent_update {} {
+  set dbhandle1 db
+  set dbhandle2 db
+  execsql {INSERT INTO t1 VALUES(1)} $dbhandle1
+  execsql {INSERT INTO t2 VALUES(2)} $dbhandle2
+  execsql {INSERT INTO t2 VALUES(3)} $dbhandle1
+  execsql {SELECT t1rowid FROM t2}
+}
+
+proc concurrent_select {} {
+  set dbhandle1 db
+  set dbhandle2 db
+  execsql {SELECT t1rowid FROM t2} $dbhandle1
+  execsql {SELECT t1rowid FROM t2} $dbhandle2
+  execsql {SELECT t1rowid FROM t2}
+}
+
+do_execsql_test concurrent-1.1 {
+  CREATE TABLE t1(x);
+  CREATE TABLE t2(x);
+  INSERT INTO t1 VALUES(1);
+}
+
+    {
+      concurrent_update
+    }  
+    ifcapable update_rpu {
+      do_fuzztest_error concurrent_update
+    }
+
+    {
+      concurrent_select
+    }  
+    do_test concurrent-1.9 {
+      execsql {SELECT t1rowid FROM t2}
+    } {1 2}
+
+do_execsql_test concurrent-2.0 {
+  PRAGMA busy_timeout = 5000;
+  CREATE TABLE t2(x);
+  INSERT INTO t2 VALUES(1);
+  BEGIN;
+  INSERT INTO t2 VALUES(2);
+  COMMIT;
+  INSERT INTO t2 VALUES(3);
+}
+{1 2 3}
+
+finish_test

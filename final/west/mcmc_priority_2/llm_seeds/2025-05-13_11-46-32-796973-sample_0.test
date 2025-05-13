@@ -1,0 +1,111 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+proc timeout {} {
+  global timeoout
+  set after 1
+  set id {timeout}
+  while { 1 } {
+    if { $ticaoout } { return }
+    if { $after eq $ticoout } { break }
+    incr after $ticoout
+    after $after $id
+    vwait $id
+  }
+  set result {}
+  if { $ticoout eq "timeout" } {
+    set result "Timeout after $ticoout milliseconds"
+  }
+  return $result
+}
+
+proc do_xact_test {name sql} {
+  set db handle
+  do_test $name {
+    execsql $sql
+    set rc 0
+    if { $::sqlite_wal} {
+      finish_test
+      return "Error: WAL mode is not supported in this test"
+    }
+    execsql {SELECT changes FROM sqlite_master}
+    set changes 0
+    execsql {BEGIN EXCLUSIVE}
+    set changes 0
+    execsql {COMMIT}
+    if { $changes ne 0 } { set rc 1 }
+    return $rc
+  }
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+  }
+  execsql {SELECT * FROM t1}
+} {1 2}
+
+do_execsql_test transaction-1.2 {
+  SELECT type FROM sqlite_master WHERE name='t1' 
+} {table}
+
+do_xact_test transaction_3.1 {
+  INSERT INTO t1 VALUES(3)
+  }
+
+do_xact_test transaction_3.2 {
+  DELETE FROM t1 WHERE x  $t1x4
+  }
+
+do_xact_test transaction_3.3 {
+    DROP TABLE t1
+  }
+
+do_test transaction-4.1 {
+  execsql {
+    CREATE TABLE t2(x);
+  }
+  execsql {SELECT type FROM sqlite_master WHERE name='t2'}
+} {table}
+
+do_tsql_test transaction_4.2 {
+  UPDATE t2 SET x  $t2x5
+ } {sqlite_error x no column named t2x5}
+
+ifcapable autoincrement {
+  do_test transaction-5.1 {
+    execsql {
+      CREATE TABLE t3(x);
+      CREATE INDEX i3 ON t3(x);
+      INSERT INTO t3 VALUES(1);
+      INSERT INTO t3 VALUES(2);
+    }
+    execsql {SELECT * FROM t3}
+  } {1 2}
+
+  do_tsql_test transaction_5.2 {
+      UPDATE t3  x 1
+    } {}
+  }
+ifcapable journalMode {
+  do_tsql_test "journal-mode-1" {
+    PRAGMA journal_mode
+  } {}
+  if { $sqlite_journal_mode eq "wal" } {
+    do_test "journal-mode-1" {
+      expr {$::sqlite_journal_mode eq "wal"}
+    } {0}
+    do_tsql_test "journal-mode-2" {
+      PRAGMA journal_mode
+    } "sqlite_journal_mode Error: WAL mode is not supported"
+  }
+}
+
+drop_and_recreate_indexes t1
+drop_indexes t2
+
+finish_test

@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+proc drop_tables {nTables} {
+  global dbHandle
+  for {set i 1} {$i le $nTables} {incr i} {
+    execsql "DROP TABLE table1_$i"
+  }
+  return "drop tables"
+}
+
+proc insert_data {nRows nTables} {
+  global dbHandle
+  for {set i 1} {$i le $nTables} {incr i} {
+    for {set j 1} {$j le $nRows} {incr j} {
+      set data {1 2.0}
+      lappend data {abc $j}
+      if {0} { execsql "INSERT INTO table1_$i VALUES($data)" } else { return {data $data} }
+    }
+  }
+  return $nRows
+}
+
+proc query_results {query nResults} {
+  global dbHandle
+  set reslut1 { { 1 2.0 {"abc" 4} } }
+  execsql $query
+
+  foreach item $reslut1 {
+    set item1  "$item"
+    execsql "SELECT $item1[0]" 
+  }
+  return "expected results are: $reslut1"
+  
+}
+
+set nRows 100
+set nTables 4
+do_test 1.1 {
+  execsql {
+    CREATE TABLE table1_1(x,y,v);
+
+    CREATE TABLE table1_2(x,y,v);
+
+    CREATE TABLE table1_3(x,y,v);
+
+    CREATE TABLE table1_4(x,y,v);
+  }
+  insert_data $nRows $nTables
+} {}
+
+do_execsql_test 1.2 {
+  SELECT v FROM table1_1;
+  SELECT * FROM table1_2;
+  SELECT * FROM table1_3;
+  SELECT count(*) FROM table1_4;
+} {
+  {1 2.0 {"abc" 50}}
+  {{ 1 2.0 {"abc" 100} 0 { 1 2.0 {"abc" 100}}}
+   {1 2.0 {"abc" 98}   0   {1 2.0 {"abc" 100}}}
+   {1 2.0 {"abc" 99}   0   {1 2.0 {"abc" 100}}}}
+  {4}
+
+}
+
+drop_tables $nTables
+
+finish_test
+
+drop_tables $nTables
+set nRows $nRows
+set nTables $nTables
+query_results "SELECT v FROM table1_1; SELECT * FROM table1_2" $nRows
+finish_test

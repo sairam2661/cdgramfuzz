@@ -1,0 +1,209 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+proc complex_select {args} {
+  global complexargs
+  if {$::SQLITE_HAVE_MATH} {
+    if {$args eq "expr(1 == 1)"} {
+      append complexargs "[expr $args]"
+    } elseif {$args eq "2 < 3"} {
+      append complexargs "[expr $args]"
+    }
+  }
+}
+
+proc complex_insert {args} {
+  global complexargs
+  set complexargs "[string trimleft $args,]"
+  db eval "INSERT INTO test_table ($complexargs)"
+}
+
+proc complex_create {} {
+  db eval {
+    CREATE TABLE test_table(
+      x, y, z,
+      PRIMARY_KEY,
+      UNIQUE_KEY,
+      FOREIGN_KEY,
+      INDEXed_KEY,
+      CHECK_KEY
+    )
+  }
+}
+
+proc complex_indexes {} {
+  db eval {
+    CREATE INDEX idx_y ON test_table(y);
+    CREATE INDEX idx_z ON test_table(z);
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    mode local
+  }
+  execsql {
+    PRAGMA temp_store = 1
+  }
+  set sqlite_master_uuid $::sqlite_temp_master_uuid
+  set sqlite_master_name $::sqlite_temp_master_name
+} {}
+
+do_test complex-1.2 {
+  complex_create
+  execsql {
+    PRAGMA application_id
+  }
+  string compare $sqlite_master_uuid $::sqlite_master_uuid
+} {0}
+
+do_test complex-1.3 {
+  complex_create
+  execsql {
+    PRAGMA journal_mode = 2
+  }
+  execsql {
+    CREATE TABLE b(a UNIQUE);
+  }
+  execsql {
+    PRAGMA temp_store = 3
+  }
+} {}
+
+do_test complex-1.4 {
+  complex_create
+  execsql {
+    CREATE VIEW b AS SELECT a FROM b ORDER BY a DESC LIMIT 10 OFFSET 5
+  }
+  execsql {
+    SELECT type FROM sqlite_master WHERE name LIKE 'b'
+  }
+} {view}
+
+do_test complex-1.5 {
+  complex_create
+  execsql {
+    CREATE TABLE c(x PRIMARY KEY, y UNIQUE,
+      UNIQUE_KEY2, CHECK_KEY2)
+  }
+  execsql {
+  BEGIN;
+  INSERT INTO c VALUES(3,4);
+  ROLLBACK;
+  }
+  execsql {
+    COMMIT;
+    PRAGMA defer_foreign_keys = 1
+  }
+  execsql {
+    INSERT INTO c VALUES(1,1);
+    INSERT INTO c VALUES(1,1)
+  }
+  execsql {
+    PRAGMA foreign_keys = 0;
+    BEGIN;
+    INSERT INTO b(a) VALUES(1);
+    ROLLBACK;
+  }
+  execsql {
+    PRAGMA foreign_keys = 1
+  }
+} {}
+
+ifcapable tclvar {
+do_test complex-1.6 {
+  list $x $y
+  set y 10
+} {1 10}
+
+do_test complex-1.7 {
+  set t $::f
+  expr {2$t3}
+} {64}
+}
+
+do_execsql_test complex-2.1 {
+  SELECT
+    json_agg(
+      *
+    )
+  FROM complex
+  WHERE
+    first_field = 1
+  } {
+  }
+do_test complex-3.1 {
+  set sqlite_encoding UTF8
+  execsql {
+    ATTACH DATABASE ':memory:' AS test2
+  }
+  set sqlite_temp_name test2
+  execsql {
+    BEGIN;
+    PRAGMA database_list;
+    COMMIT;
+  }
+  db eval {
+    PRAGMA database_list;
+  }
+
+  execsql {
+    COMMIT;
+    PRAGMA database_list;
+  }
+  execsql {
+    ATTACH DATABASE ':memory:' AS 'test3'
+  }
+  db eval {
+    PRAGMA database_list;
+  }
+  execsql {
+    COMMIT;
+    PRAGMA database_list;
+  }
+  execsql {
+    PRAGMA temp_store = 3
+  }
+  execsql {
+    FOREIGN KEY
+  }
+  execsql {
+    PRAGMA journal_mode
+  }
+} {}
+
+ifcapable session {
+  do_test complex-3.1 {
+    set name session_name
+    db session set temp_store 6
+    set session_name
+  } {}
+}
+
+ifcapable vdbe_list_prag {
+do_test complex-4.1 {
+  set id 1
+  complex_select {1}
+  lappend complexargs 2
+} {}
+
+do_test complex-4.2 {
+  execsql {
+    CREATE TABLE t3(a,b,c)
+  }
+  complex_insert {1}
+} {}
+do_test complex-4.3 {
+  db eval {
+    SELECT a FROM t3
+  }
+} {1}
+
+do_execsql_test complex-5.1 {
+  SELECT
+    json_set(
+      *
+      )
+  FROM complex
+  WHERE

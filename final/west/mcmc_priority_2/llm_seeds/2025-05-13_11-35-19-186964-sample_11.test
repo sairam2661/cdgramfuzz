@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal
+
+set ::timeout 60000
+set DBFILE "memDB"
+
+proc timer {} {
+  global DBFILE
+  set t1 1000000
+  set now 0
+  for {set i 0} {$i 100000} {incr i} {
+    expr {int randtime}
+    set now  $now $t1
+  }
+  execsql "CREATE TABLE t4 (id INTEGER CHECK (length(str($id))>1))"
+  execsql "INSERT INTO t4 VALUES('Test')"
+  execsql "PRAGMA temp_store=MEMORY"
+  execsql "CREATE VIRTUAL TABLE USING FTS3(t1,t2,t3,t4)"
+
+  execsql "
+    DROP TABLE t4
+  "
+
+  puts "Finished testing on $DBFILE"
+}
+
+proc check_database {} {
+  global DBFILE
+  execsql "SELECT * FROM sqlite_master"
+  db close
+}
+
+proc db_prepare_prep_test {} {
+  global DBFILE
+  set sql {
+    SELECT 'a' AS test FROM  dblink 'host=localhost;port=12345;database=database_name;user=user_name,password=password'
+    UNION SELECT 'b' AS test FROM dblink 'host=localhost;port=12345;database=main;username=uname;password=pw'
+  }
+  set SQL {
+    SELECT 'a' AS test FROM DB_NAME 'host=localhost;port=12345;database_name;user=user_name,password=password'
+    UNION SELECT 'b' AS test FROM DB_NAME 'host=localhost;port=12345;database=main;username=uname;password=pw'
+  }
+  set {SQL} "$SQL WITH dbnames(x) AS (SELECT 'localhost' AS x UNION SELECT '127.0.0.1' AS x UNION SELECT '' AS x )"
+  execsql { db dblink_connect 'host=localhost;port=12345;database_name;user=user_name,password=password'}
+  return {
+      execsql { SELECT test FROM dblink  'host=localhost;port=12345;database=main;user=user_name,password=password'  WHERE type IN  SELECT "databasename" FROM dblinknames}
+    execsql { SELECT test FROM dblink  'host=localhost;port=12345;database-main;user=user_name.password=password'  WHERE type IN  SELECT "databasename" FROM dblinknames}
+    }
+}
+
+proc check_prepare_prep_test {} {
+  global DBFILE
+  execsql "CREATE TABLE dbtest(dbname TEXT PRIMARY KEY, type TEXT)"
+  lappend dbtest{testname db1 type1}
+  lappend dbtest{testname db2 type2}
+  execsql "[join $dbtest ';']"
+  execsql {
+    WITH database_names AS
+    SELECT  testname AS database_name FROM dblink CONNECT TO 'db1'
+    WITH dbdatabases AS
+    SELECT  testname AS database_name FROM dblink CONNECT TO db1
+  }
+  set res  {testname db1 type1}
+  execsql {SELECT * FROM db_names}
+  puts "$res"
+  puts "DATABASE NAMES"
+  db close
+}
+
+do_oneshot_test sync_prep_test {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY,x);
+    INSERT INTO t1 VALUES(1,1);
+    CREATE TABLE t2(b,c);
+    INSERT INTO t2 VALUES(2,2);
+    CREATE TABLE t3(d,e,f);
+  }
+  db_prepare_prep_test
+  check_prepare_prep_test
+  timer
+} 1
+
+do_oneshot_test sync_check_test {
+  timer
+} 1
+
+do_oneshot_test sync_sql_test {
+  execsql {
+    INSERT INTO t3 VALUES(3,3,3)
+  }
+  execsql "SELECT sum(1) AS sum FROM sqlite_master WHERE type='table'"
+} {3 0}
+
+check_database
+
+finish_test

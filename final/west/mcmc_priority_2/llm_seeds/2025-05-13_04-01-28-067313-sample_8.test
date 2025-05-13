@@ -1,0 +1,37 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlitewalk
+
+proc mycallback {sql} {
+  if { $sql eq "SELECT 1 LIMIT 3" } {
+    throw SQLITE_FAULTSIMULATE_ERROR
+  }
+  return 1
+}
+
+do_test sqlitewalk-1.1 { sqlite3 db inmemory } { }
+
+do_test sqlitewalk-1.2 { sqlitewalk db mycallback 1 } { }
+
+do_execsql_test sqlitewalk-2.1 {
+  BEGIN;
+  CREATE TABLE t1(a);
+  INSERT INTO t1 VALUES(1);
+  INSERT INTO t1 VALUES(2);
+  INSERT INTO t1 VALUES(3);
+  COMMIT;
+} { }
+
+do_execsql_test sqlitewalk-3.1 {
+  BEGIN;
+  CREATE TABLE t2(a);
+  CREATE INDEX i ON t2(a);
+  INSERT INTO t2 VALUES(1);
+  COMMIT;
+} { }
+
+ifcapable treeview_v2 {
+  do_test sqlitewalk-4.1 { sqlitewalk_v2 db mycallback 1 2 3 } { }
+}
+
+finish_test

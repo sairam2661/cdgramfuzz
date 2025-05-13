@@ -1,0 +1,138 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix vtab
+
+set ::timeout 60000
+
+proc sqlite_vtab_callback {args} {
+  set result
+  append result "r:$args\r\n"
+  return $result
+}
+
+do_execsql_test vtab-1.1 {
+  CREATE TABLE t1(a, b);
+  CREATE TABLE t2(x);
+  CREATE TABLE t3(a, b);
+
+  CREATE TABLE bt1(
+    num,
+    vtab_name,
+    vtabl_name,
+    vtabm_name,
+    collation_name
+  );
+
+  CREATE TABLE bt2(
+    name,
+    vtabl_name,
+    vtablName,
+    collation_nameb
+  );
+
+  CREATE TABLE bt3(
+    name1,
+    vbatName3,
+    collation_name3,
+    name2
+  );
+
+  CREATE TABLE bt4(
+    vtabcName3,
+    nam2e,
+    collationnam2e,
+    na4m2e,
+    collationnam2a4e
+  );
+
+  CREATE TABLE bt5(
+    vbaName3,
+    collationnam3e,
+    n4ma3e,
+    collationna4m3e,
+    nam5e
+  );
+
+  CREATE TABLE bt6(
+    collationnam6e,
+    n5a4m6e,
+    collationna5a4m6e,
+    name7e
+  );
+}
+
+  "
+    CREATE VIRTUAL TABLE IF NOT EXISTS vtab1(
+      t1
+    ) USING sqlite_vtab;
+
+    CREATE VIRTUAL TABLE IF NOT EXISTS vtab2(
+      t2
+    ) USING echo;
+
+    CREATE TABLE IF NOT EXISTS vtab3(
+      t3
+    );
+
+    CREATE TABLE IF NOT EXISTS vtabl1(
+      x
+    );
+
+    CREATE TABLE IF NOT EXISTS vtabl2(
+      y
+    );
+
+    CREATE TABLE IF NOT EXISTS vtablName1(
+      z
+    );
+
+    CREATE TABLE IF NOT EXISTS vtablName2(
+      w
+    );
+
+    CREATE TABLE IF NOT EXISTS tab1(
+      a,
+      b
+    );
+
+    CREATE TABLE IF NOT EXISTS tab2(
+      c,
+      d
+    );
+
+    CREATE TABLE IF NOT EXISTS bat1(
+      a,
+      b
+    );
+
+    CREATE TABLE IF NOT EXISTS bat2(
+      c,
+      d
+    );
+
+    CREATE TABLE IF NOT EXISTS collation_name_b(
+      a
+    );
+
+    CREATE TABLE IF NOT EXISTS collation_name_b3(
+      a,
+      b,
+      c
+    );
+
+    CREATE TABLE IF NOT EXISTS collation_name_b4(
+      a,
+      b,
+      c
+    );
+
+    CREATE TABLE IF NOT EXISTS collation_name3_b(
+      c,
+      b
+    );
+  "
+do_execsql_test vtab-1.2 {
+  SELECT name FROM sqlite_master WHERE type='table';
+} {t1 t2 t3 bt1 bt2 bt3 bt4 bt5 bt6 vtabl1 vtabl2 vtablName1 vtablName2 tab1 tab2 bat1 bat2 collation_name_b collation_name_b3 collation_name_b4 collation_name3_b vtabl2 vtabl1 vtablName2 vtablName1}
+
+finish_test

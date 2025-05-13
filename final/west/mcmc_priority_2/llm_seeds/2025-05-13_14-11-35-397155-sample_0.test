@@ -1,0 +1,133 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_db
+set ::timeout 60000
+set db_name test_db
+
+execsql {
+  CREATE TABLE users(id PRIMARY KEY, name, age);
+  CREATE TABLE addresses(id PRIMARY KEY, user_id, address);
+}
+
+do_test users-1.1 {
+  execsql {
+    INSERT INTO users VALUES(1, 'John', 30);
+    INSERT INTO users VALUES(2, 'Alice', 25);
+  }
+  llength {1 2}
+} {2}
+
+do_execsql_test users-2.1 {
+  INSERT INTO addresses VALUES(1, 1, 'New York');
+  INSERT INTO addresses VALUES(2, 1, 'Las Vegas');
+  INSERT INTO addresses VALUES(3, 2, 'Los Angeles');
+  SELECT * FROM users;
+  SELECT * FROM addresses;
+} {1 John 30 {} 1 1 New York {} 2 1 Las Vegas {} 3 2 Los Angeles {}}
+
+ifcapable view {
+  execsql {
+    CREATE VIEW user_address AS
+      SELECT u_id AS user_id
+      FROM addresses
+  }
+}
+
+do_execsql_test users-3.1 {
+  SELECT * FROM user_address;
+} {1 2}
+
+do_execsql_test users-4.1 {
+  CREATE INDEX idx_users_name ON users(name);
+  BEGIN;
+  INSERT INTO users VALUES(3, 'Bob', 35);
+  COMMIT;
+  SELECT count(*) FROM users;
+} {4}
+
+ifcapable journalMode {
+  execsql {PRAGMA journal_mode = 'WAL'}
+}
+
+do_test users-5.1 {
+  execsql {
+    CREATE TABLE users_copy LIKE users
+  }
+  execsql {
+    INSERT INTO users_copy SELECT *  	} FROM users
+  }
+  '1 1 2 2 3'
+    eq $users_copy {
+    '1 1 2 2 3'
+  }
+  eq 3 3
+  execsql {SELECT count(*) FROM users}
+      3
+  set sql {
+    SELECT u1 user_id
+    FROM users
+  }
+  execsql "$sql" result
+ eq "1 1 2 2"  $result
+  set sql {
+    SELECT u2 name
+    FROM users
+  }
+  eq "John Alice John"  execsql "$sql" result
+  set sql {
+    SELECT u3 age
+    FROM users
+  }
+  execsql "$sql" result
+  eq "30 25 35" $result
+  set sql {
+      SELECT *
+      FROM users
+  }
+  set res1 {
+          1 John 30
+          2 Alice 25
+          3 Bob 35
+  }
+  execsql "$sql" result
+  eq $res1 $result
+    set db_name
+  set tname "" 
+    set sql {
+      SELECT name
+      FROM sqlite_master
+      WHERE type = 'table'
+      }
+
+  lmap x {
+    lindex "$x" 1
+  } eq {
+    "users users_copy addresses"
+  }
+  set result
+  set res1 {
+      id name age
+      id user_id address
+      id user_id address
+      id user_id address
+  }
+
+    eq $res1 $result
+  execsql {SELECT name FROM sqlite_master} sql1
+  execsql "SELECT name FROM sqlite_master WHERE type = 'view' AND name = 'user_address'" sql2
+  if {
+    {0}
+  } then {
+    lappend res1 user_address
+  }
+  eq $res1 $sql1 $sql2
+
+  if {
+    "false"
+  } then {
+    error "Unexpected error"
+  }
+  execsql {
+    DROP INDEX idx_users_name
+  }
+  finish_test

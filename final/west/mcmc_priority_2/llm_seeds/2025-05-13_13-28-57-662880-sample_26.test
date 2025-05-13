@@ -1,0 +1,145 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+set sqlite_options ""
+set temp_dir ""
+
+proc get_last_insert_rowid {} {
+  global db
+  expr {$db last_insert_rowid}
+}
+
+proc setup_wal {} {
+  global db
+  execsql {PRAGMA journal_mode = 'WAL'}
+}
+
+proc cleanup {} {
+  global temp_dir
+  catch {execsql {DROP TABLE a}}
+  catch {execsql {DROP TABLE b}}
+  catch {execsql {DROP TABLE c}}
+  catch {execsql {DROP TABLE temp}}
+  catch {file delete $temp_dir}
+}
+
+do_test transactions-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+  get_last_insert_rowid
+} {3}
+
+do_execsql_test transactions-1.2 {
+  BEGIN;
+  CREATE TABLE b(x);
+  INSERT INTO b(y) VALUES(4);
+  COMMIT;
+} {1}
+
+do_test transactions-1.3 {
+  cleanup
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(5);
+    INSERT INTO c VALUES(6);
+    INSERT INTO c VALUES(7);
+  }
+  execsql {
+    CREATE TABLE temp(x);
+    INSERT INTO temp VALUES(8);
+  }
+  execsql {SELECT * FROM a}
+} {1 2 3}
+
+do_execsql_test transactions-1.4 {
+  BEGIN;
+  INSERT INTO c VALUES(9);
+  COMMIT;
+  SELECT * FROM c
+} {5 6 7 9}
+
+ifcapable wal {
+  setup_wal
+  do_execsql_test transactions-1.5 {
+    BEGIN;
+    CREATE TABLE temp(x);
+    INSERT INTO b(y) VALUES(10);
+    INSERT INTO temp VALUES(11);
+    COMMIT;
+    SELECT * FROM b
+  } {4 10}
+}
+
+do_execsql_test transactions-1.6 {
+  BEGIN;
+  INSERT INTO a VALUES(12);
+  COMMIT;
+  SELECT * FROM a
+} {1 2 3 12}
+
+do_execsql_test transactions-1.7 {
+  SELECT * FROM a
+} {1 2 3 12}
+
+do_execsql_test transactions-1.8 {
+  CREATE TABLE d(x);
+  INSERT INTO d(y) VALUES(13);
+  CREATE TABLE e(x);
+  INSERT INTO e VALUES(14);
+  INSERT INTO e(y) VALUES(15);
+  INSERT INTO e(z) VALUES(16);
+  SELECT * FROM d
+} {13}
+
+do_execsql_test transactions-1.9 {
+  CREATE TABLE f(x);
+  INSERT INTO f(y) VALUES(17);
+  CREATE TABLE g(x);
+  INSERT INTO g(y) VALUES(18);
+  INSERT INTO g VALUES(19);
+  SELECT * FROM g
+} {18 19}
+
+do_execsql_test transactions-1.10 {
+  CREATE TABLE temp(x);
+  INSERT INTO temp(y) VALUES(20);
+  CREATE TABLE h(x);
+  INSERT INTO h(y) VALUES(21);
+  CREATE TABLE i(x);
+  INSERT INTO i(y) VALUES(22);
+  INSERT INTO i VALUES(23);
+  SELECT * FROM i
+} {22 23}
+
+do_test transactions-1.11 {
+  cleanup
+  execsql {
+    CREATE TABLE j(x);
+    INSERT INTO j VALUES(1);
+    INSERT INTO j VALUES(2);
+    INSERT INTO j VALUES(3);
+  }
+  execsql {
+    COPY temp TO '/tmp/temp.db'
+  }
+  execsql {
+    DROP TABLE temp
+  }
+  execsql {
+    ATTACH '/tmp/temp.db' AS s
+  }
+  execsql {
+    DROP TABLE j
+  }
+  execsql {
+    SELECT * FROM s
+  }
+} {1 2 3}
+
+finish_test

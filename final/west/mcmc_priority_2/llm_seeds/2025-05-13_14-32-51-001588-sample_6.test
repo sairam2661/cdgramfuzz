@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set timer 0
+
+proc async_proc {} {
+  global timer timeoaut asyncargs
+  incr timer
+  set asyncargs $timer
+  if {$timer eq 5} {
+    return "async timer reached 5"
+  }
+}
+
+do_test async-1.1 {
+  db eval {
+    BEGIN EXCLUSIVE;
+    CREATE TABLE async_a(x);
+  }
+  execsql {
+    INSERT INTO async_a VALUES('async_insert_1')
+    }
+  execsql {
+    COMMIT;
+  }
+  expr {$::timer eq 0}
+} {1}
+
+do_test async-1.2 {
+  set t 1
+  async_proc
+  set t
+} {1}
+
+ifcapable wal {
+  do_execsql_test async-2.1 {
+    PRAGMA journal_mode
+  } {WAL}
+
+  do_execsql_test async-2.2 {
+    PRAGMA wal_checkpoint
+  } {}
+} elseif {capable journal} {
+  do_execsql_test async2_2.2 {
+    PRAGMA journal_mode
+  } { Deleting journal_mode 'DELETE'}
+
+}
+
+ifcapable vacuum {
+  do_execsql_test async-3.1 {
+    PRAGMA auto_vacuum
+  } {0}
+
+  do_test async-3.2 {
+    db eval {
+      BEGIN EXCLUSIVE TRANSACTION
+      VACUUM
+    }
+
+  } {}
+}
+
+finish_test

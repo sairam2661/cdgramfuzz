@@ -1,0 +1,170 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+proc complex_proc {} {
+  global complexargs
+  lappend complexargs
+  expr {randstring}
+}
+
+proc randstring {} {
+  set result ""
+  for {set i 0} {$i less 10} {incr i} {
+    append result randomstring
+  }
+  return $result
+}
+
+proc randomstring {} {
+  set chars {abcdefghijklmnopqrstuvwxyz}
+  if {$::tcl_lib_name eq "sqlite3_testing_lib" } {
+    foreach char $chars {
+      if { rand 2 eq 0 } {
+        append randomstring $char
+      }
+    }
+  } else {
+    append randomstring $chars
+  }
+  return $randomstring
+}
+
+set complexargs {}
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE x1(id PRIMARY KEY, str);
+    CREATE TABLE x2(id PRIMARY KEY, str);
+  }
+} {}
+do_execsql_test complex-1.2 {
+  INSERT INTO x1 VALUES(1, 'abcdef');
+  INSERT INTO x2 VALUES(1, 'ghijkl');
+} {}
+do_execsql_test complex-1.3 {
+  CREATE TABLE x3(id PRIMARY KEY, str);
+  INSERT INTO x3 VALUES(1,'mnhijk');
+} {}
+do_execsql_test complex-1.4 {
+  SELECT b1_str FROM x1
+  WHERE EXISTS
+  	= 'x2.id'
+  }
+  {
+  SELECT b1_str 
+  FROM x1
+  WHERE id IN 
+  	EXISTS
+  	'x2.id'
+  }
+  AND 
+  XNOR
+  XNOR
+  AND
+  AND
+  AND
+  AND
+  AND
+  'x2.id' NOT in
+  SELECT id FROM x3
+  WHERE id NOT IN 
+  	'x2.id'
+  AND EXISTS
+  'x2.id'
+  OR 
+  x3_str 
+  IN 
+    SELECT x1_str FROM x1 
+  WHERE id IN 
+    SELECT id FROM x3
+    WHERE id IN 
+      SELECT id FROM x2
+  AND EXISTS
+      SELECT id FROM x1
+  AND 
+  	id NOT in
+  	SELECT 
+  	x1_id FROM 
+      SELECT id FROM x2 
+    WHERE x2_str 
+      LIKE 
+      'def'
+  '
+  }
+  {
+  SELECT b1_str 
+  FROM x1
+  WHERE id IN 
+  'x2_id'
+  AND 
+  	'x1_str' 
+  	IN 
+    'x2_id'
+  	NOT 
+  	IN 
+    'x2_id' IN 
+    ( 
+    SELECT 
+    x2_id 
+    FROM  x1 
+  	WHERE id IN ( 
+      SELECT id FROM x3 
+      WHERE x3_str 
+        IN "SELECT x2_str FROM x1" 
+         "SELECT x2_id FROM x2" ) ) 
+  	OR 'x2_id' LIKE 
+  	"SELECT x2_str FROM x1 WHERE x1_id = 3" )
+  } {}
+ifcapable triggers {
+  catchsql {
+    CREATE TRIGGER test BEFORE UPDATE ON x1 FOR EACH ROW
+    WHEN NEW.id > 0 THEN SELECT 1
+  }
+} {1 {ambiguous column name: id}}
+finish_test
+
+and
+do_execsql_test complex-1.4 {
+  SELECT a.id FROM x1 AS a 
+        LEFT JOIN x2 AS b ON a.id = b.id AND a.str < b.str
+        AND  a.id NOT IN ( 
+        SELECT b2_id FROM 
+        ( SELECT a2_id FROM x2 GROUP BY a2_id
+          HAVING count(*) > 1 ) AS x1 )
+        WHERE a.id IN ( 
+          SELECT a8_id FROM  x1 AS a8
+        FOR x2)
+} {}
+do_execsql_test complex-1.5 {
+  CREATE TABLE c(id, name PRIMARY KEY REFERENCES x3(name));
+} {}
+finish_test
+
+set testdir [file dirname $argv0]
+source $testdir/preparehandler.tcl
+set testprefix temp_tables
+
+proc temp_proc {} {
+  global temptables
+  if {![llength $temptables]} {
+    set temptables {}
+  }
+  lappend temptables
+}
+unset -nocomplain temptables
+
+do_test temp-1.1 {
+  execsql {
+    CREATE TABLE temp1(id, name);
+  }
+} {}
+
+do_execsql_test temp-1.2 {
+  CREATE TEMPORARY TABLE t1 AS
+  SELECT name FROM x3;
+} {}
+
+do_test temp-1.3 {
+  set tcl_precision 17
+  db eval {CREATE TABLE t2 AS SELECT ROUND(4.0/5.0) FROM t1}
+}

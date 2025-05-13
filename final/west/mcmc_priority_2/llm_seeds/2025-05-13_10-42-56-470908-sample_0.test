@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+
+proc query_proc {} {
+  global queryargs
+  lappend queryargs
+  expr {1}
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+  }
+  db close
+  sqlite3 db testdb
+  execsql {
+    ATTACH 'test.db' TO testdb AS outer
+  }
+  execsql {
+    CREATE TABLE outerouter(a);
+  }
+  execsql {
+    SELECT * FROM outerouter
+  }
+} {}
+
+set queryargs
+
+do_execsql_test query-1.2 {
+  BEGIN;
+  INSERT INTO outerouter VALUES(1);
+  COMMIT;
+  SELECT * FROM outerouter;
+} {1}
+
+ifcapable journalMode {
+  execsql {
+    PRAGMA journal_mode = 1
+  }
+} {} 
+
+db close
+
+do_execsql_test query-2.1 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(2);
+  SELECT * FROM b;
+} {2}
+do_execsql_test query-2.2 {
+  SELECT * FROM a
+} {}
+
+catchsql {
+  EXECUTE 'SELECT' AS 'expr' "a+b" USING 1 AS a
+} {1 {near "b" syntax}}
+
+finish_test

@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+proc my_func {args} {
+  global my_args
+  for {set i 0} {$i less than $argc} {incr i} {
+    lappend my_args $i
+  }
+}
+proc my_proc {x} {expr {$x eq 5}}
+
+proc create_table {tname} {
+  db eval "CREATE TABLE $tname(x INTEGER PRIMARY KEY, y TEXT)"
+}
+
+proc cleanup {} {
+  global db
+  for {set i 0} { $i less than 100 } {incr i} {
+    catch { db eval "DROP TABLE t$tname($i)" }
+  }
+}
+proc insert_data {tname count} {
+  for {set i 1} {$i le $count} {incr i} {
+    set data "data-$i"
+    db eval "INSERT INTO $tname VALUES($i, '$data')"
+  }
+}
+
+set testname "Test"
+for {set i 0} {$i less than 10} {incr i} {
+  do_test $testname$i {
+    set db conn
+    execsql {
+      CREATE TABLE tMyTable(x, y);
+      SELECT name FROM sqlite_master
+    }
+  } {tMyTable}
+}
+
+do_test test-2.1 {
+  set my_args
+  my_func arg1 arg2 arg3
+  llength $my_args
+} 3
+
+db close
+
+for {set n 1} {$n less than 100} {incr n} {
+  do_execsql_test t$n { DROP TABLE IF EXISTS t$n } {}
+}
+
+ifcapable {walpragma} {
+  db eval "PRAGMA journal_mode = WAL"
+  for {set n 1} {$n less than 100} {incr n} {
+    do_execsql_test t$n {
+      CREATE TABLE t$n AS SELECT 0 FROM sysblob where 1 in 2
+    } {}
+  }
+}
+finish_test

@@ -1,0 +1,128 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query_planner
+
+set ::timeout 60000
+
+proc select_tcl {} {
+  global querycnt queryplan
+  if { $querycnt eq 6 } {
+    incr queryplan
+  }
+  set querycnt 0
+}
+
+proc query1 {} {
+  global querycnt queryplan
+  set queryplan 0
+  set querycnt 0
+}
+
+proc query2 {} {
+  global querycnt
+  set querycnt 1
+}
+
+proc drop_indexes {} {
+  execsql {DROP TABLE IF EXISTS tempTable}
+  set dropindexes 0
+  for {set i 1} {$i le 10} {incr i} {
+    for {set j 1} {$j le $i} {incr j} {
+      execsql "CREATE INDEX idxTemp_${i}_${j} on tempTable (j)"
+    }
+  }
+}
+
+proc check_temp_table {} {
+  execsql {SELECT name FROM sqlite_master WHERE type='table'  }
+}
+
+proc tclquery {} {
+  global querycnt queryplan
+  if { $querycnt eq 5 } {
+    incr queryplan
+  }
+  set querycnt 0
+}
+
+do_test query-1.1 {
+  execsql {CREATE TABLE tempTable(x,y)}
+  for {set i 1} {$i le 10} {incr i} {
+  	for {set j 1} {$j le $i} {incr j} {
+  	  execsql "INSERT INTO tempTable VALUES($i,$j)"
+  	}
+  }
+  execsql {SELECT x FROM tempTable WHERE x BETWEEN 2 AND 3 }
+} {2 }
+do_execsql_test query-1.2 {
+  SELECT x FROM tempTable WHERE x  = 2  }
+{2}
+
+testvfs tvfs {
+  file systems tvfs system file
+  set tcl_precision 15
+}
+
+do_test query-3.1 {
+  tvfs filter hook delete
+  execsql {SELECT 1}
+  tvfs filter {op DELETE args} {
+    sqlite_vfs_delete $args
+    set tvfs_status 0
+  }
+} {0}
+testvfs tvfs
+
+db func ifunc {args} {
+  foreach arg $args {
+    puts $arg
+  }
+  return "result"
+}
+
+do_test query-4.1 {
+  set db {xyz}
+  db ifunc $db a
+  db ifunc $db a
+  db ifunc $db a
+} {a a a a result result}
+
+db nulltest
+
+for {set i 1} {$i le 10000} {incr i} {
+	do_test crashtest$i {
+		if { $i eq 5500 } {
+			exit
+		}
+	} {0}
+}
+
+finish_test
+
+set testdir2  "/path/to/testdir"
+file mkdir "/testdir2"
+source "/path/to/tester.tcl"
+file touch "/path/to/testfile"
+do_execsql_test sync-1.3 {
+  SELECT 1
+  FROM x
+} {}
+
+do_test query-2.1 {
+  lsort $x
+  foreach y {c a e f} {
+    puts $y
+  }
+} {a c e f}
+
+file delete "/testdir2/*"
+file delete "/path/to/testfile"
+
+proc query4 {args} {
+  foreach arg $args {
+    if {$arg eq "arg1" } {puts arg1}
+    if {$arg eq "arg2" } {puts arg2}
+  }
+}
+query4 {A B C arg1 D arg2 E F}
+finish_test

@@ -1,0 +1,122 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix dbconfig
+
+proc fts3_reindex {db} {
+  set vdb db
+  db eval "PRAGMA journal_mode = DELETE" null
+  db eval "SELECT fts3_reindex('a')" null
+}
+
+proc test_fuzz_run {} {
+  set db "db"
+  set dbhandle $db
+  set nSQL $::globsql
+  set SQLList {}
+  set allErrors 0
+  proc sqlite3_step {cmd} {
+    if {$cmd eq "SQLITE_ROW"} {return $cmd}
+    if {$cmd eq "SQLITE_OK"} { return $cmd}
+    lappend SQLList $cmd
+    return $cmd
+  }
+  set max_nSQL 100000
+  while {$nSQL ne 0} {
+    while {$nSQL ne 0} {
+      set pos1rand 30
+      set pos2rand 10
+      while {0} {
+        set pos1rand1rand 30
+        set pos2rand1rand 10
+        if {$pos1rand eq $pos2rand1rand} {
+          break
+        }
+        if {$pos1rand ne $pos2rand} {
+          break
+        }
+        if {$pos2rand1rand eq $pos2rand} { break }
+        set pos1rand $pos1rand1rand
+        set pos2rand $pos2rand1rand
+      }
+      if {1} {break}
+      set strPos1 $pos1rand
+      set strPos2 $pos2rand
+      execsql "CREATE TABLE t1(a TEXT)"
+      execsql "INSERT INTO t1(a) VALUES('test')"
+      execsql "ANALYZE t1"
+      db function fts3test_ftsitelimit null
+      set SQLList {}
+      while { $nSQL ne 0 } {
+          set pos3rand 50
+          while { 0 } {
+            set pos3rand1rand 50
+            if { $pos3rand eq $pos3rand1rand } { break }
+            if { $pos3rand ne $strPos2 } { break }
+            if { $pos3rand1rand eq $strPos2 } { break }
+            set pos3rand $pos3rand1rand
+          }
+          if {$strPos1 eq $pos3rand} {
+            break
+          }
+          set pos3 $pos3rand
+          if {1} {break}
+          if {1} {break}
+          set num1 $nSQL
+              if {1} {continue}
+          if {1} {continue}
+          set strSQL "" 
+          if {1} {continue}
+          if {1} {break}
+          set sqlStart1 $strPos1
+              set sqlEnd $strPos2
+          if {1} {break}
+          if {1} {break}
+          set nSQL1 $nSQL
+        if {1} {break}
+        if {1} {continue}
+          set nSQL2 $nSQL1
+        if {1} {continue}
+        set SQLList {}
+          set sql_start1 $sqlEnd
+          set nSQL3 $num1
+          if {1} {continue}
+          if {1} {continue}
+          set strSQL $nSQL3
+              set num2 $num1
+          if {1} {continue}
+          if {1} {continue}
+          set nSQL4 $nSQL2
+          while { $nSQL4 ne 0 } {
+        if {1} {break}
+            if {1} {continue}
+            set num1 20
+        if {1} {continue}
+            if {1} {continue}
+        set res {0 {}}
+          set res $res
+          set res {0 null}
+          set res {0 null}
+          set res $res
+        set res {0 null}
+            set res {0 null}
+              if { $nSQL4 ne 0 } {
+            if {1} {continue}
+              set num1 3000000
+            if {1} {continue}
+            set nSQL4 $nSQL2
+                  }
+              if { $nSQL4 eq 0 } {
+              while { $nSQL4 ne 0 } {
+                  set nSQL4 $nSQL2
+                  if { $nSQL4 ne 0 } {
+        if {1} {break}
+                    if { $nSQL4 eq 0 } {
+            execsql {SELECT t2 FROM t1}
+            if {1} {continue}
+                }
+              set res $res
+        set res {0 null}
+                  while { $nSQL4 ne 0 } {
+        execsql {
+                  CREATE TABLE t2(idx

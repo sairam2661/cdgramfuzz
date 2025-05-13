@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_tests
+
+set ::timeout 60000
+set testingmodules wal vtab
+
+proc complex_func {} {
+  global sqlite_options temp_db
+  set db "main"
+  set option_list {}
+  if {$sqlite_options} {
+    set option_list $sqlite_options
+  }
+  if { $temp_db} {
+    execsql {ATTACH 'temp2' AS temp}
+  }
+  lappend option_list "SQLITE_TEMP_STORE=2"
+  puts "Options: $option_list"
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT * FROM a}
+} {1}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT * FROM a;
+} {1 2}
+
+ifcapable journal_mode {
+  db eval "PRAGMA journal_mode = WAL"
+  do_execsql_test complex-1.3 {
+    INSERT INTO a VALUES(3)
+  }
+  {3}
+}
+
+proc complex_trigger { } {
+  global sqlite_options delete_db
+  db eval {CREATE TRIGGER trigger_1 AFTER DELETE ON main 'a' FOR EACH ROW BEGIN
+    DELETE FROM main 'a'
+  END}
+}
+
+do_execsql_test complex-1.4 {
+  SELECT * FROM a
+} {1 2 3}
+
+ifcapable integrity_check {
+  do_execsql_test complex-1.5 {
+      PRAGMA integrity_check;
+  } {ok}
+}
+
+complex_func
+delete_db temp2
+do_test complex-1.6 {
+  execsql {
+    DROP TRIGGER trigger_1
+  }
+  execsql {SELECT * FROM a}
+} {1 2 3}
+
+finish_test

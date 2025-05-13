@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database
+
+set ::timeout 60000
+
+proc database_setup {} {
+  global db
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(c, d);
+  }
+}
+
+proc database_cleanup {} {
+  global db
+  execsql {
+    DROP TABLE t1
+    DROP TABLE t2
+  }
+}
+
+proc do_test1 {{cmd {}}} {
+  lappend testcases $cmd
+  do_test database_1 {
+    $cmd
+  } {1}
+}
+
+proc do_test2 {{cmd {}}} {
+  lappend testcases $cmd
+  do_test database_2 {
+    $cmd
+  } {2}
+}
+
+proc test_database {} {
+  global testprefix test_dir testcases
+
+  do_execsql_test database_3.1 {
+    SELECT * FROM t1
+  } {}
+
+  set testcases {}
+
+  do_test1 {
+    INSERT INTO t1 VALUES(1, 1)
+  }
+  do_test2 {
+    INSERT INTO t2 VALUES(2, 2)
+  }
+  do_test1 {
+    SELECT * FROM t1
+  } {1 1}
+
+  set res_test {}
+  foreach t $testcases {
+    lappend res_test "$t"
+  }
+
+  do_execsql_test database_3.2 {
+    SELECT * FROM t2
+  } $res_test
+}
+
+database_setup
+defer_sql_logging
+do_test database_4 {
+  start Logging
+  test_database
+  global testcases
+  list 0 $testcases
+} {0 database_1 {INSERT INTO t1 VALUES(1, 1)} database_2 {INSERT INTO t2 VALUES(2, 2)} database_1 {SELECT * FROM t1} database_3.2 {SELECT * FROM t2}}
+
+database_cleanup
+finish_test

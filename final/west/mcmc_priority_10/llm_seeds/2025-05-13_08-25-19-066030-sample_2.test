@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite
+
+set ::timeout 60000
+
+proc check_result {expected output} {
+  if {$output ne $expected} {
+    error "Expected: $expected, Actual: $output"
+  }
+}
+
+file delete complex_table
+
+proc create_table {} {
+  set db test_db
+  execsql {
+    CREATE TABLE IF NOT EXISTS complex_table
+    {
+     a INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+      b TEXT NOT NULL
+      c REAL NOT NULL
+      d NUMERIC NOT NULL
+      e DATE NOT NULL
+      f DATETIME NOT NULL
+      g TIME NOT NULL
+    }
+  }
+}
+
+proc delete_table {} {
+  set db test_db
+  execsql {
+    DROP TABLE complex_table
+  }
+  file delete complex_table
+}
+
+create_table
+
+do_test complex-1.1 {
+  set f "this is a test string"
+  set db test_db
+  execsql {
+    INSERT INTO complex_table(b) VALUES('$f');
+  }
+  execsql {
+    SELECT b FROM complex_table
+  }
+} {this is a test string}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO complex_table(b, c, d, e, f, g)
+  VALUES(
+    'another string',
+    2.5,
+    1,
+    '2024-05-05',
+    '2020-05-05 09:00:05',
+    '09:00:05'
+  );
+  COMMIT;
+  SELECT * FROM complex_table
+} {2 this is a test string 0.0 0.0 2024.00.00 12.00.00 09.00.00 1 another string 2.5 1.0 2024.05.05 12.00.00.000000 2020.05.05 12.00.00.000000 09.00.00.000000}
+
+do_execsql_test complex-1.3 {
+  SELECT a FROM complex_table WHERE b='this is a test string'
+} {1}
+
+ifcapable vacuum {
+  catchsql {
+    VACUUM
+  }
+} {0 {}}
+
+finish_test

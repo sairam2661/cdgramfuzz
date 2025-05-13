@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithread
+
+proc multithread_multitest {} {
+  global multithreadargs
+  set multithreadargs {}
+  set thread1threadno 1
+  set thread1sql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES('one');
+  }
+  set thread2threadno 2
+  set thread2sql {
+    BEGIN;
+    INSERT INTO a VALUES('two');
+    COMMIT;
+    SELECT * FROM a;
+  }
+  do_fuzztest thread1 $thread1threadno multithreadargs $thread1sql
+  do_fuzztest thread2 $thread2threadno multithreadargs $thread2sql
+}
+
+do_test multithread-1.1 {
+  execsql {
+    PRAGMA journal_mode = 'wal';
+    CREATE TABLE b(x);
+  }
+} {wal}
+
+ifcapable wal_file_control {
+  set ctrl_name {journal_mode}
+  set default {wal}
+  set mode wal
+  set arg wal
+} {0 {}}
+ifcapable wal_write_timestamp {
+  try_fuzztest {
+    set mode WAL
+  } {
+    execsql {
+      PRAGMA wal_write_timestamp = 123;
+    }
+  }
+  
+  try_fuzztest {
+    set mode WAL
+  } {
+    execsql {
+      PRAGMA wal_write_timestamp = 123456789;
+    }
+  }
+  set ctrl_name {wal_write_timestamp}
+  set default {123}
+  set mode wal
+  set arg 123
+} {0 {}}
+
+try_fuzztest {
+  set mode WAL
+  execsql {
+    PRAGMA wal_checkpoint;
+  }
+} {
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(1);
+  }
+}
+
+do_execsql_test multithread-1.3 {
+  SELECT * FROM a;
+  SELECT * FROM b;
+  SELECT * FROM c;
+} {one one {1} two}
+
+finish_test

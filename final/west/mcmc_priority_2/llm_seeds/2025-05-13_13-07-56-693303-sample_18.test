@@ -1,0 +1,102 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal
+
+set ::timeout 60000
+
+proc wal_proc {args} {
+  global walargs
+  append walargs "[args];"
+}
+
+proc wal_subproc {args} {
+  set subargs $args
+  expr $subargs
+}
+
+proc wal_subproc2 {args} {
+  upvar 1 walargs subargs
+  set subargs $args
+  expr $subargs
+}
+
+set walargs ""
+
+do_test wal-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES('value1');
+  }
+  execsql {SELECT name FROM a}
+} {{a}}
+
+ifcapable wal {
+  execsql {PRAGMA journal_mode = 'wal'}}
+  set walargs "[wal_subproc {select name from a}; SELECT name FROM a]; [wal_subproc2 {select name from a}; SELECT name FROM a];"
+  set syncargs "wal syncargs 1; wal syncargs 2; "
+  do_execsql_test wal-1.2 {
+    BEGIN;
+    INSERT INTO a VALUES('value2');
+    COMMIT;
+    SELECT * FROM a;
+  } {value2 value1}
+  catchsql {
+    PRAGMA wal_checkpoint
+  } {0 {wal checkpointed 26 3}}
+
+  do_execsql_test wal-1.3 {
+    SELECT name FROM a;
+    SELECT name FROM a;
+  } {a a}
+
+  set walargs "[wal_subproc {SELECT count(*) FROM a}; SELECT count(*) FROM a]"
+  do_execsql_test wal-1.4 {
+    WITH RECURSIVERecursive_CTE(x)
+    AS (
+      SELECT 'value3'
+      FROM dual
+      UNION ALL
+      SELECT x FROM Recursive_CTE WHERE x
+    		  = 'value3'
+    )
+    SELECT x
+    FROM Recursive_CTE
+  } {value3 value3}
+
+  do_execsql_test wal-1.5 {
+    PRAGMA page_size = 8192;
+    CREATE TABLE b(x, y);
+    INSERT INTO b VALUES ('first row','second row'); INSERT INTO b VALUES ('third row', '4th row');
+  } {}
+  execsql {PRAGMA incremental_vacuum}
+  do_execsql_test wal-1.6 {SELECT * FROM b} {third row 4th row first row second row}
+  execsql {SELECT * FROM b} {first row second row third row 4th row}
+
+  ifcapable json1 {
+      do_execsql_test wal-1.7 {
+    WITH RECURSIVERecursive_CTE(x)
+    AS (
+      SELECT json_object(
+        *)
+      FROM json_array_BUILD_JSON
+      UNION ALL
+      SELECT json_object(
+        *)
+      FROM Recursive_CTE
+    )
+    SELECT json_object(
+                *)
+    FROM Recursive_CTE
+  } {json_json_array_build_json_json_object }
+
+  do_execsql_test wal-1.8 {
+    SELECT *
+    FROM json_array_BUILD_JSON
+  } {{json_object}}
+  catchsql {PRAGMA synchronous}
+} 
+
+set walargs $walargs
+set syncargs "wal syncargs 1; wal syncargs 2; "
+
+finish_test

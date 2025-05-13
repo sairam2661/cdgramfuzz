@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set db handle
+
+proc open_db {} {
+  global db handle
+  sqlite3 db "file::memory:?cache=shared"
+  set db handle
+}
+
+proc close_db {} {
+  global db handle
+  if {$::db} {
+    db close
+    set db
+  }
+}
+
+proc set_db {} {
+  set db handle
+  sqlite3 db "file:////tmp/dbs/test.db?cache=shared&mode=memory&wsn=false"
+  execsql {
+    CREATE TABLE people(first_name, last_name, age);
+    INSERT INTO people VALUES('John', 'Doe', 25);
+    INSERT INTO people VALUES('Jane', 'Doe', 30);
+  }
+}
+
+proc drop_db {} {
+  execsql {
+    DROP TABLE people
+  }
+}
+
+do_test test-1.1 {
+  set_db
+  execsql {
+    SELECT first_name FROM people;
+  }
+} {John Jane}
+
+do_test test-1.2 {
+  open_db
+  execsql {
+    SELECT first_name FROM people;
+  }
+} {John Jane}
+
+do_execsql_test test-1.3 {
+  CREATE TABLE numbers(x);
+  INSERT INTO numbers VALUES(1);
+  INSERT INTO numbers VALUES(2);
+} {}
+
+do_execsql_test test-1.4 {
+  CREATE INDEX name_index ON numbers(x);
+  SELECT name_index FROM sqlite_master;
+} {name_index}
+
+do_execsql_test test-1.5 {
+  BEGIN;
+  INSERT INTO numbers VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM numbers;
+} {3}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="WAL"}
+} {0 {}}
+
+finish_test

@@ -1,0 +1,147 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc insert_data {tbl name} {
+  global db
+  execsql {
+    CREATE TABLE IF NOT EXISTS $tbl IF NOT EXISTS
+    INSERT INTO $tbl VALUES randomized
+  }
+}
+
+proc get_data {tbl} {
+  global db
+  execsql "SELECT * FROM $tbl"
+}
+
+set complex_data {
+    1 2 3 4 5 6
+    John Peter Jane Bob Alice
+    Foo Bar
+    1 2 3
+}
+set data2 {
+  Hello
+  World
+  0 1 2 3 4 5 6 7 8 9
+}
+
+proc complex_test {flag} {
+  global db complex_data
+
+  if {$flag eq "setup"} {
+    if {$::tcl_platform OsType} {
+      for {set i 0} {$i 10} {incr i} {
+         execsql {INSERT INTO t1 VALUES (1000)} 
+      }
+      for {set i 0} {$i 5} {incr i} {
+        insert_data t2 $complex_data
+      }
+      set test_id 0
+    } else {
+      execsql {DROP TABLE t1}
+    }
+  } elseif {$flag eq "teardown"} {
+    catch {execsql {DROP TABLE t1 t2}}
+  }
+}
+
+set table_list {
+  "DROP TABLE IF EXISTS table1"
+  "CREATE TABLE table1 (a integer PRIMARY KEY, b integer)"
+  "DROP TABLE IF EXISTS table2"
+  "CREATE TABLE table2 (c integer PRIMARY KEY, d integer)"
+  "DROP TABLE IF EXISTS view1"
+  "CREATE VIEW view1 AS SELECT * FROM table1"
+}
+
+provides {
+  table1
+  table2
+  view1
+}
+
+if 0 {
+  execsql {
+    DROP TABLE IF EXISTS table3
+    CREATE TABLE table3 AS SELECT DISTINCT $var1 FROM table2
+  }
+}
+
+proc query_test {list} {
+  foreach {sql} $list break
+  global db
+  do_catchsql_test 0.0 $sql "0 {NOT NULL}"
+}
+
+do_execsql_test 0.1  {
+  BEGIN DEFERRED TRANSACTION
+  CREATE TABLE t1 AS SELECT 1 a FROM table1
+  INSERT INTO t2 VALUES $complex_data
+  SELECT 1 FROM t2 LIMIT 1
+} {}
+do_execsql_test 0.2
+{
+  SELECT a FROM t1
+} {1}
+do_execsql_test 0.3
+{
+  CREATE INDEX i1 ON table1(a)
+  }
+do_execsql_test 0.4
+{
+  SELECT i1 FROM t1 AND t2
+}
+do_execsql_test 0.5
+{
+  CREATE Trigger IF NOT EXISTS ins_trigger AFTER INSERT ON table1
+  FOR EACH ROW WHEN NEW
+      SELECT 0
+  }
+do_execsql_test 0.6 "
+  DROP ALL TRIGGERS
+  SELECT * FROM t1 WHERE
+"
+list table_list $table_list
+
+do_execsql_test 0.8
+{
+  SELECT table2 FROM table2 ORDER BY 1
+}
+do_query_test 0.9 {
+
+    SELECT * FROM table2 WHERE  a=100
+
+}
+{
+
+  1   1 1   
+  1   1 2   
+  1   1 3   
+  1   1 4   
+  1   1 5   
+  1   1 6
+
+}
+
+do_test 1.0 {
+  list get_data table1
+} {
+   $complex_data
+}
+set test_id 1
+set data2 {
+ 1 2 3
+}
+do_test 1.1 {
+  list get_data table2
+} {
+    " $data2\n 1 \n 2 \n 3 \n"
+}
+set test_id 2
+select $table_list
+
+finish_test

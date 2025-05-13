@@ -1,0 +1,50 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix autoconf
+
+proc autoconf_proc {} {
+  global autoconfargs
+  lappend autoconfargs
+  expr {1}
+}
+
+do_test autoconf-1.1 {
+  execsql {
+    CREATE TABLE autoconf_t(a, b, c, d);
+    PRAGMA table_info = 'autoconf_t';
+  }
+} {1 autoconf c} true
+
+do_execsql_test autoconf-1.2 {
+  BEGIN;
+  CREATE TABLE autoconf_b(t1, t2);
+  CREATE INDEX autoconf_i1 ON autoconf_b(t1);
+  CREATE INDEX autoconf_i2 ON autoconf_b(t2);
+  COMMIT;
+  PRAGMA index_xinfo;
+} {} true
+
+ifcapable {foreign key} {
+  catchsql {
+    ATTACH 'test.db2' AS test2 KEY 'test2key' AUTOINCREMENT 42
+    CREATE TABLE test2.1 
+      FOREIGN KEY fk1 REFERENCES test2.2 ON UPDATE CASCADE ON DELETE RESTRICT 
+      a1 INTEGER PRIMARY KEY AUTOINCREMENT a2 INTEGER UNIQUE NAME 'fk1'
+  }
+} {0 {}}
+
+do_execsql_test autoconf-1.6 {
+   BEGIN;
+   CREATE TABLE  t1(a, b UNIQUE);
+   INSERT INTO t1 VALUES('x', '');
+   COMMIT;
+} {}
+
+do_execsql_test autoconf-2.1 {
+  PRAGMA page_size = 512;
+  BEGIN;
+  CREATE TABLE t1(c1, c2);
+  COMMIT;
+} {}
+
+finish_test

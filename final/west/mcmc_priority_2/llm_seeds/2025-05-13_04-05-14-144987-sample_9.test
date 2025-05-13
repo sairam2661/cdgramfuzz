@@ -1,0 +1,126 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+
+proc crash_func {} {
+  execsql {
+    SELECT * FROM NONEXISTENT_TABLE;
+  }
+}
+
+proc crash_func2 {} {
+  db eval {
+    SELECT * FROM a
+    WHERE x = 999999999999999999999999999999999;
+  }
+}
+
+do_test crash-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+do_test crash-1.2 {
+  crash_func
+} {1 1}
+
+do_test crash-1.3 {
+  execsql {
+    DROP TABLE a
+  }
+  crash_func2
+} {1}
+
+test crash_func3 {
+  crash_func2
+} {CRASH}
+
+ifcapable fuzzytest {
+  fuzztest crash_func3 {a integer}
+} {}
+
+finish_test
+
+set testdir2  "[file dirname $argv0]"
+source $testdir2 "/../../test/fuzz.tcl"
+set testprefix sync
+
+proc sync_func {} {
+  execsql {
+    pragma synchronous
+  }
+}
+
+proc sync_func2 {} {
+  set res   ""
+  set res2  ""
+  set res3  ""
+  set res4  ""
+  set db    {}
+  set res   ".schema a;pragma synchronous"
+  set res2  {synchronous OFF}
+  execsql {
+    SELECT * FROM a;
+  }
+  set res3 {1}
+  foreach v {a 1} {
+    set res4 $res4$a $v
+  }
+  execsql $res
+  execsql $res2
+  execsql $res3
+  execsql $res4
+}
+
+do_test sync-1.1 {
+  execsql {
+    pragma synchronous
+  }
+} {OFF}
+
+do_test sync-1.2 {
+  sync_func
+} {OFF}
+
+do_test sync-1.2 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+  do_test sync-1.2 {
+  sync_func
+} {OFF}
+
+do_test sync-1.3 {
+  execsql {
+    DROP TABLE a
+  }
+  error_message
+} {sql error}
+
+do_test sync-1.4 {
+  sync_func
+} {OFF}
+do_test sync-1.5 {
+  execsql {
+    pragma synchronous
+  }
+} {OFF}
+
+do_test sync-1.6 {
+  sync_func2
+} {1.0}
+
+test sync_func3 {
+  sync_func2
+} {CRASH}
+
+ifcapable fuzzytest {
+  fuzztest sync_func3 sync
+} {}
+
+finish_test

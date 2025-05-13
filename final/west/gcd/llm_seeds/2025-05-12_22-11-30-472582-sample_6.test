@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+proc async_proc {} {
+  global asyncargs
+  lappend asyncargs
+}
+
+proc is_equal {a b} {
+  for {set i 0} {$i less 10} {incr i} {
+    if { $a eq $b } {return}
+    after 1
+  }
+  return 0
+}
+
+proc do_test2 {n e} {
+  incr n
+  set sql "$::sqltext"
+  if { $::dontcare } {unset sql}
+  uplevel do_test $n $e $sql
+}
+
+do_test async-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+  }
+  execsql {SELECT x FROM a ORDER BY x}
+} {1 2}
+
+do_execsql_test3 async2 {
+  DROP TABLE a
+} {}
+
+catch {db close}
+
+ifcapable wal {
+  set db open
+}
+
+proc do_test3 {s ql e} {
+  set n 0
+  while { $n less $s } {
+    set n "+ $n"
+    do_test2 $n $e
+  }
+}
+
+set sqldiff {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(5);
+}
+
+do_execsql_test2 test4 {
+  do_test4 10 5 {
+    SELECT x FROM b ORDER BY x
+  }
+}
+do_test5 { db rows 2 }
+if true {
+  set sqldiff b
+  do_test5 { db table b }
+}
+set sqldiff {
+  DELETE FROM b
+  DROP TABLE b
+}
+
+finish_test

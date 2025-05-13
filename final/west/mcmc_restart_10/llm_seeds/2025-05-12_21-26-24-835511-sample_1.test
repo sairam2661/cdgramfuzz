@@ -1,0 +1,29 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_fuzz_test
+fuzztesteenable 1
+
+set db 1
+append db WAL1
+
+set sql {
+  CREATE TABLE t1(a, b);
+  CREATE TABLE t2(c, d);
+  CREATE TABLE t3(e, f) 
+  }
+execsql "$sql"
+
+proc wal_fuzz_test {} {
+  set tclvars {}
+  foreach v {wal 1 wal 2} {
+    lappend tclvars $v
+  }
+}
+
+do_fuzz_test wal_fuzz_test WAL_test_fuzztest {
+  set sql "$a $b $c $d $e $f"
+  set xwal_file $db
+  execsql "PRAGMA wal_check=$xwal_file"
+} {ok}
+
+finish_test

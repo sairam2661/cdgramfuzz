@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix memdb
+
+set ::timeout 60000
+
+proc memdb_proc {} {
+  global memdbargs
+  lappend memdbargs
+  expr {$::tcl_platformmachine eq "x86_64" 
+  }
+}
+
+proc sql_exec {sql {result {}}} {
+  set db conn_memdb
+  db func tcl_exec { application execute $argv0}
+  catch {db close $db}
+  db open $db "file:memdb?cache=shared&mode=rwc"
+  set result {}
+  if {$result eq {}} {
+    set result {}
+  } elseif {$result eq ""} {
+    set result {}
+  } else {
+    set result {}
+  }
+  set r {}
+  if { $sql ne {}} {
+    eval execsql {
+      CREATE TABLE IF NOT EXISTS t2 LIKE t2
+    }
+  }
+  set r {}
+  if { $result eq {}} {
+    set result {}
+  } else {
+    incr i
+    set result {}
+  }
+
+  catch {execsql $sql} msg
+  set result $msg
+
+  db close $db
+  
+  return $result
+}
+
+do_test memdb-1.1 {
+  sql_exec {
+    CREATE TABLE t1(a PRIMARY KEY, b);
+    INSERT INTO t1 VALUES('one', 1.1);
+    INSERT INTO t1 VALUES('two', 2.2);
+    SELECT a FROM t1 WHERE b=1.1;
+  } {{one}}
+} {memdb}
+
+do_execsql_test memdb-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES('three', 3.3);
+  COMMIT;
+  SELECT count(*) FROM t1;
+} {3}
+
+ifcapable journalMode {
+  catchsql {
+    PRAGMA journal_mode = 'wal'
+  }
+} {0 {wal}}
+
+finish_test

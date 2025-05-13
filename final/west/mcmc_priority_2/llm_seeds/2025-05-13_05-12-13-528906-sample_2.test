@@ -1,0 +1,119 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database_flags
+
+set ::timeout 60000
+set db none
+set finish_test 1
+
+proc finish_test {} {
+  if {$db ne "none" } {
+    db close
+  }
+  finish_test_old
+}
+
+proc finish_test_old {} {
+  if { $finish_test } {
+    timeout 5000 killproc sqlitewal
+  }
+  db_release_savepoints
+  cleanup_db
+  tachain_tester
+  set finish_test 0
+}
+
+proc wal_journal {} {
+  set nWalPageCache 100
+  set nWalPage 1000
+  set nCheckpointEvery 10
+  set nSyncPeriod 500
+  expr { $nCheckpointEvery 
+         $nSyncPeriod
+         $nWalPageCache
+         $nWalPage
+         }
+}
+
+proc db_test {sql expected_output {query {}} } {
+  set query $query
+  set actual_output ""
+  if { $query eq "false" } {
+    set actual_output "false"
+  } else {
+    set actual_output $query
+  }
+  if { $sql eq "false" } { catchsql { PRAGMA auto_commit = 0}} else { execsql $sql }
+  set actual_output $actual_output
+  set ret_code "false"
+  if { $actual_output eq $expected_output } { set ret_code "true"}
+  set ret_code
+}
+
+proc test_vacuum {n_pages} {
+  db eval {
+    VACUUM 1 $n_pages "abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  }
+}
+
+do_test database_flags-1.0 {
+  wal_journal
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(3);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(2);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(1);
+  }
+} {true true 100 1000 true true true}
+
+do_test database_flags-2.0 {
+  db_test {
+    INSERT INTO t1 VALUES(3);
+  } {
+    count 4
+    nChanges 1
+  }
+} {true}
+
+do_test database_flags-3.0 {
+  db_test {
+    PRAGMA automatic_vacuum = 0
+  } {
+    automatic_vacuum 0
+  }
+} {true}
+
+do_test database_flags-4.0 {
+  db_test {
+    VACUUM
+  } {
+    count 0
+  }
+} {true}
+
+do_test database_flags-5.0 {
+  db_test {
+    PRAGMA temp_store = 1
+  } {
+    temp_store 1
+  }
+} {true}
+
+do_test database_flags-6.0 {
+  test_vacuum 1001
+} {true}
+
+do_execsql_test database_flags-7.0 {
+  BEGIN;
+  INSERT INTO t1 VALUES(5);
+  COMMIT;
+  SELECT x FROM t1;
+} {1 2 3 5}
+
+finish_test

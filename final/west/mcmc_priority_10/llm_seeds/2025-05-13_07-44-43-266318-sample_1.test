@@ -1,0 +1,113 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal
+
+set ::timeout 60000
+
+proc f_key_event { } {
+  if { $::tcl_interactive } {
+    if { $::tkcon } {
+      $::tkcon insert {}
+    }
+  }
+}
+
+proc crasher {} {
+  global timeout
+  set timeout 10000
+}
+
+proc wal_proc {} {
+  global data
+  lappend data
+  expr { 0 }
+}
+
+proc int2str {n} {
+  if { $n eq "0" } {
+    return "zero"
+  }
+  if { $n eq "1" } {
+    return "one"
+  }
+  if { $n eq "2" } {
+    return "two"
+  }
+  if { $n eq "3" } {
+    return "three"
+  }
+  if { $n eq "4" } {
+    return "four"
+  }
+  if { $n eq "5" } {
+    return "five"
+  }
+  if { $n eq "6" } {
+    return "six"
+  }
+  if { $n eq "7" } {
+    return "seven"
+  }
+  if { $n eq "8" } {
+    return "eight"
+  }
+  if { $n eq "9" } {
+    return "nine"
+  }
+  return "unknown"
+}
+
+set N 0
+while { $N "< 10" } {
+  do_test fcrash{ $N } {
+    set fcrashout
+    while { $fcrashout ne "one" } {
+      incr N
+      set fcrashout
+      int2str $N
+    }
+  } {one}
+}
+
+execsql {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}
+
+data {}
+for { set i 1 } { $i "< 5" } { incr i } {
+  execsql { INSERT INTO a values 5 }
+  wal_proc
+}
+
+catchsql {
+  PRAGMA journal_mode = 'WAL'
+}
+
+data {}
+catchsql {
+  CREATE TEMPORARY TABLE b AS SELECT x FROM a WHERE x IS NOT NULL
+}
+
+execsql {
+  COMMIT;
+}
+
+data {}
+execsql {
+  INSERT INTO a VALUES (10);
+  COMMIT;
+  INSERT INTO a VALUES (11);
+  INSERT INTO a VALUES (12);
+  COMMIT
+}
+
+do_execsql_test crasher-1.1 {
+    SELECT x FROM a WHERE x = 10
+} {10}
+
+catchsql {
+  PRAGMA journal_mode = 'DELETE'
+} {1 Error}
+
+finish_test

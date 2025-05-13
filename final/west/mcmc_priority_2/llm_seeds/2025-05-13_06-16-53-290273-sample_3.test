@@ -1,0 +1,117 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced_index_test
+
+set ::timeout 60000
+set testprefix "$testprefix-$testname."
+
+proc drop_and_create_index {tn name args} {
+  do_execsql_test $tn "DROP INDEX IF EXISTS $name" {}
+  do_execsql_test $tn "CREATE INDEX [expr {${args}?($name $args):($name)})}]"
+
+proc drop_and_create_table {tn name constraints} {
+  do_execsql_test $tn "DROP TABLE IF EXISTS $name" {}
+  do_execsql_test $tn "CREATE TABLE $name ($constraints)"
+
+proc query_func {tn sql} {
+  set db "$::test.db"
+  set SQL "$sql"
+  do_execsql_test $tn "$SQL" {}
+}
+
+proc make_test_case {tn name desc sql} {
+  uplevel do_test $tn "$name.1 {\"$desc sql} {query_func $tn $sql}"
+}
+
+proc make_index_func {proc} {
+  lappend index_func proc
+  uplevel proc
+}
+
+proc test_createmlstm {args} {
+  db eval {PRAGMA main.autovacuum=0}
+  drop_and_create_table "mlstm_test"
+  do_execsql_test "0" {
+    CREATE TABLE mlstm_test (
+      c1 text, c2 int, c3 real, 
+      c4 integer, c5 numeric, c6 datetime, c7 blob,
+      c8 text COLLATE NOCASE, c9 text COLLATE BINARY,
+      c10 text COLLATE REVNUM, c11 text
+    );
+
+    CREATE INDEX idx1 ON mlstm_test (c1);
+    CREATE INDEX idx2 ON mlstm_test (c2 ASC, c3 DESC);
+    CREATE INDEX idx3 ON mlstm_test (c4, c5, c6)
+  }
+
+  make_test_case "1" "index c1 ascending" "SELECT idx FROM mlstm_test ORDER BY c1 ASC"
+  drop_and_create_index "2.1" idx3 c4, c5, c6 DESC
+  make_test_case "2" "index c2 ascending and c3 descending" "SELECT idx FROM mlstm_test ORDER BY c2 ASC LIMIT 2 OFFSET 1"
+}
+
+proc test_collate {args} {
+  # Create a table with 2x collation
+  db eval {PRAGMA main.autovacuum=0}
+  drop_and_create_table "collate_test"
+  do_execsql_test "0" {
+    CREATE TABLE collate_test (
+      c8a text COLLATE NOCASE,
+      c8b text COLLATE BINARY,
+      c8c text COLLATE REVNUM
+    );
+
+    CREATE INDEX idx8a ON collate_test (c8a);
+    CREATE INDEX idx8b ON collate_test (c8b);
+    CREATE INDEX idx8c ON collate_test (c8c);
+
+  }
+  make_test_case "1.1" "index on c8a with NOCASE collation" "SELECT idx8a FROM collate_test ORDER BY c8a ASC"
+  make_test_case "1.2" "index on c8b with binary collation" "SELECT idx8b FROM collate_test ORDER BY c8b DESC"
+  make_test_case "1.3" "index on c8c with revnum collation" "SELECT idx8c FROM collate_text ORDER BY c8c ASC"
+}
+
+proc test_index_on_expression {args} {
+  drop_and_create_table "expr_func_c_test" "c text"
+  db eval {PRAGMA main.autovacuum=0}
+  do_execsql_test "0" {
+    CREATE TABLE expr_func_c_test(c);
+    INSERT INTO expr_func_c_test VALUES("a");
+    INSERT INTO expr_func_c_test VALUES("b");
+    INSERT INTO expr_func_c_test VALUES("c");
+    INSERT INTO expr_func_c_test VALUES("d");
+    CREATE INDEX idx On expr_func_c_test CASE WHEN c='c' THEN NULL ELSE SUBSTR(c, 1, 2) END;
+  }
+ 
+  make_test_case "1" "index on EXPR_CASE WHEN c IS 'c' THEN NULL ELSE SUBSTR c END" "SELECT idx FROM expr_func_c_test WHERE c IN 'cdef'"
+}
+
+proc test_vacuum {args} {
+  do_execsql_test "0" {
+    INSERT INTO a VALUES(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  }
+  do_execsql_test "1" {
+    CREATE INDEX idx ON a (c1 COLLATE NOCASE);
+    CREATE INDEX idx ON a (c1);
+  }
+  drop_and_create_table "vacuum_func_c_test"
+  set ::res [catch {
+    do_execsql_test "2" {
+      VACUUM;
+      CREATE TABLE vacuum_func_c_test AS SELECT c1, c2, c3, c4, c5, c6, c7, c8, c9, c10
+      FROM a UNION ALL 
+      SELECT c1, c2, c3, c4, c5, c6, c7, c8, c9, c10
+      FROM a UNION ALL 
+      SELECT c1, c2, c3, c4, c5, c6, c7, c8, c9, c10
+      FROM a;
+      VACUUM;
+    }
+  }]
+  if {$res == "1 {table a is not empty when vacuum is performed}"} {set res 0}
+  set ::res
+}
+
+ifcapable {collate_expr indexinfo index_on_expr vacuum} {
+  set ::tcl_precision 10
+  do_test "test_collate" {
+    if {![llength [$db eval {SELECT 10 / 3}] == 3.3333333333]} {
+      fail "failed collate test check

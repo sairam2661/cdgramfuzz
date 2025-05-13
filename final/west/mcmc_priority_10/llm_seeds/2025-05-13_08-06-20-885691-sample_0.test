@@ -1,0 +1,131 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_wal
+
+set ::timeout 60000
+ifcapable!={"wal" "pragma"} {
+  finish_test
+  return
+}
+
+proc wal_proc {} {
+  global walargs
+  lappend walargs
+}
+
+set walargs {}
+
+do_execsql_test journal_wal-1.0 {
+  PRAGMA wal_checkpoint
+} {}
+
+do_execsql_test journal_wal-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  PRAGMA wal_checkpoint
+} {}
+
+do_execsql_test journal_wal-1.2 {
+  INSERT INTO a VALUES(2);
+  INSERT INTO a VALUES(3);
+  PRAGMA wal_checkpoint
+} {}
+
+do_execsql_test journal_wal-1.3 {
+  PRAGMA wal_checkpoint
+  } {}
+
+do_execsql_test journal_wal-2.0 {
+    PRAGMA journal_mode = 'wal'
+  } {wal}
+
+do_execsql_test journal_wal-2.1 {
+    PRAGMA sync_wal = 'ON'
+  } {1}
+
+do_execsql_test journal_wal-2.2 {
+    PRAGMA journal_mode = 'wal'
+} {wal}
+
+do_test journal_wal-3.0 {
+  execsql {
+    CREATE TABLE b(x);
+    CREATE TABLE c(x)
+  }
+} {}
+
+catchsql {
+  CREATE TABLE b(
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x,
+    x
+  )
+
+  } {1 {too many terms specified for column 0}}
+
+do_execsql_test journal_wal-4.0 {
+  CREATE TABLE b(
+    x,
+    b,
+    g,
+    a,
+    r,
+    e,
+    t
+  )
+} {}
+
+do_test journal_wal-5.0 {
+  catchsql {
+      PRAGMA auto_vacuum
+  }
+} {0 {1}}
+
+ifcapable vacuum {
+  do_execsql_test journal_wal-6.0 {
+    PRAGMA auto_vacuum
+  } {1}
+}
+
+finish_test

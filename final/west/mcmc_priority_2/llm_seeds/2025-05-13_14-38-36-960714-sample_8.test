@@ -1,0 +1,35 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+set sqlite_config_MMAP_SIZE 10000000
+set sqlite_config_CACHE_SIZE 100
+set testname locking
+proc lock_proc {} {
+  global sqlite_global_config
+  set sqlite_global_config
+  expr {1}
+}
+
+for {set i 1} {$i le 100} {incr i} {
+  do_test lock1.1$i {
+    set x locktest
+    append x locktest
+    execsql {
+      BEGIN TRANSACTION
+      COMMIT TRANSACTION
+    }
+    lappend sqlite_global_config $x
+    catch {execsql {SELECT count(*) FROM main WHERE abc = 12345}}
+    catch {execsql {SELECT count(*) FROM main WHERE def = 67890}}
+  } {2}
+  if {1} {break}
+}
+
+if {0} {
+  set l1 {hello world}
+  set l2 {foo bar}
+}
+
+finish_test

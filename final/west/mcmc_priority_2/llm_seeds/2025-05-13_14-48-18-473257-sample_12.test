@@ -1,0 +1,116 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_tests
+
+set ::timeout 60000
+proc complex_query {} {
+  global a b c
+  set a "SELECT * FROM (SELECT * FROM sqlite_master), (SELECT * FROM $::DB) WHERE a.name = 'table1' AND b.name = 'table2';"
+  set b "UPDATE $::DB SET name = 12 WHERE name = 'table4';"
+  set c "SELECT * FROM table3;"
+}
+
+proc complex_func {args} {
+  set a "SELECT count(*) FROM (SELECT * FROM $::DB) WHERE name = 'table1';"
+  set b $args
+  return "[expr {[llength $args] == 0}? {1} : {[llength $args] == 3? {2} : {[llength $b] == 2? {1} : {0}}}]"
+}
+
+proc complex_script {} {
+  global db
+  catchsql {DROP table table1}
+  do_execsql_test "complex script" {
+    BEGIN;
+    CREATE TABLE table1(x);
+  } {}
+  do_execsql_test "complex script-2" {
+    INSERT INTO table1 VALUES(1);
+    INSERT INTO table1 VALUES(2);
+    INSERT INTO table1 VALUES(3);
+    SELECT * FROM table1;
+  } {1 1 {} 2 2 {} 3 3 {}}
+  do_execsql_test "complex script-3" {
+    COMMIT;
+    SELECT * FROM table1;
+  } {1 2 3}
+}
+
+do_execsql_test complex-0.1 {
+  CREATE TABLE table1(x);
+} {}
+
+do_execsql_test complex-0.2 {
+  CREATE TABLE table2(a,b,c);
+  CREATE TABLE table3(x,y,z);
+  INSERT INTO table2 VALUES(1,2,3);
+} {}
+
+do_execsql_test complex-0.3 {
+  CREATE TABLE table4(d);
+  INSERT INTO table4 VALUES(1);
+} {}
+
+do_test  complex-1.1 {
+  complex_query
+  set a
+} {SELECT a FROM sqlite_master}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE ifnotexists_v4_5_3_bug4(b,c,d,e,f);
+  CREATE TABLE v4_5_3_bug1(a,b,c);
+  CREATE TABLE ifnotexists_v4_5_3_wal_bug2(b,c);
+  CREATE TABLE v4_5_3_wal_bug2_2(a,b,c);
+  CREATE TABLE v4_4_3_bug1(a);
+  CREATE TABLE table_test1(a);
+  CREATE TABLE table_test2(b);
+  CREATE TABLE ifnotexists_btree_4_test4(b);
+  CREATE TABLE table_test3(b);
+  CREATE TABLE v4_4_3_wal_bug1(a);
+  CREATE TABLE ifnotexists_v4_4_3_wal_bug1(b,c);
+  CREATE TABLE ifnotexists_v4_5_3_bug4(b,c,d,e,f);
+  CREATE TABLE table_test4(c);
+  CREATE TABLE btree_4_test3(b);
+  CREATE TABLE table_test3_btree_2(d);
+  CREATE TABLE ifnotexists_table_test1(a);
+}
+{1}
+
+do_test  complex-2.1 {
+  complex_func
+} {1}
+
+do_test  complex-3.1 {
+  complex_func 1 2 3
+} {2}
+
+do_execsql_test complex-3.2 {
+  INSERT INTO table1 VALUES(4);
+  SELECT * FROM table1;
+} {4}
+ifcapable {vfs}
+
+set vfs VFS_NAME
+file attributes $vfs create
+forceexecvfs_vfs
+set vname "vfs_$vfs"
+
+set RDBMS_VFSNAME $vname
+set rdbms_vfsname $vname
+
+do_test sqlite_vfs-1.1 {
+  execsql {
+    PRAGMA vfs_list
+  }
+  lindex {vfs_list} 0
+} {vfs_name VFS_NAME}
+
+do_test sqlite_vfs-1.2 {
+  set VFSNAME1 {vfs_name}
+  set VFSNAME2 {vfs_name}
+  execsql {
+    PRAGMA vfs_list
+  }
+  lindex {vfs_list} 0
+} {vfs_name}
+
+finish_test

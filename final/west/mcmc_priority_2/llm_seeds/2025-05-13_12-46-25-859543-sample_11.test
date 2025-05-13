@@ -1,0 +1,160 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+set sqlite_options {PRAGMA synchronous=1}
+
+do_multitest_main_page 10
+
+proc page_func {} {
+  global sql
+  append sql " DROP TABLE IF EXISTS b; CREATE TABLE b(y); INSERT INTO b VALUES(9),(8),(7); "
+}
+
+do_test trans-1.1 {
+  execsql {
+    CREATE TABLE c(z);
+  }
+  execsql {
+    SELECT * FROM c
+  }
+  list
+} {99 {} {} {} {}}
+
+do_execsql_test trans-1.2 {
+  BEGIN;
+  INSERT INTO c(w,x,y) VALUES(99,0,1);
+  COMMIT;
+  SELECT * FROM c
+} {99 0 1 99 {} {} {}}
+
+do_execsql_test trans-2.1 {
+  BEGIN;
+  INSERT INTO c(w,x,y) VALUES(99,0,1);
+  INSERT INTO c(w,x,y) VALUES(99,0,1);
+  COMMIT;
+  SELECT * FROM c
+} {99 0 1 99 99 0 1 99 {} {} {} {} {}}
+
+do_execsql_test trans-2.2 {
+  SELECT SUM( *
+  ) FROM c
+} {499}
+
+file delete page_func
+
+do_catchsql_test trans3.1 {
+  PRAGMA journal_mode=  'DELETE
+} {1 {no such function: PRAGMA journal_mode=  }}
+
+set ::sqlite_options {}
+finish_test
+
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix subqueries
+
+proc func_subquery {sql} {
+  set sub_results("")
+  foreach row [execsql -$sql] {
+    lappend sub_results $row
+  }
+  lappend sub_results "final list: $results"
+  lassign $sub_results "sub_result_1" "sub_result_2"
+}
+
+do_test sub-1.1 {
+  execsql {
+    CREATE TABLE e(f);
+  }
+  list
+} {}
+
+do_execsql_test sub-1.2 {
+  INSERT INTO e(f)
+  SELECT * FROM e;
+  SELECT * FROM e;
+} {1 1}
+
+do_execsql_test sub-1.3 {
+  SELECT * FROM e WHERE f > (
+    SELECT sum(f) FROM e
+  );
+  SELECT * FROM e WHERE c = 1;
+} { {3 1 2 1 1}
+     {2 3} }
+
+func_subquery {SELECT * FROM e WHERE c = (
+    SELECT MIN(f) FROM e
+);}
+
+do_execsql_test sub-1.4 {
+  PRAGMA defer_foreign_keys
+} {1}
+
+ifcapable trigger [AND] subquery {
+  do_execsql_test sub-1.5 {
+    WITH recursive a AS (
+      SELECT 1 AS b, 2 AS c UNION
+      SELECT b * 4 + 2, 4 * c - b
+    )
+    SELECT b FROM a WHERE b > 1;
+  } {5}
+}
+
+ifcapable recursive {
+  do_execsql_test sub-1.6 {
+    WITH RECURSIVE b AS (
+      SELECT 5 AS c, 1 AS d UNION
+      SELECT c * 4 + 2, b.d + 1
+    )
+    SELECT c FROM b WHERE c > 20;
+  } {40}
+}
+set results {}
+func_subquery {SELECT c FROM b WHERE c > $results}
+finish_test
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix virtual
+
+proc test_view_func {sql} {
+  set results("")
+  foreach row [execsql -$sql] {
+    lappend results $row
+  }
+  # Put the results in the global scope so that the following do_execsql_test
+  # command can use them.
+  global results
+}
+
+do_execsql_test view-1.1 {
+  CREATE TABLE f(g,h,i);
+  INSERT INTO f VALUES(9,0,1);
+  SELECT * FROM f ORDER BY h;
+} {9 0 1}
+
+do_execsql_test view-1.2 {
+  CREATE VIEW g AS SELECT * FROM f ORDER BY h;
+} {0}
+
+do_execsql_test view-1.3 {
+  CREATE VIEW f AS SELECT * FROM f;
+} {0}
+
+test_view_func "SELECT * FROM f WHERE '}' &&  9"
+
+do_execsql_test view-1.5 {
+  WITH recursive q AS (
+    SELECT 6 AS e, 4 AS e UNION
+    SELECT e + 1, 2 * e
+  )
+  SELECT e FROM q WHERE e >= 12;
+} {12}
+
+test_view_func {SELECT e FROM q WHERE e  1}
+
+do_exec

@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000       Npgsql timeouts can exceed 1 hour
+set db test
+
+proc locking_proc {} {
+  db eval {INSERT INTO a VALUES('lock')} 
+  db eval {INSERT INTO b VALUES('unlock')} 
+  return 1
+}
+
+proc locking_func {x y z} {
+  upvar 1 a x
+  upvar 1 b y
+  upvar 1 c z
+  set a 'lock'
+  set b 'unlock'
+  return $z
+}
+
+proc test_locking {tn {stmt ""}} {
+  db eval {PRAGMA locking_mode=2}
+  catch {db eval $stmt}
+  if {$tn eq "lock"} {db eval {INSERT INTO c VALUES('lock')} }
+  if {$tn eq "unlock"} {db eval {INSERT INTO c VALUES('unlock')} }
+  return "$tn"
+}
+
+proc locking_func2 {x y z w} {
+  upvar 1 a x
+  upvar 1 b y
+  upvar 1 c z
+  upvar 1 d w
+  set a 'lock'
+  set d $w
+  return "$w"
+}
+
+do_test locking-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+do_test locking-1.2 {
+  execsql {
+    SELECT x FROM a WHERE x = 1;
+  }
+} {1}
+
+do_test locking-1.3 {
+  eval "locking_[test_locking lock];[test_locking unlock]"
+  execsql {
+    SELECT x FROM a WHERE x = 1;
+  }
+} {1}
+
+do_execsql_test locking-1.4 {
+  BEGIN;
+  INSERT INTO a VALUES ('lock');
+  INSERT INTO b VALUES ('unlock');
+  COMMIT;
+  SELECT count(*) FROM a;
+} {2}
+
+ifcapable WalMode {
+  do_execsql_test locking-1.5 {
+      PRAGMA journal_mode = 2;
+      PRAGMA wal_size;
+    }  {0}
+  db close
+  set db test2
+  db eval {PRAGMA journal_mode=1}
+  execsql {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(4);
+  COMMIT;
+  }
+  set db test
+}
+
+ifcapable subquery {
+  do_execsql_test locking-2.0 {
+      CREATE TABLE b(x);
+  } {}
+}
+ifcapable subquery {
+  do_execsql_test locking-2.0 {
+      CREATE TABLE b(x);
+  } {}
+}
+ifcapable subquery {
+  do_execsql_test locking-2.0 {
+      CREATE TABLE b(x);
+  } {}
+}
+
+finish_test

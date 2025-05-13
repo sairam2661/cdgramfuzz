@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_proc {} {
+  global asyncargs
+  lappend asyncargs
+  after 1000 expr {set asyncargs}
+}
+
+do_test async-1.1 {
+  uplevel {
+    set db db
+    execsql {
+      CREATE TABLE a(x);
+      INSERT INTO a VALUES(1)
+    } $db
+  }
+  execsql {
+    SELECT count(*) FROM a
+  }
+} {1}
+
+do_execsql_test async-1.2 {
+  CREATE TABLE b(x);
+  BEGIN;
+  INSERT INTO b VALUES(2);
+  COMMIT;
+} {1}
+
+do_execsql_test async-1.3 {
+  PRAGMA synchronous = 0;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+} {1}
+
+do_test async-1.4 {
+  set db db
+  execsql {
+    SELECT * FROM a
+  } $db
+} {1 2 3}
+
+set result1 0
+set result2 0
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'WAL'} $result1 $result2
+  expr {$result1 eq 0}
+}
+expr {$result2 eq 0}
+
+set result3 0
+set result4 0
+ifcapable wal { PRAGMA wal_checkpoint }
+expr {$result3 eq 0}
+
+proc do_run_sql_test {sql result} {
+  uplevel {
+    catchsql $sql
+  } result
+}
+
+do_run_sql_test {
+  PRAGMA synchronous = 1
+} result1 result2
+expr {$result1 eq 0}
+
+do_run_sql_test {
+  DROP TABLE a
+} result3 result4
+expr {$result3 eq 0}
+
+finish_test

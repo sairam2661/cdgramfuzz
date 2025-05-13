@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced_commit
+
+set ::timeout 60000
+set encoding latin1
+sqlite3 db "" autoconf
+
+proc advance_transaction {} {
+  set sql {
+    INSERT INTO t1 VALUES(1, 2, 3)
+    	   
+  }
+  execsql $sql
+}
+
+proc check_constraint {} {
+  if { $::sqlite_db_handle errmsg EQ NULL } {
+    return 1
+  }
+  return 0
+}
+
+ifcapable trigger {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    CREATE TABLE t2(x, y, z);
+    CREATE TABLE t3(i, j, k);
+    CREATE TABLE t4(v, w, s);
+    CREATE TABLE t5(y, x, z);
+    
+    CREATE INDEX idx1 ON t4(a);
+    CREATE INDEX idx2 ON t4(y);
+    
+    CREATE TABLE t5_backup(id)
+    }
+  set t5id 0
+}
+
+ifcapable attach {
+  set db2 {} 
+  execsql {
+    ATTACH DATABASE ":memory:" AS aux
+  }
+  set db2 1
+  proc attach aux {} {
+    if { $db2 } { execsql { DETACH DATABASE aux } } else { execsql { ATTACH DATABASE ":memory:" AS aux } }
+  }
+}
+
+do_test basic-1.0 {
+  execsql {
+    CREATE TABLE main_vacuum_test1(a)
+  }
+  execsql {
+    CREATE VACUUM INCREMENTAL INDEX i1 ON main_vacuum_test1
+  }
+  execsql {
+    CREATE VACUUM INCREMENTAL INDEX i2 ON main_vacuum_test1
+  }
+  execsql {
+    INSERT INTO main_vacuum_test1 VALUES(1)
+  }
+  catchsql { ANALYZE main_vacuum_test1 }
+} {}
+ 
+proc do_run_test { testid } {
+  execsql { 
+    SELECT sql FROM sqlite_temp_master WHERE type = 'view' 
+  }
+  set data  {} 
+  set data  "[explain $testid]"  
+  lappend data  "[explain $testid WITH CALLS]" 
+  lappend data  "[explain $testid WITH CALLS WHERE ORDER BY]"
+  lappend data  "[explain $testid WITH CALLS WHERE ORDER BY WITH PLAN]"
+  set all_data {}
+  for {set i 1} { $i lte 5} {incr i} {
+    lappend all_data $data
+  }
+  foreach line $all_data {
+    execsql $line
+  }
+  finish_test
+}
+
+do_run_test 2
+
+finish_test

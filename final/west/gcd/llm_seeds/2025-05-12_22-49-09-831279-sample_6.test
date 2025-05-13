@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_mode
+
+proc journal_mode_func {} {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+}
+
+proc journal_mode_test1 {} {
+  execsql {
+    PRAGMA journal_mode = 'delete';
+    INSERT INTO a VALUES(2);
+  }
+}
+
+proc journal_mode_test2 {} {
+  execsql {
+    PRAGMA journal_mode = 'wal';
+    INSERT INTO a VALUES(3);
+  }
+}
+
+do_execsql_test journal_mode-1.1 {
+  SELECT name FROM sqlite_master;
+} {a}
+do_test journal_mode-1.2 {
+  execsql {SELECT x FROM a ORDER BY x}
+} {1}
+do_test journal_mode-1.3 {
+  journal_mode_func
+  execsql {SELECT x FROM a}
+} {1}
+do_test journal_mode-1.4 {
+  journal_mode_test1
+  execsql {SELECT x FROM a ORDER BY x}
+} {1 2}
+do_test journal_mode-1.5 {
+  journal_mode_test2
+  execsql {SELECT x FROM a ORDER BY x}
+} {1 3}
+do_test journal_mode-1.6 {
+  execsql {PRAGMA journal_mode}
+} {wal}
+do_test journal_mode-1.7 {
+  execsql {
+    PRAGMA journal_mode = 'delete';
+    PRAGMA cache_size = 2000;
+    INSERT INTO a SELECT *      }
+} {0}
+
+do_execsql_test journal_mode-2.1 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  COMMIT;
+  SELECT x FROM a;
+} {1 2 3 4}
+do_execsql_test journal_mode-2.2 {
+  BEGIN;
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(5);
+  CREATE INDEX i ON b(x);
+  COMMIT;
+  SELECT name FROM sqlite_master;
+} {a b i} 
+
+finish_test

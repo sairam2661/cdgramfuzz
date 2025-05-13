@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc complex_insert_proc {} {
+  global complex_data
+  set complex_data {}
+  for {set i 0} {$i le 10} {incr i} {
+    set complex_insert_data {}
+    for {set j 0} {$j le 3} {incr j} {
+      lappend complex_insert_data 1234567890$i$j567890123
+    }
+    lappend complex_data $complex_insert_data
+  }
+  foreach ele $complex_data {
+    log_label "data=$ele"
+  }
+}
+
+do_multi_test complex 1 {
+  execsql {
+    CREATE TABLE complex(x PRIMARY KEY, y);
+    CREATE INDEX i_complex_y ON complex(y);
+    INSERT INTO complex VALUES
+    (1, 1234567890)  																				   	
+   	}																								   	
+}
+
+do_execsql_test complex 2 {
+  DELETE FROM complex WHERE x IN
+   	SELECT x FROM complex WHERE y NOT IN
+   		SELECT y FROM complex WHERE x NOT IN
+  		VALUES
+			1 																								   								
+} {}
+
+do_test complex 3 {
+  complex_insert_proc
+  execsql {
+    SELECT x FROM sqlite_master WHERE type='table'
+  }
+} complex
+
+do_catchsql_test complex 4 {
+  CREATE TABLE IF NOT EXISTS complex_nonexistent_column_a
+} {1 {table complex_nonexistent_column_a already exists}}
+
+do_execsql_test complex 5 {
+  DROP TABLE complex IF EXISTS
+} {}
+
+finish_test

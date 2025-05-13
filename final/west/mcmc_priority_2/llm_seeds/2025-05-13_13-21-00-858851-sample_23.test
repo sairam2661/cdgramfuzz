@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix backup
+
+set ::timeout 60000
+set sqlite_settings {
+  file_format 4
+  default_cache_size 1000
+  default_page_size 4096
+  default_synchronous 1
+  default_tempspace_engine 1
+  default_pagesize 4096
+  default_autovacuum 1
+  default_foreign_keys 1
+  default_journal_mode 5
+  default_cache_spill 0
+  default_secure_delete 1
+  default_wal_autocheckpoint 0
+}
+
+proc check_db {} {
+  global sqlite_settings
+  db eval {
+    SELECT name FROM sqlite_master ORDER BY name
+  } {
+    foreach {name value} $sqlite_settings {
+      if { $name eq "file_format" } {
+        catchsql "PRAGMA file_format = $value"
+      } else {
+        catchsql "PRAGMA $name = $value"
+      }
+      if { $value ne "[db eval $name]" } {
+        return 0
+      }
+    }
+  }
+  return 1
+}
+
+do_test backup-1.1 {
+  db close
+  execsql {
+    PRAGMA journal_mode = 'DELETE'  
+  }
+} {}
+do_execsql_test backup-1.2 {
+  PRAGMA synchronous = 2
+  } {}
+do_execsql_test backup-1.3 {
+  PRAGMA cache_size = 40960
+  } {}
+do_execsql_test backup-1.4 {
+  PRAGMA temp_store = 1
+  } {}
+do_execsql_test backup-1.5 {
+  PRAGMA default_page_size = 1024  
+  } {}
+do_execsql_test backup-1.6 {
+  PRAGMA default_cache_size = 65536 
+  } {}
+set result {}
+for {set i 1} {$i le 1000} {incr i} {
+  append result "DELETE FROM a;"
+}
+execsql $result
+check_db
+execsql {
+  DROP TABLE a
+}
+execsql {
+  VACUUM
+}
+check_db
+ifcapable {fts5} {
+  execsql {
+    CREATE VIRTUAL TABLE t USING fts5Docs
+  }
+  execsql {
+    SELECT * FROM t 
+  }
+  execsql {
+    DROP TABLE t 
+  }
+  check_db
+}
+ifcapable icu {
+  execsql {
+    PRAGMA encoding = 'UTF-8' 
+  }
+}
+catch {execsql {PRAGMA page_size = 1024} } err
+if { $err eq "" } {
+  do_catchsql_test backup_1_7 {
+    PRAGMA default_page_size = 1024
+  } ""
+}
+finish_test

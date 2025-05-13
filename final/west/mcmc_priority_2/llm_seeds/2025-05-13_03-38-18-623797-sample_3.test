@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzzy_query
+
+proc fuzzy_query {} {
+  set db ":memory:"
+  sqlite3 db $db
+  db eval {
+    CREATE TABLE words(id, word);
+  }
+  set data {
+    1 apple
+    2 banana
+    3 cherry
+    4 date
+    5 elderberry
+  }
+  db eval {INSERT INTO words VALUES(1,2,3,4,5)}
+  proc query {x} {
+    if {$x eq ""} {
+      return 100
+    }
+    set re "^.*$x.*$"
+    return {
+      SELECT id FROM words
+      WHERE word LIKE $re
+      AND id NOT IN
+      SELECT id FROM words
+      WHERE word NOT LIKE $re
+    }
+  }
+  do_query_test 1.1 {
+    execsql {SELECT * FROM words}
+  } $data
+  do_query_test 1.2 {
+    query "an"
+  } {2 3}
+  do_query_test 1.3 {
+    query ""
+  } {100}
+}
+
+proc do_query_test {tn sql args} {
+  set result ""
+  set errorinfo ""
+  uplevel {set result $args}
+  if {$result eq ""} {
+    set result "1 {error: $::$result}"
+    incr error 1
+  }
+  do_execsql_test 1.0 $sql {
+    query $args
+  } $result
+}
+
+finish_test

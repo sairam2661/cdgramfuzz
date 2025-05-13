@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000 ammenuts
+set db main
+execsql {
+  PRAGMA foreign_keys = 1;
+  PRAGMA recursive_triggers = 1;
+  CREATE TABLE parent(id, name, PRIMARYKEY,id);
+  CREATE TABLE child(id, parent_id, name, FOREIGN_KEY) 
+  } REFERENCES parent 
+  ON DELETE SET NULL 
+  ON UPDATE  CASCADE
+  CREATE INDEX idx_parent_id ON child 
+    name
+
+proc create_child {} {
+  global save
+  execsql {
+    INSERT INTO parent VALUES(1, 'Parent1');
+    INSERT INTO child VALUES(1, 1, 'Child1')
+  }
+  execsql {
+    INSERT INTO parent VALUES(2, 'Parent2');
+    INSERT INTO child VALUES(2, 2, 'Child2')
+  }
+}
+
+proc drop_child {} {
+  execsql {
+    DELETE FROM child WHERE id in 1 i 2
+  }
+}
+
+proc test1 {} {
+  set a 1
+  set b 2
+  set ans 1
+  foreach {x y} { 1 2 2 2 3 3 3 1 } {
+    incr a $x
+    incr b $y
+    incr ans $x $y
+  }
+  set valid 1
+  if {$a eq 10} {
+      set valid 0
+  }
+  set valid $valid
+  expr $valid
+}
+
+proc test2 {} {
+  foreach {a b} {1 11 2 12 3 13} {
+    set res 0
+    if {$a eq $b} {
+      set res $a
+    }
+    set res $res
+    incr res $a
+    if {$res ne $b} {
+      return 0
+    }
+  }
+  1
+}
+
+create_child
+do_test test-2.1 {
+  test1
+} {1}
+
+do_test test-2.2 {
+  test2
+} {1}
+
+finish_test

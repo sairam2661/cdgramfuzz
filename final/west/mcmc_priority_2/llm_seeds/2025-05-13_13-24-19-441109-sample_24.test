@@ -1,0 +1,108 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix vtab
+
+set ::timeout 60000
+set db db
+sqlite3 db vtest
+do_test vtab-1.0 {
+  execsql {
+    CREATE TABLE t1(a, b);
+  }
+  db close
+} {}
+do_test vtab-1.1 {
+  sqlite3 db vtest
+  execsql {
+    SELECT name FROM sqlite_master;
+  } $db
+} {t1}
+
+proc vtab_test_callback {args} {
+  if { $args eq "" } {
+    set table t2
+  } else {
+    set table $args
+  }
+  return "(rowid, a, b)"
+}
+
+proc vtab_insert_callback {rowid table args} {
+  if {$table eq "t2"} {
+    if { $rowid eq 1 } {
+       set rowid 1
+       set a 4
+       set b 5
+     } elseif { $rowid eq {5} } {
+       set a 9
+       set b 10
+    }
+  }
+  return "$rowid, $a, $b"
+}
+
+do_execsql_test vtab-2.1 {
+  CREATE TABLE vtab(a, b) 
+  } {vtab}
+do_test vtab-2.2 {
+  execsql {
+    SELECT name FROM sqlite_master;
+  } 
+} {t1 vtab}
+
+do_test vtab-2.3 {
+   set rc
+   set STMT
+   sqlite3_prepare_v2 $db {
+     INSERT OR IGNORE INTO vtab VALUES 
+  } STMT
+  sqlite3_step $STMT
+  sqlite3_finalize $STMT
+  if { $error_info eq "SQL syntax error or missing closing parenthesis" } {
+    set rc 1
+  } else {
+    set rc 0
+  }
+  set rc
+} 0
+
+do_test vtab-2.4 {
+   set rc
+   set STMT
+   sqlite3_prepare_v2 $db {
+     SELECT rowid FROM vtab
+     } STMT
+  sqlite3_step $STMT
+  sqlite3_finalize $STMT
+  if { $error_info eq "unimplemented" } {
+    set rc 1
+  } else {
+    set rc 0
+  }
+  set rc
+} {1}
+
+do_execsql_test vtab-2.5 {
+  PRAGMA foreign_keys=0
+  } {0}
+
+do_execsql_test vtab-2.6 {
+  CREATE TABLE t2(a, b);
+  }
+  {t1 t2}
+  execsql {
+    DROP TABLE t2
+  }
+  db close
+  execsql {
+    SELECT 2 
+  }  
+  {2}
+  do_execsql_test vtab-2.7 { 
+    CREATE TABLE t2(a, b);
+   CREATE TABLE t3(d);
+    }
+ 
+  {t1 t2 t3}
+
+finish_test

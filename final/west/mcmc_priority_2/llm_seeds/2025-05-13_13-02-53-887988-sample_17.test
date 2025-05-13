@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrency
+
+set ::timeout 60000
+
+proc crash Proc {} {
+  uplevel {exec sleep 2}
+  uplevel {tcl_get_return_code $::tcl_interactively}
+  uplevel exit 1
+}
+
+proc check_crash {} {
+  tcl_get_return_code
+}
+
+proc drop_a {} {
+  set err {}
+  set rc 0
+  uplevel {execsql {DROP TABLE a}}
+  tcl_get_return_code
+}
+
+proc setup {} {
+  set cmd {CREATE TABLE a(x);}
+  uplevel {execsql $cmd}
+}
+
+proc create_view {} {
+  uplevel {execsql {
+    CREATE VIEW v AS SELECT x FROM a
+  }}
+}
+
+proc do_query {} {
+  uplevel {execsql {SELECT * FROM b}}
+}
+
+proc drop_view {} {
+  set cmd {DROP VIEW b}
+  uplevel {execsql $cmd}
+}
+
+do_test concurrency-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+do_execsql_test concurrency-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT x FROM a WHERE rowid = 2;
+} {2}
+
+ifcapable pager_pseudo_table {
+  do_execsql_test concurrency-1.3 {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+  {1}
+
+  crash
+  check_crash
+}  
+
+finish_test

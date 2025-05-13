@@ -1,0 +1,98 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+
+proc my_callback {db} {
+  db eval {SELECT name FROM sqlite_master ORDER BY name}
+  db eval {SELECT * FROM sqlite_master WHERE type='table'}
+  return 0
+}
+
+set testname "test-1"
+
+do_execsql_test 1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1)
+}
+
+do_execsql_test 1.2 {
+  INSERT INTO a VALUES(2);
+  SELECT * FROM a;
+} {1 2}
+
+do_execsql_test 1.3 {
+  DROP TABLE a
+}
+
+do_execsql_test 1.5 {
+  CREATE TABLE b(
+    id   PRIMARY KEY,
+    name
+  );
+  CREATE INDEX idx_b_name ON b(name)
+}
+
+do_execsql_test 2.1 {
+  PRAGMA synchronous=0
+}
+
+do_execsql_test 2.2 {
+  INSERT INTO b VALUES('a', 1)
+}
+
+do_execsql_test 2.3 {
+  SELECT name FROM b ORDER BY name
+}
+
+do_execsql_test 2.4 {
+  PRAGMA synchronous=1
+}
+
+do_execsql_test 3.1 {
+  DELETE FROM b WHERE name IS NULL
+}
+
+do_test 4.1 {
+  expr {1}
+} {1}
+
+do_test 5.1 {
+  proc p1 {a} {lappend a a}
+  lappend a
+} {a a}
+
+ifcapable vacuum {
+  do_execsql_test 100 1 {
+    CREATE TABLE t1(a, b);
+    CREATE INDEX idx_t1_b ON t1(b);
+    INSERT INTO t1 VALUES(1, 'aaaa');
+    INSERT INTO t1 VALUES(2, 'aaaa');
+    INSERT INTO t1 VALUES(3, 'aaaa');
+    SELECT * FROM t1 WHERE a='1';
+    PRAGMA integrity_check
+  } {ok}
+  do_execsql_test 100 2 {
+    VACUUM
+    SELECT a FROM t1 WHERE b IS NOT NULL
+  } {1 2 3}
+  do_execsql_test 101 1 {
+    VACUUM
+    SELECT a FROM t1
+  } {1 2 3}
+}
+
+ifcapable wal {
+  do_test 200 1 {
+    execsql {
+      PRAGMA journal_mode = 'wal'
+    }
+  }
+}
+
+do_execsql_test 1000 {
+  DROP TABLE IF EXISTS a
+}
+
+finish_test

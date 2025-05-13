@@ -1,0 +1,79 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+proc encryption_proc {} {
+  global encryptionargs
+  lappend encryptionargs
+  expr { $encryptionargs
+    eq {1 encryption off} {1} 
+    eq {2 encryption on} {1} 
+    eq {3 masterkey empty} {0} 
+  }
+}
+
+do_test encryption-1.1 {
+  execsql {
+    PRAGMA key='';
+  }
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT count(*) FROM a}
+} {1}
+
+do_execsql_test encryption-1.2 {
+  CREATE TABLE b(x);
+  SELECT x FROM b
+} {}
+
+set masterkey "password123"
+set encryptionargs {}
+set encmode "ENCRYPTION"
+
+do_test encryption-2.1 {
+  execsql {
+    REKEY $masterkey
+  }
+  execsql {
+    PRAGMA key='password123'
+  }
+  execsql {
+    SELECT x FROM a
+  }
+} {1}
+
+do_execsql_test encryption-2.2 {
+  PRAGMA key=''
+} {}
+
+do_execsql_test encryption-2.3 {
+  CREATE TABLE c(x);
+  SELECT x FROM c
+} {}
+
+set file "test.db"
+set masterkey "newpassword"
+set encmode "ENCRYPTION"
+
+open $file
+fconfigure $file
+db eval "PRAGMA key='password123'"
+execsql {
+  PRAGMA key=''
+}
+execsql {ATTACH '$file' as dba}
+execsql {CREATE TABLE d(x)}
+execsql {SELECT * FROM d}
+close $file
+
+do_execsql_test encryption-2.4 {
+  SELECT * FROM a
+} {1}
+
+do_execsql_test encryption-2.5 {
+  SELECT * FROM b
+} {}
+
+finish_test

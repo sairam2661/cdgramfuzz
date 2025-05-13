@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+set sqlite_db_file "test.db"
+
+proc create_test_db {} {
+  global sqlite_db_file
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(2);
+  }
+}
+
+proc truncate_db {} {
+  global sqlite_db_file
+  execsql {
+    Vacuum
+  }
+}
+test_setup create_test_data {create_test_db}
+test_cleanup truncate_db
+test_multiprocess setup {setup} {test_sqlite {multi_process_1 multi_process_2}}
+test_multiprocess cleanup {cleanup} {}
+
+proc test_sqlite {tname} {
+  do_test $tname {
+    execsql {
+      SELECT * FROM a;
+    }
+  } {1}
+}
+
+proc setup {} {
+  global testprefix testdir
+  set testname "[file tail $testdir]/${testprefix}_mutex-1.1"
+  set test_time $timeoout
+}
+
+proc cleanup {} {
+  global testprefix testdir
+  set testname "[file tail $testdir]/${testprefix}_mutex-1.2"
+  set test_time $timeoout
+}
+
+proc multi_process_1 {tname} {
+  if { $tname } { return }
+  test_setup $tname {prepare_query}
+  test_cleanup {cleanup_query}
+
+  proc prepare_query {} {
+    set query "SELECT * FROM a"
+    do_test $tname exec_query $query
+  }
+
+  proc cleanup_query {} {
+    execsql {SELECT count(*) FROM sqlite_master WHERE name='proc'}
+  }
+}
+
+proc multi_process_2 {tname} {
+  if { $tname } { return }
+  test_setup $tname {cleanup_query}
+  test_cleanup {prepare_query}
+
+  proc cleanup_query {} {
+    execsql {SELECT count(*) FROM sqlite_master WHERE name='proc'}
+  }
+
+  proc prepare_query {} {
+    set query "SELECT * FROM a"
+    do_test $tname exec_query $query
+  }
+}
+
+proc exec_query {qname} {
+  do_execsql_test $qname {$qname}
+}
+
+finish_test

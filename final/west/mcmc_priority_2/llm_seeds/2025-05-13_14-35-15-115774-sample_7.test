@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix queryopt
+
+set ::timeout 60000
+set enable_fleaktest 1
+set ignore_err "SQLITE_ERROR EXISTS"
+
+proc queryopt_proc {} {
+  global result
+  set result
+}
+
+do_test queryopt-1.1 {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b UNIQUE NOT NULL);
+    CREATE TABLE t2(c PRIMARY KEY, d UNIQUE NOT NULL);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(1, 'hello');
+    INSERT INTO t2 VALUES(1, 'world');
+  }
+  execsql {SELECT a FROM t1 WHERE b = "hello"}
+} {1}
+
+do_execsql_test queryopt-1.2 {
+  SELECT * FROM t2 WHERE d = 'world' 
+  } {1 world}
+
+ifcapable fts5 {}
+do_execsql_test queryopt-1.3 {
+  CREATE TABLE t3(id PRIMARY KEY, content);
+  CREATE INDEX t3_fts ON t3(content) 
+  } {}
+
+do_test queryopt-1.4 {
+  execsql {
+    SELECT data FROM sqlite_fts5_master 
+      WHERE name IN 't3_fts_0'
+  }
+  execsql {SELECT id FROM t3 WHERE content LIKE '%a%'}
+} {1}
+
+ifcapable fts5 {} {
+  do_test queryopt_4 {
+  file delete test_index
+  sqlite3 db2 test_index
+  catchsql {
+    SELECT rowid FROM t2 WHERE d LIKE '%h'
+  }
+}
+}
+
+finish_test

@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix table_info
+
+proc table_info_proc {} {
+  global table_info_array
+  set table_info_array{}
+  for {set i 0} {$i lt 5} {incr i} {
+    lappend table_info_array $i
+  }
+}
+
+do_test table_info-1.1 {
+  db close
+  sqlite3 db testDb
+  execsql {
+    CREATE TABLE t1(id, name, age);
+  }
+} {}
+
+do_test table_info-1.2 {
+  table_info_proc
+  execsql {
+    SELECT * FROM t1;
+  }
+  set table_info_array
+} {1 name 2 age 0 id 3 {} 4 {}}
+
+do_test table_info-2.1 {
+  table_info_proc
+  execsql {
+    CREATE TABLE t2(id, name);
+  }
+} {}
+
+do_execsql_test table_info-2.2 {
+  SELECT * FROM t2;
+} {id name}
+
+do_test table_info-3.1 {
+  table_info_proc
+  execsql {
+    DROP TABLE t1
+  }
+  execsql {
+    SELECT name FROM sqlite_master;
+  }
+} {t2}
+
+ifcapable vacuum {
+  catchsql {
+    VACUUM
+  } {0 {}}
+}
+
+finish_test

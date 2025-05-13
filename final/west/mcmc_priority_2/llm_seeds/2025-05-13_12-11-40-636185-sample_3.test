@@ -1,0 +1,104 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+set sqlite_open_flags "-URI"
+
+proc complex_query {sql} {
+  set result 0
+  lappend args
+  set dbhandle open_journal
+  set result $result
+  execsql $sql
+  return $result
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE employee(
+      emp_id    PRIMARY KEY,
+      name    NOT NULL,
+      email   UNIQUE,
+      salary  NOT NULL,
+      address    NOT NULL
+    );
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  INSERT INTO employee VALUES(
+    1,
+    'John Doe',
+    'johndoe@example.com',
+    50000.00
+  );
+  INSERT INTO employee VALUES(
+    2,
+    'Jane Doe',
+    'janedoe@example.com',
+    60000.00
+  );
+  INSERT INTO employee VALUES(
+    3,
+    'Bob Smith',
+    'bobsmith@example.com',
+    70000.00
+  );
+} {}
+
+ifcapable wal {
+  set wal_journal_mode wal
+} else {
+  set wal_journal_mode delete
+}
+
+do_test complex-1.3 {
+  set default_timeout 1000
+} {}
+
+do_execsql_test complex-1.4 {
+  BEGIN;
+  INSERT INTO employee VALUES(
+    4,
+    'Alice Johnson',
+    'alicejohnson@example.com',
+    80000.00
+  );
+  INSERT INTO employee VALUES(
+    5,
+    'Michael Brown',
+   'michaelbrown@example.com',
+    90000.00
+  );
+  COMMIT;
+} {}
+
+do_test complex-1.5 {
+  list $wal_journal_mode {wal delete}
+} {wal delete}
+
+do_execsql_test complex-1.6 {
+  SELECT e1alary FROM employee WHERE address = 'Default' 
+  } {}
+
+do_test complex-1.7 {
+  db close
+} {}
+
+ifcapable attach { 
+  set dbhandle attach
+}
+ 
+do_execsql_test complex-1.8 {
+  SELECT e1alary FROM mainDB WHERE address = 'Default' 
+} {}
+
+do_test complex-1.9 {
+  set tmp 1
+  lappend args
+  set dbhandle open_attach
+  set result $result
+} {}
+
+finish_test

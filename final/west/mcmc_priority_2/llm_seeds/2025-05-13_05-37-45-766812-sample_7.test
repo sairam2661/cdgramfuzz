@@ -1,0 +1,100 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000  ounder sqlite_max_page_count 524288
+
+proc wal_check {} {
+  global wal_used sqlite_io_error_hardhat
+  if {$wal_used} {
+    error "WAL not used as expected"
+  }
+  set sqlite_io_error_hardhat 1
+}
+
+proc wal_on {} {
+  set sqlite_io_error_hardhat 0
+}
+
+proc wal_off {} {
+  set sqlite_io_error_hardhat 1
+}
+
+do_test multi-1.1 {
+  execsql {
+    PRAGMA journal_mode = 'wal';
+  }
+} {wal}
+
+do_test multi-1.2 {
+  wal_check
+} {1}
+
+do_test multi-1.3 {
+  uplevel  { WAL ON }
+} {0}
+
+do_test multi-1.4 {
+  list $::sqlite_io_error_hardhat
+} {0}
+
+do_test multi-2.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+  WAL ON
+  execsql {SELECT x FROM a ORDER BY x}
+} {1 2 3}
+
+do_test multi-2.2 {
+  execsql {
+    DELETE FROM a
+  }
+  execsql {SELECT x FROM a ORDER BY x}
+} {}
+
+do_execsql_test multi-3.1 {
+  CREATE TABLE b(y, z);
+  INSERT INTO b VALUES('a', '1');
+  INSERT INTO b VALUES('b', '2');
+  INSERT INTO b VALUES('c', '3');
+  SELECT y FROM b;
+} {a b c}
+
+do_execsql_test multi-3.2 {
+  CREATE TABLE d(dy);
+  INSERT INTO d VALUES('x');
+  INSERT INTO d VALUES('y');
+  INSERT INTO d VALUES('z');
+  SELECT dy FROM d;
+} {x y z}
+
+do_test multi-4.1 {
+  execsql {
+    PRAGMA incremental_vacuum;
+  }
+} {32767}
+
+do_test multi-4.2 {
+  execsql {
+    VACUUM
+  }
+} {0}
+
+do_test multi-4.3 {
+  execsql {
+    PRAGMA incremental_vacuum;
+  }
+} {32767}
+
+ifcapable journalMode {
+  set sqlite_io_error_hardhat 0
+  execsql {
+    PRAGMA journal_mode = 'wal'
+  }
+}
+
+finish_test

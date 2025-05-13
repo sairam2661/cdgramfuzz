@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix crash
+
+set ::timeout 60000
+
+proc crash_test {} {
+  global crasherr
+  if {$crasherr eq "1"} {return}
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  catch {crash_simulate}
+  if { $::sqlite_options_optimizedOrExperimental eq 0 } {
+    set crasherr 1
+    return
+  }
+}
+
+proc crash_simulate {} {
+  set sqlite_options_optimizedOrExperimental 0
+  setsqliteoptions "journal_mode=WAL"
+  setsqliteoptions "cache_size=-1"
+  set sqlite_options_optimizedOrExperimental 1
+}
+
+do_test crash-1.1 {
+  execsql {
+    SELECT x FROM a
+  }
+} {1}
+
+do_test crash-1.2 {
+  db close
+  crash_test
+  list
+} {}
+
+proc crash_test1 {} {
+  set sqlite_options_optimizedOrExperimental 0
+  setsqliteoptions "journal_mode=WAL"
+  setsqliteoptions "cache_size=-1"
+}
+
+proc crash_test2 {} {
+  set sqlite_options_optimizedOrExperimental 0
+}
+
+do_test crash-1.3 {
+  crash_simulate
+  catchsql {SELECT x FROM a;}
+} {1 {database disk image is malformed}}
+
+do_execsql_test crash-1.4 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT x FROM a;
+} {1 2}
+
+finish_test

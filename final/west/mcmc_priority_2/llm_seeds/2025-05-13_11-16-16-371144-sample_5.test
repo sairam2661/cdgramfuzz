@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc test_func {} {
+  global testargs
+  lappend testargs
+  expr {1}
+}
+
+proc insert_func {db} {
+  execsql {
+    INSERT INTO test_table VALUES(1, 'one', '1');
+  } $db
+}
+
+proc select_func {db} {
+  execsql {
+    SELECT * FROM test_table;
+  } $db
+}
+
+set db test_db
+
+do_test test-1.1 {
+  execsql {
+    CREATE TABLE test_table(a, b, c);
+  }
+} {}
+
+do_test test-1.2 {
+  execsql {
+    CREATE INDEX idx_test_table ON test_table(a);
+  }
+} {}
+
+ifcapable journalMode {
+  execsql {
+    PRAGMA journal_mode = 'WAL';
+  }
+}
+
+do_execsql_test test-2.1 {
+  INSERT INTO test_table VALUES(2, 'two', '2');
+  SELECT * FROM test_table;
+} {2 two 2 1 one 1}
+
+set db2 5
+
+do_execsql_test test-3.1 {
+  BEGIN;
+  INSERT INTO test_table VALUES(3, 'three', '3');
+  COMMIT;
+  SELECT * FROM test_table;
+} {3 three 3 1 one 1}
+
+do_test test-3.2 {
+  if {$db2} {
+    error "db2 is not 0"
+  }
+} {}
+
+do_test test-3.3 {
+  incr db2
+  expr {$db2}
+} {6}
+
+do_execsql_test test-4.1 {
+  INSERT INTO test_table VALUES(4, 'four', '4');
+} {5 4 four 4}
+
+lappend testargs
+delete testargs
+cleanup_test_file
+
+finish_test

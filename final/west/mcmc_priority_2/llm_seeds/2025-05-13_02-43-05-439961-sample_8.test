@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbtune2
+set db {sqlite3 db testdb}
+
+proc sqlite_exec {sql result} {
+  global db
+  set result
+  execsql $sql $db
+  return $result
+}
+
+proc execsql {sql {db db}} {
+  uplevel "sqlite_exec $sql $db"
+}
+
+do_test dbtune2-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+    CREATE TABLE c(z);
+    CREATE TABLE d(i);
+  }
+  execsql {PRAGMA stats_on}
+} {{1 1}}
+
+do_execsql_test dbtune2-1.2 {
+  CREATE INDEX i0 ON a(x);
+  CREATE INDEX i1 ON a(y);
+  CREATE INDEX i2 ON a(z);
+  CREATE INDEX i3 ON a(x);
+}
+
+"${::env(SQLITE_STMT_JOURNAL_MODE)} dbtune2-1.3 1" TRUE {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(1,'two',3);
+    COMMIT;
+  }
+}
+
+"${::env(SQLITE_STMT_JOURNAL_MODE)} dbtune2-1.4 4" TRUE {
+  execsql {
+    DELETE FROM a WHERE x IN 
+      SELECT y FROM b WHERE y IN
+      SELECT z FROM c WHERE z IN
+      SELECT i FROM d WHERE i IN
+      SELECT 4
+  }
+}
+
+"${::env(SQLITE_STMT_JOURNAL_MODE)} dbtune2-1.5 8" TRUE {
+  execsql {
+    ROLLBACK
+    PRAGMA stats_begin_transaction
+  }
+}
+
+"${::env(SQLITE_STMT_JOURNAL_MODE)} dbtune2-1.6 9" TRUE {
+  execsql {
+    PRAGMA stats_end_transaction
+    PRAGMA stats_on
+    PRAGMA auto_vacuum
+  }
+}
+
+"${::env(SQLITE_STMT_JOURNAL_MODE)} dbtune2-1.7 10" TRUE {
+  execsql {
+    DROP TABLE a
+    DROP TABLE b
+    DROP TABLE c
+    DROP TABLE d
+  }
+}
+
+"${::env(SQLITE_STMT_JOURNAL_MODE)} dbtune2-1.8 11" TRUE {
+  execsql {
+    PRAGMA stats_reset
+  }
+}
+
+db close
+
+finish_test

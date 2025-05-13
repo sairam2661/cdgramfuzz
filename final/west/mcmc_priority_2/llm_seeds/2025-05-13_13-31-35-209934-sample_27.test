@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc insert_data {} {
+  execsql {
+    INSERT INTO abc(def, ghi, jkl) VALUES(1, 2, 3);
+    INSERT INTO abc(def, ghi, jkl) VALUES(4, 5, 6);
+    INSERT INTO abc(def, ghi, jkl) VALUES(7, 8.5, 9);
+  }
+}
+
+proc query_data {args} {
+  set results {}
+  foreach result $args {
+    lappend results $result
+  }
+  return $results
+}
+
+proc check_data {} {
+  set data {
+    1 2 3
+    4 5 6
+    7 8.5 9
+  }
+  set result1 $::adb query {SELECT * FROM abc}
+  set result2 $::adb execute {SELECT * FROM abc}
+  set result3 $::adb eval {SELECT * FROM abc}
+  set results {
+    $result1
+    $result2 $data
+    $result3 $data
+  }
+  lappend results {
+    data1
+    data2
+    data3
+  }
+  return $results
+}
+
+do_execsql_test test-2.1 {
+  CREATE TABLE abc(def, ghi, jkl);
+}
+
+ 20000 insert_data
+
+do_test test-2.2 {
+  query_data $::adb evaluate {SELECT * FROM abc}
+} {1 2 3 4 5 6 7 8.5 9}
+
+ execsql {
+   DROP TABLE abc
+ }
+
+do_test test-2.3 {
+  check_data
+} {data1 data2 data3}
+
+finish_test

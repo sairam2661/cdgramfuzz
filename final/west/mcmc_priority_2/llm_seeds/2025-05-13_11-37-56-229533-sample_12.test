@@ -1,0 +1,157 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database_corruption
+
+set ::timeout 60000
+set temp_store 1
+
+ifcapable {
+  journal_mode WAL
+} {
+  journal_mode WAL
+} elseifcapable {
+  journal_mode MEMORY
+} {
+  catchsql {PRAGMA journal_mode=0}
+}
+
+proc corruption_test {sql} {
+  if { $::temp_store } {
+    file delete $::tfile
+  }
+  set sql2 "BEGIN; $sql; COMMIT;"
+  set result1 0
+  set result2 0
+  set status1 ""
+  set status2 ""
+  if 0
+  { 
+    set cmd {PRAGMA integrity_check}
+  } else {
+    execsql2 $sql2
+  }
+  if { $result1 } {
+    puts "Expected no rows returned $sql"
+  }
+  if { $result2 } {
+    puts "Expected no rows returned $sql2"
+  }
+  if { $status1 } {
+    puts "Expected empty $status1"
+  }
+  if { $status2 } {
+    puts "Expected empty $status2"
+  }
+  set tcl_file $temp_file
+  set tcl_file2 $temp_file
+  if { $::temp_store } {
+    set tcl_file $tcl_file corrupt
+    set tcl_file2 $tcl_file2 corrupt
+  } elseif { $::temp_dir } {
+    set tcl_file $::temp_dir$sep$tcl_file corrupt
+    set tcl_file2 $::temp_dir$sep$tcl_file2 corrupt
+  }
+  return {}
+}
+
+proc corruption_test2 {sql} {
+  set db corr
+  execsql2 $sql
+  set db {}
+  db close
+  delete_file corr test2
+  file mkdir corr
+  sqlite3_corr corr
+  corrupt_file corr test2
+  sqlite3 corr
+  execsql2 corr "PRAGMA integrity_check"
+  execsql2 corr "PRAGMA integrity_check"
+  execsql2 corr "SELECT sql FROM sqlite_master"
+  delete_file corr
+}
+
+proc corruption_test3 {tmp tcl tcl2 nT tmax} {
+  set status {}
+  incr nT
+  if { $nT eq $tmax } {
+    execsql {
+      COMMIT;
+    }
+    execsql {VACUUM}
+    set tcl1 ""
+    for { set i 0 } { $i lt $nT } { incr i } {
+      set tcl1 "PRAGMA temp_store=0; PRAGMA synchronous=2; PRAGMA temp_store=$temp_store;"
+    }
+    append tcl1 "PRAGMA synchronous=1"
+    puts $tcl1
+    expr {$temp_store eq 1}
+  }
+  puts $tcl
+  puts $tcl2
+  append status $tcl
+  append status $tcl2
+  set nT
+  if { $tcl eq {set T 10} } {
+    delete_file a t1
+  }
+  if { $tcl2 eq {set T 10} } {
+    delete_file a t10
+  }
+}
+
+catch {unset result1}
+do_test database_corruption-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+    COMMIT;
+    INSERT INTO a VALUES(5);
+  }
+  result1 0
+} {0}
+
+do_test database_corruption-1.2 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    COMMIT
+    }
+  result1 1
+} {1}
+
+do_test database_corruption-1.3 {
+  execsql {
+    SELECT * FROM a;
+  }
+  result1 0
+} {1}
+
+if 0 { 
+} else { execsql2 {PRAGMA integrity_check} }
+if 0 { 
+} else {
+set t1 "set T 10; PRAGMA temp_store=$::temp_store; PRAGMA synchronous=2; PRAGMA temp_store=1; PRAGMA synchronous=1; execsql {UPDATE a SET x=x; SAVEPOINT t1; VACUUM}; ROLLBACK TO t1; PRAGMA integrity_check"
+set t1 "set T 10; PRAGMA temp_store=$::temp_store; PRAGMA synchronous=2; PRAGMA temp_store=1; PRAGMA synchronous=1; execsql {SAVEPOINT t1; VACUUM}; ROLLBACK TO t1; PRAGMA integrity_check"
+do_fileio_test 1.4 $t1
+}
+do_test database_corruption-1.4 {
+  execsql {
+    SELECT * FROM a;
+  }
+  result1 0
+} {1}
+
+do_test database_corruption-2.1 {
+  execsql {
+    SELECT * FROM a;
+  }
+  corruption_test {SELECT * FROM a;}
+} {}
+
+ifcapable temp_store {
+  do_test database_corruption-5.0 {
+    set tcl "set T 1; PRAGMA temp_store=1; PRAGMA synchronous=0; PRAGMA temp_store=0; PRAGMA synchronous=2; PRAGMA temp_store=$temp_store; PRAGMA synchronous=0; PRAGMA auto_vacuum=2;"
+    set tcl2 "PRAGMA synchronous=0; PRAGMA temp_store=0; PRAGMA synchronous=2; PRAGMA temp_store=$temp_store; SAVEPOINT t2; V

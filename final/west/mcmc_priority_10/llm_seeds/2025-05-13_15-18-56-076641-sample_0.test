@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_db
+
+set ::timeout 60000
+set sqlite_options {
+  wal
+  fullSYNC
+  rtree
+  pagecnt 4096
+  maxPagecnt 8192
+}
+
+proc create_table {} {
+  global sqlite_options
+  foreach v $sqlite_options {
+    catchsql "PRAGMA $v = $v"
+  }
+  do_execsql_test 1.1 {
+    CREATE TABLE a(x PRIMARY KEY, y);
+    CREATE TABLE b(x, y, FOREIGNKEYS);
+    CREATE TABLE c(x, y, CONSTRAINT UNIQUE UNIQUE);
+  }
+}
+
+proc drop_table {} {
+  global sqlite_options
+  do_execsql_test 2.1 {
+    DROP TABLE a CASCADE
+  }
+  do_execsql_test 2.2 {
+    DROP TABLE b RESTRICT
+  }
+  do_execsql_test 2.3 {
+    DROP TABLE c CONSTRAINT UNIQUE UNIQUE
+  }
+  catchsql "PRAGMA wal_checkpoint FULL"
+  foreach v $sqlite_options {
+    catchsql "PRAGMA $v = OFF"
+  }
+}
+
+proc test_write {} {
+  do_execsql_test 3.1 {
+    INSERT INTO a VALUES('c', 4);
+  }
+  do_execsql_test 3.2 {
+    INSERT INTO b VALUES(6, 'c', 'd');
+  }
+  do_execsql_test 3.3 {
+    INSERT INTO c VALUES(7, 9, 'e','f');
+  }
+}
+
+proc test_read {} {
+  do_execsql_test 4.1 {
+    SELECT * FROM a WHERE x = 'c'
+  }
+  do_execsql_test 4.2 {
+    SELECT * FROM b WHERE y = 'c'
+  }
+  do_execsql_test 4.3 {
+    SELECT x FROM c WHERE y = 9
+  }
+}
+
+proc test_drop {} {
+  catchsql {
+    DROP TABLE c
+  }
+}
+create_table
+test_write
+test_read
+drop_table
+test_drop
+drop_table
+finish_test

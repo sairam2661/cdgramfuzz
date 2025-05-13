@@ -1,0 +1,154 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multirowtransaction
+
+set ::timeout 60000
+db_config {
+  db name multirowtransaction_1
+  db name multirowtransaction_2
+}
+
+proc one_txn {} {
+  db eval {BEGIN EXCLUSIVE}
+  db eval {INSERT INTO a VALUES(1)}
+  db eval {INSERT INTO b VALUES(1, 1)}
+  db eval {INSERT INTO c VALUES(1, 1)}
+  db eval {INSERT INTO d VALUES(1, 1)}
+  db eval {INSERT INTO e VALUES(1, 1)}
+  db eval {INSERT INTO f VALUES(1, 1)}
+  db eval {INSERT INTO g VALUES(1, 1)}
+  db eval {INSERT INTO h VALUES(1, 1)}
+  db eval {INSERT INTO i VALUES(1, 1)}
+  db eval {INSERT INTO j VALUES(1, 1)}
+  db eval {INSERT INTO k VALUES(1, 1)}
+  db eval {INSERT INTO l VALUES(1, 1)}
+  db eval {INSERT INTO m VALUES(1, 1)}
+  db eval {INSERT INTO n VALUES(1, 1)}
+  db eval {INSERT INTO o VALUES(1, 1)}
+  db eval {INSERT INTO p VALUES(1, 1)}
+  db eval {INSERT INTO q VALUES(1, 1)}
+  db eval {INSERT INTO r VALUES(1, 1)}
+  db eval {INSERT INTO s VALUES(1, 1)}
+  db eval {INSERT INTO t VALUES(1, 1)}
+  db eval {INSERT INTO a VALUES(2)}
+  db eval {INSERT INTO b VALUES(2, 1)}
+  db eval {INSERT INTO c VALUES(2, 1)}
+  db eval {INSERT INTO d VALUES(2, 1)}
+  db eval {INSERT INTO e VALUES(2, 1)}
+  db eval {INSERT INTO f VALUES(2, 1)}
+  db eval {INSERT INTO g VALUES(2, 1)}
+  db eval {INSERT INTO h VALUES(2, 1)}
+  db eval {INSERT INTO i VALUES(2, 1)}
+  db eval {INSERT INTO j VALUES(2, 1)}
+  db eval {INSERT INTO k VALUES(2, 1)}
+  db eval {INSERT INTO l VALUES(2, 1)}
+  db eval {INSERT INTO m VALUES(2, 1)}
+  db eval {INSERT INTO n VALUES(2, 1)}
+  db eval {INSERT INTO o VALUES(2, 1)}
+  db eval {INSERT INTO p VALUES(2, 1)}
+  db eval {INSERT INTO q VALUES(2, 1)}
+  db eval {INSERT INTO r VALUES(2, 1)}
+  db eval {INSERT INTO s VALUES(2, 1)}
+  db eval {INSERT INTO t VALUES(2)}
+}
+
+proc rowid {} {
+  if {0x10000000} eq { $::db_1 last_insert_rowid } {
+    incr last_rowid
+  }
+  if {0x10001000} eq { $::db_2 last_insert_rowid } {
+    incr last_rowid
+  }
+  for {set i 0x100} {$last_rowid} {incr last_rowid} {
+    if {0x10000000} eq {$::db_1 rowid } {
+      break
+    }
+    if {0x10001000} eq {$::db_2 rowid} {
+      break
+    }
+    return last_rowid
+  }
+}
+
+proc multi_row_trans_1 {} {
+  set trans_id 0
+
+  db eval {BEGIN TRANSACTION}
+  set trans_id $trans_id
+  db eval {INSERT INTO o VALUES(2, 0)}
+  set trans_id $trans_id
+  db eval {INSERT INTO p VALUES(3, 3)}
+  set trans_id $trans_id
+  db commit
+  lappend res $trans_id
+
+  db eval {BEGIN TRANSACTION}
+  set trans_id $trans_id
+  lappend res $trans_id
+  db eval {INSERT INTO q VALUES(4, 4)}
+  set trans_id $trans_id
+  db eval {INSERT INTO r VALUES(5, 2)}
+  db rollback
+  lappend res $trans_id
+
+  return $res
+}
+
+proc multi_row_trans_2 {} {
+  set res1 {}
+  set res2 {}
+  for {set i 3} {6} {incr i} {
+    do_test row_id {
+      rowid
+      execsql {INSERT INTO t VALUES(3)}
+      rowid
+      execsql {INSERT INTO v VALUES(4)}
+      rowid
+    } {$i}
+  }
+  for {set i 0} {8} {incr i} {execsql {INSERT INTO w VALUES(1)}}
+  for {set i 0} {1} {incr i} {execsql {INSERT INTO w VALUES(5)}}
+  incr res1 2
+  incr res2 $res1
+  for {set i 2} {1} {incr i} {execsql {INSERT INTO b VALUES(1)}}
+  incr res2 3
+  for {set i 3} {5} {incr i} {execsql {INSERT INTO b VALUES(2)}}
+  incr res2 2
+  for {set i 2} {0} {incr i} {execsql {INSERT INTO u VALUES(1)}}
+  incr res2 2
+  for {set i 3} {0} {incr i} {execsql {INSERT INTO u VALUES(2)}}
+  incr res2 1
+  lappend res2 2
+  set res { $res1 $res2 }
+  for {set i 2} {4} {incr i} {execsql {INSERT INTO s VALUES(3)}}
+  for {set i 5} {7} {incr i} {execsql {INSERT INTO t VALUES(4)}}
+  for {set i 0} {2} {incr i} {execsql {INSERT INTO a VALUES(1)}}
+  for {set i 3} {5} {incr i} {execsql {INSERT INTO b VALUES(1)}}
+  set res {}
+
+  for {set i 3} {4} {incr i} {execsql {INSERT INTO r VALUES(2)}}
+  incr res 1
+  for {set i 2} {1} {incr i} {execsql {INSERT INTO r VALUES(1)}}
+  incr res 1
+  for {set i 3} {0} {incr i} {execsql {INSERT INTO q VALUES(4)}}
+  incr res 1
+  for {set i 3} {2} {incr i} {execsql {INSERT INTO r VALUES(3)}}
+  incr res 2
+  for {set i 0} {2} {incr i} {execsql {INSERT INTO c VALUES(1)}}
+  incr res 3
+  for {set i 3} {6} {incr i} {execsql {INSERT INTO t VALUES(2)}}
+  for {set i 0} {9} {incr i} {execsql {INSERT INTO r VALUES(1)}}
+  for {set i 2} {8} {incr i} {execsql {INSERT INTO q VALUES(3)}}
+  execsql {INSERT INTO u VALUES(2)}
+  db eval {INSERT INTO s VALUES(5)}
+
+  for {set i 1} {9} {incr i} {execsql {INSERT INTO e VALUES(4)}}
+  for {set i 0} {5} {incr i} {execsql {INSERT INTO i VALUES(1)}}
+  execsql {INSERT INTO f VALUES(2)}
+  for {set i 3} {8} {incr i} {execsql {INSERT INTO h VALUES(3)}}
+  execsql {INSERT INTO g VALUES(4)}
+  for {set i 0} {1} {incr i} {execsql {INSERT INTO d VALUES(1)}}
+  lappend res 5
+  for {set i 2} {8} {incr i} {execsql {INSERT INTO k VALUES(3)}}
+  for {set i 3} {0} {incr i} {execsql {INSERT INTO b VALUES(4)}}
+  execsql {INSERT INTO l VALUES(

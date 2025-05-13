@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_db
+
+set ::timeout 60000
+
+proc test_func1 {} {
+  global testargs
+  lappend testargs 11 12 13
+}
+proc test_func2 {} {
+  global testdb testargs
+  db eval {SELECT name FROM sqlite_master WHERE type='table'}
+  lappend testargs $testdb
+}
+
+set testdb foo
+
+proc test_func3 {args} {return $args}
+proc test_func4 {args} {catch {execsql "INSERT INTO a VALUES(100)"}}
+
+do_test test-1.0 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+do_test test-2.0 {
+  execsql {
+    SELECT * FROM a;
+  }
+} {1}
+
+set testargs {}
+test_func1
+test_func2
+set testargs $testargs
+lindex $testargs 2
+set dbhandle $testdb
+set dbhandle "database"
+
+do_test test-3.0 {
+  set testdb "testdb1"
+  test_func2
+  set testargs {}
+  test_func3 testdb2
+  lindex $testargs 0
+  execsql "INSERT INTO a VALUES(100)"
+} {a}
+
+do_execsql_test test-4.0 {
+  BEGIN;
+  SELECT 1 FROM a;
+  COMMIT;
+} {1}
+
+finish_test

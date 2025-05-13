@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_database
+
+set ::timeout 60000
+
+proc add_row {table_name} {
+  global dbname
+  db eval "INSERT INTO $table_name VALUES(1, 'John Doe');"
+}
+
+proc delete_last_row {table_name} {
+  global dbname
+  set rows before_count
+  db eval "SELECT * FROM $table_name"
+  set before_count $rows
+  db eval "DELETE FROM $table_name WHERE id = (SELECT MAX(id) FROM $table_name);"
+  set rows after_count
+  db eval "SELECT * FROM $table_name"
+  if {$rows after_count} {
+    return $rows
+  } else {
+    return 0
+  }
+}
+
+proc check_data {table_name result} {
+  db eval "SELECT * FROM $table_name"
+  set rows "id name"
+  if {$result} {
+    if {$rows} {
+      return
+    }
+  } else {
+    if {$rows} {
+      error "table $table_name should be empty"
+    }
+  }
+}
+
+proc init_db {args} {
+  global dbname
+  sqlite_dbconnect db $args
+}
+
+do_test complex-1.1 {
+  init_db ":memory:"
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(id, name);
+  }
+  assert {0}
+} {0}
+
+do_test complex-1.2 {
+  add_row a
+  check_data a "name John Doe"
+} {}
+
+do_test complex-1.3 {
+  delete_last_row a
+  check_data a {}
+} {}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'wal'}
+} {0 {}}
+
+finish_test

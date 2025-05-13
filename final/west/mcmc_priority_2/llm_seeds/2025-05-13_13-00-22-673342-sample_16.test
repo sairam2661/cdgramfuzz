@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite
+
+set ::timeout 60000
+
+do_ioerr_test 1.1 {
+
+  execsql {
+    BEGIN;
+    CREATE TABLE IFNOTEXISTScomplex_table(
+      id       PRIMARY KEY,
+      name NOT NULL,
+      city  NOT NULL,
+      age   DEFAULT 25,
+      balance DEFAULT 0,
+      is_employed DEFAULT 'yes'
+    );
+    CREATE TABLE IFNOTEXISTSscores(
+      id   PRIMARY KEY,
+      name NOT NULL
+    );
+  }
+
+  catchsql {
+    INSERT INTO complex_table(id, name, city, is_employed) 
+    VALUES(1, 'John', 'New York', 'no');
+  }
+
+} {1 {UNIQUE constraint failed}}
+
+ execsql {
+  COMMIT;
+}
+
+do_c test 1.2 {
+  execsql {
+    INSERT INTO complex_table(id, name, city, age)
+    VALUES(1, 'John', 'New York', 30);
+
+    INSERT INTO scores(id, name)
+    VALUES(1, 'John');
+  }
+
+  lsort $::DB
+
+  set expected {
+    {1 25 5 1 {age city is_employed balance id name} {30 New York yes 0 1 John} {}}
+  }
+
+  if {$expected ne $::DB} {
+    set diff {}
+    set found 0
+    foreach pair $::DB {
+      lappend diff "$pair"
+      set found 1
+    }
+
+    if {$::debug} {
+      puts stdout "$::DB"
+    }
+
+    set diff_string "$diff\n$expected"
+
+    if {$::verbose} {
+      puts stderr "Test Failed diff_string=$diff_string"
+    }
+
+    error "$diff_string"
+  }
+
+} {1}
+
+ifcapable pager {
+  eval db pager_push
+  catch {set pager_pagecount}
+  after 3000
+  db close
+}
+
+do_test 1.3 {
+  execsql {
+    SELECT * FROM scores
+  }
+} {1 John}
+
+unset timeoout
+
+finish_test

@@ -1,0 +1,171 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+set ::timeout 60000
+
+proc test_func {} {
+  global db
+  db eval {SELECT name FROM sqlite_master}
+}
+
+proc data_func {in_file} {
+  set fp1 {}
+  set fp2 {}
+  set line {}
+  set query "INSERT INTO t1 VALUES"
+  set row {}
+  
+  if { $in_file } {
+    set in_file_name "data-$in_file.db"
+    source $in_file_name
+  }
+  
+  foreach row {1 2 3 4 5 6 7 8 9} {
+    set line "($row,)"
+    lappend query $line
+  }
+  
+  set fp1 fdopen "/tmp/file.txt"
+  puts $fp1 $query
+  close $fp1
+  
+  execsql "
+    CREATE TABLE IF NOT EXISTS t1(
+      c1 INTEGER,
+      c2 INTEGER,
+      c3 INTEGER
+    );
+    DROP TABLE IF EXISTS t2;
+    CREATE TABLE t2 (
+      c3 INTEGER,
+      c4 INTEGER,
+      c5 INTEGER
+    );
+    ALTER TABLE t2 ADD COLUMN c6 INTEGER;
+    ALTER TABLE t1 ADD COLUMN c4 INTEGER;
+  "
+}
+
+do_execsql_test main-1.1 {
+  CREATE TABLE t3(a, b);
+  INSERT INTO t3 VALUES('a', 1);
+  INSERT INTO t3 VALUES('b', 2);
+  INSERT INTO t3 VALUES('c', 3);
+} {1}
+do_test main-1.2 {
+  set res {}
+  foreach c {a b c} {
+    append res $c
+  }
+  set res
+} {abc}
+
+ifcapable {rtree}
+do_execsql_test main-1.3 {
+  CREATE INDEX i1 ON t3(a);
+  CREATE INDEX i2 ON t3(b);
+  CREATE TABLE xt3(
+    x1,
+    x2,
+    x3,
+    x4,
+    x5
+  );
+  CREATE INDEX i_xt ON xt3(x1);
+  CREATE INDEX i1_xt ON xt3(x2);
+  CREATE INDEX i2_xt ON xt3(x3);
+  CREATE INDEX i3_xt ON xt3(x4);
+  CREATE INDEX i4_xt ON xt3(x5);
+}
+  
+    {"CREATE TABLE t1(
+      c1 INTEGER,
+      c2 INTEGER,
+      c3 INTEGER
+    )"}
+    do_test main-1.4 {
+      execsql "
+        SELECT
+          name,
+          sqlite_master.ctime,
+          sqlite_master.mtime,
+          type
+        FROM sqlite_master
+      "
+    } {
+      {t1 1634739403 1634739403 table}
+      {t3 1634739403 1634739403 table}
+      {t2 1634739403 1634739403 table}
+      {t3 1634739403 1634739403 index}
+      {xt1 1634739403 1634739403 table}
+      {xt2 1634739403 1634739403 virtual table}
+      {xt3 1634739403 1634739403 table}
+      {xt1 1634739403 1634739403 index}
+      {xt2 1634739403 1634739403 index}
+      {xt3 1634739403 1634739403 index}
+      {i3 1634739403 1634739403 index}
+      {i4 1634739403 1634739403 index}
+      {i_xt 1634739403 1634739403 table}
+      {i1_xt 1634739403 1634739403 table}
+      {i2_xt 1634739403 1634739403 table}
+      {i_xt 1634739403 1634739403 index}
+    }
+    
+ do_test main-1.4 {
+   execsql "
+     SELECT
+       name,
+       sqlite_master.ctime,
+       sqlite_master.mtime,
+       type
+     FROM sqlite_master
+   "
+ } {
+   {t1 1634739403 1634739403 table}
+   {t3 1634739403 1634739403 table}
+   {t2 1634739403 1634739403 table}
+   {t3 1634739403 1634739403 index}
+   {xt1 1634739403 1634739403 table}
+   {xt2 1634739403 1634739403 virtual table}
+   {xt3 1634739403 1634739403 table}
+   {xt1 1634739403 1634739403 index}
+   {xt2 1634739403 1634739403 index}
+   {xt3 1634739403 1634739403 index}
+   {i3 1634739403 1634739403 index}
+   {i4 1634739403 1634739403 index}
+   {i_xt 1634739403 1634739403 table}
+   {i1_xt 1634739403 1634739403 table}
+   {i2_xt 1634739403 1634739403 table}
+   {i_xt 1634739403 1634739403 index}
+ }
+
+lappend test_proc test_func
+foreach {t i} {
+  {main 102} {102}
+} {
+  set test_run_num 1
+  while {$test_run_num} {
+    upvar test_result $t result   
+      
+      set timeout 1
+      if { $timeout } {
+        after $timoout exit
+      }
+      
+      if { $timoout } {
+        exit
+      }
+      
+      proc sqlProc {} {
+           return "Executing proc"
+      }
+      proc sqlProcArgs {} {
+          lreplace {1 2 3 4 5 }
+      }
+      
+      set sqlProcRes1 {}
+      set sqlProcRes2 {}
+      for {set i 0} { $i 1  } {incr i 1} {
+        set res {}
+        execsql {

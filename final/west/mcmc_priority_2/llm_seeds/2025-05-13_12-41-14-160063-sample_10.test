@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+
+proc transaction_proc {} {
+  global transactionargs
+  lappend transactionargs
+  expr {0}
+}
+
+proc error_proc {} {
+  set ret 1
+  lappend transactionargs "error"
+  return $ret
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(5);
+  }
+} {}
+
+do_execsql_test transaction-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  ROLLBACK;
+  SELECT count(*) FROM b;
+} {1}
+
+ifcapable dbconfig {
+  execsql {PRAGMA synchronous=0}
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(7);
+  }
+}
+
+do_execsql_test transaction-1.3 {
+  BEGIN;
+  INSERT INTO b VALUES(8);
+  SELECT count(*) FROM c;
+} {1}
+if 1 {
+  do_execsql_test transaction_1_4 {
+    COMMIT;
+    SELECT count(*) FROM c;
+  } {1}
+}
+do_execsql_test transaction-1.5 {
+  BEGIN;
+  INSERT INTO b VALUES(9);
+  SELECT count(*) FROM b;
+} {4}
+if 1 {
+  do_execsql_test transaction_1_6 {
+    savepoint x
+    INSERT INTO b VALUES 10
+  } {}
+}
+if 1 {
+  do_execsql_test transaction_1_7 {
+    ROLLBACK TO x
+    SELECT count FROM b
+  } {1}
+}
+
+ifcapable atomic {
+  set b {10 11 12}
+  foreach x $b {
+    execsql "BEGIN DEFERRED TRANSACTION; INSERT INTO b VALUES ($x)"
+    lappend transactionargs $x
+  }
+}
+finish_test

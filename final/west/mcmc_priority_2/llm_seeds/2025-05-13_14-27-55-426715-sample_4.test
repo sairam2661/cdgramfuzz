@@ -1,0 +1,187 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix thread
+
+set ::timeout 60000
+set sqlite_version "3.38"
+
+proc test_thread {args} {
+  set threads {}
+  foreach arg $args {
+    lappend threads $arg
+  }
+
+  eval thread {
+    global tthreads
+    set tthreads {}
+    foreach thread $threads {
+      if { $thread eq "main" } {
+        catch { testthread exit }
+      } else {
+        testthread release 0
+      }
+    }
+  }
+}
+
+do_test thread-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+  }
+  set results {}
+  foreach x {1 2} { lappend results $x }
+  return $results
+} {1 2}
+
+do_test thread-1.2 {
+  execsql {SELECT x FROM a}
+} {1 2}
+
+do_test thread-1.3 {
+  execsql {DELETE FROM a WHERE x IS NULL}
+  execsql {SELECT x FROM a}
+} {1 2}
+
+if { 1 } {
+  thread delete 2
+  proc delete_thread {thread_id} {
+    thread delete $thread_id
+  }
+  proc new_thread {args} {
+    if { $args eq {} } {
+      set res {}
+    } else {
+      set res {}
+    }
+    return $res
+  }
+} else {
+  proc delete_thread {thread_id} {
+    return
+  }
+
+  proc new_thread {args} {
+    return
+  }
+}
+
+if { 1 } {  } else {
+  thread exec2 {
+    global tthreads
+    thread detach
+  }
+}
+
+proc close_test_conn {} {
+  db close
+  set global_connections 0
+}
+
+proc setup_global_connections {nc} {
+  global global_connections
+  set global_connections $nc
+  db close
+  set DBS 0
+}
+
+set test_conn "test_conntest_global_conntest_global_connectionglobalglobal_connection"
+
+proc test_global_connection {nc} {
+  global global_connections
+
+  if { $nc eq 0 } {
+    testconn { db close } {DBS is 0}
+    testconn { db close } {DBS is 0}
+
+    testconn { close_test_conn } {DBS is 0}
+
+    return
+  }
+
+  if { $nc eq 1 } {
+    testconn { db close } {DBS is 0}
+
+    return
+  }
+
+  if { $nc eq 2 } {
+    testconn { close_test_conn } {test_conn is 0}
+    testconn { db close } {DBS is 0}
+
+    return
+  }
+}
+
+if { 1 } {
+  thread run {
+    global tglobal_conncurrently_global_connectionglobal_connectionglobal_connections
+
+    catch { thread release 0 }
+    test_global_connection 0
+  }
+  do_test thread1 { execsql { SELECT x FROM a } } {}
+} else {
+  do_test thread1 { execsql { SELECT x FROM a } } {}
+}
+
+do_test thread-3.1 {
+  do_execsql_test thread3.1 {
+    BEGIN;
+    INSERT INTO a VALUES(3);
+    COMMIT;
+  } {1}
+}
+ 
+ 60
+
+procedure 2 thread test run
+ 
+
+set up setup_global_connections 0
+
+testconn { global_connections  } 0
+
+catch { thread release 10}
+db close
+
+thread delete 1
+
+ 
+ifcapable memdb {
+  db eval PRAGMA test_control
+            set  mode           memdb
+           set  nolock         TRUE
+          }
+
+proc db_release_statement_db_release db {db eval {
+   UPDATE a SET x IS NULL WHERE x IS NOT NULL
+}}
+
+set tcl_platform { tcl_platform }
+
+  catch {set x "TEST"}
+  
+ proc get_sql_log_file {
+   global tcl_platform
+  set ret ''
+  case $tcl_platform {
+    Darwin {
+      append ret  "Library/Preferences/"
+      return ret
+    }
+    linux {
+      append ret "/.sqlite_log"
+      break
+    }
+    }
+append ret  "/.sqlite_log"
+  return $ret
+}
+ 
+proc main {ret} {
+   return $ret
+}
+
+finish_test

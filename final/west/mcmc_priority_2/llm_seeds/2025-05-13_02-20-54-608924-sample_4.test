@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fuzz
+
+proc corrupt_db {} {
+  set fd4 "[open db 1 f]"
+  set fid "[tcl::fmt fid [set file ${fd4}]]"
+  set fid2 "[open a 1 f]"
+  set fid3 "[open b 1 f]"
+  puts $fid4 "\xef\xbe\xad\xde"
+  set fp4 "$fid4 f"
+  seek $fid2 100
+  puts $fid3 "\x90\x90\x90\x90"
+  set fp5 "$fid2"
+  close $fid4
+  close $fid3
+}
+
+proc recover_db {} {
+  execsql {SELECT name FROM sqlite_master}
+}
+
+proc check_recover {} {
+  if { $::recover_db } {
+    set name ""
+    set dbhandle "db"
+    foreach {name} $::recover_db {
+      break
+    }
+    if { "not exactly" $::recover_db } {
+    }
+  } else {
+    set name ""
+    set dbhandle "a"
+    set db "dbhandle db"
+  }
+  execsql {
+    SELECT name FROM sqlite_master
+  } $dbhandle {}
+}
+
+do_test fuzz-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql COMMIT
+} {1}
+
+catch { do_test fuzz1.2 { check_recover } {}} { 3 }
+
+ifcapable tempdb {
+  db eval {CREATE TABLE tempdb(i)}
+}
+
+execsql {SELECT 1}
+
+proc recover_test {} {
+  set fid "[open a 1]"
+  set fid "[open b 1]"
+  do_test 1.4 {
+    check_recover
+  } { not exactly }
+}
+
+recover_test
+
+set result "
+  [catch {
+    execsql {
+      SELECT name FROM sqlite_master
+    }
+  } dummy]
+"
+
+proc crash {dummy} {
+  tcl_test 3.3 fail2 {}
+}
+set res4 "
+  crash $dummy
+"
+
+finish_test
