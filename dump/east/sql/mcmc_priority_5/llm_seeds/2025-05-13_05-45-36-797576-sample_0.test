@@ -1,0 +1,98 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+set ::timeout 60000
+set up {} {
+  execsql {
+    PRAGMA journal_mode = 'WAL';
+  }
+}
+
+proc simple_func {x} {
+  return $x
+}
+
+proc complex_func {x y} {
+  lappend z $x
+  lappend z $y
+  expr {1}
+}
+
+proc test_collate {a b} {
+  set x $a
+  set y $b
+  if {$x eq $y} {
+    expr {1}
+  } else {
+    expr {0}
+  }
+}
+
+proc test_index_func {x} {
+  return "[scan $x %i]"
+}
+
+do_test complex-1.1 {
+  execsql {
+    SELECT * FROM a
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE t1(x, y);
+  INSERT INTO t1 VALUES(10, 20);
+  SELECT * FROM t1;
+} {10 20}
+
+if {0} {
+  do_execsql_test complex_2.1 {
+    BEGIN;
+    INSERT INTO t1 VALUES(30, 40);
+    COMMIT;
+    SELECT * FROM t1;
+  } {10 20 30 40}
+}
+
+do_execsql_test complex-2.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(50, 60);
+  COMMIT;
+  SELECT * FROM t1;
+} {10 20 30 40 50 60}
+
+for {set i 1} {$i le 100} {incr i} {
+  do_execsql_test complex_$i {
+    SELECT simple_func(   *) FROM t1;
+  } {}
+}
+
+for {set i 1} {$i le 100} {incr i} {
+  if {0} {
+    do_execsql_test complex_$i {
+      SELECT complex_func(   *) FROM t1;
+    } {}
+  }
+}
+
+ifcapable collate_func {
+  do_execsql_test collate-1.1 {
+    CREATE TABLE t1(x, y);
+    CREATE TABLE t2(x, y);
+    SELECT x FROM t1 WHERE x = y;
+  } {}
+  do_execsql_test collate-1.2 {
+    SELECT z FROM t1 WHERE y = 'hello';
+  } {}
+}
+
+ifcapable index_func {
+  do_execsql_test index-1.1 {
+    CREATE INDEX i1 ON t1(x);
+  } {}
+  do_execsql_test index-1.2 {
+    SELECT x FROM t1 WHERE index_func = 100
+  } {}
+}
+
+finish_test

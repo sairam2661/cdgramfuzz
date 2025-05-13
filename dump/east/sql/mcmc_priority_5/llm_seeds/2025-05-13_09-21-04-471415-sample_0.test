@@ -1,0 +1,127 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix index
+
+set ::timeout 60000
+
+proc index_proc {} {
+  global indexargs
+  lappend indexargs
+  expr {1}
+}
+
+proc test_step {name sql {result {}}} {
+  upvar testname testname
+  set testname "index-$name"
+  do_test $testname {
+    sqlite3 db testdb
+    db func srand {expr {int randSetFont 1000000}}
+    srand
+    db eval {PRAGMA journal_mode = 'wal'}
+    db eval "$sql"
+    result
+  } $result
+  db close
+}
+
+test_step 1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1,2,3,4,5);
+}
+{1 2 3 4 5}
+
+test_step 1.2 {
+  CREATE INDEX i ON a(x);
+  SELECT x FROM a WHERE x=3
+}
+{3}
+
+test_step 2.1 {
+  BEGIN;
+  INSERT INTO a VALUES(6);
+  COMMIT;
+}
+{} {} {1 {errcode 0} { errmsg "uncommitted changes" }}
+
+do_execsql_test index-2.2 {
+  SELECT x FROM a WHERE x = 6
+} {}
+
+ifcapable subquery {
+  test_step index3.1 {
+    CREATE TABLE b(i);
+    CREATE INDEX i ON b(i);
+    INSERT INTO b VALUES(4);
+    SELECT x FROM a WHERE x = 1
+  } {1}
+}
+
+test_step index3.2 {
+  CREATE TABLE b(i);
+  INSERT INTO b VALUES(4);
+  CREATE INDEX i ON b(i);
+  SELECT x FROM a WHERE x = 1
+}
+{1}
+
+proc test_query {sql} {
+  sqlite3 db testdb
+  set result {}
+  db func srand {expr {int randSetFont 1000000}}
+  srand
+  db eval {PRAGMA journal_mode = 'wal'}
+  db exec $sql
+  execsql "SELECT * FROM temp.a" db
+  close db
+  return $result
+}
+
+do_test index4.1 {
+  test_query {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1,2,3,4,5);
+  }
+} {
+  1 2 3 4 5
+}
+do_test index4.2 {
+  test_query {
+    CREATE INDEX i ON a(x);
+    SELECT x FROM a WHERE x=3
+  }
+} {
+  3
+}
+do_test index4.3 {
+  test_query {
+    BEGIN;
+    INSERT INTO a VALUES(6);
+    COMMIT;
+  }
+} { {} {} {1 {errcode 0} { errmsg "uncommitted changes" }}}
+
+do_execsql_test index4.4 {
+  SELECT x FROM a WHERE x = 6
+} {}
+
+ifcapable subquery {
+  do_test index4.5 {
+    test_query {
+      CREATE TABLE b(i);
+      CREATE INDEX i ON b(i);
+      INSERT INTO b VALUES(4);
+      SELECT x FROM a WHERE x = 1
+    }
+  } {1}
+}
+
+do_test index4.6 {
+  test_query {
+    CREATE TABLE b(i);
+    INSERT INTO b VALUES(4);
+    CREATE INDEX i ON b(i);
+    SELECT x FROM a WHERE x = 1
+  }
+} {1}
+
+finish_test

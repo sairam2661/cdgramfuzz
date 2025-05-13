@@ -1,0 +1,138 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc complexproc {} {
+  global complexargs
+  set complexargs
+  expr {1}
+}
+
+proc complexproc2 {} {
+  global complexargs2
+  catch {unset complexargs2}
+  lappend complexargs2
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+  }
+} {}
+
+do_test complex-1.2 {
+  execsql {
+    INSERT INTO b VALUES(5);
+    INSERT INTO b VALUES(6);
+  }
+} {}
+
+do_multi_query_test complexmulti1 {
+  execsql {
+    SELECT * FROM b;
+  }
+} {
+  {1} {1}
+  {2} {2}
+} 1
+
+do_execsql_test complex-3.1 {
+  BEGIN;
+  INSERT INTO b VALUES(7);
+  ROLLBACK;
+} {}
+do_execsql_test complex-3.2 {
+  BEGIN;
+  INSERT INTO b VALUES(8);
+  COMMIT;
+} {}
+do_execsql_test complex-3.3 {
+  BEGIN;
+  INSERT INTO b VALUES(9);
+  ROLLBACK;
+} {}
+do_execsql_test complex-3.4 {
+  SELECT * FROM b;
+} {5 6}
+
+catchsql {
+  PRAGMA foreign_keys = 1
+} {0 {}}
+
+set complexargs "test arguments"
+
+do_execsql_test complex-4.1 {
+  BEGIN;
+  INSERT INTO b VALUES(10);
+  COMMIT;
+} {}
+do_execsql_test complex-4.2 {
+  SELECT * FROM b;
+} {5 6 10}
+
+do_test complex-5.1 {
+  list
+} {}
+set complexargs2 {test arguments 1}
+
+proc complexproc3 {} {
+  catch {unset complexargs2}
+  lappend complexargs2
+}
+complexproc3
+do_test complex-5.2 {
+  list $complexargs2
+} {}
+complexproc3
+do_test complex-5.3 {
+  list $complexargs2
+} {test arguments 1}
+
+do_multi_query_test complex1 {
+  execsql {
+    SELECT * FROM b;
+  }
+} {
+  {1} {1}
+  {2} {2}
+} 1
+complexproc
+
+do_test complex-7.1 {
+  list
+} {}
+set complexargs2 {}
+do_test complex-7.2 {
+  list $complexargs2
+} {}
+
+do_test complex-8.1 {
+  execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(11);
+    INSERT INTO c VALUES(12);
+  }
+} {}
+proc complexproc4 {} {
+  global complexargs
+  catch {unset complexargs}
+  lappend complexargs
+}
+complexproc4
+
+do_execsql_test complex-9.1 {
+  BEGIN;
+  INSERT INTO c VALUES(13);
+  COMMIT;
+} {}
+do_execsql_test complex-9.2 {
+  SELECT * FROM c;
+} {11 12 13}
+
+do_execsql_test complex-10.1 {
+  SELECT * FROM c;
+} {11 12 13}
+
+finish_test

@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+set verbose 0
+
+proc dbconfig_proc {} {
+  global db_config
+  lappend db_config
+  expr {20}
+}
+
+proc is_3_8_13 {} {
+  expr {$::sqlite_version_number eq 3}
+}
+
+proc is_3_25 {} {
+  expr {$::sqlite_config_version eq '200805020000'}
+}
+
+proc sqlite_extname {fn} {
+  set ext1 $fn
+  set ext2 $fn
+  set ext3 $fn
+  if {$fn ne ""} {
+    set ext1 $::tail
+    set ext3 $::ext
+    set ext2 $fn
+    regexp {ext$ext} $fn ext
+  }
+  return $ext2
+}
+
+proc get_timenow {} {
+  return "2006-03-01 13:00:00"
+}
+
+proc db_config_test {} {
+  set config 3
+  if {$::sqlite_version eq "3.25.1"} {set config 8}
+  if {$config eq 3} {
+    do_execsql_test 0 {
+      PRAGMA config_version;
+      PRAGMA config_rev;
+      PRAGMA config_revnum;
+      SELECT name FROM sqlite_master WHERE type='table'   
+    } {20080502 200805020000 3}
+  } elseif {$config eq 8} {
+    do_execsql_test 0 {
+      SELECT name FROM sqlite_master WHERE type='table' 
+    } {sqlite_master}
+    set result ""
+    foreach row {1 2 3 1 NULL 2 3 "SQLite version 3.25.1 2018-09-14 14:17:09;  $::argc ${::argv}" "$::sqlite_encoding ${::argc ${::argv}}" "$::sqlite_library ${::argc ${::argv}}" NULL "f" NULL NULL NULL NULL NULL NULL NULL NULL NULL NULL }
+    set res {}
+    if { llength $row } { lappend res $result }
+    if { llength $row } { lappend res "$row" }
+    do_execsql_test 0 {SELECT name FROM sqlite_master WHERE type='table'} "$res"
+  }
+}
+
+proc run_btree_test {} {
+  set res {}
+  if { $::sqlite_compileoption_used eq "EnableSQLVtab" } {
+    do_execsql_test 1 "SELECT * FROM vtab1" {}
+    lappend res {"vtab1 7 {} {} {}"}
+    do_execsql_test 2 {
+      pragma integrity_check
+    } {}
+  } else {
+    do_execsql_test 0 "SELECT * FROM vtab1" ""
+    do_execsql_test 0 {
+      pragma integrity_check
+    } ""
+  }
+}
+
+proc test2 {} {
+  ifcapable integrity_check {
+    db_config_test
+  }
+  ifcapable integrity_check {
+    db_config_test
+  }
+  ifcapable vtab {run_btree_test}
+}
+
+test2
+finish_test

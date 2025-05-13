@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix table_vacuum
+
+set ::timeout 60000
+file attributes $testdir setpermissions off
+
+file delete testdb
+file delete testdb2
+file mkdir testdb
+file mkdir testdb2
+
+db close
+lappend argv  testdb
+sqlite3 db $argv0
+db set_version 3003003
+db set_timeout $::timeoout
+sqlite3 db2 testdb2
+db2 set_timeout $::timeoout
+
+proc test1 {} {
+  db eval CREATE TABLE a1 AS SELECT 1 AS x UNION ALL SELECT 2
+  db eval {SELECT x FROM a1 WHERE x = 2}
+}
+
+proc test2 {n} {
+  db eval "CREATE TABLE a$x($n INTEGER PRIMARY KEY AUTOINCREMENT)"
+  db eval {INSERT INTO a$x VALUES NULL}
+  db eval {SELECT * FROM a1}
+}
+
+do_test table_vacuum-1.1 {
+  test1
+} {1}
+
+do_test table_vacuum-1.2 {
+  db eval BEGIN
+  test2 2
+}
+{1}
+
+do_test table_vacuum-1.3 {
+  db eval BEGIN
+  test2 3
+  test2 6
+  db eval {
+    PRAGMA auto_vacuum=0;
+    PRAGMA cache_size=1000;
+    PRAGMA journal_mode=5;
+  }
+  db eval COMMIT
+  set timeout 300000
+  sqlite3 db3 testdb
+  db3 eval {
+    BEGIN TRANSACTION IMMEDIATE VACUUM
+    SELECT name FROM sqlite_master ORDER BY name
+  }
+} {a3 a6 master sqlite_autoindex_a6_1 sqlite_autoindex_a6_2 sqlite_master}
+
+finish_test

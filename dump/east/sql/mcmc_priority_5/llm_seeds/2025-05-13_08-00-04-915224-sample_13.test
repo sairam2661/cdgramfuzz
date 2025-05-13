@@ -1,0 +1,119 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+set ::timeout 60000
+
+proc data {} {
+  srand 5489
+  set v
+  for {set i 1} {$i le 20} {incr i} {
+    set v "$v $i [expr {200000 + (rand() * 10000)}]"
+  }
+  return $v
+}
+
+proc test2 {} {
+  set v 0
+  for {set i 0} {$i le 100} {incr i} {
+    execsql "INSERT INTO t2 VALUES($v)"
+    incr v 10
+  }
+}
+
+proc exec_and_check {} {
+  catch {execsql {PRAGMA wal_checkpoint}}
+  catchsql {SELECT * FROM t2}
+}
+
+do_test setup-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    CREATE TABLE t2(y);
+  }
+} {}
+
+do_test setup-1.2 {
+  execsql {
+    INSERT INTO t1 VALUES(1);
+  }
+} {}
+
+do_test setup-1.3 {
+  execsql {
+    CREATE INDEX i1 ON t1(x);
+    CREATE INDEX i2 ON t1(x);
+  }
+} {}
+
+do_test data-1.1 {
+  execsql {
+    INSERT INTO t2 SELECT $data
+  }
+} {}
+
+do_test query-1.1 {
+  execsql {
+   SELECT x 
+     FROM t1 
+     JOIN t2 ON t2 FROMClause JOIN t1 ON 1 
+   }
+} {}
+
+do_test query-2.1 {
+  execsql {
+    SELECT x 
+      FROM t1
+      NATURAL JOIN t2
+  }
+} {}
+
+do_test query-3.1 {
+  execsql {
+    SELECT * 
+     FROM t1 
+     WHERE x = 5
+  }
+} {}
+
+do_test insert-1.1 {
+  set tme {2000 1 1 0 0 0}
+  execsql {
+    INSERT INTO t1 SELECT '$tme' AS x
+  }
+} {}
+
+do_test insert-2.1 {
+  set tme {2000 1 2 0 0 0}
+  execsql {
+    INSERT INTO t2 SELECT '$tme' AS y
+  }
+} {}
+
+do_test select-1.1 {
+  execsql {
+    SELECT x FROM t1 WHERE CAST$x AS INT BETWEEN 1 AND 3
+  }
+} {}
+
+do_test select2-1.1 {
+  execsql {
+    SELECT x FROM t1 WHERE x LIKE '5%'
+  }
+} {}
+
+test2
+exec_and_check
+do_test update-1.1 {
+  execsql {
+    UPDATE t2 SET y
+  }
+} {}
+
+do_test delete-1.1 {
+  execsql {
+    DELETE FROM t1
+  }
+} {}
+
+finish_test

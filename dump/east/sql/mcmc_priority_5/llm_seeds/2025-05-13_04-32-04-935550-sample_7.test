@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_stat
+
+proc query_count_proc {db cmd} {
+  set r1 ""
+  sqlite_db INC v $db
+  sqlite_db ENC v $db
+  set r1 $::db_verbosedb
+  set r2 ""
+  set result ""
+  set r2 $::db_verbosedb
+  return "[string compare $r1 $r2]==0?[list set result $result;expr $result]==0?:expr $result>0"
+}
+
+do_test db_stat-1.1 {
+  setup_test_directories
+  execsql {
+    WITH RECURSIVE t AS
+    SELECT 0 AS a UNION ALL
+    SELECT a AS a FROM t WHERE a NOT NULL LIMIT 100
+  }
+  query_count_proc $::DB WAL
+} {1}
+
+do_test db_stat-1.2 {
+  query_count_proc $::DB FULL
+} {1}
+
+do_execsql_test db_stat-1.3 {
+  BEGIN;
+  INSERT INTO t VALUES(10);
+  COMMIT;
+} {}
+
+do_execsql_test db_stat-1.4 {
+  SELECT 2 FROM t
+} {2}
+
+ifcapable tempdb {
+  query_count_proc $::DB tempdb
+} {1}
+
+ifcapable memorydb {
+  query_count_proc $::DB memory
+} {1}
+
+ifcapable diskdb {
+  query_count_proc $::DB disk
+} {1}
+
+do_execsql_test db_stat-1.5 {
+  PRAGMA temp_store
+  } {0}
+
+do_execsql_test db_stat-1.6 {
+  PRAGMA temp_store_directory
+  } {""}
+  
+sqlite_db set v db
+sqlite_db reset v db
+finish_test

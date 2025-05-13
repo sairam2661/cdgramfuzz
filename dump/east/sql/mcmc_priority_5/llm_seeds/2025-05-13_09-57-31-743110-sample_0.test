@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async_replication
+
+set ::timeout 60000
+set default_await_count 500
+
+proc async_replication_callback {type code rc args} {
+  if { $rc } {
+    return
+  }
+
+  global async_replication_await_count
+  incr async_replication_await_count
+}
+
+proc async_replication_tcl_callback {type code info} {
+  global async_replication_await_count
+  if { $info eq "OK" } {
+    set async_replication_await_count 0
+  }
+}
+
+proc async_replication_func {} {
+  global async_replication_await_count
+  async_test async_replication_callback 1 {} {
+    db eval {
+      CREATE TABLE replication_example(a);
+      INSERT INTO replication_example VALUES(1);
+    }
+    set async_replication_await_count 1
+    sqlite_db_connection_set_notification async_replication_callback
+    if { $async_replication_await_count } {
+      error "Timer failed to fire"
+    }
+    sqlite_db_connection_set_notification async_replication_tcl_callback
+    if { $async_replication_await_count eq 0 } {
+      error "Timer fired twice"
+    }
+  }
+}
+
+proc test_async_replication_1 {} {
+  global async_replication_await_count
+  if { $async_replication_await_count eq 0 } {
+    sqlite_db_connection_set_notification async_replication_tcl_callback
+  } else {
+    error "replication_await_count not zero"
+  }
+}
+
+test_async_replication_1
+
+catchsql {
+  DROP TABLE replication_example
+}
+{0 {}}
+
+catchsql {
+  CREATE TABLE replication_example(a);
+  INSERT INTO replication_example VALUES(1);
+}
+{1 {table replication_example already exists}}
+
+finish_test

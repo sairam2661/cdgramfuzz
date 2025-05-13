@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+db init testdb
+
+proc async_db {sql} {
+  set timeout 2000
+  execsql {
+    SET timeout $timeout
+    $sql
+  }
+}
+
+proc check_table {table} {
+  do_execsql_test "$table-1" {
+    SELECT * FROM sqlite_master WHERE type='table' 
+  } "$table"
+}
+
+proc create_view {} {
+  do_execsql_test view1 {
+    CREATE VIEW view AS SELECT 'view' FROM sqlite_master 
+  }
+}
+
+proc delete_view {} {
+  do_execsql_test view2 {
+    DROP VIEW view
+  }
+}
+
+proc check_query {query} {
+  do_execsql_test query {
+    $query
+  } {}
+}
+
+create_table1
+create_table2
+check_table view
+create_view
+delete_view
+check_query "SELECT 'query'"
+finish_test

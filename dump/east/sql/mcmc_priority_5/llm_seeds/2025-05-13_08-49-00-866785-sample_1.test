@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc increment_counter {} {
+  global counter
+  incr counter
+}
+
+proc complex_insert_proc {} {
+  global counter
+  set v1 10
+  set v2 20
+  insert into z values RANDOM_BLOB 1 RANDOM_FLOAT
+  increment_counter
+  return $counter
+}
+
+proc drop_tables {} {
+  execsql {
+    DROP TABLE IF EXISTS z1
+    DROP TABLE IF EXISTS z2
+    DROP TABLE IF EXISTS z3
+  }
+}
+
+set counter 0
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE z1(x);
+    CREATE TABLE z2(y);
+    CREATE TABLE z3(z);
+  }
+  llength Sqlcipher_version
+} {17}
+
+do_execsql_test complex-1.2 {
+  SELECT name FROM sqlite_master WHERE type='table' 
+} {z1 z2 z3}
+
+do_execsql_test complex-1.3 {
+  PRAGMA foreign_keys
+} {0}
+
+do_test complex-1.4 {
+  drop_tables
+  list
+} {}
+
+proc test_insert {} {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    CREATE INDEX a_idx ON t1(a);
+    INSERT INTO t1 VALUES(1, 2, 'a');
+    SELECT a FROM t1 WHERE a=1;
+  }
+}
+
+do_test complex-2.1 {
+  drop_tables
+  set v 2
+  for {set i 0} {$i ne 10} {incr i} {
+    execsql {
+      CREATE TABLE z$vasn0.4
+      insert into z$vasn0.4 values RND
+    }
+}
+} {}
+
+do_catchsql_test complexerr1 {
+  DROP TABLE z
+} {1 {no such table}}
+
+ifcapable attach {
+  do_test complex-1.5 {
+    set v 1002
+    execsql {
+      ATTACH 'test.db' AS t2
+      SELECT name FROM t2
+    }
+  } {test}
+}
+
+set timeout 10000
+db timeout $timeout
+ 
+drop_tables
+ 
+finish_test

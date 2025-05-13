@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+
+proc foo {x} {expr {x}}
+proc bar {y} {expr {$y}}
+
+do_execsql_test sync-1.1 {
+  BEGIN;
+  CREATE TABLE t1(a, b);
+  INSERT INTO t1 VALUES('a', 'b');
+  INSERT INTO t1 VALUES('c', 'd');
+  COMMIT;
+}
+
+"testing the timeout"
+do_test sync-2.1 {
+  set T0 1000
+  after $T0 {
+    set T1 0
+  }
+  after 5000 {
+    set T1 5000
+  }
+  foo 5000
+  set T1
+} 0
+do_test sync-2.2 {
+  catch {
+    bar $T1
+  }
+} 1
+
+do_execsql_test sync-3.1 {
+  CREATE TABLE t2(a, b);
+  INSERT INTO t2 VALUES(1, 9);
+  INSERT INTO t2 VALUES(3, 7);
+  INSERT INTO t2 VALUES(5, 11);
+  SELECT a FROM t2 WHERE b=9;
+} {1}
+
+set testprefix sync
+do_test sync-3.2 {
+   sqlite_db_handle syncconn 4 12
+
+   sqlite_db_handle syncdb_handle 12 30
+
+   catch {
+        sqlite_db_handle syncdb_conn2 13 33
+   } error
+   set error
+} {1}
+
+finish_test

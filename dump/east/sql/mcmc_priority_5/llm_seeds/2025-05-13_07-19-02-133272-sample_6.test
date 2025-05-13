@@ -1,0 +1,99 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set sqlite_options ""
+
+ifcapable wal {
+  set journal_mode "wal"
+} else {
+  set journal_mode "delete"
+}
+
+proc setup {} {
+  execsql {
+    BEGIN;
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(a, b);
+    INSERT INTO t1 VALUES(1, 2);
+    INSERT INTO t1 VALUES(3, 4);
+    COMMIT;
+  }
+}
+
+proc select_data {} {
+  execsql {
+    SELECT * FROM t1;
+  }
+}
+
+proc insert_data {} {
+  global t1_data
+  execsql {
+    INSERT INTO t1 VALUES(5, 6);
+  }
+}
+
+proc drop_table {} {
+  execsql {
+    DROP TABLE t1
+  }
+}
+
+proc query_complex {} {
+  global sqlite_options
+  execsql {
+    SELECT a AS y1
+    FROM t1 AS t1
+    JOIN t2 AS t2 ON t1.1 IS NULL OR t1.1 IS NOT NULL
+    GROUP BY a
+  }
+}
+
+do_test complex-1.1 {
+  setup
+  select_data
+} {1 2 3 4}
+
+do_execsql_test complex-1.2 {
+  SELECT * FROM t1;
+} {1 2 3 4}
+
+do_catchsql_test complex_1.3 {
+  PRAGMA journal_mode="WAL"
+} {1 {database is already in WAL mode}}
+
+do_execsql_test complex-1.4 {
+  PRAGMA journal_mode="delete"
+} {0 delete}
+
+do_test complex-1.5 {
+  insert_data
+  execsql {
+    SELECT * FROM t1;
+  }
+} {1 2 3 4 5 6}
+
+do_test complex-1.6 {
+  setup
+  drop_table
+  execsql {
+    SELECT name
+    FROM sqlite_master
+  }
+} {sqlite_master}
+
+do_execsql_test complex-1.7 {
+  SELECT * FROM sqlite_temp_master
+} {}
+
+set up_tests {
+  query_complex
+}
+
+do_test complex-1.8 {
+  set up_tests
+} {1}
+
+finish_test

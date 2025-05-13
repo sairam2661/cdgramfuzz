@@ -1,0 +1,34 @@
+set testdir [file dirname $argv0]
+
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+  set ::timeout 60000
+  set sqlite_options { journal_mode MEMORY temp_STORE default auto_vacuum full sync mode NORMAL }
+
+  do_execsql_test complex-1.1 {
+    PRAGMA temp_store = 2;
+    PRAGMA foreign_keys = 1;
+    PRAGMA encoding = 'UTF-8';
+  } {}
+
+  set masterkey "0123456789ABCDEFabcdef01234567"
+  do_catchsql_test complex1.2 {
+    INSERT INTO sqlite_master(type, name, text, rootpage, sql)
+      VALUES('table', 'a', 'id INTEGER PRIMARY KEY AUTOINCREMENT,',
+        0, 'CREATE TABLE a(id INTEGER,c,d DEFAULT 1 DEFAULT CURRENT_DATE)')
+  } {1 {Cannot specify both DEFAULT and DEFAULT clause for column "d"}}
+  do_catchsql_test complex1.3 {
+    INSERT INTO sqlite_master(type, name, text, rootpage, sql)
+      VALUES('table', 'a', 'id INTEGER PRIMARY KEY AUTOINCREMENT,',
+        0, 'CREATE TABLE a(id INTEGER, c DEFAULT CURRENT_DATE DEFAULT 1, d)')
+  } {1 {Cannot specify both DEFAULT and DEFAULT clause for column "c"}}
+
+  do_execsql_test complex1.4 {
+    PRAGMA schema_encoding = 'UTF8';
+    PRAGMA schema_preload = 1;
+  } {}
+
+  set db busy 10000
+  set db busytimeout 5000
+  finish_test

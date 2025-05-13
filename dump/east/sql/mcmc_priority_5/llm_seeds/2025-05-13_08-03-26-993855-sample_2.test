@@ -1,0 +1,123 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+set verbose 1
+set db main
+
+proc transaction {} {
+  global tnames timestart
+  foreach name $tnames {
+    do_test $name {
+      execsql {
+        PRAGMA transaction_priority = 1;
+        BEGIN;
+        INSERT INTO t1 VALUES('t3', 't3');
+        INSERT INTO t2 VALUES('t4', 't4');
+      }
+      sqlite_log_message'start'
+      set timestart
+    }
+  }
+  foreach name $tnames {
+    do_test $name {
+      sqlite_log_message 'check'
+      execsql {
+        COMMIT;
+        SELECT * FROM t1;
+        SELECT * FROM t2;
+      }
+    }
+  }
+}
+
+proc transaction1 {} {
+  global tnames
+  lappend tnames t1
+  transaction
+  set tnames {}
+}
+
+proc transaction2 {} {
+  global tnames
+  lappend tnames t2
+  transaction
+  set tnames {}
+}
+
+do_execsql_test start {
+  CREATE TABLE t1(a, b);
+  CREATE TABLE t2(c, d);
+
+  CREATE INDEX i1 ON t1(a);
+  CREATE INDEX i2 ON t1(b);
+  CREATE INDEX i3 ON t2(c);
+
+  INSERT INTO t1 VALUES(1, 2);
+  INSERT INTO t1 VALUES(2, 3);
+  INSERT INTO t1 VALUES(3, 4);
+
+  INSERT INTO t2 VALUES(5, 6);
+  INSERT INTO t2 VALUES(7, 8);
+  INSERT INTO t2 VALUES(9, 10);
+}
+
+execution_tclproc transaction1
+catchsql {
+  INSERT INTO t1 VALUES(4, 5);
+  INSERT INTO t1 VALUES(5, 6);
+}
+set res1 {
+  1 2
+  2 3
+  3 4
+}
+
+foreach {result} $res1 {
+  do_test result {
+    sqlc "SELECT * FROM t1 LIMIT 3"
+  } {1 2
+    2 3
+    3 4}
+}
+
+do_test check2 {
+  if {$verbose} {execsql {SELECT * FROM t2}} else { return }
+  set t1t2c 0
+  foreach row {SELECT * FROM t2} {
+    lappend vlist $row
+    incr t1t2c
+  }
+  sqlq "INSERT INTO t2 SELECT * FROM t1"
+  set vlist $vlist
+  set vlist {
+  1 2 5 6
+  2 3 7 8
+  3 4 9 10
+}
+  set vlist $vlist
+  set vlist {
+  1 2 7 8
+  2 3 9 10
+  3 4
+}
+  set res1 {1 2
+  2 3
+  3 4}
+  is "$res1" "$vlist" "Test check2"
+} {}
+execution_tclproc transaction2
+catchsql {
+  INSERT INTO t2 VALUES(10, 11);
+}
+
+foreach {result} $res1 {
+  do_test result2 {
+    sqlc "SELECT * FROM t1 LIMIT 3"
+  } {1 2
+  2 3
+    3 4}
+}
+
+finish_test

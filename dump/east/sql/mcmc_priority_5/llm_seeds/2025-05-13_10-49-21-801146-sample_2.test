@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+set nDb 1
+sqlite3 db main
+
+proc db_sleep {milliseconds} {
+  after $milliseconds "puts stdout db sleep finished"
+}
+
+proc wal_checkpoint {} {
+  execsql {
+    PRAGMA wal_checkpoint;
+  }
+}
+
+proc wal_backup {} {
+  execsql {
+    PRAGMA wal_checkpoint;
+    PRAGMA journal_mode = 'wal';
+  }
+}
+
+proc wal_normal {file} {
+  execsql {
+    PRAGMA journal_mode = 'wal';
+    PRAGMA wal_checkpoint;
+    SELECT * FROM sqlite_master;
+  } "result $file"
+}
+
+proc do_commit {} {
+  execsql {
+    COMMIT;
+  }
+}
+
+do_test transaction-1.0 {
+  set nDb 2
+  lappend sqlite_options2 1
+  sqlite3 db2 testdb2
+  db_sleep 4000
+  execsql {
+    DROP TABLE IF EXISTS a
+  } db2
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  } db2
+  execsql {
+    SELECT * FROM a
+  } db2
+} {1}
+
+do_execsql_test transaction-1.1 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  SELECT * FROM a;
+} {1 2}
+
+do_execsql_test transaction-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  SELECT * FROM a;
+  PRAGMA wal_checkpoint;
+} {1 2 4}
+
+ifcapable journalMode {
+  do_test transaction-1.3 {
+    catchsql {
+      PRAGMA journal_mode = 'wal';
+    }
+  } {0 {}}
+}
+
+proc transaction {} {
+  execsql {
+    COMMIT;
+    PRAGMA wal_checkpoint;
+  }
+}
+
+after 60000
+do_execsql_test transaction-1.4 {
+  INSERT INTO a VALUES(5);
+  SELECT * FROM a;
+} {1 2 4 5}
+
+transaction
+do_execsql_test transaction-1.6 {
+  INSERT INTO a VALUES(6);
+  COMMIT;
+  PRAGMA wal_checkpoint;
+  ROLLBACK;
+  SELECT * FROM a;
+} {2}
+
+do_commit
+do_execsql_test transaction-1.7 {
+  COMMIT;
+  SELECT * FROM a;
+} {2}
+finish_test

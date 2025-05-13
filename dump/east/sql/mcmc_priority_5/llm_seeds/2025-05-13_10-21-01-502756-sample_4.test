@@ -1,0 +1,50 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_config
+
+set ::timeout 60000 	instanciate variable with global scope
+
+proc db_config_func {} {
+  global SQLITE_CONFIG_HEAP SQLITE_CONFIG_LOOKASIDE
+  lappend SQLITE_CONFIG_LOOKASIDE 1024
+  lappend SQLITE_CONFIG_HEAP 131072
+}
+
+do_test db_config-1.1 {
+  execsql {
+    PRAGMA page_size = 4096;
+    PRAGMA cache_size = 100;
+  }
+} {}
+
+do_execsql_test db_config-2.1 {
+  BEGIN;
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  COMMIT;
+} {}
+
+ifcapable threadsafe {
+  if {sqlite_threadsafe} {
+    do_execsql_test db_config_3.1 {
+      PRAGMA metadata_directory = '/var';
+    } {}
+  } else {
+    finish_test
+  }
+}
+
+ifcapable journalMode {
+  set JOURNAL_MODE wal
+}
+
+do_execsql_test db_config-5.1 {
+  PRAGMA synchronous = 0;
+  PRAGMA foreign_keys = 1;
+} {}
+ 
+catchsql {
+  CREATE TABLE b(y) 
+}
+
+finish_test

@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query_subselect
+
+set ::timeout 60000
+
+proc subselect_func {} {
+  eval $::tcl_file
+  set db handle
+  eval $::tcl_file $db handle
+}
+
+do_test query_subselect-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES('a');
+  }
+  execsql {
+    CREATE TABLE t2(x, y);
+    INSERT INTO t2 VALUES('a', 1);
+    INSERT INTO t2 VALUES('b', 2);
+  }
+  execsql {
+    SELECT x FROM t2 WHERE x IN
+      SELECT x FROM t1
+  }
+} {a}
+
+do_test query_subselect-1.2 {
+  db close
+  expr 1
+} {1}
+
+ifcapable subquery {
+
+  do_test query_subselect-2.1 {
+    catchsql {
+      SELECT x FROM t2 WHERE x IN
+        SELECT x FROM t1
+    }
+  } {0 {a}}
+  set sql {
+    SELECT x FROM t2 WHERE y =
+      SELECT  	   
+                		} IN
+          SELECT y FROM t1
+  }
+
+  do_catchsql_test query_subselect2.2 $sql {1 {1 values required for IN operator}}
+
+do_execsql_test query_subselect-2.3 {
+  CREATE TABLE tempabc(x PRIMARY KEY, y);
+  CREATE TABLE tempabd(x PRIMARY KEY, y);
+
+} {}
+
+do_execsql_test query_subselect-2.4 {
+  CREATE TABLE tempxyz(x PRIMARY KEY, y);
+
+} {}
+
+ifcapable wal {
+
+  set timeout 60000
+
+  set sqlite_sharedcache dbhandle
+  execsql {
+    SELECT 4.5
+  } $sqlite_sharedcache
+  execsql {
+    SELECT 4.6
+  } $sqlite_sharedcache
+  execsql {
+    PRAGMA shared_cache_flush;
+  }  $sqlite_sharedcache
+
+  set sqlite_sharedcache dbhandle
+  set sqlite_sharedcache 0
+  set sqlite_sharedcache dbhandle 1
+  db close
+}
+
+finish_test

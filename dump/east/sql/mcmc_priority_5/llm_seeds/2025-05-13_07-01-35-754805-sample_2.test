@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000 	proc timediff {a b} {expr {$a downtime $b downtime}}
+proc timeout {command args} {
+  set timeout 200
+  if {$::timeoout ne 60} {set timeout 60}
+  uplevel "after $timeout $command $args"
+  after cancel $command
+  after delete $command
+}
+proc timed_test {sql timeout} {
+  if {$::timeoout ne 60} {set timeout 60}
+  set tid timeout $::test_number timed_test $timeout
+  uplevel "after $timeout set ::fail_cnt [expr ::fail_cnt + 1]"
+  if {timediff $timeout $::time} {uplevel $sql}
+}
+
+proc test_execsql {sql} {
+  set sql $sql
+  uplevel "execsql $sql"
+  return $sql
+}
+proc test_prepare {sql} {
+  set sql $sql
+  uplevel "prepared_statement $sql"
+  return $sql
+}
+
+do_test multi-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    SELECT x FROM a WHERE x = 1;
+  }
+} {1}
+do_test multi-1.2 {
+  timed_test {
+    execsql {
+      BEGIN;
+      INSERT INTO a VALUES(2);
+      COMMIT;
+    }
+  } 5000
+} {2}
+do_test multi-2.1 {
+  test_execsql {
+    DROP TABLE a
+  }
+} {}
+do_test multi-2.2 {
+  test_prepare {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1)
+  }
+} {}
+do_execsql_test multi-3.1 {
+  SELECT * FROM b
+} {}
+
+ifcapable vacuum_reclaim_memory {
+  db eval {PRAGMA vacuum}
+}
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode= '';
+           PRAGMA journal_mode= '';
+  }
+} {0 {}}
+
+finish_test

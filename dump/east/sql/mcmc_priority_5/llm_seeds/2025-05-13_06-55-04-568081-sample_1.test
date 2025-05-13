@@ -1,0 +1,115 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiwal
+
+set ::timeout 60000
+
+proc multiwal_test {} {
+  global SQLite_Testcase multiwalargs multiwalid
+  incr multiwalid
+
+  set multiwalarg $multiwalargs
+  set sqlite_stmt $multiwaltestcase
+  db eval {CHECKPOINT}
+  execsql {
+    SELECT $multiwalarg FROM wally
+  }
+}
+
+do_test multiwal-1.0 {
+  execsql {
+    PRAGMA integrity_check = 1
+  }
+  execsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+} {wal}
+do_test multiwal-1.1 {
+  execsql {
+    PRAGMA wal_checkpoint
+  }
+} {}
+do_test multiwal-1.2 {
+  execsql {
+    PRAGMA wal_checkpoint
+  }
+} {}
+do_test multiwal-1.4 {
+  execsql {
+    CREATE TABLE wally(arg)
+  }
+} {}
+set multiwalargs {1}
+do_test multiwal-1.5 {
+  set sqlite_stmt {SELECT arg FROM wally WHERE arg = 1}
+  set multiwal_testcase $sqlite_stmt
+  execsql {
+    INSERT INTO wally VALUES(1)
+  }
+} {}
+set multiwalid 0
+multiwal_test 1
+do_test multiwal-1.6 {
+  set multiwalargs {2}
+  set sqlite_stmt {SELECT arg FROM wally WHERE arg = 2}
+  set multiwal_testcase $sqlite_stmt
+  execsql {
+    INSERT INTO wally VALUES(2)
+  }
+} {}
+set multiwalid 0
+multiwal_test 1
+do_test multiwal-1.7 {
+  execsql {
+    SELECT arg FROM wally ORDER BY arg LIMIT 1
+  }
+} {1}
+do_test multiwal-1.8 {
+  execsql {
+    CREATE INDEX wally_idx ON wally(arg)
+  }
+} {}
+do_test multiwal-1.9 {
+  set multiwalargs {3}
+  set sqlite_stmt {SELECT arg FROM wally WHERE arg = 3}
+  set multiwal_testcase $sqlite_stmt
+  execsql {
+    INSERT INTO wally VALUES(3)
+  }
+} {}
+set multiwalid 0
+multiwal_test 1
+do_test multiwal-1.10 {
+  execsql {
+    SELECT arg FROM wally ORDER BY arg
+  }
+} {1 2 3}
+do_test multiwal-1.11 {
+  do_catchsql {
+    PRAGMA wal_checkpoint
+    ROLLBACK
+  }
+} {}
+do_test multiwal-1.12 {
+  set multiwalargs {4}
+  set sqlite_stmt {SELECT arg FROM wally WHERE arg = 4}
+  set multiwal_testcase $sqlite_stmt
+  execsql {
+    INSERT INTO wally VALUES(4)
+  }
+} {}
+set multiwalid 0
+multiwal_test 1
+do_test multiwal-1.13 {
+  do_catchsql {
+    PRAGMA wal_checkpoint
+    COMMIT
+  }
+} {}
+do_test multiwal-1.14 {
+  do_catchsql {
+    PRAGMA wal_checkpoint
+  }
+} {}
+
+finish_test

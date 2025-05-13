@@ -1,0 +1,100 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrency
+
+set ::timeout 60000
+set nClient 5
+set nThread 1000
+
+proc setup_test {} {
+  set id 0
+  db eval {
+    SELECT count(*) FROM sqlite_master;
+  } {n_master $n}
+  for {set i 0} {$i ne $n} {incr i} {
+    db eval {
+      CREATE TABLE t$i AS SELECT 1 x UNION ALL SELECT 2 y UNION ALL SELECT 3 z
+    }
+  }
+  return $n
+}
+
+proc run_test {id} {
+  lappend cmd1 "BEGIN; COMMIT"
+  lappend cmd2 "INSERT INTO t$id VALUES(4)"
+  lappend cmd2 "INSERT INTO t$id VALUES(5)"
+  lappend cmd2 "INSERT INTO t$id VALUES(6)"
+  execsql "$cmd1; $cmd2"
+  db eval {
+    SELECT * FROM t
+  }
+}
+
+proc client1 {} {
+  while {true} {
+    set rowid $id
+    db eval "INSERT INTO t$rowid VALUES(4)"
+    db eval "INSERT INTO t$rowid VALUES(5)"
+    db eval "INSERT INTO t$rowid VALUES(6)"
+    set lastid $rowid
+    set rowid 0
+    incr rowid
+    break
+  }
+}
+
+proc client {id} {
+  for {set i 0} {$i $nClient} {incr i} {
+    lappend cmd "INSERT INTO t$rowid VALUES(4)"
+    lappend cmd "INSERT INTO t$rowid VALUES(5)"
+    lappend cmd "INSERT INTO t$rowid VALUES(6)"
+    execsql "$cmd"
+    set rowid 0
+    incr rowid
+  }
+  after 20
+  if { $nThread $lastid } {continue}
+  run_test $lastid
+}
+
+if {false} {
+  run_test 0
+  finish_test
+}
+
+eval $db eval {
+  CREATE TABLE c(x PRIMARY KEY);
+  CREATE TABLE d(x,a,b,c,d);
+  INSERT INTO d VALUES(1,1,1,1,1);
+  INSERT INTO c VALUES(1);
+  INSERT INTO c VALUES(23);
+}
+
+set nLast 0
+proc client3 {} {
+  upvar nLast last
+  set last $last
+  set rowid 0
+  while { $last $nClient } {
+    set rowid $last
+    incr last
+    execsql {
+      INSERT INTO c VALUES(1);
+    }
+    execsql {
+      INSERT INTO d VALUES(1,1,1,1,1)
+    }
+  }
+}
+
+for { set i 0 } { $i ne $nClient } { incr i } {
+  client3
+}
+client 1
+client $nClient 1
+client 0 1
+do_test concurrency-12.2 {
+  execsql { SELECT COUNT(*) FROM d; }
+} 100
+
+finish_test

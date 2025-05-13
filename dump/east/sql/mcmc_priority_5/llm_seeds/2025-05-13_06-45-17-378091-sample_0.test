@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set disable_prng 1
+
+proc complex_func {} {
+  global complexargs
+  lappend complexargs
+  expr {20}
+}
+
+proc complex_func2 {} {
+  global complexargs
+  set result 
+  for { set i 0 } { $i 10 } { incr i } {
+    lappend result $i
+  }
+  set result
+}
+
+proc execsql_step {} {
+  set sql "SELECT * FROM sqlite_master"
+  execsql $sql
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  SELECT x FROM a WHERE x=1;
+} {1}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE b(x,y);
+  INSERT INTO b VALUES(2,3);
+  SELECT x FROM b WHERE x=2;
+} {2}
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE c(x,y);
+  INSERT INTO c VALUES(4,5);
+  SELECT y FROM c WHERE x=4;
+} {5}
+
+set complexargs 
+
+do_test complex-2.1 {
+  complex_func
+  complex_func2
+  llength $complexargs
+} {20}
+
+unset complexargs
+
+execsql_step
+
+do_execsql_test complex-2.2 {
+  CREATE TABLE d(x,y);
+  INSERT INTO d VALUES(6,7);
+  SELECT * FROM d;
+} {6 7}
+
+do_execsql_test complex-2.3 {
+  CREATE TABLE e(x,y);
+  INSERT INTO e VALUES(8,9);
+  SELECT * FROM e;
+} {8 9}
+
+set result 
+
+do_execsql_test complex-3.1 {
+  CREATE TABLE f(x,y);
+  INSERT INTO f VALUES(10,11);
+  SELECT f FROM f
+} {10 11}
+
+ifcapable integrity_constraint {
+  db integrity_off
+}
+
+do_execsql_test complex-3.2 {
+  CREATE TABLE g(x,y,z);
+  INSERT INTO g VALUES(12,13,14);
+  SELECT * FROM g;
+} {12 13 14}
+
+do_execsql_test complex-3.3 {
+  CREATE TABLE h(x,y);
+  INSERT INTO h VALUES(15,16);
+  SELECT * FROM h;
+} {15 16}
+
+finish_test

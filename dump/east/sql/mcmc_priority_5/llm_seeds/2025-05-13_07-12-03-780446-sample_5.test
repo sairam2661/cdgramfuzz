@@ -1,0 +1,164 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiwal
+
+set ::timeout 60000
+
+proc timer proc {
+  global tmo
+  upvar 1 $proc tmo
+  if {$tmo} {after $tmo "set tmo 0"}}"
+
+proc wal_set_journal {} {
+  catchsql {PRAGMA journal_mode=WAL}
+}
+
+proc wal_set_journal_trunkated {db timeout} {
+  uplevel "sqlite3 db timeout $timeout"
+  catchsql {PRAGMA journal_mode=WRITER_ERROR}
+}
+
+proc wal_set_journal_trunkated_err {} {
+  uplevel "sqlite3 db timeout 0"
+  catchsql {PRAGMA journal_mode=WRITER_ERROR}
+}
+
+proc wal_shutdown {db} {
+  catchsql "SHUTDOWN"
+}
+
+proc wal_checkpoint {db} {
+  execsql {CHECKPOINT}
+}
+
+proc wal_checkpoint_full {db} {
+  execsql {CHECKPOINT FULL}
+}
+
+do_test multiwal-1.1 {
+  execsql {
+    ATTACH 'file:wal_db' AS wal;
+    CREATE TABLE main.a(x);
+    CREATE TABLE wal.a(x);
+    SELECT name FROM sqlite_master WHERE type='table'
+  }
+} {main.wal main.a main.a}
+
+do_test multiwal-1.2 {
+  execsql {
+    INSERT INTO main.a VALUES(1)
+  }
+} {}
+
+do_test multiwal-1.3 {
+  execsql {
+    BEGIN;
+    INSERT INTO wal.a VALUES(2);
+    COMMIT;
+  }
+} {}
+
+proc wal_test_func {} {
+  global ::timoout
+  set ::timoout 2000
+  execsql {
+    DELETE FROM a;
+  }
+}
+
+ifcapable wal {
+  set wal_test_func
+}
+
+do_test multiwal-2.1 {
+  execsql {
+    SELECT a FROM sqlite_master WHERE type='table'
+  }
+} {a a}
+
+execsql {DETACH wal}
+
+proc wal_test_func {} {
+  global ::timoout
+  set ::timoout 20000
+  execsql {
+    DROP TABLE main.a;
+  }
+  list [catch {execsql {SELECT a FROM sqlite_master WHERE type='table'}}] [lindex $::tmo 0]
+}
+
+ifcapable wal {
+  set wal_test_func
+}
+wal_test_func
+list [catch {execsql {SELECT a FROM sqlite_master WHERE type='table'}}] [lindex $::tmo 0]
+
+do_execsql_test multiwal-3.1 {
+   SELECT coalesce(( 0 + 0 + (  10 / 5)), ( ( 0 + 0 + 5 ) + (0 + 0) ) ) AS z;
+} {5}
+
+execsql {PRAGMA synchronous=1}
+do_execsql_test sync-mode-1.100 {
+  SELECT 
+    CASE 
+      WHEN '2 * 2' + '3 * 2' = 16 AND -1 + 5 - 4 = 0 
+      THEN 0 ELSE 1 END AS z;
+} {0}
+
+execsql {PRAGMA synchronous=2}
+do_execsql_test sync-mode-1.200 {
+  SELECT 
+    CASE 
+      WHEN '2 * 2' + '3 * 2' = 16 AND -1 + 5 - 4 = 0 
+      THEN 0 ELSE 1 END AS z;
+} {0}
+
+execsql {PRAGMA synchronous=FULL}
+
+finish_test
+finish_test
+finish_test
+finish_test
+finish_test
+finish_test
+
+proc set_trace {} {
+  set ::timoout 5000
+  execsql  {
+    PRAGMA journalled_mode = truncate
+  }
+}
+
+proc wal_set_journal {} {
+  execsql {PRAGMA sync_mode=always}
+}
+execsql {PRAGMA journalled_mode = WAL}
+
+proc enable_checkpoint {} {
+  execsql {PRAGMA synchronous=2}
+
+execsql {PRAGMA wal_checkpoint}
+
+finish_test
+finish_test
+finish_test
+finish_test
+finish_test
+finish_test
+execsql "PRAGMA synchronous 2"
+
+set ::timoout   10000
+source [file dirname $argv0]/vdbe.tcl
+set_tcl_var "vdbe_test_result" {}
+proc set_trace {} {execsql "PRAGMA vdbe_trace_enable 1"]}
+execsql "PRAGMA vdbe_trace_enable 1"
+
+finish_test
+finish_test
+finish_test
+finish_test
+  execsql {SELECT CASE WHEN 0x12AB = 3078 THEN 1 ELSE 0 END}
+do_execsql_test select-1  { SELECT sqlite_version() } sqlite-version
+execsql {SELECT CASE WHEN 2 + 2 = 5 THEN 1 ELSE 0 END};
+do_execsql_test select-2.2 { SELECT CASE WHEN 2 + 2 = 4 THEN 1 ELSE 0 END } {0}
+execsql {SELECT CASE WHEN 2 + 2 =

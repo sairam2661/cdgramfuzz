@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_file_lock
+
+set ::timeout 60000
+
+proc random_id {} {
+  set id
+  for {set i 0} {$i le 16} {incr i} {
+    append id "[expr {int(rand() * 256)}]"
+  }
+  return $id
+}
+
+proc sqlite_file_lock_test {} {
+  global dbid
+
+  sqlite3 dbfile_lock test_wal
+  set dbid $dbfile_lock
+
+  do_test sqlite_file_lock_1.1 {
+    execsql {
+      CREATE TABLE a(x);
+      INSERT INTO a VALUES(1)
+    }
+    execsql {
+      SELECT count(*) FROM a;
+    }
+  } {1}
+
+  set lockid 1
+  do_test sqlite_file_lock_2.1 {
+    execsql {
+      BEGIN;
+      INSERT INTO a VALUES(2);
+      COMMIT;
+      SELECT count(*) FROM a;
+    }
+  } {2}
+
+  ifcapable journalMode {
+    catchsql {PRAGMA journal_mode = 'wal'}
+  } {0 {}}
+
+  set lockid 2
+  do_execsql_test sqlite_file_lock_2.2 {
+    PRAGMA wal_checkpoint;
+  } {}
+
+  do_test sqlite_file_lock_3.0 {
+    set fdl
+    for {set i 1} {$i le 16} {incr i} {
+      set fd
+      lappend fdl $fd
+    }
+  } {}
+
+  if { $::tcl_platform PLATFORM eq "unix" } {
+    if { $::unixODBC } {
+      eval file delete $t1
+      eval file delete $t2
+    }
+  }
+
+}
+
+do_test sqlite_file_lock_4.0 {
+  set testfile
+  expr {$testfile ne ""}
+} 1
+
+do_test sqlite_file_lock_5.0 {
+  execsql {
+    PRAGMA wal_checkpoint;
+  }
+} {}
+
+do_test sqlite_file_lock_6.0 {
+  sqlite3 dbfile_lock2 test_wal
+  set dbid $dbfile_lock2
+} {1}
+
+sqlite_file_lock_test
+
+finish_test

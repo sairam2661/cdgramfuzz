@@ -1,0 +1,96 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+proc simple_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {1}
+}
+
+proc complex_proc {} {
+  global result
+  set result {}
+  foreach i {1 2 3 4 5} {
+    lappend result $i
+  }
+}
+
+proc timer {} {
+  global timeoout
+  expr {$timeoout}
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+  }
+  execsql {
+    INSERT INTO b VALUES(6);
+    INSERT INTO b SELECT * 
+                      						  	} {7}
+
+ifcapable trigger {
+
+  do_catchsql_test complex 1.2 {
+    CREATE TRIGGER complex_tr 
+    BEFORE INSERT ON b FOR EACH ROW
+    BEGIN
+      SELECT 1
+      WHERE old AND new AND rowid AND
+          coalesce CAST AS INTEGER WHEN NOT NULL THEN
+        CASE WHEN CAST WHEN NOT NULL THEN 8
+             WHEN old AND new THEN 9 ELSE 10 END END
+      WHEN NEW AND NOT NEW THEN RAISE IGNORE 'no data found' 
+    END
+  } {1 {SQL logic error or missing database}}
+}
+do_execsql_test complex 1.3 {
+  SELECT count(*) FROM b;
+} {2}
+set result {}
+execsql {
+  INSERT INTO b VALUES(10);
+  INSERT INTO b SELECT * 
+                  				  	} {11}
+set result
+} {11}
+do_test complex-1.4 {
+  execsql {
+  SELECT * FROM b WHERE rowid = 10;
+  } 
+} {10}
+
+proc get_value {} {
+  set v 1
+  if {0} {
+    v
+  } else {
+    set v 5
+    expr { $v }
+  }
+}
+
+ifcapable {view viewindex} {
+  do_execsql_test complex 1.5 {
+    CREATE VIEW complex_view AS
+      SELECT name FROM sqlite_master
+      WHERE type IN  {'table' 'trigger'} 
+      ORDER BY name DESC
+      LIMIT 2 
+  }
+
+  do_execsql_test complex 1.6 {
+    CREATE TABLE ifnotexists c AS
+      SELECT name
+      FROM sqlite_master
+      WHERE type IN  { 'table' } 
+  }
+
+  do_execsql_test complex 1.7 {
+    SELECT * FROM complex_view
+  } {b a}
+}
+
+finish_test

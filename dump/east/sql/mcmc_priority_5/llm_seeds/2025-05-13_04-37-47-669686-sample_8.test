@@ -1,0 +1,43 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiquery
+
+proc select_all {table} {
+  sqlite_dbhandle eval "SELECT * FROM $table"
+}
+
+set sqlite_dbhandle {}
+
+do_test multiquery-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  select_all a
+} {1}
+
+do_execsql_test multiquery-1.2 {
+  SELECT x FROM a
+  WHERE x = 1
+}
+
+{1}
+
+ifcapable explain {
+  do_test multiquery-1.3 {
+    db explain "SELECT * FROM (SELECT 42 AS x)"
+  }
+  {EXPLAIN QUERY PLAN
+    0 SELECT x FROM a WHERE x
+        1 1
+}
+}
+
+catch {sqlite_dbhandle}
+do_test multiquery-1.4 {
+  catchsql {
+    DROP TABLE a
+  }
+} {0 {}}
+
+finish_test

@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+proc check_sql {db {timeout 3000}} {
+  global timeoout
+  set timeout $timeoout
+  if {$timeout eq ""} {set timeout $timeoout}
+  set result {}
+  for {set i 1} {$i le 10} {incr i} {
+    set result2 {}
+    if {$i eq 10} {set result2 "SQL: $result"}
+    set msg "Timeout after $timeout microseconds checking SQL"
+    after $timeout $msg
+    catch {execsql "SELECT 1 AS foo"}
+    if {$i eq 10} {append result $result2}
+  }
+  return $result
+}
+
+proc execsql {sql} {
+  execsql_helper $db $sql
+}
+
+proc execsql_helper {db sql} {
+  global db2
+  if {$db eq $db2} {
+    set cmd "SET ISOLATION LEVEL DEFERRED"
+  } else {
+    set cmd "PRAGMA lock_protocol_version"
+  }
+  catchsql $cmd $db
+  set ret {}
+  for {set i 1} {$i le 10} {incr i} {
+    append ret "SQL2: "
+    if {$i eq 10} {append ret "SQL2: $ret"}
+    while {execsql "SELECT 1 AS foo" $db2} {}
+  }
+  if {$db eq $db2} {
+    append result "SQL: $result"
+  } else {
+    append result "SQL2: $result"
+  }
+  return $result
+}
+
+proc crash_test {} {
+  if {$db2 eq ""} {set db2 $db}
+  if {$db eq ""} {set db $db2}
+  while {catch {execsql "SELECT 1 AS foo"}} {crash_test}
+}
+
+do_test concurrent-1.1 {catch {execsql "SELECT 1 AS foo"}} {1}
+catch {execsql "SELECT 1 AS foo" $db2}
+
+set result ""
+for {set i 1} {$i le 10} {incr i} {
+  append result "SQLA: "
+  if {$i eq 10} {append result "SQLA: $result"}
+  set msg "Timeout after 1 second checking SQLA"
+  catch {execsql "SELECT 1 AS foo"}
+}
+
+set result2 ""
+for {set i 1} {$i le 10} {incr i} {
+  append result2 "SQLB: "
+  if {$i eq 10} {append result2 "SQLB: $result2"}
+  set msg "Timeout after 1 second checking SQLB"
+  catch {execsql "SELECT 1 AS foo" $db2}
+}
+
+execsql "CREATE TABLE a(x)"
+execsql "INSERT INTO a VALUES(1)"
+
+do_test concurrent-1.4 {
+  catch {execsql "SELECT 1 AS foo"}
+  catch {execsql "BEGIN TRANSACTION"}
+  crash_test
+  catch {execsql "COMMIT"}
+  execsql "SELECT * FROM a"
+} {1}
+
+execsql "BEGIN TRANSACTION"
+catch {execsql "SELECT 1 AS foo"}
+crash_test
+catch {execsql "COMMIT"}
+
+finish_test

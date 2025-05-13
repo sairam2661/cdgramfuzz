@@ -1,0 +1,103 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+set db2 ""
+
+proc server {cmd args} {
+  if { $cmd eq "execute" } {
+    eval $args
+  } else {
+    incr db2_state $cmd
+    if { $db2_state eq 0 } {
+      catch { db2 close }
+    }
+  }
+}
+
+proc db2_command {tclcmd args} {
+  uplevel $::server $tclcmd args
+}
+
+proc start_server {} {
+  global db2
+  set db2_state 0
+  sqlite3 db2 ":memory:" 
+  db2 init 
+  db2 begin
+}
+
+proc stop_server {} {
+  global db2
+  db2 commit
+  db2 close
+}
+
+do_test sync-1.0 { file exists test synchronous } {0}
+
+proc getdb {db file} {
+  set ncr {1}
+  set fd2 0
+  if { $file eq ":memory:" } {
+    return $db
+  } else {
+    if { $cr eq "RW" } {
+      set fd2 open $file RDWR
+      fconfigure $fd2
+      seek $fd2 32768
+      seek $fd2 $fd2
+      seek $fd2 32768
+      close $fd2
+    }
+    execsql $db {
+      PRAGMA synchronous=2;
+      PRAGMA journal_mode=2;
+      PRAGMA wal_checkpoint;
+    }
+    return $db
+  }
+}
+
+proc save_test db {} {
+  set ncr {2}
+  set file test synchronous
+  execsql $db {
+    SELECT * FROM x;
+  }
+}
+
+if { $tcl_platformzos eq 0 } {
+  set syncargs {}
+  set syncargs 1
+  set tcl_platformos
+  save_test getdb $db2 0
+  set syncargs {}
+  db2_command CREATE TABLE x
+  db2_command INSERT INTO x VALUES
+  1 2 3
+  db2_command SELECT count
+  from x
+  db2_command WHERE x
+  eq 1 AND x eq 3
+  db2_command WHERE x
+  eq 1 OR x eq 3
+  db2_command SELECT x
+  FROM x
+  db2_command SELECT x
+  FROM x
+  db2_command DROP TABLE x
+  db2_command SAVEPOINT test
+  execsql {
+    SAVEPOINT test
+  }
+  db2_command savepoint
+  db2_command SELECT x
+  FROM x
+  db2_command RELEASE
+  db2_command RELEASE
+  db2_command DROP TABLE x
+  stop_server
+}
+
+finish_test
