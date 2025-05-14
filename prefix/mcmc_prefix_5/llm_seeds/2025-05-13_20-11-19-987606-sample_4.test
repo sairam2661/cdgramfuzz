@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix testdb
+
+set ::timeout 60000  command interp
+
+proc dbconn {} {
+  set db sqlite3 db testdb
+}
+
+proc dropdb {} {
+  global db
+  execsql $db {DROP TABLE IF EXISTS testtabl}
+}
+
+do_test testdb-1.1 {
+  dbconn
+  execsql $db {
+    CREATE TABLE testtabl(a, b);
+    INSERT INTO testtabl VALUES(1, 1);
+    INSERT INTO testtabl VALUES(2, 2);
+  }
+  execsql $db {SELECT sum(  	   
+  			   			*   ) FROM testtabl;}
+} {6}
+
+do_test testdb-1.2 {
+  execsql $db {
+    ALTER TABLE testtabl ADD COLUMN c
+  }
+  execsql $db {INSERT INTO testtabl VALUES(3, 3, 3)}
+  execsql $db {SELECT count(*) FROM testtabl}
+} {3}
+
+do_test testdb-1.3 {
+  execsql $db {
+    SELECT * FROM testtabl;
+  }
+} {1 1 2 2 3 3 3}
+
+do_test testdb-1.4 {
+  execsql $db {SELECT a FROM testtabl WHERE b = 3}
+} {3}
+
+dropdb
+
+set auto_commit_off 0  command interp
+
+do_execsql_test testdb-2.1 {
+  BEGIN;
+  INSERT INTO testtabl VALUES(4, 4, 4);
+  COMMIT;
+  SELECT count(*) FROM testtabl;
+} {4}
+
+ifcapable incremental_vacuum {
+  do_test testdb-3.1 {execsql {VACUUM}} {}
+}
+
+dropdb
+
+proc testfunc {args} {
+  set result ""
+  foreach arg $args {
+    append result $arg
+  }
+  return $result
+}
+
+proc testfn {args} {
+  return $args
+}
+
+do_test testdb-4.1 {testfunc a b c} {abc}
+do_test testdb-4.2 {testfn {a b c}} {a b c}
+
+finish_test

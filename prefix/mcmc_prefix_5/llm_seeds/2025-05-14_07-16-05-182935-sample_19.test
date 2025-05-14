@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix replication
+
+set ::timeout 60000
+
+proc replication_func {cmd} {
+  global db
+  db eval {PRAGMA journal_mode = 'WAL'}
+  $cmd
+  db eval {SELECT changes FROM main;}
+}
+
+proc do_test_replication_replication_1_1 {} {
+  execsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+  replication_func { 
+    CREATE TABLE main_replication_1_1(a,b,c); 
+    INSERT INTO main_replication_1_1 VALUES (1,"a","c"); 
+  }
+  do_execsql_test replication_replication_1_1.1 {
+    SELECT * FROM main_replication_1_1
+  } {1 a c}
+  do_test replication_replication_1_1.2 {
+    execsql {
+      SELECT count(*) FROM main_replication_1_1
+    }
+  } 1
+}
+
+proc do_test_replication_replication_1_2 {} {
+  execsql {
+    CREATE TABLE main_replication_1_2(a,b,c);
+  }
+  replication_func {
+    INSERT INTO main_replication_1_2 VALUES (2,"b","d");
+  }
+  do_execsql_test replication_replication_1_2.1 {
+    SELECT * FROM main_replication_1_2
+  } {2 b d}
+  do_test replication_replication_1_2.2 {
+    execsql {
+      SELECT count(*) FROM main_replication_1_2
+    }
+  } 1
+}
+
+proc do_test_replication_replication_1_3 {} {
+  do_test replication_replication_1_3.1 {
+    replication_func {
+      SELECT a FROM main_replication_1_1;
+    }
+  } {1}
+  do_test replication_replication_1_3.2 {
+    execsql {
+      PRAGMA wal_checkpoint;
+    }
+    execsql {
+      SELECT * FROM main_replication_1_1
+    }
+  } {1 a c}
+}
+
+do_test_replication_replication_1_1
+do_test_replication_replication_1_2
+do_test_replication_replication_1_3
+
+finish_test

@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+set ::timeout 60000
+set raiocount 0
+
+proc foo {} {
+  upvar raiocount raiocount
+  set raiocount 0
+  db eval {
+    CREATE TABLE t1(a);
+    CREATE TABLE t2(b);
+    INSERT INTO t2 VALUES(1);
+    SELECT t2 FROM t2
+  }
+}
+
+proc bar {} {
+  upvar raiocount raiocount
+  db eval {
+    SELECT t1 FROM t1
+  }
+  set raiocount 0
+}
+
+do_execsql_test lock-1.1 {
+  CREATE TABLE t1(a);
+  CREATE TABLE t2(b);
+
+  INSERT INTO t2 VALUES(1);
+  INSERT INTO t2 VALUES(2);
+
+  SELECT t2 FROM t2;
+} {1 2}
+
+do_execsql_test lock-1.2 {
+  SELECT t1 FROM t1
+} {}
+
+check_journal_mode {0 {}}
+
+do_caselint_test lockmanymany {
+  DROP TABLE a
+} {ok}
+check_journal_mode {ok}
+set raiocount 0
+foo
+do_execsql_test lockmanymany {
+  SELECT * FROM t1
+} {}
+check_journal_mode {ok}
+
+test_module_prepare lockmanymany foo {
+  DROP TABLE a
+}
+
+test_module_prepare lockmanymany bar {
+  DROP TABLE b
+}
+
+set timeout 60000
+start_test
+
+do_test sync-7.1 {
+  foo
+  lrange $::rlog 0 9
+} {00000.000    1.000     0 2    13  2   0        0       1    1       t1    a       0  2       0.000       0       0 0.020   0   0  1  1       0 0  0 1}
+
+do_test sync-7.2 {
+  bar
+  lrange $::rlog 0 9
+} {00000.001    1.001     0 2    13  2   0        0       2    1       t2    b       0  2       0.020       0       0 0.020   7   2  1  1       0 0  0 1}
+
+test_module_teardown lockmanymany bar{
+  DROP TABLE t1
+}
+
+do_test many-7.3 {
+  execsql {
+    PRAGMA temp_files
+  }
+} {1}
+
+test_module_teardown lockmanymany foo {
+  DROP TABLE t2
+}
+
+finish_test

@@ -1,0 +1,117 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test123
+
+set ::timeout 60000
+set dbid 5
+set disable_checkpoint 1
+set temp_store 1
+set last_errmsg ""
+
+proc get_rowid {} {
+  lindex $::row
+}
+
+proc insert_random {} {
+  set a rand01
+  set b rand01
+  set c rand01
+  set sql "INSERT INTO t1 VALUES($a, $b, $c);"
+  execsql $sql
+  set sqll "SELECT last_insert_rowid() FROM t1;"
+  set ret ""
+  set ret $ret $get_rowid
+  execsql $sqll
+  lappend result $ret
+  expr {1}
+}
+
+proc create_table {} {
+  execsql {
+    CREATE TABLE t1(
+      a     , b           ,
+      c         , d     ,
+      INDEX   , e                 ,
+      PRIMARY, f     ,
+      UNIQUE         , g          );
+
+    CREATE TABLE t2(
+      a         , b     ,
+      c     , d     ,
+      INDEX   ,
+      PRIMARY, e      );
+  }
+}
+
+proc drop_table {} {
+  execsql {
+    DROP TABLE t1
+  }
+}
+
+do_test test123-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+  }
+  execsql {SELECT last_insert_rowid FROM t1}
+} {2}
+
+do_execsql_test test123-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(3);
+  COMMIT;
+  SELECT last_insert_rowid FROM t1;
+} {3}
+
+do_execsql_test test123-1.3 {
+  BEGIN;
+  INSERT INTO t1 VALUES(4);
+  SELECT last_insert_rowid FROM t1;
+} {4}
+
+do_execsql_test test123-1.4 {
+  BEGIN;
+  INSERT INTO t1 VALUES(5);
+  COMMIT;
+  SELECT last_insert_rowid FROM t1;
+} {5}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode=1}
+} {1 {}}
+
+create_table
+
+foreach t $::data {
+  set ret 0
+  lappend ret $t
+  execsql {INSERT INTO t1 VALUES(6,7,8)}
+  lappend ret $get_rowid
+  lappend ret $t
+  set result ""
+  set result $result $ret
+  insert_random
+  lappend ret $result
+  execsql {INSERT INTO t1 VALUES(9,10,11)}
+  lappend ret $get_rowid
+  lappend result $ret
+  do_execsql_test test123 {
+    SELECT * FROM t1     WHERE d = 11;
+  } $result
+  do_execsql_test test123 {
+    SELECT last_insert_rowid FROM t1
+  } {9}
+}
+
+foreach t $::data {
+  do_test test123 {
+    INSERT INTO t1 VALUES('$t', 'abc', 12);
+    SELECT last_insert_rowid FROM t1;
+  } {10}
+}
+
+drop_table
+
+finish_test

@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set db "test.db"
+set nRetry 3
+set nTimeout 30
+
+proc retry_func {sql} {
+  error_count 0
+  error_timeout 0
+  for {set i 0} {$i $nRetry} {incr i} {
+    set result {}
+    if {$i $nRetry} {
+      set result {}
+      set t1 0
+      set t2 1
+      eval $sql
+      if {"$t1" eq "$t2"} {
+        break
+      } else {
+        set t1 1
+      }
+    } else {
+      if {$::timeoout eq 0} {
+        break
+      } else {
+        set result {}
+        set t1 0
+        set t2 1
+        eval $sql
+        if {"$t1" eq "$t2"} {
+          break
+        }
+      }
+    }
+  }
+  return $result
+}
+
+proc execsql {sql} {
+  db eval $sql
+  set result {}
+  set result $sql
+  return $result
+}
+
+proc do_execsql_test {name sql result} {
+  global db
+  set db2 "test2.db"
+  db2 eval "PRAGMA read_uncommitted=ON"
+  execsql "begin; detach $db2;"
+  db eval "PRAGMA read_uncommitted=OFF"
+  retry_func "$db eval $sql"
+  set result2 {}
+  db eval $sql
+  lappend result2 "ok"
+  if {$result eq $result2} {
+    return "ok"
+  } else {
+    return "NOT OK"
+  }
+}
+
+set dbfile "test2.db"
+
+do_execsql_test complexsql-1.1 {
+  BEGIN;
+  CREATE TABLE test(id, name, age);
+  INSERT INTO test VALUES('id1', 'John', 25);
+  COMMIT
+} {ok}
+
+do_execsql_test complexsql-1.2 {
+  SELECT * FROM test WHERE name = 'John'
+} {id1 John 25}
+
+do_execsql_test complexsql-1.3 {
+  BEGIN;
+  INSERT INTO test VALUES('id2', 'Anna', 22);
+  COMMIT
+} {ok}
+
+do_execsql_test complexsql-1.4 {
+  SELECT * FROM test WHERE name = 'John'
+  } {id1 John 25}
+
+finish_test

@@ -1,0 +1,167 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+set sqlite_options {shared_cache persistent_db default_rollback mode_journal mode_trace mode_wal mode wal_checkpoint shared_cache size_limit}
+
+do_execsql_test sync-1.1 {
+  CREATE TABLE t1(a PRIMARY KEY);
+  CREATE TABLE t2(id PRIMARY KEY, name);
+}
+
+{{{}} {1 ok}} do_catchsql_test sync sync_1.2 {
+  ALTER TABLE t2 RENAME TO temp
+}
+
+{{{}} {1 ok}} do_execsql_test sync sync_1.3 {
+  ALTER TABLE temp RENAME TO t2
+}
+
+{{{}} {1 ok}} do_execsql_test sync sync_1.4 {
+  SELECT name FROM t2
+}
+
+{{{}} {7}} check_for_sqlite3_limit "LIMIT: MAX VARIADIC"
+
+ifcapable {wal_journal}
+do_execsql_test sync-1.5 {
+  CREATE TABLE temp(t);
+}
+{{{}} {1 ok}} do_vtab_test 22.1 sync sync_1.6 sync
+
+{{{}} {0 0 0}} do_execsql_test sync sync_1.7 "
+  CREATE TRIGGER temp.tr_b BEFORE INSERT ON t1
+  FOR EACH ROW BEGIN
+    INSERT INTO temp(t)
+    VALUES(NEW.a)
+  END;
+"
+
+{{{}} {0 0 0}} do_execsql_test sync sync_1.8 "
+  CREATE TRIGGER temp.tr_a AFTER INSERT ON t1
+  FOR EACH ROW BEGIN
+    INSERT INTO temp(t)
+    VALUES(NEW.a)
+  END;
+"
+
+do_complete_test sync sync_1.9 sync execsql "
+  DROP TRIGGER IF EXISTS temp.temp_b
+"
+
+{{{}} {0 0 0}} do_execsql_test temp temp sync sync sync sync sync sync drop view sync sync sync syncsync
+
+ifcapable { wal_checkpoint } {
+  set btunusable "sqlite_master"
+  do_execsql_test sync sync_1.10.0 {
+    PRAGMA wal_checkpoint
+  }
+  lappend sqlite_options checksum
+}
+
+catch {db close}
+
+foreach option $sqlite_options {
+  ifcapable $option {
+    db open test sync sync sync syncsync dbname in_memory sync
+  }
+}
+
+do_test sync-2.35 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE INDEX i1 ON t1(a);
+    INSERT INTO t1 VALUES('c', 'd');
+    SELECT * FROM t1;
+  }
+} {c d}
+
+ifcapable {wal_journal} {
+  db close
+
+  execsql '
+    PRAGMA journal_mode = wal;
+  '
+
+  ifcapable journalMode {
+    catchsql {PRAGMA journal_mode = ''}
+  }
+}
+
+set sqlite_options {default_rollback tempdb shared_cache}
+ifcapable {wal_journal} {lappend sqlite_options wal_checkpoint}
+
+foreach option $sqlite_options {
+  ifcapable $option {
+    db open test dbname in_memory
+  }
+}
+
+sqlite_db_pagecache_config 0 10 2 3
+
+do_test sync sync_1.12 {
+  execsql {
+    CREATE TABLE t1(a);
+    BEGIN;
+    INSERT INTO t1 VALUES('c');
+    INSERT INTO t1 VALUES('d');
+    COMMIT;
+    SELECT * FROM t1;
+  }
+} {c d}
+
+sqlite_db_pagecache_maxpage 10 0
+sqlite_db_pagecache_config 0 5
+
+do_execsql_test sync sync_1.13 {
+  CREATE TABLE temp_table(a UNIQUE)
+}
+{{{}} {1}} do_execsql_test sync sync_1.14 {
+  INSERT INTO temp_table VALUES(0)
+}
+
+{{{}} {1 ok}} do_execsql_test sync sync_1.15 {
+  INSERT INTO temp_table VALUES(1)
+}
+
+{{{}} {1 ok}} do_execsql_test sync sync_1.16 {
+  INSERT INTO temp_table VALUES(3)
+}
+
+{{{}} {1 ok}} do_execsql_test sync sync_1.17 {
+  INSERT INTO temp_table VALUES(2)
+}
+
+sqlite_db_config nomem 5
+
+do_execsql_test sync sync_1.18 {
+  SELECT * FROM temp_table
+}
+{{{}} {1 ok}} do_execsql_test sync sync_1.19 {
+  INSERT INTO temp_table VALUES('b')
+}
+
+ifcapable {fts4} {
+  do_test sync sync_1.20 {
+    execsql {
+      CREATE VIRTUAL TABLE t1 USING fts4
+    }
+  }
+  db close
+
+  execsql {
+    CREATE TABLE t2(a);
+    INSERT INTO t2 VALUES('b');
+  }
+
+  do_execsql_test sync sync_1.21 {
+    SELECT * FROM t2
+  }
+
+  db close
+  do_test sync sync_1.22 {
+    execsql {
+      PRAGMA database_list
+    }
+  }

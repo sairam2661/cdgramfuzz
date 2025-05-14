@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+set ::timeout 60000
+
+proc complex_test {} {
+  global complexargs
+  lappend complexargs
+  foreach arg $complexargs {
+    if { $arg eq "error" } {
+      return "ERROR"
+    }
+  }
+  return 1
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(rowid, y);
+    INSERT INTO b VALUES(1, 'a');
+    INSERT INTO b VALUES(2, 'b');
+    INSERT INTO b VALUES(3, 'c');
+  }
+  execsql {SELECT COUNT(*) FROM b}
+} {3}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(4, 'd');
+  COMMIT;
+  SELECT COUNT(*) FROM b;
+} {4}
+
+db eval {PRAGMA journal_mode}
+
+ifcapable journalMode {
+  do_test complex-2.1 {
+    catchsql {PRAGMA journal_mode = 'wal'}
+    execsql {PRAGMA journal_mode}
+  } {wal}
+  ifcapable wal {
+    do_test complex-2.2 {
+      execsql {
+        CREATE TABLE c AS SELECT rowid FROM b
+        UNION ALL SELECT rowid FROM b
+        ORDER BY rowid
+      }
+      PRAGMA wal_checkpoint
+      execsql {PRAGMA page_size}
+    } {32768}
+  }
+}
+
+do_test complex-3.1 {
+  db close
+  set FDs {}
+  foreach fd $::auto_increment_fdlist {
+    lappend FDs $fd
+  }
+  set len 10
+  for {set i 0} {$i lt $len} {incr i} {
+    incr len
+    db set wal_checkpoint
+    db close
+  }
+  set len
+} {10}
+
+finish_test

@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix vtab
+
+set ::timeout 60000
+set upscript {
+  CREATE TABLE a(x PRIMARY KEY, y);
+  CREATE TABLE b(x PRIMARY KEY, z);
+}
+
+proc update_rows {} {
+  global db upcount
+  set upcount 0
+  update a set y rnd where x in select x from b
+  if {$::upcount} { return $::upcount }
+  sqltree2sql db 5
+  expr 1
+}
+
+proc is_equal {lhs rhs} {
+  if { $lhs eq $rhs } { return 1 }
+  return 0
+}
+
+proc is_table {lhs rhs} {
+  if { $::sqltree_eq $lhs $rhs } { return 1 }
+  return 0
+}
+
+drop_and_rebuild_all_vtab {
+  CREATE VIRTUAL TABLE v using rtree id
+  CREATE VIRTUAL TABLE s using sqlite_vtab
+  CREATE VIRTUAL TABLE w using sample_func2
+}
+
+do_execsql_test 1.1 {
+  INSERT INTO a VALUES(1, 'A')
+}
+
+do_execsql_test 1.2 {
+  INSERT INTO b VALUES(1, 'B')
+}
+
+do_test 1.3 {
+  llength $::update_rows
+} {2}
+
+do_execsql_test 1.4 {
+  SELECT a FROM s WHERE rowid = 1
+} {C}
+
+do_test 1.5 {
+  is_equal $::srow 1
+} 1
+
+ifcapable {
+  do_test 1.6 {
+    set c3 3
+    do_execsql_test {
+      SELECT count(*) FROM sample_func2
+    } {3}
+     if { sqltree_eq $c3 "[select count(*) from w]" } {
+       expr 1
+     } else { execsql "SELECT commit=1 FROM test_lock" }
+  } 1
+}
+
+drop_all_vtab {
+  DROP VIRTUAL TABLE s
+  DROP VIRTUAL TABLE v
+  DROP TABLE a
+  DROP TABLE b
+}
+
+finish_test

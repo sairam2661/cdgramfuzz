@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+execsql {
+  CREATE TABLE t1(a PRIMARY KEY);
+  CREATE TABLE t2(a PRIMARY KEY);
+  CREATE TABLE t3(a PRIMARY KEY);
+  CREATE TABLE t4(a PRIMARY KEY);
+
+  CREATE TABLE t5(a PRIMARY KEY, b, c, d);
+  CREATE TABLE t6(a PRIMARY KEY, b, c, d);
+}
+
+proc insert_and_get {} {
+  global sqlite_db
+  set result {}
+  for {set i 1} {$i le 100000} {incr i} {
+    execsql "INSERT INTO t5 VALUES($i, 'a', 1.0, 'd')"
+    execsql "SELECT a FROM t5 ORDER BY rowid DESC LIMIT 1" $sqlite_db result 
+  }
+  return $result
+}
+
+proc get_result {} {
+  global sqlite_db
+  set result {}
+  for {set i 1} {$i le 100000} {incr i} {
+    execsql "SELECT a FROM t5 ORDER BY rowid DESC LIMIT 1" $sqlite_db result 
+  }
+  return $result
+}
+
+proc multi_threaded_test {} {
+  set th1 Thread1
+  set th2 Thread2
+  set th3 Thread3
+  set th4 Thread4
+
+  set tid1 Thread1ID
+  set tid2 Thread2ID
+  set tid3 Thread3ID
+  set tid4 Thread4ID
+
+  thread start $th1 insert_and_get
+  thread start $th2 get_result
+  thread start $th3 insert_and_get
+  thread start $th4 get_result
+
+  thread join $th1 result
+  thread join $th2 result
+  thread join $th3 result
+  thread join $th4 result
+
+  thread cancel $th1
+  thread cancel $th2
+  thread cancel $th3
+  thread cancel $th4
+  return $result
+}
+
+do_test multi_thread-1.1 {
+  multi_threaded_test
+} {100000}
+
+set testname multi_thread
+db close
+unset testname
+
+do_test multi_thread-1.2 {
+  sqlite_db db
+  execsql {
+    SELECT a FROM t5 LIMIT 1
+  }
+} {1}
+
+ifcapable wal {
+  db close
+  unset sqlite_db
+}
+
+sqlite3 db test databases
+finish_test

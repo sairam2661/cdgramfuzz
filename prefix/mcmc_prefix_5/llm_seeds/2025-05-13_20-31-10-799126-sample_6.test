@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix WAL_journalling
+
+set ::timeout 60000
+set temp_store 1
+
+proc do_test_journal_mode {name cmd result} {
+  ifcapable journalMode {
+    do_test $name {
+      db transaction {
+        execsql $cmd
+      }
+    } $result
+  } else {
+    return 0
+  }
+}
+
+proc do_execsql_test_journal_mode {name cmd result} {
+  ifcapable journalMode {
+    do_execsql_test $name {
+      db transaction {
+        $cmd
+      }
+    } $result
+  } else {
+    return 0
+  }
+}
+
+proc do_test_checkpoint {name cmd result} {
+  ifcapable checkpoint {
+    do_test $name {
+      db transaction {
+        execsql $cmd
+      }
+    } $result
+  } else {
+    return 0
+  }
+}
+
+set testname WAL_journalling
+
+do_execsql_test_journal_mode $testname journal_mode 1
+do_execsql_test_journal_mode $testname journal_mode 1
+
+do_test_journal_mode $testname {
+  PRAGMA journal_mode=1
+} {1}
+
+do_execsql_test_journal_mode $testname {
+  PRAGMA journal_mode=1
+} {1}
+
+do_test_checkpoint $testname {
+  PRAGMA journal_mode=1
+} {1}
+
+do_test_journal_mode $testname {
+  PRAGMA journal_mode=2
+} {0}
+
+do_test_checkpoint $testname {
+  PRAGMA journal_mode=2
+} {0}
+
+do_test_journal_mode $testname {
+  PRAGMA journal_mode=1
+} {1}
+
+do_execsql_test_journal_mode $testname {
+  PRAGMA journal_mode=1
+} {1}
+
+finish_test

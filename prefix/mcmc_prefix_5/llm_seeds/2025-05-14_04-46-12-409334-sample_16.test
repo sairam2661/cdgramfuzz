@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_async
+
+set ::timeout 60000
+set sqlite_async_count 0
+
+ifcapable subquery {
+  do_test sqlite_async-1.1 {
+    execsql {
+      CREATE TABLE t1(a, b);
+      INSERT INTO t1 VALUES(1, 1);
+      INSERT INTO t1 VALUES(2, 3);
+      CREATE TABLE t2(a, b);
+    }
+    execsql {
+      SELECT b FROM t1 WHERE a IN
+        WITH RECURSIVE nested AS
+          SELECT a FROM t1
+          UNION ALL
+          SELECT t2 FROM t1
+    } {}
+  } {}
+
+  do_test sqlite_async-1.2 {
+    list
+  } {
+    tcl
+  }
+} else {
+  ifcapable trigger {
+    set sqlite_async_count 1
+  }
+}
+
+if { $sqlite_async_count eq 0 } {
+  do_test sqlite_async_insert1 { set ret "" } {}
+  do_test sqlite_async_insert2 { set ret "" } {}
+  do_test sqlite_async_insert3 { set ret "" } {}
+  do_test sqlite_async_sync { set ret "" } {}
+}
+
+if { $sqlite_async_count eq 1 } {
+  proc sqlite_async_callback {sql} {
+    global sqlite_async_count
+    execsql $sql
+  }
+
+  sqlite_async_insert1 "INSERT INTO t2(a, b) VALUES(1, 2)"
+  sqlite_async_insert2 "INSERT INTO t2(a, b) VALUES(1, 2)"
+  sqlite_async_insert3 "INSERT INTO t2(a, b) VALUES(3, 4)"
+}
+
+do_execsql_test sqlite_async-4.1 {
+  CREATE TABLE t2(c);
+  SELECT c FROM t2
+} {}
+
+if { $sqlite_async_count eq 1 } {
+  sqlite_async_sync "INSERT INTO t2(c) VALUES(2), (1)"
+}
+
+do_execsql_test sqlite_async-4.2 {
+  SELECT c FROM t2
+} {}
+do_execsql_test sqlite_async-4.3 {
+  SELECT c FROM t2
+} {}
+
+finish_test

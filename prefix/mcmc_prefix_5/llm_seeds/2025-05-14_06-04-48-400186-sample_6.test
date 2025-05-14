@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+
+proc create_table {} {
+  execsql {
+    CREATE TABLE test(id PRIMARY KEY, name, value);
+    CREATE TABLE test2(id PRIMARY KEY, type);
+  }
+}
+
+proc create_indexes {} {
+  execsql {
+    CREATE INDEX idx_name ON test(name);
+    CREATE INDEX idx_type ON test2(type);
+  }
+}
+
+proc insert_test {name {value {}}} {
+  execsql {
+    INSERT INTO test(name, value, id) VALUES('$name', '$value', 1);
+  }
+}
+
+proc do_insert_one {name {value {}}} {
+  if {$value eq {}} {
+    set value "test value"
+  }
+  insert_test $name $value
+}
+
+proc query_test {} {
+  execsql {
+    SELECT id FROM test WHERE name LIKE 'test%' ORDER BY id DESC LIMIT 1 OFFSET 1 LIMIT 1
+  }
+}
+
+proc verify_result {query {result {}}} {
+  do_test sync {
+    $query
+    expr {$::sqlite_last_insert_rowid ne $result}
+  } {0}
+}
+
+proc test_commit {db} {
+  db close
+  sqlite3 db test2
+  do_execsql_test sync {
+    BEGIN;
+    CREATE TABLE test3(id PRIMARY KEY);
+    INSERT INTO test3 VALUES(1);
+    COMMIT;
+    SELECT * FROM test3;
+  } {1}
+  db close
+  return ok
+}
+
+proc delete_test {} {
+  execsql {
+    DELETE FROM test2 WHERE id IN
+      CREATE TABLE tmp AS SELECT id FROM test2 WHERE type IN
+      SELECT name FROM test WHERE value LIKE '%delete%'
+  }
+}
+
+proc setup_test {} {
+  create_table
+  do_insert_one "test"
+  query_test
+}
+
+proc cleanup {} {
+  execsql {
+    DELETE FROM test2
+  }
+}
+
+setup_test
+ifcapable wal {
+  test_commit test
+}
+delete_test
+verify_result {query_test}
+destroy_test
+finish_test

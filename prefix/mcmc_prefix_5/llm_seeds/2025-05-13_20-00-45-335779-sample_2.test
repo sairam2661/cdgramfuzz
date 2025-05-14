@@ -1,0 +1,127 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_lock
+
+set ::timeout 60000
+
+proc set_test_counter {name val} {
+  global test_tcl_pid
+  set test_counter incr_test_counter
+  lappend test_counter $name $val
+}
+
+proc get_test_counter {name} {
+  global test_counter
+  return $test_counter
+}
+
+proc test_lock {cmd} {
+  set test_lock test_lock $cmd
+}
+
+do_test db_lock-1.1 {
+  test_lock START
+  expr $test_lock eq "test_lock START"
+} {1}
+
+ifcapable wal {
+  set wal true
+} else {
+  set wal false
+}
+
+do_execsql_test db_lock-2.1 {
+  BEGIN;
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  INSERT INTO a VALUES(2);
+  COMMIT;
+} ""
+
+set nWalShmFiles 3
+
+do_execsql_test db_lock-3.1 {
+  PRAGMA synchronous=2
+  }
+  {0 {}}
+
+do_execsql_test db_lock-3.2 {
+  PRAGMA journal_mode
+  }
+  {WAL}
+
+do_execsql_test db_lock-3.3 {
+   SELECT name FROM sqlite_master 
+   WHERE type='table' 
+  }
+  {a}
+
+if { $wal } {
+ do_execsql_test db_lock 3.4 {
+     PRAGMA wal_checkpoint
+   }
+ }
+
+do_execsql_test db_lock-4.1 {
+   SELECT count(*) FROM a
+   }
+  {2}
+
+do_execsql_test db_lock-4.2 {
+  ROLLBACK;
+  COMMIT;
+  SELECT count(*) FROM a;
+  }
+  {2}
+
+do_execsql_test db_lock-5.1 {
+    PRAGMA journal_mode;
+  } 
+  {WAL}
+
+ if { $wal } {
+ do_execsql_test db_lock 5.2 {
+     PRAGMA wal_checkpoint
+   }
+ }
+
+do_test db_lock-6.1 {
+  set test_counter {}
+  set incr_test_counter 1
+  set test_counter
+} {1}
+
+ifcapable wal {
+  catchsql {
+    PRAGMA wal_checkpoint;
+  }
+} {0 {}}
+
+do_execsql_test db_lock-7.1 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {3}
+
+do_test db_lock-8.1 {
+  set test_counter {}
+  incr incr_test_counter
+  set test_counter
+} {2}
+
+do_execsql_test db_lock-9.1 {
+  SELECT count(*) FROM a;
+} {3}
+
+do_test db_lock-10.1 {
+  set test_counter {}
+  lappend test_counter one 1
+  set test_counter
+} {one 1}
+
+do_execsql_test db_lock-11.1 {
+  SELECT count(*) FROM a;
+} {3}
+
+finish_test

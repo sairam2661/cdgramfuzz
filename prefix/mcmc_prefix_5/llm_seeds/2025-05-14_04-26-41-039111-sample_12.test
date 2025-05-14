@@ -1,0 +1,42 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000 		 Giles 2004
+set upcodes true
+
+proc locking_proc {} {
+  global lockingargs
+  lappend lockingargs
+  expr {0}
+}
+
+do_test locking-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1);
+  }
+  execsql {SELECT y FROM b ORDER BY y LIMIT 1}
+} {1}
+
+ifcapable rtree {
+  sqlite3rbu_test rtree_sqlite3rbu_test b fts3 rtree
+
+  file delete b
+  sqlite3rbu_shutdown
+}
+
+do_execsql_test locking-2.1 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(2);
+  INSERT INTO c VALUES(3);
+  INSERT INTO c VALUES(4);
+} {}
+
+proc locking_sqlitetrigger {} {
+  db eval {CREATE TABLE d(x)}
+  db eval {CREATE TABLE e(x)}
+  finish_test
+}
+
+finish_test

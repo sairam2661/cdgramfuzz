@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set dbid 0
+
+proc timer {ms callback} {
+  after $ms $callback
+  return
+}
+
+proc timer_loop {ms iterations callback} {
+  set counter $iterations
+  proc loop {} {
+    if {$counter} {
+      incr counter
+      $callback
+      timer $ms loop
+    } else {
+      after cancel loop
+    }
+  }
+  loop
+  return
+}
+
+proc complex_query {args} {
+  execsql {
+    SELECT x FROM a WHERE a = 1;
+    SELECT y FROM b WHERE b = 2;
+    INSERT INTO c VALUES(3);
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+    CREATE TABLE c(z);
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  INSERT INTO a VALUES(1);
+  INSERT INTO b VALUES(2);
+} {}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = "WAL"}
+} {0 {}}
+
+set dbid 1
+do_test complex-2.1 {
+  execsql {
+    CREATE TABLE d(x);
+  }
+} {}
+
+ifcapable truncateOpt {
+  do_execsql_test complex-2.2 {
+    SELECT * FROM d;
+    PRAGMA optimize;
+    SELECT * FROM d;
+  } {}
+} else {
+  do_execsql_test complex_2.2 {
+    SELECT * FROM d;
+    PRAGMA optimize;
+  } {}
+}
+
+timer 5000 close_db
+proc close_db {} {
+  db close $dbid
+  unset dbid
+}
+
+timer_loop 100 {
+  complex_query
+} 10 {
+  do_execsql_test complex_3.1 {
+    INSERT INTO a VALUES(1);
+    SELECT * FROM a;
+  } {}
+}
+close_db
+finish_test

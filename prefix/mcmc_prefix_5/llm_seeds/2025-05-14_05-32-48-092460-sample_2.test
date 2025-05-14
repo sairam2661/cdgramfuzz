@@ -1,0 +1,338 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_sync
+
+set ::timeout 60000
+set testprefix test_sync
+set testdb ""
+
+proc test_db_create {} {
+  global testdb
+  sqlite3_db_handle testdb db
+}
+
+proc test_db_open {} {
+  global testdb
+  set testdb "test.db"
+  sqlitestress_create_table test_sync test1 testdb db x string
+  sqlitestress_insert_test_sync test_sync test1 testdb db
+}
+
+proc test_db_close {} {
+  global testdb
+  sqlite3_close db
+}
+
+do_test test-1.1 {
+  test_db_create
+  test_db_open
+  expr 0
+} {0}
+
+do_test test-1.2 {
+  sqlitestress_count test_sync test1 db
+} {10}
+
+do_test test-1.3 {
+  catchsql {
+    CREATE TABLE b(y);
+  } db
+} {0 {}}
+
+do_test test-1.4 {
+  catchsql {
+    DROP TABLE b
+  } db
+} {0 {}}
+
+do_test test-1.5 {
+  test_db_close
+  expr 0
+} {0}
+
+do_execsql_test test-1.6 {
+  PRAGMA foreign_keys=0;
+} {0 0}
+
+do_test test-1.7 {
+  catchsql {
+    CREATE TABLE c(x,y,z);
+  } db
+} {0 {}}
+
+do_test test-1.8 {
+  catchsql {
+     INSERT INTO c VALUES('abc',2,4.5);
+     INSERT INTO c VALUES(2,3,4.0);
+     INSERT INTO c VALUES('def',1,'five');
+  } db
+} {0 {}}
+
+do_test test-1.9 {
+  catchsql {
+     COMMIT
+  } db
+} {0 {}}
+
+do_execsql_test test-1.10 {
+  PRAGMA foreign_keys=1;
+} {1 1}
+
+do_test test-1.11 {
+  sqlitestress_count_test_sync test_sync c db
+} {2}
+
+do_execsql_test test-1.12 {
+  INSERT INTO c SELECT nameofietyy( 
+    		  		  				  									*
+ 	 	);	 													} 10			SQL LIMIT
+  SELECT countnameofietyy  FROM c
+  SELECT name  FROM c WHERE x IS NULL
+  SELECT nameofietyy FROM c WHERE EXISTS  SELECT 1 FROM c LIMIT 5
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT nameofietyyietyy FROM c
+  SELECT nameofietyy FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c  FROM c
+  FROM c  
+ FROM c  
+ FROM c 
+  FROM c    
+  FROM c   
+  SELECT FROM c
+  FROM c
+  FROM c
+  FROM c
+  SELECT FROM c
+  FROM c 
+  FROM c 
+FROM  c 
+  FROM c  FROM c  
+ FROM c   
+    FROM c     
+     FROM c 
+   FROM c  FROM c
+    FROM c
+    FROM c
+    FROM c
+    FROM c
+  FROM c    
+    FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+        FROM c
+FROM c 
+FROM c
+FROM c
+        FROM c
+        FROM c
+FROM c
+FROM c
+  FROM c
+  FROM c
+FROM c
+  FROM c
+FROM c
+ FROM c
+FROM c 
+      FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c  FROM c
+FROM c 
+FROM c
+FROM c 
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c 
+FROM c
+FROM c
+FROM c
+FROM c 
+FROM c
+FROM c       FROM c
+FROM c
+      FROM c
+ FROM c 
+      FROM c
+  FROM c
+ FROM c
+ FROM c
+FROM c
+  FROM c       FROM c
+  FROM c
+    FROM c
+  FROM c
+  FROM c
+    FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+FROM c
+    FROM c
+  FROM c
+FROM c
+FROM c
+  FROM c 
+    FROM c
+FROM c 
+FROM c
+ FROM c
+ FROM c
+FROM c 
+        FROM c
+FROM c
+FROM c
+        FROM c
+  FROM c
+        FROM c
+        FROM c
+FROM c
+FROM c
+FROM c
+        FROM c
+    FROM c
+FROM c
+FROM c
+FROM c
+  FROM c
+  FROM c
+FROM c
+    FROM c
+     FROM c
+  FROM c        
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c 
+FROM c
+      FROM c
+      FROM c
+FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+FROM c
+  FROM c
+  FROM c
+   FROM c 
+  FROM c 
+ FROM c
+  FROM c
+  FROM c
+FROM c
+  FROM c
+  FROM c
+ FROM c
+  FROM c
+  FROM c
+FROM c
+ FROM c
+  FROM c
+FROM c
+FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+FROM c
+  FROM c
+ FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+      FROM c
+FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+  FROM c
+FROM c
+
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+      SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+  SELECT x FROM c
+    SELECT x FROM c
+  SELECT x FROM c
+FROM c
+SELECT x FROM c
+SELECT x FROM c
+SELECT x FROM c
+SELECT x FROM c
+SELECT x FROM c 
+
+  SELECT FROM c
+
+  SELECT FROM c
+ SELECT FROM

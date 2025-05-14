@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_case
+
+set ::timeout 60000  sqlite3 db test_case
+
+do_execsql_test 1.1 {
+  DROP TABLE IF EXISTS users
+  CREATE TABLE users
+  ADD COLUMN name TEXT NOT NULL
+  ADD COLUMN age INTEGER NOT NULL
+  ADD COLUMN email TEXT
+}
+{0 {}}
+
+set user_id 1
+do_execsql_test 1.2 {
+  INSERT INTO users(name, age, email) VALUES('John Doe', 25, 'john@example.com')
+  } $user_id
+
+do_execsql_test 1.3 {
+  SELECT COUNT(*) FROM users
+} 1
+
+set user_id 2
+do_execsql_test 1.4 {
+  INSERT INTO users(name, age, email) VALUES('Jane Doe', 30, 'jane@example.com')
+} $user_id
+
+proc get_user {name} {
+  execsql {
+    SELECT age FROM users WHERE name = '$name'
+  }
+}
+
+do_test 1.5 {
+  set user_age_equal_name_John_Doe_equal_25
+  if { $user_age_equal_name_John_Doe_equal_25 } {
+    return "get_user failed to get the correct age for John Doe"
+  }
+} {get_user failed to get the correct age for John Doe}
+
+do_test 1.6 {
+  set user_age_equal_name_Jane_Doe_equal_30
+  if { $user_age_equal_name_Jane_Doe_equal_30 } {
+    return "get_user failed to get the correct age for Jane Doe"
+  }
+} {get_user failed to get the correct age for Jane Doe}
+
+do_execsql_test 1.7 {
+  DROP TABLE users
+}
+{0 {}}
+
+db close
+unset db
+
+db3open db test_case 3
+do_execsql_test 2.1 {
+  PRAGMA encoding;
+} {utf8}
+do_execsql_test 2.2 {
+  PRAGMA page_size = 1024;
+  PRAGMA cache_size = 10000;
+  PRAGMA journal_mode = 'wal';
+  PRAGMA synchronous = 0;
+}
+{0 {}}
+do_execsql_test 2.2 {
+  PRAGMA temp_store = 'MEMORY';
+}
+{0 {}}
+assert {$db pagerhint 10000}
+assert {$db pagerhint 100}
+
+finish_test

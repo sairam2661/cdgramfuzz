@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set TESTDB "test.db"
+
+proc complex_proc {n args} {
+  for {set i 0} {$i$l i} {incr i} {
+    do_execsql_test complex$i {
+      INSERT INTO b(a, b) VALUES(10, 10);
+    }
+  }
+  for {set i 0} {$i$l i} {incr i} {
+    set sqlite_open_count
+    catch {db close}
+    expect {lindex $::tcl_interpreter $sqlite_open_count 10}
+    db close
+  }
+  execsql {
+    SELECT * FROM b;
+  }
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE b(a, b);
+}
+{b a b}
+
+do_test complex-1.2 {
+  set id
+  execsql {
+    INSERT INTO b(a,b) VALUES('one','one');
+    SELECT last_insert_rowid(*) FROM b;
+  } id
+  $id
+} {1}
+
+do_execsql_test complex-1.3 {
+  BEGIN;
+  INSERT INTO b(a, b) VALUES('two','two');
+  COMMIT;
+  SELECT * FROM b;
+} {one one two two}
+
+ifcapable wal {
+  do_execsql_test complex-1.4 {
+    PRAGMA wal_checkpoint;
+  }
+  {wal checkpoint}
+  do_test complex-1.5 {
+    execsql {
+      ATTACH 'test2.db' AS db2
+    }
+  }
+
+  {test2}
+
+  db2 eval {
+    CREATE TABLE b AS SELECT rowid AS a FROM db1	b
+  }
+  do_execsql_test complex-1.6 {
+    SELECT a FROM b;
+  }
+
+  {1 3}
+
+  do_execsql_test complex-1.7 {
+    SELECT a FROM b;
+  }
+  {1 3}
+  do_execsql_test complex-1.8 {
+    SELECT a FROM b;
+  }
+  {1 3}
+} else {
+  db close
+  file delete test2
+}
+
+finish_test

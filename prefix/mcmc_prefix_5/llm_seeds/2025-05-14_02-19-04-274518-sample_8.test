@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+set ::timeout 60000
+
+proc delete_and_recreate {} {
+  global db
+  execsql {
+    DROP TABLE IF EXISTS b
+  }
+  execsql {
+    CREATE TABLE b(x)
+  }
+}
+
+proc populate_b {} {
+  global db
+  execsql {
+    INSERT INTO b VALUES(0.1234);
+    INSERT INTO b VALUES(1.4567);
+    INSERT INTO b VALUES(2.7890);
+  }
+}
+
+proc query_b {} {
+  global db
+  execsql {
+    SELECT * FROM b
+  }
+}
+
+do_test test-1.1 {
+  execsql {
+    CREATE TABLE c(y);
+    INSERT INTO c VALUES(1.2);
+  }
+} {1}
+
+do_execsql_test test-1.2 {
+  BEGIN;
+  INSERT INTO c VALUES(1.2);
+  COMMIT;
+  SELECT * FROM c;
+} {1.2}
+
+ifcapable {fts5} {
+  do_execsql_test test1.3 {
+    CREATE VIRTUAL TABLE fts USING fts5
+  }
+} {0 {}}
+
+ifcapable {fts5} {
+  set sqlite_flags "-fts5-mergesorts"
+  sqlite3_extended_result_codes db 1
+}
+
+ifcapable {fts5} {
+  do_execsql_test test1.4 {
+    BEGIN;
+    INSERT INTO fts VALUES('hello');
+    COMMIT;
+    SELECT * FROM fts;
+  } {hello}
+}
+
+set sqlite_flags "-fts5-ignore-case -fts5-tokenize -fts5-document-id"
+ifcapable fts5 {
+  execsql {
+    CREATE VIRTUAL TABLE x USING fts5
+  }
+}
+
+ifcapable fts5 {
+  set timeout 3000
+  execsql {
+    INSERT INTO x VALUES('token one');
+  }
+}
+
+query_b
+execsql {
+  DROP TABLE b
+}
+
+execsql {
+  CREATE TABLE d(y);
+}
+
+populate_b
+query_b
+delete_and_recreate
+populate_b
+query_b
+
+finish_test

@@ -1,0 +1,80 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+
+proc test_complex_query {} {
+  expr {1}
+}
+
+proc create_and_populate_database {} {
+  execsql {
+    CREATE TABLE data(col1, col2, col3);
+  }
+  for {set i 1} {$i le 10} {incr i} {
+    execsql "INSERT INTO data VALUES($i, $i, $i)"
+  }
+}
+
+proc test_insert_values {} {
+  execsql {
+    INSERT INTO data VALUES(11, 22, 33);
+    INSERT INTO data VALUES(44, 55, 66);
+  }
+  execsql {SELECT * FROM data}
+}
+
+proc test_transaction {} {
+  execsql {
+    BEGIN;
+    INSERT INTO data VALUES(77, 88, 99);
+    SELECT * FROM data;
+    ROLLBACK;
+  }
+  execsql {SELECT * FROM data}
+}
+
+proc test_select_with_where {} {
+  execsql {
+    SELECT col1 FROM data WHERE col2 = 11;
+  }
+  execsql {
+    SELECT col3 FROM data WHERE col1 = 9;
+  }
+}
+
+proc test_update_table {} {
+  execsql {
+    UPDATE data SET col1 col2
+  }
+}
+
+proc test_drop_table {} {
+  execsql {
+    DROP TABLE data
+  }
+}
+
+do_test complex-1.1 {
+  create_and_populate_database
+  test_insert_values
+} {1}
+
+do_test complex-1.2 {
+  test_transaction
+} {}
+
+do_test complex-1.3 {
+  test_select_with_where
+} {11}
+
+do_test complex-1.4 {
+  test_update_table
+} {}
+
+do_test complex-1.5 {
+  test_drop_table
+} {}
+
+finish_test

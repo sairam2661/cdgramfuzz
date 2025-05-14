@@ -1,0 +1,47 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_vacuum
+
+set ::timeout 60000
+
+proc vacuum_test {} {
+  global syncargs
+  set syncargs
+  execsql {
+    ALTER TABLE a VACUUM
+  }
+}
+
+do_test sync-2.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_execsql_test sync-2.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode="WAL"}
+} {0 {}}
+
+foreach {mode temp auto} {
+  "DELETE,TRUNCATE,REINDEX" 0 1
+} {
+  db eval "PRAGMA synchronous=$temp" ""
+  db eval "PRAGMA auto_vacuum=$auto" ""
+  Vacuum_test
+  set syncargs
+}
+
+do_execsql_test sync-2.3 {
+  CREATE TABLE c(z);
+  SELECT count(*) FROM c;
+} {0}
+finish_test

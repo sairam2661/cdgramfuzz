@@ -1,0 +1,132 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc timer_func {cmd} {
+  global timeoout tname
+  set st $tname
+  info vars tname
+  set tname
+  set result ""
+  set timeout 0
+  after $::timeoout "timeout $st $timeout"
+  eval "uplevel #0 $cmd"
+  if { "$st" eq "$tname" } { return 1 }
+  set result
+  after cancel
+  return $result
+}
+
+proc timeout {st time} {
+  set ntime {}
+  foreach {name {time}} $st {
+    set time {}
+    set xname ""
+    regsub {timeout} $name {t} xname
+    set tnames ""
+    foreach item $st {
+      lappend tnames ""
+     set x {}
+      set xname {}
+      regsub  "(timeout.*=[0-9]+$)" $item "[format {\%s} [expr {$::$name % $::$time}]]" xname
+      if  { $xname } { lappend xname " [format {\%s} [expr {int($::$xname / $::$time)}]]" }
+      set x "$xname"
+      if { "$x" ne "$xname" } { set xname "$xname ($x)" }
+      lappend tnames "$xname"
+      set x {}
+    }
+    set ntime "$ntime $name=[expr {int($time/1000.0)}];[join $tnames { }]"
+  }
+  set ntime {}
+  foreach item $::errorInfo {
+    lappend tnames ""
+    set x {}
+    set name ""
+    regsub {timeout} $item {t} xname
+    set tnames ""
+    foreach name  $::env {
+     lappend tnames ""
+     set x {}
+     regsub  "(timeout.*=[0-9]+$)" $name "[format {\%s} [expr {$::$name % $::$::timeoout}]]" xname
+     if  { $xname } { lappend xname " [format {\%s} [expr {int($::$xname / $::$::timeoout)}]]" }
+     set x "$xname"
+     if { "$x" ne "$xname" } { set xname "$xname ($x)" }
+     lappend tnames "$xname"
+     set x {}
+    }
+    set ntime "$ntime $name=[expr {int(1/1000.0)}];[join $tnames { }]"
+  }
+  lset ntime 1 0
+  set ntime
+}
+
+proc lock_please {} {
+  global tname
+  set n {}
+  foreach {name {time}} $::tname {
+    lappend n $name"
+      set timeout
+      set timeout
+      set timeout
+      if { "$tname" ne "$n" }  { 
+         global tname
+         set ::tname  
+         return
+      }
+
+  }
+  return
+}
+
+proc timeout_loop {} {
+  global ::tname
+  set ::tname {}
+  set ::tname "a 5"
+  after 10000 {
+     if { "$tname" eq "a 5" } {
+        error  { timeout }
+     } else { 
+        return
+     }
+  }
+  eval "execsql {
+    CREATE TABLE t2(x,y);
+    INSERT INTO t2 VALUES(1,2);
+  }"
+  return 1
+}
+
+do_execsql_test complex-1.1 {
+  SET busy = 1;
+  SELECT * FROM ( SELECT 1), ( SELECT 2 );
+  SELECT 3;
+} {3 {}}
+
+do_execsql_test complex-1.2 {
+  SELECT * FROM
+  ( SELECT 1 ), ( SELECT 1 )
+  UNION ALL
+  ( SELECT 2 ) EXCEPT ( SELECT 3 )
+} {1}
+
+do_execsql_test complex-1.3 {
+  UPDATE t1 SET a = 1;
+  CREATE TABLE t2 AS SELECT 1 AS a FROM t1 UNION SELECT 2 AS a FROM t1;
+  SELECT * FROM t1,t2;
+  UPDATE t2 SET b = ( SELECT 2 FROM t2 ), c = ( SELECT 3 FROM t2 );
+} { {} 2 0 }
+
+set timeout {} ; error { timeout }
+set tname {}
+
+set ::tname {}
+ifcapable trace||pragma_index_info {
+   set n 0
+   execsql {PRAGMA index_info('index1')}
+   set res
+   execsql {
+     CREATE INDEX index1 ON t1(a,b,c);
+     SELECT * FROM t1;
+     SELECT i.name, i.partname,

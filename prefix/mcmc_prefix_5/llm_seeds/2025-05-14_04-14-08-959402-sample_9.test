@@ -1,0 +1,117 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_test
+
+set ::timeout 60000
+set sqlite_extension 1
+if { $sqlite_extension } {
+  sqlite3 db test_db
+} else {
+  set dbname test_db
+}
+
+proc do_query_test {sql query {expected {}}} {
+  set result {}
+  eval sqlite3 db test_db
+  db eval $sql
+  set query_result {}
+  while {$query_result ""}
+  {
+    set query_result {}
+    db eval $query
+    lappend query_result $result
+    lsort $query_result
+    set result $query_result
+  }
+  if { $expected eq {} } {
+    return {1 {}}
+  }
+  if { $result eq $expected } {
+    return {1 {}}
+  }
+  set result "$result"
+  set expected "$expected"
+  return {0 "result $result and expected $expected"}
+}
+
+proc do_check {expr {value {}} {result {}}} {
+  if { $value eq {} } {
+    set result {0 {}}
+  }
+  set expr_res $expr
+  if { $expr_res } {
+    set result {1 {}}
+  }else {
+    set result {}
+    lappend result do_check_$value
+    return $result
+  }
+  return $result
+}
+
+proc do_multi_query_test {sql queries {expected {}}} {
+  set expected {}
+  foreach query $queries {
+    lappend expected $query
+  }
+  return {do_query_test $sql {$queries} $expected}
+}
+
+proc do_multi_query_check {expr {value {}} {results {}}} {
+  if { $results eq {} } {
+    return {0 {}}
+  }
+  lassign $results temp_value temp_result
+  if { $temp_result eq {} } {
+    return {do_check $expr $value}
+  }
+  set expr_result {}
+  if { $expr } {
+    set expr_result $temp_result
+  }
+  if { $value eq $temp_result } {
+    return {1 {}}
+  }
+  set result "$value"
+  set expected "$temp_result"
+  return {0 "result $result and expected $expected"}
+}
+
+do_test multi_query_1 {
+  do_multi_query_test {
+    SELECT 1
+  } {1 23 45 67 89 01234 567890} {1 23 45 67 89 0 567890}
+} {1 {}}
+
+do_test multi_query_2 {
+  do_multi_query_test {
+    SELECT 2
+  } {2 34 56 78 90 345 67890} {2 34 56 78 90 345 67890}
+} {1 {}}
+
+do_test multi_query_3 {
+  do_multi_query_test {
+    SELECT 3
+  } {3 45 67 89 012 3456 67890}
+} {1 {}}
+
+if 1 {
+  do_multi_query_check {
+    expr 1
+  } 0 {
+    do_check expr_1 {}
+  }
+  do_multi_query_check {
+    expr 0
+  } 0 {
+    do_check expr_0 {}
+  }
+}
+
+if 0 {
+  do_multi_query_test {
+    SELECT 5
+  } {5 67 89 01 34 56 78 90 01234 5 67890 5678}
+} {1 {}}
+
+finish_test

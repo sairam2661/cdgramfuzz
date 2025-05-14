@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_cases
+
+set ::timeout 60000
+set testprefix "test"
+
+proc get_data {} {
+  global data
+  return $data
+}
+
+proc increment_data {} {
+  global data
+  incr data
+}
+
+proc validate_result {result expected} {
+  return $result eq $expected
+}
+
+do_test test-1.1 {
+  db close
+  sqlite3 db test
+  set data 10
+} {}
+
+do_execsql_test test-1.2 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(1);
+} {}
+
+do_test test-1.3 {
+  db eval {INSERT INTO b VALUES(2)}
+  increment_data
+  get_data
+} {11}
+
+do_test test-1.4 {
+  db eval {INSERT INTO b VALUES(3)}
+  increment_data
+  validate_result {3} {3}
+} {1}
+
+ifcapable trigger {
+  db eval {
+    CREATE TRIGGER tr_b AFTER INSERT ON b FOR EACH ROW
+      BEGIN
+        UPDATE b SET yNEW colum_name WHERE rowid 1
+      END
+  }
+  do_test test-1.5 {
+    db eval {INSERT INTO b VALUES(1)}
+    get_data
+  } {4}
+}
+
+ifcapable legacy_file_format {
+  for {set i 1} {$i le 10} {incr i} {
+    do_test test_$i {
+      db eval {CREATE TABLE t$test test_$i i}
+    } {}
+  }
+}
+
+finish_test

@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_sqlite_index
+
+set ::timeout 60000
+set echo on
+
+proc count_rows {} {
+  execsql {SELECT count(*) FROM sqlite_master}
+}
+
+do_test sqlite-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  count_rows
+} {1}
+
+foreach {tname tname_idx ttype} {
+  "a x x INT"
+  "b c a DATE"
+  "c d b TEXT"
+} {
+  do_test sqlite_$tname {
+    execsql {
+      CREATE TABLE IF NOT EXISTS $tname
+      c1 $ttype PRIMARY KEY
+    }
+  } {}
+}
+
+do_execsql_test sqlite-2.1 {
+  INSERT INTO a VALUES(2);
+  CREATE INDEX idx_a ON a(x);
+  SELECT name FROM sqlite_master WHERE type='index'
+} {a_bk idx_a}
+
+ifcapable auto_vacuum {
+  do_test sqlite-3.1 {
+    execsql {
+      PRAGMA auto_vacuum=1;
+      CREATE TABLE b(id PRIMARY KEY);
+      SELECT name FROM sqlite_master;
+    }
+  } {b a_bk}
+}
+
+do_execsql_test sqlite-4.1 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  SELECT name FROM sqlite_master WHERE type='table';
+  COMMIT;
+} {a b}
+
+finish_test

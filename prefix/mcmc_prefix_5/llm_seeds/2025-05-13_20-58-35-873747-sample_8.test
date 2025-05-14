@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema_creation
+
+set ::timeout 60000
+set db_name test_db
+set db_dir test_db_dir
+set env_var_name ENV_VAR_NAME
+
+proc db_open {} {
+  global db_name
+  if { $::sqlite3_enable_timestofs } {
+    set db_connection sqlite3 $db_name
+  } else {
+    set db_connection sqlite3 $db_name test_db_dir
+  }
+  return $db_connection
+}
+
+do_test schema-1.1 {
+  execsql {
+    ATTACH DATABASE '$testdir/schema1.db' AS schema1
+  }
+  execsql {SELECT name FROM sqlite_master WHERE type='table'}
+} {{main schema1}}
+
+do_execsql_test schema-2.1 {
+  CREATE TABLE t1(a, b, c);
+  PRAGMA table_info = 't1';
+} {1 a text 0 {} 0 {} 0}
+
+do_execsql_test schema-3.1 {
+  PRAGMA data_version
+} {1}
+
+do_execsql_test schema-4.1 {
+  BEGIN;
+  CREATE TABLE t2(a, b, c, PRIMARY_KEY);
+  COMMIT;
+  PRAGMA foreign_key_list;
+} {{t2 t2 a t1 a 1 DELETE UPDATE INSERT UPDATE {} }}
+
+ifcapable {fts5}
+do_execsql_test schema-5.1 {
+  PRAGMA database_list
+} {0 main 1 temp 2 attached 3 schema1 2 test3}
+
+finish_test

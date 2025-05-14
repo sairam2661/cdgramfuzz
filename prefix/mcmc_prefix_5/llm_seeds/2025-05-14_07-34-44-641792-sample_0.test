@@ -1,0 +1,86 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_rollback
+
+set ::timeout 60000
+set temp_enable 1
+
+proc custom_func {} {
+  return 10
+}
+
+proc setup_db {} {
+  execsql {
+    CREATE TABLE x(a, b);
+    CREATE TABLE y(c, d);
+    CREATE INDEX idx_x ON x(a);
+    CREATE INDEX idx_y ON y(c);
+    INSERT INTO x VALUES(1, 2);
+    INSERT INTO y VALUES('a', 1);
+  }
+}
+
+proc test_x {} {
+  set msg "Test X"
+  set res "X Result"
+  execsql {
+    SELECT * FROM x WHERE a=1;
+  }
+  return "$msg $res"
+}
+
+proc test_y {} {
+  set msg "Test Y"
+  set res "Y Result"
+  execsql {
+    SELECT * FROM y WHERE c='a';
+  }
+  return "$msg $res"
+}
+
+setup_db
+
+do_test test-1.1 {
+  setup_db
+  execsql {
+    COMMIT;
+  }
+  execsql {
+    DROP TABLE y
+  }
+  execsql {
+    SELECT * FROM x;
+  }
+} {1 2}
+
+do_test test-1.2 {
+  setup_db
+  execsql {
+    ROLLBACK;
+  }
+  execsql {
+    SELECT * FROM x;
+  }
+} {1 2}
+
+do_execsql_test test-2.1 {
+  BEGIN;
+  INSERT INTO x VALUES(3, 4);
+  SELECT * FROM x;
+} {1 2}
+
+do_execsql_test test-2.2 {
+  COMMIT;
+  SELECT * FROM x;
+} {1 2 3 4}
+
+do_catchsql_test test_3.1 "SELECT y.c FROM y WHERE y.c IS NOT NULL" {
+  {} 1 {no such column}
+}
+
+do_test test_4.1 {
+  custom_func
+} {10}
+
+eval $testprefix_rollback
+finish_test

@@ -1,0 +1,167 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiwal
+
+set ::timeout 60000
+
+proc sqlite_prepare_no_vtab {db sql} {
+  set sqlite_stmt
+  if {$::sqlite_dbdir"} = -1 {set sqlite_stmt sqlite3_prepare_v2 $db $sql 1}}
+  return $sqlite_stmt
+}
+
+proc do_execsql_test_nonwal {label {sql {}}} {
+  upvar db db_value
+  set db_value [sqlitewal_test db]
+  return [sqlite3 db_value -init $sql]
+}
+
+do_execsql_test sync-1.1 {
+  PRAGMA journal_mode=NORMAL;
+  CREATE TABLE t1(a); 
+  INSERT INTO t1 VALUES(1)
+} {ROLLBACK}
+do_test multiwal-1.2 {
+  execsql {SELECT * FROM t1}
+} {}
+
+do_execsql_test sync-1.3 {
+  INSERT INTO t1 VALUES(2)
+} {}
+do_test multiwal-1.3 {
+  execsql {SELECT * FROM t1}
+} {1 2}
+
+ifcapable!snapshot {
+  finish_test
+  return
+}
+
+proc test_query {db} {
+  sqlite3 db_value -init {CREATE TABLE t1(x)}
+  sqlite3 db_value {INSERT INTO t1 VALUES(1)}
+  execsql {db_value SELECT * FROM t1}
+  return [expr {[execsql {SELECT * FROM t1}]!= NULL}]
+}
+
+proc test_close {db} {
+  close $db
+  return
+}
+
+proc sqlitewal_test_init {db {dbdir {}} {timeout {}}} {
+  if {[info exists dbdir]} {
+    sqlite3 db -initfile $dbdir test.db
+    set db [sqlitewal_test db]
+  } else {
+    set db [sqlite3 db]
+  }
+  if {[info exists timeout]} {
+    sqlite3 db -timeout $timeout
+  }
+  return $db
+}
+
+proc sqlitewal_test_close {db {dbdir {}}} {
+  sqlitewal_test db $dbdir
+  unset db
+}
+
+proc execsql {sql} {
+  global db_value
+  if {[string match *;* $sql]} {
+    sqlitewal_test_close $db_value
+  }
+  sqlite3 db_value -init "$sql"
+  set sqlitewal_retval [sqlite3 db_value -init {-init} [lindex [split $sql {;}] 0]]
+  if {[string match *;* $sql]} {
+    return $sqlitewal_retval
+  } else {
+    return [sqlite3 db_value -init {-init} "SELECT $sql"]
+  }
+}
+
+proc execsql {sql options} {
+  global db_value
+  if {[string match *;* $sql]} {
+    sqlitewal_test_close $sqlitewal_test db
+  }
+  set db_value [sqlitewal_test_init db]
+  sqlite3 db_value -init "$sql"
+  if {[info exists options]} {
+    execsql_sqlitewal_test_close $options
+  }
+}
+
+proc execsql {sql options} {
+  global db_value
+  if {[string match *;* $sql]} {
+    sqlitewal_test_close $db_value
+  }
+  sqlite3 db_value -init "$sql"
+  set sqlitewal_retval [sqlite3 db_value -init {-init} [lindex [split $sql {;}] 0]]
+  if {[string match *;* $sql]} {
+    return $sqlitewal_retval
+  } else {
+    return [sqlite3 db_value -init {-init} "SELECT $sql"]
+  }
+}
+
+if {[file exists test.db]} {
+  sqlite3 db test.db
+} else {
+  sqlite3 db
+}
+
+do_execsql_test sync-1.4 {
+  PRAGMA journal_mode=TRUNCATE;
+  CREATE TABLE t3(x);
+  INSERT INTO t3 VALUES(1);
+  UPDATE t3 SET x=2;
+  INSERT INTO t3 VALUES(3);
+} {}
+do_test sync-1.5 {
+  set ::result [execsql {SELECT * FROM t3}]
+  expr {[execsql {SELECT * FROM t3}] == $result}
+} {1}
+
+do_execsql_test sync-1.6 {
+  PRAGMA journal_mode=MEMORY;
+  CREATE TABLE t2(a, b, c, PRIMARY KEY(a, b));
+  INSERT INTO t2 SELECT x, x+1, x+2 FROM t3
+} {}
+do_test sync-1.7 {
+  [execsql {SELECT a, b FROM t2 WHERE a=2 and b=3}]
+} {2 3}
+ifcapable!snapshot {
+  finish_test
+  return
+}
+
+sqlite3_trace db test.trace
+do_test sync-2.1 {
+  sqlite3 db -config [list -journal_mode TRUNCATE]
+  set ::tracefile test.trace
+  list [catchsql {INSERT INTO t2 VALUES(3, 4, 5)} 0] 
+} {0 {}}
+do_test sync-2.2 {
+  linsert [sqlite3_trace db] end [execsql {INSERT INTO t2 VALUES(4, 5, 6)}]
+} {INSERT into table "t2" of config database "main".  (3, 4, 5)}
+finish_test
+do_test multiwal-2.2 {
+  set ::result [execsql {DELETE FROM t2}]
+  expr {[execsql {SELECT * FROM t2}]==$result}
+} {0}
+sqlite3_trace db {}
+if {[catch {file delete test.test}]} {
+  catch {execsql "DROP TABLE t2"}
+}
+
+do_execsql_test sync-1.7 {
+  CREATE TABLE b AS SELECT a, b FROM t2 WHERE a=1 AND b=2
+} {}
+do_test sync-1.8 {
+  set ::result [execsql {SELECT * FROM b}]
+  expr {[execsql {SELECT * FROM b}] == $result}
+} {1}
+if {[file exists test

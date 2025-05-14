@@ -1,0 +1,80 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+set ::timeout 60000
+
+proc complex_query {} {
+  lappend complex_query_list "Hello, world!"
+  lappend complex_query_list {foo bar}
+  expr {0}
+}
+
+proc sqlite_query {} {
+  return sqlite3 db2
+}
+
+proc complex_result {} {
+  return "test result"
+}
+
+proc catch_sql {sql} {
+  if { $::sqlite_available } {
+    catch {db eval $sql} msg
+    if { $msg eq "1 {no such column: b}" } {
+      return 1
+    } elseif { $msg eq "1 {foreign key constraint failed}" } {
+      return 2
+    }
+  }
+}
+
+proc finish_test {} {
+  timeout 20000 {
+    finish_test
+  }
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES('hello');
+}
+
+   '' do_test complex-1.2 { 
+    db2 close
+    set sqlite_query_list {{a b c} {foo bar baz} {1 2 3}}
+    execsql {SELECT * FROM sqlite_master}
+  } {table b}
+
+  proc test {a b} {
+    return {Hello world}
+  }
+
+do_execsql_test complex-1.3 {
+  CREATE TABLE foo(i PRIMARY KEY, j);
+  CREATE TABLE bar(k PRIMARY KEY, l, FOREIGN_KEY);
+
+  INSERT INTO foo VALUES('a', 'b');
+  INSERT INTO bar VALUES('c', 'd', 'e');
+
+  SELECT i FROM foo WHERE j = 'b';
+}
+
+   '' do_test complex-1.4 {
+    proc x {x} { set x }
+    lappend x_list "c"
+    complex_query
+    execsql { PRAGMA main journal_mode }
+  } {DELETE}
+
+do_test complex-1.5 {
+    complex_result
+    sqlite_query
+    execsql { 
+      CREATE TABLE t1(a);
+      INSERT INTO t1 VALUES('a');
+      INSERT INTO t1 VALUES('b');
+      SELECT a FROM t1;
+    }
+} {1}
+
+finish_test

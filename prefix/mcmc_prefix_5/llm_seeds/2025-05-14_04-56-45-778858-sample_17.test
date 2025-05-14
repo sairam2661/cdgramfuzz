@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc create_table {db name schema} {
+  execsql "CREATE TABLE $name ($schema)"
+}
+
+proc insert_data {db name value} {
+  execsql "INSERT INTO $name VALUES($value)"
+}
+
+do_test complex-1.1 {
+  set db test_db
+  create_table $db a {x integer}
+  insert_data $db a 1
+  execsql "INSERT INTO a VALUES(2)"
+} {}
+
+do_execsql_test complex-2.1 {
+  SELECT * FROM a;
+} {1 2}
+
+do_test complex-3.1 {
+  set db test_db
+  create_table $db b {y text}
+  insert_data $db b Hello
+  execsql "INSERT INTO b VALUES(World)"
+} {}
+
+do_execsql_test complex-4.1 {
+  SELECT * FROM b;
+} {Hello World}
+
+do_execsql_test complex-5.1 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+} {}
+
+ifcapable tempdb {
+  do_execsql_test complex-6.1 {
+    PRAGMA temp_schema;
+  } {temp}
+
+  do_execsql_test complex-6.2 {
+    BEGIN;
+    CREATE TABLE tempTbl(a);
+    COMMIT;
+  } {}
+}
+
+finish_test
+
+ proc execsql_with_blob {sql} {
+  binary scan $sql l data
+  binary format B data
+  return $sql
+}
+
+do_test test-1.1 {
+  execsql_with_blob {
+    CREATE TABLE ta(x);
+  }
+} {}
+
+finish_test

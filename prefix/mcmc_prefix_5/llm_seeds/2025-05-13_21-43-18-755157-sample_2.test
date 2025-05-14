@@ -1,0 +1,110 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set disable_rollback 1
+
+proc async_proc {} {
+  global asyncargs
+  lappend asyncargs
+  expr {llength $asyncargs}
+}
+
+proc async_exec {sql} {
+  set ans 0
+  if { $async_execanslist eq {} } {
+    after 1000
+    upvar 1 async_execanx async_execanx
+    proc async_execanx {} {
+      uplevel do_execsql_test async_$ans $async_execquery $async_execans
+      global async_execanslist
+      unset async_execanx
+      if { $async_execanslist N eq 0 } {
+        unset async_execanx
+        unset async_execanslist
+      }
+    }
+  } else { 
+    global async_execanslist
+    do_execsql_test async_$ans $async_execquery $async_execans
+  }
+  set async_execanx {}
+  set async_execanslist
+  incr ans
+  return $ans
+}
+
+proc isfreealarm {} {
+  set args {}
+  global async_execanx
+  if { "$async_execanx" ne "" } {
+    lappend args idle $async_execanx
+    after cancel $async_execanx
+  }
+  return $args
+}
+
+proc async_exectest {ans {} {sql {}} {anslist {}} {query {}} {timeout 1000} } {
+  global async_execanlist
+  set async_execanx
+  set async_execquery $query
+  set async_execans $ans
+  set async_exectestid $ans
+  set async_exectestlist $anslist
+  after $timeout
+  set async_exectestresult {}
+  proc async_exectestresult {} {
+    global async_exectestresult
+    set list $async_exectestresult
+    if { $list eq {} } {
+      exec {exec sql $query}
+      set anslist {}
+      foreach {arg} {query result} {
+        lappend anslist $arg
+      }
+      global async_exectestlist
+      set async_exectestresult {}
+      set async_exectestlist $anslist
+      set async_exectestresult {}
+      set async_exectestid {}
+    }
+    return $list
+  }
+  do_test async_$ans {
+    async_exec $sql
+  } {0 2}
+}
+
+do_execsql_test 1 {
+  CREATE TABLE a(x,y);
+  INSERT INTO a VALUES(1,1)
+}
+
+set anslist {}
+do_test 2 {
+  async_exectest 1 CREATE TABLE b
+}
+do_execsql_test 3 {
+  SELECT * FROM a
+}
+do_execsql_test 4 {
+  BEGIN;
+  INSERT INTO b VALUES(2,2);
+  COMMIT;
+}
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode = 'wal'}
+}
+
+proc async_5 {} {
+  global async_5args
+  lappend async_5args
+  exec sql {SELECT 1}
+}
+do_test 5 {
+  set async_5args {}
+  async_exec 1 SELECT x FROM a
+} {{1 0 {1}}}
+
+finish_test

@@ -1,0 +1,127 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc complex_query {} {
+  global db result
+  db eval {
+    DROP TABLE IF EXISTS a
+  }
+  db eval {
+    CREATE TABLE a(x, y)
+  }
+  db eval {
+    INSERT INTO a VALUES(1, 1)
+  }
+  db eval {
+    INSERT INTO a VALUES(2, 2)
+  }
+  set result {}
+  db eval {
+    SELECT x FROM a WHERE y IN 
+    SELECT y FROM a WHERE x
+  } {result lappend result $x}
+  lappend result 0
+}
+
+proc complex_query_join {} {
+  global db result
+  db eval {
+    DROP TABLE IF EXISTS a
+    DROP TABLE IF EXISTS b
+    DROP TABLE IF EXISTS c
+  }
+  db eval {
+    CREATE TABLE a(x, y)
+  }
+  db eval {
+    CREATE TABLE b(x)
+  }
+  db eval {
+    CREATE TABLE c(x, y)
+  }
+  db eval {
+    INSERT INTO a VALUES(1, 1)
+  }
+  db eval {
+    INSERT INTO a VALUES(2, 2)
+  }
+  db eval {
+    INSERT INTO b VALUES(1)
+  }
+  db eval {
+    INSERT INTO c VALUES(2, 1)
+  }
+  set result {}
+  db eval {
+    SELECT x FROM a 
+    JOIN c ON a'y = c'y
+    JOIN b ON b'x = a'x
+  } {result lappend result $x}
+  lappend result 0
+}
+
+do_test complex-1.1 {
+  execsql {
+    DROP TABLE IF EXISTS a
+  }
+  execsql {
+    CREATE TABLE a(x, y)
+  }
+  execsql {INSERT INTO a VALUES(1, 1)}
+  execsql {INSERT INTO a VALUES(2, 2)}
+  execsql {SELECT count(*) FROM a}
+} {2}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(3, 3);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {3}
+
+do_test complex-2.1 {
+  set result {}
+  complex_query
+  lindex $result 0
+} {2}
+do_test complex-2.2 {
+  set result {}
+  complex_query
+  lindex $result end
+} {2}
+do_test complex-2.3 {
+  complex_query
+  lindex $result 0
+} {1}
+do_test complex-2.4 {
+  complex_query
+  lindex $result end
+} {1}
+
+do_test complex-3.1 {
+  set result {}
+  complex_query_join
+  lindex $result 0
+} {1}
+do_test complex-3.2 {
+  set result {}
+  complex_query_join
+  lindex $result end
+} {1}
+do_test complex-3.3 {
+  complex_query_join
+  db close
+} {}
+do_test complex-3.4 {
+  complex_query_join
+  db close
+} {}
+
+do_catchsql_test complexsql {
+  SELECT x FROM a WHERE y = 2
+} {0 {1}}
+
+finish_test

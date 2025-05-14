@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+execsql {
+  PRAGMA synchronous = 0;
+  PRAGMA journal_mode = 'PERSIST';
+  PRAGMA pragma_v2 = 1;
+  PRAGMA auto_vacuum = 0;
+  PRAGMA secure_delete = 1;
+  PRAGMA page_size = 1024;
+  PRAGMA cache_size = 1000;
+}
+
+proc dbconfig_proc {} {
+  lappend global testargs
+  expr {1}
+}
+
+proc test_async_io {} {
+  global testargs
+  if { $testargs } { 
+    set testargs off
+  } else { 
+    set testargs on
+  }
+  expr {$testargs}
+}
+
+do_test dbconfig-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+  }
+  test_async_io
+} {0}
+
+do_execsql_test dbconfig-1.2 {
+  INSERT INTO a VALUES(1);
+  SELECT count(*) FROM a;
+} {1}
+
+ifcapable waljournal {
+  do_execsql_test dbconfig-2.1 {
+    PRAGMA journal_mode = 'WAL';
+  } 1
+  set waljournal true
+}
+
+do_execsql_test dbconfig-2.2 {
+  PRAGMA vacuum;
+  PRAGMA shrink_memory;
+} {}
+
+set timeout 3600000
+set default_cache_size 5000
+
+ifcapable threadio {
+  set v1 true
+  set v2 false
+} else {
+  set v1 false
+  set v2 true
+}
+
+finish_test

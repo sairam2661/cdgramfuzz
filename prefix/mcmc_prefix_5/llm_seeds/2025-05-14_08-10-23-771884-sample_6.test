@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+do_test 1.1 {
+  execsql {
+    CREATE TABLE test(x PRIMARY KEY,y);
+    CREATE TABLE test2(z,w);
+    INSERT INTO test VALUES(1,'a');
+    INSERT INTO test2 VALUES('b',5);
+    PRAGMA synchronous=1;
+  }
+} {}
+
+do_execsql_test 1.2 {
+  CREATE TABLE test2 AS SELECT x FROM test EXCEPT SELECT y FROM test2 UNION ALL SELECT z FROM test2 EXCEPT SELECT w FROM test2
+} {}
+
+proc test_step1 {} {
+  global db
+  execsql {
+    COMMIT;
+    PRAGMA synchronous=0;
+  }
+}
+
+do_test 1.3 {
+  db eval "
+    CREATE TABLE sub(a PRIMARY KEY);
+    INSERT INTO sub VALUES
+      ('apple',10)
+    ;
+  "
+  db eval "
+    CREATE TABLE sub2 AS SELECT a FROM sub EXCEPT SELECT a FROM (
+      SELECT a,a*2,x FROM sub,b ORDER BY a LIMIT 3
+    );
+  "
+  db eval {
+    UPDATE sub SET a IS NULL WHERE a IS NOT NULL AND a IN
+    SELECT a FROM sub2
+  }
+} {}
+
+test_step1
+
+do_execsql_test 1.4 {
+  PRAGMA vacuum;
+  PRAGMA wal_checkpoint;
+} {}
+
+do_test 1.5 {
+  db eval "
+    CREATE TABLE IF NOT EXISTS f1 AS SELECT a FROM sub WHERE a IS NULL;
+    DROP TABLE f1;
+  "
+  execsql {
+    SELECT * FROM sub;
+  }
+} {1 {10}}
+
+finish_test

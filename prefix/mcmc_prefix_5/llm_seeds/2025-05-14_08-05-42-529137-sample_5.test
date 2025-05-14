@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000   
+
+
+do_test complex-1.1 {expr {$::timeoout}} {60000}
+
+proc compare_result {result expect} {
+  if {$result eq $expect} { return }
+  set err "Test failed: result = $result, expected $expect"
+  error $err
+}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE test1(
+    id1,
+    id2
+  );
+
+  INSERT INTO test1 VALUES(1, 5);
+  INSERT INTO test1 VALUES(2, 6);
+  INSERT INTO test1 VALUES(3, 7);
+} {1 1 2 2 3 3}
+
+do_test complex-1.3 {
+  set res1 0
+  set res2 0
+  db eval {SELECT id2 FROM test1 WHERE id1 = 2} {
+    set res1 $id2
+  }
+  db eval {SELECT id1 FROM test1 WHERE id2 = 6} {
+    set res2 $id1
+  }
+  list $res1 $res2
+} {2 2}
+
+do_test complex-1.4 {
+  db eval "
+    CREATE VIEW test2 AS
+    SELECT 
+      id1, 
+      id2,
+      'test3' AS test_var
+    FROM test1;
+  "
+  set res1 0
+  set res2 5
+  db eval {SELECT * FROM test2 WHERE id1 = 1} {
+    set res1 $test_var
+  }
+  list $res1 $res2
+} {test3 5}
+
+do_test complex-1.5 {
+  set res1 1
+  set res2 0
+  db eval {SELECT COUNT(*) FROM test1} {
+    set res1 $cnt
+  }
+  db eval {SELECT COUNT(*) FROM test2} {
+    set res2 $cnt
+  }
+  list $res1 $res2
+} {3 3}
+
+do_execsql_test complex-1.6 {
+  CREATE TABLE temp1(id, val);
+  CREATE TABLE temp2(id);
+} {0 0}
+
+set res 1
+do_test complex-1.7 {
+  db eval "
+    INSERT INTO temp1(id, val) VALUES(2, 9);
+  "
+  db eval "
+    SELECT val INTO temp1.val FROM temp1 WHERE id IN (SELECT id FROM temp2);
+  "
+  set res $val
+} {0}
+
+db eval "
+  DROP TABLE temp1;
+  DROP TABLE temp2; 
+"
+
+do_test complex-1.8 {
+  db eval {SELECT * FROM sqlite_master}
+} {name id type rootpage sql parent}
+finish_test

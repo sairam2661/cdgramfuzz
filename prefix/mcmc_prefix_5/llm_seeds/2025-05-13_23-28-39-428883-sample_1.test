@@ -1,0 +1,106 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql_test
+
+set ::timeout 60000
+set sqlite_max_page_size 8192
+
+proc generate_testcase {args} {
+  set db_name "test.db"
+  execsql {
+    BEGIN EXCLUSIVE;
+    CREATE TABLE t1(a PRIMARY KEY);
+    INSERT INTO t1 VALUES('key1');
+    INSERT INTO t1 VALUES('key2');
+    INSERT INTO t1 VALUES('key3');
+    COMMIT;
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t2(a PRIMARY KEY);
+    INSERT INTO t2 VALUES('key4');
+    INSERT INTO t2 VALUES('key5');
+    INSERT INTO t2 VALUES('key6');
+    SELECT * FROM t2;
+  }
+} {key4 key5 key6}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO t2 VALUES('key7');
+  COMMIT;
+  SELECT * FROM t2;
+} {key4 key5 key6 key7}
+
+do_test complex-2.1 {
+  execsql {
+    REINDEX t1
+    ANALYZE t1
+  }
+} {}
+
+do_test complex-2.2 {
+  execsql {
+    SELECT page_id FROM sqlite_master WHERE name='t1'
+  }
+} {}
+
+do_test complex-2.3 {
+  execsql {
+    REINDEX t2
+    ANALYZE t2
+  }
+} {}
+
+do_test complex-2.4 {
+  execsql {
+    SELECT page_id FROM sqlite_master WHERE name='t2'
+  }
+} {}
+
+do_test complex-3.1 {
+  generate_testcase
+  execsql {
+    SELECT * FROM t1
+  }
+} {key1 key2 key3}
+
+do_test complex-3.2 {
+  generate_testcase
+  execsql {
+    SELECT * FROM t2
+  }
+} {key4 key5 key6 key7}
+
+ifcapable fts3 {
+  do_execsql_test complex-4.1 {
+    CREATE TABLE docview_example_fts(x);
+    INSERT INTO docview_example_fts VALUES('document with text');
+    INSERT INTO docview_example_fts VALUES('and this is document');
+  }
+  {document with text and this is document}
+
+  do_execsql_test complex-4.2 {
+    SELECT doc_id FROM docview_example_fts WHERE  x='text'
+  }
+  {1}
+
+  do_execsql_test complex-4.3 {
+    SELECT doc_id FROM docview_example_fts WHERE  x='document'
+  }
+  {1 2}
+
+  do_execsql_test complex-4.4 {
+    SELECT doc_id FROM docview_example_fts WHERE  x='document with'
+  }
+  {1}
+
+  do_execsql_test complex-4.5 {
+    SELECT doc_id FROM docview_example_fts WHERE  x='is'
+  }
+  {2}
+}
+
+finish_test

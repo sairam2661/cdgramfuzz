@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set database nil
+if { $::tcl_platform OsMatch eq "windows" } {
+  set sqlite_options {}  
+  if { $::tcl_platform_os_version eq "10.0.19041" } {
+    set sqlite_options "-fsync=off -rwm-journalmode=WAL -max_page_count=100 "
+  }
+} else {
+  if { $::tcl_platform_os_version eq "14.3.0" } {
+    set sqlite_options "-fsync=off -rwm-journalmode=WAL -max_page_count=100" 
+  }
+}
+set db nil
+do {
+  set env_vars {
+    PATH { $::env{PATH} }
+    LC_ALL {en_US}
+  }
+  sqlite3_conftest {
+    sqlite3 db testdb $::sqlite_options
+    if { $::database eq nil } {
+      set database testdb
+    } else {
+      db close
+      db nullval $database
+      db set working_db nullval
+    }
+    db nullval $database
+    db set working_db $database
+    db eval {
+      CREATE TABLE "test_table1" AS SELECT 1 AS testvalue1 UNION SELECT 2 AS testvalue2
+      CREATE TABLE "test_table2" AS SELECT "2" AS testvalue1 UNION SELECT "a" AS testvalue2
+      INSERT INTO "test_table1" VALUES   	'{"testvalue1"}'   	
+      INSERT INTO "test_table2" VALUES   	'{"testvalue1"}'
+    }
+  }
+} {sqlite3_conftest setup}
+
+proc create_and_populate {} {
+  db eval {
+    create table test_table3 AS SELECT 5 AS testvalue3
+    insert into test_table1 values
+      {{"testvalue1"} {"testvalue2"} {"a"}}
+    insert into test_table3 values 
+      {{"testvalue3"} {"b"}}
+  }
+}
+
+proc create_view {} {
+  db eval {
+    create view test_view AS SELECT SUM testvalue1 FROM test_table1
+    create view test_view2 AS SELECT SUM testvalue1 FROM test_table3
+  }
+}
+
+proc drop_all {} {
+  catch {db eval {drop table test_table1}}
+  catch {db eval {drop table test_table2}}
+  catch {db eval {drop table test_table3}}
+  db eval {drop view test_view}
+  db eval {drop view test_view2}
+  execsql {vacuum}
+}
+
+do_test complex-1.1 {
+  drop_all
+  create_and_populate
+  execsql {
+    SELECT testvalue1 FROM test_table1
+  }
+} {1 2 1 2}
+
+do_execsql_test complex-1.2 {
+  SELECT testvalue1 FROM test_table3
+} {5}
+
+ifcapable json1 {
+  do_execsql_test complex-1.3 {
+    SELECT json_arrayagg( 
+      *
+    ) FROM test_table3
+  } {'{"testvalue3":"5","testvalue3":"b"}'}
+}
+
+ifcapable view {
+  do_test complex-1.4 {
+    drop_all
+    create_view
+    execsql {SELECT * FROM test_view}
+  } 6
+}
+
+finish_test

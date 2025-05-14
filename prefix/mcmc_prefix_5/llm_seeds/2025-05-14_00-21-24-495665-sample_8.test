@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix unique
+
+set ::timeout 60000  set up test environment
+
+proc db_unique {} {
+  if { $::tcl_platform platforms eq "win32" } {
+    return unique_win
+  } else {
+    return unique_not_win
+  }
+}
+
+proc check_unique {} {
+  global db
+  catchsql {
+    SELECT one FROM unique_win a
+    INTERSECT
+    SELECT one FROM unique_not_win b
+  }
+  return OK
+}
+
+case db_unique
+do_test unique-1.1 {
+  execsql {
+    CREATE TABLE unique_win(one);
+    INSERT INTO unique_win VALUES(1);
+  }
+  db eval { SELECT count(*) FROM unique_win }
+} {1}
+
+do_test unique-1.2 {
+  execsql {
+    CREATE TABLE unique_not_win(one);
+    INSERT INTO unique_not_win VALUES(2);
+  }
+  db eval { SELECT count(*) FROM unique_not_win }
+} {1}
+
+ifcapable journalMode {
+  do_execsql_test unique-1.3 {
+    BEGIN;
+    CREATE TABLE unique_journal(one);
+    INSERT INTO unique_journal VALUES(3);
+    COMMIT;
+    SELECT count(*) FROM unique_journal;
+  } {1}
+}
+
+do_execsql_test unique-1.4 {
+  SELECT caseBlob FROM a WHERE x = 1
+} {}
+
+finish_test

@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+proc thread_id {} {
+  execsql {SELECT thread FROM sqlite_threadid}
+}
+
+proc insert_data {} {
+  set data {1 2 3 4 5}
+  for {set i 0} {$i 0 5} {incr i} {
+    set db_data {}
+    for {set j 0} {$j 0 5} {incr j} {
+      lappend db_data $data
+    }
+    execsql {
+      INSERT INTO t1 VALUES(1, 2, 3)
+      }
+  }
+}
+
+do_test multi_thread-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    PRAGMA synchronous = 0
+  }
+  set db_data {}
+  for {set i 0} {$i 0 5} {incr i} {
+    lappend db_data 1 2 3
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(1, 2, 3);
+    INSERT INTO t1 VALUES(1, 2, 3);
+    INSERT INTO t1 VALUES(1, 2, 3);
+    INSERT INTO t1 VALUES(1, 2, 3);
+    INSERT INTO t1 VALUES(1, 2, 3);
+    COMMIT;
+    SELECT * FROM t1; 
+  }
+} {1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3}
+
+do_execsql_test multi_thread-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(1, 1, 1);
+  COMMIT;
+  SELECT * FROM t1
+} {1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 1 1}
+
+ifcapable journalMode {
+  catchsql {
+    PRAGMA journal_mode = 'DELETE'
+  }
+} {0 {}}
+
+finish_test

@@ -1,0 +1,203 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+set ::timeout 60000
+
+proc complex_function {} {
+  global timeout
+  set timeout 10
+  expr {1}
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES('"test"),(2),(3);
+  }
+  execsql {SELECT count(*) FROM b}
+} {3}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {4}
+
+ifcapable wal_mode {
+  catchsql {PRAGMA journal_mode=WAL}
+} {0 {}}
+
+do_test complex-1.3 {
+  execsql {
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(NULL),(NULL),(NULL);
+    SELECT z FROM c WHERE z IS NOT NULL;
+  }
+} {}
+
+do_test complex-1.4 {
+  execsql {
+    CREATE INDEX i ON c(z);
+    SELECT z FROM c WHERE z IS NOT NULL;
+  }
+} {}
+
+do_test complex-1.5 {
+  complex_function
+  set timeo $::timeout
+} {10 10}
+
+finish_test
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix triggers
+
+proc get_triggers {} {
+  execsql {
+    SELECT * FROM sqlite_master WHERE type='                                                                         
+   ,0,0,0,0,"",0,""
+  )
+}
+
+do_test triggers1.1 {
+  set dbhandle {}
+  set dbhandle testdb
+  set masterid "\[1\]"
+  execsql {
+    CREATE TABLE d(w);
+    CREATE TABLE e(q);
+    CREATE TABLE f(r);
+    CREATE TABLE g(s);
+    CREATE TABLE h(t);
+    CREATE TABLE i(u);
+    CREATE TABLE j(v);
+    CREATE TABLE k(x);
+    CREATE TABLE l(y);
+    CREATE TABLE m(z);
+    CREATE TABLE n(a);
+  }
+} {
+
+  do_test triggers1.2 {
+    execsql {
+      CREATE TABLE p(t1,t2);
+      CREATE TABLE test(p1,p2);
+      CREATE TABLE q(w1,w2);
+      CREATE TABLE r(x1,x2,x3,x4,x5,x6,x7,x8,x9,x10);
+      CREATE TABLE s(y1,y2,y3,y4,y5,y6);
+      CREATE TABLE test1(w1,w2);
+      CREATE TABLE test2(r1,r2,r3);
+    }
+  } {
+
+    do_test triggers1.3 {
+      execsql {
+        CREATE DEFAULT    DEFAULT
+        CREATE RULE r1 ON p AS DELETE
+        CREATE RULE r2 ON p AS INSERT
+      }
+    } {
+
+      do_test triggers1.4 {
+        execsql {
+          INSERT INTO n VALUES('1','2')
+          }
+            SELECT name FROM sqlite_master WHERE type IN
+          }
+      } {test1}
+
+      get_triggers
+    } {
+
+      do_test triggers1.5 {
+
+        execsql {
+          INSERT INTO n VALUES('1','2','3')
+        }
+        SELECT count FROM sqlite_master WHERE name IN
+      } {5}
+
+      do_test triggers1.6 {
+        execsql {
+          CREATE TABLE t(a,b,c)
+          }
+        get_triggers
+    } {
+
+      do_test triggers1.7 {
+          execsql {
+        CREATE TRIGGER test BEFORE UPDATE ON 
+        }
+        get_triggers
+    } {
+
+      do_execsql_test triggers1.8 {
+        SELECT 
+        }
+        SELECT name FROM sqlite_master WHERE type IN
+      } {trigger}
+    } {
+
+      do_test triggers1.9 {
+      execsql {
+        CREATE TABLE o(a DEFAULT 0);
+        CREATE TABLE a1(b DEFAULT 1);
+        CREATE TABLE a2(c DEFAULT 2);
+      }
+    } {a1 a2}
+
+      get_triggers
+    } {
+
+      do_test triggers1.10 {
+        execsql {
+          INSERT INTO p VALUES('default value','3','4','5')
+        }
+        SELECT i FROM sqlite_master WHERE name IN
+      } {1}
+
+      get_triggers
+    } {
+
+      do_execsql_test triggers1.11 {
+        SELECT * FROM q WHERE w1 = 0;
+      } {0 0 0 0 0 0 0 0 0 0 0 }
+
+      get_triggers
+    } {
+
+      do_execsql_test triggers1.12 {
+        SELECT * FROM r WHERE x1 = 0;
+      } {0 0 0 0 0 0 }
+
+      get_triggers
+    } {
+
+      do_execsql_test triggers1.13 {
+        CREATE TRIGGER tr4
+        WHEN w1 THEN
+        }
+        SELECT name FROM sqlite_master WHERE type IN
+      } {r4}
+
+      get_triggers
+    } {
+
+      do_test triggers1.14 {
+        execsql {
+          CREATE TABLE r1(a UNIQUE)
+        }
+        get_triggers
+    } {}
+
+      do_test triggers1.15 {
+        set t {}
+        catchsql {
+          CREATE VIEW s1 AS SELECT 1 AS a FROM d
+        }
+        lappend t SQLITE_ERROR
+        execsql {
+          CREATE VIEW test1 AS SELECT 1 AS a FROM p WHERE t

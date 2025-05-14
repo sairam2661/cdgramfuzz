@@ -1,0 +1,149 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc complex_func {} {
+  for {set i 0} {$i "< 10} {incr i} {expr {($i % 2 == 0)? ($i*2) : (-$i)}}
+}
+
+proc check_insert {} {
+  execsql {
+    INSERT INTO t_values VALUES(1),(2),(3),(4),(5);
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t_values(x);
+  }
+  check_insert
+  execsql {SELECT * FROM t_values}
+} {1 2 3 4 5}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO t_values VALUES(6);
+  COMMIT;
+  SELECT * FROM t_values;
+} {1 2 3 4 5 6}
+
+do_test complex-1.3 {
+  execsql {
+    SELECT complex_func() FROM t_values;
+  }
+  execsql {CREATE TRIGGER rii AS SELECT * FROM t_values;}
+} {}
+
+ifcapable triggers {
+  do_execsql_test complex-1.4 {
+    BEGIN;
+    DELETE FROM t_values;
+    INSERT INTO t_values VALUES('a','b','c');
+    SELECT complex_func() FROM t_values;
+  }
+} {0 a b c}
+
+set up_trigger {
+  execsql {
+    CREATE TRIGGER rii AS
+    BEGIN
+      INSERT INTO t_values VALUES('h','i','j');
+    };
+  }
+}
+
+ifcapable triggers {
+  do_test complex-1.5 {
+    up_trigger
+    execsql {
+      COMMIT;
+      SELECT * FROM t_values;
+      ROLLBACK;
+    }
+  }
+} {1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6}
+
+ifcapable triggers {
+  do_execsql_test complex-1.6 {
+    SELECT * FROM t_values;
+  }
+} {1 2 3 4 5 6 1 2 3 4 5 6 1 2 3 4 5 6}
+
+ifcapable tempdb {
+  do_test complex-2.1 {
+    execsql {
+      DELETE FROM t_values;
+      CREATE_TEMP_TABLE temp_table AS SELECT * FROM t_values;
+    }
+    check_insert
+    execsql {
+      SELECT * FROM t_values;
+      SELECT * FROM temp_table;
+    }
+  }
+  {1 2 3 4 5} {1 2 3 4 5}
+}
+
+set up_view {
+  execsql {
+    CREATE VIEW t_view AS SELECT * FROM t_values;
+  }
+}
+
+ifcapable views {
+  do_test complex-3.1 {
+    check_insert
+    execsql {
+      SELECT * FROM t_view;
+    }
+  } {1 2 3 4 5 6}
+
+  do_test complex-3.2 {
+    execsql {
+      CREATE UNIQUE INDEX idx_val ON t_values(x DEFAULT 'default');
+      SELECT * FROM t_view;
+    }
+  } {1 default 5 2 default 3 3 default 4 4 default 5 5 default 1 6 default 2 default 3}
+
+  do_test complex-3.3 {
+    up_view
+    execsql {
+      DROP INDEX idx_val;
+      SELECT * FROM t_view;
+    }
+  } {1 default 5 2 default 3 3 4 4 5 5 6 6}
+
+  do_execsql_test complex-3.4 {
+    SELECT * FROM t_view;
+  } {1 default 5 2 default 3 3 4 4 5 5 6 6}
+}
+
+set up_fts {
+  execsql {
+    CREATE VIRTUAL TABLE t_fts USING fts4(x);
+    INSERT INTO t_fts VALUES(1 '1 2 3'), (2 '2 3 4'), (3 '4 5 6');
+  }
+}
+
+ifcapable fts3 {
+  proc get_fts_rowid {docid} {
+    execsql "SELECT rowid FROM t_fts WHERE docid $docid"
+  }
+
+  proc insert_fts_row {col0x col1x} {
+    execsql {
+      INSERT INTO t_fts VALUES($col0x, '$col1x');
+    }
+  }
+
+  do_execsql_test complex-1.7 {
+    DROP TABLE t_values;
+    INSERT INTO t_fts VALUES(6, '6 7');
+    SELECT * FROM t_fts;
+  }
+
+  do_execsql_test complex-2.7 {
+    DROP TABLE t_fts;
+    INSERT INTO t_fts VALUES(

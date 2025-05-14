@@ -1,0 +1,44 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+forcedebug 1
+catchsql "PRAGMA foreign_keys=ON"
+
+proc insert_data {} {
+  global db
+  set data {
+    1 2002 '2002-01-01'
+    2 2003 '2003-02-02'
+    3 2004 '2004-03-03'
+    4 2005 '2005-04-04'
+  }
+  execsql {
+    CREATE TABLE t1(a, b, c);
+  }
+  execsql {
+    INSERT INTO t1 VALUES
+      ('$data', '$data', '$data');
+  }
+}
+
+do_test complex-1.1 {
+  db close
+  insert_data
+  execsql {CREATE TABLE t2(d, e, f);}
+  execsql {INSERT INTO t2 SELECT 1 AS d2 FROM t1}
+} {}
+
+do_execsql_test complex-1.2 {
+  SELECT SUM( * ) FROM t1;
+} {}
+
+if {0} {
+  do_test complex_query3 {
+    db configure COLLATE nocase
+  } {}
+}
+
+catchsql "CREATE COLLATION nocase" {}
+finish_test

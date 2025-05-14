@@ -1,0 +1,99 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+set ::timeout 60000
+
+proc encrypt_proc {} {
+  global encryptargs
+  lappend encryptargs
+  expr {20}
+}
+
+proc decrypt_proc {} {
+  global decryptargs
+  lappend decryptargs
+  expr {30}
+}
+
+proc setup_encryption {} {
+  global encryptargs
+  eval execsql {
+    PRAGMA key='1234567890123456';
+    PRAGMA kdf='hs256';
+    PRAGMA csprng=1;
+  }
+}
+
+proc cleanup {} {
+  global main_db db
+  db close
+  unset main_db
+}
+
+do_test encryption-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  expr 1
+} {1}
+
+do_test encryption-1.2 {
+  setup_encryption
+  execsql {
+    SELECT x FROM a;
+  }
+  expr 1
+} {1}
+
+do_test encryption-1.3 {
+  setup_encryption
+  execsql {
+    SELECT x FROM a;
+  }
+  expr 1
+} {1}
+
+do_test encryption-1.4 {
+  execsql {
+    PRAGMA key='456';
+    SELECT x FROM a;
+  }
+  expr 1
+} {1}
+
+do_execsql_test encryption-1.5 {
+  BEGIN;
+  COMMIT;
+  SELECT x FROM a;
+} {1}
+
+ifcapable journalMode {
+  do_execsql_test encryption-2.1 {
+    PRAGMA journal_mode="PERSIST";
+    PRAGMA synchronous=2;
+    PRAGMA wal_checkpoint;
+  } ""
+  do_catchsql_test encryption_2.2 {
+    PRAGMA journal_mode="DELETE";
+  } {1 {file is encrypted}}
+}
+
+do_test encryption-3.1 {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    COMMIT;
+  }
+} {}
+
+do_test encryption-3.2 {
+  execsql {
+    SELECT * FROM a;
+  }
+} {}
+
+cleanup
+
+finish_test

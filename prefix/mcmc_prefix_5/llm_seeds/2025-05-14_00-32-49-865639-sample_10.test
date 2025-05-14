@@ -1,0 +1,126 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix queryopt
+
+set ::timeout 60000
+
+proc add_to_query_plan {name text} {
+  global query_plan
+  lappend query_plan "$name: $text"
+  return
+}
+
+proc init {nRow} {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    INSERT INTO t1 VALUES(1, 6, 11);
+    INSERT INTO t1 VALUES(2, 7, 12);
+    INSERT INTO t1 VALUES(3, 8, 13);
+    INSERT INTO t1 VALUES(4, 9, 14);
+    INSERT INTO t1 VALUES(5, 10, 15);
+    CREATE INDEX i1 ON t1(b);
+    CREATE INDEX i2 ON t1(c);
+  }
+  set res {}
+  for {set i $nRow} {$i} {
+    lappend res $i
+    lappend res 10
+    lappend res $i
+    execsql {
+      INSERT INTO t1 VALUES(100, 101, 102)
+    }
+  }
+  return $res
+}
+
+proc get_query_plan {} {
+  global query_plan
+  return $query_plan
+}
+
+do_test queryopt-1.0 {
+  set query_plan {}
+  set result {}
+  for {set i 1} {$i} {
+    if { $i mod 2} {
+      set result "SELECT * FROM t1 ORDER BY a, b"
+    }
+    if { $i mod 4 } {
+      set result "SELECT * FROM t1 ORDER BY b, a"
+    }
+    if { $i mod 8} {
+      set result "SELECT * FROM t1, t1 WHERE t1.b = i1.b"
+    }
+    execsql $result
+    add_to_query_plan "Query $i" $result
+    if { $i mod 8} {
+      lappend result "DELETE FROM t1"
+    }
+  }
+  set result ""
+  for {set i 0} {$i} {
+    lappend result "SELECT * FROM t1"
+  }
+  execsql $result
+  lappend result "SELECT 0"
+  execsql $result
+  set result ""
+  for {set i 0} {$i} {
+    lappend result "SELECT 1"
+  }
+  execsql $result
+  lappend result "SELECT 1, 2"
+  execsql $result
+  lappend result "SELECT 1"
+  execsql $result
+  lappend result "SELECT 1"
+  execsql $result
+  lappend result "SELECT 1"
+  execsql $result
+} {}
+
+do_test queryopt-2.1 {
+  set N 7
+  execsql "PRAGMA journal_mode=MEMORY"
+  execsql "DELETE FROM t1"
+  execsql "VACUUM"
+  set last_sync 0
+  lappend result "SELECT * FROM t1"
+  execsql $result
+  set result "SELECT rowid, * FROM t1 ORDER BY a"
+  set last_sync 0
+  execsql $result
+  set timeo 4
+  set res {}
+  set nrow 7
+  foreach i Range $nrow {
+    lappend res 1
+    lappend res $i
+  }
+  set res {}
+  for {set i 1} {$i} {
+    lappend res 1
+    lappend res $i
+  }
+  for {set i 1} {$i} {
+    lappend res 1
+    lappend res $i
+  }
+  foreach i Range 3 16 2 {
+    lappend res 1 101 11
+  }
+  while { $res eq {} } {
+    lappend res {}
+  }
+  foreach i Range $nrow {
+    lappend res 0
+    lappend res 100
+    lappend res 11
+    lappend res 2
+    lappend res 6
+    lappend res 11
+  }
+  execsql "PRAGMA synchronous=NORMAL"
+} {}
+
+finish_test

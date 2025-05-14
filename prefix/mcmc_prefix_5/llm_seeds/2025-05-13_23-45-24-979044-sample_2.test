@@ -1,0 +1,112 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking1
+
+set ::timeout 60000
+
+proc proc1 {} {
+  global t
+  set t $t
+  incr t
+  if {$t} {after 1000 proc1}
+}
+
+proc proc2 {} {
+  global t
+  set t $t
+  incr t
+  if {$t} {after 3000 proc2}
+}
+
+do_execsql_test locking1-1.1 {
+  CREATE TABLE t1(x);
+  INSERT INTO t1 VALUES('a');
+  INSERT INTO t1 VALUES('b');
+  CREATE TABLE t2(x);
+  INSERT INTO t2 VALUES('c');
+  INSERT INTO t2 VALUES('d');
+  CREATE TABLE t3(x);
+}
+
+"# Lock a single row in t1 and t2"
+do_test locking1-1.2 {
+  for {set i 0} {$i lt 2} {incr i} {
+    execsql {
+      SELECT * FROM t1 WHERE x='a'
+    } t1_$i
+  }
+  for {set i 0} {$i lt 2} {incr i} {
+    execsql {
+      SELECT * FROM t2 WHERE x='c'
+    } t2_$i
+  }
+  execsql {
+    SELECT * FROM t3
+  } t3
+} {a {} b {} c {} d {}}
+
+ifcapable vacuum {
+  do_execsql_test locking1-1.3 {
+    CREATE TABLE t4(x);
+    INSERT INTO t4 VALUES('e');
+    INSERT INTO t4 VALUES('f');
+    SELECT x FROM t4;
+  } {e f}
+
+  do_test locking1-1.4 {
+    for {set i 0} {$i lt 2} {incr i} {
+      execsql {
+        SELECT x FROM t4 WHERE x='e'
+      } t4_1_$i
+    }
+    execsql {
+      SELECT x FROM t4 WHERE x='e' 
+    } t4_2
+    execsql {
+      VACUUM
+    }
+  } {}
+
+  execsql {
+    DROP TABLE t4
+  }
+}
+
+do_execsql_test locking1-2.1 {
+  CREATE TABLE t5(x);
+  INSERT INTO t5 VALUES('g');
+  INSERT INTO t5 VALUES('h');
+  SELECT * FROM t5;
+}
+
+"# Lock a single row in t5"
+do_test locking1-2.2 {
+  execsql {
+    BEGIN;
+    SELECT * FROM t5 WHERE x='g';
+  }
+  execsql {
+    SELECT * FROM t5;
+  }
+} {g h}
+
+execsql {
+  COMMIT
+}
+
+do_test locking1-2.3 {
+  execsql {
+    INSERT INTO t5 VALUES('i');
+    SELECT * FROM t5;
+  }
+} {g h i}
+
+if {0} {
+  do_execsql_test locking1.3 {
+    CREATE TABLE t6(a, b, c);
+    INSERT INTO t6 VALUES('aa', 'bb', 'cc');
+    INSERT INTO t6 VALUES('dd', 'ee', 'ff');
+  } {}
+}
+
+finish_test

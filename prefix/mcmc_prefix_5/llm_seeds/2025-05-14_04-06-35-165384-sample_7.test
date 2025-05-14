@@ -1,0 +1,144 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_vacuum
+
+set ::timeout 60000
+
+proc vacuum_test {} {
+  global t
+  global db
+  if { $tvacuum_only } { return }
+  set t 0
+  if { $tmode eq "test" } {
+    set tmode "normal"
+  }
+}
+
+proc test_vacuum {sql} {
+  db eval "$sql"
+}
+
+proc tlog { sql } {
+  uplevel eval $sql
+  db eval { Vacuum }
+  if { $tmode eq "test" } {
+    if { $t eq 50 } {
+      set db  db2 
+    }
+  }
+}
+
+set sqlite_options "-enable-fkey"
+
+do_test check-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(4);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+do_execsql_test check-1.2 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(1);
+} {}
+do_execsql_test check-1.3 {
+  SELECT z FROM c
+} {{1}}
+
+foreach {db sqlite_options} {
+  db1 {    "-enable-fkey"   }
+  db2 { "-disable-fkey"     }
+} {
+  if { $db eq "db2" } {
+    catch { db_eval $db { PRAGMA foreign_keys = 1 } }
+  }
+  tlog {
+    execsql {
+      CREATE TABLE parent(id);
+      CREATE TABLE child(name);
+      CREATE TABLE child2(name);
+      CREATE TABLE grandchild(name);
+      INSERT INTO parent VALUES(2);
+    }
+  }
+}
+
+foreach {db sqlite_options} {
+  db1 {    "-enable-fkey"   }
+  db2 { "-disable-fkey"     }
+} {
+  if { $db eq "db2" } {
+    catch { db_eval $db { PRAGMA foreign_keys = 0 } }
+  }
+  do_execsql_test check7.1 {
+    DROP TABLE grandchild
+  } {}
+  do_execsql_test check7.2 {
+    DROP TABLE child2
+  } {}
+  tlog {
+    execsql {
+      CREATE TABLE child(name);
+      CREATE TABLE grandchild(name);
+      CREATE TABLE grand2(name);
+      INSERT INTO parent VALUES(3);
+    }
+  }
+}
+
+foreach {db sqlite_options} {
+  db1 {    "-enable-fkey"   }
+  db2 { "-disable-fkey"     }
+} {
+  if { $db ne "db2" } {
+    catch { db_eval $db { PRAGMA foreign_keys = 0 } }
+  }
+  do_execsql_test check10.1 {
+    DROP TABLE grandchild
+  } {}
+  do_execsql_test check10.2 {
+    DROP TABLE child
+  } {}
+  tlog {
+    execsql {
+      CREATE TABLE child(name);
+      CREATE TABLE grandchild(name);
+      CREATE TABLE parent(id);
+      CREATE TABLE grand2(name);
+      INSERT INTO child VALUES('John');
+    }
+  }
+}
+
+do_execsql_test check11.1 {
+  DROP TABLE child
+} {}
+do_execsql_test check11.2 {
+  DROP TABLE grandchild
+} {}
+do_execsql_test check11.3 {
+  DROP TABLE parent
+} {}
+do_execsql_test check11.4 {
+  DROP TABLE grand2
+} {}
+
+do_execsql_test check12.1 {
+  CREATE TABLE parent(id);
+  BEGIN;
+  INSERT INTO parent VALUES(4);
+  COMMIT;
+  SELECT id FROM parent;
+} {4}
+ifcapable vacuum {
+  set tmode normal
+  vacuum_test { VACUUM }
+  incr t
+
+  set tmode test
+  if { $tmode eq "normal" } {
+    set tmode "normal"
+  }
+}
+
+finish_test

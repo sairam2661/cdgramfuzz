@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+proc count_rows {} {
+  expr {SELECT count(*) FROM sqlite_master WHERE type='table'}
+}
+
+proc create_tables {} {
+  execsql {
+    CREATE TABLE t1(a, b); CREATE TABLE t2(c, d);
+    INSERT INTO t1 VALUES(1, 4); INSERT INTO t2 VALUES(2, 5);
+  }
+}
+
+proc drop_tables {} {
+  execsql {
+    DROP TABLE t2 DROP TABLE t1
+  }
+}
+
+proc delete_data {} {
+  execsql {DELETE FROM t1}
+}
+
+proc query_data {} {
+  do_test complex_QUERY_1 {
+    execsql {SELECT * FROM t1}
+  } {1 4}
+}
+
+do_test complex_CREATE_1 {
+  create_tables
+  query_data
+} {1 4}
+
+do_execsql_test complex_INSERT_1 {
+  INSERT INTO t1 VALUES(3, 6)
+} {}
+
+do_execsql_test complex_DELETE_1 {
+  DELETE FROM t1 WHERE a IS NOT NULL
+} {}
+
+do_test complex_ROWS_1 {
+  count_rows
+} {1}
+
+do_execsql_test complex_DROPTABLES_1 {
+  drop_tables
+} {}
+
+do_execsql_test complex_CREATEFOR_1 {
+  CREATE TABLE t3(a, b); CREATE TABLE t4(c, d);
+  INSERT INTO t3 VALUES(7, 8); INSERT INTO t4 VALUES(9, 10);
+} {}
+
+do_execsql_test complex_MERGE_1 {
+  CREATE TABLE temp_merge AS SELECT a FROM t3 UNION SELECT c FROM t4
+} {}
+
+do_execsql_test complex_MERGE2_1 {
+  DROP TABLE temp_merge
+} {}
+
+do_test complex_DML_1 {
+  delete_data
+  execsql {SELECT * FROM t1}
+} {}
+
+finish_test

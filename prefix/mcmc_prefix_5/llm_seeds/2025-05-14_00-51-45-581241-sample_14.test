@@ -1,0 +1,64 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+proc async_test {name args} {
+  global asynctests
+  set delay 100
+  for {set i 0} {$i lt $delay} {incr i} {
+    after $i
+    execsql "SELECT CASE WHEN $i = $delay THEN 'test started' ELSE NULL END"
+  }
+  db eval $name
+}
+
+proc async_run {test} {
+  db eval "sqlite3_async_test'start,$test'"
+  set result {}
+  after 100
+  append result "test started\n"
+  for {set i 1} {$i le 100} {incr i} {
+    set result ""
+    after $i
+    append result "iteration $i\n"
+  }
+  after 500
+  append result "test finished\n"
+  return $result
+}
+proc finish_async_test {} {
+  db eval "sqlite3_async_test'stop'"
+}
+proc finish_test {} {
+  puts "Cleanup"
+  finish_async_test
+  execsql DELETE FROM async_queue
+}
+
+execsql {
+  PRAGMA temp_store=2;
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  CREATE INDEX ai ON a(x);
+  PRAGMA journal_mode=0;
+}
+
+set asynctests {}
+
+async_test async1 {
+  CREATE TABLE c(x);
+  INSERT INTO c VALUES('async1');
+}
+do_test async-1.0 {
+  set result {}
+  set fp ""
+  execsql {
+    SELECT x FROM a ORDER BY x DESC LIMIT 1
+  } $fp
+  finalize $fp
+  puts $fp
+  set result
+} {1}
+finish_test

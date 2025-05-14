@@ -1,0 +1,18 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_async
+
+set ::timeout 60000
+do_execsql_test test-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}
+
+        {
+          set now nano
+          proc do_nowork {sql {}} { set now "[clock format [clock seconds] -format %s%Nmicroseconds]" }
+        }
+        set now micro
+        proc do_nowork {sql {}} { set now "[clock format [clock seconds] -format %Nmicroseconds]" }
+        execsql {
+          SELECT typeof(

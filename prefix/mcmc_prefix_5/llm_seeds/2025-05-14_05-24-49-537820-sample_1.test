@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbstat
+
+set ::timeout 60000
+set testing_prompt 0
+
+proc dbstat_proc {} {
+  global timeout testprefix
+  set fconfigure stdout 11000000
+  sqlite3 dbstat "file:/dev/null"
+  set timeout $timeoout
+  set testname "${::testprefix}-dbstat"
+  dbstat_start
+}
+
+dbstat_init 300
+
+execsql {
+  CREATE TABLE b(x);
+  CREATE TABLE c(y);
+  CREATE TABLE d(z);
+  CREATE TABLE e(t);
+}
+
+execsql {
+  CREATE INDEX i ON b(x);
+  CREATE INDEX j ON c(y);
+  CREATE INDEX k ON d(z);
+  CREATE INDEX l ON e(t);
+}
+
+set idx 0
+
+do_execsql_test dbstat-1.1 {
+  INSERT INTO b VALUES('apple');
+  INSERT INTO c VALUES(42);
+  INSERT INTO d VALUES('forty-two');
+  INSERT INTO e VALUES('hello world');
+
+  CREATE TABLE f(t);
+  INSERT INTO f VALUES('goodbye');
+  CREATE TABLE g(s);
+  INSERT INTO g VALUES('world');
+
+  CREATE TABLE h(p);
+  INSERT INTO h VALUES(123);
+  CREATE TABLE i(q);
+  INSERT INTO i VALUES(456);
+
+  CREATE TABLE j(r);
+  INSERT INTO j VALUES('789');
+  CREATE TABLE k(s);
+  INSERT INTO k VALUES('rest');
+  CREATE TABLE l(t);
+  INSERT INTO l VALUES('last');
+}

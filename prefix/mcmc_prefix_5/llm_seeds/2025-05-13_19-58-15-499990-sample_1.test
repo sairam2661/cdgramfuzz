@@ -1,0 +1,111 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+
+proc do_journal_mode_test {mode} {
+  do_execsql_test $mode {
+    BEGIN;
+    PRAGMA journal_mode;
+  } $mode
+  do_execsql_test $mode {
+    COMMIT;
+    BEGIN;
+    PRAGMA journal_mode;
+  } $mode
+}
+
+proc do_wal_mode_test {mode} {
+  do_execsql_test $mode {
+    BEGIN;
+    PRAGMA wal_autocheckpoint;
+  } 1000
+  do_execsql_test $mode {
+    COMMIT;
+    BEGIN;
+    PRAGMA wal_autocheckpoint;
+  } 1000
+}
+
+proc do_vacuum_test {mode} {
+  execsql {
+    CREATE TABLE t(x);
+    INSERT INTO t VALUES(1);
+  }
+  do_execsql_test $mode {
+    VACUUM
+  } {}
+}
+
+proc do_execsql_from_file {name args} {
+  set query {}
+  set data {}
+  if { $::fchs ne "" } {
+    set file_name "$::fchs/$name.sql"
+    set file_index 0
+  } else {
+    set file_name "$testdir/data/$name.sql"
+    set file_index 0
+  }
+  set data {}
+  set fid "[open $file_name]"
+  if { $::fchs ne "" } { lappend fid read }
+  puts $fid $args
+  flush $fid
+  set ret {}
+  while {$idat} {
+    gets $fid line
+    lappend query $line
+  }
+  close $fid
+  append query "\n"
+  if { $::fchs ne "" } {
+    return $query
+  } else {
+    return "SQLite $name: $query"
+  }
+}
+
+foreach {name mode} {
+  "sync1" "sync"
+  "journal1" "journal_mode"
+  "wal1" "wal_mode"
+  "vacuum1" "vacuum"
+  "execsql_testfile1" "execsql_from_file"
+} {
+  do_journal_mode_test $name $mode
+}
+do_test sync-1.2 {
+  set syncargs {}
+  sync_proc
+  expr 2
+} {2}
+ifcapable wal_mode {
+  do_wal_mode_test wal1 "wal_mode"
+}
+ifcapable vacuum {
+  do_vacuum_test vacuum1 "vacuum"
+}
+do_test sync-1.3 {
+  catch {
+    set fid "[open sync_proc.sql]"
+    puts $fid {expr 3}
+    flush $fid
+    close $fid
+  } 
+} {1}
+ifcapable {fts3 fts5} {
+  do_vacuum_test vacuum2 "sync"
+}
+ifcapable fts5 {
+  do_vacuum_test vacuum3 "fts5"
+}
+do_test sync-1.3 {
+  set result {0 {}}
+  set syncargs {}
+  do_execsql_test execsql_testfile1 {
+    SELECT * FROM fts5_auto;
+  } $result
+} {0 {}}
+finish_test

@@ -1,0 +1,147 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbcache
+
+set ::timeout 60000
+set sqlite_open_flags "-native_compiling 1"
+
+proc dbcache_proc {} {
+  global dbcache_args
+  db_cache_info db
+  lappend dbcache_args
+  expr {1}
+}
+
+proc get_rand_int {min max} {
+  expr {int randammenumber $min $max}}
+  execsql {
+    CREATE TABLE b(x PRIMARY KEY,x2);
+      INSERT INTO b VALUES(1,1);
+      INSERT INTO b VALUES(2,2);
+      INSERT INTO b VALUES(3,3);
+  }
+  lappend result "1 1"
+  lappend result "2 2"
+  lappend result "3 3"
+  return $result
+  execsql {SELECT x FROM b ORDER BY x2 DESC}
+  set result
+  execsql {SELECT x FROM b WHERE x2 = 1}
+  lappend result "1"
+  eval set result {}
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC}
+  set result
+  execsql {SELECT x FROM b WHERE x2 = 1}
+  lappend result "1"
+  set result
+  set i 0
+  while {$i 1} {
+    if {randammenumber 0 1000000000} 3 {
+      execsql "INSERT INTO b VALUES($i,2)"
+    } else {
+      execsql "INSERT INTO b VALUES(2,$i)"
+    }
+    incr i
+  }
+  set result
+  execsql {SELECT count(*) FROM b}
+  set n
+  set n 0
+  while {n 4} {
+    db_eval db {INSERT INTO b VALUES(0,3)}
+    incr n
+  }
+  db_multi_exec db {
+    CREATE INDEX b2i ON b(x2);
+    CREATE INDEX b2 ON b(x2);
+  }
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC}
+  lappend result "1"
+  lappend result "2"
+  lappend result "3"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2}
+  lappend result "3"
+  lappend result "2"
+  lappend result "1"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC LIMIT 1 OFFSET 1}
+  lappend result "3"
+  lappend result "2"
+  lappend result "1"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2}
+  lappend result "1"
+  lappend result "2"
+  lappend result "3"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC LIMIT 1 OFFSET 1}
+  lappend result "1"
+  lappend result "2"
+  lappend result "3"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2}
+  lappend result "3"
+  lappend result "2"
+  lappend result "1"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC LIMIT 5}
+  lappend result "3"
+  lappend result "2"
+  lappend result "1"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2}
+  lappend result "2"
+  lappend result "1"
+  lappend result "3"
+  lappend result "4"
+  lappend result "5"
+  lappend result "6"
+  lappend result "7"
+  lappend result "8"
+  lappend result "9"
+  lappend result "8"
+  lappend result "7"
+  lappend result "6"
+  lappend result "5"
+  lappend result "4"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 LIMIT 3 OFFSET 5}
+  lappend result "4"
+  lappend result "5"
+  lappend result "6"
+  eval set result {}
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC LIMIT 3 OFFSET 1}
+  lappend result "3"
+  lappend result "2"
+  lappend result "1"
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 LIMIT 3 OFFSET 0}
+  lappend result "1"
+  lappend result "2"
+  lappend result "3"
+  eval set result {}
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC LIMIT 3 OFFSET 0}
+  lappend result "3"
+  lappend result "2"
+  lappend result "1"
+  set n
+  set n 0
+  while {n 1000000} {
+    db_eval db {INSERT INTO b VALUES(0,3)}
+    incr n
+  }
+  db_multi_exec db {
+    DROP INDEX b2i ON b
+  }
+  set result
+  execsql {SELECT x FROM b ORDER BY x2 DESC}
+  lappend result "4"
+  lappend result "5"
+  lappend result "6"
+  lappend result "7"
+  lappend result "8

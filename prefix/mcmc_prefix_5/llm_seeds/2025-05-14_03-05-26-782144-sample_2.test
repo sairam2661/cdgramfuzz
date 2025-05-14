@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set sqlite_options {WAL Rollback}
+
+proc insert_data {} {
+  set data "INSERT INTO t1 VALUES(NULL, 1, 1, 1, 1, 1, 1, 1, 1, 1)"
+  for {set i 2} {$i 10000} {incr i} {
+    regsub "#$i" $data "#$i" data
+    uplevel execsql $data
+  }
+}
+
+proc check_data {} {
+  uplevel execsql "SELECT * FROM t1 LIMIT 5"
+  uplevel execsql "SELECT * FROM t2 ORDER BY rowid LIMIT 1"
+}
+
+set up_script {
+  execsql {
+    CREATE TABLE t1(
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i
+    );
+    CREATE TABLE t2(
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i
+    );
+  }
+}
+
+set sql "EXPLAIN QUERY PLAN SELECT a, b, c FROM t1 WHERE d IN "
+do_test complex_query-1.1 {
+  db transaction {
+    execsql $sql "SELECT 1"
+    check_data
+  }
+  set res 1
+  for {set i 2} {$i 10} {incr i} {
+    set data "SELECT 1"
+    regsub ".$i" $data ".$i" data
+    uplevel do_test complex_query$i {
+      db transaction {
+        execsql $sql $data
+        check_data
+      }
+      incr res
+    }
+  }
+} {1}
+
+do_test complex_query-11.1 {
+  insert_data
+  check_data
+} {1}
+
+do_test complex_query-12.1 {
+  execsql {
+    SAVEPOINT s1
+    DELETE FROM t1
+    RELEASE s1
+  }
+  check_data
+} {1}
+
+set testname complex_query_$::testrc
+finish_test

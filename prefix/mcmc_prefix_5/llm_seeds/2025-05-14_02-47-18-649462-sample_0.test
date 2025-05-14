@@ -1,0 +1,44 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+
+proc generate_data {} {
+  set id 1
+  for {set i 0} {$i less than 10} {incr i} {
+    execsql {
+      INSERT INTO data(id, data) VALUES("$id", "Data $id")
+    }
+    incr id
+  }
+}
+
+proc complex_query {} {
+  execsql {
+    CREATE TABLE temp(
+      a1,
+      a2,
+      b1,
+      b2
+    )
+  }
+  execsql {
+    CREATE TABLE other(
+      o1,
+      o2
+    )
+  }
+  execsql {
+    CREATE TABLE c(
+      c1,
+      c2
+    )
+  }
+  execsql {
+    INSERT INTO data(id, data) VALUES("d1", "Data d1")
+  }
+  execsql {
+    INSERT INTO temp(a1, a2, b1, b2)
+      SELECT c1
+      (

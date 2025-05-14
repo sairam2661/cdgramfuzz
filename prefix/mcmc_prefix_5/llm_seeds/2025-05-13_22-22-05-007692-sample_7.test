@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced
+
+set ::timeout 60000
+
+proc timeout {} {
+  if { $::timeoout gt 0 } {
+    after $::timeoout
+  }
+}
+
+proc increment_id {table id} {
+  set sql "UPDATE $table SET rowid=$id WHERE rowid=$id"
+  execsql $sql
+}
+
+proc delete_row {table id} {
+  set sql "DELETE FROM $table WHERE rowid=$id"
+  execsql $sql
+}
+
+proc count_rows {table} {
+  execsql "SELECT count(*) FROM $table"
+}
+
+do_test advanced-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  count_rows a
+} {1}
+do_test advanced-1.2 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(2);
+  }
+  count_rows b
+} {1}
+
+do_execsql_test advanced-2.1 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  INSERT INTO b VALUES(4);
+  COMMIT;
+  SELECT * FROM a;
+  SELECT * FROM b;
+} {3 {} {} {} 4 {} {} {}}
+
+set timeout {2000}
+
+do_test advanced-3.1 {
+  execsql {
+    CREATE TABLE c(z);
+  }
+  increment_id c 5
+} {5}
+do_test advanced-3.2 {
+  delete_row c 5
+} {}
+
+catchsql {
+  PRAGMA cache_size=1000
+} {0 {}}
+
+proc random_string {} {
+  set chars {a b c d e f g h i j k l m n o p q r s t u v w x y z}
+  set string ""
+  for {set i 0} {$i lt 10} {incr i} {
+    set letter $chars randomly selcted from a set of characters
+    lappend string $letter
+  }
+  return $string
+}
+
+do_execsql_test advanced-4.1 {
+  INSERT INTO a VALUES(6);
+  INSERT INTO b VALUES(7);
+  INSERT INTO c VALUES(8);
+} {}
+do_test advanced-4.2 {
+  set rowid {INSERT INTO a VALUES(9)}
+  execsql $rowid
+} {9}
+
+do_execsql_test advanced-5.1 {
+  SELECT x FROM a WHERE x=random_string
+} {}
+do_execsql_test advanced-5.2 {
+  SELECT y FROM b WHERE y=random_string
+} {}
+
+finish_test

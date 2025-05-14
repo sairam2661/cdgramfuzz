@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set timeout 60
+set sqlite_limit_size 5120000
+
+proc async_proc {} {
+  global asyncargs
+  lappend asyncargs
+  expr {1}
+}
+
+register_db_config async
+ifcapable {fts5} {
+  register_fts5_config async
+}
+
+set db_async {
+  CREATE TABLE t1(x);
+  CREATE TABLE t2(y);
+  CREATE INDEX i1 ON t2(y);
+}
+
+do_multistep_test async1.1 {
+  query_execsql $db_async {
+    INSERT INTO t1 VALUES(1);
+  }
+  query_execsql $db_async {
+    INSERT INTO t2 VALUES(1);
+  }
+} {
+  query_execsql $db_async {
+    INSERT INTO t1 VALUES(2);
+    SELECT * FROM t1;
+  }
+  query_execsql $db_async {
+    INSERT INTO t2 VALUES(2);
+    SELECT * FROM t2;
+  }
+}
+
+do_test async1.2 {
+  execsql {
+    CREATE TABLE t3(z);
+    CREATE TABLE t4(a);
+  }
+  execsql {SELECT name FROM sqlite_master}
+} {t1 t2 t3 t4}
+do_execsql_test async1.3 {
+  SELECT name FROM sqlite_master ORDER BY name DESC
+} {t4 t3 t2 t1}
+do_test async1.4 {
+  execsql {
+    DROP TABLE t1
+  }
+  execsql {
+    SELECT name FROM sqlite_master ORDER BY name
+  }
+} {t2 t3 t4}
+do_catchsql_test async1.5 {
+  CREATE TABLE t5(x);
+  CREATE INDEX i1 ON t5(x);
+} {1 {table t5 is already indexed}}
+do_test async1.6 {
+  execsql {
+    DROP INDEX t2_i1
+    CREATE INDEX i3 ON t3_z_z
+  }
+  execsql {
+    SELECT name FROM sqlite_master ORDER BY name DESC
+  }
+} {t4 t3 t3_i3 t2}
+
+finish_test

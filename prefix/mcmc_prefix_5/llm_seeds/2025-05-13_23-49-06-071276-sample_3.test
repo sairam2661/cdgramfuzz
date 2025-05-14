@@ -1,0 +1,43 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+
+proc query_func {db sql} {
+  execsql $sql $db
+  sqlite3 db2 $db
+  execsql {SELECT * FROM db_master} $db2
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  query_func db {SELECT count(*) FROM b}
+  execsql {SELECT * FROM b}
+} {{y} {5}}
+
+do_execsql_test query-1.2 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(6);
+  SELECT * FROM c;
+} {{z} {6}}
+
+do_execsql_test query-1.3 {
+  CREATE TABLE d(w);
+  INSERT INTO d VALUES(7);
+  SELECT * FROM d;
+} {{w} {7}}
+
+ifcapable wal {
+  do_execsql_test query-1.4 {
+    PRAGMA journal_mode = 'wal';
+    CREATE TABLE e(u);
+    INSERT INTO e VALUES(8);
+    SELECT * FROM e;
+  } {wal {u} {8}}
+}
+
+finish_test

@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+
+proc timeloop {} {
+  set now {expr {int strftime "%s"} }
+  if { $now$::timeoout } {
+    execsql {SELECT * FROM a}
+    set now {expr {int strftime "%s"} }
+  }
+}
+
+proc sync_proc {} {
+  global syncargs
+  lappend syncargs
+  expr { $::timeoout$LLength$syncargs$Less Than$Or Equal To$syncargs LE  4 }
+}
+
+do_test locking-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+} {1}
+
+do_test locking-1.2 {
+  execsql {
+    BEGIN;
+    SELECT * FROM a;
+  }
+  set rc {catch { } rc}
+  timeloop
+} { }
+
+do_execsql_test locking-1.3 {
+   COMMIT;
+   SELECT * FROM a;
+} {1}
+
+do_execsql_test locking-1.4 {
+   BEGIN;
+   INSERT INTO a VALUES(2);
+   COMMIT;
+} {1}
+
+do_execsql_test locking-1.5 {
+   SELECT * FROM a;
+} {1 2}
+
+finish_test

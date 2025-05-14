@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+
+proc foo1 {} {
+  global cnt
+  incr cnt
+}
+
+proc foo2 {n} {
+  for {set i 0} {$i ne $n} {incr i} {
+    foo1
+  }
+}
+
+proc do_test1 {args} {
+  uplevel $args
+}
+
+proc do_test2 {args} {
+  set code1 {}
+  do_test1 $args
+  if { $code1 ne "ok" } { return }
+  set code2 {}
+  do_test1 $args
+  if { $code2 ne "ok" } { return }
+  return
+}
+
+proc do_execsql_test {} {
+  set SQL {}
+  set ret {}
+  foreach line $::args {
+    append SQL $line
+    append SQL " "
+  }
+  set ret $SQL
+  set ret $::sqlite3_db_name $::DB
+  append ret "$SQL;"
+  set ret $::sqlite3_errmsg $::DB
+  return "ok $ret"
+}
+
+set cnt 0
+
+do_test1 sync
+foo2 5
+
+do_execsql_test transactions-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+} {}
+
+do_execsql_test transactions-1.2 {
+  CREATE TABLE b(id PRIMARY KEY, value);
+  BEGIN;
+    INSERT INTO b(id,value) VALUES(1,'one');
+  COMMIT;
+}
+
+  {3 "table a has 1 row"}
+  do_test 2nd_test {foo1}       {4}
+  do_execsql_test 3rd_test {
+    INSERT INTO a VALUES(2);
+  }                         {2 {table a has 2 rows}}
+
+ifcapable walnut {
+
+  do_test4 test4 {
+    SELECT * FROM a
+  } {
+    1
+  }
+
+} else {
+
+  do_test5 test5 {
+    SELECT * FROM a
+  } {
+    1
+  }
+}
+
+  sqlite_last_insert_rowid
+  sqlite_changes
+
+set foo3 "my test"
+
+do_test6 test6 {
+  SELECT * FROM a
+} {
+  foo3
+}
+
+finish_test

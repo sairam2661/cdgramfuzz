@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+set DBID 0
+proc get_connection {} {
+  global DBID
+  incr DBID
+  return sqlite_db $DBID
+}
+
+do_test locking-1.1 {
+  set db0 get_connection
+  set db1 get_connection
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  } $db0
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+  } $db1
+  execsql {
+    COMMIT;
+    SELECT count(*) FROM a;
+  } $db1
+} {2}
+
+do_test locking-1.2 {
+  set db2 get_connection
+  execsql {
+    DROP TABLE a
+  } $db1
+  execsql {
+    SELECT sql FROM sqlite_master
+  } $db2
+} {}
+
+ifcapable!=tempdb {
+  do_test locking {
+    execsql {
+      SELECT name FROM sqlite_master
+    } $db1
+  } {}
+  return
+}
+
+set tempdbfile templock
+file delete $tempdbfile
+
+do_test locking-2.1 {
+  execsql {
+    ATTACH 'file:$tempdbfile' AS tempdblock
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO tempdblock(tempdbtable) VALUES(99);
+  }
+  execsql {
+    DETACH tempdblock
+  }
+  execsql {
+    SELECT count(*) FROM tempdbdatabase
+  }
+} {0}
+
+finish_test

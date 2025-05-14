@@ -1,0 +1,145 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set sqlite_version 3007000
+
+proc setup_database {} {
+  execsql {
+    CREATE TABLE users(id, name, email);
+    CREATE TABLE orders(order_id, user_id, order_date);
+  }
+  if {$sqlite_version} {
+    do_execsql_test 1.1 {
+      BEGIN;
+      INSERT INTO users VALUES(1, 'John Doe', 'john@example.com');
+      INSERT INTO orders VALUES(1, 1, '2022-01-01');
+      COMMIT;
+    } {}
+  } else {
+    do_execsql_test 1.1 {
+      INSERT INTO users VALUES(1, 'John Doe', 'john@example.com');
+      INSERT INTO orders VALUES(1, 1, '2022-01-01');
+    } {}
+  }
+}
+
+proc teardown_database {} {
+  execsql {
+    DROP TABLE users ordenes
+  }
+}
+
+do_test 1.2 {
+  setup_database
+  teardown_database
+} {}
+
+do_execsql_test 1.3 {
+  CREATE TABLE ordenes(id, item, price);
+  INSERT INTO ordenes VALUES(1, 'item1', 10.00);
+  INSERT INTO ordenes VALUES(2, 'item2', 20.00);
+  SELECT * FROM ordenes;
+} {1 item1 10.0 2 item2 20.0}
+
+do_test 1.4 {
+  set result {}
+  foreach row {
+    id item price
+  } of {
+    select row_count from pragma_table_info orders
+  } {
+    lappend result $row
+  }
+  list $result
+} {0 5 0}
+
+do_execsql_test 1.5 {
+  CREATE VIEW user_orders AS
+  SELECT uemail
+  FROM users
+  JOIN orders ON usersid  ordersorderid
+}
+{1 johndoe johnexamplecom}
+drop view user_orders
+
+
+
+setup_database
+do_execsql_test 2.1 {
+  UPDATE ordenes
+  SET price 15.00
+  WHERE id 1
+} {1}
+
+do_test 2.2 {
+  set result {}
+  foreach row {
+    id item price
+  } of {
+    select row_count from pragma_table_info ordenes
+  } {
+    lappend result $row
+  }
+  list $result
+} {1 1 15.0}
+
+set tmp_file "[file tempname]"
+
+set master_root $tmp_file
+file mkdir $master_root
+file append $tmp_file ".sqlite"
+
+set db_path "$master_root/$tmp_file"
+set sqlite_master_path "$master_root/$tmp_file-master"
+set db_connection {
+  sqlite3 db $db_path
+}
+
+set db_handle {
+  db eval {INSERT INTO ordenes VALUES (3, 'item3', 30.00)}
+  db last_insert_rowid
+}
+
+teardown_database
+file delete $tmp_file
+file delete $tmp_file
+file delete $tmp_file
+
+do_execsql_test 3.1 {
+  BEGIN;
+  INSERT INTO ordenes VALUES (4, 'item4', 40.00);
+  ROLLBACK;
+  SELECT * FROM ordenes;
+} {1 item1 10.0 2 item2 20.0 3 item3 30.0 4 item4 40.0}
+
+set master_root $tmp_file
+file mkdir $master_root
+file append $tmp_file ".sqlite"
+
+set sqlite_tmp_dir "$master_root/tmp"
+
+file mkdir $sqlite_tmp_dir
+file append $tmp_file ".log"
+set log_file_path "$master_root/$tmp_file.log"
+
+set wal_file "$master_root/WAL"
+
+set sqlite_master_path "$master_root/$tmp_file-master"
+
+ifcapable log_level_pr_debug {
+  sqlite3_pr_debug db $log_file_path
+}
+
+set wal_path "$sqlite_master_path/WT"
+set db_path "$tmp_file.sqlite"
+
+set db_path2 "$master_root/${tmp_file}_copy"
+set db_connection {
+  sqlite3 db $db_path
+}
+set master_root $tmp_file
+teardown_database
+file delete $tmp_file
+finish_test

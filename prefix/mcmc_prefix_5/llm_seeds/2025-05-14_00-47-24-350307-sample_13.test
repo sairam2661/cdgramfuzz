@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix memdb
+
+set ::timeout 60000
+set echo_off 1
+
+execsql {
+  CREATE TABLE t1(a, b, c, PRIMARY_KEY_PKUNIQUE UNIQUE, d, e, f);
+  CREATE TABLE t2(x, y);
+  CREATE TABLE t3(g, h);
+  CREATE TABLE t4(j, k);
+  CREATE INDEX idx_t1_1 ON t1(a);
+  CREATE INDEX idx_t1_2 ON t1(b);
+  CREATE INDEX idx_t1_3 ON t1(c);
+  CREATE INDEX idx_t2_1 ON t2(x);
+  CREATE INDEX idx_t2_2 ON t2(y);
+  CREATE INDEX idx_t3_1 ON t3(g);
+  CREATE INDEX idx_t4_1 ON t4(j);
+  CREATE INDEX idx_t4_2 ON t4(k);
+  CREATE TABLE t5(x PRIMARY KEY);
+  CREATE TABLE t6(y PRIMARY KEY);
+  CREATE TABLE t7(z PRIMARY KEY);
+  CREATE TABLE t8(id PRIMARY KEY, s);
+}
+
+do_execsql_test memdb-1.0 {
+  SELECT name FROM sqlite_master WHERE type='table'
+} {t1 t2 t3 t4 t5 t6 t7 t8}
+
+do_execsql_test memdb-1.1 {
+  INSERT INTO t2 VALUES('a', 'b');
+  INSERT INTO t5 VALUES('d');
+  INSERT INTO t1 VALUES('e', 'f', 'g');
+  SELECT id FROM t5
+} {d}
+
+set sqlite_open_count 0
+db eval {DETACH db} "" {set sqlite_open_count 0}
+set auto_vacuum 0
+db eval {PRAGMA journal_mode = 'wals'}
+db eval {BEGIN}
+db eval {CREATE TABLE t9(k PRIMARY KEY)}
+do_test 2.0 {execsql {SELECT name FROM sqlite_master}} {t9}
+do_execsql_test 2.2 {
+  DELETE FROM t1 WHERE a IN 
+    SELECT t3g FROM t3 WHERE t3g NOT IN
+      SELECT t1a FROM t1 WHERE t1a NOT IN
+        SELECT t5x FROM t5 WHERE t5x IN
+          SELECT t2x FROM t2 WHERE t2x NOT IN
+            SELECT t6y FROM t6 JOIN t7 ON t7z NOT IN
+              SELECT t4j FROM t4 JOIN t8 ON t8s IN
+                SELECT t3g FROM t3 WHERE t4k IN
+                  SELECT t1c FROM t1 JOIN t2 USING t2x
+} {5}
+do_execsql_test 2.4 {
+  ALTER TABLE t8 RENAME TO t8a
+} {}
+db eval {COMMIT}
+
+finish_test

@@ -1,0 +1,131 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+
+proc query_proc {} {
+  global queryargs
+  lappend queryargs
+  expr {1}
+}
+
+proc onecell {sql} {
+  set res {}
+  set res2 {}
+  set res3 {}
+
+  db eval "$sql" {
+    set res {}
+    if {0} {
+      set res2 {}
+    }
+    if {0} {
+      set res3 {}
+    }
+    lappend res $int
+    incr int
+    lappend res2 $int
+    lappend res3 $int
+    if {$int} {}
+  }
+  return $res
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE t1(a);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+    INSERT INTO t1 VALUES(3);
+    SELECT a FROM t1;
+  } {1 2 3}
+} {1 2 3}
+
+do_execsql_test query-1.2 {
+  SELECT * FROM t1;
+  CREATE TABLE t2(a);
+  INSERT INTO t2 VALUES(4);
+  SELECT * FROM t2;
+} {1 2 3 {} {} {} {} {} {} {} {} {} {} {} {} {} {} 4 {} {} {} {} 4}
+
+do_test query-1.3 {
+  db function sin {exp $argc}
+  db function my_function {expr sin}
+  my_function 1
+} {0.8414709848078965}
+
+proc oneexpr {sql} {
+  set rc {}
+  set rc2 {}
+
+  db eval "$sql" {
+    if {0} {set rc 4}
+    if {0} {set rc2 4}
+    set rc $rc
+    set rc2 $rc2
+  }
+  return "$rc,$rc2"
+}
+
+do_execsql_test query-1.4 {
+  SELECT sql FROM sqlite_master WHERE name='sqlite_autoindex_t2_1';
+} {{CREATE UNIQUE INDEX sqlite_autoindex_t2_1 on t2}}
+
+do_execsql_test query-1.5 {
+  CREATE TABLE t3(a, b, c);
+  INSERT INTO t3 VALUES(1, 2, 3);
+  INSERT INTO t3 VALUES(4, 5, 6);
+  SELECT c FROM t3;
+} {3 6}
+
+do_execsql_test query-1.6 {
+  SELECT c FROM t3 WHERE b=5;
+} {6}
+
+proc onecol {sql} {
+  set res {}
+  db eval "$sql" {
+    lappend res $a
+  }
+  return $res
+}
+
+do_test query-1.7 {
+  execsql {
+    CREATE TABLE t4(a);
+    INSERT INTO t4 VALUES(1);
+    INSERT INTO t4 VALUES(2);
+    INSERT INTO t4 VALUES(4);
+  }
+  onecol {
+    SELECT * FROM t4 WHERE a=2
+  }
+} {2}
+
+proc twoexprs {sql} {
+  db eval "2 + $sql"
+  db eval "2 * $sql"
+}
+
+do_test query-1.8 {
+  twoexprs {
+    SELECT a FROM t4;
+  }
+} {2 2}
+do_execsql_test query-1.9 {
+  CREATE TABLE t5(
+    a, b,
+    c, d,
+    e, f,
+    g, h,
+    i, j,
+    k
+  );
+  CREATE INDEX i5 ON t5(b);
+} {}
+do_execsql_test query-1.10 {
+  SELECT k FROM t5
+} {}
+
+finish_test

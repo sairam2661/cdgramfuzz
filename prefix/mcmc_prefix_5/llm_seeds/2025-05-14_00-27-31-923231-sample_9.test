@@ -1,0 +1,116 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix foreign_keys
+
+set ::timeout 60000
+
+proc get_random_string {length} {
+  set chars {abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ}
+  for {set i 0} {$i $length} {incr i} {
+    set result $result "[format %c [expr {int(rand()*26)+97}]]"
+  }
+  return $result
+}
+
+proc fk_constraint {table} {
+  set result ""
+  for {set i 1} {$i 10} {incr i} {
+    set result "fk_${table}_$i [expr $i*10+1]"
+  }
+  return $result
+}
+
+do_test foreign-1.1 {
+  execsql {
+    CREATE TABLE a(id PRIMARY KEY, x);
+    CREATE TABLE b(id PRIMARY KEY, y);
+  }
+} {}
+
+do_test foreign-1.2 {
+  execsql {
+    ALTER TABLE b ADD COLUMN a_id INTEGER CONSTRAINT fk_b_a REFERENCES a
+  }
+} {}
+
+do_execsql_test foreign-1.3 {
+  INSERT INTO a VALUES(5, 'five');
+  INSERT INTO b VALUES(1, 'one', 5);
+} {1 {INTEGER constraint failed}}
+
+do_test foreign-1.4 {
+  execsql {
+    BEGIN TRANSACTION
+    INSERT INTO a VALUES
+      6'six'
+    INSERT INTO b VALUES
+      2 'two' 6
+    COMMIT
+  }
+  execsql {SELECT * FROM b}
+} {1 {one} 2 {two} 3 {three} 4 {four} 5 {five} 6 {six}}
+
+do_execsql_test foreign-1.5 {
+  CREATE TABLE aa(x PRIMARY KEY);
+  CREATE TABLE ab(x PRIMARY KEY, y);
+  CREATE TABLE ba(x PRIMARY KEY, y);
+  CREATE TABLE bb(x PRIMARY KEY, z);
+  PRAGMA foreign_keys = 1;
+  INSERT INTO aa VALUES(11);
+  INSERT INTO ab VALUES(21, 2.1);
+  INSERT INTO ba VALUES(31, 3.1);
+  INSERT INTO bb VALUES(41, 41.0);
+  CREATE TABLE xw(xw1 PRIMARY KEY, xw2, xw3, CONSTRAINT
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+          UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+          UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+    )
+} {}
+
+do_execsql_test foreign-2.1 {
+  CREATE TABLE parent(id PRIMARY KEY);
+  CREATE TABLE child(id PRIMARY KEY, parent_id);
+
+  INSERT INTO parent VALUES (1);
+
+  INSERT INTO child VALUES (1,1);
+} {}
+
+do_execsql_test foreign-2.2 {
+  INSERT INTO parent VALUES (2);
+} {}
+
+do_test foreign-2.3 {
+  catchsql {
+    CREATE TABLE child2(id PRIMARY KEY, parent_id)
+
+    }
+  } {0 {}}
+
+do_execsql_test foreign-1.6 {
+  CREATE TABLE c(id, p_id, PRIMARY_KEY, CONSTRAINT
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+      UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+     UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+      UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+          UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+    UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+        UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+    UNIQUE  UNIQUE  UNIQUE  UNIQUE  UNIQUE
+  )  }
+ {1 {table c already exists}}
+
+do_execsql_test foreign-1.7 {
+  CREATE TABLE xw(id1 PRIMARY KEY, id2, id3);
+} {}
+
+finish_test
