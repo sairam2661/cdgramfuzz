@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes xmlns CDATA #REQUIRED>
+  <!ENTITY date "1">
+  <!ENTITY % number "#">
+  <!NOTATION SGML SYSTEM ";">
+  %number;
+  <!--
+  SGML note
+  -->
+]>
+<notes xmlns="x">
+  <note date="%">
+    <item>
+      Item %date%!
+      <choice default="A">A or B</choice>
+      <text><![CDATA[SGML is %a% language]]></text>
+      <subnote ref="&note1;"/>
+    </item>
+  </note>
+</notes>

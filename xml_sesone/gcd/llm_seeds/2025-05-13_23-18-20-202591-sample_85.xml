@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog owner CDATA #REQUIRED>
+  <!ENTITY part1 "F">
+  <!ENTITY % part2 "F" >
+  <!NOTATION html PUBLIC "-"
+       "d"
+       >
+ 		
+		
+		
+		%xhtml-doctype 
+		                                
+		; 
+  <!--
+			<!DOCTYPE html PUBLIC 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-->
+ 
+<!ELEMENT product (description,name,price+)>
+<!ATTLIST product id ID #REQUIRED>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ATTLIST price currency CDATA #REQUIRED>
+<!ELEMENT category (#PCDATA)>
+<!ATTLIST category color CDATA #IMPLIED>
+<!ELEMENT address (#PCDATA)>
+
+]>
+<catalog xmlns="x" xmlns:xi="x" xmlns:xs="x" xmlns:html="x"
+ owner="x">
+	<product id="1" currency="d">
+		<category color="r">Category</category><description>description</description>
+		<address>Test</address><name>Product1</name>
+		<price>&part1;</price>
+		<price>&part1;</price>
+	</product>
+</catalog>

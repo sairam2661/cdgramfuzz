@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "b"
+  [<!ELEMENT catalog (group*)>
+   <!ATTLIST catalog id CDATA #IMPLIED>
+   <!ENTITY book SYSTEM "a">
+   <!ENTITY % catalog.xinclude SYSTEM "c">
+   <!NOTATION BOOKMARC PUBLIC "L"
+                "M">
+  %catalog.xinclude;
+  <!--
+   Do not confuse this with XInclude declaration in @xsi:schemaLocation
+  -->
+  ]>
+<catalog id="1" xsi:schemaLocation="d" xmlns:xsi="w" xmlns:y="z" xsi:noNamespaceSchemaLocation="e">
+<xi:include href="f" parse="x" xmlns:xi="i"/>
+<group><title>&book;</title></group>
+<group><title>&book;</title>&note;</group>
+</catalog>

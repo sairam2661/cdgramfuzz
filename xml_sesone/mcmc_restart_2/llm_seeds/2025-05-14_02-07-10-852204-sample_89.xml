@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book 
+    lang CDATA #REQUIRED
+    id ID #REQUIRED>
+  <!ENTITY chapter1 "<" > <!ENTITY % p "a" > <!NOTATION print SYSTEM "l"> 
+    %p; <!--\n--><!ELEMENT chapter (title | passage)*> 
+    <!ENTITY chapter2 "2" >]>
+<book lang="h" id="b"> 
+  <title>My Book</title>
+  <author>John</author>
+  <chapter1><title>Ch1</title><passage>This is chap1</passage></chapter1>
+</book>

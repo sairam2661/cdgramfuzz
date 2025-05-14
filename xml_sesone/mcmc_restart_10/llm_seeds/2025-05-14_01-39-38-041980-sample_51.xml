@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog 
+   author CDATA #REQUIRED>
+  <!ENTITY book1 "A" >
+  <!ENTITY % book2 "!">
+  <!NOTATION book3 SYSTEM "M">
+  %book2;
+  <!---->
+]>
+<catalog author="U"> 
+  &book1;
+  <book><title>Book 1</title></book>
+  <book><title>Book 2</title></book>
+  <book><title>Book 3</title></book>
+  <book><title>Book 4</title></book>
+  <book>
+    <title>Book 5 &book1;</title>
+    <price>$10.00</price>
+  </book>
+</catalog>

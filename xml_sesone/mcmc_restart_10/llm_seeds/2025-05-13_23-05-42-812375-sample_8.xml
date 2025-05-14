@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (chapter*)>
+  <!ATTLIST book
+         title CDATA #REQUIRED
+         author CDATA #REQUIRED>
+  <!ENTITY chapter1 "<" ><!ENTITY % p "<" ><!NOTATION html PUBLIC''
+        '<script type=\"text/plain\"> alert(&#39;script included&#39;);</script>'>
+  %html;<!--%p %chapter1 %p>-->
+]>
+<book title="A" author="B">
+  <chapter>
+    An important <emph>point</emph>
+  </chapter>
+</book>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "m"
+ [
+   <!ELEMENT catalog (product*,note)>
+   <!ATTLIST product 
+     id  CDATA  #REQUIRED
+     name  CDATA  #REQUIRED
+     price  CDATA  #REQUIRED
+   >
+   <!ENTITY note "W">
+   <!ENTITY % p SYSTEM "p">
+   <!NOTATION isbn SYSTEM "J">
+   %p;
+  <!--   <!ELEMENT % p SYSTEM "p">-->
+ ]>
+<inventory>
+  <catalog>
+    <product id="1" name="T" price="5"/>
+    <product id="2" name="G" price="3"/>  
+  </catalog>
+  <note>&note;</note>
+</inventory>

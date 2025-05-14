@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY m "m" >
+  <!ENTITY %
+    sysID SYSTEM "m">
+  <!NOTATION m PUBLIC "m" "m" >
+  %sysID;
+  <!--&note -->]>
+<note id="n">
+  <to>John</to>
+  <from>Jane</from>
+  <heading>&note;</heading>
+  <body>&m;</body>
+</note>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (header,section*)>
+  <!ATTLIST doc id ID #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  %data-typesDTD-public-id "x"><!NOTATION x SYSTEM "x">
+
+
+
+
+
+
+
+
+
+
+
+  %data-typesDTD-system-id  					;<!--
+  -->
+]>
+<doc id="D">
+  <header>
+    <title>Complex Document</title>
+    <date>Today</date>
+  </header>
+  <section>
+    <content>
+      <![CDATA[
+Some &amp; text with line breaks
+on multiple lines
+and special characters &!@#$%
+
+and a reference to  &amp;data;
+
+]]>
+    </content>
+  </section>
+  <section>
+    <content>&amp;</content>
+  </section>
+</doc>

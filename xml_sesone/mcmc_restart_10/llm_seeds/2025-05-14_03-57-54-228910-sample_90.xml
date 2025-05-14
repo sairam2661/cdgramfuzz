@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE complex [
+  <!ELEMENT complex (sub1, sub2)>
+  <!ATTLIST complex
+    id (A|B) #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY ent "D">
+  <!ENTITY % ent2 "E">
+  <!NOTATION notation SYSTEM "G">
+  %Xent2; <!-- % notation must appear as a declaration -->
+]>
+<complex id="A" xmlns:xi="x" lang="F">
+  <sub1>&ent;</sub1>
+  <sub2><![CDATA[Here is <h> some <i> text]]></sub2>
+  <xi:include xmlns:xi="x" href="(">H</xi:include>
+</complex>

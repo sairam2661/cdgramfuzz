@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+|author*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY xref "x">
+  <!ENTITY % ent "1">
+  <!NOTATION xsl PUBLIC "x" "y">
+  %ent;
+  <!--
+    An entity declaration using the 'E' keyword for legacy support
+  --><!ENTITY z "y">
+]>
+<books>
+  <book id="b">1</book>
+  <author>2</author>
+  <book id="c"><title>Z! &y;1</title></book>
+  <xsl:xinclude not="y">x</xsl:xinclude>
+  &xref;<message>&note; Z&amp;y;</message>
+</books>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog platform CDATA #IMPLIED>
+  <!ENTITY desc "A">
+
+  <!ENTITY % ent SYSTEM "x"><!NOTATION FPI SYSTEM "f">
+
+  %ent;
+  <!--
+    Multiple lines of
+    mixed
+    comment
+  -->
+]>
+<catalog platform="x" xmlns:xs="x" xmlns="x">
+ <product ns1="y" ns2="y">
+  <description>&desc; &ent;</description>
+ </product>
+ <product>&nt;</product>
+</catalog>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "c"
+  [
+    <!ELEMENT book (title, author, publication)>
+    <!ATTLIST book
+      id ID #REQUIRED
+      lang CDATA #IMPLIED
+    >
+    <!ENTITY author "J"  >
+    <!ENTITY % attr " ">
+  <!NOTATION iso-8859-1 SYSTEM "c">
+  %attr;
+    <!-- internal unparsed entity declaration -->
+    <!ENTITY book1 SYSTEM "c" NDATA iso-8859-1>
+  ]
+>
+<book id="B"
+  xmlns="a"
+ xsi:schemaLocation="a"
+  lang="b" xmlns:xsi="b">
+  <title>C</title>
+  <author>&author;</author>
+  <publication>book</publication>
+</book>

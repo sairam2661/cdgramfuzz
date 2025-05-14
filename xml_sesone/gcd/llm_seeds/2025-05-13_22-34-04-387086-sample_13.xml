@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #IMPLIED>
+  <!ENTITY phone "1">
+  <!ENTITY % ext "d">
+  <!NOTATION iso-8859-1 SYSTEM "m">
+  %ext;
+  <!--
+     Sample comment with XML entity reference: &id;
+  -->
+]>
+<catalog id="c" xmlns:def="m">
+  <product>
+    <name><![CDATA[Some & raw < text]]></name>
+       <description>
+          This is a product!
+          This is another paragraph.
+       </description>
+    <price>99.99</price>
+  </product>
+          <product>
+                  <name>Battery</name>
+          <description>Portable Power</description>
+                  <price>99.95</price>
+          </product>
+</catalog>

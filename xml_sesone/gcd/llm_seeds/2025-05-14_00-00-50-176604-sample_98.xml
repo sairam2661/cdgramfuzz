@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE article SYSTEM "n"[
+  <!ELEMENT article (#PCDATA)>
+  <!ATTLIST article lang CDATA #REQUIRED>
+  <!ENTITY para "P">
+  <!ENTITY % ent "a">
+  <!NOTATION paper SYSTEM "N">
+  %include
+  								
+ 	                              
+	                              
+	                        
+           		            
+	                        
+           	            
+	                        
+           	                    		
+           		            
+	                        
+         					            
+         					            
+         						                        
+	                        
+ 	                                                                                
+ 	                                                   				         
+ 	                                              		            
+ 	                                              			
+      	    
+   				       
+   				        
+   				        	
+   					        
+                                                                                
+                                                                                
+  		
+ 			
+ 	
+ 	                          
+	                            
+	                        
+       	
+      				
+     	
+    												          
+    													                      
+    															            
+         	                                        	
+ 	                                                            
+	                                        
+ 	                                                                             
+ 	                                                                         
+ 	                                                                            
+ 	                                                                            
+ 	                                                                            
+ 	     				 
+     		   
+   					 
+  	 	  
+	 	
+	                                     	
+  
+ 	                            
+	                                   	
+	                                   
+	      
+   		      
+   					 	 
+ 	                           
+   						                
+   					 
+	                            
+       	
+   		
+  		  							
+  				
+  		 					      
+  	      				
+      
+  						
+  				       
+     		
+  						   
+  	  	
+	                                                                            
+ 																								
+  	  						
+  	  							     	
+     															
+  	
+  						 
+    					 
+  			
+  					 
+  						 
+    	                        
+      		;	
+ 		<!--
+	   	                                                                                    
+		
+		-->]>
+
+<article lang="r">	
+  <para>&para;</para>
+  <h2><![CDATA[Some Text]]></h2>
+  <p>&ent;</p>
+  <!-- Entity test: &test; -->
+  <xi:include href="X"></xi:include>
+  <NOTATION paper.system="N"> paper system <NOTATION NAME="N" SYSTEM="N" /> not defined </NOTATION>
+</article>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "c" [
+  <!ELEMENT foo (bar+, qux?)>
+  <!ATTLIST foo
+    style (normal|bold) "n"
+    width CDATA #IMPLIED
+    height CDATA #IMPLIED
+  >
+  <!ENTITY sysid "r">
+  <!ENTITY % ent PUBLIC "c" "d">
+  <!NOTATION xsl SYSTEM "e">
+  %ent;<!--
+  %not; is not supported
+  %not; here
+  -->
+]>
+<data>
+  <foo
+    style="b"
+    width="3"
+    height="4"
+  >
+    <bar>a</bar>
+    <bar>b</bar>
+    <qux>c</qux>
+  </foo>
+  &sysid;
+</data>

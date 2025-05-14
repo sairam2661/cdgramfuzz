@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+, annotation?)>
+  <!ATTLIST books
+    lang CDATA #IMPLIED
+    edition CDATA #IMPLIED
+  >
+  <!ENTITY book "1">
+  <!ENTITY % annotation "2">
+  <!NOTATION iso-8859-1 SYSTEM "e">
+  %annotation; <!-- conditional comment -->
+]>
+<books lang="g" edition="x" xmlns="a">
+  <book xsi:type="a" xmlns:xsi="b"><copy>&book;</copy></book>
+  <!-- sample comment -->
+  <annotate><!-- <!ENTITY name "1"> --></annotate>
+  <annotate>&iso-8859-1;</annotate>
+</books>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "V"[
+  <!ELEMENT chapter (#PCDATA)>
+  <!ATTLIST chapter id CDATA #REQUIRED>
+  <!ENTITY book-description "A"
+  ><!ENTITY % all-public-id '(?i)(author|editor|translator|title)'>
+  <!NOTATION GZIP PUBLIC "G" "Z">
+  %all-public-id;
+  <!--
+  --><!ENTITY book-name "B"
+  >
+]>
+<book xmlns:gpx="G">
+  <catalogue>
+    <category name="m">
+      <tag lang="r">y</tag>
+    </category>
+  </catalogue>
+  <chapter id="i" gpx:notation="Z">
+    <xi:include href="t">
+      <xi:fallback>
+        <empty>1</empty>
+      </xi:fallback>
+    </xi:include>
+  </chapter>
+  &Book-Name; &book-description;
+</book>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,chapter)+>
+  <!ATTLIST book 
+    id CDATA #REQUIRED
+    lang (en|es|fr) 'en'
+    xmlns CDATA #FIXED "h"
+  >
+  <!ENTITY bookauthor "J"
+  >
+  <!ENTITY % chaptercontent "#">
+  <!NOTATION ISO-8859-8 PUBLIC " " " ">
+  %chaptercontent;
+  <!--= --><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><--><!--><!
+<!ELEMENT chapter (author,sec* }>
+<!ATTLIST chapter
+  number CDATA #REQUIRED
+>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT sec (#PCDATA)>
+]>
+<!DOCTYPE book SYSTEM "book.dtd" [
+  <!ELEMENT book (title,chapter)+>
+  <!ATTLIST book 
+    id CDATA #REQUIRED
+    lang (en|es|fr) 'en'
+    xmlns CDATA #FIXED "h"
+  >
+  <!ENTITY bookauthor "J"
+  >
+  <!ENTITY % chaptercontent "#">
+  <!NOTATION ISO-->
+]>
+<doc xmlns="h" id="b" lang="f"><title> Title</title><chapter number="c"><author>Author</author><sec>S</sec></chapter><chapter number="d"><author>Author2</author><sec>Hello</sec></chapter></doc>

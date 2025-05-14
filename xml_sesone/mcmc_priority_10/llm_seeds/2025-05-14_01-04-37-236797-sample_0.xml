@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (catalogs?)>
+  <!ATTLIST catalog vendor CDATA #REQUIRED>
+  <!ENTITY name "W">
+  <!ENTITY 
+    %comment
+    "W">
+  <!NOTATION XSL PUBLIC '-//W3C//DTD XSL Style Sheet 1.0//EN' 'http://www.w3.org/TR/WD-xsl.xsl'>
+  %comment; 
+  <!-- internal entity reference -->
+  <!-- external entity reference:'system' -->
+  %name;
+]>
+<catalog vendor="O">
+  <catalogs><catalog vendor="R"/></catalogs>
+  &name;
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY chapter1 "A"
+         >
+  <!ENTITY % chapter2 "B">
+  <!NOTATION iso8402 SYSTEM "M">
+  %chapter2;
+  <!---->
+]>
+<book lang="x" xi:nil="t" xsi:noNamespaceSchemaLocation="x">
+  <title>Test Title</title>
+  <author>Name Surname</author>
+  <chapter>&chapter1;</chapter>
+  <chapter>&chapter1;</chapter>
+</book>

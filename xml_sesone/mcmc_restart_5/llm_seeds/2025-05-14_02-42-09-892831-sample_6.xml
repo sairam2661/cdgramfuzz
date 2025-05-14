@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+    SYSTEM "D"
+    [
+    <!ELEMENT root (msg+,note)>
+    <!ATTLIST root
+      xmlns:dc CDATA #IMPLIED
+      xmlns:xlink CDATA #IMPLIED
+    >
+    <!ENTITY e "1">
+    <!ENTITY % ent SYSTEM "E">
+    <!NOTATION NAP SYSTEM "N" >
+    %ent;
+    <!--%note;-->
+    ]>
+<root xmlns="U" xmlns:dc="A" xmlns:xlink="B" xlink:href="C">
+  <msg xml:lang="E"/>
+  <msg xml:lang="F">
+    <dc:title>Sample</dc:title>
+  </msg>
+  <note>
+    <p>
+      Test
+      &e;$;
+    </p>
+  </note>
+</root>

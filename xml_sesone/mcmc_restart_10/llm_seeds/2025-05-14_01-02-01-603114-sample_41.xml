@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE note SYSTEM "b"
+  [
+    <!ELEMENT note (#PCDATA)>
+    <!ATTLIST note 
+        lang CDATA #REQUIRED
+        version CDATA #IMPLIED
+    >
+    <!ENTITY desc SYSTEM "b" NDATA b>
+  <!ENTITY % b SYSTEM "b"
+    NDATA b>
+  <!NOTATION b SYSTEM "b">
+  %b;
+  <!--%comment
+  %><!ENTITY comment "Internal comment">-->
+]>
+<note lang="F" version="2">Text containing entities: &desc; &comment;
+&note; and ampersand (&amp;).
+</note>

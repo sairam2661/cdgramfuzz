@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c" [
+  <!ELEMENT root (elem1, elem2, elem3) >
+  <!ATTLIST root
+         id  CDATA #REQUIRED
+         version CDATA #IMPLIED
+  >
+  <!ENTITY elem-text "A" >
+  <!ENTITY % elem-ref "b" >
+  <!NOTATION internal-notation SYSTEM "d" >
+  %elem-ref;<!---->
+]>
+<root id="A" version="1" xmlns:m="h">
+  <elem1 xml:lang="e">A</elem1><elem2>a</elem2><elem3>a b c</elem3>
+</root>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Global declaration -->
+<!DOCTYPE catalog SYSTEM "d"
+   [
+   <!ELEMENT catalog (catalog, item+)>
+    <!ATTLIST catalog id  CDATA  #IMPLIED>
+    <!ENTITY part "1">
+  <!ENTITY % i "x">
+   <!NOTATION XMLNOTATION SYSTEM "d">
+  %i;
+   <!-- Internal subset: Entities, elements, entities and element notations (ENs) and attribute types are declared. -->
+  ]
+>
+<catalog id="C">
+  <catalog id="I">
+    <item>
+      <title>&part;</title>
+      <description>Description of Item #&part;</description>
+    </item>
+  </catalog>
+</catalog>

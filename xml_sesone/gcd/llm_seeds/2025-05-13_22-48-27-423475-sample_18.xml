@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST book author CDATA #REQUIRED>
+  <!ENTITY book1 "A" >
+  <!ENTITY % p1 "1">
+  <!NOTATION HTML PUBLIC "-"
+    "/">
+  %p1;
+  <!---->
+]>
+<catalog xmlns="i"> 
+  <book author="J">
+   <title>&book1;</title>
+  </book>
+</catalog>

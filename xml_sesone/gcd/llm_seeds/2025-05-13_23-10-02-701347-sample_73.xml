@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "x"
+ [
+   <!ELEMENT catalog (book+)>
+   <!ATTLIST catalog author CDATA #REQUIRED>
+   <!ENTITY book SYSTEM "x">
+   <!ENTITY % p1 "("><!NOTATION XInclude PUBLIC '' ''>
+   %p1;<!-->]><catalog author="John" xmlns:xi="http://www.w3.org/2001/XInclude">%book;</catalog> 
+   <!ENTITY book SYSTEM "x">-->
+<!ENTITY % p2 "<"><!NOTATION XInclude1 PUBLIC '' ''>
+ %p2;<!-->]><catalog author="Doe"> 
+   <book>Book1</book>
+   <book>Book2</book>
+ </catalog> 
+<!ENTITY % p3 "<"><!NOTATION XInclude2 PUBLIC '' ''>
+ %p3;<!-->]><xi:include xmlns:xi="x" href="y"/>

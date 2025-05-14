@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY bookauthor "J">
+  <!ENTITY % section "#">
+  <!NOTATION ISO-8859-1 SYSTEM "m">
+  %section;
+  <!--
+    This XML document is a short fictional book.
+  -->
+]>
+<book id="b" xml:lang="f">
+  <title>Life &amp; Times</title>
+  <author xmlns="f">John &amp; Jane</author>
+  <chapter>Chap1</chapter>
+  <chapt1>
+    <chap2 xml:space="p"></chap2>
+    This text is not wrapped
+  </chapt1>
+</book>

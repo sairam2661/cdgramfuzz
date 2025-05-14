@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog xml:lang (en|fr|de) " ">
+  <!ENTITY company "D" >
+  <!ENTITY % emps "e" >
+  <!NOTATION ISO-8859-1 SYSTEM " ">
+  %emps;<!--
+    This is a block comment
+  -->
+]>
+<catalog xml:lang="f">
+  <item entity-name="&company;"><name>Tv</name><price>230</price></item>
+  <item entity-name="&company;"><name>Tablet</name><price>450</price></item>
+  <item entity-name="&company;"><name>Laptop</name><price>3000</price></item>
+</catalog>

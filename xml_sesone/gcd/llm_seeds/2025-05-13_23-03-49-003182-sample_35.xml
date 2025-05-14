@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "l" [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY book "A"
+       >
+  <!ENTITY % section "#"
+       >
+  <!NOTATION book-format
+    PUBLIC "+"
+     "d"
+  >
+  %section; <!-- entity in place of -->
+]>
+<catalog lang="X" xmlns="y">
+  <book>&book;</book>
+  <book>&book;</book>
+  <book>
+    <chap>&section;</chap>
+    <chap ref="n"></chap>
+    <chap ref="#" notation="e"></chap>
+  </book>
+</catalog>

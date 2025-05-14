@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE book SYSTEM "z" [
+  <!ELEMENT book (title,chapter*)>
+  <!ATTLIST book author CDATA #REQUIRED>
+  <!ENTITY c "v">
+  <!ENTITY % e PUBLIC "e" "f">
+  <!NOTATION n SYSTEM "m">
+  %e;
+  <!--
+    This is a multilined
+    comment
+  -->
+]>
+<book n:href="h" author="a">Some text</book>

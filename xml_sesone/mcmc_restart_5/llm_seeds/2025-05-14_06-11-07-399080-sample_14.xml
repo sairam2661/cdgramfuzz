@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY author "J">      
+  <!ENTITY % perecent "<"       >     <!NOTATION percent PUBLIC "P"  "I">
+  %perecent;
+  <!-- 
+    Entity: 
+  -->
+]>
+<notes xmlns:fb="y">
+  <title lang="z" fb:content="x">Notes</title>
+  <note id="n">Some text</note>
+  <item><title>X</title><item><title>Y</title></item></item>
+</notes>

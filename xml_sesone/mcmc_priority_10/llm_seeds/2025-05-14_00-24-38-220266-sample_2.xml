@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog lang CDATA #IMPLIED>
+  <!ENTITY book "A"
+  >
+  <!ENTITY % e-comment "A">
+  <!NOTATION xml-ent SYSTEM "d">
+  %e-comment;
+  <!--
+    This document defines a list of available catalog entries.
+  -->
+]>
+<catalog lang="f">
+  <!-- This is a comment in German -->
+  <item>
+    <isbn>1-1234567890</isbn>
+    <title entity-ref="&book;">Entity Reference</title>
+  </item>
+  <item>
+    <price entity-ref="&book;">9.99</price>
+  </item>
+  <item>
+    <item-ref href="d">
+      Notation Reference
+    </item-ref>
+  </item>
+</catalog>

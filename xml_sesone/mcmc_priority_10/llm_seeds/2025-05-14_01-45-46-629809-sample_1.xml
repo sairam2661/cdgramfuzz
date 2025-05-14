@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE articles [
+  <!ELEMENT articles (article*)>
+  <!ATTLIST articles xml:lang CDATA #IMPLIED>
+  <!ENTITY book-title "S" >
+  <!ENTITY % year "Y" >
+  <!NOTATION iso-std PUBLIC "N" "S">
+  %year;
+ <!---->
+]>
+<articles xmlns="h" xmlns:xsi="a" xsi:schemaLocation="b" xml:lang="e" id="i">
+  <article><title>S<?book-title?>title</title><!-- Sample comment --><body><![CDATA[Some <raw> text]]></body>
+  </article>
+  <iso-std refID="j" notationName="x">k</iso-std>
+</articles>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- XML document created by an XPAT processor -->
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*, product+)>
+  <!ATTLIST catalog
+           lang (en|fr|de) #REQUIRED
+           encoding CDATA #IMPLIED>
+  <!ENTITY author "W"> 
+  <!ENTITY % para "A">
+  <!NOTATION APU SYSTEM "B">
+  %para;
+  <!-->[CDATA[External comments are no longer supported.]]>
+  ]>
+<catalog lang="en" xsi:noNamespaceSchemaLocation="schema.xsd" xmlns:g="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema/XMLSchema"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://www.example.org/catalog"
+  xmlns:n="http://www.example.org/note"
+  xmlns:ix="http://example.com/ix"
+  xmlns:c="http://www.example.com/catalog">
+  <section n:ref="#sec1"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="included.xml"/>
+  <title> &author; Books</title>
+  <product productID="123">A book</product>
+  <product productID="456"[attr]="&x;[CDATA[Value]]">
+    <description>
+    This is a paragraph with a <b>bold</b> tag. Another paragraph follows.
+    </description>
+  </product>
+</catalog> 
+!ENTITY x "x">. 
+!CDATA[x]  ] >  ]>  ] > ]>   ]  ]> ]    ]] ] ]   > ] > ]]> ] ] ] ]] ] ] ] ] ] ] ] ] ] ] ]]> ] ] ] ]]> ]]  > ] ] ] ]  ]]>       ]]>    ] ] ] > ]]>  ] ]]> ]]>   ] ]]> ] ]]]]> ]]>  ]   ] ] ] ] ]]>  ] ]]> ]]] ]]>       ]] ] ] ] ]]> ]]> ]]> ]>> ] ] ]]] ] ] ] ]]] ] ]  > ]]> ] ] ] > ]]> ] ] ] ] ]]]> ] ] ] ] ] ] ] ]]> ] ]    ] ] ]]] ] ] ]]] ] ] ] ] ] ]]] ]]> ] ]]> ] ] ] ] ]]> ] ] ] ] ] ]]> ] ] ] ] ] ] ] ]   ] ] ] ] ] ] ] ] ] ] ] ] > ] ] ] ] ] ] ] ] ] ]     ]]> ] ] ] ] ] ] ] ] ] ] ] ]]> ] ] ] ] ] ] ] ] ] ] ] ] ]]> ] ] ] ] ] ] ] ] ] ] ] ] ] ] > ] ] ] ] ] ] ] ] ]     ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]       ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]     ] ] ] ] ] ] ] ]    ] ] ] ]    ] ] ] ] ] ] ] ] ] ] ] ] ]] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ] ]     ] ] ] ] ] ]

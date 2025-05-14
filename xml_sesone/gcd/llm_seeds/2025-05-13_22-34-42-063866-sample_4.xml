@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog xmlns:fbg CDATA #REQUIRED>
+  <!ENTITY author "J"
+  ><!ENTITY % ent "%">
+  <!NOTATION GIF PUBLIC "G"
+  "f">
+  %general;
+  <!--
+    This is an XML Catalog document.
+    -->
+]>
+<catalog xmlns:fbg="f" xml:lang="e">
+  <product>
+    <name>Sample Product</name>
+  </product>
+  <product>
+    <!-- Character entity -->
+    <name>&lt;&gt;,&frasl;</name>
+  </product>
+</catalog>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    lang (EN|FR|ES) "F">
+  <!ENTITY chapter1 "D"
+
+  ><!ENTITY % chapter "d">
+  <!NOTATION ISO-8859-1 PUBLIC "A"
+    "1"
+>

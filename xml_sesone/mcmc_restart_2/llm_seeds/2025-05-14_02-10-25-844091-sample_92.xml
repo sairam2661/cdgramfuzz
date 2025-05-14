@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book 
+    id         ID        #REQUIRED 
+    lang       CDATA     #IMPLIED
+    xmlns      CDATA     #IMPLIED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION svg PUBLIC "-"
+            " ">
+    %chapter2; <!-- not a character entity -->
+]>
+<book id="b" lang="x" xmlns="x">
+  <title>Sample</title>
+  <author>
+   <first>Sam</first>
+   <last>pe</last>
+  </author>
+  <chapter>
+    <title>&chapter1;</title>
+    <content>
+      <p>Some <span>&note;</span> &note; content</p>
+    </content>
+  </chapter>
+  <chapter>
+     <title>&chapter2;</title>
+     <content>
+      Sample <span>&note;</span> <b>bold</b> &note;
+    </content>
+  </chapter>
+</book>

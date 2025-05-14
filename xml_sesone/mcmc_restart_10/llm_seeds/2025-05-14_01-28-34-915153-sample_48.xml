@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, part+)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY book.author "J"
+  ><!ENTITY % year "A">
+  <!NOTATION ISO-2022-JP PUBLIC "J"
+  "A" >
+  %year;
+  <!-- Notation reference -->
+<!NOTATION XML PUBLIC
+"-"
+"A" >]>
+<book lang="j">
+  <title>Example Book</title>
+  <author>&book.author;</author>
+  <part>
+    <chapter xml:lang="j">First chapter</chapter>
+  </part>
+  <part>
+    <chapter xml:lang="A">Second chapter</chapter>
+  </part>
+</book>

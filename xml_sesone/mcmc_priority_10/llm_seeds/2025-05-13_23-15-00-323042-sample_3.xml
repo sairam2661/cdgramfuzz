@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter+)>
+  <!ATTLIST book
+    publisher CDATA #REQUIRED
+    year 	CDATA #REQUIRED
+  >
+  <!ENTITY title "A"
+   	>
+  <!ENTITY 	%
+	publisher
+	"M"
+  >
+  <!NOTATION print SYSTEM "l"
+  >
+  
+  %publisher;
+  <!-- Internal subset of the document type declaration -->
+  %notation.print;
+]>
+
+<book publisher="&publisher;" year="&title;">
+  <author>John Smith</author>
+  <title>&title; Book</title>
+  <chapter>
+    <title>Chapter 1</title>
+    <content>
+      <p>Some text...</p>
+    </content>
+  </chapter>
+  <chapter>
+    <title>Chapter 2</title>
+    <content>
+      <p>Some more text...</p>
+    </content>
+  </chapter>
+</book>

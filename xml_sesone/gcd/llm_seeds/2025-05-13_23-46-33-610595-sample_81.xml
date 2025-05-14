@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (#PCDATA)>
+  <!ATTLIST bookstore 
+    author CDATA #REQUIRED>
+  <!ENTITY abstract 'Abstract section'>
+  <!ENTITY 	%E	'doctype declaration %dqdqdo'>
+  <!NOTATION iso-8859-1 PUBLIC "e" "w">
+  %iso-8859-1;
+  <!--
+    External general parsed entity -->	
+]>
+<bookstore author="J" xmlns:xi="x">
+  <category/>
+  <message>&note;</message>
+  %{abstract;}
+  <!-- external parameter entity -->
+  <xi:include xmlns:xi="x" href="b"/>
+  <comment> <!-- internal comment --> 
+    This is a new line. 
+    <!-- This is a nested comment -->
+  </comment>
+  <text xml:lang="x">This <b> text</b> is in <x/> </text>
+  <section xml:space="x" xmlns:xsi="x">a <raw> section</raw> with a <b> raw attribute</b></section>
+</bookstore>

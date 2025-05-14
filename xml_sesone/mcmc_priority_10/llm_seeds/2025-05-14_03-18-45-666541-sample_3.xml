@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE complex-document [
+  <!ELEMENT complex-document (header, section+, address)>
+  <!ATTLIST complex-document
+    id CDATA #REQUIRED
+    language (en|fr|de) "e">
+  <!ENTITY addr "R">
+  <!ENTITY % sect "%">
+  <!NOTATION paper SYSTEM "A">
+  %sect;	<!-- External parameter entity declaration -->
+]>
+<complex-document id="1" language="e">
+  <header>
+    <title>Main Header</title>
+    <date>2022-09-01</date>
+  </header>
+  <!-- Sample comment -->
+  <section><![CDATA[Some <raw> inner section]]></section>
+  <section><subtitle>subtle info</subtitle></section>
+  <!--<!ENTITY sub "subtlety" >-->
+  <message>&addr;</message>
+  <address>
+    <street>123 Street Lane</street>
+    <city>City Name</city>
+  </address>
+  <notationsystems paper="B"/>
+  <ref href="1" name="b"/>
+</complex-document>

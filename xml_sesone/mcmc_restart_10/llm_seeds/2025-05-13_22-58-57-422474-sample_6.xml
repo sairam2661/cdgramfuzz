@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes[
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes
+    id   CDATA  #REQUIRED
+    lang (en|fr|de) "e"
+  >
+  <!ENTITY book "U"
+  >
+  <!ENTITY % section "s">
+  <!NOTATION book-format SYSTEM "U">
+  %section;
+  <!--
+   This is a block comment.
+  -->
+]>
+<notes id="g" lang="e">
+  <note>
+    <title>&book;</title>
+    <!-- Inline comment -->
+    <author>&book; Author</author>
+    <text>
+      <p>Some text.<br/></p>
+      <p>Including <xi:include href="2"/>
+      CDATA Section<![CDATA[
+        Some raw text
+      ]]>.</p>
+    </text>
+  </note>
+</notes>

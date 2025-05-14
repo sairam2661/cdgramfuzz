@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  SYSTEM "e" [
+    <!ELEMENT group (name,age)>
+    <!ATTLIST group
+      id CDATA #REQUIRED
+      class CDATA #IMPLIED
+    >
+    <!ENTITY date "%"
+         ><!ENTITY % xmark "<">
+  <!NOTATION SGML-NOT
+    PUBLIC "+"
+    "N"
+  >
+  %date;
+  <!-->sample
+  <group id="1">
+    <name>John Doe</name>
+    <age>30</age>
+  </group>
+  -->
+]><root><group id="1" class="A"><name>John Doe</name><age>30</age></group></root>

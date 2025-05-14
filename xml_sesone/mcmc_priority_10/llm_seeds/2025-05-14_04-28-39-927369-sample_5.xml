@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE users [
+  <!ELEMENT users (user*)>
+  <!ATTLIST users xmlns:xs CDATA #REQUIRED>
+  <!ENTITY addr "1"
+          >
+  <!ENTITY % xs "x"
+          >
+  <!NOTATION pdf PUBLIC "A"
+          "A"
+          >
+ %Xs;  <!-- This is a comment -->
+]>
+<users xmlns="&ns;" xmlns:xsi="&ns2;"
+       xsi:schemaLocation="&ns; ">
+  <!-- comment -->
+  <user><name><![CDATA[<b>Nick</b>]]></name>
+    <age>35</age>
+    <address>
+      &addr;<postal-code>123</postal-code>
+    </address>
+  </user>
+</users>

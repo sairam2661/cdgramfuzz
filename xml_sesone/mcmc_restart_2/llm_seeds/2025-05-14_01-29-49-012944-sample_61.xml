@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml:lang [
+  <!ELEMENT xml:lang (title,description)>
+  <!ATTLIST xml:lang lang CDATA #IMPLIED>
+  <!ENTITY x "X">
+  <!ENTITY % p "p">
+  <!NOTATION ISO-8859-1 SYSTEM "A">
+  %p;  <!-- reference to the entity %p -->
+]>
+<xml:lang lang="e">
+  <title>A short XML document</title>
+  <description>This is a complex XML document with various elements at its disposal.</description>
+  <![CDATA[
+    <section>Some data to include in a CDATA section.</section>
+    <message><?=x;?></message>
+  ]]>
+</xml:lang>

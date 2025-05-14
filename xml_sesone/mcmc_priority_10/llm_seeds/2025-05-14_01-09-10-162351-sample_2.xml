@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n"[
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    author CDATA #REQUIRED
+    date CDATA #IMPLIED
+    title CDATA #REQUIRED
+  >
+  <!ENTITY author "J"><!ENTITY % authorDTD SYSTEM "a" >
+  <!NOTATION xml-stylesheetDTD SYSTEM "b">
+  %authorDTD;
+  <!--
+  This is a sample note written by %author; in the %currentYear;. The %subject; is %topic;.
+  -->
+]>
+<note title="A" author="D" date="E">
+  You can also find similar notes in <noteref href="F"/>, but only <count count="1"/>, like those at our web <xref href="G"/>.
+</note>

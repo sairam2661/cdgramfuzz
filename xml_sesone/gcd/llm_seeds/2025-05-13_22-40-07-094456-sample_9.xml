@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, body)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author "J"><!ENTITY  %note "["> 
+  <!NOTATION XHTML PUBLIC '+//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+  %note; 
+  <!--%quote; 'You can never go back'--><!ENTITY quote '&quot;'>
+]>
+<book id="b" xmlns:xi="h" xmlns:xsi="h"> 
+ <!-- sample -->
+  <xsi:schemaLocation="h"></xsi:schemaLocation> 
+  &author;
+  <title>My Book</title> 
+  <body>&quote;</body>
+  <xi:include xmlns:xi="h" href="h"></xi:include>
+</book>

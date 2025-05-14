@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,editor)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY title "G" ><!ENTITY % author "P" >
+  <!NOTATION ISO8362  PUBLIC "B" "A" >
+  %author; 
+  <!-- Internal subset ends here -->
+]>
+<book w3cdtd:xmlns="B" xmlns:xsi="C" xsi:noNamespaceSchemaLocation="A" id="D">
+  <editor>E</editor>
+  <title>F</title>
+  <author>G</author>
+  <chapter>
+    <title>Chapter 1</title>
+    <text><![CDATA[Chapter 1 Text]]></text>
+  </chapter>
+</book>

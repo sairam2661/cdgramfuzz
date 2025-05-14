@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (elem1,elem2,elem3)>
+  <!ATTLIST elem1 id (a|b|c) #REQUIRED>
+  <!ENTITY system "Z">
+  <!ENTITY % systemref "Z">
+  <!NOTATION xml-entity SYSTEM "Z">
+  %systemref;
+  <!--entity Z-->
+  <!NOTATION xml-entity SYSTEM "Z">
+]>
+<root>
+  <elem1 id="c"/><!-- element with id attribute -->
+  <elem2><!-- content of elem2 --></elem2>
+  <elem3 a="a" b="b"/>
+  <import href="m"/>
+  <message>&system;</message>
+  <name>
+    <first>John</first>
+    <last>Smith<!-- last name of John Smith -->
+      &xml-entity;
+    </last>
+  </name>
+</root>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY % bookEntity SYSTEM "x" > 
+  <!NOTATION x SYSTEM "x">
+  %bookEntity;
+  <!-- Internal Entities -->
+]>
+<book lang="f">
+  <title>This is a book</title>
+  <author>AUTHOR</author>
+  <!-- Character data with special character -->
+  <chapter id='123'>&nbsp;</chapter>
+</book>

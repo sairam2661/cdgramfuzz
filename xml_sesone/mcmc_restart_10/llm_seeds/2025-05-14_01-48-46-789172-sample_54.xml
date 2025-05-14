@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "B" [
+  <!ELEMENT data (item+, note)>
+  <!ATTLIST data lang CDATA #IMPLIED>
+  <!ENTITY myname "J"
+         >
+  <!ENTITY % entities "Y" 
+             >
+  <!NOTATION bib SYSTEM "C"
+  >
+  %entities;
+  <!--
+  &myname;
+  -->
+]>
+<html>
+  <head>
+    <meta http-equiv="X" content="Y" />
+  </head>
+  <body>
+    <data lang="f"> <!-- language set to french -->
+      <item>one</item>
+      <item>two</item>
+    </data>
+    <note>Sample note</note>
+  </body>
+</html>

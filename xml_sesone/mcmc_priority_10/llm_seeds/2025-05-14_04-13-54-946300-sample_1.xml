@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (booklist, author)*>
+  <!ATTLIST catalog lang (eng|spa|fra) #REQUIRED>
+  <!ENTITY book "A"
+    >
+  <!ENTITY % entity "D">
+  <!NOTATION file PUBLIC 'Text file' 'file://*.txt'
+     >
+ %p;
+  <!--entity--><!ELEMENT book (#PCDATA)>
+]>
+<catalog lang="f"> 
+  <author>Emerson</author>
+  <book>&book;</book>
+  <notepad>
+    <file>
+      <text>This is a text</text>
+    </file>
+  </notepad>
+</catalog>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title,author,sections+)>
+  <!ATTLIST article 
+    id CDATA #REQUIRED
+  >
+  <!ENTITY title "A"
+  >
+  <!ENTITY % author "A">
+  <!NOTATION xinclude SYSTEM "X">
+  %author;
+  <!--comment 1--> 
+]>
+<article id="A">
+  <title>&title;</title>
+  <author>&author;</author>
+  <sections>
+    <section>1</section>
+    <section>2</section>
+    <section>3</section>
+  </sections>
+</article>

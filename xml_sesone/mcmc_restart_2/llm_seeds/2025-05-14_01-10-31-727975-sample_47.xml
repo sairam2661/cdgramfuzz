@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note
+    id   CDATA  #REQUIRED
+    type (todo|done) " "
+  >
+  <!ENTITY hi "H" > <!ENTITY  
+  %hi";">
+  <!NOTATION EPS SYSTEM "D" >
+  %hi;<!---->%i;
+]>
+<notes xmlns:sdk="x"><note id="1" type="1">Note1</note><note id="2" type="2">Note2</note><note id="3" type="3">Note3</note></notes>

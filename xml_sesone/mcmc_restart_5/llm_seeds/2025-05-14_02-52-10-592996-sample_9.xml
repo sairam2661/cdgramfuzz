@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC "A" "B" [
+  <!ELEMENT name (#PCDATA)>
+  <!ATTLIST author SYSTEM CDATA #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY % entity "n">
+  <!NOTATION nnotation SYSTEM "N">
+  %entity;
+  <!--
+    This is a comment
+  -->
+]>
+<catalog xmlns:xi="x" xmlns="y">
+  <!-- Attribute with default value -->
+  <book xi:include="I" genre="M" author="Z">
+    <!-- CDATA section -->
+    <note><![CDATA[&lt;content&gt;]]></note>
+    <name>Document</name>
+  </book>
+</catalog>

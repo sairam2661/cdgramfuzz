@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY from "P">
+  <!ENTITY % from-address "p">
+  <!NOTATION xsl SYSTEM "m">
+  %from-address;
+  <!-- Sample comment -->
+]>
+<note id="n">
+  <to>John</to>
+  <from>[%from;]</from>
+  <heading>Reminder</heading>
+  <body xml:lang="x" xml:space="x">Dear John, do not forget &from;!</body>
+</note>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data [
+  <!ELEMENT data (record+)>
+  <!ATTLIST data id CDATA #REQUIRED>
+  <!ENTITY product "D">
+  <!ENTITY % general "G">
+  <!NOTATION SVG PUBLIC "H" "I">
+  %general;
+  <!---->
+  <!ELEMENT record (#PCDATA|name|age|address|phone|email|address)>
+  <!ELEMENT address (#PCDATA|street|city|country)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT age (#PCDATA)>
+]>
+<data id="A" xmlns:h="A" xmlns="B"><record>
+  <name>John</name>
+  <age>25</age>
+  <address>
+    <street>123</street>
+    <city>New York</city>
+    <country>USA</country>
+  </address>
+  <phone>9876543210</phone>
+  <email>test@ex.com</email>
+</record>
+<record>
+  <product>&product;</product>
+</record>
+]</data>

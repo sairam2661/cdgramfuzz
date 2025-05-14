@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c" [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY cat1 "F">
+  <!ENTITY % cat2 "#">
+  <!NOTATION ISO PUBLIC 'ISO notation for XML files' 'http://www.iso.ch/'>
+  %cat2;<!-->&cat1;
+]>
+<catalog lang='eng'>
+  <!-->
+  <!-- comment -->
+  <!--
+     <item name='book' price='9.99'>
+       <description>This is a sample book.</description>
+     </item>
+  -->
+  <!--
+    <item name='book' price='9.99'>
+      <description>This is a sample book.</description>
+    </item>
+  -->
+  <!-- <item name='book' price='9.99'><description>This is a sample book.</description></item> -->
+  <!-- <item name="book" price="9.99"><description>This is a sample book&#x20;;</description></item> -->
+  <!-- <item name='book' price='9.99'><description>This is a sample book</description></item> -->
+  <!-- <item name="book" price="9.99"><description>This is a sample book</description></item> -->
+  <!-- 
+     <item name='book' price='09.99'>
+       <description>This is a &gt; sample book.</description>
+     </item>
+  -->
+  <!-- <?xml:id='id123'?> -->
+  <!-- <declaredName>Item1</declaredName> -->
+  <!-- <externalId>http://example.com/item1</externalId> -->
+  <!-- <itemId>item123</itemId> -->
+  <!-- <item name&quot;book&quot; price&quot;9.99&quot;><description&gt;This is a sample book &amp;#x20;;</description></item> -->
+  <!-- <item><name>Book</name><price>19.99</price><description>This is a sample book.</description></item> -->
+  <!-- <!--><!--name&gt;Book&lt;/name>&#09;Price:&gt;19.99</Price>&#x20;<Description&gt;This is a sample book&lt;/description>-->
+  <!-- <comment>This is a sample book</

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "b"[
+  <!ELEMENT note (to*,from,heading,body)>
+  <!ATTLIST note creation-date CDATA #IMPLIED>
+  <!ENTITY a1 "#">
+  <!ENTITY % e1 "x">
+  <!NOTATION FISHER SYSTEM "F">
+  %e1;
+  <!--
+  This is a CDATA section
+  -->
+]>
+<note xmlns="F" creation-date="1" xmlns:xi="x" creation-date="1">
+  <to>John, Smith</to>
+  <to>Smith, Mary</to>
+  <from>Bill, Smith</from>
+  <heading>This is a sample note</heading>
+  <body>&a1;</body>
+</note>

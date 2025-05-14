@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY title "A"
+  >
+  <!ENTITY % chapter "B">
+  <!NOTATION svg SYSTEM "w" >
+  %chapter;   <!-- 1.2.4: Use CDATA to define an internal subset and import
+            entity sets from internal subsets -->
+]>
+<book id="b" lang="x" xmlns="x">
+  &title;
+  <author>
+    <name>John</name>
+  </author>
+  <chapter><title>C</title>This is the first chapter.</chapter>
+  <chapter><title>D</title>This is the second chapter.</chapter>
+</book>

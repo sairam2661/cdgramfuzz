@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST author nameCDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+ <!NOTATION publisher SYSTEM "O"
+  > 
+ 							
+ 								%XINCLUDE
+ 																
+ 																																		
+ 								;																		<!-- 
+ 	-->																					
+]>
+<book xmlns="w" xmlns:xsi="w">
+  <xsi:schemaLocation="/"></xsi:schemaLocation>
+  <author name="J"><b>M</b></author>
+  <title>A</title>
+  <chapter xmlns:xlink="h">
+    <chapter1>
+      This is chapter one &chapter2;.
+    </chapter1>
+  </chapter>
+</book>

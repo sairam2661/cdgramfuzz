@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE book [
+  <!ELEMENT book (title, author, publisher, chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED lang (en|fr|es) 'en'>
+  <!ENTITY chapter1 "c" >
+  <!ENTITY % chapter "c" >
+  <!NOTATION sgml SYSTEM "X">
+  %chapter1;
+  <!--<!ENTITY % p "p" --><!--<!ATTLIST p id CDATA #IMPLIED>-->
+]>
+<book id="B" lang="f">
+  <title>Un <raw> nom</raw></title>
+  <desc><p></p></desc>
+  <author>
+    <name>Marie-Lise &amp; Marie</name>
+  </author>
+  <chapter><![CDATA[
+    Hello!
+  ]]></chapter>
+  <publisher><sect1><info>in</info>éditeur</sect1></publisher>
+  <title>Un petit bout</title>
+</book>

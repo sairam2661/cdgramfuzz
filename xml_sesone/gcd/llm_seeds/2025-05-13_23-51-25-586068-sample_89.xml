@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "x"
+	[<!ELEMENT notes (note+)>
+	<!ATTLIST note id ID #REQUIRED>
+	<!ENTITY amp "&amp;">
+	<!ENTITY % entity "%">
+	<!NOTATION XMLNOTATION SYSTEM "x">
+	%XComment
+		; 
+	<!--
+	  Note section
+	-->%note;
+	<!ENTITY % ent " "><!-- Entity test -->]>
+<notes>
+  <note id="n">This note includes &amp; entity.</note>
+  <note id="n">This note includes %ent; entity.</note>
+  <note id="n">This note includes &XMLNOTATION;</note>
+</notes>

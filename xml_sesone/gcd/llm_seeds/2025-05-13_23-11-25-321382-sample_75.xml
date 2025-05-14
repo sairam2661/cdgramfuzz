@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+,section*)>
+  <!ATTLIST book 
+    id  ID  #REQUIRED
+    type CDATA  #IMPLIED
+  >
+  <!ENTITY book-author "J" >
+  <!ENTITY 	%xref "("><!NOTATION xref SYSTEM "x">
+  %xref;
+  <!--[<!ENTITY % xref SYSTEM "http://www.example.com/xref.dtd">]-->
+]>
+<book xmlns="h" xmlns:xlink="h" xmlns:xi="g" id='A1' type='fiction' >
+  <!--[<!--><title>Sample Title -&gt;<title> </book>
+  <author>&book-author;</author>
+  <chapter>Chapter 1</chapter>
+  <chapter name="C" xlink:href='#B'/><chapter>
+  &xref; Sample ref.&xref;
+</book> 
+<!--[<!ELEMENT title (#PCDATA)><!ELEMENT chapter (#PCDATA|chapter)*><![CDATA[Element!]]></book> 
+   <!-->][<![CDATA[Some text with <a>link</a>![CDATA[]]></chapter>](#) -->] 
+<!--<section>sample sec!</section>][<!ENTITY % book SYSTEM 'book.doc'?>
+<!ELEMENT section (#PCDATA | section | link)*
+<!ELEMENT link (#PCDATA | link)>] 
+<!ATTLIST section name CDATA #IMPLIED><![CDATA[<link>link </link>]]</chapter>[<!ENTITY book SYSTEM 'book.cnt'> ]]> 
+<!ELEMENT title (#PCDATA)><![CDATA[<link>Some title</link>]]></book> 
+<!ELEMENT chapter (#PCDATA | chapter)*>
+<!ELEMENT section (#PCDATA | section |link)*>][<!ELEMENT link (#PCDATA | link)>][<!ATTLIST section name CDATA #IMPLIED>][<!ELEMENT link (#PCDATA)>][<![CDATA[   <!-->][<![CDATA[<link>Another link</link>]]><![CDATA[<link> Link</link>]]><!-->]][<![CDATA[Another link!]]><link> ]]> 
+<!ELEMENT link (#PCDATA|link)*>][<!ATTLIST chapter name CDATA #IMPLIED>][<!CDATA[Element! ]]><link>

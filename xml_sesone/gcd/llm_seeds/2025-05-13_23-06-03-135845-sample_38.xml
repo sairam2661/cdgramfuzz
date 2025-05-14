@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "m"
+  [
+    <!ELEMENT m (#PCDATA)>
+    <!ATTLIST m id CDATA #REQUIRED>
+    <!ENTITY desc "A" >
+    <!ENTITY % macros SYSTEM "m">
+  <!NOTATION XML-notation SYSTEM "m">
+  %macros;
+  <!--
+  This comment was added during the parse time.
+  -->
+  <!ENTITY xml-version "1">
+  <!ELEMENT doc (message)*>
+  <!ELEMENT message (#PCDATA)>
+]>
+<document id="D">
+  <![CDATA[
+  This is a CDATA section
+  ]]>
+  <document id="D" name="x" type="y" attr="z">
+    &desc;
+    <message id="f" type="g">This is a message</message>
+  </document>
+</document>

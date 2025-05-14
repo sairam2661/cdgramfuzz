@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c"[
+  <!ELEMENT name (#PCDATA) >
+  <!ATTLIST root
+    id ID #REQUIRED
+    lang (en|fr|de) "c"
+  >
+  <!ENTITY percent-escaped "&amp;">
+  <!ENTITY % year "y">
+  <!NOTATION ISO PUBLIC
+    "D" "d" 
+  >
+  %year;
+  
+  <!---->
+]> 
+<root xml:lang="c" id="a" xmlns:newattrib="x">
+    <name>test</name>
+    <message>A&amp;B</message>
+    <entity>A&lt;B</entity>
+</root>

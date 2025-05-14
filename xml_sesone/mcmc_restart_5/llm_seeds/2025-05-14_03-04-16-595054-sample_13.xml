@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m" [
+  <!ELEMENT catalog (product,product)><!ATTLIST catalog src CDATA #IMPLIED>
+  <!ENTITY product1 "P">
+  <!ENTITY % product2 "<"><!NOTATION book SYSTEM "f"> 
+  %product2;<!-- P --><!ELEMENT product (#PCDATA|price|author)><!ATTLIST product id ID #REQUIRED>
+]>
+<catalog src="m" version="1"><price>$5</price><product id="a"><author>John</author></product></catalog>

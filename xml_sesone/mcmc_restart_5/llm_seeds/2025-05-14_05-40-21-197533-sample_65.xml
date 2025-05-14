@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE employees [
+  <!ELEMENT employees (emp+)>
+  <!ATTLIST employees 
+    id CDATA #IMPLIED
+  >
+  <!ENTITY emp1 "P">
+  <!ENTITY % emp2 "J">
+  <!NOTATION XMLdecl SYSTEM "d">
+  %emp2;<!---->
+]>
+<employees id="1">
+  <emp entity-public-id="x" entity-system-id="y">Entity Ref</emp>
+  <emp entity-public-id="x" entity-system-id="y">&emp1;</emp>
+  <emp entity-public-id="x" entity-system-id="y">Entity Param Ref <!----></emp>
+</employees>

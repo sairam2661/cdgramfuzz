@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalogue SYSTEM "w"
+
+
+
+
+  [
+  <!ELEMENT catalogue (book, book)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY book1 "P" >
+  <!ENTITY  %book2 "P">
+  <!NOTATION SGML-system SYSTEM "s">
+  %SGML-system;
+  <!-- Internal DTD subset begins here -->
+  <!ENTITY book "B">
+]
+>
+<catalogue>
+ <book id="b"> &book; </book>
+ <book>
+   <author>Smith</author>
+   <title> &book1; </title>
+ </book>
+</catalogue>

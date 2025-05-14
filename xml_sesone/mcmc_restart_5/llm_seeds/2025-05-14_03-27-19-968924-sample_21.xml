@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note type (INFO|WARNING|ERROR) #REQUIRED>
+  <!ENTITY author "S" >
+  <!ENTITY % genEntities "<" >
+  <!NOTATION bookSystem SYSTEM "J">
+ 	%genEntities;
+ 	<!-- The XML declaration, a processing instruction, 
+  		a DTD and some entities all on a single line -->
+ 	<!ELEMENT message (#PCDATA)>
+]>
+<notes>
+  <note type="W">Wanted: S</note>
+  <note type="I">Important for S</note>
+  <note type="W">Warning: D</note>
+  &author; : &note;
+</notes>

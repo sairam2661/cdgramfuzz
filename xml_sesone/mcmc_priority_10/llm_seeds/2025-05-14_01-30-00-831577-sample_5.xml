@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #IMPLIED vendor CDATA #IMPLIED>
+  <!ENTITY author "J">
+  <!ENTITY % entity "1">
+  <!NOTATION SVG SYSTEM "X">
+  %entity;
+  <!--+ 
+  -->
+]>
+<catalog id="C" vendor="E" XML:lang="U">
+  <product>
+    <name entityref="&author;" notation="X">Product</name>
+    <price>12.5</price>
+  </product>
+  <product>
+    <name>TV</name>
+    <price>1200</price>
+  </product>
+</catalog>

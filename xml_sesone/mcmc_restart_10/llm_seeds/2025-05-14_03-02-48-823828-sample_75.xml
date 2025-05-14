@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (meta, header, content)>
+  <!ATTLIST doc
+    id CDATA #IMPLIED
+    xmlns CDATA #IMPLIED>
+  <!ENTITY desc "A"
+ ><!ENTITY % ent "%">
+  <!NOTATION NData  SYSTEM "N">
+  %ent;
+  <!--
+  -->
+]>
+<doc xmlns='http://example.org/namespace' id='doc1'>
+  <meta attr='value'>
+    <author>&desc;</author>
+  </meta>
+  <header>
+    <title>Example Title</title>
+  </header>
+  <content><p>NData</p></content>
+</doc>

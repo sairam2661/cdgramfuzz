@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog
+    lang CDATA #IMPLIED
+    version CDATA #REQUIRED>
+  <!ENTITY percent "%">
+  <!ENTITY

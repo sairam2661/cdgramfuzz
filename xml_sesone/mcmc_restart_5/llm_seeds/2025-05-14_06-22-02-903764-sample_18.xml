@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,message)>
+  <!ATTLIST note
+    id  CDATA  #REQUIRED
+    ver CDATA  "1">
+  <!ENTITY msg "I"
+  ><!ENTITY % ext "<"
+  ><!NOTATION ISO-8859-1 SYSTEM "C">
+  %ext;<!--External Reference -->
+]>
+<note id="N" ver="2">
+  <to>John</to>
+  <from>Jane</from>
+  <message>&msg; love you</message>
+</note>

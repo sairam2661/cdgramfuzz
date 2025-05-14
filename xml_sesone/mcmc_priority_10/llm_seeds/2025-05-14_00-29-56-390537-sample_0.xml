@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY title "F"> <!ENTITY % author "A"> <!NOTATION svg SYSTEM "x">
+  %include-system;<!----><!ENTITY xml SYSTEM "x" NDATA svg>
+]>
+<book lang="J"><title>&title;</title>
+<author>&author;</author>
+<chapter><section><![CDATA[<&xml;-- <xml &gt;]]></section>
+</chapter></book>

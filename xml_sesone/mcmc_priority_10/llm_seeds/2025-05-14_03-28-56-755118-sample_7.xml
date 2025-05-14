@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY % fpi SYSTEM "f" NDATA text>
+  <!NOTATION text SYSTEM "a">
+  %fpi; 
+  <!--
+    This is a multi&#x2011;line comment
+   -->
+]>
+<notes xmlns:xi="w">
+  <xi:include href="b"/>
+  <note id="a">This is a &nbsp; sample text</note>
+</notes>

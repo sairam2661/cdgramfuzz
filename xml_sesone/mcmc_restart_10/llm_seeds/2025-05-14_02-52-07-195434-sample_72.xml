@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding="UTF-16"?>
+<!DOCTYPE book SYSTEM 'book.dtd' [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST chapter id CDATA #IMPLIED>
+  <!ENTITY author "J"
+        >
+  <!ENTITY % ent SYSTEM 'entset.xml'>
+  <!NOTATION xsl PUBLIC '-//XSLTPRO//DTD Stylesheet Transformation v1'
+            '-//XSL Working Group//DTD Stylesheet v4.1 Transitional Saxon'
+            >
+  %ent;
+  <!---->
+]>
+<book xmlns:xsl="x" xml:space="p" ex="t" xml:lang="e">
+  <title>My Book</title>
+  <chapter id="1"><title>First Chapter</title></chapter>
+  <chapter id="2"><title>Second Chapter</title></chapter>
+  &author;
+  <section><xsl:apply-templates select="."/></section>
+  <note>&note;</note>
+</book>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Default language: en -->
+<!DOCTYPE note [
+  <!ELEMENT note (title, to, message) >
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY title "G"> 
+  <!ENTITY % note-content "A"> 
+  <!NOTATION HTML SYSTEM " ">
+  %note-content;
+  <!-- entities, and other declarations -->
+]>
+<note xmlns="h" xmlns:xlink="w" id='abc123'>
+  <title entity-rename='true'>Hello, </title>
+  <to entity-rename='false'>%title;</to>
+  <message>Wish:  <xsl:value-of select='note'/>!</message>
+</note>

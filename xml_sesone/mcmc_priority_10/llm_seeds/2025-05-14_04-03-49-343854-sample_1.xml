@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC
+  "E" "I"
+  [
+    <!ELEMENT catalog (author+, book+)>
+    <!ATTLIST catalog
+      id (A|B) #REQUIRED
+      xml:lang CDATA #IMPLIED>
+    <!ENTITY book1 "M">
+    <!ENTITY % authorList "("
+      ><!NOTATION book1 SYSTEM "E"> 
+    %authorList;
+  <!-- NOTATION declaration -->
+  <!NOTATION svg PUBLIC "C" "D">
+  <!-- entity set -->
+  <!ENTITY % entitySet "
+">
+]>
+<catalog id='A' xml:lang='en'>
+  <author><name>John</name><age>30</age></author>
+  <author><name>Jane</name><age>25</age></author>
+  <book id="1"><title>A Title</title><authorref>&authorList;</authorref></book>
+  <book id="2"><title>A Book</title><authorref>Book  &note;</authorref></book>
+</catalog>

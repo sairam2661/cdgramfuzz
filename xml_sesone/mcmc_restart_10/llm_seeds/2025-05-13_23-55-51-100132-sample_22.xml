@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "S"[
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root xml:lang CDATA #REQUIRED>
+  <!ENTITY year "&year;">
+  <!ENTITY % ent SYSTEM "e">
+  <!NOTATION XML-entity PUBLIC "S" "P">
+  %ent;
+  <!--
+  External general entities and parsed entities can be used here.
+  -->
+
+]>
+<root xml:lang="F" xmlns="U" xmlns:xsi="V">
+  <!-- Sample comment -->
+  Sample text at #PCDATA root level
+  <item>Item value</item>
+</root>

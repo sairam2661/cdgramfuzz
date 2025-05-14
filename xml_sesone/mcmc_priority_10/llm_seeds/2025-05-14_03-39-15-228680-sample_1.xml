@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"
+  [
+    <!ELEMENT catalog (book+)>
+    <!ATTLIST catalog
+      id (A|B) #REQUIRED
+    >
+    <!ENTITY book1 SYSTEM "b">
+    <!ENTITY % book2 "<" >   <!NOTATION biblio SYSTEM "c">
+    %book2;
+  <!--<! ENTITY biblio SYSTEM "c">-->
+  <!--&biblio;-->
+  ]
+>
+<catalog id="A">
+  <book>&book1;</book>
+  <!--&biblio;-->
+</catalog>

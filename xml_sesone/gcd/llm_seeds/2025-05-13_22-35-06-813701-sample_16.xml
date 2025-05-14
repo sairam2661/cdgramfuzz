@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, chapter*, section+, appendix*)>
+  <!ATTLIST chapter (authorCDATA) #REQUIRED>
+  <!ENTITY chapter.1 "I">
+  <!ENTITY % include "I">
+  <!NOTATION HTML PUBLIC "-" "I">
+  %include;
+  <!--
+    This CDATA section can contain special characters
+    without being parsed.
+  -->
+]> 
+<book>
+  <title>Example Book</title>
+  <chapter xml:lang='en' xml:space='preserve' author="J"></chapter>
+  <section>
+    <part>Part 1</part>
+  </section>
+  <appendix>
+    <heading>Appendix</heading>
+  </appendix>
+  &chapter.1;
+</book>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding="ISO-8859-15"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, section+)>
+  <!ATTLIST book publisher CDATA #REQUIRED>
+  <!ENTITY bookTitle "A" > 
+  <!ENTITY  % note "#">
+  <!NOTATION PDF PUBLIC '-//Acrobat//PDF 1.3//EN' 'http://www.adobe.com/pdf/pdfs/PDF1.3.pdf'>
+  %note;
+  <!---->
+]>
+<book publisher="O" xmlns:m="m">
+  <title>&bookTitle;</title>
+  <xmlns:xsi="w"
+  xi:noNamespaceSchemaLocation="x"
+  xsi:schemaLocation="x">
+    <m:chapter>ch</m:chapter>
+  </xmlns:xsi>
+  <section>Sec!</section>
+</book>

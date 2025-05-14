@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE address SYSTEM "H" [
+  <!ELEMENT author (#PCDATA)>
+  <!ATTLIST document
+    id  CDATA #REQUIRED
+  >
+  <!ENTITY address "R"><!ENTITY% phone SYSTEM "I">
+  <!NOTATION pdf PUBLIC "+"
+
+  "M">
+
+  %phone;
+  <!--
+  	XML Comment.
+  	Other
+  	Comments!
+  -->
+
+]>
+<document xmlns="h" xmlns:a="i" xmlns:xsi="w" id="1">
+  <a:address>
+    <country>US</country>
+  </a:address>
+  <author>&address;<address/></author>
+</document>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book[
+  <!ELEMENT book (title, author+, chapter)> 
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY booktitle "A">
+  <!ENTITY % entity "Z"> 
+  <!NOTATION notation1 SYSTEM "a">
+  %entity; <!-- element reference -->
+]>
+<book lang="x">
+  <title>&booktitle;-length book</title>
+  <author><name>Author1</name><born year="3" month="1" day="1"/></author>
+  <chapter><title>&note;</title><para>This is some more text</para></chapter>
+  <chapter><title>Chapter with notation</title><para>The text is written in <notation notation1="b"/> the notations.</para></chapter>
+</book>

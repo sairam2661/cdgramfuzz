@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m" [
+  <!ELEMENT catalog (item, category)*>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY catalog-name "&#x4D6174;">
+  <!ENTITY % i "a" >
+  <!NOTATION SGML-PUBLIC SYSTEM "m"
+    > 
+  %i;
+  <!-- this would not be allowed in SGML -->
+]>
+<catalog id="c">
+  <item name="i">
+    <description>A product</description>
+  </item>
+  <category name="c">
+    <description>A category</description>
+  </category>
+</catalog>

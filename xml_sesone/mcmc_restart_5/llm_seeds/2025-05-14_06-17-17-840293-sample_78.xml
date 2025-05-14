@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST book author CDATA #REQUIRED>
+  <!ENTITY booksystem "A">
+  <!ENTITY % xmlns " ">
+  <!NOTATION book-notation SYSTEM " ">
+  %xmlns;
+  <!--comment--> ]>
+<books xmlns:xi="&xmlns;" xmlns="&xmlns;">
+  <book author="D">
+    <title>XML</title>
+    <xi:include href="p"></xi:include>
+  </book>
+  <xi:include href="c"></xi:include>
+  <book author="A">
+    <title>&booksystem;</title>
+  </book>
+  <notation notation-type="&book-notation;"></notation>
+</books>

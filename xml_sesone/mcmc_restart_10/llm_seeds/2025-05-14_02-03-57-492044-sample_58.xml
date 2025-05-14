@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "K" [
+  <!ELEMENT document (title,message+)>
+  <!ATTLIST document lang CDATA #IMPLIED>
+  <!ENTITY n "n" >
+  <!ENTITY % d "d" >
+  <!NOTATION ISO-8859-1 SYSTEM "K">
+  %d;
+  <!--
+    Some
+  -->
+]>
+<document xmlns:xml="a" lang="k" xml:space="p">
+  <message>first</message>
+  <message>&n;</message>
+  <message>third</message>
+  <title><![CDATA[Fourth message here]]></title>
+</document>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE result [
+  <!ELEMENT result (header, body) >
+  <!ATTLIST result xml:lang CDATA #REQUIRED>
+  <!ENTITY chapter "1">
+  <!ENTITY % general "x">
+  <!NOTATION ISO-8859-1 SYSTEM " "
+    >
+  %general;
+  <!--
+  --> 
+]>
+<result xmlns="x">
+  <header><language>&xml:lang;</language></header>
+  <body><section refid="s" sortkey="#"><para>Paragraph text <mark>with <sub>italic sub</sub></mark> content.</para></section></body>
+</result>

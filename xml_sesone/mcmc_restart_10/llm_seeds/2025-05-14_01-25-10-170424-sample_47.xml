@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog
+   PUBLIC "C"
+   "C"
+   [
+    <!ELEMENT catalog (book|author)?>
+    <!ATTLIST catalog author CDATA #IMPLIED>
+    <!ENTITY ds "D">
+    <!ENTITY % e "E">
+   <!NOTATION iso PUBLIC "-" "-">
+   %e;
+  <!--
+    This will not be a comment
+    -->
+   ]>
+<catalog author="J"> 
+  <book><title>The Aeneid</title><xi:include href='b.xml'/></book>
+  <author>Virgil</author>
+</catalog>

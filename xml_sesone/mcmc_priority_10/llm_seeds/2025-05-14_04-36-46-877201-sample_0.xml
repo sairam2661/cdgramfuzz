@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+<!ELEMENT notes (note+)>
+<!ATTLIST note 
+   num CDATA #REQUIRED
+   seq CDATA #REQUIRED
+>
+<!ENTITY xref "X">
+<!ENTITY % ent PUBLIC "x" "x">
+<!NOTATION xref SYSTEM "x">
+   %ent;
+<!---->
+]>
+<notes>
+  <note num="1" seq="a" >
+    <!-- This is a note. -->
+    <message>&xref;</message>
+    <person name="J"/>
+  </note>
+  <note num="2" seq="b">
+    <person name="K"/><person name="X"/>
+  </note>
+</notes>

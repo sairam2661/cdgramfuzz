@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books SYSTEM "b" [
+  <!ELEMENT book (title,author,chapter+,price)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY book-system "B">
+  <!ENTITY  %xlfn 'Greek letter lambda: λ

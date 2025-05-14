@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY title "A">
+
+  <!ENTITY % data-system PUBLIC
+          "X" "X"
+          >
+  <!NOTATION PDF SYSTEM "X">
+  %data-system;
+  <!--[ This is a sample comment ]-->
+
+]>
+<notes
+       xmlns:xs="x">
+  <note id='nid1'>
+    <title>&title; of the note</title>
+    <content>&apos;
+                 <quote>This is a
+                           <emphasis>Sample</emphasis>
+                           Note &apos;
+                 </quote>;
+                 </content>
+    <!--[ Another sample comment ]-->{pdf}
+    <media type='PDF' href='note1.pdf' notation='PDF'/>
+  </note>
+</notes>

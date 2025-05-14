@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, subtitle, chapter+)>
+  <!ATTLIST book
+    author CDATA #REQUIRED
+    date CDATA #IMPLIED
+  >
+  <!ENTITY chapter-start "<" >
+  <!ENTITY % chapter-end-before "?">
+  <!NOTATION GIF PUBLIC "G" "I" > 
+  %chapter-end-before;  <!---->
+]>
+<book
+  author="A" 
+  date="D"
+  xml:lang="U" 
+  xmlns="H"
+  xmlns:xsi="s"
+  xsi:schemaLocation="c">
+  <title>Page T</title>
+  <subtitle>N: Some S</subtitle>
+  <chapter>
+    <title>C</title>
+    <para>Section 1: The XML features demonstrated here include: CDATA sections, entities, and NOTATIONS.
+     <figure><globe symbol="&#x2B06;"></globe></figure>
+    </para>
+  </chapter>
+</book>

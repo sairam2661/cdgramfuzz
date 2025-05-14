@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,contents)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter3 "A">
+
+
+<!ENTITY % param1 "<">
+<!NOTATION book-notation PUBLIC "A" "B">
+
+  %param1;
+
+<!--
+-->
+
+]>
+<book id = "x">
+  <title>Book Title</title>
+  <author>
+    <name>An Author</name>
+    <address>
+      <street>123 St.</street>
+      <city>City</city>
+      <country>Country</country>
+    </address>
+  </author>
+  <contents>&chapter3;</contents>
+</book>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  PUBLIC "+"
+  "A" 
+  [
+  <!ELEMENT root (elem1*,elem2?)>
+  <!ATTLIST root
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY ent SYSTEM "a">
+  <!ENTITY % att "Y">
+  <!NOTATION w3c SYSTEM "A">
+  %att;
+  <!-- XML Declaration for another element -->
+  <?import.System-Id xyz scheme internal system nohref noignore dtd external xi dss schema document http www w3 org 1999 xml schema datatypes xhtml11 strict doctype http www w3 org 1999 xhtml xhtml11 dtd strict xhtml11 doctypehtml public strict xi html a h t t p index php w3 s html index htm index xhtml http css http css js php php a php b php c php js css js html w3 css http dhtml css style ccc bbb aaa ccc bbb aaa xsl dhtml index html ccc dhtml bbb a js style s html style css style css css w3 a b c c a c b dhtml a w3c dhtml s w3 xhtml s a b c xhtml http schema http a b w3 b c a html a a b xhtml style c n php a html b c b a html a php b b a php b a html html a a xhtml b a html xhtml html html a a html xhtml a a html a php xhtml a a b a xhtml a a html html a a html a html a html a html a xhtml a a a a a html html html a xhtml a b a xhtml a a a a a a a b html b html a html php a js html o r g xmlns xi xmlns h t t p xmlns html schema d c dxml s xml c x 1 dxml c  a  e schema e f g schema g b b html b d d dhtml d dhtml b b d a a b d a a a xhtml a b c d dhtml style s html a x html b a b b a html o e html dhtml b a b html b a xhtml xhtml b a html a xhtml a a html a html a a html a html a a a html a a html a xhtml a html a a html a

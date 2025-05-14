@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id  CDATA  #REQUIRED>
+  <!ENTITY chapter SYSTEM "c">
+  <!ENTITY % p "A">
+  <!NOTATION SGML PUBLIC " " " ">
+  %p; <!-- p is in scope -->
+]>
+<book id="x">
+  <title>
+    <italic>&lt;element&gt; can be embedded</italic>
+  </title>
+  <author>
+    <!-- This is a short author description. It contains some special characters -->
+    &lt;&gt;&amp; and some line breaks
+  </author>
+  <chapter xmlns:xi="x" xmlns:h="h">
+    <title>Chapter 1: Introduction</title>
+    <chapter xmlns:h="i">
+      <title>Chapter 2: Methods</title>
+    </chapter>
+  </chapter>
+  <chapter>
+    <title>Chapter 3: Results</title>
+    &chapter; <!-- use entity reference -->
+  </chapter>
+</book>

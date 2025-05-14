@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding="ISO-8859-1"?><!DOCTYPE p:poem [
+  <!ELEMENT p:poem (#PCDATA | title | poet | stanza | xref:ref |
+                  xinclude:xi | pi:comment | comment | para | link:html )>
+  <!ATTLIST p:poem id ID #REQUIRED>
+  <!ENTITY p "R">
+  <!ENTITY % para-param "x">
+  <!NOTATION nfo SYSTEM "n">
+  %para-param;
+  <!-- other entities and notations -->
+]>
+<p:poem id="1" xmlns:p="d" xmlns:poet="x" xmlns:ref="y"
+         xmlns:xi="z" xmlns:f="g">
+  <title><p:A></p:A></title>
+  <poet:link xlink:href='#2'>Link</poet:link>
+  <stanza>
+    First line.
+    <xref:ref target='#3'/>
+    Second line.
+  </stanza>
+  <pi:comment xml:space='preserve'>Comment</pi:comment>
+  <para><link:html href='#6'>More Info</link:html></para>
+</p:poem>

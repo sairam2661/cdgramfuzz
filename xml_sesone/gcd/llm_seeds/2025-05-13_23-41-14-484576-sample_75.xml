@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST product id ID #REQUIRED>
+  <!ENTITY address "B">
+  <!ENTITY % content "<" ><!NOTATION JPEG SYSTEM 'image/jpeg'>%content;<!-- image --><!ENTITY % content2 'test'><!ELEMENT declaration EMPTY>
+<!ELEMENT image ANY>
+<!ELEMENT product (name,description,price,image*)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT catalog (#PCDATA)>
+<!ELEMENT declaration EMPTY>
+]>
+<catalog xmlns:xsi="x" xmlns:xs="y">
+  <product id="p">
+    <name>A Product</name>
+    <description>&address;</description>
+    <price>20.00</price>
+    <image src="a" type="&JPEG;"/>
+    <image src="b" type="&JPEG;" location="&address;"/>
+  </product>
+</catalog>

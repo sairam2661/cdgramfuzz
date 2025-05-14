@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST item name CDATA #REQUIRED>
+  <!ENTITY currency "$">
+  <!ENTITY % html "
+"> <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'>
+  %html;
+  <!----> <!ENTITY zeta "&#952;">
+]>
+<catalog xmlns:xsi="x" xmlns:y="y" xsi:noNamespaceSchemaLocation="a">
+  <item name="A"><![CDATA[<para>It is <b>a</b> test.</para>]]></item>
+  <item name="B">This item costs <price>&currency;10.00</price>.</item>
+</catalog>

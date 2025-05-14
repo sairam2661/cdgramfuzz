@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    title CDATA #REQUIRED
+  >
+  <!ENTITY pi-system "B">
+  <!ENTITY % comment "%">
+  <!NOTATION book-data PUBLIC "+"
+           "A">
+  %comment;
+  <!-- Sample comment -->
+]>
+<notes>
+  <notation ref='book-data'/>
+  <note id='N1' title='Important Note'><pi-system/>&pi-system;</note>
+  <note id='N2' title='Another Note'><pi-system/></note>
+</notes>

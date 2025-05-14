@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE root SYSTEM "d"
+  [
+    <!ELEMENT root (#PCDATA | sub| comment | pi | cdata | entityref | ref | charref | entity | amp | lt | gt | apos | quot | num | extender | s)>
+
+          <!ATTLIST root attr1 CDATA #IMPLIED attr2 NMTOKENS #IMPLIED>
+   <!ENTITY entity1 "y" >    <!ENTITY % entity3 "a" > <!NOTATION notation1 SYSTEM "f" >        
+
+  %comment;    <!-- comment for external parser -->
+]>
+<root xmlns:xs="X"
+       xs:schemaLocation="X">
+  <!-- &entity1;, &#62;,&#x61;
+       <sub>&entity1; &#62;</sub>
+  <sub>&#62; &#x61;</sub>
+  -->
+  <sub>Hello, World!</sub>
+</root>

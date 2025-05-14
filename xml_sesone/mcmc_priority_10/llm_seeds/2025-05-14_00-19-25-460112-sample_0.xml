@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC "Y" "X" [
+  <!ELEMENT catalog (category+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % entity-set "<" >
+  <!NOTATION iso-8859-1 PUBLIC "+"
+    "I" >
+  %entity-set;
+  <!-- Sample note -->
+]>
+<catalog id="x" xmlns:xsi="1"
+  xmlns:xs="1"
+  xsi:schemaLocation="x">
+  <category>
+  	<!-- Comment with entity reference -->
+  	<name>a &entity;</name>
+  	<desc><![CDATA[a <description>]]></desc>
+  </category>
+</catalog>

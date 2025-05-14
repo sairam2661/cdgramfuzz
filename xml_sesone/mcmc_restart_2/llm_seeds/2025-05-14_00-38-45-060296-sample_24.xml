@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (header,section+,appendix?)>
+  <!ATTLIST document
+    id CDATA #REQUIRED
+    lang (en|fr|de) 'en'
+  >
+  <!ENTITY cat "F">
+  <!ENTITY % ent "1">
+  <!NOTATION XMLua SYSTEM "n">
+  %ent;
+  <!--
+   Sample comment
+   <!-->
+]>
+<document xmlns:link="x" id="d" lang="f">
+  <header>
+    <link:title>Sample title</link:title>
+    <link:sub>Sample subtitle</link:sub>
+  </header>
+  <section id="1"><![CDATA[<raw>text]]></section>
+  <message>&cat;&cat;</message>
+  <appendix><sub>Sample sub</sub></appendix>
+</document>

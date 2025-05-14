@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "C"
+
+
+
+
+
+
+
+ 
+[
+<!ELEMENT notes (note+)>
+<!ATTLIST note id CDATA #REQUIRED>
+<!ENTITY book "A" >
+<!ENTITY % bookit "A">
+<!NOTATION ISO-8859-1 SYSTEM "C">
+ 
+  %bookit;
+<!--%ISO--><!ELEMENT note (#PCDATA)>
+<!ELEMENT ref (#PCDATA)>
+<!ELEMENT title (#PCDATA) >]>
+<notes version="1">
+  <note id="1"> 
+    <title>The Good, the Bad, and the Ugly</title>
+    <ref>http://site.com</ref>
+  </note>
+  <note id="2"> 
+    <title>The Green Mile</title>
+    <ref>http://site.com</ref>
+  </note>
+  <note id="3"> 
+    <title>&book;</title>
+    <ref>http://site.com</ref>
+  </note>
+</notes>

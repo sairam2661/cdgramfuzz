@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note 
+    id  ID  #REQUIRED
+    type CDATA  #IMPLIED>
+  <!ENTITY head1 "N">
+  <!ENTITY % entm "M">
+  <!NOTATION A  SYSTEM "a">
+  %entm;
+  <!-- entity included above -->
+]>
+<note id="N" xmlns="x">
+  <to>John</to>
+  <from>Jane</from>
+  <heading>Important <head1>Meeting</head1></heading>
+  <body>&A; some <a:A>formatted text</a:A> in note body and also CDATA section<![CDATA[<i>inside CDATA</i>]]>
+  </body>
+</note>

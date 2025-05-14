@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE articles SYSTEM "P" [
+  <!ELEMENT articles (title, section+)>
+  <!ATTLIST articles title CDATA #REQUIRED>
+  <!ENTITY title "T">
+  <!ENTITY % entities SYSTEM "D" >
+  <!NOTATION PDF SYSTEM "P">
+  %entities;
+  <!---->
+]>
+<articles title="T" xmlns="a" xmlns:s="b">
+  <title>&title;</title>
+  &PDF;
+  <!-- sample comment -->
+  <s:section><s:text1>Some&amp;raw text</s:text1></s:section>
+  <message>Some <raw> text</message>
+</articles> 
+<!-- 4-->. 
+<chapter xmlns:a="c"/>
+<!--> 
+<note></note> 
+<!ELEMENT c (note)> 
+<!ENTITY e "e">
+<!ENTITY d "d">
+<!ENTITY f "f">
+<!ENTITY g "g"> 
+
+<!DOCTYPE article 
+[
+  <!ELEMENT article (title,sec+)>
+  <!ATTLIST article id CDATA #REQUIRED>
+]>
+<article xmlns="d">
+  <title e="e" f="f"></title>
+  <sec>
+    &d;
+    <note>&g;</note>
+  </sec>
+</article> 
+
+<!DOCTYPE root [
+<!ELEMENT root (section*, message+)>
+]>
+<root>
+  <section>1</section>
+  <message>Hi from the messages!</message>
+  <!-->
+  <message>Hi2</message>
+  <section>2</section>
+</root>

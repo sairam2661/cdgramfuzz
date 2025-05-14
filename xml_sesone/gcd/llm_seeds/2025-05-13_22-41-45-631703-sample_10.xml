@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (entry+)>
+  <!ATTLIST catalog
+    name CDATA #IMPLIED
+    id  ID #REQUIRED
+  >
+  <!ENTITY desc "A" > <!ENTITY  % xmlns "p" >  <!NOTATION PDF SYSTEM "m">
+  %xmlns;
+  <!--used notations or entities
+]>
+<catalog id="cat1" name="My Catalog" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <entry>
+    <title>Penicillin</title>
+    <desc&desc;></desc>
+    <price>$10</price>
+    <notation>
+     <resource notationName="PDF" publicID="adobe:///Acrobat.PDF" systemID="http://www.adobe.com/ Acrobat.PDF"/>
+    </notation>
+  </entry>
+  <entry>
+    <title>Insecticide</title>
+    <desc&desc;></desc>
+    <price>$5</price>
+  </entry>
+</catalog> 
+
+(Note: This is a complex document including various markup declarations)  and different markup declarations. The document type declaration uses both notations and entity references.) 
+<!ELEMENT -->
+<!ATTLIST 
+ entities(inside  ) 
+  " " 
+    attribute  NOTATION 
+ 
+        (NOTATION 
+ 
+       ) 
+  "["
+  
+ NOTATION 
+ 
+  NMTOKEN   #IMPLIED 
+    NOTATION  NOTATION  ( NOTATION  ) #IMPLIED
+ 
+ 
+  publicID  CDATA 
+    #IMPLIED 
+   systemID  CDATA 
+#IMPLIED 
+ NOTATION   NOTATION  ( NOTATION  ) #IMPLIED>
+<!ENTITY %  NOTATION  SYSTEM "m"  NDATA m>
+<!NOTATION  SYSTEM  PUBLIC  'm>
+<!ENTITY % xmlns "p">  
+<!NOTATION PDF SYSTEM "m"
+ ]> 
+<! ENTITY % > 
+      %xmlns; 
+%xmlns; 
+<!NOTATION   PUBLIC  NDATA m > % ndata n > ; 
+<!ATTLIST > ]> % 1   % ndata n > ;  ]> % 1 ]> 
+] >  %xmlns; % 1 ;] ) ] > ] > ] [ <  ] > % ndata n > > ] > ] [ ] > ] > ] > % 1 ] ] > ]

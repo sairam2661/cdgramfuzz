@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY author "D" >
+  <!ENTITY % booktype "a">
+  <!NOTATION xpdf SYSTEM "x"> 
+  %booktype;
+  <!-- catalog element contains one product element or more -->
+]>
+<catalog id="x">
+  <product name='A'>
+    <price>22</price>
+    <author entity-ref='%author'/>
+    <description xml:lang='en' >
+       A book written mostly in the <xref href='#x'/> notation.
+    </description>
+  </product>
+  <product>
+    <bookid>AB1234</bookid>
+    <booktype entity-ref='%booktype'/>
+    <author entity-ref='%author;'/>
+  </product>
+  <product>
+    <booktype choice='#x'>b</booktype>
+    <author entity-ref='#x'/>
+
+  </product>
+</catalog>

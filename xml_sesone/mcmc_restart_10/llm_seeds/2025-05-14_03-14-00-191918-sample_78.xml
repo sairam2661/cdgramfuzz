@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (title, author*, book+)>
+  <!ATTLIST title id ID #REQUIRED>
+  <!ENTITY year "2">
+  <!ENTITY % quote "I">
+  <!NOTATION FOP PUBLIC "F" "F">
+  %quote;
+  <!-- -->
+]>
+<books>
+  <title id="t">The history of Rome</title>
+  <author>Julius Cesar</author>
+  <book>
+    <title entity-paragraph="#">The conquest of Gaul</title>
+    <note entity-notation="F"><![CDATA[This book is well written and easy to understand]]></note>
+    <chapter>
+      <head>Chapter &year;</head>
+      <!--  -->
+    </chapter>
+  </book>
+</books>

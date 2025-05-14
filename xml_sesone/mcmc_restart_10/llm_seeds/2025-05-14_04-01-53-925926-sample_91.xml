@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM 'basic.dtd' [
+  <!ELEMENT s (#PCDATA)>
+  <!ATTLIST s id ID #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY  % ent "1">
+  <!NOTATION ISO-8859-1 SYSTEM "D">
+  %ent;
+  <!--
+    This CDATA section contains an unescaped ampersand.
+  -->]>
+<root xmlns:fn="f">
+  <xsl:stylesheet href="f" xmlns:xsl="x" version="2"/>
+  <s id="a">Some <raw>text</raw> with &amp; entity</s>
+  <message><![CDATA[This text contains a 
+    <tag attr="val">nested tag</tag>.]]></message>
+</root>

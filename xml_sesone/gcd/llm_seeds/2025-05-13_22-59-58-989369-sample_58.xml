@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT system (name, address)>
+  <!ATTLIST system id ID #REQUIRED>
+  <!ENTITY emp "R">
+  <!ENTITY % para "%">
+  <!NOTATION ISO-8859-1 PUBLIC "-"
+   "W" >
+  %para;  <!-- Include or include markup may be used here -->
+]>
+<books>
+  <system id='sys1'>
+    <name>Company</name>
+    <address>New York</address>
+  </system>
+  <system id='sys2'>
+    <name>Cyber</name>
+    <address>Hollywood</address>
+  </system>
+  <message entity-name="&emp;">Some text</message>
+  <para> This is paragraph with 
+   <notation name='ISO-8859-1' publicId=' "a'
+    systemId='http://www.example.com/namespace.dtd'/> Not a Real Entity but a Notation.
+  </para>
+</books>

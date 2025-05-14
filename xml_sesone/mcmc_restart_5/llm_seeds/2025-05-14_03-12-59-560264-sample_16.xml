@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note lang CDATA #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY % entities "<" 	> 
+                        <!NOTATION ISO-8859-1 SYSTEM 'http://example.org/iso-8859-1.dtd'> 
+  %entities;		<!---->
+]>
+<note lang="s">This is a &amp; complex note.</note>

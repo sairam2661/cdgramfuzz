@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (movie+)>
+  <!ATTLIST catalog idCDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % comment "A">
+  <!NOTATION sgml SYSTEM "N">
+  %comment;
+  <!-- Sample comment -->
+]>
+<catalog id="C">
+  <movie title="J">
+    <director>&author;</director>
+    <year>1992</year>
+    <genre xml:lang="x">
+      <xi:include href="x" />
+      <!--&gt;-->Test
+    </genre>
+  </movie>
+</catalog>

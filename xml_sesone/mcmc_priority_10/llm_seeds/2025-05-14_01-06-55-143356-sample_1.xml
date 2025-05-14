@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book
+    lang (en|fr|de) "f">
+  <!ENTITY booktitle "A"
+    >
+  <!ENTITY  %chapter
+    "<" >  <!NOTATION chapter SYSTEM " " >  %chapter;  <!--
+    A short chapter %chapter
+    -->
+  %chapter
+  ;
+]>
+<book lang="f">
+  <title>&booktitle;</title>
+  <author>
+    <name>John</name>
+    <address>
+      <street>123 rue de l' école</street>
+      <city>Paris</city>
+    </address>
+  </author>
+  <chapter id="1">
+    <h1>Introduction</h1>
+    <p>This is the first chapter</p>
+  </chapter>
+  <chapter id="2">
+    <h1>Conclusion</h1>
+    <p>This is the second chapter</p>
+  </chapter>
+</book>

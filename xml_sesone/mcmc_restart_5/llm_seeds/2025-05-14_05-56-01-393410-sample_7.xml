@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<!DOCTYPE persons SYSTEM "g"
+
+ [
+  <!ELEMENT persons (description, people)*>
+  <!ATTLIST persons author (XML) #REQUIRED>
+  <!ENTITY desc "A">
+
+ <!ENTITY % param "1">
+  <!NOTATION paper SYSTEM "A">
+ %Xparam; 
+ <!---->
+ ]
+
+><persons author="H">
+  <description>
+    &desc;oing XML
+<para> A great markup language</para>
+  </description>
+  <people>
+    <person name="J" age="&param;">
+      <gender>
+        <sex>Male</sex>
+        <status>Single</status>
+      </gender>
+    </person>
+  </people>
+</persons>

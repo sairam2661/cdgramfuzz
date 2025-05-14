@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE note SYSTEM "v" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % entities "<" >
+  <!NOTATION xsl PUBLIC "x" "y">
+  %entities;
+  <!--
+    This is a short comment.
+  -->
+]>
+<note id="n" xmlns:po="p"
+      xsi:schemaLocation="z"
+      xsi:noNamespaceSchemaLocation="w"
+      xmlns:xsi="x"
+      xmlns:local="o"
+      local:attr="a"
+      po:prefix="p"
+      xsl:version="v">This is a note &author;!CDATA[a raw string],&entity;b], </note>

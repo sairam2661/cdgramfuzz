@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root lang CDATA "0">
+  <!ENTITY x1 "#">
+  <!ENTITY % x2 "2">
+  <!NOTATION NOTATION1 SYSTEM "T">
+  
+  %x2;
+  <!---->
+]>
+<root lang="1" n1="m" n2='4' n3='{"b": "a"}' x1="&x1;"> 
+  <!----> 
+  <child n="9">
+    <a>&x1;</a>
+    <b attrib5="C" n3="4"> 
+      <c>/</c> 
+      <d i="3" j1="8"> 
+       <e i2="8" i3="1">&x1;</e> 
+      </d> 
+    </b>
+  </child>
+</root>

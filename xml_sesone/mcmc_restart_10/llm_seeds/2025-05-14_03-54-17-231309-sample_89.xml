@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog type CDATA #IMPLIED>
+  <!ENTITY author "J">
+  <!ENTITY % p1 "A">
+  <!NOTATION html PUBLIC "-"
+    "w"
+  >
+  %p1;
+  <!--
+  Comment
+  -->
+]>
+<catalog type="e">
+  <product>
+    <name>
+      <title>Product 1</title>
+      <subtitle>&author;</subtitle>
+    </name>
+    <price>9.99</price>
+  </product>
+  <product>
+    <name>
+      <title>Product 2</title>
+      <subtitle></subtitle>
+    </name>
+    <price>4.99</price>
+  </product>
+</catalog>

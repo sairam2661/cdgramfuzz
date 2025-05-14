@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note type CDATA #REQUIRED>
+  <!ENTITY system "V" > 
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION NotationName SYSTEM "d">
+  %ent;
+  <!--% NotationName; -->
+]>
+<notes xmlns:xi="w"
+       xmlns="s">
+  <!--  -->
+  <note type="1">Note</note>
+  <note type="2" xsi:type="x"><![CDATA[<xsl:stylesheet version="1.0" type="some">]]></note>
+  <note type="3" xml:space="t" xmlns:xsl="z">&system;&system;</note>
+</notes>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE book [
+  <!ELEMENT book (author,contents+)>
+  <!ATTLIST author
+    id   CDATA  #REQUIRED
+    name CDATA  #REQUIRED
+  >
+  <!ENTITY content1 "A"
+  >
+  <!ENTITY % content2 "B">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.01//EN'
+    'http://www.w3.org/TR/html4/strict.dtd'
+  >
+  %content2;
+  <!--
+    XML declaration has been made in both styles, one has a
+    DTD inline and the other as an external reference
+  -->
+]><book>
+  <author id="1" name="J"></author>
+  <author id="2" name="K"></author>
+  <!--<!ELEMENT contents (#PCDATA)>--><contents>&content1;</contents>
+  <contents>1</contents>
+</book>

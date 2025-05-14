@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "d"
+       [
+         <!ELEMENT root (#PCDATA) >
+         <!ATTLIST root attr1 CDATA #REQUIRED>
+       <!ENTITY amp '&amp;'> 
+       <!ENTITY % ent SYSTEM "e">
+       <!NOTATION n-name SYSTEM "n"
+         >
+       %ent;
+       <!-- internal subset -->
+       ]>
+<root attr1="v" xmlns:sch="s" xmlns:xsi="w" xsi:noNamespaceSchemaLocation="x">
+  <!-- Sample comment -->
+  <xi:include href="y" xmlns:xi="z"/> <!-- XInclude -->
+  <element> text </element>
+  <element attr2="b"> 
+    <p>&amp; entity </p>  <!-- entity reference -->
+    <p> element text<!-- comment -->
+      <![CDATA[
+        <data> value </data>
+      ]]>
+    </p>
+  </element>
+  <notation n:name="n">  <!-- notation declaration -->
+    <note> some note </note>
+  </notation>
+</root>

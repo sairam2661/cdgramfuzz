@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+  [<!ELEMENT root (item*, elem-not-emptyCDATA, elem-req, elem-not-emptyPCDATA)>
+   <!ATTLIST root attr-not-emptyCDATA   CDATA #REQUIRED>
+   <!ENTITY myEntity "D">
+   <!ENTITY % ent "R">
+   <!NOTATION m PUBLIC "m" "m">
+  %ent; 
+  <!---->
+  ]>
+<root attr-not-emptyCDATA="A" xmlns="b"
+      xmlns:xi="c"
+      attr-emptyCDATA=" "
+      attr-emptyPCDATA=" ">
+  <item>
+    <subitem/> <!-- empty element -->
+  </item>
+  <elem-not-emptyCDATA><![CDATA[Some text & data]]></elem-not-emptyCDATA>
+  <elem-req required="1">Some text &amp; data</elem-req>
+  <elem-not-emptyPCDATA>Text and data</elem-not-emptyPCDATA>
+  <message entity-ref="&myEntity;"/></root>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root-system [
+  <!ELEMENT root-system (header, section*, message)>
+  <!ATTLIST root-system
+    xml:lang CDATA #REQUIRED
+    xsi:noNamespaceSchemaLocation CDATA #IMPLIED
+  >
+  <!ENTITY year "&#x0022;  "><!ENTITY % fnum "<">
+  <!NOTATION ISO-8859-1 PUBLIC " "  "/">
+  %fnum;
+  <!-- Entities for special characters -->
+  <!ENTITY ndash "&#8211;">
+  <!ENTITYmdash "&#8212;">
+]>
+<root-system xml:lang="F"
+   xmlns:xsi=" ">
+  <header>
+    <title>  XML Document Header  </title>
+    <date>&year; 1999</date>
+  </header>
+  <message>  This &ndash;  is an example &mdash; of XML markup!  
+   <!-- comment in code -->
+  </message>
+  <section>  <!--  this is a valid section element  -->
+     <paragraph>
+      This is some <sub>sub</sub> text within 
+      a <b>section</b>.
+    </paragraph>
+  </section>
+</root-system>

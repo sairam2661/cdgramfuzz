@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC
+  "S" "S"
+  [
+   <!ELEMENT p (#PCDATA)>
+   <!ATTLIST p id ID #REQUIRED>
+   <!ENTITY amp "&amp;">
+  <!ENTITY % entities SYSTEM "d">
+  <!NOTATION ISO-8859-1 PUBLIC "S"
+    "S">
+  %entities;
+  <!-- other declarations -->
+  ]
+>
+<catalog xmlns:glossary="g"
+  version="1"
+  date="&date;"
+  author="&author;"
+  glossary:prefix="a">
+  <!-- sample comment -->
+  <p id="e">Example</p>
+  <ref target="&amp;" linktext="a"/>
+  <bibdate year="&year;">&copyright;</bibdate>
+</catalog>

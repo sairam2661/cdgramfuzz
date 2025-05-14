@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (elem+)>
+  <!ATTLIST root a CDATA #IMPLIED>
+  <!ENTITY a "b">
+  <!ENTITY % b "c">
+  <!NOTATION m PUBLIC "M" "a">
+  %m;
+  <!--
+    d comment
+    e comment
+  -->]>
+<root a="d" xmlns:c="e" c:attr="f">
+  <elem>
+    <s d="g"
+       e="h">
+      i
+    </s>
+    <t f="g"
+       a="d" j="m"/>
+  </elem>
+</root>

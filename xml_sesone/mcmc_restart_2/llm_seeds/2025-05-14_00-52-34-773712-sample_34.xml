@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE itemSet [
+  <!ELEMENT itemSet (item*)>
+  <!ATTLIST itemSet
+    id CDATA #REQUIRED
+    type (numeric|alphanumeric) #REQUIRED
+  >
+  <!ENTITY pi "3">
+  <!ENTITY % p 'percent'>
+  <!NOTATION HTML PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'
+  'http://www.w3.org/TR/html4/loose.dtd'>
+  %HTML;
+  <!---->
+]>
+<xsd:schema xmlns:xsd="x" xmlns="y">
+  <itemSet id="1" type="n">
+    <item>Test 1</item>
+    <item>Test2</item>
+  </itemSet>
+  <message>%pi; %p;</message>
+</xsd:schema>

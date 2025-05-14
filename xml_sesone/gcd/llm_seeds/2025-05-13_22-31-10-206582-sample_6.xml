@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter-one "A"
+    >
+  <!ENTITY % chapter-replace "1">
+  <!NOTATION ISO-8859-1 SYSTEM "N">
+  %ISO-8859-1;
+  <!--
+   Entity replacing the value of chapter with value 'C'
+  -->
+  %chapter-replace;
+]>
+<book lang="e">
+  <xsl:stylesheet xmlns:xsl="w"
+    >  
+  </xsl:stylesheet>
+  <title>Title</title>
+  <author>Author</author>
+  <xi:include xmlns:xi="w"
+    href="b"
+    />
+  <chapter>
+    &chapter-one;
+  </chapter>
+  <n Name="a">*</n>
+</book>

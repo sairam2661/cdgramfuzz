@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root attr1 CDATA #REQUIRED>
+  <!ENTITY entity "A"
+    >
+<!ENTITY % param-entity "B">
+<!NOTATION nnotation-for-graphics SYSTEM "C">
+  %param-entity;
+  <!-- InternalSubset comment -->
+]>
+<root attr1="1">Default text from root element</root>

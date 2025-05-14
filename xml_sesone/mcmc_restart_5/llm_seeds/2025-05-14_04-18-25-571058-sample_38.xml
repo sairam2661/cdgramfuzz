@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (group+)>
+  <!ATTLIST catalog language (eng|spa|fra) #REQUIRED>
+  <!ENTITY year "2">
+  <!ENTITY % xmlpi "X">
+  <!NOTATION isbn SYSTEM "1">
+  %xmlpi; <!-- XInclude processing instruction -->
+]>
+<catalog language="f"> 
+  <group ref="1">
+    <item isbn:relaxNG="1" type="1"></item>
+    <item xlink:href="2">
+      <title>Some <small> title</small></title>
+    </item>
+  </group>
+  <group ref="2">
+    <item ref="3">
+      <subitem ref="4">
+        <ref id="4" ref="5" xlink:href="6" xpointer="x">
+          <title>&note;</title>
+        </ref>
+      </subitem>
+    </item>
+  </group>
+</catalog>

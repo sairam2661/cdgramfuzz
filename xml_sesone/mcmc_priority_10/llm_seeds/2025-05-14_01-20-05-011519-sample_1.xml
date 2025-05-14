@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE persons [
+  <!ELEMENT persons (person+)>
+  <!ATTLIST person id CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % xref "x">
+  <!NOTATION ISO-8859-15 PUBLIC "A" "B">
+  %xref; <!-- include notation -->
+]>
+<persons xmlns:my="&NS;">
+  <person id="1">
+    <name><my:capitalize>Peter</my:capitalize></name>
+    <email>foo@bar.com</email>
+  </person>
+  <person id="2">
+    <name>John</name>
+    <phone>123-456-7890</phone>
+  </person>
+  <message>&author;</message>
+</persons>

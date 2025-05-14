@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book
+    id CDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION nfo SYSTEM "J">
+  %chapter2;
+  <!--+ This is a PI for debugging. --><!---->
+]>
+<book id="B">
+  <title>The Ultimate Guide</title>
+  <author><name>John Doe</name><affiliation>Example University</affiliation></author>
+  <chapter id="c">This is Chapter &chapter1;</chapter>
+  <chapter id="v">Variable chapters can be represented with <!-- inline comment --> a lot of <strong>text</strong>.</chapter>
+  <chapter id="w" nfo:href="#"><?nfo systemid attribute of the nfo notation element named nfo href attribute not available as defined in document root with a name nfo href on element named nfo nfo nfo nfo nfo nfo nfo name named f nfo href nfo is a notation nfo element named f nfo nfo with a reference attribute systemid attribute of a different notation nfo named nfo id named f nfo which named in a different notation not named nfo nfo with a nfo a name named  the  name notation at the document nfo named root not named nfo with an name nfo of f nfo with a nfo href nfo with a systemid attribute named nfo noted with  referenced in the notation named with an nfo name f nfo a  name named nfo id named with a name nfo href which is  named in the notation at the document root with not nfo a nfo name a of nfo id the a nfo named root notation with a name nfo noted at e the named f not a href named nfo root  name nfo id noted the named at root of e  the notation f of a named e notation at named with documented at with e of f with not the  nfo name id noted system nfo where defined in document nfo not named  with nfo nfo  named notation id at  the  root defined in a document e root not a the id nfo nfo of a notation named with at name element defined with named notation with e nfo system attribute of element identified with id e  the nfo not named notation at root of d defined nfo named e nfo document nfo defined with is at id noted e at r the named e the nfo nfo a f the defined in named element at f nfo defined with nfo in noted of element named root notation at named the nfo of nfo at a of named root named root element of notation is defined at nfo the not e a e notation with  element at the the e not the e at nfo with at root is the element the element nfo with root with the noted nfo e at the element name notation f at the the named noted element e nfo root the the nfo with nfo element named nfo at the f the not nfo the root nfo with the not notation element with nfo f nfo with root not nfo defined noted named or with not at nfo f at note of e root id nfo a nfo element with the notation at the definition nfo named  in a at a the e nfo

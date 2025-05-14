@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "w" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note language CDATA #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY % ent "%">
+  <!NOTATION w SYSTEM "w">
+  %ent;
+  <!-- other information that must appear in the DTD -->
+]>
+<note xmlns="h" xmlns:xi="i">
+  <![CDATA[Some &lt; &amp; > text]]>
+  <!-- Sample comment -->
+  <xi:include href="w" />
+</note>

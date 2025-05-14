@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root
+     attr1 CDATA #REQUIRED
+     attr2 (val1|val2) "1">
+  <!ENTITY ent1 "I">
+  <!ENTITY % ent2 "2">
+  <!NOTATION ISO-PDF PUBLIC "T" "T">
+  %ent2;
+  <!---->
+]>
+<root
+  attr1="A"
+  attr2="2"
+  xmlns="b"
+  xsi:noNamespaceSchemaLocation="d"
+  xi:nil="1"
+>
+<!-- comment -->
+  Hi<!---->
+  &ent1;
+</root>

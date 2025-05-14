@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE people [
+  <!ELEMENT people (person*)>
+  <!ATTLIST people
+    name CDATA #REQUIRED
+    date CDATA #REQUIRED
+  >
+  <!ENTITY id "U" >
+  <!ENTITY % sec "b" >
+  <!NOTATION ISO-8859-1 PUBLIC "I" "S">
+  %sec;
+  <!----><!ELEMENT person (#PCDATA)>
+  <!ATTLIST person
+    name CDATA #IMPLIED
+    age CDATA #IMPLIED
+  >
+]>
+<people name="F" date="D" xmlns="f"http:xml.orgxmlschema
+  ="?">
+  <xi:include xmlns:xi="f"http:xml.org2001XInclude
+    ="?">
+    <xi:fallback xmlns:xi="f"http:xml.org2001XInclude
+      ="?">
+      <section>a <person>1</person> <person>2</person> <b>1</b> <person>3</person>
+      </section>
+    </xi:fallback>
+  </xi:include>
+  <person name="T" age="t"> 6  </person>
+  <person name="g"> 14  </person>
+</people>

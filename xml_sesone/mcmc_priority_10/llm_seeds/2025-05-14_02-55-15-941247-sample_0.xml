@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes
+    id CDATA #REQUIRED
+    author CDATA #IMPLIED
+  >
+  <!ENTITY note1 "A">
+  <!ENTITY % note2 "B">
+  <!NOTATION ISO-8859-1 SYSTEM " ">
+ %Xnote2;
+  <!-- Entity Resolution Exception (ERE) -->
+]>
+<notes id="x" author="Y">
+  <note>&note1;</note>
+  <note>&note2;</note>
+</notes>

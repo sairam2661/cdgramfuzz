@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (abstract, body, bibliography) >
+  <!ATTLIST author id ID #REQUIRED>
+  <!ENTITY address "U" >
+  <!ENTITY % meta SYSTEM "m" >
+  <!NOTATION AcrobatReader SYSTEM "A">
+  %meta;
+  <!---->
+]>
+<article xmlns:dc="&quot; 
+         ">
+  <author id='e1' xmlns="&quot; 
+          ">Example Author</author>
+  <abstract>Short document summary.</abstract>
+  <body>
+    <figure><source>
+      <alt>Illustrative picture.</alt>
+      <pict>&AcrobatReader;</pict>
+    </source>
+    <paragraph>This is another paragraph &address; in the text</paragraph>
+  </body>
+  <bibliography>
+    <bibItem>Source 1.</bibItem>
+    <bibItem>Source 2.</bibItem>
+  </bibliography>
+</article> 
+<!-- Added after the XML Root --> 
+<!---->. 
+  <section>
+     <subsection>Section One</subsection>  
+    <subsection><p>This <b>important <strong>information</strong></b>
+    you will <i>need</i> or <u>find</u>
+    for your report.</p></subsection>  
+  </section> 
+</article>

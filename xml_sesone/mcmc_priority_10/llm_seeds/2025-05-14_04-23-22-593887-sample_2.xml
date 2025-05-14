@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+ <!ELEMENT catalog (title, subtitle, books)>
+  <!ATTLIST title id CDATA #REQUIRED>
+  <!ENTITY book1 "F" >
+  <!ENTITY % book2 "U">
+  <!NOTATION MyNotation SYSTEM "W">
+ 	%book2;  <!-- Use of entity % -->
+]>
+<catalog>
+  <title id="1">My Library</title>
+  <subtitle>&note;</subtitle>
+  <books>
+    <book>&book1;</book>
+    <book>&book1;</book>
+  </books>
+</catalog>

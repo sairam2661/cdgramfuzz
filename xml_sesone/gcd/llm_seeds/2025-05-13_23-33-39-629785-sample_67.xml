@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c"
+  [
+    <!ELEMENT root (author+ | title | copyright) >
+    <!ATTLIST root id ID #REQUIRED>
+    <!ENTITY author "<">
+    <!ENTITY % content "<" > <!NOTATION biblio-system SYSTEM '/biblio.dtd'> %biblio-system; <!--/style=font--><!ENTITY title "<" ><!ENTITY copyright "<" >
+  ]
+>
+<root id="R">
+  <author>John Doe</author>
+  &title;
+  &copyright;
+</root>

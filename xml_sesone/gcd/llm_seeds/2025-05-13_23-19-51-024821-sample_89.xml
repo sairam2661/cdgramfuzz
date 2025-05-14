@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book     (author+)>
+  <!ATTLIST book     id     CDATA  #REQUIRED>
+  <!ENTITY author    "J">
+  <!ENTITY  %section  " "><!NOTATION book-notation-system SYSTEM "f">
+  %section;<!---->]>
+<book type="f" name="A" id="1" xml:lang="x" xmlns:a="y">
+  <a:author xmlns="z">John</author>
+  <author entity-ref="&author;"/><!-- attribute value -->
+  <para>Para one!</para>
+  <para>&author;</para>
+  <para>&para;</para>
+<![CDATA[
+<note>Some &para; in it!
+</note>
+]]>
+</book>

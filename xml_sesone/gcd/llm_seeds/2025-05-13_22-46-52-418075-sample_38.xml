@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author+)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter "I">
+  <!ENTITY % section "%">
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %section; 
+  <!--section declaration--> <!-- -->]>
+<book lang='en'>
+  <title>Sample Book</title>
+  <author><name>Doe</name><degree>Mr.</degree></author>
+  <author><name>Smith</name><degree>Mrs.</degree></author>
+  <title>Sample Chapter</title>
+  <chapter>&chapter;<sec>&section;</sec></chapter>
+</book>

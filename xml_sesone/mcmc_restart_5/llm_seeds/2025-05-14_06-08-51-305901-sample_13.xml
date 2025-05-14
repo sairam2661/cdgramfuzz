@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY publisher "W">
+  <!ENTITY % comment "A">
+  <!NOTATION ISDN SYSTEM "x">
+  %comment;
+  <!--
+  The book collection is attributed to the &publisher;
+  ISDN system notation has been imported successfully.
+  -->
+]>
+<books xmlns="x" xmlns:xsi="x">
+  <xi:include href="x" xmlns:xi="x">
+    <book id="x">Book 1</book>
+    <book id="x">Book 2</book>
+  </xi:include>
+  <!-- <xi:fallback xmlns:xi='http://www.w3.org/2001/XInclude'>fallback</xi:fallback>  -->
+</books>

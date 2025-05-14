@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m" [
+  <!ELEMENT root (note+, attr)>
+  <!ATTLIST root id CDATA #IMPLIED>
+  <!ENTITY note "A"
+  >
+  <!ENTITY % attr "D">
+  <!NOTATION note SYSTEM "A">
+  %attr;
+  <!--
+  This is a comment
+  -->
+]>
+<root id="1">
+  <note entity="&note;">&note;</note>
+  <note>&note;</note>
+</root>

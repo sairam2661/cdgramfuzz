@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c" [
+  <!ELEMENT root (header,footer)>
+  <!ATTLIST root xmlns:dsfx CDATA #REQUIRED>
+  <!ENTITY title "L" ><!ENTITY % dsfx "t" ><!NOTATION sgml PUBLIC "D" "N" >   
+  %dsfx; 
+  <!--%sgml;-->]>
+<root xmlns:dsfx="U" xmlns="c">
+  <header dsfx:tag="B">&title;</header>
+  <footer>&apos;i&amp;not;</footer>
+</root>

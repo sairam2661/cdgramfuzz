@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapters)>
+  <!ATTLIST book
+    publisher CDATA #REQUIRED
+    year CDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY  % chapter2 "B">
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %chapter2; <!---->
+]>
+<book publisher="W" year="X" xmlns:xi="x" xmlns="y">
+  <title>Z</title>
+  <author>T</author>
+  <chapter>
+    <xi:include href="y"/>
+    &chapter1;
+  </chapter>
+  <chapter>
+    &chapter2;
+    <foo/>
+  </chapter>
+</book>

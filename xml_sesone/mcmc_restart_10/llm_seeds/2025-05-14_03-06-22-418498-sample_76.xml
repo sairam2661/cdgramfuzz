@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "d"
+ [
+   <!ELEMENT note (to,from,heading,body+)>
+   <!ATTLIST note id ID #REQUIRED>
+   <!ENTITY x "x">
+   <!ENTITY % xdata "x">
+   <!NOTATION iso-8859-1 SYSTEM "F">
+   %xdata;
+  <!-- Internal Subset -->
+  <!ELEMENT section (#PCDATA)>
+  <!ELEMENT raw (#PCDATA)>
+]>
+<note id="n">
+  <to>
+   <name>John Smith</name>
+  </to>
+  <from>
+    <name>Jane Doe</name>
+  </from>
+  <heading>Reminder</heading>
+  <body>
+    This is an example.
+  </body>
+  <section>Some raw content</section>
+  <message>&x;</message>
+  <section/>
+</note>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, publisher, author+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY publisher "W" >
+  <!ENTITY % author "("
+  >
+<!NOTATION ISBN SYSTEM "X" >  %author; 
+<!--%(name surname)-->]>
+<book>
+  <title>XML and the Web</title>
+  <publisher>&publisher;</publisher>
+  <author name="J" surname="G" />
+  <author name="R" surname="T" />
+  <ISBN SYSTEM="X" />
+</book>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d" [
+  <!ELEMENT catalog (product|group)> 
+  <!ATTLIST catalog lang CDATA #IMPLIED nillable ID #IMPLIED> 
+  <!ENTITY catdesc "F" >
+  <!ENTITY % popt "P" >
+  <!NOTATION print SYSTEM "A" >
+  %popt;
+  <!--%popt; = P --> <!-- added the newline character -->
+]>
+<catalog lang="e" nillable="T">
+    <group entity="C">
+        <product id="A" name="B" price="C"/> 
+        <product id="D" name="E" price="F"/>
+    </group>
+    <product id="G" name="H" price="I"/>
+</catalog>

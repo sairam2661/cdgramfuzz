@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book lang (en|fr|de) "e">
+  <!ENTITY authormail "j">
+  <!ENTITY 	% pubinfo "a">
+  <!NOTATION PDF SYSTEM "P">
+  %pubinfo;
+  <!-- ENTITY to be used later -->
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+  <!ELEMENT chapter (#PCDATA)>
+]>
+<book lang="e" xmlns="h">
+  <xi:include href="h" xmlns:xi="h"/>
+  &pubinfo;
+  <title>This is a &nbnbsp; title</title>
+  <author id="1">&authormail;</author>
+</book>

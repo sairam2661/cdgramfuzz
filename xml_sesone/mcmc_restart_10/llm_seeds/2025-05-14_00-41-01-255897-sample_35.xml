@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "x" [
+  <!ELEMENT data (row+, row?)>
+  <!ATTLIST row id ID #REQUIRED>
+  <!ENTITY desc "A">
+  <!ENTITY % entity "B">
+  <!NOTATION xsl PUBLIC "x" "d">
+  %entity;
+  <!--
+    This is a comment
+    that is split across
+    multiple lines.
+  -->
+]>
+<data>
+  <row id="R"><element>&desc;</element></row>
+  <row id="R"><element>&desc;</element></row>
+  <xsl:stylesheet xmlns:xsl="x" />
+</data>

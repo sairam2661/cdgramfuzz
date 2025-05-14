@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,body) >
+  <!ATTLIST note
+    id ID #REQUIRED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY system "v" >
+  <!ENTITY % xinclude "X" >
+  <!NOTATION w3c SYSTEM "<" >

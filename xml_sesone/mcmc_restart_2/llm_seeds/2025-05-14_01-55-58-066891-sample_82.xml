@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE data SYSTEM "M" [
+  <!ELEMENT A (#PCDATA)>
+  <!ATTLIST A attr1 CDATA #REQUIRED>
+  <!ENTITY desc "A">
+  <!ENTITY % entm "#">
+
+  <!NOTATION book SYSTEM "B">
+  %entm;
+  <!--) comments -->
+]>
+<data xmlns:local="X" xmlns="Y">
+  <A attr1="Y">A<sub>sub</sub></A>
+  <message>&desc;</message>
+  <xi:include href="M" xmlns:xi="Z">
+    <xi:fallback>
+      <local:localfallback>T</local:localfallback>
+    </xi:fallback>
+  </xi:include>
+  <A attr1="X">B<sup>sup<sup>sup</sup></sup></A>
+  <book bookid="c" xmlns:z="A" booknotation="A" z:alias = "a">Book</book>
+  A
+</data>

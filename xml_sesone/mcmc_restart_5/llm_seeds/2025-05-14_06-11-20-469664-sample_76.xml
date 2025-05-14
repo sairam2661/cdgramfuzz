@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog language CDATA #REQUIRED>
+  <!ENTITY catalog-note "B">
+
+  <!ENTITY % ent "%">
+  <!NOTATION ISO-8859-2 PUBLIC "I" "I">
+  %lt;
+  <!-- Other entity declarations -->
+]>
+<catalog language="C">
+  <product name="D" year="2">
+    <price currency="E">$2.50</price>
+  </product>
+  <!-- Other product elements -->
+</catalog>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note
+    id  CDATA  #REQUIRED
+    author  CDATA  #REQUIRED
+  >
+  <!ENTITY author "A">
+  <!ENTITY % pyp "1">
+  <!NOTATION ISO-8859-1 PUBLIC "W"
+             "G">
+  %pyp;
+  <!--
+    Entity Declaration
+   -->
+  <!ENTITY ent "T">
+]>
+<notes xmlns:dsig="h" xmlns:ev="i"
+  xmlns:relax-ng-compact-syntax="j">
+  <note id="1" author="B">
+    This is the <em>first</em> note.
+  </note>
+  <note id="2" author="C">
+    This is the second note:
+    <list>
+      <item>list item 1</item>
+      <item>list item 2</item>
+    </list>
+  </note>
+</notes>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, publisher)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY year "2">
+  <!ENTITY  % p "a">
+  <!NOTATION book-format PUBLIC "a" "b">
+  %p;
+  <!--><!-->
+]>
+<book id="a" xmlns="a" xmlns:xsi="b"
+      xsi:noNamespaceSchemaLocation="c">
+  <author><name>John</name></author>
+  <title>My Note Book</title>
+  <publisher ref="x">Local Press</publisher>
+  <message>&year;</message>
+  <!--&note;-->
+</book>

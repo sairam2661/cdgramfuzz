@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  PUBLIC "R" "U" [
+    <!ELEMENT root (title, section*)>
+    <!ATTLIST root lang CDATA #IMPLIED>
+    <!ENTITY e "A">
+    <!ENTITY % ent SYSTEM "x">
+    <!NOTATION n SYSTEM "X">
+  %ent;
+  <!--
+  A very interesting thing to see here is
+  the ability to include another XML document here
+  -->
+]>
+<root xmlns="A" lang="A"> 
+  <title>Important Information</title> 
+  <section> 
+    A <b>very interesting statement</b>
+    &e;
+  </section> 
+  <section not="A"> 
+    <i>This has been a very interesting XML document</i>
+    &n; 
+    <xi:include href="x">
+      <xi:fallback xmlns:xi="A"> 
+        Nothing here to display 
+      </xi:fallback>
+    </xi:include> 
+    <message>Important message</message>
+  </section> 
+</root>

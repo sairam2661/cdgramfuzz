@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m" [
+  <!ELEMENT notes (note*)>
+  <!ATTLIST note 
+    id  CDATA  #REQUIRED
+    name CDATA   #REQUIRED
+  >
+  <!ENTITY pi "x">
+  <!ENTITY % en SYSTEM "f">
+  <!NOTATION bookReader PUBLIC "Z" "c">
+  %en;
+  <!--
+     A long comment 
+     spanning multiple lines
+  -->
+]>
+<notes xmlns:xi="x"><note id="1" name="a"/></notes>

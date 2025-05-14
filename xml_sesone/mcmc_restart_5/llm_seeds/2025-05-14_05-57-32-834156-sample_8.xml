@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, chapter+)>
+  <!ATTLIST book
+           author CDATA #IMPLIED
+           year CDATA #IMPLIED>
+  <!ENTITY chapter1 "C"
+  ><!ENTITY % bookattribs 'author="J.K. Rowling" year="2000"'>
+  <!NOTATION bookfile SYSTEM "e">
+  %XIncludeProtoEntity;<!-- not a standard entity!-->
+]>
+<book>
+  <title>&chapter1;</title>&bookattribs;
+  <ix:include xmlns:ix="x" xmlns="i" href="i"/>
+</book>

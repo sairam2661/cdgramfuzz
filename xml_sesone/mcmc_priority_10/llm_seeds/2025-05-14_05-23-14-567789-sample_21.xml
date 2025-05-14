@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author,edition)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY title "G"                >
+  <!ENTITY 		    
+
+  %yearEntity "C"                      >
+  <!NOTATION PDF SYSTEM "A">
+  %editionEntity
+  ;<!--%elementEntity "N">]>
+<title entityPublic>&title;</title>
+<note entityPrivate>&title;</note>
+<book id="BK123" xmlns="http://example.com/schema">
+  <author>
+    <name>John Doe</name>
+    <birthyear entityExternal="#yearEntity#yearEntity#yearEntity"></birthyear>
+  </author>
+  <edition notation="PDF" entityInterpolation="#PDF#$yearEntity#yearEntity"></edition>
+</book>
+
+  ]]>
+<!ATTLIST %elementEntity SYSTEM "A">
+<!ELEMENT %elementEntity (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!KEY key1 "a">
+<!UNTAGGEDATTVAL #c>
+<!ENTITY %elementEntity "" >     
+<!ENTITY editionEntity "<edition>First Edition</edition>"
+<!ENTITY yearEntity "2010">
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT edition (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT birthyear (#PCDATA)>
+<!ELEMENT 1 (#PCDATA)>
+<!ENTITY entityExternal "#yearEntity#yearEntity#yearEntity">
+<!ENTITY entityInterpolation "&yearEntity&yearEntity&yearEntity">
+<!ATTLIST edition system "A">
+<!ATTLIST system PUBLIC "B">
+<!ENTITY entityPublic "&yearEntity">
+<!ENTITY entityPrivate "&yearEntity">
+<!ENTITY note1 "&entityPublic&amp;entityPrivate"></note1>
+<!ENTITY note2 "&note1;">
+<!ENTITIES "A"></ENTITIES>
+<!ELEMENT 1 (#PCDATA)>
+<!ELEMENT 2 (#PCDATA)>
+<!ELEMENT 3 (#PCDATA)>
+<!ELEMENT 4 (#PCDATA)>
+<!ELEMENT 5 (#PCDATA)>
+<!ELEMENT 6 (#PCDATA)>
+<!ELEMENT 7 (#PCDATA)>
+<!ELEMENT 8 (#PCDATA)>
+<!ELEMENT 9 (#PCDATA)> 
+<!ELEMENT 10 (#PCDATA)> 
+<!DOCTYPE %elementEntity [<!ELEMENT 1 (#PCDATA)>]>
+<!DOCTYPE 2 [<!ELEMENT 2 (#PCDATA)>]>
+<!ELEMENT %elementEntity (#PCDATA)>
+<!ELEMENT %c (#PCDATA)>
+<!ELEMENT C (#PCDATA)>
+<!ELEMENT G (#PCDATA)>
+<!ELEMENT 9 (#PCDATA)>
+<!DOCTYPE %elementEntity SYSTEM 'B.dtd'>
+<!DOCTYPE %elementEntity SYSTEM 'C.dtd'>
+<!DOCTYPE %elementEntity SYSTEM 'D.dtd'>
+<!DOCTYPE %elementEntity SYSTEM 'E.dtd'>
+<!DTDDECL B SYSTEM "A">
+<!NOTATION A SYSTEM "B">
+<!ELEMENT L (#PCDATA)>
+<!ELEMENT 0 (#PCDATA)>
+<!ELEMENT 1 (#PCDATA)>
+<!ENTITY %N "(%N)|")>
+<!ELEMENT N (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT %c (#PCDATA)>
+<!NOTATION a SYSTEM "b">
+<!ELEMENT %elementEntity (#

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT name (#PCDATA)>
+  <!ATTLIST name xml:lang CDATA #REQUIRED>
+  <!ENTITY entity "#">
+  <!ENTITY % entref "<">
+  <!NOTATION ISBN SYSTEM "z">
+  %entref; <!-- Entity reference -->
+  <!-- Internal DTD Subset -->
+]>
+<note xml:lang="e">
+  <name xml:lang="f">John Doe</name>
+  <address>
+    <street xmlns="x">123 Main St</street>
+    <city>Anytown</city>
+    <!-- Sample comment -->
+    <postal-code>i<x:include href="y" xmlns:x="y"/></postal-code>
+  </address>
+  &entity;<phone>123-456-7890</phone>&entity;
+  <isbn NOTATION="z">123456789</isbn>
+</note>

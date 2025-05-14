@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, content)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "C">
+  <!ENTITY % chapter2 SYSTEM "2">
+  <!NOTATION PDF PUBLIC "P" "D">
+  %chapter2;
+  <!---->
+]>
+<book id="B" xmlns:m="m">
+  <title xml:lang="e">Maths</title>
+  <m:math xml:id="x">
+    <m:p>
+      <m:text>Some formula:
+        <m:semantics>
+          <m:annotation>&chapter1;</m:annotation>
+        </m:semantics>
+      </m:text>
+    </m:p>
+  </m:math>
+  <content>
+    This is content
+  </content>
+  <author>John</author>
+</book>

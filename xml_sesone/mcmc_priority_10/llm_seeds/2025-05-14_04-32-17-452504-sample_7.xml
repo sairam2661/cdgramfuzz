@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note (to,from,message)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    type (urgent|normal|priority) "U"
+  >
+  <!ENTITY m "m">
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION iso8601 PUBLIC "W" "w">
+  %ent;
+  <!--
+    DTD internal subset.  The external subset is in note.dtd.
+  -->
+  <!ELEMENT to (#PCDATA)>
+  <!ELEMENT from (#PCDATA)>
+  <!ELEMENT message (#PCDATA)>
+  <!ATTLIST to
+    street (yes|no)
+    "y"
+  >
+]>
+<note id="X" type="q"> 
+  <!-- External reference: d -->
+  &d;
+  <to street="y">John</to>
+  <from street="y">Mary</from>
+  <message>&iso8601;1999</message>
+</note>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)> 
+  <!ATTLIST book xml:lang CDATA #REQUIRED>
+  <!ENTITY chapter.1 "A">
+  <!ENTITY % chapter.2 "B">
+  <!NOTATION ISO-8859-1 PUBLIC " " " ">
+  %chapter.2; <!-- Notation reference -->
+]>
+<book xml:lang='en'>
+  <title>My Book</title>
+  <author>
+    <name>John</name>
+  </author>
+  <chapter xml:lang='fr'><![CDATA[&chapter.1;]]></chapter>
+  <chapter>&chapter.2;</chapter>
+  <chapter> C</chapter>
+  <chapter> D</chapter>
+  <chapter> E</chapter>
+</book>

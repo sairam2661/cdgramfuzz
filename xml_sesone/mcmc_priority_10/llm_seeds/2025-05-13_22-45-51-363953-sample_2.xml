@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "d" [
+  <!ELEMENT document (#PCDATA)>
+  <!ATTLIST document
+    xmlns CDATA #FIXED 'http://example.com/schema'
+    xi:include CDATA #IMPLIED
+    xml:lang CDATA #IMPLIED
+  >
+  <!ENTITY e 'This is an entity: %x%x%!'>
+  <!ENTITY % ent 'abc' >
+  <!NOTATION external PUBLIC "M" "m">
+  %ent;
+  <!-- -->
+  <!ENTITY % id 'id'>
+]>
+<document xmlns:xi="w" xmlns="x" xml:lang="a">
+  <xi:include href="f"></xi:include>
+  <xi:include href="e"></xi:include>
+  <!-- 
+   This is a comment with an embedded general entity and a
+   parameter entity to be expanded and possibly evaluated.
+  -->
+  &e;
+</document>

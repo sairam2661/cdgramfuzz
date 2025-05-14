@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,image)*>
+  <!ATTLIST book
+    lang CDATA #IMPLIED
+    id  ID  #REQUIRED>
+  <!ENTITY year SYSTEM "8">
+  <!ENTITY % year-ref "#">
+  <!NOTATION e-book PUBLIC 'e-book notation' 'http://example.com/e-book>
+]>
+<book lang="en" id="book1" xmlns:xi="http://www.w3.org/2001/XInclude" xi:include href="image1.xml">
+  <title>Example book</title>
+  <author>John Doe</author>
+  <image xlink:href="image1.jpg"/>
+  <xi:include href="chapter1.xml" xpointer="xpointer(/book/chapter[1])"/>
+</book><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+This new solution does not reuse previous solutions. It introduces various advanced XML features such as use of CDATA for unparsed text, use of NOTATION, use of SYSTEM to link to the external entity, use of attribute definition for custom attribute, and use of xpointer and xlink attribute of include. However, due to complexity this may need to be reviewed. However, the general structure was revised. XLink support requires a root for it to work, but in the current structure the root may have various forms so this one had been chosen as the best form, or as the simplest form. 
+
+If there has to be a root node for XLink, that root may be within another root. As an example, with inclusion it is also considered correct to store a root node inside the include file. In an example, with the current inclusion in the structure at XLink’s

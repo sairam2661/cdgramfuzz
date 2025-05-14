@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE catalog [
+    <!ELEMENT catalog (product*)>
+    <!ATTLIST catalog
+        id CDATA #REQUIRED
+        language CDATA #IMPLIED>
+    <!ENTITY product "V" >
+    <!ENTITY % entity "D">
+    <!NOTATION GML SYSTEM "g" >
+   %f1;
+    <!--%entity;-->
+]>
+<catalog id="C" language="E" xmlns:xi="x" xmlns:xsi="x" xsi:noNamespaceSchemaLocation="z">
+<product>&product;A</product><product>&product;B</product>
+<product>&product;C</product>
+</catalog>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note
+    id CDATA #REQUIRED
+    title CDATA #REQUIRED
+  >
+  <!ENTITY n1 "1">
+  <!ENTITY  % n2 "2">
+  <!NOTATION n3 PUBLIC 'notation 3' 'http://example.com/notations/3'>
+  %n3;
+  <!-- Attaching the DTD to a PUBLIC identifier -->
+]>
+<notes xmlns="a" xmlns:a="a" xmlns:x="x" xmlns:y="y" xmlns:o="o">
+  <!-- Sample comment -->
+  <xi:include href="G">
+    <o:option>X</o:option>
+  </xi:include>
+  <note id="n" title="n" n1="3" n2="4">
+    <item>&n1;</item>
+    <item>&n2;</item>
+    <info>
+      <content>
+        This is some information in the content element.
+        This is another piece of information.
+        <!-- this information is nested -->
+        <nested>
+          The following data is used to test the inclusion of nested XML tags.
+            <tag1 att1="1" att2="2">tag 1</tag1>
+          The nested information ends here.
+        </nested> 
+        &n1;
+      </content>
+    </info>
+  </note>
+  <note id="x" title="x">&n1;</note>
+</notes>

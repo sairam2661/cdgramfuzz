@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,publisher,chapter+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author "J"
+
+
+  >
+
+
+<!ENTITY % bookinfo "J"
+
+>  <!NOTATION iso-std PUBLIC "+"" ">
+  %bookinfo;<!--
+    Book information
+  -->
+]>
+<book id="X">
+  <title>The Book's Title</title>
+  <author>&author;</author>
+  <publisher>The Publisher</publisher>
+  <chapter>
+    <section>
+      <title>Chapter One</title>
+      <content>
+        <p>This is the content of Chapter One.</p>
+        <p>This is a paragraph at the bottom of the chapter.</p>
+      </content>
+    </section>
+  </chapter>
+  <chapter>
+    <section>
+      <title>Chapter Two</title>
+      <content>
+        <p>This is the content of Chapter Two.</p>
+      </content>
+    </section>
+  </chapter>
+</book>

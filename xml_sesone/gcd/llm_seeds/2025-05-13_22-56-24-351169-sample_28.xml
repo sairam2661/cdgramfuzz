@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (to,from,message,items) >
+  <!ATTLIST note version CDATA #REQUIRED>
+  <!ENTITY message "M">
+  <!ENTITY % pattern "A">
+  <!NOTATION Print SYSTEM "C">
+ %Xpattern;  <!-- declare notation -->
+]>
+<note version="1" xmlns:c="C"><c:items/><to>from</to><from>to</from><message>&message;</message></note>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY author "A" >
+  <!ENTITY  % chapter-content "K">
+  <!NOTATION iso8601 PUBLIC "w" "S" >
+  %chapter-content;
+  <!-- internal>
+    <chapter/&>
+  internal-->
+  ]>
+<book lang="A">
+  <title>I</title>
+  <author>&author;</author>
+  <chapter>
+    <title>C</title>
+    <chapter> &iso8601; </chapter>
+</chapter>
+</book>

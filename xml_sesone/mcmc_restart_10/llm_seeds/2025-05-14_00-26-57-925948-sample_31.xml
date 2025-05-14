@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog
+    id  CDATA  #REQUIRED
+    desc CDATA  #IMPLIED>
+  <!ENTITY product "1">
+  <!ENTITY % entities "<">
+  <!NOTATION ISO-8859-2 SYSTEM "c"> 
+  %entities;<!--comment -->
+]>
+<catalog id="1" desc="s"> 
+  <product num="1"/>
+  <product num="2" attr="t">
+    <description xml:lang="h">&product;</description>
+  </product>
+</catalog>

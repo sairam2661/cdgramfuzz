@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY % myent "1">
+  <!NOTATION mpeg SYSTEM "M" >
+  %myent;
+  <!---->
+]>
+<catalog id="1">
+  <product xmlns:xsi="w"
+          xsi:schemaLocation="M"
+          xsi:noNamespaceSchemaLocation="N">
+    <price>$100</price>
+    <description>
+     <![CDATA[The best <b>Product</b> available ]]>
+    </description>
+  </product>
+  <product>
+    <price>$200</price>
+    <description>&nbsp;&ndash;The <i>nice</i> one&ndash;</description>
+  </product>
+</catalog>

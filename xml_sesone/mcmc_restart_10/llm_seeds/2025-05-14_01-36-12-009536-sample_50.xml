@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+, author?)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % common "n">
+  <!NOTATION ISO-8859-1 SYSTEM "m">
+  %common;
+ <!--
+  An author note: “

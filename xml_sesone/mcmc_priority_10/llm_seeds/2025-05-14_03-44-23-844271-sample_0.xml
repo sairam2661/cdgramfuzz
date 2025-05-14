@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY authorEmail "j"> 
+  <!ENTITY% bookEntity "<"> 
+  <!NOTATION ISO-8879 PUBLIC "-"
+         "L" 
+         >
+  %bookEntity;
+  <!-- This will cause a parser to stop. -->   
+]>
+
+
+<book id="b"> 
+  <title>Taxi Service</title>
+  <author><name>John</name><address>
+    <street>123 Street</street>
+    <city>New York</city>
+  </address></author>
+  <chapter id="a">
+    <title>Introduction</title>
+    <para>This is a sample paragraph: [a^2+b^2=c^2].</para>
+  </chapter>
+</book>

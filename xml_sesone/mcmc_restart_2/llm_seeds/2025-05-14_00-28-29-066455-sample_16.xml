@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (#PCDATA|p|b|i|table)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY n SYSTEM "n">
+  <!ENTITY % e "3">
+  <!NOTATION rda SYSTEM "R">
+ %Xe; 
+  <!--
+  --><!NOTATION tmoz SYSTEM "T">
+]>
+<note xmlns="h" xml:lang="x" xml:space="p">
+  <p>
+    <b xml:lang="t">Test1</b>
+    <i>Test2</i>
+    <table border="2">
+      <tr><td row="1" col="1">1.2</td><td row="1" col="2">2.3</td></tr>
+    </table>
+  </p>
+</note>

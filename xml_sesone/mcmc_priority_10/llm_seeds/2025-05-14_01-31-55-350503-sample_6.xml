@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author, book+)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY author "J" >
+  <!ENTITY  %header " ">
+  <!NOTATION pdf SYSTEM "P">
+  %header;
+   <!--%entity%  -->
+]>
+<catalog id="x">
+  <author entity="&author;"/>
+  <book>
+    <title>Book One</title>
+  </book>
+  <book>
+    <title>Book Two</title>
+  </book>
+</catalog>

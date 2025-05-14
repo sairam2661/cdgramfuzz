@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book SYSTEM "d"
+[
+  <!ELEMENT book (title, author, content+)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    name CDATA #REQUIRED
+  >
+  <!ENTITY author "J"
+    >
+  <!ENTITY% id "0">
+  <!NOTATION SGML SYSTEM "A">
+  %p
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  					 																																															;
+  <!--
+-->
+]>
+<book
+  id="A"
+  name="B"
+  xmlns="C"
+  xmlns:xsi="D"
+  xsi:schemaLocation="E">
+  <title>XML document example</title>
+  <author ref="%">
+    &author;
+  </author>
+  <content>
+    More text inside the document, just for testing and making this XML look more complex.
+  </content>
+</book>

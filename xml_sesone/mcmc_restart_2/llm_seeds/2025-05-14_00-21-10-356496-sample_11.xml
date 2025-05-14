@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, edition, author*)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY name "J">
+  <!ENTITY % date "1">
+  <!NOTATION w3c SYSTEM "L">
+  %date;<!--used in declaration--> 
+]>
+<book id="B" xmlns:xi="x">
+  <title>&name;'s book</title>
+  <edition>First</edition>
+  <author>
+    John
+    <xi:include href="2"/>
+  </author>
+  <author>Mark
+    <NOTATION w3c="W">W</NOTATION>
+  </author>
+</book>

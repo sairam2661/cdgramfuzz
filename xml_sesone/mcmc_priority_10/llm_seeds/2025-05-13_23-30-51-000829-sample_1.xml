@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book) >
+  <!ATTLIST catalog
+    lang CDATA #REQUIRED
+    charset CDATA #IMPLIED
+  >
+  <!ENTITY book "A"
+  >
+  <!ENTITY % booklist "P" >
+  <!NOTATION ISO PUBLIC 
+    '+//INFO//ISO//Dtd//Catalog'
+  'info.sil//Dtd//ISO//PublicCatalog'
+  >
+  %booklist;
+  <!--<!ENTITY % b BOOK>-->
+]>
+<catalog lang="f" charset="S">
+  &book;
+</catalog>

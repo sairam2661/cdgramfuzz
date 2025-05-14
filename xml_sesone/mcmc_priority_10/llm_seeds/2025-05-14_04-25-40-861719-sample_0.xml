@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id  CDATA  #IMPLIED
+    lang  CDATA  #IMPLIED
+  >
+  <!ENTITY chapter1 "I">
+  <!ENTITY % chapter2 "I">
+  <!NOTATION xhtml SYSTEM "x"
+    >
+ 			       
+        
+ 			%XHTML10-STANDALONE
+ 	      
+      	   
+       
+       
+      		   
+      			     	      
+      					     
+	
+      					 
+       
+       
+     	      
+      				      	
+      		            
+      	      
+      		   
+        
+  
+ 	;<!---->
+]>
+<book id="b" lang="g" xmlns:xi="f">
+  <title><note/>This is title</title>
+  <author><name>John<tel>123456789</tel></name></author>
+  <chapter id="c"><title><xi:include href="x"/>
+  &chapter1;This is chapter&chapter2;This is chapter 2
+  </title>
+  <section><![CDATA[Some <raw> text]]></section>
+  </chapter>
+</book>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "m" [
+  <!ELEMENT article (#PCDATA)>
+  <!ATTLIST article
+    id    CDATA  #REQUIRED
+    title CDATA  #REQUIRED
+    lang  (en|fr) #REQUIRED
+  >
+  <!ENTITY author "J"
+                       ><!ENTITY % ent "%"
+  ><!NOTATION ISO88 PUBLIC " "
+                           " "
+  > 
+   %ent;
+    <!--
+   &ISO88;
+   -->
+]>
+<article id="1" title="A" lang="f">
+<![CDATA[<p>First paragraph is here.</p><p>
+   Second paragraph.
+]]>]]></article>

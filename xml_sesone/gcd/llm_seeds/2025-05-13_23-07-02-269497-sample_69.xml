@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE students [
+  <!ELEMENT students (student+)>
+  <!ATTLIST students
+    id CDATA #REQUIRED>
+  <!ENTITY student-note "A">
+  <!ENTITY  % studentAttrs "e"  >
+  
+  <!NOTATION ISO-10383 SYSTEM "W"
+    >
+  
+  %studentAttrs;
+  <!--other comments here-->
+
+]>
+<students id="U" xmlns:a="a">
+  <student a:score="A"><![CDATA[<em>John Doe</em>, 22]]></student>
+  <student><![CDATA[Jim</em>]]></student>
+  <message>&student-note;</message>
+</students>

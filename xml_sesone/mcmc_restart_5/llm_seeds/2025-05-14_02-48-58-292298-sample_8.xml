@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT book (author, title, publicationDate) >
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "P"> 
+  <!ENTITY % chapter2 "<">
+  <!NOTATION sgml SYSTEM "B">
+  %chapter2;
+  <!---->
+]>
+<book id='BK01'>
+  <title>My Simple Book</title>
+  <author>A. K. Fodor</author>
+  <publicationDate>June 8, 2016</publicationDate>
+  <info>This is a chapter about <xinclude:include href="C"/></info>
+  <content><chapref target="C"/></content>
+  <xinclude:include href="C"/>
+</book>

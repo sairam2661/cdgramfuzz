@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library [
+  <!ELEMENT library (author, books)>
+  <!ATTLIST library title CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % bookAttrs "("
+  >
+  <!NOTATION PDF PUBLIC
+    "A" " ">
+
+  %bookAttrs;
+  <!--
+
+  "D">
+]>
+<library title="Bookstore">
+  <author entity=&author;/>
+  <xi:include href="books.xml"xi:fallback="No books found"/>
+  <books>
+    <book author="R" ref="#/a1" mediaType="application/pdf" extension=".pdf">
+      <title>Some <info>Info </title>
+      <price>€

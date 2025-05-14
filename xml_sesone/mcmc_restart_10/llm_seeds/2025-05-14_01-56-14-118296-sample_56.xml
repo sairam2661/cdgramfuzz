@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id    CDATA  #REQUIRED
+    label CDATA  #IMPLIED>
+  <!ENTITY chapter1 SYSTEM "1"
+         NDATA zip>
+  <!ENTITY % chapterentities SYSTEM "1"
+         NDATA include>
+  <!NOTATION zip SYSTEM "z">
+ %Xchapterentities;  <!-- Declare a default inclusion -->
+]>
+<book id="1" label="A"> 
+  <title>Solution 2</title>
+  <author>Alice</author>
+  <chapter id="1"><title>Chapter 1</title><section>A section <b>in the chapter</b> with a &chapter1; attachment</section></chapter>
+</book>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog type CDATA #REQUIRED>
+  <!ENTITY desc "A">
+  <!ENTITY % ent "3">
+  <!NOTATION isbn PUBLIC "A" "N">
+  %ent; 
+  <!--%note;-->
+ ]>
+<catalog type="&type;" xmlns:xi="&xmlns:xi;">
+  <product>
+    <number>1</number>
+    <desc>&desc;</desc>
+  </product>
+</catalog>

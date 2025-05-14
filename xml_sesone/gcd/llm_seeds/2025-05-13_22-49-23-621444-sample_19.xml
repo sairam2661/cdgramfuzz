@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST product id CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % book-name "B">
+  <!NOTATION ISO-8859-1 SYSTEM "m">
+ %XISO-8859-1;
+  <!--%ISO-->
+  <!ELEMENT product (description,price,author,book-name)>
+  <!ATTLIST product source CDATA #IMPLIED>
+]>
+<catalog xmlns:math="x" xmlns:xi="x">
+  <!-- product element -->
+  <product id="A" source="x" math:math-notation="x">
+    <xi:include href="x"/>
+    <description/>
+    <price/>
+    <author>&author;</author>
+    <book-name>&book-name;</book-name>
+  </product>
+</catalog>

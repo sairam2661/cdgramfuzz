@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (title, para+)>
+  <!ATTLIST doc id ID #REQUIRED>
+  <!ENTITY foo "a">
+  <!ENTITY % ent "b">
+  <!NOTATION internal-notation SYSTEM "m">
+ %Xent;
+ <!-- comment -->
+]>
+<doc id="D"> 
+  <title>&foo;</title> 
+  <para> <!-- para comment -->
+    This is a <b>bold</b> paragraph with <i>italicised</i>
+    inline markup. [link]
+  </para>
+  <para>&note;</para>
+  <link href="x">x</link>
+</doc>

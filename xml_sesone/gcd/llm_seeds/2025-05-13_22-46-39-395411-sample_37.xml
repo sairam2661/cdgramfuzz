@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Created by John Smith  --> 
+<!DOCTYPE note SYSTEM "w"
+ [<!ELEMENT note (to,from,message)><!ATTLIST note
+   id  ID   #REQUIRED
+   type  CDATA  #IMPLIED>
+
+<!ENTITY  name1 SYSTEM "A" NDATA entity><!ENTITY  %name2   SYSTEM "B">
+<!NOTATION entity SYSTEM "a">
+    %name2;  
+ <!--
+   Note this is a comment -->]>
+<note id="N" type="P" xmlns='no'>
+  <to xmlns:xi='http://www.w3c.orgxml/xinclude' xmlns:o='http://example.com'> you </to>
+  <from> me </from>
+  <message>
+    <![CDATA[Hello,
+<raw>&amp;&#38;
+        <xi:include href='#foo'/>&lt;a&gt;
+You are welcome! &name1;
+    ]]> 
+  </message>
+</note>

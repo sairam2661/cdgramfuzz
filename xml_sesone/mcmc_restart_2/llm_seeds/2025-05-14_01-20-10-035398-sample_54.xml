@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog 
+    id ID #REQUIRED>
+  <!ENTITY book "W" >
+  <!ENTITY % section "A">
+  <!NOTATION SGML-system SYSTEM "D">
+  %section;
+  <!--
+   This XML document has a DOCTYPE declaration, and the book element is declared 
+   to be optional.
+  -->
+]>
+<catalog id="C">
+  <!-- A single book element in this document -->
+  <book title="%"></book>
+</catalog>

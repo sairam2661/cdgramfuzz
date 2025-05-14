@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    idCDATA #REQUIRED>
+  <!ENTITY chapter "A" >
+  <!ENTITY  % chapter2 "B" >
+  <!NOTATION ISOpeg SYSTEM "h">
+   %chapter;  <!-- internal subset entity reference -->
+]>
+<book id="x"> <!-- attribute with CDATA type -->
+  <title>
+    <s>Some text in a span</s>
+  </title>
+  <author>
+    <name>John Doe</name>
+  </author>
+  <xi:include xmlns:xi="x" href="y"/>
+  <chapter>%chapter2;</chapter>
+  <iso:Peg notations="s" system="t"/> <!-- notation reference -->
+</book>

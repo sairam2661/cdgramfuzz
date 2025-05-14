@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- XML declaration with encoding declaration -->
+<!DOCTYPE article SYSTEM "N" [
+  <!ELEMENT article (title, paragraphs*, footnote?)>
+  <!ATTLIST article
+    id ID #REQUIRED
+    date CDATA #IMPLIED
+  >
+  <!ENTITY amp "&#038;">
+  <!ENTITY % attr "x"  >
+  <!NOTATION Book  SYSTEM "N" >
+  %attr;  <!-- Attribute included here -->
+]>
+<article id="A" date="&date;">
+  <title>Danger of Not Taking Care of Your XML</title>
+  <par>Hello world!&amp;</par>
+  <footnote>Check the manual.</footnote>
+  <author>John Doe</author>
+</article>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (title, author*, publisher+)>
+  <!ATTLIST books lang CDATA #IMPLIED>
+  <!ENTITY author1 "J">
+  <!ENTITY % xinclude "X">
+  <!NOTATION GIF PUBLIC "G" "I">
+  %xinclude;
+  <!--other comment -->
+]>
+<books lang="f">
+  <title>Example</title>
+  <publisher name="A"/>
+  <publisher name="B"/>
+  <author>&author1;.Rao</author>
+  <copyright>2020</copyright>
+  <image href="s"/>
+  <note>This is a Note</note>
+</books>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+, note*)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    source CDATA #REQUIRED>
+  <!ENTITY note "A"
+  ><!ENTITY % ent "B"
+  ><!NOTATION rtf SYSTEM "C"
+  >
+  %ent;
+  <!-- Entity reference --><!ENTITY entref "&note;">
+
+]>
+<notes xmlns="h" xmlns:xsi="w" xmlns:xs="x">
+  <note id="1" source="A">A</note>
+  <note id="2" source="B">B</note>
+  <note source="X">X</note> C
+  <message>&entref;</message>
+</notes>

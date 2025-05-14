@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE document SYSTEM "M"
+  [ <!ELEMENT document (message, section, xi:include)>
+    <!ATTLIST document
+      xmlns CDATA #FIXED 'http://example.com/schema'
+      xmlns:xi CDATA #FIXED 'http://www.w3.org/2001/XInclude'>
+  <!ENTITY n "E">
+  <!ENTITY % e "<">
+  <!NOTATION xsl PUBLIC '-//XML::XSL Transformation//EN'
+    'xsl-stylesheet'>
+  %e
+  ;<!--[ CDATA[
+  This is a test
+  ]]>
+  -->]>
+<document xmlns='http://example.com/schema' 
+          xmlns:xi='http://www.w3.org/2001/XInclude'
+          xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+          xsl:version='2.0'
+          class='document-class'>
+  <message>Entity reference: &n;</message>
+  <section>Include: <xi:include xmlns:xi="&xi;" href="2"></xi:include></section>
+</document>

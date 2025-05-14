@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book author CDATA #REQUIRED title CDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION ISO-8859-1 SYSTEM "w" >  %chapter2;  <!-- Entity expansion before inclusion check--><!ENTITY chapter2 "B">]>
+<book xmlns:xi="x" xmlns:xsi="y" xml:lang="z" xml:space="p" xml:base="/"></book>

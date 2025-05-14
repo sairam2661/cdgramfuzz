@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, content)>
+  <!ATTLIST book author CDATA #REQUIRED>
+  <!ENTITY chapter1 "A"><!ENTITY 	%SINGLE 	"	">
+  <!NOTATION print SYSTEM "l">
+
+  %include;
+  <!--  &entity;  &notation; -->
+]>
+<book author="S">
+  <title>test</title>
+  <content>
+    <chapter><xi:include href="1"/>&chapter1;&SINGLE;<foreign>&content;</foreign></chapter>
+  </content>
+</book>

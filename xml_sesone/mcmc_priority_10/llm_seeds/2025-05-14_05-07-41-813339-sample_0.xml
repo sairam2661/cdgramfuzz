@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c"
+
+      [
+         <!ELEMENT catalog (product+)>
+         <!ATTLIST catalog 
+            label  CDATA   #REQUIRED
+            lang   CDATA   "z" >
+         <!ENTITY xproduct "X">
+         <!ENTITY % sectatt "a">
+      <!NOTATION ISO-8859-1 SYSTEM "c">
+      %Xproduct;
+      <!-- 
+         A brief description of some XML declarations.
+         This  document type definition (DTD)
+         specifies
+      -->
+    ]>
+<catalog lang="z" label="Z">
+  <product>
+    <name>Alice</name>
+    <price>10</price>
+  </product>
+  <product>
+    <name>Bob</name>
+    <price>20</price>
+  </product>
+</catalog>

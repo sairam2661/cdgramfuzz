@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "w"[
+  <!ELEMENT book (author, bookinfo, title) >
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY book1 "W">
+  <!ENTITY % authorid "("><!NOTATION authorid SYSTEM "x">
+  %authorid;
+  <!--& "Author: " &;authorid -->]>
+<book lang='en' width='2' height='1'>
+  <author>John Doe</author>
+  <bookinfo>
+    <author>Jim Doe</author>
+  </bookinfo>
+  <title>&book1;&book1;&book1;</title>
+</book>

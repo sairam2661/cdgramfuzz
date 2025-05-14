@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (title,author,message*)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    authorRef IDREF
+ 'class'>
+  <!ENTITY authorref "E"> 
+  <!ENTITY % p "P">
+  <!NOTATION iso-8859-1 SYSTEM " ">
+  %iso-8859-1;
+  <!--
+  --><!ELEMENT p (#PCDATA)>
+]>
+<note id="1" class='article'>
+<title>A Test Title &p;</title>
+<author id='author' > &authorref; Smith</author>
+<message>Message 1&p; 1 &p; 2 &p; 3. Message 4</message>
+<message> Message 5!  ( 6  ) </message>
+<message> Message 7 with special chars : * + = { } </message>
+<message>&p;&p;</message>
+<p> This message should be treated as CDATA</p>
+</note>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "p"
+     [
+    <!ELEMENT catalog (meta,category*)>
+    <!ATTLIST catalog
+         id (alpha|beta) #REQUIRED
+    >
+    <!ENTITY entity "T"
+     >
+    <!ENTITY % entity1 "<">
+    <!NOTATION NOT1
+     SYSTEM "1"
+    >
+    %entity1;
+    <!---->
+    ]>
+<catalog id="d">  
+   <meta attr="q">  
+      <!---->  
+      <!-- this is not a comment -->
+      test
+   </meta> 
+   <category name="r">
+        &entity;
+    </category> 
+   <category att="a">
+        <p id='s'>s<note>
+            ^text^
+        </note>t
+        </p>
+   </category> 
+  <import
+     xpointer="x"
+     xi:href="x"
+     system="
+"
+  />
+</catalog>

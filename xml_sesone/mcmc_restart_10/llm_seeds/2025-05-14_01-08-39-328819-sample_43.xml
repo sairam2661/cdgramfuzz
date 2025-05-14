@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE person [
+  <!ELEMENT person (#PCDATA)>
+  <!ATTLIST person name CDATA #REQUIRED age CDATA #IMPLIED>
+  <!ENTITY city "P"><!ENTITY % em "%"><!NOTATION XML  PUBLIC "-"
+        "a">
+  %em; <!-- Entity reference -->
+]>
+<person xmlns="a" xmlns:b="b" name="A" age="B">
+  <!-- Sample comment -->
+  <b:schemaLocation xmlns="c">d</b:schemaLocation> 
+  <address><street number="1"><city>City Z</city></street></address>
+</person>

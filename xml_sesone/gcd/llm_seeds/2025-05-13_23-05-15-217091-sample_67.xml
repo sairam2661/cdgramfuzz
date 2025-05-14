@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category*)>
+  <!ATTLIST catalog
+  id CDATA #IMPLIED
+  locale (en|fr|de) "f"
+  >
+  <!ENTITY cat1 "<" >
+  <!ENTITY % ent1 "("
+  >
+  <!NOTATION notation-name SYSTEM "C">
+ 	        
+ 	%ent1;<!-- notation declaration comment -->
+ 	<!ENTITY entity-name "A">
+  <!-- CDATA block -->
+  <!ELEMENT category (#PCDATA)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT description (#PCDATA)>
+  
+  ]>
+<catalog id="c" locale="f" xmlns:xsi="w" xsi:noNamespaceSchemaLocation="x">
+  <category
+  	lang="f"
+    name="A"
+  >
+    &entity-name;
+    &cat1;
+  <description
+    lang="f"
+  >This is a description</description>
+  </category>
+  <category
+  	lang="e"
+    name="B"
+  >
+  &entity-name;
+  &cat1;
+  <description
+    lang="e"
+  >This is another description</description>
+  </category> 
+</catalog>

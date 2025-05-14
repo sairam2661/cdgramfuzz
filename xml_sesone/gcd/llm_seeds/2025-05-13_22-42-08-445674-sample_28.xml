@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE persons SYSTEM "c"
+ [
+  <!ELEMENT persons (person+)> 
+  <!ATTLIST person name CDATA #REQUIRED job CDATA #IMPLIED>
+  <!ENTITY c SYSTEM "c">
+  <!ENTITY % p "%">
+  <!NOTATION ISO-8859-1 SYSTEM "p">
+  %p;
+  <!--
+    This is a short comment
+  -->
+  <!--
+    This is a long comment spanning multiple lines
+  -->]>
+<c>
+  <persons>
+   <person name="S" job="D" />
+   <person name="E" />
+   <person job="A"/>
+   <person name="W"/>
+  </persons>
+  <!--
+    This is another short comment
+  -->
+  <group xml:lang="f">
+   <!-- This is a short comment too -->
+   <text>This is English text</text>
+  </group>
+</c>

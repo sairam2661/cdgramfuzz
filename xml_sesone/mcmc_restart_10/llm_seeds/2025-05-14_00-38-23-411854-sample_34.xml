@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE root SYSTEM "d" [ 
+  <!ELEMENT s (s*,p+)>
+  <!ATTLIST s type CDATA #IMPLIED>
+  <!ENTITY x "X">
+  <!ENTITY % p-content "#">
+  <!NOTATION BOOKMARC SYSTEM "B" >
+  %p-content;
+  <!--
+    A comment
+  -->
+]>
+<root name='example'>
+  <s type="1">Some text</s>
+  <p>This is a paragraph &x;
+    <xi:include href="/">
+      <xi:fallback>No content</xi:fallback>
+    </xi:include>
+  </p>
+</root>

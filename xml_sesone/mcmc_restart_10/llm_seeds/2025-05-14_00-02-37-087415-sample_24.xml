@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE dataset [
+  <!ELEMENT dataset (head, body)>
+  <!ATTLIST dataset id ID #REQUIRED>
+  <!ENTITY data "1">
+  <!ENTITY % ext SYSTEM "d">
+  <!NOTATION iso-pub-application  SYSTEM "i">
+  %ext;
+  <!-- This is a comment -->
+]>
+
+<dataset xmlns:my="x" id="1">
+  <head><title xml:lang="x"/></head>
+  <body>
+    <description xml:space="x"/>
+    <record>
+      <number>1</number>
+      <field1>&data;</field1>
+    </record>
+  </body>
+</dataset>

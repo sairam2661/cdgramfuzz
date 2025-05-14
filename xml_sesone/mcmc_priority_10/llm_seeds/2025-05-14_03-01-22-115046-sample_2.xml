@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*,comment)>
+  <!ATTLIST catalog attr CDATA #IMPLIED>
+  <!ENTITY cat "F">
+  <!ENTITY % catEnt "%">
+  <!NOTATION iso-8859-1 SYSTEM "w">
+  %catEnt;
+  <!---->
+]>
+<catalog attr="v" xml:lang="x">
+  <comment>Best products</comment>
+  <item><name>Pencil</name><price>10</price></item>
+  <item><name>Pen</name><price>20</price></item>
+  <comment>This is sample data</comment>
+</catalog>

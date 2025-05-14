@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"
+    [
+        <!ELEMENT catalog (book+)>
+        <!ATTLIST book id ID #REQUIRED>
+        <!ENTITY book "W"
+            >
+  <!ENTITY  %ent "A">
+  <!NOTATION print SYSTEM "l">
+    %ent;   
+  <!--
+  
+   -->]>
+<catalog>
+<book id="B"> 
+    <title>&book;</title> 
+    <author>&book;</author>
+    xmlns:a="http://b">
+        &print;
+    <a:a>text</a:a>
+</book>
+</catalog>

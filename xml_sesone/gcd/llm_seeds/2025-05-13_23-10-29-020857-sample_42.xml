@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (#PCDATA|image|script|style|sub1|sub2|comment |pi |CDATA |entityref |Attlist |Decl |Text)>   <!ATTLIST root title CDATA #REQUIRED>
+  <!ENTITY year "a">
+  <!ENTITY % ent SYSTEM "e" >  <!NOTATION m SYSTEM "m" >  %ent;   <!--not included in the DOCTYPE  -->]>
+<root title="A">
+  <comment><!-- comment --></comment>
+  <sub1 xml:lang="f">text</sub1>
+  <sub2 xml:lang="g">&year;</sub2>
+  <image src="x" alt="v" title="b" />
+  <script><![CDATA[<u>s
+   <table border="1"> </table> 
+   <style>font:3pt verdana</style>
+  ]]></script>
+  <style> <span style="1"> </span></style>
+  <pi target="x"><!-- processed instruction --></pi>
+  <Attlist name="s" id="u" value="w" default="#" type="(">  a  </Attlist>
+  <Decl id="r" type="d" content="e" format="s"  />
+  <Text>
+    <foo/>  <bar barbar="o"/>
+  </Text>
+</root>

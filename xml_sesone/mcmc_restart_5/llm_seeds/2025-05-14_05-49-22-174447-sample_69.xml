@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "A"> 
+  <!ENTITY % entity-list "a"> 
+  <!NOTATION notation-nameSYSTEM "m" 
+         > 
+  %entity-list;
+  <!--<!ELEMENT chapter (#PCDATA)>
+ !-->
+]>
+<book id="1" xmlns:xi="x" xmlns:xsi="x"  xsi:noNamespaceSchemaLocation="n">
+  <author><![CDATA[name < > "text"]]></author>
+  <title xml:lang="r">Book title &chapter1;</title>
+  <chapter1>&chapter1;</chapter1>
+  <chapter2>Chapter 2: &note;</chapter2>
+</book>

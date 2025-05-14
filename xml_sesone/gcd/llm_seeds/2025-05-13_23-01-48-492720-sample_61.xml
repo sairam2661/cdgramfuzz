@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m"[
+<!ELEMENT top (#PCDATA)>
+<!ATTLIST top id CDATA #REQUIRED>
+<!ENTITY ans "0">
+<!ENTITY % ent SYSTEM "e">
+<!NOTATION sys PUBLIC "-"
+    "J"
+>
+%sent;
+<!--
+--><!ELEMENT note (#PCDATA)>
+<!ATTLIST note id CDATA #REQUIRED>
+<!--
+Note, to see all available attributes you should press F2 in 
+Eclipse. They can also be found in your project folder / 
+yourprojectname/.metadata/.plugins/org.eclipse.wst.xsl.transformation/ 
+xml_xslt_config.xml
+
+--><!ELEMENT summary (#PCDATA)>
+
+<!ENTITY ref SYSTEM "d" NDATA sys>
+
+<!ENTITY % dtd PUBLIC "d" "c" >
+<!ENTITY z SYSTEM "e"> 
+<!NOTATION sys PUBLIC "-"
+"-">
+<!ENTITY % x SYSTEM "e">
+<!ENTITY p "H" >
+<!ENTITY e SYSTEM "e" NDATA sys>
+<!ENTITY m SYSTEM "d" NDATA sys>
+<!ENTITY yref SYSTEM "e" NDATA sys>
+<!ENTITY % e SYSTEM "e">
+<!NOTATION sys PUBLIC "-"
+    "H" 
+>
+<!ATTLIST y
+    id
+    CDATA
+    #REQUIRED
+>
+<!ELEMENT y (#PCDATA)>
+<!ENTITY u SYSTEM "e" NDATA w>
+<!ENTITY l SYSTEM "e" NDATA w>
+<!NOTATION x SYSTEM "q">
+
+<!ENTITY y SYSTEM "o"
+    NDATA w>
+<!NOTATION r PUBLIC "-"
+    "J"  >
+<!ATTLIST r
+    lang CDATA #IMPLIED
+    style CDATA #IMPLIED
+>
+<!ELEMENT r (#PCDATA)>
+<!ATTLIST w
+    style CDATA #IMPLIED
+>
+<!ELEMENT w (#PCDATA)>
+<!ELEMENT w1 (#PCDATA)>
+<!ATTLIST w1
+    id
+    CDATA
+    #IMPLIED
+>
+<!ELEMENT m (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT m1 (#PCDATA)>
+<!ATTLIST m1
+    id
+    CDATA
+    #IMPLIED
+>
+<!ELEMENT b (#PCDATA)>
+<!ATTLIST b
+    lang CDATA
+    #IMPLIED
+>
+
+<!ELEMENT top (#PCDATA)>
+<!ELEMENT note2 (#PCDATA)>
+<!ATTLIST note2
+    id CDATA #IMPLIED
+>
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+
+<!ATTLIST notes
+    version
+    CDATA
+    #REQUIRED
+>
+<!ELEMENT a (#PCDATA)>
+
+<!ATTLIST o
+    style
+    CDATA
+    #IMPLIED
+>
+<!ELEMENT b (#PCDATA)>
+
+<!ATTLIST z
+    color
+    CDATA
+    #IMPLIED
+>
+<!ELEMENT note (#PCDATA)>
+<!ATTLIST note
+    id CDATA #IMPLIED
+>
+<!ELEMENT f1 (#PCDATA)>
+
+  <!-- start document -->
+  <!ELEMENT q (#PCDATA)>
+
+<!ELEMENT r (#PCDATA)>
+<!ATTLIST r
+    style
+    CDATA
+    #IMPLIED
+>
+<!-- end document -->
+<!ELEMENT l (#PC

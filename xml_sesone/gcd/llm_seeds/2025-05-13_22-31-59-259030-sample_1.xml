@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog entityID ID #IMPLIED>
+  <!ENTITY product1 SYSTEM "v">
+  <!ENTITY % product2 SYSTEM "v">
+  <!NOTATION pdf PUBLIC "P" "P">
+  %product2;
+  <!--* external declaration of entity product2 *-->  
+]>
+<catalog entityID="E" xmlns:xi="&ns;">
+
+  <product xmlns:xsi="x" xsi:noNamespaceSchemaLocation="x">
+    <name>&product1;</name>
+    <image>&product2;<![CDATA[<logo>picture</logo>]]>';</image>
+  </product>
+</catalog>

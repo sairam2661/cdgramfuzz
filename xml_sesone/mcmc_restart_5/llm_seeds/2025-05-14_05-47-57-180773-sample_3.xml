@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE persons [
+  <!ELEMENT persons (person+)>
+  <!ATTLIST persons 
+    id CDATA #REQUIRED 
+    version CDATA #FIXED '1.0'>
+  <!ENTITY person1 "1">
+  <!ENTITY % person2 "2">
+  <!NOTATION W3C PUBLIC '+//W3C//DTD XML 1.0//EN' 'http://www.w3.org/TR/REC-xml'>
+  %person2;
+  <!-- Comment with entities : &#60;&#63; &#60;person>&#60;&#47;person&#62; &#60;&#47;&#62; -->
+  ]>
+<persons id='example' version='1.0' xmlns:xi='http://www.w3.org/2001/XInclude'>
+  <person id='&person1;'>John</person>
+  <person id='3'>Doe</person>
+  <person xmlns:local='http://example.org/local'>
+    Smith
+    <local:address>123 Main St</local:address>
+  </person>
+</persons>

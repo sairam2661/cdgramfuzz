@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root
+   id  CDATA    #REQUIRED
+   class CDATA   #IMPLIED
+  >
+  <!ENTITY book "F" >
+  <!ENTITY % entity "X">
+  <!NOTATION print SYSTEM "m">
+  %entity;
+  <!---->
+]>
+<root id="1" class='doc'><?print?> &book;<front>header</front></root>

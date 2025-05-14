@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog author CDATA #REQUIRED>
+  <!ENTITY product1 "L" >
+  <!ENTITY % product2 "A">
+  <!NOTATION n1 SYSTEM "n">
+ 	 		%product2; 	<!---->	  
+  <!-- Internal subset declaration -->
+]>
+<catalog author="J">
+    <!-- External subset declarations (via external subset DTD file or PI) here -->
+    <product>&lt;</product> <!-- Ampersand, angle brackets and some special chars -->
+    <product>&prod;</product>
+    <product>&n1;</product>
+</catalog>

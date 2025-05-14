@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bibliography [
+  <!ELEMENT bibliography (book+, author+)>
+  <!ATTLIST bibliography
+       owner ID #REQUIRED
+       revision CDATA #IMPLIED
+  >
+  <!ENTITY book "A" >
+  <!ENTITY % bookSeq "("
+    > <!NOTATION SGML PUBLIC " "
+        " "
+   >
+  %bookSeq; <!----> <!ENTITY % bookSeq " "
+               >
+]>
+<bookstore owner="J">
+  <revision>2</revision>
+  <book title="A">
+    <author>John</author>
+    <year>2001</year>
+  </book>
+  <book title="B">
+    <author>Jane</author>
+    <year>2002</year>
+  </book>
+  <author name="E">Emily</author>
+</bookstore>

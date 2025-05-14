@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root ANY>
+  <!ATTLIST root attr1 CDATA #IMPLIED>
+  <!ENTITY ent "X">
+  <!ENTITY % ent2 "a">
+  <!NOTATION GIF PUBLIC "G" "c">
+  %ent2;
+  <!---->
+]>
+<root attr1="q" xmlns='http://example.org/'>
+  <xi:include xmlns:xi="s">
+    <xsl:stylesheet version='1.0'
+        xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+        xmlns='http://www.example.com/style'><xsl:template match='/'>
+      <text/>
+    </xsl:template></xsl:stylesheet>
+  </xi:include>
+</root>

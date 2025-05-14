@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY note "A">
+  <!ENTITY % sec "B" >
+  <!NOTATION ISO-PICTURE SYSTEM "G" >
+  %sec ;
+  <!--& This is a comment --> 
+]>
+<notes xmlns:xi="&xi;" xmlns="&ns;">
+  <note id="1">#Note 1</note>
+  <note id="2">#Note 2</note>
+</notes>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c" [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog
+    company CDATA #REQUIRED
+    date  CDATA #IMPLIED
+  >
+  <!ENTITY name "S" >
+  <!ENTITY % e SYSTEM "e" >
+  <!NOTATION Fichier  PUBLIC "S" "F" >
+  %e;
+  <!---->
+  <!ELEMENT product (name, price+, description?)>
+  <!ATTLIST product
+    id    CDATA #REQUIRED
+    year  CDATA #IMPLIED
+    flag  (true | false) "0"
+  >
+]>
+<catalog company="E"
+         date="T"
+         xmlns:foo="w"
+         xmlns:xlink="w"
+         xmlns:xsi="w"
+         xsi:noNamespaceSchemaLocation="s"
+         id="1">
+  <name></name>
+  <price>20</price>
+  <price>10</price>
+  <description></description>
+  <product id="1" year="y" flag="1">
+    <name></name>
+    <price>20</price>
+    <price>10</price>
+    <description></description>
+  </product>
+</catalog>

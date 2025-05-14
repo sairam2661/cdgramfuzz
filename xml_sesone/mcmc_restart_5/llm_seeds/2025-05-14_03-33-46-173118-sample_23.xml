@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog author CDATA #REQUIRED>
+  <!ENTITY logo "W">
+  <!ENTITY % ent SYSTEM "d">
+
+  <!NOTATION html PUBLIC "-"
+
+      "W">
+  %ent;
+  <!-- 2.1 -->
+  <!-- 2.0 -->
+]>
+<CATALOG xmlns="h"
+  author="S">
+  <product>
+    <title></title>
+  </product>
+  &logo;
+</CATALOG>

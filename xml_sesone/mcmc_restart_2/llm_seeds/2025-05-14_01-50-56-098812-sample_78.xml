@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "n" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root attr1 CDATA #REQUIRED>
+  <!ENTITY foo "a">
+  <!ENTITY % bar "b">
+  <!NOTATION ISO-8859-1 SYSTEM "n">
+  %bar;
+  <!---->
+]>
+<root attr1="a" xmlns="b"><body attrib="b" xmlns:xs="c"><s></s><!----></body></root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+,title,author)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY para "P"> <!ENTITY  % para-start "<" ><!NOTATION PDF SYSTEM "P">
+  %para-start;<!-- Notation --> %para-start;<!-- Notation 2 %para;'--> %para;]>
+<books>
+  <book id="1">
+    <title>Book 1</title>
+    <author>Author 1</author>
+  </book>
+  <book id="2">
+    <title>Book 2</title>
+    <author>Author 2</author>
+  </book>
+  <title>A Book Title</title>
+  <author>Nick Author</author>
+</books>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes
+     owner CDATA #REQUIRED
+     creation-date CDATA #IMPLIED
+     modification-date CDATA #IMPLIED>
+  <!ENTITY person "D"
+                 >
+  <!ENTITY % pattern "<">
+    <!NOTATION text PUBLIC 'text/plain'
+              'This document is in plain text'>
+  %pattern; <!----> <!-- text -->
+]>
+<notes owner='Alex' creation-date='2022-01-01'>
+  <note>
+    <title>&person;</title>
+    <text>&text;</text>
+  </note>
+  <note>
+    <title>Important Task</title>
+    <text>Don't forget to buy groceries</text>
+  </note>
+</notes>

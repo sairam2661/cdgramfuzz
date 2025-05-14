@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library [
+  <!ELEMENT library (book+)>
+  <!ATTLIST library id CDATA #REQUIRED>
+  <!ENTITY book "A" >
+  <!ENTITY 	%genre "F" >
+  <!NOTATION ISO-8859-1 PUBLIC " " " ">
+  %book; <!-- validate -->
+]>
+<library id="1" xi:schemaLocation="x"
+         xmlns="x"
+         xmlns:xsi="x"
+         xmlns:xi="x">
+  <xi:include href="x"/>
+  <book>
+    <title><![CDATA[Some CDATA text]]></title>
+    <author>John</author>
+    <genre>&genre;</genre>
+  </book>
+</library>

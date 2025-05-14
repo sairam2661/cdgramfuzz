@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m"
+       [
+         <!ELEMENT catalog (#PCDATA)>
+         <!ATTLIST catalog
+             id CDATA #REQUIRED
+             lang (en|fr|de) "f"
+         >
+         <!ENTITY entity1 "A">
+         <!ENTITY % entity2 "B">
+         <!NOTATION svg PUBLIC 'SVG Notation'
+               "A">
+       %entity2;<!---->
+       ]>
+<catalog id='cat1' lang='en' xmlns='http://example.com/schema'>
+  <image><raw>Some CDATA text </raw><xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='xinel.rnc'/></image>
+  &entity1;<message>Text with &entity2; and &note;.</message>
+</catalog>

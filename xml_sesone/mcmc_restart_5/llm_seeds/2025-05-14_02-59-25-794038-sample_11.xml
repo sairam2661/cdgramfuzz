@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapters)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    lang (en|fr|de) 'en'
+  >
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION iso-8859-1 SYSTEM "w" >
+  %chapter2;
+  <!--
+    A comment with multiple lines
+  -->
+]>
+<book id="b" lang="f"> 
+  <title>Example</title>
+  <author>
+    <name>John Doe</name>
+    <affiliation>University</affiliation>
+  </author>
+  <chapter1 entity-ref="c" /> 
+  <!--Chapter 1--> 
+  <xi:include xmlns:xi="1" href="x"/> 
+  <chapters>
+    <a>Chapter A</a>
+  </chapters>
+</book>

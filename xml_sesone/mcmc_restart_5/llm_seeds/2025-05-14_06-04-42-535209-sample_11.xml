@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapters+)>
+  <!ATTLIST book edition CDATA #REQUIRED>
+  <!ENTITY chapter1 "<"> 
+  <!ENTITY % include "%" >
+  <!NOTATION BookFormat PUBLIC "_" "_">
+  %include;
+  <!--( This is a comment )-->
+]>
+<book edition="2">
+  <title>This is a title</title>
+  <author>John Doe</author>
+  <chapters>
+    <chapter>&chapter1;</chapter>
+  </chapters>
+</book>

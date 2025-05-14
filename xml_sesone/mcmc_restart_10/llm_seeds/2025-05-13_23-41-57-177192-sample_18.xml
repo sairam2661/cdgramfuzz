@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Default and namespace with prefix -->
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note (to,from,text)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY x "X">
+  <!ENTITY % y "Y">
+  <!NOTATION Internal  PUBLIC " " " " >
+  %internal-notation;
+  <!-- Non-->
+  <!ENTITY para SYSTEM "j" NDATA f>
+  ]>
+<note xmlns="h" c:m="1" xmlns:m="d">
+  <to>Who</to>
+  <from>Me</from>
+  <text><![CDATA[<para>This line is an internal CDATA section but text will be shown outside]]></text>
+</note>

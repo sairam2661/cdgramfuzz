@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author "J" >
+  <!ENTITY % section "1" >
+  <!NOTATION book-format SYSTEM "E">
+  %section;
+  <!-- default notation -->
+]>
+<book id="B" xmlns="y">
+  <title>XML</title>
+  <author>&author;</author>
+  <chapter id="C"><b>Section</b></chapter>
+</book>

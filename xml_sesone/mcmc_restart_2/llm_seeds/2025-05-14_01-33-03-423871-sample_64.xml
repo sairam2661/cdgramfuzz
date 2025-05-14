@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED
+    id ID #REQUIRED
+  >
+  <!ENTITY chapter1 "A" >
+  <!ENTITY % chapter2 '#PCDATA'>
+  <!NOTATION bookNotation SYSTEM "J">
+  %chapter2;
+  <!-- some other stuff -->
+]>
+<book lang="B" id="B" xmlns="a" xmlns:m="b">
+  <title>m&v; Book</title>
+  <author>
+    <name>Mr.B</name>
+    <mail>m@b.com</mail>
+  </author>
+  <chapter><chapter1/></chapter>
+  <chapter><![CDATA[ch&2;2;]]></chapter>
+  <m:note a="b">This is a book.</m:note>
+</book>

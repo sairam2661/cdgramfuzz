@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ELEMENT document (title, section*, xi:include+)>
+  <!ATTLIST document lang CDATA #REQUIRED>
+  <!ENTITY eacute "&#201;">
+  <!ENTITY % ent "%">
+  <!NOTATION ISO-8859-1 SYSTEM " ">
+  %ent;
+  <!--*--><!ELEMENT section (#PCDATA)>
+  <!ELEMENT xi:include EMPTY>
+  <!ATTLIST xi:include href CDATA #REQUIRED>
+]>
+<document 
+  xmlns:xi="x"
+  xmlns:xsi="y"
+  lang="z"
+  xsi:schemaLocation="w">
+  <title>
+    <span xml:lang="x" xml:space="7">
+      Some &eacute; &nt;&x200a;
+    </span>
+  </title>
+  <section> Raw <raw> text </raw> section </section>
+</document>

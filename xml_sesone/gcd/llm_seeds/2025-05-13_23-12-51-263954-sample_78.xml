@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY chapter4 "A" >
+  <!ENTITY  % chapter5 SYSTEM "s" >
+  <!NOTATION book-format SYSTEM "X" >
+  %chapter5;
+  <!--
+   -->]>
+<book lang="x">
+  <title>BookTitle</title>
+  <author>AuthorAuthor</author>
+  <chapter>FirstChapter</chapter>
+  <chapter>SecondChapter</chapter>
+  <chapter>&chapter4;</chapter>
+  <chapter>FourthChapter</chapter>
+  <chapter>&book-format; FifthChapter</chapter>
+</book>

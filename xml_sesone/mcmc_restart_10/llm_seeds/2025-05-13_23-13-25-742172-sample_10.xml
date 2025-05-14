@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (header+, item*)>
+  <!ATTLIST header id ID #REQUIRED>
+  <!ENTITY book "B"
+  >
+  <!ENTITY % quote "A">
+  <!NOTATION isbn PUBLIC "A" "B">
+  %quote;
+   <!--&nsb;-->
+]>
+<catalog>
+  <header channel="A" id="C"><![CDATA[header text]]> </header>
+  <header channel="B" id="C"/>
+  <item><![CDATA[<item1>
+    <year>1998</year>
+   <book>&book;</book>
+    <title>Hello</title>
+   &isbn;
+    <author>Kate</author>
+]]></item>
+  <item><author>John</author></item>
+</catalog>

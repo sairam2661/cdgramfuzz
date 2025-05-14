@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT chapter (#PCDATA)>
+  <!ATTLIST chapter id CDATA #REQUIRED>
+  <!ENTITY book-year "2">
+  <!ENTITY% chapter.ent ">"
+                                                                                
+ 			   		
+ 																				><!NOTATION W3CDTD PUBLIC "-"
+" "

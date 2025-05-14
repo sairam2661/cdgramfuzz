@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title, para+, author)+>
+  <!ATTLIST article id ID #REQUIRED>
+  <!ENTITY email "m"><!ENTITY % emailType "y"><!NOTATION mail PUBLIC "E" "E">
+  %emailType;
+  <!--%email;-->
+]>
+<article id="A" xmlns:xi="p">
+  <title>This</title>
+  <para>This is a</para>
+  <para>para</para>
+  <author>By Me</author>
+</article>

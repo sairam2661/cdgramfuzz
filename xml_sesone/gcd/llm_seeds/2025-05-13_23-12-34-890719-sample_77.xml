@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE complex-system [
+  <!ELEMENT complex-system (component*, system-property)>
+  <!ATTLIST complex-system
+    id    CDATA    #REQUIRED
+    version    CDATA    #IMPLIED
+  >
+  <!ENTITY hard-drive "1">
+  <!ENTITY % processor-public
+     "1">
+  <!NOTATION public-note SYSTEM "A">
+ %i  ;
+  <!-- NOTATION -->
+  <!--<!NOTATION  SYSTEM="http://www.example.com/notation.dtd">-->
+  <!-- ELEMENT -->
+  <!ELEMENT system-property (#PCDATA)>
+  <!ELEMENT component (#PCDATA)>
+  <!ELEMENT hardware (#PCDATA)>
+
+]>
+<complex-system id="e" version="1">
+  <!--  systemProperty1  -->
+  <system-property>This is the system property</system-property>
+  <!--  some description for system property   -->
+  <component>Intel</component>
+  <hardware>This hardware has EntityReference: &Hard-Drive;, CDATA: <![CDATA[&Processor;]]>, reference entity: &processor;, &i;, and an internal parameter entity reference: %processor;</hardware>
+</complex-system>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "m" [
+  <!ELEMENT data (item+)>
+  <!ATTLIST data id ID #REQUIRED>
+  <!ENTITY myname "J">
+  <!ENTITY % ent "<">
+  <!NOTATION iso  PUBLIC " " " ">
+  %ent;<!--
+  Sample comment here
+  --><!NOTATION internal SYSTEM "m">
+]>
+<document xmlns:svg="x">
+  <data id="D">
+    <item>Item1</item>
+    <item>Item2</item>
+  </data>
+</document>

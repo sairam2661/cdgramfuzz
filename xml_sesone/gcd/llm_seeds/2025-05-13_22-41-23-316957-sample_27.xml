@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "m" [
+  <!ELEMENT inventory (product*)>
+  <!ATTLIST product 
+    Id  ID   #REQUIRED 
+    Price  CDATA  #IMPLIED
+  >
+  <!ENTITY catalog SYSTEM "d">
+  <!ENTITY % cdata ">"
+  >  
+<!NOTATION rtf PUBLIC "R" "r">
+  %catalog;
+<!--
+    -->]>
+<inventory xmlns:sch="x" xmlns:p="m">
+  <product Id="1" p:Price="4"></product>
+  <product Id="2" xmlns:xiurp="y" xiurp:uri="d">4
+    <item>test</item>
+    <item>sdf</item>
+  </product>
+</inventory>

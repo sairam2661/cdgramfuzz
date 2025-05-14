@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (film*)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY film1 "P" >
+  <!ENTITY % film2 "L" >
+  <!NOTATION iso-8859-1 SYSTEM "I">
+  %film2;
+  <!-- other notation declarations -->
+]>
+<catalog lang='EN'>
+  <film><title>&film1;</title></film>
+  <film><title><annotation>Best film</annotation></title></film>
+</catalog>

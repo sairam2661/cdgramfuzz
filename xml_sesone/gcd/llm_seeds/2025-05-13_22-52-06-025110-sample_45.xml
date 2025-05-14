@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA | author | title | chapter | year | publisher | authorgrp)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY title "F" >
+  <!ENTITY  % authorgrp "a">
+  <!NOTATION SGML SYSTEM "M">
+  %authorgrp;
+  <!--%content;  -->
+]>
+<book lang="e" xml:lang="f" xmlns:xincludes="f">
+  <!-- Sample comment -->
+<cdata>&lt;raw&gt; f &lt;/raw&gt;<p>text</p></cdata>
+  &title; &apos; ;<title>Sample title</title>
+  <chapter>Sample Chapter</chapter>
+  <year>2023</year>
+  <publisher>Example Publisher</publisher>
+  &title; &apos; ;<authorgrp> Sample<author>John</author> Author <author>John</author></authorgrp>
+  <publishergrp> Sample<vendor>Vendor</vendor> Vendor <vendor>Vendor</vendor></publishergrp>
+</book>

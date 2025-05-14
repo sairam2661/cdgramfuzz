@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog language (English | Spanish | French) #REQUIRED>
+  <!ENTITY ent "W">
+  <!ENTITY % e "a">
+  <!NOTATION FTP SYSTEM "M" >
+  %e; <!-- internal declaration -->
+]>
+<catalog language="F">
+  <product><desc>&ent;</desc></product>
+  <product><name>&note;</name></product>
+  <product><ref attr1="1" attr2="2"/>  <!-- element with attributes -->
+    <param>&ent;</param>
+  </product>
+</catalog>

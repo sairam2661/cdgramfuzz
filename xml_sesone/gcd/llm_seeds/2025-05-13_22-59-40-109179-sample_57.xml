@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE note SYSTEM "f" [<!ELEMENT name (#PCDATA)><!ATTLIST note  id ID #REQUIRED>  <!ENTITY date "("><!ENTITY % e "x" ><!NOTATION f SYSTEM "P">  %e;<!--Za--> ]><note id="n"><name xml:lang="e">John</name>   <to xml:space="p">Mary</to>   <from>Foo</from>   <heading>Reminder</heading>   <body>&date;  It's 17:00</body></note>

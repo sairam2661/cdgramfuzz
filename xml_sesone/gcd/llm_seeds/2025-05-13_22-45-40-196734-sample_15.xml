@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book
+    id  CDATA  #REQUIRED
+    lang (en|fr|de) 'en'
+  >
+  <!ENTITY chapter "B">
+  <!ENTITY % para "<">
+  <!NOTATION PDF PUBLIC 'Portable Document Format application'
+    'application/pdf'
+  >
+  %para;
+  <!-- Entities, notations, elements and attributes are declared here -->
+]>
+<book id="B" lang="f">
+  <author>John Doe</author>
+  <title>Example Book</title>
+  <chapter id="C">
+    Chapter 1
+  </chapter>
+</book>

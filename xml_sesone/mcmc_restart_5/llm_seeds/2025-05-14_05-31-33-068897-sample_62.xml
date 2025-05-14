@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+<!ELEMENT root (person+)>
+<!ATTLIST root
+  id  CDATA   #IMPLIED
+  xmlns  CDATA  #FIXED 'http://www.example.org/'>
+<!ENTITY pi SYSTEM "p">
+<!ENTITY % p SYSTEM "p">
+<!NOTATION movie SYSTEM "m">
+   %pi; 
+<!--%movie;-->
+]>
+<root xmlns="&ns;" id="1" person="&person;">
+  <person><name>Jane</name><age>35</age></person>
+</root>

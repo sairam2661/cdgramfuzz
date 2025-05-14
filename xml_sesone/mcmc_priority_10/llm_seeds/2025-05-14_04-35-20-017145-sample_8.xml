@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "m"
+ [
+   <!ELEMENT data (item)>
+   <!ATTLIST item id CDATA #REQUIRED>
+   <!ENTITY year "2">
+   <!ENTITY % entities "a">
+   <!NOTATION SystemIdentification SYSTEM "x">
+   %entities;
+  <!--<!ENTITY % ent SYSTEM 'ent.dtd'>-->
+   <!ELEMENT data (item*)>
+   <!ELEMENT item (name,personal)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT personal (#PCDATA)>
+]>
+<data>
+  <item id="1">
+    <name>John Doe</name>
+    <personal>Age: &year; years, a fan of <b>football</b> in the ECI.</personal>
+  </item>
+</data>

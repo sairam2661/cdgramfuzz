@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book type CDATA #REQUIRED>
+  <!ENTITY year " ">
+  <!ENTITY % ent ";">
+  <!NOTATION print SYSTEM "a">
+  %ent;<!---->
+]>
+<book type="A">
+  <author>John</author>
+  <title>A title&year;
+      <!-- text -->
+  </title>
+  <xi:include xmlns:xi="x" href="b"/>
+  <notetype>Printed book</notetype>
+  <chapter>First chapter</chapter>
+  <print system="a">Notation</print>
+</book>

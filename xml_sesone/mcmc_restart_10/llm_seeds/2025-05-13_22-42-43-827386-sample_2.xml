@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rootSYSTEM "X" [
+  <!ELEMENT root (sect1,sect2,sect3)>
+  <!ATTLIST root
+    id ID #REQUIRED
+  >
+  <!ENTITY author "J"
+    >
+  <!ENTITY % ent-ref-parameter-entity SYSTEM "X">
+  <!NOTATION html SYSTEM "X">
+  %ent-ref-parameter-entity;
+  <!--
+    This document defines XML markup declarations using various techniques
+  -->
+]>
+<root xmlns:xi="n" id="d">
+  <sect1><sect id="i">Inside</sect></sect1>
+  <sect2 xmlns:y="X">
+    <para1>Sample text <x:ref ref="F" xi:nil="t">No link <y:par>Text!</y:par></x:ref>&author;</para1>
+  </sect2>
+  <sect3 id="_">Outside</sect3>
+</root>

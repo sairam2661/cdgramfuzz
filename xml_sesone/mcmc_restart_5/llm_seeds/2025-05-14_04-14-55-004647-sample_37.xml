@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, body)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY book-version "1">
+  <!ENTITY% s "s" >
+  <!NOTATION ISO-8859-1 SYSTEM "1">
+  %s;
+  <!---->
+]>
+<book lang="X" xmlns="x" xmlns:xi="x">
+<title><![CDATA[<title>The <code> XML </code> book]]></title>
+</book>

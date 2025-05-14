@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog 
+    vendor CDATA #REQUIRED
+    date CDATA #IMPLIED>
+  <!ENTITY product1 "T" >
+  <!ENTITY % product2 "<"> 
+  <!NOTATION iso-8859-1 PUBLIC "-"
+      " ">
+  %product2;
+  <!--comment is ignored -->
+]>
+<catalog vendor="W" date="D">
+  <xsl:stylesheet version="1" xmlns:xsl="x"> 
+    <product>
+      <item entity-ref="#"
+      xsi:type="&xmltype;"/>  
+    </product>  
+    <product>   
+      &product1;<name><![CDATA[<>&"]]></name>  
+    </product>
+</catalog>  <message> ISO 8859-1 </message>  <entity-ref-entity-ref name="n">$n$;  </entity-ref-entity-ref>   <name entity-ref="#"></name>  <date entity-ref="#">1998<!--&ISO 8859-->-</date>    <message> $n; 1998$;   <note> &ISO  ;  </note>   <element name="T" type="&xmltype;">&ISO  ;</element>   <!--&ISO 8853--></message>    <catalog vendor="Y" date="y">   
+    <product><note entity-ref="/">n&ISO  ;</note></product>     <xsl:apply-templates/>  </catalog>   <catalog vendor="C" date="c"> 
+   <note entity-ref="/">&ISO;&ISO  ; </note> 
+      <product><name entity-ref="'"> 
+        <a entity-ref="'">
+           <!--& -->
+        </a> 
+    </name>   <product>  
+   <comment entity-ref='""><![CDATA[--&n;]]></comment>
+  <note entity-ref="/'>n;  (note-  </note></product>   <message>note</message>  
+</catalog>   <stylesheet>        <!--&ISO;  -->
+  <title entity-ref='#'></title>   <title> ISO 8859-1 </title>  
+  <note> <!--&ISO; (ISO 8859--></note>    <message> <note entity-ref="$" name="r">Note

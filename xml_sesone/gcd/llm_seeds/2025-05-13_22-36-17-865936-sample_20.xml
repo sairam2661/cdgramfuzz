@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog attr1 CDATA #IMPLIED attr2 (on|off) "n">
+  <!ENTITY book "T"
+       >
+  <!ENTITY % sect "#"
+       >
+  <!NOTATION HTML PUBLIC "-"
+       "w"
+    >
+ %XINCLUDE;
+  <!---->
+]>
+<catalog
+  xmlns="w"
+  attr1="v"
+  attr2="o"
+  xi:noNamespaceSchemaLocation="s"
+  xi:include="/"
+>
+  <book>
+    <title>&book;</title>
+    <author>U</author>
+    <price>
+      <amount>0</amount><currency>EUR</currency>
+    </price>
+  </book>
+</catalog>

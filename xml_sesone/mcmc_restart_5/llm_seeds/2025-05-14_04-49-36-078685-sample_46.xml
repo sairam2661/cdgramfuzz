@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog lang CDATA #IMPLIED>
+  <!ENTITY desc "A"> <!ENTITY % para "P"> <!NOTATION html SYSTEM "m">
+  %desc;<!----> 
+  <!ENTITY pi SYSTEM "s" NDATA html> 
+  %para;<!----> 
+]>
+<catalog lang="e" xml:lang="x"> 
+  <product id="0">
+    <name>Mango <B>slices</B></name> 
+    <price>
+      <amount>0.99</amount> 
+      <currency></currency> 
+    </price> 
+    <description>&desc;</description> 
+    &pi; test <!-- data for markup section --> test </product> 
+</catalog>

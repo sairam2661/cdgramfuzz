@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product, note)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY catalog.header " "
+    >
+  <!ENTITY % catalog.footer " ">
+  <!NOTATION file-notation SYSTEM 'file system'>
+  %catalog.footer;
+  <!---->
+]>
+<catalog id="C">
+  <product name="A" price="1">
+    <description>Product A</description>
+  </product>
+  <note>&catalog.header;</note>
+  <product>
+    <description>B</description>
+  </product>
+  <product>
+    <description>C</description>
+  </product>
+</catalog>

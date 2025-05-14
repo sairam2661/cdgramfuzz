@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE person [
+  <!ELEMENT person (#PCDATA | address | phone | email | name | date | organization | position | section | table | figure | figure-data)> 
+  <!ATTLIST person 
+     id  CDATA  #REQUIRED 
+     author  CDATA #IMPLIED 
+     date  CDATA #IMPLIED 
+     description  CDATA #IMPLIED
+  >
+  <!ENTITY desc "A"
+    >
+  <!ENTITY % e "V">
+  <!NOTATION print PUBLIC "-"
+    "J"
+  >
+  %e;
+  <!--
+     Description:
+    All information regarding an individual, e.g., name, address, phone number
+    organisation affiliation, position, date created...
+  -->
+]>
+<person id="P" author="J">
+  <name>Last First</name>
+  <date>&date;</date>
+  <organization>Company S.A.</organization>
+  <position>Managing Director</position>
+  <section>
+    <table>
+      <tr>
+        <td>Heading 1</td>
+        <td>Heading 2</td>
+        <td>Heading 3</td>
+      </tr>
+      <tr>
+        <td>&desc;</td>
+        <td>Cell 2, line 2</td>
+        <td>Cell 3, line 2</td>
+      </tr>
+    </table>
+    <figure>Reference 1</figure>
+    <figure-data>This figure depicts a reference in the work</figure-data>
+  </section>
+  <address>
+    First Avenue
+  </address>
+  <phone>+123456789</phone>
+  <email>jim@company.com</email>
+</person>

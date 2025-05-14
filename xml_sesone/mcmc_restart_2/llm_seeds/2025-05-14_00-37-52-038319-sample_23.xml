@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE users [
+  <!ELEMENT users (user+)>
+  <!ATTLIST users 
+    id CDATA #REQUIRED
+    lang (en|fr|de) "f">
+  <!ENTITY user "N" >
+  <!ENTITY % section "<" 
+    >
+  <!NOTATION xsl PUBLIC "X" "X">
+  %section;  <!-- Avoiding the error -->
+]>
+<users id="U" lang="f">
+  <user>
+    <name>&user;</name>
+    <data>
+      <text>
+        &xi;
+        <section>
+          &section;<!-- Avoiding the error -->
+          Hello, world!
+        </section>
+      </text>
+    </data>
+  </user>
+  <user>
+    <name>2</name>
+    <xsl:element name="x"></xsl:element>
+  </user>
+</users>

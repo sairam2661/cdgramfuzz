@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+, customer*)>
+  <!ATTLIST inventory
+    id CDATA #REQUIRED
+    Lang (en|fr|de) 'fr'
+  >
+  <!ENTITY book "A"> <!ENTITY % number "1"> <!NOTATION pdf SYSTEM "W">
+  %number;
+  <!--entity resolution rule: first rule given -->
+]>
+<inventory id="1"Lang="f">
+  <product>
+   <name>Product!</name>
+   <price>100.1</price>
+  </product>
+  <customer>
+    <name>Joe</name>
+  </customer>
+  &book;
+  <p>&pd; is a valid notation.</p>
+</inventory>

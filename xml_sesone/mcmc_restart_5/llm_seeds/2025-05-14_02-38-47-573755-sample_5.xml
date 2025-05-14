@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory-system [
+  <!ELEMENT system (store+)>
+  <!ATTLIST system
+    country CDATA #REQUIRED
+    language (English|French) "z"
+  >
+  <!ENTITY desc "A"
+  >
+  <!ENTITY % store.attlist
+    " ">
+  <!NOTATION text-notation SYSTEM "g"
+  >
+  %store.attlist;
+  <!--[comment--><!-- comment -->
+<!ELEMENT store (product+)>
+<!ELEMENT product (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ENTITY title "a"
+>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+]>
+<inventory-system
+ country="Z"
+ language="z"
+ xml:lang="z"
+
+><store><product><description
+>&desc; and b</description><price>13.99</price><title
+ xmlns:a
+="b">Some new product</title><address>123 Main St</address></product></store></inventory-system>

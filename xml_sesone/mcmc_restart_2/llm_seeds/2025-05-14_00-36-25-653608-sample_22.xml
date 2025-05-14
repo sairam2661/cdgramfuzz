@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)> 
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION SGML PUBLIC "-" "-">
+  %chapter1;
+  <!--<!ENTITY % chapter3 "C">-->
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+  <!ELEMENT chapter (#PCDATA)>
+]>
+<book id='mybook'>
+  <title>Example Book</title>
+  <author>John Doe</author>
+  <chapter><xi:include xpointer="x" href="x"/></chapter>
+  <chapter entity='%chapter2;'/><!-- Notation: SGML PUBLIC "-->b</notation-- >

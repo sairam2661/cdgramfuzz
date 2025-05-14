@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  PUBLIC '+//IDN HP//EN'
+  'http://www.hp.com/dtds/public/root.dtd'
+  [
+  <!ELEMENT root (para+,img+)>
+  <!ATTLIST root xmlns CDATA #REQUIRED>
+  <!ENTITY name "G" >
+  <!ENTITY % base "s" >
+  <!NOTATION sgml SYSTEM "I">
+  %base;
+  <!--
+  sample comment
+  -->
+]>
+<root xmlns = "I"
+     xmlns:xlink="x"
+     xmlns:xi="x">
+  <para>Text <sub>sub</sub></para>
+  <para>Text <sup>sup</sup></para>
+  <img xlink:href="x"/>
+  <image xlink:title="x" />
+</root>

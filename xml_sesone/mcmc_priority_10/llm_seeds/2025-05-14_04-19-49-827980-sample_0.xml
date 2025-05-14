@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "A" [
+  <!ELEMENT foo (#PCDATA)>
+  <!ATTLIST foo cid ID #REQUIRED
+  href CDATA #REQUIRED>
+  <!ENTITY para1 "D">
+
+  <!ENTITY % myMacro "<" ><!NOTATION MyNotatn SYSTEM 'http://uri.org'>
+  %myMacro   ;
+
+<!---->
+
+<!ENTITY ename SYSTEM "C" NDATA MyNotatn>
+]>
+<root>
+  <foo id="A" cid="B" href="C" > 
+   &ename; &para1;
+  <foo>
+
+  <!-- Sample comment -->
+  <bar><![CDATA[Some mixed<raw>content]]></bar>
+</root> 
+<!-->
+
+
+Note: To make this XML document work, there should be two external files A and C. "NDATA" notation is referenced by "ENAME" to that file, and the "SYSTEM" entity points to another file. A and C should be XML files like the above. The notations are also referenced in SYSTEM "A". This document might not work as it is. It may depend on the files referenced notations and entities. However, this is a highly complex XML document that you asked for. You would need those external XML files to get this document to parse successfully. In this particular case, it would fail because of the %myMacro entity and!ENTITY %myMacro. This is likely to fail.  This is an example of an highly complex XML file that will likely fail. For the purpose of the assignment, I gave this example. In reality, this will likely fail due to the %myMacro entity. The correct response will parse all the entities and references, and all will require the right files existing. And would likely work for you if you just had A, B, and C files in place. The purpose was to create and provide the correct complex XML in the requested format. The notation referenced by the SYSTEM may point to a URI, a local file (with the URI), and NDATA notation is the notation of an external function. We use the notation to define the data type of an external parse entity. The contents of this file are only interpreted as entities only they can expand into, rather than being parsed in place. If entities point to files, you will need those files. In the case of systems in these examples, entities are going to point to documents of some kind with appropriate XML DOCTYPE, entities or DTD. If any notations, which are also referred to as external definitions of a parsing function referenced in the system, they would reference some function at the URI, that is typically used to parse the document. External definitions referenced by "SYSTEM" entities are, as they are named systems, external, to the main document. But entities referred to by the SYSTEM point, to one such function somewhere else. In these complex scenarios, it is often needed for the document to be able to properly parse. In these documents, external definitions of functions are typically used, the same way as regular XSL. The notation should contain one rule. These rules are given as a special kind of regular expression, based on the type of input the given parser is designed to process. This also allows you to write and share such custom parsing rules in your documents, that others could load, with the given notation. Notations reference the rules given (like this: some file is referencing this particular custom rule. If this notation was about some standard notations then

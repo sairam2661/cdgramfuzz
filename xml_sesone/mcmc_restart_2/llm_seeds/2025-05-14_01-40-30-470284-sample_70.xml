@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST books lang CDATA #REQUIRED>
+  <!ENTITY booktitle "A" >
+  <!ENTITY % note "T" >
+  <!NOTATION sysID SYSTEM "x" >
+  
+  %note;<!---->
+]>
+<books lang="e"><book xml:lang="e">
+  <title>&booktitle;</title>
+  <year condition="&sysID;">1999</year>
+</book></books>

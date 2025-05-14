@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author+, product+)>
+  <!ATTLIST author id  CDATA  #REQUIRED>
+  <!ENTITY product1 "M"
+         >
+  <!ENTITY % content "(">
+  <!NOTATION NOTATION-1 PUBLIC " "
+             " ">
+  %content;
+  <!--
+     This is an XML comment
+  -->
+]>
+<catalog>
+  <author id="A">Author one</author>
+  <author id="B">Author two</author>
+  <product>&product1;</product>
+</catalog>

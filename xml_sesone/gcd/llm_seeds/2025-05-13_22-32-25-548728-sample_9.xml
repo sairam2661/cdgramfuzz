@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (header, content)>
+  <!ATTLIST doc
+    lang CDATA #REQUIRED
+    id  ID #REQUIRED>
+  <!ENTITY person "W">
+  <!ENTITY  % entities "<"  >   <!NOTATION NData  PUBLIC  'entity notation'  'notation system'>
+  %entities;
+  <!--, %entities; is not in scope here -->]>
+<doc xmlns:svg="w" xmlns:xinclude="h" lang="x"
+  id="t"
+  xml:lang="e"
+  exclude-result-prefixes="w">
+  <header>
+   <title>The title of the document</title>
+   <date>2022-07-26</date>
+  </header>
+  <content>&person; is a person</content>
+  <footer>
+    <xi:include href="d" xpointer="x"/>
+  </footer>
+</doc>

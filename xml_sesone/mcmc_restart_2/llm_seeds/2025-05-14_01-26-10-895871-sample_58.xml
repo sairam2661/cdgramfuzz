@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (header | content)*>
+  <!ATTLIST doc
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY chapter "1">
+  <!ENTITY % section "2">
+  <!NOTATION ISO-8859-1 SYSTEM "f">
+  %section;
+  <!-- Entities defined here -->
+]>
+
+<doc xmlns:xs="w" xmlns:xi="x" xml:lang="x" id="x" xml:space="x">
+  <header>
+    <title>Complex Document</title>
+    <author>John Doe</author>
+  </header>
+  <content>
+    <chapter>&chapter;</chapter>
+  </content>
+  <!-- &#169; Copyright -->
+</doc>

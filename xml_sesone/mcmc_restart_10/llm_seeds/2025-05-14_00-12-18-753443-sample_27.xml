@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (sub*)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY entity "a">
+  <!ENTITY % macro "b">
+  <!NOTATION notation SYSTEM "c">
+  %macro;
+  <!--
+    Block comment
+  -->
+]>
+<root id="1" xmlns:xi="x" xmlns="p">
+  <sub>Some<![CDATA[<raw>text]]></sub>
+  <sub attr="1">&entity;</sub>
+  <sub name="1" n="2">
+    <sub2>Notation reference: <notref notation="x"/></sub2>
+  </sub>
+</root>

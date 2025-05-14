@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,chapter+)>
+  <!ATTLIST book author CDATA #REQUIRED>
+  <!ENTITY em "E" >
+  <!ENTITY  % section '(title,para)+'>
+  <!NOTATION iso-8859-1 SYSTEM "M">
+  %section;
+  <!---->
+]>
+<book author="J">
+  <title>Test book</title>
+  <chapter id="1">
+    <para>This is <em a="b" xmlns="x" attribute="a">an em</em></para>
+    <title>Sub title</title>
+    <para>Some content <img src="x" alt="%"/></para>
+  </chapter>
+  <chapter id="2">
+    <para>Another <reference ref="y"/> paragraph</para>
+    <title>Sub title 1</title>
+  </chapter>
+</book>

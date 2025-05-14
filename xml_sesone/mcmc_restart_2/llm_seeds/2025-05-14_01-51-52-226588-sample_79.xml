@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title, section*, note+)>
+  <!ATTLIST article
+    id  CDATA  #REQUIRED
+    lang (en|fr|de) 'en'
+  >
+  <!ENTITY note "B" > 
+  <!ENTITY % comment "A">
+  <!NOTATION SVG SYSTEM "x">
+  %comment;
+  <!-- <xsl:stylesheet...> -->
+]>
+<article xmlns:xi="x" xmlns:xsi="x" id="x" lang="x">
+  <xi:include href="#"/>
+  <!-- <xsl:template> -->
+ <title>Doc</title>
+  <section>A1</section>
+  <section>B1</section>
+  <note>C1</note>
+  <note>&note;</note>
+</article>

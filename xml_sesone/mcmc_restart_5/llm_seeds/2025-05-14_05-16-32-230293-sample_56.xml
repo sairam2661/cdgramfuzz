@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book*)>
+  <!ATTLIST catalog lang CDATA #IMPLIED>
+  <!ENTITY author "J"
+           >
+  <!ENTITY % genent "<"
+      ><!NOTATION html PUBLIC '-//W3C//DTD HTML 4.0//EN' 'http://www.w3.org/TR/REC-html40/strict.dtd'> %genent;<!----> ]
+  >
+  <catalog lang="E">
+    <book><title>Book 1</title><author>&author; Doe</author></book>
+    <book><title>Book 2</title><author>&author;</author></book>
+  </catalog>

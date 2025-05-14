@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book language CDATA #REQUIRED>
+  <!ENTITY booktitle "A"
+       >
+  <!ENTITY % bookauthor "J">
+  <!NOTATION book-notation PUBLIC "B"
+             "C">
+  %bookauthor;  <!-- &J -->
+]>
+<book xmlns="x" xmlns:z="x" language="F">
+  <title entity="B">&booktitle;a</title>
+  <author>&bookauthor;</author>
+  <chapter xmlns:xi="y">
+    <chaptertitle>C</chaptertitle>
+    <paragraph>&booktitle;<z:c>D</z:c>&booktitle;</paragraph>
+  </chapter>
+  <chapter>
+    <chaptertitle xmlns="w">
+      <notatedref ref="&book-notation;" E="v">Y</notatedref>
+      <notatedref ref="&book-notation;" E="u">X</notatedref>
+    </chaptertitle>
+    <note xmlns="x">Z</note>
+  </chapter>
+  <ix:include xmlns:ix="w" href="X"/>  
+</book>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog owner CDATA #REQUIRED>
+  <!ENTITY book "A">
+
+  <!ENTITY % book-list "1"  >
+  <!NOTATION ISO-8859-1 SYSTEM "w"  >
+  %book-list;
+
+  <!--
+  Entity "book" is already defined
+   Entity "catalog" is already declared
+  --> 
+]>
+<catalog xmlns="x" xmlns:xi="x" xmlns:xsi="x" xmlns:cac="x" owner="A">
+  &book;
+  <book ID="1"/><book ID="2"/>
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id   CDATA   #REQUIRED
+    lang  (en|fr|de)  "n"
+  >
+  <!ENTITY chapter-one "<" 
+    ><!ENTITY % semicolon ";"><!NOTATION ISO639-public  PUBLIC '-//ISO 639//NOTATION//EN' '%semicolon%^chapter-one><'  >
+  %ISO639-public; 
+  <!-- Additional comments -->
+]>
+<book id="b" lang="n" xmlns="m" xmlns:xsi="w" version="3">
+  <title>&chapter-one;</title>
+  <author>&ISO639-public;</author>
+  <chapter xml:lang="x"><title>TITLE</title><section><![CDATA[Test % 5]]></section></chapter>
+</book>
