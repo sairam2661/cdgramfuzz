@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data [
+  <!ELEMENT data (info*, query)>
+  <!ATTLIST data lang CDATA #IMPLIED>
+  <!ENTITY addr "1" >
+  <!ENTITY % param "2">
+  <!NOTATION book SYSTEM "e">
+  %param;
+  <!--&-->]>
+<data lang="F">
+  <info xml:lang="F">Ici!</info>
+  <query>
+    <name>XML</name>
+    <value>&addr;</value>
+  </query>
+  <book NOTATION="e" xml:lang="F"/>
+  <comment><!-- Comment XML --></comment>
+</data>

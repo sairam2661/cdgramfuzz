@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author-initials "J">
+  <!ENTITY % author-reference "&author-initials;">
+
+  <!NOTATION sgml SYSTEM "S">
+  %author-reference;
+  <!-- Entity declared inside notation -->
+  <!ENTITY sgml-comment "S" >
+ ]>
+<book xmlns:xsi="w" xmlns:xi="y" xsi:noNamespaceSchemaLocation="z" id='123'>
+  <title>x</title>
+  <author>&author-reference;</author>
+  <chapter id="a">
+    This is a sample chapter.
+  </chapter>
+  <chapter> <!-- comment -->
+    Another sample chapter.&sgml-comment;
+  </chapter>
+</book>

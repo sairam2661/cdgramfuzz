@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION pdf SYSTEM "Z">
+  %chapter2;
+  <!--[CDATA[Some content with special characters: & <=> ]]-->
+]>
+<book id="1" xsi:schemaLocation="x" xsi:noNamespaceSchemaLocation="a">
+  <xi:include href="c" xmlns:xi="x"/>
+  <title><![CDATA[Special < > &#39; &#60; characters]]></title>
+  <author>N. Smith</author>
+  <chapter><![CDATA[@ 234.23]]></chapter>
+  <chapter ref="e" xml:lang="x">Chapter 2&amp; chapter 3</chapter>
+  <chapter ref="f" xmlns:g="h">Chapter 4 and <g:name>text</g:name> chapter 5</chapter>
+  <chapter>Chapter <i id="6">6</i></chapter>
+  <chapter ref="7">Chapter <i>7</i></chapter>
+  <chapter ref="7">Chapter 8 and Chapter <i>9</i> and a note: &chapter1;</chapter>
+  <chapter.ref pdf:notation="g">Chapter 10</chapter.ref>
+  <chapter ref="i"><?document type notations are g and k and a note is g is pdf i is not i which is h which is the notation for this notation is h i is pdf notation b and notation c i is not f notation e which is k f is k it is notation k is notation j and a ref is notation k it is notation g is used i j is the schema and a note is notation k k is t the notation for this notation is k k is notation j it is notation k i is j then k and e is k used it is notation k used j and a note is g and b b is b b is a ref k j and a note c is k b a ref e k b a ref is b a note is i a ref is d and e and i and not b k is used is e k notation b is used i is used e is b b a 7 is k i e k b d 7 is i k and e k

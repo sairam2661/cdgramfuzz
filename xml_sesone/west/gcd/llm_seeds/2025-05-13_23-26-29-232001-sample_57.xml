@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "n" [
+    <!ELEMENT note (#PCDATA) >
+    <!ATTLIST note
+        id   ID  #REQUIRED
+        type CDATA #IMPLIED
+    >
+    <!ENTITY n SYSTEM "m" > 
+    <!ENTITY % d SYSTEM "k" >
+    <!NOTATION mod PUBLIC "M"
+    "R">
+    %mod; 
+    <!-- internal subset ends here -->
+]>
+<notes>
+    <note id="1" type="u">
+        <author>
+            <first>Ron</first>
+            <last>Jones</last>
+        </author>
+        <title>&note;</title>
+    </note>
+</notes>

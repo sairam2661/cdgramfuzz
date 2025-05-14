@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT book (title, author, price)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY copyright "�

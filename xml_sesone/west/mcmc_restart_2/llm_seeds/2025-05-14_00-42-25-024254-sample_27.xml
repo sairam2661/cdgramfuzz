@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-32"?>
+<!DOCTYPE xmen [
+  <!ELEMENT xmen (team|aliens) >
+  <!ATTLIST xmen 
+    name CDATA #REQUIRED
+    year CDATA #IMPLIED>
+  <!ENTITY team "X">
+  <!ENTITY 	%ECA "X">
+  <!NOTATION svg SYSTEM "a">
+ 	%note3;
+ 	<!--%note4  -->
+]>
+<xmen name="W" year="Y" 
+xmlns="a" xmlns:xsi="b" 
+xmlns:xsd="c" xmlns:xi="d">
+  <team>&team;</team>
+  <aliens>&ECA;</aliens>
+</xmen>

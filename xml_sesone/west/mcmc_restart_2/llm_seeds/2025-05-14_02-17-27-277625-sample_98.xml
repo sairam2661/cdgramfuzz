@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product | category)*>
+  <!ATTLIST product id ID #REQUIRED>
+  <!ENTITY product-name "P" >
+  <!ENTITY % product-class "c">
+  <!NOTATION XHTML PUBLIC "-" ".">
+  %product-class; <!-- attribute name only -->
+]>
+<inventory xmlns="x" xmlns:xsi="x" xsi:schemaLocation="x">
+  <product id="A" name="%">
+    <category>&product-name;</category>
+    <description><![CDATA[ Sample product description & ]]></description>
+    <x:X refid="a">{{XhtmlText}}"></x:X>
+  </product>
+  <product id="B"><product-name/></product>
+</inventory>

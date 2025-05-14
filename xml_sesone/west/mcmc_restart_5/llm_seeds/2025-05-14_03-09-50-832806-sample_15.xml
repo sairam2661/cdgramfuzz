@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,editor)>
+  <!ATTLIST book 
+    id CDATA #REQUIRED
+  >
+  <!ENTITY title-system "&#x9;">
+  <!ENTITY % book-info "1">
+  <!NOTATION XMLNotation SYSTEM "X">
+  %book-info;
+<!-- internal subset declared as an XML declaration -->
+]>
+<book id="B" xmlns:ex="x">
+  <section ex:schema-location="X">
+    <content>&title-system;</content>
+    <year>2020</year>
+  </section>
+  <message>&XMLNotation;</message>
+  <author xmlns="X">John</author>
+</book>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE piers [
+  <!ELEMENT piers (pi*|message+)>
+  <!ATTLIST pi xmlns:xi  CDATA #FIXED 'http://www.w3.org/2001/XInclude'>
+  <!ENTITYPE "v">
+  <!ENTITY % v "v">
+  <!NOTATION ISOSO SYSTEM "x">
+  %v;
+  <!---->
+  <!ELEMENT pi (#PCDATA)>
+  <!ELEMENT message (raw+)>
+]>
+<piercing><pi>Hello</pi><message><raw> World</raw></message></piercing>

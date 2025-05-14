@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book publisher (Oxford|Cambridge|Harvard) #REQUIRED>
+  <!ENTITY booktitle "A">
+  <!ENTITY 
+
+
+
+
+
+
+
+
+
+
+
+  %info SYSTEM "a">
+
+
+
+<!NOTATION iso-8859-1 SYSTEM "1">
+  %includeSYSTEM  ;	 <!-- %include -->
+<!ENTITY % b "C">]>
+<book xmlns:xi="x"
+ xi:include
+          ="
+"
+ xmlns:a='http://a'>
+  <title>&booktitle;</title>
+  &a;
+  <author>
+    <name>John</name>
+    <nickname>&b;</nickname>
+  </author>
+  <chapter id="c">
+    <title>Chapter 1</title>
+    <content><![CDATA[ <raw>text</raw> ]]></content>
+  </chapter>
+</book>

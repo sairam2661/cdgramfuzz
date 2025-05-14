@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog author CDATA #REQUIRED>
+  <!ENTITY desc "A"><!ENTITY % ent "<"><!NOTATION GIF PUBLIC "G" "I" >
+  %ent;
+ <!--<GIF PUBLIC="G" "I" --><!ELEMENT product (#PCDATA)>
+]>
+<catalog author="K" xmlns="x" xsi:noNamespaceSchemaLocation="x"> <!-- xi for Xinclude -->
+  <product> <?comment?> &desc; (GIF &ent;= "GIF &GIF; Image")  <![CDATA[Some ]]></product>
+  <product><![CDATA[%ent; = HTML: <, > ]]></product>
+  <product> &GIF; </product>
+  <product> <?GIF?></product>
+</catalog>

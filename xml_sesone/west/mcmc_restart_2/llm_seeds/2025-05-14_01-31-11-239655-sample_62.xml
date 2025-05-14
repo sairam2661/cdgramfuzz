@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE glossary [
+  <!ELEMENT glossary (term+)>
+  <!ATTLIST glossary
+    id ID #REQUIRED
+  >
+  <!ENTITY acronym "e" >
+  <!ENTITY % entref "1">
+  <!NOTATION FAX SYSTEM "f"  >
+  %entref;
+  <!---->
+]>
+<glossary id="g">
+  <title>XML Glossary</title>
+  <media-type>application/xml</media-type>
+  <short-desc>short description</short-desc>
+  <ref xml:lang='en' href="e">English</ref>
+  <term id="t">
+    <short-desc>short description</short-desc>
+    <long-desc>long description</long-desc>
+    <acronym>&acronym;</acronym>
+    <syn>&xi;</syn>
+  </term>
+</glossary>

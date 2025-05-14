@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY addr SYSTEM "m">
+  <!ENTITY % ent "A">
+  <!NOTATION GIF PUBLIC "G" "g">
+  %ent;
+  <!--<!ENTITY % comment "Some comment by %ent;">-->
+]>
+<catalog id="C" xml:lang="x">
+  <product xml:space="x">
+    <name>Prod 1</name>
+    <price>&addr;</price>
+    <NOTATION GIF="G">Notation</NOTATION>
+  </product>
+</catalog>

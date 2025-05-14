@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE notes [
+     <!ELEMENT notes (note+)>
+     <!ATTLIST notes xml:lang CDATA #FIXED 'en'>
+     <!ENTITY author "J">
+     <!ENTITY % entity-ref PUBLIC "x" "x" >
+     <!NOTATION xsl PUBLIC "x" "x">
+     %entity-ref;
+  <!---->
+]>
+<notes xml:lang="f" xmlns:xlink="x"
+       xmlns:xsi="x"
+       xsi:noNamespaceSchemaLocation="x"
+       xsi:schemaLocation="x">
+<note xlink:href="t" xsl:href="s">
+   <title>T</title>
+   <text>%</text>
+      <!-- Comment -->
+      <p> Some <i>inline</i> markup </p>
+  </note>
+</notes>

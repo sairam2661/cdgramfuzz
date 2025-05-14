@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (header, section*, footnote?)>
+  <!ATTLIST doc lang CDATA #REQUIRED>
+  <!ENTITY addr "1" >
+  <!ENTITY % ent "1" >
+  <!NOTATION wml SYSTEM "W"> 
+  %ent; <!-- internal subset reference -->
+]>
+<doc lang="e">
+  <header>
+    <title>Example XML document</title>
+    <xi:include xmlns:xi="x" href="b"/></header>
+  <section>
+    <!-- XML comment -->
+    <![CDATA[<br>More <i>text</i> <table> <tr> <td>,,</td><td>,</td> </tr></table>]]>
+  </section>
+  <footnote><ref id="a"/>
+    &addr;
+  </footnote>
+</doc>

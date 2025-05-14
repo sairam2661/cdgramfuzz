@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "G"
+ [
+  <!ELEMENT note (to,from,message)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % entity2 SYSTEM "B">
+  <!NOTATION iso-639 SYSTEM "B">
+  %entity2;
+  <!---->
+  <!ELEMENT iso-639 EMPTY>
+]>
+<note id="X" xmlns:notiation="w">
+  <to>to</to>
+  <from>from</from>
+  <message>msg <notiation:iso-639/></message>
+  <xi:include href="C" xmlns:xi="w"/>
+</note>

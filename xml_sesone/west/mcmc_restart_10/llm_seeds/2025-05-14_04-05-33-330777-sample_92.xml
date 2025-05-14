@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b"
+  [
+    <!ELEMENT root (elem+, elem?)>
+    <!ATTLIST elem
+      id  CDATA   #REQUIRED
+      class CDATA  #IMPLIED>
+    <!ENTITY ent "X">
+    <!ENTITY % ent2 'ab'>
+    <!NOTATION XML  PUBLIC '+//IDN xml.org//NOTATION XML 2.0//EN+IDN xml.org//NOTATION XML 1.0//EN'
+      'XML Notation'>
+  %ent2;      
+  <!--<!ENTITY % ent3 ANY-->]>
+<root xmlns:xi="x" xmlns:y="y">
+  <elem id="e" class="c" y:z="b"/><xi:include href="a"/>
+  &ent;
+</root>

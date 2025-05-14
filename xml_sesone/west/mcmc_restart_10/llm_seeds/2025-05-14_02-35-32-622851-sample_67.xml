@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (section*,footer*)>
+  <!ATTLIST article
+      author CDATA #REQUIRED
+      title CDATA #REQUIRED>
+  <!ENTITY header "&#x9;  ">
+  <!ENTITY % dtd PUBLIC 
+    '-//W3C//DTD XHTML 1.1//EN'
+    'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
+  <!NOTATION FOP PUBLIC '-//Apache//FO//DTD//EN' 'http://xml.apache.org/fop/dtd/dtd.dtd'>
+  %dtd;
+  <!-- XML Catalogs -->
+  <!ENTITY % sicatalog SYSTEM "S" NDATA XMLCatalog>
+  %sicatalog;
+]>
+<article author="J" title="T">
+  &header;
+  <section>&header;</section>
+  <section>&header;</section>
+  <!-- sample CDATA -->
+  <section>Some text <![CDATA[&]]> text</section>
+</article>

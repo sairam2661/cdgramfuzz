@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book 
+    author CDATA #REQUIRED
+    year  IDREF #REQUIRED
+    title CDATA #REQUIRED
+  >
+  <!ENTITY x "A">
+  <!ENTITY % p "B">
+  <!NOTATION isbn  SYSTEM " ">
+  %p;
+  <!---->]>
+<book author="D" year="C" title="A">
+  <title>&x;</title>
+  <NOTATION system=" ">
+    isbn
+  </NOTATION>
+  <!-- <![CDATA[Notation C]]>-->
+</book>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (entry*)>
+  <!ATTLIST catalog author CDATA #REQUIRED>
+  <!ENTITY catname "F">
+  <!ENTITY % ent SYSTEM "f" >
+  <!NOTATION xhtml PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+  %ent;
+  <!--
+  The following line is commented out 
+  --><!ELEMENT section (p+,block*)>
+]>
+<catalog author="J" xmlns:xi="x" xmlns:xsi="y">
+  <!-- Sample comment -->
+  <xi:include xmlns:xi="x" href="t"/>
+  <xi:include xmlns:xi="x" href="s"/>
+  <!-- &catname; -->
+  &catname;
+  <entry name="G">
+    <description><![CDATA[<b>This is <i>sample</i></b>]]></description>
+  </entry>
+</catalog>

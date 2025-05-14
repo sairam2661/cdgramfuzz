@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST books id CDATA #REQUIRED>
+  <!ENTITY booksEntity "A">
+  <!ENTITY % paramEntity "#">
+  <!NOTATION iso-8859-1 SYSTEM "w"
+    >
+  %paramEntity;
+  <!---->
+]>
+<books id="1" xmlns:my="x" xmlns:xsi="w">
+  <book>
+    <my:title>Book</my:title>
+    <status open="1">Available</status>
+    <summary>
+      <description>
+        &booksEntity;&booksEntity;&booksEntity;.
+        <![CDATA[&booksEntity;]]>
+      </description>
+    </summary>
+  </book>
+  <status open="0">Not Available</status>
+</books>

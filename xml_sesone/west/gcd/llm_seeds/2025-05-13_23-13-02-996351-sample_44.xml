@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE employees SYSTEM "x"[
+  <!ELEMENT employees (employee*)>
+  <!ATTLIST employees 
+    name CDATA #IMPLIED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY desc "A">
+  <!ENTITY % e SYSTEM "e">
+  <!NOTATION notation SYSTEM "n">
+  %e;
+  <!--%notation; notation 
+]>
+<employees %iri="http://example.com" 
+          name="example"
+          version="1.0"
+          xmlns:xi="http://www.w3.org/2001/XInclude">
+  <comment>/* 
+  */
+  <?xml:stylesheet href="s" type="text/xsl"?>
+ ?>
+  <employee>
+    <name>
+      <first name="first" lastname="last">John Doe</first>
+    </name>
+  </employee>
+  <ref name="John Doe" refid="j">
+    <xi:include xmlns:xsi="http://www.w3.org/2001/XMLSchema" href="i.xml"/>
+    &desc;
+  </ref>
+</employees> 
+<!ENTITY x "employees.dtd"> 
+<!ENTITY e "">
+<!ENTITY i "include.xml"> 
+<!ENTITY j "ID/123456">
+<!ENTITY n "notation.n"> 
+<!ENTITY s "xslt.xsl"> 
+<!ELEMENT first (#PCDATA)> 
+<!ATTLIST first 
+    id CDATA #REQUIRED
+    last CDATA #REQUIRED
+> 
+<!ELEMENT name EMPTY> 
+<!ATTLIST name 
+    xml:id CDATA #REQUIRED
+    lang CDATA #IMPLIED 
+> 
+<!ELEMENT ref EMPTY> 
+<!ATTLIST ref 
+    href CDATA #IMPLIED 
+    id CDATA #IMPLIED 
+    %iri; CDATA #IMPLIED 
+    style CDATA #IMPLIED 
+> 
+<!ELEMENT employee (ref*)> 
+<!ATTLIST employee 
+    id CDATA #IMPLIED 
+    name CDATA #IMPLIED 
+> 
+<!ELEMENT desc (#PCDATA)> 
+<!ELEMENT include (#PCDATA)> 
+<!ELEMENT first (#PCDATA)> 
+<!ELEMENT xi:include (#PCDATA)> 
+<!ELEMENT comment (#PCDATA)> 
+<!ELEMENT xml:stylesheet EMPTY> 
+<!ATTLIST xml:stylesheet 
+    href CDATA #IMPLIED 
+    type CDATA #IMPLIED 
+    xml:space CDATA #IMPLIED 
+    xmlns CDATA #IMPLIED 
+    xmlns

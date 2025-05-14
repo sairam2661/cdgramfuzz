@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "m" [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST product id ID #REQUIRED>
+  <!ENTITY pi SYSTEM "m" NDATA math>
+  <!ENTITY % xml "a">
+  <!NOTATION math PUBLIC "M" "1">
+  %xml;
+  <!-->[<!-->
+   <!--
+   -->
+   ]>
+  <inventory>
+    <product id="P">Book</product>
+    <product id="P">Pen</product>
+  </inventory>

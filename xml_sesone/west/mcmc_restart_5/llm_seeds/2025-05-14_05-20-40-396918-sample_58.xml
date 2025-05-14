@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id  CDATA  #REQUIRED
+    type  (fiction|non-fiction)  #REQUIRED
+  >
+  <!ENTITY author-first-name "J">
+  <!ENTITY % author-last-name "(" >
+  <!NOTATION external-resource PUBLIC "c" "d">
+  %author-last-name; 
+  <!-- a DTD comment -->
+]>
+<book id="b" type="f">
+  <title><![CDATA[<xml:lang> Book Title ]]></title>
+  <author>
+    <first-name>&author-first-name;</first-name>
+    <last-name>&author-last-name;</last-name>
+  </author>
+  <chapter xml:lang="x">
+    <title>Chapter <number> 1  </number></title>
+  </chapter>
+  <chapter include-notation="x">Chapter 2</chapter>
+</book>

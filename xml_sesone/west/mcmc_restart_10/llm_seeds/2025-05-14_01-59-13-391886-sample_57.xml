@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pascal-xml [
+  <!ELEMENT html ANY >
+  <!ATTLIST html lang CDATA #IMPLIED>
+  <!ENTITY ent "X">
+  <!ENTITY % ent1 "X">
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %ent1;
+  <!----><!---->
+]>
+<document xmlns="m" version='$Revision: 5.3 $' xmlns:xi="h">
+  <div lang="n">
+    <title>Sample</title>
+    <p>This is a <code>paragraph</code> with <span class="h">a span inside</span>.
+      <a href="#">A link.</a>
+    </p>
+  </div>
+</document>

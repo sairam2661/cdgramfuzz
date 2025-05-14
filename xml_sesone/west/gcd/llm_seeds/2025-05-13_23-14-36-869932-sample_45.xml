@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "b" [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY cat "F" >
+  <!ENTITY % cat "P" >
+  <!NOTATION iso-8859-1   PUBLIC  "j"
+  "c">
+ %XIncludePI
+  ;<!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!---->
+<!ATTLIST book id ID #REQUIRED>
+<!ELEMENT book (title,price,author)*>
+<!ATTLIST book (title|price|author) #REQUIRED>
+<!--  -->
+<!--
+   ?xml:space="preserve"
+   ?entity?
+   ?name?
+   ?notation?
+   ?include?
+  -->
+<!ENTITY entity "<">
+<!NOTATION iso-8859-1 SYSTEM "c" >
+ <!ELEMENT p (#PCDATA)>
+ <!ELEMENT div (#PCDATA|p|div|span|script|form|table|tr|td)  >
+<!ATTLIST P  
+     name CDATA #IMPLIED
+  >
+<!ATTLIST p  
+     language CDATA "C"
+  >
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ENTITY cat "F" >
+  <!-- > -->
+  <!--<!ENTITY %cat "P"> -->
+<!ELEMENT content (#PCDATA | title | price | author | div | content | comment)>
+
+
+<!-- 
+  -->       <!-- --> 
+<!ENTITY c "&CAT;">
+<!ENTITY f "&CAT;">
+<!ENTITY l "&CAT;">
+<!ELEMENT book (title,price,author)>
+<!ATTLIST book lang CDATA #IMPLIED>
+<!ELEMENT content (#PCDATA | div | title | price | author )>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT comment (#PCDATA |title |price |author)>

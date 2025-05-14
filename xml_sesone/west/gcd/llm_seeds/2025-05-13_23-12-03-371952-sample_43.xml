@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (head, body, footer)>
+  <!ATTLIST doc lang CDATA #REQUIRED>
+  <!ENTITY item "A">
+  <!ENTITY % ent "<">
+  <!NOTATION PDF PUBLIC "-"
+    "A" >
+  %ent;<!--%PDF
+  2.0%ent;>
+]>
+<doc lang="EN">
+  <head>
+    <title>Sample Header</title>
+  </head>
+  <body>
+    <section>
+      &item;
+    </section>
+  </body>
+  <footer>
+    <message>&note;</message>
+  </footer>
+</doc> 
+<!DOCTYPE doc [<!ELEMENT doc (head, body, footer)><!ATTLIST doc lang CDATA #REQUIRED><!ENTITY item "A">]> 
+<!DOCTYPE doc [<!ELEMENT doc (head, body, footer)><!ATTLIST doc lang CDATA #REQUIRED ]]> 
+<!DOCTYPE %temp; [<!ELEMENT %temp; (head, body, footer)><!ATTLIST %temp; lang CDATA #REQUIRED>]> <!DOCTYPE doc [<!ELEMENT doc (head, body, footer)><!ATTLIST doc lang CDATA #REQUIRED >]> 
+<!ENTITY % temp; "doc"> <!DOCTYPE %temp; [<!ELEMENT %temp; (head, body, footer)><!ATTLIST %temp; lang CDATA #REQUIRED >]> 
+<!NOTATION temp PUBLIC "--><!ELEMENT doc (head, body, footer)><!ATTLIST doc lang CDATA #REQUIRED>  <!NOTATION temp SYSTEM "f"> 
+<!NOTATION temp SYSTEM "f"><!ELEMENT doc (head, body, footer)><!ATTLIST doc lang CDATA #REQUIRED>  <!ELEMENT doc (head, body, footer )> 
+<!NOTATION temp SYSTEM "f">  <!ELEMENT doc (head, body, footer)>  <!NOTATION temp PUBLIC "z" "f">  
+<!ELEMENT doc (head, body, footer)><!ATTLIST doc lang CDATA #REQUIRED>
+<!NOTATION temp PUBLIC "-" "z">
+<!ELEMENT doc (head, body, footer)>
+<!ATTLIST doc lang CDATA #REQUIRED>
+<!NOTATION temp PUBLIC "z" "-">
+<!NOTATION temp PUBLIC '' "z">
+<!NOTATION temp PUBLIC "z

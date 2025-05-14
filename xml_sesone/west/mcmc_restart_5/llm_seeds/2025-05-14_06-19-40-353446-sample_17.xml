@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (section+,note+)>
+  <!ATTLIST book title CDATA #REQUIRED author CDATA #REQUIRED year (none|hobby|professional) #REQUIRED>
+  <!ENTITY book1 "<"><!ENTITY % book "x"><!NOTATION w3  PUBLIC "w" "t"> 
+           %book; <!--<title--><!ENTITY title "W"><!--title>-->
+]>
+<bookstore>
+  <xs:schema xmlns:xs="h" xmlns:xsi="i" xmlns:y="j" xmlns:z="k"
+     targetNamespace="m"
+     elementFormDefault="n"
+     attributeFormDefault="o"
+     version="p"
+     xmlns:xs1="q"
+     schemaLocation="r">
+  </xs:schema>
+  <book title="E" author="F" year="G"></book>
+  <section q="x" v="y"/>.
+  <note d="h" c="r">w</note>
+  <xi:include href="s" xmlns:xi="t"/>.
+</bookstore>

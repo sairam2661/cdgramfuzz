@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, price)*>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY author "J" >
+  <!ENTITY % booklist "d">
+  <!NOTATION book-notation
+   SYSTEM "m" 
+   >
+  %booklist;
+  <!---->
+]>
+<book id="B">
+  <!--Sample book info-->
+  <price currency="D"><![CDATA[<d>9.99</d>]]></price>
+  <title>Book title</title>
+  <notation refId="B">book-notation</notation>
+  <author entity-id="B">John Doe&amp;</author>
+</book>

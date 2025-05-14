@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes xmlns:xmla CDATA #IMPLIED>
+  <!ENTITY note "A">
+  <!ENTITY % note-entity "%">
+
+  <!NOTATION Munge PUBLIC "-"
+    "M" >
+
+  %note-entity;
+  <!-- other data -->
+]>
+<xmla:notes xmlns:xmla="m">
+  <note>
+    <![CDATA[<note>&note;&note;</note>]]></note>
+  <note>
+    <!-- Sample comment -->
+    <content>&note;</content>
+  </note>
+
+  <note id="4" x="2" y="3"/>
+  <note id="1" other="1">
+    <![CDATA[ Some text &note; ]]>
+  </note>
+
+</xmla:notes>

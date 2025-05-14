@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author*, chapter+)> 
+  <!ATTLIST book lang CDATA #REQUIRED> 
+  <!ENTITY author "J" > 
+  <!ENTITY % book "1"> 
+  <!NOTATION SGML PUBLIC "X" "X" > 
+  %book ;
+  <!----> 
+]>
+<book xmlns:xi="&xi;">
+  <title>Book Title</title>
+  <author>&author;</author>
+  <author>Jane</author>
+  <chapter>
+    <heading>This is Chapter 1</heading>
+    <content>&note;</content>
+  </chapter>
+  <title xmlns="&ndash;">Subtitle</title>
+  <SGML SGML="X" SYSTEM="X">Some &ndash; markup</SGML>
+</book>

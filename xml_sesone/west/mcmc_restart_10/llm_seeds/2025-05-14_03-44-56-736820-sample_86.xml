@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note CDATA>
+  <!ATTLIST note
+          systemCDATA #IMPLIED
+          publicCDATA #IMPLIED
+  >
+  <!ENTITY entity "I"
+        >
+  <!ENTITY % generalEntity '%entity;'>
+  <!NOTATION notationName SYSTEM's'>
+  %generalEntity;
+  <!-- Entity declaration with parameter entity -->
+  <!ELEMENT group (#PCDATA)>
+]>
+<note xmlns:foo="B" system="n" public="c" foo:foo="X" xmlns:xsi="X">
+  <info>This is a test.</info>
+  <message>Text 1 <i>Text 2</i>&entity;</message>
+  <group>
+    <subgroup>
+        <test>&notationName;</test>
+    </subgroup>
+  </group>
+</note>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+<!ELEMENT book (title,author,Integer,section)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ENTITY eacute "&#201;">
+<!ENTITY % p1 "p">
+<!NOTATION XML PUBLIC '-//W3C//DTD XML 1.0//EN'"
+"    >    
+    %p1;
+    <!-- 
+    %p1;
+    %p1;
+    -->]>
+ <book id="B" xmlns:xsi="w"><section>
+This is a very long<xi:include xmlns:xi="w" href="a"></xi:include> sentence
+</section>
+ <Integer>11</Integer>
+<title>My book</title>
+<author>John Doe</author>
+<message>eacute</message>
+</book>

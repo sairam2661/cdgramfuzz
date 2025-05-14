@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category*)>
+  <!ATTLIST category idCDATA #REQUIRED>
+  <!ENTITY cat1 "F"  >
+  <!ENTITY % cat2 "P">
+  <!NOTATION book-format SYSTEM "M">
+  %cat2;
+  <!--
+   This is a
+   multi line
+   comment
+  -->
+]>
+<catalog xmlns="w" xmlns:xi="x">
+  <category id="1">
+    <xi:include href="#"/>
+  </category>
+  <category id="&cat1;" idref="2">
+    <note><![CDATA[&note;]]></note>
+  </category>
+</catalog>

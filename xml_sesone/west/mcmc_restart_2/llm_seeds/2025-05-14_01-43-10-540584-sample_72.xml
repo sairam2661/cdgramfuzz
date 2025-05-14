@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+       [
+         <!ELEMENT root (elem+, elem)>
+         <!ATTLIST root id ID #REQUIRED>
+         <!ENTITY ref SYSTEM "c">
+       <!ENTITY % ent "1" > 
+       <!NOTATION nnotation SYSTEM "n" > 
+       %ent; 
+       <!-- Internal PE -->
+       ]>
+<root id="R">
+ <elem attr1="1" atrr2='3'/>
+</root>

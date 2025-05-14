@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author+,product*)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY catalogDesc "A"
+  ><!ENTITY % bookAttr "x">
+  <!NOTATION SGML-PUBLIC " "
+  "w"
+  >
+  
+  %bookAttr;
+  <!---->
+  <!ELEMENT author (#PCDATA)>
+  <!ELEMENT product EMPTY>
+  <!ELEMENT price (#PCDATA)>
+  <!ELEMENT model (#PCDATA)>
+]>
+<catalog id="c">
+  &catalogDesc;
+  <author>John Doe</author>
+  <author>Mary Smith</author>
+  <product>
+    <price>$100</price>
+    <model> ABC-123</model>
+  </product>
+  <product x="y">
+    <price>$200</price>
+    <model>DEF-456</model>
+  </product>
+</catalog>

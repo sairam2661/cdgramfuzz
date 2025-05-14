@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE items [
+  <!ELEMENT items (item*)>
+  <!ATTLIST item id CDATA #REQUIRED>
+  <!ENTITY special-char "&amp;">
+  <!ENTITY % ent "A">
+  <!NOTATION n1 SYSTEM "n">
+  %ent;<!--%
+  <!--><!---->
+]>
+<items>
+  <item id="1">Item 1 &amp; Item 1</item>
+  <item id="2">&note;&special-char;</item>
+  <item id="3">
+    <tag n1="n">Text
+      <subtag n2="n">Subtext</subtag>
+    </tag>
+  </item>
+</items>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookman SYSTEM "x"
+ [
+  <!ELEMENT bookman (title, author, book+)>  <!ATTLIST bookman lang (en|fr|de) #REQUIRED>
+  <!ENTITY year '2010'>
+  <!ENTITY % general-public "a">
+  <!NOTATION tvg PUBLIC "-"
+    "T">
+  %general-public;
+  <!---->
+]>
+<xi:inline xmlns:xi="`">
+<bookman lang="f">
+    <title>D&eacute;veloppement de l'informatique dans l'espace</title>
+    <author>John Smith</author>
+    <book>
+        <title>Mathematics for the Digital Age</title>
+        <author>a and b </author>
+        <year>&year;</year>
+    </book>
+</bookman>
+</xi:inline>

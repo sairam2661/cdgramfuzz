@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog  lang CDATA #IMPLIED>
+  <!ENTITY book "Z" >        
+  <!ENTITY % booklist "<" >
+  <!NOTATION isbn SYSTEM "h">
+  %booklist;  <!-- Entity with % declaration, must be processed after the definition, to allow proper reference -->
+]
+>
+<catalog xmlns="s" xmlns:xsi="s" xsi:schemaLocation="s">
+  <!-- Sample comment -->
+  <book>
+   <info><![CDATA[Some <raw> text with <title>more</title>]]></info>
+   <author>
+    <firstName>William</firstName>
+    <lastName>Shakespeare</lastName>
+    <address>
+      <!-- Subcomment 2 -->
+      <street>Strait Street</street>
+      <city>New York</city>
+     </address>
+    </author> 
+  </book>
+  <book> 
+   <author>
+    <firstName>Marc</firstName>
+    <lastName>Aurel</lastName> 
+    <address>
+       <street>Street of 2nd</street>
+      <city>London</city>
+      <country>UK</country>
+    </address>
+   </author>
+  </book>
+  <title>&book;</title>  <!-- Using ENTITY definition in the XML document -->
+</catalog>

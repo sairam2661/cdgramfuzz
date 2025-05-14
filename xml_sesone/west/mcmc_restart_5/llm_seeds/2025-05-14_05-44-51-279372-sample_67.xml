@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category*)>
+  <!ATTLIST catalog xml:lang CDATA #IMPLIED>
+  <!ENTITY pedro SYSTEM "l"
+  NDATA xml:binary>
+  <!ENTITY % a "a">
+  <!NOTATION xml:binary PUBLIC "1"
+  "1">
+  %a;
+  <!--
+    &pedro;
+  -->
+]>
+<catalog xml:lang="x">
+  <category name="f">Fruits</category>
+  <category name="v">Vegetables</category>
+  <item sid="c" iid="b">&pedro;</item>
+</catalog>

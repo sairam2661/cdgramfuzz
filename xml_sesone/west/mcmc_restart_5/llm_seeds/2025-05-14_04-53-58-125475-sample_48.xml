@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body+)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY x "X">
+  <!ENTITY % p "\">
+  <!NOTATION ISO-8859-1 PUBLIC "a" "b">
+  %p; <!-- Entity reference -->
+]>
+<note id="n" lang="e">
+  <to>Bob</to>
+  <from>Al</from>
+  <heading>&x;</heading>
+  <body>This is the first body</body>
+  <body>This is the second body...</body>
+</note>

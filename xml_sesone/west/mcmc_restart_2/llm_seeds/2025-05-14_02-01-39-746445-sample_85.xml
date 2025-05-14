@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (cdlist+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY juno "J"
+         >
+  <!ENTITY  % cdlist " "
+    > 
+  <!NOTATION ISO-8859-1 SYSTEM " ">
+  %cdlist;
+  <!--%cdlist; -->
+]>
+<catalog id=" ">
+  <cdlist>
+    <cd artist="U" title="E" price=" " year=" ">
+      <composer>M. Smith</composer>
+    </cd>
+  </cdlist>
+  <message>&juno;</message>
+</catalog>

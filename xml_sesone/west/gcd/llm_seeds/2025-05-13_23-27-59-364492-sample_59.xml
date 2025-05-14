@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookstore[
+    <!ELEMENT bookstore (book, notes)>
+    <!ATTLIST bookstore
+        Id   CDATA  #REQUIRED
+        Lang (en|es|fr) 'en'
+    >
+    <!ENTITY booktitle "F" >
+    <!ENTITY % bookattr "(">
+
+<!NOTATION print SYSTEM "l" >
+   
+  %bookattr;
+<!--%-->]>
+<bookstore Id="1" Lang="s" xmlns:xsi="&ns1;">
+   <notes>Bookstore Notes&booktitle; Books</notes>
+   <book Isbn="&quot;  "></book>
+    <message>&booktitle;</message>
+</bookstore>

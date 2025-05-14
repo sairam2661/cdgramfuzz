@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "x"
+[
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root xmlns:xi CDATA #IMPLIED>
+  <!ENTITY pi SYSTEM "x" NDATA pi>
+  <!ENTITY % f SYSTEM "f">
+  <!NOTATION pi SYSTEM "A">
+  %f;
+  <!-- pi was here -->
+]>
+<root xmlns:xi="a" xml:lang="e">x<!----><![CDATA[a: <b>>e]]></root>

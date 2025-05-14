@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+|supplier*)>
+  <!ATTLIST inventory xml:lang CDATA #IMPLIED>
+  <!ENTITY percent "%">
+  <!ENTITY 	%x "x">
+  <!NOTATION SGML SYSTEM "K">
+  %note;
+  <!---->
+]>
+<inventory xml:lang="x" xi:nil="0">
+  <supplier><![CDATA[<address> <phone>555-1234</phone>]]></supplier>
+  <product id="1">
+    <name>A product</name>
+    <price currency="*">14.99</price>
+    <attributes>
+      <attribute>This is <b>bold</b></attribute>
+    </attributes>
+  </product>
+  <product id="2" name="B">
+    <quantity>&x;</quantity>
+  </product>
+  <product id="3">
+    <code>&period;</code>
+  </product>
+</inventory>

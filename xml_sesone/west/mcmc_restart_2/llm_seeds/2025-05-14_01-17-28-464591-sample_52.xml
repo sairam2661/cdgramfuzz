@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY address "1">
+  <!ENTITY % pattern "#">
+  <!NOTATION ISO8583 PUBLIC "E" "M" >
+  %pattern;
+  <!-- Comment for ISO standard -->
+]>
+<notes xmlns:dt="D" xmlns:a="B">
+  <note id="N">This is note 1</note>
+  <note idref="N">This is note 2</note>
+  <a:note>&dt;address</a:note>
+  <!----><?notparsed?>ISO standard<?notparsed?>-->
+</notes>

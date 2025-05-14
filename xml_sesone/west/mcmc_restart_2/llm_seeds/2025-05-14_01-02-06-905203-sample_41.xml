@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<!DOCTYPE note SYSTEM "z" [
+  <!ELEMENT note (to,from,msg)>
+  <!ATTLIST note type (personal|travel|work) #REQUIRED>
+  <!ENTITY ped "p">
+  <!ENTITY 	%pc "i">
+  <!NOTATION SGML SYSTEM "v">
+  %pc;  <!-- pc entity -->
+]>
+<note type="w">
+  <to>Dr. Smith</to>
+  <from>
+    John
+    <address>
+      123 Main St.,
+      New York, NY  10036
+    </address>
+  </from>
+  <msg>Don't forget me this weekend.</msg>
+</note>

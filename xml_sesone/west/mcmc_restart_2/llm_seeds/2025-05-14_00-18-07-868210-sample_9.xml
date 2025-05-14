@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST inventory
+    id    CDATA   #REQUIRED
+    date  CDATA   #REQUIRED
+  >
+  <!ENTITY name "A"> <!ENTITY 	%digits	"0"		>
+  <!NOTATION SystemID  PUBLIC  "A" "B">
+ 	%note;
+ 	<!--
+ 	-->
+
+]>
+<inventory id="1" date="2"> 
+  <product>
+    <code>&name;</code>
+    <quantity>&digits;</quantity>
+    <vendor>
+      <name>Xi</name>
+      <address>
+        <street>123</street>
+        <city>&note;</city>
+      </address>
+    </vendor>
+    <notationsystem ref="A"/>
+  </product>
+  <product>
+    <code>A</code>
+    <quantity>1</quantity>
+    <vendor>
+      <name>yY</name>
+      <address>
+        <street>45</street>
+        <city>B</city>
+      </address>
+    </vendor>
+    <notationsystem ref="A"/>
+    <notationsystem SystemID="B" />
+  </product>
+</inventory>

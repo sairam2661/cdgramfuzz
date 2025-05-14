@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY title "F" >
+  <!ENTITY % para "P">
+  <!NOTATION ISO-8859-1 SYSTEM "f" >
+  %para;
+  <!-- unparsed entities -->
+  <!ENTITY content SYSTEM "c">
+]>
+<book lang="x">
+  <title>&lt;x&gt;</title>
+  <author>&title;</author>
+  <chapter refID="c">
+     <!-- Internal subset and XML Notations -->
+     <!--<!ENTITY x "internal subset"> -->
+    &content;
+  </chapter>
+</book>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "f" [
+  <!ELEMENT name (#PCDATA)>
+  <!ATTLIST book
+    title CDATA #REQUIRED
+    auth CDATA #IMPLIED
+  >
+  <!ENTITY book-ref "&volume;" >
+  <!ENTITY % book-attr "w">
+  <!NOTATION book-dtd SYSTEM "d">
+  %book-attr;
+  <!---->
+]>
+<article xmlns="h" xmlns:xsi="w" xmlns:xlink="n">
+  <xi:include xmlns:xi="y" href="x" xpointer="b"/>
+  <section>
+    <book title="C" xsi:noNamespaceSchemaLocation="v">
+      <volume>1</volume>
+      <title>ABC</title>
+      <auth>D</auth>
+      &book-ref;
+    </book>
+  </section>
+  <message>See book at <xlink:href="k"></xlink:href></message>
+</article>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes[
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY a "&acute;" >
+  <!ENTITY % ent "%">
+  <!NOTATION ISO-8859-1 SYSTEM "w" >
+  %ent;
+  <!-- <!ENTITY % p1 SYSTEM "data1.xml" NDATA w --> 
+]>
+<notes><note id="1" >XML <xsl:message>Notes</xsl:message> entity: a{&a;} <xi:include href="x" xi:fallback="d"/></note></notes>

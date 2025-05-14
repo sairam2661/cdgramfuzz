@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "b" [
+  <!ELEMENT note (#PCDATA|name|age) >
+  <!ATTLIST note xmlns CDATA #FIXED "a" >
+  <!ENTITY percent "%">
+  <!ENTITY  %p  "&#37;">
+  <!NOTATION n SYSTEM "c">
+  %note;
+  <!--%a
+]>
+<note xmlns="http://example/namespace" xml:lang='en'>
+  <name xml:space="default">example</name>
+  <age>20<year/></age>
+</note> 
+
+  <!-->
+<!ENTITY e SYSTEM "c">
+<!NOTATION s SYSTEM "b"> 
+<!ATTLIST name xmlns CDATA #FIXED "d">
+
+<!ELEMENT group (note+)> 
+<!ATTLIST group n CDATA #IMPLIED p CDATA #REQUIRED>
+
+<!ENTITY i "%">
+<!ENTITY a SYSTEM "x">
+<!ENTITY u SYSTEM "y">
+<!ENTITY d SYSTEM "z">
+<!ENTITY p SYSTEM "-">
+<!ENTITY m "%">
+<!ELEMENT doc (group+)>
+<!ATTLIST doc xmlns CDATA #IMPLIED xmlns:xsi CDATA #IMPLIED>
+<!ELEMENT e (#PCDATA)>
+<!ELEMENT x (#PCDATA)>
+<!ELEMENT y (#PCDATA)>
+<!ELEMENT z (#PCDATA)>
+<!ELEMENT w (#PCDATA)>
+<!ELEMENT s (#PCDATA)>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT r (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT q (#PCDATA)>
+
+<!ELEMENT n (#PCDATA)>
+
+<!ELEMENT o (#PCDATA)>
+
+<!ELEMENT u (#PCDATA)>
+<!ELEMENT t (#PCDATA)>
+
+<!ELEMENT m (#PCDATA)>
+
+<!ELEMENT k (#PCDATA)>
+
+<!ELEMENT i (#PCDATA)>
+
+<!ELEMENT j (#PCDATA)>
+
+<!ELEMENT l (#PCDATA)>
+<!ELEMENT v (#PCDATA)>
+
+<!ELEMENT  r (#PCDATA)>
+
+<!ELEMENT  v (#PCDATA)> 
+
+<!ELEMENT  s (#PCDATA)>
+<!ELEMENT  h (#PCDATA)>
+
+<!ELEMENT h (#PCDATA)>
+<!ELEMENT l (#PCDATA)>
+<!ELEMENT  r (#PCDATA)>
+
+<!ELEMENT  j (#PCDATA)>
+
+<!ELEMENT  f (#PCDATA)> 
+
+<!ELEMENT n (#PCDATA)>
+
+<!ELEMENT j (#PCDATA)>
+<!ELEMENT  r (#PCDATA)>

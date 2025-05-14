@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data PUBLIC "G" "C" [
+  <!ELEMENT data (list,sequence)?>
+  <!ATTLIST data attr CDATA #REQUIRED>
+  <!ENTITY ent "1">
+  <!ENTITY % ent2 "2">
+  <!NOTATION note SYSTEM "G">
+  %ent2;
+  <!--comment -->
+]>
+<data attr="3" xmlns="G">
+  <list>
+    <item>1</item>
+    <item>2</item>
+  </list>
+  <sequence>
+    <num>1</num>
+    <num>2</num>
+  </sequence>
+  <note SYSTEM="G">note message</note>
+</data>

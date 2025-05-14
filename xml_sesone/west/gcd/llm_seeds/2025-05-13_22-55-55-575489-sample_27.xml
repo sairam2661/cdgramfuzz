@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter1 "A" >
+  <!ENTITY  % chapter2 "B">
+  <!NOTATION print SYSTEM "l">
+
+  %chapter2;
+
+  <!--%chapter1;-->
+
+]>
+<book lang="G">
+  <title>The Book</title>
+  <author>Me</author>
+  <chapter ref="&chapter1;"><section>Sample</section></chapter>
+  <chapter ref="&chapter2;"><section>Sample</section></chapter>
+  <chapter><section>Sample</section></chapter>
+</book>

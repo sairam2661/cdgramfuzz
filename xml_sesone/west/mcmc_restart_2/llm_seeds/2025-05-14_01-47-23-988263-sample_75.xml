@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)> 
+  <!ATTLIST book id ID #REQUIRED> 
+  <!ENTITY chapter1 "<" 
+    ><!ENTITY % chapter2 "&chapter1;  "> <!NOTATION xsl PUBLIC 
+    'XSL Transformation Language (XSLT) version 1.0' 'http://www.w3.org/Style/XSL'> 
+  %chapter2;  
+
+<!-- 
+  --><!ELEMENT chapter (title, section+)> 
+  <!ELEMENT title (#PCDATA)> 
+  <!ELEMENT section (#PCDATA)> 
+]>
+<book id="b" xmlns:xsi="x" xmlns:xlink="y"> 
+  <title>Example book</title> 
+  <author><name>John</name></author> 
+  <chapter> 
+    <title>The beginning</title> 
+    <section> 
+      First <em>Section</em> &note;<xi:include href="#"/></section> 
+  </chapter> 
+</book>

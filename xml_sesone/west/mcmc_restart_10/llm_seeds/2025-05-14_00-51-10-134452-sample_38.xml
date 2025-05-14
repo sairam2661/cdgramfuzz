@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT a (#PCDATA)>
+  <!ATTLIST a id ID #REQUIRED>
+  <!ENTITY a "a">
+  <!ENTITY % b "b">
+  <!NOTATION bookman-rtf SYSTEM "b" >
+  %b;
+  <!---->
+]>
+<root>
+  <a id="1" xml:lang='en' xmlns="h" xmlns:xsi="w">
+    <b>&a;</b>
+  </a>
+  <c><![CDATA[c]]></c>
+  <a pid="2" id="3" p="4" href="d">d</a>
+</root>

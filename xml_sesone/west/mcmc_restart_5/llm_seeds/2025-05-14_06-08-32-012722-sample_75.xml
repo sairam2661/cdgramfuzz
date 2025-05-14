@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+, message)>
+  <!ATTLIST catalog
+    xmlns CDATA #REQUIRED
+    xmlns:xsi CDATA #REQUIRED
+    xsi:noNamespaceSchemaLocation CDATA #IMPLIED>
+  <!ENTITY product-name "F"
+    >
+  <!ENTITY % product-ref "<" >
+  <!NOTATION Product-Specification SYSTEM "S"
+  >
+  %product-ref;
+ 
+  <!-- element with no content -->
+  <!ELEMENT empty-element EMPTY>
+  ]>
+<catalog
+  xmlns="S"
+  xmlns:xsi="S"
+  xsi:noNamespaceSchemaLocation="S"
+>
+  <!-- element with no content -->
+  <empty-element />
+  <message>Sample comment</message>
+  <product><name>&product-name;</name></product>
+  &quot;
+</catalog>

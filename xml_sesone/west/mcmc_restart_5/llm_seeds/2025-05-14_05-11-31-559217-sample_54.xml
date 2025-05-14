@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "m"
+  [
+    <!ELEMENT data (entry*, group+)>
+    <!ATTLIST data 
+      id ID #REQUIRED>
+
+    <!ENTITY date "%"
+      >
+   <!ENTITY % base "B">
+    <!NOTATION GIF PUBLIC "G"
+      "G"
+    >
+    %base;<!--
+    --><!--
+      %base;--><!ENTITY % d "D">
+    <!ELEMENT entry (#PCDATA)>
+    <!ELEMENT group (entry+, total)>
+    <!ELEMENT total (#PCDATA)>
+    
+    <!ATTLIST entry 
+      title CDATA #REQUIRED>
+  ]>
+<datadir='d1'>
+  <entry title='et1'>et1</entry>
+  <group>
+    <entry title='et2'>et2</entry>
+    <entry title="G">
+      &date;<![CDATA[<GIF>&GIF;</GIF>
+<!ENTITY p '<p>
+<!ENTITY t '<t>
+']]></total>
+  </group>
+</data>

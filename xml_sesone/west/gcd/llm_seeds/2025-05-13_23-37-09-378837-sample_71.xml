@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+ [
+  <!ELEMENT root (a0+)>
+  <!ATTLIST root att1 CDATA #IMPLIED>
+  <!ENTITY ent1 "a">
+  <!ENTITY % ent2 "<">
+  <!NOTATION n1 SYSTEM "r">
+  %ent2;<!-- internal subset -->
+]>
+<root att1="v" xmlns="h">
+  <a1> &ent1; </a1>
+  <a2>&ent1;;</a2>
+  <a3> &amp; </a3>
+</root>

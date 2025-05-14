@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (author+)>
+  <!ATTLIST books 
+    lang CDATA #REQUIRED
+    pubdate CDATA #IMPLIED
+  >
+  <!ENTITY book1 SYSTEM "1">
+  <!ENTITY % book2 SYSTEM "2">
+  <!NOTATION book-parser SYSTEM "3">
+  %book2;
+  <!--
+    This is a multi line comment
+    Demonstrating XML's comment structure
+  -->
+]>
+<books lang="g" pubdate="t">
+  <author>Author1</author>
+  <book ref="&book1;">
+    <title>Example</title>
+    <page count="2"/>
+  </book>
+  <book ref="&book2;">
+    <title>Example</title>
+  </book>
+  <book ref="&book3;" notation="&book-parser;">
+    <title>Example</title>
+  </book>
+</books>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (parent*)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY name "S" >
+  <!ENTITY % param-entity SYSTEM "c">
+  <!NOTATION c-data PUBLIC "c" "d">
+  %param-entity;
+  <!---->
+]>
+<root xmlns="h" id="r" x:link="g">
+  <title attr="m">&name;</title>
+  <parent n="p"> 
+    <text>Some <![CDATA[<]]> text</text>    
+  </parent> 
+</root>

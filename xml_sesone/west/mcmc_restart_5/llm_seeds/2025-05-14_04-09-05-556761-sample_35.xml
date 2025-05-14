@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "w" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY percent "%">
+  <!ENTITY  % symbol "&#x2261;">
+  <!NOTATION w SYSTEM "w">
+  %symbol;
+  <!--
+    This is a block comment
+  -->
+]>
+<note id="1" lang="x">This is a %test% of <i>nation</i> &percent; symbols.</note>

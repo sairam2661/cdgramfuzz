@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog
+    type (novel|non-fiction) #REQUIRED
+  >
+  <!ENTITY book1 SYSTEM "m">
+  <!ENTITY % book2 "<"> <!NOTATION BOOK-XML SYSTEM "b"> %book2; <!-- example of a %pi -->
+]>
+<catalog type="P" xml:lang="x">
+  <xi:include xmlns:xi="x" href="a"/>
+  <!-- This is XInclude -->
+  <xi:fallback xmlns:xi='y'>Fallback</xi:fallback>
+  <book ID="1">New <xref linkend="b">book</xref></book>
+  <!-- book with ID '1' and xref -->
+  &book1;
+</catalog>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+, address+)>
+  <!ATTLIST note
+    id   CDATA   #REQUIRED
+    type (to|from) #REQUIRED
+  >
+  <!ENTITY address1 "<" >
+  <!ENTITY % address2 ">"
+  ><!NOTATION System-Entity SYSTEM "B">
+  %address2;
+  <!-- Internal subset ends here -->
+]>
+<notes>
+  <note id="n" type="n">Note n</note>
+  <note id="m" type="m">Note m</note>
+  <note id="z" type="z">Note z</note>
+  <address>Address 1</address>
+</notes>

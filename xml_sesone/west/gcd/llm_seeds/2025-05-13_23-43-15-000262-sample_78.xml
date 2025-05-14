@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalogue [
+  <!ELEMENT catalogue (book+)>
+  <!ATTLIST book id ID #REQUIRED title CDATA #REQUIRED author CDATA #REQUIRED>
+  <!ENTITY currency "$">
+  <!ENTITY % include "x">
+  <!NOTATION n1 SYSTEM "a">
+  %include;
+  <!--%n1;--> <!-- Example of commented notation -->
+]>
+<catalogue xmlns="&x;">
+
+  <book id="B" title="F" author="O">
+    <edition date="1">1</edition>
+  </book>
+  <book title="Q" author="b">
+    <price>&currency;2</price>
+  </book>
+</catalogue>

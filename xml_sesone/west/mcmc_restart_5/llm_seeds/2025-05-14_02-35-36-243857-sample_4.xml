@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog PUBLIC "B" "C" [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog  
+  	id (A|B) "A"
+  	xmlns (X|Y) "X">
+  <!ENTITY address "1">
+  <!ENTITY % i "#">
+  <!NOTATION notation-name SYSTEM "D">
+  %i;
+  <!--
+    <copyright><year>1996</year></copyright>
+     -->
+<!ELEMENT product (description,price)*>
+<!ATTLIST product
+  	id (A|B) "B">
+<!ELEMENT description EMPTY>
+<!ATTLIST description
+	id (A|C) "A"
+>
+<!ELEMENT price (#PCDATA)>
+<!ATTLIST price
+	id (A|D) "D">
+]>
+<catalog xmlns='U' xmlns:xi='V' id="A" xmlns="Z">
+  <!-- Sample comment -->
+  <products><![CDATA[Some <raw text> products:]]></products>
+  <product id="D">
+    <description id="A"></description>
+    <price id="D">$10</price>
+  </product>
+  &address;123
+</catalog>

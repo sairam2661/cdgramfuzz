@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE users PUBLIC '-//My Company//DTD User Data 1.0//EN' 'userdata.dtd' [
+  <!ELEMENT users (user+)>
+  <!ATTLIST users name CDATA #REQUIRED>
+  <!ENTITY symbol "&#x3F;">
+  <!ENTITY % entity 'entity set'>
+  <!NOTATION print SYSTEM 'print.exe'>
+  %entity;
+  <!--
+  Entity comment
+  -->
+]>
+
+<users name="V">
+  <user>
+    <attribute>Hello</attribute>
+    <address>
+      <street>15, Main Street</street>
+      <city>London</city>
+      <country>GB</country>
+      <city xml:lang="x">Paris</city>
+      <annotation>See below</annotation>
+      <![CDATA[<x>Some &symbol; text</x>]]>
+      <xref refid="b">[<anchor>jump</anchor>]</xref>
+    </address>
+  </user>
+</users>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id  ID   #REQUIRED
+    lang  CDATA   #IMPLIED
+  >
+  <!ENTITY author "J"
+  >
+  <!ENTITY % section ">"
+  >
+  <!NOTATION SGML SYSTEM " ">
+  %section;
+  <!--
+     comment within the DTD subset
+   -->
+]>
+<book id="B" lang="e" xmlns:i18n="i">
+  <title>Book Title</title>
+  <author>{author} K</author>
+  <chapter>Chapter 1</chapter>
+  <chapter>Chapter 2</chapter>
+</book>

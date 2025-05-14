@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY book "A"
+    >
+  <!ENTITY % book-entity "B"
+    >
+  <!NOTATION book-notation SYSTEM "A">
+  %book-entity;
+  <!--+ NOTATION declaration +-->
+]>
+<catalog id="1">
+  <product name="S">
+    <description entity-ref="#">
+      &book;
+    </description>
+    <attributes>
+      <NOTATION name="n" system="A" />
+    </attributes>
+  </product>
+  <product name="T">
+    <description entity-ref="#">
+      <NOTATION name="n" system="A" />
+    </description>
+    <attributes>
+      <NOTATION name="n" system="A" />
+      <notation ref="!"/>
+    </attributes>
+  </product>
+</catalog>

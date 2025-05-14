@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "l" [
+  <!ELEMENT data (#PCDATA) >
+  <!ATTLIST data 
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+    rel NMTOKENS #IMPLIED
+  >
+  <!ENTITY eacute "&#201;">
+  <!ENTITY % p1 "<">
+  <!NOTATION HTML PUBLIC '-//W3C//DTD HTML 4.0//EN' '{"http://www.w3.org/TR/REC-html40/strict.dtd"}'>
+  %p1;<!--%HTML%-->
+]>
+<data id="d" lang="x" rel="a">European: é</data>

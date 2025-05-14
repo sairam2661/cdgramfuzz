@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book 
+    id ID #REQUIRED
+    publisher CDATA #REQUIRED>
+  <!ENTITY publisher-name "W">
+  <!ENTITY % book-chapter "a">
+  <!NOTATION HTML PUBLIC '-//W3C//DTD HTML 4.0//EN' 'http://www.w3.org/TR/REC-html40/strict.dtd'>
+  %book-chapter;
+  <!-- Internal entity -->
+  <!ENTITY book-comment "A">
+]>
+<book id="B" publisher="O">
+  <title>My Book</title>
+  <author name="J">Example</author>
+  <chapter><title>Chapter 1</title></chapter>
+  <chapter id="B"><title>Chapter 2</title></chapter>
+</book>

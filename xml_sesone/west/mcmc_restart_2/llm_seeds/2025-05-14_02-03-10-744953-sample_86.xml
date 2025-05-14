@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book
+    id     CDATA  #REQUIRED
+    language (en|fr|es) "f"
+  >
+  <!ENTITY copyyear SYSTEM "C">        
+  <!ENTITY % general PUBLIC "D" "N">
+  <!NOTATION ISO85 PUBLIC "O" "U" >
+  %general;
+  <!---->
+]>
+<book id="B" language="f" xmlns:xi="L">
+  <title>Example Title</title>
+  <author>Mi</author>
+  <chapter>
+    <chapnum>1</chapnum>
+    <head>Introduction</head>
+  </chapter>
+  <chapter>
+    <chapnum>2</chapnum>
+    <head>The End</head>
+  </chapter>
+  &copyyear; &note;
+  <notation ref="L" notationtype="N" purpose="U" version="3"/>
+</book>

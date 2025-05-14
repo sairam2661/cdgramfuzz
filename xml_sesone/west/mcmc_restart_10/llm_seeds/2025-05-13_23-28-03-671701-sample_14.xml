@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY xinclude "X">
+  <!ENTITY % entities "1">
+  <!NOTATION ISO-8859-1 SYSTEM "f">
+  %entities;
+  <!---->
+]>
+<notes xmlns:xi="x" xmlns:m="m">
+  <note id="n">This is a note.&xinclude;</note>
+  <note id="t">
+    <meta>Hello World</meta>
+    <content>This is some <b>bold</b> content</content>
+  </note>
+</notes>

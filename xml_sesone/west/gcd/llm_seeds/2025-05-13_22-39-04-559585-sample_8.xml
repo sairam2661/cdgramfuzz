@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "W"
+               [
+                <!ELEMENT catalog (product+)>
+                <!ATTLIST catalog 
+                  (idCDATA)
+                  #REQUIRED>
+                <!ENTITY cat "F">
+                <!ENTITY % p "p">
+                <!NOTATION n SYSTEM "z">
+               					
+                %p;	
+                <!--%d %s %a>
+               ]>
+<catalog id="prod1">
+	<!-->
+	<!--
+		product	
+	-->
+	<!-->!product
+	<product id="prod2">
+		<description>&cat;</description>
+		test&n;
+	</product>
+	</catalog>  <!ATTLIST catalog
+			          (type (category|subcategory)) "category">
+	<!ELEMENT category (book+)>
+	<!ATTLIST category 
+      (titleCDATA)
+      #REQUIRED>
+	<!ELEMENT book (#PCDATA)>
+	<!ATTLIST book 
+		(authorCDATA)
+		#REQUIRED>
+	<category title="Books">
+		<book>
+			<title>The Great Gatsby</title>
+			<author>Francis Fanny</author>
+		</book>
+		<book>
+			<title>The Picture of Dorian Grey</title>
+			<author>James James</author>
+		</book>
+	</category>
+</catalog>
+<!ATTLIST catalog
+          (type (category|subcategory)) "category">
+<!ELEMENT category (book+)>
+<!ATTLIST category 
+      (titleCDATA)
+      #REQUIRED>
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book 
+		(authorCDATA)
+		#REQUIRED>  
+<!ELEMENT subcategory (book+)>
+<!ATTLIST subcategory
+      (titleCDATA)
+      #REQUIRED> 
+<subcategory title="Category Subcategory">
+	<book>
+		<title>The Three Musketeers</title>
+		<author>Charles Dickens</author>
+	</book>
+	<book>
+		<title>The Great Expectations</title>
+		<author>Moby Dick</author>
+	</book>
+</subcategory> 
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book 
+		(authorCDATA)
+		#REQUIRED> 
+<!ELEMENT document (text)>
+<!--> 
+<!ELEMENT text (#PCDATA)> 
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)> 
+<!

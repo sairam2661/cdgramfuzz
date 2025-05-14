@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "b" [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST title id ID #REQUIRED>
+  <!ENTITY year " ">    
+  <!ENTITY % ent SYSTEM "a">
+  <!NOTATION book SYSTEM "c">
+  %ent;
+  <!--> 
+]>
+<catalog<?xml:lang="EN"?>
+  <title id="1">Book</title>
+  <author>John</author>
+  <price><num>100</num><den>one</den></price>
+  <year>
+    <start>20</start>
+    <end>10</end>
+  </year>
+  <book xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://www.w3schools.com"><xi:include xmlns:xlink="http://www.w3.org/1999/xlink" href="b"/></book>
+</catalog> 
+<!DOCTYPE c [<!ELEMENT c ANY>]>c 
+ 
+<!ENTITY d SYSTEM "b"> 
+<!ENTITY e "<!DOCTYPE r SYSTEM 'b' [<!ELEMENT b ANY>]>"> 
+<!ELEMENT b ANY> 
+<!ELEMENT r ANY> 
+<!ENTITY m SYSTEM "a">
+<!NOTATION a  SYSTEM "b" > 
+<!ENTITY f "<!ELEMENT d ANY>"> 
+<!ENTITY p SYSTEM "c" > 
+<!ENTITY r SYSTEM "b">
+<!ENTITY l "<!ELEMENT a ANY>"> 
+<!ENTITY s SYSTEM "a"> 
+<!ELEMENT c ANY> 
+<!ELEMENT g ANY> 
+<!ELEMENT f ANY> 
+<!ELEMENT x ANY> 
+<!ENTITY y SYSTEM "b"> 
+<!ELEMENT t ANY> 
+<!ELEMENT v ANY> 
+<!ELEMENT u ANY> 
+<!ENTITY b SYSTEM "a"> 
+<!ATTLIST u  g CDATA #REQUIRED> 
+<!ATTLIST h  g CDATA #IMPLIED> 
+<!ATTLIST q  g CDATA #FIXED "123"> 
+<!ENTITY w "<!ENTITY k SYSTEM 'a'>"> 
+<!ATTLIST a  g CDATA #REQUIRED> 
+<!ATTLIST k  g CDATA #IMPLIED> 
+<!ATTLIST y  g CDATA #FIXED "123"> 
+<!ATTLIST o  g CDATA #IMPLIED> 
+<!ATTLIST n  g CDATA #REQUIRED> 
+<!ATTLIST e  g

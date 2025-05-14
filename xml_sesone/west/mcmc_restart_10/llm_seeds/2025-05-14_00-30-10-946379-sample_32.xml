@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [<!ELEMENT book (author, title, price, chapters+)> 
+                    <!ATTLIST book publisher CDATA #REQUIRED> 
+                    <!ENTITY address "D" > 
+                    <!ENTITY % x "%"> 
+                    <!NOTATION XML SYSTEM "D"> 
+                    %x; <!-- use the defined entity -->
+                    <!ELEMENT author (#PCDATA)> 
+                    <!ELEMENT title (#PCDATA)> 
+                    <!ELEMENT price (#PCDATA)> 
+                    <!ELEMENT chapters (chapter+, chapter*)> 
+                    <!ELEMENT chapter (#PCDATA)>]>
+<book publisher="W" xmlns:db="D" xmlns:xsi="D" xsi:schemaLocation="D">
+  <author>K</author>
+  <title>New</title>
+  <price>2</price>
+  <chapters>
+    <chapter>6</chapter>
+    <chapter>J</chapter>
+    <chapter>A</chapter>
+  </chapters>
+  <message entity="&address;" notation="#"/> 
+</book>

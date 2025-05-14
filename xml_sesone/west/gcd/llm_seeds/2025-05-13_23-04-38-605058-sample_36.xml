@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE note SYSTEM "G"
+[
+<!ELEMENT note (to,from,heading,body)>
+<!ATTLIST note
+  id  CDATA  #REQUIRED
+  date CDATA  #REQUIRED
+>
+
+<!ENTITY text "A">
+<!ENTITY % testAttrs "!">
+<!NOTATION ISO-8859-1PUBLIC "."
+
+  "M">
+  %testAttrs;
+<!--
+<!ELEMENT section (title,para+)>
+<!ATTLIST section
+  id   CDATA  #IMPLIED
+  class CDATA  #IMPLIED
+>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+
+<!-->
+]>
+<notas ID="1" date="t">
+  <note date="t">
+    <to xml:lang="f" type="n">t1</to>
+    <from xml:lang="z">t2</from>
+    <heading>h</heading>
+    <body>&text;</body>
+  </note>
+  <section id="s" class="c"><title>c</title><para>t</para><para>t</para></section>
+</notas>

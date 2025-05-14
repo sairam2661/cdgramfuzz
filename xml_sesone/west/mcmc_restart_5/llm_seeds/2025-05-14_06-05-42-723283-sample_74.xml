@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "B" [
+  <!ELEMENT root (header+, section*)>
+  <!ATTLIST root lang CDATA #IMPLIED>
+  <!ENTITY book "A">
+  <!ENTITY % comment "A">
+  <!NOTATION sysid SYSTEM "#">
+  %comment;
+  <!--
+    A comment spanning multiple lines.
+  -->
+]>
+<root xmlns:xi="x" lang="y">
+  <!-- Sample comment -->
+  <header>
+    <title>z</title>
+  </header>
+  <xi:include href="w" parse="x"/>
+  <section id="i" xml:lang="j">
+   ![CDATA[k!-l!-~<p>
+      A sample paragraph with text.
+    </p>-~!]]>
+  </section>
+</root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"  [
+  <!ELEMENT root (item*)>
+  <!ATTLIST root attr1 CDATA #IMPLIED>
+  <!ENTITY ent SYSTEM "t" NDATA fmt>
+  <!ENTITY % ent2 "&#38;"> 
+  <!NOTATION fmt SYSTEM "f">
+  %ent2;
+  <!--
+  This is a multi line comment
+  -->
+]>
+<root attr1="T" nls="f">
+  <item nls="t">
+    This is some text: <data> &ent; </data>
+    More text <!-- and some comments -->
+  </item>
+</root>

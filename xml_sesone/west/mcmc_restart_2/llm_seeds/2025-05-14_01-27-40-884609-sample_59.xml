@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "d" [
+  <!ELEMENT xref (loc+)>
+  <!ATTLIST xref type CDATA #REQUIRED>
+  <!ENTITY a "T">
+  <!ENTITY % b "B">
+  <!NOTATION iso-8859-1 PUBLIC "A" "b" >
+ %xref:base
+  		 	;
+  <!---->
+]>
+<note>&a;</note>

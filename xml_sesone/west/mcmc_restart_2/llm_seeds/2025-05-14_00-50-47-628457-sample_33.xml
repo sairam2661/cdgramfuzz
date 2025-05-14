@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT book (author, title, chapter+)>
+  <!ATTLIST book author CDATA #REQUIRED title CDATA #REQUIRED>
+  <!ENTITY title "W">
+  <!ENTITY % note "T">
+  <!NOTATION nfor SYSTEM "X" >
+  %note;
+  <!--
+    Sample comment
+  -->
+]>
+<book title="&title;"> 
+  <author>&author;</author> 
+  <chapter ref="c" ref="d"> 
+    <segment num="1" id="i"> 
+      <!-- some content -->
+      text content <!-- more content -->
+    </segment> 
+  </chapter> 
+</book>

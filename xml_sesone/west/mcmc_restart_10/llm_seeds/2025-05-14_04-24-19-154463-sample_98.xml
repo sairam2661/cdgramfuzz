@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note author CDATA #REQUIRED>
+  <!ENTITY ref SYSTEM "b" NDATA rtf>
+  <!ENTITY % ent SYSTEM "c" >
+  <!NOTATION rtf PUBLIC "g" "h">
+  %ent;
+  <!--
+    This is a block of comments and CDATA sections and a declaration.
+  -->
+  <!ENTITY comment "i">
+]>
+<note author="j" xsi:schemaLocation="z">k&comment;&ref;</note>

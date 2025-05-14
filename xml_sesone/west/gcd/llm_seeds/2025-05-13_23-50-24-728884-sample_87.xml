@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book
+    title CDATA #REQUIRED
+    author CDATA #REQUIRED
+  >
+  <!ENTITY chapter "A"
+  >
+  <!ENTITY % param "1"
+  >
+  <!NOTATION xxs SYSTEM "S"
+  >
+  %param;
+  <!--
+    This is a comment.
+  -->
+]>
+<book xmlns:xsi="x" title="A" author="B">
+  <ix:include href="C" xmlns:ix="d">
+    <data select="E"/>
+  </ix:include>
+  <chapter>&chapter;</chapter>
+  <note>&note;</note>
+  <xs:schema xmlns:xs="x">
+    <xs:element name="s">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element ref="t"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+<xxs:notation name="r" system="t" public="u"/>
+</book>

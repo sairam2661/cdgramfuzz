@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+  [<!ELEMENT main (#PCDATA|element | comment | cdata )>
+   <!ATTLIST main id ID #REQUIRED> 
+   <!ENTITY percent99 "%">
+   <!ENTITY % x "a">
+   <!NOTATION x PUBLIC "N" "X">
+   %x;
+   <!---->
+  ]
+>
+<root xmlns="a">
+    <!-- comment -->
+    <main id="m">Test 123
+        <element xmlns="b" q="&percent99;"></element>
+    </main>
+</root>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  SYSTEM "m" 
+  [  <!ELEMENT root (option*, result*)>  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY m SYSTEM "m" NDATA text> 
+  <!ENTITY % text SYSTEM "b" >  
+  <!NOTATION text SYSTEM "c">  
+  %text;  
+  <!-- Internal subset declaration -->
+]>
+<root id="a" xmlns:xs="x" xsi:noNamespaceSchemaLocation="y" n="d">
+  <!-- Sample comment using entity -->
+  <note>&m;</note>
+  <option>123</option>
+  <option><![CDATA[456 ABC]]>
+    <option2>ghi</option2>
+  </option>
+  <option>890</option>
+  <result><xs:comment>This is a comment</xs:comment></result>
+</root>

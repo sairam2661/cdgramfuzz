@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE myDocument [
+  <!ELEMENT myDocument (title, section*, message+)>
+  <!ATTLIST myDocument 
+    version CDATA #REQUIRED>
+  <!ENTITY text1 "A">
+  <!ENTITY % text2 "B">
+  <!NOTATION SystemResource SYSTEM "C">
+ 		
+		
+		
+ 	%text2;
+ 	<!--
+ 	Notation Reference 
+ 	-->  
+ 	<!NOTATION MyNotation SYSTEM "D">]
+>
+<myDocument version="1" xmlns="C">
+  <title>Example</title>
+  <section><h2>Section 1</h2></section>
+  <message>&text1;</message>
+  <message>&text1;</message>
+  <section><h2>Section 2</h2></section>
+  <message>&text1;</message>
+  <notationref notationname="C"/>
+  <notationref notationname="D"/>
+</myDocument>

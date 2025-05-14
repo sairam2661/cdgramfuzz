@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book type CDATA #IMPLIED>
+  <!ENTITY author-first "J">
+  <!ENTITY % entity-ref-system "J">
+  <!NOTATION System SYSTEM "J">
+  %entity-ref-system; 
+  <!---->
+]>
+<book xmlns:fb="f" type="F">
+  <fb:fb xmlns:fb="g" version=".">Book Version</fb:fb>
+  <title xml:lang="f">Título</title>
+  <author>&author-first;&company;</author>
+  <chapter id="c">
+    <title>Chapter 1: Introduction</title>
+    <!-- Comment with a CDATA section -->
+    <section>
+      <![CDATA[This is some sample paragraph with a <b>bold</b> tag.]]>
+    </section>
+  </chapter>
+</book>

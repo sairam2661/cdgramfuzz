@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root
+    id ID #REQUIRED
+    name CDATA #IMPLIED
+  >
+  <!ENTITY desc "<">
+  <!ENTITY % ent "%">
+  <!NOTATION PDF PUBLIC "M" "O">
+  %dtd-comment; <!-- This is a comment in the external DTD subset -->
+]>
+<root  id="R" name="A"><element xmlns:foo="b">Some text <xsl:apply-templates select="."/> with <f:link xmlns:f="c">external link</f:link></element></root>

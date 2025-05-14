@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes[
+  <!ELEMENT notes (note+, message?)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    type (text|image) " "
+  > 
+  <!ENTITY message "A" >
+  <!ENTITY % section "<"
+  >  
+  <!NOTATION ISO-8859-1 SYSTEM "M">
+  %section;<!--[CDATA[your description here]]-->
+  %section;<!ELEMENT note (#PCDATA)>
+]>
+<notes>
+  <note id="n" type=" ">
+    <raw> Text <!-- sample comment -->
+      some data: 
+        <value> 42 </value>
+    </raw>
+  <message entity="A"/> 
+  </note>
+</notes>

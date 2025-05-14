@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (item|comment)*>
+  <!ATTLIST inventory
+    id    CDATA   #IMPLIED
+    date  CDATA   #IMPLIED
+  >
+  <!ENTITY inventory-date "1">
+  <!ENTITY % cdata "<">
+  <!NOTATION cdata SYSTEM "/">
+  %cdata;
+<!---->]>
+<inventory id="1" date="&inventory-date;">
+  <comment>&note;</comment>
+  <item>
+    <![CDATA[
+      This is a sample <item> with some <content> inside <it>.
+    ]]>
+    <custom-attributes type="x" id="1" name="&note;" />
+  </item>
+  <item>
+    <desc>This is <b>another content</b> to demonstrate nested <i> tags.</i></desc>
+  </item>
+</inventory>

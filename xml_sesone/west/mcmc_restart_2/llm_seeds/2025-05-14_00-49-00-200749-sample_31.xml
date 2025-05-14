@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root
+    lang CDATA #IMPLIED
+    id ID #IMPLIED
+  >
+  <!ENTITY ent "W"
+  ><!ENTITY % xsl "x"
+  ><!NOTATION XERCES PUBLIC "X"
+ '><!NOTATION ISO PUBLIC>
+]>
+<root xmlns:schema="http://www.example.com" lang="en" id="main">
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="file.xml">
+    <params>
+      <param name="p1">a</param>
+      <param name="p2">b</param>
+    </params>
+  </xi:include>
+  &ent;&xsl;
+</root><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+The document has a DOCTYPE declaration, notations, internal entities, external reference, attribute declarations, external subset reference, external parameter entities, an XInclude element, an attribute group, parameter entity references, a raw text and an external reference to file "file.xml" which should exist for document to work correctly. 
+
+The XML declaration specifies version 1.0 of XML and character encoding ISO-8859-1, the XML document also makes use of different XSL entities,notations,DTD entities, attribute groups and an attribute for lang. The file referenced by the external reference does not have to exist in this solution for an XML-document to be generated correctly. In many cases the XML parser will attempt to include an external file or even give a false result if trying to load them with no data when asked (depending on the parser in question). Some elements include raw data which can then be accessed by its children because they have different types, the root element and xi:include both has it own set of characteristics so the whole document is varied. You can change the characteristics found in this document by adding new attributes, entities, and elements, or editing the already present ones. The document includes external and internal subsets, DTDs, external parameter entities, XInclude, parameter entity references, and raw text, but no data at all, so you should understand this before you make any serious modifications. In a large system though, you would likely want to include validation or error checking.  The different elements of the code like XInclude, DTD, and external entity references have been included

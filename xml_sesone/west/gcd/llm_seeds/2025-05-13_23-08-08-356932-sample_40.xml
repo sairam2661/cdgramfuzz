@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data [
+  <!ELEMENT data (record+)>
+  <!ATTLIST data 
+    lang CDATA #REQUIRED
+    id  ID  #REQUIRED>
+  
+  <!ENTITY author "J"
+  ><!ENTITY % emsg "<">
+  <!NOTATION print SYSTEM "l"
+  >
+  %emsg;
+  <!-- comment text -->
+]>
+<data lang="i" id="u">
+  <record><title>XML</title><year>200 0</year></record>
+  <note entityid="a" noteref="1">see below</note>
+  <img src="p" width="4" height="5"><title></title></img>
+</data>

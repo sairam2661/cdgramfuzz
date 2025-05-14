@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m" [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST item id CDATA #REQUIRED>
+  <!ENTITY percent "%">
+  <!ENTITY  % d "d">
+  <!NOTATION ISO-8859-1 SYSTEM "m">
+  %d;
+  <!--
+     This does two things:
+     -->  
+  ]>
+<catalog xml:lang="x" xmlns="h" xmlns:fb="g"
+  xmlns:xsi="w" xsi:schemaLocation="m" fb:id="t">
+  <item id="f">
+    <title>ABC</title>
+    <price>25.00</price>
+    <tax>&percent; VAT</tax>
+  </item>
+  <item id="a">Item a</item>
+  Item b
+</catalog>

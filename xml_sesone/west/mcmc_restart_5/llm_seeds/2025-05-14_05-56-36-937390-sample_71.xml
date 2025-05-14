@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!ELEMENT book (title,author,chapter+)>
+<!ATTLIST book 
+  idCDATA #REQUIRED 
+  publisherCDATA #IMPLIED 
+  year CDATA #IMPLIED>
+<!ENTITY book-author "J">
+<!ENTITY  % xinclude SYSTEM "x" >
+<!NOTATION xinclude SYSTEM "x" >  
+  %xinclude;
+<!---->
+]>
+<book id="b" publisher="P" year="Y">
+<title>X</title>
+<author>&book-author;</author>
+<chapter xml:id="c" key='1'><data>data</data></chapter>
+</book>

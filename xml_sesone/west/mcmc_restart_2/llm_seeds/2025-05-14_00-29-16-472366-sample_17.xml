@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE person [
+  <!ELEMENT person (name, address)>
+  <!ATTLIST person
+    id ID #REQUIRED
+    lang CDATA #IMPLIED>
+  <!ENTITY address1 "B" >
+  <!ENTITY % test "#">
+  <!NOTATION PDF SYSTEM "S">
+   %test;
+   <!---->
+]>
+<name xmlns="a" xmlns:foo="b">Juan
+  <address xmlns="c">
+    <street>&address1;</street>
+    <number>100</number>
+    <city>New York</city>
+  </address>
+</name>

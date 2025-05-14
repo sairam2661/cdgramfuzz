@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ISO 8879 compliant -->
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY item SYSTEM "g">
+  <!ENTITY % g "<">
+  <!NOTATION ISO-8859-1 PUBLIC "+"
+      "W" >
+  %ISO-8859-1;
+  <!----> <!-- comment -->
+]>
+<catalog id="1" version="2">
+  <item>First item</item>
+  <item>Second item</item>
+  <title>
+    <language xmlns:lang="l" lang="1">English</language>
+    <title>Sample title</title>
+  </title>
+</catalog>

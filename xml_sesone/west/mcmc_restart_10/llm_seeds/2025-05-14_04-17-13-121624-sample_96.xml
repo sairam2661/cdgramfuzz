@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (editor, section*, book+)>
+  <!ATTLIST books 
+    lang CDATA #IMPLIED 
+    lang-list CDATA #IMPLIED> 
+  <!ENTITY title "A" >
+  <!ENTITY % pub "B" > 
+  <!NOTATION ISO8859-1 PUBLIC "w" 
+    "x">
+  %pub;
+  <!-- 
+    A comment.
+  -->
+]>
+<books lang="a" lang-list="b" xmlns="c" xmlns:xi="d">
+  <!-- Sample comment -->
+  <editor name="E" experience="X">
+    <address>
+      <street>Street 1</street>
+      <postal-code>1A</postal-code>
+    </address>
+  </editor>
+  <section id="1">A Section</section>
+  <book edition="1">
+    <title>&title;</title>
+    <author xml:lang="e">author-A</author>
+  </book>
+  <book edition="2">
+    <title>Book Title</title>
+    <author xml:lang="f">author-B</author>
+    <translator xml:lang="g">translator</translator>
+    <pub info="&ISO8859-1;"/>
+  </book>
+</books>

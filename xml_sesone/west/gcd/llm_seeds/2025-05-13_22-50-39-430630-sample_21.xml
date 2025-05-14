@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item+)>
+  <!ATTLIST catalog
+    author CDATA #IMPLIED>
+  <!ENTITY address "R"><!ENTITY % name "R"><!NOTATION XML-Editor SYSTEM "h">
+  %name;<!---->
+]>
+<catalog xml:lang="x" xml:space="x" xmlns:xi="x" author="R">
+  <xi:include href="x" parse="x"/>
+  <item ID="x">Sample Item</item>
+  <item ID="x">
+    <x:xlink xmlns:xlink="x">x</xlink>
+    address address address<!---->
+    &address;  &address;  &address;  &address;
+  </item>
+</catalog>

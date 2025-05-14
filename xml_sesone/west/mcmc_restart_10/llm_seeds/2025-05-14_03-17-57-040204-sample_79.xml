@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE root-element [
+  <!ELEMENT root-element (#PCDATA)>
+  <!ATTLIST root-element xmlns CDATA #REQUIRED>
+  <!ENTITY desc "A"> 
+  <!ENTITY % ext-attr "d"> 
+  <!NOTATION PDF SYSTEM "X">
+  %ext-attr;
+  <!--[CDATA -->
+  <!--]--> 
+]>
+<root-element xmlns="P">
+  <sub-document href="x">
+  <desc>&desc;</desc></sub-document>
+  <not a="1" b="2">3</not>
+  <image src="y">
+  <img data="4"></img></image></root-element>

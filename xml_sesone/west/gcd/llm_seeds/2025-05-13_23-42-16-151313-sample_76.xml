@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id (ID) #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION ISBN SYSTEM "a">
+  %chapter2;
+  <!---->
+]>
+<book id="B" xmlns="a" xmlns:xi="b">
+  <title>Sample Book</title>
+  <author>Author</author>
+  <chapter ID="c">Chapter 1</chapter>
+  <chapter ID="d">Chapter 2</chapter>
+  <xi:include href="e"/>
+</book>

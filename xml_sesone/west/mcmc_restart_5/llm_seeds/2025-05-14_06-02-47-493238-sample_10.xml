@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ELEMENT document (section+, message+)>
+  <!ATTLIST document
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY note "B" ><!ENTITY % noteentity "<"><!NOTATION note-notation SYSTEM "w" >  
+  %noteentity;
+  <!-- entity replacement occurs at 2nd pass of DTD to the xml -->
+]>
+<document id="d" lang="x" xmlns="x">
+  <section> <!-- this element will contain a couple of entity references -->
+    &note;
+    <!-- a comment to note entity references in element scope -->
+    &note;
+  </section>
+  <message><![CDATA[Some <raw> text ]]></message>
+</document>

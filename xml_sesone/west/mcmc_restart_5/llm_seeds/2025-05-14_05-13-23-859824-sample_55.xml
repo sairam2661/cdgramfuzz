@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE root SYSTEM "M" [
+  <!ELEMENT root (header,paragraph*,note+)>
+  <!ATTLIST root lang CDATA #IMPLIED>
+  <!ENTITY note "B">
+  <!ENTITY % e "A">
+  <!NOTATION M SYSTEM "M">
+  %e;
+  <!--&M-->
+]><root lang="1">
+  <header>
+    <title>Text</title>
+  </header>
+  <paragraph>Some text <b>with</b> some <i>important</i> features.</paragraph>
+  <paragraph>Some text <i>with</i> some no.</paragraph>
+  <paragraph>Some text <i>with</i> some more.</paragraph>
+  <note>1</note>
+  <note>2</note>
+  <note>3</note>
+  <note>4</note>
+  <note>5</note>
+  <note>6</note>
+  <note>7</note>
+</root>

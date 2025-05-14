@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY contact "j">
+  <!ENTITY % macro "p">
+  <!NOTATION ISO-8859-1 SYSTEM "w">
+  %macro;
+  <!--&contact; -->
+]>
+<notes>
+  <note id="N"><title>MyNote</title><content>MyContent</content></note>
+  <note id="M"><title>MyNote2</title><content>MyContent2</content></note>
+</notes>

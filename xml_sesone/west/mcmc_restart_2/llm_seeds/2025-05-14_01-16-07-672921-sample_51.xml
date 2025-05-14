@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title,para+,abstract)>
+  <!ATTLIST article
+    id           ID  #REQUIRED
+    lang         CDATA #IMPLIED
+  >
+  <!ENTITY entity1 "X">
+  <!ENTITY % entity2 "<">
+  <!NOTATION print SYSTEM "l"
+
+  > 
+  %print;
+
+<!---->
+]>
+<article id="a" lang="d" xmlns:xi="&amp;">
+  <title>Hello</title>
+  <abstract>&entity1;&entity2;</abstract>
+  <para>
+    <italic>This</italic>
+    is a paragraph
+  </para>
+  <para>
+    A <sub>subscript</sub> <sup>superpostion</sup>
+  </para>
+</article>

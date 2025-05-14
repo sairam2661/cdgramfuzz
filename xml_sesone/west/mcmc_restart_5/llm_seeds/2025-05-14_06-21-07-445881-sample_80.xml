@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (section|message)> 
+  <!ATTLIST root attr CDATA #IMPLIED>
+  <!ENTITY name SYSTEM "c">
+  <!ENTITY % xinclude SYSTEM "d">
+  <!NOTATION notation SYSTEM "e">
+  %xinclude;
+  <!--comment-->  
+]>
+<root attr="b" xmlns:h="x">
+  <xsi:schemaLocation xmlns:xsi="x" version="f"/>
+  <section>
+    <xi:include xmlns:xi="y" href="g">
+      <xi:fallback>
+        <message>&name;</message>
+      </xi:fallback>
+    </xi:include>
+  </section>
+  <message><![CDATA[<notation>test</notation>]]></message>
+  <message>&notation;</message>  
+  <notation>h</notation>  
+</root>

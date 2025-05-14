@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note type CDATA #REQUIRED>
+  <!ENTITY note1 "I">
+  <!ENTITY % note2 "<">
+  <!NOTATION XSD PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+    %note2;
+    <!--enable the notation for use in the DTD -->
+  ]
+>
+<notes>
+  <note type="t">Note 1!</note>
+  <note type="m">&note1;&note2;t;Note 2!</note>
+</notes>

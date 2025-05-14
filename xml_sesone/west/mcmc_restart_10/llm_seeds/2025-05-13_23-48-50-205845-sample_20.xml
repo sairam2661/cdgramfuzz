@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (title,author*)>
+  <!ATTLIST book attr1 CDATA #IMPLIED attr2 (yes|no) "y">
+  <!ENTITY emod "I" >
+  <!ENTITY  %ent "p" >
+  <!NOTATION sgml-system SYSTEM "d"
+
+
+  >
+  %ent;  <!-- internal, % declares a parameter entity -->
+  ]>
+<books>
+  <book attr1="y">1</book>
+  <book attr1="n"/>
+  <title></title>
+  <author/>
+  <book attr2="y">2</book>
+  <book attr2="n">3</book>
+  <book attr2="y" attr1="1">4</book>
+  <message>&emod;</message>
+</books>

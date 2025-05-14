@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % general-atts "x" >
+  <!NOTATION book-notation PUBLIC "A" "B">
+  %general-atts;
+  <!--><!--><!--><!--> 
+]>
+<book id="1" xmlns:xi="x">
+  <title>X</title>
+  <author>Y</author>
+  <chapter>&chapter1;</chapter>
+  <chapter attr="1">Value</chapter>
+  <xi:include href="Z" xmlns:xsi="x"/>
+  <notation use-notation="#">some text</notation>
+</book>

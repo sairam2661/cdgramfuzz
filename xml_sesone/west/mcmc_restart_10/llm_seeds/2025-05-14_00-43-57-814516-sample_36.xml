@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (#PCDATA) >
+  <!ATTLIST inventory vendor CDATA #IMPLIED>
+  <!ENTITY cat "F">
+  <!ENTITY % cat-list "<" > <!NOTATION cat SYSTEM "F">  		
+		%cat-list;		<!---->  ]>
+  <inventory xmlns="x" xmlns:xi="w" vendor="M">
+    Sample Inventory &cat;
+    <item>Item #1</item>
+  </inventory>

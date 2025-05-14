@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter+)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY chapter "A" > 
+  <!ENTITY % section "B">
+  <!NOTATION ISO-8859-1 SYSTEM "A">
+  %section;
+  <!-- Default language set to English -->
+  <!ENTITY eng SYSTEM 'http://en.wikipedia.org/wiki/English_language'>
+]>
+<book lang="X">
+  <author>John Smith</author>
+  <title>The Secret of the Forest</title>
+  <chapter id="C">A First Chapter</chapter>
+  <chapter id="D">&chapter;</chapter>
+  <notation name="&ISO-8859-1;">&ISO-8859-1;</notation>
+  <!-- A comment of interest -->
+  <message>&eng;</message>
+</book>

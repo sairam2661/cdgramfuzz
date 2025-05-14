@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST books 
+    lang CDATA #IMPLIED>
+  <!ENTITY author "J" > <!ENTITY 
+
+
+
+
+
+
+
+  %author:bookDTD PUBLIC '<!ENTITY name "John Doe">; <!ELEMENT book (isbn, title, description)>;!<!ATTLIST book
+  (id ID #REQUIRED, isbn CDATA #REQUIRED, title CDATA #REQUIRED, description CDATA #IMPLIED)><!ELEMENT isbn (#PCDATA)><!ELEMENT title (#PCDATA)><!ELEMENT description (#PCDATA)>;''>
+]>
+<books lang="en" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="example.xsd"
+  xsi:schemaLocation="http://example.com/schema http://example.com/books.xsd">
+  <book>
+    <id>b1</id>
+    <isbn>978-1-4321-1111-1</isbn>
+    <title>Book Title</title>
+    <description><![CDATA[<p>Some <b>XML</b> text.</p>]]></description>
+    <author>&author;</author>
+  </book>
+</books>  <!-- This is the end of the document. --!>  <!-- This is another comment. -->   &#160;  <!-- Zero-width space char. --!>   &#x200b;  <!-- Zero-width space glyph, Unicode character U+200B. --!>   aaaaa  <aaaaaaa> [bbbbbb]  <!-- [ This is a section marker.]  -->  <section> <!-- [ This is the start.], The section starts here.-->  <message>1</message> <a href="#anchor">Link</a> <img src="image.jpg" alt="An image" width="50" height="50"/> <b>bold</b> <em>emphasized</em> <strong>strong</strong> <u>underlined</u> <s>struck out</s> <cite>A book</cite>  <!-- A section marker ends, this is the end of the section. --><section> <!-- Another section starts here, The section starts here.-->  <message>2</message> <i>italic</i> <abbr>abbr</abbr> <acronym>acronym</ac

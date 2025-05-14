@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (title, author+, publisher)>
+  <!ATTLIST books year CDATA #IMPLIED>
+  <!ENTITY bookid "B">
+  <!ENTITY  % note "U">
+  <!NOTATION pdf PUBLIC "A" "C">
+  %note;
+  <!--section  -->
+]>
+<books xmlns:xs="a" version="3" xmlns="d">
+  <title>Example Title</title>
+  <author>Author 1</author>
+  <author>Author 2</author>
+  <publisher>Publisher</publisher>
+  <message>&bookid;</message>
+  <book id="1">
+    <xs:integer>1</xs:integer>
+    <title>Book Title</title>
+  </book>
+  <book id="2">
+    <xs:integer>2</xs:integer>
+    <title>Another Title</title>
+  </book>
+  <!--<!pdf:some attr="hi" xmlns:pdf="b">this is the text</pdf:some>-->
+</books>

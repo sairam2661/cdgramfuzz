@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c" [
+  <!ELEMENT root (author,sample*)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY ent SYSTEM "d">
+  <!ENTITY % ent2 "%">
+  <!NOTATION ext SYSTEM "e">
+  %ent2;
+  <!-- default values for sample elements -->
+  <!ENTITY ent3 "A">
+]>
+<root xmlns="h" id="r">
+  <author> John Doe </author>
+  <sample>1</sample>
+  <sample>2</sample>
+  <sample>3</sample>
+  &ent;
+  <sample>&ent3;</sample>
+</root>

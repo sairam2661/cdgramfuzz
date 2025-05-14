@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: example.xml,v 1.3 2006/04/04 12:00:00 root Exp $ -->
+<!DOCTYPE catalogue [
+  <!ELEMENT catalogue (product+)>
+  <!ATTLIST catalogue lang CDATA #IMPLIED>
+  <!ENTITY order "1">
+  <!ENTITY % common "2">
+  <!NOTATION ISO-8859-1 SYSTEM 'ISO-8859-1'>
+  %common;
+  <!--entity declared as parameter entity -->
+  <!ENTITY param-entity "3">
+]>
+<catalogue lang="f" xmlns:foo="f"
+  xsi:noNamespaceSchemaLocation="f"
+  xmlns:xsi="f">
+  <product id="1">
+    <foo:comment>Sample <raw> text</raw></foo:comment>
+  </product>
+  <product id="&order;">
+    <foo:comment>&note;</foo:comment>
+  </product>
+</catalogue>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root ANY>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY ans "8">
+  <!ENTITY % ent "5">
+  <!NOTATION n SYSTEM "f">
+  %ent;
+  <!--
+    This is a multi
+    line comment
+  -->
+]>
+<root id="R" xmlns:xi="x" n="o">
+  <sub id="s" x="y" z="t" />
+  <p>
+    An example sentence containing
+    entities &ent; &ans;,
+    and a reference to a named notation(&n;).
+  </p>
+  <p xmllang="y">&note;</p>
+</root>

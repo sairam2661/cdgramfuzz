@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY desc SYSTEM "C">
+  <!ENTITY % ent "%">
+  <!NOTATION book-system PUBLIC "J" "J">
+  %ent;
+  <!--comment--> <!-- another level of nesting -->
+]>
+<catalog id="C" xml:space="I" xmlns:xs="w">
+  <xi:include xmlns:xi="j" href="T"/>
+  <product><xs:decimal>100</xs:decimal></product>
+  <message entity-ref="#"></message>
+</catalog>

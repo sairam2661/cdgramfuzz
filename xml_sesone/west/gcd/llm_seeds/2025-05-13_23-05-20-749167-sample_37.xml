@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA|chapter|author|year)> 
+  <!ATTLIST book    titleCDATA #REQUIRED>
+  <!ENTITY title "A"
+         >
+  <!ENTITY % entities "a">
+  <!NOTATION Acrobat  SYSTEM "J"
+           >
+  %entities;
+  <!--
+    XML comments like this one 
+    are ignored by processors.
+  -->
+]>
+<book title="&title;" xmlns:xsi="&xsi;">
+  <xsi:schemaLocation="&xsi;"></xsi:schemaLocation>
+  <chapter>
+    <author>Richard</author>
+    <year>2006</year>
+  </chapter>
+</book>

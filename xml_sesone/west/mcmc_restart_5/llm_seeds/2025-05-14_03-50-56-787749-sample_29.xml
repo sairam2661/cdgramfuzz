@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (#PCDATA)>
+  <!ATTLIST catalog owner CDATA #REQUIRED>
+  <!ENTITY address "1" >
+  <!ENTITY % phone "2">
+  <!NOTATION FAX SYSTEM "f">
+  %phone;
+  <!---->
+]>
+<catalog owner="S" xmlns:xi="x" xmlns:fb="f">
+  <!-- Sample comment -->
+  <item><![CDATA[<info> More & info ]]></item>
+  <address>&address;</address>
+</catalog>

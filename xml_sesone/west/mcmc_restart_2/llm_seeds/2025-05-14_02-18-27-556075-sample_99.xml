@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "n"[
+  <!ELEMENT note (to,from,body) >
+  <!ATTLIST note type CDATA #REQUIRED>
+  <!ENTITY from SYSTEM "C">
+  <!ENTITY % note-list '<note type="urgent">Urgent!</note><note type="non-urgent">Non-urgent!</note>' >
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %note-list;
+  <!-- this will be treated as character data in the XML document -->
+  <!ENTITY C SYSTEM "C" NDATA ISO-8859-1>
+]>
+
+<note xmlns="x" xml:lang="x" xml:space="x" type="x">
+  To: <i>&from;</i> 
+  From: <b>Me</b>
+  <body>
+    <xi:include href="y" xmlns:xi="x">
+      <xi:fallback>
+        Fallback text
+      </xi:fallback>
+    </xi:include>
+  </body>
+</note>

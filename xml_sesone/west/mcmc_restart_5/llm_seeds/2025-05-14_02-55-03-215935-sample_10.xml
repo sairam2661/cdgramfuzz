@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "d" [
+  <!ELEMENT book (title, author)*>
+  <!ATTLIST book
+    id   CDATA #IMPLIED
+    lang (eng|spa|fra) "?"
+    name CDATA #IMPLIED
+    pub   (yes|no) "?"
+  >
+  <!ENTITY part "3"
+  >
+  <!ENTITY % xsl-system-id "d" >
+  <!NOTATION xsl PUBLIC '-//W3C//DTD XSL Transformation 1.0//EN' 'w'>
+  %xsl-system-id;
+  <!-- other DTD stuff -->
+]>
+<book id='b123' lang='eng'>
+  <title>Learn XML</title>
+  <author><fn>John Doe</fn></author>
+</book>

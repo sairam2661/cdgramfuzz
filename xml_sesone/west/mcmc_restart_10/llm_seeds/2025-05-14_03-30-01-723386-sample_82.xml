@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n"
+  [<!ELEMENT x (#PCDATA)><!ATTLIST x att1 CDATA #REQUIRED>
+    <!ENTITY y '20'>
+      <!ENTITY % z SYSTEM "z">
+<!NOTATION t PUBLIC "t" 'http://t'>
+    %z; <!-- entity expansion -->
+]>
+<note xmlns="h">5<![CDATA[<]]>b<![CDATA[>]]><x att1="v">3<![CDATA[<]]>b<![CDATA[>]]></x></note>

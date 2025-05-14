@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (name, address, phone)*>
+  <!ATTLIST root 
+    id  ID  #IMPLIED
+    lang  NMTOKEN  #IMPLIED
+  >
+  <!ENTITY e "K">
+  <!ENTITY % ent "p">
+  <!NOTATION f SYSTEM "c">
+  %ent;
+  <!---->
+]>
+<root id="1" xmlns="a" lang="b" xi:noNamespaceSchemaLocation="d">
+  <name>f</name>
+  <address>g</address>
+  <phone>h</phone>
+  <i xmlns:xi="e">&e;</i>
+</root>

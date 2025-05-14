@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"[
+  <!ELEMENT root (header,section+)>
+  <!ATTLIST root lang CDATA #REQUIRED>
+  <!ENTITY foo "m">
+  <!ENTITY % bar "<">
+  <!NOTATION GIF PUBLIC "G" "G">
+  %bar;
+  <!-- internal subset start -->
+  <!ELEMENT header (#PCDATA)>
+  <!ATTLIST header title CDATA #REQUIRED>
+  <!ELEMENT section (#PCDATA) >
+  <!ATTLIST section id CDATA #IMPLIED>
+]>
+<root lang="x">1</root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root id (a|b) #REQUIRED>
+  <!ENTITY para "P"
+         >
+  <!ENTITY % d "#">
+  <!NOTATION photo SYSTEM "G">
+  %d;
+  <!--[% para;]=--> ]
+>
+<root xmlns:pxml="x" id="a">
+  <note>&note;</note>
+  <list>
+    <item><para/></item>
+  </list>
+  <pxml:item>Item 1</pxml:item>
+</root>

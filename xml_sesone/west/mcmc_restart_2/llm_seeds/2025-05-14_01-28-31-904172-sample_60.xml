@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE complex-type [
+  <!ELEMENT complex-type (container*)>
+  <!ATTLIST container 
+    idCDATA #REQUIRED
+    type (basic|complex) "b"
+  >
+  <!ENTITY ref "A">
+  <!ENTITY % ext-param "A">
+  <!NOTATION notation-name SYSTEM "C">
+  %ext-param;
+  <!-- External declaration -->
+  <!-- Entity definition -->]>
+<complex-type xmlns="a">
+  <container id="1" type="b">
+   <ref/> 
+  </container>
+  <container id="2">
+    <name>Sample</name>
+    <notation notation-name="A"
+             system="B"
+    />
+  </container>
+</complex-type>

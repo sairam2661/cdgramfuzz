@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE itemset SYSTEM "n" [
+  <!ELEMENT itemset (item*)>
+  <!ATTLIST itemset
+    id  CDATA  #REQUIRED
+    name CDATA  #REQUIRED
+  >
+  <!ENTITY item "I">
+  <!ENTITY % p "a">
+  <!NOTATION book SYSTEM "q">
+  %p;<!--%book;-->
+]>
+<itemset id="1" name="A">
+  <item>1</item>
+  <item>2</item>
+  <item>3</item>
+</itemset>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE complex [
+  <!ELEMENT percent (#PCDATA) >
+  <!ATTLIST person gender (male|female) #REQUIRED >
+  <!ENTITY amp "&amp;" >
+  <!ENTITY % entity-set "("><!NOTATION ext-notation PUBLIC 'ISO8879:1986' 'ISO-DIS-8879/TR' >%entity-set;<!--(nested)-->%entity-set;<!ELEMENT top (a,b+)>
+]>
+<root xml:lang="x">
+  <!-- Sample comment in english -->
+  <!-- another  comment -->
+  <complex>
+    <part refId='#root' />
+    <!--  a CDATA section containing XML syntax -->
+    <![CDATA[
+      <name>
+        <givenName>&amp;</givenName>
+        <?xml:namespace prefix="ns1"?>
+        <familyName>&note;</familyName>
+      </name>
+    ]]>
+    <person id='12345' xmlns='http://www.example.com/complex' gender='male' name='John'>
+      <note>
+        This is a sample note
+      </note>
+    </person>
+    <section>
+      Raw %amp;; text: '<a amp="b" >b</a>' - <xi:include xmlns:xi="&xi;" href='local.xml'></xi:include>-<b/> tag
+    </section>
+  </complex>
+</root>

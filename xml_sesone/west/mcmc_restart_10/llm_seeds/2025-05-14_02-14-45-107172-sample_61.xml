@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book title CDATA #REQUIRED>
+  <!ENTITY chap1 "Y">  
+  <!ENTITY % chapter "a">
+  <!NOTATION book-format PUBLIC "A" "B">
+  %chapter;    <!-- Entity resolution -->
+]>
+<book title="T">
+  <author>John</author>
+  <chapter number="1">The start&amp;%chap1;</chapter>
+  <chapter><title>Second chapter</title><editor></editor></chapter>
+  <book-format ref="#"/>
+</book>

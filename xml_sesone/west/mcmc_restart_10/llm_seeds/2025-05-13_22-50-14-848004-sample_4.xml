@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "l" [
+  <!ELEMENT catalog (book)+>
+  <!ATTLIST catalog
+    title CDATA #IMPLIED
+    date CDATA #REQUIRED
+  >
+  <!ENTITY l SYSTEM "D">
+  <!ENTITY % book PUBLIC "l" "c">
+  <!NOTATION ISO-8859-1 SYSTEM "l">
+  %book;
+  <!-- Author of the DTD is J.Doe -->
+]>
+<catalog title="J" date="Y" xml:lang="z">
+  <iso:catalog xmlns:iso="l">
+    <xi:include href="t" xmlns:xi="x">
+      <iso:note>Added.</iso:note>
+    </xi:include>
+    <book>
+      <author>J</author>
+      <title>T</title>
+      <price>6.99</price>
+    </book>
+  </iso:catalog>
+</catalog>

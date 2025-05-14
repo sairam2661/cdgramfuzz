@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title,section+,note)>
+  <!ATTLIST article id CDATA #REQUIRED>
+  <!ENTITY note "*">
+  <!ENTITY % ent "1">
+  <!NOTATION pdf PUBLIC "1" "1">
+  %ent;
+  <!-- external entity to replace 1 with a content -->
+  <!ENTITY % ent1 "<"  >
+  <!-- replacement text -->
+  %ent1; %ent; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent1; %ent

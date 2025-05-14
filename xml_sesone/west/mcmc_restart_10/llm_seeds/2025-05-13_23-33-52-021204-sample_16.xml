@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY product1 "P">
+  <!ENTITY % product2 "A">
+  <!NOTATION GIF PUBLIC "G" "I">
+  
+  %product2;  <!-- Reference to declared entity with % symbol-->
+]><catalog id="c">
+  <product>
+   xmlns="http://example.com/schema" xmlns:xi="http://www.w3.org/2001/XInclude" priority="high" <!--ATTLIST -->
+   &GIF;<!-- NOTATION -->
+   <name>Product &P;</name>
+   <description>Sample product</description>
+  </product>
+</catalog>

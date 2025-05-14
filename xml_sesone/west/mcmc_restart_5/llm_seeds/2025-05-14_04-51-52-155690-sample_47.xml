@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "f" [
+  <!ELEMENT top (#PCDATA)    >
+  <!ATTLIST root attr1 CDATA #REQUIRED>
+  <!ENTITY en "F" >
+  <!ENTITY % ent1 "<" >
+  <!NOTATION sysid SYSTEM "c">
+  %ent1;  <!-- should produce a fatal error -->
+]>
+<root attr1="/" xmlns:m="x">
+<b>Hello, world!</b>
+<c>&en;</c>
+<d><![CDATA[<span>test data</span>]]></d>
+<!-- 2nd comment -->
+<e>m:a</e></root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  SYSTEM "m" [
+    <!ELEMENT root (title, content)>
+    <!ATTLIST root id CDATA #REQUIRED>
+    <!ENTITY author "J"><!ENTITY % ent "J">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.0//EN' 'http://www.w3.org/TR/REC-html40/'>
+  %ent; 
+  <!--[ Internal DTDSubset ]-->
+]>
+<root id="x" xmlns:xsi="x" xsi:noNamespaceSchemaLocation="s">
+  <notUsed/> 
+  <title>Complex XML Document</title>
+  <section name="a"><![CDATA[Some & and < text]]></section>
+  <content>
+    <data>1</data>
+    <data type="c">Hello</data>
+  </content>
+</root>

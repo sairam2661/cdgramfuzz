@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED
+    id  ID  #REQUIRED>
+  <!ENTITY author "J"
+       >
+  <!ENTITY 	%title "A"
+     >
+  <!NOTATION w3c PUBLIC
+       '+//W3C//NOTATION XHTML 1.0'
+       'http://www.w3.org/MarkUp+//NOTATION XHTML 1.0'>
+ 	%title
+ 	;<!-- & -->
+]>
+<book lang="F" id="R">
+  <title>&author;</title>
+  <author/> <!-- & -->
+  <chapter id="C">
+    <title>&author;</title>
+    <!-- & -->
+  </chapter>
+</book>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog CDATA #REQUIRED>
+  <!ENTITY cat "F"
+         >
+  <!ENTITY % prod "p">
+  <!NOTATION fop SYSTEM "F"
+  >
+  %prod; 
+ <!--
+  This is a comment about cats
+  -->
+]>
+<catalog id="M"
+         xmlns:xsi="&xsi;"
+         xmlns:xlink="&xlink;">
+  <product desc='product 1'>
+    <!-- another comment -->
+    <name xlink:href="&file;"/>
+    <price>10</price>
+    <category>&cat;</category>
+  </product>
+</catalog>

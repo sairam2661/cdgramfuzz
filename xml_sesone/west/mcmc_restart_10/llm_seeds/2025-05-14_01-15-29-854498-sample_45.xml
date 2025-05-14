@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "f" [
+  <!ELEMENT root (a*,b+,c*)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY name "S">
+  <!ENTITY% param "%">
+  <!NOTATION f SYSTEM "f">
+  %param; <!-- not applicable -->
+]>
+<root id="1">
+  <a xmlns:xs="x" href="#">test</a>
+  <b>Hello</b>
+  <c>World!</c>
+  <section xmlns="y">
+    <h>This is a sample section</h>
+  </section>
+  <name>&S;</name>
+</root>

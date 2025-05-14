@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE myRoot [
+  <!ELEMENT myRoot (title, body, section+)>
+  <!ATTLIST myRoot
+    id CDATA #REQUIRED
+    lang (en|fr|es) "n"
+  >
+  <!ENTITY example "a"
+  ><!ENTITY % ent "(">
+  <!NOTATION print SYSTEM "l">
+ 
+        
+        
+  %ent;
+  <!-- other notation -->
+]>
+<myRoot id="1" lang="f">
+  <title xml:lang="f">Titre</title>
+  <body>
+    <paragraph>Some <b>Important</b> text in <strong>bold</strong> and <i>italic</i> or <u>underline</u></paragraph>
+  </body>
+  <section><sectionTitle>Un titre de section</sectionTitle></section>
+</myRoot>

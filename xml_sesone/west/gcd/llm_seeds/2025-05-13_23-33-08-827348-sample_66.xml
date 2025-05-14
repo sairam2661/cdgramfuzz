@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE notes
+ [<!ELEMENT notes (note+)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    author CDATA #IMPLIED>
+  <!ENTITY percent "%">
+  <!ENTITY % note "x" ><!NOTATION internal-entity SYSTEM "D">
+  %note;
+  <!--
+    Another comment block
+  -->
+  ]>
+<notes>
+<data xmlns:foo="a" xmlns:m="b" xmlns:n="c">abc</data>
+<note id="n" author="a"><note id="m">abc</note></note>
+<message>&percent;</message>
+</notes>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note idCDATA #REQUIRED>
+  <!ENTITY note1 "I">
+  <!ENTITY % note2 "o">
+  <!NOTATION svg PUBLIC "c" "d">
+  %note2;
+  <!-- [ID] -->
+]>
+<notes>&note1;&note2;<note id="1">This is a note</note><note id="2">Another note</note></notes>

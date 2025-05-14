@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (author*)>
+  <!ATTLIST author ID CDATA #REQUIRED>
+  <!ENTITY title "A" >
+  <!ENTITY % entities PUBLIC "A" "A">
+  <!NOTATION xml-notation1 SYSTEM "A"  >
+ %i;
+  <!----> <!-->[<!DOCTYPE notations SYSTEM "A" ]>-->
+]>
+<books>
+  <author ID="1">John</author>
+  <author ID="2">Doe</author>
+  <title>&title;</title>
+  <notations entity="P">
+    <notation>&xml-notation1;</notation>
+  </notations>
+</books>

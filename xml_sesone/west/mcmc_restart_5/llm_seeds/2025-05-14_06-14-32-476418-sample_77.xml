@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog version CDATA #REQUIRED>
+  <!ENTITY catalogDesc "A">
+  <!ENTITY % genEnt "<">
+  <!NOTATION HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'
+  'http://www.w3.org/TR/html4/loose.dtd'>
+  %genEnt; <!--
+  Comment
+  --><!ELEMENT product (name, price, quantity)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT price (#PCDATA)>
+  <!ELEMENT quantity (#PCDATA)>
+]>
+<catalog version='1.0' xmlns:xi="x" xmlns:m="m">
+  <xi:include href="/"/>
+  <m:product>
+    <name>Product 1</name>
+    <price>10</price>
+    <quantity>100</quantity>
+  </m:product>
+</catalog>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE note SYSTEM "b"
+  [
+    <!ELEMENT note (head,content,signature)>
+    <!ATTLIST note
+      version CDATA #REQUIRED
+      type (text|html) #IMPLIED
+    >
+    <!ENTITY book.title "I"
+    ><!ENTITY % book.start "<"><!NOTATION GIF SYSTEM "G"
+         >%book.start;
+    <!--&
+    Some comment&--><!ATTLIST current CDATA #REQUIRED>
+  ]
+>
+<note version="1" type="h"/>

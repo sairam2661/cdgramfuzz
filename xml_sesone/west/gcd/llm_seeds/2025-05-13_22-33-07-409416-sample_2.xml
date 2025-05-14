@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % entity2 "&#38;">
+  <!NOTATION FOO PUBLIC "F" "f">
+  %entity2;
+  <!---->
+]>
+<catalog id="1" xmlns:xs="w" xmlns:xsi="w">
+  <product>
+    <name>Cat</name>
+    <price>&entity;</price>
+    <!-- Sample comment -->
+    <description xml:lang="x">Cat description</description>
+  </product>
+  <product>
+    <name>Dog</name>
+    <price>10</price>
+    <FOO SYSTEM="s">f</FOO> <!-- NOTATION -->
+  </product>
+</catalog>

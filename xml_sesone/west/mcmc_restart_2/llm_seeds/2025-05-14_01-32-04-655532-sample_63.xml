@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY book-title "A"
+  >
+  <!ENTITY % chapter-attributes "s">
+  <!NOTATION book-nat SYSTEM "B">
+  %chapter-attributes;
+  <!---->
+]>
+<book lang="x" xmlns:xi="x"><title entity="Y">&book-title; X</title>
+ <author>Mark</author>
+ <chapter s="6">C</chapter>
+ <chapter s="9">
+  D
+  <xi:include parse="x">/home/x</xi:include>
+ </chapter>
+ <!--A book without a title and with D as chapter -->
+</book>

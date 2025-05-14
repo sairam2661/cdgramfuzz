@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root-system [
+  <!ELEMENT root-system (header, content) >
+  <!ATTLIST root-system lang CDATA #REQUIRED>
+  <!ENTITY ent1 'Entity!'>
+  <!ENTITY % ent2 'Percentage!'>
+  <!NOTATION external-format SYSTEM 'http://www.w3.org/2000/xml namespaces' >
+  %ent2;
+  <!--[internal subset] -->
+]>
+<root-system xmlns:xi="w" xmlns:xsi="b" xmlns:xs="c"
+   lang="f" id="d" 
+   xi:include="e" xsi:schemaLocation="a">
+   <!-- comment -->
+  <header>
+   <title>header</title>
+  </header>
+   <content>
+    <para>Some &ent1; text</para>
+    <para>With <note>some</note> more!</para>
+  </content>
+</root-system>

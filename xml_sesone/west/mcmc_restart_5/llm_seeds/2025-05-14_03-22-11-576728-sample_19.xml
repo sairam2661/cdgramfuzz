@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST author id ID #REQUIRED>
+  <!ENTITY author-id "A">
+  <!ENTITY % attribute "#">
+  <!NOTATION iso-8859-1 SYSTEM "S">
+  %attribute;
+  <!--
+  This is a single line comment in the DTD
+  -->
+]>
+<book xmlns:xi="x" xmlns:xs="s">
+  <title>Book Title</title>
+  <author id="B">Author Name</author>
+  <chapter><section><xi:include href="A"/></section></chapter>
+  <author entity-ref="A"/>
+  <message>&iso-8859-1;</message>
+</book>

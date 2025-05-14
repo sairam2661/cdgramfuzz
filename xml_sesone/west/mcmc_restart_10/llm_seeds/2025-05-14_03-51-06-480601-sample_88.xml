@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE address [
+  <!ELEMENT address (street, city, state, zip)>
+  <!ATTLIST address
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY author "J">
+  <!ENTITY % general-atts "x">
+  <!NOTATION HTML PUBLIC "X" "Y">
+  %general-atts;
+  <!---->
+]>
+<address id="A" version="1">
+  <street>123 Elm St.</street>
+  <city>Anytown</city>
+  <state>CA</state>
+  <zip>12345</zip>
+  <![CDATA[<data>&author;</data>]]>
+  &author;
+  &note;
+  <!-- comment -->
+</address>

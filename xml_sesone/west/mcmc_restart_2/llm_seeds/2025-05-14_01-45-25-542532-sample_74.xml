@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book
+    id	CDATA #REQUIRED
+    lang	(EN|FR|DE) "x"
+  >
+  <!ENTITY special "&lt;">
+  <!ENTITY % comment "#">
+  <!NOTATION image PUBLIC "X" "R">
+  %comment;<!-- This is a comment -->
+]>
+<book id="X" lang="x">
+  <title>The &special; story book</title>
+  <author>John Doe</author>
+  <chapter1>This is chapter one.</chapter1>
+  <chapter2>This is chapter two.</chapter2>
+  <notationref nottype="X">image</notationref>
+</book>

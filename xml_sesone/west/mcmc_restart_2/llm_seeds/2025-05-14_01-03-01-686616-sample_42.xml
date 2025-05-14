@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "c" [
+  <!ELEMENT inventory (item)> 
+  <!ATTLIST inventory xmlns CDATA #REQUIRED> 
+  <!ENTITY item "A">
+  <!ENTITY % note "T">
+  <!NOTATION w3c SYSTEM "w">
+  %note;<!---->
+]>
+<inventory xmlns:xs="w" xmlns:xi="x" xmlns:w3c="w">
+  <item>&item;</item>
+  <w3c:w3c/> 
+  <xi:include href="d"><w3c:w3c/></xi:include>
+</inventory>

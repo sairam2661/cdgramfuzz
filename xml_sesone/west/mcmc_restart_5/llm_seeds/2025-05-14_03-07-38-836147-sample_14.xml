@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookmap [
+  <!ELEMENT bookmap (title, author) >
+  <!ATTLIST bookmap id CDATA #REQUIRED>
+  <!ENTITY book.title "T" >
+  <!ENTITY % book.author "("><!NOTATION xsl PUBLIC'-//W3C//DTD XSL 1.1//EN''http://www.w3.org/Style/XSL/' > %book.author; <!--(author) -->
+]>
+<bookmap id="B" xsl:href='book.xsl' version="3">
+  <title entity='&book.title;'>Programming</title>
+  <author>&book.author;</author>
+  <section>The Main Contents</section>
+  <subsection>Chapters</subsection>
+</bookmap>

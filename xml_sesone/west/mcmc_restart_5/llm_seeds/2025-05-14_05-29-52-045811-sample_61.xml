@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article[
+  <!ELEMENT article (title, para+, list+)>
+  <!ATTLIST article id CDATA #REQUIRED>
+  <!ENTITY pi SYSTEM 'http://example.com/math-codes'>
+  <!ENTITY % ent SYSTEM 'ent-data.xml' >
+  <!NOTATION ebnf PUBLIC '+//DTD ebnf//EN' '+//URI ebnf//'>
+  %ent;
+  <!---->
+]>
+<article id='A2' xmlns='http://example.org/xsd/app'>
+	<title>Example Article</title>
+	<para> This is some paragraph text <subscript>with subscript text</subscript> </para>
+	<para > and another one with <superscript>superscript text</superscript></para>
+	<list>&pi;</list>
+</article>

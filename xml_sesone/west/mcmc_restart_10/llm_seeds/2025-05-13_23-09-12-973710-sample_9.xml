@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml:doc[
+  <!ELEMENT xml:doc (metadata,greeting)>
+  <!ATTLIST xml:doc
+    id ID #REQUIRED>
+  <!ENTITY ent "W">
+  <!ENTITY % ent2 "E">
+  <!NOTATION W3C SYSTEM "I">
+  %xent2;  <!-- E -->
+]>
+<xml:doc id="X">
+  <metadata>
+    <author>John Doe</author>
+    <date>2022-07-26</date>
+  </metadata>
+  <greeting>
+    Hello, <b.getWorld> </b>
+  </greeting>
+</xml:doc>

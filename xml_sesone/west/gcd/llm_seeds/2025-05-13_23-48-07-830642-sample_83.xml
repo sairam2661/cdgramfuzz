@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m"
+
+
+  [
+     <!ELEMENT catalog (book+)>
+     <!ATTLIST catalog xmlns CDATA #FIXED "g">
+     <!ENTITY chapter "1">
+  <!ENTITY % comment "(">  <!NOTATION PDF SYSTEM "g"  >
+     %comment;  <!-- Sample comment -->
+  <!ELEMENT book (author+,title*)>
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+  <!ENTITY book "b">
+]>
+<catalog xmlns="g">
+  <book>
+    <author>Homer</author>
+    <title>The Iliad</title>
+  </book>
+  <book>
+    <author>Virgil</author>
+    <title>The Aeneid</title>
+  </book>
+</catalog>

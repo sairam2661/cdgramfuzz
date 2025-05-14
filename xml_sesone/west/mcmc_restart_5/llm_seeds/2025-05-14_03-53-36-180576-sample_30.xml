@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (item*)>
+  <!ATTLIST item id (ID) #REQUIRED>
+  <!ENTITY product "L" >
+  <!ENTITY % xinclude "X">
+  <!NOTATION svg SYSTEM "X">
+  %xinclude;
+  <!--%xinclude; declaration -->
+]>
+<inventory>
+  <item id="a"><title>Apple</title></item>
+  <item id="g"><title>Grapes</title></item>
+  <item>
+    <name><![CDATA[<Orange> fruit]]></name>
+  </item>
+  <message>&product;</message>
+</inventory>

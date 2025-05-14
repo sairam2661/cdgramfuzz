@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author+,title,year)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY xref "X">
+  <!ENTITY % section "A">
+  <!NOTATION nfo PUBLIC "N" "r">
+  %section;
+  <!-->[<!NOTATION ref SYSTEM "X.jpg" NDATA nfo>]<!-->]>
+  <book id="B">
+    <author>Author 1</author>
+    <author>Author 2</author>
+    <title>X-Touch</title>
+    <year>1996</year>
+    <chapter>Chapter 1</chapter>
+    <note entity-ref="#" id="N" nname="n">
+      Take note and follow the directions. You are not reading this note when you see it.
+    </note>
+    <xi:include href="#"/>
+    <other>&xref;</other>
+  </book>

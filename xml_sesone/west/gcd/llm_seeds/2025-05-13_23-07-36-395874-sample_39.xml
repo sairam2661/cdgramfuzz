@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root ANY>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY entity "A"
+         	   
+     >
+  <!ENTITY % entity-set "A">
+  <!NOTATION SystemEntity SYSTEM "f">

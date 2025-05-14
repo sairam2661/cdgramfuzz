@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE result SYSTEM "b" [
+  <!ELEMENT r (#PCDATA)>
+  <!ATTLIST r 
+    type CDATA #REQUIRED
+    id ID #REQUIRED>
+  <!ENTITY n "R">
+  <!ENTITY % e "e">
+  <!NOTATION xml SYSTEM "a">
+  %e;
+  <!--
+    This is an example of a CDATA comment.
+  -->
+]>
+<result xmlns="h" xmlns:g="i" xmlns:xsi="j">
+  <r id="1" type="a" /><!-- some text --><!---->
+  <r id="2" type="b"/><g:some attr='d'>e</g:some>
+  <msg>&n;</msg>
+  <r id="3" type="a" />
+</result>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (person, address)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY personName "A">
+  <!ENTITY  % addressAttributes "n" >
+  <!NOTATION ISO-8859-1 SYSTEM "g">
+  %addressAttributes;
+  <!---->
+]>
+<root id="r">
+  <person>
+    <name>&personName;</name>
+  </person>
+  <address 
+    addressType="n" 
+    n="2"
+  >
+    <street n="1">&street1;</street>
+    <city><ci>Tlaxcala de Xicohtencatl</ci></city>
+  </address>
+</root>

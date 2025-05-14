@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding="iso-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog id ID #REQUIRED title CDATA #IMPLIED>
+  <!ENTITY itemEntity SYSTEM "m" NDATA mtype>
+  <!ENTITY % booktype "M"><!NOTATION mtype SYSTEM "M">
+  %booktype;
+  <!--
+    This is a long comment
+  --> 
+]>
+<catalog id="c" title="A" xmlns:p="a" xmlns="b">
+  <p:p>Some text</p:p>
+  <item num="0"><![CDATA[<!-This is a new line
+Another one
+And one more-->]]></item>
+  <item>&itemEntity;</item>
+</catalog>

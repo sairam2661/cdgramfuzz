@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE note SYSTEM "b" [
+  <!ELEMENT note (head, body)>
+  <!ATTLIST note
+         version CDATA #REQUIRED
+          id   ID #REQUIRED>
+  <!ENTITY date SYSTEM "c">
+  <!ENTITY % noteAttr "d" >
+  <!NOTATION ISO-8859-1 PUBLIC "e" "f">
+  %noteAttr;
+  <!-- default xml namespace -->
+]>
+<note xmlns="g"
+       version="1"
+       id="1">
+ <head>
+  <title>Some title</title>
+  <to>Person</to>
+  <from>%noteAttr;</from>
+ </head>
+ <body>
+  This is a note which can be &date;
+ </body>
+</note>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "s" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root lang CDATA #IMPLIED>
+  <!ENTITY author "P" >
+  <!ENTITY % quote "%">
+  <!NOTATION GIF PUBLIC "G"  "I" >
+  %quote;
+  <!-->[<!ENTITY foo "bar">]-->]>
+<root lang='en' xmlns='http://example.com/schema' xmlns:xi='http://www.w3.org/2001/XInclude'>
+  <!-- Sample comment -->
+  <subroot/>
+  <message attr='t'>&author;</message>
+  <nested attrs='c'>
+    foo
+    <bar>baz</bar>
+  </nested>
+  <notated>
+    <GIF/>
+  </notated>
+  <!-- Nested CDATA sections -->
+  <![CDATA[Some <raw> text
+    <elem>content</elem>
+  ]]>
+</root>

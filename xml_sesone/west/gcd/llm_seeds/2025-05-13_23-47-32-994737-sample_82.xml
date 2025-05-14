@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (item*)>
+  <!ATTLIST item (priceCDATA) #IMPLIED>
+  <!ENTITY note "T"
+  ><!ENTITY % e SYSTEM "d">
+  <!NOTATION n1 SYSTEM "X">
+  %e;<!-- %e; is treated as an external parsed entity -->
+]>
+<inventory n1:notation="X" xmlns="X" xmlns:ci="Z"><item><name>test</name><price><![CDATA[123.45]]></price></item></inventory>

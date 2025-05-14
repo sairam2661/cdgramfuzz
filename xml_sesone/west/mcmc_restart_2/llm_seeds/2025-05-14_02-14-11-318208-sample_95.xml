@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "M"
+       [
+         <!ELEMENT root (author, element, entity, comment)>
+         <!ATTLIST root id ID #REQUIRED>
+         <!ENTITY entity "A"
+         >
+         <!ENTITY % entity-p "%"
+         >
+         <!NOTATION print SYSTEM "l">
+         %entity-p;
+         <!--
+         test comment
+         -->
+       ]
+>
+<root id="R" xmlns:xi="x">
+  <author> author1 </author>
+  <element> element1 </element>
+  <message>&entity;</message>
+  <message>&entity-p;</message>
+  <comment><![CDATA[
+      <data> data  </data>
+  ]]></comment>
+</root>

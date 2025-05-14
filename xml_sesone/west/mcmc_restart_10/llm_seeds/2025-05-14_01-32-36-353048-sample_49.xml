@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note*)>
+  <!ATTLIST note 
+    id ID #REQUIRED 
+    type CDATA #REQUIRED>
+  <!ENTITY july "1">
+  <!ENTITY % author "S">
+  <!NOTATION svg SYSTEM "a">
+  %author;
+  <!--<!ELEMENT note (#PCDATA|p |ul |li |a |img |b |i)-->
+]>
+<notes xmlns="h">
+  <note id="1" type="b">Hello</note>
+  <note id="2" type="i">%july%</note>
+  <!--&svg;!-->
+  <note id="3" type="b">&note;</note>
+</notes>

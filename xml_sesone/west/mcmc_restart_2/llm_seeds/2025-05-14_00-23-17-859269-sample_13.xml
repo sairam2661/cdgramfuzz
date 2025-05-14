@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author,title,chapter*)>
+  <!ATTLIST book  
+      author CDATA #REQUIRED  
+      title CDATA #REQUIRED>
+  <!ENTITY chapter1 "M">
+  <!ENTITY % chapter2 "u">
+  <!NOTATION ISO-8859-1 SYSTEM "m">
+  %chapter2;  <!-- reference notation -->
+]>
+<book xmlns="h" xmlns:xsi="h" xmlns:xi="h">  
+  <title>This is &chapter1; book</title>
+  <author>N</author>
+  <xi:include href="c" xmlns:xi="h"/>
+  <chapter>Another c&chapter1;hapter</chapter>
+</book>

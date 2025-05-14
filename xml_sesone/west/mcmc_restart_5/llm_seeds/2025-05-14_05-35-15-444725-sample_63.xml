@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+, catalog?)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY book "1">
+  <!ENTITY % entity "3">
+  <!NOTATION ISO-8859-1 SYSTEM "w" >
+  %entity;
+  <!-- other entity -->  
+  <!ELEMENT product (#PCDATA)>
+  <!ATTLIST product
+    id CDATA #IMPLIED
+    price CDATA #IMPLIED
+  >
+]>
+<catalog id="C" version="1" xmlns:xi="w" xmlns="h">
+  <!-- text without an element -->
+  <product id="P" price="2">&book;  </product>
+  <product xmlns="a" id="P" price="4"><xi:include href="w" parse="x"/></product>
+</catalog>

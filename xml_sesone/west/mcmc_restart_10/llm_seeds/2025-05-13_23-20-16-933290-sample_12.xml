@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root-element [
+  <!ELEMENT root-element (#PCDATA)>
+  <!ATTLIST root-element id CDATA #REQUIRED>
+  <!ENTITY text-system " ">
+
+
+  <!ENTITY % system " ">
+  <!NOTATION sgf SYSTEM " ">
+  %system;
+<!---->
+]>
+<root-element xmlns=" ">&text-system;<message>&note;</message></root-element>

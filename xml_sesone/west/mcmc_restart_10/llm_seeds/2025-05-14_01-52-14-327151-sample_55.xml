@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE noteSYSTEM "m"
+  [
+    <!ELEMENT note (to,from,heading,message)>
+    <!ATTLIST note style CDATA #REQUIRED>
+    <!ENTITY m "m">
+  <!ENTITY % e SYSTEM "e"><!NOTATION svg PUBLIC'SVG PUBLIC NOTATION' 'http://www.w3.org/Graphics/SVG'>
+  %e;
+  <!-- other declaration-->]>
+<note style="G"><to>Namdeo</to><from>Todd</from><heading>Hi Todd</heading><message>&m;</message></note>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY n "A"
+          ><!ENTITY %eone "B"
+          ><!NOTATION iso-8859-1 SYSTEM "A">
+  %eone;
+  <!-- DTD validation error: 'NOTATION declaration of iso--> ]>
+<notes xmlns:green="a">
+  <note id="n" xgreen:color="#">This is a sample note: </note>
+  <note id="n">Some  fancy text: This is another   sample  note</note>
+</notes>

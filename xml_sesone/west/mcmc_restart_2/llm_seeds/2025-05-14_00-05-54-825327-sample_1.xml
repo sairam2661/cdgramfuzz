@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE declaration [
+  <!ELEMENT declaration (#PCDATA)>
+  <!ATTLIST declaration 
+    id CDATA #REQUIRED
+    type (integer|string) #REQUIRED
+  >
+  <!ENTITY system "L" >
+  <!ENTITY % user "U">
+  <!NOTATION ISO-8859-1 SYSTEM "L">
+  %user;
+  <!---->
+]>
+<declaration id="A" type="L"><![CDATA[Example with raw text <bold>bold&style;</bold>]]></declaration>

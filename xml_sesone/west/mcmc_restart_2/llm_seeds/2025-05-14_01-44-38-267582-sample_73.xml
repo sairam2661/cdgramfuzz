@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE student [
+  <!ELEMENT student (name+,address)>
+  <!ATTLIST student
+    id CDATA #REQUIRED
+    lang (en|fr|de) "f"
+  >
+  <!ENTITY address "R"
+  >
+  <!ENTITY % sectionatt "("
+  >
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %sectionatt;
+  <!--
+    Entity
+  -->
+]>
+<student xmlns="h" xmlns:xsi="w" xsi:schemaLocation='s' id="1" lang='f'>
+  <address>&address;</address>
+  <name>John</name>
+  <address>Road</address>
+  <details>
+    <description>Some stuff</description>
+  </details>
+</student>

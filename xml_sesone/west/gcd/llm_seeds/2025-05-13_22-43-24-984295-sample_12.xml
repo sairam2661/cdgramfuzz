@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book
+    id   ID   #IMPLIED
+    lang CDATA  #IMPLIED
+  >
+  <!ENTITY book-author "J"
+     >
+  <!ENTITY % comment "&#38;"
+  >
+  <!NOTATION image SYSTEM "X"
+  >
+  %comment;<!-- XML comment is started -->
+]>
+<book id="b" lang="X">
+  <title>Book Title</title>
+  <author>&book-author;</author>
+  <chapter num="1">
+    <heading>Chapter 1</heading>
+    <para>
+      &image;
+      <bold>Hello world!</bold>
+      <xi:include xi:href="x" parser="x"/>
+    </para>
+    <xi:include href="y"/>
+  </chapter>
+</book>

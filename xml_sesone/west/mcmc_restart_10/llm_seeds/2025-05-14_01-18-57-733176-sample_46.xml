@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m"
+  [<!ELEMENT note (title, desc+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY note-ref "&note1;">
+  <!ENTITY % p "p">
+  <!NOTATION publ SYSTEM "D">
+  %p;
+  <!--
+    This is a comment in xml
+    with multiple lines
+  -->
+  ]
+>
+<notes xmlns:xi="x"></notes>

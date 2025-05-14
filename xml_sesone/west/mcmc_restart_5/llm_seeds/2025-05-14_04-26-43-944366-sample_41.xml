@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION F90 PUBLIC "f" "f">
+  %chapter2;<!--<!ELEMENT chapter (#PCDATA)-->
+
+]>
+<book id="B" xmlns:xs="w"><title>T</title><author>A</author><chapter xml:lang="x" n="n">D</chapter><chapter ref="r">E</chapter></book>

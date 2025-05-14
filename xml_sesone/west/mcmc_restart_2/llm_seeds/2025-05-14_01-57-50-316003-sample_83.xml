@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (title, author+, publication)>
+  <!ATTLIST books lang CDATA #REQUIRED>
+  <!ENTITY author1 "J">
+
+<!ENTITY % entname "J">
+<!NOTATION PDF SYSTEM "M">
+  %entname;
+  <!---->
+]>
+<books xmlns:m="m"
+  lang="m" xml:lang="m">
+  <title>Example</title>
+  <author>Alice</author>
+  <author>Jane</author>
+  <author>Bob</author>
+  <publication xml:lang="m">
+    <m:pub year="4" month="2">
+      <date>10, 15</date>
+    </m:pub>
+  </publication>
+</books>

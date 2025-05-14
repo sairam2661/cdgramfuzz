@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "d" [
+  <!ELEMENT data (item*)>
+  <!ATTLIST item id ID #REQUIRED>
+  <!ENTITY entity "A" >
+  <!ENTITY % param1 "1" >
+  <!NOTATION XQ  PUBLIC ''  ''>
+  %param1;
+  <!-- Test a comment -->
+]>
+<data>
+  <item id="i" >Item one with %param1; param</item>
+  <item id="i">Item with entity: &entity;</item>
+  <item id="m">Special Item</item>
+</data>

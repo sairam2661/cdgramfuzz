@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    lang (en|fr|de) "e"
+  >
+  <!ENTITY chapter "A"
+  >
+  <!ENTITY % ent "1">
+  <!NOTATION PDF SYSTEM "w" >
+  %ent;
+  <!--A comment-->
+]>
+<book id="B" lang="e">
+  <title>Book title</title> &chapter; 
+  <author xml:lang="e">Author</author>
+  <chapter>
+    <s>Text</s> 
+    <xi:include href="1" xpointer="x"/>
+  </chapter>
+  <chapter>
+    <s>&PDF;</s>
+  </chapter>
+</book>

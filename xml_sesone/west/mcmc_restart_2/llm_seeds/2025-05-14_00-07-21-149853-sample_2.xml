@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE book SYSTEM "d"
+ [
+   <!ELEMENT book (title,author,chapter+)>
+   <!ATTLIST book id ID #REQUIRED>
+   <!ENTITY chapter SYSTEM "c">
+   <!ENTITY % book-entity SYSTEM "b">
+   <!NOTATION xsl PUBLIC "x"
+       "X"
+       >
+  %book-entity;
+  <!--
+  -->]>
+<book xml:lang="g">
+  <id>1</id>
+  <xsl:stylesheet xmlns:xsl="x" version="X"/>
+  &chapter;<chapter>Some text</chapter>;
+  <title>
+   <text>
+    <b>This.</b>
+   </text>
+  </title>
+</book>

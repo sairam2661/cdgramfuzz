@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book
+    lang CDATA #IMPLIED
+    lang2 CDATA #IMPLIED
+  >
+  <!ENTITY book-author "J"
+    >
+  <!ENTITY % book-chapter "b">
+  <!NOTATION ISO-8859-1 PUBLIC "I"
+     "I"
+    >
+  %book-chapter;
+  <!--
+    A sample XML Schema reference
+    xmlns:xsi = http://www.w3.org/2001/XMLSchema
+  -->
+]>
+<book xmlns:m="m" m:ID="1">
+  <title>My XML Book</title>
+  <author>&book-author;</author>
+  <chapter num="1">
+    <chapter>&book-author;</chapter>
+  </chapter>
+  <NOTATION iso="f" system="l"></NOTATION>
+</book>

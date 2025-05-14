@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC 'http://example.com/dtd' 'http://example.com/config.dtd' [
+  <!ELEMENT config (user+, preference+)>
+  <!ATTLIST config
+   id        CDATA   #REQUIRED
+   version  CDATA   #REQUIRED>
+  <!ENTITY base "C">
+ <!ENTITY % local "%">
+  <!NOTATION gif SYSTEM "G">
+  %local;
+  <!-- Entity reference to an included file -->
+  %include;
+]>
+<config id='application' version='1.0'>
+  <!-- Sample comment -->
+  <user><![CDATA[Username 1<--test-->]]></user>
+  <preference entity='%base;'>Value 1</preference>
+</config>

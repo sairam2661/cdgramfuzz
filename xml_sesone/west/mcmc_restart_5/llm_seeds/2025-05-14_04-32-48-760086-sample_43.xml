@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n"[
+  <!ELEMENT note (p, p, p)>
+  <!ATTLIST note
+    xmlns CDATA #IMPLIED
+    xmlns:xsi CDATA #IMPLIED
+    xmlns:xlink CDATA #IMPLIED>
+  <!ENTITY p1 "P"
+         >
+  <!ENTITY  % p2      "p">
+  <!NOTATION n SYSTEM "n">
+  %p2;  
+  <!--
+   This note 
+   con 
+    tains.
+  -->
+]>
+<note xmlns="X" xmlns:xsi="Y" xmlns:xlink="Z">
+  &p1;<p xml:lang="e">First</p></note>

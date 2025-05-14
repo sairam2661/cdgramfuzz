@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+
+  [
+    <!ELEMENT root (title, chapter*)>
+    <!ATTLIST root
+      id  CDATA #REQUIRED>
+    <!ENTITY chapter1 SYSTEM "c"
+      NDATA text>
+    <!ENTITY % chapter-content "s">
+    <!NOTATION text SYSTEM "m">
+ 		         		%chapter-content;	
+	<!-- Sample Entity Reference-->
+  ]>
+
+<root id="r" xmlns:xi="x">
+  <title>&chapter1;</title>
+  <chapter><chapcontent>&chapter1;</chapcontent></chapter>
+</root>

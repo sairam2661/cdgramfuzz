@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html:root [
+  <!ELEMENT html:root (head, body)>
+  <!ATTLIST html:root
+    xmlns CDATA #REQUIRED
+    xml:lang CDATA #IMPLIED
+  >
+  <!ENTITY myatt "M">
+  <!ENTITY % myent "I">
+  <!NOTATION HTML PUBLIC
+    "a"
+    "+"
+  >
+  %myent;
+  <!--* this is a comment -->
+]>
+<html:root xmlns:html="s" xmlns:svg="c"
+  xml:lang="e"
+  xml:space="p">
+  <head>
+    <title>X</title>
+  </head>
+  <body>
+    <p>&myatt;</p>
+    <svg:svg xmlns:xlink="z" xml:base="b">
+      <svg:image xlink:href="h"/>
+    </svg:svg>
+  </body>
+</html:root>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (author, body) >
+  <!ATTLIST note
+    id  ID    #REQUIRED
+    lang CDATA  "a"
+  >
+  <!ENTITY head "A">
+  <!ENTITY % quote "<">
+  <!NOTATION ISO-10179 PUBLIC " "
+  "<" 
+  >
+  %quote;
+  <!-- 
+    This comment contains some special chars:!@#$%^&*()
+    And this one contains a new line
+    This line is continued
+  -->
+]>
+<note id="n" lang="a">
+  <author>Author 1</author>
+  <body>&head; This is a &note;.</body>
+</note>

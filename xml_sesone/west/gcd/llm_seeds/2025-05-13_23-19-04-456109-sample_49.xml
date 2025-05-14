@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body) >
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY header "G" >
+  <!ENTITY % ent "x">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN' 'http://www.w3.org/TR/REC-html40/loose.dtd'>
+  %ent;  <!-- internal subset reference -->
+]>
+<note xml:lang="x" id="N" xmlns="a" xmlns:xsi="b" xmlns:xs="c" xml:space="d">
+  <xi:include xmlns:xi="e" href="f"/>
+  &header; <!-- entity reference -->
+  to: j
+  from: k
+  <headingCDATA>&a; &b;</heading>
+  <!-- &c;  -->
+  body: xys
+</note>

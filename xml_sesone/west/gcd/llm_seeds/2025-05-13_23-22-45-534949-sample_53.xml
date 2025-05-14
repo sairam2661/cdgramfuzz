@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book
+    id ID #REQUIRED
+  >
+  <!ENTITY chapter1 "A">
+
+<!ENTITY % chapterEntity "<" >
+
+
+<!NOTATION bookDTD PUBLIC "#"
+
+"#"
+>
+
+  %chapterEntity;<!--  Book Contents  -->
+
+<!NOTATION 
+       XML PUBLIC "#"
+
+"#"
+>
+
+<!ENTITY chapter2 "&chapter1;">
+
+  ]>
+<book id="B">
+  <title>XML Book</title>
+  <author>Author Name</author>
+  <notation ref="#"></notation>
+  <chapter ref="#"></chapter>
+  <chapter ref="#"></chapter>
+  <chapter ref="#"></chapter>
+  <notation ref="#"></notation>
+</book>

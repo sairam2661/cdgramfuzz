@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book
+      id   CDATA   #REQUIRED
+      lang (en|fr|de) "g"
+  >
+  
+  <!ENTITY title "D"
+  >
+  <!ENTITY % chapter "C">
+  <!NOTATION html PUBLIC "-"
+  "I">
+ 
+  
+  %chapter;
+  
+  <!---->
+  <!ELEMENT  title  (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+]>
+<book id="e" lang="g">
+  <title entity="&title;">Book Title</title>
+  <author>John Doe</author>
+  <chapter entity="C"></chapter>
+  <chapter></chapter>
+  <chapter>Hier sein Text</chapter>
+</book>

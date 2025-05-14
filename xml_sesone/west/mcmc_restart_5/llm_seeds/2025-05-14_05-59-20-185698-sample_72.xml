@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT person (name, address)>
+  <!ATTLIST person id  ID #REQUIRED>
+  <!ENTITY e "2"  >
+  <!ENTITY % ent "%">
+  <!NOTATION isbn SYSTEM "x">
+  %ent;
+  <!---->
+]>
+<book xmlns="p" xmlns:xs="p">
+  <author>
+    <name>Paul</name>
+    <address street="1" city="a" country="e"/>
+  </author>
+  <chapter>
+    <title>&e;</title>
+  </chapter>
+  <person id="1">
+    <name>&e;</name>
+    <address>
+      <street>&e;</street>
+      <city>&e;</city>
+    </address>
+  </person>
+  <isbn:notation>123</isbn:notation>
+</book>

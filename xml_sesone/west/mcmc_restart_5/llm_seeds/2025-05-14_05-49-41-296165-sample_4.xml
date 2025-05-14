@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE persons [
+  <!ELEMENT persons (person+)>
+  <!ATTLIST person id ID #REQUIRED>
+  <!ENTITY message "G" >
+  <!ENTITY % param "#">
+  <!NOTATION NOT1 SYSTEM "w" >
+  %param;<!--[ Not used ]-->]>
+<persons xmlns="&notated;"  >
+  <person id="p"><message/></person>
+  <person id="p"><name>Sam</name></person>
+  <person id="p"><name>Cat</name></person>
+</persons>

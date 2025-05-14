@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (category*)>
+<!ATTLIST catalog
+  id  CDATA  #REQUIRED
+  lang  ID  #IMPLIED>
+<!ENTITY product1 "L"  > 
+<!ENTITY % process "d">
+<!NOTATION book-publication SYSTEM "C">
+  %process; <!-- process instruction invocation -->
+]>
+<catalog id='cat001' lang='en' xmlns="&iso; ">
+  <category>
+    <product entity-id='&product1;' notat="C">item</product>
+  </category>
+</catalog>

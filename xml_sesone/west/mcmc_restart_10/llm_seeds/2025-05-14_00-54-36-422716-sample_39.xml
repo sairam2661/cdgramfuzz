@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- XML document with XLink and XSL -->
+<!DOCTYPE xsl:stylesheet [
+  <!ELEMENT xsl:stylesheet ANY>
+  <!ATTLIST xsl:stylesheet
+    xmlns:xi CDATA #FIXED 'http://www.w3.org/2001/XInclude'
+    xmlns:xsl CDATA #FIXED 'http://www.w3.org/1999/XSL/Transform'
+    xmlns:rdf CDATA #FIXED 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+    xmlns:rdfs CDATA #FIXED 'http://www.w3.org/2000/01/rdf-schema#'
+    xsi:schemaLocation CDATA #IMPLIED
+  >
+  <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+  <!ENTITY % rdfs 'rdfs:seeAlso'>
+  <!NOTATION svg PUBLIC '+//IDML//DTD SVG 1.0//EN' 'http://www.w3.org/Graphics/SVG/1.0/DTD/svg10.dtd'>
+  %rdfs; <!-- resolve reference to %rdfs; -->
+]>
+<xsl:stylesheet xmlns:xsl="&xsl;"
+  exclude-result-prefixes="#"
+  version="1"
+  xml:lang="#"
+  extension-element-prefixes="#"
+  xpathDefaultNamespace="#"
+  xmlns:xi="&xi;"
+  idref="A"
+>
+  <xsl:comment>Added comment</xsl:comment>
+  <xsl:stylesheet version="2" xmlns:xsl="&xsl;">
+    <!-- XML document example -->
+    <xsl:processing-instruction xmlns:xsl="&xsl;" name="#"></xsl:processing-instruction>
+    <subject><subject><subject>Sample</subject></subject></subject>
+    <xsl:value-of select="&xsl;"/>
+  </xsl:stylesheet>
+</xsl:stylesheet>

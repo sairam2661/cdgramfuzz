@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note author CDATA #IMPLIED>
+  <!ENTITY author "J"
+  >
+  <!ENTITY % id "x">
+  <!NOTATION iso-8859-1 SYSTEM "x">
+  %iso-8859-1;
+  <!-- DTD Comments can appear anywhere! -->]
+>
+<catalog xmlns="t" xmlns:xsi="w" xsi:noNamespaceSchemaLocation="y">
+  <collection>
+    <book ID="a">
+      <author entity:ref="z" entity:attr="b" id:attr="%">
+        <title> Title
+          <!-- Inline comments like these are allowed -->
+        </title>
+        <note entity:value="d" entity:ref="e" id:ref="%">f</note>
+      </author>
+    </book>
+  </collection>
+</catalog>

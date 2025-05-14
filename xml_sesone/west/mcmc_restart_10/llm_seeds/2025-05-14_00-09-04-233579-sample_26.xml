@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m" [
+  <!ELEMENT notes (note+, info*)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY x "a">
+  <!ENTITY % m "b">
+  <!NOTATION a SYSTEM "a">
+  %m;
+  <!----> <!--
+  -->
+]>
+<notes>
+  <note id="1">text1</note>
+  <note id="2">text2</note>
+  <note id="3">text3</note>
+  <info>additional info</info>
+  &x;
+  <note>&x;</note>
+  <a:notation notationType="a">Sample annotation</a:notation>
+</notes>

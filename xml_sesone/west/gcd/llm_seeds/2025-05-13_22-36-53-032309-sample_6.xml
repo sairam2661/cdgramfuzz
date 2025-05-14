@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog (titleCDATA) #REQUIRED
+  xmlns:xi CDATA "#"
+  >
+  <!ENTITY book "A"
+  >
+  <!ENTITY % p.att "B"
+  >
+  <!NOTATION PDF PUBLIC "C"
+  "["
+  >
+  %p.att;
+  <!-->XML -->  <!ENTITY e "D">
+]>
+<catalog title="&e;"/>

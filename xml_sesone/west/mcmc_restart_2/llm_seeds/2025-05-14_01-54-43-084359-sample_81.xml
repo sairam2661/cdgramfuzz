@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library SYSTEM "m" [
+  <!ELEMENT library EMPTY>
+  <!ATTLIST library
+    author CDATA #IMPLIED
+    date CDATA #IMPLIED
+  >
+  <!ENTITY title "<" > <!ENTITY % quote "1" ><!NOTATION n PUBLIC "N" "n"> 
+  %quote; 
+<!----> 
+<!ENTITY entity-2 "%">
+<!ENTITY % entity-3 '<!ELEMENT name (#PCDATA)>'
+><!ELEMENT n EMPTY> 
+<!ELEMENT i EMPTY> 
+]>
+<library author="J" date="R" xmlns:xi="x" xmlns="y"><info><name>&title;&entity-2;&entity-3;n</name><n>&n;</n></info><section1><i xmlns:n="n">n</i></section1></library>
