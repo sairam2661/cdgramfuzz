@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set sqlite_options {
+  temp_store
+  synchronous
+  foreign_keys
+}
+
+proc foreign_key_constraint {} {
+  global db
+  db eval {
+    CREATE TABLE a(x PRIMARY KEY, b NOT NULL);
+    INSERT INTO a VALUES(1, 'hello');
+    INSERT INTO a VALUES(2, 'world');
+  }
+  if {0} {
+    db eval {INSERT INTO a VALUES(3, 'abc')}
+  }
+}
+
+proc invalid_transaction {} {
+  global db
+  set code 0
+  set msg "none"
+  catch {
+    db eval {
+      INSERT INTO a VALUES(4, 'xyz');
+      INSERT INTO a VALUES(5, 'pqr');
+      SELECT * FROM a;
+      COMMIT;
+    }
+  } {errmsg $msg codec $code}
+}
+
+do_test test-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)  
+  }
+  execsql {SELECT count(*) FROM a}
+} {1}
+
+foreach opt $sqlite_options {
+  do_test testopt_$opt {
+    sql $opt OFF
+  } {1}
+}
+
+set sync_options {
+  OFF
+  NORMAL
+  FULL
+  PENDING
+
+}
+foreach sync_op $sync_options {
+  do_test sync_$sync_op {
+    execsql {PRAGMA synchronous = '$sync_op' }
+    execsql {PRAGMA synchronous}
+  } $sync_op
+}
+
+ifcapable journalMode {
+  do_test journalmode {
+    execsql {PRAGMA journal_mode = "wal" }
+    execsql {PRAGMA journal_mode}
+  } {wal}
+}
+
+db eval {PRAGMA foreign_keys = 1}
+
+foreach {test func} {
+  "test-2.1" "foreign_key_constraint"
+  "test-2.2" "invalid_transaction"
+} {
+  do_test $test {
+    $func
+    catchsql {SELECT * FROM a}
+  } {}
+}
+finish_test

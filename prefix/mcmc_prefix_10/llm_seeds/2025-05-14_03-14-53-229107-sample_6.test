@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix my_test
+
+set ::timeout 60000
+set testname "My Test"
+
+proc my_func {} {
+  global my_counter
+  incr my_counter
+  return $my_counter
+}
+
+do_test my_test-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES('a');
+    INSERT INTO b VALUES('b');
+    INSERT INTO b VALUES('c');
+  }
+  execsql {SELECT count(*) FROM b}
+} {3}
+
+do_execsql_test my_test-1.2 {
+  BEGIN;
+  INSERT INTO b(y) VALUES('d');
+  COMMIT;
+  SELECT count(*) FROM b;
+} {4}
+
+ifcapable wal {
+  catchsql {PRAGMA journal_mode = 'WAL';}
+} {0 {}}
+
+db func my_func my_func
+do_test my_test-1.3 {
+  my_func
+} {1}
+
+do_execsql_test my_test-1.4 {
+  CREATE TABLE temp_counter(c);
+  INSERT INTO temp_counterVALUES(0);
+  CREATE INDEX counter_index ON temp_counter(c);
+} {}
+
+db eval {SELECT my_func FROM temp_counter}
+do_test my_test-1.5 {
+  execsql {SELECT * FROM a}
+} {1 2 3}
+do_test my_test-1.6 {
+  execsql {
+    CREATE INDEX idx_a ON a(x);
+  }
+  execsql {SELECT name FROM sqlite_master WHERE type='index' }
+} {{idx_a}}
+
+finish_test

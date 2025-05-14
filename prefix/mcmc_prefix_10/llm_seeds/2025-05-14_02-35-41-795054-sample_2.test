@@ -1,0 +1,109 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set timeout 60
+
+proc complex_proc {} {
+  global complex_args
+  lappend complex_args
+}
+
+proc reset_db {} {
+  execsql {
+    DELETE FROM sqlite_stat1
+  }
+}
+
+proc sqlite_stat {} {
+  execsql {
+    ANALYZE
+  }
+}
+
+proc run_queries {} {
+  execsql {
+    DROP TABLE IF EXISTS t1
+  }
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  for {set i 1} {$i} {
+    execsql {
+      INSERT INTO t1 VALUESrandstr
+    }
+  }
+  execsql {
+    SELECT *
+    FROM t1
+    WHERE x = 'abc';
+  }
+}
+
+proc execsql_wal {} {
+  ifcapable journal_mode {
+    catchsql {
+      PRAGMA journal_mode = 'WAL'
+    } {0 1}
+  }
+}
+
+set up_db {
+  execsql {
+    PRAGMA synchronous = 'FULL'
+   
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x, y, z);
+    INSERT INTO a VALUES(1, 2, 3);
+    INSERT INTO a VALUES(4, 5, 6);
+  }
+  execsql {SELECT * FROM a}
+} {1 2 3 4 5 6}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(7, 8, 9);
+  COMMIT;
+  SELECT * FROM a
+} {1 2 3 4 5 6 7 8 9}
+
+set testid ""
+
+do_test complex-2.1 {
+  uplevel reset_db
+} {}
+
+do_test complex-2.2 {
+  uplevel run_queries
+} {1}
+
+do_test complex-2.3 {
+  uplevel sqlite_stat
+} {}
+
+do_test complex-2.4 {
+  uplevel execsql_wal
+} {0}
+
+do_test complex-2.5 {
+  uplevel run_queries
+} {0}
+
+do_test complex-3.1 {
+  uplevel set up_db
+} {}
+
+do_test complex-3.2 {
+  uplevel run_queries
+} {0}
+
+do_test complex-3.3 {
+  uplevel execsql_wal
+} {0}
+
+finish_test

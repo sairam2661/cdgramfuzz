@@ -1,0 +1,113 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc timeout_handler {} {
+  global sqlite_busy_timeout
+  sqlite_busy_timeout 500
+}
+
+proc test_proc {} {
+  global testargs
+  lappend testargs
+  expr $::sqlite_busy_timeout
+}
+
+sqlite_database_close_all
+
+do_execsql_test test-1.1 {
+  CREATE TABLE a(x);
+} {} 
+
+do_execsql_test test-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(1);
+  COMMIT;
+} {} 
+
+do_execsql_test test-1.3 {
+  SELECT x FROM a
+} {1}
+
+do_execsql_test test-1.4 {
+  CREATE TABLE b(y);
+} {} 
+
+do_execsql_test test-1.5 {
+  CREATE INDEX idx_b ON b(y);
+} {} 
+
+do_execsql_test test-1.6 {
+  INSERT INTO b VALUES(1);
+} {} 
+
+ifcapable auto_vacuum {
+  do_execsql_test test-1.7 {
+    PRAGMA auto_vacuum
+  } {full}
+}
+
+do_execsql_test test-2.1 {
+  CREATE TABLE c(z);
+} {} 
+
+do_execsql_test test-2.2 {
+  INSERT INTO c VALUES(1)
+} {} 
+
+do_execsql_test test-2.3 {
+  SELECT z FROM c
+} {1}
+
+do_execsql_test test-2.4 {
+  CREATE TABLE d(v);
+} {} 
+
+do_execsql_test test-2.5 {
+  CREATE INDEX idx_d ON d(v);
+} {} 
+
+do_execsql_test test-2.6 {
+  INSERT INTO d VALUES(1);
+} {} 
+
+ifcapable wal {
+  do_execsql_test test-2.7 {
+    PRAGMA journal_mode
+  } {wal}
+}
+
+set testargs {}
+set sqlite_busy_timeout {}
+do_test test-3.1 {
+  execsql {
+    CREATE TABLE e(w);
+  }
+  execsql {SELECT w FROM e}
+} {}
+
+do_test test-3.2 {
+  timeout_handler
+  execsql {
+    CREATE TABLE f(x,y);
+  }
+  execsql {SELECT * FROM f}
+} {}
+
+set sqlite_busy_timeout {}
+do_test test-3.3 {
+  test_proc
+  execsql {
+    DROP TABLE e
+  }
+  execsql {SELECT name FROM sqlite_master}
+} {}
+
+execsql {
+  VACUUM 10
+  PRAGMA page_size
+}
+
+finish_test

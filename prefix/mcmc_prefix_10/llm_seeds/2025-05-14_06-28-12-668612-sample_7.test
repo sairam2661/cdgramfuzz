@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema
+
+set ::timeout 60000
+proc test_callback {} {
+  set T 1
+  incr T
+  expr {T}
+}
+
+proc do_test_2 {n s sql ans} {
+  uplevel "do_test $n.1 {sqlite3 db test.db; set db(sqlite_open_v2)} {sqlite3}"
+  uplevel "do_execsql_test $n.2 {"
+  uplevel "set sqlite_file [$db eval $sql]"
+  if { $sqlite_file eq $ans } { return 1 }
+  if { $sqlite_file ni $ans } {return 0 }
+  return
+}
+
+do_test schema-1.1 {
+  set test 1
+  execsql {
+    CREATE TABLE schema_test_1(a,b,c);
+    INSERT INTO schema_test_1 VALUES(1,"one",1);
+    SELECT * FROM schema_test_1;
+  }
+
+  set resoid 5
+} {1 one 1}
+
+do_execsql_test schema-1.2 {
+  CREATE TABLE schema_test_2(a,b,c);
+  CREATE TABLE schema_test_3(a,b,c);
+}
+{ {} {} {} }
+do_execsql_test schema-1.3 {
+  SELECT name FROM sqlite_master WHERE type='table';
+} {{schema_test_2}
+ {schema_test_3}
+ {schema_test_1}}
+
+do_execsql_test schema-1.4 {
+  PRAGMA foreign_keys=1;
+} {'0'}
+do_test schema-1.5 {
+    execsql {
+      ALTER TABLE schema_test_2 ADD CONSTRAINT schema_test_2a FOREIGN KEY schema_test_2z REFERENCES schema_test_1 a
+    }
+} {
+ 0
+}
+
+do_execsql_test schema-1.6 {
+  CREATE INDEX schema_1_idx ON schema_test_1(a);
+} {}
+
+finish_test

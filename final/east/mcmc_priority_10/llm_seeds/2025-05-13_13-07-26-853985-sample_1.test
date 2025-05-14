@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_config
+
+set ::timeout 60000
+set testprefix "db_config"
+
+proc db_config_proc {db} {
+  db eval {PRAGMA encoding='UTF-8'}
+}
+
+do_execsql_test 1 {
+  PRAGMA encoding;
+} {UTF8}
+
+do_execsql_test 2 {
+  PRAGMA synchronous='OFF';
+  PRAGMA journal_mode='DELETE';
+}
+{OFF DELETE}
+
+do_execsql_test 3 {
+  PRAGMA wal_checkpoint;
+}
+{}
+
+ifcapable wal {
+  set BCK "main"
+  do_execsql_test 4 {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+
+  set SQL {
+    BEGIN;
+    INSERT INTO b VALUES(2);
+    SELECT * FROM b
+  }
+
+  do_execsql_test 5.1 $SQL {1}
+
+  set CCKN 1
+  do_test 5.2 {
+    execsql $SQL
+  } {1 2}
+
+  do_execsql_test 6 {
+    PRAGMA wal_checkpoint;
+  }
+  {}
+
+  ifcapable tempdb {
+    set DB2 {db2}
+    set DB1 main
+    attach $DB2 db2 'temp.db'
+    do_execsql_test 7 {
+      CREATE TABLE b(x);
+      INSERT INTO b VALUES(3);
+      PRAGMA wal_checkpoint;
+    }
+    {}
+
+    set CCKN "db2"
+    do_execsql_test 8 {
+      BEGIN;
+      INSERT INTO b VALUES(4);
+      SELECT * FROM b
+    }
+    {3 4}
+  }
+
+  detach $CCKN
+}
+
+finish_test

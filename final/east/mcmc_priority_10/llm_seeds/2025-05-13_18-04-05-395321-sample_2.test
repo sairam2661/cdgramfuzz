@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc complex_sql_proc {} {
+  global complex_sqlargs 
+  lappend complex_sqlargs "[clock format [clock seconds] -format %s]"
+}
+
+proc set_up {name} {
+  set up query "CREATE TABLE $name (id INTEGER PRIMARY KEY, name TEXT)"
+  execsql $query
+}
+
+proc tear_down {} {
+  execsql {DROP TABLE complex_sql}
+}
+
+do_test complex_sql-1.1 {
+  set up complex_sql
+} {}
+
+do_test complex_sql-1.2 {
+  execsql {
+    INSERT INTO complex_sql VALUES(1, 'John Doe');
+    INSERT INTO complex_sql VALUES(2, 'Jane Doe');
+  }
+  execsql {SELECT * FROM complex_sql}
+} {1 John Doe 2 Jane Doe}
+
+do_execsql_test complex_sql-1.3 {
+  BEGIN;
+  INSERT INTO complex_sql VALUES(3, 'Joe Doe');
+  COMMIT;
+  SELECT * FROM complex_sql;
+} {1 John Doe 2 Jane Doe 3 Joe Doe}
+
+ifcapable journalMode {
+  do_execsql_test complex_sql-1.4 {
+    PRAGMA journal_mode = 'WAL';
+    PRAGMA synchronous = 'off';
+    PRAGMA temp_store = 'exclusive';
+  } {}
+}
+
+set complex_sqlargs {}
+
+while {1} {
+  complex_sql_proc
+  lappend args "complex_sql-2.$i"
+  set result $i
+  break
+}
+
+finish_test

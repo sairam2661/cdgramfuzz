@@ -1,0 +1,87 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+db timeout $::timeoout
+db close
+set tcl_prompt1 "db "
+set tcl_prompt2 "> "
+
+proc transaction_proc {} {
+  global tsql
+  lappend tsql
+  return
+}
+
+set tsql {}
+
+proc do_transaction_test {name sql} {
+  global tsql
+  uplevel do_execsql_test $name $sql
+  if { $name like "aborted*" } { 
+    list
+  } else {
+    lappend tsql $name
+  }
+}
+
+do_transaction_test sync1 {
+  BEGIN;
+  SELECT count(*) FROM sqlite_master
+}
+do_transaction_test aborttest {
+  SELECT 1
+}
+do_transaction_test committedtest {
+  SELECT count(*) FROM sqlite_master
+}
+do_transaction_test rollbacktest2 {
+  SELECT 1
+}
+
+ifcapable wal {
+  do_execsql_test sync2 {
+    PRAGMA journal_mode="WAL"
+  } {wal}
+}
+
+do_transaction_test sync3 {
+  DO $::transaction_proc
+  SELECT 1
+}
+
+if { $::sqlite_compileoption_enabled5369 } {
+  set walflag ""
+} else {
+  set walflag "wal"
+}
+
+ifcapable wal {
+  if { $::sqlite_compileoption_enabled5369 } {
+
+    do_execsql_test 1 {
+      PRAGMA journal_mode='DELETE'
+    } $walflag
+  }
+}
+
+do_transaction_test rollbacktest3 {
+  BEGIN;
+  INSERT INTO t1 VALUES(1,2);
+  ROLLBACK;
+  SELECT * FROM t1
+} {}
+do_transaction_test commit1 {
+  BEGIN;
+  INSERT INTO t2 VALUES(13, 34);
+  COMMIT;
+  SELECT count(*) FROM t2;
+} {1}
+
+db close
+do_test sync4 {
+  list
+  file exists testdb
+} {1 0}
+finish_test

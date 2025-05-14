@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite
+
+set ::timeout 60000
+env LANG en_US
+
+proc randStr {} {
+  set str ""
+  for {set i 0} {$i 10} {incr i} {
+    append str "."
+    set v 1
+  }
+  return $str
+}
+
+proc exec_and_verify {args} {
+  lassign $args cmd sql ret
+  if {$ret} {
+    return $cmd "$sql; SELECT * FROM a"
+  }
+}
+
+do_test sqlite-1.1 {
+  execsql {
+    CREATE TABLE a(c1,a1,c2,a2);
+  }
+  execsql {
+    INSERT INTO a VALUES(1,2,'3','4');
+  }
+  execsql {
+    INSERT INTO a VALUES(5,6,'7','8');
+  }
+  execsql {
+    SELECT a1 FROM a ORDER BY a2
+  }
+} {8 4 6 2}
+
+do_execsql_test sqlite-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(9,10,'11','12');
+  ROLLBACK;
+  SELECT count(*) FROM a;
+} {2}
+
+ifcapable journalMode {
+  execsql {PRAGMA journal_mode = 'wal'}
+}
+
+ifcapable wal {
+  set dbhandle 1
+}
+
+exec_and_verify execsql {
+  CREATE TABLE b(c11,c12,c13);
+} {3 9 10 11 12} 1
+exec_and_verify execsql {
+  BEGIN;
+  INSERT INTO b VALUES (13,14,'15');
+  ROLLBACK;
+} {1 1 2 3 4 6 7 8} 1
+
+do_execsql_test sqlite-1.4 {
+  BEGIN;
+  INSERT INTO b VALUES ('16',17,18);
+  COMMIT;
+} {1 13 14 15 5 16 17 18}
+
+set dbhandle 0
+do_execsql_test sqlite-1.5 {
+  SELECT * FROM a
+} {1 2 3 4 5 6 7 8}
+do_execsql_test sqlite-1.6 {
+  SELECT * FROM b
+} {13 14 15 16 17 18}
+
+finish_test

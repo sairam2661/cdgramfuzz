@@ -1,0 +1,53 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix user
+
+set ::timeout 60000
+
+proc user_func {arg1 arg2} {
+  set result ""
+  if {$arg1 eq $arg2} {
+    lappend result even
+  } elseif {$arg1 gt $arg2} {
+    lappend result arg1_gt_arg2
+  } else {
+    lappend result arg1_lt_arg2
+  }
+  return $result
+}
+
+do_execsql_test user-1.1 {
+  CREATE TABLE foo(
+    id PRIMARY KEY,
+    data
+  );
+} {}
+
+do_test user-1.2 {
+  execsql {
+    INSERT INTO foo(id, data) VALUES(1, 'data1');
+  }
+  sqlite_compile_and_execute db compiled stmt
+  set result {}
+  lappend result $stmt
+  set result
+} {compiled stmt}
+
+proc user_func2 {sql} {
+  eval $sql
+  if { $sql eq {INSERT INTO foo(id, data) VALUES(2, 'data2')} } {
+    set x 20
+  } else {
+    set x {}
+  }
+  return $x
+}
+
+do_test user-1.3 {
+  user_func2 {INSERT INTO foo(id, data) VALUES(2, 'data2')}
+  user_func 10 15
+  user_func2 {INSERT INTO foo(id, data) VALUES(2, 'data2')}
+  db_close
+} {even {} 20}
+
+finish_test

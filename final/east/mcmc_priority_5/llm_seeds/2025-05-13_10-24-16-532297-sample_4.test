@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix backup
+
+set ::timeout 60000
+
+proc backup_database {mode} {
+  set sqlite3_db "[file exists./backup.db?delete./backup.db : copy./backup.db]"
+  execsql {
+    PRAGMA journal_mode = '$mode';
+    SELECT name FROM sqlite_master WHERE type='table';
+  } $sqlite3_db
+}
+
+proc backup_file {sqlite3_db {filename backup_db}} {
+  execsql {
+    ATTACH DATABASE '$filename' AS db2
+  } $sqlite3_db
+  execsql {
+    INSERT INTO db2_BACKUP SELECT x FROM db2_a
+  } $sqlite3_db
+  execsql {
+    DETACH db2
+  } $sqlite3_db
+}
+
+proc cleanup_test {test1 {mode "WAL"}} {
+  execsql {
+    PRAGMA journal_mode = '$mode';
+    SELECT count(*) FROM sqlite_master;
+  }
+}
+
+proc check_backup {dir1 {dir2 ""}} {
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+  if {$dir1 ne "$dir2"} {
+    file mkdir $dir1
+    file mkdir $dir2
+  }
+  file delete $dir2
+  copy_file "$dir1" "$dir2"
+}
+
+do_test backup-1.1 {
+  set data1 {}
+  backup_database "DELETE"
+  foreach line $data1 {
+    set data1 {}
+  }
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+} {}
+
+ifcapable journal_mode {
+  set db1 "[file exists./db1.db?delete./db1.db : copy./db1.db]"
+  set db2 "[file exists./db2.db?delete./db2.db : copy./db2.db]"
+  backup_database "TRUNCATE"
+  backup_database "WAL"
+  backup_database "MEM"
+}
+
+ifcapable rollback_wal {
+  set data {}
+  set data2 {}
+  set data3 {}
+  backup_database "DELETE"
+  backup_database "WAL"
+  execsql {
+    SELECT * FROM a;
+  }
+  backup_database "DELETE"
+  backup_database "DELETE"
+  backup_database "WAL"
+
+  check_backup "/home/db1" "/home/db2"
+  backup_database "DELETE"
+  backup_database "WAL"
+
+  check_backup "/home/db1" "/home/db3"
+  backup_file "backup_db" "./backup_db"
+  check_backup "/home/db1" "/home/db3"
+
+}
+
+cleanup_test "test1"
+cleanup_test "test2" "WAL"
+cleanup_test "test3" "DELETE"
+
+finish_test

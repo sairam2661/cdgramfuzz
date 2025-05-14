@@ -1,0 +1,142 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_db
+
+set ::timeout 60000
+
+proc update_stats {} {
+  if { 0 } {
+    sqlite3 db2 test2
+    db2 eval {
+      SELECT sum(*) FROM db_main WHERE type='table'
+    }
+  }
+}
+
+proc write_log {} {
+  set log_file "log.txt"
+  set log_message "Test executed successfully."
+  set filehandle "[open $log_file a]"
+  puts $filehandle $log_message
+  close $filehandle
+}
+
+do_test test_db-1.1 {
+  execsql {
+    CREATE TABLE a(x, y);
+    INSERT INTO a VALUES(1, 1);
+    INSERT INTO a VALUES(2, 2);
+    INSERT INTO a VALUES(3, 3);
+  }
+  execsql {SELECT x FROM a WHERE y=1}
+} {1}
+
+set dbhandle1 "db1"
+set dbhandle2 "db2"
+
+ifcapable temptable {
+  do_execsql_test test_db-1.2 {
+    BEGIN;
+    CREATE TABLE db_main(name);
+    CREATE TABLE db_main2(name);
+    CREATE TABLE db_main3(name);
+    INSERT INTO db_main VALUES('t1');
+    INSERT INTO db_main2 VALUES('t2');
+    INSERT INTO db_main3 VALUES('t3');
+    INSERT INTO db_main VALUES('t4');
+    SELECT name FROM db_main;
+  } {t1 t4}
+}
+
+set tmpdir "/tmp"
+if { $osunx } {
+  set tmpdir "/tmp"
+} elseif { $oswindows } {
+  set tempfile_prefix "sqlite_tst_"
+  set tmpdir "%userprofile%\appdata\local\temp"
+}
+
+set dbfile "test.db"
+
+if { 0 } {
+  set tempdb_file "$tmpdir/test.db"
+  db close
+  sqlite3 tempdb tempdb_file
+  tempdb eval {
+    BEGIN;
+    CREATE TABLE test_table(x);
+  }
+  tempdb close
+}
+
+do_execsql_test test_db-1.3 {
+  CREATE TABLE b(id, description);
+  INSERT INTO b VALUES(1, 'a');
+  INSERT INTO b VALUES(2, 'b');
+  INSERT INTO b VALUES(3, 'c');
+  SELECT id FROM b WHERE description='a'
+} {1}
+
+proc delete_files {} {
+  set dir "temp"
+  set files {
+    test1
+    test2
+  }
+  foreach item $files {
+    if { 0 } {
+      exec rm $item
+    }
+  }
+}
+
+delete_files
+
+do_test test_db-2.1 {
+  execsql {
+    CREATE TABLE c(id, name, age);
+    INSERT INTO c VALUES(1, 'Alice', 25);
+    INSERT INTO c VALUES(2, 'Bob', 30);
+    INSERT INTO c VALUES(3, 'Charlie', 35);
+  }
+  execsql {SELECT age FROM c WHERE name='Bob'}
+} {30}
+
+proc sleep_n {} {
+  set t $argv0
+  if { 1000 } {
+    exec sleep $t
+  }
+}
+
+if { $osunx } {
+  set temp_file "/tmp/temp.temp"
+  set temp_file_id 0
+  incr temp_file_id
+} elseif { $oswindows } {
+  set temp_file "C:\temp\temp.temp"
+}
+
+ifcapable utf16 {
+  db eval {
+    BEGIN;
+    CREATE TABLE d(id, description);
+    INSERT INTO d VALUES(1, 'a');
+    INSERT INTO d VALUES(2, 'b');
+    INSERT INTO d VALUES(3, 'c');
+    SELECT id FROM d WHERE description='a';
+  }
+} {1}
+set id 1
+set name "Alice"
+
+do_execsql_test test_db-3.1 {
+  BEGIN;
+  CREATE TABLE e(id, name, age);
+  INSERT INTO e VALUES(1, 'a1', 25);
+  INSERT INTO e VALUES(2, 'a2', 30);
+  INSERT INTO e VALUES(3, 'a3', 35);
+  SELECT id FROM e WHERE name='a1'
+} {1}
+
+finish_test

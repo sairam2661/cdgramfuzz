@@ -1,0 +1,229 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+set nWalDb 7
+set nJournalDb 5
+
+proc complex_query {} {
+  global selectData
+  set selectData {}
+  foreach name {
+    zzz
+    hello
+    world
+  } {
+    lappend selectData "$name test"
+  }
+}
+
+proc create_index {} {
+  global db
+  execsql {
+    CREATE INDEX a ON t3(a);
+  }
+  execsql {
+    CREATE INDEX b ON t3(b);
+  }
+}
+
+proc drop_index {} {
+  global db
+  execsql {
+    DROP INDEX a
+  }
+  execsql {
+    DROP INDEX b
+  }
+}
+
+proc delete_table {} {
+  global db
+  execsql {
+    DELETE FROM t1 WHERE c1 BETWEEN 2 AND 3
+  }
+  execsql {
+    DELETE FROM t2 WHERE c1 BETWEEN 2 AND 3
+  }
+  execsql {
+    DELETE FROM t2 WHERE c2 BETWEEN 2 AND 3
+  }
+  execsql {
+    DELETE FROM sqlite_stat2
+  }
+  execsql {
+    SELECT * FROM t3
+  }
+  execsql {
+    SELECT * FROM t4
+  }
+}
+
+proc delete_index {} {
+  global db
+  execsql {
+    DROP INDEX b
+  }
+  execsql {
+    DROP INDEX j
+  }
+}
+
+proc drop_table {} {
+  global db
+  execsql {
+    DROP TABLE t3
+  }
+  execsql {
+    DROP TABLE t4
+  }
+}
+
+proc empty_sqlite_master {} {
+  global db
+  set sqlite_master_empty 1
+  execsql {
+    CREATE TABLE t1(a, b);
+  }
+  execsql {
+    CREATE VIEW v1 AS SELECT 1 AS a FROM t1
+  }
+  execsql {
+    CREATE INDEX j ON t1(a);
+  }
+  execsql {
+    ALTER TABLE t1 ADD COLUMN c REAL
+  }
+  execsql {
+    SET sqlite_master_empty 0
+  }
+}
+
+proc make_table {} {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY,
+        b UNIQUE,
+        c NOT NULL,
+        c2 DEFAULT 'def' NOT NULL);
+  }
+  for {set i 1} {$i 10} {incr i} {
+    execsql "INSERT INTO t1 VALUES($i, $i, $i, $i)"
+  }
+  execsql {
+    SELECT * FROM t1;
+  }
+  execsql {
+    DELETE FROM t1 WHERE a LIKE '1%'
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY,
+      b UNIQUE,
+      c NOT NULL,
+      c2 DEFAULT 'def' NOT NULL);
+    INSERT INTO t1 VALUES(1,1,'foo','foo');
+  }
+  execsql {
+    SELECT a FROM t1;
+  }
+} {1}
+
+do_test complex-1.2 {
+  execsql {
+    DELETE FROM t1 WHERE a LIKE '1%'
+  }
+  execsql {
+    SELECT a FROM t1;
+  }
+} {}
+
+do_execsql_test complex-1.3 {
+  SELECT a FROM t1 WHERE a = 1;
+} {1}
+
+ifcapable {expr} {
+  do_test complex_2.1 {
+    make_table
+    execsql {
+      UPDATE t1 SET b LIKE 'b%' AND a LIKE '3%'
+    }
+    db close
+    sqlite3 db test2
+    execsql {
+      SELECT * FROM t1;
+    }
+  } {}
+  do_test complex_2.2 {
+    make_table
+    execsql {
+      UPDATE t1 SET b LIKE 'b%' AND c LIKE 'c%'
+    }
+    db close
+    sqlite3 db test2
+    execsql {
+      SELECT * FROM t1;
+    }
+  } {}
+} else {
+  do_test complex_2.1 {
+    make_table
+    execsql {
+      UPDATE t1 SET b LIKE 'b%' AND a LIKE '3%'
+    }
+    execsql {
+      SELECT * FROM t1
+    }
+  } {}
+  do_test complex_2.2 {
+    make_table
+    execsql {
+      UPDATE t1 SET b LIKE 'b%' AND c LIKE 'c%'
+    }
+    execsql {
+      SELECT * FROM t1
+    }
+  } {}
+}
+
+ifcapable view {
+  do_test complex-2.0 {
+    create_index
+    execsql {
+      DROP TABLE t4
+    }
+    execsql {
+      COMMIT
+    }
+    execsql {
+      PRAGMA writable_schema = 1
+    }
+    execsql {
+      UPDATE sqlite_master SET sql LIKE 'create%index%'
+      WHERE type LIKE 'index' AND name LIKE 'a'
+    }
+    execsql {
+      UPDATE sqlite_master SET sql LIKE 'create%index%'
+      WHERE type LIKE 'index' AND name LIKE 'b'
+    }
+    execsql {
+      PRAGMA writable_schema = 0
+    }
+    execsql {
+      CREATE TABLE t4(a, b);
+      CREATE INDEX j ON t4(a);
+      COMMIT
+    }
+    do_execsql_test complex_2.1 {
+      SELECT * FROM t4
+    } {}
+  } {}
+  do_test complex-2.1 {
+    execsql {
+      SELECT * FROM v1;
+    }
+  } {}
+  do_test complex-2.2 {
+    exec

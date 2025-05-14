@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+set ::timeout 60000
+set sqlite_options {}
+
+do_test concurrent-1.1 {
+  db func sleep sleep
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  db func sleep sleep
+  execsql {SELECT x FROM a}
+} {1}
+catch {db func sleep sleep}
+
+ifcapable uuid {
+  do_execsql_test concurrent-1.2 {
+    CREATE TABLE b(uuid, x);
+    INSERT INTO b VALUES(
+      '00000000-0000-0000-0000-000000000000',
+      1
+    );
+  }
+  {
+    {db func randomblob randomblob}
+    db eval {
+      pragma page_size
+    }
+  }   
+}
+
+catch {db func randomblob randomblob}
+ifcapable {fts5 optimize} {
+  set disable_optimize 0
+  if {$disable_optimize} {
+    db settings {fts5 optimize}
+  }
+}
+ifcapable {fts5} {
+  set usefts 0
+}
+
+set enable_flextree 1
+do_execsql_test concurrent-1.3  {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(1);
+  }
+  {
+    {db eval {
+      SELECT x FROM c
+      EXPLAIN optimize FOR c
+      EXPLAIN optimize FOR c
+  }}
+}
+
+finish_test

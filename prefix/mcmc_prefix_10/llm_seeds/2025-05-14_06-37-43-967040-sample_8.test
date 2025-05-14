@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+
+proc create_test_table {tn} {
+  global db
+  execsql "CREATE TABLE $tn(x text, y integer)"
+}
+
+proc drop_test_table {tn} {
+  global db
+  execsql "DROP TABLE $tn"
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(
+      a PRIMARY KEY,
+      b,
+      c,
+      d
+    );
+    CREATE TABLE t2(
+      a PRIMARY KEY,
+      b,
+      c,
+      d
+    );
+    INSERT INTO t1 VALUES('a', 1, 2, 3);
+    INSERT INTO t2 VALUES('a', 4, 5, 6);
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  SELECT * FROM t1
+} {a 1 2 3}
+
+ifcapable trigger {
+  do_execsql_test complex-1.3 {
+    CREATE TABLE t3(
+      a PRIMARY KEY,
+      b,
+      c,
+      d
+    );
+    CREATE TABLE t4(
+      x PRIMARY KEY,
+      y
+    );
+    CREATE TABLE t5(
+      a,
+      b,
+      c,
+      d
+    );
+  }
+  {0 {}} 
+  do_execsql_test complex-1.4 {
+       CREATE TABLE t111(
+         a,
+         b,
+         c,
+         d
+       );
+
+       CREATE INDEX t111_1 ON t111(b)
+       }
+      {0 {}} 
+}
+
+do_execsql_test complex-1.5 {
+  CREATE TABLE t6(
+    a PRIMARY KEY,
+    b,
+    c
+  );
+  INSERT INTO t6 VALUES('a', 1, 'r');
+} {0 {}} 
+
+do_execsql_test complex-1.6 {
+     BEGIN;
+         INSERT INTO t6 VALUES('r', 10, 'y');
+     ROLLBACK;
+} {0 {}} 
+
+do_execsql_test complex-1.7 {
+     BEGIN;
+     INSERT INTO t6 VALUES('r', 10, 'r');
+     COMMIT;
+} {0 {}} 
+
+do_execsql_test complex-1.8 {
+     BEGIN;
+     INSERT INTO t6 VALUES('r', 4, 'r');
+     ROLLBACK;
+     SELECT * FROM t6;
+} {a 1 r}
+
+finish_test

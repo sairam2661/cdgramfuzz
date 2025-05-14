@@ -1,0 +1,171 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+        set ::timeout 60000
+
+proc my_transaction_callback {db} {
+  return 0
+}
+
+proc generate_random_string {} {
+  return "random string $::uuid"
+}
+
+proc get_random_data {} {
+  set data "12345"
+  lappend data "[clock format [clock seconds] -format %M]'
+set ::random_data $data
+  return $data
+}
+
+proc do_transaction {db} {
+  return [catch {
+    for {set i 0} {$i < 5} {incr i} {
+      execsql {
+        INSERT INTO t1 VALUES($get_random_data)
+      }
+    }
+    execsql {
+      COMMIT
+    }
+  }]
+}
+
+proc do_transaction_multiple {db} {
+  return [catch {
+    for {set i 0} {$i < 5} {incr i} {
+      execsql {
+        INSERT INTO t2 VALUES($get_random_data)
+      }
+    }
+    execsql {
+      INSERT INTO t1 VALUES($get_random_data)
+    }
+    execsql {
+      COMMIT
+    }
+    for {set i 0} {$i < 3} {incr i} {
+      execsql {
+        BEGIN
+        INSERT INTO t2 VALUES($get_random_data)
+        INSERT INTO t2 VALUES($get_random_data)
+        INSERT INTO t2 VALUES($get_random_data)
+        ROLLBACK
+      }
+   }
+  }
+  }]
+}
+
+do_test locking-1.1 {
+  sqlite3 db :memory:
+  execsql {
+    CREATE TABLE t1(x);
+    CREATE TABLE t2(x);
+  }
+  set ::t1_name t1
+  set ::t2_name t2
+  return SQLITE_OK
+} {sqlite3 errcode(db)}
+
+do_execsql_test locking-1.2 {
+  SELECT name FROM (SELECT 't1' AS name UNION ALL
+  SELECT 'random_data' AS name) ORDER BY name;
+} {random_data t1}
+
+do_execsql_test locking-1.3 {
+  INSERT INTO t1 VALUES('initial value');
+  SELECT * FROM t1;
+} {initial value}
+
+do_test locking-1.4 {
+  set ::t1_id [sqlite3 db eval {
+    SELECT id FROM t1 WHERE x = 'initial value';
+  }]
+  list [sqlite3 db eval {
+    PRAGMA lock_status;
+  }] $::t1_id [sqlite3 db eval {
+    SELECT x FROM t1 WHERE id = $::t1_id;
+  }]
+} {0 1 initial value}
+
+do_execsql_test locking-1.5 {
+  INSERT INTO t2 VALUES('second initial value');
+  SELECT * FROM t2;
+} {second initial value}
+
+do_execsql_test locking-1.6 {
+  INSERT INTO t2 VALUES('second second');
+  SELECT * FROM t2;
+} {second initial value second second}
+
+do_test locking-1.7 {
+  set ::t2_id [sqlite3 db eval {
+    SELECT id FROM t2 WHERE x ='second second';
+  }]
+  list [sqlite3 db eval {
+    PRAGMA lock_status;
+  }] $::t2_id [sqlite3 db eval {
+    SELECT x FROM t2 WHERE id = $::t2_id;
+}]
+
+} {0 4 second second}
+
+do_execsql_test locking-1.8 {
+  DROP TABLE t1;
+  DROP TABLE t2;
+} {}
+
+do_test locking-2.1 {
+  sqlite3 db :memory:
+  do_transaction db
+  set ::t1_id [sqlite3 db eval {
+    SELECT id FROM t1;
+  }]
+  list [sqlite3 db eval {
+    PRAGMA lock_status;
+  }]
+  $::t1_id
+  [sqlite3 db eval {
+    SELECT x FROM t1 WHERE id = $::t1_id;
+  }]
+} {0 1 [get_random_data]}
+
+do_test locking-2.2 {
+  set ::t1_lock_stats [catchsql {
+    ROLLBACK
+  }]
+  list [sqlite3 db eval {
+    PRAGMA lock_status;
+  }]
+  [sqlite3 db eval {
+    SELECT x FROM t1 WHERE id = $::t1_id;
+  }]
+} {0 1 [get_random_data]}
+
+do_test locking-2.3 {
+  set ::t1_lock_stats [catchsql {
+    SELECT count(*) FROM t2;
+  }]
+  list [sqlite3 db eval {
+    PRAGMA lock_status;
+  }]
+  [sqlite3 db eval {
+    SELECT x FROM t1 WHERE id = $::t1_id;
+  }]
+} {0 1 [get_random_data]}
+
+do_test locking-2.4 {
+  do_transaction_multiple db
+  set ::t1_id [sqlite3 db eval {
+    SELECT id FROM t1 WHERE x = "12345'42";
+  }]
+  list [sqlite3 db eval {
+    PRAGMA lock_status;
+  }]
+  $::t1_id
+  [sqlite3 db eval {
+    SELECT x FROM t1 WHERE id = $::t1_id;
+  }]
+} {0 1

@@ -1,0 +1,285 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix threadtest
+
+set ::timeout 60000
+set num_threads 10
+set sqls {
+  CREATE TABLE t1(x);
+  INSERT INTO t1 VALUES(1);
+  BEGIN;
+  INSERT INTO t1 VALUES(2);
+  COMMIT;
+  SELECT count(*) FROM t1;
+}
+
+array set config {
+  cacheSize 10
+  connectionCount 50
+  sqliteThreadMaxPriority 40
+  sqliteThreadMinPriority 20
+}
+
+proc threadtest_func {id sql} {
+  global db config
+  if {$id} {set timeout 1000}
+  set config thread $id
+  set config timeout $timeout
+  while {1} {
+    if { catchsql {$sql} } { return 0 }
+    if { $config {connectionCount} } { return 1 }
+  }
+}
+
+set testlist {}
+
+proc tclthreadproc {args} {
+  uplevel "tclThread::CreateTask [list threadtest_func $args] 3 2 2"
+}
+threadtest_func 0 "tclthreadproc 1 x 3"
+
+for {set i 0} {$i $num_threads} {incr i} {
+  lappend testlist "tclthreadproc $i x $config {cacheSize}"
+}
+
+do_test threadtest-1.0  {
+  ifcapable rtree {unset testlist}
+  execsql {
+    CREATE TABLE t2(y);
+    INSERT INTO t2 VALUES(2);
+  }
+} {1}
+
+do_execsql_test threadtest-2.0 {
+  SELECT * FROM t2
+} {2}
+
+do_execsql_test threadtest-3.0 {
+  SELECT * FROM t1
+} {1}
+
+do_setup_test threadtest threadtest_func
+do_setup_test threadtest threadtest_func
+do_test threadtest-4.0 {
+  expr {$num_threads}
+} {10}
+
+do_test threadtest-5.0 {
+  list
+} {}
+do_execsql_test threadtest-6.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest7.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-8.0 {
+  SELECT * FROM t1
+} {1}
+do_execsql_test threadtest-9.0 {
+  SELECT * FROM t2
+} {2}
+do_test threadtest-10.0 {
+  llength $testlist
+} {$num_threads}
+foreach cmd $testlist {
+  do_test threadtest11.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-12.0 {
+  SELECT * FROM t1
+} {1}
+do_execsql_test threadtest-13.0 {
+  SELECT * FROM t2
+} {2}
+do_test threadtest-14.0 {
+  llength $testlist
+} {$num_threads}
+do_setup_test threadtest "tclthreadproc 5 x $config {cacheSize}"
+do_test threadtest-15.0 {
+  list
+} {}
+do_execsql_test threadtest-16.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest17.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-18.0 {
+  SELECT * FROM t2
+} {2}
+do_execsql_test threadtest-19.0 {
+  SELECT * FROM t1
+} {1}
+do_execsql_test threadtest-20.0 {
+  SELECT * FROM t2
+} {2}
+set config {cacheSize 10}
+set testlist {}
+for {set i 0} {$i $num_threads} {incr i} {
+  lappend testlist "tclthreadproc $i x $config {cacheSize}"
+}
+do_test threadtest-21.0 {
+  llength $testlist
+} {$num_threads}
+foreach cmd $testlist {
+  do_test threadtest22.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-23.0 {
+  SELECT * FROM t1
+} {1}
+do_execsql_test threadtest-24.0 {
+  SELECT * FROM t2
+} {2}
+do_execsql_test threadtest-25.0 {
+  SELECT * FROM t1
+} {1}
+do_execsql_test threadtest-26.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest27.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_setup_test threadtest threadtest_func
+do_setup_test threadtest threadtest_func
+do_test threadtest-28.0 {
+  list
+} {}
+do_execsql_test threadtest-29.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest30.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-31.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest32.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-33.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest34.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-35.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest36.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-37.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest38.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-39.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest40.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-41.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest42.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-43.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest44.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-45.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest46.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-47.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest48.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-49.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest50.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-51.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest52.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-53.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest54.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-55.0 {
+  SELECT * FROM t2
+} {2}
+foreach cmd $testlist {
+  do_test threadtest56.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_setup_test threadtest threadtest_func
+do_setup_test threadtest threadtest_func
+do_test threadtest-57.0 {
+  list
+} {}
+do_execsql_test threadtest-58.0 {
+  SELECT * FROM t1
+} {1}
+foreach cmd $testlist {
+  do_test threadtest59.0 $cmd {
+    expr {$num_threads}
+  }
+}
+do_execsql_test threadtest-60.0 {
+  SELECT * FROM t2
+} {2}
+do_test threadtest-

@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced
+
+set ::timeout 60000
+
+proc do_test_with_check {nCmd {sql ""}} {
+  global tcl_timeouts
+  set tcl_timeouts $nCmd
+  catch {eval $cmd} res
+  set tcl_timeouts 0
+  return $res
+}
+
+do_test 1.0 {
+  execsql {
+    CREATE TABLE t1(a, b);
+  }
+} {}
+
+do_test 1.1 {
+  execsql {
+    INSERT INTO t1 VALUES(1, 10);
+    INSERT INTO t1 VALUES(2, 20);
+    INSERT INTO t1 VALUES(3, 30);
+  }
+} {}
+
+do_test 1.2 {
+  execsql {
+    SELECT a FROM t1 WHERE b LIKE '10%' ORDER BY a
+  }
+} {1 2}
+
+do_test 2.0 {
+  try 10000 {
+    do_test_with_check {execsql {SELECT * FROM t1 WHERE a=4}}
+  } {40000}
+} {}
+
+do_test 3.0 {
+  execsql {
+    BEGIN;
+    INSERT INTO t1 VALUES(4, 40);
+    INSERT INTO t1 VALUES(5, 50);
+    COMMIT;
+  }
+} {}
+
+do_test 4.0 {
+  execsql {
+    SELECT a FROM t1 ORDER BY a DESC LIMIT 2
+  }
+} {5 4}
+
+ifcapable icu {
+  execsql {
+    SELECT a COLLATE icuCOLLATE unicode_ci FROM t1 ORDER BY a DESC LIMIT 2
+  }
+} {5 4}
+
+do_test 5.0 {
+  execsql {
+    SELECT a FROM t1 ORDER BY a LIMIT 1 OFFSET 1
+  }
+} {2}
+
+do_execsql_test 6.0 {
+  DELETE FROM t1 WHERE a IN SELECT a FROM t1 ORDER BY a LIMIT 2 OFFSET 1
+}
+
+do_test 7.0 {
+  execsql {
+    SELECT a FROM t1 WHERE a=5
+  }
+} {5}
+
+finish_test

@@ -1,0 +1,87 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complextest
+
+set ::timeout 60000
+
+proc create_table {} {
+  execsql {
+    CREATE TABLE test1(a, b, c);
+    CREATE TABLE test2(d, e, f);
+    CREATE TABLE test3(g, h, i);
+  }
+}
+
+proc drop_table {} {
+  execsql {
+    DROP TABLE IF EXISTS test1 test2 test3
+  }
+}
+
+proc test_data {} {
+  execsql {
+    INSERT INTO test1 VALUES(1, 2, 3);
+    INSERT INTO test1 VALUES(4, 5, 6);
+    INSERT INTO test1 VALUES(7, 8, 9);
+    INSERT INTO test1 VALUES(10, 11, 12);
+  }
+  execsql {
+    INSERT INTO test2 VALUES('a', 'b', 'c');
+    INSERT INTO test2 VALUES('d', 'e', 'f');
+    INSERT INTO test2 VALUES('g', 'h', 'i');
+    INSERT INTO test2 VALUES('j', 'k', 'l');
+  }
+  execsql {
+    INSERT INTO test3 VALUES('x' ,'y',  'z');
+    INSERT INTO test3 VALUES('m', 'n',  'o');
+    INSERT INTO test3 VALUES('w', 'v',  'u');
+    INSERT INTO test3 VALUES('c', 'b',  'a');
+  }
+}
+
+proc test_query {} {
+  do_execsql_test complextest1.1 {
+    SELECT * FROM test1
+  } {1 2 3 4 5 6 7 8 9 10 11 12}
+  do_execsql_test complextest1.2 {
+    SELECT * FROM test2
+  } {a b c d e f g h i j k l}
+  do_execsql_test complextest1.3 {
+    SELECT * FROM test3
+  } {x y z m n o w v u c b a}
+}
+
+proc complex_test {} {
+  create_table
+  drop_table
+  test_data
+  test_query
+}
+
+do_test complextest-1.0 {
+  set test_data
+} {test_data}
+
+do_test complextest-2.0 {
+  complex_test
+} {1}
+
+ifcapable tempdb {
+  do_execsql_test complextest-3.0 {
+    CREATE TABLE temp_table(a, b);
+    INSERT INTO temp_table VALUES(1, 2);
+    INSERT INTO temp_table VALUES(3, 4);
+    SELECT * FROM temp_table;
+  } {1 2 3 4}
+}
+
+proc complex_drop_test {} {
+  drop_table
+  do_test complextest2.0 {
+    execsql {SELECT name FROM sqlite_master}
+  } {}
+}
+drop_table
+complex_drop_test
+
+finish_test

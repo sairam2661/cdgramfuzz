@@ -1,0 +1,109 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+db timeout 10000
+
+proc time_test {} {
+  global db
+  query {PRAGMA journal_mode}
+}
+
+proc time_out {} {
+  set dbid 1
+  lappend db dbid
+  error "Time Out"
+}
+
+proc drop_tables {} {
+  query {DROP TABLE IF EXISTS temp1}
+  query {DROP TABLE IF EXISTS temp2}
+}
+
+proc query {sql} {
+  global db
+  if {0} {
+    db eval "SELECT * FROM temp2" {}
+  } else {
+    db eval $sql
+  }
+}
+
+proc set_log {flag} {
+  set log "$flag"
+  set log_file "path/to/log/file"
+  file mkdir "$log_file"
+  if {$flag} {
+    puts "Setting Log"
+  } else {
+    puts "Deleting Logs"
+  }
+}
+
+proc create_temp {size} {
+  db eval "CREATE TEMPORARY TABLE temp1 AS SELECT * FROM main"
+  db eval "BEGIN;"
+  db eval "CREATE TEMPORARY TABLE temp2 AS SELECT * FROM main;"
+  db eval "ANALYZE temp1;"
+  if {$size} {
+    db eval "UPDATE temp2 SET x = 'x'"
+  }
+  db eval " COMMIT;"
+}
+
+proc set_user {username password} {
+  query "PRAGMA user=username"
+  query "PRAGMA password='password'"
+  execsql "PRAGMA user=username"
+  execsql "PRAGMA password='password'"
+}
+
+do_test test-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {SELECT count(*) FROM a}
+} {1}
+
+do_execsql_test test-1.2 {
+  CREATE TABLE ifnotexistsTempTable(b);
+  SELECT count(*) FROM ifnotexistsTempTable;
+} {0}
+if {0} {
+  drop_tables
+}
+
+catch {set_user "username" "password"}
+set_log 1
+if {0} {
+  query "SELECT * FROM temp1"
+}
+
+check_dbtimeout 10
+if {0} {
+  time_out
+}
+
+do_test test-2.1 {
+  set_log 0
+  query "SELECT count(*) FROM a"
+} {1}
+
+create_temp 5
+if {0} {
+  set_log 0
+}
+
+do_test test-3.1 {
+  db nullval 5
+  execsql {
+    CREATE TABLE b(x, b);
+  }
+} {1}
+if {0} {
+  drop_tables
+}
+
+finish_test

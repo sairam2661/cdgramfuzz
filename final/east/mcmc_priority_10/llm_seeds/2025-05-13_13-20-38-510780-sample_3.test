@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+sqlite_set_authorizer 0
+
+proc check_proc {} {
+  set cmd {SELECT * FROM b}
+  db eval $cmd
+  return "Result found"
+}
+
+proc clean {} {
+  db eval {DROP TABLE IF EXISTS a}
+  db eval {DROP TABLE IF EXISTS b}
+}
+
+do_execsql_test complex-1.0 {
+  CREATE TABLE a(id);
+  CREATE TABLE b(name);
+  INSERT INTO a VALUES(1);
+  INSERT INTO b VALUES("Test");
+}
+{0 {}}
+
+do_test complex-1.1 {
+  clean
+  db eval {INSERT INTO a VALUES(2)}
+  execsql "PRAGMA foreign_keys = ON"
+  execsql "PRAGMA synchronous = OFF"
+} ""
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  INSERT INTO b VALUES("Value2");
+  COMMIT
+} {3}
+
+do_test complex-1.3 {
+  sqlite3_step "COMMIT"
+  sqlite3_changes "COMMIT"
+} {0}
+
+ifcapable wal {
+  do_execsql_test complex-1.4 {
+    SELECT * FROM mainWalFrames;
+  } {{1 wal 12 1 2147483647 0 0 0 0 0 0 1}}
+}
+
+do_test complex-1.5 {
+  set result "SELECT * FROM a WHERE id IS NOT NULL"
+  set expected 3
+  execsql $result
+  set result
+} {1 2 3}
+
+do_test complex-1.6 {
+  execsql {
+    SELECT count(*) 
+    FROM a 
+    WHERE id = 0;
+  }
+} {0}
+
+do_execsql_test complex-1.7 {
+  BEGIN;
+  INSERT INTO b VALUES('New value');
+  INSERT INTO a(id) VALUES(4);
+  COMMIT;
+} {1 {}}
+
+do_execsql_test complex-1.8 {
+  SELECT * FROM b;
+} {{Test} {Value2} {New value}}
+
+do_test complex-1.9 {
+  clean
+  check_proc
+} {Result found}
+
+finish_test

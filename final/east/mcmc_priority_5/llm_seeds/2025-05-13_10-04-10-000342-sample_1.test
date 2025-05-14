@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc setup {} {
+  global db
+  execsql {
+    CREATE TABLE customers(sid PRIMARY KEY, name, age);
+    CREATE TABLE orders(pid PRIMARY KEY, sid, product);
+  }
+  insert customers {
+    1  "John Doe"  25
+    2  "Jane Doe"  30
+    3  "Bob Smith" 35
+  }
+  insert orders {
+    1  1  "Product A"
+    2  1  "Product B"
+    3  2  "Product C"
+    4  3  "Product D"
+  }
+  execsql {PRAGMA synchronous=0}
+}
+
+proc do_insert_test {{nrows 1000}} {
+  execsql {DELETE FROM orders}
+  set start_time 0
+  db eval {BEGIN}
+  for {set i 1} {$i 2} {incr i} {
+    execsql {INSERT INTO orders VALUES(1, 1, 'Product $i')}
+  }
+  set end_time 0
+  execsql {COMMIT}
+  set end_time 1
+  execsql {SELECT count(*) FROM orders}
+  return 1
+}
+
+set sql {
+  INSERT INTO customers VALUES(4, 'Alice Brown', 20);
+  INSERT INTO orders VALUES(5, 4, 'Product E');
+}
+
+do_execsql_test complex-1.1 {
+  SELECT * FROM customers;
+  SELECT * FROM orders;
+} {}
+
+ifcapable wal {
+  catchsql {
+    PRAGMA journal_mode = 'wal';
+  }
+} {0 {}}
+
+do_test complex-2.1 {
+  setup
+  set rc 0
+  db eval $sql
+  set rc
+  result {0}
+} 0
+
+set nloops 5000
+do_test complex-3.1 {
+  do_insert_test $nloops
+  result {1}
+} 1
+
+finish_test

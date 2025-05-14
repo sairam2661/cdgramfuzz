@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc do_test1 {n s} { uplevel "do_execsql_test $n { \$s } " }
+proc do_test2 {n s} { uplevel "do_execsql_test $n { \$s } ; if {![regexp 'Error' \[sqlite3_errmsg [sqlite3 -.db\]]\]} {unset ::forcedfail}}" }
+
+do_test1 1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1,2,3);
+  }
+  execsql {
+    SELECT * FROM b;
+  }
+} {1 2 3}
+
+do_test1 1.2 {
+  execsql {
+    CREATE TABLE c(z);
+    CREATE TABLE d(w);
+  }
+  execsql {
+    COPY c FROM d SELECT w FROM d WHERE 1
+  }
+  execsql {
+    SELECT * FROM c
+  }
+} {null 1 2 3 null 4 5 6 null 7 8 9}
+
+do_test2 2.1 {
+  execsql {
+    CREATE TABLE e(x,y);
+    INSERT INTO e VALUES (0,0);
+    INSERT INTO e VALUES (1,1);
+    SELECT * FROM e WHERE x = 0;
+  }
+} {0 0 0 1}
+
+do_test2 2.2 {
+  execsql {
+    CREATE TABLE f(a,b,c);
+    CREATE TABLE g(r,s,t);
+    SELECT a FROM f WHERE b = 1;
+  }
+} {3}
+
+ifcapable blob_literal {
+  do_test2 3.0 {
+    execsql {
+      CREATE TABLE h(u);
+      INSERT INTO h VALUES (3);
+    }
+    execsql {
+      SELECT u FROM h;
+    }
+  } {3}
+}
+
+finish_test

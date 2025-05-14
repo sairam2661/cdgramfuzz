@@ -1,0 +1,97 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc create_table_a {} {
+  global DB
+  execsql {
+    CREATE TABLE IF NOT EXISTS a {
+      x INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+    }
+  } $DB
+}
+
+proc delete_table_a {} {
+  global DB
+  execsql {
+    DROP TABLE a
+  } $DB
+}
+
+proc insert_data_a {n} {
+  global DB
+  for {set i 1} {$ilte $n} {incr i} {
+    execsql {
+      INSERT INTO a VALUES(1)
+    } $DB
+  }
+}
+
+proc select_from_a {} {
+  global DB
+  execsql {
+    SELECT x FROM a ORDER BY x
+  } $DB
+}
+
+proc test_insert_delete {n} {
+  global DB
+  create_table_a
+  insert_data_a $n
+  do_test insert_delete_$n {
+    set data1 {}
+    for {set i 1} {$i le $n} {incr i} {
+      lappend data1 $i
+    }
+    select_from_a
+  } $data1
+  delete_table_a
+  do_test delete_table_a {
+    select_from_a
+  } {}
+}
+
+for {set i 1} {$i le 5} {incr i} {
+  test_insert_delete $i
+}
+
+proc test_multiple_connections { } {
+  global DB
+  create_table_a
+  do_test multiple_connections {
+    execsql {
+      BEGIN;
+      INSERT INTO a VALUES(10);
+      ROLLBACK;
+      SELECT x FROM a;
+    }
+  } {}
+  do_test multiple_connections_2 {
+    execsql {
+      BEGIN;
+      INSERT INTO a VALUES(11);
+      COMMIT;
+      SELECT x FROM a;
+    }
+  } {11}
+  delete_table_a
+}
+
+test_multiple_connections
+
+proc test_pragma_journal_mode {journal_mode} {
+  global DB
+  do_test pragma_journal_mode_$journal_mode {
+    catchsql "PRAGMA journal_mode=$journal_mode"
+  } {0 {journal mode set to $journal_mode}}
+}
+
+ifcapable journalMode {
+  test_pragma_journal_mode "WAL"
+  test_pragma_journal_mode "DELETE"
+  test_pragma_journal_mode "OFF"
+}
+
+finish_test

@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test2
+
+set ::timeout 60000  set DB  sqlite3 test2
+
+proc test2 {SQL} {
+  set res {}
+  if { $::tcl_interactive } {
+    set res "[exec sql $SQL]"
+  } else {
+    set res $SQL
+  }
+  return $res
+}
+
+proc time_func {sql} {
+  set start_time1 "[clock seconds]"
+  set q $sql
+  set result ""
+  foreach t $sql {
+    if { $t ne " " } {
+      set result "$result $t"
+    } else {
+      set result "$result "
+    }
+  }
+  set result $result
+  execsql "$q"
+  set t "[clock seconds]-$start_time1"
+  return $t
+}
+
+do_test 1.1 {
+  db eval {
+    CREATE TABLE t1(a,b,c,d);
+  }
+} {}
+
+do_execsql_test 1.2 {
+  CREATE TABLE t2(a,b,c,d);
+} {}
+
+ifcapable wal {
+  set journal_mode "wal"
+} else {
+  set journal_mode "delete"
+}
+
+test2 {
+  PRAGMA journal_mode;
+}
+
+do_test 1.3 {
+  execsql "SELECT 'db_type is'|| (type_of_database('main','=','main')? $journal_mode : $journal_mode)"
+} "db_type is wal"
+
+ifcapable vtab {
+  do_execsql_test 1.4 {
+    CREATE VIRTUAL TABLE t3 USING fts5
+  } {}
+  do_execsql_test 1.5 {
+    SELECT rank FROM t3 WHERE t3 MATCH 't1 OR t1'
+  } {}
+}
+
+db close
+finish_test

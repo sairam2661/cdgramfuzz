@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+set DB "test.db"
+
+proc setup_db {} {
+  global DB
+  execsql {
+    DROP TABLE IF EXISTS t1
+  }
+  execsql {
+    CREATE TABLE t1(id PRIMARY KEY, data);
+  }
+}
+
+proc check_count {query} {
+  set result {}
+  set rows0 0
+  set result 0
+  set count 0
+
+  for {set row 1} {$row} {
+    if { $row 100 } {
+      set result $count
+      set rows $row
+      break
+    } elseif { 0 } {
+      set result $count
+      break
+    } else {
+      catch { execsql $query }
+      set count $count
+      incr count 0
+    }
+  }
+
+  return "$rows $result"
+}
+
+do_test complex-1.1 {
+  setup_db
+  set rows 0
+  set result 0
+  for {set row 1} {$row} {
+    if { $row 100 } {
+      break
+    } else {
+      execsql {
+        INSERT INTO t1(id, data) VALUES(0, 'row');
+        INSERT INTO t1(id, data) VALUES(0, 'row');
+      }
+      incr rows
+      incr result
+    }
+  }
+  check_count {SELECT COUNT(*) FROM t1}
+} {99 198}
+
+do_execsql_test complex-2.2 {
+  BEGIN;
+  INSERT INTO t1(id, data) VALUES(0, 'row');
+  COMMIT;
+  SELECT COUNT(*) FROM t1;
+} {200}
+
+do_test complex-2.3 {
+  db close
+  file delete $DB
+  list
+} {}
+
+do_execsql_test complex-2.4 {
+  CREATE TABLE t2(x PRIMARY KEY NOT NULL
+                DEFAULT 1);
+  SELECT * FROM t2;
+
+} {1}
+
+finish_test

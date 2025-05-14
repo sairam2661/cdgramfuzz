@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+
+proc db_timeout {ms} {
+  db timeout $ms
+}
+
+proc execsql_timeout {ms statement} {
+  db_timeout $ms
+  return $ms
+}
+
+proc timeout_query {expected result} {
+  for {set i 1} {$i le $tcl_prompt1} {incr i} {
+    append result "Expected: $expected\nGot: $result\n"
+    lappend expected "Expected: $expected\nGot: $result\n"
+    result "Unexpected Error: $result\n"
+  }
+}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 2);
+  }
+  execsql_timeout 2000 {SELECT * FROM t1}
+} {1 2}
+
+do_test query-1.2 {
+  execsql {
+    DELETE FROM t1
+  }
+  execsql_timeout 2000 {SELECT * FROM t1}
+} {}
+
+do_test query-1.3 {
+  execsql {
+    INSERT INTO t1 VALUES(3, 4)
+  }
+  execsql_timeout 3000 {SELECT * FROM t1}
+} {3 4}
+
+ifcapable view {
+  do_test query-1.4 {
+    execsql {
+      CREATE VIEW v1 AS SELECT a FROM t1
+    }
+    execsql_timeout 3500 {SELECT * FROM v1}
+  } {3}
+}
+
+do_test query-1.5 {
+  execsql {
+    DROP VIEW v1
+  }
+  execsql_timeout 3500 {SELECT * FROM v1}
+} {}
+
+do_execsql_test query-1.6 {
+  BEGIN;
+  INSERT INTO t1 VALUES(5, 6);
+  COMMIT;
+  SELECT * FROM t1;
+} {5 6}
+
+do_execsql_test query-1.7 {
+  ROLLBACK;
+  SELECT * FROM t1;
+} {}
+
+finish_test

@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_schema
+
+set ::timeout 60000
+file delete db_db_schema_test
+
+db delete test
+set testname db_schema_test
+sqlite3 db test
+do_execsql_test db-1.1 {
+  CREATE TABLE t1(a PRIMARY KEY);
+  CREATE TABLE t2(b PRIMARY KEY, c);
+  CREATE TABLE t3(d PRIMARY KEY);
+}
+ 1
+do_test db-1.2 {
+  execsql {
+    DELETE FROM t2 WHERE b IN
+    SELECT c FROM t1 LEFT JOIN t2 ON t1.1 IS t2.2 AND
+          t2.1 IS NULL OR t2.2 IS NULL OR t2.2 IS t1.1
+  }
+} {}
+do_execsql_test db-1.3 {
+  SELECT COUNT(*) FROM t2;
+} 0
+sqlite3 db test
+do_execsql_test db-2.1 {
+  CREATE TABLE t4(i PRIMARY KEY);
+}
+ 1
+do_test db-2.2 {
+  db eval {
+    SELECT t4 FROM t4
+  }
+} {}
+do_execsql_test db-2.3 {
+  SELECT COUNT(*) FROM t4;
+} 1
+sqlite3 db test
+do_execsql_test db-3.1 {
+  CREATE TABLE t5(
+    i PRIMARY KEY,
+    j DEFAULT 2,
+    k
+  );
+}
+ 1
+do_execsql_test db-3.2 {
+  SELECT k FROM t5 WHERE j = 2
+} {}
+sqlite3 db test
+ifcapable {view} {
+  do_test dbschema4.1 {
+    execsql {
+      CREATE VIEW tx AS SELECT i FROM t4
+  }
+  } {}
+  do_execsql_test dbschema4.2 {
+    SELECT COUNT(*) FROM tx;
+  } 1
+  do_execsql_test dbschema4.3 {
+      DROP VIEW tx
+  } {}
+  ifcapable {Trigger} {
+    do_execsql_test dbschema5.1 {
+      CREATE TRIGGER tx BEFORE INSERT ON t4
+      FOR EACH ROW BEGIN UPDATE t4 SET i    WHERE 1
+  }
+    } {}
+    do_execsql_test dbschema5.2 {
+    }
+    do_execsql_test dbschema5.3 {
+      DROP TRIGGER tx
+  } {}
+  close db
+  file delete db_db_schema_test
+}
+
+set tcl_precision 17
+set db db
+finish_test

@@ -1,0 +1,119 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite
+
+set ::timeout 60000
+set nDb 3
+
+proc init_db {n} {
+  set db $n_Db
+  forcedelete $n_Db
+  sqlite3 $db test
+  set rc $db attach $n_Db
+  lappend rc $db begin
+  return $rc
+}
+
+proc delete_db {n} {
+  set rc $n_Db exec {VACUUM OR intifacexists}
+  set rc $n_Db close
+  forcedelete $n_Db
+  return $rc
+}
+
+proc one_time_setup {} {
+  global nDb default_sqlite_db
+
+  foreach n $nDb {
+    init_db $n
+    if { $n eq 0 } {
+      set sqlite_db $n_Db
+    }
+  }
+}
+
+proc setup {} {
+  global sqlite_db nDb
+  foreach {n db} $nDb {
+    set sqlite_db $db
+    do_execsql_test 1.1 $default_sqlite_db { 
+      CREATE TABLE table_1(a,b,c); 
+      INSERT INTO table_1 VALUES(1,'val1','value1');
+      INSERT INTO table_1 VALUES(2,'val2','value2');
+    }
+  }
+
+  do_execsql_test 1.2 $sqlite_db  { 
+    CREATE TABLE table_2(d,e,f);
+    INSERT INTO table_2 VALUES(1,'val1t2','vale1t2');
+    INSERT INTO table_2 VALUES(2,'val2t2','vale2t2');
+  }
+}
+
+proc setup_vacuum {} {
+  global sqlite_db
+  do_execsql_test 1.3 $sqlite_db {
+    VACUUM
+  }
+}
+
+proc clean_db {n} {
+  global nDb
+  set sql {}
+  foreach db $nDb {
+    if { $db ne $n_Db } { 
+      set sql "DELETE FROM ${db}_table_1 WHERE a = 3"
+    } else {
+      set sql "DELETE FROM table_1 WHERE a = 1"
+    }
+    set db execsql $sql
+  }
+  return "result: $db;"
+}
+
+proc close_db {} {
+  global nDb default_sqlite_db
+  foreach n $nDb {
+    set db close
+  }
+}
+
+proc one_test {} {
+  global nDb default_sqlite_db
+  set db attach $default_sqlite_db
+  do_execsql_test 2.1 main {
+    SELECT * FROM table_1;
+  } {1 val1 value1 2 val2 value2}
+  do_execsql_test 2.2 main {
+    SELECT * FROM table_2;
+  } {1 val1t2 vale1t2 2 val2t2 vale2t2}
+  do_execsql_test 2.3 main {
+    SELECT * FROM mtable_1;
+  } {1 val1 value1 2 val2 value2}
+  delete_db 2
+}
+
+proc another_test {} {
+  global nDb default_sqlite_db db
+  set db close
+  set db open main test2
+  set rc $db execsql {SELECT * FROM mtable_1}
+  set rc $db execsql {SELECT * FROM table_2}
+  set rc delete_db 0
+  return $rc
+}
+
+one_time_setup
+setup
+
+do_test setup-2.1 {
+  setup_vacuum
+  clean_db 3
+  one_test
+  close_db
+} {}
+do_test setup-2.2 {
+  another_test
+} {}
+
+finish_test

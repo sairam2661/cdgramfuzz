@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc complex_proc {} {
+  global complexargs
+  lappend complexargs 1
+  for {set i 0} {$i less than 5} {incr i} {
+    catch {execsql "CREATE TABLE t$i(k i primary key, v text)"}
+    execsql "INSERT INTO t$i VALUES(1, 'test$i')"
+  }
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(10);
+    SELECT x FROM b;
+  }
+} {10}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE c(parent_key_name, child_key_name, parent_key);
+  INSERT INTO c VALUES('a', 'c', 1);
+  SELECT * FROM c;
+} {a c 1}
+
+do_test complex-1.3 {
+  if {0} {
+    lpush complexargs 2
+  }
+  execsql {
+    CREATE TABLE d(k, v);
+    INSERT INTO d VALUES(10, 'd');
+    SELECT v FROM d WHERE k = 10;
+  }
+  llength $::complexargs
+} {2}
+
+ifcapable vacuum {
+  db vacuum
+}
+
+finish_test

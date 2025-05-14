@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+set up {
+  db close
+  db file delete test_db
+}
+do_one_test setup {
+  execsql {
+    PRAGMA journal_mode = 'wal';
+    PRAGMA synchronous = 0;
+    PRAGMA wal_sync_mode = 'full';
+  }
+  set DBNAME test_db
+  db set db test_db
+}
+
+proc test_case {sql {expect {}}} {
+  uplevel do_execsql_test sqlite3.1 $sql $expect
+}
+
+do_test dbconfig-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  test_case "SELECT x FROM a"
+  llength $result
+} {1}
+
+ifcapable journalMode {
+  do_test dbconfig-1.2 {
+    test_case "PRAGMA journal_mode"
+    expr {$result eq "wal"}
+  } 1
+}
+
+do_test dbconfig-1.3 {
+  test_case "PRAGMA synchronous" 0
+  execsql {
+    PRAGMA synchronous = 1;
+    PRAGMA synchronous;
+  }
+} {1}
+
+do_test dbconfig-2.1 {
+  db close
+  db file delete test_db
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+  test_case "SELECT x FROM b"
+  llength $result
+} {1}
+
+set test_case_up {
+  catch { db close }
+  db file delete test_db
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+}
+
+proc test_case_down {} {
+  db close
+  db eval {
+    SELECT name FROM sqlite_master
+    WHERE type='table' 
+    } t {
+    execsql BEGIN
+    execsql "DROP TABLE $t(name)"
+    }
+  execsql COMMIT
+}
+
+set up {
+  db set db test_db
+  catch {db close}
+  db file delete test_db
+}
+
+test_case_up
+test_case "SELECT x FROM b" {}
+test_case "SELECT x FROM b 2" {}
+test_case "SELECT x FROM a" {}
+test_case "SELECT x FROM c" {}
+test_case "PRAGMA journal_mode" {}
+finish_test

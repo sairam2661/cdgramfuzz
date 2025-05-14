@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithread_01
+
+set ::timeout 60000
+
+proc log_message {msg} {
+  global log
+  lappend log $msg
+}
+
+proc test_sleep {ms} {
+  global sqlite_tcl_interactive
+  if {$sqlite_tcl_interactive} {
+    vwait tcl_event_$ms
+  } else {
+    after $ms
+  }
+}
+
+proc start_thread {name code} {
+  global sqlite_tcl_interactive
+  set thread_ID "[expr {fork()}]"
+  if {$thread_ID} {
+    if {$sqlite_tcl_interactive} {
+      log_message "Thread $name started, ID = $thread_ID"
+      eval $code
+    } else {
+      proc $name {code}
+      $name $code
+    }
+  }
+}
+
+proc stop_thread {name} {
+  global sqlite_tcl_interactive
+  if { $sqlite_tcl_interactive } {
+    catch {exec kill $name}
+  } else {
+    proc $name {exit 0}
+    $name
+  }
+}
+
+set log {}
+set tid {thread 1}
+
+start_thread "thread 1" {
+  set tid "thread 1"
+  log_message "$tid: Starting thread 1..."
+  execsql {
+    CREATE TABLE t1(a,b);
+    INSERT INTO t1 VALUES(1,1);
+  }
+  test_sleep 3000
+  execsql {SELECT * FROM t1}
+  stop_thread "thread 1"
+  log_message "$tid: Terminating thread 1"
+}
+
+start_thread "thread 2" {
+  set tid "thread 2"
+  log_message "$tid: Starting thread 2..."
+  execsql {
+    CREATE TABLE t1(a,b);
+  }
+  stop_thread "thread 2"
+  test_sleep 4000
+  execsql {
+    SELECT * FROM t1;
+  }
+  set log
+}
+
+finish_test

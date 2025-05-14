@@ -1,0 +1,115 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_mode
+
+set ::timeout 60000
+set wal_mode 1
+set schema "
+CREATE TABLE a(x INTEGER PRIMARY KEY, y TEXT);
+
+CREATE TABLE b(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    email TEXT,
+    FOREIGN KEY(id) REFERENCES a(x)
+);
+
+CREATE TABLE c(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    email TEXT,
+    FOREIGN KEY(id) REFERENCES b(id)
+);
+"
+
+proc drop_tables {db} {
+  execsql {
+    DROP TABLE c
+  } $db
+  execsql {
+    DROP TABLE b
+  } $db
+  execsql {
+    DROP TABLE a
+  } $db
+}
+
+proc test_wal {} {
+  global wal_mode
+  if {$wal_mode} {
+    execsql {
+      PRAGMA journal_mode = 'wal'
+    }
+  } else {
+    execsql {
+      PRAGMA journal_mode = 'delete'
+    }
+  }
+}
+
+do_execsql_test 1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  SELECT * FROM a;
+} {1}
+do_test 2 { execsql {SELECT x FROM a} } {1}
+do_test 3 { execsql {SELECT x FROM a ORDER BY x} } {1}
+
+do_execsql_test 4 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT * FROM a;
+} {1 2 3}
+
+do_execsql_test 5 {
+  UPDATE a SET x WHERE x IN 2
+} {1 {} 0 {} 0 {} 0 {}}
+
+do_test 6 {
+  set rc
+  set rc1
+  if {$wal_mode} {
+    set rc1 1
+  } else {
+    set rc1 0
+  }
+  set rc1
+} 1
+
+do_test 7 {
+  db eval {SELECT * FROM a WHERE x = 1} {unset res}
+  set res 2
+  set res
+} 2
+
+proc create_and_fill_table {db} {
+  execsql "DROP TABLE IF EXISTS d"
+  execsql {
+    CREATE TABLE d(x,y);
+  }
+  execsql {
+    INSERT INTO d VALUES(1,2);
+    INSERT INTO d VALUES(3,4);
+  }
+}
+
+do_test 8 {
+  set dbfile "file::memory?"
+  eval sqlite3 db $dbfile
+  create_and_fill_table db
+  execsql {SELECT * FROM d} db
+} {1 2 3 4}
+
+db close
+
+drop_tables {}
+
+test_wal
+
+do_execsql_test 9 {
+  SELECT name FROM sqlite_master WHERE type='table'
+} {{a} {} {b} {} {c} {}}
+
+finish_test

@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set uuid 12345678
+
+proc isequal {l1 l2} {
+  foreach {a b} $l1 {}
+  set eq 1
+  foreach {c d} $l2 {}
+  if { $a ne $c } { set eq 0 }
+  if { $b ne $d } { set eq 0 }
+  return $eq
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(x, y, z);
+    CREATE TABLE t2(u, w, r);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(1, 2, 3);
+    INSERT INTO t2 VALUES(4, 5, 6);
+  }
+  expr {isequal {1 2 3} {4 5 6}}
+} {0}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(7, 8, 9);
+  COMMIT;
+  SELECT x FROM t1;
+} {1 2 3 7 8 9}
+
+do_test complex-1.3 {
+  execsql {
+    SELECT SUM u FROM t2
+  }
+} {24}
+
+ifcapable wal {
+  do_execsql_test complex-1.4 {
+    PRAGMA journal_mode
+  } {wal}
+}
+
+ifcapable cipher {
+  catchsql {
+    PRAGMA key = 'abc123';
+  }
+} {0 {}}
+
+finish_test

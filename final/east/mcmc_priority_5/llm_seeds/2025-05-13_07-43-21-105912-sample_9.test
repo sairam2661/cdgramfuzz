@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multirowupsert
+
+set ::timeout 60000
+set db_name "test.db"
+set n_changes 0
+set n_inserts 0
+
+proc multirow_upsert {} {
+  global n_changes n_inserts
+  n_changes 0
+  n_inserts 0
+}
+
+proc upsert_rows {c {s {}}} {
+  global db_name n_changes n_inserts
+  uplevel db eval "
+    ATTACH DATABASE '$db_name' AS db;
+    CREATE TABLE IF NOT EXISTS db.table (id TEXT PRIMARY KEY, c TEXT);
+    BEGIN;
+      INSERT OR REPLACE INTO db.table (id, c) VALUES ('row1', 'value1');
+      SET n_changes = $n_changes + 1;
+      INSERT OR REPLACE INTO db.table (id, c) VALUES ('row2', 'value2');
+      SET n_changes = $n_changes + 1;
+      INSERT INTO db.table (id, c) VALUES ('row3', 'value3');
+      SET n_inserts = $n_inserts + 1;
+      COMMIT;
+  "
+  return $n_changes
+}
+
+proc delete_table {} {
+  global db_name
+  uplevel db eval "
+    ATTACH DATABASE '$db_name' AS db;
+    DROP TABLE db.table;
+    DETACH DATABASE db;
+  "
+}
+
+do_test multi-1.1 {
+  unset n_changes
+  unset n_inserts
+  execsql {
+    CREATE TABLE table(x);
+    INSERT INTO table VALUES(1);
+  }
+  execsql {SELECT count(*) FROM table}
+} {1}
+
+do_execsql_test multi-1.2 {
+  BEGIN;
+  INSERT INTO table VALUES(2);
+  COMMIT;
+  SELECT count(*) FROM table;
+} {2}
+
+db eval {DETACH DATABASE main}
+
+do_test multi-1.3 {
+  upsert_rows
+  upsert_rows 10
+  execsql {SELECT count(*) FROM maindbname}
+} {3}
+
+do_test multi-1.4 {
+  multirow_upsert
+  upsert_rows test test
+  info exists result
+} {0}
+
+do_test multi-1.5 {
+  delete_table
+  catchsql {ATTACH DATABASE 'nonexistant.db' AS db}
+} {1 {file is encrypted or is not a database}}
+
+finish_test

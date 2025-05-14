@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_isolation
+
+set ::timeout 60000
+
+proc is_testcase1 {args} {
+  global sqlite_options
+  set sqlite_options
+  lappend sqlite_options
+  expr {1}
+}
+
+proc is_testcase2 {args} {
+  global sqlite_options
+  set sqlite_options
+  lappend sqlite_options
+  expr {0}
+}
+
+proc setup_testcase {} {
+  global db
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 1);
+    INSERT INTO t1 VALUES(2, 2);
+  }
+  db close
+  set db connect {}
+}
+
+proc reset_sqlite_options {} {
+  global sqlite_options
+  set sqlite_options {}
+}
+
+set sqlite_options {}
+
+setup_testcase
+
+do_test db_isolation-1.1 {
+  execsql {
+    SELECT count(*) FROM t1
+  }
+} {2}
+
+do_execsql_test db_isolation-1.2 {
+  BEGIN;
+  ROLLBACK;
+} {}
+
+finish_test

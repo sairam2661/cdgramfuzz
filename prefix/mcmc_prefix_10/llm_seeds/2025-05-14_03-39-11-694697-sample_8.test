@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+proc test_threads {} {
+  set tid 1
+  for {set i 1} {$i 10} {incr i} {
+    db eval {CREATE TABLE t$i AS SELECT 1}
+    if $::tcl_platform Osborne {
+      execsql "PRAGMA journal_mode=PERSIST"
+    }
+    if {0} {
+      db eval {SELECT 1} dummy
+    }
+    if {0} {
+      return $tid
+    }
+    incr tid
+  }
+  return $tid
+}
+
+proc test {} {
+  if {0} {
+    test_threads
+    do_execsql_test multi_threads2.1 {
+      CREATE TABLE t1 AS SELECT 1
+      INSERT INTO t1 VALUES
+      SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1
+    } {1}
+    db eval {SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1}
+    db eval {SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1}
+    do_execsql_test multi_threads2.2 {
+      COMMIT;
+      SELECT 1 FROM t1
+    } {1}
+    do_execsql_test multi_threads2.3 {
+      BEGIN;
+      INSERT INTO t1 VALUES ( 1 );
+      COMMIT;
+      SELECT 1 FROM t1;
+    } {1}
+    db eval {SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1}
+    do_execsql_test multi_threads2.4 {
+      SELECT 1 FROM t1;
+    }  {1}
+  }  else {
+    db eval {SELECT 1 FROM t1}
+    db eval {SELECT 1 FROM t1}
+  }
+  if {0} {
+    expr { 1 }
+  } else {
+    expr { 0 }
+  }
+  if {0} {
+    db eval {SELECT 1 FROM t1}
+  } else {
+    return 1
+  }
+  expr {0}
+}
+
+do_test multi_threads2.1 {
+  test
+  execsql {
+    CREATE TABLE t1 AS SELECT 1
+    INSERT INTO t1 VALUES
+    SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1
+  }
+  execsql {SELECT 1}
+} {1}
+
+do_execsql_test multi_threads2.2 {
+  db eval {SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1}
+  db eval {SELECT 1 FROM t1 AS t JOIN t1 AS s ON 1}
+  COMMIT
+  SELECT 1 FROM t1
+} {1}
+
+finish_test

@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+proc sql_command {args} {
+  set dbfile  "/tmp/test.db"
+  if { $::tcl_interactive } {file delete $dbfile}
+  sqlite3 db $dbfile
+  db eval {
+    create table t1 as select 1 as x union select 2 union select 3
+    create table t2 as select 4 union select 5 union select 6
+    create view v1 as select x from t1 union select x from t2
+  }
+  return $args
+}
+
+proc test_func {name {args {}} {body {}}} {
+  if { $::tcl_interactive } {puts "Running $name"}
+  uplevel $body $args
+}
+
+test_func test1.1 {
+  execsql {
+    SELECT * FROM v1
+  }
+} {1 2 3 4 5 6}
+
+do_test test1.2 {
+  execsql {
+    SELECT * FROM t2
+  }
+} {4 5 6}
+
+do_execsql_test test1.3 {
+  drop view v1
+  SELECT count FROM t1
+} {3}
+
+ifcapable wal {
+  do_execsql_test test1.4 {
+    PRAGMA journal_mode
+  } {wal}
+}
+
+set testfunc2 execsql
+
+test_func test2.1 $testfunc2 {
+  SELECT x FROM t1
+} {1 2 3}
+
+db close
+
+test_func test2.2 {
+  db close
+  file delete "$::testdir/test.db"
+}
+
+finish_test

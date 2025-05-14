@@ -1,0 +1,66 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_recovery
+
+set ::timeout 60000
+do_catchsql_test 1.1 {
+  DELETE FROM sqlite_master WHERE name LIKE'sqlite_stat%dual-%'
+}
+
+proc setup_test {} {
+  db dblink close db_wal
+  execsql {
+    CREATE TABLE t1(x);
+    CREATE TABLE t2(y);
+    BEGIN;
+      INSERT INTO t1 VALUES('apple');
+      INSERT INTO t2 VALUES('banana');
+    COMMIT;
+  }
+  do_execsql_test 2.1 {
+    PRAGMA wal_checkpoint;
+  }
+}
+
+proc rollback_test {} {
+  do_execsql_test 3.1 {
+    ROLLBACK
+  }
+  catchsql {
+    SELECT * FROM t1
+  }
+}
+
+proc commit_test {} {
+  do_execsql_test 4.1 {
+    INSERT INTO t1 VALUES('cherry');
+    SELECT * FROM t1
+  }
+}
+
+setup_test
+rollback_test
+commit_test
+
+do_execsql_test 5.1 {
+  ATTACH 'file:dummy_file' AS dummy AND
+  ATTACH 'zip:dummy_file' AS dummy_z
+}
+
+do_execsql_test 5.2 {
+  PRAGMA journal_mode;
+  PRAGMA synchronous;
+}
+
+set sql {
+  PRAGMA synchronous = 1;
+  PRAGMA checkpoint_fullfsync = 1;
+}
+execsql $sql
+do_catchsql_test 6.0 {
+  INSERT INTO t1 VALUES('date')
+  }
+do_execsql_test 6.1 {
+  SELECT * FROM t1
+  }
+finish_test

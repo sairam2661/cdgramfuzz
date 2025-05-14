@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal
+
+set ::timeout 60000
+set testprefix wal
+
+proc wal_test_func {args} {
+  global wal_result
+  uplevel $args
+  set wal_result 1
+}
+
+do_test wal-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES('x');
+  }
+  catchsql {
+    ALTER TABLE a RENAME TO z
+  }
+} {1 {no such table z}}
+
+set wal_result 0
+do_execsql_test wal-1.2 {
+  CREATE TABLE c(x,y);
+  BEGIN;
+  INSERT INTO c VALUES(1,'a');
+  COMMIT;
+} {} 
+set wal_result
+
+ifcapablewal {
+  set db_settings " wal journal_mode WAL cache_size 1000"
+  do_execsql_test wal-1.3 {
+     PRAGMA synchronous=1;
+     PRAGMA foreign_keys=0;
+     PRAGMA locking_mode=1;
+     PRAGMA journal_size_limit=1000;
+     PRAGMA wal_autocheckpoint=10;
+  } {}
+  do_test wal-1.4 {
+     do_test wal_test_func {
+       execsql {
+         CREATE VIRTUAL TABLE v0 USING sample
+          IFNOTEXISTS
+       }
+     }
+  } 0
+  do_execsql_test wal-1.5 {
+    SELECT name FROM sqlite_master
+     WHERE type='table'
+  } {a b c v0}
+
+}
+
+finish_test

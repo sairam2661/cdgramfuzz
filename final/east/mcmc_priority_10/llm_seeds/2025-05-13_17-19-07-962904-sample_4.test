@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix data_types
+
+set ::timeout 60000
+set testname sqlite_data_types
+
+proc string_test {n} {
+  global result
+  set result n
+}
+
+proc int_test {n} {
+  global result
+  set result $n
+}
+
+proc blob_test {n} {
+  global result
+  binary scan $n c result
+}
+
+do_test data_types-1.1 {
+  execsql {CREATE TABLE a(x, y, z);}
+  execsql {INSERT INTO a VALUES('apple', 5, 'banana');}
+  string_test 5
+  int_test 50
+  blob_test 0x68a42a2b
+} {apple 5 banana}
+
+do_test data_types-1.2 {
+  execsql {SELECT typeof(  						   	*  	) FROM a}
+} {text int blob}
+
+do_test data_types-1.3 {
+  execsql {SELECT a FROM a WHERE x = 'apple'}
+} {apple}
+
+ifcapable json {
+  set json_null1 "null"
+  set json_null2 null
+
+  do_test data_types-1.4 {
+    select sql $json_null1 $json_null2
+  } { text text text }
+}
+
+finish_test

@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sql_opt
+
+set ::timeout 60000
+set sqlite_db "sql_opt_test"
+
+do_setup_test sql_opt {
+
+  execsql {
+    CREATE TABLE t1(a, b);
+    CREATE TABLE t2(c, d);
+    CREATE TABLE t3(e, f);
+    CREATE TABLE t4(g, h);
+
+    INSERT INTO t1 VALUES('1', '2');
+    INSERT INTO t2 VALUES('3', '4');
+    INSERT INTO t3 VALUES('5', '6');
+    INSERT INTO t4 VALUES('7', '8');
+  }
+}
+
+do_test sql_opt-1.1 {
+  execsql {
+    CREATE VIEW v1 AS SELECT a FROM t1 WHERE 1 IS NOT NULL AND a IS NOT NULL
+  }
+  catchsql {INSERT INTO v1 SELECT '9' FROM t4}
+} {0 {}}
+
+do_test sql_opt-1.2 {
+  execsql {
+    SELECT a FROM t1 WHERE NOT a IS NULL AND a BETWEEN 2 AND '8'
+  }
+} {2}
+
+do_test sql_opt-1.3 {
+  execsql {
+    SELECT a FROM t1 WHERE NOT a IS NULL AND a BETWEEN '8' AND 8
+  }
+} {8}
+
+do_test sql_opt-2.1 {
+  execsql {
+    PRAGMA synchronous = 0;
+  }
+  catchsql {SELECT * FROM t2 WHERE b=4; }
+} {0 {}
+
+  execsql {
+    PRAGMA synchronous = 1;
+  }
+}
+
+do_rollback_test sql_opt_2 {
+  execsql {
+    CREATE TABLE t2(x);
+    INSERT INTO t2 VALUES(3);
+    PRAGMA synchronous = 1;
+  }
+} {1}
+
+finish_test

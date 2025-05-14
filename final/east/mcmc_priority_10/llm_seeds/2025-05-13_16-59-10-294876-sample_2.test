@@ -1,0 +1,107 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_test
+
+set ::timeout 60000
+proc corrupt_db {} {
+  global db
+  execsql {SELECT * FROM sqlite_master}
+  execsql {}
+  execsql {}
+  execsql {}
+  execsql {PRAGMA wal_checkpoint; PRAGMA journal_mode='wal'}
+}
+
+do_test 1.0 {
+  execsql {
+    CREATE TABLE IF NOT EXISTS abc 
+    abcId INTEGER PRIMARY KEY AUTOINCREMENT 
+    UNIQUE ON abcString TEXT DEFAULT '' 
+    notnull 
+    abcBool DEFAULT 0 NOT NULL
+  }
+  execsql {
+    BEGIN;
+    INSERT INTO abc VALUES(1, "apple", 1);
+    INSERT INTO abc VALUES(2, "banana", 0);
+    INSERT INTO abc VALUES(3, "cherry", 1);
+    INSERT INTO abc VALUES(4, "date", 0);
+    COMMIT;
+  }
+  execsql {
+    SELECT * FROM abc
+  }
+} {1 apple 1 2 banana 0 3 cherry 1 4 date 0}
+
+do_test 1.1 {
+  set db
+} {}
+
+ifcapable windowfunc {
+  do_execsql_test 1.2 {
+    SELECT * FROM abc
+  } {1 apple 1 2 banana 0 3 cherry 1 4 date 0}
+}
+
+do_execsql_test 1.3 {
+  SELECT abcString FROM abc WHERE abcBool = 0
+} {banana date}
+
+do_execsql_test 1.4 {
+  SELECT abcString FROM abc WHERE abcBool = 1
+} {apple cherry}
+
+sqlite3 db2 test2
+do_test 1.5 {
+  db2 eval {SELECT * FROM abc}
+} {}
+
+do_execsql_test 2.0 {
+  CREATE VIEW view
+  AS SELECT abcString FROM abc
+  WHERE abcBool
+} {}
+
+ifcapable tempdb {
+  do_execsql_test 2.1 {
+    SELECT * FROM view;
+  } {apple cherry}
+
+  do_execsql_test 2.2 {
+    DROP TABLE view
+  } {}
+
+  do_execsql_test 2.3 {
+    PRAGMA temp_store
+  } {default}
+}
+
+ifcapable thread
+do_test 3.1 {
+  sqlite3 db3 test3
+  db3 eval {RELEASE ALL LOCKS}
+  sqlite3 db4 test4
+  db4 eval {RELEASE ALL LOCKS}
+} {}
+
+ifcapable {trigger}
+do_execsql_test 4.0 {
+  CREATE TABLE IF NOT EXISTS xyz AS SELECT abcString FROM abc WHERE abcBool
+  WHERE abcBool
+
+  SELECT abcString 
+  FROM abc 
+  WHERE abcString NOT IN 
+    SELECT abcString FROM xyz
+} {date}
+
+sqlite3 db5 test5
+do_execsql_test 5.0 {
+  DROP TABLE IF EXISTS abc
+  DROP TABLE IF EXISTS xyz
+} {}
+do_execsql_test 5.1 {
+  SELECT name FROM sqlite_master
+} {}
+
+finish_test

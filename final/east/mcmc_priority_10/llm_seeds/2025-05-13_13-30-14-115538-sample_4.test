@@ -1,0 +1,120 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_transaction
+
+set ::timeout 60000
+ifcapable!=mutex {
+  error "mutex must be enabled for this test"
+}
+
+proc create_test_db {} {
+  global DB
+  if { $DB ne "" } {
+    db close
+  }
+  set DB "test.db"
+  sqlite3 $DB
+}
+
+proc drop_test_db {} {
+  global DB
+  if { $DB ne "" } {
+    set result ""
+    sqlite3 db $DB
+    catch { execsql {COMMIT} }
+    execsql {DROP TABLE t1}
+    execsql {DROP TABLE t2}
+    catch { db close $DB }
+    set DB ""
+  }
+}
+
+proc create_test_data {} {
+  execsql {
+    CREATE TABLE t1(a PRIMARY KEY, b);
+    CREATE TABLE t2(c PRIMARY KEY, d);
+  }
+  execsql {
+    INSERT INTO t1 VALUES('aaa', 1);
+    INSERT INTO t1 VALUES('bbb', 2);
+    INSERT INTO t2 VALUES('ccc', 3);
+    INSERT INTO t2 VALUES('ddd', 4);
+  }
+}
+
+do_test sqlite_transaction-1.1 {
+  create_test_db
+  create_test_data
+  catchsql {INSERT INTO t1 VALUES('eee', 5)}
+} {1 {UNIQUE constraint failed}}
+do_test sqlite_transaction-1.2 {
+  catchsql {COMMIT}
+} {1 {cannot commit while in transaction}}
+do_test sqlite_transaction-1.3 {
+  set rc
+  catchsql {ROLLBACK}
+  set rc
+  lappend rc $DB
+  set RC $rc
+} {0 {}}
+
+do_execsql_test sqlite_transaction-2.1 {
+  COMMIT;
+  BEGIN;
+  INSERT INTO t1 VALUES('eee', 5);
+  SELECT * FROM t1;
+} {aaa 1 bbb 2 eee 5}
+do_execsql_test sqlite_transaction-2.2 {
+  ROLLBACK;
+  SELECT * FROM t1;
+} {aaa 1 bbb 2}
+
+do_execsql_test sqlite_transaction-3.1 {
+  BEGIN;
+  INSERT INTO t2 VALUES('eee', 5);
+  SELECT * FROM t2;
+} {ccc 3 ddd 4 eee 5}
+do_execsql_test sqlite_transaction-3.2 {
+  COMMIT;
+  SELECT * FROM t2;
+} {ccc 3 ddd 4 eee 5}
+do_execsql_test sqlite_transaction-3.3 {
+  ROLLBACK;
+  SELECT * FROM t2;
+} {ccc 3 ddd 4}
+
+proc rollback_and_close {} {
+  set rc
+  catchsql {ROLLBACK}
+  set rc
+  catch { db close }
+}
+
+do_test sqlite_transaction-4.1 {
+  create_test_db
+  catchsql {INSERT INTO t1 VALUES('eee', 5)}
+} {1 {UNIQUE constraint failed}}
+set rc
+rollback_and_close
+lappend rc $DB
+set RC $rc
+do_test sqlite_transaction-4.2 {
+  set rc
+  catchsql {COMMIT}
+  set rc
+  lappend rc $DB
+  set RC $rc
+} {1 {cannot commit while in transaction}}
+set rc
+rollback_and_close
+lappend rc $DB
+set RC $rc
+do_test sqlite_transaction-4.3 {
+  set rc
+  catchsql {ROLLBACK}
+  set rc
+  lappend rc $DB
+  set RC $rc
+} {0 {5}}
+
+finish_test

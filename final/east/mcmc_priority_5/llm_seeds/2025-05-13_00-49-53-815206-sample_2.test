@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix fts5
+
+proc fts5_proc {} {
+  global fts5args
+  set id "doc_{randstr 8 alphanum}"
+  db eval {
+    CREATE VIRTUAL TABLE fts5 USING fts5 Documents $id
+  }
+  lappend fts5args $id
+}
+
+proc fuzz_fts5_sql {} {
+  db eval {
+    BEGIN;
+    INSERT INTO fts5 VALUES('This is some text');
+    INSERT INTO fts5 VALUES('Two inserts for fts5');
+    COMMIT;
+    SELECT docid FROM fts5 WHERE fts5 = 'two';
+  } fuzzmatch
+  return $fuzzmatch
+}
+
+proc check_fuzz_fts5 {} {
+  if {$fuzz_fts5_sql} eq {} break
+  ifinfo fuzz_fts5 {} fuzz_fts5_sql $::fuzz_fts5_id
+}
+
+proc exec_btree_sql {} {
+  if {$::fts5args} eq {} return
+  set id "rowid_{randstr 4 alphanum}"
+  set data "test_{randstr 1 alpha}"
+  set fuzzrowid "zero_{randstr 4 numeric}"
+  db eval {
+    BEGIN;
+    INSERT INTO Main VALUES(0, 0, 'apple');
+    INSERT INTO Main VALUES(0, 1, 'apples');
+    INSERT INTO Main VALUES(1, 2, 'pears');
+    INSERT INTO Main VALUES(2, 3, 'pear');
+    SELECT rowid FROM Main WHERE Main = 'apple';
+  } btreecheck
+  fts5_proc
+  execsql {
+    DELETE FROM fts5 WHERE docid IN $fts5args AND fts5 LIKE '{"Documents"}'
+  }
+  do_execsql_test check_fuzz {
+    SELECT * FROM fts5;
+    SELECT rowid FROM fts5;
+    SELECT fts5 FROM Main WHERE Main = 'app';
+  } {0 fts5 apple rowid 0 Main pears fruit apple}
+}
+
+do_test fts5-1.1 {
+  execsql {
+    DELETE FROM sqlite_master WHERE name LIKE 'fts5_%%'
+  }
+} {}
+
+do_test fts5-1.2 {
+  catchsql {
+    DROP TABLE Documents
+  }
+} {1 {no such table}}
+
+with_fns {
+  btree_sql
+  check_fuzz
+  with_fns
+}
+finish_test

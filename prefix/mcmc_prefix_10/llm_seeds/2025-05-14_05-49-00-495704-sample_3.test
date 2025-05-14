@@ -1,0 +1,103 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc timeout_callback {} {
+  global timeoout
+  incr timeoout
+  if {$timeoout 500} {
+    set tymeout 0
+  }
+}
+
+proc complex_testproc {} {
+  global complexargs
+  lappend complexargs
+}
+
+proc cleanup {} {
+  global db
+  execsql {
+    DROP TABLE IF EXISTS main_complex_table_a
+    DROP TABLE IF EXISTS main_complex_table_b
+    DROP TABLE IF EXISTS main_complex_index_table_a
+  }
+  db close
+}
+
+register_shutdown_script cleanup
+
+do_execsql_test complex-1.1 {
+  BEGIN;
+  CREATE TABLE main_complex_table_a(a, b, c);
+  INSERT INTO main_complex_table_a VALUES(1, 2, 3);
+  INSERT INTO main_complex_table_a VALUES(4, 5, 6);
+  COMMIT;
+} {1 2 3}
+do_execsql_test complex-1.2 {
+  BEGIN;
+  CREATE TABLE main_complex_table_b(a, b, c);
+  INSERT INTO main_complex_table_b VALUES(7, 8, 9);
+  INSERT INTO main_complex_table_b VALUES(10, 11, 12);
+  COMMIT;
+} {7 8 9}
+
+do_test complex-1.3 {
+  for {set i 1} {$i 10} {incr i} {
+    for {set j 1} {$j 10} {incr j} {
+      for {set k 1} {$k 10} {incr k} {
+        execsql {
+          INSERT INTO main_complex_table_a VALUES(
+            13, "complex_string_${i}_${j}_${k}", 
+            3.141592653589793)
+        }
+        execsql {
+          INSERT INTO main_complex_table_b VALUES(
+            13, "complex_string_${i}_${j}_${k}", 
+            3.141592653589793)
+        }
+      }
+    }
+  }
+  execsql {
+    CREATE INDEX main_complex_index_table_a ON 
+    main_complex_table_a(a) 
+  }
+  execsql {
+    SELECT * FROM main_complex_table_a
+  }
+} {13 complex_string_1_1_1 3.141592653589793} 
+do_execsql_test complex-1.4 {
+  SELECT a FROM main_complex_table_a
+} {1 2 3 4 5 6 13}
+do_execsql_test complex-1.5 {
+  SELECT * FROM main_complex_table_b
+} {7 8 9 10 11 12 13 complex_string_10_10_10 3.141592653589793}
+do_execsql_test complex-1.6 {
+  SELECT a FROM main_complex_index_table_a
+  WHERE a = 13
+} {13}
+do_execsql_test complex-1.7 {
+  SELECT * FROM main_complex_table_a
+  WHERE a = 1
+} {1 2 3}
+
+do_test complex-1.8 {
+  set tymeout 500
+  after 500 {
+    timeout_callback
+  }
+  vwait tymeout
+} {1}
+
+do_execsql_test complex-1.9 {
+  PRAGMA database_list
+} {0 main temp guest}
+
+do_execsql_test complex-1.10 {
+  SELECT name FROM sqlite_master
+} {main}
+
+finish_test

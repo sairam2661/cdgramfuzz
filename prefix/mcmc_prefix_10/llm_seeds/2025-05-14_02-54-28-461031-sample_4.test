@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+sqlite_extension_push "json1"
+set testuser "walnut"
+
+proc db_config_proc {} {
+  global db_configargs
+  db_configargs_append {test_name}
+  expr {$db_configargs_allows {test_var} }
+}
+
+proc db_configargs_append {value} {
+  global db_configargs
+  lappend db_configargs $test_user
+  lappend db_configargs $::testname
+  lappend db_configargs $value
+}
+
+proc db_configargs_allows {type value} {
+  switch $type {
+    "test_var" {
+      expr {$value eq {test_value}}
+    }
+    default {
+      expr 0
+    }
+  }
+}
+
+do_test dbconfig-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+    SELECT * FROM b;
+  }
+} {5}
+
+do_execsql_test dbconfig-1.2 {
+  SELECT c FROM json_query
+  WHERE json_string = '{
+    "info": { "test": "info" },
+    "c": { "data": 10 }
+  }'
+} {10}
+
+catchsql {
+  PRAGMA temp_store = 2
+}
+{0 {temp_store set to'memory'}}
+
+do_execsql_test dbconfig-1.4 {
+    CREATE TABLE  c(id PRIMARY KEY,x);
+    SELECT * FROM sqlite_master WHERE name ='sqlite_master';
+} {id PRIMARY KEY x 1  17 17}
+
+finish_test

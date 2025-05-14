@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database
+
+set ::timeout 60000
+
+do_test database-1.1 {
+  execsql {
+    PRAGMA synchronous = 0;
+    PRAGMA journal_mode = 'wal';
+    CREATE TABLE a(x);
+  }
+} {}
+
+do_execsql_test database-1.2 {
+  INSERT INTO a VALUES('a');
+  INSERT INTO a VALUES('b');
+  INSERT INTO a VALUES('c');
+} {}
+
+do_test database-1.3 {
+  execsql {
+    SELECT count(*) FROM a;
+  }
+} {3}
+
+do_execsql_test database-1.4 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES('d');
+} {}
+
+ifcapable tempdb {
+  do_test database-1.5 {
+    db eval {ATTACH 'dbname=temp1'}
+    execsql {
+      PRAGMA temp_store = 2
+    }
+  } {}
+  do_execsql_test database-1.6 {
+    INSERT INTO b VALUES('e');
+    SELECT name FROM temp1 WHERE type='table';
+  } {"temp1"}
+}
+
+ifcapable fts3 {
+  execsql {
+    CREATE VIRTUAL TABLE c Using fts3aux
+  }
+}
+
+do_test database-1.7 {
+  execsql {
+    INSERT INTO c VALUES(1, 2, 3);
+    SELECT a FROM c
+  }
+} {3 4 5}
+
+do_test database-1.8 {
+  execsql {
+     COMMIT
+  }
+  execsql {
+     CHECKPOINT
+  }
+} {}
+
+do_execsql_test database-1.9 {
+  PRAGMA synchronous = 1;
+  PRAGMA journal_mode = 'delete';
+} {}
+
+do_execsql_test database-1.10 {
+  PRAGMA journal_mode = 'wal';
+} {}
+
+ifcapable wal {
+  do_test database-1.11 {
+    execsql {
+      PRAGMA wal_checkpoint;
+    }
+  } {}
+}
+
+finish_test

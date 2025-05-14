@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_crash
+
+set ::timeout 60000
+
+proc wal_check_journal_page_cache {} {
+  global sqlite_ioerr_cnt
+  if {$sqlite_ioerr_cnt} {
+    return "Error in IO err cnt"
+  } else {
+    return ok
+  }
+}
+
+proc crash_simulation {} {
+  while { 1 } {
+    catch {
+      execsql {
+        INSERT INTO a VALUES(5);
+        COMMIT;
+      }
+    }
+  }
+}
+
+do_test wal_crash-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+  }
+  execsql {INSERT INTO a VALUES(6)}
+  db close
+  execsql {
+    SELECT count(*) FROM a;
+    SELECT count(*) FROM b;
+  }
+} {2 0}
+
+do_execsql_test wal_crash-1.2 {
+  PRAGMA journal_mode = 'WAL';
+  CREATE INDEX idx_b ON b(y);
+  CREATE TABLE c(x,y);
+  INSERT INTO c VALUES(111,444);
+} {wal idx_b x y c 1}
+
+crash_simulation
+
+do_test wal_crash-2.1 {
+  execsql {SELECT * FROM a}
+} {6}
+
+do_execsql_test wal_crash-2.2 {
+  PRAGMA wal_checkpoint;
+} {}
+
+finish_test

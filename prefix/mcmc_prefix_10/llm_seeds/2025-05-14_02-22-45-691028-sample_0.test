@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+set busy_timeout 10000
+
+do_test complex_sql-1.1 {
+  execsql {
+    PRAGMA temp_store = 2;
+    PRAGMA cache_size = 10;
+    CREATE TABLE a(x PRIMARY KEY);
+    CREATE TABLE b(y PRIMARY KEY);
+    CREATE TABLE c(x, y);
+    CREATE TABLE d(y, x);
+    CREATE TABLE e(x, y PRIMARY KEY);
+    CREATE TABLE f(x PRIMARY KEY, y);
+    CREATE TABLE g(x PRIMARY KEY, y);
+    CREATE TABLE h(x PRIMARY KEY, y);
+  }
+  execsql {
+    CREATE TRIGGER tr1 BEFORE INSERT ON b FOR EACH ROW BEGIN
+      SELECT raise_ abort 'TR1' FROM a WHERE x OLD NEW NEW x
+    END
+  }
+  execsql {
+    CREATE VIEW v1 AS SELECT x FROM a UNION ALL SELECT x FROM b
+  }
+  execsql {
+    INSERT INTO a VALUES ('apple');
+    INSERT INTO a VALUES ('banana');
+    INSERT INTO b VALUES ('cat');
+    INSERT INTO b VALUES ('dog');
+    INSERT INTO c VALUES ('apple', 'pear');
+    INSERT INTO d VALUES ('dog', 'cat');
+    INSERT INTO e VALUES ('grape','mango');
+    INSERT INTO f VALUES ('hello', 'world');
+    INSERT INTO g VALUES ('red', 'green');
+    INSERT INTO h VALUES ('yellow', 'blue');
+  }
+} {apple banana cat dog apple pear dog cat grape mango hello world red green yellow blue}
+
+do_execsql_test complex_sql-1.2 {
+  SELECT * FROM v1
+} {apple banana cat dog apple pear}
+
+do_test complex_sql-1.3 {
+  db eval "SELECT rowid FROM sqlite_master" rowid
+} {7 8 9 10 11 12 13 14 15 16 17}
+
+do_execsql_test complex_sql-1.4 {
+  SELECT trigger_name FROM sqlite_master WHERE type='trigger'
+} {tr1}
+
+do_test complex_sql-1.5 {
+  db eval "SELECT sql FROM sqlite_master" sql
+} {CREATE TABLE a$x PRIMARY KEY$x CREATE TABLE b$y PRIMARY KEY$y CREATE TABLE c$x$y CREATE TABLE d$y$x CREATE TABLE e$x$y PRIMARY KEY$e CREATE TABLE f$x PRIMARY KEY$x$y CREATE TABLE g$x PRIMARY KEY$x$y CREATE TABLE h$x PRIMARY KEY$x$y CREATE TRIGGER tr1 BEFORE INSERT ON b FOR EACH ROW BEGIN SELECT raiseabort 'TR1' FROM a WHERE x OLD NEW NEW x END CREATE VIEW v1 AS SELECT x FROM a UNION ALL SELECT x FROM b}
+
+ifcapable wal {
+  catchsql {
+    PRAGMA journal_mode = 'WAL';
+  }
+}
+
+catch {db eval {
+  PRAGMA synchronous = "FULL";
+  PRAGMA wal_syncnow;
+}}
+
+finish_test

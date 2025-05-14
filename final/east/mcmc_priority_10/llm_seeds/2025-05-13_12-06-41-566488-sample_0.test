@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_case
+
+set ::timeout 60000
+ifcapable!=null {
+  proc is_not_null {a b} {expr {$a ne $b}}
+} else {
+  rename is_not_null {}
+}
+proc is_null {a} {expr {$a eq {}}} 
+proc expr_eq {a b} {expr {$a eq $b}} 
+
+proc hexdump n {
+  set o ""
+  foreach i {0 1 2 3 4 5 6 7 8 9} {
+    set b ""
+    set offset ""
+    if {$o ne ""} {
+      set b "%02x"
+      set offset " %016x: "
+    } else {
+      set b ""
+      set offset ""
+    }
+    set b "%s $o $b"
+    set o hexdump_a $b$i
+    for {set j 0} {$j lt 16} {incr j} {
+      append o'' '} {set v $::hexdump_a($j)} {append o "%02x" $v}
+    }
+    lappend o {\n}
+    regsub -all \r $o {} o
+    set o $b$o
+  }
+  set o $b$o
+  return $o
+}
+
+proc test_func a b {expr {[llength $a] eq [llength $b]}} 
+
+set t1 {a {1 2 3} {b 4 5 6} c}
+set t2 {a {7 8 9} {b 10 11 12} d}
+do_execsql_test 1.00 {  SELECT *, rowid FROM t  } {}
+ifcapable subquery {  do_execsql_test 1.01 {  SELECT (  SELECT * FROM t2 ORDER BY x DESC  ) ORDER BY x FROM t } "$t2 11  $t2 10   $t2 7  $t2 12  $t2 9  $t2 6  $t2 5  $t2 4  $t2 8  $t"
+} else {
+  do_test 1.01 {  catch_sql {  SELECT (  SELECT * FROM t2 ORDER BY x DESC  ) ORDER BY x FROM t } } SQLITE_ERROR
+}
+do_execsql_test 1.02 {
+  CREATE TABLE x ( x, 4, SELECT 1);
+  WITH RECURSIVE cte AS ( SELECT 0 UNION ALL SELECT x + 2 ) SELECT * FROM cte;
+} 1 2 3 4 5 6
+ifcapable triggers {
+  CREATE TRIGGER t2  UPDATE OF  a  ON t2  FOR EACH ROW BEGIN
+    UPDATE t SET x =   100  WHERE a = new.a;
+  END;
+
+  UPDATE t2 SET a = 4;
+} {1 2 3 100 4 6}
+do_execsql_test 1.04 {
+  SELECT   4, 4 * *, 4 / %, 4 ^ x, 4, 4 | 4, 4 & 6, 4 > 6,  4 <  , 4 IN (3, 4, 4, 5),
+   6, 6, 6, 6, 7 IN (1, 2, 3, 4),  7  = 6, a   8 AND a  9 OR a = 3, - 6 ~ 4 UNION - 6   3, - 6  4 INTERSECT - 6  5, -6  4 EXCEPT - 6  3, NULL IF(7 > 1, 7,  8 ),   10, 11, 12, 13 UNION  11  = 14 INTERSECT 14  15 EXCEPT - 3  4
+}   4   16   0.25   65536   4   8   6  0  0  1   19 9
+do_execsql_test 1.05 {
+  PRAGMA  synchronous = FULL;
+  PRAGMA synchronous;
+} {FULL FULL}
+do_execsql_test 1.06 {  CREATE TABLE f(a UNIQUE,  b); } {}
+do_execsql_test 1.07  {  CREATE TABLE f5 (i, c) } {}
+do_execsql_test 1.08 1 {  SELECT x * y + z + w FROM f5 ORDER BY w FROM a, {1 8 5}, {1 17 20}
+  } {}
+SET db [sqlite3 Connect :memory:]
+execsql {
+  CREATE TABLE   (   int,
+                   , int,
+                   , int,
+                   , INT,
+                   , int
+                  );
+  INSERT INTO f(a, c, z, w, x, y) VALUES
+  (1,5,10,20,21,7,20),
+  (2,6,18,48,22,7,7),
+  (3,7,15,28,23,7,9),
+  (4,8,19,37,24,7,0);
+do_execsql_test 1.10  {
+  SELECT f,a,c,, FROM f WHERE  BETWEEN 4 AND 48 AND (z* AND w<  AND x>20) GROUP BY a ORDER BY  LIMIT 2 OFFSET 1 ;
+} { 6 4, 0 7, 19 28, 20, 22 } 
+db close
+do_execsql_test 1.11 1 {  CREATE TABLE f2 (w,, x); } {}
+do_execsql_test 1

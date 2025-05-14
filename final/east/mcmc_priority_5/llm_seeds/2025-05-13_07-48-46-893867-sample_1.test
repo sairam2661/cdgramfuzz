@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbflags
+
+set ::timeout 60000
+
+proc update_database {query} {
+  set ret {}
+  lappend ret "execsql {SQLITE_DBTIMEOUT 1}"
+  lappend ret "execsql {SQLITE_DBFLAGS (SQLITEFLAG_BtreeLockless)}"
+  lappend ret "execsql $query"
+  lappend ret "execsql {SQLITE_DBFLAGS (SQLITEFLAG_BtreeLockless 0)}"
+  lappend ret "execsql {SQLITE_DBTIMEOUT 0}"
+  return $ret
+}
+
+proc update_database_with_timeout {query timeoutms} {
+  set ret {}
+  lappend ret "execsql {SQLITE_DBTIMEOUT $timeoutms}"
+  lappend ret "execsql {SQLITE_DBFLAGS (SQLITEFLAG_BtreeLockless)}"
+  lappend ret "execsql $query"
+  lappend ret "execsql {SQLITE_DBFLAGS (SQLITEFLAG_BtreeLockless 0)}"
+  return $ret
+}
+
+proc do_vacuum {} {
+  execsql {
+    VACUUM
+  }
+}
+
+proc reset_database {} {
+  do_execsql_test 1.1 {
+    CREATE TABLE a(x, b);
+  }
+  do_execsql_test 1.2 {
+    INSERT INTO a VALUES('data', 1);
+    INSERT INTO a VALUES('data', 2);
+    INSERT INTO a VALUES('data', 3);
+  }
+}
+
+ifcapable vacuum {
+  proc db_time_limit_test {nsec expected_value query} {
+    do_vacuum
+    set timeoutms $nsec
+    update_database_with_timeout $query $timeoutms
+    error_bar {"Error in $nsec: expected result=$expected_value, ret = [execsql_result $query]"}
+  }
+}
+
+do_test 2.1 {
+  execsql {
+   CREATE TABLE a(b);
+  }
+ } {}
+
+do_execsql_test 2.2 {
+   INSERT INTO a VALUES(1);
+ } {1}
+do_execsql_test 2.3 {
+   SELECT * FROM a
+ } {1}
+
+reset_database
+
+do_execsql_test 3.1 {
+   DROP TABLE a
+} {}
+
+ifcapable wal{
+   do_execsql_test 4.1 {
+     CREATE TABLE a(b);
+   }
+   do_execsql_test 4.2 {
+     INSERT INTO a VALUES(1);
+   }
+} else {
+  do_test 4.1 {
+    execsql {
+     CREATE TABLE a NO Btrees
+    }
+  } {}
+  do_execsql_test 4.2 {
+    INSERT INTO a VALUES(1);
+  }
+}
+
+finish_test

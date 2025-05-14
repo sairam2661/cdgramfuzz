@@ -1,0 +1,58 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+proc sql_func {} {
+    global sqlerr
+    lappend sqlerr
+}
+proc check_sql_err {} {
+    llength $::sqlerr
+}
+proc db_open {db file} {
+    sqlite3 $db $file
+    puts "Database: [sqlite3 connection status $db]"
+}
+
+db_open testdb locking_testdb
+
+db_exec_test lockingdb1 {
+    execsql {
+        CREATE TABLE t1(a);
+        CREATE INDEX i1 ON t1(a);
+    }
+} {1 {table t1 already exists}}
+
+execsql {
+    BEGIN;
+}
+
+execsql {
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t1 VALUES(2);
+}
+execsql {
+    COMMIT;
+    SELECT * FROM t1;
+} {1 {} 2 {}}
+
+do_catchsql_test dbopen1 {
+    execsql {SELECT * FROM t1}
+} {1 {no such table}}
+
+catch {db close testdb}
+set var 5
+do_execsql_test locking_2 {
+    SELECT COUNT(*) FROM t1 WHERE a = 4;
+} {0}
+
+do_execsql_test locking_3 {
+    PRAGMA synchronous=0;
+} {0}
+
+do_test locking_4 {
+    check_sql_err
+} {1}
+
+finish_test

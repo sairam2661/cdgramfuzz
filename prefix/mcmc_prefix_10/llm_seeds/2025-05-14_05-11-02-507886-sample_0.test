@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complexTest
+
+set ::timeout 60000
+
+if { $tcl_platform OsFamily eq "Windows" } {
+  do_test complextestprepwin {
+    set timeout 1
+  } {}
+} else {
+  do_test complextestprepunix {
+    set timeout 2
+  } {}
+}
+
+proc counter {} {
+  global count
+  incr count
+  return $count
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES('hello');
+  }
+  execsql {SELECT x FROM t1}
+} {hello}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE t2(y);
+  INSERT INTO t2 VALUES('world');
+  SELECT * FROM t2;
+} {world}
+
+do_test complex-2.1 {
+  execsql {
+    DROP TABLE t1
+  }
+  execsql {SELECT name FROM sqlite_master}
+} {t2}
+
+if { $tcl_platform OsFamily eq "Windows" } {
+  do_test complextesttimeoutwin {
+    set timeout 3
+    expr 1
+  } {}
+} else {
+  do_test complextesttimeoutunix {
+    set timeout 6
+    expr 1
+  } {}
+}
+
+do_execsql_test complex-3.1 {
+  CREATE TABLE t3(x);
+
+  BEGIN;
+    INSERT INTO t3 VALUES('good');
+    ROLLBACK;
+  COMMIT;
+  SELECT x FROM t3;
+} {}
+do_test complex-3.2 {
+  counter
+} {1}
+
+ifcapable wal_journal {
+  do_execsql_test complex-4.1 {
+    PRAGMA journal_mode = 'wal';
+  } {}
+  do_execsql_test complex-4.2 {
+    PRAGMA journal_mode;
+  } {wal}
+} else {
+  if { $tcl_platform OsFamily eq "Windows" } {
+    do_test complexjournalnocheckwin {
+      execsql {
+        PRAGMA journal_mode;
+      }
+    } {delete}
+  } else {
+    do_test complexjournalnocheckunix {
+      execsql {
+        PRAGMA journal_mode;
+      }
+    } {delete}
+  }
+}
+
+finish_test

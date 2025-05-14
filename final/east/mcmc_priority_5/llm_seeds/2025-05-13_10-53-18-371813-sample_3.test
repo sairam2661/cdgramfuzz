@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+create_test_suite suite
+create_test cases suite
+
+proc timeout_1 {} {
+  execsql {
+    PRAGMA timeout=2
+  }
+}
+
+do_test timeout-1.1 {
+  set rc
+  set rc
+  set rc
+  set rc
+  set rc
+  set rc
+  set rc
+} {1}
+
+do_execsql_test timeout-1.2 {
+  SELECT 1
+  FROM a
+} {1}
+
+proc timeout_2 {} {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES('timeouttest');
+    COMMIT;
+    SELECT count(*) FROM a;
+  }
+}
+
+create_test_case suite timeout_case timeout_1
+create_test_case suite timeout_case timeout_2
+create_test_case suite timeout_case timeout_1
+create_test_case suite timeout_case timeout_2
+
+create_test_case suite timeout_case_2 timeout_1
+
+finish_test

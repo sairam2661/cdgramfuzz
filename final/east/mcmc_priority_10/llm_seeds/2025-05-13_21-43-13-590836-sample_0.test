@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+
+proc my_func {x} {
+  set ret_val "[expr $x * 10.00]"
+  lappend ret_vals $ret_val
+  return 0
+}
+
+proc test_func {} {
+  set ret_val 0
+  if { $ret_val  } {
+    append ret_val " is True"
+  } else {
+    append ret_val " is False"
+  }
+  lappend ret_vals $ret_val
+}
+
+proc insert_data { table_name } {
+  set conn_id 10
+  db eval "INSERT INTO $table_name VALUES ('value1', 1)"
+  db eval "INSERT INTO $table_name VALUES ('value2', 2)"
+}
+
+proc check_data { table_name } {
+  set result ""
+  set result_sql "SELECT * FROM $table_name"
+  foreach row $result {
+    lappend result $row
+  }
+  return $result
+}
+
+set timeout 30
+set timeout_type "second"
+
+do_test 1.1 {
+  insert_data "test_table"
+} {}
+
+do_test 1.2 {
+  check_data "test_table"
+} {0 value1 1 value2 2}
+
+do_execsql_test 1.3 {
+  BEGIN;
+  INSERT INTO test_table VALUES ('value3', 3)
+  } {}
+
+do_execsql_test 1.4 {
+    COMMIT
+  } {}
+
+do_test 1.5 {
+  check_data "test_table"
+} {0 value1 1 value2 2 value3 3}
+
+ifcapable {fts5} {
+  do_execsql_test 2.1 {
+    CREATE VIRTUAL TABLE test_fts USING fts5 
+    rowid
+    name
+    description
+  } {}
+}
+
+finish_test

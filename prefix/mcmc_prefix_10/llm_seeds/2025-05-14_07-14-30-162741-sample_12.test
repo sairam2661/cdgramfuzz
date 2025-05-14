@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction_test
+
+set ::timeout 60000
+
+proc transaction_proc {} {
+  global timeout
+  set timeout 0
+  expr {1}
+}
+
+db timeout 0
+
+proc check_rowcount {sql rows} {
+  set count 0
+  foreach row $rows {
+    incr count
+  }
+  return $count
+}
+
+db function check_rowcount check_rowcount
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES('test1');
+    INSERT INTO a VALUES('test2');
+    INSERT INTO a VALUES('test3');
+  }
+  check_rowcount {SELECT * FROM a} {test1 test2 test3}
+} {3}
+
+db function sleep_tcl sleep
+do_execsql_test transaction-1.2 {
+  CREATE TABLE b(x);
+  BEGIN;
+  INSERT INTO b VALUES('value1');
+  INSERT INTO b VALUES('value2');
+  COMMIT;
+  SELECT * FROM b;
+} {{}}
+do_test transaction-1.3  {
+  execsql {
+    CREATE VIRTUAL TABLE temp_a AS journal
+  }
+  db close
+  db open temp_a
+  execsql {INSERT INTO a VALUES('test4')}
+  check_rowcount {SELECT * FROM a} {test1 test2 test3 test4}
+} {4}
+
+finish_test

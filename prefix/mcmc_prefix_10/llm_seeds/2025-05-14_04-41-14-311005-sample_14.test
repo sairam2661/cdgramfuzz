@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_mode
+
+set ::timeout 60000
+set testprefix "journal-mode-${testprefix}"
+
+proc check_journal_mode { expected } {
+  global db
+  set mode $expected
+  execsql { PRAGMA journal_mode; } db $mode
+  execsql { PRAGMA journal_mode = 'delete' }
+  if {$expected eq 'wal'} {
+    set mode "wal"
+  } else {
+    set mode "delete"
+  }
+  execsql { PRAGMA journal_mode; } db $mode
+}
+
+proc verify_journal_mode { expected } {
+  global db
+  set mode $expected
+  execsql { PRAGMA journal_mode; } db $mode
+}
+
+do_test journal-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+    SELECT count(*) FROM t1
+  }
+} {1}
+
+do_execsql_test journal-1.2 {
+  INSERT INTO t1 VALUES(2);
+  SELECT count(*) FROM t1;
+} {2}
+
+do_test journal-1.3 {
+  check_journal_mode "delete"
+  execsql {
+    CREATE TABLE t2(y);
+    INSERT INTO t2 VALUES(1);
+  }
+  verify_journal_mode "delete"
+} {}
+
+do_test journal-1.4 {
+  check_journal_mode "wal"
+  execsql {
+    PRAGMA cache_size = 20
+  }
+} {}
+
+do_execsql_test journal-1.5 {
+  PRAGMA journal_mode = 'delete';
+  PRAGMA journal_mode = 'wal';
+  PRAGMA journal_mode;
+} {wal}
+
+do_execsql_test journal-1.6 {
+  BEGIN;
+  PRAGMA journal_mode;
+  PRAGMA journal_mode = "DELETE"
+} {wal}
+
+do_execsql_test journal-1.7 {
+  PRAGMA journal_mode = 'wal';
+  PRAGMA journal_mode;
+  CREATE TABLE t3(z);
+  PRAGMA journal_mode;
+  PRAGMA journal_mode = "DELETE"
+  } {wal wal wal wal}
+
+finish_test

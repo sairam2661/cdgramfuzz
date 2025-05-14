@@ -1,0 +1,62 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc complex_function_v1 {a b c} {
+  return "[expr $a+$b]*$c"
+}
+
+proc complex_function_v2 {d e f} {
+  return "[expr $d*$e]+$f"
+}
+
+proc complex_callback {} {
+  return 100
+}
+
+do_test complex-1.1 {
+  set result1 10
+  for {set i 11} {$i le 20} {incr i} {
+    set result1 "[expr {$result1+1}]"
+  }
+  set result1
+} {21}
+
+do_test complex-1.2 {
+  set result2 10
+  for {set i 11} {$i le 20} {incr i} {
+    incr result2
+  }
+  set result2
+} {20}
+
+do_test complex-1.3 {
+  set result3 10
+  set i 11
+  while {$i le 20} {
+    incr result3
+    incr i
+  }
+  set result3
+} {20}
+
+do_test complex-1.4 {
+  catch { complex_function_v1 10 20 30 }
+} {60}
+
+do_test complex-1.5 {
+  complex_function_v2 10 20 30
+} {430}
+
+do_test complex-1.6 {
+  set result "[catch {set a 10; set b 20} res]"
+  set result
+} {0}
+
+do_test complex-1.7 {
+  complex_callback
+} {100}
+
+finish_test

@@ -1,0 +1,137 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbsize
+
+set ::timeout 60000
+
+proc dbsize_func {} {
+  global db
+  execsql {
+    PRAGMA database_list;
+  }
+}
+
+proc execsql_with_bindings {sql args} {
+  set ret ""
+  set bindvars {}
+  foreach {param value} $args {
+    lappend bindvars $param
+    set ret "$ret, $value"
+  }
+  append ret "
+  execsql -named $sql $bindvars
+}
+
+do_test db-100.1 {
+  set db [sqlite3 db test.db]
+  for {set i 0} {$i < 100} {incr i} {
+    db eval "INSERT INTO VALUES"
+  }
+  db eval {
+    PRAGMA cache_size;
+  }
+} ""
+do_test db-100.2 {
+  execsql_with_bindings {
+    SELECT * FROM db
+    LIMIT?
+    OFFSET?
+  } {5 3}
+  } {}
+do_test db-100.3 {
+    db_function dbsize_func
+} {}
+do_test db-100.4 {
+  do_test db-100.2
+  execsql_with_bindings {
+    SELECT * FROM 5
+  } {3}
+} {}
+execsql {
+  PRAGMA journal_mode
+}
+do_execsql_test db-100.5 {
+  ALTER TABLE db ADD COLUMN col;
+  BEGIN TRANSACTION;
+  INSERT INTO db VALUES (4, 4);
+  COMMIT TRANSACTION;
+  BEGIN TRANSACTION;
+  ALTER TABLE db RENAME col col2;
+  COMMIT TRANSACTION;
+  PRAGMA journal_mode
+} {wal}
+
+do_test db-101.1 {
+  set data [list]
+  for {set i 0} {$i < 5} {incr i} {
+    lappend data [list $i]
+  }
+  db func foo {args {lappend ::data $args}}
+  db eval {
+    select @foo($data);
+  }
+} {}
+set data ""
+
+execsql {
+  CREATE TABLE 2 (
+    a NUMBER,
+    b NUMBER
+  );
+}
+
+do_execsql_test db-100.6 {
+  TABLE 2;
+} {}
+
+execsql {
+  DROP TABLE 2;
+}
+
+do_test db-100.7 { db status  } {not in a read transaction}
+execsql_with_bindings {
+  select * from db;
+} {}
+set testdir
+finish_test
+
+set ::N 500000
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix bigtest
+
+set f1 [open [set fname [file makedir ffile]] w]
+puts -nonewline $f1 {A\n}
+for {set i 0} {$i < $N} {incr i} {
+  puts -nonewline $f1 V5
+}
+close $f1
+proc exec_file {} {
+  execsql {
+    CREATE TABLE a(x);
+  }
+  fconfigure stdin -encoding binary -translation binary
+  set data [read stdin]
+  seek stdin 0
+  db eval "INSERT INTO a VALUESNULL
+  }
+exec_file
+execsql {
+  SELECT count(*) FROM a;
+} 
+execsql {
+  CREATE TABLE 1.1 2 3
+}
+exec_file
+execsql {
+  SELECT count(*) FROM a;
+}
+exec_file
+execsql {
+  DROP TABLE a
+}
+execsql {
+  SELECT count(*) FROM a;
+}
+finish_test

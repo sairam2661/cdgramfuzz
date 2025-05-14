@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set sqlite_options "--enable-fuzzer --enable-debug"
+
+proc insert_and_check {} {
+  global db data
+  if { $data ne "INSERT INTO b VALUES (10)" } { 
+    error "Expected a 10 but received '$data'"
+  }
+  set data "INSERT INTO b VALUES (20)"
+  execsql {
+    INSERT INTO b VALUES (20);
+  }
+}
+
+proc drop_and_check {} {
+  global db
+  if { $db ne "main" } { 
+    error "Expected a'main' but received '$db'"
+  }
+  execsql {
+    DROP TABLE b
+  }
+  execsql {
+    SELECT name
+    FROM sqlite_master
+    WHERE type='table'
+  }
+}
+
+proc save_and_restore {} {
+  global data temp_storage
+  set temp_storage $data
+  execsql {
+    SAVEPOINT sp
+  }
+  set data "INSERT INTO a VALUES ('new value')"
+  execsql {
+    INSERT INTO a VALUES ('new value')
+  }
+  execsql {
+    RELEASE sp
+  }
+  execsql {
+    RESTORE temp_storage
+  }
+}
+
+set temp_memory_store 80000
+
+crash_test "sqlite3_prepare" {
+  set db2 open none
+  set r1 $::sqlite3
+  execsql {
+    CREATE TABLE a(x PRIMARY KEY);
+    INSERT INTO a VALUES (1);
+    CREATE TABLE b(y PRIMARY KEY);
+    INSERT INTO b VALUES (20);
+  }
+}
+
+crash_test "sqlite3_step" {
+  set db2 close
+  set r1 $::sqlite3
+  execsql {
+    DROP TABLE b
+  }
+  execsql {
+    SELECT name
+    FROM sqlite_master
+    WHERE type='table'
+  }
+}
+
+finish_test

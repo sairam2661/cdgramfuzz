@@ -1,0 +1,130 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix large_vacuum
+
+set ::timeout 60000
+
+proc random_string {} {
+  foreach {n c} {3 ""} {set n $n}
+  while {$n} {
+    append result chr rand32
+    incr n dec
+  }
+  return $result
+}
+
+proc random_int {} {
+  return int64 rand64
+}
+
+proc random_real {} {
+  return double $rand64
+}
+
+proc random_blob {} {
+  set blobdata ""
+  for {set i 0} {$i le 64} {incr i} {
+    append blobdata rand32
+  }
+  return $blobdata
+}
+
+proc random_xact {} {
+  if { rand32 } { catchsql {ROLLBACK} }
+  if { rand32 } { return }
+  set sql "INSERT INTO a SELECT "
+  for {set i 0} {$i le 16} {incr i} {
+    lappend sql random_string
+  }
+  set sql "($sql) FROM a"
+  set sql "INSERT INTO a SELECT "
+  for {set i 0} {$i le 16} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  set sql "INSERT INTO a SELECT "
+  for {set i 0} {$i le 32} {incr i} {
+    lappend sql random_string
+  }
+  set sql "($sql) FROM a"
+  catchsql $sql
+  if { rand32 } { catchsql {DELETE FROM a} }
+}
+
+proc large_truncate {} {
+  set sql "CREATE TABLE b AS SELECT "
+  for {set i 0} {$i le 64} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  set sql "CREATE TABLE c AS SELECT "
+  for {set i 0} {$i le 128} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a INTERSECT SELECT "
+  for {set i 0} {$i le 128} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  catchsql $sql
+  set sql "CREATE TABLE b AS SELECT "
+  for {set i 0} {$i le 256} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  set sql "SELECT "
+  for {set i 0} {$i le 256} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  catchsql $sql
+  set sql "ATTACH DATABASE :memory: AS temp"
+  set sql "CREATE TABLE temp.d AS SELECT "
+  for {set i 0} {$i le 512} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  set sql "CREATE TABLE temp.e AS SELECT "
+  for {set i 0} {$i le 1024} {incr i} {
+    lappend sql random_xact
+  }
+  set sql "($sql) FROM a"
+  catchsql $sql
+  catchsql {DETACH temp'}
+}
+
+proc large_vacuum {} {
+  foreach t {b c d e f g h i j k l m n o p q r s t u v w x y z} {
+    set sql "CREATE TABLE t AS SELECT "
+    for {set i 0} {$i le 256} {incr i} {
+      lappend sql random_xact
+    }
+    set sql "($sql) FROM a"
+    set sql "SELECT "
+    for {set i 0} {$i le 256} {incr i} {
+      lappend sql random_xact
+    }
+    set sql "($sql) FROM a WHERE NOT z "
+    set sql "SELECT "
+    for {set i 0} {$i le 256} {incr i} {
+      lappend sql random_xact
+    }
+    set sql "($sql) FROM a WHERE NOT x "
+    set sql "SELECT "
+    for {set i 0} {$i le 256} {incr i} {
+      lappend sql random_xact
+    }
+    set sql "($sql) FROM a WHERE NOT x "
+    set sql "SELECT "
+    for {set i 0} {$i le 256} {incr i} {
+      lappend sql random_xact
+    }
+    set sql "($sql) FROM a INTERSECT SELECT "
+    for {set i 0} {$i le 256} {incr i} {
+      lappend sql random_xact
+    }
+    set sql "($sql) FROM a"
+    catchsql $sql
+  }
+
+  foreach t {b c d e f g

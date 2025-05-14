@@ -1,0 +1,112 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+set dbid 0
+
+proc transaction_proc {} {
+  global dbid
+  set dbid
+  execsql {
+    BEGIN EXCLUSIVE;
+    INSERT INTO a VALUES(
+      5,
+      6,
+      7
+    );
+    SELECT count(*) FROM a;
+  }
+}
+
+do_ioerr_test transaction1.1 {
+  db close
+  execsql {
+    CREATE TABLE a(x, y, z);
+    INSERT INTO a VALUES(0, 1, 2);
+  }
+
+  db close
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(3);
+  }
+
+  execsql {
+    DROP TABLE a
+  }
+} {1 error}
+
+do_test transaction1.2 {
+  execsql {
+    SELECT * FROM a
+  }
+} {1}
+
+do_test transaction1.3 {
+  execsql {
+    ROLLBACK;
+  }
+} {}
+
+do_test transaction1.4 {
+  execsql {
+    SELECT * FROM b
+  }
+} {3}
+
+do_test transaction2.1 {
+  execsql {
+    SELECT count(*) FROM a
+  }
+} {1}
+
+do_test transaction2.2 {
+  execsql {
+    DELETE FROM a WHERE x
+  }
+} {}
+
+do_test transaction3.1 {
+  execsql {
+    CREATE TABLE c(x, y);
+    INSERT INTO c VALUES(8, 9);
+    SELECT count(*) FROM c
+  }
+} {1}
+
+do_execsql_test transaction4.1 {
+  BEGIN;
+  INSERT INTO c VALUES(10, 11);
+  SELECT count(*) FROM c;
+  ROLLBACK;
+  SELECT count(*) FROM c;
+} {1 1}
+
+do_execsql_test transaction4.2 {
+  BEGIN;
+  INSERT INTO c VALUES(12, 13);
+  SELECT count(*) FROM c;
+  COMMIT;
+  SELECT count(*) FROM c;
+} {1 2}
+
+ifcapable vacuum {
+  do_execsql_test transaction5.1 {
+    VACUUM
+  } {}
+}
+
+ifcapable {wal} {
+  do_execsql_test transaction6.1 {
+    PRAGMA wal_checkpoint;
+  } {}
+}
+
+ifcapable journal_mode {
+  do_execsql_test transaction7.1 {
+    PRAGMA journal_mode;
+  } "wal"
+}
+
+finish_test

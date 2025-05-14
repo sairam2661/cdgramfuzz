@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000
+
+proc create_test_table {varname} {
+  global db
+  execsql {
+    CREATE TABLE $varname
+    AS SELECT 'value_' AS name
+    UNION ALL
+    SELECT 'other_value_' AS name
+    LIMIT 10
+  }
+}
+
+proc delete_test_table {varname} {
+  global db
+  execsql {DROP TABLE $varname}
+}
+
+do_test multi-1.1 {
+  execsql {
+    CREATE TABLE t1(id, val);
+  }
+  execsql {
+    INSERT INTO t1 VALUES(1, 10);
+    INSERT INTO t1 VALUES(2, 20);
+  }
+  lrange $::t1 0 0
+} {1 10}
+
+do_execsql_test multi-1.2 {
+  CREATE TABLE t2(id, val);
+  INSERT INTO t2 VALUES(1, 100);
+  INSERT INTO t2 VALUES(2, 200);
+} { }
+unset t2
+
+do_test multi-2.1 {
+  set t5 {}
+  foreach {row} {
+    {1 {value_0}}
+    {2 {value_1}}
+    {3 value_2}
+    {4 value_3}
+    {5 "value_4"}
+    {6 value_5}
+    {7 {value_6}}
+    {8 value_7}
+    {9 value_8}
+    {10 value_9}
+  } {
+    lappend t5 $row
+  }
+  set t5
+} {{1 value_0} {2 value_1} {3 value_2} {4 value_3} {5 value_4} {6 value_5} {7 value_6} {8 value_7} {9 value_8} {10 value_9}}
+
+do_test multi-2.2 {
+  create_test_table t6
+  lrange $::t6 0 0
+} {{value_ value_}}
+
+do_test multi-3.1 {
+  delete_test_table t6
+  lrange $t5 2 2
+} {2 {value_1}}
+
+do_test multi-4.1 {
+  create_test_table t7
+  lrange $::t7 9 9
+} {9 value_8}
+
+do_test multi-4.2 {
+  execsql {
+    SELECT * FROM t1
+  }
+  lrange $::t1 0 0
+} {1 10}
+
+finish_test

@@ -1,0 +1,36 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sql_conflict
+
+set ::timeout 60000
+
+proc sql_conflict_proc {} {
+  global sql_conflictargs
+  lappend sql_conflictargs
+  expr {2}
+}
+
+do_test sql_conflict-1.1 {
+  db close
+  sqlite3 db test2bsj
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES('a', 'b');
+  }
+  set db
+} {} 
+
+do_catchsql_test sql_conflict1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES('c', 'd');
+  INSERT INTO t1 VALUES('e', 'f');
+  ROLLBACK;
+  SELECT * FROM t1;
+} {1 {cannot rollback transaction when in 'deferred' mode}}
+
+ifcapable {utf16} {
+  sqlite3 db utf
+  do_execsql_test sql_conflict1.3 {
+    PRAGMA encoding="UTF-16";
+    CREATE TABLE utf16_table(a);
+    INSERT INTO utf16_table VALUES('α

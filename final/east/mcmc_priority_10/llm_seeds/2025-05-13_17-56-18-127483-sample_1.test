@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithreaded
+
+set ::timeout 60000
+proc timeout {t script} {
+  uplevel $script
+  after $t {error timeout}
+}
+
+proc random_string {length} {
+  for {set i 0} {$i less $length} {incr i} {
+    append str "[string range {abcdefghijklmnopqrstuvwxyz} [expr rand()*$i%26]]"
+  }
+  return $str
+}
+
+set testid 0
+proc test_id {} {
+  global testid
+  incr testid
+  return $testid
+}
+
+proc execsql_test {name cmd} {
+  global db
+  uplevel do_execsql_test "$name.$test_id" $cmd
+}
+
+proc do_clean {db} {
+  db eval {
+    UPDATE sqlite_master SET name WHERE name GLOB 'a\.*' OR name GLOB 'b\.*'
+  }
+  db eval {
+    DELETE FROM a
+  }
+}
+
+execsql_test 1.1 {
+  CREATE TABLE a(id,name,description);
+  BEGIN;
+  INSERT INTO a(id,name) VALUES(1,'name1','');
+  INSERT INTO a(id,name) VALUES(2,'name2','');
+  INSERT INTO a(id,name) VALUES(3,'name3','');
+  COMMIT;
+  SELECT * FROM a;
+} {1 name1 {} 2 name2 {} 3 name3 {}}
+
+set syncargs {}
+proc do_timeout {timeout expr} {
+  uplevel $timeout
+  expr {$timeout eq 0}
+}
+
+do_execsql_test 2.1 {
+  CREATE TABLE b(id PRIMARY KEY);
+  INSERT INTO b VALUES(1);
+  PRAGMA synchronous=0;
+  SELECT * FROM b;
+} {1}
+
+execsql_test 3.1 {
+  PRAGMA wal_checkpoint;
+  PRAGMA page_size;
+} {1 {8192}}
+
+do_execsql_test 3.2 {
+  PRAGMA journal_mode;
+} {wal}
+
+ifcapable journalMode {
+  execsql_test 3.3 {
+    PRAGMA wal_checkpoint;
+    PRAGMA busy_timeout;
+  } {1 {1008}}
+}
+
+finish_test

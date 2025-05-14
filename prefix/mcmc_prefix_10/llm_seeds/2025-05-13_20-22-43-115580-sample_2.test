@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+source $testdirRLF_20_0_00_20_00_00_0_01_0_01_0_0_8_3_3_8_2_8e_0p_6c_0a_8t_00_0b_0i_01_32_8y_0e_0t_0s_0r_0i
+set testprefix "sql"
+
+proc complex_sql_func {} {
+  global complexargs
+  lappend complexargs "current time" "now"
+  expr {0}
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE complex_table(
+    id           PRIMARY KEY,
+    name        NOT NULL,
+    value        NOT NULL,
+    timestamp   NOT NULL DEFAULT 'now'
+  );
+  INSERT INTO complex_table VALUES(1, 'test', 1);
+}
+
+  1
+  do_test complex-1.2  { sql 'SELECT * FROM complex_table ORDER BY id > 1 AND id < 3 AND name = test AND value = 1' } { 1 }
+
+do_execsql_test complex-2.1 {
+  INSERT INTO complex_table VALUES(2, 'test', 2,'2024-07-26 18:42:13');
+}
+0
+do_test complex-2.2 { sql 'SELECT * FROM complex_table ORDER BY id DESC LIMIT 1' } { 2 2 2 test 2024 7 26 18 42 13 }
+
+do_execsql_test complex-3.1 {
+  CREATE INDEX ix_complex_table_value ON complex_table(value)
+}
+0
+do_test complex-3.2 { sql 'SELECT * FROM complex_table WHERE value = 2' } { 2 2 2 test 2024 7 26 18 42 13 }
+
+set testprefix "function_test"
+
+proc create_function {} {
+  db function sqlite_sql {args} "STRING"
+  ifcapable function {
+    do_test function_test1.1 { sqlite_sql a a a } { a a a }
+  }
+}
+
+proc create_function_two {} {
+  global complexargs
+  lappend complexargs "func 'test2'"
+  set function_test2 "func test2"
+}
+try_do_test function_test2.1 { create_function_two }
+catchsql {SELECT $function_test2 } { {SQL logic error near $function_test2} }
+finish_test

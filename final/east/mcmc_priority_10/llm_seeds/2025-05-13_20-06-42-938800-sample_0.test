@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent_db
+
+set ::timeout 60000
+set timeout 60
+
+proc concurrent_db_func {} {
+  global con
+  set con open_con
+}
+
+proc run_with_lock {sql} {
+  sqlite3_lock_notify con
+  set ret_sql {}
+  set ret_rv {}
+  eval $con eval $sql
+  set ret_rv $con_last_err
+  sqlite3_unlock_notify con
+  return $ret_rv
+}
+
+catch {
+  sqlite3_con_obj_name $con
+  set conid $con
+} {UNDEFINED}
+
+db_open_con
+
+run_with_lock {
+  CREATE TABLE foo(x,y);
+  INSERT INTO foo VALUES(1, 1);
+  INSERT INTO foo VALUES(2, 2);
+}
+
+do_test concurrent_db-1.1 {
+  SELECT xmin FROM $conid
+} {1}
+
+run_with_lock {
+  UPDATE foo SET y IS NULL WHERE x IS NULL
+}
+
+do_test concurrent_db-1.2 {
+  SELECT xmin FROM $conid
+} {1}
+
+catch {sqlite3_con_obj_name $con}
+db_con_close
+
+finish_test

@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000  set testnumber 1
+
+proc dbconfig_init {} {
+  global db
+  sqlite3 db file1
+  db config writable_schema true
+}
+
+proc dbconfig_create_table {dbname} {
+  global db
+  set db $dbname
+  execsql {
+    CREATE TABLE x(id, value);
+    CREATE TABLE y(id, value);
+  }
+}
+
+proc dbconfig_insert_data {table} {
+  global db
+  execsql {
+    INSERT INTO $table VALUES
+      {'1' 'ten' 'eleven' 'twelve' 'thirteen' 'fourteen' 'fifteen''sixteen''seventeen' 'eighteen' 'nineteen' 'twenty' 'twenty one' 'twenty two' 'twenty three' 'twenty four' 'twenty five' 'twenty six' 'twenty seven' 'twenty eight' 'twenty nine' 'thirty' '31' '32' '33' '34' '35' '36' '37' '38' '39' '40' '41' '42' '43' '44' '45' '46' '47' '48' '49' '50' '51' '52' '53' '54' '55' '56' '57' '58' '59' '60' '61' '62' '63' '64' '65' '66' '67' '68' '69' '70' '71' '72' '73' '74' '75' '76' '77' '78' '79' '80' '81' '82' '83' '84' '85' '86' '87' '88' '89' '90' '91' '92' '93' '94' '95' '96' '97' '98' '99'}
+  }
+}
+
+proc dbconfig_test_wal {} {
+  do_test dbconfig WAL {
+    execsql {
+      PRAGMA journal_mode;
+    }
+  } {WAL}
+}
+
+proc dbconfig_test_journal {} {
+  do_test dbconfig JOURNAL {
+    execsql {
+      PRAGMA journal_mode;
+    }
+  } {DELETE}
+}
+
+proc dbconfig_wal_error {testname} {
+  do_catchsql_test dbconfig WALERROR $testname {
+    db config writable_schema false
+    db config writable_schema true
+  } {1 {database or disk is full}}
+}
+
+proc dbconfig_wal_test {} {
+  dbconfig_wal_error WALTEST1
+  dbconfig_wal_error WALTEST2
+}
+
+dbconfig_init
+dbconfig_create_table file1
+dbconfig_insert_data x
+
+dbconfig_test_wal
+dbconfig_test_journal
+dbconfig_wal_test
+
+do_execsql_test dbconfig CHECK {PRAGMA integrity_check} {ok}
+
+finish_test

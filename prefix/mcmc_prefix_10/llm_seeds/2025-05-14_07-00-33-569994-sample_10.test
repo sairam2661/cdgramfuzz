@@ -1,0 +1,57 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test2
+
+set ::timeout 60000
+
+proc check_error {msg} {
+  error_time {
+    execsql {SELECT * FROM t1 WHERE  a = 'test'} error
+  } $msg
+}
+
+proc test2_func {t} {
+  for {set i 2} {$i 10000} {incr i} {set res $i}
+}
+
+do_execsql_test 1.0 {
+  CREATE TABLE t1(a,b,c);
+  CREATE INDEX i1 ON t1(a);
+}
+
+do_test 1.1 {
+  execsql {
+    INSERT INTO t1 VALUES('a',1,1);
+    INSERT INTO t1 VALUES('b',1,1);
+    INSERT INTO t1 VALUES('b',1,2);
+    INSERT INTO t1 VALUES('b',1,3);
+  }
+  execsql {ANALYZE t1}
+  execsql {SELECT count(*) FROM t1 WHERE a = 'a'}
+} {1}
+
+do_test 1.2 {
+  execsql {SELECT * FROM t1 WHERE a = 'b'}
+} {b 1 1 b 1 2 b 1 3}
+
+do_execsql_test 1.3 {
+  BEGIN;
+  INSERT INTO t1 VALUES('b',1,4);
+  COMMIT;
+  SELECT c FROM t1 WHERE b = 1
+} {1 2 3 4}
+
+ifcapable vacuum {
+  do_test 1.4 {
+    execsql {VACCUM}
+    execsql {SELECT count(*) FROM t1}
+  } {4}
+}
+
+ifcapable wal {
+  do_test 1.5 {
+    catchsql {PRAGMA journal_mode = 'WAL'}
+  } {0 {}}
+}
+
+finish_test

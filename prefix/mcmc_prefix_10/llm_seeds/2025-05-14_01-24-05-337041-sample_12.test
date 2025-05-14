@@ -1,0 +1,111 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc timed_query {sql} {
+  eval $::testprefix_test tquery $::testprefix_db $sql
+  set start_time 0
+  set timeo  $::timeoout
+  set maxtries 5
+  while { $tries eq 0 } {
+    incr start_time
+    uplevel eval block $::testprefix_db $sql $start_time
+    incr tries
+    if { $start_time eq $timeo } { break }
+  }
+  eval $::testprefix_test integrity_check $::testprefix_db
+}
+
+proc tquery {db stmt time} {
+  if { "[execsql $db $stmt]" eq 0 } { return ok }
+}
+
+set testname {}
+proc run_test {name} {
+  global testname
+  if { $testname ne $name } {
+    uplevel eval do_execsql_test $name {
+      PRAGMA journal_mode='WAL';
+    }
+    set testname $name
+  } else {
+    eval $::testprefix_test integrity_check $::testprefix_db
+  }
+}
+
+proc tcase {test} {
+  uplevel eval run_test $test
+}
+
+tcase complex_test1.1 {
+  execsql {
+    CREATE TABLE b(x)
+  }
+  execsql {
+    INSERT INTO b VALUES(7);
+    INSERT INTO b VALUES(8);
+  }
+}
+
+tcase complex_test2.1 {
+  foreach {name sql} {
+    table1 {
+      CREATE TABLE c(x, y);
+    }
+    table2 {
+      CREATE TABLE d(x, y);
+    }
+    table3 {
+      CREATE TABLE e(x, y);
+    }
+  } {
+    execsql $sql
+  }
+}
+
+tcase complex_test3.1 {
+  execsql {
+    BEGIN;
+    INSERT INTO b VALUES(9);
+    COMMIT;
+    SELECT * FROM b;
+  }
+}
+
+ifcapable wal {
+  tcase complex_test4.1 {
+    execsql {
+      CREATE TABLE f(x, y);
+      INSERT INTO f VALUES('wal_test_1', 'wal_test_2');
+    }
+  }
+}
+
+tcase complex_test5.1 {
+  execsql {
+    SELECT count(*) FROM a;
+    SELECT count(*) FROM b;
+    SELECT count(*) FROM e;
+  }
+}
+
+do_test compe_test_error1 {
+  execsql {
+    INSERT INTO a VALUES(10);
+  }
+  db eval SELECT 0 AS nothing
+  db eval {
+    error msg "This should error out!"
+  }
+} error
+
+do_test complex_test_error2 {
+  execsql {
+    INSERT INTO a
+    VALUES(11, 12, 13);
+  }
+} {11 12 13}
+
+finish_test

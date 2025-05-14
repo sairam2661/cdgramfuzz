@@ -1,0 +1,166 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite
+
+set ::timeout 60000  set timeout {6000} set defaultTimeout 10
+proc do_test {name code args {result {}}} {
+  global ioerr
+  if {$result eq ""} {set result {}}
+  if {$result ne ""} {
+    uplevel set result "$result"
+  }
+  if { $result N Ole  ne "O"} {
+    error "expected: $result,  actual: [set result]"
+   }
+  set res code
+  if {$code eq "ok"} {
+    uplevel "puts -nonewline \"$name    done    time    $::tinfoout    $res{1}    $res{2}    $res{3}    $res{4}    $res{5}    $res{6}    $res{7}    $res{8}    $res{9}"
+    return "ok"
+  }
+  set errn [expr $res]
+  set errc [execsql errorinfo]
+  set errm [regexp -line -expanded {^(.+) in module "sqlite3"} $errc -> err]
+  if {$errc eq ""} {
+    set errn -1
+    set errc {unknown error}
+    set err $code
+  }
+  uplevel "puts {ERROR    $res{1}    $errn Error Codes $errc $errm $err}"
+  set res "error"
+  return -code error $res
+}
+
+do_test complex-1.1 {
+  execsql {
+    -- Create and populate a table
+    CREATE TABLE customers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT
+    );
+
+    INSERT INTO customers (name, email)
+    VALUES 
+    ('John Doe', 'johndoe@example.com'),
+    ('Jane Doe', 'janedoe@example.com');
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  -- Insert new customer
+  INSERT INTO customers (name, email)
+  VALUES ('Bob Brown', 'bobbrown@example.com');
+
+  SELECT * FROM customers;
+} {1 John Doe johndoe@example.com 2 Jane Doe janedoe@example.com 3 Bob Brown bobbrown@example.com}
+
+do_execsql_test complex-1.3 {
+  -- Query customers whose names start with 'B'
+  SELECT * FROM customers WHERE name LIKE 'B%';
+} {3 Bob Brown bobbrown@example.com}
+
+ifcapable windowfunction {
+  do_execsql_test complex-1.4 {
+    -- Window function: ranking customers by age (id)
+    SELECT *, 
+           SELECT COUNT(id) OVER (ORDER BY id) AS row_number
+    FROM sqlite_main.customers;
+  } {1 John Doe johndoe@example.com 1 2 Jane Doe janedoe@example.com 2 3 Bob Brown bobbrown@example.com 3}
+}
+
+finish_test
+
+do_test column-1.1 {
+  execsql {
+    -- Create a table with multiple columns
+    CREATE TABLE employees (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      department TEXT,
+      salary REAL,
+      hire_date DATE,
+      employment_status TEXT
+    );
+
+    -- Insert data
+    INSERT INTO employees (name, department, salary, hire_date, employment_status)
+    VALUES 
+    ('Mark Johnson', 'Sales', 50000.00, '2020-01-01', 'Full-time'),
+    ('Diana Wilson', 'Marketing', 40000.00, '2019-01-01', 'Permanent');
+
+    -- Get column names
+    SELECT name, type FROM pragma_table_info('employees');
+  }
+} {{name text} {department text} {salary real} {hire_date date} {employment_status text}}
+
+finish_test
+
+do_test table_info-1.1 {
+  execsql {
+    -- Create a table
+    CREATE TABLE IF NOT EXISTS cars (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      color TEXT,
+      price REAL,
+      country TEXT
+    );
+
+    -- Create a table with the same name as an existing one
+    CREATE TABLE cars (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      color TEXT,
+      price REAL,
+      city TEXT,
+      year TEXT
+    );
+  }
+} {}
+do_test table_info-1.2 {
+  execsql {
+    -- Get table info for the 'cars' table
+    SELECT * FROM pragma_table_info('cars');
+  }
+} {1 name TEXT 0 1 name TEXT 0 2 color TEXT 0 3 price REAL 0 4 country TEXT 0 5 city TEXT 0 6 year TEXT 0}
+do_test table_info-1.3 {
+  execsql {
+    -- Query the column names of the existing table
+    SELECT name FROM (
+      SELECT name, id 
+      FROM pragma_table_info('cars') 
+      ORDER BY id SELECTION
+    );
+  }
+} {id name color price country city year}
+
+finish_test
+
+do_test constraint-1.1 {
+  execsql {
+    -- Create a table with primary key constraint
+    CREATE TABLE products (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      description TEXT
+    );
+
+    -- Insert data with duplicate id
+    INSERT INTO products (name, description)
+    VALUES ('Product 1', 'Description 1');
+    INSERT INTO products (name, description)
+    VALUES ('Product 2', 'Description 2'), ('Product 2', 'Description 3');
+  }
+} {1 {near "Product 2": syntax error}}
+do_test constraint-1.2 {
+  execsql {
+    -- Drop the existing id column and create a new id column with autoincrement property
+    ALTER TABLE products RENAME TO products_old;
+    CREATE TABLE products (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      description TEXT
+    );
+    INSERT INTO products (name, description)
+    VALUES ('Product 1', 'Description 1'),
+          ('Product 2',

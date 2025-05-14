@@ -1,0 +1,86 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+
+set testprefix complex_tests
+
+set ::timeout 60000
+
+proc complex_proc {} {
+  global complexargs
+  lappend complexargs
+  if { $complexargs ne "" } { set timeout 1000}
+  set timeout 2000
+  expr { $complexargs ne {} }
+}
+
+proc sqlite_backup {} {
+  sqlite3 db_name db
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+  }
+  execsql {
+    SELECT * FROM a
+  }
+  close db_name
+}
+
+set filename  "test.db"
+forcedelete $filename
+set db sqlite_backup
+set testvfs "testvfs"
+
+do_execsql_test complex-1.1 { 
+  BEGIN;
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  COMMIT;
+} {1}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(2);
+  SELECT * FROM b;
+} {2}
+
+ifcapable wal_shm {
+  do_execsql_test complex-1.3 {
+    PRAGMA wal_autocheckpoint=1;
+    CREATE TABLE c(z);
+    INSERT INTO c VALUES(3);
+    SELECT * FROM c;
+  } {3}
+}
+
+do_test complex-1.4 { 
+  execsql {
+    VACUUM 
+  }
+} {}
+
+do_test complex-1.5 { 
+  sqlite_backup
+} {}
+
+sqlite3 db_name testvfs
+set rc "[catchsql { 
+  SELECT * FROM [db main]a}]"
+do_test complex-2.1 { 
+  testvfs errorcode
+  llength $rc
+} {0}
+close db_name
+
+do_test complex-2.5 { 
+  set testvfs errorcode
+  testvfs errorlog
+} {0}
+
+do_test complex-2.6 { 
+  execsql {
+    SELECT * FROM a
+  }
+} {1}
+
+finish_test

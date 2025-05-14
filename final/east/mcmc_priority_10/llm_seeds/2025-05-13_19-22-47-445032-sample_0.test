@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix nested_transactions
+
+set ::timeout 60000  cmdline option for timeout
+set sqlite_options "-init main.db"
+set database_path "/tmp/sqlite_test.db"
+
+proc rollback_sql {} {
+  puts "Rolling back changes..."
+  execsql {
+    BEGIN;
+    ROLLBACK;
+  }
+}
+
+do_test nested-1.1 {
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(1);
+  }
+} {1}
+
+do_execsql_test nested-1.2 {
+  BEGIN;
+  INSERT INTO c VALUES(2);
+  COMMIT;
+  SELECT count(*) FROM c;
+} {2}
+
+do_execsql_test nested-2.1 {
+  BEGIN;
+  INSERT INTO c VALUES(3);
+  INSERT INTO c VALUES(4);
+  BEGIN;
+  INSERT INTO c VALUES(5);
+  COMMIT;
+  COMMIT;
+  SELECT count(*) FROM c;
+} {5}
+
+do_test nested-3.1 {
+  rollback_sql
+} {}
+
+do_execsql_test nested-4.1 {
+  INSERT INTO c VALUES(6);
+  BEGIN;
+  INSERT INTO c VALUES(7);
+  ROLLBACK;
+  SELECT count(*) FROM c;
+} {6}
+
+ifcapable wal {
+  do_execsql_test nested-5.1 {
+    PRAGMA journal_mode = 'wal';
+    INSERT INTO c VALUES(8);
+    COMMIT;
+    SELECT count(*) FROM c;
+  } {8}
+}
+
+finish_test

@@ -1,0 +1,89 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc my_hash {} {
+  set result ""
+  foreach byte $::blob {
+    binary scan $byte H $result
+  }
+  return $result
+}
+
+do_execsql_test 1.1 {
+  BEGIN;
+  CREATE TABLE htable(x);
+  INSERT INTO htable VALUES(0);
+  INSERT INTO htable VALUES(255);
+  INSERT INTO htable VALUES(100);
+  COMMIT;
+}
+
+set blob ""
+for {set i 1} {$i le 400} {incr i} {
+  binary format c $i
+  set blob $blob$i
+}
+
+testeh 2.1 {
+  select x from htable order by x
+} {0 100 255}
+
+testeh 2.2 {
+  select my_hashblob from htable order by x
+} {}
+
+proc is_equal {a b} {
+  foreach {x y} $a break
+  return $my_hash $x $y
+}
+
+testeh 3.1 {
+  select my_hashblob from htable order by x
+} {a {is_equal {0 {}} {255 {}}}
+                        a {is_equal {0 {}} {100 {}}}
+                        a {is_equal {100 {}} {255 {}}}}
+
+set up {
+  execsql {
+    CREATE TABLE t1(a, b, c, d, e);
+    INSERT INTO t1 VALUES(1, 1, 0, 0, 0);
+    INSERT INTO t1 VALUES(2, 1, 0, 0, 0);
+    INSERT INTO t1 VALUES(3, 1, 0, 0, 0);
+    CREATE TABLE t1a(a);
+    INSERT INTO t1a SELECT a;
+  }
+}
+
+test_all 4.5 {
+  set n0 0
+  set n1 0
+  testeh 4.4 {
+    db eval {SELECT * FROM t1}
+  } {a b c d e}
+  while {$n0 ne 5} {
+    foreach row $tcl_result {
+      foreach {a b c d e} $row break
+      if {$a eq $b} {incr n0}
+      if {$a eq $c} {incr n1}
+    }
+  }
+  if {0} {is_equal {2 3 4} { $n0 $n1 }}
+}
+
+test_all 4.10 {
+  cleanup
+}
+
+test_execsql_errmsg 5.1 {
+  PRAGMA unsupported;
+} {PRAGMA unsupported}
+
+test_execsql_errmsg 5.2 {
+  PRAGMA journal_mode;
+  PRAGMA unsupported;
+} {PRAGMA unsupported}
+
+finish_test

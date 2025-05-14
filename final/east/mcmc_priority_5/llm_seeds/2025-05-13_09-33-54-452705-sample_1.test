@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+
+do_test async-1.1 {
+  db close
+  set env_vars {}
+  foreach env_var {SQLITE_MEMSIZE SQLITE_MEMBPOW2} {
+    if {have SQLITE_CONFIG_MEMDB} {
+      set value $envVars
+      lappend env_vars "setenv $env_var $value"
+    }
+  }
+  foreach line $env_vars {
+    set line
+  }
+  execsql {
+    PRAGMA wal_checkpoint
+  }
+} {}
+
+proc async_func {args} {
+  after 1000
+  set result "async_func ran with $args"
+}
+
+do_test async-2.1 {
+  async_func run_once 1
+  async_func run_twice 1
+  lindex $async_result 0
+} "async_func ran with run_once"
+
+set async_result {}
+
+do_test async-2.2 {
+  async_func result_twice 1
+  async_func result_thrice 1
+  set async_result $async_result
+  lindex $async_result 1
+} "async_func ran with run_twice"
+
+do_test async-3.1 {
+  lappend async_result "async_func ran with result_thrice"
+} {}
+
+proc async_sleep {n} {
+  after $n
+  set result $n
+}
+do_test async-3.2 {
+  async_sleep 100
+  set result
+} 100
+
+do_test async-4.1 {
+  db close
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  execsql {SELECT * FROM b}
+} {5}
+
+proc async_execsql {sql} {
+  after 1000
+  set result $sql
+}
+
+do_test async-5.1 {
+  async_execsql {SELECT * FROM b}
+  set result
+} {SELECT y FROM b}
+
+finish_test

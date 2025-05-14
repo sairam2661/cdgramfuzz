@@ -1,0 +1,128 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+set timeout $::timeoout
+execsql {
+  PRAGMA synchronous=0;
+  PRAGMA journal_mode=3;
+  PRAGMA journal_size_limit=2097152;
+  PRAGMA temp_store=2;
+  PRAGMA foreign_keys=1;
+}
+
+proc transaction_proc {} {
+  global txns
+  lappend txns
+}
+
+proc rollback_proc {} {
+  global txns exception
+  if { $exception } {
+    execsql {
+      ROLLBACK;
+    }
+    set exception 0
+  } else {
+    foreach txn $txns {
+      transaction_proc
+    }
+  }
+}
+
+proc checksumProc {db} {
+  set cksum 0
+  db eval {CREATE TABLE ck2(t)}
+  db eval {INSERT INTO ck2 VALUES(1)}
+  return $cksum
+}
+
+proc checksumProc2 {db} {
+  set cksum 123
+  db eval {INSERT INTO a VALUES(4)}
+  return $cksum
+}
+
+do_test transactions-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+  execsql {
+    SELECT x FROM a
+  }
+} {1}
+
+do_execsql_test transactions-1.2 {
+  BEGIN;
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(2);
+  COMMIT;
+  SELECT x FROM b
+} {2}
+
+set txns 0
+set exception 0
+
+do_test transactions-1.3 {
+  transaction_proc
+  execsql {
+    INSERT INTO a VALUES(3);
+  }
+  rollback_proc
+  delete transaction_proc
+  delete rollback_proc
+  db eval {ROLLBACK}
+} {}
+
+proc queryProc {db} {
+  execsql {SELECT * FROM a WHERE  DATEADDa = 'date';}
+}
+
+proc queryProc2 {db} {
+  execsql {SELECT * FROM aa WHERE x = 5;}
+}
+
+do_execsql_test transactions-1.4 {
+  BEGIN;
+  INSERT INTO aa VALUES(1, 'date');
+  COMMIT;
+} {}
+
+set txns 0
+set exception 0
+
+catchsql {
+  CHECKSUM
+} {1 {near "CHECKSUM" syntax error or missing closing quote}}
+
+execsql {
+  CREATE TABLE aa(x,y);
+  INSERT INTO aa VALUES(5,30);
+}
+do_execsql_test transactions-1.5 {
+  CREATE TABLE bb(x,y);
+  INSERT INTO bb VALUES(40,50);
+} {}
+do_execsql_test transactions-1.6 {
+  CREATE TABLE cc(x,y);
+  INSERT INTO cc VALUES(60,70);
+} {}
+
+execsql {
+  SELECT x FROM bb
+}
+execsql {
+  SELECT x FROM aa
+}
+
+assertions {
+  assert {checksumproc 4} {5}
+  assert {checksumproc2 4} {123}
+  assert {checksumProc 1} {0}
+}
+db eval {COMMIT}
+set db {}
+
+finish_test

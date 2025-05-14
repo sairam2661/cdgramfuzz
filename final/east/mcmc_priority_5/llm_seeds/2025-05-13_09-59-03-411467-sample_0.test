@@ -1,0 +1,87 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+set sqlite_limit 2000
+
+proc sleep_ms {ms} {
+  after $ms { set test_result 1 }
+}
+
+proc test_thread {id} {
+  global test_result
+  set thread_id $id
+  catch {
+    set result {}
+    set thread_result {}
+    for {set i 100} {$i} {set i $i} {
+      incr result
+      lappend thread_result  $result
+      sleep_ms 1
+    }
+
+    set test_result $result
+    set thread_test_result $thread_result
+    unset result
+  } result
+}
+
+do_test multi-1.0 {
+  set test_result 1
+  set thread_result {}
+  sqlite3 db test_ThreadTest
+  db eval {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+  }
+  ifcapable wal {
+    sqlite3_wal_hook db 1 multiWalHook
+  }
+
+  ifcapable {fts5} {
+    proc make_foo {table} {
+      db eval {
+        CREATE VIRTUAL TABLE foo $table USING fts5
+      }
+    }
+    foreach table {doclist matchinfo} {
+      make_foo $table
+    }
+  }
+} {1}
+
+proc multiWalHook {db data} {
+  upvar $data test_result
+  global thread_result
+  set thread_result 0
+}
+
+do_test multi-1.1 {
+  set test_result {}
+  thread start thread1
+  thread start thread2
+  thread sleep 1000
+  sqlite3_extended_errcode db
+} {SQLITE_LOCKED}
+
+do_test multi-1.2 {
+  db eval {SELECT x FROM t1}
+  db eval {UPDATE t1 SET x}
+  db eval {SELECT x FROM t1}
+  db rollback
+} {1}
+
+do_test multi-1.3 {
+  sqlite_limit 10000 0
+  sqlite_limit 100000 0
+  sqlite_limit 0 1000000
+  sqlite_limit 0 1000000
+} {0 0 1000000}
+
+ifcapable journalMode {
+  do_test multi-1.4 {
+    execsql {PRAGMA journal_mode}
+  } {wal}
+}
+finish_test

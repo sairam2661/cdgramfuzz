@@ -1,0 +1,65 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc wal_read_check {db} {
+  ifcapable wal {
+    set wal_mode "WAL"
+    execsql {
+      PRAGMA journal_mode
+    } $db
+  } else {
+    set wal_mode "DELETE"
+  }
+}
+
+do_test complex_sql-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1);
+    INSERT INTO b VALUES(2);
+  }
+  execsql {SELECT * FROM b}
+} {1 2}
+
+do_execsql_test complex_sql-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(3);
+  COMMIT;
+  SELECT * FROM b;
+} {1 2 3}
+
+do_test complex_sql-1.3 {
+  wal_read_check "main"
+} {WAL}
+
+ifcapable windowsmode {
+  do_test complex_sql-1.4 {
+    sqlite3 db2 testdbname
+    execsql {
+      SELECT * FROM b;
+    } db2
+  } {1 2 3}
+}
+
+ifcapable auto_vacuum {
+  do_test complex_sql-1.5 {
+    execsql {
+      CREATE TABLE c(z);
+      INSERT INTO c VALUES('abc');
+      INSERT INTO c VALUES('def');
+    }
+    execsql {
+      SELECT * FROM c;
+    }
+  } {abc def}
+}
+
+do_test complex_sql-1.6 {
+  set db main
+  wal_read_check $db
+} {WAL}
+
+finish_test

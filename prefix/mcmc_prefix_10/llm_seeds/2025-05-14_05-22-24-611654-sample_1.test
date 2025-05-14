@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced
+
+set ::timeout 60000
+
+proc advanced_proc {} {
+  global advancedargs
+  lappend advancedargs
+  expr {99} 
+}
+
+proc assert_stmt {sql} {
+  set sql2 $sql
+  append sql2 "; SELECT sql FROM sqlite_master WHERE type='table' AND name='advanced';"
+  uplevel do_execsql_test $sql2 advanced_assert_0
+}
+
+proc advanced_assert_0 {result} {
+  lappend result {CREATE TABLE advanced(x)}
+  expr {$result eq "1 {4  CREATE TABLE advanced(x)}"}
+}
+
+proc test_insert {} {
+  do_execsql_test advanced_insert_0 {
+    CREATE TABLE temp(t);
+    INSERT INTO temp VALUES(1);
+  } {}
+  do_execsql_test advanced_insert_1 {
+    INSERT INTO temp VALUES(2);
+  } {}
+}
+
+proc test_delete {} {
+  do_execsql_test advanced_delete_0 {
+    DELETE FROM temp WHERE t IS NULL
+  } {}
+  do_execsql_test advanced_delete_1 {
+    DELETE FROM temp WHERE t IS NOT NULL
+  } {}
+}
+
+proc test_update {} {
+  do_execsql_test advanced_update_0 {
+    CREATE TABLE temp(t);
+    INSERT INTO temp VALUES(1);
+  } {}
+  do_execsql_test advanced_update_1 {
+    UPDATE temp SET t IS NULL
+  } {}
+  do_execsql_test advanced_update_2 {
+    UPDATE temp SET t IS NOT NULL
+  } {}
+}
+
+test_insert
+test_update
+test_delete
+
+do_execsql_test advanced-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  SELECT count(*) FROM a
+} {1}
+
+do_execsql_test advanced-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {2}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode=8}
+} {0 {}}
+
+do_execsql_test advanced-2.1 {
+  PRAGMA journal_mode
+} {8}
+
+assert_stmt {
+  PRAGMA integrity_check;
+}
+
+finish_test

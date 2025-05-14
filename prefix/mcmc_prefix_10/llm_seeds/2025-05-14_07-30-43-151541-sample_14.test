@@ -1,0 +1,79 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+set dbconfigoptions {
+  {WAL wal}
+  {JournalMode journal_mode}
+  {CacheSize cache_size}
+  {Synchronous synchronous}
+}
+
+proc set_dbconfig {} {
+  foreach {key value} $::dbconfigoptions {
+    set sqlite_options "-init dbconfig.db -configkey $key -configval $value"
+  }
+  execsql {
+    PRAGMA data_store_directory = ':memory:';
+  }
+}
+
+proc sqlite_options {} {
+  global sqlite_options
+  set options ""
+  foreach configoption $sqlite_options {
+    set {key value} $configoption
+    lappend options "-D${key}=${value}"
+  }
+  set options
+}
+
+sqlite_options
+set_dbconfig
+
+do_execsql_test 1.1 {
+  SELECT name FROM sqlite_master
+} {a}
+
+do_execsql_test 2.1 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {4}
+
+do_execsql_test 3.1 {
+  PRAGMA journal_mode
+} {wal}
+
+do_execsql_test 4.1 {
+  PRAGMA synchronous
+} {ON}
+
+do_execsql_test 4.2 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(1);
+  PRAGMA cache_size;
+} {100 100}
+
+do_test 5.1 {
+  execsql {
+    BEGIN;
+    INSERT INTO a VALUES(5);
+    COMMIT;
+    SELECT count(*) FROM a;
+  }
+} {5}
+
+do_execsql_test 6.1 {
+  PRAGMA wal_checkpoint;
+  PRAGMA wal_checkpoint;
+}
+ 
+sqlite_options
+execsql {
+  VACUUM
+}
+
+finish_test

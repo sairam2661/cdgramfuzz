@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiquery
+
+set ::timeout 60000
+db settings log_statement 1
+db authorizer proc multi_query {
+  db errorinfo set "Authorization denied"
+  return 1
+}
+
+proc multi_query {sql} {
+  global multi_query_test
+  if {$multi_query_test} {
+    execsql "INSERT INTO a VALUES(1))"
+  }
+  execsql $sql
+  if {$multi_query_test} {
+    execsql "DROP TABLE a"
+  }
+}
+
+proc multi_query_test {} {
+  global multi_query_test
+  set multi_query_test $multi_query_test
+}
+
+do_execsql_test multi-1.1 {
+  CREATE TABLE a(x);
+  CREATE TABLE b(y);
+  SELECT * FROM b;
+} {}
+
+proc multi_query_test {} {
+  global multi_query_test
+  set multi_query_test 1
+}
+
+do_execsql_test multi-1.2 {
+  SELECT * FROM b;
+  CREATE TABLE c(z);
+  SELECT * FROM c;
+} {}
+
+proc multi_query_test {} {
+  global multi_query_test
+  set multi_query_test 0
+}
+
+do_execsql_test multi-1.3 {
+  SELECT z FROM c WHERE x=1;
+  CREATE TABLE d(w);
+  SELECT w FROM d;
+} {}
+
+finish_test

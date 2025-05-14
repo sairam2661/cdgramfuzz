@@ -1,0 +1,69 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbstat
+
+set ::timeout 60000
+set testname "Database Statistics Test"
+
+proc dbstat_proc {} {
+  global dbstatargs
+  lappend dbstatargs
+  expr {expr {$::timeoout}}
+}
+
+do_test dbstat-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+    INSERT INTO a VALUES(1);
+    INSERT INTO b VALUES(2);
+  }
+  execsql {
+    ANALYZE a
+    ANALYZE b
+    SELECT countrows FROM sqlite_stat1 WHERE tbl '=' 'a'
+  }
+} {1}
+
+do_execsql_test dbstat-2.1 {
+  PRAGMA page_size = 1024;
+  PRAGMA cache_size = 1000;
+} {}
+
+do_test dbstat-3.1 {
+  execsql {
+    CREATE INDEX i1 ON a(x);
+    CREATE INDEX i2 ON b(y);
+  }
+  execsql {
+    CREATE INDEX i3 ON a(x)
+  }
+} {3}
+
+do_execsql_test dbstat-4.1 {
+  PRAGMA integrity_check;
+} {}
+
+ifcapable wal_mode {
+  do_test dbstat-5.1 {
+    db eval {
+      CREATE VIRTUAL TABLE v1 USING rtree
+        a 12     b 45      c 78      n 0 12 0 45 1 78
+      CREATE VIRTUAL TABLE v2 USING rtree
+        a 12     b 45      c 78      n 0 12 0 45 1 78
+    }
+    list
+  } {v1 v2 v1 v2}
+}
+
+ifcapable tempdb {
+  do_test dbstat-6.1 {
+    db eval {
+      SELECT name
+        FROM sqlite_temp_master
+        WHERE type IN  {'table' 'index'}
+    }
+  } {}
+}
+
+finish_test

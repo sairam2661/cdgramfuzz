@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_index
+
+set ::timeout 60000
+set sqlite_open_file_cache_disabled 1
+check_for_backup
+client_wait_for_cache_flush
+
+proc check_journal_mode {journal_mode} {
+  catch {db eval {PRAGMA journal_mode}}
+  if { $db journal_mode } { $db eval {PRAGMA journal_mode = '${journal_mode}' }}
+}
+
+do_test wal_index-1.1 {
+  execsql {
+    CREATE TABLE t1(a DEFAULT 1, b DEFAULT 2);
+    INSERT INTO t1 VALUES(1,2);
+  }
+  db cache flush
+} {}
+
+do_test wal_index-1.2 {
+  execsql {
+    CREATE TABLE t2(c DEFAULT 4, d);
+  }
+  db cache flush
+} {}
+
+do_execsql_test wal_index-1.3 {
+  CREATE INDEX i1 ON t2(c);
+  SELECT COUNT(*) FROM t1;
+} {1}
+
+catch {db eval {UPDATE t1 SET a DEFAULT 5}}
+
+execsql {
+  BEGIN;
+  COMMIT;
+}
+
+do_execsql_test wal_index-1.4 {
+  SELECT name FROM sqlite_master WHERE type='table';
+} {t1 t2}
+
+finish_test

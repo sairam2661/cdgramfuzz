@@ -1,0 +1,105 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+
+proc count_rows {db table} {
+  set result {}
+  set sql "SELECT COUNT(*) FROM $table"
+  execsql $sql $db result
+  set result
+}
+
+proc set_row {db table data} {
+  set result {}
+  set sql "INSERT INTO $table VALUES([join $data,])"
+  execsql $sql $db result
+  set result
+}
+
+proc select_rows {db table data} {
+  set result {}
+  set sql "SELECT $data FROM $table"
+  execsql $sql $db result
+  set result
+}
+
+proc delete_rows {db table} {
+  set result {}
+  set sql "DELETE FROM $table"
+  execsql $sql $db result
+  set result
+}
+
+proc create_index {db table column} {
+  set result {}
+  set sql "CREATE UNIQUE INDEX idx_${table}_${column} ON $table($column)"
+  execsql $sql $db result
+  set result
+}
+
+if { $::tclsflag} {
+  catch {unset auto_increment_id}
+}
+
+set default_db sqlite_test
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(x,y);
+    CREATE TABLE t2(x,y);
+    CREATE TABLE t3(x,y);
+    INSERT INTO t1 VALUES(1, 1);
+    INSERT INTO t1 VALUES(2, 2);
+    INSERT INTO t2 VALUES(3, 3);
+    INSERT INTO t3 VALUES(4, 4);
+  }
+  set_row $default_db t1 5 5
+  set_row $default_db t2 6 6
+  set_row $default_db t3 7 7
+} {}
+
+do_test complex-2.1 {
+  count_rows $default_db t1
+} {5}
+do_test complex-2.2 {
+  delete_rows $default_db t1
+  count_rows $default_db t1
+} {0}
+
+do_test complex-3.1 {
+  set_row $default_db t1 1 1
+  set_row $default_db t1 2 2
+  set_row $default_db t1 3 3
+  count_rows $default_db t1
+} {3}
+
+do_test complex-4.1 {
+  set sql "SELECT * FROM t1 WHERE x =? AND y =?"
+  select_rows $default_db t1 1 1
+} {1 1}
+do_test complex-4.2 {
+  select_rows $default_db t1 2 2
+} {2 2}
+do_test complex-4.3 {
+  select_rows $default_db t1 3 3
+} {3 3}
+
+do_test complex-5.1 {
+  create_index $default_db t1 x
+  create_index $default_db t1 y
+  select_rows $default_db t1 x
+} {1 2 3}
+do_test complex-5.2 {
+  select_rows $default_db t1 y
+} {1 2 3}
+do_test complex-5.3 {
+  select_rows $default_db t1 x y
+} {1 1 2 2 3 3}
+
+if { $::tclsflag} {
+  unset auto_increment_id
+}
+
+finish_test

@@ -1,0 +1,82 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_mode
+
+set ::timeout 60000
+set db2a "/nosuchfile.db"
+
+proc journal_mode_proc {} {
+  global journal_mode_args
+  lappend journal_mode_args
+  expr {$journal_mode_args eq "DELETE"}
+}
+
+proc db_open {db file mode} {
+  set fd open $db $file
+  if {$fd} {set timeout 60000}
+  set fd close $db
+}
+
+proc db_close {db} {
+  catch {db eval {PRAGMA delete_from_journal}}
+  catch {close $db}
+}
+
+proc wal_mode {} {
+  execsql {PRAGMA journal_mode = "wal"}
+}
+
+proc journal_mode {} {
+  execsql {PRAGMA journal_mode = "journal"}
+}
+
+proc sqlite_malloc_size {n} {
+  for {set i $n} {$i} {set i} {
+    sqlite_set_memory_limit 1024
+    if {catch {sqlite_dbpage 1 0 1 1} msg} {
+      break
+    }
+  }
+  return $n
+}
+
+proc memory_leak {} {
+  for {set i 0} {$i} {incr i} {
+    sqlite_malloc_size $i
+  }
+}
+
+do_test journal-1.1 {
+  set journal_mode_args
+} {}
+
+do_test journal-1.2 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)
+  }
+  lappend journal_mode_args
+} {a 1}
+
+ifcapable journalMode {
+  wal_mode
+}
+
+db_open db1 test2journal_mode
+db_open db2 test2journal_mode
+set x 0
+for {set i 0} {$i} {incr i} {
+  append x "a "
+}
+
+lappend test_cases syncdbclose
+proc syncdbclose {} {
+  db_close db1
+}
+
+foreach test test_cases {
+  do_test $test {db_close db1} OK
+  db_close db2
+}
+
+finish_test

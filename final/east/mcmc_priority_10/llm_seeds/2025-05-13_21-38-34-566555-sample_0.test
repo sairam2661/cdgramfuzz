@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test1
+
+set ::timeout 60000
+set testprefix "testprefix"
+set log_user 1
+set cache_size 2000
+set default_synchronous normal
+set default_tmpdir "./tmp"
+create_module testmod sqlite3_module test_module
+
+proc test_func {} {
+  set db "testdb"
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)
+  } $db
+}
+
+do_test test-1.1 {
+  execsql {
+    SELECT * FROM a
+  } testdb
+} {1}
+
+do_catchsql_test test1test_2_3_1 {
+  CREATE TABLE a(x);
+  SELECT * FROM a
+} {1 {table a has no column named x}}
+
+catch {forcedelete testdb}
+
+finish_test
+
+do_test test-1.2 {
+  execsql {
+    SELECT * FROM a
+  } testdb
+} {}
+
+proc sync_db {} {
+  db eval {PRAGMA synchronous=1}
+  db eval {PRAGMA cache_size=2000}
+  set cache_size 2000
+}
+
+set testprefix "test3"
+set dbfile "testdb"
+forcedelete $dbfile
+
+do_execsql_test test-2.1 {
+  SELECT * FROM a
+} {}
+
+finish_test

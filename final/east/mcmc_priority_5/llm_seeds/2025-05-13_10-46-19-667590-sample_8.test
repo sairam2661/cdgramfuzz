@@ -1,0 +1,51 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix main
+
+set ::timeout 60000
+set ntest 0
+
+proc sqlite_malloc_realloc_free_test {N} {
+  global sqlite_malloc_count sqlite_free_count
+  set sqlite_malloc_count 0
+  set sqlite_free_count 0
+  for {set i 0} {$i lt $N} {incr i} {
+    set ptr "[expr rand() % 100]"
+    sqlite_malloc 10
+    incr sqlite_malloc_count
+  }
+  for {set i 0} {$i lt $N} {incr i} {
+    sqlite_free $ptr
+    incr sqlite_free_count
+  }
+  return 0
+}
+
+do_test main-1.1 {
+  expr 1
+} {1}
+
+do_trace_test main2 main2.1 {
+  execsql {
+    CREATE TABLE abc(a,b,c);
+    INSERT INTO abc VALUES(1,2,3);
+    SELECT * FROM abc;
+  }
+} {}
+
+db eval {PRAGMA automatic_index = 1}
+do_test main-2.1 {
+  execsql {
+    CREATE TABLE t1(a, b, UNIQUEa );
+    CREATE TABLE t2(a UNIQUE, b)
+  }
+} {}
+do_execsql_test main-2.2 {
+  BEGIN;
+  INSERT INTO t2 VALUES('three', 'B');
+  INSERT INTO t2 VALUES('two', 'A');
+  INSERT INTO t1 VALUES('three', 'C');
+  SELECT * FROM t1
+} {}
+
+finish_test

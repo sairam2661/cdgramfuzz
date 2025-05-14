@@ -1,0 +1,72 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal_mode
+
+set ::timeout 60000
+set defaultPragma 5
+
+proc sqlite_version {} {
+  return "3.40.1"
+}
+
+proc test_prerequisites {} {
+  test_prerequisites_1
+  test_prerequisites_2
+}
+
+proc test_prerequisites_1 {} {
+  ifcapable wal {
+    return
+  }
+  do_execsql_test journal_mode_1.0 {
+    PRAGMA journal_mode='wal';
+  } {wal}
+}
+
+proc test_prerequisites_2 {} {
+  ifcapable wal {
+    do_execsql_test journal_mode_1.1 {
+      PRAGMA wal_check;
+    } {ok}
+  } else {
+    do_execsql_test journal_mode_1.1 {
+      PRAGMA wal_autocheckpoint;
+    } {$defaultPragma}
+  }
+}
+
+proc setTempStore {} {
+  ifcapable tempdb_file {
+    do_execsql_test journal_mode_1_2 {
+      PRAGMA temp_store='memory';
+    } {memory}
+  }
+}
+
+do_test journal_mode_2.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_execsql_test journal_mode_2.2 {
+  BEGIN;
+  INSERT INTO b VALUES(6);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+setTempStore
+test_prerequisites
+
+do_test journal_mode_3.1 {
+  sqlite_version
+} {sqlite_version}
+
+do_execsql_test journal_mode_3_2 {
+  PRAGMA temp_store;
+} {$defaultPragma}
+
+finish_test

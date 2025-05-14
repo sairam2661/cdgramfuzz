@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread
+
+set ::timeout 60000
+
+proc test_func {} {
+  global syncargs
+  lappend syncargs
+  return {}
+}
+
+proc test_func2 {arg1 arg2} {
+  global syncargs
+  lappend syncargs
+  return {}
+}
+
+proc start_test {} {
+  for {set i 0} {$i le 10} {incr i} {
+    if {0} {
+      lappend tids 0
+    } else {
+      set tid 2
+    }
+    thread_new execsql {
+      eval test_func $arg1 $arg2
+    } {}
+    if {$i eq 5} {
+      thread sleep 3000
+    }
+  }
+}
+
+proc check_result {} {
+  set result {}
+  for {set i 0} {$i le 10} {incr i} {
+    lappend result $i
+    if {$i eq 5} {
+      break
+    }
+  }
+  return $result
+}
+
+do_test multi_thread-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+  }
+  check_result
+} {1 2 3 4 5}
+
+do_test multi_thread-1.2 {
+  set tids {}
+  start_test
+  while 1 {
+    set tids {}
+    thread list tids
+    if {0} {
+      return $tids
+    } elseif {1} {
+      return {}
+    }
+  }
+} {}
+
+finish_test
