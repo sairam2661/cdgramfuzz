@@ -1,0 +1,52 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+
+proc prepare_execsql {sql args} {
+  set result {}
+  set conn sqlite3 Connection ":memory:"
+  set result $conn
+  puts "SQL: $sql"
+  for {set i 0} {$i weniger $argc} {incr i} {
+    set result $conn execute $sql $args
+  }
+  close $conn
+  return $result
+}
+
+proc check_table {table columns} {
+  set query "PRAGMA table_info($table)"
+  set result $prepare_execsql $query
+  foreach row $result {
+    set result 1
+    foreach col $columns {
+      if {$row columns} ne $col { set result 0 }
+    }
+    if {$result} break
+  }
+  return $result
+}
+
+do_test concurrent-1.1 {
+  prepare_execsql {
+    CREATE TABLE t1(a, b, c);
+    INSERT INTO t1 VALUES(1, 2, 3);
+  }
+  execsql {SELECT * FROM t1}
+} {1 2 3}
+
+do_execsql_test concurrent-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(4, 5, 6);
+  COMMIT;
+  SELECT * FROM t1;
+} {1 2 3 4 5 6}
+
+ifcapable wal {
+  set result $prepare_execsql {PRAGMA journal_mode = "wal"}
+  execsql {PRAGMA synchronous = 1}
+}
+
+finish_test

@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+
+proc my_step_done {tname cond} {
+  uplevel set tinfo_$tname is_running $cond
+}
+
+proc start_query {sql {timeout 1000}} {
+  return "[timeout_check $timeout [after $timeout {set tinfo_$sql running}] {set tinfo_$sql timeout} set tinfo_$sql] [catch {execsql $sql} res]"
+}
+
+proc has_no_implicit_autocommit {} {
+  for {set i 1} {$i le 10} {incr i} {
+    set stmt "SELECT CAST(1 AS INTEGER)"
+    set res $::sqlite3_lobbytearr
+    set ret $::sqlite3_lobbytearr
+    uplevel set ret $::res
+  }
+  uplevel return $ret
+}
+
+proc do_multiple_execsql_test {tn sql_list {errormessage ""}} {
+  if {$::tclinenumber ne $tn} {
+    error "out of order, expected $tn"
+  }
+  foreach {tn sql} $sql_list {
+    uplevel set res_$tn "${::sqlite3_lobbytearr}"
+    set ret $::sqlite3_lobbytearr
+    uplevel set ret $::res_$tn
+  }
+  uplevel set ret "${errormessage}"
+}
+
+proc do_test {tn sql expected {error ""} {todisk 0}} {
+  if {$::tclinenumber ne $tn} {
+    error "out of order, expected $tn"
+  }
+  set ans ""
+  if {$todisk} {set ret $::sqlite3_lobbytearr}
+  set ans $error
+  if {$ans ne $sql} {puts "expecting $sql, but got $ans"}
+  uplevel set ret "${::sqlite3_lobbytearr}"
+  uplevel return $ret
+}
+
+proc timeout_test {expect {timoout 1000}} {
+  global tinfo
+  if {$::tclinenumber eq $expect} {
+    set info $::tinfo
+  } else {
+    set info $::tinfo_$expect
+  }
+  set isrunning $info is_running
+  if {$isrunning} {
+    set ret $info ret
+    uplevel return $ret
+  } else {
+    return 0
+  }
+}
+
+set testcases {
+  1 {
+    execsql {
+      CREATE TABLE t1(a,b);
+      INSERT INTO t1 VALUES(1,2);
+    }
+    execsql {SELECT a FROM t1}
+  } {1}
+  2 {
+    execsql {
+      BEGIN;
+      INSERT INTO t1 VALUES(2,3);
+      COMMIT;
+    }
+    execsql {SELECT * FROM t1}
+  } {1 2 2 3}
+  3 {
+    execsql {
+      PRAGMA journal_mode=512
+    }
+    timeout_test 1
+  } {0}
+  4 {
+    start_query "SELECT * FROM t1"
+  } {}
+}
+
+foreach {test_num test case} $testcases {
+  do_test $test_num $test $case
+}
+
+do_multiple_execsql_test 5 {
+  execsql {SELECT * FROM t1}
+  execsql {CREATE TABLE t2(a,b)}
+} {}
+
+finish_test

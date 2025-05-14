@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+set default_rollback {false}
+
+set up_db {
+  db eval {
+    PRAGMA journal_mode = 'WAL';
+    PRAGMA cache_size = 10000;
+  }
+}
+
+proc drop_tables {args} {
+  foreach table $args {
+    db eval "DROP TABLE IF EXISTS $table;"
+  }
+}
+
+proc create_tables {args} {
+  foreach table $args {
+    db eval "CREATE TABLE $table (x INTEGER PRIMARY KEY);"
+    for {set i 1} {$i 101} {incr i} {
+      db eval "INSERT INTO $table VALUES ($i)"
+    }
+    if {$table eq "b"} {
+      db eval "CREATE INDEX idx_b ON b (x)"
+    }
+  }
+}
+
+do_execsql_test complex-1.1 {
+  SELECT * FROM a;
+} {} 
+
+do_test complex-1.2 {
+  uplevel $::up_db
+  execsql {
+    SELECT x FROM a ORDER BY x DESC LIMIT 1
+  }
+} {100}
+
+do_test complex-1.3 {
+  uplevel $::up_db
+  create_tables a b
+  execsql {
+    SELECT x FROM b ORDER BY x DESC LIMIT 1
+  }
+} {100}
+
+do_test complex-1.4 {
+  uplevel $::up_db
+  drop_tables a b
+  execsql {
+    SELECT name FROM sqlite_master
+  }
+} {}
+
+do_test complex-1.5 {
+  uplevel $::up_db
+  set up_db
+  catchsql {
+    CREATE TABLE c AS SELECT x FROM a
+  }
+} {1 {database or disk error}}
+
+do_test complex-1.6 {
+  uplevel $::up_db
+  set up_db
+  catchsql {
+    BEGIN;
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES (1);
+    COMMIT;
+  }
+} {0 {}}
+
+do_execsql_test complex-1.7 {
+  SELECT * FROM a
+} {}
+
+finish_test

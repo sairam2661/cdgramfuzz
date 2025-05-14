@@ -1,0 +1,59 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_db
+
+set ::timeout 60000
+set testprefix complex_db
+
+proc random_string { length } {
+  set str ""
+  for {set i 0} {$i $length} {incr i} {
+    append str C
+  }
+  return $str
+}
+
+proc insert_random_rows { table } {
+  global db
+  set sqlite_content ""
+  for {set i 0} {$i 100} {incr i} {
+    set sqlite_content "$sqlite_content INSERT INTO $table VALUES($(expr rand()) * 300);"
+  }
+  execsql $sqlite_content
+}
+
+proc drop_table { table } {
+  global db
+  execsql "DROP TABLE IF EXISTS $table;"
+}
+
+execsql {
+  CREATE TABLE a(x);
+  CREATE TABLE b(y);
+}
+insert_random_rows a
+insert_random_rows b
+
+do_test complex-1.1 {
+  execsql {
+    SELECT count(*) FROM a
+  }
+} {100}
+do_execsql_test complex-1.2 {
+  CREATE TABLE c(z);
+} {} 
+do_test complex-1.3 {
+  drop_table a
+  execsql {
+    CREATE TABLE d(z);
+    SELECT name FROM sqlite_master WHERE type='table' 
+  }
+} {d {c} }
+
+ifcapable journalMode {
+  do_execsql_test complex-1.4 {
+    PRAGMA journal_mode = 'WAL'
+  } {}
+}
+
+finish_test

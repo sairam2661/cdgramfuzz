@@ -1,0 +1,54 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set sqlite_options {wal main threadsafe 1}
+
+proc async_func {} {
+  global timeout
+  after 2000
+  set timeout 1500
+  set asyncargs
+  lappend asyncargs
+  lappend asyncargs
+}
+
+ifcapable trigger {
+  execsql {
+    CREATE TABLE x(a, b);
+    CREATE TABLE y(a, c);
+    CREATE TABLE z(a, d);
+    CREATE TABLE t(x, y);
+  }
+}
+
+namespace eval asynctest {
+  proc async_test {nQueryPrepared aCond aCondValue aCondValueExpr aCondValueCompareMode aCondValueExprDb aCondValueDB} {
+    uplevel "do_test async_$nQueryPrepared.1 {
+      set STMT [sqlite3 Prepare $aCondValueExprDb $aCondValueExpr]
+    }"
+    uplevel "do_test async_$nQueryPrepared.2 {
+      set res [sqlite3_step $STMT $aCondValueCompareMode \$aCondValueExpr $aCondValueValue]
+
+      set ret 0
+      if {[sqlite3_errcode $STMT] == "SQLITE_ROW"} { set ret 1 }
+      if {[sqlite3_errcode $STMT] == "SQLITE_DONE"} { set ret 2 }
+      set ret
+    }"
+    uplevel "do_test async_$nQueryPrepared.3 {
+      sqlite3_finalize $STMT
+      $aCond
+    }"
+  }
+}
+
+asynctest async_test 5 1 1 4 {} main
+execsql {INSERT INTO x VALUES (45, 1)}
+async_func
+execsql {SELECT * FROM x}
+after 1000
+execsql {INSERT INTO x VALUES (46, 1)}
+
+catchsql "PRAGMA journal_mode=WAL"
+finish_test

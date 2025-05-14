@@ -1,0 +1,73 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix queryoptimize
+
+set ::timeout 60000
+
+proc queryoptimize_proc_1 {} {
+  global queryoptimizeargs
+  lappend queryoptimizeargs {1 2}
+  expr {1}
+}
+
+proc queryoptimize_proc_2 {} {
+  global queryoptimizeargs
+  lappend queryoptimizeargs {3 4}
+  expr {1}
+}
+
+do_test queryoptimize-1.1 {
+  db eval {
+    CREATE TABLE a(x, y);
+    CREATE INDEX a_x ON a(x);
+    INSERT INTO a VALUES(1, 'a');
+    INSERT INTO a VALUES(2, 'b');
+    INSERT INTO a VALUES(3, 'c');
+    SELECT x FROM a WHERE y='a';
+  }
+} {1}
+
+do_test queryoptimize-1.2 {
+  db eval {
+    SELECT x FROM a WHERE y='b';
+  }
+} {2}
+
+ifcapable full_index_scan {
+  db eval {
+    BEGIN;
+    COMMIT;
+    SELECT x FROM a WHERE y='c';
+  }
+} {3}
+
+do_execsql_test queryoptimize-2.1 {
+  CREATE TABLE b(x, y);
+  CREATE INDEX b_x ON b(x);
+  CREATE INDEX b_y ON b(y);
+  INSERT INTO b VALUES(5, 'd');
+  INSERT INTO b VALUES(6, 'e');
+  SELECT x FROM b WHERE y='d';
+} {5}
+
+proc queryoptimize_proc_3 {} {
+  global queryoptimizeargs
+  lappend queryoptimizeargs {7 8}
+  expr {2}
+}
+
+ifcapable journalMode {
+  do_execsql_test queryoptimize-3.1 {
+    PRAGMA journal_mode='DELETE';
+    PRAGMA journal_mode;
+  } {DELETE}
+}
+
+do_execsql_test queryoptimize-4.1 {
+  BEGIN;
+  INSERT INTO b VALUES(7, 'f');
+  COMMIT;
+  SELECT x FROM b WHERE y='f';
+} {7}
+
+finish_test

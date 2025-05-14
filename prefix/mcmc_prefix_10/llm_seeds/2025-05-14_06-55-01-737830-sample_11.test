@@ -1,0 +1,50 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc random_string {len} {
+  set str ""
+  for {set i 0} {$i $len} {incr i} {
+    append str {abcdefghijklmnopqrstuvwxyz}
+  }
+  return $str
+}
+
+proc compare_lists {a b} {
+  return {expr {$a eq $b}}
+}
+
+proc delete_rows {} {
+  global db_connection
+  execsql {DELETE FROM t1} $db_connection
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(i, v);
+    INSERT INTO t1 VALUES(1, 'one');
+    INSERT INTO t1 VALUES(2, 'two');
+    INSERT INTO t1 VALUES(3, 'three');
+  }
+  execsql {SELECT * FROM t1}
+} {1 one 2 two 3 three}
+
+do_execsql_test complex-1.2 {
+  CREATE INDEX i ON t1(v);
+  SELECT * FROM t1
+} {1 one 2 two 3 three}
+
+ifcapable vacuum {
+  catchsql {VACUUM}
+} {0 {}}
+
+ifcapable atomicWrites {
+  catchsql {PRAGMA journal_mode=9220769;}
+} {0 {}}
+
+set db_connection db
+db transaction {INSERT INTO t1 VALUES(4, 'four')}
+catchsql {SELECT * FROM t1}
+finish_test

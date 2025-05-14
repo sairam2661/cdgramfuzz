@@ -1,0 +1,112 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complexTests
+
+set ::timeout 60000
+
+proc write_file {x} {
+  global tfile
+  set tfile ""
+  puts $tfile $x
+  fileevent $tfile writable 0
+  flush $tfile
+}
+
+proc read_file {x} {
+  global tfile
+  upvar $tfile t
+  set ret ""
+  seek $t 0 start
+  gets $t ret
+  return $ret
+}
+
+proc start_file {x} {
+  global tfile
+  set tfile ""
+  close $tfile
+  set tfile ""
+  if {isset FFI} {
+    fileevent $tfile readable {read_file t}
+  }
+  puts $tfile "start"
+  flush $tfile
+}
+
+proc finish_file {x} {
+  global tfile
+  set tfile ""
+  if {isset FFI} {
+    set tfile ""
+  }
+  puts $tfile "finish"
+  flush $tfile
+}
+
+proc query_func {x} {
+  upvar $x Y
+  foreach y $Y {
+      lappend Y $y
+      incr Y 2
+  }
+}
+
+proc query_func2 {x} {
+  global syncargs
+  upvar $x Y
+  append Y ";"
+  lappend Y syncargs
+  set sql "SELECT * FROM b"
+  lappend Y $sql
+  incr Y 2
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+} {3}
+
+do_execsql_test complex-1.2 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(4);
+} {1}
+
+set syncargs {}
+do_test complex-1.3 {
+  do_execsql_test complex1.3 {
+    CALL query_func2 SYNCARGS a
+  }
+} {1 a a}
+
+set syncargs {}
+do_test complex-1.4 {
+  do_execsql_test complex1.4 {
+    BEGIN;
+    SELECT * FROM a;
+    INSERT INTO b VALUES(5);
+    COMMIT;
+    PRAGMA table_info
+  } {2 0 no 0}
+} {{}}
+
+do_execsql_test complex-1.5 {
+  SELECT * FROM a;
+} {1 1 2 3 4}
+
+do_execsql_test complex-1.6 {
+  SELECT * FROM b;
+} {4 1}
+
+set tfile "tfile"
+start_file "tfile"
+puts $tfile "test"
+query_func SYNCARGS {a {1 1 2 3 4} b {4 1}}
+puts $tfile "test2"
+finish_file "tfile"
+read_file "tfile"
+execsql {SELECT * FROM b}
+finish_test

@@ -1,0 +1,40 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set sqlite_options {}
+proc complex_proc {} {
+  global sqlite_options
+  lappend sqlite_options "option-1"
+  lappend sqlite_options "option-2"
+  expr {1}
+}
+
+do_catchsql_test complex_1.1 {
+  DROP TABLE IF EXISTS t1
+} {1 {no such table}}
+
+ifcapable wal {
+
+  if { $sqlite_options } { set wal_options "PRAGMA journal_mode=WAL; " }
+  do_test complex_1.2 {
+    execsql {
+      $wal_options CREATE TABLE t1 AS SELECT x FROM t1 WHERE x IS NULL
+    }
+  } {}
+
+  do_catchsql_test complex_2.1 {
+    ANNOTATE t1 x
+  } {1 {table has no columns}}
+
+  do_test complex_2.2 {
+    execsql {
+      CREATE TABLE t2(x, y);
+      INSERT INTO t2 VALUES(5, 6);
+      SELECT x FROM t2;
+    }
+  } {5}
+}
+
+finish_test

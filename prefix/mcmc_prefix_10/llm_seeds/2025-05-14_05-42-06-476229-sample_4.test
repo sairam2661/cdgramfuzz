@@ -1,0 +1,86 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_db
+
+set ::timeout 60000
+
+proc timer_func { args } {
+  set time $args
+  set time2 $args
+  set time3 $args
+}
+
+do_test multi-1.1 {
+  db close
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1.1);
+    INSERT INTO a VALUES(2.2);
+  }
+  db close
+  lrange {1.1 2.2} 0 0
+} {1.1 2.2}
+
+proc multi_proc {} {
+  global t2
+  set t2 "t2"
+  db eval {SELECT * FROM a}
+  execsql {SELECT sum( * ) FROM a}
+  set t2 "t2"
+}
+
+db enable_shared_cache 1
+ifcapable wal {
+  db journal_mode wal
+} {db journal_mode delete}
+ifcapable wal {
+  db synchronous off
+}
+do_test multi-2.1 {
+  execsql {
+    CREATE TABLE b(x, y);
+    INSERT INTO b VALUES(1, 2);
+  }
+  execsql {SELECT * FROM b}
+} {1 2}
+
+do_test multi-2.2 {
+  db {SELECT * FROM a}
+  db close
+  execsql {
+    CREATE TABLE c(x, y);
+    INSERT INTO c VALUES(7, 8);
+    CREATE TABLE d(x, y);
+  }
+  execsql {SELECT * FROM c}
+} {7 8}
+
+proc fnc {args} {error "fnc error"}
+proc test_func {args} {
+  global count
+  error "Error [incr count]"
+}
+do_test multi-3.1 {
+  catch {fnc foo}
+} {fnc error}
+do_test multi-3.2 {
+  catch {test_func foo}
+} {Error 1}
+catch {db close}
+do_execsql_test multi-4.1 {
+  SELECT * FROM b
+} {1 2}
+do_execsql_test multi-4.2 {
+  SELECT * FROM c
+} {7 8}
+execsql {
+  BEGIN;
+  INSERT INTO d VALUES(18, 19);
+  COMMIT;
+}
+do_execsql_test multi-5.1 {
+  SELECT * FROM d
+} {18 19}
+db close
+
+finish_test

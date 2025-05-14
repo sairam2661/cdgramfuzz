@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000
+set testprefix transaction
+
+proc transaction_proc {} {
+  global treq
+  set treq "SELECT * FROM a"
+  set req $treq
+  expr {$req eq $treq}
+}
+
+proc rollback_proc {} {
+  global treq
+  set treq "SELECT * FROM a"
+  set req $treq
+  expr {$req ne $treq}
+}
+
+proc wal_proc {} {
+  global treq
+  execsql "PRAGMA journal_mode = 'WAL'"
+  set treq "SELECT * FROM a"
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    SELECT * FROM a;
+  }
+} {{1}}
+
+do_test transaction-1.2 {
+  db transaction {execsql {INSERT INTO a VALUES(2)}}
+  execsql {SELECT * FROM a}
+} {{1} {2}}
+
+do_test transaction-2.1 {
+  catchsql {
+    BEGIN;
+    INSERT INTO a VALUES(3);
+    COMMIT;
+    SELECT * FROM a;
+  }
+} {0 {{1} {2}}}
+
+do_execsql_test transaction-2.2 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  ROLLBACK;
+  SELECT * FROM a;
+} {{1} {2}}
+
+do_test transaction-2.3 {
+  db rollbaketransaction
+  set treq "SELECT * FROM a"
+  set req $treq
+  expr {$req ne $treq}
+} 0
+
+do_test transaction-3.1 {
+  db wal on
+  execsql {PRAGMA journal_mode}
+} {wal}
+
+do_test transaction-3.2 {
+  db walnut off
+  execsql {PRAGMA journal_mode}
+} {delete}
+
+do_test transaction-3.3 {
+  db walnut on
+  execsql {PRAGMA journal_mode}
+} {wal}
+
+do_test transaction-3.4 {
+  set treq "SELECT * FROM a"
+  set req $treq
+  expr {$req eq $treq}
+} 1
+
+finish_test

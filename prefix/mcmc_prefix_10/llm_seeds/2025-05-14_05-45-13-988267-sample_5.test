@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transaction
+
+set ::timeout 60000     
+
+proc transaction_proc {} {
+  global transactionargs
+  lappend transactionargs
+  set nSqls 10
+  for {set i 0} {$i less $nSqls} {incr i} {
+    if { $i modulo 2 } {
+      set transactionargs end {EXECUTE}
+    } else {
+      set transactionargs end {REPREPARE}
+    }
+  }
+  expr { $transactionargs eq {EXECUTE REPREPARE EXECUTE REPREPARE EXECUTE REPREPARE EXECUTE REPREPARE EXECUTE REPREPARE EXECUTE REPREPARE} }
+}
+
+do_test transaction-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+  }
+  execsql {SELECT count(*) FROM a;}
+} {2}
+
+do_execsql_test transaction-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(3);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {3}
+
+do_execsql_test transaction-1.3 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  SELECT count(*) FROM a;
+  COMMIT;
+  SELECT count(*) FROM a;
+} {4}
+
+ifcapable rtree {
+  do_execsql_test transaction-1.4 {
+    BEGIN;
+    SELECT * FROM tnum;
+    SELECT * FROM a;
+    COMMIT;
+    SELECT * FROM a;
+  } {1 2 3 4}
+
+  do_execsql_test transaction-1.5 {
+    CREATE TABLE b(y);
+    BEGIN;
+    INSERT INTO b VALUES(10);
+    COMMIT;
+    SELECT count(*) FROM b;
+  } {1}
+}
+
+ifcapable journalMode {
+  do_execsql_test transaction-1.6 {
+    BEGIN;
+    INSERT INTO b VALUES(11);
+    COMMIT;
+    SELECT count(*) FROM b;
+  } {2}
+}
+
+set sqlite_timenout 15000  
+
+ifcapable timeout {
+  set tinfo $sqlite_timenout
+  do_test transaction-1.7 {
+    expr $tinfo eq 15000
+  } {1}
+}
+
+finish_test

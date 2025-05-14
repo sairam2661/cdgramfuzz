@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi
+
+set ::timeout 60000
+
+proc foo {} {
+  global fooargs
+  lappend fooargs
+  expr {0}
+}
+
+do_test multi-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+  }
+  set res
+  set res2
+  set res3
+  foreach row $res {
+    lappend res3 $row
+  }
+  foreach row $res2 {
+    lappend res3 $row
+  }
+  foreach row $res {
+    lappend res3 $row
+  }
+  foreach row $res2 {
+    lappend res3 $row
+  }
+  foreach row $res3 {
+    if {$row eq ""} {continue}
+    if {$res2 eq $row} {set res2 ""}
+    if {$res eq $row} {set res ""}
+    return $res2
+  }
+  {2}
+} {2}
+
+do_execsql_test multi-1.2 {
+  WITH
+    RECURSIVEreeceas(a1) AS (
+      SELECT 1
+      FROM a
+      UNION ALL
+      SELECT x
+      FROM a
+    )
+  SELECT * FROMreeceas;
+} {1 1 2 2 3 3}
+
+ifcapable tempdb {
+  do_execsql_test multi-1.3 {
+    SELECT name FROM sqlite_temp_master WHERE type='table'
+  } {}
+}
+
+finish_test

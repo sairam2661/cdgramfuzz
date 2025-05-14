@@ -1,0 +1,46 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix encryption
+
+set ::timeout 60000
+set db encrypted
+db func random sqlite_random
+db func encrypt sqlite_encrypt
+db func decrypt sqlite_decrypt
+
+proc encrypted {} {
+  execsql {
+    OPEN KEY encrypt_key
+    ATTACH 'encrypted.db' AS encrypted
+    EXECUTE encrypted 'CREATE TABLE a(x)'
+    EXECUTE encrypted 'INSERT INTO a VALUES(random())'
+  }
+}
+
+proc decrypted {} {
+  execsql {
+    EXECUTE encrypted 'SELECT sum(x) FROM a'
+  }
+}
+
+do_test encryption-1.1 {
+  encrypted
+  execsql {SELECT name FROM sqlite_master WHERE type='table'}
+} {{encrypted a}}
+
+do_test encryption-1.2 {
+  decrypted
+  execsql {SELECT sum FROM encrypted}
+} {0.5}
+
+do_test encryption-1.3 {
+  encrypted
+  catchsql {DROP TABLE a}
+} {0 {}}
+encrypted
+do_test encryption-2.1 {
+  decrypted
+  execsql {SELECT x FROM encrypted}
+} {{random}}
+
+finish_test

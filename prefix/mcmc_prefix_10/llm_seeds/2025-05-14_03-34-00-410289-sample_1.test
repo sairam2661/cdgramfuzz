@@ -1,0 +1,106 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema_changes
+
+set ::timeout 60000
+
+proc table_changed {name {is_added 0} {is_dropped 0}} {
+  set table_data $::sqlitetrace
+  if {$is_added} {
+    lappend table_data "$name" "CREATE TABLE"
+  }
+  if {$is_dropped} {
+    lappend table_data "$name" "DROP TABLE"
+  }
+  set modified_table_data {}
+  foreach line $table_data {
+    if {ereg "table $name" $line} {
+      lappend modified_table_data "$line"
+    }
+  }
+  return $modified_table_data
+}
+
+proc schema_test {sql stmts} {
+  global last_change
+  set last_change 0
+  set sqlitetrace {}
+  do_execsql_test schema1.1 $sql
+  set last_change 0
+  foreach stmt $stmts {
+    incr last_change
+    set modified_data {}
+    foreach line $sqlitetrace {
+      if {ereg "INSERT INTO table $stmt" $line} {
+        set modified_data "$line inserted"
+      }
+      if {ereg "UPDATE of table $stmt" $line} {
+        set modified_data "$line updated"
+      }
+      if {ereg "DELETE from table $stmt" $line} {
+        set modified_data "$line deleted"
+      }
+    }
+    append modified_data ";"
+    set modified_data "modified schema - $stmt: $modified_data"
+    lappend table_data $modified_data
+  }
+  set tcl_result $table_data
+  do_execsql_test schema1.2 {
+    SELECT name FROM sqlite_master
+  }
+  foreach {name} $stmts {
+    set query "PRAGMA schema_table('$name')"
+    do_execsql_test schema1.3 $query $name
+  }
+}
+
+proc schema_test_query {sql} {
+  do_execsql_test schema1.1 $sql
+  lappend last_change
+  set modified_data {}
+  foreach line $sqlitetrace {
+    if {ereg "INSERT INTO table " $line} {
+      set modified_data "$line inserted"
+    }
+    if {ereg "UPDATE of table " $line} {
+      set modified_data "$line updated"
+    }
+    if {ereg "DELETE from table " $line} {
+      set modified_data "$line deleted"
+    }
+  }
+  append modified_data ";"
+  set modified_data "modified schema: $modified_data"
+  return $modified_data
+}
+
+set last_change 0
+set table_data {}
+
+do_test   schema-1.1 {
+  schema_test {
+    SELECT * FROM foo;
+  } {}
+} {"foo bar foo"}
+
+do_test   schema-1.2 {
+  schema_test_query {
+    SELECT * FROM foo;
+  }
+} {}
+
+do_test   schema-1.3 {
+  set schema_changes {}
+  schema_test {
+    DROP TABLE foo
+  } {foo}
+  set schema_changes
+} {}
+
+schema_test {
+  DROP TABLE foo
+  ALTER TABLE bar RENAME COLUMN a TO f
+} {f}
+
+finish_test

@@ -1,0 +1,93 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test5
+
+set ::timeout 60000
+
+proc my_func {x} {
+  return $x
+}
+
+proc do_test2 {n s r} {
+  uplevel "doctest $n $s"
+}
+
+proc do_execsql_test2 {n s r} {
+  uplevel "do_execsql_test $n $s"
+}
+
+proc my_sqlproc1 {} {
+  if {0} {
+    return
+  } else {
+    set x 5
+    return $x
+  }
+}
+
+proc my_sqlproc2 {x} {
+  if {0} {
+    return $x
+  } else {
+    return $x
+  }
+}
+
+do_test test4.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1);
+    INSERT INTO b VALUES(2);
+    INSERT INTO b VALUES(3);
+  }
+  execsql {SELECT count(*) FROM b}
+} {3}
+
+do_execsql_test2 test4.2 {
+  BEGIN;
+  INSERT INTO b VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {4}
+
+if {1} {  } else {
+  do_test test4.3 {
+    execsql {
+      SELECT * FROM b
+    }
+  } {1 2 3}
+}
+
+set result 5
+do_test test4.4 {
+  my_func 5
+} 5
+do_test test4.5 {
+  my_sqlproc1
+} 5
+do_test test4.6 {
+  my_sqlproc2 5
+} 5
+do_test test4.7 {
+  my_func 5
+} 5
+
+ifcapable wal {
+
+  set reswal "wal"
+
+  set sqlite_settings "% -dets wal; "
+} else {
+
+  set reswal "journal"
+  set sqlite_settings ""
+}
+
+set res wal
+do_execsql_test test5.1 "$sqlite_settings PRAGMA journal_mode=$reswal" ""
+do_execsql_test test5.2 { SELECT 1 } 1
+execsql {SELECT 1}
+
+set n 5
+
+finish_test

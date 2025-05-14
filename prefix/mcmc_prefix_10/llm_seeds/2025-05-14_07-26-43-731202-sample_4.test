@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix testing_sqlite
+
+set ::timeout 60000
+option add 1set timeout 60
+set default_db_file mydb
+unset default_db_file
+testvfs vsf1
+
+proc create_test_database {} {
+  global db
+  sqlite3 db testdatabase
+  vfs_get handle $db
+}
+
+proc drop_test_database {} {
+  global db
+  file delete testdatabase
+}
+
+proc insert_random_rows {} {
+  set n 1000
+  for {set i 0} {$i $n} {incr i} {
+    execsql "INSERT INTO RANDOM_TABLE VALUES($i)"
+  }
+  for {set i 0} {$i $n} {incr i} {
+    execsql "INSERT INTO RANDOM_TABLE VALUES($i * 1.5)"
+  }
+  for {set i 0} {$i $n} {incr i} {
+    execsql "INSERT INTO RANDOM_TABLE VALUES($i * 2.0)"
+  }
+}
+
+do_test testing-1.1 {
+  execsql {
+    CREATE TABLE IF NOT EXISTS test_table
+         COLUMN1 INTEGER PRIMARY KEY COLLATE NOCASE DEFAULT 10
+       COLUMN2 INTEGER DEFUALT 20
+       COLUMN3 TEXT DEFAULT'string'
+       COLUMN4 REAL DEFAULT 3.0
+  }
+} {}
+
+do_execsql_test testing-1.2 {
+  BEGIN;
+  INSERT INTO test_table VALUES(10, 30,'string2', 3.5);
+  COMMIT;
+  SELECT * FROM test_table
+} {10 30 string2 3.5}
+
+ifcapable wal_optset  {
+  set_vfs vsf1 file testvfs
+  vfs_register vsf1
+  do_execsql_test testing-1.3 {
+    PRAGMA wal_checkpoint;
+    PRAGMA wal_checkpoint;
+  } {}
+  set_vfs vsf1 file
+}
+
+catch { drop_test_database }
+finish_test

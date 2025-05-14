@@ -1,0 +1,44 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set timeout 30
+set db fileexists true
+
+proc data {} {
+  return $::test_name
+}
+
+proc query {db query} {
+  set result {}
+  foreach row $db {
+    lappend result $row
+  }
+  return $result
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE a(id, name);
+    INSERT INTO a VALUES(1, 'John');
+    INSERT INTO a VALUES(2, 'Jane');
+    INSERT INTO a VALUES(3, 'Alice');
+  }
+  execsql {SELECT * FROM a}
+} {1 John 2 Jane 3 Alice}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(4, 'Bob');
+  COMMIT;
+  SELECT * FROM a;
+} {1 John 2 Jane 3 Alice 4 Bob}
+
+if { $::tcl_version 8.6 } {
+  sqlite_dbconfig_patch_version_in
+} else {
+  sqlite_dbconfig_patch_version
+}
+
+finish_test

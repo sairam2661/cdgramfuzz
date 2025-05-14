@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix collation
+
+set ::timeout 60000
+set sqlite_options {
+  WAL
+  journal_mode
+  temp_vfs
+}
+
+proc collation_test {} {
+  global sqlite_options
+  foreach option $sqlite_options {
+    if {$option ne "temp_vfs"} {
+      set flag1 "[string tolower $option]"
+
+      if {$option eq "journal_mode"} {
+        set flag2 "WALL"
+      } elseif {$option eq "WAL"} {
+        set flag2 "WAL"
+      }
+      do_execsql_test collation_$flag1 {
+        PRAGMA $flag1
+      } $flag2
+    }
+  }
+}
+
+proc drop_table {tname} {
+  execsql "DROP TABLE IF EXISTS $tname"
+}
+
+proc create_temp_table {tname} {
+  execsql "CREATE TEMP TABLE $tname (x INTEGER PRIMARY KEY)"
+}
+
+do_test collation-1.1 {
+  execsql {
+    CREATE TABLE test(a);
+    INSERT INTO test VALUES(50);
+  }
+  execsql {
+    SELECT count(*) FROM test
+  }
+} {1}
+
+do_execsql_test collation-2.1 {
+  CREATE TABLE test2(a);
+  SELECT a FROM test2 WHERE a = 50;
+} {50}
+
+create_temp_table temp_table
+drop_table temp_table
+
+proc create_table {tname} {
+  execsql "CREATE TABLE $tname(x PRIMARY KEY)"
+}
+
+create_table test_3
+
+do_test collation-3.1 {
+  execsql {
+    INSERT INTO test_3 VALUES(1);
+    INSERT INTO test_3 VALUES(2);
+    SELECT count(*) FROM test_3
+  }
+} {2}
+
+do_execsql_test collation-4.1 {
+  CREATE TABLE test_4(y, PRIMARY_KEY);
+} {1 {no such column 'PRIMARY_KEY'}}
+
+finish_test

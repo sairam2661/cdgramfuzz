@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+set ::timeout 60000
+set sqlite_limit 1024
+set big_int 0x1fffffffffffffff
+
+proc check_schema {} {
+  global db
+  execsql {PRAGMA schema_list} $db
+}
+
+proc create_table_1 {} {
+  global db
+  execsql {
+    CREATE TABLE table_1(
+      id		PRIMARY KEY,
+      name		NOT NULL DEFAULT '',
+      age		DEFAULT 0,
+      balance	NOT NULL,
+      data		DEFAULT ''
+    );
+  }
+}
+
+proc insert_data {} {
+  global db
+  execsql {
+    INSERT INTO table_1 VALUES(1,'','4',25,'');
+    INSERT INTO table_1 VALUES(2,'test1','3',50,'');
+    INSERT INTO table_1 VALUES(3,'','6',75,'');
+    INSERT INTO table_1 VALUES(4,'','5',100,'');
+  }
+}
+
+proc query_table_1 {} {
+  global db
+  execsql {SELECT * FROM table_1}
+}
+
+proc check_data {} {
+  global db
+  execsql {SELECT * FROM table_1} $db
+}
+
+do_execsql_test complex-1.1 {
+  CREATE TABLE table_2(
+    id		PRIMARY KEY,
+    name		NOT NULL DEFAULT '',
+    age		DEFAULT 0,
+    balance	NOT NULL,
+    data		DEFAULT ''
+  );
+} {0 {}}
+do_query_test complex_1.21 {
+    SELECT * FROM table_2
+    WHERE   age = 13 
+    } {{}}
+do_test complex-1.3 {
+  catchsql {
+    CREATE TABLE table_3(
+      id		PRIMARY KEY,
+      name		NOT NULL DEFAULT '',
+      age		DEFAULT 0,
+      balance	NOT NULL,
+      data		DEFAULT ''
+    );
+  }
+  expr {$::sqlite_error}
+} {0}
+
+do_test complex-1.4 {
+  expr {$::sqlite_limit}
+} {$sqlite_limit}
+
+ifcapable wal {
+  do_execsql_test complex-1.5 {
+    PRAGMA wal_checkpoint;
+  } {4}
+}
+
+finish_test

@@ -1,0 +1,81 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_fts3
+
+set ::timeout 60000
+set db main
+set db2 db2
+
+proc table_statements {tables} {
+  foreach table $tables {
+    execsql "CREATE TABLE $table (id INTEGER PRIMARY KEY, name TEXT)"
+  }
+}
+
+proc insert_data {tables} {
+  foreach table $tables {
+    foreach {id name} {
+      1 "John Smith"
+      2 "Jane Doe"
+      3 "Bob Johnson"
+      4 "Alice Brown"
+    } {
+      execsql "INSERT INTO $table (id, name) VALUES ($id, '$name')"
+    }
+  }
+}
+
+proc select_data {tables} {
+  set res {}
+  foreach table $tables {
+    set query "SELECT * FROM $table"
+    lappend res $query
+  }
+  return $res
+}
+
+proc error_handling {tables} {
+  uplevel catch {
+    set db2 "SELECT * FROM non_existent_table"
+  }
+}
+
+do_test sqlite_fts3-1.1 {
+  execsql {
+    CREATE VIRTUAL TABLE fts_table USING fts3 tokenize tokenizer1
+  }
+  table_statements a b c
+  insert_data a b c
+} {}
+
+do_test sqlite_fts3-1.2 {
+  select_data a b c
+} {SELECT id FROM a SELECT id FROM b SELECT id FROM c SELECT name FROM a SELECT name FROM
+ b SELECT name FROM c}
+
+do_test sqlite_fts3-2.1 {
+  set data {1 John Smith 2 Jane Doe 3 Bob Johnson 4 Alice Brown}
+  foreach id name $data {
+    execsql "INSERT INTO fts_table (rowid, id, name) VALUES ($id, $name, '$name')"
+  }
+  set res "SELECT * FROM fts_table WHERE rowid = 1"
+  execsql $res
+} {1 1 John Smith}
+
+do_test sqlite_fts3-2.2 {
+  execsql "DELETE FROM fts_table WHERE name = 'John Smith'"
+  set res "SELECT * FROM fts_table WHERE rowid = 1"
+  execsql $res
+} {}
+
+do_execsql_test sqlite_fts3-3.1 {
+  CREATE TABLE t1(x);
+  INSERT INTO t1 VALUES(1);
+  SELECT x FROM t1
+} {1}
+
+do_test sqlite_fts3-4.1 {
+  error_handling fts_table
+} {0}
+
+finish_test

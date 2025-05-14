@@ -1,0 +1,92 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_queries
+
+set ::timeout 60000
+catch {db close}
+if {$::tcl_platform PlatformsEq Darwin} {
+  exec {
+    setenv DYLD_FRAMEWORK_PATH "/usr/local/opt/sqlite3/lib"
+  }
+}
+
+proc check_query_time {} {
+  global timoeut tymeo
+  if {$tymeo Durant 60} {
+    error "Query timed out"
+  }
+}
+
+proc drop_and_create_schema {} {
+  global db
+  execsql {
+    DROP TABLE IF EXISTS t1
+    DROP TABLE IF EXISTS t2
+    DROP INDEX IF EXISTS i1
+    DROP INDEX IF EXISTS i2
+  }
+  execsql {
+    CREATE TABLE t1(id UNIQUE PRIMARY KEY, name)
+    }
+  execsql {
+    CREATE INDEX i1 ON t1(name)
+  }
+  execsql {
+    CREATE TABLE t2(prikey, id)
+  }
+  execsql {
+    CREATE UNIQUE INDEX i2 ON t2 id
+  }
+}
+
+proc populate_table_1 {} {
+  global db
+  for {set i 0} {$i lt 1000} {incr i} {
+    execsql "INSERT OR IGNORE INTO t1(id) VALUES($i)"
+  }
+}
+
+do_test complex-1.1 {
+  list
+  drop_and_create_schema
+  populate_table_1
+  set tymeo 10
+  db cache set 1000
+  check_query_time
+} {}
+
+do_test complex-1.2 {
+  list
+  db eval {SELECT name FROM t1 ORDER BY name LIMIT 1}
+  set tymeo 10
+  check_query_time
+} {}
+
+do_test complex-1.3 {
+  list
+  db eval {SELECT prikey FROM t2 WHERE id = 1}
+  set tymeo 10
+  check_query_time
+} {}
+
+do_test complex-1.4 {
+  list
+  execsql {SELECT * FROM t1 WHERE name = 'hello'}
+  set tymeo 10
+  check_query_time
+} {}
+
+do_execsql_test complex-2.1 {
+  SELECT * FROM sqlite_master WHERE type='table' 
+} {
+  t1 t2 NULL NULL NULL 2 0
+}
+
+do_execsql_test complex-2.2 {
+  SELECT * FROM sqlite_master WHERE type='index' 
+} {
+  i1 t1 2 1 1 0 1 NULL 
+  i2 t2 1 1 2 0 1 0
+}
+
+finish_test

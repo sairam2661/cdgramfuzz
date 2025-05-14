@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc complex_insert {} {
+  set id 1
+  for {set i 0} {$i lt 100} {incr i} {
+    execsql "INSERT INTO t1 VALUES($i, $id)"
+  }
+}
+
+proc complex_select {} {
+  execsql "SELECT id, avg(a) FROM t1 GROUP BY id ORDER BY id"
+}
+
+proc complex_drop {} {
+  execsql {DROP TABLE t1}
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(a, id);
+  }
+  complex_insert
+  complex_select
+} {}
+
+do_test complex-1.2 {
+  complex_drop
+  execsql {CREATE TABLE t1(a, id)}
+  execsql {INSERT INTO t1 VALUES(1, 1)}
+  complex_select
+} {1 50.0}
+
+do_test complex-1.3 {
+  complex_drop
+  execsql {CREATE TABLE t1(a, id)}
+  for {set id 1} {$id le 1000} {incr id} {
+    execsql "INSERT INTO t1 VALUES($id, $id)"
+  }
+  complex_select
+} {999 499500.0}
+
+do_test complex-1.4 {
+  db self_rollback
+  complex_select
+} {}
+
+do_execsql_test complex-2.1 {
+  BEGIN;
+  CREATE TABLE t2(a, b);
+  INSERT INTO t2 VALUES(1, 2);
+  COMMIT;
+  SELECT * FROM t2;
+} {1 2}
+
+do_execsql_test complex-2.2 {
+  BEGIN;
+  INSERT INTO t2 VALUES(3, 4);
+  COMMIT;
+  SELECT * FROM t2;
+} {1 2 3 4}
+
+ifcapable attach {
+  do_test complex-3.1 {
+    ATTACH 'file:test.db' AS t2
+    execsql {SELECT name FROM sqlite_master}
+  } {main test2}
+  do_test complex-3.2 {
+    dettach 't2'
+    execsql {SELECT name FROM sqlite_master}
+  } {main}
+}
+
+finish_test

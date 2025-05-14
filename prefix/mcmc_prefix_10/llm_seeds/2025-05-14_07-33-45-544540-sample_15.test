@@ -1,0 +1,95 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_query
+
+set ::timeout 60000
+set tmpdir "/tmp"
+
+proc delete_file {file_path} {
+  global tmpdir
+  exec rm "$tmpdir/$file_path"
+}
+
+proc drop_table {table_name} {
+  execsql {
+    DROP TABLE $table_name
+  }
+}
+
+proc setup {} {
+  global db
+  execsql {
+    CREATE TABLE customers(
+      id  PRIMARY KEY,
+      name,
+      city
+    );
+    CREATE TABLE orders(
+      id PRIMARY KEY,
+      customer_id,
+      total
+    );
+  }
+  do_test complex_query_1_1 {
+    execsql {
+      INSERT INTO customers VALUES(1, 'John', 'New York');
+      INSERT INTO customers VALUES(2, 'Jane', 'London');
+    }
+    execsql {
+      INSERT INTO orders VALUES(1, 1, 100.0);
+      INSERT INTO orders VALUES(2, 2, 200.0);
+    }
+  } {1 2}
+}
+
+proc query1 {} {
+  execsql {
+    SELECT c1 city
+    FROM customers c1
+    JOIN orders o1
+    ON c1city  o1customer_id
+    ORDER BY c1city
+  }
+}
+
+do_test complex_query_1_2 {
+  setup
+  query1
+  result {New York
+           London}
+} {New York London}
+
+do_test complex_query_2_1 {
+  setup
+  execsql {
+    UPDATE customers
+    SET city  'Paris'
+    WHERE id  1
+  }
+  query1
+  result {Paris
+           London}
+} {Paris London}
+
+do_execsql_test complex_query_3_1 {
+  BEGIN;
+  INSERT INTO customers VALUES(3, 'Alice', 'Madrid');
+  COMMIT;
+}
+do_test complex_query_3_2 {
+  execsql {
+    SELECT c1 city
+    FROM customers c1
+    LEFT JOIN orders o1
+    ON c1city  o1customer_id
+  }
+  result {Paris
+           London
+           Madrid
+           }
+} {Paris London Madrid}
+
+drop_table customers
+drop_table orders
+delete_file "temp"
+finish_test

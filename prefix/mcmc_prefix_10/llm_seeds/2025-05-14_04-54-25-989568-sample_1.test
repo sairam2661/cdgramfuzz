@@ -1,0 +1,101 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async_replication
+
+set ::timeout 60000
+proc sqlcheck {} {
+  set nTimeouts 0
+  foreach msg $::sqlite_temp_msgs {
+    if {$msg eq "database is locked" } {incr nTimeouts}
+  }
+  return $nTimeouts
+}
+
+set cmd1 "SELECT 1"
+set cmd2 "SELECT 2"
+
+set up_sql {
+  CREATE TABLE data(x);
+  INSERT INTO data VALUES(1);
+  CREATE TABLE temp_data(x);
+
+  BEGIN;
+  INSERT INTO data VALUES(2);
+  INSERT INTO temp_data VALUES(3);
+  COMMIT;
+
+  BEGIN;
+  INSERT INTO temp_data VALUES(4);
+  COMMIT;
+}
+
+proc test_async_replication {} {
+  setup_sql
+
+  execsql {
+    BEGIN;
+    INSERT INTO temp_data VALUES(5);
+  }
+
+  forcedelete temp_data_1
+  forcedelete temp_data_1wal
+
+  db WAL {VACUUM}
+
+  execsql {
+    ANALYZE
+  }
+
+  execsql {
+    SELECT x FROM temp_data;
+  }
+
+  execsql {
+    SELECT x FROM temp_data;
+  }
+
+  execsql {
+    PRAGMA mainjournal_mode = 'DELETE'
+  }
+
+  execsql {
+    DROP TABLE temp_data
+  }
+
+  execsql {
+    CREATE TABLE temp_data(x UNIQUE)
+  }
+
+  execsql {
+    INSERT INTO temp_data VALUES(1)
+  }
+
+  db close
+
+  global syncargs
+  execsql {
+    INSERT INTO temp_data VALUES(1);
+    SELECT x FROM temp_data
+  }
+}
+
+do_execsql_test async-1.1 {
+  BEGIN;
+  INSERT INTO data VALUES(2);
+  SELECT count(*) FROM data;
+} {2}
+
+do_execsql_test async-1.2 {
+  BEGIN;
+  INSERT INTO temp_data VALUES(3);
+  SELECT count(*) FROM temp_data;
+} {1}
+
+ifcapable wal {
+  forcedelete temp_data_1
+  forcedelete temp_data_1wal
+} else {
+  forcedelete temp_data_1
+}
+
+finish_test

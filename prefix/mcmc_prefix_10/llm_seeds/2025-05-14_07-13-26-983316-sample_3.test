@@ -1,0 +1,60 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix subquery
+
+set ::timeout 60000
+
+do_test subquery-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+    INSERT INTO a VALUES(2);
+    INSERT INTO a VALUES(3);
+  }
+  execsql {SELECT count(*) FROM a}
+} {3}
+
+do_execsql_test subquery-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {4}
+
+do_test subquery-2.1 {
+  execsql {
+    CREATE TABLE t1(c1, c2);
+    CREATE TABLE t2(c3, c4, c5);
+    INSERT INTO t1 VALUES(1, 'a');
+    INSERT INTO t1 VALUES(2, 'b');
+    INSERT INTO t1 VALUES(3, 'c');
+    INSERT INTO t2 VALUES(4, 5, 6);
+    SELECT t1_rows FROM 
+    EXCEPT 
+    WHERE t2_rows = 0;
+  }
+} {3}
+
+do_test subquery-2.2 {
+  execsql {
+    CREATE TABLE t3(c6, c7);
+    CREATE TABLE t4(c8, c9, c10);
+    INSERT INTO t3 VALUES('e', 10);
+    INSERT INTO t3 VALUES('f', 20);
+    INSERT INTO t3 VALUES('g', 30);
+    INSERT INTO t4 VALUES(41, 50, 60);
+    SELECT t3_rows FROM 
+    INTERSECT 
+    WHERE t4_rows = 3;
+  }
+} {3}
+
+ifcapable vacuum {
+  do_test subquery-3.1 {
+    execsql {
+      VACUUM
+    }
+  } {}
+}
+
+finish_test
