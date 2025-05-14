@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "c" [
+  <!ELEMENT book (title, section*)>
+  <!ATTLIST section id CDATA #REQUIRED>
+  <!ENTITY text1 "I">
+  <!ENTITY % text2 "d">
+  <!NOTATION XML-Schema PUBLIC "3" "1">
+  %text2;  <!-- text expansion -->
+]>
+<book>
+  <title>The history of programming</title>
+  <section id="1"><![CDATA[This]]></section>
+  <section id="2">&text1;</section>
+</book>

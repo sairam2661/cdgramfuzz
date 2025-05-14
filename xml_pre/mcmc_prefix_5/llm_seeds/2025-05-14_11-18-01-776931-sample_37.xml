@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library SYSTEM "l"[
+  <!ELEMENT book (#PCDATA) >
+  <!ATTLIST book id CDATA #REQUIRED name CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY  %pub "G" >
+  <!NOTATION Acrobat  SYSTEM "/">
+  %pub;<!-->; %pub;-->]>
+<library xmlns:uri="x" uri:schemaLocation='a b'>
+  <!-- Sample comment -->
+  <book id="1" name="A">by <name>&author;&author;&author;</name></book>
+  <copy id="2" name="B" uri:schemaLocation="c" NOTATION="x" uri:schemalocation="d">&author;;</copy>
+</library>

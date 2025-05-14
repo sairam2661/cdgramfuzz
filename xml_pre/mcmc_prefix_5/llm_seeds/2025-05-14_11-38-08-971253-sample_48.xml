@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED>
+  <!ENTITY entity "e">
+  <!ENTITY % pi PUBLIC "p" "i">
+  <!NOTATION f SYSTEM "f">
+  %pi;
+  <!--
+  This is a multi
+  line comment
+  -->
+]>
+<book lang="f" xmlns="F" xmlns:xsi="F">
+  <title xmlns:xi="C"></title>
+  <author>John Doe</author>
+  <xi:include href="C"></xi:include>
+  <chapter xmlns:xi="F">
+    <xi:fallback>/fallback</xi:fallback>
+  </chapter>
+  <chapter>
+    <section>Text <Entities>&entity;</Entities> is not allowed</section>
+  </chapter>
+</book>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, publicationInfo, author*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author1 "J">
+  <!ENTITY
+    %dollar "5"
+     >
+  <!NOTATION book-notation SYSTEM "e">
+  %dollar;
+  <!--%dollar -->
+]>
+<book id="B" xml:lang="i" xmlns:ns="u" xmlns:xi="h">
+  <title>Short Title</title>
+  <publicationInfo>
+    <publisher>ABC Publisher</publisher>
+    <date>2020</date>
+  </publicationInfo>
+  <author>
+    <name>John</name>
+  </author>
+  <author>
+    <name>&author1;</name>
+  </author>
+</book>

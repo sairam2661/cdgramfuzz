@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    id  ID   #REQUIRED
+    date CDATA  #IMPLIED
+    priority (high|low) "n"
+  >
+  <!ENTITY a "a">
+  <!ENTITY % ent "b">
+  <!NOTATION SVG PUBLIC "a" "b">
+  %ent;<!--
+  --><!NOTATION xmlpublic PUBLIC
+  "a"
+  "a"
+  >
+]>
+<dataset>
+  <notes>
+    <note id="n" date="y" priority="h">x &a; &xmlpublic;</note>
+    <note id="m" date="x" priority="l">z</note>
+    <xinclude xmlns:xlink="w">
+      <xi:include href="z"/>
+    </xinclude>
+  </notes>
+</dataset>

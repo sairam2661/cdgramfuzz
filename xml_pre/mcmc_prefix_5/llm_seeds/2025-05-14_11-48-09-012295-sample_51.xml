@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (book+)>
+  <!ATTLIST bookstore author CDATA #IMPLIED>
+  <!ENTITY chapter1 "I">
+  <!ENTITY % section "P">
+  <!NOTATION PDF PUBLIC "-"
+    "a"
+    >
+ 	    
+ 	%p;
+ 	<!--%chapter1;
+]>
+<bookstore author="John Smith"
+ 	note="All rights reserved"
+ 	copyright="&copy;1998"
+ 	xmlns:xi="http://www.w3.org/2001/XInclude"
+ 	xsi:noNamespaceSchemaLocation="file:schema.xsd"
+ 	xml:lang="en"
+ 	nm:uniqueID="X123"
+ 	ext:version="1.0">
+ 	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+ 		href="other.xml"/>
+ 	<book>
+ 		<title>XML Tutorial</title>
+ 		<price>39.95</price>
+ 		<xi:fallback xmlns:xi="http://www.w3.org/2001/XInclude" xpath="/root/text()"/>
+ 		<author>
+ 					&name;
+ 		</author>
+ 	</book>
+</bookstore><|eom_id|><|start_header_id|>assistant<|end_header_id|>
+
+This XML document includes various XML features such as:
+
+-->   <!ENTITY note "A"> 			
+ 	<!ENTITY chapter "B">            
+ 	<!ENTITY % section "C">         
+
+ 	<!--
+ 	<!NOTATION note PUBLIC ""-->           
+
+ 	<!ELEMENT bookstore (book+)>
+ 	<!NOTATION PDF PUBLIC "-"
+      "a"
+      >
+
+    <!ATTLIST bookstore author CDATA #IMPLIED>
+
+ 	<!ELEMENT book (title,price,author)>
+ 	<!ELEMENT title (#PCDATA)>
+ 	<!ELEMENT price (#PCDATA)>
+ 	<!ELEMENT author (#PCDATA)>
+        <!--
+    	<!ELEMENT section (section+|para+)>
+    	<!ATTLIST section 
+    		id CDATA #IMPLIED
+    		anchor (yes|no) "no"
+    	>
+    	-->
+	<!ELEMENT para (#PCDATA)>
+	<!ELEMENT chapter (chapter+|para+)>
+    <!ATTLIST chapter id CDATA #IMPLIED>
+    <!--
+
+<!ENTITY % section "D">
+<!ELEMENT section (section+|para+)>
+<!

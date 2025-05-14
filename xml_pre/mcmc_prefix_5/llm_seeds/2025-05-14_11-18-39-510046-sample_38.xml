@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "c"
+          [
+            <!ELEMENT name (#PCDATA)>
+            <!ATTLIST note 
+              id  CDATA  #REQUIRED
+              date  CDATA  #IMPLIED
+            >
+            <!ENTITY date "1" >
+          <!ENTITY % note SYSTEM "b">
+          <!NOTATION sysid SYSTEM "c"
+            >
+          %note;
+          <!---->
+          ]>
+<notes xmlns="a" xmlns:xlink="b"
+     xlink:href="d" 
+     version="2">
+  <note id="1" date="&date;">
+    <name>Katsumi</name>
+  </note>
+</notes>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookmarks SYSTEM "b" [
+  <!ELEMENT booklist (book+, book+)>
+  <!ATTLIST book id ID #IMPLIED title CDATA #REQUIRED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY % section SYSTEM "s">
+  <!NOTATION HTML SYSTEM "A">
+  %section;
+  <!---->
+]>
+<bookmarks b="b">
+  <book id="B" title="B">
+    <section>&nbsp;<xi:include xmlns:xi="x" href="1"/></section>
+  </book>
+  <book id="A" title="A"><section>HTML</section></book>
+</bookmarks>

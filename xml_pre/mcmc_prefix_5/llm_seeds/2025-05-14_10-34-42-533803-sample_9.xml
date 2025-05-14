@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author,chapter+)>
+  <!ATTLIST book
+         id       CDATA  #REQUIRED
+         lang     (EN|FR|ES) 'EN'
+  >
+  <!ENTITY chapterOne "I">
+  <!ENTITY % chapterTemplate "I">
+  <!NOTATION svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+          'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+
+  %chapterTemplate;
+  <!--
+   -->]>
+<book id="m" lang="X">
+  <title>My Book</title>
+  <author>Me</author>
+  <chapter id="c">
+    &chapterOne;
+  </chapter>
+  <chapter>
+    &chapterOne;
+  </chapter>
+</book>

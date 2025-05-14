@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This is a sample XML document -->
+<!DOCTYPE db [
+  <!ELEMENT db (user+)>
+  <!ATTLIST db
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY contact "D">
+  <!ENTITY % contact-list "("><!NOTATION phone SYSTEM "E"> 
+  %contact-list; 
+  <!--% -->
+  <!ELEMENT user (name,email,phone)> 
+  <!ATTLIST user
+    id ID #IMPLIED
+    address CDATA #IMPLIED
+  >
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT email (#PCDATA)>
+  <!ELEMENT phone (#PCDATA)>
+]>
+<db id="x" version="3">
+  <user id="1"><name>John</name><email>johndoe</email><phone>123-456-7890</phone></user>
+  <user id="2"><name>Jane</name><email>jane doe</email><phone>987-654-3210</phone></user>
+</db>

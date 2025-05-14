@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "f" [
+  <!ELEMENT inventory (item*, price)>
+  <!ATTLIST item id CDATA #REQUIRED>
+  <!ENTITY pound "&#x00A3;">
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION ISOpeg SYSTEM "i" >
+  %ent;
+  <!--
+    If the attribute is referenced in the DTD, it needs to be
+    declared in the ATTLIST with a value like #REQUIRED or #IMPLIED
+    A default can be provided instead of a value like #REQUIRED
+  -->
+
+
+]>
+<inventory>
+  <item id='a1'>book<price>10</price></item><price>15</price>
+  <item id='b1'><price>5</price>greeting card</item>
+</inventory>

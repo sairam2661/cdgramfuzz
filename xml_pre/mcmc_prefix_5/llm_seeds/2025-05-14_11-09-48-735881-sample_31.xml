@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE tutorial SYSTEM "t" [
+  <!ELEMENT title (#PCDATA) >
+  <!ATTLIST title type (text | number) #REQUIRED>
+  <!ENTITY address "E" >
+  <!ENTITY % section "d" > 
+  <!NOTATION html SYSTEM "H">
+  %section;
+  <!--doc comment-->
+]>
+<doc xml:lang="x">
+  <title type="h">Chapter &address;&note;</title>
+  <section><![CDATA[< > "'` ]]></section>
+</doc>

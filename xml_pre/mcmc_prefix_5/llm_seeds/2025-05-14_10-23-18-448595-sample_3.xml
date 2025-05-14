@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "m"
+
+[
+  <!ELEMENT catalog (title,author,year) >
+  <!ATTLIST catalog  author CDATA #REQUIRED >
+  <!ENTITY title "A">
+  <!ENTITY  % bookAttr "("
+    >  	<!NOTATION html SYSTEM "x">
+   	
+   	%x
+		;
+  <!--
+  %bookAttr;>
+  <title>
+  &title;
+   
+  catalog
+	<author name="John Doe">
+	
+		</author>
+  <year>
+	&year;
+	</year>
+</catalog>
+
+]>
+<catalog xmlns="http://example.org/book">
+<title xml:lang="en">Book Title</title>
+<author name="Jane Doe">
+<email> jane@example.org</email>
+</author>
+<year>2022</year>
+</catalog> 
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' xpath='doc('C:/file.xml')//element'/>
+<xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='doc:///Users/file.xml'/> 
+<doctype name='document' public '''some URL '/></doctype>  <comment>Sample comment</comment>  <id>abc</id> <root>  <sub>   <attr>10<</attr> </sub>  <sub>   <attr>10</attr>  </sub>   <root>    <id>123</id>    <version>1</version>   </root>  <text>Hello <b> World</b>;,!? .</text>   <entity name ='testData'   publicId="http://www.publicId.com/testData">  Test data</entity>  <root>   <root>   <element1 attr="attrValue1" />   <element>   <value>This is element 1 value.</value>   <element>   <value>This is element 2 value.</value>     <node>   <value>This is my node value.</value>   <node>   <subroot>   <subroot>  <sub>    <attr attr2="attrValue2">    <element2 attr3 ='some Attribute  '/>   </sub>   </subroot>   <subroot>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY author "D">
+  <!ENTITY % section-content
+    " "><!NOTATION GIF SYSTEM 'gif-file' >
+  %section-content;
+  <!---->
+]>
+<catalog id="C">
+  <product barcode="1">
+    <name><![CDATA[product name]]></name>
+  </product>
+  <product barcode="2">
+    <name>&author;</name>
+  </product>
+</catalog>

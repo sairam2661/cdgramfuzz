@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "s" [
+  <!ELEMENT root ANY>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY user "j">
+  <!ENTITY % general "<">
+  <!NOTATION book PUBLIC "a" "c">
+  %general;
+  <!-- %general; will cause parser error  -->
+]>
+<root id="A" xmlns:custom="a" xmlns:image="b">
+  <custom:name>Jack</custom:name>
+  &user;
+  <!-- entity that contains & -->
+  &user;&a;&b;
+  <image:URL>http://example.com/image</image:URL>
+  <image:pic not="1" xmlns:book="c">
+    <image:file book:ID="2" not="1">a</image:file>
+  </image:pic>
+</root>

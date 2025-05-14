@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "n"
+
+  [
+    <!ELEMENT catalog (entry+)>
+    <!ATTLIST catalog
+      id CDATA #REQUIRED
+      author CDATA #IMPLIED
+    >
+    <!ENTITY eacode "&eacode;">
+    <!ENTITY % eacode "E">
+  <!NOTATION SGML-PUBLIC
+
+    SYSTEM "p"
+  >
+    %comment;
+  <!-- %entity; -->
+]
+>
+
+<catalog id="x" author="y">
+  <entry>
+    <title>z</title>
+    <description>&eacode;</description>
+  </entry>
+</catalog>

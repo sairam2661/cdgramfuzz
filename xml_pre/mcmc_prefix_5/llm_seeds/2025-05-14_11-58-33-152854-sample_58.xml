@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)> 
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY title "G" > 
+  <!ENTITY  % note.content "(">
+  <!NOTATION GIF SYSTEM "G">
+  %note.content; <!-- to fix the 'undeclarations' warning -->
+]>
+<notes xmlns:xsld="x" xmlns:xs="y">
+  <!-- <xs:schema id="my_schema" targetNamespace="uri:TargetNS"> -->
+  <note id="A">
+    <data>This is a note.&title;</data>
+  </note>
+  <note id="B">
+    <data><![CDATA[This <is> a <note>.]]></data>
+  </note>
+</notes>

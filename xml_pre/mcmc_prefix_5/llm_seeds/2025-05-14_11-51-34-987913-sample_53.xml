@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE result SYSTEM "m"
+[
+<!ELEMENT result (output, error?)>
+<!ATTLIST result
+  id ID #REQUIRED
+  xmlns CDATA #REQUIRED
+  xsi:schemaLocation CDATA #REQUIRED
+>
+<!ENTITY dbpassword "P">
+<!ENTITY 
+  %date "1"
+>
+<!NOTATION internalDTD SYSTEM "m"
+  >
+  %internalDTD;
+<!--
+  Copyright (c) &date; John Doe.  All rights reserved.
+-->
+]>
+<result id="1" xmlns:xsi="w" xmlns="w" xsi:schemaLocation="w"></result>

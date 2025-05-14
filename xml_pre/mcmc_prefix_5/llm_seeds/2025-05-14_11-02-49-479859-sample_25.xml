@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE employees [
+  <!ELEMENT employees (emp+)>
+  <!ATTLIST employees
+    id CDATA #REQUIRED
+    lang (en|fr|de) "e">
+  <!ENTITY author "J">
+  <!ENTITY % emp "d">
+  <!NOTATION tiff PUBLIC "-"
+  "T"
+  >
+ %pemp; 
+  <!--example comment-->
+]>
+<employees id="e" lang="e">
+  <emp>
+    <fname>&author;</fname>
+    <lname>John</lname>
+    <age>28</age>
+  </emp>
+  <emp>
+    <fname>Jane</fname>
+    <lname>Doe</lname>
+    <age>24</age>
+  </emp>
+</employees>

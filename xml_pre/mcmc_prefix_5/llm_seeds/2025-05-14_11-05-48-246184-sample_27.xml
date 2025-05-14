@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY author "J"
+  	>
+  <!ENTITY  % chapter-sequence "1">
+  <!NOTATION nfo PUBLIC "N"
+  	"o"
+  	>
+  				
+  				
+  				
+  				
+  				
+  				
+		%chapter-sequence;
+  				
+		<!-- Chapter 2 -->
+		<!ELEMENT chapter (heading, text)>
+		<!ELEMENT heading (#PCDATA)>
+		<!ELEMENT text (#PCDATA)>
+		<!ELEMENT  title (#PCDATA)>
+	<!ELEMENT  author (#PCDATA)>
+]>
+<book lang="x" name:xi  = "i" xmlns:xi="i" xmlns="k"
+		nfo:notation =  "w"
+		nfo:id="n"  
+	nfo:status="v"
+	nfo:history="t" xml:space="p" xmlns:nfo="h"
+	xml:lang =  "s"
+ xml:base="b"
+  	lang   = 't'
+  	>
+ <title>Example</title>
+ <author>&author;</author>
+ <chapter>
+   <heading>First Chapter heading</heading>
+   <text>This text belongs to chapter one</text>
+ </chapter>
+ <chapter>
+   <heading>Second Chapter heading</heading>
+   <text>This text belongs to chapter two</text>
+ </chapter>
+</book>

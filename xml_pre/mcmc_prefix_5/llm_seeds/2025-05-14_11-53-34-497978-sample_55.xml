@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY currency "$">
+  <!ENTITY % quote "#">
+  <!NOTATION iso-8859-1 PUBLIC "-"
+    "N"  > 
+   					  	%XInclude;
+  <!--
+     #ifdef DEBUG
+     #else
+     -->
+]>
+<catalog id="A" xmlns="p"> 
+  <product>
+   <name>&quote;Name 1&quot;</name>
+   <price>&currency;99.99</price>
+  </product> 
+  <product>
+   <name>&quote;Name 2&quot;</name>
+   <price>&currency;34.56</price>
+  </product> 
+</catalog>

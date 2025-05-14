@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY cat "C">
+  <!ENTITY % dog "D">
+  <!NOTATION ISO-8859-1 SYSTEM "W">
+  %dog;
+  <!---->
+]>
+<notes>
+  <note id="E">
+    Some text with <raw>&amp;<ref>&cat;&dog;</ref><refref>ID</refref></raw> elements and a reference.
+  </note>
+  <note id="F">This node contains <r>rich</r> and <i>italic</i> text with CDATA.
+    <data>
+
+<![CDATA[
+  These are more text elements in CDATA format with <ref>references</ref> and
+  <ref>and more text after this line</ref> and <entityref>&cat;</entityref>
+    <charrefs>&lt; &gt; &amp; &apos; &quot;</charrefs>
+
+]]>   </data>
+  </note>
+</notes>

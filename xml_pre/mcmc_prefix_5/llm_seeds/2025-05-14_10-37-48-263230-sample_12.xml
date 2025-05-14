@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY copyright "W">
+  <!ENTITY % bookentity "w" >
+  <!NOTATION iso-8859-1 SYSTEM "1">
+  %bookentity;
+  <!-- DTD Comments -->
+]>
+<book xmlns:xi="x" id="B" lang="f">
+  <title>&copy;</title>
+  <author>
+    <firstname>Joe</firstname>
+    <lastname>Doe</lastname>
+  </author>
+  <chapter>
+    <head>Introduction</head>
+    <content>
+      This is a sample text.
+      <![CDATA[
+        And 
+        this
+        is
+        another
+        <tag>
+      ]]>
+    </content>
+  </chapter>
+  <chapter>
+    <head>Conclusion</head>
+    <content>
+      <!-- Ignore me -->
+      Another sample.
+    </content>
+  </chapter>
+</book>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE config SYSTEM "l" [
+  <!ELEMENT config (setting+)>
+  <!ATTLIST config xmlns CDATA #REQUIRED>
+  <!ENTITY l SYSTEM "l">
+  <!ENTITY % temp "%">
+  <!NOTATION XMLNotation PUBLIC "L" "L">
+  %temp;
+  <!-->[CDATA[Some sample content ]]<!-->]>
+  <notepad>
+    &l;
+    <title attr="&note;">Sample Document</title>
+  </notepad>

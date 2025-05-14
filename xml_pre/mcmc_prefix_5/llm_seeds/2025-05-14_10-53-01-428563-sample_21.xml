@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "e"
+ [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    name CDATA #REQUIRED
+    age  CDATA #IMPLIED
+    id  (A|B) "A">
+  <!ENTITY entity1  "F"   >
+  <!ENTITY % entity2 "G" >
+  <!NOTATION ISO-8859-1 SYSTEM "f">
+  %entity2;
+   <!--%ISO--> 
+]>
+
+<note name="J" id="A" age="K">
+  This is a note entity with multiple notations: &entity1; &ISO-8859-1; &entity2;
+</note>

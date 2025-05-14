@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapters)>
+  <!ATTLIST chapter id CDATA #REQUIRED>
+  <!ENTITY author "J" >
+  <!ENTITY  % note "#">
+
+<!NOTATION xquery SYSTEM "x">
+  %note;
+<!--
+
+<![CDATA[<p> Some <b>bold</b> text ]]>
+<!ELEMENT book (title, author, chapters)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST chapter
+    %id;
+    lang CDATA #IMPLIED>
+<!ATTLIST document xml:lang CDATA #IMPLIED>
+<!ENTITY % para "CDATA">
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ATTLIST docbook
+xml:lang CDATA #IMPLIED>
+
+<!ELEMENT body (#PCDATA)>
+<!ATTLIST heading
+    level CDATA #IMPLIED>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST chapter
+    id CDATA #REQUIRED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+
+<!ATTLIST book
+
+xml:lang CDATA #IMPLIED>
+
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT docbook (#PCDATA)>
+<!ENTITY % p "CDATA" >
+
+<!ELEMENT body (#PCDATA)>
+<!ELEMENT docbook (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT docbook (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ENTITY p "CDATA">
+<!ELEMENT note (#PCDATA)>
+
+<!ATTLIST chapter
+lang CDATA #IMPLIED>
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT body (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT chapters (chapter*)>
+<!ENTITY % id "CDATA" >
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST chapter
+
+id CDATA #REQUIRED>
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+
+<!ELEMENT chapters (chapter*)>
+<!ATTLIST chapter
+lang CDATA

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, publisher+)>
+  <!ATTLIST book
+    lang CDATA #IMPLIED
+    id  ID  #REQUIRED
+  >
+  <!ENTITY author "J" >
+  <!ENTITY  % pub "P">
+  <!NOTATION Acrobat  PUBLIC "x" "x" >
+  %pub;
+  <!---->
+]>
+<book id="B" lang="x" xmlns:xsi="c" xsi:schemaLocation="d">
+  <author>&author;</author>
+  <title>a title </title>
+  <publisher xmlns:xi="y">some publisher</publisher>
+  <Acrobat />
+  <!-- not a not -->
+  Book content 
+  with some
+  entities &copy;
+</book>

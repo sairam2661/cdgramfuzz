@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE person [
+  <!ELEMENT person (#PCDATA|name|address|phone|email|notebd|noteitg |
+                  cd|sub|b|ul|li|ol|i|h1|h2|h3|h4|h5|h6)>
+  <!ATTLIST person id CDATA #REQUIRED>
+  <!ENTITY person-id "1">
+  <!ENTITY % mypi "&person-id;">
+  <!NOTATION ISO8601-DATE SYSTEM "I">
+  %my-notation;
+  <!-- This is an internal subset -->
+  <!ELEMENT name (#PCDATA)>
+]>
+<person xmlns:xi="x" id="1">
+  <!-- Sample comment -->
+  <name id="2">John Doe</name>
+  <address>
+    &person-id; (entity reference)
+    <!-- text inside a CDATA block -->
+    <![CDATA[Here is some info:
+      Address Line 1
+      Address Line 2
+    ]]>
+  </address>
+  <phone>1234567890</phone>
+  <email>johndoe@example.com</email>
+  <notebd>
+    <!-- Inline code element -->
+    <cd>Some sample text in a code block</cd>
+  </notebd>
+  <noteitg>Additional text</noteitg>
+</person>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html [
+  <!ELEMENT html ANY >
+  <!ATTLIST html lang CDATA #IMPLIED>
+  <!ENTITY h "d">
+  <!ENTITY % p "o">
+  <!NOTATION ISO-8859-1 SYSTEM " ">
+  %p; <!-- entity reference -->
+]>
+<xml:namespace xmlns="x"
+  xmlns:xsi="x"
+  xsi:noNamespaceSchemaLocation="y"
+  xml:lang="e"
+  xml:space="p">
+  <section><![CDATA[Some <raw> text]]></section>
+  <message>&h;</message>
+  <root xmlns:a="c">
+    <child attr="1" a:other="x">text with entities &entity1; and &entity2;</child>
+  </root>
+</xml:namespace>

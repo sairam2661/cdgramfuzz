@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    lang (EN|FR|DE) "N"
+  >
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY % book "g">
+  <!NOTATION ISO8842 SYSTEM "S">
+  %book;
+  <!--<!ELEMENT book --><!ELEMENT  book (title,author) >    <!-- <book><title>The</title> <author>Robert</author>A</book> -->
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+]>
+<catalog id="c" lang="N">
+  <book>
+    <title>&nbsp;Title1&amp;</title>
+    <author>Author 1</author>
+  </book>
+  <book>
+    <title></title>
+    <!--<!NOTATION ISO8842 PUBLIC "S"--> 
+    <author>Author 2</author>
+  </book>
+</catalog>

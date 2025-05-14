@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE declaration [
+  <!ELEMENT declaration (#PCDATA) >
+  <!ATTLIST declaration id CDATA #REQUIRED>
+  <!ENTITY year " ">
+  <!ENTITY % entities "a" >
+  <!NOTATION html SYSTEM "d">
+  %entities;
+  <!--><!--><!ELEMENT x (#PCDATA) ><!ELEMENT y (#PCDATA)>
+]>
+<declaration xmlns:xi="h" xmlns="b" id='1' version='1.0'>
+  <xi:include href='https://example.org/file.xml'/>
+  <![CDATA[<root><x>1<x><y>2</y></root>]]>
+   <xsl:value-of select='."/Declaration[@id=$id]"'/>
+  <entities/>
+  &year;&year;
+  <d>xml</d>
+</declaration>

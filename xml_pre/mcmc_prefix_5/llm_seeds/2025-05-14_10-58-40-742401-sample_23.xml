@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Internal subset: element declarations and attribute lists -->
+<!DOCTYPE notes [
+  <!ELEMENT notes (note*)>
+  <!ATTLIST note 
+    id    ID    #REQUIRED
+    type  (info|warning|error) ">"
+  >
+  <!ENTITY note "A" >     <!ENTITY % noteEntity "<" >       <!NOTATION MathML SYSTEM "m" >
+  %noteEntity;<!---->     <!ENTITY noteEntity SYSTEM "m" ><!ELEMENT a (#PCDATA)>
+]>
+<notes xmlns:fb="f" xmlns="f"><note type="i" id='1'/></notes>

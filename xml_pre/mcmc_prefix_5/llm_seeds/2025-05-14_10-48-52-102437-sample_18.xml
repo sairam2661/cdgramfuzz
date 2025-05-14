@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (person*)>
+  <!ATTLIST root language (eng|fra|ger) #IMPLIED>
+  <!ENTITY amp "&#38;">
+  <!ENTITY % foo "5">
+  <!NOTATION JPEG PUBLIC "A" "B">
+  %foo;
+  <!---->
+]>
+<root xmlns:NS1="w" xmlns:NS2="x" lang="f">
+  <person><name>John</name></person>
+  <person><name>Jane</name></person>
+</root>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (author+)>
+  <!ATTLIST books
+    id CDATA #REQUIRED
+    lang (en|fr|de) "x"
+  >
+  <!ENTITY book-author "F">
+  <!ENTITY % common-attributes
+    "x"    																		      
+    >
+  <!NOTATION isbn SYSTEM "N">
+  %common-attributes;
+  <!--%common-->
+  <!ELEMENT author (name, address)>
+  <!ELEMENT name (#PCDATA)>
+  <!ATTLIST name
+    lang (en|fr|de) "x"  		
+		id ID  #REQUIRED  		
+  >
+  <!ELEMENT address (#PCDATA)>
+  <!ELEMENT book (isbn, price)>
+  <!ELEMENT isbn (#PCDATA)>
+  <!ATTLIST isbn
+    type (ISBN-10|ISBN-13) "x"
+  >
+  <!ELEMENT price (#PCDATA)>
+  <!ATTLIST price
+    currency CDATA #REQUIRED
+  >
+]>
+<books id="x" lang="x" xmlns:xi="x">
+  <author id="A">
+    <name id="X">John Doe</name>
+    <address>123 Test St, NY</address>
+  </author>
+  <book>
+    <isbn type="x">X-12345</isbn>
+    <price currency="x">19.99</price>
+  </book>
+  <author id="B">
+    <name id="Y">Jane Doe</name>
+    <address>456 Test St, NY</address>
+  </author>
+</books>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note 
+    id ID #REQUIRED
+    title CDATA #IMPLIED
+    author NMTOKEN #IMPLIED>
+  <!ENTITY authorEntity "J"
+     >
+  <!ENTITY % entityAtt "a"
+     >
+  <!NOTATION n1 SYSTEM "n">
+  %entityAtt;
+  <!--
+  Some comments
+  -->
+  <!ELEMENT note (para*)>
+  <!ELEMENT para (#PCDATA)>
+  <!ATTLIST section
+    type (article|thesis|book) #REQUIRED>
+]>
+<notes xml:lang="x"><note id="1" title="a" author="&authorEntity;" xmlns:n="x"/></notes>

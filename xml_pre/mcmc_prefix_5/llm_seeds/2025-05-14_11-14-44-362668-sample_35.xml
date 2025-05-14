@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id CDATA #IMPLIED>
+  <!ENTITY xslt "X">
+  <!ENTITY % ent "X">
+  <!NOTATION ext-notation SYSTEM "A">
+  %ent;
+  <!--><!-->
+]>
+<catalog id="D" version="1" xmlns="&ns;">
+  <product type="B">
+    <name>Product B</name>
+    <price>10</price>
+    <description>
+      <p>
+        <b>Product B was added to the catalog:</b>
+        <year>2022</year>
+        <month>12</month>
+        <day>01</day>
+      </p>
+    </description>
+    <reference uri="A" ext-notation="B"/>
+  </product>
+  <product type="C">
+    <name>Product C</name>
+    <price>11</price>
+    <description>
+      <h>Test heading</h>
+    </description>
+  </product>
+</catalog>

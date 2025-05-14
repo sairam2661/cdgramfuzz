@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*,appendix*)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY chapter1 "A"
+  >
+  <!ENTITY % title-param "(">
+  <!NOTATION xslt PUBLIC '-//W3C//DTD XSLT 1.0//EN'
+    'http://www.w3.org/TR/xslt:xslt.dtd'>
+  %title-param;  <!-- entity reference to parameter in CDATA section -->
+]>
+<book id="B" lang="f"
+  xmlns:html="w" xmlns:xlink="h" xmlns:a
+  =
+  "e" xml:lang="x"
+  xml:space="p" xml:base="[">
+  <title xmlns:a="d" 
+    xmlns:d="c">
+    My Book
+  </title>
+  <author xml:lang="s"
+    xml:space=
+    "y">
+    <name>John</name>
+  </author>
+  <chapter refid="B">
+    <title>&chapter1;</title>
+  </chapter>
+  <chapter>
+    <title>Chapter 2</title>
+  </chapter>
+  <affiliation>
+    <a:email href="p">example@example.com</a:email>
+  </affiliation>
+  <appendix>
+    <title>Appendix A: Glossary</title>
+  </appendix>
+</book>

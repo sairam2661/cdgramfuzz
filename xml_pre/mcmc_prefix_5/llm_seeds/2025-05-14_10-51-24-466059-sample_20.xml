@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (header*, section+)>
+  <!ATTLIST article type (book|article|thesis) #REQUIRED>
+  <!ENTITY book "A"
+         >
+  <!ENTITY % common "a">
+  <!NOTATION isbn SYSTEM "d">
+  %common;
+  <!--book--><!ENTITY book "B">
+]>
+<article type="t">text</article>

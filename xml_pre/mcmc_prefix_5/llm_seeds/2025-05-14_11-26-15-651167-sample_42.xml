@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "g"
+  [<!ELEMENT notes (note+,address)>
+   <!ATTLIST note
+     id  CDATA #REQUIRED
+     date CDATA #REQUIRED>
+   <!ENTITY pi-system "G"
+     >
+  <!ENTITY % ent "S">
+  <!NOTATION file PUBLIC
+     "G"
+     "G">
+  %ent;<!--
+    -->
+  ]>
+<notes>
+  <note id="A" date="A"
+    >Today<font><b><i>Today</i></b></font> is
+      <!-- is Today -->
+  </note>
+  <address>
+   <street>&pi-system;</street>
+  </address>
+</notes>

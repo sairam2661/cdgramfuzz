@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "s" [
+  <!ELEMENT root (element,comment)>
+  <!ATTLIST root id ID #IMPLIED>
+  <!ENTITY entity "I">
+  <!ENTITY % entity-percentage "%" >
+  <!NOTATION notation-system PUBLIC "s" "p">
+  %notation-system;
+  <!--<!NOTATION notation PUBLIC "public" "URI"> -->
+]>
+<root id="1">
+  <element>
+      &entity;
+      <info attribute="%">Sample</info>
+  </element>
+  <!-- Sample comment -->
+  <comment>
+    text
+    <sub-comment>
+       <info>This is a sub-comment</info>
+    </sub-comment>
+  </comment>
+</root>

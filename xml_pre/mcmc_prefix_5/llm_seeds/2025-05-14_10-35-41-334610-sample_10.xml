@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note (head, body+)>
+  <!ATTLIST note 
+    id ID #REQUIRED 
+    class (a|b) "a"
+  >
+  <!ENTITY entity1 "1">
+  <!ENTITY % entity2 "%">
+  <!NOTATION m SYSTEM "m">
+  %entity2;
+  <!---->
+]>
+<note id="n" class="b">
+  <xi:include href="i"/>
+  <head>Header</head>
+  <body>Body 1</body>
+  &note;
+  <body>&entity1;</body>
+</note>

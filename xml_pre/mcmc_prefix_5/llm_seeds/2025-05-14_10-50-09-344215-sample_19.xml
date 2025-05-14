@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root [
+  <!ELEMENT root (element, element) >
+  <!ATTLIST root
+    id CDATA #REQUIRED
+    lang (en|fr|de) "m">
+  <!ENTITY entity "M"
+  ><!ENTITY % entityset "M">
+  <!NOTATION HTML-PUBLIC  SYSTEM " ">
+ 	 
+ 	%entityset;
+  <!---->
+]>
+<root xmlns="X" xmlns:a="A" id="1" lang="m">
+  <a:element>Child</a:element>
+  <element>Parent</element>
+</root>

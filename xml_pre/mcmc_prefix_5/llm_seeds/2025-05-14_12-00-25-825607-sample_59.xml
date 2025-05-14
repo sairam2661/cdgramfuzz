@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA|title|author|chapter|paragraph)>
+  <!ATTLIST book  language (en|fr|de) #IMPLIED>
+  <!ENTITY percent "&#37;">
+  <!ENTITY  % dtdinfo  " ">
+  <!NOTATION ISO-8859-1  SYSTEM "G">
+  %dtdinfo;
+  <!--
+  External entity declaration for an ISO standard file...
+  -->
+]>
+<book language="f"></book>

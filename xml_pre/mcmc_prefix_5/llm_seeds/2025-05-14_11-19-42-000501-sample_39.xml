@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY title SYSTEM "C"><!ENTITY % chapter PUBLIC "C" "C">
+  <!NOTATION XHTML PUBLIC "+"
+        "a">
+  %chapter;
+  <!---->
+]>
+<book id="B">
+  <title entity-ref="C">&C;</title>
+  <author xmlns:xsi="w" xmlns:xlink="y">Z</author>
+  <chapter refid="A">A</chapter>
+  <chapter xml:lang="x">X</chapter>
+</book>
