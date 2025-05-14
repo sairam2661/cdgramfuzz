@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog lang CDATA #IMPLIED>
+  <!ENTITY desc "A"> <!ENTITY % ent "B"> <!NOTATION XMLNotation SYSTEM "3">
+  %ent;
+  <!---->
+]>
+<catalog lang="f">
+  <product>
+    <title>&desc;</title>
+    <price>9.99</price>
+    <!-- &XMLNotation; -->
+  </product>
+  <product>
+    <title>E</title>
+    <price>7.99</price>
+  </product>
+</catalog>

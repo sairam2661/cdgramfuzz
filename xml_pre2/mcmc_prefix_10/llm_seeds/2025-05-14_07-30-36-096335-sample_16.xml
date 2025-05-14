@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE address-set [
+
+  <!ELEMENT address-set (address+)>
+
+  <!ATTLIST address-set
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+
+  <!ENTITY cdata "<">
+  <!ENTITY 	% cd "%">
+  <!NOTATION xxe SYSTEM "h" >
+ %xee;<!-- xxe entity referenced -->
+  %xxa; <!-- Notation referenced -->
+]>
+<address-set id="A" version="1">
+  <address>
+    <name>&cdata;</name>
+    <street>
+      &cdata;
+      Hi there!
+    </street>
+  </address>
+  <address>
+    <name>
+      &cdata;
+      John Doe
+   </name>
+    <street>&cdata;</street>
+  </address>
+  <message>
+ <![CDATA[
+    This is a <raw> CDATA section
+ ]]> </message>
+</address-set>

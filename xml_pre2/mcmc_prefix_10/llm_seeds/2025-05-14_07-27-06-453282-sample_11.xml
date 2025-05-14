@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, year, chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A"
+          >
+  <!ENTITY % chapter2-system "A">
+  <!NOTATION ISO-8859-1 SYSTEM "N">
+  %chapter2-system;
+  <!--></DOCTYPE book>
+
+<book id="bk101" xmlns="http://www.mywebsite.com/xsd">
+  <title>Learning XML</title>
+  <author>�

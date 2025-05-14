@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (data, attributes)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY entity "a"
+  >
+  <!ENTITY % ent "y"
+  ><!NOTATION nnotation SYSTEM "a"
+  >
+  %ent;
+  <!-- comment -->
+]>
+<root id="r" xmlns="x">
+  <data>
+    Z<element>1</element>
+    <pi target="y">foo</pi>
+    &entity;&entity;-
+  </data>
+  <attributes><att1>value1</att1><att2>value2</att2></attributes>
+</root>

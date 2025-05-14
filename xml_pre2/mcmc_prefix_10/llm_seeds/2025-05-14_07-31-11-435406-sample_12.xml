@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (booklist+)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY chapter "D">
+  <!ENTITY % p "p">
+  <!NOTATION iso-8859-1 PUBLIC "A" "B">
+  %p;
+  <!--<!ELEMENT %p; (#PCDATA|title)*> -->
+]>
+<catalog lang="g">
+ <!-- <catalog lang="#PCDATA"> --> 
+<![CDATA[<title>ABC</title>
+<author> 
+  <name>DEF</name>
+</author>]]>
+</catalog>

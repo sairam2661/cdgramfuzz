@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE catalog PUBLIC
+  "-"
+  "J" 
+  [
+    <!ELEMENT catalog (product+)>
+    <!ATTLIST catalog id CDATA #REQUIRED>
+    <!ENTITY product SYSTEM "1" NDATA productType>
+  <!ENTITY % productType PUBLIC "J" "J" >
+  <!NOTATION productType SYSTEM "J">
+  %productType;
+  <!---->
+]>
+<catalog id="c">
+  <product>Book</product>
+  <product>Computer</product>
+  <product>Pencil</product>
+</catalog>

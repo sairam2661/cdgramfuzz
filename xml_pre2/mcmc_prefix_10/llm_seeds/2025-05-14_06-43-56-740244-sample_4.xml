@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "r" [
+  <!ELEMENT root (elem1|elem2)*>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY ent1 "&#94;">     
+  <!ENTITY % ent2 "<">
+  <!NOTATION note SYSTEM "n">
+  %ent2;
+  <!--; element declaration -->
+  <!ELEMENT elem1 (#PCDATA)>
+  <!ELEMENT elem2 (subElem+)>
+  <!ELEMENT subElem (#PCDATA)>
+]>
+<root id="r"> 
+<![CDATA[elem1 content]]> 
+<!-- element comment --><elem2> 
+  <subElem> elem1 sub- element!&ent1; </subElem>
+</elem2>
+/message xmlns=""&ent1;>
+<message>ent1 used in message</message>
+<message>another message</message>
+</root>

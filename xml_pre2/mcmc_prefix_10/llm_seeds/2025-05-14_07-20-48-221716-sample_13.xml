@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE complexDoc [
+  <!ELEMENT complexDoc (heading, section*)>
+  <!ATTLIST complexDoc lang CDATA #IMPLIED>
+  <!ENTITY part "1">
+  <!ENTITY % section-data "("
+  >
+<!NOTATION ISO-8859-1 PUBLIC " " " ">
+  %section-data; 
+<!--
+
+<!ELEMENT section (p+, figure?)>
+<!ATTLIST section kind CDATA #IMPLIED>
+<!ATTLIST section id ID #IMPLIED>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT figure (#PCDATA)>
+<!ATTLIST figure href CDATA #IMPLIED>
+<!ATTLIST complexDoc xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema.getInstance">
+<!ATTLIST section xmlns:xsi CDATA #IMPLIED>
+
+<!DOCTYPE complexDoc [
+<!ENTITY part "1">
+<!ELEMENT complexDoc (heading, section*)>
+<!ATTLIST complexDoc lang CDATA #IMPLIED>
+<!ELEMENT section (p+, figure?)>
+<!ATTLIST section kind CDATA #IMPLIED>
+<!ATTLIST section id ID #IMPLIED>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT figure (#PCDATA)>
+<!ATTLIST figure href CDATA #IMPLIED>
+
+]>
+<!DOCTYPE document [
+<!ELEMENT document (section+)>
+<!ATTLIST document author CDATA #IMPLIED>
+<!ELEMENT section ((p+, figure?)*)>
+<!ATTLIST section type CDATA #IMPLIED>
+<!ELEMENT figure (#PCDATA)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ENTITY note "Take care!">
+<!ATTLIST section id ID #IMPLIED>
+<!ATTLIST section xmlns:xi CDATA #IMPLIED>
+<!ATTLIST figure href CDATA #IMPLIED>
+<!ELEMENT comments (#PCDATA)>
+<!ELEMENT notes (#PCDATA)>
+<!ELEMENT reference (#PCDATA)>
+<!ELEMENT abstract (#PCDATA)>
+
+]>
+<complexDoc xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://example.com/schema">
+  <heading>Example Heading</heading>
+  <section kind="Main" id="s1"> 
+    <p>This is some paragraph text.</p>
+    <figure href="https://www.example.com/image.jpg">A figure appears here.</figure>
+  </section>
+<xs:schema xmlns:xs='http://www.w3.org/20XX/XMLSchema' targetNamespace='http://example.com/schema'><xs:attribute name="id"><xs:simpleType><xs:restriction base="xs:string"><xs:enumeration value="s1"/></xs:restriction></xs:simpleType></xs:attribute></xs:schema>
+</complexDoc>  <note>Useful note</note>  <p>Some <b>bold</b> text</p>  <p>Further <b>bold</b> text.</p>  <p>Other <emphasis>text</emphasis>.</p>  <p>This <i>italic</i> text is here</p>  <p>Example of <xref>cross reference</xref>.</p>  <section id="s

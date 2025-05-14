@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id ID #IMPLIED>
+  <!ENTITY booktitle "A">
+  <!ENTITY % bookauthor "D">
+  <!NOTATION html PUBLIC "1" "2">
+  %bookauthor;
+  <!-- XML Declaration with standalone and version -->
+]>
+<book id="1" xmlns="b" xmlns:xsi="b" xsi:schemaLocation="c">
+  <title>&booktitle;</title>
+  <author>&bookauthor;</author>
+  <chapter>chapter1</chapter>
+  <chapter>chapter2</chapter>
+</book>

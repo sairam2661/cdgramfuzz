@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE result [
+  <!ELEMENT result (#PCDATA)><!ATTLIST result xml:lang CDATA #REQUIRED>
+  <!ENTITY x "1">
+  <!ENTITY % i "3">
+  <!NOTATION n PUBLIC 'notation 1.1' 'http://example.org/nota'>
+  %i;
+  <!--
+  Copyright 2020 example.org.
+  Licensed under the MIT License.
+  -->
+]>
+<result xml:lang='en' n:id='res' n:href='result.xml'><xi:include href='inc.xml'/><xhtml:table xmlns:xhtml='http://www.w3.org/1999/xhtml'><xhtml:tr><xhtml:td>1</xhtml:td><xhtml:td>&x;</xhtml:td></xhtml:tr><xhtml:tr><xhtml:td>2</xhtml:td><xhtml:td>3</xhtml:td></xhtml:tr></xhtml:table>
+</result>

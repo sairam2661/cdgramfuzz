@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc SYSTEM "b"[
+ <!ELEMENT doc (header*,body,footer+)>
+ <!ATTLIST doc
+  lang CDATA #REQUIRED
+  title CDATA #IMPLIED
+  author CDATA #IMPLIED
+  date CDATA #IMPLIED>
+ <!ENTITY hi "B"
+  >
+ <!ENTITY % ent "1"
+  >
+ <!NOTATION HTML SYSTEM "h"
+  >
+  %ent;
+  <!--><!ELEMENT body (para+, fig+, tbl*)>
+ <!ATTLIST body
+  font CDATA #REQUIRED
+  color CDATA #IMPLIED
+  size CDATA #IMPLIED>
+ <!ELEMENT para (#PCDATA)>
+ <!ELEMENT fig (title, image)>
+ <!ATTLIST fig
+  width CDATA #IMPLIED
+  height CDATA #IMPLIED
+  id CDATA #REQUIRED>
+ <!ELEMENT image (#PCDATA)>
+ <!ELEMENT title (#PCDATA)>
+ <!ELEMENT table (#PCDATA)>
+]>
+<doc lang="en" title="My Documents" author="A" date="2023"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+xi:include href="#fig">
+  <header>
+    <title>This is the title</title>
+  </header>
+  <body font="Arial" color="#0000ff"
+    size="12" id="main">
+    <para>This is some paragraph text &hi;</para>
+    <fig id="abc">
+      <title>Image title</title>
+      <image src="image1.jpg" width="200" height="100">
+     Image
+    </image>
+    </fig>
+    <fig>
+      <title>Fig Title</title>
+      <image src="image2.bmp">
+     <table frame="void">
+       <tr>
+        <td>Cell 1</td>
+        <td>Cell  2</td>
+       </tr>
+       <tr>
+        <td>&note;</td>
+        <td></td>
+       </tr>
+     </table>
+      </image>
+    </fig>
+  </body>
+  <footer>Copyright @ 2023</footer>
+  <xi:include href="#fig"/>
+</doc> 
+  %ent; 
+<!DOCTYPE b SYSTEM "a">
+<!ELEMENT a (#PCDATA)>
+<!ENTITY a "c">
+<!ATTLIST a ID CDATA #REQUIRED
+    b CDATA #IMPLIED
+    c CDATA #IMPLIED
+>    
+<!DOCTYPE m [
+<!ELEMENT m (#PCDATA)>
+<!ATTLIST m a CDATA #REQUIRED
+        b CDATA #IMPLIED
+        c CDATA #IMPLIED
+        >]]>
+<!DOCTYPE m SYSTEM "m.dtd"[
+<!ELEMENT m (#PCDATA)>
+<!ATTLIST m
+  a CDATA #REQUIRED
+  b CDATA #IMPLIED
+  c CDATA #IMPLIED>
+]>
+<root>
+  <m a="abc" b="

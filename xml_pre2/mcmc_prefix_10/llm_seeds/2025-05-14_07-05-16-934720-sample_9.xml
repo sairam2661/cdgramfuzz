@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    language CDATA #IMPLIED>
+  <!ENTITY dsdl "W" ><!ENTITY % temp "<">
+  <!NOTATION print SYSTEM "L">
+   %temp;
+  <!---->
+]>
+<catalog id="x" language="f">
+  <product><title>productA</title><price xmlns:o="f">
+    <o:amount>100</o:amount>
+  </price></product>
+  <product><title>productB</title><price><amount>200</amount></price></product>
+</catalog>

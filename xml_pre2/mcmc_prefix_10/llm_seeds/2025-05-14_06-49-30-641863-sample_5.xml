@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes PUBLIC 
+  "-"
+  "F" 
+  [<!ELEMENT notes (note+, warning?)>
+  <!ATTLIST notes 
+    author CDATA #REQUIRED
+    date CDATA #REQUIRED>
+  <!ENTITY ref SYSTEM "z">
+  <!ENTITY % ent "1">
+  <!NOTATION html SYSTEM "z">
+  %ent; 
+  <!----> ]>
+<notes author="J" date="N"> 
+  <note>&ref; and %ent; &note;</note>
+  <warning>&ref;;</warning>
+</notes>

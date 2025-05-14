@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE stock [
+<!ELEMENT stock (symbol, description, price)*>
+<!ATTLIST stock 
+    id ID #REQUIRED
+    type (Equity|Bond|Option) ">"
+    version CDATA #IMPLIED>
+<!ENTITY symbol "L" >
+<!ENTITY % description "F">
+<!NOTATION XML  SYSTEM " ">
+  %description;
+<!--
+  Entity declared as a parameter entity
+  -->
+ <!ENTITY % parameter "C">
+]>
+<stock id="1" type="D" version="2">
+  <symbol>&symbol;</symbol>
+  <description>&description;</description>
+  <price>100</price>
+</stock>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE data SYSTEM "c" [
+  <!ELEMENT p (#PCDATA)>
+  <!ATTLIST p  
+         ID       ID    #REQUIRED
+         style CDATA #IMPLIED
+         color    CDATA #IMPLIED
+  >
+  <!ENTITY para "L">
+  <!ENTITY % pAttr " ">
+  <!NOTATION iso8593 PUBLIC "I" "C">
+  %pAttr;
+  <!--* comment added for display purposes -->
+]>
+<data xmlns:xlink="w"
+      xsi:schemaLocation="a">
+  <p xmlns="h" ID='d' color='g' style='e' xlink:href='f'>&para; &p;</p>
+  <b ID="c" p='k'><w>o <t/>u</w>y <m/></b>
+</data>

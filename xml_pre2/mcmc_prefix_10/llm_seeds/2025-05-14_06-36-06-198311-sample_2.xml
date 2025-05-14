@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT book (chapter+|note+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY booktitle "A" >
+  <!ENTITY  % chanel-elements " ">
+    <!NOTATION Print SYSTEM "g" >
+    %chanel-elements;
+  <!--
+    This is long multi line comment 
+  -->
+]>
+<book xmlns="x"><id>tag</id><chapter title="C"><sect1/><!-- empty element --></chapter><message>&booktitle;</message></book>

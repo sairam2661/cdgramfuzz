@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "n"
+  [
+    <!ELEMENT note (to,from,body)>
+    <!ATTLIST note
+      id  ID    #REQUIRED
+      type (warning|alert|info) "?"
+    >
+    <!ENTITY xml "e">
+  <!ENTITY % n "x">
+  <!NOTATION NOTATION1 PUBLIC "N" "n">
+  %n;
+  <!---->
+  ]>
+<note id="n" type="w">
+  <to><![CDATA[To: you]]></to>
+  <from>Me</from>
+  <body>&xml;</body>
+</note>

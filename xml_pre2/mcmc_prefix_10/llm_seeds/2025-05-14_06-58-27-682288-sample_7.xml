@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE persons [
+  <!ELEMENT persons (person*)>
+  <!ATTLIST persons language CDATA #IMPLIED>
+  <!ENTITY contact "<">
+  <!ENTITY % section-data SYSTEM "s" >  
+  <!NOTATION Acrobat  SYSTEM "s">
+  %section-data;
+  <!--
+    %block = section(section)*--> 
+]>
+<persons language="f"> 
+  <person>
+    <name>John</name>
+    <age><![CDATA[nineteen]]></age>
+  </person> 
+  <person>
+    <name>Jane</name>
+    <address>&contact; Broadway</address>
+  </person> 
+  <message>&Acrobat;</message>
+</persons>

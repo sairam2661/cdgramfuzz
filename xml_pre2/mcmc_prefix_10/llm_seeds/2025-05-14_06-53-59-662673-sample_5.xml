@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "x"[
+  <!ELEMENT book (title,author,year)>
+  <!ATTLIST chapter id ID #REQUIRED>
+  <!ENTITY chapter-one SYSTEM "x">
+  <!ENTITY % chapter-id "1">
+  <!NOTATION PDF PUBLIC "a"
+    "b"
+    >
+  %chapter-id;
+  <!--&-->]>
+<book>
+  <title>Example</title>
+  <author>Your Name</author>
+  <year>2023</year>
+  <chapter id="1">
+    <header>
+      <title ref="&chapter-one;"/>
+    </header>
+    <sect1>
+      <title>Introduction</title>
+      <para>This is a sample XML document.</para>
+    </sect1>
+  </chapter>
+  <notation PUBLIC="a" cde="b"/>
+</book>

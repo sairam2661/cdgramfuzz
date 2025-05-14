@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- XML declaration with standard attribute set -->
+<!DOCTYPE books [
+  <!ELEMENT books (title, author, publisher+)>
+  <!ATTLIST title id ID #REQUIRED>
+  <!ENTITY booktitle "T">
+  <!ENTITY % bookid "("> <!NOTATION ISO-2022-JP PUBLIC 'ISO 2022-JP:1990(E) ID' 'http://www.iso.ch' >   %bookid;  <!-- CDATA section --> ]>
+  <catalog>
+    <book>
+      <title id="J">A New Book</title>
+      <author>Jane</author>
+      <year>&booktitle;</year>
+      <publisher>
+        <city>New York</city>
+        <email>publisher@books.com</email>
+      </publisher>
+    </book>
+    <book>
+      <title id="K"></title>
+      <author>John</author>
+      <year>A</year>
+      <publisher>
+        <city>London</city>
+        <email>publisher@books.co.uk</email>
+      </publisher>
+    </book>
+  </catalog>

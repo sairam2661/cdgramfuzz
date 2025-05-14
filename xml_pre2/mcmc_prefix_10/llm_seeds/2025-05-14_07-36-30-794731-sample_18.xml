@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "d"
+[
+<!ELEMENT note (#PCDATA)>
+<!ATTLIST note id CDATA #REQUIRED>
+<!ENTITY y "A"><!ENTITY 
+           %z "n">
+           <!NOTATION iso-8859-1 SYSTEM "A">
+           %z;
+           <!--
+                A comment
+           -->
+]>
+<note id="n">
+  <note>This is a test.</note>
+  <title>Example Note</title>
+</note>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- This is a sample XML document -->
+<!DOCTYPE root SYSTEM "S" [
+  <!ELEMENT root (child1, child2+)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY child1 "1">
+  <!ENTITY % child2 "2">
+  <!NOTATION publ SYSTEM "P">
+  %child2;
+  <!--
+    This is a
+    multi
+    line
+    comment
+  -->
+]>
+<root id="R" NOTATION="P">
+  <child1>&child1;</child1>
+  <child2>&child2;</child2>
+</root>

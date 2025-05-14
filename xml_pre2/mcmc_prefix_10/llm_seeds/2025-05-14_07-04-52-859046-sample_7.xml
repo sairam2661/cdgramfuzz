@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "b" [
+  <!ELEMENT item (#PCDATA)>
+  <!ATTLIST item
+    id ID #REQUIRED
+    name CDATA #REQUIRED
+  >
+  <!ENTITY product "N">
+  <!ENTITY % extEntities SYSTEM "a">
+  <!NOTATION n-of-interest PUBLIC "a" "b">
+  %extEntities;
+  <!---->  
+]>
+<inventory xmlns:g="g" xmlns="d">
+  <item id="g" name="h"></item>
+  <g:message>&product;</g:message>
+  <include href="a">
+    <xi:furtherInclude href="b"/>
+  </include>
+  <notifiedApplication n-of-interest="i"/>
+  <!-- This is another comment -->
+  <list type="d">
+    <value>1</value>
+  </list>
+</inventory>

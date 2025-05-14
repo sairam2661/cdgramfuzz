@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED
+  >
+  <!ENTITY author "J"
+  >
+  <!ENTITY % chapter "I">
+  <!NOTATION HTML PUBLIC "-"
+  "/"
+  >
+  %chapter;
+  <!--
+  -->
+]>
+<book lang="x">
+  <title><![CDATA[(&author;) Smith]]></title>
+  <author>&author;</author>
+  <chapter>One</chapter>
+  <chapter>Two</chapter>
+</book>

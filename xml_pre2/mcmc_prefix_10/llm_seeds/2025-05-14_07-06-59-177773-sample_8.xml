@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "e" [
+  <!ELEMENT catalog (author+, book*)>
+  <!ATTLIST catalog language (English|German) "E">
+  <!ENTITY author-list "A">
+  <!ENTITY % param "C">
+  <!NOTATION SGML PUBLIC "E" "W">
+  %param;
+  <!-- Comment -->
+]>
+<catalog language="G">
+  <author>&author-list;</author>
+  <book cat="F">
+    <title>Hello</title>
+    <price>$20.0</price>
+  </book>
+  <book cat="E">
+    <title>World</title>
+    <price>40</price>
+  </book>
+</catalog>

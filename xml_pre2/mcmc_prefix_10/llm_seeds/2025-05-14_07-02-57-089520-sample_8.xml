@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m" [
+  <!ELEMENT notes (note*,docType) >
+  <!ATTLIST note
+    nnumber CDATA #REQUIRED
+  >
+  <!ENTITY m "m">
+  <!ENTITY % z "5">
+  <!NOTATION SGML PUBLIC '-//OASIS//DTD DocBook XML V4.1.2//EN'
+        'http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd'>
+   %SGML;
+  <!---->
+]>
+<notes xmlns="h" xmlns:xi="i">
+  <xi:include xmlns:xi="i" href="k"/>
+  <note nnumber="1">This is note #1</note>
+  <note nnumber="2">This is note #2</note>
+  <docType type="a"/>
+</notes>

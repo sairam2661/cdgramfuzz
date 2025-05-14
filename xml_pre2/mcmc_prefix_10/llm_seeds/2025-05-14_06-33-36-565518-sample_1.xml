@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE glossary [
+  <!ELEMENT glossary (entry+)>
+  <!ATTLIST glossary
+    title CDATA #REQUIRED
+    author CDATA #REQUIRED
+  >
+  <!ENTITY term "&def;">
+  <!ENTITY % def "A"
+          ><!NOTATION xml-stylesheet PUBLIC '' ''>
+  %def; 
+  <!--
+    Copyright (c) 2024. All rights reserved.
+  -->
+]>
+<document xmlns="x"
+  xmlns:xs="x"
+  xmlns:xi="x">
+  <root>
+    <child attr1="&lt;" attr2="&#38;"/>
+    {{ Some <b> escaped </b> text }}
+  </root>
+</document>

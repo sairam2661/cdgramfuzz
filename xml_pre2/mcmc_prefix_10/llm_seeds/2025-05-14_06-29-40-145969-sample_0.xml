@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC '-//Example Config//DTD' 'config.dtd' [
+  <!ELEMENT config (#PCDATA | header | footer | section | paragraph |
+                    list | item | title | subtitle) >
+  <!ATTLIST config
+    xml:lang CDATA #IMPLIED
+    class CDATA #IMPLIED
+  >
+  <!ENTITY chapter "1">
+  <!ENTITY % section "1">
+  <!NOTATION wml SYSTEM "w" >
+  %section;
+  <!--
+  Entity declaration
+  -->
+]>
+<config
+  xml:lang='en'
+  class='default'
+>
+  <header xml:lang='en' >
+    <xi:include href='header.xsl'/>
+    <subtitle>Example Title</subtitle>
+  </header>
+  <section xml:lang='en' >
+    <!-- CDATA text section, including some formatting -->
+    <![CDATA[
+      This is a <b>bold</b> and an <i>italic</i> text
+      inside a <section> element.
+    ]]>
+  </section>
+  <section >
+    <xi:include href='subsections.inc' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+  </section>
+</config>

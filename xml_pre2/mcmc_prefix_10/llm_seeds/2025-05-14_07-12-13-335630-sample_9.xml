@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, introduction?, chapter+)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED
+    author CDATA #IMPLIED
+  >
+  <!ENTITY chapter-title "A" >
+  <!ENTITY % chapter-body "#">
+  <!NOTATION book-format SYSTEM "e" >
+  %chapter-body;
+  <!-- other notation declarations... -->
+]>
+<book lang="f" author="R">
+  <title>&chapter-title;</title>
+  <introduction>This book contains information about</introduction>
+  <chapter number="1">
+    <title>&chapter-title;</title>
+    <sec>
+      <title>Introduction</title>
+      <title>&chapter-title;</title>
+    </sec>
+  </chapter>
+  <chapter number="2">
+    <title>&chapter-title;</title>
+    <title>&chapter-title;</title>
+  </chapter>
+</book>
