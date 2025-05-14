@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "g"
+  [
+    <!ELEMENT inventory (item)>
+    <!ATTLIST item name CDATA #REQUIRED price CDATA #REQUIRED>
+    <!ENTITY percent "0">
+  <!ENTITY % x "0">
+  <!NOTATION MyNotation SYSTEM "N">
+  %x; <!---->
+  ]>
+<inventory>
+  <item name="L" price="2">This is a test</item>
+  <item>Another item&amp;&lt;more item</item>
+</inventory>

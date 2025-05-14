@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST product id ID #REQUIRED>
+  <!ENTITY entity1 "&#169;  ">
+  <!ENTITY % entity2 " ">
+  <!NOTATION book-file PUBLIC "a" "b">
+  %entity2;
+  <!--&note;-->
+]>
+<catalog version="1" xmlns:xsi="w" xmlns:xi="y">
+  <product id="A">
+    <title>&entity1; Example Title</title>
+    <product xsi:type="d">
+      <note>&note;</note>
+    </product>
+  </product>
+  <xi:include href="f" xmlns:f="z" xmlns:xlink="x"/>
+  <product id="B" xlink:href="g">
+    <info>&book-file;</info>
+  </product>
+</catalog>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1-id "A">
+  <!ENTITY % chapter1-content "a">
+  <!NOTATION svg PUBLIC'svg notations''svgnotations.dtd'>
+  %chapter1-content;
+  <!-- XML Schema reference -->
+  <!-- http://www.w3.org/2001/XMLSchema.xsd -->
+]>
+<book id="B" xmlns=" ">
+  <title>Textbook</title>
+  <author>Author1</author>
+  <chapter id="A" xmlns:xi=" ">
+    <title>Introduction</title>
+    <paragraph>Here is a simple paragraph 
+      <xi:include xmlns:xi=" ">
+        <xi:fallback>
+          <fallback>Default text</fallback>
+        </xi:fallback>
+        <xi:href href="C"/>, 
+      </xi:include> of XML.
+    </paragraph>
+  </chapter>
+  <chapter id="B">
+    <title>Example</title>
+  </chapter>
+</book>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM  "f"[
+    <!ELEMENT note (#PCDATA)>
+    <!ATTLIST note id  CDATA  #REQUIRED>
+    <!ENTITY name "I">
+    <!ENTITY  % data "<" >
+    <!NOTATION mpeg SYSTEM "M">
+    %data;
+    <!---->
+]>
+<note id="1" xmlns="a" xmlns:b="b">Hello &name;1</note>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, xi:include*, author+)>
+  <!ATTLIST book 
+    id ID #REQUIRED
+  >
+  <!ENTITY author "J"  >
+  <!ENTITY 	%citation "1" >
+  <!NOTATION PDF PUBLIC "W" "B">
+  %book-notations;
+  <!--><!ATTLIST citation
+    source (a|b) #REQUIRED
+    %IDattribute;
+  >
+]>
+<book xml:lang="en" xmlns="http://example.com/book" xmlns:xi="http://www.w3.org/2001/XInclude"
+  id="bk123" notates:notation--><!ENTITY notates:notation "N"
+  >
+  <!-- a comment -->
+  <!-- book notations -->
+  <!ENTITY book-notations "C">
+  <!-- end of comment -->
+  <!ENTITY 	%IDattribute 'ID %f" >
+  <title>Book Title</title>
+  <xi:include href="chapter1.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/> 
+  <author>John &entity; entity; &entity; &author;</author>
+  <citation source="a">%citation</citation>
+  <book-notations>%book-notations;</book-notations>
+</book>  <note> &notates:notation;N</note>   <note>1</1note>  x   book-notations="book-notations">
+ a<note>[a]note[a]</note> b<note>[b]note[b]</note> a<note>[a]note[a]</note> b<note>[b]note[b]</note>
+ a<note>[a]note[a]</note> b<note>[b]note[b]</note> b<note>[b]note[b]</note> a<note>[a]note[a]</note>
+ a<note>[a]note[a]</note> b<note>[b]note[b]</note> a<note>[a]note[a]</note> b<note>[b]note[b]</note>
+ a<note>[a]note[a]</note> b<note>[b]note[b]</note> b<note>[b]note[b]</note> a<note>[a]note[a]</note>
+ a<note>[a]note

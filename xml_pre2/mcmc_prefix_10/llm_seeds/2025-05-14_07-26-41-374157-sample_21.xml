@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC
+  "M" "M"
+  [
+    <!ELEMENT catalog (category*)>
+    <!ATTLIST catalog id ID #REQUIRED>
+    <!ENTITY cat1 "c">
+  <!ENTITY % macros SYSTEM "m">
+  <!NOTATION ISO-ISBN  PUBLIC "1" "1">
+   %macros;
+    <!---->
+  ]>
+<catalog id="C">
+  <category>
+    <title>Cat titles</title>
+    <books>
+      <book><title>Cat Story</title><author>Author</author><year>2020</year></book>
+      <book><title>Cat Book</title><author>Author</author><year>2019</year></book>
+    </books>
+  </category>
+</catalog>

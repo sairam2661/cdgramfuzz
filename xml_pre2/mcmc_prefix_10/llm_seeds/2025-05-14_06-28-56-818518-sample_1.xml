@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE book [
+   <!ELEMENT book (title,author,editor)>
+   <!ATTLIST book lang CDATA #REQUIRED>
+   <!ENTITY amp "&amp;">
+   <!ENTITY % ent SYSTEM "m">
+   <!NOTATION SystemEntity SYSTEM "n">
+   %ent;
+   <!---->
+   <!ENTITY % x "x">
+   <!ENTITY param
+     SYSTEM "p" NDATA SystemEntity>
+   <!ELEMENT title (#PCDATA)>
+   <!ELEMENT author (#PCDATA)>
+   <!ELEMENT editor (#PCDATA)>
+   <!ELEMENT note (#PCDATA)>
+   <!ELEMENT section (#PCDATA)>
+   <!ELEMENT para (#PCDATA)>
+   <!ELEMENT bibli (#PCDATA)>
+   <!ELEMENT list (#PCDATA)>
+   <!ELEMENT item (#PCDATA)>
+   <!ELEMENT chapter (#PCDATA)>
+   <!ELEMENT sectiontitle (#PCDATA)>]>
+<book lang="R">
+  <title>&amp;</title>
+  <author>&x;</author>
+  <editor>&test;</editor>
+  <note>Sample commentary</note>
+  <para>Hello &param;
+          this is a list.</para>
+  <section>Items on a list
+    <list>
+      <item>Apple</item>
+      <item>Banana</item>
+    </list>
+  </section>
+  <bibli>Some references</bibli>
+  <chapter>First chapter</chapter>
+  <sectiontitle>Subtitle for a section</sectiontitle>
+</book>

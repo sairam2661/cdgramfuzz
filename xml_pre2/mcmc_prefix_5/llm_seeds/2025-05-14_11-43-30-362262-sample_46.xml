@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE data [
+  <!ELEMENT data (info*, result+)>
+  <!ATTLIST data lang CDATA #REQUIRED>
+  <!ENTITY address "5" >
+  <!ENTITY % entity "a">
+  <!NOTATION wml PUBLIC "W" "W">
+  %entity;
+ <!--
+   Element "info" has the following form :
+   (name,""@",lang)
+  -->
+]>
+<data info="2" lang="e" result="#"/>

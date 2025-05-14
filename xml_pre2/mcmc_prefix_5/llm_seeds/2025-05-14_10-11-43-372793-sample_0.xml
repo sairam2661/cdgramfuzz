@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    version CDATA #REQUIRED>
+  <!ENTITY product1 "S" >
+  <!ENTITY  % product2 "P" >
+  <!NOTATION GIF PUBLIC "G" "N">
+  %product2;
+  <!--
+
+<!ELEMENT product (name,description)>
+<!ATTLIST product
+  ID ID #REQUIRED
+  name CDATA #IMPLIED
+  author CDATA #IMPLIED>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT note (#PCDATA)>
+
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT message (#PCDATA)-->
+]>
+<catalog xmlns:xi="x" version="1" id="1">
+  <!-- comment -->
+  <product id="a" name="&product1;">
+    &note;
+    <description>Desc</description>
+    <section>sect</section>
+    <message>mess</message>
+  </product>
+</catalog>

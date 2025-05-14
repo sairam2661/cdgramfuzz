@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA|title|author|chapter|section|para)>
+  <!ATTLIST book
+    xmlns CDATA #REQUIRED
+    id    CDATA #IMPLIED
+  >
+  <!ENTITY title "M"
+    ><!ENTITY
+    %chapter "c"><!NOTATION svg PUBLIC "Z"
+      '<
+       svg
+       xmlns   = ""
+       version = "1.0"
+       width   = "200"
+       height  = "200"
+      >
+      <![    CDATA [
+  <
+  rect
+  x   = "50"
+  y   = "50"
+  width  = "50"
+  height  = "50">
+      
+  </rect>
+    ]]>
+  </NOTATION> 
+]>
+<!ENTITY title "A Simple Book">
+<!ENTITY chapter "First Chapter">
+<!-- Root element of the document -->
+<book xmlns="http://example.org/book/1.0"
+  id="book-123"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="basic.xsd">
+  <title entity-ref="#title"></title>
+  <author>John Smith</author>
+  <chapter entity-ref="#chapter">
+    <section>Section 1.1</section>
+    <section>
+      <xi:include href="included.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude">
+      </xi:include>
+    </section>
+    <para>
+      This is a paragraph.
+    </para>
+  </chapter>
+  <para>
+    Here is another paragraph 
+    with <b>a
+      few
+      <u
+      xmlns="http://example.com">
+      <italic>italic</italic></u>
+    </b> words.
+  </para>
+</book> 
+
+<!-- The included material. -->
+<!DOCTYPE section [
+  <!ELEMENT section (#PCDATA)>
+  <!ENTITY square "■

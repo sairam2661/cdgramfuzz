@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml-stylesheet [
+  <!ELEMENT xml-stylesheet EMPTY>
+  <!ATTLIST xml-stylesheet href CDATA #REQUIRED>
+  <!ENTITY author "H">
+
+<!ENTITY % ent SYSTEM "m"> <!NOTATION m SYSTEM "m">
+  %ent;
+<!--% ent = %m;-->
+
+<!ENTITY pi SYSTEM "m">
+<!ENTITY % e-pi SYSTEM "m" NDATA m> <!NOTATION m SYSTEM "m">
+
+<!--% ent = %m;ent; %e-->
+
+<!ENTITY % entp SYSTEM "m" NDATA m> %entp;<!--% entp = %m;entp;%entp; %entp; %m; %m; %m;%>
+  %e-->]>
+<xml-stylesheet href="x" xmlns:xi="x"> 
+  <root e="-" p="m" g="x" i="^"/>
+  <pi>pi() 1 2 3</pi>
+</xml-stylesheet>

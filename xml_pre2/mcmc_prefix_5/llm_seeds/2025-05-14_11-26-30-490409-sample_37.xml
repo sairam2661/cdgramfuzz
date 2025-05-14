@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY ent-date "("
+  >
+<!ENTITY % entityblk " ">
+<!NOTATION print PUBLIC "R" "l"
+   >
+  %entityblk;
+  <!--. -->]>
+<catalog lang="X" xmlns:g="g">
+  <product>
+    <name>
+      <!-- comment -->
+      <price>12</price>
+      <g:unit>
+        <description>kg.</description>
+      </g:unit>
+    </name>
+  </product>
+</catalog>

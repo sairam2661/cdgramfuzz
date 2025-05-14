@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE glossary[
+  <!ELEMENT glossary (term+)>
+  <!ATTLIST glossary
+    lang CDATA #REQUIRED
+    version CDATA #IMPLIED>
+  <!ENTITY n "n">
+  <!ENTITY % i "#">
+  <!NOTATION ISO-8859-1 PUBLIC "O" "E">
+  %i;<!--
+  To use entity %i; you must declare it
+  -->
+]>
+<glossary xmlns:fn="f" lang="z" version="a">
+  <term fn:f='f(m,n)'><xlink:href ln='h'>Function f of two parameters</xlink:href><dfn>&n;</dfn></term>
+</glossary>

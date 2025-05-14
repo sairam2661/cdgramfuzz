@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product|paragraph)*>
+  <!ATTLIST catalog xmlns CDATA #FIXED "v" xmlns:xsi CDATA #FIXED "v">
+  <!ENTITY prod1 "P">
+  <!ENTITY % prod2 "L">
+  <!NOTATION n1 PUBLIC "v" "v" >
+  %prod2;<!-- entity reference -->
+]>
+<catalog xmlns="v" xmlns:xsi="v">
+  <paragraph>One product, one paragraph.</paragraph>
+  <product>&prod1;</product>
+  <product>&prod1;
+     <product>&prod1;
+        <noref>n1</noref>
+        <nototref></nototref>
+     </product>
+     <nnotation>n1</nnotation>
+  </product>
+</catalog>

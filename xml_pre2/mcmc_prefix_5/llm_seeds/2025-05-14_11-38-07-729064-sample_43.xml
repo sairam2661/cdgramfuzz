@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (book*)>
+  <!ATTLIST book title CDATA #IMPLIED author CDATA #IMPLIED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY % fsystem "<" ><!NOTATION format PUBLIC '' 'Format attribute)">
+]>
+<bookstore xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="catalog.xml"/>
+  <book title="XML Book" author="John Doe">
+    <format>&fsystem;bold</format>
+    <copy>&fsystem;2</copy>
+    <price>$&amp;1.99;<format>&fsystem;end</format></price>
+  </book>
+  <book title="XLink Book" author="Jane Doe">
+    <format>&fsystem;italic</format>
+    <copy>&fsystem;1</copy>
+    <price>$&amp;2.99;<format>&fsystem;end</format></price>
+  </book>
+</bookstore> 
+
+  <?xml-stylesheet href="book.xsl" type="text/xsl"?><bookstore xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="catalog.xml"/>
+  <book title="XML Book" author="John Doe">
+    <format>&fsystem;bold</format>
+    <copy>&fsystem;2</copy>
+    <price>$&amp;1.99;<format>&fsystem;end</format></price>
+  </book>
+  <book title="XLink Book" author="Jane Doe">
+    <format>&fsystem;italic</format>
+    <copy>&fsystem;1</copy>
+    <price>$&amp;2.99;<format>&fsystem;end</format></price>
+  </book>
+</bookstore> 
+
+However, the above-mentioned XML document is also including book.xsl and catalog, however the output I provided was only up to catalog.xml which got included already, I suggest adding a small tag for book.xsl and let user find out where the style sheet located, please check below: 
+ <?xml-stylesheet href="book.xsl" type="text/xsl"?>
+  <!-- this is a user tag -->
+<style-sheet location="/root/dir/book.xsl"></style-sheet>
+
+<bookstore xmlns:xi="http://www

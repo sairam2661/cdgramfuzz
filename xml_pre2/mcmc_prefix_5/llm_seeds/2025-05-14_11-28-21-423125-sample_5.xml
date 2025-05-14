@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE declaration [
+  <!ELEMENT declaration (#PCDATA)>
+  <!ATTLIST declaration
+    target CDATA #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY book "A"
+         >
+  <!ENTITY % booklist "B"
+        >
+  <!NOTATION booknotation SYSTEM "a">
+  %booklist;
+  <!---->
+]>
+<declaration target="v" version="1" xmlns:x="x">
+  <!-- Sample text -->
+  <x:element attr="2">
+    <a>content1</a>
+    <b>content2</b>
+  </x:element>
+  <a attr="3">content3</a>
+  <b>content4</b>
+  &book;
+  <c><d>&booknotation; d</d></c>
+  <!--  text  -->
+  <e>Hello</e>
+</declaration>

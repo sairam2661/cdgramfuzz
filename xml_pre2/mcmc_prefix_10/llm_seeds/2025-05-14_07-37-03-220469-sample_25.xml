@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml-root [
+  <!ELEMENT xml-root (header,body,footer)>
+  <!ATTLIST xml-root 
+    id CDATA #REQUIRED 
+    lang (en|fr|de) 'en'>
+  <!ENTITY ent1 "I">
+  <!ENTITY % ent2 "<">
+  <!NOTATION ISO-8859-15 PUBLIC "N"
+             "I">
+ %Xent2;
+  <!---->
+]>
+<xml-root id="x" lang="f" xmlns="f">
+  <header>
+    <title xml:lang="x">XML Title</title>
+  </header>
+  <body>
+    <note><xi:include href="y"/></note>
+    <data>&ent1;</data>
+  </body>
+  <footer>Version: 1</footer>
+</xml-root>

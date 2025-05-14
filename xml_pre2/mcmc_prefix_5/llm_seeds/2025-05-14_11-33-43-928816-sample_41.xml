@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,edition)>
+  <!ATTLIST book id CDATA #IMPLIED>
+  <!ENTITY authorSystem "J"
+              >
+  <!ENTITY % bookNote "D">
+  <!NOTATION PDF SYSTEM "M">
+  %bookNote;
+  <!--= Comment about book =-->  
+]>
+<book xmlns="x" xmlns:xsi="y" 
+      xsi:noNamespaceSchemaLocation="z"
+      xsi:schemaLocation="x">
+  <title>My Book</title>
+  <edition>12</edition>
+  <author xmlns="a" entity="1">
+    &authorSystem;
+    &entity;
+  </author>
+</book>

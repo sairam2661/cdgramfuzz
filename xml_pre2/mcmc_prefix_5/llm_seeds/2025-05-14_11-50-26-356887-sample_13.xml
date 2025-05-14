@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m" [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY date "A" >
+  <!ENTITY
+    %p1 "a">
+  <!NOTATION ISO-8859-1 PUBLIC "A" "a">
+  %note-decl;
+  <!---->
+]>
+<notes
+  xmlns:a="x"
+  xmlns:xi="x"
+  xmlns="y"
+>
+  <x:a xmlns:a="y"><xi:include href="z"/><z/></x:a>
+  <note id="n"> &date;  <p1/>
+  </note>
+</notes>

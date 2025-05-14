@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "B"
+    [  <!ELEMENT root (header+, item*)>
+        <!ATTLIST root id ID #REQUIRED>
+        <!ENTITY db "d">
+        <!ENTITY % xml "x">
+    <!NOTATION GIF PUBLIC "G" "I" >
+    %xml;
+    <!--> <!--> <!-->
+<!ELEMENT header (#PCDATA)>
+<!ELEMENT item (#PCDATA)-->
+<!ATTLIST item year CDATA #IMPLIED>
+<!ATTLIST item lang CDATA #IMPLIED>
+<!ATTLIST item version CDATA #IMPLIED>
+]>
+<root xmlns="A" id="R" xml:lang="B">
+    <header>X</header>
+    <!-- comment -->
+    <xi:include xi:href="C" xmlns:xi="D" />
+    &db;&db; <!-- entity reference -->
+    <item lang="E">1</item>
+    <item version="F">2</item>
+    <item year="G">3</item>
+    <item>4</item>
+</root>

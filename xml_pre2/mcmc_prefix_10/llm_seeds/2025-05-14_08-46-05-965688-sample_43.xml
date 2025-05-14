@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bibliograph [
+  <!ELEMENT bibliograph (book,author+)>
+  <!ATTLIST book title CDATA #REQUIRED>
+  <!ENTITY dbase "D"
+  ><!ENTITY % entityRef "("
+  >
+  <!NOTATION PDF SYSTEM "x"
+    >
+  %entref;
+  <!-- 
+     This is an XML attribute in the external entity.
+     This is the end of the XML attribute. -->
+<!ELEMENT author (#PCDATA)>
+]>
+<bibliograph>
+  <book title="1">2</book>
+  <author>John Smith (author@domain.com)</author>
+  <author>Jane Doe (author@otherdomain.com)</author>
+</bibliograph>

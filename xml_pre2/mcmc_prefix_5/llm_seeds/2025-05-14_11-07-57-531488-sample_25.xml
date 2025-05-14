@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  PUBLIC "+"
+    "W"   [
+      <!ELEMENT root (para+)>
+      <!ATTLIST root id CDATA #REQUIRED>
+      <!ENTITY title "A">
+   <!ENTITY % content "("
+      >
+<!NOTATION ISO8211 SYSTEM "M">

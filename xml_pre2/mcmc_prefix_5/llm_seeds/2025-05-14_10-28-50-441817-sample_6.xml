@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE persons [
+  <!ELEMENT persons (person+)>
+  <!ATTLIST persons 
+    id    CDATA    #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY % temp "<" 
+     ><!NOTATION ANYONEIGNORESPECIALSINXML-ESPECIALLYAMP.  PUBLIC" ""
+">
+  %temp;
+  <!--
+  Some sample comment
+  -->]>
+<persons id="U"> 
+  <person id="M" name="J"
+    role
+= "J"> 
+    &amp;
+    <![CDATA[This 
+    is a  CDATA section.
+    With & chars.
+]]>
+  </person>
+  <person id="F" name
+="W"> 
+    <address>
+      <street nr="5" />
+      <house nr
+      ="7" />
+    </address>
+  </person>
+</persons>

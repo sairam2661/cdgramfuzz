@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE xmlDocument SYSTEM "m"
+  [<!ELEMENT document (sect*)>
+   <!ATTLIST document
+     xml:lang CDATA #IMPLIED>
+   <!ENTITY entity "A">
+   <!ENTITY % entp "%">
+   <!NOTATION notation SYSTEM "m">
+     
+       
+    
+      
+      
+     
+    
+   
+   
+      
+   
+   
+   
+   
+  		
+		
+  %entp;
+  <!----> ]
+  >
+<xmlDocument xml:lang="x"
+  xi:nil="x"
+  xml:space="x">
+  <sect xsi:nil="x">
+    Sample section
+  </sect>
+  <elem1 xmlns:foo="x" xsi:schemaLocation="y"/>
+  <elem2 />
+  &entity;
+  ¡
+  <notations>
+    <notation name="z"/>
+  </notations>
+</xmlDocument>

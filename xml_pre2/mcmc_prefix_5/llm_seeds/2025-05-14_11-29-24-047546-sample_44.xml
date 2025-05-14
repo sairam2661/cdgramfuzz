@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE note SYSTEM "b" [
+  <!ELEMENT note (title, to, from, heading, body)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY ent1 "B" >
+  <!ENTITY % ent2 "&ent1; ">
+  <!NOTATION HTML SYSTEM " ">
+  %ent2;<!---->
+]>
+<note id="1" xmlns="&ns;">
+  <title>This is a title</title>
+  <to>Someone</to>
+  <from>Me</from>
+  <heading>This heading was also included</heading>
+  <body>To &note; with love</body>
+</note>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory[
+  <!ELEMENT inventory (item*)>
+  <!ATTLIST inventory
+    id  CDATA  #REQUIRED
+    source CDATA #IMPLIED
+  >
+  <!ENTITY author "J">
+  <!ENTITY % temp "1">
+  <!NOTATION w3c PUBLIC "-"
+            "w"  >
+  %temp;
+  <!-- other notation -->
+]>
+<inventory id="1" source="O">
+  <item>
+    <title>Apples</title>
+    <price>&author;20</price>
+  </item>
+  <item>
+    <title>Bananas</title>
+    <price>50</price>
+  </item>
+</inventory>

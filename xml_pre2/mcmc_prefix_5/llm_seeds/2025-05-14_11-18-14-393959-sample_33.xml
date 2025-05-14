@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog[
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog owner CDATA #REQUIRED>
+  <!ENTITY cat "F"> <!ENTITY 	%cat   "F">
+  <!NOTATION pdf PUBLIC "x" "y">
+  %pi;
+  <!--
+  Document Type Definition for catalog
+  -->
+]>
+
+<catalog xmlns="y" xmlns:xsi="x" xsi:noNamespaceSchemaLocation="b" owner="Z">
+  <!-- Sample note -->
+  <book>
+    <title>Book1</title>
+    <price>10.99</price>
+    <author>
+      <name>Author1</name>
+      <email>email1</email>
+    </author>
+  </book>
+  <book xmlns:xi="h">
+    <title>Book2</title>
+    <price>15.99</price>
+    <author>
+      <name>Author2</name>
+      <email>email2</email>
+    </author>
+  </book>
+  <message>
+    &cat; &pi; &cat; &cat; &cat; <!--  &cat and %pi used in sequence -->
+  </message>
+</catalog>

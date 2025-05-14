@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m" [
+  <!ELEMENT note (title,category,list+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY percent "&#37;">
+  <!ENTITY % entities "<" 							>
+    	<!NOTATION math PUBLIC '-//W3C//NOTATION MathML 1.0//EN''mml'				>
+    	%entities;
+  <!---->
+]>
+<million ref="n">
+  <note id="b">
+    <category>
+      <cat>&percent;</cat>
+    </category>
+    <title xml:lang="v">
+      <proper>&percent;</proper>
+    </title>
+    <list>
+      <item>Four thousand forty</item>
+    </list>
+  </note>
+  <note id="c">
+    <category>
+      <cat>&percent;</cat>
+    </category>
+    <title xml:lang="v">
+      <proper>&percent;</proper>
+    </title>
+    <list>
+      <item>Sixty and five</item>
+    </list>
+  </note>
+</million>

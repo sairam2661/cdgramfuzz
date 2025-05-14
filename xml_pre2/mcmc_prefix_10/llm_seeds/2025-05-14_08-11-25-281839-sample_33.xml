@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE declaration [
+  <!ELEMENT declaration (#PCDATA)>
+  <!ATTLIST declaration attr1 CDATA #IMPLIED>
+  <!ENTITY ent1 "P">
+  <!ENTITY % ent2 "%">
+  <!NOTATION notation1 SYSTEM "x">
+  %ent1; 
+  <!-- &ent2; -->
+]>
+<declaration attr1="x">
+  &ent1;
+  <sub-element></sub-element>
+  <!-- comment -->
+  <![CDATA[Integrated text <tag/> with markup]]>
+  &notation1;
+</declaration>

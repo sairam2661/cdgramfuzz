@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes
+    id ID #REQUIRED
+    author CDATA #IMPLIED>
+  <!ENTITY author "J">
+  <!ENTITY % comment " ">
+ <!NOTATION ISO-8859-1 SYSTEM "W">
+  %comment;
+  <!--  Some comment -->
+]>
+<notes id="1" author="J">
+  <note>
+    <title></title>
+    <text><![CDATA[Some <raw> text]]></text>
+    <date>2022-01-01</date>
+  </note>
+</notes>

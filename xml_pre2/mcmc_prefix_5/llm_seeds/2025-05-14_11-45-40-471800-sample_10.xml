@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "d"
+ [
+   <!ELEMENT data (#PCDATA|item|group-group |group |person |item-list |list-group |list )>
+   <!ATTLIST item id ID #REQUIRED>
+   <!ENTITY msg "A" >
+   <!ENTITY % attrREF "("> 
+   <!NOTATION HTML PUBLIC "-"
+   " ">

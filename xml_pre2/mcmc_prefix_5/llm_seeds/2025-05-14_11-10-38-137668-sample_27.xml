@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE item-catalog [
+  <!ELEMENT item (#PCDATA | name | price | desc | item-group | desc-group)> 
+  <!ATTLIST item id CDATA #REQUIRED>
+  <!ENTITY desc "<">
+  <!ENTITY % entities SYSTEM "d"><!NOTATION ISO-8859-1 SYSTEM "d">
+  %entities;
+  <!--. External entities, systems --> <!-- NOTATION declaration -->
+]>
+<item-catalog
+  version="1"
+  xmlns="h"
+  xmlns:xsi="w"
+  xsi:schemaLocation="x">
+  <item id='item1'>
+    <name>Hello</name>
+    <price>20</price>
+    <desc-group>
+      <desc>Cat</desc>
+    </desc-group>
+  </item>  
+</item-catalog>

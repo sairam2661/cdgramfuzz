@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, section*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY title "G" >
+  <!ENTITY% xinclude SYSTEM "x" >
+  <!NOTATION ACR SYSTEM "B">
+  %xinclude;
+  <!-- Entity declaration for external XML file -->
+  <!ENTITY acronyms SYSTEM "C" NDATA ACR>
+]>
+<book xmlns:fbu="f" fbu:foo="j" lang="e" xmlns="h" xmlns:cfn="d">
+  <cfn:comments>
+    Sample comment with multiple lines:
+    Line 1
+    Line 2
+  </cfn:comments>
+  <p>This is a sample book. Its title is &title;</p>
+  <author><first-name>Xylophone</first-name><last-name>Starweaver</last-name></author>
+</book>

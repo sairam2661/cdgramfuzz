@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book version CDATA #FIXED "1">
+  <!ENTITY author "J" >
+  <!ENTITY% eattr  PUBLIC "
+"  "x">
+  <!NOTATION XML PUBLIC '-//W3C//DTD XML 1.0//EN'
+  '<!ELEMENT chapter (#PCDATA|img)+'>
+  %eattr;
+  <!--<!ENTITY % eattr  PUBLIC "+//W3C//NOTATION RDF//EN"> -->
+]>
+<book xmlns:xi="x" xmlns="x" version="1"xi:noNamespaceSchemaLocation='-//example//book//book-1.xsd'>
+  &author;
+  <title>XHTML and XML</title>
+  <chapter>
+   <img src='<alt'>XHTML logo</alt>'/>
+    XHTML and XML.
+  </chapter>
+</book>

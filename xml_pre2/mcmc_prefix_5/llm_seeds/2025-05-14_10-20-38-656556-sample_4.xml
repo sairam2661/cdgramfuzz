@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (author+, message*, section+)>
+  <!ATTLIST author id ID #REQUIRED>
+  <!ENTITY message1 "A"
+         >
+  <!ENTITY % message2 "B"
+         >
+  <!NOTATION HTML SYSTEM "m"
+         >
+  %message2;
+  <!--
+    Entity defined with an internal subset
+  -->
+  <!ENTITY note "&message1;">
+
+  <!ELEMENT section (#PCDATA)>
+  <!ELEMENT address (#PCDATA)>
+]>
+<article>
+  <author id="A">Jhon Smith</author>
+  <author id="B">John Doe</author>
+  <message>&note;</message>
+  <section>This is a &note; section!</section>
+</article>

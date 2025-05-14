@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root EMPTY>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY p1 SYSTEM "p">
+  <!ENTITY % p2 "p">
+  <!NOTATION N01 PUBLIC "N" "F">
+  %p2;
+  <!--(XML: comment)--> 
+]>
+<root id="r" xmlns:xs="w" name="a" xsi:noNamespaceSchemaLocation="b" version="3" xsi:schemaLocation="c"> 
+<xsi:schema xmlns:a="x" xmlns="y" targetNamespace="z" xmlns:xsi="p">
+  <!-- xinclude -->
+  <xi:include  xmlns="e" href="f" />
+  <p1>&p1;</p1>
+</xsi:schema>
+  <root n="q"/>
+  <N01 systemId="t" publicId="s"/>
+</root>

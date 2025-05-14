@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"
+
+              [
+		<!ELEMENT author (book+)>
+		<!ATTLIST author id CDATA #REQUIRED>
+		<!ENTITY data "<" >
+		<!ENTITY % entity "a">
+                <!NOTATION NOTO SYSTEM "d"
+            >
+             		%NOTO;
+             			<!--
+
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book id CDATA  #REQUIRED>
+<!ELEMENT catalog (author+, catalog?)>
+
+                ]>
+<catalog>
+    <author id="A1">
+        <book id="B1">The first book</book>
+        <book id="B2">The second book</book>
+    </author>
+    <catalog>
+        <author id="A2">
+            <book id="B3">The third book</book>
+            <book id="B4">The fourth book</book>
+        </author>
+    </catalog>
+</catalog> 
+
+<!DOCTYPE a [
+<!ENTITY foo 'foo!'>
+<!ELEMENT a EMPTY >]>
+<a xmlns='http://www.w3.org/2005/xpath/xquery'>&foo;</a> 
+<a>&#1000;&#1006;&#1080;!</a>
+<a xml:lang="ru">&foO!</a>
+<!DOCTYPE html>
+<!ATTLIST a lang CDATA #REQUIRED  >
+<!ELEMENT a EMPTY  >  ]>
+ 
+<a />&quot;The book name&quot; 
+<!DOCTYPE catalog [
+<!ATTLIST a id CDATA #REQUIRED> 
+<!ELEMENT book (#PCDATA) >]>
+<catalog>
+    <a id="A1">
+        <book>The book name</book>
+    </a> 
+</catalog> 
+<!DOCTYPE book SYSTEM "d.dtd">
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT catalog (author+)>
+
+<catalog>
+    <book>The book</book>
+    <author>Author name</author>
+</catalog>   
+<!DOCTYPE book SYSTEM "d.dtd">
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT data (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+
+<book>
+    <title>Book title</title>
+    <data>Some text in data element</data>
+    <name>Author name</name>
+</book> 
+<!ELEMENT myelt ANY>
+<!ATTLIST myelt att1 CDATA #IMPLIED att2 CDATA #IMPLIED>]
+<myelt att1="value1" att2="value2">text</myelt> 
+<!ELEMENT xml Any> 
+<!ATTLIST xml att2 CDATA #IMPLIED> ]
+<xml att2="value">text</xml> 
+<!ELEMENT title (#PCDATA)> 
+<!ATTLIST title lang CDATA #REQUIRED >]
+<title xml:lang="en">Hello! 
+<!ELEMENT myelt (#PCDATA)> 
+<!ATTLIST myelt att CDATA #IMPLIED> ]
+<myelt(att="value")/> 
+<!ELEMENT p (#PCDATA)> 
+<!ATTLIST p xml:lang CDATA #IMPLIED >] 
+<p xml:lang="en">Hello!</p> 
+
+<!ELEMENT myelt (#PC

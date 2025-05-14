@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+
+  [
+<!ELEMENT root (parent*, child+)>
+<!ATTLIST root id CDATA #IMPLIED>
+<!ENTITY foo "F">
+<!ENTITY % ent1 "<" >
+<!NOTATION app PUBLIC "A"
+  "B">
+  %ent1;<!----><!ENTITY ent2 "C">
+  ]
+>
+<root id="1" xmlns:xs="e">
+<parent>
+  &foo;
+</parent>
+<!---->
+<child ns="f">
+  <subchild></subchild>
+  <subchild><subsubchild>h</subsubchild></subchild>
+</child>
+</root>

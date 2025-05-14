@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root-tag [
+  <!ELEMENT root-tag (parent|child)*>
+  <!ATTLIST root-tag
+     id   CDATA  #IMPLIED
+     lang (en|fr|de) 'en'
+  >
+  <!ENTITY author "J"><!ENTITY % local "%">
+  <!NOTATION print PUBLIC "R"'print notation'>
+  %local;
+  <!--
+
+#Public Identifier
+<!PUBLIC print_n PUB 'print notation'>
+
+--><!ELEMENT parent EMPTY>
+<!ELEMENT child (#PCDATA)>
+<!ELEMENT root-tag (#PCDATA)>
+<!ATTLIST parent
+     attr   CDATA  #IMPLIED
+     other  CDATA  #IMPLIED
+>
+<!ATTLIST child
+     key  (value1|value2) #IMPLIED
+>
+<!ENTITY % local-param "(">
+<!ENTITY % entity-def "%">
+<!ENTITY ent-with-att "E"  >
+<!ENTITY ent-no-att-with-nest "
+">
+<!ENTITY ent-no-att-with-nest-2 "
+">
+<!ENTITY ent-with-att-and-nest "<">
+<!ENTITY ref-to-ent "%">
+<!ENTITY ent-with-attr "&ref-to-ent;" >
+<!ENTITY ent-with-nest-attr  "%">
+<!ENTITY ent-with-nest-param-1
+"
+">
+<!ENTITY ent-with-nest-attr-pipe-symbol "%">
+<!ENTITY ent-cdata-markup  "<"  >
+<!ENTITY ent-pipe-symbol-with-attr  "|"  >
+<!ENTITY ent-attr-name  'E<%t>'  >
+<!ENTITY att-with-ref-to-entity  "E"
+>
+
+<!ELEMENT root-tag (
+         name,
+         address,
+         phone?,
+         email?,
+         mail?,
+         item+
+        )
+>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT phone (#PCDATA)><!ATTLIST item
+         name   CDATA  #REQUIRED
+         order  ID    #IMPLIED
+         class  (class-val1|class-val2) 'class-val1'>
+<!ATTLIST root-tag
+    order (order-val1|order-val2) 'order-val1'>
+<!ELEMENT item (#PCDATA)>
+<!ELEMENT address (#PCDATA)><!ELEMENT mail (#PCDATA)>]>
+<root-tag
+order='first'
+attr='attr-value'
+id='root'
+lang='de'
+key='value1'
+>
+<name>Sample Name</name>
+<address><street>123 Main St</street><city>New York</city></address>
+<phone>212-123-4567</phone>
+<email>john.doe@example.com</email>
+<mail>Alternate Mail</mail>
+<item name='First' order='item-1'>Item 1</item>
+<item name='Second' order='item-2'>Item 2</item>
+</root-tag>

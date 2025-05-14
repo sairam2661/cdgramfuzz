@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,note,chapter*)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % param "1">
+  <!NOTATION book-formatter SYSTEM "x" >
+ %Xinclude:include-system;
+  <!----> <!-- Nested comment -->
+]><book lang="f">
+  <!-- Element -->
+  <title>This is a title</title>
+  <note>Example 1</note>
+  <chapter>
+    <sect1><h1>Heading 1</h1><p>&entity; entity</p></sect1>
+  </chapter>
+</book>

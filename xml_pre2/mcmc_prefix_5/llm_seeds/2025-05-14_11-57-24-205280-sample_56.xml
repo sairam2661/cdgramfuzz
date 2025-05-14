@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog
+    lang CDATA #FIXED "c"
+    vendor ID #REQUIRED>
+  <!ENTITY catalogDesc "C" >
+  <!ENTITY % i " ">
+  <!NOTATION ISO-8859-1 SYSTEM "K">
+  %i;
+  <!---->]>
+<catalog lang="c" vendor="O">
+  <product>
+    <name>&catalogDesc;</name>
+    <description>&catalogDesc;&ISO-8859-1;</description>
+    <price>100</price>
+  </product>
+</catalog>

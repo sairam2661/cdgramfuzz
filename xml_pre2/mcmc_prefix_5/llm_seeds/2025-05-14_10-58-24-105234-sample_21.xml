@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (title,author,message)> 
+  <!ATTLIST note id ID #REQUIRED> 
+  <!ENTITY author "J">
+  <!ENTITY % para "&author;   ">
+  <!NOTATION sgml PUBLIC '' 'SGML'>
+
+
+  %para;
+  <!--%para;
+<!ELEMENT address EMPTY >
+<!ELEMENT title (#PCDATA) >
+<!ELEMENT message (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+
+<!ELEMENT div (#PCDATA)>
+
+<!ELEMENT address (#PCDATA)>
+
+<!ELEMENT address2 (#PCDATA)>
+
+<!ELEMENT i (#PCDATA)>
+
+<!ELEMENT q (#PCDATA)>
+
+<!ELEMENT abbr (#PCDATA)>]>
+<!ELEMENT html (head,body)><head><p xmlns="http://www.w3schools.com"/>
+    <title xmlns:xi="http://www.w3.org/2001/XInclude">XML</title>
+    <meta xi:href="http://www.w3schools.com"/>
+    <style><xsl:mess xmlns:xsl="http://www.w3.org/1999/XSL/Transform"/> </style >
+</head>
+$xml><body><address> 
+  <p>Hello World</p>     
+  </address><address  xmlns:xi="http://www.w3.org/2001/XInclude">http://www.example.com</address>      
+    <address2 xmlns="http://www.example.com">http://www.W3C.org <i>index <address2/></i>  <i > </i> </address2> 
+  <div>Hello <i> <script xmlns:xsi="http://www.w3.org/2001/XMLSchema"  xmlns="http://www.w3.org/1999/xhtml">World <p>   <title><script /> <option value="hi" 
+    i> </i></option></p></script>    <script xmlns:xsi="http://www.w3.org/2001/XMLSchema"  xmlns="http://www.w3.org/1999/xhtml"> World <p>   <title>
+    <script /> <option value="hi"  i> </i>
+  </option>
+</p>
+</script>
+ 
+  <p style=' color: blue'> 
+    &lt;xsl:text/&gt;
+</p></div> </body>
+</xml>  <note id="E123456" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema"> 
+  <title xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="#q1" />
+  <author xmlns:xlink="http://www.w3.org/1999/xlink">#</author> 
+  <message>XML is <q>cool</q> <i> &quot;really&quot;</i></message> 
+  <address2 q>http://www.example.com</address2>  
+  <address2 q>http://www.W3C.org</address2> 
+  <i >XML <p>XSLT <address2/></p> <title>XQuery</title> <address>http://www.example.com</address> 
+  </i> 
+  <

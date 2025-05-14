@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE db [
+  <!ELEMENT db (user*)>
+  <!ATTLIST db
+    id    CDATA  #REQUIRED
+    name  CDATA  #REQUIRED
+  >
+  <!ENTITY user-name "d"
+               >
+  <!ENTITY % user-macro "
+">
+<!NOTATION biblio SYSTEM 'BIB.TXT'>
+  %user-macro;<!--=-->
+]>
+<db id="1" name="f">
+  <user login="u" xml:lang="e">
+    <!-- Sample comment -->
+    <profile>&note;</profile>
+    <message><![CDATA[&user-name &user-name;]]></message
+>
+  </user>
+</db>

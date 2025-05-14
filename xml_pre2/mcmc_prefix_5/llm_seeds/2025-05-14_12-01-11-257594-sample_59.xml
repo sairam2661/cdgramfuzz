@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY author "A">  <!ENTITY  %note-entity-handler "<" 	>   <!NOTATION XML-notation SYSTEM "b">
+  %note-entity-handler;
+  <!--;
+    <!-->
+]>
+<notes xmlns="&NS;">
+
+  <note id="N">
+    <title>Example Note</title>
+      <note id="A">
+        An example nested note.
+      </note>
+  </note>
+
+</notes>

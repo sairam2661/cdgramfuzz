@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book
+    id CDATA #REQUIRED
+    lang (en|fr|de) "n"
+  >
+  <!ENTITY author "J"
+       >
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION book-note SYSTEM "B"
+    >
+  %ent;
+  <!---->
+]>
+
+<book id="3" lang="n">
+  <title>$book</title>
+  <author>&author;</author>
+  <chapter>Chapter 1</chapter>
+  <chapter>Chapter 2</chapter>
+  <book:note SYSTEM="B" not="n">Note</book:note>
+</book>

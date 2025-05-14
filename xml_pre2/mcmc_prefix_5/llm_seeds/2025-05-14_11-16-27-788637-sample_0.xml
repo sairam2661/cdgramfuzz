@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!DOCTYPE books [
+    <!ELEMENT books (book+,comment*)>
+    <!ATTLIST book id ID #REQUIRED>
+    <!ENTITY author "L">
+    <!ENTITY % comment "("> 
+    <!NOTATION Acrobat  PUBLIC 'Acrobat application' '1.7'>
+    %comment;
+<!--This is a sample xml comment -->
+]>
+<books version="1">
+    <book id="B">
+        <xi:include href="b"><xi:fallback>fallback content</xi:fallback></xi:include>
+        <title>&author; Booker</title>
+        <author>&author;</author>
+        <NOTATION Acrobat="1"/>
+    </book>
+    <book id="P">
+        <book><author>&author;Paul</author></book>
+    </book>
+</books>

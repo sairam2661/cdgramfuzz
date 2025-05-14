@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC '-//WAPFORUM//DTD CC/PP Configuration 1.1//EN'
+  'http://www.wapforum.org/DTD/ccpp-config-19991206.dtd'
+  [
+    <!ELEMENT address (street | street-number-plus-name)>
+    <!ATTLIST street-number-plus-name
+      id      ID #REQUIRED
+      type    (house | flat | room) 'house'
+      street  CDATA #REQUIRED
+    >
+  <!ENTITY address1 SYSTEM "c" NDATA c>
+  <!ENTITY % param "1">
+  <!NOTATION c PUBLIC "c" "d">
+  %param; 
+  <!---->
+  ]
+>
+<config xmlns:wsdl="w" xmlns:xs="x"
+  xsi:noNamespaceSchemaLocation="c"
+  xsi:schemaLocation="d"
+  w:o="1" x:y="2">
+  <section>
+    <address id="A" type="a">
+      <street>Street 1</street>
+      <street-number-plus-name>Street</street-number-plus-name>
+    </address>
+    &address1;
+    <message>Here is some text: <note>Sample note!</note></message>
+  </section>
+</config>

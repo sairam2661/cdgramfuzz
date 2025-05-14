@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY foo " ">
+  <!ENTITY % ent " ">
+  <!NOTATION iso8601 SYSTEM "E">
+  %ent;
+  <!-- -->
+]>
+<root id="1">1 &foo; b</root>

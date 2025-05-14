@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST chapter id ID #REQUIRED>
+  <!ENTITY chapter1 "C">
+  <!ENTITY % psubs "a" >
+  <!NOTATION book-system SYSTEM "#">
+  %subs;
+  <!--comment -->
+]>
+<b>
+  <book xmlns:xi="x" xmlns:local="l">
+    <xi:include xmlns:xi="x" href="y"/>
+    <chapter id="c" local:href="v"/>
+    <title>&chapter1;</title>
+    <author>John Smith</author>
+    <chapter>&psubs;</chapter>
+  </book>
+</b>

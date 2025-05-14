@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION book-notation SYSTEM "B">
+  %chapter2;
+  <!--
+  Sample comment with some text and another comment within a CDATA section
+  -->
+]>
+<book lang="x">
+  <title>Sample XML Document</title>
+  <author>Anonymous</author>
+  <chapter ID="1" book-notation="B">Chapter 1</chapter>
+  <chapter ID="2" x="1">&chapter1;</chapter>
+</book>

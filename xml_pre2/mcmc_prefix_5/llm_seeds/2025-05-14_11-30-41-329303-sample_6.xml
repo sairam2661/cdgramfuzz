@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE notes SYSTEM "m"
+
+ [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes 
+    version CDATA #REQUIRED 
+    lang CDATA #IMPLIED>
+  <!ENTITY n "a">
+  <!ENTITY % p "p" >
+  <!NOTATION PDF SYSTEM "z">
+
+  %p;
+<!-- Sample prolog -->
+<!ELEMENT note (title, text)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+
+<!ENTITY y SYSTEM "b">
+<!ATTLIST note 
+  seq CDATA #IMPLIED
+  id ID #IMPLIED
+>
+<!ENTITY z "c">
+  ]>
+  <notes version="1" lang="v">
+    <note id="1" seq="2"><title>Item 1</title><text>Some text</text></note>
+    <note seq="1"><title>Item 2</title><text>Sometext</text></note>
+    <address>1234, Any street</address>
+  </notes>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book*)>
+  <!ATTLIST books
+    title CDATA #IMPLIED
+    author CDATA #IMPLIED>
+  <!ENTITY author "J"
+  ><!ENTITY  %book " "><!NOTATION ISO-8879 SYSTEM "g">
+  %book;
+  <!-- External general entity -->
+  <!ENTITY %external SYSTEM "d">
+  %external;
+]>
+<books title="F" author="K">
+  <book><title>A</title><author>B</author><year>2000</year><edition>1</edition>
+    <page><pageno>1</pageno><contents>We</contents> are <b>reading</b></page>
+  </book>
+  <book><title>C</title><author>D</author><year>2001</year><edition>2</edition>
+    <page><pageno>2</pageno>and <em>also</em></page>
+  </book>
+</books>

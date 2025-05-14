@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY product1-system "M">
+  <!ENTITY % product1-keywords "F">
+  <!NOTATION PDFSYSTEM "P">
+  %product1-keywords;
+  <!--
+    &product1;
+    This is a comment.
+  -->]>
+<catalog id="1" xmlns="f" xmlns:xsi="h" xsi:schemaLocation="i">
+  <product system="N">
+    <title>&product1-system;</title>
+    <para>This is a <term>&product1-keywords;</term> product.</para>
+  </product>
+  <note PDFSYSTEM='&product1-system;'>
+    Please order by the &product1-system; system.
+  </note>
+</catalog>

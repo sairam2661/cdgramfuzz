@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY book-title "A" >
+  <!ENTITY % books-publication-year "Y">
+  <!NOTATION xsl PUBLIC "-"
+          "/"
+          >
+ 	%books-publication-year;
+ 	<!--%XML notations...%>
+]>
+<notes>
+  <note id="A123">
+    <title><![CDATA[<A>book title</A>]]></title>
+    <author>
+      <firstname>&book_title;</firstname>
+      <lastname>Smith</lastname>
+    </author>
+  </note>
+  <note id="B456">
+    <title>XML and XSLT: A Very Big Book</title>
+    <author>
+      <firstname>Jane</firstname>
+      <lastname>Smith</lastname>
+    </author>
+  </note>
+</notes> 
+
+  <!-->
+  <!---->
+  <!--> 
+  <![--> 
+  <!--> 
+  <!--> 
+  <!--> 
+  <!--> 
+  <!--> 
+  <!-->
+  <!--
+  --> 
+  <!-- 
+  --> 
+
+   <?mike comment on book 1 of 1 1 book title 100 books of 1 1 of 3 books of 0 of 2 books of 4 of 2 8 of 4 books of 2 of 7 book title 1 book title of 7 of 2 11 book title 9 of 0 1 book title of 6 of 1 2 books of 1 book title of 2 book of 2 book title 8 books of 1  book of 2 of 0 3 book title of 4 book title of 8 book title of 7 books of 6 books of 3 9 of 6 book of 8 book title 7 of 5 of 2 book title of 3 book title of 8 book of 6 book of 6 book title 8 of 5 books of 3 book of 1 books of 6 book title of 9 book of 5 book title of 5 book of 4 of 4 books of 5 book title of 1 book title of 7 book of 5 book title of 1 book title of 5 book title of 8 of 9 book title of 5 5 book title of 8 2 book title of 7 book of 3 book of 9 book of 8 8 of 8 books of 5 of 5 book of 5 book title 0 book title 6 book of 0 9 book of 5 book title of 7 book of 1  book title of 7 book title of 9 3 of 8 book of 7 of 0 of 5 book of 9 book title 8 of 1 0 book of 6 book title of 5 of 7 of 4 2 book of 6 4 book of 5 book of 6 book title of 1 7 book title of 9 4 book title of 8 0 of 2 book of 4 7 book of 5 book title 0 book of 2 of 0 8 book title of 9 0 book of 1 book title of 5 8 9 book title 5 book of 5 book title 8 of 5 of 4 book of 2 book of 9  book title of 3 3 of 6 book of 5 book title of 7 book of 9 0 book title of 8 8 0 book of 3 book of 6 book title of 9 9 book of 7 book title of 2 book title of 1 book of 8 of 8 8 of 2 book of 0 7 book title of 3 1 book title of 1 book of 7 3 book title of 3 book of 2 book title of 1 book title 2 book title of 3 book title 3 book title 7 of 5 1 book title 8 of 8 book of 8 book title of 0 book of 3 book of 3 book title 4 8 book title 0 book of 0 of 5 book title of 6 book title of  8 2 book title 9 book of 4 8 book title of 1 6 book title 4 book title of 8 of 5 book of 7 book title of book title 0 of 8 book of 4 book title  book title of 1 book title 8 5 book of 9 of

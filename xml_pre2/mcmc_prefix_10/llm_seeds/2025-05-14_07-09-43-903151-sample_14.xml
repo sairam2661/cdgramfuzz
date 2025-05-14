@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY book "A">
+  <!ENTITY % entity "B">
+  <!NOTATION notation-public
+    PUBLIC "1"
+    "C">
+   %notation-public;
+   <!---->
+]>
+<catalog id="D" lang="E">
+  <book>&book;</book>
+  <book>&entity;</book>
+  <notation-public/>
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog[
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog
+   id CDATA #REQUIRED
+   version CDATA #FIXED "1">
+  <!ENTITY entity1 "&#37;">
+  <!ENTITY % entity2 "T">
+  <!NOTATION book SYSTEM "e">
+  %entity2;
+  <!--
+   This is a comment 
+  -->
+]>
+<catalog id="x" version="2"><![CDATA[
+  <product xmlns="http://example.com/product"/> <!-- Another product element -->
+]]></catalog>

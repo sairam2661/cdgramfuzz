@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE html [
+  <!ELEMENT html ANY>
+  <!ATTLIST html xmlns CDATA #REQUIRED>
+  <!ENTITY ent1 "a">
+  <!ENTITY % ent2 "b">
+  <!NOTATION ent3 SYSTEM "c">
+  %ent2;
+  <!--
+    Sample comment
+  --><!--
+    Sample nested comment
+  --><!--
+    Final comment
+  -->]>
+<html xmlns="h">
+  <!-- Sample comment -->
+  <b><![CDATA[Some text with <span> HTML & content ]]>
+  <c>&ent1;&ent1;</c>
+  </b>
+  <script>&ent1;</script>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book[
+  <!ELEMENT book (title,author,Chapter+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chap "D">
+  <!NOTATION pdf PUBLIC "A" "B" >
+ %Xchap;
+  <!--
+    To include this file at this position, you would call this line as:
+    <xi:include href="path_to_file" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  -->
+]>
+<book id="x">
+  <title>My Book</title>
+  <author>John Doe</author>
+  <Chapter>
+    <title>&chapter1;</title>
+    <text>This &note; is a chapter</text>
+  </Chapter>
+  <Chapter>
+    <title>A Title</title>
+    <text>Sample text with <b>bold</b> <i>italic</i></text>
+  </Chapter>
+  <Chapter>
+    <title>&chap;</title>
+    <text></text>
+  </Chapter>
+  <notation target="*">pdf</notation>
+</book>

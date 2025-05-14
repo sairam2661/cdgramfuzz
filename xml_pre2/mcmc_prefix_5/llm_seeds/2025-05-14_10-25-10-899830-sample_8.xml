@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog 
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY ent1 "A">
+  <!ENTITY % ent2 "<">
+  <!NOTATION w3c SYSTEM "C">
+  %ent2;
+  <!--[ comment about attributes ]-->
+]>
+<catalog id='cat1' lang="f">
+  <product name='prod1'>
+    <price>5.99</price>
+  </product>
+  <product>
+    <price>12.99</price>
+  </product>
+  &ent1;
+</catalog>

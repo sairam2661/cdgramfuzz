@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book
+    id       ID   #REQUIRED
+    version  CDATA #REQUIRED
+    xmlns    CDATA #IMPLIED
+  >
+  <!ENTITY chapter1 "A">
+  <!ENTITY  % chapter2 "B">
+  <!NOTATION html PUBLIC "d" "a">
+  %chapter2;
+  <!-- other notation entity -->
+  <!NOTATION other PUBLIC "a" "d">
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT author (#PCDATA)>
+]>
+<book id="B" version='1.0' xmlns="h" xmlns:xi="i">
+  <title xmlns:xlink="j">Some book</title>
+  <author>Author name</author>
+  <chapter>
+    &chapter1;
+  </chapter>
+  <chapter>
+    <name>Another Chapter</name>
+  </chapter>
+</book>

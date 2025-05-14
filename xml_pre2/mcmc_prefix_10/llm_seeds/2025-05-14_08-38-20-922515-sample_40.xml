@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m"
+
+  [<!ELEMENT catalog (library,author+)>
+   <!ATTLIST library id CDATA #REQUIRED>
+   <!ENTITY book1 SYSTEM "m" NDATA book-data>
+   <!ENTITY % book-data SYSTEM "m">
+   <!NOTATION book-data SYSTEM "m">

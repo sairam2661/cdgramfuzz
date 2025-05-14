@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % percent ";">
+  <!NOTATION ISBN PUBLIC "+"
+    "A"
+  >
+  %percent;
+  <!--
+   Another comment
+  -->
+]>
+<catalog xmlns:math="x" id="C">
+  <product>Book &entity; <xsl:value-of select="."/>
+    <price math:calc="5">10</price>
+  </product>
+</catalog>

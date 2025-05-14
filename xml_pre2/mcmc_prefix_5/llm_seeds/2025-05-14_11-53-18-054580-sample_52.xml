@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product, product+)>
+  <!ATTLIST product id CDATA #REQUIRED>
+  <!ENTITY authoriffe "I">
+  <!ENTITY% entity1 "%">
+  <!NOTATION book  SYSTEM "m">
+  
+  %entity1; 
+  <!-- Sample comment -->
+]>
+<catalog id="x" name="y"><product id="a"><title>&authoriffe;</title></product><product id="b"><title>&authoriffe;</title></product></catalog>

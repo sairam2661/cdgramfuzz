@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product, product+)>
+  <!ATTLIST catalog language CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % xinclude "x">
+  <!NOTATION iso-8859-1 SYSTEM "W">
+ %Xnote;
+  <!--
+   Sample comment with multiple lines
+  -->
+]>
+<catalog xmlns="s" language="g">
+  <product name="l" price="5">
+    <description>
+      <p>This &note; is some text</p>
+    </description>
+  </product>
+  <product name="t" price="3">
+    <description><![CDATA[
+      Some other
+      <b>text</b>
+    ]]></description>
+  </product>
+  <product name="f" price="4">
+    <description>
+      <p>&author;</p>
+    </description>
+  </product>
+</catalog>

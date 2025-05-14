@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE itemset [
+  <!ELEMENT itemset (item+)>
+  <!ATTLIST itemset attr1 CDATA #IMPLIED attr2 (on|off) "\">
+  <!ENTITY author "N"
+  	><!ENTITY 	
+ 		 	                  
+           										      
+   				 	      	     			                                    
+   	                	                        
+                	                            		
+        		                        
+      	 		                            										
+     	 		             			                	
+    	 			                        				 
+   	 			        		    
+ 	                      
+   	                  
+ 	                       	                    
+				          	                    		
+ 	                        
+   
+  	                 
+ 	                  
+ 	                        
+ 	            
+    	
+	
+	            
+	            
+	                  		      
+	                
+	                
+	                
+	                
+	                
+			          	              
+ 	            
+ 	                        
+ 	            
+ 	            
+ 	                        
+ 	                        
+ 	                        
+ 	            
+		
+		                  		      
+ 	                 
+	
+ 	                        
+ 	            
+	            
+	                
+  			
+	            
+	                
+	                
+ 	                                
+		      
+ 	            
+	            
+	            
+	            
+	            
+			%author "N"
+			>
+			<!NOTATION file PUBLIC
+	                          	" "
+						" "
+							  	>
+		
+	                                                                														
+  	%id1;
+  	<!--
+
+			<!ELEMENT item (name, type)>
+			<!ATTLIST item id (id1) #REQUIRED> 
+		<!NOTATION link PUBLIC "application/pdf#link" "file://example.com/link">
+		<!ELEMENT name (#PCDATA)>
+		<!ELEMENT type (#PCDATA)>
+		<!ELEMENT description (#PCDATA)>
+	]]
+<itemset attr1="" attr2="on">
+  <item id="id1">
+    <name>Sample Item</name>
+    <type>Sample Type</type>
+  </item>
+</itemset>  
+
+
+
+<!ELEMENT item (name, type)>
+
+<!ATTLIST item id (id1) #REQUIRED>
+
+<!NOTATION link PUBLIC "application/pdf#link" "file://example.com/link">
+
+<!ELEMENT name (#PCDATA)>
+
+
+<!ELEMENT type (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ENTITY author "Doe">
+<!ENTITY id1 " Sample 1">
+
+<!NOTATION file PUBLIC
+"application/pdf

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml:lang [
+  <!ELEMENT xml:lang (title*, description+)>
+  <!ATTLIST xml:lang id ID #IMPLIED>
+  <!ENTITY desc "A"> <!ENTITY 
+    %data  "a">
+  <!NOTATION A SYSTEM "a">
+  %data;
+  <!-- -->
+  <!ELEMENT sample (a|b|c)*>
+]>
+<sample>
+  <a>First element a</a>
+  <b>
+    Text b is <xi:include href="b"></xi:include> and <xi:include href="c"></xi:include>.
+  </b>
+  <c>Other element of c with <?procInst?> is present.</c>
+<!--<!ENTITY c "C">-->
+  <notAllowed>&desc;</notAllowed>
+</sample>

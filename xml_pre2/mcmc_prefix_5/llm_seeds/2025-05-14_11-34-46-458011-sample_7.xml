@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "p" [
+  <!ELEMENT p (#PCDATA)>
+  <!ATTLIST section id ID #REQUIRED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY 
+
+
+
+
+
+  %idg " "><!NOTATION notation SYSTEM "x" >
+
+
+
+  %xifg2b 	; <!-- %xifg2b -->
+<!ENTITY idg2 "<" 	>
+<!ENTITY idfg "<">
+<!ENTITY idfga1 " ">%xifg1d 	; <!-- %xifg1d -->
+
+
+
+<!ELEMENT notes (message*, section+)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ATTLIST section type CDATA #IMPLIED id CDATA #IMPLIED>
+<!NOTATION x SYSTEM "x">
+<!NOTATION z SYSTEM "x">
+<!ELEMENT xinclude(sections)>
+<!ELEMENT sections(section*)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT text (#PCDATA)>
+<!ATTLIST section id ID #REQUIRED>
+<!ELEMENT notes (#PCDATA)>
+<!ELEMENT doc (#PCDATA)>
+<!ELEMENT sub-sec (#PCDATA)>
+<!ELEMENT child (parent*)>
+<!ELEMENT grand-child (#PCDATA)>
+<!ELEMENT my-element EMPTY>
+<!ATTLIST my-element id CDATA #IMPLIED>
+<!ELEMENT sub (#PCDATA)>
+<!ATTLIST sub attrib-cd CDATA #IMPLIED>
+<!ELEMENT address (street, city, state, zip)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+<!ELEMENT person (name, email, address+) >
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+
+<!NOTATION x SYSTEM "x" >
+<!ENTITY name " ">
+<!ENTITY name2 " ">
+<!ENTITY name3 " ">
+<!ENTITY name4 " ">
+<!ENTITY xifg2b " ">
+<!ENTITY xifg1a " "><!ENTITY xifg2a " ">%xifg1d;
+
+<!ENTITY xifg1d " "><!ENTITY xifg1c " "><!ENTITY xifg1b " "><!ENTITY xifg1a " "><!ENTITY xifg1 " "><!ENTITY xifg3a " "><!ENTITY xifg3b " "><!ENTITY

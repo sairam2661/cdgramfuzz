@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT author (#PCDATA) >
+  <!ATTLIST book 
+    title CDATA #REQUIRED
+    year CDATA #REQUIRED
+  >
+  <!ENTITY bookinfo "A" >
+  <!ENTITY % entity "f" >
+  <!NOTATION ISO-8859-1 SYSTEM "w" >
+  %ISO-8859-1;
+  <!---->
+]>
+<book title='Python Programming' year='2020' xmlns:fb='http://www.example.com/fb'>
+  <bookinfo>&bookinfo;</bookinfo>
+  <title>&entity;</title>
+  <author>
+    xmlns="http://example.org/ns&quot;">Author of <b>Python</b>
+    <![CDATA[
+      First and last part of the text.
+    ]]>
+  </author>
+</book>

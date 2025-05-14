@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book*)>
+  <!ATTLIST catalog
+           lang (en|fr|de) "N"
+  >
+  <!ENTITY author "J"
+           >
+  <!ENTITY
+         % book-start
+         " "><!NOTATION FOP PUBLIC '<http://xmlgraphics.apache.org/fop/output/pdf.dtd>' ''
+           >
+           %book-start;
+           <!--
+           % book
+           -->
+  <!ENTITY % book-start "<">
+]>
+<catalog lang="N" xmlns:fo="F">
+<book id='b1'>
+  <title>Programming in XML</title>
+  &author;
+  <chapter>XML Basics</chapter>
+</book>
+<book id='b2'>
+  <title>Document Type Definitions</title>
+  &author;
+  <chapter>DTD Rules</chapter>
+</book>
+</catalog>

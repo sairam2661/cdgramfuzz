@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!-- This is an XML document --><!DOCTYPE itemcollection [
+  <!ELEMENT itemcollection (item+)>
+  <!ATTLIST itemcollection
+    id  CDATA  #IMPLIED
+    date  CDATA  #IMPLIED>
+  <!ENTITY itemone "F">
+  <!ENTITY  % itemtwo "E"><!NOTATION ISO PUBLIC  " "  " " > 	%i
+ 	; <!--  A  comment on a  CDATA section  -->
+  <!ELEMENT item (name,description)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT description (#PCDATA)>
+]>
+<itemcollection xmlns=" "
+  xmlns:xi=" "
+  xmlns:xsi=" "
+  id="Y"
+  date="X">
+  <item>
+    <name>Item One</name>
+    <description>&itemone;</description>
+  </item>
+  <!-- &itemtwo; is referenced only via parameter entity %itemtwo; above -->
+  <item>
+    <name>Item Two</name>
+    <description>Sample</description>
+  </item>
+</itemcollection>

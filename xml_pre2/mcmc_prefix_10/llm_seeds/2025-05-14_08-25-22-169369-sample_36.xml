@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category+)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY title "F" >   
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION FISH PUBLIC "F" "f">
+  %ent;
+  <!---->
+]>
+<catalog lang="f">
+  <category>
+    <name>&title;</name>
+    <item><description>item1</description><item-id>1</item-id></item>
+  </category>
+</catalog>

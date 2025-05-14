@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY product1-system "S">
+  <!ENTITY % product1-name "P">
+  <!NOTATION isbn-system SYSTEM "S" >
+  
+  %product1;
+  <!-- Comment explaining the namespace and the prefix -->
+
+]>
+
+<catalog xmlns:local="S"
+         xmlns:xlink="S"
+         id="S">
+  <product local:id="S">
+    <name>&product1-name;</name>
+    <price>
+      <value>10</value>
+      <unit>USD</unit>
+    </price>
+    <local:notation ref="S" system="S"/>
+    <xlink:href xml:lang="S" xmlns:xlink="S">link</xlink:href>
+  </product>
+</catalog>

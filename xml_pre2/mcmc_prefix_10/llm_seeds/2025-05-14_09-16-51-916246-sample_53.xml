@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "d"
+  [
+    <!ELEMENT document (section*, message+)>
+    <!ATTLIST document
+      lang CDATA #IMPLIED
+      xmlns CDATA #FIXED 'http://example.com/schema'>
+    <!ENTITY entity1 'Initial Value'>
+    <!ENTITY % entity2 "U" >
+  <!NOTATION notation1 SYSTEM "f" >
+  %entity2;    <!---->
+  ]>
+<document xmlns='http://example.com/schema' xmlns:xi='http://www.w3.org/2001/XInclude' lang="E">
+  <section>
+    <p>This <b>document</b> demonstrates several <u>XML</u> features</p>
+  </section>
+  <message>&entity1;</message>
+  <![CDATA[
+    <!-- Sample comment -->
+  ]]>
+</document>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (to,from,title,body) >
+  <!ATTLIST note
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY n SYSTEM "n">
+  <!ENTITY % xsl "x">
+  <!NOTATION xsl PUBLIC
+              "X"
+              "X">
+  %xsl;
+  <!--
+    XSL Pattern 1
+    ============
+  -->
+]>
+<note xml:lang="x">
+    <to>Recipient</to>
+    <from>Sender</from>
+    <title>&note;</title>
+    <body>
+        <![CDATA[
+            <!-- Text with XML entities
+                ================
+            -->
+            <raw>Some text &amp; &#62; after &lt; and &gt;</raw>
+        ]]>
+    </body>
+    <id>12345</id>
+</note>

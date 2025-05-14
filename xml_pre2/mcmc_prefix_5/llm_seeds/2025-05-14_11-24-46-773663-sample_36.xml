@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (store+)>
+  <!ATTLIST store id CDATA #REQUIRED>
+  <!ENTITY sect "S">
+  <!ENTITY 	%sect	"Y">
+  <!NOTATION ISO-8859-1 PUBLIC "-"
+    "W"		>
+ 	 		%AUTO	;	
+  <!--
+]><catalog
+  xmlns:i18n="http://example.com/locale"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-->	
+  <!--
+<store id="A"><section i18n:lang="en">Apple</section></store>
+<store id="B"><section i18n:lang="fr">Pomme</section></store>
+<catalog>	xsi:noNamespaceSchemaLocation="catalog.xsd"
+><store i18n:translate="yes">	<price currency="USD">5.99</price>
+  <description>Red Delicious</description>
+  <section>	<!(CDATA
+Some
+	</section>	
+  <store>	<store id="C"><price currency="EUR">4.99</price>
+	<section i18n:lang="de">Grenadier</section></store>	</catalog>				]><![CDATA[ Apples 99
+</catalog>				]><![CDATA[ Apples <price currency="GBP">3.99</price>
+  </store>	<store>	<section>	<!ATTLIST some ID CDATA #REQUIRED	<i18n:lang="it">Mele Rossi</i18n:lang>
+</store>				]><![CDATA[ 99p	
+]]><![CDATA[ ]]></catalog>				]><![CDATA[ ]]></catalog>				]></catalog>				]]>			]]><![CDATA[ 100
+  ]]></catalog>				]]><![CDATA[ ]]></catalog>				]]><![CDATA[ ]]></catalog>				]]><![CDATA[ ]]></catalog>				]></catalog>				]]>			]]>			]]]><![CDATA[ ]]></catalog>				]]><![CDATA[ ]]></catalog>				]]>			>>				]><store>	<section i18n:translate="yes">	<price currency="USD">5.99</price>
+  <description>Red

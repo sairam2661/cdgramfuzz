@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE inventory SYSTEM "p" [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST person id ID #REQUIRED>
+  <!ENTITY person1 "<"><!ENTITY

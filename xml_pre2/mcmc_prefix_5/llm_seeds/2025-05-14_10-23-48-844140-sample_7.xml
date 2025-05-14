@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root-system [
+  <!ELEMENT root-system (#PCDATA)>
+  <!ATTLIST root-system id CDATA #REQUIRED>
+  <!ENTITY user "x">
+  <!ENTITY % user-var '(&user;)'>
+  <!NOTATION webtools SYSTEM "G"
+    >
+  %user-var;
+  <!-- comment about the notations -->
+]>
+<root-system id="d">Element</root-system>

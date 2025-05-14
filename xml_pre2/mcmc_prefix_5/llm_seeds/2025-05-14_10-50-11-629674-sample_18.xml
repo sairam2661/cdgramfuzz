@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog SYSTEM "d"
+
+[
+  <!ELEMENT catalog (product)*>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    version CDATA #IMPLIED>
+  <!ENTITY d SYSTEM "d">
+  <!ENTITY% e "I">
+  <!NOTATION n PUBLIC "R"
+     "R">
+  %e;
+  <!-- This is a comment -->
+]>
+<catalog id="C" version="1" xmlns:n="n">
+  <product n:ignore="t">
+    <price>10.0</price>
+  </product>
+</catalog>

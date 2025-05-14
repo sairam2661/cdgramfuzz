@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m" [
+  <!ELEMENT cat (#PCDATA)>
+  <!ATTLIST cat
+    type CDATA #IMPLIED
+    name CDATA #IMPLIED
+  >
+  <!ENTITY foo "A">
+  <!ENTITY % bar "B">
+  <!NOTATION NCR SYSTEM "L">
+  %bar;
+  <!-- foo & bar -->
+]>
+<catalog>
+  <cat type="H" name="J">
+    <comment> <!-- Comment --></comment>
+  </cat>
+  &foo;
+</catalog>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<!DOCTYPE book PUBLIC
+  "-"
+  " "
+  [
+    <!ELEMENT book (title, author, content*)>
+    <!ATTLIST book id ID #REQUIRED>
+    <!ENTITY chapter1 "A"
+     >
+    <!ENTITY  % chapter2 "
+">
+   <!NOTATION sgf PUBLIC
+    " "
+  " "
+    > 
+  %safemode

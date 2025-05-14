@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookmap PUBLIC
+  "-"
+  "D" 
+  [
+    <!ELEMENT notes (note+)>
+    <!ATTLIST note ID    #REQUIRED
+             TYPE  (info|warning|error)   ">"
+  ortebookmap.dtd
+  (CType )"
+" 
+  bookmap (bookmap|partmap|chaptermap|sect1map|sect2map|appendixmap|eqmap|figmap|tablerefmap|inlinelistmap) 
+  ">"
+  bookmap.dtd
+  (CType )"
+" 
+  chaptermap (chaptermap|sect1map|sect2map|appendixmap)   ">"
+ bookmap.dtd
+  (CType)" ">
+<!ENTITY xrefs SYSTEM "x"
+          NDATA x>
+<!ENTITY % notes "("
+  >
+<!NOTATION x
+  PUBLIC  "x"
+    "x"
+  >

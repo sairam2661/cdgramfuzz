@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog
+  [
+    <!ELEMENT catalog (store*)>
+    <!ATTLIST store id CDATA #REQUIRED>
+    <!ENTITY author "J">
+    <!ENTITY % section "1">
+  <!NOTATION ISO-8859-1 SYSTEM "r">
+  %section;
+  <!--
+    Sample comment with PI
+  -->
+  ]>
+<catalog>
+  <store id="1"><item>Product A</item></store>
+  <store id="2"><item>Product B</item></store>
+  <message>&author;</message>
+</catalog>

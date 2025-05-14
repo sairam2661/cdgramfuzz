@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog owner CDATA #REQUIRED>
+  <!ENTITY author "A"> <!ENTITY % entity-set "("> <!NOTATION PDF PUBLIC " "
+                                           " ">
+  %entity-set;
+  <!--<!ENTITY! "IGNORE">-->
+]>
+
+<catalog owner="S">
+    <product id="p"/>
+    <product order="8">
+        <price>$23.99</price><tax>$1.25</tax>
+    </product>
+    <price>19.99</price>
+</catalog>

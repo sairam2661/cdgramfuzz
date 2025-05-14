@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY author "J"
+    >
+  <!ENTITY 		%xtils PUBLIC "X"
+    "X"
+  >
+  <!NOTATION iso8601 PUBLIC "w" "A" >
+ 
+        
+        
+        %book;
+        <!-- internal DTD -->
+        
+]>
+<books>
+  <book id="1"><title entity-ref="#">Entity Title</title><author entity-ref="#">&author;</author></book>
+  <book id="2">
+    &iso8601;
+    <note entity-ref="#">
+      Entity Note:&xtil;
+    </note> 
+    <author>&author;</author>
+  </book>
+</books>

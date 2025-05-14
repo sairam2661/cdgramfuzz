@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE db [
+  <!ELEMENT db (user+, config)>
+  <!ATTLIST db
+    id CDATA #REQUIRED
+    version CDATA #IMPLIED>
+  <!ENTITY desc "A"> 
+  <!ENTITY % entity "X">
+  <!NOTATION iso-8859-1 SYSTEM "I">
+  %entity;
+  <!---->
+]>
+<db id="1" version="2" xmlns:db="D">
+  &iso-8859-1;
+  &desc;
+  <user><![CDATA[User with: <bold>bold text</bold>]]></user>
+  <config>
+    <option><option>true</option></option>
+  </config>
+</db>

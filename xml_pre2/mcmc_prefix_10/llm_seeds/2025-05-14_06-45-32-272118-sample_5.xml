@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (#PCDATA|item|section)> 
+  <!ATTLIST note lang CDATA #IMPLIED>
+  <!ENTITY part1 "1">
+  <!ENTITY % ent1 "1">
+  <!NOTATION ISO-8859-15 PUBLIC "M" "d">
+  %ent1;
+  <!--[ISO:1998]--> 
+]>
+<note lang="f">
+  &part1;
+  <section>Section Element</section>
+  <!-- A sample comment for testing -->
+  <item>Item 1</item>
+  <item>Item 2</item>
+</note>

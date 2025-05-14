@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST chapter id CDATA #REQUIRED>
+  <!ENTITY booktitle "N">
+  <!ENTITY % e "e">
+  <!NOTATION ISBN SYSTEM "b">
+ 					  	
+ 					  	
+ 	 		%e;
+ 	<!--
+ 	(.*?)  -->
+ ]>
+<book>
+  <title>&booktitle;</title>
+  <chapter id="c">Sample Chapter</chapter>
+  <bibliography xmlns="h" xmlns:xsi="w">
+    <book xmlns:xsi="w">12345</book>
+    <page ref="p" xsi:schemaLocation="w">1</page>
+  </bibliography>
+</book>

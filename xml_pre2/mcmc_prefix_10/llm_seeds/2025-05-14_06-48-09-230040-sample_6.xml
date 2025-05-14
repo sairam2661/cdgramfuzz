@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST notes xml:lang CDATA #REQUIRED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY  % section "2">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'>
+  %section;
+  <!---->
+]>
+<notes lang="x"> 
+  <note><![CDATA[<note>example</note>]]></note>
+  <para>&nbsp;<!-- XML entities --> &apos; a single <strong>apostrophe</strong> is added <small>now</small> </para>
+</notes>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author: John Doe
+  Version: 1.0
+  Description: Example document
+-->
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST inventory id CDATA #REQUIRED>
+  <!ENTITY prod1 "L" >
+  <!ENTITY 	%prod1-ext "	">
+  <!NOTATION pdf PUBLIC "-"
+     "z" >
+ 	%prod1-ext;
+  <!--
+  Note: Entity declared inside a DTD is available to the DTD itself
+-->]>
+<inventory xmlns="x"
+ xmlns:xsi="x"
+ id="x" xsi:schemaLocation="x">
+  <product xsi:nonUniqueID="x" >
+    <name>Example Product</name>
+  </product>
+</inventory>

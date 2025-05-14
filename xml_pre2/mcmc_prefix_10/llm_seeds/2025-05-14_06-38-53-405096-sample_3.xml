@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+            [
+            <!ELEMENT root (name,phone,addr)>
+            <!ATTLIST root 
+                    id   CDATA  #REQUIRED >
+            <!ENTITY name "R"
+                        >
+            <!ENTITY 	%phone "%"
+                        >
+            <!NOTATION PLOT
+			 PUBLIC "+"
+                ">"
+			 >

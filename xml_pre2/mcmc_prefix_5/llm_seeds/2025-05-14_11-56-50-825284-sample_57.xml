@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN' 'http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd'
+               [
+                 <!ELEMENT math CDATA>
+              
+                 <!ATTLIST math
+                       xmlns:xlink CDATA #REQUIRED
+                       xmlns:math CDATA #REQUIRED
+                       xsi:schemaLocation CDATA #IMPLIED
+                       xml:space (preserve|default) 'preserve'>
+              
+                 <!ENTITY mathml 'http://www.w3.org/1998/Math/MathML'>
+           
+                 <!ENTITY % pubid SYSTEM 'http://www.w3.org/1999/xhtml'>
+                 <!NOTATION SYSTEM PUBLIC "%" "%" >
+              
+                 %pubid;
+                 <!--
+                 %pubid; -->
+               ]>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Math XML Doc</title>
+    <math xml:id='first'>
+      <apply>
+        <times/>
+        <ci>sin</ci>
+        <ci>x</ci>
+      </apply>
+    </math>
+  </head>
+  <body>
+    <h1>Text to be included in the Xslt</h1>
+    <p>This is the content of the article with some Math.</p>
+  </body>
+</html>

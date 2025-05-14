@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,message-sections)>
+  <!ATTLIST book isbn CDATA #REQUIRED>
+  <!ENTITY book-author "J"
+  ><!ENTITY
+      %author
+      "K"
+  >
+  <!NOTATION ISO-8859-1 SYSTEM "c">
+  %book-author; <!-- internal entity expansion -->
+]>
+<book xmlns:xi="w"
+        xmlns:xsi="w"
+        xml:lang="y"
+        xsi:schemaLocation="w"
+        xml:space="p"
+        isbn="x"
+  >
+  <title xml:id="t"
+        xml:base="b"
+        xml:lang="u">B</title>
+  <author xml:id="a">A</author>
+  <message-sections>
+    <message>A</message>
+    <message>A</message>
+  </message-sections>
+</book>

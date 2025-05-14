@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c"
+
+
+  [
+    <!ELEMENT catalog (brand+,book+)>
+    <!ATTLIST brand 
+      id  CDATA #REQUIRED
+    >
+    <!ENTITY brand.ora "O"
+      >
+    <!ENTITY % book.includes "#"
+      >
+  <!NOTATION w3c PUBLIC "W"
+    "w">
+    
+  %book.includes;
+  <!---->
+  ]
+>
+<catalog>
+  <brand id="1">&brand.ora;</brand>
+  <book>
+    <title>Book Title</title>
+    <author>Author Name</author>
+    <genre>Genre</genre>
+  </book>
+  <book>
+    <title>Book Title</title>
+    <author>Author Name</author>
+    <genre>Genre</genre>
+  </book>
+</catalog>

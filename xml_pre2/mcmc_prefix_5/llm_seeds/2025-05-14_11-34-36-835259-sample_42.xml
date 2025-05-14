@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!-- 
+  Document Author: John Doe
+  Copyright (C) 2023 Example Inc.
+-->
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+,address+)>
+  <!ATTLIST notes
+    titleCDATA #IMPLIED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY address "1" >
+  <!ENTITY % company "("> 
+  <!NOTATION ISO8601 PUBLIC "w" "h">
+  %company;
+  <!-- Internal DTD subset -->
+  <!ELEMENT note (name,telephone)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT address (#PCDATA)>
+  <!ELEMENT telephone (#PCDATA)>
+]>
+<notes title="S" version="2">
+  <note><name>Joe</name><telephone>123</telephone></note>
+  <note><name>Jane</name><telephone>456</telephone></note>
+  <address>&address;</address>
+  <note>&ISO8601; <name>John</name><telephone>789&amp;</telephone></note>
+</notes>

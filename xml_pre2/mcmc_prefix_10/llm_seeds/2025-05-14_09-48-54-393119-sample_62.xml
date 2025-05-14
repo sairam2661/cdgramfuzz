@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "l" [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY product-group "E" >
+  <!ENTITY % genent "<" >
+  <!NOTATION html PUBLIC 'adcfklasdkf' 'adasd.com' >
+  %genent; 
+  <!-- 
+     comment above element 
+  -->
+]>
+<catalog id='cat-001'>
+  <product>
+    <product-id>prod-001</product-id>
+    <product-group>&product-group;</product-group>
+  </product>
+  <product>
+    <product-id>prod-002</product-id>
+    <product-group>&product-group;</product-group>
+  </product>
+</catalog>

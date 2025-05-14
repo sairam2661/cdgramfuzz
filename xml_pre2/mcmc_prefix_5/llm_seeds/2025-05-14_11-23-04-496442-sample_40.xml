@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book pub-date CDATA #IMPLIED>
+  <!ENTITY amp "&amp;">
+  <!ENTITY 
+
+
+
+
+
+
+
+
+
+
+
+  %bookinfo.entity-decls.content
+  "
+">
+
+<!NOTATION ISO-8859-1 SYSTEM "M"
+		                
+
+		>
+
+		
+
+
+
+
+		
+
+
+
+		
+
+
+
+		%chapter.entity-decls.content
+
+
+
+ 	
+
+    
+
+
+
+
+
+
+
+
+
+  ;<!--
+<!ELEMENT chapter (title, (section | paragraph)*)
+<!ATTLIST chapter id CDATA #IMPLIED
+<!ENTITY chapter "%chapter";
+<!ENTITY sec "%section";  !ENTITY papa "%para"
+
+
+
+
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT paragraph (#PCDATA)>
+
+
+<!ENTITY sec "%chapter.chapter.section">
+
+
+<!ENTITY pap "%chapter.chapter.paragraph">
+<!ATTLIST   chapter name CDATA   #IMPLIED>
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+
+
+
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT chapter (title, (section | p)*)
+
+<!ATTLIST chapter id CDATA #IMPLIED>
+
+
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+
+
+
+<!ELEMENT para (#PCDATA)>
+
+<!ATTLIST   chapter name CDATA   #IMPLIED>
+<!ELEMENT chapter (title, (section | paragraph)*)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+
+<!ELEMENT chapter (title, (section | p)*)
+<!ATTLIST chapter id CDATA #IMPLIED
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT chapter (title, (section | paragraph)*)
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT chapter (title, (section | p)*)
+<!ELEMENT section (#PCDATA)>
+
+<!ELEMENT paragraph (#PCDATA)>
+
+<!ELEMENT chapter (title, (section | para+)>
+
+<!ATTLIST chapter id CDATA #IMPLIED>
+
+<!ELEMENT chapter (title, (section | paragraph)+)
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+
+<!ELEMENT chapter (title, (section | p)*)
+
+
+<!ELEMENT chapter (title, (section | p)*)>
+<!ELEMENT para (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+
+<!ELEMENT chapter (title, (section | paragraph)*)>
+
+<!ELEMENT para (#PCDATA)>
+
+<!ELEMENT  p (#PCDATA)>
+<!ELEMENT chapter (title, (section | p)*)>
+
+<!ATTLIST chapter id CDATA #IMPLIED>
+<!ELEMENT chapter (title, (section | paragraph)+)
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+
+
+
+<!ELEMENT chapter (title, (para | section)*)>
+<!ELEMENT chapter (title, (section | paragraph)*)>
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT chapter (title, (section | p)+)
+<!ELEMENT chapter (title, (section | p)*)>
+<!ELEMENT chapter (title, (paragraph | section)*)>
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT chapter (title,

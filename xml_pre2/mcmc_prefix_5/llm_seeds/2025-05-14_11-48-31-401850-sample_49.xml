@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A" >
+  <!ENTITY % sectionEntities "x" >
+  <!NOTATION ISO8583 PUBLIC "O" "I" >
+ 		
+ 	%i 	;
+	
+<!--(%chapter1;)%-->
+
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+
+<!ATTLIST chapter id ID #REQUIRED>
+<!ATTLIST title isbn CDATA #REQUIRED>
+
+<!ENTITY title " ">
+<!ELEMENT book >
+<!ELEMENT author >
+<!ELEMENT chapter >
+<!ELEMENT section >
+
+
+
+<!ELEMENT link (title,url)>
+<!ELEMENT cite (#PCDATA)>
+
+
+
+<!ELEMENT date (#PCDATA)>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ATTLIST title xml:lang CDATA #IMPLIED> 
+
+
+
+<!ATTLIST link
+   typeCDATA #IMPLIED
+   xml:lang CDATA #IMPLIED
+   >
+
+
+
+<!ELEMENT section (#PCDATA)>
+
+
+
+<!ELEMENT note (#PCDATA)> 
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ATTLIST title xml:lang CDATA #IMPLIED> 
+
+
+
+<!ELEMENT section (#PCDATA)>
+
+
+
+<!ELEMENT note (#PCDATA)> 
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ELEMENT note (#PCDATA)> 
+
+
+<!ELEMENT section (#PCDATA)>
+
+
+
+<!ELEMENT author (#PCDATA)>
+
+
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT link (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT date (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+
+
+
+
+
+<!ELEMENT book (#PCDATA)>
+
+
+
+<!ELEMENT author (#PCDATA)>
+
+
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ELEMENT date (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT section (#PCDATA)>
+
+
+
+<!ELEMENT note (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT book (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT link (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT date (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT date (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT section (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT title (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+
+
+<!ELEMENT author (#PCDATA)>
+
+
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT chapter (#PC

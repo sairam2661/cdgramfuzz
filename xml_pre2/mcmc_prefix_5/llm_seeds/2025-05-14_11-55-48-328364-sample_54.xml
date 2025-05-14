@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE product [
+  <!ELEMENT product (info*,order+)>
+  <!ATTLIST product 
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY author "J"><!ENTITY % test "#">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd' >
+  %test;
+  <!---->
+]>
+<product xmlns:dc="x" id="P" version="1">
+  <info>
+    <dc:creator>John</dc:creator>
+    <title>Example</title>
+    <date>2020</date>
+  </info>
+  <order>
+    <item>
+      <item-id>001</item-id>
+      <description>Item 1</description>
+    </item>
+    <item>
+      <item-id>002</item-id>
+      <description>Item 2</description>
+    </item>
+  </order>
+</product>

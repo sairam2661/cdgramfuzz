@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,content)>
+  <!ATTLIST note version CDATA #REQUIRED>
+  <!ENTITY ref1 "1">
+  <!ENTITY % section "<">
+  <!NOTATION ISO9660 PUBLIC '-//ISO//IEC 13346 version 1.0//NOTATION' 'urn:oasis:names:specification:relax-ng:default NS - https://nokogiri.org/relaxng'>
+  %section;  <!-- empty element -->
+  %section;  <!-- empty element -->
+]>
+<note xmlns="w" xmlns:xsi="w">
+  <xi:include href="w"/> <!-- XInclude declaration -->
+  <to>example@example.com</to>
+  <from>sender@example.com</from>
+  <heading>Important Note</heading>
+  &ref1; <!-- entity reference -->
+  <content>
+    <![CDATA[
+      <message>This is a message
+      <!-- sample comment -->
+    ]]>
+  </content>
+</note>

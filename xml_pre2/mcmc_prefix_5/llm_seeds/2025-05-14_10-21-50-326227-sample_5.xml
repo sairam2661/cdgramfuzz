@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE complex-system SYSTEM "c" [
+  <!ELEMENT complex-system (header, contents)>
+  <!ATTLIST complex-system system-id CDATA #REQUIRED>
+  <!ENTITY system-name "G" >
+  <!ENTITY % p1 "y" >
+  <!NOTATION SGMLPUBLIC SYSTEM "d">
+  %p1;
+  <!--
+    This is a sample comment
+    This is another line.
+  -->]>
+<complex-system xmlns="h" xmlns:math="a" id="A">
+  <header>
+    <title><![CDATA[Title < (special) char > ]]> </title>
+    <author>John Doe</author>
+  </header>
+  <contents>
+    <paragraph>&system-name;</paragraph>
+    <math:equation>x^2 + 3x = 4</math:equation>
+  </contents>
+</complex-system>

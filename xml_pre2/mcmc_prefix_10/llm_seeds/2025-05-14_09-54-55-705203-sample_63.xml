@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author "J">   <!ENTITY  				
+  	%author's-name; "John Doe">
+]>
+<books>
+  <book id="bk101" xmlns="http://example.org">
+    %author; %author'	
+   	
+ 	><!NOTATION entity-set PUBLIC "o" "b">
+  	%Ebook 	;<!-->[<!-->]><book>
+  </book>

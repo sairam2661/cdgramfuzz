@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog 
+           version CDATA #REQUIRED 
+           author  CDATA #IMPLIED>
+  <!ENTITY productref "P"
+           >
+  <!ENTITY % xlink  "("
+  >
+  <!NOTATION iso-8859-1 PUBLIC "A" "B">
+ %XInclude;  <!-- Enable XInclude support -->
+  %xlink;
+]>
+<catalog version="2" author="J">
+    <product>
+        <item id="1" desc="A"><price>$5</price></item>
+        <item id="2"><price>$10</price></item>
+    </product>
+</catalog>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item+)>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY part-number "P">
+  <!ENTITY % xml-version "1">
+  <!NOTATION ISO-8859-1 PUBLIC "M"
+    "M" >  
+  %xml-version;    
+  <!---->
+]>
+<catalog id="c" lang="f">
+<item><title>This is a</title><description>test</description>
+<price>$20.00</price></item>
+<item><title>Another item</title><description>This is description</description></item>
+<message>&part-number;</message>
+</catalog>

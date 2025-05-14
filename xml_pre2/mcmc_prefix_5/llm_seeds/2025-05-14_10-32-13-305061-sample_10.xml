@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE buildings [
+  <!ELEMENT buildings (building+)>
+  <!ATTLIST building
+    id  CDATA  #REQUIRED
+    name CDATA #REQUIRED>
+  <!ENTITY address "1" >
+  <!ENTITY% temp "<">
+  <!NOTATION ISO-Normalization PUBLIC "-"
+   "W" >
+  %temp;
+  <!--comment from parser -->
+]>
+<buildings>
+  <building id="1" name="A" address="#">
+    <city>London</city>
+    <country>UK</country>
+  </building>
+  <building id="2" name="B">
+    <city>Paris</city>
+    <country>FW</country>
+  </building>
+</buildings>

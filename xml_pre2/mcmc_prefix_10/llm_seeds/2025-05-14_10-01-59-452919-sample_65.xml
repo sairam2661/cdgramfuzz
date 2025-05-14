@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book 
+    version CDATA #REQUIRED
+    lang (en|fr|de) 'en'
+  >
+  <!ENTITY book-title "c" >
+  <!ENTITY % comment "A"
+    >
+  <!NOTATION ISO8601 SYSTEM "R">
+  %comment;
+  <!--
+   This is a multi line 
+   comment for the 
+   book document
+  -->
+]>
+<book
+  version="1"
+  lang="f" 
+  xmlns:xi="x" 
+  xi:include="f">
+  <title>&book-title;</title>
+  <author>&note;</author>
+  <chapter>
+    This is a chapter
+  </chapter>
+  <chapter ref="f">This chapter too</chapter>
+  &ISO8601;
+<b>Bold text</b>
+</book>

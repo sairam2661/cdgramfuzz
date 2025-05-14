@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "E"[
+  <!ELEMENT root (person*, address*)>
+  <!ATTLIST root lang CDATA #IMPLIED>
+  <!ENTITY name "A">
+  <!ENTITY % gen "(">
+  <!NOTATION XInclude SYSTEM "X" >
+  %gen;<!--
+    --><!ELEMENT person (#PCDATA)>
+  %gen;<!ELEMENT address (#PCDATA)>
+]>
+<root lang="h">
+  %gen;
+  &name;
+  <person>Peter</person>
+  %gen;
+  &name;
+  <address>London</address>
+  %gen;<address>New York</address>
+</root>

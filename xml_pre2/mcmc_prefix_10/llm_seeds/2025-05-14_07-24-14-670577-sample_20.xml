@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (meta*, product*)>
+  <!ATTLIST catalog 
+    version CDATA #IMPLIED
+    creator CDATA #IMPLIED
+  >
+  <!ENTITY data SYSTEM "D" NDATA BinHex>
+  <!ENTITY % entity "I">
+  <!NOTATION BinHex SYSTEM "M">
+  %entity;
+  <!---->
+  <!ELEMENT meta (#PCDATA)>
+  <!ELEMENT product (#PCDATA)>
+]>
+<catalog xmlns:db="x" version="1" creator="a">
+  <meta>info</meta>
+  <product id="x">product</product>
+  <product><db:other attr="t">db</db:other></product>
+</catalog>

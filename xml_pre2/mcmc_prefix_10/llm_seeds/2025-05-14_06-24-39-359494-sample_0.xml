@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY title "G" >
+  <!ENTITY % e1 "#">
+  <!NOTATION book PUBLIC "B" "b">
+  %e1; <!-- internal entity -->
+]>
+<note id="n" lang="e">My note is: &title;, %e1; &book;.</note>

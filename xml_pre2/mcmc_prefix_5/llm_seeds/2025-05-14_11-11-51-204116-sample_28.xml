@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA|title|author|chapter|section | desc)> 
+  <!ATTLIST book 
+            pub-date CDATA #IMPLIED 
+            language (en|fr|es) "e">
+  <!ENTITY year " ">
+  <!ENTITY % data "B"><!NOTATION publisher SYSTEM "m">
+  %data; 
+  <!--<!ENTITY % b "">-->]>
+<book xmlns="h" xmlns:xsi="w" language="e" pub-date="x">
+  <title>Title1<xi:nil/></title>
+  <desc>&year;</desc>
+  <author><![CDATA[<name>A <last>E</last></name>]]></author>
+  <chapter>
+    <section>Text to be <title>included</title> as part of it</section>
+    <desc>Part of chapter description</desc>
+  </chapter>
+</book>

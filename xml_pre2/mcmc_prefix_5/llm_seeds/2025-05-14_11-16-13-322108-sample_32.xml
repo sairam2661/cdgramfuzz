@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (title, author, chapter)>
+  <!ATTLIST author id ID #REQUIRED>
+  <!ENTITY booktitle "A">
+  <!ENTITY  %
+  bookauth "A">
+ <!NOTATION PDF SYSTEM "A">
+  %bookauth; 
+  <!--Internal entity used in the element.-->
+
+]>
+<books xmlns="R">
+  <chapter id="1"><![CDATA[Some <raw> text & booktitle; & bookauth;  ]]>.</chapter>
+  <title xmlns="T">A Title<foo:bar xmlns:foo="H"/></title>
+  <author id="1">A Author</author>
+</books>

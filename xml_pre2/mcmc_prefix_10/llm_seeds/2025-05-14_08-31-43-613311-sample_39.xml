@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "Q"[
+  <!ELEMENT note (to,from,message)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY  xmlns "L">
+  <!ENTITY  % xmlns:xi "X">
+  <!NOTATION svg PUBLIC "S" "V">
+  %xmlns:xi;
+  <!--
+  --> <!ELEMENT title (#PCDATA)>
+  <!ELEMENT to (#PCDATA)>
+  <!ELEMENT from (#PCDATA)>
+  <!ELEMENT message (#PCDATA)>
+]>
+<note id="n" xmlns="L" xi:no="1" svg:href="V">
+  <title>Title</title>
+  <to>To</to>
+  <from>From</from>
+  <message>&note;</message>
+</note>

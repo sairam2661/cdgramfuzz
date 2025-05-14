@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc SYSTEM "m"
+ [
+     <!ELEMENT doc (sect+, elemC?)>
+     <!ATTLIST doc
+      xmlns CDATA #FIXED "a"
+      id ID #IMPLIED>
+     <!ENTITY ent1 "1">
+     <!ENTITY % ent2 "#">
+     <!NOTATION NOT1 PUBLIC "b" "c">
+     %ent2;
+    <!--
+     Entity ref:
+     --><!ENTITY ent-name "&ent1;">
+ ]>
+<a xmlns="a" id="A">
+ <sect>A segment</sect>
+ <elemB>B element</elemB>
+ <sect>C segment</sect>
+ <elemC><elemD>D element</elemD></elemC>
+</doc>

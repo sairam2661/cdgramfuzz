@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (root)>
+
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY ent SYSTEM "x" NDATA ext-type>
+  <!ENTITY % ext-type "2">
+  <!NOTATION ext-type SYSTEM "2">
+
+  %exthandler;
+  <!---->
+]>
+<doc>
+  <root id="r"><![CDATA[Any <special> tags]]></root>
+  <msg>&ent;</msg>
+</doc>

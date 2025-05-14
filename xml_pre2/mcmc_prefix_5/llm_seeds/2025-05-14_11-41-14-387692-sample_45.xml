@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC '-//W3C//DTD XML Schema 1.1//EN'
+  'http://www.w3.org/2001/XMLSchema.dtd'
+  [<!ELEMENT name (#PCDATA)><!ATTLIST note NUMBER CDATA #REQUIRED> <!ENTITY msg "P"> <!ENTITY % ent SYSTEM "D">
+  <!NOTATION ext PUBLIC "F" "G"> 
+  %ent; 
+  <!--
+  This is an 
+  XSLT-->
+]>
+<messages>
+  <note NUM='1'/> <note NUM='2'/> <message>&msg;</message>
+</messages>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "M" [
+  <!ELEMENT p (#PCDATA|b|i|em|strong|sup|sub|u|big|small|align|img|br|quote|hr|table)> 
+  <!ATTLIST b                  id        CDATA   #IMPLIED
+                           xml:lang  CDATA   #IMPLIED       
+                           xml:space CDATA   #IMPLIED> 
+  <!ENTITY ns "a"> 
+  <!ENTITY % e "e"> 
+  <!NOTATION N SYSTEM "N">
+  %e; <!-- Reference to parameter entity -->
+]>
+<root
+ xmlns="a"
+ ns:test="b"
+ xml:lang="c" xml:space="d">
+  <p>This <b id='e' xml:lang='f' xml:space='g'/> sample <img src='h'/> 
+  is used to test XML features and attributes.</p>
+</root>

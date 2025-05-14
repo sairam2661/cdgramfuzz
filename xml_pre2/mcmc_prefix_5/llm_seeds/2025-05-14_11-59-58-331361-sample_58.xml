@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (subject, body+)>
+  <!ATTLIST note
+    class (A|B|C) "A"
+    id CDATA #REQUIRED
+  >
+  <!ENTITY entity1 "#">
+  <!ENTITY % entity2 "X">
+  <!NOTATION iso-entities
+    PUBLIC "+"
+    " "
+    >
+ %Xentity2;
+  <!---->
+]>
+<note class="B" id="n">
+  <subject>A subject with &entity1;</subject>
+  <body>Lorem ipsum&entity1;<br/>
+    dolor sit amet, consectetur adipiscing elit.</body>
+</note>

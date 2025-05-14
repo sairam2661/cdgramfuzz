@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note 
+    id  ID #REQUIRED
+    date CDATA #IMPLIED
+  >
+  <!ENTITY entity "A">
+  <!ENTITY % entityref "%">
+  <!NOTATION PDF SYSTEM "p"
+          >
+  %entityref;
+  <!--
+    <!-->
+     <!--A comment in the DOCTYPE-->
+  <!--
+  -->
+]>
+<notes xmlns:my="p" xmlns="o">
+  <note id="n" date="y">This is a &entity; note</note>
+  <note id="p" date="d">Including &entity; in a CDATA section<![CDATA[ like this]]> </note>
+  <note id="s"><my:comment>This is a comment with mynamespace</my:comment>Name: &name;</note>
+</notes>

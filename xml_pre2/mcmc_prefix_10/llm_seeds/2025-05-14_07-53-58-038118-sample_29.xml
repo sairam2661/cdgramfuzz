@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA|chapter|appendix)>
+  <!ATTLIST book
+    id  CDATA  #REQUIRED
+    lang (eng|spa|fra) #IMPLIED
+  >
+  <!ENTITY author 'John Doe'>
+  <!ENTITY % data 'data attribute value'
+  >
+  <!NOTATION iso-8859-1 SYSTEM 'http://www.iso.org/iso/catalogue_detail.htm?csnumber=54533'>
+  %data;
+  <!---->
+]>
+<book id="B" lang="y">
+  <chapter>
+    <title><![CDATA[<title>This is chapter title]]></title>
+    <author>&author;</author>
+  </chapter>
+  <appendix>
+    <ref notatingName='iso-8859-1' system='http://www.iso.org/iso/catalogue_detail.htm?csnumber=54533'>reference</ref>
+  </appendix>
+</book>

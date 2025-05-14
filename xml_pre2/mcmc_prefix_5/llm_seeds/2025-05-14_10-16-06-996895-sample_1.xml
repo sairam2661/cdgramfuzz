@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"[
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY book-model "e"
+    >
+  <!ENTITY % catalog-attr "a"
+    >
+  <!NOTATION book-notation PUBLIC "n"
+    "m"
+  >
+  %catalog-attr;
+  <!--&>
+]>
+<catalog id="c1" version="v1">
+  <xi:include
+    href="b_xi.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <book id="b1" xmlns="http://example.com/book">
+    <author>
+      <name>John Smith</name></author>
+    <annotation>
+      %book_MODEL;
+    </annotation>
+  </book>
+</catalog> 
+<!ATTLIST book %catalog--> 
+
+<!ELEMENT name (#PCDATA)> 
+<!ELEMENT book (#PCDATA)>   
+<!ELEMENT book (author,annotation)* >
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT annotation (#PCDATA)> 
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT catalog (#PCDATA|book.title)>
+<!ELEMENT id (#PCDATA)> 
+<!ELEMENT b (#PCDATA)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST catalog id CDATA #REQUIRED>
+<!ATTLIST book xmlns CDATA #IMPLIED>
+<!ATTLIST book xmlns:xsi CDATA #IMPLIED> 
+
+
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT b2 (#PCDATA)>
+<!ELEMENT book-notation (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT b1 (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT annotation (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT b2 (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT b1 (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT annotation (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT b1 (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT document (#PCDATA|section)>
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT b1 (#PCDATA)>
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT iD (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT annotation (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT note (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT b2 (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT book-model (#PCDATA)>
+<!ELEMENT book-model (#PC

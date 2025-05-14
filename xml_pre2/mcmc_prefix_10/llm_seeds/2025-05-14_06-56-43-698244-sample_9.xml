@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (author+, book*)>
+  <!ATTLIST books 
+    lang CDATA #IMPLIED 
+    source CDATA #REQUIRED>
+  <!ENTITY book1 "M"
+        >
+  <!ENTITY % section "1">
+  <!NOTATION ISO-8859-1 SYSTEM "C">
+  %section;<!---->
+]>
+<books source="W" lang="e">
+  <author>Paul</author>
+  <author>Mark</author>
+  <![CDATA[I am a <cdata>tag]]></book>

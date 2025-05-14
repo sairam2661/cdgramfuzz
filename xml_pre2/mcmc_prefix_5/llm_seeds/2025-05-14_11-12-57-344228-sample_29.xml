@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "B" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY n "N">
+  <!ENTITY % ext SYSTEM "C">
+  <!NOTATION S SYSTEM "D">
+  %ext;
+  <!--
+  This is a
+  CDATA section
+  inside the
+  DTD, which
+  includes <!-->
+  <!-- -->
+  <!-- comment -->]>
+<root id="r" xmlns="U" xmlns:xsi="W" xsi:noNamespaceSchemaLocation="X"><![CDATA[Some <raw> text <n/>]]></root>

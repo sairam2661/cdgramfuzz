@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bibliograph [
+  <!ELEMENT bibliograph (author*, title*, publication)>
+  <!ATTLIST author name CDATA #REQUIRED>
+  <!ENTITY book "A" >
+  <!ENTITY % percent "%">
+  <!NOTATION BibMac PUBLIC "B" "C">
+ %p1;
+  <!--
+  ^ DTD Internal Subset ^
+  -->
+]>
+<bibliograph>
+  <author name="A"/>
+  <author name="B"/>
+  <publication>
+    <title entity-ref="b">*</title>
+    <volume entity-ref="%"></volume>
+    <BibMac system-id="B" public-id="C"></BibMac>
+  </publication>
+</bibliograph>

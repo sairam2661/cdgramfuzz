@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author+, book+)>
+  <!ATTLIST catalog
+    id  CDATA  #REQUIRED
+    lang (en|fr|de) "e">
+  <!ENTITY cat "F">  
+  <!ENTITY % p "p">
+  <!NOTATION ISO-10646-UCS-2 SYSTEM "L">
+  %XINCLUDE;
+  <!--[NOTATION comment] -->
+]>
+
+<document>
+  <catalog id="x" lang="f">
+    <author>Paul</author>
+    <author>&cat;</author>
+    <book>
+      <title>&p;</title>
+      <price>10.99</price>
+    </book>
+  </catalog>
+</document>

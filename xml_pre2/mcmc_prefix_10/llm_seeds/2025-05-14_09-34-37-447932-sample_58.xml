@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter1 "A"> 
+  <!ENTITY % chapter2 "B">
+  <!NOTATION book-note SYSTEM "C">
+  %chapter2;
+  <!-- Define an internal subset, referenced by the %xi declaration -->
+  %xi;
+]>
+<book xml:lang="n">
+  <title lang="n">Harry Potter</title>
+  <author>Author Name</author>
+  <chapter entity="1">First Chapter</chapter>
+</book>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE root [
+  <!ELEMENT root (parent*)>
+  <!ATTLIST root att1 CDATA #IMPLIED>
+  <!ENTITY myEntity "a">
+  <!ENTITY % entityProxy "(">
+  <!NOTATION book-system PUBLIC "W" "X">
+  %entityProxy; 
+  <!-- comment -->
+]>
+<root att1="a">
+  <parent>test
+    <sub>&myEntity;</sub>
+  </parent>
+  <parent attrib="x">
+    <child/>
+    <child attrib="y"/>
+    <child attrib="z">
+      <!-- nested comment -->
+      <!-- test CDATA sections -->
+      <![CDATA[ ]]>
+    </child>
+  </parent>
+</root>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (entry+)>
+  <!ATTLIST catalog title CDATA #IMPLIED>
+  <!ENTITY ent1 "S">
+  <!ENTITY % ent2 "L">
+  <!NOTATION XML-PUBLIC SYSTEM "G">
+  %ent2;<!---->
+]><entry name="&ent1;">
+  <author>M</author>
+  <info>
+    <keywords>
+      <keyword>test</keyword>
+      <keyword>sample</keyword>
+    </keywords>
+  </info>
+</entry>

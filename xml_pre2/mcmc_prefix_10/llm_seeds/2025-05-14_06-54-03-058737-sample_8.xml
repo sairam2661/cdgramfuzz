@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY entity "A"
+    >
+  <!ENTITY % ent1 "%">
+  <!NOTATION iso-8859-1 SYSTEM " ">
+  %ent1;<!--
+  --><!ELEMENT item (#PCDATA|author|title|price|description|shippingdates|shippingzones|customerref)>
+
+  <!ELEMENT description (#PCDATA)>
+  <!ATTLIST item id CDATA #REQUIRED ref CDATA #IMPLIED>
+  <!ELEMENT author (#PCDATA)>
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT price (#PCDATA)>
+  <!ELEMENT shippingdates (#PCDATA)>
+  <!ELEMENT shippingzones (#PCDATA)>
+  <!ELEMENT customerref (#PCDATA)>
+]>
+<catalog id="1" xmlns:fn="e"
+         xmlns:xs="e"
+         xmlns:xsi="e"
+         xsi:noNamespaceSchemaLocation="d"
+         xsi:schemaLocation="c">
+  <note> </note>
+  &entity;
+  <title>test</title>
+  <author>author</author>
+  <description>desc</description>
+  <item id="2" ref="2">
+    <shippingzones>zone 1, 2, 3</shippingzones>
+    <shippingdates>10-20-30</shippingdates>
+    <price>price</price>
+  </item>
+</catalog>

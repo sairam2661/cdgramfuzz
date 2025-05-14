@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library [
+  <!ELEMENT library (book+)>
+  <!ATTLIST library type CDATA #REQUIRED>
+  <!ENTITY book-author "D" >
+  <!ENTITY  %X "1">
+  <!NOTATION iso8802-3 SYSTEM "I">
+  %iso8802-3;
+  <!-- internal subset of DTD -->
+  <!--<!ENTITY % ENT1 "10">-->
+]>
+<library type='reference'>
+  <book>
+    <title>The Art of War</title>
+    <author entity-ref="#" ref="&book-author;">&X;</author>
+  </book>
+  <book>
+    <title>Othello</title>
+    <author entity-ref="#">Shakespeare</author>
+  </book>
+</library>

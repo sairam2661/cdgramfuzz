@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (item+)>
+  <!ATTLIST notes xmlns:xs CDATA #FIXED 'http://www.w3.org/2001/XMLSchema'>
+  <!ENTITY n "&#160;">
+  <!ENTITY %note 'Take note!'>
+  <!NOTATION xsl PUBLIC '-//XSL Transformation//EN' 'http://www.w3.org/Style/XSL/'>
+  %note;
+  <!---->
+]>
+<notes xmlns:xs="*" xmlns="&xsd;">
+  <item><![CDATA[This <raw>message]]>
+    <subitem>&n;</subitem>
+  </item>
+  <item>has </item>
+</notes>

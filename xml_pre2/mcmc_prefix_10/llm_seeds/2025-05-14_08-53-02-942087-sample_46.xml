@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-16" standalone="no"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog language CDATA #REQUIRED>
+  <!ENTITY p1 "P">
+  <!ENTITY % p2 "<">
+  <!NOTATION GIF SYSTEM "G">
+ %p;
+  <!--&p1;p2;p1;-->
+]>
+<catalog language="x">
+  <product>
+    <name>&p1;&p2;Product 1&p1;&p2;</name>
+    <price>100</price>
+  </product>
+  &GIF;
+  <product>
+    <name>Product 2</name>
+    <price>200</price>
+  </product>
+</catalog>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "e" [
+  <!ELEMENT note (to,from,head,body)>
+  <!ATTLIST note
+    id     CDATA  #REQUIRED
+    type   (ltr|rtl)  "l"
+  >
+  <!ENTITY n "N">
+  <!ENTITY % entity "a">
+  <!NOTATION ISO-8859-2 SYSTEM "c">
+  %entity;
+  <!--
+  * @author A
+  * @version 1.0
+  -->
+]>
+<not xmlns="h">
+  <to>Recipient</to>
+  <from>Sender</from>
+  <head>
+    <date>2022-10-22</date>
+    <subject>Example XML document</subject>
+  </head>
+  <body>&n;</body>
+</not>

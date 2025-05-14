@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT person (name, address, phone) >
+  <!ATTLIST person idCDATA #REQUIRED>
+  <!ENTITY pedata SYSTEM "d" NDATA ddata>
+  <!ENTITY % ddata "C" >
+  <!NOTATION ddata SYSTEM "d">
+  %namespaces;
+  <!---->
+]>
+<note>
+  <person id="1">
+    <name>John</name>
+    <address>
+      <street>123 Main</street>
+      <city>New York</city>
+    </address>
+    <phone>1234</phone>
+  </person>
+  <message entityref="#">&pedata;</message>
+</note>

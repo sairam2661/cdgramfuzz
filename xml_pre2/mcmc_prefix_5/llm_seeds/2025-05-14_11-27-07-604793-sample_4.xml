@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (title, body)>
+  <!ATTLIST note
+    id (A|B|C) #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY n SYSTEM "n">
+  <!ENTITY % ent SYSTEM "n">
+  <!NOTATION nat SYSTEM "n">
+  %ent;
+  <!---->
+<!---->
+<!ENTITY foo "B">
+]>
+<section xmlns="m" xmlns:m="h">
+  <m:message href="x" target="y">%foo;</m:message>
+</section>

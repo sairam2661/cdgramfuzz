@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE book SYSTEM "m"
+[
+  <!ELEMENT book (#PCDATA|chapter|author|title)>
+  <!ATTLIST book
+     title CDATA #IMPLIED
+     author CDATA #IMPLIED
+  >
+  <!ENTITY chapter "A" >
+  <!ENTITY % pattr "f" >
+  <!NOTATION book-not
+    PUBLIC "#"
+    "B"
+  >
+ %XPARSER1
+  ;
+
+<!--
+--><!ELEMENT book-not EMPTY>
+<!--
+--><!ATTLIST book-not src CDATA #REQUIRED>
+<!ELEMENT chapter (#PCDATA)>
+<!ENTITY % pattr "s" >
+]>
+<book title="G"
+        author="A"
+>
+ <chapter>&chapter;</chapter>
+ <title>&pattr;</title>
+<book-not src="a"></book-not>
+</book>

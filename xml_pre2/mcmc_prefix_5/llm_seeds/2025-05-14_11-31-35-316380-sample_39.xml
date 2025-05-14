@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- XML Declaration with ISO-->
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (editorial,books+)>
+  <!ATTLIST catalog name CDATA #REQUIRED>
+  <!ENTITY editorial "P">
+  <!ENTITY % books "("
+    ><!NOTATION ISO-8859-1 SYSTEM "w">
+    %books;
+    								
+  <!--books-->]>
+  <editorial entity-name="&editorial;">
+    <company>&editorial;|Company</company>
+  </editorial>

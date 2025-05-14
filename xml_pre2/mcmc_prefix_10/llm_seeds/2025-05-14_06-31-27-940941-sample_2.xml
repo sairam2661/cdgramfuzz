@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog
+    id  ID  #REQUIRED
+    lang CDATA  #IMPLIED
+  >
+  <!ENTITY address "1" >
+  <!ENTITY % temp "("><!NOTATION xsl SYSTEM "x"
+      >%temp;<!--<!ENTITY d "Date">
+    <d.--><!NOTATION mathSYSTEM "x"><!NOTATION math SYSTEM "x"
+   ><!NOTATION svg SYSTEM'svg.xsl'>
+]>
+<catalog xml:lang="x" id="c" xmlns:xi="x">
+  <product quantity="x" />
+  <product><param name="x" value="1" />
+    <price>2.99</price>
+  </product>
+  <message>&address;</message>
+</catalog>

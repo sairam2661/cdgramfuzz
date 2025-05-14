@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, chapter*, footnote*)>
+  <!ATTLIST book id ID #IMPLIED>
+  <!ENTITY chapter1-body "Y" >
+  <!ENTITY % chapter-content "Y" >
+  <!NOTATION xsl SYSTEM "x"
+    >

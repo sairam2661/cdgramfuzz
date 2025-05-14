@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST author name CDATA #REQUIRED age CDATA #IMPLIED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter1alt "B">
+  <!NOTATION print SYSTEM "R">
+  %chapter1alt;
+  <!--(&print;)-->
+  <!--Sample comment -->
+]>
+<book>
+  <author name="S" age="2">T</author>
+  <title>&chapter1;</title>
+  <info>&chapter1;</info>
+</book>

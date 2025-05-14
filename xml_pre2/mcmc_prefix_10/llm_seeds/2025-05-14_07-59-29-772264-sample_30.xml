@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "a" [
+  <!ELEMENT root (person, address, phone) >
+  <!ATTLIST root idCDATA #REQUIRED>
+  <!ENTITY phone-system "1"
+       >
+  <!ENTITY% atts SYSTEM "b" >
+  <!NOTATION print-for-web SYSTEM "b" >
+  %atts;
+  <!---->
+]>
+<root xmlns:local="a"
+      xmlns:xi="b"
+      id="R">
+  <person>John</person>
+  <address>12345</address>
+  <phone>&phone-system;</phone>
+</root>

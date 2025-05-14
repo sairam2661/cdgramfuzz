@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book*)>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    language CDATA #IMPLIED
+  >
+  <!ENTITY book "A">
+  <!ENTITY % ref "&book;  ">
+  <!NOTATION iso-8859-1 SYSTEM "W" >
+  %ref;
+  <!-- Internal Subset -->
+]>
+<catalog id="C" language="X">
+  <notUsed>x</notUsed>
+  <book>
+    <title>Book 1</title>
+    <author>Author 1</author>
+  </book>
+</catalog>

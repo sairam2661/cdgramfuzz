@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book lang (en|fr|de) 'en'>
+  <!ENTITY chapter1 "A"
+          >
+  <!ENTITY % comment "!">
+  <!NOTATION book-format PUBLIC "X" "x">
+  %comment; <!-- comment -->
+]>
+<book lang="f">
+  <title>&chapter1;</title>
+  <author>
+    <name>John&note;</name>
+    <age>25</age>
+  </author>
+  <chapter>
+    <title>Introduction&amp;
+ </title>
+    <text>&chapter1;</text>
+    <footnote>1&amp;
+  </footnote>
+  </chapter>
+  <chapter>
+    <title>Conclusion</title>
+    <text><![CDATA[
+This text, like the one above, contains special characters & and <.
+]]></text>
+  </chapter>
+</book>

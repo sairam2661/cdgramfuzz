@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE employees [
+  <!ELEMENT employees (employee+)>
+  <!ATTLIST employees
+    id   CDATA  #REQUIRED
+    lang CDATA  #IMPLIED
+  >
+  <!ENTITY name "S" >
+  <!ENTITY % employees-list "#">
+  <!NOTATION PSS SYSTEM "p">
+  %employees-list;
+  <!---->
+]>
+<employees id="1" lang="f">
+  &PSS;
+  <!-- sample comment -->
+  <employee id="1">
+    <name>&name;</name>
+    <age>25</age>
+    <address>
+      <zip>1</zip>
+      <street>
+        address with
+        <note>
+          &note;
+        </note>
+        text
+      </street>
+    </address>
+  </employee>
+</employees>

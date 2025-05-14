@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (#PCDATA | para | addr | person | postal | tel | email)> 
+  <!ATTLIST note version CDATA #REQUIRED>
+  <!ENTITY para-deco "<">
+  <!ENTITY % person-para "#">
+  <!NOTATION iso8601 PUBLIC "W" "W" >
+ 		    
+ 		   		
+   	  	   	
+ 	%document-class;
+
+<!--% document class, this is only valid here -->
+<!ELEMENT person (name, title, addr)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT addr (#PCDATA)>	
+<!ELEMENT postal (#PCDATA)>		
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT para (#PCDATA)>	
+
+<!ATTLIST person
+	id    ID        #REQUIRED
+	name  CDATA     #IMPLIED
+
+> ]>
+<note version="1">
+	<para>&amp;para-deco</para>
+	<person>
+		<title>
+			<name>John</name>
+		</title>
+		<addr>
+			<postal>12345</postal>
+			<tel>1234567890</tel>
+			<email>user@domain.com</email>
+		</addr>
+	</person>
+</note>
