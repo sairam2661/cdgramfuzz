@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (item*)>
+  <!ATTLIST item id CDATA #REQUIRED name CDATA #REQUIRED>
+  <!ENTITY desc "A" >
+  <!ENTITY % section "A" >
+  <!NOTATION ISO-8859-1 SYSTEM "a">
+  %section;
+  <!-- a pi -->
+  <!ENTITY pi SYSTEM "a">
+]>
+<inventory xml:lang="x" xmlns:green="y" xsi:noNamespaceSchemaLocation="z" xmlns="a" xmlns:xsi="b">
+  <item id='1' name='book'>1</item>
+  <item id='2' name='book'>2</item>
+  <item id='3' name='book'>&pi;</item>
+  <message>&desc;</message>
+</inventory>

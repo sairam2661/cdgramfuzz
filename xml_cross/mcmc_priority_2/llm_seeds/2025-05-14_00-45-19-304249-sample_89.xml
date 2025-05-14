@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE article SYSTEM "x" [
+  <!ELEMENT article (title, section*, footnote*)>
+  <!ATTLIST article 
+    lang CDATA #IMPLIED 
+    id ID #IMPLIED>
+  <!ENTITY author "J">
+  <!ENTITY % footnote "%">
+  <!NOTATION x SYSTEM "x">
+  %footnote;
+  <!---->
+]>
+<article xmlns="h" xmlns:sch="s" xml:lang="f">
+  <title xml:space="c" xml:base="a"><name xmlns="s">John</name></title>
+  <description xml:lang="y">&author;</description>
+  <section>
+    <title>Example Section</title>
+    <text>&note;</text>
+    <note>
+      <citation>Some text in the note</citation>
+    </note>
+  </section>
+  <footnote xmlns:xi="z" xml:space="c">This is a footnote.</footnote>
+</article>

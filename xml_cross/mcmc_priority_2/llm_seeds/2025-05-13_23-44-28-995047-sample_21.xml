@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (header, body)>
+  <!ATTLIST document
+    id CDATA #REQUIRED
+  >
+  <!ENTITY author "J">
+  <!ENTITY % general-notation "N">
+  <!NOTATION SVG PUBLIC "W" "K">
+ 	    
+ 	%general-notation;
+  <!--
+   This is a comment
+  -->
+]>
+<document xml:lang="e" xmlns:xs="x"> 
+  <header id="h"> Title <xsl:call-template select="/"/>&author;</header>
+  <body>
+   <para>&note;&SVG;</para>
+  </body>
+</document>

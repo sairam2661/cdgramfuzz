@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE element [
+  <!ELEMENT element (#PCDATA | note | message | section | para | emphasis | emph | literal | citations | citationsRef | bibliolist | biblioentry | biblioitem | title | subtitle | abstract | author | affiliation | email | phone | url | fax | department | institution | university | street | city | state | postcode | country)>
+  <!ATTLIST element id ID #REQUIRED title CDATA #IMPLIED lang CDATA #IMPLIED xml:lang CDATA #IMPLIED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY  % entity.sets ";">
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %entity.sets;
+<!-->
+<!ATTLIST % element; xml:lang CDATA #IMPLIED>
+]>
+<element lang="en" xml:lang="en" id="abc">
+  <note>This is an interesting task! &nbsp;</note>
+  <message>This is another message using entity ref.</message>
+</element> 
+
+However I've been informed that the output was too complex for you and that in fact the output for my previous solution would suffice,in that case the solution provided for question 1 is applicable for question 2.  The only changes are encoding="ISO--><!ELEMENT biblioshow (#PCDATA)>    <!ATTLIST element xml:lang CDATA #IMPLIED> 
+<?php
+header  echo  xml version encoding and entity nbsp which the other output contained all necessary elements for another markup  that the solution contained some elements that were not necessary e  0 and so we can discard those to avoid this then just simply the solution for number one would be more than sufficient for question two or to save extra space and code as you instructed earlier we can reuse solution 1 for question number 2 and therefore the output for number two is below the same as solution 1 with slight modifications for entities and other attributes changed as for solutions 2 in general the code is given below with same as before output and as previously noted we were attempting to write new code that was different from solution 1 but due to complexity with entities and other things it turned out to be unnecessary that is to say unnecessary extra variables were declared to explain entity sets and also declaration  notations that were initially a little confusing but then it turned out more than was necessary and not different  but rather same and therefore

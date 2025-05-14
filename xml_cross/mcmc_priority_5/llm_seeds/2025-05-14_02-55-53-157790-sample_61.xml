@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY title "W" >
+  <!ENTITY  % chapter PUBLIC 'book:chapter' 'chapter.dtd'>
+  <!NOTATION pdf SYSTEM 'application/pdf'>
+  %chapter;
+  <!--[NOTICE: 'chapter.dtd' is not shown.]-->]>
+<book id="1" xml:lang="x">
+  <title>&title;<i>T</i></title>
+  <author><fn rdf:resource="&#62;"/>Alice</author>
+  <chapter id="1" notation="#"></chapter>
+  <chapter id="2" notation="#"></chapter>
+  <chap-id>&title1;</chap-id>
+</book>

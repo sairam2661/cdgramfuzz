@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note 
+             id ID #IMPLIED 
+             type CDATA #IMPLIED>
+  <!ENTITY person "<" 
+         > <!ENTITY % person "%" > <!NOTATION person SYSTEM "&#38;">
+  %person;
+  <!---->
+  <!ELEMENT note (#PCDATA)>
+]>
+<notes xmlns:po="x" xmlns="y">
+  <note id="n" type="e" po:id="o"/>
+  <note id="a">Sample text&person;a!</note>
+</notes>

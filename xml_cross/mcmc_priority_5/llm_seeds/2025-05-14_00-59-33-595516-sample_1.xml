@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml:lang [
+  <!ELEMENT e (#PCDATA)>
+  <!ATTLIST e lang CDATA #REQUIRED>
+  <!ENTITY n "<">
+  <!ENTITY 	%
+    s " ">
+  <!NOTATION sg SYSTEM "S" 
+    >
+  %s;
+   <!-- Notation -->
+]>
+<root 
+ xmlns="s"
+ xmlns:xsi="s"
+ xsi:schemaLocation="s">
+<e lang="s"></e>
+<entity-name>%n%n%n</entity-name>
+ entity reference "%n"="%e">
+  &n; <!-- not in e!-->
+  &s; <!-- entity from s!-->
+  &e; <!-- entity!-->
+  &sg; <!-- notation!--> &s;
+ <!-- entity from s!-->
+<![CDATA[
+Entity inside CDATA!
+]]>
+ entity inside
+<!-- comment -->
+</root>

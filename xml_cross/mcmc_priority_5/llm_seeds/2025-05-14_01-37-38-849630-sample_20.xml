@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article PUBLIC '
+  -//W3C//DTD XHTML 1.0 Transitional//EN
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<root xmlns:j="java://netbeans/schema">
+  <j:object id="#root">
+    <data><![CDATA[Some <em>text with entities</em> &amp; &#169;]]></data>
+    <section> 
+      <!-- Another sample comment -->
+      <subsection> This is a
+      <b> bold</b> <i> text</i>
+    </subsection>
+  </section>
+</root> 
+
+
+<!–

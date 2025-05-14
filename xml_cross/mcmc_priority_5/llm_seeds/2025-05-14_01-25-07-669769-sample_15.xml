@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+, category+)>
+  <!ATTLIST document 
+    id ID #REQUIRED 
+    lang CDATA #IMPLIED>
+  <!ENTITY year "2">
+  <!ENTITY % entity "a">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'
+    'http://www.w3.org/TR/REC-html40/strict.dtd'>
+  %html;
+  <!--(dtd comments are preserved]-->
+]>
+<inventory xmlns:xi="x" xmlns="y" id="1" lang="b">
+  <product>
+    <name><![CDATA[Product 1]]></name>
+    <price>15.99</price>
+  </product>
+  &year;
+  <category>
+    <cat>&entity;</cat>
+    <cat>&note;</cat>
+  </category>
+</inventory>

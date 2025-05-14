@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC "B" "C" [
+<!ELEMENT catalog (product*)>
+<!ATTLIST catalog system (Windows|Mac|Linux) "C" >
+<!ENTITY product "A">
+<!ENTITY % products "#">
+<!NOTATION BookReader SYSTEM "C">
+     %products;
+<!---->
+]>
+<elem>
+<catalog system="X" xmlns:a="B"
+      xmlns:m="C" xmlns:d="D">
+<xi:include xmlns:xi="C" href="C"/>
+<a:product>Item 1</a:product>
+<m:product>Item 2</m:product>
+</catalog>
+</elem>

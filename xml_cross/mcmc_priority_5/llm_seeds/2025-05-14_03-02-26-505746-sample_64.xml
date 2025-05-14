@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE complex-doc [
+  <!ELEMENT complex-doc (section+, message+)>
+  <!ATTLIST complex-doc xml:lang CDATA #IMPLIED>
+  <!ENTITY my-var "1">
+  <!ENTITY % my-ent "%">
+  <!NOTATION rtf PUBLIC "v" "a">
+  %my-ent;
+  <!--[ %my-->] 
+  >  
+  <section xml:lang="f">Some <raw> &my-var; text</section>
+  <message>&note;</message>
+  <section rtf:version="a">Another one</section>
+  <section>And one more</section>
+]>
+
+
+Note: This XML document includes a variety of elements and features such as entities, entity references, attribute lists, notations, and included comments. Remember, in production, XML documents should not use the ampersand (&amp;) as the markup does not accurately represent the XML that would be generated from the given markup. The entity within the XML code must be named, not referenced, or the code would have issues displaying. I assume it's given here in this manner for demonstration purposes. For production, use entities properly named for the purpose they were created for. In XML 1.1, the ampersand is allowed within a parameter entity but the DTD example here used XML 1.0 for familiarity.  The document also uses namespace (xml:lang) and an external notation. However, those are not defined in the markup. The notation is defined in the document type declaration (DTD). The XML code will only include the namespace xml:lang but will not utilize it. It is merely included to show another markup option. 
+
+The document in use includes namespace and two entities defined, one as an attribute list or ID and the other as a parameter entity with the attribute that is used to set the value of my-var. There is a referenced entity in the XML body that is already defined above the included section. 
+
+All possible attribute lists were written out as the code to create the entities and the notation was written in the context within their respective parts which would be required. This is how an XML document in the format described in this question is described. 
+
+It should be noted, the way that entities are referenced and constructed in this template might cause issues or raise XML parsing issues. These are done here in service of providing the information required to fulfill the request in full

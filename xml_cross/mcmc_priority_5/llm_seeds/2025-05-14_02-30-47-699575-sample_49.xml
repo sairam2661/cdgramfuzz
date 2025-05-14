@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE root SYSTEM "h" [
+  <!ELEMENT root (title, description, author*)>
+  <!ATTLIST root lang CDATA #REQUIRED>
+  <!ENTITY desc "T">
+  <!ENTITY % e "f">
+  <!NOTATION NOTATN SYSTEM "n">
+  %e;
+  <!--
+  Comment
+  -->]>
+<root lang="i" xmlns="j" xmlns:x="k" NOTATN="m">
+  <title>&desc;</title>
+  &NOTATN;
+  <description>Some &desc; text</description>
+  <author name="x" age="y"/>
+  <author name="z" age="a">
+    <address>1 w</address>
+  </author>
+</root>

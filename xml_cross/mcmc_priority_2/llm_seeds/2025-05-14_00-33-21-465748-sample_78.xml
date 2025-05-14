@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note-system [
+  <!ELEMENT note-system (section+, message+)>
+  <!ATTLIST note-system id ID #REQUIRED>
+  <!ENTITY title "G"
+  >
+  <!ENTITY % p1 "<">
+
+<!NOTATION book SYSTEM "m">
+  %p1;
+  <!--
+     --><!ELEMENT section (title, description)>
+    <!ATTLIST section type (info|warning) #IMPLIED>
+
+  <!ENTITY chapter SYSTEM "c">
+
+]>
+<note-system id="N"
+  xml:lang="P"
+  xml:space="P"
+>
+  <xi:include xmlns:xi="d">
+    <comment>This is an inclusion!</comment>
+  </xi:include>
+  <!--<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../inclusion.xmi">-->
+<b id='b'> Book</b>
+  <section type="i">
+    <title>&chapter;</title>
+    <description>&title;</description>
+  </section>
+   <message>
+    &lt;&lt;&lt; text &gt;&gt;&gt;
+  </message>
+</note-system>

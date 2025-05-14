@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book 
+    lang CDATA #IMPLIED
+    id  ID #REQUIRED
+  >
+  <!ENTITY year " ">
+  <!ENTITY % gen "g" >
+  <!NOTATION ISO-8859-1 SYSTEM "J">
+  %gen;
+  <!---->
+]>
+<book id="b" xmlns:xi="x" lang="e">
+  <title>Some book&nbsp;<span xml:lang="s">S</span></title>
+  <author>
+    <name><first-name>Jane</first-name><last-name>K.</last-name></name>
+  </author>
+  <year>&year;</year>
+  <chapter>Chapter <num>III</num></chapter>
+  <chapter/> 
+  <chapter>&note;</chapter>
+</book>

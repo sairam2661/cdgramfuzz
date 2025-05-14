@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC
+          '-//W3C//DTD XHTML 1.0 Strict//EN'
+          'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'
+          [
+            <!ELEMENT catalog (catalog|section)*>
+            <!ATTLIST catalog id ID #REQUIRED>
+            <!ENTITY product "N" >
+          <!ENTITY % xml-header "X" >
+          <!NOTATION iso PUBLIC " " " "    
+          >
+        	%namespace-decls;
+        <!-- other external parameter entry points -->
+       ]>
+<catalog id="1" xmlns="a" xmlns:xi="b" xmlns:c="d">
+  <section id="2">
+   <c:subSection>
+    <xi:include href="b"/>
+    <xi:include href="c"/>
+   </c:subSection>
+   <message>&product;</message>
+  </section>
+  <catalog id="3">
+     <section />
+     <message>&product;</message>
+  </catalog>
+</catalog>

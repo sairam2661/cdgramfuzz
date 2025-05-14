@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author,entry+)>
+  <!ATTLIST catalog
+    lang CDATA #REQUIRED
+    source CDATA #IMPLIED
+  >
+  <!ENTITY author "S">
+  <!ENTITY % entry "("><!NOTATION xhtml PUBLIC'-//W3C//DTD XHTML 1.0 Strict//EN' 'xhtml1-strict.dtd'>
+  %entry;
+<!--disable doctype system resolution in internal subset -->]>
+<catalog lang="E" source="v">
+  <author>&author;</author>
+  <entry id="1">Item #1</entry>
+  <entry id="2">Item #2</entry>
+</catalog>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, year, chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "#">
+  <!NOTATION booknotation SYSTEM "d">
+  %chapter2;
+  <!--
+    This is a
+    multi
+    line
+    comment.
+  -->
+]>
+<book xmlns:xi="a" id="1">
+  <title>Book1</title>
+  <year>2022</year>
+  <xi:include href="b"/> <!--  <xi:parser select="/book/chapter" xmlns:xi="a"/> -->
+  <chapter entity="&chapter1;"></chapter>
+  <chapter xml:lang='en' >Chapter2</chapter>
+</book>

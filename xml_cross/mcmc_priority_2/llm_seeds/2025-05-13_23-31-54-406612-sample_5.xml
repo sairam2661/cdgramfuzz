@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY product1-system "P">
+  <!ENTITY % product1-code 'Prod1'>
+  <!NOTATION ISO-8859-2 PUBLIC "J" "J">
+  %product1-code; 
+  <!-- Entity ref with variable substitution -->
+]>
+<catalog lang='EN'> 
+  <product name='%product1-code;'> 
+    <desc system='&product1-system;'/>
+    <!-- Comment -->
+  </product>
+</catalog>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (editorial-group, book)*>
+  <!ATTLIST editorial-group 
+            id CDATA #REQUIRED>
+  <!ENTITY editor "W">
+  <!ENTITY  % book " ">
+ <!NOTATION paper SYSTEM "A">
+  %book;
+  <!--
+  Note this is an internal DTD subset for the book element.
+  -->
+]>
+<bookstore>
+<editorial-group id="1" publication="U">Utopia</editorial-group>
+<editors>&editor;</editors>
+<book>
+  <title>The Great Book</title>
+  <notation paper="A">Good</notation>
+  <author>John Doe</author>
+  <publisher>Publisher1</publisher>
+  <notation system="B">Best Seller</notation>
+</book>
+</bookstore>

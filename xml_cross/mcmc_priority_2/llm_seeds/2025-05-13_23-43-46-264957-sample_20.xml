@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data [
+  <!ELEMENT data (#PCDATA)>
+  <!ATTLIST data
+    id CDATA #IMPLIED
+    revision CDATA #REQUIRED
+  >
+  <!ENTITY x "5">
+  <!ENTITY % y "#">
+  <!NOTATION iso-dtd SYSTEM "d">
+  %noti;
+  <!---->
+  <!ENTITY z "6">
+]>
+<data id="A" revision="1" xmlns:local="a">10&amp;%x;</data>

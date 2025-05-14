@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  This is a XML comment with a different encoding
+  to demonstrate how it is specified
+-->
+<!DOCTYPE bookstore [
+  <!ELEMENT book (title,price,author)>
+  <!ATTLIST book
+    id ID #REQUIRED
+    publisher CDATA #REQUIRED
+  >
+  <!ENTITY author "J" >
+  <!ENTITY % section "m">
+  <!NOTATION HTML PUBLIC "-"
+          "/">
+  %section;
+  <!-- NOTATION and ENTITY declaration -->
+]>
+<bookstore xmlns:xi="x" xmlns="y">
+  <book xmlns:xi="x" id="1" publisher="y">
+    <author>&author;</author>
+    <title>&note;</title>
+    <price>$x</price>
+  </book>
+</bookstore>

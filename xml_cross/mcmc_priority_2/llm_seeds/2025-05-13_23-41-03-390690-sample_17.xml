@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note*)>
+  <!ATTLIST note type CDATA #REQUIRED>
+  <!ENTITY ns "x">
+  <!ENTITY % gen "%">
+  <!NOTATION JPEG PUBLIC "J"
+          "G" >
+  %gen; <!-- Entity definition -->
+]>
+<notes
+  xml:lang="x"
+ >
+  <note type="N">
+    <comment> Test note &ns;</comment>
+    <!-- Sample text node -->
+    <text> Test <media> XML </media> document.</text>
+    <ref><ref-data ref-id='x'/></ref>
+  </note>
+</notes>

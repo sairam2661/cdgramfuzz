@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book author CDATA #IMPLIED>
+  <!ENTITY author "J" > 
+  <!ENTITY%n "n">
+  <!NOTATION XSL PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+  %XSL;
+  <!--%XSL%>
+]>
+<book 
+  xmlns="http://example.com/book" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  author="Mary&#232; Johnson" 
+  xmlns:a="http://www.mediawiki.org/xml"
+  a:category="reference"
+  a:sortkey="book">
+  <title>Book Title</title>
+  <chapter num="1" a:id="ch1" xlink:href="chapter1.xsl">
+    Chapter 1
+  </chapter>
+</book> 
+<!--><!NOTATION MyNotation PUBLIC '-//MyNotation 1.0//EN' 'http://example.com/mynotation.dtd'><!--> 
+<!ENTITY entity1 "This is a &entity2; entity">
+<!ENTITY % entity3 "This is a %entity4; entity"&entity1;
+<!ENTITY entity4 "%entity5;">
+<!ENTITY entity5 "%entity6;">
+<!ENTITY entity6 "%"entity7;"> 
+<!ENTITY entity7 "Entity7"> 
+<!ENTITY entity8 'Entity 8'>   
+<!ENTITY entity9 'The &entity10; entity'> 
+<!ENTITY entity10 '&#38;entity11;' >    
+<!ENTITY entity11 &#38;entity12; > 
+<!ENTITY entity12 'entity12'> 
+<!ENTITY entity13 '%entity14' ; > 
+<!ENTITY entity14 'entity14' > 
+<!ENTITY entity15 '&#38;%entity16;' > 
+<!ENTITY entity16 '&#38;%entity17;' > 
+<!ENTITY entity17 '&#38;entity18;' > 
+<!ENTITY entity18 '&#38;entity19;' > 
+<!ENTITY entity19 '&#38;entity20;' > 
+<!ENTITY entity20 'entity20'>     
+<!ENTITY % entity21 "This is a &entity22; entity">
+<!ENTITY entity22 "&#38;entity21;" > 
+<!ENTITY % entity23 "(Entity %entity24;)">
+<!ENTITY entity24 "%entity25;">
+<!ENTITY entity25 "%entity26;">
+<!ENTITY entity26 "%entity27; entity28" >
+<!ENTITY entity27 "%entity28; entity29" >
+<!ENTITY entity29 "%entity28">
+<!ENTITY entity28 "entity28">
+<!ENTITY % entity29 "(entity29)">
+<!ENTITY % entity30 "(  &#38;entity31 ; &#38;entity32 ; ) &#38;entity33">
+<!ENTITY entity31 "&#38;entity32" >
+<!ENTITY entity32 "&#38;entity33" >
+<!ENTITY entity33 "&#38;entity34" > 
+<!ENTITY entity34">&#38;entity35;>
+<!ENTITY entity35 '&#38;entity35:' >
+<!ENTITY entity36 '&#38;entity37&#38;entity38;' > 
+<!ENTITY entity37&#38;entity38 '&#38;entity39&#38;entity40;' > 
+<!ENTITY entity39 '&#38;entity40&#38;entity41;' > 
+<!ENTITY entity40 '&#38;entity41&#38;entity42;' >   
+<!ENTITY entity41 '&#38;entity42&#38;entity43;' > 
+<!ENTITY entity42 '&#38;entity43&#38;entity44;' > 
+<!ENTITY entity43 '&#38;entity44&#38;entity45;' > 
+<!ENTITY entity44 '&#38;entity45&#38;entity46;' > 
+<!ENTITY entity45 '&#38;entity46&#38;entity47;' > 
+<!ENTITY entity46 '&#38;entity47&#38;entity48;' > 
+<!ENTITY entity47 '&#38;entity48&#38;entity49;' > 
+<!ENTITY entity48 '&#38;entity49&#38;entity50;' > 
+<!ENTITY entity49 '&#38;entity50&#38;entity51;' > 
+<!ENTITY entity50 '&#38

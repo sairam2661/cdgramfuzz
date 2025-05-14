@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "p" [
+  <!ELEMENT inventory (item, item)>
+  <!ATTLIST item id ID #REQUIRED>
+  <!ENTITY address "1" >
+  <!ENTITY % comment "(">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'>
+  %comment;
+<!-- sample comment -->
+]>
+<inventory xmlns:xi="&xi;" xsi:schemaLocation="&xsi;">
+  <item id="I">Car</item>
+  <item id="Z"><item>Toy</item>Plane</item>
+</inventory>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "t" [
+  <!ELEMENT root (#PCDATA)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY address "1">
+  <!ENTITY % attr "d" >
+  <!NOTATION XSD SYSTEM "X">
+  %attr;
+  <!--
+  This is a CDATA section
+  --><!ENTITY book "<"><!ELEMENT b (#PCDATA)><!ELEMENT person (#PCDATA)><!ATTLIST person name CDATA #REQUIRED addr ENTITY #IMPLIED><!ENTITY bookdata "<"><!ENTITY persondata "<"><!ELEMENT notes (#PCDATA)><!ELEMENT book (#PCDATA)><!ELEMENT library (#PCDATA)><!ELEMENT bookshelf (#PCDATA)><!ELEMENT author (#PCDATA)><!ELEMENT title (#PCDATA)><!ELEMENT publisher (#PCDATA)><!ELEMENT year (#PCDATA)><!ELEMENT book-info (#PCDATA)><!ELEMENT rating (#PCDATA)><!ELEMENT category (#PCDATA)><!ELEMENT summary (#PCDATA)><!ELEMENT details (#PCDATA)><!ELEMENT comment (#PCDATA)><!ELEMENT content (#PCDATA)><!ELEMENT item (#PCDATA)><!ELEMENT name (#PCDATA)><!ELEMENT value (#PCDATA)> ]>
+<root id="R" xmlns:xsi="w" xmlns:xlink="y" xmlns:y="z" xml:space="p"
+  xml:lang="f"
+  xml:base="g"
+  xml:prettyFormat="e"
+  xsi:schemaLocation="h"
+  xsi:noNamespaceSchemaLocation="i"
+  xmlns:z="j"
+  xlink:type="c"
+  xmlns="k">
+<z:g c="d">1</z:g>
+  <h>Test of General Entities, N. Attributes, and Comments</h>
+  <d xml:lang="e"> &apos; &quot; &lt; &gt; &amp; &apos; &apos; </d>
+  <m>&address;</m>
+</root>

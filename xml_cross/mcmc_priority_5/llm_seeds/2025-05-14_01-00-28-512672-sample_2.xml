@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note*)>
+  <!ATTLIST note id ID #REQUIRED type CDATA #IMPLIED>
+  <!ENTITY mynote "A"
+  >
+  <!ENTITY % ent "A">
+  <!NOTATION ISO-8859-1 SYSTEM "F">
+  %ent;
+  <!--&mynote;-->
+]>
+<notes>
+  <note id="n" type="t">text</note>
+  <note id="m">text</note>
+</notes>

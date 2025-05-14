@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "p" [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY p SYSTEM "p">
+  <!ENTITY % local "1">
+  <!NOTATION print PUBLIC "x" "z">
+  %include-system;
+  <!-- comment -->
+  <!ENTITY note "A"> <!-- entity -->
+]>
+<nota xmlns="a"> <!-- Default namespace -->
+  <to><![CDATA[<xml> text ]]></to>
+  <from attr="x">text</from> <!-- extended markup declaration -->
+  <heading attrib="x">heading</heading>
+  <xi:include xmlns:xi="w" href="s"/> <!-- xinclude section -->
+  <message>message&note;</message>
+</nota>

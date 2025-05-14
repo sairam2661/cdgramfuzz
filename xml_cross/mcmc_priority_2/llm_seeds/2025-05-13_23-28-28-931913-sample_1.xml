@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY date "&amp;">
+  <!ENTITY % comment "a">
+  <!NOTATION mpeg PUBLIC "M" "X">
+  %comment;
+  <!---->
+]>
+<book lang="x" xmlns:xsi="&quot;  
+        "
+  xmlns:xi="&quot;    
+    "
+>
+  <title><![CDATA[XML]]><!--></title>
+  <author><!-->
+       <xi:include href='./schema.xsd'/>
+    <!---->
+  </author>
+  <date>&date;</date>
+</book>

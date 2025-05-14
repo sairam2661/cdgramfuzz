@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (store+)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % ent "%">
+  <!NOTATION ISBN SYSTEM "x">
+  %ent;
+  <!-- unparsed entities -->
+  <!ENTITY name SYSTEM "x" NDATA ISO-8859-1>
+]>
+<catalog id="A">
+  <!---->
+  <store>
+    <inventory>
+      <product><name>&name;</name></product>
+    </inventory>
+  </store>
+  <store>
+    <description>
+      Authored by &author;. &note;
+    </description>
+  </store>
+   <!---->
+</catalog>

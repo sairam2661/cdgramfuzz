@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+ <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY year " ">
+  <!ENTITY  % idlist "a" >
+  <!NOTATION ISO-8859-1SYSTEM "c">
+  %idlist;
+  <!-- &ISO--> 
+]>
+<book id="B" xmlns="s"><title>My book</title><author>N.</author>
+  <chapter>
+    <title>Ch 1</title>
+    <section><![CDATA[This is a <raw> test]]><![CDATA[!]]></section>
+  </chapter>
+</book>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (published,unpublished)>
+  <!ATTLIST books author CDATA #REQUIRED>
+  <!ENTITY book-name "W" >
+  <!ENTITY % book-author "("> 
+  <!NOTATION PDF PUBLIC "a" "b">
+  %book-author;
+  <!--> <author>The Author</author>
+]>
+<books author="The Author" xmlns="http://example.com/books"
+   xsi:noNamespaceSchemaLocation="schema.xsd"
+   xsi:schemaLocation="http://example.com/books http://example.com/books.xsd"
+   id="BOOKS01" xmlns:xsi="http://www.w3.org/2001/XMLSchema--> 
+
+   <!ELEMENT book (#PCDATA | title | author)> 
+   <!ATTLIST book id CDATA #REQUIRED title CDATA #REQUIRED
+      category (fiction|non-fiction) " ">
+       <!--> <pagebreak/>
+   <!--> <!--page breaks are comments in xml so we need a real pagebreak to break the pages.
+       Here we create a real pagebreak element with a fixed width-->
+   <!-- pagebreak width='100%'-->
+<!ENTITY book-author "T">
+<!ENTITY title "G">
+<!ENTITY category "F">
+<!--> &title;--> <!--> &book_name;
+<book id="BK01"  title="The Book" category="fiction">
+  <pagebreak width="100%"/>
+  <title>&title;</title>
+  <subtitle>&book_name;</subtitle>
+  <author>&book_author;</author>
+  <edition>1</edition>
+  <year>1999</year>
+  <!--> <!ATTLIST published (title | pagebreak | title) #IMPLIED> <!ELEMENT published (#PCDATA | title
+       | author)> <!ATTLIST unpublished (title|version|title) #REQUIRED> 
+<!ATTLIST version (revision | note) #IMPLIED> <!ELEMENT unpublished (#PCDATA |
+       title | version)> <!ELEMENT version (#PCDATA | title)>
+  <!ATTLIST edition (year | edition) #IMPLIED> <!ELEMENT edition (#PCDATA | year)> <!ATTLIST year
+       (date |year) #IMPLIED> 
+  <!ELEMENT year (#PCDATA | date)> 
+  <!ELEMENT subnote (#PCDATA)>

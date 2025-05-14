@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE root [
+  <!ELEMENT root (parent | child | attribute)> 
+  <!ATTLIST root
+    id (par|chil) #REQUIRED
+  >
+  <!ENTITY parent "<">
+  <!ENTITY % child "<">
+  <!NOTATION SYSTEM-XML PUBLIC " " " ">
+  %child;
+  <!-- -->
+]>
+<root xmlns:xi="x" id="p" x:foo="5" xsi:nil="1">par<parent/></root>

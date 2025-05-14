@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, section+)>
+  <!ATTLIST author 
+    name CDATA #REQUIRED>
+  <!ENTITY author "J"
+    > 
+  <!ENTITY % section "#">
+  <!NOTATION book-note SYSTEM "B">
+  %book-note;
+  <!---->
+  <!ELEMENT section (para)*>
+]>
+<book>
+  <title>Complex Book</title>
+  <author name="J"xmlns:b="b">J
+  <xi:include xmlns:xi="x">
+  <xi:fallback xmlns:xi="x" b:note = "b" xmlns:b = "b">fallback</xi:fallback>
+    <xi:fallback xmlns:xi="b">
+     &section;
+    </xi:fallback>
+    <b:b xmlns:c = "c">Some <raw> text</b:b>
+ </document> 
+  </author>
+  <section>
+   <para>This is a para
+   <b:fail xmlns:b = "d">Para fail
+</para> 
+  </section>
+</book>
+<?book-note external system id booknote file xref 7 8b external system id booknote 9 booknote external system id 0 9 file id booknote xref book id 8 7 external system id booknote 10 3 6 external system id booknote 4 10 2 file book id xref external system id 1b0 external system id 2 booknote file 5 1 9 booknote external system id xref 7 external system id 8 idnote external system id 8 8  10 9 b bexternal system id booknote xref file 5 8 noteb 3 booknote noteb external system id noteb noteb booknote file 1x4external system id 8 3 note noteb note noteb system external 7 file  b b external system id booknote note booknote  file 2 3 8 b0 book note 8 booknote book x b9 ide note booknote external system ide note ide 9 book id 8 note 8 6 ide 3 ide note note x 7 not id ide x 8 system ide not booknote xref note 3 ide book ide note note file ide note ide ide note ide book note system 8 note note file note 3 ide 2 ide ide note ide book ide note ide 5 1 booknote file 10 b ide ide system note ide note ide note x 4 1 ide note ide 5 booknote file note note ide note ide book note note ide 2 ide ide noteb ide note booknot ide ide note note ide ide booknote x 7 ide note id book  ide book id note note ide ide book ide note ide ide ide ide ide note ide note ide ide ide ide ide ide ide note ide ide ide ide ide ide ide ide ide note ide noteb note ide ide ide ide ide ide note ide  book ide ide book  b ide ide note ide ide ide note ide ide book ide ide note ide ide ide note ide ide note ide note note ide note ide note ide ide ide ide booknote ide note ide ide ide ide ide ide ide ide ide ide note ide ide note ide ide booknote ide book ide noteb ide ide noteb ide ide note ide noteb note ide ide ide note ide ide ide noteb note note ide ide ide booknote note ide ide note note ide ide ide ide ide noteb ide note note ide ide note ide noteb note ide ide ide noteb ide ide note note b note ide ide booknote ide note 1 ide ide noteb ide note ide  note ide ide book 0 booknote ide ide not

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog ver CDATA #REQUIRED>
+  <!ENTITY address "B" >
+  <!ENTITY % sects "s">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'>
+  %sects;  <!---->
+]>
+<catalog ver="1">
+  <product><title>Product</title><price>100</price></product>
+  <product><title>Book</title><price>30<!-- comment --></price></product>
+  <message>&address;</message>
+</catalog>

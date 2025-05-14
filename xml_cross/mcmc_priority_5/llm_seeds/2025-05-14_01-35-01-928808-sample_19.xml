@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note 
+    id  CDATA  #REQUIRED
+    class CDATA #IMPLIED
+  >
+  <!ENTITY copyright "("><!ENTITY % copy "C"><!NOTATION gif PUBLIC "G" "I"> 
+  %copy;  <!--  All Rights reserved --> 
+  <!NOTATION gif SYSTEM "G">
+]>
+<notes>
+  <note id="A" class="A">This is note A</note>
+  <note id="B" class="B">This is note B</note>
+  <note id="C" class="C">
+    <note xmlns="q">&note;</note>
+  </note>
+  &copy;2001
+</notes>

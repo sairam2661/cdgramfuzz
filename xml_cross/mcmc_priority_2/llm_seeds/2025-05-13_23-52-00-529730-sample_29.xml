@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (element+)>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY entity "a">
+  <!ENTITY % subset PUBLIC " "
+    "<" 
+    ><!NOTATION
+    ENTITIES  
+  SYSTEM "c">
+  %subset;
+  <!--
+    This is a multi
+    line comment.
+  -->  
+]>
+<root xmlns:temp="x" id="1" xmlns="y" version="2">
+  <temp:element attribute2="2" attribute3="3"/>
+  <element attribute2="2">Child <b>element</b>.&entity;</element>
+  <!-- &note; -->
+</root>

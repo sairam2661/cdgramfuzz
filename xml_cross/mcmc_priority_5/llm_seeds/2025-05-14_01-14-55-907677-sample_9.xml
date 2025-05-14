@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book SYSTEM "v"
+ [<!ELEMENT book (title, author, genre) >
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % gen "m">
+  <!NOTATION html SYSTEM "U">
+  %gen;
+  <!-- Other DTD comments -->
+  ]>
+<book id="1">
+  <title>An Entypoic Novel</title>
+  <author>&author;</author>
+  <genre>&gen;</genre>
+</book>

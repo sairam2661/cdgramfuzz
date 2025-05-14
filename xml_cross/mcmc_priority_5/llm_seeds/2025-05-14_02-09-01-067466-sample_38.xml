@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "b" [
+  <!ELEMENT root (child*)>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY pi SYSTEM "a">
+  <!ENTITY % eacute "&#169;">
+  <!NOTATION a SYSTEM "a">
+  %eacute;
+  <!--ignore this -->
+]>
+<root xmlns:c="c" c:id="1" id="d" xmlns="b">
+  <child>
+    <p>Some <x> &pi; </x> HTML &eacute; </p>
+  </child>
+  <child>
+    <p>Some normal characters</p>
+  </child>
+  <![CDATA[
+    some
+    ignorable text
+  ]]>
+</root>

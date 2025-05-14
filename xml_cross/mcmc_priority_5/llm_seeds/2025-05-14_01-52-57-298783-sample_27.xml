@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note (title,copyright,license) >
+  <!ATTLIST note
+    id  CDATA  #IMPLIED
+    lang (en|fr|de) "e"
+  >
+  <!ENTITY n "N"
+  >
+  <!ENTITY % a "a">
+  <!NOTATION print SYSTEM "p" >
+  %a;
+  <!-- A comment -->
+]>
+<note xmlns="p"
+ xml:space="p"
+ xml:lang="e"
+     lang="f"
+      id = "1">
+<title>Nota</title>
+<copyright year = '11'> &n; </copyright>
+<license>Nota is under license %a; </license>
+</note>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (header, section+)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY address "E"      >
+  <!ENTITY  % date "(">   <!NOTATION ISO-8859-1SYSTEM "f"  >
+  %date; <!--" 20  00-->
+]>
+<root id="R" xmlns:n="e" xmlns:p="p" type="t">
+  <header>
+    <h1>&address;</h1>
+    <date>&date;</date>
+    <p:meta xml:lang="a"/></header>
+  <section>
+    <h2>Section</h2>
+    <p>This is a sample &note;</p>
+  </section>
+</root>

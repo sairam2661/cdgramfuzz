@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "l" [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST book 
+    id  ID  #REQUIRED
+    lang CDATA  #IMPLIED
+  > 
+  <!ENTITY bookinfo "A" >
+  <!ENTITY % entity "b" >
+  <!NOTATION sgf SYSTEM "g">
+  %entity;
+  <!--
+  | 
+  -->
+]>
+<book id="B" lang="E" xml:lang="f"
+  xmlns="A" xmlns:xi="C"
+  xi:index="1">
+  <![CDATA[
+    <title>X</title>
+    <!-- Y -->
+    <note>Z</note>
+  ]]>
+</book>

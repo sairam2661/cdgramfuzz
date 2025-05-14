@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note 
+    id ID #REQUIRED 
+    author CDATA #IMPLIED 
+  >
+  <!ENTITY author "J"
+        ><!ENTITY % author-entity ">"
+        ><!NOTATION JPEG PUBLIC "A" "B">
+  %author-entity;
+  <!--system
+  entity
+> note
+>author
+>]]></notes>
+<notes>
+<note id="n1" author="John Doe"/></notes> 
+<!DOCTYPE book [
+ <!ELEMENT book (title,author,price)>
+ <!ELEMENT title (#PCDATA)>
+ <!ELEMENT author ((#PCDATA|name)+)>
+ <!ELEMENT name (#PCDATA)>
+ <!ATTLIST author id CDATA #REQUIRED>
+ <!ELEMENT price (#PCDATA)>
+]>
+<book>
+  <title>The Great Gatsby</title>
+  <author id="1"><name>F. Scott Fitzgerald</name></author>
+  <price>$15.00</price>
+</book>  
+
+<!DOCTYPE document [
+    <!ENTITY % a "Hello World">
+    <!ENTITY b "%a;">
+]>
+<document>
+    <message>&a;</message>
+    <message>&b;</message>
+</document>
+
+<!DOCTYPE note SYSTEM "note.dtd">
+<!ENTITY % ent "ent">
+<!ENTITY % ent2 %ent;>
+<!ENTITY &ent;>
+<!ENTITY s "&">
+<!ENTITY ds "&">&"> 
+<!ENTITY % ent3 "%ent;">
+<!ENTITY % ent4 "%ent;">
+<!ENTITY % ent5 " &s; %ent;">
+<!ENTITY % ent6 "%ent;"> 
+<!DOCTYPE document [
+<!ENTITY s "&#38;">
+<!ENTITY d "&#62;">
+<!ENTITY m "&#60;">
+<!ELEMENT document (#PCDATA)>
+]>
+<document>&s;d;m;n&;e;</document>
+
+
+<!DOCTYPE doc [
+  <!ELEMENT doc (elem+)>
+  <!ELEMENT elem (#PCDATA)>
+  <!ATTLIST elem
+    name CDATA #IMPLIED
+    num CDATA #REQUIRED
+  >
+]>
+<doc>
+  <elem name="name1" num="1">hello</elem>
+  <elem name="name2" num="2">world</elem>
+</doc>
+<!DOCTYPE doc [
+  <!ENTITY d "<doc><elem></elem></doc>"><!-->
+  <!ELEMENT doc (#PCDATA)>
+]>
+  <doc>&d;</doc>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book[
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book
+    id  CDATA  #REQUIRED
+    lang  (en|fr|de)  "f"
+  >
+  <!ENTITY chapter1 "A"
+        ><!ENTITY % chapter2 "B">
+  <!NOTATION book-format SYSTEM "E" >
+  %xchapter2; <!-- include the entity -->
+]>
+<book id="B" lang="f">
+  <title>XML Document</title>
+  <author>Author's Name</author>
+  <chapter ref="&chapter1;" />
+  <chapter ref="&chapter1;" />
+</book>

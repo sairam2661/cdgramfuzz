@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m"
+
+[
+   <!ELEMENT notes (note+)>
+   <!ATTLIST notes
+      id ID #REQUIRED
+      version CDATA #IMPLIED
+   >
+   <!ENTITY address SYSTEM "c">
+   <!ENTITY % note "n">
+   <!NOTATION XSL PUBLIC "-"
+      "D"
+      >
+   %note;
+   <!--
+   A single note.
+   -->
+   <!--
+   A reference to the note.
+   -->
+]>
+<notes id="n" version="v" xmlns:xi="x">
+  <xi:include href="x" xpointer="x">
+    <note>
+      <!--
+      A text message.
+      -->
+      <para xml:lang="x">Hi!</para>
+    </note>
+  </xi:include>
+  <!-- reference -->
+  <note xmlns:NS1="n">
+    <!--
+    A list.
+    -->
+    <orderedlist>
+      <!--
+      An item number.
+      -->
+      <number>1</number>
+      <!--
+      An item.
+      -->
+      <listitem>
+        <para>Text</para>
+      </listitem>
+    </orderedlist>
+  </note>
+</notes>

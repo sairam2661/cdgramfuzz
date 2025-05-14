@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c" [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog 
+    author CDATA #REQUIRED>
+  <!ENTITY book "A">
+  <!ENTITY % section "X">
+  <!NOTATION BookType PUBLIC "A" "B">
+  %section;
+  <!--
+    Sample block of text
+  -->
+]>
+<catalog author="D">
+  <!-- Sample comment -->
+  <![CDATA[Raw text 
+  &book; with entities]]>
+  <xi:include href="b"/>
+</catalog>

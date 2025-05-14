@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category*)>
+  <!ATTLIST catalog
+    id  ID  #REQUIRED
+    name  CDATA  #REQUIRED
+  >
+  <!ENTITY book "A" > 
+  <!ENTITY % catalog-p 'category'>
+  <!NOTATION ISO-8859-1 SYSTEM "A">
+  %catalog-p; 
+  <!---->
+]>
+<catalog id="1" name="X" xmlns:xi="x" xmlns:xs="y">
+  <category>
+    <title>&book;&book;</title>
+    <item price="5">
+      <xi:include href="t">
+        <xs:schema version="1">
+          <xs:annotation>
+            <xs:documentation>Used by the catalog</xs:documentation>
+          </xs:annotation>
+        </xs:schema>
+      </xi:include>
+    </item>
+  </category>
+</catalog>

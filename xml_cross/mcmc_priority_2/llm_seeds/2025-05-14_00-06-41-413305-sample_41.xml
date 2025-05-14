@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter +)>
+  <!ATTLIST book format CDATA #REQUIRED>
+  <!ENTITY chapter1 "I">
+  <!ENTITY % chapter2 "!">
+  <!NOTATION ISO-10316 PUBLIC "w" "Z">
+  %chapter2;
+  <!--
+    Entities and parameter entities can be used
+    within a DTD in the same way as the one above,
+    except for %parameter.entity%.
+  -->]>
+<book format="e">
+  <title>Best Seller</title>
+  <author>A. N. Author</author>
+  <chapter>I</chapter>
+  <chapter>&chapter1;</chapter>
+  <chapter>This chapter contains <ISO-10316>notation.</chapter>
+  <chapter>This chapter begins with some special characters: (, ), [, ], {, }.</chapter>
+</book>
+
+  <chapter>This chapter is written in CDATA section: <![CDATA[Some text with <special>characters.]]> 
+  <chapter>This chapter contains an ID "A" attribute for an IDREF: 
+  <paragraph idref="A">Text for a paragraph</paragraph>
+  <chapter>This chapter contains an entities: Entities are the building blocks of XML.
+   A general entity starts with % and has the form %name;,
+   and is used to represent a reference to a parameter entity, 
+   or a string of characters that may contain markup which would be illegal in the DTD being used.</chapter>
+</book> 
+
+  <chapter>This chapter contains an entities: An unparsed entity is defined using this syntax:
+   <!--
+      notation_name
+      PEDEF
+   -->.
+   Notation for images are identified by this syntax: 
+   <image iso-10316="w">/w/image.</image></chapter>
+</book> 
+<chapter>This chapter contains special characters which should or must be escaped in XML:</chapter>
+<chapter>&tab; &lf; &cr;</chapter></book>

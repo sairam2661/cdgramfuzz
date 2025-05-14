@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE stockquote PUBLIC '-//OASIS//DTD Document Description and ditamap//EN' 'http://docs.oasis-open.org/dita-v1.2/strict.dtd'
+[<!ELEMENT conference (name,place,times) >
+<!ATTLIST conference id CDATA #IMPLIED>
+<!ENTITY name "D"
+   >
+<!ENTITY % place PUBLIC 'example place'
+   'http://example.com/strict.dtd'
+   >
+<!NOTATION SGML SYSTEM "M"
+   >
+    %place;    <!-- expand time -->
+   ]>
+<stockquote xmlns="x"/>

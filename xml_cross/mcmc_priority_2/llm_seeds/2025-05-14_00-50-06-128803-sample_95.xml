@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"
+  [
+    <!ELEMENT catalog (product*,note)>
+    <!ATTLIST note type (warning|information) " ">
+    <!ENTITY warning "D">
+
+<!ENTITY % i "<" >
+<!NOTATION GIF PUBLIC  "G" "I"   >
+  %i-IMAGE-gif  ;   <!-- ignore -->
+]>
+<catalog version="3">
+  <product>
+    <id>i123</id>
+    <name>Mouse</name>
+  </product>
+  <note type='warning'>&warning;</note>
+  <note>&note;</note>
+  <note >&nbsp;</note>
+</catalog>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article 
+  PUBLIC "+"
+   "N" 
+   [ 
+    <!ELEMENT article (title,sections+)>
+    <!ATTLIST article id ID #REQUIRED>
+    <!ENTITY author "S"> 
+   <!ENTITY % entity1 "a">
+   <!NOTATION GIF  SYSTEM "G">
+  	%public;
+  	<!--
+  	|       +——

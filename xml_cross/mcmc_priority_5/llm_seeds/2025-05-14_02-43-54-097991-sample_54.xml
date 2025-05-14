@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"
+
+  [
+ 
+ <!ELEMENT catalog (item+, price-list)>
+ <!ATTLIST catalog xml:lang CDATA #REQUIRED>
+ <!ENTITY item-att "1">
+ 
+  <!ENTITY % general-att "1">
+  <!NOTATION ISO-8859-15 PUBLIC "+"
+    "A">  %ISO-8859-15;  
+
+  <!---->
+
+]>
+<collection xmlns="d">
+  <catalog xml:lang="x">
+    <item xml:lang="x" xml:space="x" id="a">A1</item>
+    <price-list>
+     <price>A1</price>
+    </price-list>
+  </catalog>
+  <catalog xml:lang="y" id="b" pfx="%">X1    </catalog>
+</collection>

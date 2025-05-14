@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog docId CDATA #REQUIRED>
+  <!ENTITY article "A">
+  <!ENTITY % attr "x">
+  <!NOTATION iso-8859-1 SYSTEM "a">
+  %attr;
+  <!--<!NOTATION public SYSTEM "example://a">-->
+]>
+<catalog docId="C" xmlns:local="h">
+  <!-- Sample comment -->
+  <product local:category="h">
+    This is a <p>product</p>
+  </product>
+  <product local:category="h">
+    Article &article; about <b>item</b>
+  </product>
+</catalog>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE result [
+  <!ELEMENT result (question|answer)+>
+  <!ATTLIST result id CDATA #REQUIRED>
+  <!ENTITY year "R" >
+  <!ENTITY % section "1">
+  <!NOTATION rfc7303 SYSTEM "M">
+ %xinclude 	
+ 	                           
+ 	                              		                           
+	                              		                         
+	                              		                        
+		                                        					                        
+	                         	                                   
+ 	                               	
+ 	                                              
+ 	                                                                  
+	                        
+	                        
+	                        
+	                                                                                
+	                                                                                
+	                            
+	                            
+	                                    			                  	            
+	                                    	                        
+                	                                                                             
+                 	                          		   
+  
+   	                                                              
+                         	            
+ 	                                         	
+ 	                                                                                         
+	
+	                                     						    	      				   
+						    	  						        				        						           						            
+                       				     
+                        	      
+	                      	   	
+ 
+       	
+       					             
+   								                                                                		
+ 
+       	                                                                
+     	                
+	                                                                      
+	                    
+	                    
+	                                                                      
+       					                                  
+                
+	      
+	      
+	      
+	   	                                     
+                   							 	 
+   								                                                                		
+ 	   
+   	                                                                           
+                 			        
+	                                                                      
+	            
+	                
+		             
+	            
+       			      
+					                                                                                                                                    
+		
+				
+
+			;<!---->
+<!ENTITY s1 "S" >
+<!ENTITY s2 "T" >
+<!ENTITY s3 "D" >
+<!ENTITY s4 "E" >
+<!ENTITY s5 "N" >
+<!ENTITY s6 "I" 	>	
+<!ENTITY s7 "A" >
+]>
+<result xmlns:xsi="w" xmlns="w" id="C">
+  <h1>A</h1>
+  <d><i>U</i><u><b>W</b><q></q></u></d>
+</result>

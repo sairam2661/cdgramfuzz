@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter1 "<"><!ENTITY  
+  %xmldata "<"><!NOTATION xmldata
+  SYSTEM 'http://example.com/xml.dtd'>
+  %xmldata2  		
+		
+		;	
+<!--
+
+  <chapter xlink:href="#c1">
+
+<!ATTLIST chapter id ID #REQUIRED>
+<!ELEMENT chapter (title, content)>
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST chapter xlink:href CDATA #IMPLIED>
+<!ATTLIST chapter id CDATA #REQUIRED>
+<!ELEMENT content (#PCDATA)>]>
+
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST author name CDATA #REQUIRED>
+<!ATTLIST author affiliation CDATA #IMPLIED>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST book xml:lang CDATA #IMPLIED>
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book xml:lang CDATA #IMPLIED>	
+<!DOCTYPE book [
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST book xmlns CDATA #IMPLIED>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author name CDATA #REQUIRED>
+<!ATTLIST author affiliation CDATA #IMPLIED>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST chapter id CDATA #REQUIRED>
+<!ELEMENT title (#PCDATA)>	
+<!ATTLIST chapter xlink:href CDATA #IMPLIED>
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST book xml:lang CDATA #IMPLIED>
+<!NOTATION xmldata SYSTEM 'http://example.com/xml.dtd'>
+<!ENTITY chapter1 "<">
+<!ELEMENT content (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ATTLIST author affiliation CDATA #IMPLIED>
+<!ELEMENT book (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST chapter id CDATA #REQUIRED>
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST book xml:lang CDATA #IMPLIED>
+<!ATTLIST chapter xlink:href CDATA #IMPLIED>
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book xmlns CDATA #IMPLIED>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book xmlns CDATA #IMPLIED>
+<!ELEMENT chapter (#

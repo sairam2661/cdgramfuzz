@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "I">
+  <!ENTITY  % chapter2 "I">
+  <!NOTATION isbn PUBLIC "W" "X">
+  %chapter2;
+  <!--
+    Sample book with chapters and isbn notation.
+    The notation isbn is used to validate document.
+  -->
+]>
+<book id="B" xmlns="x" xmlns:xsi="x">
+  <title>Example</title>
+  <author><name>Aria</name></author>
+  <chapter>&chapter1;</chapter>
+  <chapter>&chapter2;</chapter>
+  <notation></notation>
+</book>

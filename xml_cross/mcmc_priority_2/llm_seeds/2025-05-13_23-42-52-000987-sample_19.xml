@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<!DOCTYPE catalogue [
+  <!ELEMENT catalogue (title,section)>
+  <!ATTLIST catalogue 
+    xml:lang CDATA #REQUIRED>
+  <!ENTITY title "B" >
+  <!ENTITY % section "%">
+  <!NOTATION iso-8859-1 SYSTEM "F">
+  %section;
+  <!--= 
+   NOTE: This CDATA section is legal but not recommended
+   It contains
+   a CDATA section, a system identifier, an element type name, a public 
+   identifier, a notation declaration, and a comment (<!-->
+ ]>
+<catalogue xml:lang="F" xmlns="f" 
+   ENTITY='title' NOTATION="F" cdse="F"/>

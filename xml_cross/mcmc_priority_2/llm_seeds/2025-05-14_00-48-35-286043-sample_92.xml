@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog
+    lang CDATA #REQUIRED>
+  <!ENTITY symbol "|">
+  <!ENTITY % entity "a">
+  <!NOTATION internal SYSTEM "F"
+    >
+  %entity;<!-- some <!--> <!-- -->
+  ]>
+<catalog lang="f">
+  <product>&symbol;&note;</product>
+  <product>
+    <price>&symbol;&price;</price>
+    <price>&entity;&price;</price>
+  </product>
+</catalog>

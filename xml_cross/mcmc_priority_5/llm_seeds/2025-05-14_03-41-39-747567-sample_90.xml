@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookmarks SYSTEM "P" [
+  <!ELEMENT bookmarks (bookmark+)>
+  <!ATTLIST bookmark id CDATA #REQUIRED>
+  <!ENTITY book-title "F">
+  <!ENTITY % ext-param "V">
+  <!NOTATION ISO-8859-2 PUBLIC '+ISO-8859-2:1995)>
+<!ATTLIST! bookmark content CDATA #IMPLIED>
+<!KEY name CDATA #REQUIRED>
+<!ELEMENT description EMPTY>
+<!ATTLIST description width CDATA #IMPLIED>
+<!ELEMENT title (#PCDATA)>
+<!ATTLIST title lang CDATA #IMPLIED>
+]>
+<bookmarks xmlns="http://example.com/schema">
+  <bookmark id="1" content="Sample entry">
+    <$title xml:lang="en">My Title</$title>
+    <description width="200">Short desc.</description>
+  </bookmark>
+  <bookmark name="2" content="Sample entry 2">
+    <$title xml:lang="fr">Mon Titre</$title>&book-title;&note;
+  </bookmark>
+</bookmarks> 
+<xi:include xmlnsxi="http://www.w3.org/2001/XInclude" href="includedfile.xml"/> 
+<!ENTITY book-title "Book Title" --> 
+
+<!-- Sample comment for testing XML declaration with XMLPI -->
+<?xml-stylesheet type="text/xsl" href="transform.xsl"?> 
+<!-- Sample PI for testing processing instruction and XML declaration  -->  
+<!-- End of document -->  &test;  &note;  &test; 
+
+ 
+<!DOCTYPE book-item[
+<!ATTLIST book-item ID    ID    #REQUIRED>
+<!ATTLIST book-item CLASS      CDATA  #IMPLIED>
+<!ATTLIST book-item TITLE  CDATA  #IMPLIED>
+<!ELEMENT book-item (#PCDATA)>
+<!ATTLIST book-item TITLE  CDATA  #REQUIRED>
+<!ELEMENT book-item (#PCDATA)  >
+<!ELEMENT book-item (#PCDATA)>
+<!ELEMENT book-item (#PCDATA) >]>
+<includedfile>
+<!ELEMENT link (link+)>
+<book-item CLASS="itemClass" TITLE="Test"  ID="1"> <book-item><link  href="link1.html" TITLE="Link1"></link> <link href="link2.html" TITLE="Link1"></link></book-item></book-item>
+<!ELEMENT items (items?)>
+<!ELEMENT item (#PCDATA) >
+<!ATTLIST item sortkey CDATA #IMPLIED>
+<!ELEMENT items ((item | items)*)>
+<!ATTLIST book-item   sortkey      CDATA  #IMPLIED>
+<!ELEMENT link EMPTY>
+<!ATTLIST link href CDATA #REQUIRED><items></includedfile> 
+<!ELEMENT person (name,age) >
+<!ELEMENT age (#PCDATA) > <!ELEMENT name (#PCDATA) > 
+<book-item

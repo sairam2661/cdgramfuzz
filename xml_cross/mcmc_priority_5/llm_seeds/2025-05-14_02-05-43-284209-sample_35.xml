@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title, paragraph*, section+, footer)>
+  <!ATTLIST article id CDATA #REQUIRED>
+  <!ENTITY e-mail "j"
+  ><!ENTITY % ent "d" >  
+  <!NOTATION web-mastering SYSTEM "C">
+  													%ent; <!-- entity reference in DTD -->
+]>
+<article id='art-1234' xmlns:xsi="w" xsi:schemaLocation="y">
+  <title>Title of Article</title>
+  <paragraph>Sample paragraph with some text</paragraph>
+  <section>Section 1</section>
+  <footnote>foot note</footnote>
+  <footer>Copyright 2022</footer>
+  <section>
+   <xi:include href="b" xpointer="x">
+    <xi:fallback><p>default text</p></xi:fallback>
+   </xi:include>
+  </section>
+</article>

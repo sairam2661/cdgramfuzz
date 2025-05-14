@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m"
+           [
+             <!ELEMENT notes (note+)>
+             <!ATTLIST note
+               id   CDATA  #REQUIRED
+               type (warning|info) ">"
+               >
+             <!ENTITY desc1 "A">
+             <!ENTITY % desc2 SYSTEM "d"
+                        >
+           <!NOTATION npeg SYSTEM "C">
+        	   %desc2;
+           <!-- 
+           	Purpose of the notes element 
+           -->
+           ]>
+<notes>
+  <note id="w" type="w">
+    <!-- Warning! 
+		<note/>, 
+		<%desc1%>, 
+	  &desc1; 
+    -->
+    <title attr="D">Value of attr.1</title>
+    <content>&desc1; </content>
+  </note>
+  <note type="i">
+	<![CDATA[An <inline> example]]> </note>
+</notes>

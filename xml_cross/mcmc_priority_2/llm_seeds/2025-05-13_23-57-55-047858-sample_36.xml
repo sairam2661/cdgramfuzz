@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author,book+)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY bookitem "<"> 
+  <!ENTITY % bookref "%">
+  <!NOTATION ISO9660CD SYSTEM "x">
+  %bookref;
+  <!-- ENTITY for CDATA Section -->
+  <!ENTITY date "&ISO:YYYY-MM-DD;" >
+]>
+<catalog lang="x">
+  <author xml:lang="x">
+    <name>Author Name</name>
+    <address>Author Address</address>
+  </author>
+  <book>
+    <title>Book Title</title>
+    <id>&bookitem;</id>
+  </book>
+  <book>
+    <title>Another Book Title</title>
+  </book>
+</catalog>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+
+ 
+  [
+  <!ELEMENT root (child,attr*,comment+)>    
+  <!ATTLIST root
+      id   CDATA    #REQUIRED
+      name CDATA    #IMPLIED
+        >
+  <!ENTITY entity1 "I">
+  <!ENTITY % entity2 "R"> 
+  <!NOTATION mime PUBLIC "M" "K">
+  %entity2;                    
+  <!--
+
+comment
+  ]>
+<root id="root1" name="Example">
+  <child>text</child>
+  <attr attrValue="value"/>
+  <!--><!---->
+  <!-- comment -->
+  <!---->
+  <!--&note;>
+</root> 
+<!DOCTYPE document [
+  <!ENTITY note "Take care!">
+]>
+<document xmlns="http://example.com/schema" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!--> <!--<!--> 
+  <!-- Sample comment -->
+  <!-- <raw> text 
+  <section><![CDATA[Some <raw> text]]></section>
+  <message>&note;</message>
+</document> 
+
+<root xmlns="http://example.com/ns"><ref refid="r1"/><ref refid="r2"/></root> 
+
+  <root>
+  
+     <!--><?php echo 5 5     echo 5  echo 5 5     echo 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5   echo 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "w" [
+  <!ELEMENT book (title, author, chapter*, footnote?)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter-number "C">
+  <!ENTITY % foot "x">
+  <!NOTATION w  SYSTEM "w"  >
+  %foot;
+  <!--=Comment about book=-->
+
+]>
+<book id="B" xi:schemaLocation='http://example.com/schema http://example.com/xsch.xsd'
+xi:noNamespaceSchemaLocation='file://sch.xsd' xmlns:xi='http://www.w3.org/2001/XInclude'>
+  <title>Example </title>
+  <author>Me</author>
+  <chapter>&chapter-number;</chapter>
+  <chapter>&chapter-number;</chapter>
+  <footnote entity='&foot;'>This is a footnote</footnote>
+</book>

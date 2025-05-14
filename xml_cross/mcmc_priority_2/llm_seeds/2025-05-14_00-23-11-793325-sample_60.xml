@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY product "A">
+  <!ENTITY % p "d">
+  <!NOTATION book  SYSTEM "C">
+  %p;<!--example of pcdata--><!ELEMENT product (#PCDATA)>]>
+<catalog id="X" xmlns="a"><![CDATA[<book/> &product;]]></catalog>

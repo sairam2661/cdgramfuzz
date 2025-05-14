@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "f"[
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book
+    lang (en|fr|de) "n">
+  <!ENTITY chapter1 "1">
+  <!ENTITY % chapter2 SYSTEM "c">
+  <!NOTATION XHTML PUBLIC "+"
+            "x"
+            >
+  %chapter2;
+  <!--
+    some sample comment
+   -->
+]>
+<book lang='fr'><title>Test</title>
+<author>Me</author>
+<chapter id="&chapter1;">one</chapter>
+<chapter ref="&chapter2;"/>
+</book>

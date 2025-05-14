@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bibliography SYSTEM "b"
+
+
+  [<!ELEMENT book (title,author)> 
+   <!ATTLIST book
+          ID ID #REQUIRED 
+          lang CDATA #REQUIRED
+          year CDATA #IMPLIED 
+          publisher CDATA #IMPLIED >
+    <!ENTITY book.author "J"
+    >
+    <!ENTITY % book.title "A"> 
+   <!NOTATION iso-8859-1 SYSTEM "2">
+   
+
+   
+  %Xinclude ; 
+<!--><!ELEMENT catalog (catalog|bibliography)*>
+<catalog> 
+  <bibliography xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <book ID="bk1" lang="en" year="2000" publisher="ABC"><title>&book.title;</title><title xmlns:gml='urn:ogc:def:feature:XML:<http://www.opengis.net/spec/gml/3.0/2011/10>' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:gml='http://www.opengis.net/spec/gml/3.0/2011/10'><xs:element><xs:element name="title" type="xs:string"/></xs:element></title><author>&book.author;</author></book> 
+    <book ID="bk2" lang="fr" year="2001" publisher="DEF"><title xml:lang="en">Book Two</title><title><en:book>&book.title;</en:book></title><author xmlns:xs='http://www.w3.org/2001/XMLSchema'>A</author></book>   
+  </bibliography>
+</catalog> 
+
+  <!ELEMENT en:book (#PCDATA|en:title)*> 
+   <en:book xmlns:en="http://example.com/en">
+    <en:title>A Simple Title</en:title>
+    <en:title>Another Title</en:title>
+  </en:book> 
+<!ELEMENT ex:example (#PCDATA|ex:element)*> 
+<ex:example xmlns:ex="http://example.com/ex">
+    <ex:element ex:attr="value">Example Value</ex:element>
+    <ex:element ex:attr="another value">Another Value</ex:element>
+  </ex:example> 
+  ```  
+
+  ```
+**Note that I have separated this into different lines to be able to parse the code properly**  
+ 
+  I may not have written the correct closing tags or maybe some minor adjustments were required, it's recommended to test it and to make sure all XML elements are correctly closed.  
+*This might also cause issues if there is an actual requirement to follow exactly, which I'm hoping isn't the case since such XML structure can be really complex.* 
+
+You might need to use `<?xml version="1.0" encoding="UTF

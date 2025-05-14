@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalogue SYSTEM "d"
+    [
+        <!ELEMENT catalogue (chapter+,appendix?)>
+        <!ATTLIST catalogue
+            idCDATA #REQUIRED
+            titleCDATA #REQUIRED
+        >
+        <!ENTITY dbase SYSTEM "c">
+        <!ENTITY % base "<" >
+        <!NOTATION DBSystem SYSTEM "d">
+   %xmllang 	; <!-- Notation declaration is disabled in current version -->
+    ]>
+<catalogue id="E" title="A" xmlns:xi="&xmllang;"/>

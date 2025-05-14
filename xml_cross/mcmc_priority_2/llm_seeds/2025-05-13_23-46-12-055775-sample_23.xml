@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book*)>
+  <!ATTLIST catalog producer CDATA #REQUIRED>
+  <!ENTITY bookname "<" >
+  <!ENTITY 	%prod "P" >
+  <!NOTATION niso PUBLIC "+" "N" >
+  %include 	;<!-->external entities -->
+]>
+<catalog xmlns="&#xA;" xmlns:xsi="x" xml:lang="x" xsi:noNamespaceSchemaLocation="C" 
+         xml:base="B" id="A" name="&#x21;">
+
+   <book>
+     <id>1</id>
+     <title>Book &product;Title!</title>
+   </book>
+   <book>
+     <id>2</id>
+     <title>
+       <titlePart>&bookname;b</titlePart>
+       A &apos; book &apos; &aacute;
+       <!-- CDATA section -->
+       <![CDATA[&apos; 
+       <note> A note! </note> ]]>
+     </title>
+
+     <year>&prod;99</year>
+   </book>
+   <note> &niso; </note>
+</catalog>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST books
+    id   CDATA    #IMPLIED
+    title CDATA    #IMPLIED
+  >
+  <!ENTITY book "A"
+         >
+  <!ENTITY % gen "B"
+          >
+  <!NOTATION MLC SYSTEM "m"
+          >
+  %gen;
+  <!---->
+]>
+<books>
+  <book id="1" title="N">
+    <MLC/>
+    <author>&book;</author>
+    <year>20</year>
+  </book>
+  <book>
+    <year>19</year>
+    <author>Y</author>
+  </book>
+  <book id="2" title="Z">
+    <author>A</author>
+    <year>20</year>
+  </book>
+  <book>
+    <year>2</year>
+    <author>B</author>
+  </book>
+</books>

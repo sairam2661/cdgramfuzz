@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc SYSTEM "m"
+        [
+        <!ELEMENT doc (author, body+)>
+        <!ATTLIST doc lang CDATA #IMPLIED> 
+        <!ENTITY author-name "R"> 
+        <!ENTITY % author-contact "E"> 
+        <!NOTATION HTML SYSTEM "m">
+        %author-contact;  
+        <!--section-->
+        ]>
+<doc lang="F">
+  <author>
+    &author-name;
+    &ntsp;(contact) - &author-contact;
+  </author>
+  <body>
+    This example is a fragment of an HTML document.
+  </body>
+  <body>
+    <HTML xmlns="m">
+      <head>
+        <title>test</title>
+      </head>
+      <body>
+        Hello World! 
+      </body> 
+    </HTML>
+  </body> 
+</doc>

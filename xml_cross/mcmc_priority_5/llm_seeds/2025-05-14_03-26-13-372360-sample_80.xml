@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+       [<!ELEMENT root (child1,child2,child3)>
+        <!ATTLIST root
+          id    ID    #REQUIRED
+          lang  CDATA  #IMPLIED>
+        <!ENTITY entref SYSTEM "r"
+                 NDATA refdata>
+        <!ENTITY % external-param PUBLIC "V"
+                         "N">
+        <!NOTATION refdata SYSTEM "r"
+        >
+        %external-param;
+        <!--
+         sample comment with XML entity:
+            & -->
+        ]>
+<root id="R" lang="a"
+    xi:include="b" xi:fallback="c"
+    xmlns="h" xmlns:xi="i"
+    xml:lang="d"
+    xml:base="e"
+    xmlns:c="f"
+    xmlns:g="h">
+  <child1 a="1"/>
+  <child2 b="2">
+    &entref;
+  </child2>
+  <child3 c="3" n="4"
+          d="5"/>
+</root>

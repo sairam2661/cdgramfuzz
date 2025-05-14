@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,publication-date)>
+  <!ATTLIST book
+    id     CDATA  #REQUIRED
+    lang   CDATA  #IMPLIED
+  >
+  <!ENTITY book-author "J"
+           >
+  <!ENTITY % book-toc "#">
+
+<!NOTATION XML-internal  PUBLIC "J"
+           "
+">
+  %book-toc;
+  <!--
+
+]>
+<book id="JB1" xmlns:xsi="http://www.w3.org/2001/XMLSchema Instance"
+ xsl="http://example.com/styles.xsl" xml:space="default">
+  <title>A Nice Book</title>
+  <author entities:ref=&book author;/>
+  <publication date="1995-->
+  <!-- internal notation -->
+  <!NOTATION internal PUBLIC "a" "A">
+  <!-- internal parameter entity -->
+  <!ENTITY % book-sample "<">
+  <!ENTITY % sample-param "A">
+  <!ENTITY
+   internal
+   PUBLIC
+   "A"
+   "&book-sample; "
+     >
+  <!ELEMENT sample (#PCDATA)>
+
+  <!ELEMENT book-info (#PCDATA)>
+  <!ELEMENT text (#PCDATA)>
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+    type CDATA #IMPLIED
+  >
+  <!ATTLIST book
+    language CDATA
+  #IMPLIED
+    date CDATA
+  #IMPLIED
+  >
+  <!-- internal general entity -->
+  <!ENTITY pub-date "J">
+  <!-- internal parameter entity -->
+  <!ENTITY % book-param "<">
+  <!ENTITY % pub-param "a">
+  <!ELEMENT external EMPTY>
+  <!ELEMENT title (#PCDATA)>
+  <!-- internal unparsed entity -->
+  <!ENTITY % unparsed "a" 	> 
+  <!-- internal parameter entity -->
+  <!ENTITY % pub2-param "b">
+  <!ELEMENT subtit (#PCDATA)>
+  <!ELEMENT content (#PCDATA)>
+  <!ELEMENT authorInfo (#PCDATA)>
+  <!ELEMENT pub (#PCDATA)>
+  <!ELEMENT sample
+    (#PCDATA |
+    ref |
+    book)>
+  <!ATTLIST sample
+    type CDATA #IMPLIED
+  >
+  <!-- Internal DTD Subset -->
+  <!ATTLIST book
+    ID ID #REQUIRED
+    xml:lang CDATA #IMPLIED

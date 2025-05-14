@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT document (name,number,items)>
+  <!ATTLIST document id CDATA #REQUIRED>
+  <!ENTITY address "1"
+  	>
+  <!ENTITY 	%suffix "T"
+		>
+  <!NOTATION XHTML PUBLIC
+	"-"
+		"W"
+		>
+ 	%XINCLUDE;
+	<!--
+	[ignorable
+	white space]
+	 -->
+]>
+<root xmlns:xi="x" xmlns="y">
+  <document xmlns="z" id="#">
+
+    <!-- Embedded entity -->
+    <name>John&lt;&gt;Entity &address;&suffix;</name>
+
+    <!-- Entities embedded in attribute -->
+    <number>12</number>
+    <!-- Text including whitespace is required  in the XInclude process : "  " -->
+    <items></items>
+
+    <!-- XML markup example -->
+    <list><![CDATA[
+      <item>
+        <item1>item#1
+          <subitem>subitem1</subitem>
+        </item1>
+        <!-- Embedded CDATA section to test the XML output -->
+        <item2 />
+      </item>
+    ]]></list>
+
+    <items><item1/>item2</items>
+  </document>
+</root>

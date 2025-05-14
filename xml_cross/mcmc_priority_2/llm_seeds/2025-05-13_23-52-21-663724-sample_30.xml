@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "c" [
+  <!ELEMENT book (title, chapter*)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION SGML PUBLIC '-//ISO 8879//ENTITIES Added in Common Use//EN'
+   'sgml.dtd'>
+  %chapter2;
+  <!-- %chapter2 is a parameter entity -->
+]>
+<book lang="e">
+  <title>New Book</title>
+  <chapter>Chapter 1: &chapter1;</chapter>
+  <chapter>&chapter2;</chapter>
+  <!-- Note: The CDATA section contains SGML declarations to ensure entity resolution. -->
+  <![CDATA[
+    &SGML;
+    This should be parsed, but it will contain & and not be replaced by any entities.
+  ]]>
+</book>

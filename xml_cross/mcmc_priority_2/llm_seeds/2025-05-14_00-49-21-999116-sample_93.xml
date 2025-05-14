@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY note1 "A">
+  <!ENTITY % note2 "<">
+  <!NOTATION HTML SYSTEM "a">
+  %note2;<!--<!ENTITY % ext "<">>-->
+]>
+<notes>
+  <note id="n">
+    &note1;;
+  </note>
+</notes>

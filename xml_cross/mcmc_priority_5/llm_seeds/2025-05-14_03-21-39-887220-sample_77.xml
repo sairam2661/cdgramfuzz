@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST book id   ID  #REQUIRED>
+  <!ENTITY name "W">
+  <!ENTITY 	% W 	"3">
+  <!NOTATION svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+  %note; 
+  <!--%note; has already been declared in namespace  -->
+]>
+<catalog xmlns:svg="h" xmlns:xsi="w" xsi:noNamespaceSchemaLocation="r">
+  <comment>Sample comment</comment>
+  <book id="B">
+    <title>My Book</title>
+    <author>&name;</author>
+    <price>&W;</price>
+  </book>
+  <book id="A">
+    <title>Another</title>
+    <author>Me</author>
+    <price>5.99</price>
+  </book>
+  <section>
+    <message><![CDATA[Some text with <b>bold</b>]]></message>
+  </section>
+</catalog>

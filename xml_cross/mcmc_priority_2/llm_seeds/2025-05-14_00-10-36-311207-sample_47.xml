@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY cat "F"> 
+  <!ENTITY % cat-list "a">
+  <!NOTATION xsl PUBLIC '-//W3C//DTD XSL Transformation//EN' 'http://www.w3.org/1999/XSL/Transform'>
+ 	       				        
+ 	%cat-list;
+	<!---->
+]>
+<catalog id="1" xml:lang="e">
+  <xsl:stylesheet xmlns:xsl="w">  <!--><title>My Catalog</title>
+  <product>
+    <title xml:lang="e">Product 1</title>
+    <description><![CDATA[Product 1 Description]]></description>
+    &#32;&#x30;<!-->&cat;
+  </product>
+  <product>
+    <title xml:lang="e">Product 2</title>
+    <description>This is Product 2</description>
+  </product>
+  <xi:include href="t"></xi:include>
+</catalog>

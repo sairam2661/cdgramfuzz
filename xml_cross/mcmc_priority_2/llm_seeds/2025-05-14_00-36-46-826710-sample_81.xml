@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY ent "E">
+  <!ENTITY % ent2 "p">
+  <!NOTATION ISO-8859-1 PUBLIC "W" "N">
+  %ent2;
+  <!--
+  --> <!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--><!--> 
+]>
+<books&ent;>
+  <book id="b1"><author><fn>&#x3c;/fn></author></book>
+</books> 
+
+<?xml version="1.0" encoding="UTF-->   <?x-include hrefurl2scheme3scheme2sc3e1v1m 3h4re2f2url1e2sch3eme1v2f1  e3n2co4ding2 1is3utf1 5c2i08xml4i2s1xml4en3c6o1d3i8n9g2i4t1m2e5xml6i1s9utf4e5i4o1l3t9h6e5c8o1n6d2i4n9g2e4i1s1d6k6h9e2c5m6a2l7l2y4c4o1d1i8n9g2e4i1s2s8c3k3v1a1l1u0o1en3c5o1m1p9l9a2s1s5e4s9c4o1n6e4l4a0n1e3c9h4a3o2t4i5o2n1a7

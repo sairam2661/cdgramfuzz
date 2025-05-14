@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m" [
+  <!ELEMENT author (#PCDATA)>
+  <!ATTLIST author idCDATA #IMPLIED>
+  <!ENTITY year "2">
+  <!ENTITY
+  %ent-name "N"
+  >
+  <!NOTATION NOTA
+   SYSTEM "c"
+   >
+  %m;
+  <!-- Internal DTD subset -->
+]>
+<catalog xmlns:xi="x">
+  <author id="1"><xi:fallback xmlns:xi="x" xmlns:xsi="x">This text is an XML declaration</xi:fallback></author>
+  <chapter>
+   <title>Chapter <?year?> 6</title>
+   <author id="2">%ent-name;</author>
+  </chapter>
+</catalog>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (categories)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY catref "c">
+  <!ENTITY % p1 "1" >
+  <!NOTATION xsl PUBLIC "x" "y">
+  %p1;
+  <!--
+  --><!-- comment -->
+]>
+<catalog id="X" xmlns:xs="W" default="y">
+  &catref;
+  <categories>
+    <category id="A"><![CDATA[<cat attr="val">]]></category>
+  </categories>
+  <message>&note;<xs:element name="e"/></message>
+</catalog>

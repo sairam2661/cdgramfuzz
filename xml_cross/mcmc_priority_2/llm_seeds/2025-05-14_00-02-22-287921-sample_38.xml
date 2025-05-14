@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE html [
+  <!ELEMENT address (#PCDATA)>
+  <!ATTLIST address lang CDATA #REQUIRED>
+  <!ENTITY pi "3">
+  <!ENTITY % p1 "A">
+  <!NOTATION ISO-2022-JP PUBLIC "J"
+      "J"
+      >
+  %p1;
+  <!-- pi -->
+  <!-- ISO-->  <!ENTITY % p2 SYSTEM "J">
+      %p2;
+  <!-- pi -->
+]>
+<html xmlns:html="x">
+<head>
+    <!-- Sample Entity with reference
+        &sect;=&sect;&sect;
+    -->
+    <!-- Sample Comment -->
+    <title>&sect;</title>
+    <meta charset="x" http-equiv="x" content="x">
+    <link rel="x" href="x" type="x">
+    <script type="x" language="x">var w=3&eacute;</script>
+    <style>body {background:x&amp;y},h2{color:x}*{display:block}</style>
+</head>
+<body>
+    <h2>Some <raw>text&amp;in a h2 element</h2>
+    <p>With &sect;<span style="x">x y  x y x y x x</span>&sect;</p>
+
+    <!-- Some XML comments
+    --><!--[a, another XML comment]--><h3>a non-breaking space &nbsp;</h3>
+    <div data-x="x" data-y="y">  <!-- 
+        attribute 
+        name x=x value =“

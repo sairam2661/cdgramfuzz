@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE persons SYSTEM "G"
+ [
+   <!ELEMENT persons (person*)>
+   <!ATTLIST person   id    CDATA #REQUIRED>
+   <!ENTITY G "g" >
+   <!ENTITY % ent "1"
+       >
+   <!NOTATION g  PUBLIC "g"   "g">
+   %ent;
+   <!--comment for external references!-->
+ ]>
+<persons>
+  <person id="1"/><person id="2"/>
+</persons>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "d" [
+  <!ELEMENT declaration (#PCDATA)>
+  <!ATTLIST declaration ID ID #REQUIRED>
+  <!ENTITY author "J" >
+  <!ENTITY % f SYSTEM "f">
+  <!NOTATION nmg SYSTEM "n">
+  %f;
+  <!--
+    This is an XML comment
+  -->
+]>
+<article xmlns:xi=" ">
+  <declaration ID="d">Decl. 1
+    <xi:include href="c"/>
+    <xi:include href="k"/>
+    <i>test</i>
+  </declaration>
+  <message>&author;</message>
+  &nmg;
+</article>

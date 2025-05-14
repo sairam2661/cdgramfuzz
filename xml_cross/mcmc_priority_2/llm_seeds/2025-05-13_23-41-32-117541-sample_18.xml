@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST books
+    lang CDATA #REQUIRED
+    edition CDATA #IMPLIED
+  >
+  <!ENTITY year "P" >
+  <!ENTITY  % section " ">
+  <!NOTATION ISO-8859-1 SYSTEM "g">
+  %section;
+  <!--
+    This is a CDATA section in entity'section'.
+  -->
+]>
+<books lang="2" edition="1">  
+  <book><title>XML</title></book>  
+  <book><title>XSD</title></book>  
+</books>

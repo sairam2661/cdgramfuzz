@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (brand+)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY brandname "D" >
+  <!ENTITY % symbol "$" >
+  <!NOTATION XSL PUBLIC '' 'xsl.xsl'> 
+  %XInclude;
+  <!----><!ELEMENT brand (#PCDATA)>
+  <!ELEMENT product (#PCDATA)>
+  <!ELEMENT image (#PCDATA)>
+]>
+<catalog lang="J">
+  <brand>&brandname;</brand>
+  <product>Prod&symbol;1 <image>img1</image></product>
+  <product>Prod&symbol;2</product>
+</catalog>

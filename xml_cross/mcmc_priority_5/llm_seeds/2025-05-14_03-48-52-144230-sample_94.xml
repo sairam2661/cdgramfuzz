@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)>
+  <!ATTLIST book
+     id  ID #REQUIRED
+     lang CDATA #IMPLIED
+  >
+  <!ENTITY author "J"
+    >
+  <!ENTITY  %Xchapter
+"I"
+ >
+  <!NOTATION eps PUBLIC "A"
+"Z"
+>

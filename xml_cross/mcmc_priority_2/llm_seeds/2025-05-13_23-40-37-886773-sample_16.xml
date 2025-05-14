@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (chapter+)>
+  <!ATTLIST book
+    idREQUIRED ID #IMPLIED
+    title CDATA #IMPLIED
+    author (Smith|Jones) #IMPLIED
+  >
+  <!ENTITY xref SYSTEM "x"><!ENTITY % ent SYSTEM "d">
+  <!NOTATION HTML PUBLIC "-"
+  "a">
+  %ent;
+  <!--<!ENTITY % xmlns SYSTEM "g">-->
+]>
+<book id="B" title="A" author="P"> 
+  <chapter id="c"><xi:include href="h" parse="x" xpointer="x"/></chapter>
+  <chapter nr="3">
+    <xi:include href="x" parse="t"/>
+  </chapter>
+</book>

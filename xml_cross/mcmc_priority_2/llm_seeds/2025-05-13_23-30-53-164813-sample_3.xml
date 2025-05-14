@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+ <!ELEMENT root (element1|element2)>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY author "D"><!ENTITY % config "x">
+  <!NOTATION xsl SYSTEM "x">
+  %config;
+  <!--
+
+<!ELEMENT element1 (#PCDATA)>
+<!ELEMENT element2 (elem2child)*>
+<!ELEMENT elem2child (#PCDATA)>
+<!ATTLIST element2 type CDATA #IMPLIED>
+<!ENTITY system "XSL processors">
+]>
+<root id="main" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!-->
+  <!-- attribute -->
+  <!ENTITY ent SYSTEM "X">
+  <!ELEMENT root (a)>
+  <!ELEMENT a (#PCDATA)>
+  <!ATTLIST a attrib CDATA #REQUIRED>
+  <!ATTLIST a attr CDATA #IMPLIED>
+  <!ELEMENT element1 (#PCDATA)>
+  <!ATTLIST element2 type (square|circle) " ">
+  <!-- entity -->
+  <!ENTITY xslt SYSTEM "X">
+  <!ENTITY % ent "y">
+  <!NOTATION external SYSTEM "z">
+  <!ENTITY z SYSTEM "z">
+  <!ENTITY myent SYSTEM "X">
+  <!ELEMENT element2 (elem2child)*>
+  <!ELEMENT elem2child (#PCDATA)>
+  <!ATTLIST elem2child type (square|circle) " ">
+  <!ENTITY author "Y">
+  <!-- data -->
+  <!ENTITY ent2 "2">
+  <!--<!ENTITY &ent;entity SYSTEM "X">
+  <message>&author;</message>
+  <element1 attrib="test">
+    <element2 type="square">data</element2>
+    <elem2child attrib="square">square data</elem2child>
+  </element1>
+  <message>&system;</message>
+  <message>&xslt;</message>
+  <message>4</message>
+  <message>1</message>
+</root> 
+
+  <!--> 
+  ]> 
+  <message>&ent;</message>

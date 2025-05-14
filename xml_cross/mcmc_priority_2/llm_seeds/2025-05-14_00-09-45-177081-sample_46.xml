@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter+)> 
+  <!ATTLIST book language (EN|ES|FR) #IMPLIED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION SGML SYSTEM "U">
+  %chapter2;
+  <!--
+    Sample comment using Unicode character: 
+    (U+00B6, Middle Dot, ·)
+  -->
+]>
+<book language="n" xmlns:gamel="g" xnns:l2="a">
+  <title>Books</title>
+  <author>&note;</author>
+  <!--&SGML; -->
+  <chapter id="c"> Chapter &chapter1;  </chapter>
+  <chapter id="c"> Chapter &chapter2;  </chapter>
+  <!-- comment with CDATA > tag with newline -->
+  <![CDATA[ Sample CDATA: raw < text ]]>
+</book>

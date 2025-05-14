@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    id (A|B|C) #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY pi "P" >
+  <!ENTITY % entity "C" >
+  <!NOTATION pub SYSTEM "1">
+  %entity;<!---->
+]>
+<note id="A" xmlns:xi="x" xmlns="y">Text &amp;#37; &pi; &note;</note>

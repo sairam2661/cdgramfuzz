@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product*)>
+  <!ATTLIST inventory
+    id CDATA #REQUIRED
+    owner CDATA #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % ent "B">
+  <!NOTATION notation SYSTEM "C">
+  %ent; <!-- internal entity -->
+]>
+<inventory id="I" owner="O">
+  <product>
+    <name>T</name>
+    <price>10.99</price>
+  </product>
+  &entity; <!-- entity reference -->
+  <notational-system>notation</notational-system> <!-- notation attribute -->
+</inventory>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc [
+  <!ELEMENT doc (title, section+)> 
+  <!ATTLIST doc lang CDATA #REQUIRED>
+  <!ENTITY percent90 "%">
+  <!ENTITY 			   	
+ 	%note "V"
+	>
+  <!NOTATION xml-notation SYSTEM "D">
+ 	%include   	      
+ 	;<!---->
+ 	<!ENTITY % pub   "
+"
+>	
+]>
+
+<doc lang="g" xmlns="x" xml:space="&default;">
+  <title>Complex document</title>
+  <section>Section 1 </section>
+  <section>&note; 1234</section>
+  <section><![CDATA[&percent90;]]></section>
+  <section>Section 5</section>
+</doc>

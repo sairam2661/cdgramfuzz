@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE article SYSTEM "d" [
+  <!ELEMENT article (#PCDATA|author|date|title)>
+  <!ATTLIST article publisher CDATA #IMPLIED>
+  <!ENTITY title-system "D"
+  ><!ENTITY % book-elements "("
+  ><!NOTATION ISO-8859-1 PUBLIC " "
+  " ">
+  %book-elements;
+  <!-- Comment -->
+<!ENTITY date "1" >
+<!ELEMENT author EMPTY>
+<!ELEMENT date EMPTY>
+<!ATTLIST date month CDATA #REQUIRED>
+<!ATTLIST date year CDATA #IMPLIED>
+]>
+<article xmlns="h" xmlns:dc="i"
+         xmlns:xsi="j"
+         xsi:noNamespaceSchemaLocation=
+                   "k"
+         xmlns:xi="l"
+         id="m"
+         language="r"
+         xml:lang="r"
+  publicationDate="#"
+  pub-id="n"
+  dc:title="o"
+  dc:creator="p">
+  <title>&title-system;</title>
+  <dc:contributor>&note;</dc:contributor>
+  <author/>
+  <date month="2" year="3" />
+  <dc:subject>R</dc:subject>
+</article>

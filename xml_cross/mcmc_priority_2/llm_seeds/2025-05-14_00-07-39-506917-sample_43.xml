@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter+)>
+  <!ATTLIST book
+    lang CDATA #IMPLIED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY chapter1 "A" >
+  <!ENTITY % chapter2 "B" >
+  <!NOTATION html PUBLIC "-"
+    "W" >
+  %chapter2; 
+  <!--
+    Description of this book
+  -->
+]>
+<book xmlns = "h" version="2" lang="x" >
+  <author>Author&amp;x</author>
+  <title>Example</title>
+  <chapter entity-ref='chapter1'/>
+  <xi:include xmlns:xi='http://www.w3.org/2001/XInclude' href='#chp1'/>
+  <chapter entity-ref='%chapter2;'/>
+
+  <chapter id='chp1'><note>&note;</note></chapter>
+</book>

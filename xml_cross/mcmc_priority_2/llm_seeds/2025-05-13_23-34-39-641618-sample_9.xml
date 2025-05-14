@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY pi SYSTEM "v" NDATA vcalc>
+  <!ENTITY % vcalc "1">
+  <!NOTATION vcalc SYSTEM "v">
+  %i;
+  <!---->
+]>
+<notes xmlns:xi="x" xmlns="x">
+  <note id="a">Apple</note>
+  <note id="b">Banana</note>
+  <note id="c">Cherry</note>
+  <calculation><pi>&pi;</pi></calculation>
+</notes>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*, category+)>
+  <!ATTLIST catalog 
+    id        CDATA #REQUIRED
+    date      CDATA #REQUIRED>
+  <!ENTITY book "T" >
+  <!ENTITY % catalogRef "1">
+  <!NOTATION html SYSTEM "a">
+  %catalogRef;
+  <!--[internal Subset] -->
+]>
+<catalog id='123' date='2022-10-10'>
+  <product>product 1</product>
+  <category>Electronics</category>
+  <product>product 2</product>
+  <product>product 3</product>
+  <message>&book;</message>
+</catalog>

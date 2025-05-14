@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE catalog SYSTEM "c"
+[
+    <!ELEMENT catalog (item*)>
+    <!ATTLIST catalog 
+      id   CDATA  #IMPLIED
+      lang (en|fr) 'en'
+    >
+    <!ENTITY item1 'Item 1 Information'>
+    <!ENTITY % item2 'Item 2 Information'>
+    <!NOTATION ISBN SYSTEM 'http://dataguide.com/isbn.sgml'>
+    %item2;
+    <!--
+        Catalog sample information
+    -->
+]>
+<catalog xmlns="h" xmlns:xsi="w"> <!--  -->
+    <item id='item01'> 
+        &item1; 
+        <title>Some Title</title> 
+        <description>Sample item description</description> 
+        <price>19.99</price> 
+        <isbn:ISBN>978-1-56592-424-3</isbn:ISBN> 
+    </item>
+    <item>Sample Item 2</item>
+    <item>Sample Item 3</item>
+</catalog>

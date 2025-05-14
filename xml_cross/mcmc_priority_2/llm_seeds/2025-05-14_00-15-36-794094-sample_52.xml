@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (product*)>
+<!ATTLIST catalog lang CDATA #IMPLIED>
+<!ENTITY cdata "<">
+<!ENTITY % some "%">
+<!NOTATION notation SYSTEM "N">
+  %some;
+<!--& cdata;>
+<!-->]>
+<catalog lang="e">
+  <product ref="1">
+    <name>Test Product</name>
+    <description>&cdata;CDATA section;&cdata;</description>
+    <price unit="e">9.99</price>
+    <notified systemID="N">
+      <notationnotation SYSTEM="N"></notationnotation>
+    </notified>
+  </product>
+</catalog>

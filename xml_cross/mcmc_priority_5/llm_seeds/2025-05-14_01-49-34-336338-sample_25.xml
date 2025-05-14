@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books [
+  <!ELEMENT books (author*,book+) >
+  <!ATTLIST author id ID #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION PDF PUBLIC "A"
+  "A">
+  %chapter2;  <!-- unescape % chapter2 -->
+]>
+<books>
+  <author id="A">
+    <name>Author 1</name>
+  </author>
+  <book>
+    <title></title>
+    <text>&chapter1;</text>
+  </book>
+</books>

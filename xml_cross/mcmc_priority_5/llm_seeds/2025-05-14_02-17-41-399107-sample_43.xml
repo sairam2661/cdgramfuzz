@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (book+)>
+  <!ATTLIST bookstore
+    lang CDATA #IMPLIED
+    version CDATA #IMPLIED>
+  <!ENTITY booktitle "S">
+  <!ENTITY % sects "b">
+  <!NOTATION iso-8859-1 PUBLIC "w" "i">
+  %secs;
+  <!---->
+]>
+<bookstore lang='en' version='1.0'>
+  <xi:include href='included.xml' xmlns:xi='http://www.w3.org/2001/XInclude'/>
+  <book id='bk101'><title xml:lang='en'><name>XML</name></title>
+    <author><name>John Smith</name>
+      <affiliation>My Affiliation</affiliation></author>
+    <bookmeta>
+      <subject>XML</subject>
+    </bookmeta>
+  </book>
+</bookstore>

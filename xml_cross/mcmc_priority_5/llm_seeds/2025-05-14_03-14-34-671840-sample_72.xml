@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title, section*, paragraph+)>
+  <!ATTLIST article id ID #IMPLIED>
+  <!ENTITY copyright " ">
+  <!ENTITY  % xincludes "<"  ><!NOTATION xmlparser SYSTEM 'xml-parser.dtd' > %xincludes ;  <!-- internal subset for notation and notation decl -->
+  <!NOTATION xmlparser SYSTEM 'xml-parser.dtd' >
+]>
+<article xmlns:xi="x" xmlns:xsi="y" xml:lang='en'>
+  <title>Sample Article</title>
+  <section>  <!-- & is a special character -->
+    <paragraph>This is a sample paragraph 1<sup>123</sup>.</paragraph>
+    <paragraph>
+      <i>This</i> is a <span emphasis='YES'>sample paragraph 2</span>.</paragraph>
+  </section>
+  <section>
+    <paragraph>Copyright &copyright; 2019</paragraph>
+  </section>
+  <xi:include href="x" />
+</article>

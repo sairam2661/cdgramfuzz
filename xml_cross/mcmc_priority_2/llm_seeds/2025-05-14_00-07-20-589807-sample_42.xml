@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "c"[
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note author CDATA #REQUIRED>
+  <!ENTITY today "(">
+  <!ENTITY  % books SYSTEM "c">
+  <!NOTATION book SYSTEM "c">
+  %books;
+  <!---->
+  <!ELEMENT  figure (image, caption, footnote)*>
+]>
+<book xmlns:xi="x" xmlns="y">
+  <xi:include href="x" xpointer="u"/>
+  <title>&today;</title>
+  <note author='p'>Some text!</note>
+  <figure>
+    <image src='I'/>
+    <caption>Figure caption</caption>
+    <footnote>&today;</footnote>
+  </figure>
+</book>

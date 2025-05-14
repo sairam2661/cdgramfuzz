@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE address [
+  <!ELEMENT address (name, street, city, state, zip)>
+  <!ATTLIST address
+    id  CDATA  #REQUIRED
+    type  (home|work)  #REQUIRED
+  >
+  <!ENTITY salutation "U">
+  <!ENTITY % note "S">
+  <!NOTATION html PUBLIC '-//W3C//DTD HTML 4.0//EN' 'http://www.w3.org/TR/REC-html40/strict.dtd'>
+  %note;
+  <!--+[
+  ]+-->
+]>
+<address xmlns="x" xmlns:h="y" id="1" type="h">
+  <h:name>Some Person</h:name>
+  <street><![CDATA[<street>123</street>]]></street>
+  <city>Cityville&salutation;ville</city>
+  <state>State</state>
+  <zip>zip</zip>
+</address>

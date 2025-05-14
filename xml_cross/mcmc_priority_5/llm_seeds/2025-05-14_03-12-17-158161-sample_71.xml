@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (header*, product+)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+  >
+  <!ENTITY desc SYSTEM "a">
+  <!ENTITY % entref "#"><!NOTATION entity PUBLIC "%"
+    "c" 
+  >
+  %entref;
+  <!---->
+]>
+
+<catalog xmlns='p' id='e'
+  xmlns:xlink='http://www.w3.org/1999/xlink' xlink:type='simple' 
+  schemaLocation='schema.xsd'>
+  <header/>
+  <product id='b'>
+    <price>$100</price>
+    <description entity-ref='desc'/><product id='k'/>
+    <product id='f'/>
+  </product>
+</catalog>

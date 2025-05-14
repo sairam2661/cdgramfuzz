@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY copy "1">
+  <!ENTITY % pubinfo "<" > <!NOTATION sgml SYSTEM "S">
+  %pubinfo;
+  <!-- Internal Subset: Only for doctype declarations -->
+]>
+<book id="B" xmlns="&ns;">
+  <title xmlns:xsi="&ns2;">The History</title>
+  <!-- &copy; is allowed inside comment -->
+  <!-- &copy; -->
+  <author>
+    <first-name>&copy;</first-name>
+    <last-name>Father</last-name>
+  </author>
+  <chapter>
+    <title>Hello there!</title>
+    <text>Some <emphasis>sample</emphasis> <term>stuff</term>  here</text>
+  </chapter>
+</book>

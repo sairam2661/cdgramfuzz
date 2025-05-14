@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % entity-ref "A">
+  <!NOTATION NotationName PUBLIC "A" "A">
+  %entity-ref;
+  <!--
+    Multi line comment
+   -->
+]>
+<notes xmlns="b">
+  <note id="N" type="N">Note &entity;</note>
+  <note id="B" type="B">Note &entity;</note>
+  <note id="D" type="D">
+    <address>
+      <street>101 Maple St</street>
+      <street>102 Spruce St</street>
+    </address>
+    Notation: <notation>NotationName</notation>
+  </note>
+</notes>

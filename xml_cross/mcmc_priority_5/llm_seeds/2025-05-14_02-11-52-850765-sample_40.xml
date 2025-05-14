@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY address "1" >
+  <!ENTITY % comment "A"> 
+  <!NOTATION SGML-PUBLIC SYSTEM " "
+           >
+  %comment;<!--Sample comment in element declaration--> 
+]>
+<notes xmlns:link="&ns1;">
+  <note id="N">
+    <link:annotation>Test note</link:annotation>
+    <note>&note;&address;</note>
+  </note>
+</notes>

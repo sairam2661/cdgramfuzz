@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    title CDATA #REQUIRED
+    author CDATA #REQUIRED
+    lang (en|fr|de) 'en'>
+  <!ENTITY author "J"
+  ><!ENTITY% year ">"
+  ><!NOTATION ISO-8859-1 SYSTEM "f"
+  >
+  %year;<!--*!>
+  %author;]>
+<book xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang='en'
+xml:िड

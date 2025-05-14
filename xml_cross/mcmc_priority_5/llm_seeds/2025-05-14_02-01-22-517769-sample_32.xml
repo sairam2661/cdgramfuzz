@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!DOCTYPE data SYSTEM "t" [
+  <!ELEMENT data (child+)>
+  <!ATTLIST data
+   xmlns CDATA #FIXED 'http://example.com/
+  attribute'
+    version CDATA #REQUIRED
+   lang CDATA #IMPLIED
+   xmlns:lattitude CDATA #IMPLIED
+         >
+  <!ENTITY year "1">
+  <!ENTITY % percent "1">
+  <!NOTATION ISO-8859-9 PUBLIC '-//ISO//TEXT-ENCODING/8859/9//NOTATION 9' 'ISO Character Set for Eastern European Languages'>
+  %percent;
+  <!--&year;-->
+]>
+<data xmlns="&xmlns;" xmlns:l="&xmlns;" version="5" lang="f" l:height="1">
+  <child num="2" lang="e">Child</child>
+  <child num="2" lang="d">Child</child>
+  <child>&ISO-8859-9;</child>
+  <child>
+    Sample
+  </child>
+</data>

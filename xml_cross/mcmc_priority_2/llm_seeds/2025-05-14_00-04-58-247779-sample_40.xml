@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, subtitle?, author+)>
+  <!ATTLIST book
+    id CDATA #REQUIRED
+    lang (en|fr|de) "e"
+    xml:lang (en|fr|de) #FIXED "e"
+  >
+  <!ENTITY title "A">
+  <!ENTITY % author "<">
+  <!NOTATION xsl PUBLIC "X" "X">
+  %author; 
+  <!--% xsl;>
+]>
+<book id="book1"
+  lang="de"
+  xml:lang="en"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>&title;</title>
+<subtitle>Nutzungskonzepte</subtitle>
+<author>Tim Bergmann</author>
+<author>Tom Rippke</author>
+</book> 
+<!xsl:url> 
+<!xsl:href> http://www.w3.org/TR/xslt 
+</xsl:href></xsl:url></book> 
+[1m] 
+<!ENTITY % book1 "<author>Tam&half;</author>">
+<!ENTITY % book "> &book1; &book1;"
+[0m] 
+<!ATTLIST a xmlns:b="http://www.pw.com/schema" b:attrib CDATA #IMPLIED> 
+<author> &book; 
+</author>  
+<!ELEMENT a (b+)>    
+!</doctypetitle> 
+<!DOCTYPE any [
+  <!ENTITY % any "XML">
+]> 
+<!ENTITY % dtd "any"> [2m] 
+<!ATTLIST any xmlns:c "https://www.test.com/" c:attrib CDATA #IMPLIED a b c> 
+<!ELEMENT dtd any> 
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT b ANY> 
+<!EMPTY> 
+XML
+<xml:namespace prefix="xsl" uri="http://www.w3.org/1999/XSL/Transform" /> 
+<!ELEMENT comment EMPTY> 
+<!ELEMENT a EMPTY> 
+<!ATTLIST a %dtd; CDATA #IMPLIED %any;"> 
+</a> 
+<!ENTITY % any "XML"> &any; [1m] 
+<d> 
+<comment/> [1m] 
+<! ENTITY %book "T1" >
+</d></book> [1m] [0m]<b>a</b> [

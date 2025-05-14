@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE product [
+  <!ELEMENT product (name, description, price)>
+  <!ATTLIST product id ID #REQUIRED>
+  <!ENTITY desc "A"
+  ><!ENTITY % priceAtt "d"
+  ><!NOTATION ISO-8859-1 SYSTEM " ">
+  %priceAtt;   <!-- use the internal subset to apply the attribute %priceAtt -->
+]>
+<product xmlns:xlink="w"
+  xml:lang="x"
+  xml:space="y"
+  xml:base="z"
+  href="t"
+  type="u">
+  <name>v</name>
+  <description>w!</description>
+  <price>&desc;</price>
+</product>

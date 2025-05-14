@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE doc-system [
+  <!ELEMENT doc-system (section, section, footer)>
+  <!ATTLIST doc-system
+    version CDATA #REQUIRED
+    author CDATA #REQUIRED
+  >
+  <!ENTITY entity1 "I" >
+  <!ENTITY % macro "I" >
+  <!NOTATION w3c SYSTEM "w" >
+  %xmllint  							
+  												 				
+  				
+  												             
+  				
+		             
+  									
+  													                 					 	
+  																	 							 				 							  
+  												 								 	
+  																		  	
+  							
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+											
+															
+											
+											
+											
+											
+																						
+											
+											
+											
+																																																
+																																										
+																											
+																													
+																													
+											
+																																	
+											
+											
+											
+											
+											
+																								    		
+																											
+											
+																																																
+																															
+																																				
+  																			 																					  																				 														 									
+  																																														
+																																
+																		 																				  			;  				<!---->
+  <!ENTITY entity2 "I" >
+  <!ENTITY copy "I" >
+  ]>
+<doc-system xmlns:xlink="w"
+			ID="b"
+			version="2"
+			author="J"
+			xsi:schemaLocation="d"
+			xsi:noNamespaceSchemaLocation="w">
+   <section xmlns:xhtml="u">Some section, please</section>
+   <section>&entity1;</section>
+   <footer>&entity2; copy: &copy;</footer>
+</doc-system>

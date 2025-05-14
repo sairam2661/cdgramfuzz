@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (header, body)>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY foo "A"><!ENTITY % bar "<">
+
+<!NOTATION print SYSTEM "l"
+                               >
+                              
+
+  %bar; 
+  <!---->
+]>
+<root id="R" xmlns:my="&mybase;" 
+xmlns:xs="&xs;" 
+xmlns:xsi="&xsi;" 
+schemaLocation="&mylocation;">
+
+  <header><date>2024-07-26</date><author>Alex</author></header>
+  <body>
+    <!-- Sample CDATA section -->
+    <![CDATA[
+       <section>
+         Some <raw >text</raw> which contains an entity: &foo;
+       </section>
+    ]]>
+  </body>
+</root>

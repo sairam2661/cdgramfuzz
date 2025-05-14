@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE person [
+  <!ELEMENT person (name, address, phone)*>
+  <!ATTLIST person id ID #REQUIRED>
+  <!ENTITY email "e" >
+  <!ENTITY % number "#">
+  <!NOTATION bookmgmt SYSTEM "m">
+  %number;
+  <!--
+    Multiple line comment
+  -->
+]>
+<root xmlns:fb="f" xmlns:fb2="f">
+  <!-- Comment -->
+  <person id="A"><name>Peter Petrov</name>
+    <address>
+      <![CDATA[<city>Paris</city><state>France</state>]]>  
+      <street>London Street</street>
+    </address>
+    <phone><fb2:number>3</fb2:number>2345</phone>
+  </person>
+  <person id="B"><name>Peter Petroff</name>
+    <address>
+      <![CDATA[<city>New York</city><state>USA</state>]]>  
+      <street>Rome Street</street>
+    </address>
+    <phone>&email;2&number;3456</phone>
+  </person>
+  <![CDATA[<root xmlns:fb="f">Book: &bookmgmt;]]> 
+</root>

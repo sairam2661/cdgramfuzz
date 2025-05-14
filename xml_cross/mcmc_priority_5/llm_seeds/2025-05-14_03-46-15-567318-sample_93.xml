@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST inventory id CDATA #REQUIRED>
+  <!ENTITY product1 "T" >
+  <!ENTITY  % list "("> <!NOTATION ISO-8859-1 SYSTEM " ">
+     %list;
+<!---->
+<!ELEMENT product (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+
+]>
+<inventory xmlns:xsi="w"><id>123</id>
+  <category>Phones</category>
+  <product>&product1;</product>
+  <product>Apple</product>
+  <product>HTC</product>
+  <product>Nokia</product>
+</inventory>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY chapter "3">
+  <!ENTITY % chapter-elements "("><!NOTATION SGML SYSTEM "C">
+  %chapter-elements;
+  <!-- <!KEY 'author'> -->
+]>
+<catalog id="a" xmlns:me="m"
+         me:uri="b">
+<xml:comment >This is XML comment</xml:comment>
+<!---->
+<book id="b">
+  <title>Book title</title>
+  <chapter refid="c">
+    <section>Section 1</section>
+    <section>Section 2</section>
+  </chapter>
+</book>
+</catalog>

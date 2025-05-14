@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE document [
+  <!ELEMENT document ANY>
+  <!ATTLIST document id CDATA #REQUIRED>
+  <!ENTITY pi-system SYSTEM "p" NDATA p>
+  <!ENTITY % p SYSTEM "d" >
+  <!NOTATION p SYSTEM "p">
+  %pi-system;
+ <!---->
+]>
+<document id="e" xmlns:xlink="&xlink;" xmlns="&ns;">
+  <section>
+    <message id="d" xlink:href="#"></message>
+    <info>
+      <code>&xinclude;</code>
+      &p;
+      <name> Sample Name </name>
+      <description> Sample Description </description>
+    </info>
+  </section>
+</document>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE note SYSTEM "v" [
+  <!ELEMENT note (#PCDATA)><!ATTLIST note xml:lang CDATA #IMPLIED>
+  <!ENTITY e "a">
+  <!ENTITY  % d "d">
+  <!NOTATION t SYSTEM "t">
+  %d;
+  <!-- Comment -->
+]>
+<note xml:lang='en' xmlns="v">Test entity: &e;</note>

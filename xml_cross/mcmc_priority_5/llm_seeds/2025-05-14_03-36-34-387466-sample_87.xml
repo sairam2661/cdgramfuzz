@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    author CDATA #REQUIRED
+    date CDATA #IMPLIED
+  >
+  <!ENTITY entity "X">
+  <!ENTITY % ent "Y">
+  <!NOTATION notation SYSTEM "F">
+  %ent;
+  <!-- internal subset -->
+]>
+<note author="J">
+  This &entity; was written on &date; which was a &notation;. 
+  <subnote>&note;</subnote>
+</note>

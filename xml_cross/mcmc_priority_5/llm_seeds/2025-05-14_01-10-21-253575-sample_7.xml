@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "S" [
+  <!ELEMENT document (title, section*, message+)>
+  <!ATTLIST document
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+  >
+  <!ENTITY author "J">
+  <!ENTITY % ent "1">
+  <!NOTATION book SYSTEM "B">
+  %ent;
+  <!-- Book notation --><!NOTATION B SYSTEM "C">
+]>
+<document id="D" lang="E">
+  <title> Title &author; </title>
+  <section> One, Two, Three... 4 <n/> <n/></section>
+  <message>&author;</message>
+</document>

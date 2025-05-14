@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (person+)>
+  <!ATTLIST root
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY phone "+"
+  >
+  <!ENTITY % xinclude "x">
+  <!NOTATION ISO-8859-1 SYSTEM "W">
+  %xinclude;
+  <!--%x;>
+]>
+<root id="R--> 
+  <!-- Root element annotation -->
+  <!ATTLIST person
+    id ID #REQUIRED
+    name CDATA #IMPLIED
+  > 
+  <!-- Define custom element --> 
+  <!ELEMENT custom (raw, text) >
+  <!ELEMENT raw (#PCDATA)>
+  <!ELEMENT text (#PCDATA)>
+  <!ELEMENT address (street, city, country)> 
+  <!-- Define entities -->
+  <!ENTITY cityAddress "&phone;  ">
+  <!ENTITY stateAddress "&#x13;" > 
+  <!-- Include XML document -->
+  <!ELEMENT import (#PCDATA)>
+  <!ELEMENT content (#PCDATA)>
+  <!ELEMENT note (#PCDATA)>
+  <!ELEMENT section (#PCDATA)>
+  <!ENTITY section "S">
+  
+ <!--  Define key -->
+  <!ATTLIST section
+    key ID #REQUIRED  
+ >   
+  <!--  Define custom attribute --> 
+  <!ATTLIST address
+     mail CDATA #IMPLIED 
+  >   
+  <!-- Entities for characters outside ASCII -->
+  <!ENTITY copyright "&copy;">     
+  <!ENTITY registed "&reg;">     
+  <!ENTITY trademark "&trade;"> 
+    <!ATTLIST address
+    zip CDATA #REQUIRED           
+   >
+   <!ATTLIST person
+    phone CDATA #IMPLIED
+  >   
+  <!-- Sample comment -->
+  <!ATTLIST section
+    priority CDATA #IMPLIED  
+  >   
+  <!ENTITY phone "+"> 
+  <!ENTITY copyright "&copy;">     
+  <!ENTITY registed "&reg;">     
+  <!ENTITY trademark "&trade;"> 
+  <!ENTITY copyright "&#169;">
+  <!ELEMENT contact(#PCDATA)>
+  <!ATTLIST contact
+    mail CDATA #IMPLIED 
+  >
+  <!ELEMENT company (#PCDATA)>
+  <!ATTLIST company
+    name CDATA #IMPLIED 
+  >
+  <!ELEMENT city (#PCDATA)>
+  <!ATTLIST city
+    zip CDATA #IMPLIED 
+  >
+  <!-- Root annotation -->
+  <!ATTLIST root 
+    xmlns:xi  CDATA #IMPLIED 
+  >
+  <!ELEMENT state (#PCDATA)>
+  <!ATTLIST state 
+    zip CDATA #IMPLIED 
+  >  
+  <!ELEMENT country (#PCDATA)>
+  <!ELEMENT section (#PCDATA)>
+  <!ELEMENT note (#PCDATA)>
+  <!ELEMENT person (address+)> 
+  <!-- Include XML document

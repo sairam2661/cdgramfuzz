@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT tutorial (#PCDATA|paragraph|code-block)>
+  <!ATTLIST tutorial id ID #REQUIRED>
+  <!ENTITY entity "a">
+  <!ENTITY % comment "%">
+  <!NOTATION PDF PUBLIC "-""-">
+  %comment;
+  <!-- A CDATA section -->
+]>
+<catalog xmlns="x" xmlns:xs="x"
+  xs:schemaLocation="x" xs:noNamespaceSchemaLocation="x" 
+  xi:nil = "1" 
+  xmlns:xi="x">
+  <tutorial id="A">
+    <paragraph>This is a paragraph.<code-block language="C">printf(&entity;)</code-block></paragraph>
+    <code-block>This is &entity;</code-block>
+  </tutorial>
+</catalog>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+
+  <!ELEMENT root (header,sections)>
+
+  <!ATTLIST root
+    id          ID  #REQUIRED
+    namespace   CDATA #IMPLIED
+  >
+
+  <!ENTITY percent '%'>
+  <!ENTITY % section "("><!NOTATION section-data SYSTEM "#" >%section;<!--><!NOTATION section SYSTEM "text/xml"><!--><!NOTATION section SYSTEM "#"><!NOTATION section-data SYSTEM "D" ><!NOTATION section SYSTEM 'U'><!-- %section;%section;--><!NOTATION section SYSTEM '#'><!--<!ENTITY %section;!--><!-- %section;%section;%section; -->
+  <!--<!NOTATION section SYSTEM 'HREF' %section">-->
+  <!ENTITY section-data SYSTEM "#" NDATA section>
+<!ATTLIST section
+  id ID #REQUIRED
+  type NMTOKEN #REQUIRED
+>
+
+<!ELEMENT sections (section+)>
+<!ATTLIST section
+  title  CDATA #REQUIRED
+>
+
+<!ELEMENT header (name, description)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ATTLIST header
+  language CDATA #IMPLIED
+>
+
+<!NOTATION section SYSTEM "D">]>
+<root id="r" xmlns="x" xmlns:xsi="y" xmlns:a="z">
+<name>Solution 2</name>
+<description>This is solution 2</description>
+<sections>
+<section id='s1' type='t1'>Section 1</section>
+<section id='s2' type='t2'>Section 2</section>
+</sections>
+</root>

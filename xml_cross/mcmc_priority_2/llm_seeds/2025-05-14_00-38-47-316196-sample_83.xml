@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE book SYSTEM "n" [
+<!ELEMENT book (title,author,body)>
+<!ATTLIST book id ID #REQUIRED>
+<!ENTITY n SYSTEM "n">
+<!ENTITY % x "a">
+<!NOTATION xmlNOTATION SYSTEM "#">
+%x;
+<!----><!-- Sample comment -->
+]>
+<book id="1" xmlns:xlink="&ns;" xmlns:xi="&ns;" xmlns="&ns;">
+  <title>This</title>
+  <author>x&y;</author>
+  <body xlink:href='#x'><xsl:text> Some &a; text</xsl:text></body>
+</book>

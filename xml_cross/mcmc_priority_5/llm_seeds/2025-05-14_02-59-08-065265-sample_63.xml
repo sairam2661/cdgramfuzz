@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book 
+    binding CDATA #REQUIRED
+    edition CDATA #REQUIRED
+  >
+  <!ENTITY chapter-start "<">
+  <!ENTITY % chapter-end ">">
+  <!NOTATION html PUBLIC '-//-'
+    'Application set for SGML parsed entity content'
+  >
+  %chapter-start;
+  <!---->
+  <!--
+  This is a sample comment
+  -->
+]>
+<book binding="h" edition="2">
+  <title>Sample Title&amp;!</title>
+  <author>
+    <!-- Embedded comment -->
+    First Last
+  </author>
+  <chapter>&chapter-start;Chapter 1&chapter-end;</chapter>
+  <chapter>&chapter-start;Chapter 2&chapter-end;</chapter>
+</book>

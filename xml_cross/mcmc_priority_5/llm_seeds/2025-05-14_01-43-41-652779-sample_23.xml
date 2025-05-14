@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "b" [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY n "M"
+           >
+  <!ENTITY % d "D">
+  <!NOTATION ISO-10383 SYSTEM "x">
+  %d;
+  <!---->
+]>
+<note>
+  <to entity-ref="a"/> 
+  <from ref-id="b"/>
+   <heading>&n;.!</heading> 
+  <body>XML Entities: &n; &n; &entity; &x; &ISO-10383; &lt; and &gt; &apos; &quot;'' &apos; "'</body>
+</note>

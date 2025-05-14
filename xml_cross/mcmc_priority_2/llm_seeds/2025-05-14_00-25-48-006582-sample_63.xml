@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book+)>
+  <!ATTLIST books
+    idCDATA #REQUIRED>
+  <!ENTITY copyright " ">
+  <!ENTITY  
+  																															%copyrightsystem " ">
+  <!NOTATION ISBN SYSTEM " ">
+  %copyright;
+  <!--
+    Internal subset comment
+   -->
+]>
+<books id="B">
+  <book>
+    <title>&system;</title>
+    <author>John</author>
+    <price>10.99</price>
+  </book>
+  <book>
+    <title>A title</title>
+    <author>Jane</author>
+    <price>12.99</price>
+  </book>
+</books>

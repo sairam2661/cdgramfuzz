@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "m"
+  [<!ELEMENT catalog (#PCDATA)>
+   <!ATTLIST catalog author CDATA #IMPLIED>
+   <!ENTITY year "2">
+   <!ENTITY  % m SYSTEM "m">
+  <!NOTATION GIF PUBLIC "G" "G">
+  %m;  <!-- Merge in m -->
+  ]>
+<catalog author="J">
+  <!-- This is a text node -->
+  &year;<xi:include href='sub.xml'/>
+</catalog>

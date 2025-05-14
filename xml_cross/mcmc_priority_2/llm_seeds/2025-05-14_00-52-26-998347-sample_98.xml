@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY item "&#x2764;">
+  <!ENTITY  % gen "(">
+  <!NOTATION iso-norm PUBLIC "+" "w"  >
+  %gen;
+  <!-- element declaration for product -->
+  <!ELEMENT product (name, description?, price) >
+  <!ELEMENT name (#PCDATA) >
+  <!ELEMENT description (#PCDATA) >
+  <!ELEMENT price (#PCDATA) >
+]>
+<catalog id="1" xmlns="x" xmlns:m="y">
+  &iso-norm;
+  <product>
+    <m:name>Apple</m:name>
+    <description>This is an apple.</description>
+    <price>5.99</price>
+  </product>
+  <product>
+    <m:name>Banana</m:name>
+    <description>This is a banana.</description>
+    <price>0.49</price>
+  </product>
+</catalog>

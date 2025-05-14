@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root-element [
+  <!ELEMENT root-element (title, section*)>
+  <!ATTLIST root-element
+    id CDATA #REQUIRED>
+  <!ENTITY my-entity "A">
+
+  <!ENTITY % MyEnt SYSTEM "m">
+  <!NOTATION MYNOTATION SYSTEM "p">
+  %MyEnt;
+  <!--%NOTATION MyNoatation SYSTEM "p" -->
+
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT section EMPTY>
+  <!ATTLIST section
+    name CDATA #REQUIRED>
+]>
+<root-element id="1">
+  <title>My Title</title>
+  <section name="1"/>
+  <section name="2"/>
+</root-element>

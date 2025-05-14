@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category+)>
+  <!ATTLIST catalog
+    lang CDATA #REQUIRED
+    id ID #IMPLIED>
+  <!ENTITY cat "F"><!ENTITY % catlist "("><!NOTATION GIF PUBLIC "G" "e"> 
+ 
+  %catlist;
+  <!--><!ATTLIST %catlist; id CDATA #REQUIRED>
+]>
+<catalog lang="en" id="prodList" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <category>
+   <name>Category</name>
+   <item>Item1</item>
+   <item>Item2</item>
+  </category>
+  <category>
+   <name>Category1</name>
+   <item>Item11</item>
+  </category>
+</catalog> 
+
+--><!ENTITY % catlist ";"><!ATTLIST section
+    title CDATA #IMPLIED> 
+<!ELEMENT section (paragraph)+>
+<!ELEMENT paragraph (#PCDATA|stringref|sectionref)> 
+
+<!ELEMENT stringref (#PCDATA)>
+<!ELEMENT sectionref (#PCDATA)> 
+
+<!ATTLIST sectionref
+    id ID #IMPLIED
+    type CDATA #IMPLIED>
+<!ATTLIST stringref
+    id ID #IMPLIED
+ 
+ 
+><!ELEMENT title (#PCDATA)><!ELEMENT subheading (#PCDATA)>
+<!ELEMENT chapter (#PCDATA|chapter|section)>
+<!ELEMENT section (#PCDATA|section)>
+<!ELEMENT h (#PCDATA)> 
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT body (#PCDATA|body)>
+<!ATTLIST chapter
+    id CDATA #IMPLIED
+    href CDATA #IMPLIED>
+<!ELEMENT sectionref (#PCDATA)> 
+<!ELEMENT document (#PCDATA|document)> 
+<!ELEMENT stringref (#PCDATA)><!ELEMENT sectionref (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT para (#PCDATA)> 
+<!ELEMENT h (#PCDATA)>
+ 
+<!ELEMENT p (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT chapter (#PCDATA|chapter|section)>
+<!ELEMENT chapter (#PCDATA|chapter|section)>
+ 
+<!ELEMENT subheading (#PCDATA)>
+<!ELEMENT document (#PCDATA|document)>
+<!ELEMENT body (#PCDATA|body)>
+<!ELEMENT para (#PCDATA)>
+ 
+<!ELEMENT para (#PCDATA)> 
+<!ELEMENT para (#PCDATA)><!ELEMENT para (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+ 
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT para (#PCDATA)><!ELEMENT section (#PCDATA)><!ELEMENT chapter (#PCDATA)><!ELEMENT p EMPTY> 
+<!ELEMENT p EMPTY>
+<!ELEMENT chapter (#PCDATA)><!ELEMENT title (#PCDATA)>
+<!ELEMENT subheading (#PCDATA)>
+<!ELEMENT a (#PCDATA)>
+ 
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)> 
+<!ELEMENT p EMPTY>
+ 
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)><!ELEMENT body (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+<!ELEMENT chapter (#PCDATA)><!ELEMENT p EMPTY>
+<!ELEMENT section (#PCDATA)>
+ 
+<!ELEMENT body (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT subheading (#PCDATA)>
+ 
+<!ELEMENT para (#PCDATA)> 
+<!ELEMENT a (#PCDATA)> 
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+ 
+<!ELEMENT chapter (#PCDATA)> 
+<!ELEMENT section (#PCDATA)>
+ 
+<!ELEMENT

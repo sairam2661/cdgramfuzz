@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (element1+|element2*)>
+  <!ATTLIST element1 id ID #REQUIRED>
+  <!ENTITY entity1 "A">
+  <!ENTITY % entity2 "B">
+  <!NOTATION pdf PUBLIC "-" " ">
+  %entity2;
+  <!--
+    XML comment with escaped ampersand (&) and less than (<)
+  -->
+  <!-- XML comment with escaped ampersand (&) and less than (<) -->
+]>
+<root>
+  <element1 id="1">first</element1>
+  <element2>second</element2>
+  <element1 id="2">&entity1;first!</element1>
+</root>

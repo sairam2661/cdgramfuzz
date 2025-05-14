@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book
+    title CDATA #REQUIRED
+    author CDATA #REQUIRED
+  >
+  <!ENTITY chapter "1">
+  <!ENTITY % xinclude "X">
+  <!NOTATION BookSystem PUBLIC "M" "1" 
+    >
+  %xinclude;
+  <!-- some notation -->]>
+<book title="T" author="L">
+  <chapter1>/book/chapter</chapter1>
+  <title Chapter3="5">&chapter;</title>
+  &note;
+</book>

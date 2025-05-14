@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+   attrib1 CDATA #REQUIRED
+   attrib2 NMTOKEN #IMPLIED
+   attrib3 NMTOKENS #IMPLIED
+  >
+  <!ENTITY percent "%">
+  <!ENTITY % include "x">
+  <!NOTATION n SYSTEM "s">
+  %include;
+  <!-- An internal subset -->
+]>
+<note attrib1="1" attrib2="2" attrib3="3">Hello, &percent; world!</note>

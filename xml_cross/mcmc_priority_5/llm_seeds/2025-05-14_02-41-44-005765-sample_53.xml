@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (film*)>
+  <!ATTLIST film author CDATA #REQUIRED>
+  <!ENTITY title "P"
+  ><!ENTITY % ent "x">
+  <!NOTATION xnotation SYSTEM "x">
+ %x;<!---->
+  <!ELEMENT film (#PCDATA)>
+  <!ELEMENT title (#PCDATA)>
+]>
+<catalog>
+  <film author="S">
+    <title>&title;</title>
+  </film>
+  <film author="S">
+    <title>
+      <!-- test for a nested processing instruction -->
+      <?this is a pi with attrs id and name spaces xml and s xmls and xml l which includes xmls and xml version and xmls and xml d is 1 and encoding iso and l 1 and o 0 and version is 1 and text is foo and lang en us and standalone yes and omit xml declaration yes y 1 and is version 1 and text foo and lang en and standalone yes and is no  2 version of xml  2 version of xml text foo and language en language en standalone yes version is 1 and standalone no and lang en version no and l 1 and v a and v 3  version is 1 version is 1 1 and v 3 yes standalone yes and standalone yes   and standalone yes yes 1 version 1 version version 1 a 1 and no yes is is yes is yes standalone is  and yes which one xml stand yes and yes v a a and v yes v v yes yes v yes v d no yes v d a and v no v no no v and no no and no is no is yes is no a yes a v yes and v and no is and no and version and yes version a no no yes and yes is no is is is yes v d is yes is and no yes yes is no a v is and a and no version yes a v v a v and yes a yes v v v v no no yes v v v v a v and v and v a no a v v d v is d no d no a is is and v yes and yes a v v d a and a a a no a no no and yes a d is no no no v v yes a no is no and yes a v v v a yes d d and is d yes v is and is no v v is yes and d v v is is and is a a yes yes d and is a yes v yes and v a and is v no a d v v d v v a yes v yes a is and a is no v v d no and d is no and d v yes v v v d is yes is a a and d a and a no no and d v v and v and no and yes a is is no and d d a a v v a yes v v d and v a and a is no and is v v v v yes a a v and yes and v is and no a and v v and a and d v a a yes a no a a v is yes and a and v a yes is yes v and is d v yes a a is and v a no a yes a d a and a v d and d a v and a a a yes a no is d v is d and d a v a and a v v d yes v a a d and a a d and a is and v v a v and a is yes and a v and is v and a and d v a a d no a and d v is v yes a a v and a d v is a v a a d v a a and a v a d v and v v v a and a v v and yes a d v v a a and v a a and d v v a a a and d a d a a and d a d a and a a a yes v a is a and a a v and v and v v and a is v a a v is a a and a a a a a a v v d d a v a a v v a a and d v v d a a and v and v a a a a is yes and v a v d a v a and a v v a d a and a a v a v a a d v a d a d a d and a a a a a and a a a a a and a a a and a a a a v v a v v v d d a a and a d a a a a and a d and a d a d a

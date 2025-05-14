@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (entry+)>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY phone "+"
+  ><!ENTITY 	 		%xmlelement ">"
+  ><!NOTATION GIF PUBLIC "G"
+
+
+  "G"
+  >

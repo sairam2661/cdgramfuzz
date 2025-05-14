@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title+,author,input)>
+  <!ATTLIST book 
+    id ID #REQUIRED 
+    lang (en|fr|de) "d">
+  <!ENTITY chapter "I">
+  <!ENTITY % ent SYSTEM "x" >
+  <!NOTATION SYSTEM-internal SYSTEM "C">
+  %ent;
+  <!--
+  This XML document contains information 
+  about a book with a chapter.
+  -->
+]>
+<book id="1" lang="d">
+  <title>Le Langage XML</title>
+  <author>John Doe</author>
+  <input><![CDATA[This is the input: some <xml> tags]]></input>
+  <chapter>&chapter;</chapter>
+</book>

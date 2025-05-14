@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "N" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note
+    id  CDATA  #REQUIRED
+    date CDATA #IMPLIED
+    version CDATA "#">
+  <!ENTITY ns "N" >
+  <!ENTITY % d "x">
+  <!NOTATION pub SYSTEM "P">
+  %d;
+  <!--%d;-->
+]>
+<note xmlns:xi="x" xml:lang="z" id="A" version="1" pubidLiteral="P" pubid="B">
+  <xi:include href="C"/>
+  &ns;
+  <foo>&note;</foo>
+</note>

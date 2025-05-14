@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "M"
+   [<!ELEMENT name (#PCDATA) ><!ATTLIST name lang CDATA #IMPLIED> 
+    <!ENTITY example SYSTEM "D" NDATA E> <!ENTITY % E "D"> 
+    <!NOTATION E SYSTEM "D" >  
+    %includeSYSTEM  ;  
+    <!---->
+    ]>
+<root>
+  <name></name>
+  <comment xml:lang="&lang;">&example;</comment>
+  <section>
+    Some<![CDATA[<raw>]]>&example;</section>
+</root>

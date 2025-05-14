@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, chapter*)>
+  <!ATTLIST book
+    idCDATA #REQUIRED
+    lang (en|fr|de) "y"
+  >
+  <!ENTITY author "G"
+  >
+  <!ENTITY % bookEntities "<" >
+  <!NOTATION iso-8859-1 PUBLIC "A" 
+    "B"
+  >
+  %bookEntities;
+  <!--
+    [Comment here:]
+    This is an XML comment
+  -->
+]>
+<book id="x" lang="f">
+  <title>&author;-&note;</title>
+  <chapter>
+    <para>&note;</para>
+  </chapter>
+</book>

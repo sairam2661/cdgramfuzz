@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ELEMENT document (header,section*)>
+  <!ATTLIST document 
+    id CDATA #REQUIRED>
+  <!ENTITY xref "x">
+  <!ENTITY % entset "a">
+  <!NOTATION XML-external-parsed-entity SYSTEM "x">
+ 					     		
+ 			     	
+ 		
+ 	%entset;	
+ 	<!---->	
+ 	<!ELEMENT section (title,para+)>
+ 	<!ATTLIST section number CDATA #REQUIRED>
+ 	<!ELEMENT header (#PCDATA)>
+ 	<!ELEMENT title (#PCDATA)>
+ 	<!ELEMENT para (#PCDATA)>
+]>
+<document id="1" xmlns="a" xmlns:xi="b" xmlns:c="d">
+<![CDATA[
+some  
+text <title>in
+<para>the</para>
+<para>xml</para>
+
+]]>
+<xref>&xref;</xref>
+</document>

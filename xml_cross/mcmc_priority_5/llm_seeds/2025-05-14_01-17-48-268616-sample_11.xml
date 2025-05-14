@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document [
+  <!ELEMENT document (declaration*, title, section+)>
+  <!ATTLIST document id ID #REQUIRED>
+  <!ENTITY name "D">
+  <!ENTITY % entity "x">
+  <!NOTATION DTD SYSTEM "d">
+  %entity;
+  <!--other notation -->
+]>
+<document id='main' xmlns="h" xmlns:xml="c" xmlns:nil="c">
+  <title xml:lang='en'>Hello World</title>
+  <section>
+    <p>The quick &name;brown fox jumps over the lazy dog.</p>
+  </section>
+  <section>
+    <p>Entity: &name;</p>
+    <p>Notation: &DTD;</p>
+  </section>
+</document>

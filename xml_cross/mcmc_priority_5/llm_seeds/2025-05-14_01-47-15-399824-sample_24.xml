@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+
+  [
+    <!ELEMENT root (head, body) >
+    <!ATTLIST root id CDATA #REQUIRED>
+    <!ENTITY author "J"
+  >
+<!ENTITY % pereference SYSTEM "d">
+<!NOTATION pdf PUBLIC "p"
+        "d">
+  %pereference;
+<!--
+-->
+
+
+
+<!-- Author: &author; -->
+<!ENTITY pi "3">
+
+
+
+<!-- pi -->
+<!ELEMENT head (title, meta)*>   <!-- Head element can have multiple title and meta elements -->
+<!ELEMENT title (text)>           <!--  Title element has a text element -->
+<!ATTLIST title name CDATA #REQUIRED> <!-- Title element has an attribute name -->
+<!ELEMENT text (#PCDATA)>          <!-- text element can contain PCDATA -->
+<!ELEMENT meta (#PCDATA)>          <!-- meta element can contain PCDATA -->
+<!ATTLIST meta http-equiv CDATA #IMPLIED> <!-- meta element has an attribute http_ equiv -->
+
+<!ELEMENT body (section, section, section)>
+<!ELEMENT section (#PCDATA)>
+<!ELEMENT para (#PCDATA)>
+
+<!ENTITY y '2001'>
+
+
+<!ENTITY name "S">
+
+<!ELEMENT book (author, title, publisher)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+
+<!ELEMENT address (#PCDATA)>
+
+<!ELEMENT paragraph (#PCDATA)>
+<!ELEMENT addressdetails (#PCDATA)>
+
+<!ATTLIST book id CDATA #REQUIRED>
+
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+
+<!ELEMENT organization (#PCDATA)>
+
+<!ATTLIST paragraph align (left|center|right) #IMPLIED>
+<!ATTLIST address line CDATA #IMPLIED>
+
+<!ELEMENT contact (#PCDATA)>
+
+<!ELEMENT details (#PCDATA)>
+
+<!ATTLIST addressdetails line CDATA #IMPLIED>
+<!ELEMENT zip (#PCDATA)>
+
+<!ELEMENT orgname (#PCDATA)>
+
+<!ELEMENT date (#PCDATA)>
+
+<!ELEMENT street (#PCDATA)>
+
+<!ATTLIST addressdetails street CDATA #IMPLIED>
+
+<!ELEMENT phonenumber (#PCDATA)>
+
+<!ELEMENT faxnumber (#PCDATA)>
+
+<!ELEMENT email (#PCDATA)>
+
+<!ELEMENT creditcard (#PCDATA)>
+
+<!ELEMENT countryname (#PCDATA)>
+
+<!ELEMENT currency (#PCDATA

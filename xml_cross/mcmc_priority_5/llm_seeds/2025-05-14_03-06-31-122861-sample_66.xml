@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE address [
+  <!ELEMENT address (name, street, city, state, zip)>
+  <!ATTLIST address
+   id ID #REQUIRED
+   lang CDATA #IMPLIED
+  >
+  <!ENTITY contact "1">
+  <!ENTITY % entities SYSTEM "x" NDATA text>
+  <!NOTATION text PUBLIC "X" "Y">
+  %entities;
+ <!--
+  -->]>
+<address xml:lang="f" xml:space="p" lang="f" id="x" xmlns:y="a">
+
+  <y:message>
+    <z:attr yattr="z" xmlns:z="f">v</z:attr>
+    <x:b>some text without spaces</x:b>
+    <address xml:space="p">x</address>
+
+    <y:message xml:space="p">
+      <p xmlns:y="z">y = value</p>
+      <c:a c:style="a" xmlns:c="d">z = &value;</c:a>
+   </y:message>
+   <y:y y:x="g">1=0</y:y>
+  </y:message>
+  <!--
+  --> 
+</address>

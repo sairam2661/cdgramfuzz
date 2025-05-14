@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book PUBLIC "M" "M" [
+  <!ELEMENT book (title,price,author+,editor?,dedication?)*>
+  <!ATTLIST book
+    id CDATA #REQUIRED
+    lang (French|English) "x">
+  <!ENTITY author "I">
+  <!ENTITY % editor "I">
+  <!NOTATION iso-8859-1 SYSTEM "M">
+  %editor;
+  <!---->
+]>
+<book id="B" lang="x" xmlns="h" xmlns:xi="g" xmlns:foo="o">
+  <title>My book</title>
+  <price>10</price>
+  <author>&author;</author>
+  {%editor;}
+  <dedication> To you</dedication>
+  <xi:include href="f"/>
+  <foo:item>test&amp;</foo:item>
+  <!-- a comment  -->
+</book>

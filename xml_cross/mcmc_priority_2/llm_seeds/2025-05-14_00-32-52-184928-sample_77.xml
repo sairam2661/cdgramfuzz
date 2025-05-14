@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION ISO-8859-1 SYSTEM "I">
+  %chapter2;
+  <!--><!ELEMENT chapter (#PCDATA)>
+  <!-->
+]>
+<book lang="e">
+  &chapter1;
+  <title>Test Title</title>
+  <author>Jane Smith</author>
+  <chapter>&ISO-8859-1;</chapter>
+  <chapter> C</chapter>
+  <chapter> D</chapter>
+</book>

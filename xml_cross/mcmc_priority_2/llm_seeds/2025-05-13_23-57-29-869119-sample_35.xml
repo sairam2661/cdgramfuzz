@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookmarks SYSTEM "x"
+[
+  <!ELEMENT bookmarks (bookmark+)>
+  <!ATTLIST bookmark ID #REQUIRED>
+  <!ENTITY book "F">  <!ENTITY  % comment1 "-">
+  <!NOTATION booknotation PUBLIC "X" "y">
+  %comment1;  <!-- A comment -->
+]>
+<bookmarks xmlns:loc="x" xmlns:xs="x" version="1">
+  <!-- Some comments -->
+  <bookmark xmlns:r="z" ID="1" r:foo="o"><book/> <!-- Another comment -->
+  <bookmark ID="2">  <title>This<b>bold</b> text</title> 
+    <loc:href="z">http://example.com</loc:href>
+    <author>&book;</author>
+  </bookmark>
+</bookmarks> 
+<!-- Another comment --></xml>

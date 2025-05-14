@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<!DOCTYPE data [
+  <!ELEMENT data (element, element, element+)>
+  <!ATTLIST author
+    name CDATA #REQUIRED
+    affiliation CDATA #IMPLIED
+  >
+  <!ENTITY entity "W"
+  ><!ENTITY % entity-set "I">
+  <!NOTATION notation-system SYSTEM 'http://example.com/system'>
+ %xinclude:include-here
+  ;
+<!----><!---->]>
+<data>
+  <element name="E" affiliation="A"/><element name="F"/><element name="G"/>
+  <xi:include href="X"/>
+  <element/>
+  <author name="A" affiliation="A"/><xsl:template-match name="X"/>
+</data>

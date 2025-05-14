@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE myXML [
+  <!ELEMENT myXML (person+)>
+  <!ATTLIST myXML lang CDATA #IMPLIED>
+  <!ENTITY address "4" >
+  <!ENTITY % xinclude "x">
+  <!NOTATION ISO-8859-1 PUBLIC "w" 'r'>
+  %xinclude;
+  <!-- ISO DTD notation -->
+]>
+<myXML lang="z" xmlns:xi="z" xmlns="z">
+  <comment>This is a comment</comment>
+  <person entity="z" gender="f">
+    <address line1="z" line2="z" line3="z">
+      <city>z</city>
+      <state>z</state>
+    </address>
+  </person>
+  <person gender="m">
+    <address line1="a" line2="b" line3="c">
+      <city>c</city>
+      <state>a</state>
+    </address>
+  </person>
+</myXML>

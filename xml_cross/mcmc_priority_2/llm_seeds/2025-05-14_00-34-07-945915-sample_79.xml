@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book author CDATA #REQUIRED>
+  <!ENTITY copyright "&#169;  ">
+  <!ENTITY  % comment " ">
+  <!NOTATION xsl PUBLIC "X" "x">  
+  %comment;
+  <!--(not a comment) -->  
+]>
+<book xmlns:xlink="&ns;"
+   version="1" author="J"
+   id="m" xmlns="&ns;" type="f">
+  <title><xsl:value-of select="."/></title>  
+  <biblStruct>
+    <monogr><author><namePart/>
+</title><titleLevel>-</titleLevel>
+    </monogr></biblStruct>
+  <abstract xmlns:xi="&ns;">
+<![CDATA[
+#This is <raw>abstract <text>
+]]>
+  </abstract>
+  &copyright; <title></title>
+</book>

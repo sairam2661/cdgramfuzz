@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY chapterone "A">
+  <!ENTITY % chaptertwo "B">
+  <!NOTATION SGMLDTD PUBLIC "a" "b">
+  %chaptertwo;
+  <!--
+    This is a multi 
+      line comment.
+  -->
+]>
+<book lang="E">
+  <author><![CDATA[Johnathan Swift]]></author>
+  <title>This is the Title of the book</title>
+  <chapter>
+    <title>&chapterone;</title>
+    <text><![CDATA[Some raw text here]]></text>
+    <note>&note;</note>
+  </chapter>
+  <!-- Comment here -->
+</book>

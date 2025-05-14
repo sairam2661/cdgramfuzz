@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog
+     id CDATA #REQUIRED
+     version CDATA #IMPLIED
+  >
+  <!ENTITY product.name " "
+  >
+  <!ENTITY % product.attrs " ">
+  <!NOTATION SYSTEMNOTATION SYSTEM " ">
+  %product.attrs;
+  <!--
+
+<!ELEMENT product (#PCDATA | item)*
+
+<!ATTLIST product
+    id      CDATA     #REQUIRED
+    name    CDATA     #REQUIRED
+    price   CDATA     #REQUIRED
+>
+<!ENTITY item "">
+
+<!ATTLIST item
+    id          CDATA     #REQUIRED
+    description CDATA     #IMPLIED
+>
+
+  <!-->
+
+ <!--
+ 
+  <!ELEMENT product (%product.items;)>
+  %>documented>
+  ]]
+]>
+<catalog id="cat1" version="1.0" xmlns="http://example.com/schema" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <!-->
+  <?targetSystemNotation?>
+  <!--
+    ID: P001
+    Name: Apple
+    Price: 1.99
+  -->
+ 
+  <!--
+    ID: P002
+    Name: Orange
+    Price: 2.99
+  -->
+  <!--
+    ID: P003
+    Name: Banana
+    Price: 0.99
+  -->
+  <!--
+    ID:I001
+    DESCRIPTION: Sample Item Description
+    -->
+ 
+  <!-- 
+    ID: T001 
+    DESCRIPTION: Sample Item Description2 
+ -->
+  <!ENTITY item " ">
+ 
+  <!ENTITY name " ">
+  <!ENTITY price " ">
+  <!--!ENTITY desc ""-->
+  
+  <!ENTITY desc " ">
+ 
+  <!--  item description -->
+  <!ENTITY description " "> 
+  <!ENTITY itemid " ">
+  <!ENTITY docid " ">
+  <!--!  [![CDATA[<pre>item &name; &price;  itemid &#39;I001&#39;   desc &#39;Some text&#39; ]]></pre>  -->
+  <?CDATA  item cd ata 1 20 01  desc 3 21 02  name 4 22  03  price 10 23  04    itemid cd at a   desc 1 6      name

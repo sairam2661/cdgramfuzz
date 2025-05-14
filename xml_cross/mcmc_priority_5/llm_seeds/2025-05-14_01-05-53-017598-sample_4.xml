@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml:lang [
+  <!ELEMENT xml:lang (#PCDATA)>
+  <!ATTLIST xml:lang lang CDATA #REQUIRED>
+  <!ENTITY xml.dept SYSTEM "C"
+        NDATA iso>
+  <!ENTITY % iso SYSTEM "C"
+        NDATA encoding>
+  <!NOTATION iso PUBLIC "I"
+        "K" >  
+  %iso;
+  <!-- notation entity -->
+]>
+<xml:lang lang='en'><title xml:space='preserve' xml:lang='en'><xinclude href="C"/></title></xml:lang>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (book+)>
+  <!ATTLIST bookstore author CDATA #IMPLIED>
+  <!ENTITY booksystem "N">
+  <!ENTITY % bookprocessor "<">
+  <!NOTATION ISO-8859-1 SYSTEM "N">
+  %bookprocessor;
+  <!--[<!ATTLIST book category (#REQUIRED)>--> 
+]>
+<bookstore author="J" xml:lang="N">
+  <book category="F"/>
+  <book>
+    <title>&booksystem;</title>
+    <author ref="K"/>
+    <publisher pub-id="x">Book 2</publisher>
+  </book>
+</bookstore>

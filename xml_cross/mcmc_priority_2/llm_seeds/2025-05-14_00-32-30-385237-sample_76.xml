@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+    <!ELEMENT catalog (category+)>
+    <!ATTLIST catalog
+        title CDATA #REQUIRED
+        date CDATA #REQUIRED
+    >
+    <!ENTITY booktitle "A" >
+    <!ENTITY % author PUBLIC "F" "O">
+    <!NOTATION iso-8859-1 SYSTEM "F">
+        %iso-8859-1;
+    <!--%author-->    
+    <!ELEMENT category (book+)>
+    <!ELEMENT book (title,price,author)>
+    <!ELEMENT title (#PCDATA)>
+    <!ATTLIST book
+        id ID #REQUIRED
+    >
+    <!ELEMENT price (#PCDATA)>
+]>
+<catalog title="e" date="1"> 
+<category>
+    <title>&booktitle;</title>
+    &author;
+    <book id="1">
+        <price>10.00</price>
+        <title>HTML</title>
+    </book>
+    <book id="2">
+        <price>20.00</price>
+        <title>CSS</title>
+    </book>
+</category>
+<category>
+    <price>5.00</price>
+    <title>XML</title>
+    <book id="3">
+        <title>XHTML</title>
+    </book>
+</category>
+</catalog>

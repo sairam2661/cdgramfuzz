@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE suite PUBLIC
+  "-"
+  "W" 
+  [
+    <!ELEMENT suite (test*)>
+    <!ATTLIST suite
+      id    CDATA  #REQUIRED
+      type  (unit|integration)  #IMPLIED
+    >
+    <!ENTITY test "A"
+     >
+  <!ENTITY % testAttrs "x" >
+  <!NOTATION HTML PUBLIC "-"
+  "/"
+  >
+  %testAttrs;
+  <!--
+    External entity
+  -->
+  ]>
+<suite id="T" type="x" xmlns:f="f">  
+  <test f:f="f">%test;</test>
+  <test>f::test::test</test>  
+  <test>f::test test f::test </test>  
+  <test>test
+    test </test>
+</suite>

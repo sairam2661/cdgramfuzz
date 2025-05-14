@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book title CDATA #REQUIRED author CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % entity-param "x">
+  <!NOTATION mla SYSTEM "W">
+  %entity-param;
+  <!---->
+]>
+<book title="G" author="F">A</book>

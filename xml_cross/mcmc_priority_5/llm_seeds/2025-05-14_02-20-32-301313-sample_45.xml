@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE root-system [
+  <!ELEMENT root-system (root, system)>
+  <!ATTLIST root-system 
+    id (A|B|C) #REQUIRED
+    description CDATA #IMPLIED
+  >
+  <!ENTITY desc "A">
+  <!ENTITY % pubid "w">
+  <!NOTATION pdf SYSTEM 'PDF 1.3'>
+  %pubid;
+  <!--><![%pubid;] This is a notation! <-->]>
+<root-system id="A" description="R">
+  <root>
+    <header>
+      <title>&desc;</title>
+      <date>2022-01-01</date>
+    </header>
+  </root>
+  <system>
+    <sys-id>&desc;</sys-id>
+  </system>
+</root-system>

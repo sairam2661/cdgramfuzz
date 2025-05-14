@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "m"
+[
+  <!ELEMENT notes (person+)>
+  <!ATTLIST note
+    id  ID    #REQUIRED
+    name CDATA  #REQUIRED
+    lang  NMTOKEN #IMPLIED>
+  <!ENTITY dburl "C">
+  <!ENTITY % note "#">
+  <!NOTATION XMLCDATA PUBLIC "-"
+    "A">
+  %note;
+  <!--
+    Sample comment with multiple lines
+  -->
+]>
+<notes xmlns:xs="w">
+  <note id="n" name="J" lang="f">A message from John</note>
+  <note id="e" name="c" XMLCDATA="S">Another message from Cathy</note>
+</notes>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST inventory
+    id CDATA #REQUIRED
+    author NMTOKEN #REQUIRED>
+  <!ENTITY prod-id-system "0">
+  <!ENTITY % prod-attrs "c" 	>
+  <!NOTATION ISO-8859-1 SYSTEM "1">
+  %prod-attrs;
+  <!--comment about products -->
+]>
+<inventory id="1" author="S">
+  <product>
+    <name>Item</name>
+    <price>20</price>
+  </product>
+  <product>
+    <name>Item</name>
+    <price>15</price>
+  </product>
+</inventory>

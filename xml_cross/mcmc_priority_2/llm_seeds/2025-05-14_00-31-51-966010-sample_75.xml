@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book SYSTEM "m"
+
+
+  [<!ELEMENT book (year, title, author+)>
+   <!ATTLIST book idCDATA #REQUIRED>
+   <!ENTITY author1 "J">
+   <!ENTITY
+     %xml-version "1">
+  <!NOTATION
+     PUBLIC
+     SYSTEM "z" 
+     >
+  %xml-version;
+  <!--
+    This comment is on 2 lines
+   -->
+  ]
+><book id="1"
+xmlns:xi="w"
+xi:include="f"
+xmlns="y"
+  >  
+  <year>2020</year>
+  <title></title>
+  <author>&author1;</author>
+  <author>Smith</author>
+</book>

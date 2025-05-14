@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+, vendor?)>
+  <!ATTLIST catalog lang CDATA #REQUIRED>
+  <!ENTITY vendor "N"><!ENTITY % foo "("><!NOTATION svg SYSTEM "x">
+  %foo;
+  <!--.<!-->      
+]>
+<catalog lang="x" xmlns:xsi="x" xmlns:xsd="y" xsi:schemaLocation="w">
+  <product>
+    <price>5</price>
+    <description><![CDATA[lorem & ipsum]]></description>
+  </product>
+  <vendor>&vendor;</vendor>
+</catalog>

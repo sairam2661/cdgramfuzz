@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE note SYSTEM "m"
+  [
+    <!ELEMENT note (to, from, heading, body)>
+    <!ATTLIST note lang CDATA #IMPLIED>
+    <!ENTITY m SYSTEM "m">
+    <!ENTITY  % n "N">
+  <!NOTATION fmg PUBLIC "F" "f">
+    %n;
+ 
+    <!-- Sample comment -->
+  ]>
+<note lang="x">
+  <to>Bob</to>
+  <from>Alice</from>
+  <heading>Bond's Letter</heading>
+  <body>Dear &n;, you have come &n; a long way &n;...&m;</body>
+  <fmg system-public="F"/>
+</note>

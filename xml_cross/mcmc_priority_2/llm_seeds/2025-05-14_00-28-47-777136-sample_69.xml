@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE students [
+  <!ELEMENT students (faculty+)>
+  <!ATTLIST students 
+    id ID #REQUIRED>
+  <!ENTITY faculty-list "(">  
+  <!ENTITY % faculty-types "(">
+  <!NOTATION GIF PUBLIC "G" "I" >
+    %faculty-types; 
+<!--& id &id; -->]>
+<students id="1">
+  <faculty entity-ref="#"
+          ref="#"
+  attribute-ref="1">
+    <name>John</name>
+    <age>30</age>
+  </faculty>
+  <faculty>
+    <name>Jane</name>
+    <age>29</age>
+  </faculty>
+</students>

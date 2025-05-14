@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, publisher, chapter+)>
+  <!ATTLIST chapter id CDATA #REQUIRED>
+  <!ENTITY booktitle "A" >
+  <!ENTITY 	%chapter1ref "1">
+  <!NOTATION  BookTool SYSTEM "e"> 
+ 	%chapter1ref;
+ 	<!--%BookTool SYSTEM "e"-->	
+]>
+<book xmlns:xi="w" xmlns="a">
+  <title>&booktitle;</title>
+  <publisher>Author &amp; Publisher</publisher>
+  <chapter id="2">Some <p>content</p></chapter>
+</book>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    pubdate CDATA #REQUIRED
+    lang (en|fr|es) 'en'>
+  <!ENTITY author "J"
+    >
+  <!ENTITY 	%chapterNum "1">
+  <!NOTATION pdf SYSTEM "a">
+ 	%chapterNum; 
+ 	<!--%author; -->  
+ ]>
+<book pubdate="1" lang='fr'>
+    <title entity1="v">T</title>
+    <author entity2="u">A</author>
+    <chapter number="#"/>
+    <chapter attribute='test'/>
+</book>

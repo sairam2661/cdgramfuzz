@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id (ID) #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % temp "x">
+  <!NOTATION w3c PUBLIC "W" "w">
+  %temp;
+  <!---->
+]>
+<catalog id="C">
+  <product><name>Dog</name><price>20</price></product>
+  <product><name>Car</name><price>50000</price></product>
+  <msg>&author;</msg>
+</catalog>

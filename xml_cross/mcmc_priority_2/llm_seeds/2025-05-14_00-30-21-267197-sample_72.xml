@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, publisher, author, note)>
+  <!ATTLIST book lang CDATA #REQUIRED>
+  <!ENTITY book-title "T">
+  <!ENTITY % publisher-data "C">
+  <!NOTATION citation SYSTEM "g">  
+  %publisher-data;
+  <!---->
+  <!ENTITY note "W" >
+]>
+<book xmlns="g" lang="g"> 
+ <xi:include href="a" xmlns:xi="h"/>
+ <xi:include xmlns:g="f" href="e"/>
+ <title>&book-title;</title>  
+ <publisher>&publisher-data;</publisher>
+ <author>A</author>
+<note>&note;</note>
+</book>

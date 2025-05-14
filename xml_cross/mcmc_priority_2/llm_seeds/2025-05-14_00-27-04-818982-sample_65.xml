@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, chapter*)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "t">
+  <!ENTITY % chapter2 "<"> 
+  <!NOTATION ISO-8859-1 SYSTEM "C">
+  %chapter2;
+  <!---->
+]>
+<book id="B" xmlns="C" xmlns:xi="P">
+  <title>Some Title</title>
+  <chapter>Chapter 1</chapter>
+  <!--
+  <chapter>
+  A & chapter1; 
+  --><!---->
+</book>

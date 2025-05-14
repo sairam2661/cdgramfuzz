@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category*)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    author CDATA #IMPLIED
+  >
+  <!ENTITY category "F">
+  <!ENTITY % section-content "("
+  >
+  <!NOTATION rtf SYSTEM "r"  >
+  %section-content;
+  <!-- internal DTDSubset -->
+]>
+<catalog xmlns:xi="x" id="1" author="a">
+  <category>Category 1</category>
+  <category>Category 2</category>
+  <xi:include href='doc.xsl'/>
+  <catalog id="c" author="b">&category;</catalog>
+</catalog>

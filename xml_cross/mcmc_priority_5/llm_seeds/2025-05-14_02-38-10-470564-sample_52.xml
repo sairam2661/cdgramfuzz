@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE person [
+  <!ELEMENT person (name, address, phone) >
+  <!ATTLIST person id ID #REQUIRED>
+  <!ENTITY name "J">
+  <!ENTITY % phone-list "2">
+  <!NOTATION Systematic SYSTEM "s">
+  %phone-list;
+  <!--[[ Comment start ]]--><!--[[ comment inside ]]--><!--! Comment end --><!ENTITY phone1 "+">
+  ]>
+<person id="P">
+  <!-- Comment here -->
+  <name>&name;</name>
+  <address>
+    <street>&name;</street>
+    <!-- Child comment -->
+    <city>Some <raw> text</raw></city>
+  </address>
+  <phone xmlns:xi="&defaultPrefix;">&phone1;</phone>
+  <xi:include href="#">(include comment)</xi:include>
+  <phone>&phone1;</phone>
+</person>

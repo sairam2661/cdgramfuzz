@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m"
+  [
+    <!ELEMENT root (#PCDATA)>
+    <!ATTLIST root id CDATA #REQUIRED>
+    <!ENTITY num "1"> 
+  <!ENTITY % entname "<">
+<!NOTATION svg PUBLIC "X" "Y">
+  %entname;
+  <!-- Internal Subset Declaration -->
+  ]>
+<root id="R">Number: &num;
+  <!---->
+  <foo attrs:attr="b">text</foo>
+  <root>Root Element</root>
+</root>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter*, note?)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter-10 "A"  >
+  <!ENTITY % chapter "%" >
+  <!NOTATION w3c SYSTEM "H">
+ 	%fpi-public-idinfo; 
+  <!--> 
+]>
+<book id="bk101" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <author>John Smith</author>
+  <title>XML: The Complete Guide</title>
+  <xi:include href="chapter--> 
+    <!ELEMENT chapter (#PCDATA)>
+    <!ATTLIST chapter number CDATA #IMPLIED title NMTOKEN #IMPLIED>
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note type NMTOKEN #IMPLIED> 
+  <!ATTLIST chapter number CDATA #IMPLIED title NMTOKEN #IMPLIED>
+  <!ATTLIST book id ID #REQUIRED>
+]>
+  <note type="w" >Thanks for the book!</note>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c" [
+  <!ELEMENT catalog (item*)>
+  <!ATTLIST catalog name CDATA #REQUIRED>
+  <!ENTITY cat-name "F" >
+  <!ENTITY % catalogEntity "("><!NOTATION iso-8859 PUBLIC "a" "c">
+  %catalogEntity;
+  <!-- iso--><!ENTITY zla SYSTEM "w" NDATA iso-8859> <!--iso-->]>
+<catalog name="&cat-name;">
+  <item number="1" quantity="&CAT-qty;">Mouse</item>
+  <item number="2" quantity="&CAT-qty;">Keyboard</item>
+</catalog>

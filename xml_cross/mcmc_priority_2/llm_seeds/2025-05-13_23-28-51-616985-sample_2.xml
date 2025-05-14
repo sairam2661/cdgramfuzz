@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author-system "C">
+  <!ENTITY % xinclude-system "X">  
+  <!NOTATION XInclude SYSTEM "X">
+  %xinclude-system;
+  <!---->
+]>
+<book xmlns:xi="x" id="X" xml:lang="X">
+  <title>&note;</title>
+  <author xmlns="x" entity-public-id="x">&author-system;</author>
+  <xi:include href="X" xmlns:xi="x"/><!-- External reference -->
+  <xi:include href="#"></xi:include><!-- Another example -->
+  <chapter> <!-- 
+   Example entity declaration  
+   <x:XPointer>... <x:xpointer/>
+  -->
+  &Note; 
+  </chapter>
+</book>

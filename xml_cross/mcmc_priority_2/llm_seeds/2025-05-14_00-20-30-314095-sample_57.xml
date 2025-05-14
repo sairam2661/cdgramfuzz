@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product+)>
+  <!ATTLIST catalog
+    id (INT) #REQUIRED
+    name CDATA #IMPLIED
+  >
+  <!ENTITY name "F" >
+  <!ENTITY % fattr "y">
+  <!NOTATION fnet PUBLIC "F" "C" >
+  %fattr;
+  <!--
+  (1) --> 
+]>
+<catalog id="1" xmlns:foa="f" xmlns:foi="f"
+    foa:f1="f" foi:f2="f">
+ <product>Pro</product>
+</catalog>

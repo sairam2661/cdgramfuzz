@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY book "A">
+  <!ENTITY % booktype "H">
+  <!NOTATION SGML SYSTEM "K">
+  %book; 
+  <!--%booktype; -->
+]>
+<catalog id='cat1' version='v1'>
+  <note><![CDATA[<book type='&book;'><b>&book;</b>!&book;</book>]]></note>
+  <book>1&SGML;</book>
+</catalog>

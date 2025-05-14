@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,chapter+,author)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY author "J"> 
+  <!ENTITY % book-entity "J">
+  <!NOTATION HTML SYSTEM "R">
+  %book-entity;
+  <!--example entities -->
+]>
+<book id="x" xmlns:xi="x" xmlns:xs="y">
+  <title>Example Title</title>
+  <chapter>Chapter 1</chapter>
+  <chapter>Chapter 2</chapter>
+  <chapter>Chapter 3</chapter>
+  <chapter>Chapter 4</chapter>
+  <author>&author;</author>
+</book>

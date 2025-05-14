@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (product+)>
+  <!ATTLIST product id CDATA #REQUIRED>
+  <!ENTITY product1 "#">
+  <!ENTITY  % PRODUCT " ">
+  <!NOTATION ISO8601 PUBLIC "W" "1">
+  %PRODUCT;
+  <!----><!-- comment here -->
+]>
+<inventory>
+  <product id="1" xmlns:my="&NS;" xmlns="&defaultNS;"/>
+  <product xmlns:msxsl="&msxsl;" id="2">
+    <name>Sample produdct</name>
+    <price>10.99</price>
+    <tax>8</tax>
+  </product>
+  <product id="3">
+    <name>XML Product</name>
+    <price><![CDATA[12.99]]></price>
+    <tax>10</tax>
+  </product>
+</inventory>

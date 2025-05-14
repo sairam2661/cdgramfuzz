@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE person [
+  <!ELEMENT person (#PCDATA)>
+  <!ATTLIST person
+    age CDATA #REQUIRED
+    name CDATA #IMPLIED
+    sex (male|female)
+ "&xmlversion;   "
+  ERROR
+  ENTITY  "G"   >
+<!ENTITY xmlversion " ">
+<!ENTITY  % personentity " ">
+<!NOTATION personnotation SYSTEM " ">
+  %personentity;
+  <!--><!ELEM]ENT person 
+<!ELEMENT section(?, #PCDATA)>
+<!ENTITY title "Mr. Ms. Dr." >
+<!ELEMENT message (message_text,!CDATA)>
+]>
+<person age='30' name='John'>female</person>
+<messages>
+  <message>
+    <message_text> Hello World!  </message_text>
+  </message>
+</messages> 
+
+<!DOCTYPE document [
+  <!ELEMENT document (header/body)>
+  <!ATTLIST document 
+    id CDATA #REQUIRED  &xmlversion;
+  "><
+<!ELEMENT header (#PCDATA)&note;
+<!ELEMENT body (#PCDATA)>
+<!DOCTYPE note [
+  <!ELEMENT note (#PCDATA)>
+]>
+<!DOCTYPE declaration [
+  <!ELEMENT declaration (#PCDATA)>
+  <!ATTLIST declaration
+    version CDATA #REQUIRED
+  ]>
+<!ENTITY &note;>
+  declaration version="1.0">header</document> 
+<!DOCTYPE doc [
+<!ATTLIST doc
+  lang LANG  #default #IMPLIED
+  lang NMTOKEN #IMPLIED 
+]>
+ <doc lang='en'><section>Section 1</section></doc> 
+<!DOCTYPE document [
+  <!ELEMENT document (#PCDATA)>
+  <!ATTLIST document
+    author CDATA #IMPLIED
+  ]>
+<![CDATA[
+<!DOCTYPE section [
+  <!ELEMENT section (#PCDATA)>
+  ]]>
+<section>This is a section.</section>
+]>
+<!DOCTYPE doc [
+<!ENTITY title "Title 1">
+<!ATTLIST doc 
+  type
+  (xml|dtd|xhtml)
+  "xml"  #REQUIRED
+   %authorinfo;
+  ]>
+<!ENTITY authorinfo "by John"> 
+<!ATTLIST doc 
+  version 
+  (v2|v3) 
+  #default "v2"
+  CDATA #IMPLIED>
+<!DOCTYPE doc [
+  <!ENTITY author "author123">
+  <!ATTLIST doc
+    title CDATA #IMPLIED
+  ]>
+<!DOCTYPE section [
+<!ELEMENT section (
+  ((header, section)*,footer)
+  )>
+<!ATTLIST section 
+  title CDATA #IMPLIED
+]>
+<!DOCTYPE doc[
+<!ENTITY title "Title 1" 
+<!ELEMENT doc (#PCDATA)>
+<!ELEMENT header (#PCDATA)>
+<!ELEMENT section (#PCDATA)>
+<!ATTLIST doc 
+  id 
+  CDATA #IMPLIED 
+  &note;
+<!ELEMENT footer (#PCDATA) >
+<!ELEMENT note(#PCDATA) >
+<!ATTLIST note 
+  date CDATA #IMPLIED >]>
+<!

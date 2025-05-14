@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category*)>
+  <!ATTLIST category id CDATA #REQUIRED>
+  <!ENTITY entity "D"
+  >
+  <!ENTITY % ent "a"
+  >
+  <!NOTATION system-notation PUBLIC " "
+  " ">
+  %ent;  
+  <!--<!ENTITY system_ENTITY "http://example.org"
+  SYSTEM "http://www.example.org/system_entity">-->
+]>
+<catalog xml:lang="x" xml:space="x" xml:base="c" xmlns:xs="x" xmlns:xsi="x">
+  <category id="1">
+    <title>title</title>
+    <subcat cat="c">
+      <subcat cat="c">
+        <desc>&entity;</desc>
+      </subcat>
+    </subcat>
+  </category>
+</catalog>

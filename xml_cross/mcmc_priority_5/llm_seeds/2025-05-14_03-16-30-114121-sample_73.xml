@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "w" [<!ELEMENT note (#PCDATA)> <!ATTLIST note target CDATA #IMPLIED author CDATA #IMPLIED> <!ENTITY amp "&amp;"> <!ENTITY % entities "p" ><!NOTATION file SYSTEM "x"> 
+   %entities; 
+<!--%  file  -->
+]>
+<note xmlns="h" xmlns:math="t" xmlns:xsi="t" target="g"
+    author="g" xsi:schemaLocation="t" xml:space="p">
+  <math:expression>1 + &amp;2; </math:expression>
+  This is content<!--%  b%q --><math:expression>3 * &amp;4;</math:expression>
+</note>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Created by someone -->
+<!DOCTYPE root SYSTEM "C"
+
+  [
+    <!ELEMENT root (child, child, child)>
+    <!ATTLIST root
+      id ID #REQUIRED
+    >
+  <!ENTITY author "A"> 
+  <!ENTITY % ent SYSTEM "a"> 
+  <!NOTATION SGML PUBLIC "A" "B">
+ 
+    
+  %ent;
+  <!-- The note is an advisory or informational text 
+       that indicates what a character or entity refers to. -->
+  ]
+
+>
+<root xmlns:xsi="w" id="q" xsi:schemaLocation="y" xmlns:y="z">
+  <child>A <b>bold</b> text</child>
+  <child></child>
+  <child><![CDATA[A & < character]]></child>
+</root>

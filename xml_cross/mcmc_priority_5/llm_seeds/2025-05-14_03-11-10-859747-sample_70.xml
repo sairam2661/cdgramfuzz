@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note type CDATA #REQUIRED>
+  <!ENTITY date "<" 
+    >
+  <!ENTITY % param "&#34;">
+  <!NOTATION ISO-8859-1 PUBLIC "&#45;""@" 
+    >
+  %ISO-8859-1;
+  <!-- <notes> is a document with a single root element -->
+]>
+<notes xmlns:xsi="x">
+  <note type="1">&date;</note>
+  <note type="2">No &date; here &note;</note>
+</notes>

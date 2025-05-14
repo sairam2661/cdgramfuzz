@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE book [
+<!ELEMENT book (author, title, publisher, copyright*)>
+<!ATTLIST book id CDATA #IMPLIED>
+<!ENTITY copy "&#169;">
+<!ENTITY % book.ent "<">
+<!NOTATION SVG PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+%book.ent;
+<!---->
+]>
+<book id="x" lang="e" xml:lang="e" xmlns:xsi="x">
+&copy;2005
+<author>John &amp; Joe</author>
+<title xml:lang="e">The book</title>
+<publisher>John&amp; Joe Publishers</publisher>
+<copyright>&copy;</copyright>
+<copyright>&copy;2006 John</copyright>
+</book>

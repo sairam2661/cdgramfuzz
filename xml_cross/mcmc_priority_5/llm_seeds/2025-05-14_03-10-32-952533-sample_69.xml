@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE result SYSTEM "D" [
+  <!ELEMENT result (#PCDATA)>
+
+  <!ATTLIST result
+    id CDATA #REQUIRED
+  >
+  <!ENTITY amp "&amp;">
+
+  <!ENTITY % include SYSTEM "I">
+  <!NOTATION XInclude SYSTEM "X">
+  %include;
+
+  <!--
+
+  &#x0A;&#x0D;
+  -->
+
+]>
+<result id="U" xi:noNamespaceSchemaLocation="N">
+
+  <!-- 
+  <xi:furtherInclude xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="http://www.example.org/xi/include.xml/xpath
+  /">
+    <xi:fallback xmlns:xi="http://www.w3.org/2001/XInclude">
+      Default Text</xi:fallback>
+  </xi:furtherInclude>
+
+  -->
+</result>
