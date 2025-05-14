@@ -1,0 +1,127 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix schema_evolution
+
+set ::timeout 60000
+set sqlite_options {}
+
+proc sqlite_init {} {
+  global sqlite_options
+  execsql {
+    PRAGMA foreign_keys = 1;
+  }
+  set sqlite_options 1
+}
+
+proc create_tables {} {
+  execsql {
+    CREATE TABLE t1(
+      a    PRIMARY KEY
+    );
+    CREATE TABLE t2(
+      b    PRIMARY KEY,
+      a    NOT NULL,
+      FOREIGNKEY        NOT NULL
+    );
+    INSERT INTO t2 VALUES(1,1,1);
+  }
+  do_execsql_test 1.4 {
+    SELECT count(*) FROM t2 WHERE b = 1
+  } {1}
+  do_execsql_test 1.5 {
+    SELECT count(*) FROM t2
+  } {1}
+}
+
+proc do_query_1_1 {} {
+  set ret1 0
+  do_execsql_test 1.11 {
+    SELECT a FROM t2;
+  }
+  do_execsql_test 1.22 {
+    SELECT t2 FROM t2 UNION ALL SELECT a FROM a
+  } {}
+  do_execsql_test 1.33 {
+    INSERT INTO t2 VALUES(2,2,1);
+    INSERT INTO a VALUES(3);
+    SELECT t2 FROM a
+  } {}
+  do_execsql_test 1.44 {
+    SELECT t2 FROM a
+  } {}
+  return 0
+}
+do_test 3.1 {
+  catch {
+    do_query_1_1
+  }
+} {NULL}
+
+proc sqlite_options {} {
+  return 1
+}
+
+proc sqlite_option_option {} {
+  return 2
+}
+
+proc sqlite_option {option} {
+  if {$option} {return 3}
+  return 4
+}
+
+proc query_2_2 {option} {
+  set ret2 0
+  set option2 2
+  switch $option {
+    2 { set ret2 1 }
+    default {}
+  }
+  do_execsql_test 2.2 {
+    SELECT a FROM t1 ORDER BY 0
+    SELECT a FROM t1 ORDER BY a DESC NULLS FIRST
+  } {}
+  return $ret2
+}
+
+do_test query_2_2 {
+  catch {
+    query_2_2 $option
+  }
+} {NULL}
+
+proc create_indices {} {
+  execsql {
+    CREATE INDEX t1_a_index ON t1(a)
+  }
+  do_execsql_test 4.1 {
+    CREATE INDEX t1_a_b_index ON t1(b)
+  } {}
+}
+
+do_test 5.1 {
+  sqlite_options
+} 1
+do_test 5.2 {
+  sqlite_option_option
+} 2
+do_test 5.3 {
+  set sqlite option
+  sqlite_option "$option"
+} 4
+do_test 5.4 {
+  query_2_2 2
+} 1
+do_test 5.5 {
+  create_tables
+} {}
+do_test 5.6 {
+  query_1_1
+} 0
+do_test 5.7 {
+  query_1_1
+} 0
+do_test 5.8 {
+  create_indices
+} 1
+finish_test

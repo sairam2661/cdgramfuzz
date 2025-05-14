@@ -1,0 +1,302 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_thread_insert
+
+set ::timeout 60000
+
+proc random_string {} {
+  set str ""
+  for {set i 0} {$i less 10} {incr i} {
+    append str A
+  }
+  random 50
+  append str Bcdefghijklmnopqrstuvwxyz
+  return $str
+}
+
+proc multi_thread_insert {} {
+  global data thread_num
+  set thread_list {}
+  set db main
+  for {set i 0} {$i less $thread_num} {incr i} {
+    lappend thread_list $i
+  }
+  db eval {BEGIN}
+  foreach tid $thread_list {
+    set data{$tid} ""
+    db eval {INSERT INTO t1 VALUES(1) }
+    data{$tid} {
+      WAIT IF NOT EXISTS
+      UPDATE t1 SET x$xid
+      WHERE xid
+      SELECT xid FROM t2 WHERE xid
+    } }
+  }
+
+  db eval {COMMIT}
+  return {
+    thread_list $thread_list
+    db db_main
+  }
+  puts "Thread completed."
+  error "Thread ended before completion"
+  return
+  finish
+  after 0
+  finish
+  return
+  error "thread ended before completion"
+  return
+  db eval {ROLLBACK}
+  db eval {ROLLBACK}
+  return
+  finish
+  return
+  select
+  after 0
+  finish
+  puts "Thread completed."
+  error "Thread ended before completion"
+  finish
+  return
+  error "Thread ended before completion"
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  error "Thread ended."
+  return
+  db eval {COMMIT; COMMIT;}
+  error "thread ended before completion."
+  return
+  after 10000000
+  select
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  error "Thread ended before completion"
+  db eval {ROLLBACK;}
+  return
+  error "Thread completed before finishing"
+  db eval {COMMIT;}
+  return
+  puts "Thread completed."
+  db eval {ROLLBACK}
+  return
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  error "Thread completed before finishing"
+  return
+  puts "Thread completed."
+  db eval {COMMIT;}
+  return
+  after 0
+  puts "Thread completed."
+  finish
+  db eval {COMMIT;}
+  error "Thread ended before completion"
+  puts "Thread ended before completion"
+  error "Thread ended."
+  puts "Thread ended."
+  return
+  put "thread completed."
+  return
+  after 0
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  return
+  error "Thread ended."
+  db eval {COMMIT}
+  puts "Thread completed."
+  return
+  puts "Thread completed."
+  return
+  puts "Thread ended."
+  error "Thread completed before finishing."
+  return
+  return
+  puts "Thread ended before finishing"
+  puts "Thread ended before finishing"
+  puts "Thread ended before finishing"
+  puts "Thread ended."
+  puts "Thread completed."
+  puts "Thread ended before finishing."
+  puts "Thread ended before finishing."
+  puts "Thread ended before finishing."
+  db eval {ROLLBACK;}
+  puts "Thread completed."
+  puts "Thread completed"
+  puts "Before error: thread completed"
+  error "Thread completed."
+  db eval {COMMIT;}
+  puts "Thread ended before finishing"
+  puts "Thread completed."
+  puts "Thread completed."
+  puts "Thread completed"
+  db eval {ROLLBACK;}
+  error "Thread completed before finishing"
+  puts "Thread ended before finishing"
+  puts "Thread ended before finishing"
+  puts "Thread completed before finishing"
+  error "Thread completed before finishing"
+  return
+  puts "Thread ended before finishing"
+  return
+  puts "Thread completed before finishing"
+  return
+  finish
+  puts "Thread ended before finishing."
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing."
+  puts "Thread completed before finishing."
+  puts "Thread ended before finishing"
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing"
+  error "Thread ended before finishing."
+  return
+  puts "Thread completed before finishing"
+  puts "Thread completed"
+  db eval {ROLLBACK;}
+  puts "Thread completed before finishing"
+  error "Thread completed"
+  error "Thread ended before finishing"
+  puts "Thread ended before finishing"
+  error "Thread completed before finishing"
+  db eval {COMMIT;}
+  puts "Thread completed before finishing"
+  return
+  after 0
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing."
+  puts "Thread completed before finishing."
+  puts "Thread ended before finishing"
+  puts "Before error: thread completed."
+  puts "Thread completed before finishing."
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing"
+  return
+  puts "Thread completed before finishing"
+  after 0
+  error "Thread ended before finishing"
+  puts "Thread completed before finishing"
+  return
+  puts "Thread completed before finishing."
+  puts "Thread ended before finishing."
+  puts "Before error: thread completed"
+  puts "Thread completed"
+  puts "Thread ended before finishing"
+  return
+  puts "Before error: thread completed."
+  puts "Thread completed before finishing"
+  error "Thread ended."
+  return
+  puts "Thread completed before finishing"
+  puts "Thread completed"
+  puts "Thread ended before finishing"
+  puts "Before error: thread completed before finishing"
+  puts "Before error: thread completed before finishing."
+  error "Thread ended before finishing."
+  puts "Thread ended before finishing."
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing"
+  puts "Before error: thread completed before finishing."
+  return
+  puts "Thread ended before finishing"
+  return
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing"
+  return
+  return
+  return
+  return
+  return
+  error "Thread ended before finishing"
+  puts "Thread completed before finishing"
+  error "Thread ended before finishing."
+  puts "Before error: thread completed before finishing"
+  return
+  puts "Before error: thread completed before finishing"
+  return
+  error "Thread completed before finishing."
+  return
+  after 0
+  error "Thread ended before finishing."
+  return
+  puts "Thread completed before finishing"
+  error "Thread ended before finishing"
+  return
+  puts "Thread completed before finishing"
+  return
+  puts "Thread completed"
+  return
+  puts "Thread completed"
+  puts "Thread ended."
+  return
+  puts "Thread completed before finishing."
+  return
+  puts "Thread completed before finishing."
+  puts "Thread ended before finishing"
+  error "Thread completed"
+  puts "Thread completed before finishing"
+  error "Thread completed before finishing"
+  error "Thread completed before finishing."
+  puts "Thread ended before finishing"
+  return
+  puts "Thread completed before finishing."
+  return
+  error "Thread ended before finishing"
+  error "Thread ended before finishing"
+  puts "Thread completed before finishing"
+  return
+  return
+  puts "Thread ended before finishing."
+  return
+  error "Thread ended before finishing"
+  return
+  return
+  puts "Thread ended before finishing."
+  return
+  return
+  puts "Before error: thread ended before finishing"
+  error "Thread ended before finishing"
+  puts "Before error: thread ended before completing"
+  return
+  puts "Before error: thread completed."
+  return
+  return
+  return
+  finish
+  db eval {ROLLBACK;}
+  put error "Thread ended."
+  return
+  after 0
+  puts "Thread completed before finishing."
+  puts "Thread completed"
+  return
+  db eval {RELEASE}
+  puts "Thread ended before finishing"
+  puts "Thread ended before finishing."
+  error "Thread ended"
+  puts "Thread completed before finishing"
+  puts "Thread completed before finishing."
+  puts "Thread ended"
+  return
+  return
+  puts "Thread ended before finishing"
+  error "Thread ended before finishing."
+  after 0
+  puts "Thread ended before finishing"
+  puts "Thread ended before finishing."
+  db eval {COMMIT;}
+  return
+  puts "Thread ended

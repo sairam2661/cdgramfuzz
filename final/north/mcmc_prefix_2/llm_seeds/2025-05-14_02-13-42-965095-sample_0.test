@@ -1,0 +1,85 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+set dbfile "${testdir}/complex.db"
+
+proc init_db {} {
+  set sqlite_config "-init ${testdir}/init.sql"
+  execsql {
+    CREATE TABLE users(id, name);
+    CREATE TABLE orders(order_id, user_id, order_date);
+  }
+  return
+}
+
+proc complex_func {} {
+  global dbfile
+  execsql "ATTACH '${dbfile}' TO main2"
+  execsql {
+    DROP TABLE main2_order2
+  }
+  return
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE main2_order1(order_id, user_id, order_date);
+    INSERT INTO main2_order1 VALUES(1,1,'2022-01-01');
+  }
+  execsql {
+    SELECT main2_order1 order from main2_order1
+  }
+} {1 1 2022 1 1 1}
+
+do_execsql_test complex-1.2 {
+  BEGIN;
+  INSERT INTO users VALUES(5,'user5');
+  INSERT INTO orders VALUES(6,5,'2022-01-02');
+  COMMIT;
+  SELECT * FROM users;
+  SELECT * FROM orders;
+} {5 user5 {} {} {} 6 5 2022 1 2 {} {}}
+
+do_test complex-1.3 {
+  ifcapable journalMode {
+    catchsql {
+      PRAGMA main2_journal_mode='WAL';
+      PRAGMA main2_synchronous='OFF';
+    }
+  }
+  execsql {
+    SELECT name FROM users;
+    SELECT name FROM orders;
+  }
+} {users orders}
+
+do_test complex-1.4 {
+  complex_func
+  execsql {
+    DROP TABLE main2_order1
+  }
+  execsql {
+    SELECT name FROM main2_order1;
+  }
+} {}
+
+do_test complex-1.5 {
+  execsql {
+    CREATE TABLE complex_table(
+      id, 
+      name, 
+      address
+    );
+  }
+  execsql {
+    INSERT INTO complex_table
+    VALUES(7,'John Doe','123 Main St');
+  }
+  execsql {
+    SELECT * FROM complex_table;
+  }
+} {7 John Doe 123  Main  St}
+
+finish_test

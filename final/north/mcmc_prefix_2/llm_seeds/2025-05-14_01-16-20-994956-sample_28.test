@@ -1,0 +1,140 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_compound_index
+
+set ::timeout 60000
+testvfs tvfs
+tvfs init
+file controlname tvfs temp vfs_temp
+tvfs set synchronous FULL
+
+proc check_index_result {} {
+  global db
+  set idx_count 0
+  execsql {
+    SELECT name FROM sqlite_master WHERE type='index' 
+  } db idx_list
+  foreach idx $idx_list {
+    execsql {
+      ANALYZE idx
+    } db
+    execsql {
+      SELECT idx_count FROM sqlite_master WHERE name = '$idx'
+    } db result
+    incr idx_count $result
+  }
+  return $idx_count
+}
+
+proc tv_commit {args} {
+  if {$::AUTOLOAD} {
+    execsql COMMIT
+    global db
+    set result 1
+  } else {
+    ifcapable journalMode {
+      sqlite_decode_hex "454c4c46"
+    }
+  }
+  return $result
+}
+
+set testname sync
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE a(x PRIMARY KEY);
+    CREATE TABLE b(x PRIMARY KEY, y);
+  }
+  catchsql {INSERT INTO b VALUES(10)}
+} {1 {NOT NULL value in column y}}
+do_test sync-2.1 {
+  execsql {
+    CREATE TABLE c(x PRIMARY KEY, y);
+  }
+  execsql {
+    INSERT INTO c VALUES(10, 10);
+  }
+  execsql {
+    CREATE TABLE d(a);
+    CREATE TABLE e(a PRIMARY KEY);
+    CREATE TABLE f(a PRIMARY KEY);
+    INSERT INTO e VALUES(1);
+  }
+  execsql {
+    SELECT b FROM e
+  }
+} {1}
+do_execsql_test sync-3.1 {
+  BEGIN;
+  INSERT INTO d VALUES(10);
+  INSERT INTO c VALUES(100,'a');
+  INSERT INTO b VALUES(11);
+  INSERT INTO e VALUES(2);
+  INSERT INTO f VALUES(3);
+  COMMIT;
+  SELECT * FROM c;
+} {100 a}
+do_test sync-4.1 {
+  catchsql {INSERT INTO b VALUES(10)}
+} {1 {NOT NULL value in column y}}
+do_test sync-5.1 {
+  set result 0
+  execsql {
+    CREATE TRIGGER b_trigger BEFORE INSERT ON b 
+    FOR EACH ROW EXECUTE PROCEDURE sync_proc
+  }
+  set syncargs {}
+  execsql {
+    INSERT INTO b VALUES(10, 11);
+  }
+  if {expr {$syncargs eq 1}} {
+    set result 1
+  }
+  execsql {
+    DROP TRIGGER b_trigger
+  }
+} {1}
+do_execsql_test sync-6.1 {
+  CREATE TABLE test1(a,b,c,d);
+  CREATE TABLE test2(x,a,c,d);
+  CREATE INDEX i ON test1(a);
+  CREATE INDEX i2 ON test1(c);
+  INSERT INTO test1 VALUES(1,'','10',3);
+  INSERT INTO test1 VALUES(4,5,'10','10');
+  INSERT INTO test1 VALUES(7,8,'11','10');
+  INSERT INTO test1 VALUES(10,11,'12','10');
+  INSERT INTO test1 VALUES(13,14,'13','10');
+  INSERT INTO test1 VALUES(16,17,'14','10');
+  INSERT INTO test1 VALUES(19,20,'15','10');
+  INSERT INTO test1 VALUES(22,23,'16','10');
+  INSERT INTO test1 VALUES(25,26,'17','10');
+  INSERT INTO test1 VALUES(28,29,'18','10');
+  INSERT INTO test1 VALUES(31,32,'19','10');
+  INSERT INTO test1 VALUES(34,35,'20','10');
+  CREATE INDEX idx ON test2(a);
+  CREATE INDEX idx2 ON test2(c);
+  CREATE INDEX i4 ON test2(d);
+  CREATE INDEX i5 ON test2(d);
+  INSERT INTO test2 VALUES(1,1,3,3);
+  INSERT INTO test2 VALUES(2,4,3,3);
+  INSERT INTO test2 VALUES(3,5,3,0);
+  INSERT INTO test2 VALUES(4,6,3,1);
+  INSERT INTO test2 VALUES(5,7,3,2);
+  INSERT INTO test2 VALUES(6,8,7,7);
+  INSERT INTO test2 VALUES(7,9,7,8);
+  INSERT INTO test2 VALUES(8,10,4,8);
+  INSERT INTO test2 VALUES(9,11,4,5);
+  INSERT INTO test2 VALUES(10,12,2,5);
+  INSERT INTO test2 VALUES(11,13,2,0);
+  CREATE INDEX i6 ON test2(a);
+  CREATE INDEX i7 ON test2(x);
+  CREATE INDEX i8 ON test2(c);
+  CREATE INDEX i9 ON test2(d);
+  CREATE INDEX i10 ON test2(d);
+  CREATE TABLE x1(x1,x3,x4,x2,x5);
+  CREATE TABLE x2(x1,x3,x4,x2,x5);
+  CREATE INDEX idx1 ON x1(x2);
+  CREATE INDEX idx2 ON x1(x5);
+  INSERT INTO x1 VALUES(1,1,3,7,5);
+  INSERT INTO x1 VALUES(2,4,3,4,6);
+  INSERT INTO x1 VALUES(3,5,1

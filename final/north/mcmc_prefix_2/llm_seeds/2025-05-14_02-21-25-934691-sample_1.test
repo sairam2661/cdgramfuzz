@@ -1,0 +1,110 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix lock
+
+set ::timeout 60000
+set db main
+set wal true
+
+catchsql {
+  PRAGMA journal_mode = 'WAL'
+} {}
+
+proc generate_random_row {tablename} {
+  set random_data ""
+  for {set i 1} {$i le 50} {incr i} {
+    append random_data "RANDOM($i), "
+  }
+  return "INSERT INTO $tablename VALUES($random_data);"
+}
+
+proc sqlite_random_query {query} {
+  execsql {
+    $query
+  }
+}
+
+do_execsql_test lock-1.1 {
+  BEGIN;
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+  COMMIT;
+} {}
+
+do_execsql_test lock-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(2);
+  COMMIT;
+} {}
+
+do_execsql_test lock-1.3 {
+  SELECT x FROM a;
+} {1 2}
+
+set random_query1 "INSERT INTO a VALUES(3); DELETE FROM a WHERE x=1; UPDATE a SET x=4 WHERE x=2;"
+
+do_execsql_test lock-1.4 {
+  BEGIN;
+  COMMIT;
+  SELECT x FROM a;
+} {4}
+
+do_execsql_test lock-2.1 {
+  CREATE TABLE b(x,y);
+} {}
+
+set random_query2 "INSERT INTO b VALUES(5,6), (7,8), (9,10);"
+
+do_execsql_test lock-2.2 {
+  SELECT * FROM b;
+} {5 6 7 8 9 10}
+
+do_execsql_test lock-2.3 {
+  PRAGMA synchronous = 0;
+} {0}
+
+do_execsql_test lock-2.4 {
+  SELECT * FROM b;
+} {5 6 7 8 9 10}
+
+do_execsql_test lock-3.1 {
+  CREATE TABLE c(x,y,z);
+} {}
+
+set random_query3 {
+  INSERT INTO c VALUES
+    (11,12,13)
+  }
+
+do_execsql_test lock-3.2 {
+  BEGIN;
+  INSERT INTO c VALUES(14,15,16);
+  COMMIT;
+} {}
+
+do_execsql_test lock-3.3 {
+  SELECT * FROM c;
+} {11 12 13 14 15 16}
+
+do_test lock-4.1 {
+  sqlite_random_query $random_query1
+  execsql {
+    SELECT * FROM sqlite_master;
+  }
+} {}
+
+do_test lock-4.2 {
+  sqlite_random_query $random_query2
+  execsql {
+    SELECT * FROM sqlite_master;
+  }
+} {}
+
+do_test lock-4.3 {
+  sqlite_random_query $random_query3
+  execsql {
+    SELECT * FROM sqlite_master;
+  }
+} {}
+
+finish_test

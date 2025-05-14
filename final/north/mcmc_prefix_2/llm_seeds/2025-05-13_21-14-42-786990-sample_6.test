@@ -1,0 +1,31 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multi_threaded
+
+set ::timeout 60000
+
+proc test_trigger {} {
+  global timeout
+  set time 10000
+  if {$::ttimeout}$time
+  } {
+    time sleep 2
+  } {
+    return
+  }
+  execsql {
+    CREATE TABLE b(x UNIQUE);
+    CREATE TABLE c(y);
+    CREATE TABLE d(x,z);
+    INSERT INTO c VALUES(0);
+    INSERT INTO d VALUES(0,99);
+    INSERT INTO d VALUES(0,101);
+    INSERT INTO b VALUES(1);
+    INSERT INTO b VALUES(2);
+    INSERT INTO b VALUES(3);
+    INSERT INTO b VALUES(4);
+    INSERT INTO b VALUES(5);
+    INSERT INTO b VALUES(6);
+    INSERT INTO b VALUES(7);
+    INSERT INTO b VALUES(8);
+    INSERT INTO b SELECT x1FROM (

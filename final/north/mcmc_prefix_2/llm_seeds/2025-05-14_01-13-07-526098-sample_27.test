@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000  sets a timeout after 6000 seconds
+
+proc get_random_id {n} {
+  srand
+  for {set i 0} {$i lt $n} {incr i} {
+    append id $i
+  }
+  return $id
+}
+
+proc generate_random_string {length} {
+  set chars "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  for {set i 0} {$i lt $length} {incr i} {
+    append str "[string index $chars [expr int(rand()*[string length $chars]]]]"
+  }
+  return $str
+}
+
+proc db_transaction {t_sql} {
+  db func random random
+  set db_trans_id 1
+  eval db eval {BEGIN}
+  db eval $t_sql
+  set db_trans_id 0
+  db eval {COMMIT}
+  return $db_trans_id
+}
+
+proc db_count {t_table} {
+  return $db eval {SELECT count(*) FROM sqlite_master WHERE name = '$t_table'}
+}
+
+proc db_add {t_table t_data} {
+  db eval {INSERT INTO $t_table VALUES} $t_data
+}
+
+proc db_add_id {t_table t_data t_id} {
+  db eval {INSERT INTO $t_table VALUES} $t_data
+  set id $db_last_insert_rowid
+  set id $id $t_id
+  db eval {UPDATE $t_table SET id}
+}
+
+proc string_equal {t_left t_right} {
+  if {$t_left eq $t_right} {return true} else {return false}
+}
+
+do_execsql_test query-1.1 {
+  CREATE TABLE users(name,user_id,age);
+  INSERT INTO users VALUES("John Doe",12345,30);
+} {}
+do_test query-1.2 {
+  set id "get_random_id 10"
+  set id "$id"
+  string_equal $id "1234567890"
+} {false}
+do_execsql_test query-1.3 {
+  CREATE TABLE roles(role_name,description);
+  INSERT INTO roles VALUES("admin","admin role");
+} {}
+do_test query-1.4 {
+  set str "generate_random_string 20"
+  set str "$str 1234567890"
+  string_equal $str "12345678901234567890"
+} {false}
+do_execsql_test query-1.5 {
+  CREATE TABLE test1(a,col2);
+} {}
+do_execsql_test query-1.6 {
+  CREATE TABLE test2(a,col2);
+} {}
+do_test query-1.7 {
+  set id "[db_count test1] [db_count test2]"
+  string_equal $id "12 0"
+} {true}
+do_test query-1.8 {
+  db_add test1 values1 "1   10.23 $abc hello"
+  db_add test2 values1 "2   20.25 $hello hello"
+} {0}
+do_test query-1.9 {
+  set id "$[db_count test1] $[db_count test2]"
+  string_equal $id "2 2"
+} {true}
+do_test query-1.10 {
+  set db transaction "INSERT INTO test1 VALUES(3,99.09 'goodbye, world')"
+  set db "db_last_insert_rowid"
+  set db "id $db_trans_id"
+  string_equal $id "3 3"
+} {true}
+finish_test

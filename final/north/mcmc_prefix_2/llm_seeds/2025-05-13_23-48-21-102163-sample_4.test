@@ -1,0 +1,192 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set sqlite_openherit 0
+set nTry 5
+db setting timeout 30000
+forcedelete testdb
+
+proc my_test_func {testname start_time} {
+  global timeout
+  if { $timeout" == 0} {
+    puts "TEST $testname TIMEOUT"
+    return -code abort
+  } else {
+    if { [expr {$::global(auto_execok date) - $start_time}] >= $timeout } {
+      puts "TEST $testname TIMEOUT"
+      return -code abort
+    }
+  }
+  return 0
+}
+
+do_execsql_test 5.1 {
+  CREATE TABLE t1(a, b);
+  CREATE INDEX i1 ON t1(b);
+}
+
+set ::test_data(-1.1.1) "test data 1"
+set ::test_data(-1.1.2) "test data 2"
+
+do_test 1.x {
+  execsql {
+    INSERT INTO t1 VALUES(1, 'foo');
+  }
+  list
+} {}
+
+do_execsql_test -skip 2.x.1 {
+  BEGIN;
+  INSERT INTO t1 VALUES(2, 'bar');
+  COMMIT;
+} {} 
+proc test_insert {value} {
+  do_execsql_test 1.x {
+    INSERT INTO t1 VALUES($::value, 'foo insert');
+  }
+}
+test_insert 2
+test_insert 3
+
+set test_result [lindex [execsql {SELECT MAX (rowid) FROM t1}] 0 ]
+do_test 1.y {
+  for {set i 1} {$i <= $::test_result } {incr i} {
+    do_test 2.x.\$i."
+      {execsql {SELECT a FROM t1 WHERE rowid = '$i'}}
+    } {foo insert}
+  }
+  return ok
+  ok
+  return fail
+  fail
+
+sqltest proc test_func {} {
+  global test_result test_data
+  lappend test_result $test_data
+  if { $test_data eq "test data 1" } {
+    set test_result 2
+  }  elseif { $test_data eq "test data 2" } {
+    set test_result 3
+  }  
+  if { $test_result eq 2 } {
+    append test_data { additional text}
+    return
+  }
+  return test_result
+}
+
+source testfunc_test
+
+register_sqltest_function {test_func} test_func
+registered proc
+test_func test_data
+test_data "test data 2"
+do_test 2.99 {
+    set test_result
+} { test data 2 additional text }
+test_data "test data 2"
+
+do_execsql_test 4.1 {
+  SELECT * FROM sqlite_master
+}
+do_execsql_test 4.2 {
+  DROP TABLE IF EXISTS t1
+}
+forcedelete t1
+forcedelete testdb
+forcedelete testdb2
+set N try 5
+forcedelete testdb3
+for { set i 0 } { $i" < $::N } { incr i 1} { do_test 5.\$i { catch {forcedelete testdb4}}} {}
+forcedelete testdb5
+
+do_execsql_test sync-5.1 {
+  ATTACH 'testdb5' AS db5
+  PRAGMA journal_mode
+} {wal}
+
+ifcapable journalMode {
+
+  catchsql {PRAGMA journal_mode=WAL}
+
+  do_test 4.99 {
+    forcedelete testdb2
+    forcedelete testdb3
+    forcedelete testdb4
+    forcedelete testdb5
+    forcedelete testdb6
+    forcedelete testdb7
+  }
+
+  forcedelete testdb8 testdb9
+  execsql {
+    DETACH FROM db5;
+  }
+  file exists testdb7
+} {0 0}
+forcedelete testdb8 testdb9
+forcedelete sync-10.*
+do_execsql_test sync-6  {
+  CREATE TABLE b(a, b);
+
+  CREATE TABLE c(a, b);
+  DROP table c;
+
+  SELECT name FROM sqlite_master
+} { b btestdb sync-9.* }
+
+ifcapable {WITHOUT ROWID} {
+  do_test sqlite3test-10 {
+    CREATE TABLE c(a, b);
+  } {c a b TEXT}
+
+  do_test sqlite3test-11.1 {
+    SELECT type, name 
+    FROM sqlite_master WHERE name like "c__rowid"
+  } {{}
+
+  do_test sqlite3test-11.2 {
+    SELECT type FROM sqlite_master WHERE name like "c_rowid"
+  } {{}
+
+}
+do_test sqlite3test-12 {
+  CREATE TABLE c(a, b);
+}
+forcedelete sync-10*
+
+sqlite_open testdb10
+
+do_execsql_test test-13.1 {
+  WITH RECURSIVE res(x, y) AS (
+    SELECT 1 AS x, 1 AS y
+    UNION 
+    SELECT res.x + 1, res.x + 2 FROM res WHERE res.x <= 10
+  )
+  SELECT * FROM res;  
+} {
+  1 1
+  2 3
+  3 4
+  4 5
+  5 6
+  6 7
+  7 8
+  8 9
+  9 10
+  10 11
+}
+
+forcedelete sync-4.*
+
+if  {[variant] in {berkeley db  eval}} {
+  do_test sqlite3test-17 {
+    execsql {
+      BEGIN EXCLUSIVE;
+      SELECT 1
+    }
+  } {1}
+} else {
+  do_test sqlite

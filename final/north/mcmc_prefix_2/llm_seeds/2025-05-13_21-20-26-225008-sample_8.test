@@ -1,0 +1,75 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set sqlite_options 0
+
+do_test test-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(1.1);
+    SELECT * FROM b;
+  }
+} {1.1}
+
+do_test test-2.1 {
+  execsql {
+    DROP TABLE b
+  }
+} {}
+
+proc run_sql_test {sql} {
+  set result {}
+  execsql $sql
+  set result $sql
+  return $result
+}
+
+do_execsql_test test-3.1 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(2.1);
+  SELECT * FROM c;
+}
+{CREATE TABLE c zincrease 0 c y 1 c z 2.1 c zincrease 0
+INSERT INTO c VALUES
+   $::DB 2.1
+SELECT z FROM c}
+do_execsql_test test-3.1 {
+  SELECT * FROM c;
+} {2.1}
+
+proc create_table {name} {
+  set result {}
+  execsql {
+    CREATE TABLE $name
+  }
+  return $result
+}
+
+do_execsql_test test-4.1 {
+  CREATE TABLE d(z);
+  INSERT INTO d VALUES(2.2);
+  SELECT * FROM d;
+}
+{2.2}
+
+proc delete_table {name} {
+  execsql {
+    DROP TABLE $name
+  }
+}
+
+delete_table d
+execsql {
+  DROP TABLE c
+}
+execsql {
+  DROP TABLE a
+}
+
+do_catchsql_test test5.1 {
+  PRAGMA journal_mode= 'DEFALULT'
+} {1 {unknown pragma or option}}
+
+finish_test

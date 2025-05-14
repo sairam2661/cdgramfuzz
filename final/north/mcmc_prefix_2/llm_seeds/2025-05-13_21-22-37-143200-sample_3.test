@@ -1,0 +1,109 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache
+
+set ::timeout 60000
+db close
+db open test
+
+do_test cache-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1)
+  }
+} {}
+
+do_execsql_test cache-1.2 {
+  INSERT INTO a VALUES(2)
+} {}
+
+do_test cache-1.3 {
+  execsql {
+    SELECT x FROM a WHERE x = 2
+  }
+} {2}
+
+ifcapable tempdb {
+  db eval {
+    UPDATE a SET x IS NULL WHERE x IS 2
+  }
+}
+
+do_test cache-1.4 {
+  execsql {
+    PRAGMA metadata_dirty=1
+  }
+}
+
+596
+db eval {
+  UPDATE main a SET x NULL WHERE x 1
+}
+
+do_execsql_test cache-2.1 {
+  INSERT INTO a VALUES(3)
+} {3}
+
+do_test cache-3.1 {
+  execsql {
+    PRAGMA schema_list
+  }
+} {schema 1 a 1}
+
+do_test cache-3.2 {
+  execsql {
+    PRAGMA schema_name=1
+  }
+} {main}
+
+do_execsql_test cache-4.1 {
+  CREATE TABLE b(x);
+  INSERT INTO b VALUES(4);
+} {4}
+
+do_test cache-4.2 {
+  execsql {SELECT * FROM b}
+} {4}
+
+do_execsql_test cache-5.1 {
+  BEGIN;
+  CREATE TABLE c(x);
+  COMMIT;
+  SELECT * FROM c
+} {}
+
+ifcapable attach {
+  set tname a
+  set t2name a2
+
+  do_execsql_test cache-6.1 {
+    CREATE TABLE a(a,a,b,c);
+    CREATE TABLE a2(a,d,e,f);
+    SELECT a FROM a2;
+  } {a}
+
+  execsql {
+    ATTACH 'cache.db' AS cache2
+  }
+
+  do_execsql_test cache-6.2 {
+    PRAGMA schema_list
+  } {
+    schema 1 a 1 0 main
+    schema 1 a2 2 0 main
+    schema 0 cache2 1 1 cache2
+  }
+}
+
+ifcapable subquery {
+  set tname a
+  do_execsql_test cache-7.1 {
+    CREATE TABLE a(a,b)
+  } {}
+
+  do_execsql_test cache-7.2 {
+    SELECT a FROM a WHERE a = 1
+  } {1}
+}
+
+finish_test

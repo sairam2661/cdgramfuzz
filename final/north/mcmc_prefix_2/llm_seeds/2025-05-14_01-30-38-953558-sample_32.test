@@ -1,0 +1,43 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbconfig
+
+set ::timeout 60000
+
+proc dbconfig_func {args} {
+  global dbconfigargs
+  lappend dbconfigargs $args
+}
+
+catch { db config list } dbconfig_list
+if {$dbconfig_list eq "dbconfig_list = sqlite3_config(ListFunctions)" } { 
+  do_test dbconfig1.1 { dbconfig list } {dbconfig_list}
+}
+
+set sqlite_config_list_functions 1
+do_test dbconfig1.2 { dbconfig list } {0}
+
+do_execsql_test dbconfig1.3 {
+  select sqlite_source_id  from sqlite_master  where type  is  'table'
+} {2}
+
+ifcapable vtracetable {
+  do_execsql_test dbconfig2.1 {
+    PRAGMA vdbe_trace
+  } {1}
+  do_test dbconfig2.2 {
+    execsql {SELECT sqlite_source_id FROM sqlite_master WHERE type='table'}
+  } {2}
+  do_test dbconfig2.3 {
+    execsql {SELECT vdbe_program FROM sqlite_vdbe_trace}
+  } {1}
+}
+
+dbconfig_func {cache_spill limit}
+dbconfig_func {page_size 4096}
+dbconfig_func {cache_size 1000}
+ifcapable journalMode {
+  set default_journal_mode "wal"
+}
+
+finish_test

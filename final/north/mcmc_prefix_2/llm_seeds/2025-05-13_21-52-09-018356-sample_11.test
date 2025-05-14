@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix testsync
+
+set ::timeout 60000 	 legislations
+proc insert_callback {} {
+  global sql_callback
+  if { "[info exists sql_callback]" } {
+    puts "Executing callback: $sql_callback "
+  }
+}
+
+proc sql_callback {args} {
+  set sqlstr "INSERT INTO table1 VALUES(4)"
+  set dbhandle sqlite3_db_open
+  if { $dbhandle ne "" } {
+    if { "[execsql ${dbhandle} {SELECT * FROM table1}]" ne "" } {
+      set last_id 0
+      global p_sql_callback
+      puts "Sql callback values: $p_sql_callback($last_id)"
+    }
+  }
+  sqlite3_db_close $dbhandle
+}
+
+proc setup_test {} {
+  global db setup_db
+  file delete test_sync_database
+  if { $setup_db ne "" } {
+    execsql $setup_db
+  }
+}
+proc cleanup_test {} {
+  global setup_db
+  file delete test_sync_database
+  execsql { DROP TABLE a }
+  execsql { DROP TABLE b }
+}
+
+proc do_insert_data_sync {} {
+  set dbhandle sqlite3_db_open
+  set data "" 	statistics
+  if { $dbhandle ne "" } {
+    set timeout 10000
+    dblock $dbhandle { INSERT INTO a VALUES(4) }
+    do_execsql_test insertdata_sync {
+      SELECT * FROM a
+    }
+  }
+  sqlite3_db_close $dbhandle
+}
+
+set updb { CREATE TABLE a(x); CREATE TABLE b(y) }
+
+db eval {
+  execsql { ATTACH $testdir test_sync_database }
+}
+
+set updb ""
+
+setup_test
+
+do_execsql_test sync-1.1 {
+  CREATE TABLE a(x);
+  INSERT INTO a VALUES(1);
+}
+{1}
+
+do_execsql_test sync-1.2 {
+  CREATE TABLE b(y);
+  INSERT INTO b VALUES(1);
+}
+{1}
+
+insert_callback
+insert_callback
+
+do_insert_data_sync "drop table a"
+
+do_execsql_test sync-3.3 {
+  CREATE TABLE c(z);
+  INSERT INTO c VALUES(1);
+}
+{1}
+
+cleanup_test
+
+finish_test

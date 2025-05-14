@@ -1,0 +1,84 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+proc query_proc {} {
+  global sqlstmt
+  lappend sqlstmt
+}
+
+set sqlstmt {}
+
+do_test query-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(10);
+  }
+  llength $sqlstmt
+} {2}
+
+set sqlstmt {}
+
+do_execsql_test query-1.2 {
+  INSERT INTO b SELECT x
+    (  											
+  	   
+  			*
+  		)
+   	   	
+  } {1}
+
+set sqlstmt {}
+
+do_test query-1.3 {
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES(100);
+  }
+  llength $sqlstmt
+} {2}
+
+set sqlstmt {}
+
+do_execsql_test query-1.4 {
+  BEGIN;
+  INSERT INTO c SELECT x
+    (  											
+  	   
+  	* 	)
+   	   	
+  }
+  {0 {}}
+
+do_test query-2.1 {
+  execsql {
+    DROP TABLE b
+  }
+  execsql {SELECT * FROM b}
+} {}
+
+do_execsql_test query-2.2 {
+  CREATE TABLE d(x);
+  INSERT INTO d VALUES(200);
+  SELECT * FROM d;
+} {200}
+
+do_execsql_test query-3.1 {
+  BEGIN;
+  INSERT INTO d SELECT x
+    (  											
+  	   
+  	* 	)
+   	   	
+  }
+  {0 {}}
+
+do_test query-3.2 {
+  execsql {
+    DROP TABLE c
+  }
+  execsql {SELECT * FROM c}
+} {}
+
+finish_test

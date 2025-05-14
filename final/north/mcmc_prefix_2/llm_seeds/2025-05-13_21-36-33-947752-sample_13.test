@@ -1,0 +1,79 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+set testfixture 3.35.0
+
+do_execsql_test 1.1 {
+  CREATE TABLE t1(a PRIMARY KEY, b);
+}
+do_test 1.2 {
+  execsql {
+    SELECT * FROM t1
+  }
+} {}
+
+set sqlite_dbfile $testdir TESTDB
+
+do_execsql_test 2.1 {
+  ATTACH 'TESTDB' AS db2
+} {0 {}}
+
+do_test 2.2 {
+  catchsql {
+    SELECT * FROM db2mainmainmaindb2t1
+  }
+} {1 {no such table}}
+
+do_execsql_test 3.1 {
+  VACUUM 'TESTDB'
+} {}
+
+set autoconf_fail 1
+
+do_execsql_test 4.1 {
+  PRAGMA autoincrement_id
+} {1}
+do_execsql_test 4.2 {
+  CREATE TABLE t2(a PRIMARY KEY, b);
+} {0 {}}
+do_execsql_test 4.3 {
+  INSERT INTO t2 VALUES(5, 11);
+} {} 
+do_execsql_test 4.4 {
+  SELECT a FROM t2
+} {5}
+
+db eval {
+  COMMIT
+  DROP TABLE t2
+  PRAGMA foreign_keys
+}
+
+if { 0 } {
+  do_execsql_test 5.1 {
+    CREATE TABLE t3(x PRIMARY KEY, y);
+    CREATE TABLE t4(x, y,
+                    PRIMARY  PRIMARY KEY);
+  }
+} {0 {}}
+
+do_execsql_test 6.1 {
+  BEGIN;
+  INSERT INTO t6 VALUES('a');
+  COMMIT
+} {} 
+
+set dbpath $testdir
+set loglevel 0
+set busytimeout 0
+
+db eval {
+  COMMIT;
+  PRAGMA defer_foreign_keys
+  }
+
+set db $testdir
+
+finish_test

@@ -1,0 +1,281 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+catch {file attributes $testdir redirect standard error}
+debug 1
+set testprefix {}
+proc test_error {args} {
+  if {$args eq "wal rollback failed"} {
+    return
+  }
+  if { $args eq "storage engine error" } { return}
+  if {$::testprefix eq ""} { return }
+  if { $args eq "assertion failed:!sqlite3ConnectionOpenReadonly" } {
+    return
+  }
+  if { $args eq "assertion failed: ||!([file exists $::sqlite_tempname] ||![file isdirectory $::sqlite_tempname])" } {
+    return
+  }
+  if { $args eq "assertion failed:!sqlite3ConnectionOpenReadonly" } {
+    return
+  }
+  if { $args eq "attempt to write a readonly database" } {
+    return
+  }
+  if { $args eq "not a transaction" } {
+    return
+  }
+  if { $args eq "database disk image is malformed" } {
+    return
+  }
+  if { $args eq "out of memory" } {
+    return
+  }
+  if { $args eq "disk I/O error" } {
+    return
+  }
+  if { $args eq "not an error" } {
+    return
+  }
+  if { $args eq "sqlite3_errstr(1) expected, but got " } {
+    return
+  }
+  if { $args eq "memory error" } {
+    return
+  }
+  if { $args eq "unknown SQL command" } {
+    return
+  }
+  if { $args eq "sqlite3VdbeExec failed, error-code [1]" } {
+    return
+  }
+  if { $args eq "SQLite database corruption: failed to read the first sector of the database file"}} {
+    return
+  }
+  if { $args eq "cannot open file: /tmp" } {
+    return
+  }
+  if { $args eq "cannot open file: /private"  } {
+    return
+  }
+  error $args
+  catch { set testprefix "" }
+  error $args
+  exit ""
+  break
+  break
+  finish_test
+  return
+  return
+  error $args
+  catch { set testprefix "" }
+  return
+  break
+  break
+  return
+  return
+  break
+  break
+  exit ""
+  finish_test
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  error $args
+  catch { set testprefix "" }
+  exit ""
+  error $args
+  return
+  error $args
+  catch { set testprefix "" }
+  set testprefix {}
+  error $args
+  return
+  return
+  error $args
+  return
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  return
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  set testprefix {}
+  return
+  return
+  error $args
+  return
+  return
+  error $args
+  return
+  return
+  return
+  error $args
+  return
+  catch { set testprefix "" }
+  return
+  return
+  catch { set testprefix "" }
+  return
+  return
+  error $args
+  return
+  error $args
+  return
+  error $args
+  set testprefix {}
+  return
+  return
+  error $args
+  return
+  return
+  return
+  error $args
+  set testprefix {}
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  error $args
+  return
+  catch { set testprefix "" }
+  error $args
+  error $args
+  set testprefix {}
+  return
+  error $args
+  return
+  return
+  error $args
+  return
+  error $args
+  return
+  return
+  return
+  error $args
+  set testprefix {}
+  return
+  return
+  error $args
+  set testprefix {}
+  error $args
+  return
+  return
+  error $args
+  return
+  return
+  return
+  error $args
+  return
+  error $args
+  return
+  error $args
+  set testprefix {}
+  return
+  set testprefix {}
+  return
+  error $args
+  return
+  return
+  return
+  error $args
+  error $args
+  return
+  set testprefix {}
+  return
+  return
+  set testprefix {}
+  return
+  catch { set testprefix "" }
+  return
+  return
+  set testprefix {}
+  return
+  return
+  error $args
+  return
+  error $args
+  return
+  return
+  set testprefix {}
+  return
+  error $args
+  return
+  error $args
+  set testprefix {}
+  catch { set testprefix "" }
+  return
+  return
+  return
+  return
+  return
+  error $args
+  catch { set testprefix "" }
+  set testprefix {}
+  return
+  return
+  error $args
+  return
+  return
+  return
+  return
+  return
+  return
+  catch { set testprefix "" }
+  return
+  error $args
+  return
+  return
+  catch { set testprefix "" }
+  set testprefix {}
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  return
+  error $args
+  return
+  return
+  return
+  return
+  catch { set testprefix "" }
+  return
+  return
+  error $args
+  error $args
+  catch { set testprefix "" }
+  return
+  return
+  return
+  return
+  return
+  catch { set testprefix "" }
+  error $args
+  return
+  catch { set testprefix "" }
+  return
+  catch { set testprefix "" }
+  set testprefix {}
+  error $args
+  return
+  return
+  error $args
+  return
+  return
+  catch { set testprefix "" }
+  return
+  set testprefix {}
+  return
+  return
+  return
+  return

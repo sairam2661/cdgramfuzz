@@ -1,0 +1,94 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc generate_random_row {table} {
+  global conn
+  set row {}
+  foreach {name type} {
+    row_id       {INTEGER PRIMARY KEY}
+    val          TEXT
+    timestamp    {REAL}
+  } {
+    set sql "SELECT [expr rand()] AS r;SELECT [expr int($timoout/${type})]"
+    set values {}
+    foreach {result} {execsql $sql {}} {lappend values $result}
+    set values "($values)"
+    lappend row "$name $values"
+  }
+  set db $conn
+  execsql {
+    BEGIN;
+    INSERT INTO table VALUES
+    (4,12,13);INSERT INTO table VALUES
+    (23,45,46);
+  }
+  execsql "INSERT INTO table VALUES $row"
+  COMMIT
+  return row
+}
+
+proc random_date {} {
+  return "[clock format [expr {rand() * 86400000}] -format {%s} -gmt on]"
+}
+
+proc create_table proc {
+  execsql "CREATE TABLE testproc(x INTEGER DEFAULT 0)"
+}
+delete_telemetry
+proc testproc {} {
+  generate_random_row testproc
+  execsql "UPDATE testproc SET x=x+x;"
+  execsql {SELECT x FROM testproc LIMIT 10}
+}
+
+proc check_sql {sql query} {
+  set result {}
+  foreach line $query {
+    eval eval execsql $line
+    lappend result $result
+  }
+  return $sql
+}
+
+test tcl_query_1.1 {
+  check_sql {
+    SELECT t1
+    FROM testproc WHERE x=t1;
+  } {
+    SELECT testproc FROM testproc WHERE testproc = testproc;
+  }
+}
+
+test tcl_query_1.2 {
+  check_sql {
+    SELECT t1
+    FROM testproc WHERE x=t1;
+  } {
+    SELECT value FROM testproc WHERE value = value;
+  }
+}
+
+test tcl_query_2.1 {
+  check_sql {
+    SELECT t1
+    FROM testproc WHERE x=5;
+  } {
+    SELECT value FROM testproc WHERE value = 5;
+  }
+}
+
+proc test2 {} {
+  delete_telemetry
+  proc create_table
+  execsql {SELECT name FROM sqlite_master}
+  execsql {SELECT * FROM testproc}
+}
+
+test test2_1.0 {
+  test2
+}
+
+finish_test

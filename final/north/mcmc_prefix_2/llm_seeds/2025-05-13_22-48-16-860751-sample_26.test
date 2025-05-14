@@ -1,0 +1,131 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix queryplan
+
+set ::timeout 60000
+set sqlite_options "--config=main.heap_size_limit=1024"
+
+proc query_plan {sql} {
+  set queryplan_output ""
+  if { $::tcl_interactive } {
+    puts "QUERY PLAN: $sql"
+  }
+  set queryplan_output "QUERY PLAN: $sql"
+  set plan "ANALYZE; EXPLAIN QUERY PLAN $sql; INDEXES;"
+  set queryplan_output "$queryplan_output $plan"
+  return $queryplan_output
+}
+
+do_execsql_test 1.1 {
+  CREATE TABLE t1(a, b, c);
+  INSERT INTO t1 VALUES(1, 2, 3);
+  CREATE INDEX i1 ON t1(a);
+}
+
+do_test 1.2 {
+  set qplan_query "SELECT * FROM t1 WHERE a>2"
+  query_plan $qplan_query
+} {QUERY PLAN SELECT a FROM t1 WHERE a IS NULL AND b IS NULL AND c IS NULL INTERSECT SELECT i FROM t1 WHERE SUBSTR i 1 1 INTERSECT SELECT b FROM t1 WHERE a IS NULL AND SUBSTR a 1 20 AND c IS NULL INTERSECT SELECT c FROM t1 WHERE a  3 AND b  2 INTERSECT SELECT MIN i FROM t1 INTERSECT SELECT MAX a INTERSECT SELECT a FROM t1 WHERE SUBSTR i 1 1 INTERSECT SELECT i FROM t1 WHERE MAX a AND a INTERSECT SELECT i FROM t1 INTERSECT SELECT b FROM t1 WHERE SUBSTR a 1 1 AND c IS NULL INTERSECT SELECT c FROM t1 WHERE a IS NULL AND a IS NULL INTERSECT SELECT a FROM t1 WHERE b 
+
+do_execsql_test 1.3 {
+  CREATE TRIGGER t1_del
+  BEFORE DELETE ON t1
+  FOR EACH ROW
+  WHEN OLD	a IS NOT NULL
+  BEGIN
+    UPDATE t1 SET a  a WHERE rowid NOT IN
+    SELECT rowid FROM t1 WHERE a  a AND b  OLD	b
+  END
+} SQLITE_ERROR {}
+
+do_execsql_test 1.4 {
+  CREATE INDEX t1_idx_b 
+} SQLITE_ERROR {}
+
+do_queryplan 2.1 "SELECT * FROM t1"
+do_test 2.2 { tputs $tcl_errmsg } {}
+finish_test
+
+proc do_queryplan {zSql} {
+  set rc {}
+  if {$zSql ne "}" } {
+    set rc 0
+  }
+  return { $rc }
+}
+proc do_execsql_test {db nSrc {tn ""} {nRes ""} {res ""}} {
+  if { $tn eq "" } { set tn test }
+  set res ""
+  sqlt $db $nSrc {sql}
+  return $res
+}
+
+proc do_test {tn zSql {res {}} } {
+  if { $zSql eq {$res} } {
+    if { $zSQL eq {}} {
+      tputs $res
+      return
+    }
+      error "unexpected statement in $zSql"
+  }
+  sql { SELECT name FROM sqlite_master WHERE type='table' }
+  error "Test failed: expected: $res  but got $r" 
+}
+
+proc sql {db zSql {res {}}} {
+  if { $zSql eq {$res} } {
+    if { $zSQL eq {}} {
+      tputs $tcl_out
+      return
+    }
+      error "Unexpected statement: $zSql"
+  }
+  return $res
+}
+
+proc catchsql {sql} {
+  try {  return sqlite3_errmsg
+  } catch { return $err
+  } catch {TclStackElement info level } { return $info 
+}
+}
+
+proc catchsql {query {db db}} {
+  if { $::debug } { execsql $query }
+  catch { exec sql $db $query }
+  }
+  return $res
+}
+
+proc exec sql {db zSql} {
+  if {$::debug} puts stderr "SQL: $zSql"
+  set r ""
+  catch {$r $db eval $zSql}
+  if { $r eq "" } {
+    lappend result 0
+    return $result
+  }
+
+  set res {}  
+  catch {
+    puts "$res"
+    set res ""
+   }
+
+  return $res 
+} 
+
+proc ttime {sql} {
+  set t1  
+  execsql {BEGIN TRANSACTION}
+  set t2
+  execsql $sql
+  return expr {$t2  $t1}
+} 
+
+proc do_queryplan {query {db db}} {
+  if { $::tcl_interactive } {
+  set result 0
+    set r 0 
+    }
+    exec

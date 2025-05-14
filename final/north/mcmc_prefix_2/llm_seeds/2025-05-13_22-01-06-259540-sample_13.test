@@ -1,0 +1,183 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000 ammen
+proc check_schema {} {
+  set schema {
+    CREATE TABLE customers(id PRIMARY KEY, name, address);
+    CREATE TABLE orders(order_id PRIMARY KEY, customer_id, order_date);
+    CREATE INDEX idx_orders ON orders(customer_id);
+  }
+  execsql {
+    CREATE VIRTUAL TABLE temp_vtab USING temp_index_temp_vtab2
+  }
+  foreach line $schema {
+    if {$::tcl_rcount} { lappend schema $line }
+  }
+  execsql {
+    drop table if exists temp_vtab
+  }
+  execsql {
+    DELETE FROM $::DB temp_vtab
+  }
+  execsql {
+    $schema
+  }
+}
+
+proc check_index {index_list} {
+  set table {CREATE TABLE customer_orders(order_id PRIMARY KEY, customer_id, order_date);}
+  execsql {
+    drop table if exists customer_orders
+  }
+  execsql $table
+  set sql "INSERT INTO customer_orders VALUES(1,1,DATE( 'now'));"
+  for {set i 2} {$i le 10} {incr i} {
+    append sql "INSERT INTO customer_orders VALUES($i,1,DATE( 'now'));"
+  }
+  execsql $sql
+  set row_count 0
+  set index_info_sql {
+    PRAGMA index_info
+  }
+  foreach idx $index_list {
+    set count 0
+    foreach lntmp {idx name desc} {
+      execsql {
+        PRAGMA index_info="$idx"
+      }
+      set count 0
+      
+      while { $::tcl_rcount } {incr count}
+    }
+    do_test complex_index_$idx {
+      set row_count 0
+      execsql {
+        PRAGMA index_info="$idx"
+      }
+      do_eq $count
+    } $count
+  }
+  if { $row_count eq $count } { do_test result complex_index_correct {
+    return $row_count
+    execsql {
+      delete from table  customer_orders
+    }
+  } $row_count }
+  error "row_counts dont match:$row_count!=$count"
+  error "table customer orders should have been deleted
+    execsql {
+    drop table if exists customer_orders;
+  }
+}
+
+do_test complex-1.1 {
+  check_schema
+  execsql {
+    SELECT sql FROM sqlite_master
+  }
+} {customers orders}
+
+do_test complex-1.2 {
+  execsql {
+    INSERT OR IGNORE INTO customers VALUES(1, 'A', 'B');
+    INSERT INTO customers (name, address ) VALUES('C', 'D')
+  }
+  execsql {
+   SELECT id, name, address FROM customers
+  }
+} {1  NULL        NULL 2  C  D}
+
+do_test complex-1.3 {
+  check_index {idx_orders}
+  check_index {}
+}
+
+ifcapable vtab {
+    sqlite3_vtab *p 
+    sqlite3_create_vtab db
+}
+finish_test
+execsql {
+  drop  table if exists temp_vtab;
+}
+ 
+finish_test; 
+ifcapable vtab {
+  sqlite3_vtab *p 
+}  
+if {$code!= 0 } {
+  error "Test timed out"
+} 
+  execsql {drop  table  if exists temp_vtab
+}
+  execsql {    
+    drop  table customers;
+}   
+execsql {
+  CREATE TABLE customers(id PRIMARY KEY, 
+    name, address);
+
+  DROP INDEX if EXISTS idx_orders;
+}   
+ 
+finish_test  ; 
+
+proc check_function {proc name name argcount paramtype returntype} {
+  set sql "SELECT $proc"
+  set param " FROM customers WHERE id"
+  if {$param ne {}} { append sql $param }
+  append sql " LIMIT 10"
+  do_test "check_function_$proc"
+  {SQLITE_OK} {  execsql { SELECT count(x) FROM $proc } }
+if { "$proc eq x" } {
+    check_string_func proc
+  } elseif { $proc eq x1 }  {check_int_func proc
+  } else {check_value_func proc
+  }
+  set row_count 0
+}
+
+proc check_string_func {proc} {
+  db eval {
+    UPDATE customers SET  address  = address,
+      name =  name ||'abc'
+  }
+if "$proc eq sqlite_function" {
+  set name {
+    UPDATE customers SET name=sqlite_function(name, 'xyz','abc'))
+     return (name)
+  }
+}
+  execsql {
+    SELECT $proc(address) as x, id, name  FROM customers WHERE x!= ''
+  }
+  set result 0
+  if { $proc ne {sqlite_function} } {
+    while { $tcl_rcount } {do_eq sqlite $tcl_rcount } {
+    incr result
+  } }
+  if { $proc eq {sqlite_function}} {
+    while { $tcl_rcount } {
+     sqlite_function "$tcl_result"
+
+  } }
+  do_eq result 3
+  execsql {
+    UPDATE customers SET name=  address
+  }
+}
+
+proc check_int_func {proc} {
+  if { 1 eq proc } {
+    db eval {
+      UPDATE customers SET id=id + 1
+    }
+  } else { db eval {UPDATE customers SET id=1} }
+  execsql {SELECT EXISTS(SELECT 1 FROM customers WHERE id = 1)}
+  return 1}
+  if { 0 eq proc } {
+    db eval { update customers SET name=name||'cdef'}
+    check_string_func proc
+    execsql

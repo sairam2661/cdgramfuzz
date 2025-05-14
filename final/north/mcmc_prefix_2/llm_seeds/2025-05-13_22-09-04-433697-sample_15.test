@@ -1,0 +1,102 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+set ::timeout 60000
+
+proc transactions_proc { } {
+  global transactions_result
+  lappend transactions_result
+}
+
+proc transactions_query {sql} {
+  execsql $sql
+  set result $return
+  return $return
+}
+
+do_test transactions-1.1 {
+  set transactions_result {}
+  transactions_proc
+  transactions_query {
+    SELECT 1
+  }
+  set result $transactions_result
+  llength $result
+} {1}
+
+ifcapable wal {
+  do_execsql_test transactions-1.2 {
+    BEGIN;
+    INSERT INTO t1 VALUES('wal');
+    COMMIT;
+  } {}  wal
+
+  set transactions_result {}
+  transactions_proc
+  transactions_query {
+    SELECT * FROM t1
+  }
+  set result $transactions_result
+  db eval {
+    SELECT * FROM t1
+  }
+}  error  {no such column 'wal'}
+
+set open_mode "ro"
+do_execsql_test transactions-2.1 {
+  PRAGMA main_PAGE_SIZE=1024;
+  CREATE TABLE t2(x DEFAULT 1);
+  CREATE TABLE t3(x);
+} {}  wal
+
+set open_mode "rw"
+do_execsql_test transactions-2.2 {
+  SELECT x FROM t2;
+  BEGIN;
+  INSERT INTO t2 VALUES('a');
+  INSERT INTO t3 VALUES(4);
+  COMMIT;
+  SELECT x FROM t2;
+  SELECT * FROM t3;
+} {1 a 4}
+
+set transactions_result {}
+transactions_proc
+transactions_query {
+  SELECT *
+  FROM t1
+  WHERE  rowid = 1
+}
+
+do_execsql_test transactions-3.1 {
+  CREATE TABLE t5(c DEFAULT '1', b, a);
+  CREATE INDEX i5 ON t5(a);
+  INSERT INTO t5 VALUES(10, '7', '4');
+  INSERT INTO t5 VALUES('7', 10, 0);
+  SELECT * FROM t5;
+  COMMIT;
+}  {7 10 0 10 7 {}}  
+
+execsql {
+  CREATE TABLE t6(
+    c DEFAULT 0,
+    b,
+    a);
+
+  INSERT INTO t6 VALUES('6', 9, 0);
+
+  COMMIT;
+
+}
+
+do_execsql_test transactions-4.1 {
+  INSERT INTO t6 VALUES('2','3','1');
+  INSERT INTO t6 VALUES('6','6',0);
+}
+
+   
+   {
+  SELECT rowid FROM t1
+   }
+
+finish_test

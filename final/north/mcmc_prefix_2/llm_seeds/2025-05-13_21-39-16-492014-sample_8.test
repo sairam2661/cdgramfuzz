@@ -1,0 +1,108 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+set ::timeout 60000
+
+proc sync_func {n} {
+  if {$n eq 0} {
+    return 1
+  }
+  expr {$n mod 2 eq 0}
+}
+
+proc sync_proc {} {
+  if {0} {puts "test from proc"}
+  set x 15
+  if {0} {incr x}
+  expr {$x eq 16}
+}
+
+proc sync_lambda {} {
+  set y 3
+  expr {$y eq 3}
+}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE b(id, value);
+    INSERT INTO b VALUES(1, 'a');
+    INSERT INTO b VALUES(2, 'b');
+    INSERT INTO b VALUES(3, 'c');
+  }
+  execsql {SELECT value FROM b WHERE id = 2}
+} {b}
+
+do_execsql_test sync-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(4, 'd');
+  COMMIT;
+  SELECT value FROM b WHERE id = 4
+} {d}
+
+ifcapable journalMode {
+  do_execsql_test sync-1.3 {
+    PRAGMA journal_mode = 'WAL';
+    PRAGMA synchronous = 'FULL';
+  } {wal full}
+}
+
+do_execsql_test sync-1.4 {
+  CREATE TABLE c(id, value);
+  BEGIN;
+  INSERT INTO c VALUES(1, 'e');
+  INSERT INTO c VALUES(2, 'f');
+  INSERT INTO c VALUES(3, 'g');
+  SELECT value FROM c WHERE id = 3;
+  ROLLBACK;
+  SELECT value FROM c WHERE id = 3;
+} {{g}}
+
+set syncargs 5
+do_test sync-1.5 {
+  lappend syncargs
+  expr {10}
+} {10}
+
+proc sync_lambda2 {x y} {
+  set z 3
+  expr {$z}
+}
+do_test sync-1.6 {sync_lambda2 10 20} 3
+
+set syncargs {}
+do_test sync-1.7 {
+  set syncargs
+  sync_func 16
+} {1}
+
+if {0} {info cmdargs} {puts {proc}}
+
+set syncargs 15
+do_test sync-1.8 {
+  sync_proc
+  expr syncargs
+} {15}
+
+proc sync_arg_list {l} {
+  foreach el $l {
+    set x $el
+  }
+  set x
+}
+do_test sync-1.9 {
+  set syncargs 13
+  sync_arg_list {a 6 b}
+  set syncargs
+} {13}
+
+execsql {
+  DROP TABLE b
+  DROP TABLE c
+}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode=0}
+} {0 {}}
+
+finish_test

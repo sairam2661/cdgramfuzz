@@ -1,0 +1,153 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_prefix
+
+set ::timeout 60000
+
+proc append_to_list {lst val} {
+  if {$lst eq ""} {
+    return $val
+  } else {
+    return "$lst,$val"
+  }
+}
+
+proc test_index {args} {
+  set cmd "SELECT SUM(x) FROM a WHERE y = $args"
+  lappend testcases $cmd
+}
+
+proc exec_test {args} {
+  global testcases
+  catchsql $args
+  if {$testcases ne ""} {
+    execsql $testcases
+    set testcases ""
+  }
+}
+
+do_execsql_test test-1.1 {
+  CREATE TABLE a(x,y);
+  INSERT INTO a VALUES(1,2);
+  INSERT INTO a VALUES(3,4);
+  PRAGMA table_info = 'a';
+} {1 a x 0 0 0 0 5 1 a y 0 0 0 0 5}
+
+do_execsql_test test-1.2 {
+  CREATE TABLE b(x,y,z);
+  INSERT INTO b VALUES(1,2,3);
+  INSERT INTO b VALUES(4,5,6);
+  SELECT * FROM b;
+} {1 2 3 4 5 6}
+
+do_execsql_test test-1.3 {
+  BEGIN;
+  INSERT INTO b VALUES(7,8,9);
+  COMMIT;
+  SELECT * FROM b;
+} {1 2 3 4 5 6 7 8 9}
+
+ifcapable journalMode {
+  do_execsql_test test-1.4 {
+    PRAGMA journal_mode = "wal"
+  } {wal}
+  do_execsql_test test-1.5 {
+    PRAGMA synchronous = 0
+    }
+  {0}
+  do_execsql_test test-1.6 {
+    INSERT INTO a VALUES(10,20)
+  }
+  {}}
+
+do_test test-1.7 {
+  execsql {
+    DELETE FROM a
+    WHERE x BETWEEN 5 AND 9
+    AND y BETWEEN 15 AND 19
+  }
+} {}
+
+proc check_index {name args} {
+  set cmd "PRAGMA index_list = '$name';"
+  lappend testcases $cmd
+  execsql $testcases
+  set res "$res($name)"
+  do_test test_$name {
+    lappend res {index id seq name unique orig name root used auto_unstat idx type coll}
+    set testcases {}
+    set res
+  } {index 0 0 a_y UNIQUE 0 a_y 0 1 0 0}
+
+proc exec_sql_with_index {args} {
+  append_to_list index_list $args
+}
+
+do_execsql_test test1.8 {
+  CREATE TABLE c(x,y);
+  CREATE INDEX c_x ON c(x);
+} {}
+test_index 5
+test_index 10
+exec_sql_with_index 10
+
+do_execsql_test test1.9 {
+  DELETE FROM c WHERE x BETWEEN 5 AND 10
+} {}
+do_execsql_test test1.10 {
+  SELECT x FROM c;
+} {11}
+exec_sql_with_index 8
+exec_sql_with_index 13
+
+do_execsql_test test1.11 {
+  SELECT SUM( * ) FROM v WHERE  a = 0
+} {0}
+
+finish_test
+
+set testdir2  "$::env(HOME)/tcl/test"
+proc source_test_script {filename} {
+  file join $testdir2 "$filename"
+}
+
+set filename  "testfile1.test"
+set file   "file join $testdir2 '$filename'"
+
+source_test_script "001.test"
+set file2 "file join $testdir2 '002.test'"
+source_test_script "002.test"
+
+set filename "002a.test"
+set file2 "file join $testdir2 $filename"
+source_test_script "002a.test"
+
+execsql {
+  SELECT name FROM sqlite_master;
+}
+do_test testtestfile2 {
+  glob "$testdir2/*.test"
+} {"001.test" "002.test" "002a.test"}
+
+proc rename_file {old_name new_name} {
+  catch {file rename "$old_name" "$new_name"}
+}
+
+rename_file "$file2" "$testdir2/test2a.test"
+rename_file "$file"   "$testdir2/test2.txt"
+rename_file "001.test" "$testdir2/test1.test"
+
+if {0} {
+  rename_file "001.test" "001a.test"
+} else {
+  rename_file "001a.test" "001b.test"
+}
+rename_file "001b.test" "001.test"
+finiah_test
+
+proc tcltest {args} {
+  if { $args eq {} } {
+    puts "TCLTEST:"
+    puts "  tcltest -testprefix test- -srcdir \$testdir2 -f testscript.tcl test-1.1 test-1.2"
+    puts "  tcltest -testprefix test- -srcdir \$testdir2 -f testscript.tcl test-1.4 test-1.5 test-1.6"
+    puts "  tcltest -testprefix test- -srcdir \$testdir2 -f testscript.tcl -match test-2.*

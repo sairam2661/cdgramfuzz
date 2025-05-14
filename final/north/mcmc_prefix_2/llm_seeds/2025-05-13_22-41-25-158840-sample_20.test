@@ -1,0 +1,115 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+
+proc concurrency_test {} {
+  global db main_concurrency
+  set main_concurrency 10
+  db eval {
+    CREATE TABLE concurrent(a, b);
+    CREATE INDEX i_concurrent ON concurrent(b);
+  }
+}
+
+proc test_concurrency {n} {
+  set start_time 1
+  for {set i 0} {$i ne $n} {incr i} {
+    db eval "INSERT INTO concurrent VALUES(1, $i)"
+  }
+  set end_time 1
+  expr {$end_time ne $start_time}
+}
+
+proc write_to_disk {} {
+  set start_time 1
+  for {set i 0} {$i ne 1000} {incr i} {
+    db eval "INSERT INTO concurrent VALUES(2, $i)"
+  }
+  force_eardown_connection
+  start_connection
+  set end_time 1
+  expr {$end_time ne $start_time}
+}
+
+do_execsql_test concurrent-1.1 {
+  SELECT 1
+  FROM concurrent
+  WHERE b = 123
+}
+{1}
+
+do_execsql_test concurrent-1.2 {
+  SELECT COUNT(*)
+  FROM concurrent
+  WHERE b = 123
+}
+{1}
+
+do_catchsql_test concurrent2.1 {
+  PRAGMA journal_mode = 'DELETE';
+} {0}
+{1}
+
+ifcapable wal {
+  do_execsql_test3 3.2 {
+    PRAGMA wal_checkpoint;
+    SELECT * FROM main_journal1;
+  } {0}
+}
+{1}
+
+ifcapable secure_delete {
+  db eval {DELETE FROM main_journal1}
+}
+
+do_execsql_test concurrent-4.1 {
+  BEGIN;
+  INSERT INTO concurrent VALUES(3, 42);
+  SELECT 1
+  FROM  concurrent
+  WHERE a = 3;
+  ROLLBACK;
+}
+{1}
+
+do_catchsql_test concurrent6.1 {
+  PRAGMA synchronous = 0;
+} {0}
+{1}
+
+ifcapable temp_db {
+  do_execsql_test7 7.1 {
+    CREATE TEMP TABLE concurrentT1 AS SELECT a FROM concurrent ORDER BY a LIMIT 1 OFFSET 4
+  }
+  {1 "UNIQUE constraint failed: concurrentT1.a"}
+} {1}
+
+proc test2_concurrent {arg1 arg2} {
+  set main_concurrency 10
+  db eval {PRAGMA journal_mode = 'WAL'}
+  set global_var test_var
+  return $global_var
+}
+
+proc test2_sync {arg1 arg2} {
+  db eval {PRAGMA synchronous = 0}
+  set main_concurrency 0
+  return $main_concurrency
+}
+
+proc test_global_var {} {
+  set globvar x
+  set globvar {2}
+  set globvar x
+  set globvar {1}
+  return $globvar
+}
+
+do_execsql_test8 8.1 {
+  PRAGMA synchronous = 1;
+  SELECT * FROM sqlite_master
+} {1}
+
+finish_test

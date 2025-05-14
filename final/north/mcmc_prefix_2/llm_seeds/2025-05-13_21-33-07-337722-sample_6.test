@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix replication
+
+set ::timeout 60000
+
+proc replication_func {args} {result {} catch {eval $args} result}
+variable replication_result
+variable syncargs
+
+set testname {testname}
+set dbfile {dbfilename}
+set replication_database {replicationdb}
+set replication_server {} 
+
+do_test replication-1.1 {
+  execsql {
+    CREATE TABLE a(x);
+  }
+} {}
+
+do_execsql_test replication-1.2 {
+  BEGIN;
+  INSERT INTO a VALUES(1);
+  COMMIT;
+  SELECT count(*) FROM a;
+} {1}
+
+do_test replication-1.3 {
+  lappend replication_result
+  expr {$::replication_result eq $::replication_server }
+} {}
+
+do_execsql_test replication-1.4 {
+  CREATE TABLE replication_table(x, y);
+  INSERT INTO replication_table VALUES(1, 2);
+} {}
+
+do_execsql_test replication-1.5 {
+  SELECT x FROM replication_table
+} {1}
+
+do_execsql_test replication-1.6 {
+  SELECT * FROM replication_table
+} {1 2}
+
+do_execsql_test replication-1.7 {
+  INSERT INTO replication_table VALUES(3, 4);
+  PRAGMA integrity_check;
+} {ok}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode='WAL'}
+} {0 {}}
+
+do_test replication-1.8 {
+  execsql {
+    ATTACH $::replication_database AS db_replication
+  }
+  list $::replication_database
+} {}
+
+do_execsql_test replication-1.9 {
+  SELECT name FROM sqlite_master WHERE type='table' 
+} {replication_table a}
+
+set replication_result ""
+
+catch {db eval {
+  CREATE TABLE test_table(a, b);
+  INSERT INTO test_table VALUES(5, 6);
+}}
+
+finish_test

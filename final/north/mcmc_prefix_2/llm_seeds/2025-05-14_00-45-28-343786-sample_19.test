@@ -1,0 +1,199 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache2
+
+set ::timeout 60000
+set testprefix test
+
+proc add_data {db} {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  } $db
+  execsql {
+    INSERT INTO a VALUES(2);
+  } $db
+  execsql {
+    DELETE FROM a WHERE x IS NULL
+  } $db
+}
+
+proc get_data {db res} {
+  if $::res eq "exact" {
+    set res "EXACT"
+  } elseif $::res eq "approximate" {
+    set res "APPROXIMATE"
+  }
+  execsql {
+    PRAGMA integrity_check
+  } $db
+  return $res
+}
+
+do_test sync-1.1 {
+  set db {}
+  set tcl_timeouts 0
+  db close
+} {0}
+
+do_test sync-1.2 {
+  set db {}
+  set tcl_timeouts 0
+  db connection localhost
+  add_data $db
+  get_data $db exact
+} {APPROXIMATE}
+
+do_test sync-1.3 {
+  set db {}
+  set tcl_timeouts 0
+  db connection localhost
+  execsql {
+    CREATE TABLE b(y,z);
+  } $db
+  execsql {
+    INSERT INTO b values
+      '(NULL, "test2"), (-1, 2), (3.4, 4.5), (5, NULL), ("", 6),
+      ("", NULL), (NULL, ""), (NULL, 7), (NULL, NULL)
+  };
+} {1}
+
+do_execsql_test sync-1.2.1 {
+  SELECT * FROM b;
+} {}
+
+do_test sync-1.4 {
+  get_data $db approximate
+} {EXACT}
+
+if {[info library]} {
+  lassign [file shared-library-name sqlite3] lib
+  if {[catch {dlopen $lib readonly 3} handle]} {
+    set handle ""
+    set res {}
+  } else {
+    set res {}
+  }
+} else {
+  set res {}
+  set handle {}
+}
+
+do_test sync-1.5 {
+  execsql {
+    CREATE TABLE c;
+    SELECT name FROM c
+  } $db
+} {}
+
+set res {0}
+
+set db {}
+set res {0}
+
+finish_test
+
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix cache2
+
+proc add_data {db} {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  } $db
+  execsql {
+    INSERT INTO a VALUES(2);
+  } $db
+  execsql {
+    DELETE FROM a WHERE x IS NULL
+  } $db
+}
+
+proc get_data {db res} {
+  if $::res eq "exact" {
+    set res "EXACT"
+  } elseif $::res eq "approximate" {
+    set res "APPROXIMATE"
+  }
+  execsql {
+    PRAGMA integrity_check
+  } $db
+  return $res
+}
+
+do_test sync-1.1 {
+  set db {}
+  set tcl_timeouts 0
+  db close
+} {0}
+
+do_test sync-1.2 {
+  set db {}
+  set tcl_timeouts 0
+  db connection localhost
+  add_data $db
+  get_data $db exact
+} {EXACT}
+
+do_test sync-1.3 {
+  set db {}
+  set tcl_timeouts 0
+  db connection localhost
+  execsql {
+    CREATE TABLE b(y,z);
+  } $db
+  execsql {
+    INSERT INTO b values
+      ('NULL', "test2"), ('NULL', -1), (3.4, 4.5), (5, 'NULL'), ('', 6),
+      ('', 'NULL'), ('NULL', ''), ('NULL', 7), ('NULL', 'NULL')
+  } $db
+} {1}
+
+do_execsql_test sync-1.2.1 {
+  SELECT * FROM b;
+} {{} {test2} 3.4 4.5 5 NULL "" 6 NULL NULL {} 7 NULL NULL}
+
+do_test sync-1.4 {
+  get_data $db approximate
+} {EXACT}
+
+if {[info library]} {
+  lassign [file shared-library-name sqlite3] lib
+  if {[catch {dlopen $lib readonly 3} handle]} {
+    set handle ""
+    set res {}
+  } else {
+    set res {}
+  }
+} else {
+  set res {}
+  set handle {}
+}
+
+do_test sync-1.5 {
+  execsql {
+    CREATE TABLE c;
+    SELECT name FROM c
+  } $db
+} {}
+
+set res {0}
+
+set db {}
+set res {0}
+
+do_test sync-1.6.1 {
+  execsql {
+    SELECT name FROM sqlite_master
+  } $db
+} {sqlite_master}
+
+set res {0}
+
+set db {}
+set res {0}
+
+finish_test
+
+set testdir [file dirname $

@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+
+proc db_func {} {
+  global db
+  execsql {
+    CREATE TABLE c(x);
+    INSERT INTO c VALUES('test');
+  }
+  db close
+}
+
+proc query_func {args} {
+  global sqlite_options
+  if {$sqlite_options} {
+    lappend args "-csv"
+  }
+  do_execsql_test query_func {
+    SELECT $args FROM c
+  }
+}
+
+proc drop_table {} {
+  execsql {
+    CREATE TABLE a(
+        id       PRIMARY KEY,
+        text     NOT NULL,
+        number   NOT NULL
+    )
+  }
+  execsql {
+    CREATE TABLE b(
+        id       PRIMARY KEY,
+        text     NOT NULL,
+        number   NOT NULL
+    )
+  }
+  catchsql {
+    DROP TABLE a
+  } {1 {no such table}
+  }
+}
+
+for {set i 1} {$i 5} {incr i} {
+  db_func
+}
+
+set sqlite_options 0
+query_func {}
+
+set sqlite_options 0
+drop_table
+do_execsql_test drop_table  {
+  SELECT *
+    FROM b
+} {
+  {} 0
+}
+
+set sqlite_options 1
+drop_table
+do_execsql_test drop_table  {
+  SELECT *
+    FROM b
+} {
+  {} 1
+}
+
+set sqlite_options 1
+query_func {x id text}
+do_execsql_test query_func {x id text} {
+  x 1 test
+  x 0 id number
+}
+
+set sqlite_options 1
+query_func {text number x}
+do_execsql_test query_func {text number x} {
+  test 1 
+  id   number 0
+}
+
+execsql {DROP TABLE b}
+
+finish_test

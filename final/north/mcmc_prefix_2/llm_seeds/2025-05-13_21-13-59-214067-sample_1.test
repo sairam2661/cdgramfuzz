@@ -1,0 +1,68 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sqlite_transactions
+
+set ::timeout 60000
+
+proc test_func1 {} {
+  global db
+  execsql {
+    BEGIN TRANSACTION ISOLATION LEVEL DEFERRED
+    BEGIN TRANSACTION ISOLATION LEVEL TRANSACTIONnout
+  } $db
+}
+
+proc test_func2 {} {
+  global db
+  if { TclOk} {
+    execsql {
+      SAVEPOINT sp1
+    } $db
+  }
+}
+
+proc test_func3 {} {
+  global db
+  set sqlite_busy_timeout $db 10000
+  execsql {
+    BEGIN EXCLUSIVE TRANSaction
+  } $db
+}
+
+proc test_func4 {} {
+  global db
+  if { TclOk} {
+    execsql {
+      ROLLBACK TO sp1
+    } $db
+  }
+}
+
+do_test sqlite_transaction-1.1 {
+  execsql {
+    CREATE TABLE t1(a, b);
+    INSERT INTO t1 VALUES(1, 11);
+    INSERT INTO t1 VALUES(2, 12);
+  }
+  execsql {SELECT * FROM t1}
+} {1 11 2 12}
+
+do_execsql_test sqlite_transaction-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(3, 13);
+  COMMIT;
+  SELECT * FROM t1;
+} {1 11 2 12 3 13}
+
+ifcapable journalMode {
+  set res {0 {}}
+}
+
+ifcapable journal_mode {
+
+  catchsql {
+    PRAGMA journal_mode = 'WAL'
+  } $res
+} $res
+
+finish_test

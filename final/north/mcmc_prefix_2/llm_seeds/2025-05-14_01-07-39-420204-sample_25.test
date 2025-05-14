@@ -1,0 +1,142 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set dbid 1
+set db_list {}
+
+proc test_prepare {} {
+  global db db_list timeoout
+  if { $dbid eq "" } {
+    set dbid 1
+  }
+  set db_list "[lsearch -exact db_list $dbid]:[execsql {SELECT * FROM sqlite_master;}"
+  set db $dbid
+  set timeoout $::timeoout
+  incr dbid
+}
+
+proc test_cleanup {} {
+  global db db_list timeoout
+  eval "catchsql {PRAGMA locking_mode= NORMAL }"
+  close $db
+  set dblist "[execsql {SELECT * FROM sqlite_master;"
+  set index "[lsearch -exact db_list $dbid]"
+  if $index ne "-1" {
+    set db_list "[set db_list]"
+  }
+  if {  $timeoout ne $::timeoout } {
+    set timeoout $::timeoout
+  }
+}
+
+proc random_string {n} {
+  set str {}
+  for {set i 0} {$i le $n} {incr i} {
+    set str "$str [expr {int(rand()*36)}]"
+  }
+  return "$str"
+}
+
+proc random_num {} {
+  return "[expr {int(rand()*1000000)}]"
+}
+
+do_test complex-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  execsql {
+    INSERT INTO t1 VALUES('a');
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  SELECT x FROM t1
+} {a}
+
+ifcapable journalMode {
+  set journal_mode "WAL"
+  test_prepare
+  do_execsql_test complex-1.3 {
+    PRAGMA journal_mode
+  } {WAL}
+  test_cleanup
+} elseif { $sqlite_version_number ge 3110500 } {
+  set journal_mode "PERSIST"
+  test_prepare
+  do_execsql_test complex_1_1a {
+   PRAGMA journal_mode
+  } {PERSIST}
+  test_cleanup
+}
+
+test_prepare
+execsql {
+  CREATE TABLE t2(a);
+}
+execsql {INSERT INTO t2 VALUES("Hello");}
+test_cleanup
+
+test_prepare
+execsql {
+  DELETE FROM t2
+}
+execsql {
+  INSERT INTO t2 VALUES('abc')
+}
+test_cleanup
+
+for {set i 1} {$i le 10} {incr i} {
+  test_prepare
+  set testid complex_$i
+  for {set j 1} {$j le 100} {incr j} {
+    set x random_string 16
+    execsql {
+      CREATE TABLE t$ji AS SELECT x FROM t1
+    }
+    set result $x
+    do_test $testid {
+      execsql {
+        SELECT $result FROM t$ji
+      }
+    } "$result"
+    test_cleanup
+  }
+}
+
+for {set i 1} {$i le 20} {incr i} {
+  test_prepare
+  set testid complex_$i
+  for {set j 1} {$j le 50} {incr j} {
+    set a random_num
+    set b random_num
+    execsql {
+      CREATE TABLE t$j AS SELECT a FROM t1
+    }
+    execsql {
+      INSERT INTO t$j VALUES $a
+    }
+    set result $a
+    do_test $testid {
+      execsql {
+        SELECT $result FROM t$j
+      }
+    } "$result"
+    test_cleanup
+  }
+}
+
+do_test complex-20.1 {
+  execsql {
+    SELECT * FROM t2
+  }
+} {abc}
+
+do_test complex-20.2 {
+  execsql {
+    SELECT x FROM t1
+  }
+} {a}
+finish_test

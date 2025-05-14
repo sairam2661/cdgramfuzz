@@ -1,0 +1,110 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query_plan
+
+set ::timeout 60000
+
+proc test_query_plan {sql {count 0}} {
+  global tcount
+  set tcount 0
+  execsql {
+    EXPLAIN $sql
+    SELECT sql FROM sqlite_exec_log LIMIT 1
+  }
+  set tcount 1
+  incr count
+  do_test query_plan_$count {
+    execsql {
+      EXPLAIN $sql
+      SELECT sql FROM sqlite_exec_log LIMIT 1
+    }
+  } {}
+  return $count
+}
+
+proc test_query_plan_expr {expr1 expr2} {
+  set count 0
+  set test_query_plan $expr1
+  incr count
+  set tcount 0
+  do_test query_plan_expr_$count {
+    execsql {
+      EXPLAIN $test_query_plan
+      SELECT sql FROM sqlite_exec_log LIMIT 1
+    }
+  } {}
+  
+  append test_query_plan " AND $expr2"
+  incr count
+  do_test query_plan_expr_$count {
+    execsql {
+      EXPLAIN $test_query_plan
+      SELECT sql FROM sqlite_exec_log LIMIT 1
+    }
+  } {}
+  return $count
+}
+
+proc test_query_plan2 {sql} {
+  execsql {
+    EXPLAIN $sql
+    SELECT sql FROM sqlite_exec_log LIMIT 1
+  }
+}
+
+do_test query_plan-1.1 {
+  execsql {
+    CREATE TABLE t1(a);
+    INSERT INTO t1 VALUES(1);
+    SELECT a FROM t1
+  }
+} {}
+
+do_test query_plan-1.2 {
+  test_query_plan "SELECT a FROM t1 WHERE a <= 10"
+} 2
+
+do_test query_plan-1.3 {
+  test_query_plan_expr {$a IS NOT NULL} {$a IS NULL}
+} 3
+
+do_test query_plan-1.4 {
+  test_query_plan "SELECT a FROM t1"
+} 4
+
+do_execsql_test query_plan-1.5 {
+  CREATE TABLE t2(a);
+  INSERT INTO t2 VALUES(2);
+  SELECT a FROM t2
+} {}
+
+do_test query_plan-1.6 {
+  test_query_plan2 {
+    SELECT a FROM t2 WHERE a NOT IN
+    SELECT a FROM t1
+  }
+} {}
+
+do_test query_plan-1.7 {
+  execsql {
+    DROP TABLE t2
+  }
+} {}
+
+do_execsql_test query_plan-1.8 {
+  PRAGMA journal_mode = 'wal'
+} {
+
+}
+
+do_execsql_test query_plan-1.9 {
+  SELECT * FROM sqlite_master;
+} {}
+
+do_test query_plan-1.10 {
+  test_query_plan {
+    SELECT * FROM sqlite_master
+  }
+} 11
+
+finish_test

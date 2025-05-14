@@ -1,0 +1,78 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+
+set sql {
+  CREATE TABLE customers(
+    customer_id,
+    name,
+    address
+  );
+  CREATE TABLE orders(
+    order_id,
+    customer_id,
+    order_date
+  );
+}
+
+ifcapable attach {
+  attach 'file:data.db?mode=ro' AS data
+}
+
+do_execsql_test 1.1 {
+  $sql
+}
+
+do_execsql_test 1.2 {
+  INSERT INTO customers VALUES(1, 'John Doe', '123 Main St');
+  INSERT INTO customers VALUES(2, 'Jane Doe', '456 Elm St');
+}
+
+if {0} {
+  do_catchsql_test 1.3 {
+    INSERT INTO customers VALUES(3, 'Bob Smith', '789 Oak St');
+  }
+} {1 {UNIQUE constraint failed}}
+
+do_execsql_test 1.4 {
+  SELECT * FROM customers;
+}
+
+do_execsql_test 2.1 {
+  CREATE INDEX customers_index ON customers(name);
+}
+
+do_execsql_test 2.2 {
+  CREATE VIEW customer_view AS SELECT customer_id FROM customers WHERE name IS NOT NULL
+}
+
+proc run_test {} {
+  set out {}
+  for {set i 1} {$i le 10} {incr i} {
+    catch {file delete dat1$i} ex
+  }
+
+  for {set i 10} {$i le 20} {incr i} {
+    if {file exists dat1$i} {
+      file rename dat1$i dat1 tempdat1$i
+    } else {
+      set tempdat1$i dat1$i
+    }
+  }
+
+  for {set i 1} {$i le 10} {incr i} {
+    file link dat1$i dat1$i tempdat1$i
+    execsql {INSERT INTO customers VALUES(11, 'Customer 11', 'Address 11')}
+    file delete dat1 tempdat1$i tempdat1$i
+  }
+}
+
+run_test
+
+do_execsql_test 3.1 {
+  DROP TABLE customers
+}
+
+finish_test

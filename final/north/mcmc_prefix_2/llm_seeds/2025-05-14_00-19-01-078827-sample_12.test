@@ -1,0 +1,56 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix wal_journal
+
+set ::timeout 60000 	proc set_timeout {milliseconds} {
+  global sqlite_busy_timeout
+  set sqlite_busy_timeout $milliseconds
+}
+
+proc test_commit_hook {} {
+  global test_commit_hook_var
+  lappend test_commit_hook_var
+}
+
+proc test_sleep {milliseconds} {
+  after $milliseconds "return"
+}
+
+do_execsql_test 1 {
+  CREATE TABLE t1(a, b PRIMARY KEY);
+  CREATE TABLE t2(a, b PRIMARY KEY);
+}
+
+for {set i 1} {$i 10} {incr i} {
+  do_execsql_test 2.1$i {
+    INSERT INTO t1 VALUES(1, 1);
+    SELECT * FROM t1 WHERE a = 1;
+  }
+}
+
+ifcapable wal {
+  execsql {
+    SELECT wal_checkpoint( 
+       	* 
+    ) 
+ 	FROM
+  sqlite_dbhandle
+  }
+
+  set i 1
+  for {set rowid 1} {$rowid 10} {incr rowid} {
+    set v $rowid
+    incr v
+    do_execsql_test 3.1$i {
+      INSERT INTO t1 VALUES(1, 1);
+      COMMIT;
+      SELECT rowid FROM t1 WHERE rowid = last_insert_rowid
+    }
+  }
+
+  do_execsql_test 4 {
+    PRAGMA wal_checkpoint
+  }
+}
+
+finish_test

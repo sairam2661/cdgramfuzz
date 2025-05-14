@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test_123
+
+set ::timeout 60000
+do_ncmp_test 1 {
+  CREATE TABLE t1(a, b);
+  SELECT * FROM t1;
+} {
+  {}
+}
+do_ncmp_test 2 {
+  CREATE TABLE t2(a PRIMARY KEY) 	          
+  } {
+  sqlite_master
+  }
+  do_test sqlite3_test-3.1 {sqlite_release_filename} {}
+  do_ncmp_test 4 {
+    INSERT INTO t1 VALUES(1, 2);
+    SELECT * FROM t1;
+  } {
+    {1 2}
+  }
+  do_ncmp_test 5 {
+    DELETE FROM t1 WHERE a BETWEEN 0 AND 2
+  } {}
+  do_execsql_test 7 {
+    DROP TABLE t1
+  } {}
+  do_execsql_test 8 {
+    DROP TABLE t2
+  } {}
+  do_test sqlite3_test-9.1 {catch {execsql {SELECT * FROM nonexist}}} 1
+  set timeout 3000
+  set dbfile "test.db"
+  execsql {
+    ATTACH 'test.db' AS foo
+  }
+  do_test sqlite3_test-11.1 {
+    execsql {
+      CREATE TABLE foo(bar)
+    }
+  } {}
+  db close
+  execsql {
+    DROP TABLE t1
+    DROP TABLE t2
+    DROP TABLE t3
+    DROP TABLE t4
+  }
+  do_execsql_test 28 {
+    SELECT * FROM sqlite_master
+  } {{  sqlite_master t1  1 {  CREATE TABLE x}} }
+  do_test 29.1 {sqlite3_auto_extension foo} 1
+  sqlite3_shutdown
+  do_execsql_test 44.1 {
+    CREATE TABLE t5(x);
+    SELECT * FROM t5;
+    SELECT count(*) FROM t5
+  } {}
+  do_execsql_test 44.2 {
+    DROP TABLE t1
+  } {}
+  do_ncmp_test 45 {
+    CREATE TABLE t2(a);
+  } {
+    {}
+  }
+  db close
+  finish_test

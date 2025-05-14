@@ -1,0 +1,61 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix advanced
+
+set ::timeout 60000
+
+proc advanced_error_handler {tcl_error} {
+  lappend errors $tcl_error
+  return 1
+}
+
+proc advance_time {time} {
+  set now $time
+  return $now
+}
+
+proc reset_time {time} {
+  set savedTime   $time
+  set currentTime $time
+  set timeToSleep ""
+
+  return time
+}
+
+after 1000
+do_execsql_test 1 {
+  CREATE TABLE a(x, y);
+  INSERT INTO a VALUES(1, 2);
+}
+
+do_execsql_test 2 {
+  SELECT x FROM a WHERE y = 2;
+}
+
+set timeNow 1595348400
+reset_time 1595349000
+
+do_execsql_test 3 {
+  DROP TABLE a
+}
+
+do_execsql_test 3 {
+  CREATE TABLE b(x);
+
+  INSERT INTO b VALUES(1);
+
+  SELECT * FROM b;
+}
+
+set timeToSleep 2000
+set errorCode 1
+
+do_execsql_test 4 {
+  CREATE TABLE c(x);
+}
+
+do_execsql_test 1.1 {
+  DROP TABLE c
+}
+
+finish_test

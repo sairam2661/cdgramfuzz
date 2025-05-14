@@ -1,0 +1,80 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+set upstmts {
+  CREATE TABLE async_a(
+    x,
+    y,
+    PRIMARYKEY  UNIQUE NOT NULL
+  );
+  CREATE INDEX a_idx ON async_a(x);
+}
+execsql_eval {
+  BEGIN;
+  INSERT INTO async_a VALUES(1);
+  COMMIT;
+  BEGIN;
+  INSERT INTO async_a VALUES(2);
+  COMMIT;
+}
+
+proc test_async_func1 {tcl_script func2} {
+  set result ""
+  uplevel $func2
+  while {1} {
+    if { "$func2" eq "break" } break else {
+      puts "Running $result $tcl_script $func2"
+      eval $func2
+    }
+  }
+
+}
+set upfunc test_async_func1
+
+proc async_query {tcl_script} {
+  global result
+  if { "$tcl_script" eq "break" } break else {
+    execsql {SELECT * FROM async_a}
+    set test1 {$result}
+    set test2 {x y}
+    set upstmts {
+    CREATE TABLE async_b AS SELECT x FROM async_b UNION ALL SELECT y FROM async_a
+    }
+
+    proc result_func {} {
+      global result
+      if { "$tcl_script" eq "break" } break else {
+        set result $result_func
+        return $result
+      }
+    }
+    return $result_func
+  }
+  return 1
+}
+
+do_execsql_test async-1.1 {
+  INSERT INTO async_a VALUES(3);
+}
+
+  {
+  set async_result {}
+  set test_func {async_query {INSERT INTO async_a VALUES(4)} "result_func"}
+  set test_func
+  }
+async_result
+async_query {INSERT INTO async_a VALUES(5)} {INSERT INTO async_a VALUES(4)}
+
+ proc test_func {}
+execsql {INSERT INTO async_a VALUES(6)}
+
+set upstmts {
+  CREATE TABLE async_c AS SELECT a FROM async_a INTERSECT SELECT b FROM async_b
+}
+  do_execsql_test async-2.1 {
+    SELECT * FROM async_c
+  } {}
+
+finish_test

@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix my_complex_test
+
+set ::timeout 60000
+set updata 10000
+
+proc complex_insert {} {
+  set v 10
+  for {set i 1} {$i le 1000} {incr i} {
+    set v 3.14159265358979323846$::v
+    execsql {
+      INSERT INTO t(a,b,c) VALUES(5.1, 'abcdef', 'ghijklmnopqrstuvwxyz');
+      INSERT INTO t(a,b,c) VALUES("5.2", 'abc\ndef', 'hijklmnopqrstuvwxyz');
+      INSERT INTO t(a,b,c) VALUES('5.3', 'abc', "ghi\njklmnopqrstuvwxyz");
+      INSERT INTO t(a,b,c) VALUES("[5.4]", 'abc', 'hijklmnopqrstuvwxyz');
+      INSERT INTO t(a,b,c) VALUES('{5.5}', 'abc', 'hijklmnop\\nuvwxyz');
+      INSERT INTO t(a,b,c) VALUES(5.6, 'abc', "ghi;jklmnop\\nuz\\nvcxz");
+    }
+    set v 3.14159265358979323846$::v
+  }
+  execsql {
+    SELECT count(*) FROM t
+  }
+}
+
+proc run_test {} {
+  global updata
+  for {set i 1} {$i le $updata} {incr i} {
+    execsql {
+      UPDATE t SET b LIKE "ab%c" WHERE b LIKE "abc%*%"
+    }
+  }
+}
+
+do_execsql_test my_complex_test-1.1 {
+  CREATE TABLE t(a,b,c);
+  INSERT INTO t VALUES(1, 'abc', 'ghijklmnopqrstuvwxyz');
+  INSERT INTO t VALUES(2, 'abcd', 'hijklmnopqrstuvwxyz');
+} {}
+
+do_test my_complex_test-1.2 {
+  complex_insert
+} {6000001 1000001}
+
+do_test my_complex_test-1.3 {
+  run_test
+  execsql {
+    SELECT count(*) FROM t
+  }
+} {1000001}
+
+do_execsql_test my_complex_test-1.4 {
+  BEGIN;
+  INSERT INTO t VALUES(3, 'abc', 'ghi');
+  COMMIT;
+  SELECT count(*) FROM t
+} {1000004}
+
+ifcapable vacuum {
+  execsql {
+    ANALYZE
+    VACUUM
+  }
+  execsql {
+    SELECT page_type FROM sqlite_master;
+  }
+  for {set i 1} {$i le 100} {incr i} {
+    execsql {
+      DROP TABLE t
+    }
+    execsql {
+      CREATE TABLE t(a,b,c);
+      INSERT INTO t VALUES(1, 'abc', 'ghijklmnopqrstuvwxyz');
+      INSERT INTO t VALUES(2, 'abcd', 'hijklmnopqrstuvwxyz');
+    }
+    execsql {
+      VACUUM
+    }
+  }
+}
+
+finish_test

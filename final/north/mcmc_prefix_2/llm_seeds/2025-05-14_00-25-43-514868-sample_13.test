@@ -1,0 +1,190 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix journal
+
+set ::timeout 60000
+set timeout 60
+file delete journal2err
+file delete journal2Wal
+
+proc trigger_func {} {
+  global before_update
+  set before_update $before_update" "update
+}
+
+do_test journal-1.1 {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+  }
+} {}
+
+do_execsql_test journal-1.2 {
+  INSERT INTO b VALUES(2);
+  SELECT x FROM b;
+} {1 2}
+
+do_execsql_test journal-1.3 {
+  CREATE TABLE c(y);
+} {}
+
+do_test journal-1.4 {
+  execsql {
+    BEGIN;
+    INSERT INTO c VALUES(3);
+  }
+} {}
+
+do_execsql_test journal-1.5 {
+  ROLLBACK;
+  SELECT y FROM c;
+} {}
+
+ifcapable vacet {
+  execsql {
+    PRAGMA integrity_check
+  }
+} {ok}
+execsql {
+  SELECT count(*) FROM sqlite_master
+} {2}
+
+ifcapable writerahead {
+  do_execsql_test journal-1.7 {
+    BEGIN;
+    INSERT INTO b SELECT y;
+    COMMIT;
+    SELECT sql FROM sqlite_master;
+  } {CREATE TABLE b x }
+} 
+
+do_execsql_test journal-1.8 {
+  CREATE TABLE d(x);
+  SELECT x FROM d;
+} {}
+ 
+ifcapable pragma_journal_mode {
+  if { $tcl_precision1 ne 1 } {
+    do_test journal 1.9 {
+      set result
+      db eval { PRAGMA journal_mode }
+      set result $result
+      if { $result ne "WAL" } {
+        execsql {PRAGMA journal_mode = "WAL"}
+        do_test journal 1.10 {
+          execsql {PRAGMA journal_mode}
+          string equal $result "WAL"
+        } 1
+      }
+    } {}
+  } else {
+    execsql {PRAGMA journal_mode = "WAL"}
+  }
+}
+
+do_execsql_test 2.1 {
+  INSERT INTO b SELECT y FROM d
+} {}
+  
+do_test journal 2.2 {
+  execsql {
+    DELETE FROM b
+  }
+} {}
+
+append testname " " temp
+
+ifcapsable table_info {
+  set db busy 0
+  execsql {
+    DROP TABLE b
+  }
+  do_test clean 0.1 0 {}
+finish_test 
+
+db close
+proc drop {} {
+  db eval {DROP TABLE c}
+}
+do_test 3.2 {
+  set err
+  if { $rc ne 0 } {
+    append err "sqlite3 errors: $sqlite3_errmsg \n"
+    set drop true
+  }else {
+    set drop 0
+  }
+  list $err $drop
+} {}
+drop
+finish_test 
+
+set timeout 60
+set tcl_precision1 1
+db eval { 
+  begin commit
+}
+  
+do_execsq_test 4.1 {
+  CREATE TABLE temp2 AS SELECT 1 AS temp1 FROM b 
+} {1 2 1} 
+db close 
+proc execsql {sql {tname temp2}} {
+  sqlite3 tmp 2
+  tmp eval $sql
+  list "SELECT * FROM $tname" "SELECT * FROM $temp2"
+}
+execsql "SELECT * FROM alltab" alltab alltab
+execsql "SELECT * FROM allobjtype" alltab alltab
+finish_test 
+
+proc startdb { } {
+  sqlite set dbfile {
+    sqlite3 db file1
+    sqlite set key 1
+  }
+}
+startdb
+finish_test 
+
+do_test 5.2 {
+  sql "CREATE TABLE x ( a, b)"
+  db select x a b
+} { } 
+finish_test 
+
+db close
+proc drop 0 false
+drop
+db eval { drop table temp2 }
+finish_test 
+
+do_execsql_test 6.1 {
+  CREATE TABLE d1 AS SELECT 1 AS a FROM d1
+} {}
+ifcapability index {
+  do_execsql_test 6.2 {
+    CREATE TABLE t1 AS SELECT 1 FROM d1
+    CREATE INDEX t1i ON t1 a
+  } {}
+}
+do_test 6.3 {
+  db eval {
+    SELECT sql FROM sqlite_master WHERE tbl_name = 't1i'
+  }
+} {CREATE UNIQUE INDEX t1i ON t1 a} 
+
+set testname syncprefix
+catch { db close }
+unset db
+do_test 7.1 {
+  sqlite eval {
+    CREATE TABLE d4 AS SELECT 1 AS a FROM d4
+  }
+} {}
+do_test 7.2 {
+  sqlite eval {
+    CREATE TABLE d5 AS SELECT 1 AS a FROM d5
+  }
+} {}
+catch { sqlite db

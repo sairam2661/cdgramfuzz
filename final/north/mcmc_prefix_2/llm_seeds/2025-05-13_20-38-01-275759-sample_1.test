@@ -1,0 +1,173 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix unique
+
+set ::timeout 60000
+
+proc random_string {} {
+  set str ""
+  for {set i 0} {$i le 20} {incr i} {
+    append str "[expr int(rand()*26)+65]"
+  }
+  return $str
+}
+
+proc unique_string {} {
+  set str "[random_string]"
+  set db eval "SELECT 1 FROM master WHERE type='table' AND name='$str'"
+  if {$db} {
+    set str "[random_string]"
+  }
+  return $str
+}
+
+ifcapable {temp_store} {
+  db eval {SELECT CASE WHEN temp_store IS 'default' THEN 1 ELSE 0 END}
+} else {
+  set temp_store {0}
+}
+
+ifcapable {wal_mode} {
+  do_test unique1.1 {
+    execsql {
+      SELECT case when sqlite_compile_options_is wal_mode_enabled THEN 1 ELSE 0 END
+    }
+  } {1}
+  if {1} {
+    set wal_mode {1}
+  } else {
+    set wal_mode {0}
+  }
+} else {
+  set wal_mode {0}
+}
+
+proc test_wal {test_query} {
+  do_test unique1.2 "$test_query" {}
+}
+
+proc setup_test {} {
+  if {1} {
+    execsql {
+      DELETE FROM'sqlite_master'
+    }
+  }
+  do_test unique2.1 {
+    execsql {
+      CREATE TABLE UNIQUE(a, UNIQUE_NAME);
+      CREATE TABLE UNIQUE2(a, UNIQUE_NAME2);
+      CREATE TABLE UNIQUESQLITE(a);
+    }
+  {}
+  do_test unique2.2 {
+    execsql {
+      INSERT INTO UNIQUE(a, UNIQUE_NAME) VALUES(1, '1');
+      INSERT INTO UNIQUE2(a, UNIQUE_NAME2) VALUES(1, '1');
+    }
+  } {}
+  do_test unique2.3 {
+    set test_query {
+      BEGIN;
+      INSERT INTO UNIQUE(a, UNIQUE_NAME) VALUES(2, '1');
+      COMMIT
+    }
+    execsql $test_query
+  } {}
+}
+
+proc execute_test {test_query expect_result} {
+  do_test unique3.1 "$test_query" $expect_result
+}
+
+proc set_db_parameter {param value} {
+  if {$value ne "default"} {
+    set db eval "PRAGMA $param=$value"
+  }
+}
+
+set_db_parameter busy_timeout 10
+
+proc time_query {sql} {
+  set start_time clock format 1000000000
+  set r {}
+  ifcapable {wal_mode} {
+    set query {SELECT case when sqlite_compile_options_is wal_mode_enabled THEN 1 ELSE 0 END}
+    set db eval $query
+    if {$db} {
+      if {$wal_mode} {
+        test_wal {VACUUM}
+      }
+    } else {
+      time_query {VACUUM}
+    }
+  }
+  set end_time clock format 1000000000
+  return {$end_time $start_time} 
+}
+
+proc query_speed {sql} {
+  set result {}
+  foreach r {a d h c o} {
+    lappend result "[$time_query $sql]"
+  }
+  return $result
+}
+
+do_test unique4.1 {
+  set v 40
+  set_db_parameter synchronous $v
+  db transaction {
+    for {set i 1} {$i le 3000} {incr i} {
+      insert into UNIQUE2 values randomized
+    }
+  }
+} {}
+
+finish_test
+
+proc setup_with_random {test_query} {
+  set v 40
+  set_db_parameter synchronous $v
+  set db eval $test_query
+}
+
+setup_with_random {
+  CREATE TABLE t1(a,b);
+  CREATE TABLE t2(a,b);
+  CREATE TABLE t3(a,b);
+  CREATE TABLE t4(a,b);
+  CREATE TABLE t5(a,b);
+  CREATE TABLE UNIQUE1(a, UNIQUE_NAME1);
+}
+
+setup_with_random {
+  INSERT INTO UNIQUE1(a, UNIQUE_NAME1) SELECT 1
+}
+
+setup_with_random {
+  INSERT INTO t3 VALUES(100, 'b')
+}
+
+finish_test
+ query_speed {
+  SELECT rowid rowid1 FROM t2 WHERE a IS NULL AND b IS NULL
+}
+
+test_wal {
+  SELECT rowid1 rowid1 FROM t2 WHERE a IS NOT NULL AND b IS NOT NULL
+}
+
+finish_test 
+
+do_test {
+  set v 20
+  set_db_parameter synchronous $v
+  set_db_parameter checkpoint_fullfsync $v
+  query_speed {
+    INSERT INTO t4 VALUES('string'); 
+    INSERT INTO UNIQUE1(a, UNIQUE_NAME1) VALUES(1,1);
+  }
+} {1400000 750 800 650 1500}
+
+proc get_insert_result_in_real_wal {sql} {
+  set n 2

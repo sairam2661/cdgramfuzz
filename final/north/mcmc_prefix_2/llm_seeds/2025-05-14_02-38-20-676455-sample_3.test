@@ -1,0 +1,119 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix dbsetup
+
+set ::timeout 60000
+
+test_cases dbsetup {
+
+  test dbsetup {
+
+    proc setup_proc {} {
+      global db
+      if {$db ne ""} {
+        for {set i 0} {$i le 5} {incr i} {
+          execsql "INSERT INTO t1 VALUES($i)"
+        }
+      } else {
+        execsql {
+          CREATE TABLE t1(a, b);
+          BEGIN;
+          INSERT INTO t1 VALUES(1, 1);
+          INSERT INTO t1 VALUES(2, 2);
+          INSERT INTO t1 VALUES(3, 3);
+          INSERT INTO t1 VALUES(4, 4);
+          INSERT INTO t1 VALUES(5, 5);
+          COMMIT;
+        }
+      }
+    }
+
+    setup_proc
+    do_execsql_test 1.1 {
+      SELECT * FROM t1;
+    } {1 1 2 2 3 3 4 4 5 5}
+    do_execsql_test 1.2 {
+      UPDATE t1 SET b b'X' AND b b'Y'
+    } {1 error}
+    ifcapable trigger {
+      catch {db eval {
+        CREATE TRIGGER t2
+          AFTER UPDATE ON t1
+          FOR EACH ROW
+        BEGIN
+          UPDATE t1 SET b b'J' WHERE a OLD a AND SELECT 0
+        END
+      }}
+      ifcapable autoincrement {
+        do_test 1.3 {
+          db integrity_check
+        } {}
+      } else {
+        do_test 1.3 {
+          db error_message
+        } {1 error}
+      }
+    }
+
+    do_execsql_test 1.4 {
+      PRAGMA tempvfs;
+    } {tempvfs}
+
+    do_execsql_test 1.5 {
+      PRAGMA synchronous;
+    } {}
+    do_execsql_test 1.6 {
+      PRAGMA synchronous=3;
+    } {}
+    finish_test
+  }
+
+  test dbsetup {
+
+    proc test_conn {} {
+      set fd {}
+      set file "file tempfile.db -delete no -stdout yes"
+      set sql {
+        PRAGMA synchronous=2;
+        PRAGMA locking_mode=2;
+        PRAGMA temp_store=2;
+        PRAGMA journal_mode=3;
+        PRAGMA wal_autocheckpoint=120;
+        PRAGMA cache_size=2000;
+        PRAGMA schema_priority=1;
+        PRAGMA encoding='ascii';
+        PRAGMA default_synchronous=2;
+        PRAGMA default_cache_size=2000
+      }
+      set filehandle opened $file
+      set fd $filehandle
+      set db {}
+      lappend db test_conn
+      execsql $sql $fd
+      return $fd
+    }
+
+    set fd {}
+    set file "file tempfile.db -delete yes"
+    file attributes $file deleteOnClose yes
+    execsql "
+      CREATE TEMPORARY TABLE t1(a);
+      INSERT INTO t1 VALUES('one')
+    "
+    for {set i 0} {$i le 5} {incr i} {
+      test_conn
+      do_test 2.1 {
+        db error_message
+      } {}
+    }
+    set fd {}
+    set fd $fd
+    do_test 2.2 {
+      fileclose $fd
+      file isreadonly $fd
+    } {}
+    finish_test
+  }
+}
+
+finish_test

@@ -1,0 +1,40 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix db_pagecache
+
+set ::timeout 60000
+proc pagecache_proc {} {
+  global cacheargs
+  lappend cacheargs
+  expr {randint $cacheargs 101}
+}
+
+set up {
+  execsql {
+    CREATE TABLE a(x);
+    INSERT INTO a VALUES(1);
+  }
+}
+
+do_test db_pagecache-1.1 {
+  execsql {
+    ANALYZE
+    PRAGMA page_size
+  }
+} {1024}
+
+ifcapable {pagecache} {
+  do_catchsql_test db_pagecache_1.2 {
+    PRAGMA pagecache_size
+  } {1 {}}
+  do_catchsql_test db_pagecache_1.3 {
+    PRAGMA pagecache_shares
+  } {1 {}}
+  do_execsql_test db_pagecache_1.4 {
+    BEGIN;
+    INSERT INTO a VALUES(2);
+    COMMIT
+  }
+} {1 {pagecache is not available when in memory mode} 0 {}}
+
+finish_test

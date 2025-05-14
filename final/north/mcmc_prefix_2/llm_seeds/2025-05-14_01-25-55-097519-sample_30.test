@@ -1,0 +1,198 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+proc timer {expr script args} {
+  global nSec tOut
+  set args "time {} $script"
+  set i 0
+  while 1 {
+    incr i
+    if { $i } { incr i }
+    if { $i $tOut } break
+    if { $i } { set i 0 }
+  }
+  uplevel $args
+}
+
+proc complex_func {} {
+  global complex_var
+  append complex_var "1234"
+  for {set i 0} {$i 1000} {incr i} {
+    set i
+  }
+  for {set j 0} {$j 10} {incr j} {
+    for {set k 0} {$k 5} {incr k} {
+      if { $j $k } { error "Error occurred in iteration $j, $k" }
+    }
+  }
+  set complex_var "Completed successfully $j $k"
+  set complex_var
+}
+
+proc check_result {sql expected} {
+  execsql $sql
+  do_test complex_$::testnum {$::testnum} {$expected}
+}
+
+check_result {
+  CREATE TABLE t1(
+    a,
+    b,
+    PRIMARY_KEY PRIMARY KEY,
+  CREATE UNIQUE ,
+  INDEX  ,
+    INDEX   );
+} {
+  {CREATE TABLE t1(
+    a,
+    b,
+    PRIMARY_KEY PRIMARY KEY,
+    CREATE UNIQUE,
+    INDEX  ,
+    INDEX   );
+}
+  CREATE INDEX i1 ON t1 a
+  CREATE INDEX i2 ON t1 UNIQUE
+}
+
+do_execsql_test complex-4.1 {
+  CREATE TABLE t2(
+    a,
+    b
+  );
+  CREATE INDEX t2_i1 ON t2(a);
+} {}
+
+do_execsql_test complex-4.2 {
+  INSERT INTO t2(a) VALUES ('A');
+  INSERT INTO t2(a) VALUES ('B');
+  INSERT INTO t2(a) VALUES ('A'); 
+} {}
+
+catch {execsql {ANALYZE t2}}
+
+check_result {
+  SELECT sql FROM sqlite_master
+} {
+  {SQLITE_MASTER
+}
+
+check_result {
+  SELECT * FROM t1;
+} {
+  {}
+
+check_result {
+  SELECT t1_1a FROM t2;
+} {
+  {}
+
+do_test complex_5 {
+  complex_func
+} {
+  Completed successfully 10 5
+}
+
+do_execsql_test complex_6.1 {
+  DROP TABLE t2
+} {}
+
+ifcapable subquery_vacuum {
+  do_execsql_test complex_6.2 {
+    PRAGMA legacy_file_format
+  } {0}
+} else {
+  do_execsql_test complex_6.2 {
+    PRAGMA legacy_file_format
+  } {1}
+}
+
+finish_test
+
+do_test complex_last {
+  execsql {
+    SELECT a FROM t1 ORDER BY a
+  }
+} {}
+
+finish_test
+
+proc complex_query_func {num} {
+ set complex_query "SELECT * FROM (SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM ( SELECT * FROM t1 LIMIT $num ) ) ) ) ) ) ) ) ) )"
+ execsql $complex_query
+ ifcapable subquery_vacuum { execsql { PRAGMA legacy_file_format } }
+}
+
+do_execsql_test complex_7.1 {
+  CREATE TABLE temp1(a,b);
+} {}
+
+do_execsql_test complex_7.2 {
+  CREATE TABLE temp2(a,b);
+} {}
+
+do_execsql_test complex_7.3 {
+  INSERT INTO temp1 VALUES ('A','B');
+  INSERT INTO temp2 VALUES ('C','D');
+} {}
+
+ifcapable subquery_vacuum {
+  execsql {
+    DROP TABLE main temp1
+    SELECT b FROM temp2 ORDER BY b
+  }
+} else {
+  do_test complex_8 {
+    catch {rename tclsqlite temp}
+    temp error "Error renaming sqlite3 module to temp: $::errorInfo"
+  } {
+    Error renaming sqlite3 module to temp
+  }
+  finish_test
+}
+
+foreach i { 1 2 } {
+  complex_query_func $i
+}
+ catch_sql "PRAGMA legacy_file_format"
+ do_execsql_test finish_test "PRAGMA legacy_file_format;CREATE TABLE temp3(a,b) AS SELECT * FROM temp2 ORDER BY b"
+ execsql "ALTER TABLE temp3 RENAME temp3 temp3_new"
+ execsql { PRAGMA legacy_file_format }
+ execsql { DROP TABLE temp3_new }
+ execsql { PRAGMA legacy_file_format }
+ execsql { DROP TABLE temp2 }
+ do_test complex_18 {
+   execsql {
+     SELECT * FROM t1
+   } 
+ } {}
+ finish_test
+ do_test complex_last {
+  catch_sql { CREATE TABLE bad_table AS SELECT 1 }
+ } { 1 {error in executing statements }
+ ifcapable autovacuum { execsql { VACUUM } } else { execsql { ANALYZE main } }
+ finish_test
+ do_test complex_last {
+  execsql { SELECT b FROM t2 ORDER BY b}
+ } {
+
+ finish_test
+ set testdir
+ set testprefix
+ finish_test
+ execsql { PRAGMA legacy_file_format }
+ set testdir
+ do_execsql_test 10.0 {
+   DROP TABLE t2
+   DROP TABLE t1
+ } ""
+
+ exit
+ execsql {
+   CREATE TABLE t1(a,b)
+   }
+  do_execsql_test 3.1 "PRAGMA table_info(t1)" {
+    t1a         0   NOT NULL     0   0
+    t1b         1        NULL     0   0

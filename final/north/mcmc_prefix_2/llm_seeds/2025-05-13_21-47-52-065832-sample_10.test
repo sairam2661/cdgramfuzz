@@ -1,0 +1,145 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync
+
+  set ::timeout 60000
+  set disable pris_insert
+
+  set testprefix sync
+  unset syncargs
+  set disable wal
+  unset disable
+
+  if { $::osx } {
+    set sqlite_os_mode "Unix"
+  } elseif { $::win } {
+    set sqlite_os_mode "Win32"
+  } else {
+    set sqlite_os_mode "Other"
+  }
+
+  do_test sync-1.1 {
+    execsql {
+      PRAGMA synchronous = 0;
+      CREATE TABLE a(x);
+    }
+    execsql {
+      INSERT INTO a VALUES(11)
+    }
+    execsql {
+      SELECT x FROM a
+    }
+  } {11}
+
+  ifcapable journalMode {
+    set default_journal_mode "WAL"
+  } else {
+    set default_journal_mode "DELETE"
+  }
+
+  if { $default_journal_mode eq "WAL" } {
+    catchsql {PRAGMA wal_checkpoint}
+  }
+
+  proc sync_proc {} {
+    global syncargs
+    lappend syncargs
+    expr {1}
+  }
+
+  set up { PRAGMA synchronous = 0; }
+  set up sync_proc
+
+  proc sync_func {} {
+    global syncargs
+    puts "sync_func: syncargs: $syncargs"
+  }
+
+  do_execsql_test sync-1.2 {
+    BEGIN;
+    INSERT INTO a VALUES(21);
+    COMMIT;
+  } {}
+
+  do_test sync-1.3 {
+    execsql {
+      SELECT x FROM a;
+      PRAGMA INTEGRITY_CHECK;
+    }
+  } {21 {0 0 0}}
+
+  catch {execsql {DELETE FROM a }}
+
+  do_test sync-1.4 {
+    execsql {
+      PRAGMA cache_size = 10;
+      PRAGMA async = 0;
+    }
+    execsql {
+      INSERT INTO a VALUES(40)
+    }
+    execsql {
+      SELECT c FROM a
+    }
+  } {40}
+
+  do_execsql_test sync-1.5 {
+    PRAGMA integrity_check
+  } {ok}
+
+  proc sync_func {}
+
+  proc sync_delete {} {
+    set db "main"
+  }
+
+  proc sync_func {}
+  proc f1 {} {}
+
+  proc f2 {} {
+    if {$::isfail} return
+    set f1
+    f1
+  }
+
+  proc f3 {} {
+    if { $::isfail } { return }
+    f2
+    f1
+  }
+
+  proc f1 {a} {
+    set f2
+  }
+
+  proc f2 {b c d} {
+    set e
+    f1 $b
+  }
+
+  proc f3 {}
+  proc f4 {} {
+    f1
+  }
+
+  proc f5 {a} {
+    f1
+  }
+
+  proc f5 {a b} {
+    f2
+  }
+
+  proc f5 {a b c} {
+    f2
+  }
+
+  do_execsql_test sync-1.6 {
+    CREATE TABLE abc(a,b,c);
+    INSERT INTO abc VALUES('q','w','e');
+    INSERT INTO abc VALUES('y','u','i');
+    PRAGMA integrity_check;
+  } {ok}
+
+  db close
+  finish_test

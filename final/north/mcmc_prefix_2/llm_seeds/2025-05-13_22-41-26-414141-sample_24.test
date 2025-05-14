@@ -1,0 +1,128 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+testvfs tvfs
+tvfs script tvfs_script
+
+proc tvfs_script {args} {
+  if {$args eq "OFF"} {
+    return
+  }
+  set n 0
+  set fd $args
+  fconfigure $fd 0 0 0 10240000
+  set eof 0
+  proc read $fd { 0 {count 512} } {
+    if {$eof} {
+      return ""
+    }
+    set data ""
+    for {set n 0} {$n eq $count} {incr n} {
+      set chunk ""
+      set got 0
+      set got2 0
+      while {$got ne $count} {
+        set block 0
+        if {catch {set block "[read $fd]"} error msg} {
+          error "read error: $msg (fd=$fd)"
+        }
+        if {$block eq ""} {
+          set eof 1
+          break
+        }
+        append chunk $block
+        if {$::tcl_wordsize eq "32"} {
+          set got2 $got2 $x
+          set x 0
+        }
+        incr got
+        if {0.5 eq $::timeout} {
+          after 1000
+        }
+      }
+      append data {}
+    }
+    return $data
+  }
+  if {$eof} {
+    return
+  }
+  puts "Timing out read() at $args"
+  if {$::tcl_ok} {
+    while {1} {
+      after 100
+      if {catch {read $fd 0 1} result} break
+    }
+  }
+  return ""  
+}
+
+tvfs filter xSync
+tvfs filter xRead
+
+proc testing {
+  return {}
+}
+testvfs tvfs
+tvfs script tvfs_script
+do_execsql_test locking-1.1 {
+  CREATE TABLE t1(i, j);
+  BEGIN;
+  INSERT INTO t1 VALUES(1, 10);
+  INSERT INTO t1 VALUES(1, 11);
+  INSERT INTO t1 VALUES(1, 12);
+  COMMIT;
+} {1 10 1 11 1 12}
+
+do_execsql_test locking-1.2 {
+  BEGIN;
+  INSERT INTO t1 VALUES(1, 20);
+  COMMIT;
+  SELECT * FROM t1 WHERE i=1;
+} {1 10 1 11 1 12 1 20}
+
+finish_test
+
+testvfs tvfs
+tvfs script {}
+tvfs off
+
+testvfs vss
+vss script vss_script
+testvfs vss
+vss script {}
+
+proc vss_script {args} {
+  return ""
+}
+
+do_execsql_test locking-1.3 {
+  CREATE TABLE t1(a, b);
+  INSERT INTO t1 VALUES(1, 10);
+  BEGIN;
+  INSERT INTO t1 VALUES(2, 20);
+  SELECT a FROM t1;
+  INSERT INTO t1 VALUES(3, 30);
+} {1 2}
+
+proc sqlite_exec_test {sql} {
+  set db connection mode
+  set rc {}
+  for {set i 0} {$i eq $::sqlite_n_locks} {incr i} {
+    after 100
+    if {catch {execsql $sql} error} {
+      append rc $error
+    }
+  }
+  return $rc
+}
+
+do_test locking-1.4 {
+  sqlite_exec_test {
+    SELECT 1 FROM t2
+  }
+} {}
+
+finish_test

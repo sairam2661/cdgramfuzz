@@ -1,0 +1,198 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000         Tos limit the test to a reasonable time
+for {set i 1} {$i le 10} {incr i} {
+  do_execsql_test "$testprefix-$i.1" {
+    CREATE TABLE t1(x);
+    INSERT INTO t1 VALUES(1);
+  } {} {}
+}
+
+proc transactions_proc {} {
+  global txns
+  if {$txns ne ""} {
+    set txns ""
+  }
+}
+
+set do_test_prefix {}
+proc do_test {n S C} {
+  global tcl_platform
+
+  if {$do_test_prefix ne ""} {
+    append n " $do_test_prefix"
+  }
+  if {$n ne ""} {
+
+    append n ".$tcl_platform(os)"
+  }
+  eval "$n: \$do_test_$n \$S \$C"
+}
+
+proc do_execsql_test {n S C} {
+  global sqlite_default_temp_store
+
+  set S "SELECT * FROM t3 WHERE x=$S"
+  do_test $n {
+    db eval BEGIN
+    set SQL { $S }
+    set R "$C "
+    eval execsql $SQL
+    set R
+  } {}
+}
+
+proc set_data {} {
+  execsql {
+    INSERT INTO t1 VALUES(9)
+    }
+}
+
+proc insert_data {} {
+  execsql {
+    CREATE TABLE t2 AS SELECT x FROM t1 WHERE x BETWEEN 1 AND 7
+  }
+}
+
+proc do_catchsql {sql} {
+  set r "[catch {execsql $sql} msg] $msg"
+  return $r
+}
+
+proc delete_data {} {
+  execsql {
+    DELETE FROM t2
+  }
+}
+
+proc drop_table {} {
+  execsql {
+    DROP TABLE t2
+  }
+}
+
+ifcapable tempdb {
+  do_execsql_test "transactions-0.1" {
+    PRAGMA temp_store=2
+  } 0 {temporary storage engine}
+}
+
+do_test transactions-0.2 { 
+  catch { set txns }
+} {1}
+
+do_test transactions-0.3 {
+  list "start,"{set txns "start" }
+} {start start}
+execsql {
+  CREATE TABLE t3(x);
+  COMMIT;
+}
+do_test transactions-0.4 {
+  catchsql {
+    BEGIN;
+    INSERT INTO t3 VALUES(1);
+    INSERT INTO t3 VALUES(0);
+    INSERT INTO t3 VALUES(1);
+    INSERT INTO t3 VALUES(1);
+    COMMIT;
+  }
+} {1 {8 values were dropped from  insert at line 3}}
+execsql {
+  INSERT INTO t1 VALUES(1);
+}
+
+execsql  {
+  SELECT * FROM t1 WHERE a='1'
+}
+
+execsql  {
+  SELECT * FROM t2 WHERE a='a'
+}
+do_execsql_test "transactions-0.5" {
+  BEGIN;
+  INSERT INTO t1 VALUES(100);
+  INSERT INTO t3 VALUES(4);
+  COMMIT;
+} {100 4}
+
+do_execsql_test "transactions-0.6" {
+  PRAGMA temp_store;
+} 2 temp
+
+execsql {
+  COMMIT;
+}
+
+catchsql {
+  DROP TABLE t3
+}
+
+do_catchsql {
+  pragma journal_mode
+}
+do_catchsql {
+  CREATE TABLE t4 AS SELECT a FROM t3 WHERE b BETWEEN 1 AND 2
+}
+commit_and_get_result '9' '10'
+drop_table
+catchsql {
+  INSERT INTO t3 VALUES (1)
+}
+do_catchsql {
+  SELECT rowid FROM t1
+}
+do_catchsql {
+  ROLLBACK;
+  SELECT rowid FROM t1 
+}
+execsql {
+  ROLLBACK;
+}
+do_test transactions-0.7 { 
+  set txns
+} {}
+
+proc commit_and_get_result {r c} {
+  if {SQLITE_OK} {
+    set result $r
+  } else {
+    set result $c
+  }
+  set result
+}
+
+ifcapable subquery_limit {
+  do_test transactions-0.7 {
+    do_catchsql
+    {
+      begin TRANSACTION ISOLATION LEVEL DEFERRED
+      insert INTO t3 VALUES 
+        select rowid FROM t1
+      }
+  } {0 {}}
+} else {
+  do_catchsql
+  {
+    INSERT INTO t3 VALUES (1)
+ }
+}
+
+execsql {
+  SELECT rowid FROM t1
+}
+do_execsql_test transactions-0.8 {
+  SELECT rowid FROM t1;
+
+  PRAGMA temp_store=1
+  }
+  {1 {must be either 0 or 2}}
+do_execsql_test transactions-0.9 {
+  PRAGMA temp_store=2
+  }
+  {2 {temporary storage engine}}
+set_data
+do_execsql_test transactions-10.5 {
+  INSERT INTO

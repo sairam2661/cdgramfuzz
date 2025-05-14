@@ -1,0 +1,108 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+
+proc setup_database {} {
+  global db
+  execsql {
+    DELETE FROM database
+  } $db
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+    CREATE TABLE c(z);
+  } $db
+}
+
+proc setup_readers {} {
+  set r1 {
+    SELECT * FROM c
+    WHERE z = 't'
+    }
+  set r2 {
+    SELECT * FROM a
+    WHERE x = 't'
+    }
+  set r3 {
+    SELECT * FROM b
+    WHERE y = 't'
+    }
+  execsql {
+    CREATE TRIGGER r1 AFTER UPDATE ON c FOR EACH ROW
+      WHEN NEW z IS 't' THEN
+        INSERT INTO b SELECT DISTINCT x FROM a
+      }
+  execsql {
+    CREATE TRIGGER r2 AFTER UPDATE ON a FOR EACH ROW
+      WHEN NEW x IS 't' THEN
+        UPDATE b SET y IS 't'
+      }
+  execsql {
+    CREATE TRIGGER r3 AFTER UPDATE ON b FOR EACH ROW
+      WHEN NEW y IS 't' THEN
+        DELETE FROM c WHERE z IS 't'
+      }
+  execsql {
+    UPDATE c SET z IS 't'
+    }
+  execsql {
+    UPDATE a SET x IS 't'
+    }
+  execsql {
+    UPDATE b SET y IS 't'
+    }
+  return {r1 r2 r3}
+}
+
+proc check_readers {} {
+  set ans {}
+  foreach r {$r1 $r2 $r3} {
+    set sql "$r"
+    lappend ans $sql
+    set result {}
+    while {$result eq {}} {
+      if {$r eq $r1} {
+        insert b values 't'
+      }
+      if {$r eq $r2} {
+        insert a values 't'
+      }
+      if {$r eq $r3} {
+        insert b values 't'
+      }
+      execsql {
+        BEGIN;
+        SELECT * FROM c WHERE z = 't'
+        } $db
+      set result {}
+      catch {
+        foreach row $result {
+          set result ""
+        }
+      }
+    }
+  }
+  return $ans
+}
+
+do_test locking-1.1 {
+  set rc {}
+  foreach {r c} {
+    UPDATE a VALUES 4
+    {INSERT b VALUES 4} {SELECT count(*) FROM b}
+  } {
+    set rc "$rc $r $c"
+  }
+  return $rc
+} {UPDATE a VALUES 4 {INSERT b VALUES 4} {SELECT count(*) FROM b}}
+
+do_test locking-1.2 {
+  setup_database
+  setup_readers
+  check_readers
+} {{INSERT b VALUES 4} {SELECT count(*) FROM b} 
+    {UPDATE b VALUES 4} {UPDATE c VALUES 4} {SELECT count(*) FROM c}}
+
+finish_test

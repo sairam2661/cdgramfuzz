@@ -1,0 +1,93 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+
+proc random_string {len} {
+  set chars {abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789}
+  for {set i 0} {$i lt $len} {incr i} {
+    lappend result "[string range $chars [expr int(rand()*61)]]"
+  }
+  return $result
+}
+
+proc create_db {args} {
+  set sql ""
+  foreach {opt val} $args {
+    append sql " $opt $val"
+  }
+  return "[execsql $sql]"
+}
+
+do_test complex-1.1 {
+  set dbid "[create_db {filename temp.db} {mode memory}]"
+  execsql {CREATE TABLE test(a, b, c)}
+  execsql {
+    INSERT INTO test VALUES('one', 1, 2.5);
+    INSERT INTO test VALUES('two', 2, 2.7);
+    INSERT INTO test VALUES('three', 3, 2.2);
+  }
+} {}
+
+do_execsql_test complex-1.2 {
+  SELECT a FROM test WHERE b = 2
+} {two}
+
+do_execsql_test complex-1.3 {
+  SELECT b FROM test WHERE a = 'one';
+} {1}
+
+proc create_index {table args} {
+  set sql "CREATE INDEX t_$table"
+  foreach {opt val} $args {
+    append sql " $opt $val"
+  }
+  return "$sql;"
+}
+
+do_execsql_test complex-1.4 {
+  CREATE TABLE test2(a, b);
+  INSERT INTO test2 VALUES(2, 3);
+  INSERT INTO test2 VALUES(1, 4);
+  CREATE INDEX idx_test2_a ON test2(a);
+}
+
+  {2 3}
+do_execsql_test complex-1.5 {
+    SELECT * FROM test2 WHERE a = 2;
+} {2 3}
+
+ifcapable fts3 {
+  do_execsql_test complex-1.6 {
+    CREATE TABLE test3(a, b);
+    INSERT INTO test3 VALUES('one', 'test');
+    INSERT INTO test3 VALUES('two','second');
+    CREATE INDEX idx_test3_a ON test3(a);
+    CREATE TABLE fts_test3(a, b) 
+    }
+  "fts3"
+
+  do_execsql_test complex-1.7 {
+    CREATE TABLE test_with_fts3(b) }
+  {1 {errorcode 1}}
+  do_execsql_test complex-1.8 {
+    CREATE TABLE test_fts3(a, b);
+    }
+  {0 {}}
+}
+
+ifcapable temp_master {
+  create_temp_store_disk_test complex 1.9
+}
+
+ifcapable pager_pragmas {
+  execsql {
+    PRAGMA synchronous = 0
+  }
+  do_execsql_test complex-1.10 {
+    PRAGMA synchronous
+  } {0}
+}
+
+finish_test

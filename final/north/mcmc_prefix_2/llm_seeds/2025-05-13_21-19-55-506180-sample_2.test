@@ -1,0 +1,55 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking_test_1
+set ::timeout 60000
+db close
+sqlite3 db test
+do_execsql_test 1.0 { PRAGMA journal_mode = 'wal' }
+db cache size 100
+do_execsql_test 1.1 { CREATE TABLE a(x); }
+do_execsql_test 1.2 { CREATE TABLE b(y); }
+sqlite3 db main test
+set n wal
+
+proc async {cmd1 cmd2} {
+  global n wal db
+  set n 0
+  catchsql {PRAGMA journal_mode = 'wal'; PRAGMA wal_checkpoint}
+  after 100
+  execsql $cmd1 db
+  execsql $cmd2 db
+}
+
+do_test 2.000 {
+  execsql {PRAGMA locking_mode = 'exclusive'}
+  set n 0
+  async { 
+    INSERT INTO b VALUES(2) 
+  } { 
+    INSERT INTO a VALUES(4) 
+  }
+} {0 {}}
+
+do_test 3.000 {
+  set n 5
+  async { 
+    UPDATE b SET y 2 WHERE y IS NULL LIMIT 1
+  } { 
+    UPDATE a SET x 4 WHERE x IS NULL LIMIT 1
+  }
+} {0 {}}
+
+proc wal2 {cmd} {
+  global n db
+  expr { $n incremented }
+} 
+
+do_test 4.000 {
+  async { 
+    INSERT INTO b VALUES(3)
+  } { 
+    UPDATE a SET x 5 WHERE x IS NULL LIMIT 1
+  }
+}
+
+finish_test

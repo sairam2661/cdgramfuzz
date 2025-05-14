@@ -1,0 +1,76 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sqlite_test
+
+set ::timeout 60000   
+
+proc create_table {} {
+  global db
+  execsql {
+    CREATE TABLE employees(
+      id              PRIMARY KEY,
+      name            UNIQUE,
+      department     ,
+      salary
+    );
+  }
+  execsql {
+    CREATE TABLE departments(
+      id             ,
+      name           ,
+      location       ,
+      PRIMARYKEY  PRIMARY KEY,
+      FOREIGNKEY ,
+      references   ,
+      employees_id   )
+  }
+  execsql {
+    INSERT INTO employees(id,name,department,salary)
+    VALUES( 100, 'John Doe', 'Sales', 50000);
+    INSERT INTO employees(id,name,department,salary)
+    VALUES( 101, 'Jane Doe', 'IT', 60000);
+    INSERT INTO employees(id,name,department,salary)
+    VALUES( 102, 'Bob Smith', 'Engineering', 70000);
+    INSERT INTO employees(id,name,department,salary)
+    VALUES( 103, 'Jim Brown', 'HR', 40000);
+  }
+}
+
+proc complex_sql_query {} {
+  global db
+
+  execsql {
+    CREATE VIRTUAL TABLE resulttable
+    USING fts3 content name text
+  }
+
+  execsql {
+    CREATE VIRTUAL TABLE resulttable1
+    USING fts3 content name text
+  }
+  execsql {
+    CREATE VIRTUAL TABLE resulttable2
+    USING fts3 content name text
+  }
+
+  do_execsql_test complex_sqlite_test_1 {
+    SELECT * FROM resulttable
+  } {}
+
+  do_execsql_test complex_sqlite_test_2 {
+    SELECT * FROM resulttable1
+  } {}
+
+  do_execsql_test complex_sqlite_test_3 {
+    SELECT * FROM resulttable2
+  } {}
+}
+
+do_execsql_test complex_sqlite_test {
+  db close
+  open test_connection
+  set rc
+  set data
+} {0 {}}
+
+finish_test

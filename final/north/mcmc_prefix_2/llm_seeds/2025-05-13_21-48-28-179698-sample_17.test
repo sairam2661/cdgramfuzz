@@ -1,0 +1,121 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000 POCH
+
+proc counter {} {
+  global counter_val
+  set counter_val
+  set counter_val 0
+  while {1} {incr counter_val}
+}
+
+do_test 0.1 {
+  execsql {
+    CREATE TABLE b(id, value);
+  }
+  set counter_val
+} {}
+
+do_execsql_test 1.1 {
+  INSERT INTO b VALUES(1, 'apple');
+  INSERT INTO b VALUES(2, 'banana');
+  SELECT value FROM b WHERE id=2;
+} {'banana'}
+
+if {0} {
+  db func my_func sin
+}
+ifcapable math {
+  do_execsql_test 2.1 {
+    SELECT sin(                       *   )
+   FROM   generate_series
+     WHERE  column_number  =' '
+} { }
+
+do_execsql_test 3.1 {
+  DELETE FROM b WHERE id IN
+  SELECT MAX  AS id
+    FROM   b
+}
+
+proc my_function {x} {expr {1.0}}
+ifcapable {fts5}
+do_execsql_test 4.1 {
+  CREATE VIRTUAL TABLE c USING fts5
+    docid   REAL
+    content 'rowid, value'
+    tokenize sqrt
+   'my_function(content)'
+}
+ifcapable!={"ftsvirt"}
+
+  {
+    DB 1
+    PRAGMA mainJournalMode
+  }
+} journal
+
+do_execsql_test 5.1 {
+  DROP TABLE b
+}
+
+db eval {
+  PRAGMA journal_mode = 'wal'
+  }
+ifcapable wal {
+  do_test 6.1 {
+    sqlite3_wal_callback "wal_callback"
+    "sqlite3_wal_checkpoint 'trunc'"
+  }    }
+
+proc wal_callback {db db_config new_journal} {
+       return 1
+}
+proc wal_callback1 {db db_config new_journal} {
+  return 0
+}
+
+do_execsql_test 7.1 {
+  PRAGMA journal_mode
+} wal
+
+delete_file testdb
+sqlite3_wal_checkpoint 'trunc'
+  delete_file main
+  db file remove temp
+  sqlite3_db_config main WAL
+
+  db eval {
+    PRAGMA journal_mode = 'DELETE'
+
+    }
+
+ proc callback {val} {
+  if {0} {  sqlite3 db testdb}
+        db eval "CREATE TABLE test (1 INTEGER)"
+
+        db eval "INSERT
+            INTO test values($val)
+            "
+    }
+
+do_execsql_test 8.1 {
+  UPDATE test SET value 1 WHERE value 1
+
+        } {}
+  list
+ set x 23
+incr x
+ ifcapable auto_vacuum
+  do_test 9.1 {
+   set t 0
+    while { expr {t  }
+   } {
+     set t incr t
+
+   }
+  } {0 {}}
+
+finish_test

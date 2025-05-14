@@ -1,0 +1,91 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix testing
+
+set ::timeout 60000
+
+proc testing_proc {} {
+  global testingargs
+  lappend testingargs
+  expr {0}
+}
+
+proc testing_func {} {
+  global testingargs
+  lappend testingargs
+  set testingargs
+}
+
+do_test testing-1.1 {
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(11);
+  }
+  execsql {SELECT count(*) FROM b}
+} {1}
+
+do_execsql_test testing-1.2 {
+  BEGIN;
+  INSERT INTO b VALUES(12);
+  COMMIT;
+  SELECT count(*) FROM b;
+} {2}
+
+do_execsql_test testing-1.3 {
+  BEGIN;
+  ROLLBACK;
+  SELECT count(*) FROM b;
+} {1}
+
+proc testing_func {} {
+  return "testing_func"
+}
+
+do_test testing-1.4 {
+  set result
+  set result
+} {testing_func}
+
+do_test testing-1.5 {
+  execsql {
+    INSERT INTO b VALUES(13);
+  }
+  execsql {SELECT COUNT(*) FROM b}
+} {3}
+
+ifcapable trigger {
+  do_execsql_test testing-1.6 {
+    CREATE TABLE c(A)
+    }
+  {
+    CREATE TABLE c
+        }
+  }
+
+  do_execsql_test testing-1.7 {
+    BEGIN;
+    INSERT INTO c VALUES(14);
+    COMMIT;
+    SELECT * FROM c;
+    }
+    {14}
+
+   do_execsql_test testing-1.8 {
+    BEGIN;
+    INSERT INTO c VALUES(15);
+    ROLLBACK;
+    SELECT * FROM c;
+    }
+    {14}
+
+    db close
+    test_configurations "no_journal"
+    if {0} {
+    sqlite_libversion_number {}
+
+    if {0} {
+        finish_test
+    }
+}
+
+finish_test

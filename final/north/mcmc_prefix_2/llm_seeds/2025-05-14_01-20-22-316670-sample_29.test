@@ -1,0 +1,74 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query
+
+set ::timeout 60000
+db_config 10
+catch {db close}
+test_config 0
+
+proc query_func {args} {
+  lappend query_args $args
+  list $args
+}
+
+set query_args {}
+set tstart {}
+db open main test_db
+catch {db close}
+test_db_config 1
+
+do_test query-1.1 {
+  set tstart
+  execsql {
+    CREATE TABLE t1(x PRIMARY KEY);
+    CREATE TABLE t2(y PRIMARY KEY, FOREIGN_KEY);
+    CREATE TABLE t3(x, y, FOREIGN_KEY);
+    INSERT INTO t1 VALUES(1);
+    INSERT INTO t2 VALUES(2);
+    INSERT INTO t3 VALUES(3, 4);
+  }
+  set tstart
+  db close
+  db open main test_db
+  execsql {
+    PRAGMA journal_mode
+  }
+} {wal}
+
+db eval {pragma main journal_mode}
+do_execsql_test query-1.2 {
+  INSERT INTO t1 VALUES(5);
+  SELECT count(*) FROM t1;
+} {6}
+do_execsql_test query-1.3 {
+  INSERT INTO t2 VALUES(6)
+} {}
+ifcapable fkey {
+  do_execsql_test query-1.4 {
+    SELECT y FROM t2
+  } {2 6}
+}
+ifcapable alter_table {
+  do_test query-1.5 {
+    set t1_id
+    set t1_rowid
+    set nChanged
+    db function func {a b} {{a b}}
+    db function func2 {c d} {{c d}}
+    set t1_id
+    db eval {SELECT rowid FROM t1}
+    db eval {
+      DROP TABLE t1
+    }
+    set t1_rowid
+    set nChanged
+    execsql {
+      pragma main pager_lockstat
+    }
+    catch {func 5 7}
+    catch {func2 8 9}
+  } {2 1 2}
+}
+
+finish_test

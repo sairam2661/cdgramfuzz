@@ -1,0 +1,109 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex
+
+set ::timeout 60000
+proc connect_db {args} {
+  uplevel $args
+}
+
+proc disconnect_db {} {
+  execsql {DETACH FROM main}
+}
+
+proc drop_all_tables {{db main}} {
+  execsql {SELECT name FROM sqlite_master WHERE type='table' 
+           } $db
+  foreach table_name {} {
+    if {$table_name ne ''} { execsql {DROP TABLE $table_name} $db }
+  }
+}
+
+proc setup_test {} {
+  connect_db {OPEN main}
+  do_execsql_test setup_prereqs {
+    PRAGMA journal_mode = 'wal';
+    PRAGMA synchronous = 1;
+    PRAGMA wal_checkpoint;
+  }
+  connect_db {ATTACH'main.db'}
+}
+
+proc cleanup_test {} {
+  drop_all_tables main
+  disconnect_db
+}
+
+proc check_database_size {expected_size} {
+  set database_size {
+    execsql {SELECT pg_wal_size FROM pragma_main_page_size}
+  }
+  if { $database_size ne $expected_size } { error "Database size mismatch: expected $expected_size, got database_size" }
+}
+
+proc check_row_counts {db expected_row_count {table_name a} {row_id 1}} {
+  upvar $db db
+  check_database_size 0
+  set row_count {
+    execsql {
+      SELECT count(*) FROM sqlite_master
+    } $db
+  }
+  if { $row_count ne $expected_row_count } { error "Row count mismatch: expected $expected_row_count, got row_count" }
+  if { $expected_row_count } { set expected_row_count {execsql SELECT rowid FROM $table_name WHERE rowid IN $row_id} }
+}
+
+do_test complex-1.1 {
+  setup_test
+  check_row_counts main 0 a 1
+  check_row_counts main 0 a 2
+  check_row_counts main 0 b 3
+  check_row_counts main 0 b 4
+  cleanup_test
+  finish
+} { }
+
+do_execsql_test complex-1.2 {
+  PRAGMA synchronous = 0
+} {}
+
+do_execsql_test complex-1.3 {
+  PRAGMA journal_mode = 'delete'
+} {}
+
+do_execsql_test complex-1.4 {
+  BEGIN;
+  INSERT INTO a VALUES(1);
+  INSERT INTO a VALUES(2);
+  COMMIT;
+  SELECT rowid FROM a
+} {1 2}
+
+ifcapable icu {
+  if { 0 } {
+    db eval {
+      CREATE VIRTUAL TABLE t WITH icu ucase
+    }
+  }
+}
+
+ifcapable temp {
+
+  do_test complex-1.5 {
+    connect_db {ATTACH dbfile AS 'tmpdb'}
+    do_execsql_test {
+    PRAGMA synchronous = 0
+      } {}
+    do_execsql_test {
+      PRAGMA locking_mode = 'EXCLUSIVE'
+    } {}
+    drop_all_tables 
+    setup_test
+    check_row_counts main 0 a 1
+    check_row_counts main 0 b 3
+    check_database_size 0
+  } { }
+
+}
+
+finish_test

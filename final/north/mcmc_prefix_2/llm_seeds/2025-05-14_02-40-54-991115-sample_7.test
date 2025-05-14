@@ -1,0 +1,71 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix async
+
+set ::timeout 60000
+do_execsql_test 1 {
+  CREATE TABLE a(x);
+  CREATE TABLE b(y);
+  CREATE TABLE c(z);
+}
+
+proc insert_a {} {
+  global t
+  set t $t
+  db eval {INSERT INTO a VALUES(10)}
+}
+
+proc insert_b {} {
+  db eval {INSERT INTO b VALUES(20)}
+}
+
+proc insert_c {} {
+  db eval {INSERT INTO c VALUES(30)}
+}
+
+proc do_test_async_test {id expr args} {
+  set id $id
+  set args $args
+  if {$::t} {
+    uplevel $args
+  } else {
+    after 100 $args
+    set t 1
+  }
+}
+
+do_test_async_test async_test1 {
+  execsql {
+    BEGIN TRANSACTION
+  }
+} {  }
+
+do_test_async_test async_test2 {
+  execsql {
+    INSERT INTO a VALUES(10);
+  }
+  insert_a
+} {  }
+
+do_test_async_test async_test3 {
+  execsql {
+    INSERT INTO b VALUES(20);
+  }
+  insert_b
+} {  }
+
+do_test_async_test async_test4 {
+  execsql {
+    INSERT INTO c VALUES(30);
+  }
+  insert_c
+} {  }
+
+do_execsql_test async_test5 {
+  COMMIT;
+  SELECT * FROM a;
+  SELECT * FROM b;
+  SELECT * FROM c;
+} {10 {} {} 20 {} {} 30 {} {}}
+
+finish_test

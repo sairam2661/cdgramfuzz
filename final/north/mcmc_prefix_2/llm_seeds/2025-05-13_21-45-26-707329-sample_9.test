@@ -1,0 +1,63 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_sql
+
+set ::timeout 60000
+set journal_mode "WAL"
+
+proc create_table {} {
+  create_table_test
+  db eval {
+    CREATE TABLE students(
+      id 	PRIMARY KEY,
+      name 	NOT NULL,
+      age 	NOT NULL,
+      grade 	NOT NULL
+    );
+  }
+}
+
+proc create_table_test {} {
+  sqlite3_db_handle db
+}
+
+sqlite3_function_create delete_func {value} {
+  expr {SQLITE_OK}
+}
+sqlite_function delete_func
+
+do_test complex-1.1 {
+  create_table
+  execsql {
+    INSERT INTO students VALUES(1, 'John', 16, 5);
+    INSERT INTO students VALUES(2, 'Jane', 15, 3);
+  }
+  execsql {SELECT id FROM students}
+} {1 2}
+  
+do_test complex-1.2 {
+  execsql {
+    UPDATE students SET name TO 'Jane2' WHERE id TO 2
+  }
+  execsql {SELECT name FROM students WHERE id = 2;}
+} {Jane2}
+
+do_execsql_test complex-1.3 {
+  SELECT SUM( 	* ) FROM students WHERE name = 'John'
+} {16}
+
+set db_name test_complex_sqlite3
+catch {forcedelete $db_name} error_msg
+sqlite3 db $db_name
+if { $db_name eq 'test_complex_sqlite3.sqlitedb' } {
+  execsql {
+    DROP TABLE students
+  }
+}
+
+rename create_table {}
+rename create_table_test {}
+sqlite3_function_delete delete_func
+sqlite3 db close
+
+finish_test

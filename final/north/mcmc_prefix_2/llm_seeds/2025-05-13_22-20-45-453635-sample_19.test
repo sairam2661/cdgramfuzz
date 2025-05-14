@@ -1,0 +1,147 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multithread
+
+set ::timeout 60000
+set testprefix "async-"
+
+proc setasync {} {
+  global asyncenabled asyncarg1 asyncarg2
+  asyncenabled 1
+  set asyncarg1 "foo"
+  set asyncarg2 "bar"
+}
+
+proc getasync {} {
+  global asyncenabled asyncarg1 asyncarg2
+  expr {$asyncenabled}
+}
+
+do_test async-1.1 {
+  setasync
+  set x 0
+  lappend x "1"
+} {1}
+
+do_test async-1.2 {
+  async_proc {} {
+    global z
+    set z 1
+    proc foo {} {global asyncarg1 z asyncarg2
+      if {$z} {set asyncarg2 "test"}
+      return $asyncarg1
+    }
+    foo
+  }
+  set x 0
+  lappend x "[getasync]" "[getasync]"
+  set x "2"
+  lappend x $asyncarg1
+  set x $asyncarg2
+} {2 bar}
+
+ifcapable journalMode {
+  catchsql {PRAGMA synchronous=0}
+}
+
+if {{sqlite_source_id} {002100}} {
+  set sql {
+    CREATE TABLE "t1" AS SELECT 1
+    CREATE INDEX "i1" ON "t1"
+  }
+  do_execsql_test async_2 {
+    SELECT name FROM sqlite_master
+  } {
+  }
+
+  proc async_insert_test3 {} {
+    do_execsql_test async_3 {
+      SELECT count(*) FROM t1
+    } {0}
+  }
+
+  proc async_insert_test4 {} {
+        do_execsql_test async_4 {
+      CREATE TABLE t2 AS SELECT 2
+      CREATE INDEX i2 ON t2
+        }
+  }
+
+  proc async_trigger_test1 {} {
+    do_execsql_test async_5 {
+      INSERT INTO t1 VALUES(2)
+    } 1
+  }
+
+  proc async_trigger_test2 {} {
+    execsql {
+      SELECT count(*) FROM t1
+    }
+  }
+
+  proc async_insert_test1 {} {
+    do_execsql_test async_6 {
+      INSERT INTO t2 VALUES(3)
+    } 1
+  }
+  set x 0
+  lappend x "[getasync]" "[getasync]"
+  set tmoout 180000
+}
+
+if {0} {
+  set testprefix multi_thread
+}
+
+proc is_threadsafe {} {
+  global threadsafe
+  set threadsafe 1
+}
+
+proc sync {} {
+  global sql
+  set sql "SELECT 1"
+}
+sql 
+do_test multithread-1.1 {
+  is_threadsafe
+  thread exit
+} {1}
+
+proc async_test {sql {err {}}} {
+  global x thread exit
+  set x 1
+  catch {thread create {
+    sync
+    do_test multithread {
+      async {set sql $sql}
+      expr "$x == 1"
+    } 1 $err
+  }}
+  return $x
+}
+
+proc multi_thread_async_test {} {
+  if {0} {
+    set sql {
+      CREATE TABLE t1(x UNIQUE)
+    }
+    set x 0
+    lappend x "async {CREATE TABLE t2(x UNIQUE)}"
+    set x "1"
+  } else {
+    set sql {
+      INSERT INTO t1 VALUES("foo")
+      }
+    set x 1
+    lappend x "async {INSERT INTO t1 VALUES('bar')}"
+    set x 2
+    lappend x "async {INSERT INTO t1 VALUES('baz')}"
+  }
+  do_test multithread {
+    async_test $sql
+    async_test $sql
+  } {2}
+}
+
+finish_test

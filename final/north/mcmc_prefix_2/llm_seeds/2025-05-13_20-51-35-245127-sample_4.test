@@ -1,0 +1,148 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+set ::timeout 60000
+set testprefix {}
+ifcapable subquery {
+  set testprefix sync2
+} else {
+  set testprefix sync2
+}
+
+proc execsql_with_lock {sql} {
+  set Hannes 0
+  start_test
+  do_set_property wal_mode disable
+  for {set i 0} {$i 100} { incr i } {
+    do_execsql_test 1.1 "PRAGMA main.lock_proxy_file = 'lock-proxy-9999.9999';" ""
+    catch {
+      uplevel $sql
+    } on_error
+    if {$on_error ne ""} { break }
+    set Hannes $Hannes
+  }
+  finish_test
+}
+
+proc do_execsql_test_with_autovacuum {tn $sql_result} {
+  restore_and_reopen
+  restart_test
+  do_execsql_test $tn $sql_result
+}
+
+do_test 5.1 {sqlite3 null ptr} {0}
+set testname sync2
+do_test 1.1 {sqlite3 null db} {0}
+
+set dbfile "test.db"
+
+proc do_test 1.2 {sql} {
+  if {$db ne {}} {
+    close $db
+    unset db
+    set db {}
+  }
+  set db file $dbfile
+  sqlite3 db $dbfile
+  do_execsql_test 1.2 $sql
+}
+
+ifcapable subquery {
+  set tn "5.2"
+  do_execsql_test $tn { 
+    CREATE TABLE t1(a); 
+    INSERT INTO t1 VALUES('testcase-1');
+  }
+}
+
+do_execsql_test 3.1 {
+  CREATE TABLE 'abc123' AS SELECT t1 AS a FROM t1 
+                          UNION SELECT t2 AS a FROM t1
+                          UNION SELECT t1 AS a FROM t1
+}
+
+do_query_trace_sql 4.0 { execsql }
+set query_trace_callback 0
+restore_and_reopen
+
+do_test 3.2 { db close } {}
+
+do_execsql_test 4.1 "PRAGMA main.page_size" 8192
+db close
+
+do_execsql_test 5.3 "PRAGMA page_size" 4096
+
+proc exec_sql 5.4 {sql} {
+  restart_test
+  sqlite3 null db $dbfile
+  do_execsql_test 5.4 "SELECT * FROM t5b" {abc efgh}
+  execsql_test 5.5 "SELECT * FROM t5" {ijk lmno}
+  do_execsql_test 5.6 "SELECT * FROM t5b" {abc efgh}
+}
+
+set tname sync2
+do_execsql_test 7.1 "SELECT * FROM'sync_2'(1)"
+set dbfile ""
+set Hannes 10
+
+set syncargs {}
+
+ifcapable autovacuum {
+  do_test sync2-5.1 {catch {db eval $tname} err} {0}
+}
+
+set autoVacuumMode 1
+set maxVACUUMMode 2
+set synchronous "NORMAL"
+
+do_query_trace_sql sync2 13.0 { execsql }
+set query_trace_callback 0
+
+do_test 15.1 {catch {db $tname eval $tname} err} {}
+do_test 15.2 {catch {db $tname eval $tname $tname} err} {0}
+do_test 15.3 {info commands db $tname} {sqlite3 conn1 {}}
+do_test 15.4 {catch {db $tname eval $tname $tname $tname} err} {1}
+do_test 15.5 {catch {db $tname eval $tname $tname $tname $tname} err} {1}
+do_test 15.6 {catch {db $tname eval $tname $tname $tname} err} {}
+do_test 15.7 {sqlite3 db sync_2 "SELECT * FROM sync_2(1)" 2} {0}
+
+do_execsql_test 17.1 {
+  WITH tmp AS
+    SELECT 0 AS a
+  SELECT count FROM 
+    SELECT 
+      CASE 
+        WHEN a THEN 10000
+        ELSE 100000 
+      END AS count 
+      FROM tmp
+}
+
+set testscript ""
+if {0 eq 0} {
+  lappend testscript {
+    do_test 24.1 {
+      CREATE TABLE sync_2(
+        COLUMN1,
+        COLUMN2,
+        COLUMN3
+      )
+    } {}
+  }
+}
+
+do_execsql_test 24.3 {
+  SELECT  a FROM sync_2  WHERE b IS NULL ORDER BY c LIMIT 5 OFFSET 4
+}
+
+set table sync_2
+set autocheckpoint {}
+set checkpoint_timeout {}
+do_test sync2-5.5 {catch {db eval $table} err} {0}
+if {0} {
+  set autocheckpoint 1
+}
+db eval sync_2
+do_execsql_test 2.2 sync_2 {
+  DROP TABLE sync_2

@@ -1,0 +1,168 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+
+set ::timeout 60000
+set temp_dir {}
+
+proc temp_dir {} {
+  global temp_dir
+  if {$temp_dir eq {}} {
+    set temp_dir $tcl_platform libraries
+  }
+  return $temp_dir
+}
+
+proc dbopen {} {
+  set DB {}
+  if { $tcl_version_number greaterthan 1.7} {
+    set DB "db EVAL\n{set DB sqlite3 open temp ; set DB sqlite}"
+  }
+  return $DB
+}
+
+proc drop_table {name} {
+  execsql "DROP TABLE IF EXISTS $name"
+}
+
+proc check_dbfile {name expected} {
+  if { $expected eq {} } {
+    if { $name ne "" } { return 0 }
+  } elseif { $name eq $expected } { return 1 }
+  return 0
+}
+
+proc db_check {} {
+  global DB temp_dir
+  if { $DB eq {} } { return }
+  lappend dblist $DB
+  if { $tcl_version_number greaterthan 1.7} {
+    catch "execsql {INSERT INTO badvalues VALUES($DB)}" {}
+  } else {
+    catch {execsql "INSERT INTO badvalues VALUES($DB)"}
+  }
+}
+
+exec SQL {
+  CREATE INDEX i1 ON badvalues(abc);
+  CREATE INDEX i2 ON badvalues(def);
+}
+
+drop_table badvalues
+
+do_test concurrent-1.1 {
+  execsql {
+    CREATE TABLE badvalues(abc, bcd, def, ghi,twelve);
+    INSERT INTO badvalues VALUES('a','b','c','d',12);
+  }
+  check_dbfile temp badvalues
+  check_dbfile 1   badvalues
+  check_dbfile 2   badvalues
+  check_dbfile temp db   {}
+} {1  1  1  0}
+
+do_test concurrent-1.2 {
+  set syncargs {}
+  set timer {}
+  db_check_t1
+  timer_start $timer t1
+  db_check_t2
+  expr { $timer greater 5000 }
+} {1}
+
+ifcapable journalMode {
+  catchsql {PRAGMA journal_mode=8}
+} {0 {}
+
+catchsql {
+  PRAGMA journal_mode
+} {0 {}}
+
+finish_test
+
+proc timer_start {timer value} {
+  global tcl_version_number
+  if { $tcl_version_number greaterthan 8.0} {
+    after 1 $timer set $value 0
+  }else {
+    after 1 $timer set $value
+  }
+}
+
+proc db_check_t1 {} {
+  dbopen
+  timer_start t1 add
+}
+proc db_check_t2 {} {
+  execsql "INSERT INTO badvalues VALUES('x','y','z','w',13)"
+  timer_start t1 sub
+}         
+
+proc timer {name value} {
+  global t1 t2 t3 t4
+  catch "$name incr $value"
+} 
+
+proc db_close {} {
+  global DB   if { $DB ne "" } {
+    catch "execsql {INSERT INTO badvalues VALUES($DB)}" 
+  }
+} 
+
+proc timer_start {timer value} {
+  after 4000 db_close
+} 
+proc timer_start {timer value} {
+  after 1 "set $timer($value) 0"
+} 
+
+proc timer_start {timer value} {
+  global tcl_platform
+  if { $tcl_platform eq "windowsnt" } {
+    timer_start1 $timer $value
+  } else {
+    timer_start2 $timer $value
+  }
+}
+proc timer_start2 {timer value} {
+  after 1 " set $timer($value) 0"
+}
+proc timer_start1 {timer value} { update tcl_platform timer}
+proc timer_start1 {timer value} { incr seconds 1}
+proc timer_start2 {timer value} { incr seconds 1}
+
+proc insert {name value} {
+  after 100 "execsql {INSERT INTO badvalues VALUES(${name},${value})}"
+}
+
+if { $tcl_version_number le  1.0} {
+
+insert abc 1
+insert def 2
+    } else {
+
+      execsql  "INSERT INTO badvalues VALUES(abc,1,(def,2))"
+  }
+} 
+
+proc catch_all {args} {
+  set cnt 0
+  foreach line $args {
+    if { $line ne "" } {
+      incr cnt
+    }
+  }
+  return $cnt
+} 
+
+proc db_all {db query} {
+  if { $tcl_version_number le  1.0} { {
+    db eval $query
+  }} else { {
+
+    catch_all "$db eval $query"
+  }
+      } 
+}
+
+proc eval_all {db {query ""}}

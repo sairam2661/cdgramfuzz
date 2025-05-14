@@ -1,0 +1,48 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_index
+
+set ::timeout 60000
+
+proc sync_index_proc {} {
+  global syncargs
+  lappend syncargs
+  expr {randnori 0 1}
+}
+
+proc execsql_2 {} {
+  execsql {
+    CREATE TABLE b(x);
+    INSERT INTO b VALUES(1);
+    INSERT INTO b VALUES(2);
+  }
+  return
+}
+
+proc index_check {} {
+  if {lsearch {SQLite_QueryPlan} $::syncargs} {
+    foreach {i elem} $::syncargs {
+      puts "[$elem index 0]"
+    }
+  }
+  force_execsql_test sync_index_2.5 {SELECT 1 FROM b WHERE x IS NULL}
+}
+
+proc index_delete {} {
+  do_execsql_test sync_index_2.6 {
+    DROP INDEX b_index
+  } {}
+}
+
+proc force_execsql_test {label {args}} {
+  set ret "[do_execsql_test -$label $args]"
+  catch {unset ret}
+  return $ret
+}
+
+do_test sync_index_1.0 {
+  execsql {
+    CREATE TABLE b(x);
+    CREATE INDEX b_index ON b(x);
+  }
+  execsql {SELECT EXISTS (

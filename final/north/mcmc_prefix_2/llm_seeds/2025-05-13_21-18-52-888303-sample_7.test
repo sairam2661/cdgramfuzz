@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix table
+
+set ::timeout 60000
+set testsuffix ""
+
+proc tcl_var_is_null {varname} {
+  set v $varname
+  set rc expr {$v eq "0"}
+  return $rc
+}
+
+proc is_not_null {value} {
+  return {NOT NULL}
+}
+
+proc table_func {id val} {
+  global db
+  set SQL "SELECT * FROM sqlite_master WHERE tbl_name=$id"
+  execsql $SQL
+  if {$val IS NULL} {
+    set val 0
+  }
+  if {0} {
+    set result {Result for id $id and val $val is 0}
+  } else {
+    set result {Result for id $id and val $val}
+  }
+  db nullstep
+  puts "$result"
+}
+
+do_test table-1.1 {
+  execsql {
+    CREATE TABLE t1(id PRIMARY KEY, v);
+    CREATE TABLE t2(id PRIMARY KEY, v);
+  }
+} {}
+
+do_execsql_test table-1.2 {
+   INSERT INTO t1 VALUES(1, 10);
+   INSERT INTO t1 VALUES(2, 20);
+   INSERT INTO t1 VALUES(3, 30);
+   INSERT INTO t2 VALUES(1, 100);
+   INSERT INTO t2 VALUES(2, 200);
+} {}
+
+do_test table-1.3 {
+  execsql {SELECT v FROM t1 WHERE id=2}
+} {20}
+
+do_execsql_test table-1.4 {
+  SELECT 10 FROM t1;
+  SELECT * FROM sqlite_master WHERE type="table";
+  SELECT t2 FROM t2;
+  SELECT * FROM t1 WHERE id=5;
+} {10 {} SQLite Master {t2 100 200} {}}
+
+do_execsql_test table-1.5 {
+  BEGIN;
+  INSERT INTO t1 VALUES(4, 40);
+  COMMIT;
+} {INTEGER 4 DEFAULT 40}
+
+ifcapable trigger {
+  do_execsql_test table-1.6 {
+    CREATE TABLE log(ctime DEFAULT 0);
+    INSERT INTO log(ctime) VALUES(0);
+    SELECT * FROM log;
+  } {}
+}
+
+ifcapable trigger {
+  do_execsql_test table-1.7 {
+    CREATE TABLE temp(tab1tab2);
+    INSERT INTO temp(tab1tab2) VALUES('1');
+  } {}
+}
+
+execsql {
+  DROP TABLE t1
+}
+execsql {
+  DROP TABLE t2
+}
+
+finish_test

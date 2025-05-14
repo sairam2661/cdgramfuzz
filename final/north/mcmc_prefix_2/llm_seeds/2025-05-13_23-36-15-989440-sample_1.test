@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+set main_database test_main
+set dbfile1 test_file1
+set dbfile2 test_file2
+set dbfile3 test_file3
+
+proc test_prep {} {
+  global dbfile1 dbfile2 dbfile3
+  execsql {
+    CREATE TABLE t1(a, b);
+  }
+  execsql "$dbfile2 {CREATE TABLE t2(c, d);}"
+  execsql "$dbfile3 {CREATE TABLE t3(e, f);}"
+}
+
+proc delete_dbs {} {
+  global dbfile1 dbfile2 dbfile3 main_database
+  execsql "$dbfile1 {SELECT sql FROM sqlite_master;}"
+  execsql "$dbfile2 {SELECT sql FROM sqlite_master;}"
+  execsql "$dbfile3 {SELECT sql FROM sqlite_master;}"
+  file delete $dbfile1
+  file delete $dbfile2
+  file delete $dbfile3
+  db close
+}
+
+do_test 1 {
+  sqlite3 db test_main
+  set rc {}
+  set rc 1
+} {1}
+
+do_execsql_test 2.1 {
+  ATTACH $dbfile1 AS db1
+  ATTACH $dbfile2 AS db2
+  ATTACH $dbfile3 AS db3
+} {}
+
+test_prep
+
+do_catchsql_test 3.1 {
+  PREPARE stmt FROM $dbfile1 {SELECT * FROM t1 WHERE a = 2}
+} {1 {unable to open database file $dbfile1}}
+do_catchsql_test 3.1 {
+  PREPARE stmt FROM $dbfile2 {SELECT * FROM t2 WHERE c = 2}
+} {1 {unable to open database file $dbfile2}}
+
+do_execsql_test 4.1 {
+  SELECT sql FROM sqlite_master
+} {table t1 a b table t2 c d table t3 e f}
+
+rename sql it
+
+proc execute_one {db filename sql} {
+  set it $sql
+  set rc {}
+  if {sqlite3 db2 $filename db2} {
+    set rc {}
+    set rc 1
+    db2 eval $it
+    sqlite3 db2 CLOSE
+  }
+  execsql {$it}
+  return $rc
+}
+
+do_execsql_test 5.1 {
+  PREPARE stmt FROM $dbfile1 {SELECT * FROM t1}
+} {}
+
+do_test 6 {
+  set fd1 open $dbfile1 r
+  set fd2 open $dbfile2 r
+  gets $fd1 line1
+  gets $fd2 line2
+  close $fd1
+  close $fd2
+} {}
+
+delete_dbs
+
+db close
+
+finish_test

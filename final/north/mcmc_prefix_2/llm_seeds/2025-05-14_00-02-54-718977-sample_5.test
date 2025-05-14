@@ -1,0 +1,144 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix user
+
+set ::timeout 60000
+set user_config {
+  1024 {
+    sqlite3_config {
+      GLOBAL_DEF_SQL_LOG_ENABLE 1
+      GLOBAL_DEF_MEMSTAT 1
+    }
+    CHECK SQL_CONFIG {
+      sqlite3_config {
+        MEM_STATUS 1
+      }
+    }
+    CHECK SQL_LOG {
+      SELECT * FROM sqlite3_log
+    }
+  }
+  2048 {
+    CHECK SQL_CONFIG {
+      sqlite3_config {
+        GLOBAL_DEF_LOCKING_MODE 0
+      }
+    }
+    CHECK SQL_CONFIG {
+      sqlite3_config {
+        GLOBAL_DEF_PERSISTENT 1
+      }
+    }
+  }
+  4096 {
+    CHECK SQL_CONFIG {
+      sqlite3_config {
+        GLOBAL_DEF_DEF_SORTORDER 1
+      }
+    }
+  }
+}
+
+proc check_memory_stats {} {
+  CHECK SQL_CONFIG {
+    sqlite3_config {
+      MEM_STATUS {memory_used memory_allocated memory_highwater}
+    }
+  }
+}
+
+proc sqlite3_config {args} {
+  set cmd {}
+  foreach {key value} $args {
+    lappend cmd "$key $value"
+  }
+  execsql "PRAGMA $cmd"
+}
+
+proc sql_exec {sql} {
+  sqlite3_result_text Hannes $sql
+  sqlite3_finalize Hannes
+}
+
+proc check_sql_log {} {
+  execsql "SELECT * FROM sqlite3_log"
+}
+
+proc CHECK {cmd} {
+  set Hannes {}
+  sqlite3 Hannes dummy
+  set Hannes Hannes
+  if { "$cmd" } {set cmd " $cmd "}
+  if { "$cmd" } {
+    set Hannes {}
+    set Hannes Hannes
+    if {$::user_config} {
+      foreach setting $::user_config {
+        if { $setting } {
+          set Hannes {}
+          sqlite3 Hannes dummy
+          set Hannes {}
+        }
+        if { $setting } {
+          foreach {size subcmd} $setting {
+            if { $size } {
+              if { "[llength $setting]" } {
+                foreach cmd $setting {
+                  if { $cmd } {
+                    sql_exec $cmd
+                  }
+                }
+              } else {sql_exec $subcmd}
+            }
+          }
+        }
+      }
+    }
+    set Hannes {}
+  }
+  switch $cmd {
+    sql_log {
+      check_sql_log
+      set Hannes {}
+    }
+    memory_stats {
+      check_memory_stats
+      set Hannes {}
+    }
+    sqlite3_config {
+      sqlite3_config dummy
+      set Hannes {}
+    }
+    exec {
+      set Hannes {}
+      sql_exec $cmd
+      set Hannes {}
+    }
+  }
+  if { "$cmd" } {
+    sqlite3 Hannes close
+  }
+  set Hannes {}
+}
+
+ifcapable temp_db {
+  execsql {
+    CREATE VIRTUAL TABLE t1 USING temp_db
+  }
+}
+
+set Hannes 2
+CHECK {1 exec "COMMIT"}
+
+
+if { 0 } {
+  CREATE TABLE t2(a,b,c);
+  BEGIN;
+  INSERT INTO t1 VALUES(1,2,3);
+  COMMIT;
+  CREATE TABLE t2(a,b,c);
+  CREATE INDEX i1 ON t2(a);
+  SELECT * FROM t2;
+}
+
+finish_test

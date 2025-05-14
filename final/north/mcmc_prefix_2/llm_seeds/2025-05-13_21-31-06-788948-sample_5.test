@@ -1,0 +1,197 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix database_encryption
+
+set ::timeout 60000
+
+proc setup_encryption_test {filename password} {
+  execsql {
+    PRAGMA key = '$password';
+    PRAGMA kdf_iter = 4000;
+    PRAGMA key_len = 128;
+    PRAGMA cipher_name = 'aes-128-ccbc';
+  }
+  execsql {ATTACH '$filename' AS db}
+}
+
+proc detach_db {db} {
+  execsql "DETACH $db"
+}
+
+proc test_encryptdb {file password} {
+  setup_encryption_test $file $password
+  set result {}
+  do_execsql_test test3.1 {
+    SELECT name
+    FROM sqlite_master
+  } {sqlite_master}
+  do_execsql_test test3.2 {
+    SELECT name
+    FROM sqlite_master
+  } {sqlite_master}
+  detach_db db
+  unset result
+  error_out
+}
+
+proc test_decryptdb {filename} {
+  test_encryptdb $filename "test"
+  execsql {
+    CREATE TABLE abc(c);
+    INSERT INTO abc VALUES('hello');
+  }
+  execsql {SELECT c FROM abc}
+  set result {}
+  execsql {SELECT * FROM db}
+  do_error_test test3.4 {
+    execsql {
+      COMMIT
+    }
+  } 1
+  set result
+  finish_test
+}
+
+set testname enc1
+set key "test_key"
+do_test enc1.1 {
+  execsql {
+    CREATE TABLE test1(a,b,c);
+    INSERT INTO test1 VALUES
+    ("test1",1,"$key");
+  }
+} {}
+set result {test1 1 test_key}
+do_test enc1.2 {
+  execsql {SELECT * FROM test1 WHERE a = 'test1'}
+} $result
+do_test enc1.3 {
+  test_encryptdb "test1.db" "test_key"
+} {0 {}}
+set result {}
+do_test enc1.4 {
+  execsql {
+    SELECT name
+    FROM sqlite_master
+  }
+} {sqlite_master}
+do_test enc1.5 {
+  test_decryptdb "test1.db"
+} {}
+do_test enc1.6 {
+  execsql {
+    SELECT * FROM test1
+  }
+} {test1 1 test_key}
+set result {test2 2 enc_key}
+do_test enc1.7 {
+  execsql {
+    CREATE TABLE test2(b,c);
+    INSERT INTO test2 VALUES
+    ("test2",2,"enc_key");
+  }
+} {}
+ifcapable {utf16}
+do_test enc1.8 {
+  execsql {
+    SELECT * FROM test2 WHERE b = 'test2';
+  }
+} $result
+set result {test3 3 enc_key}
+do_test enc1.9 {
+  execsql {
+    CREATE TABLE test3(b,c);
+    INSERT INTO test3 VALUES("test3","enc_key");
+  }
+} {}
+do_test enc1.10 {
+  execsql {
+    SELECT c FROM test3
+  }
+} $result
+set result {}
+ifcapable prepared_stmts {
+  do_test enc1.11 {
+    sqlite3 db2 test1 2
+    db2 eval {
+      INSERT INTO test1 VALUES(3,1);
+    }
+  } {}
+  do_test enc1.12 {
+    sqlite3 db2 test1 2
+    list
+    db2 eval {
+      SELECT * FROM test1 WHERE a = 'test1'
+    }
+  } {{test1 1 test_key} {test1 4 test_key} {test1 3 test_key}}
+  do_test enc1.13 {
+    sqlite3 db2 test1 close
+    list
+    db2 close
+  } {}
+  do_test enc1.14 {
+    execsql {
+      SELECT * FROM test1 WHERE a = 'test1';
+    }
+  } {test1 1 test_key test1 4 test_key test1 3 test_key}
+  do_test enc1.15 {
+    execsql {
+      SELECT * FROM test1 WHERE a = 'test3';
+    }
+  } {test3 3 test_key}
+}
+set result {}
+do_test enc1.16 {
+  set res
+  execsql {
+    SELECT * FROM db
+  }
+} {}
+do_error_test enc1.17 {
+  execsql {
+    SELECT * FROM db
+  }
+} 1
+do_test enc1.18 {
+  execsql {
+    SELECT * FROM db
+  }
+} {test1 1 4 3 test2 2 test3 3}
+ifcapable attach {
+  set result {}
+  do_test enc1.19 {
+    execsql {
+      ATTACH'mem1' AS mem
+    }
+  } {}
+  do_test enc1.20 {
+    execsql {
+      ATTACH'mem2' AS mem
+    }
+  } {}
+  do_error_test enc1.21 {
+    execsql {
+      SELECT * FROM db
+    }
+  } 1
+  do_test enc1.22 {
+    execsql {
+      SELECT * FROM db
+    }
+  } {}
+  do_test enc1.23 {
+    execsql {
+      pragma database_list
+    }
+  } {main mem mem}
+  do_test enc1.24 {
+    execsql {
+      SELECT name FROM sqlite_master
+    }
+  } {main sqlite_master mem sqlite_master}
+  do_test enc1.25 {
+    execsql {
+      SELECT name FROM sqlite_master
+    }
+  } {main sqlite_master mem sqlite_master}
+  do_test enc1.26 {

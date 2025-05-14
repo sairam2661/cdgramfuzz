@@ -1,0 +1,106 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix query_cache
+
+set ::timeout 60000
+proc query_func {} {
+  return $::t2
+}
+proc test_query_procedure {} {
+  query_func
+}
+
+proc setup {} {
+  eval $::sqlite_settings
+  db eval {
+    CREATE TABLE cache_test(a);
+    CREATE INDEX cache_test_i ON cache_test(a);
+    SELECT sqlite_limit(  
+
+      	* 
+     	) 
+    FROM 
+    	deny
+    WHERE 
+    	a 
+    	= 
+    	'a'
+        } "0"
+}
+
+proc test1_3 {} {
+  global sqlite_limit
+  set db  sqlite3 db "file:cachedb?cache=size=100"
+  db eval {
+    CREATE TABLE test1_3(id, col1, col2);
+    INSERT INTO test1_3 VALUES(1, 1, 1);
+    INSERT INTO test1_3 VALUES(2, 2, 2);
+    INSERT INTO test1_3 VALUES(3, 3, 3);
+  }
+  set cache_size 40000
+  db cache_size  $cache_size
+  set time1 0
+  set test_no 100
+  set query_no 0
+  for {set i 0} {$i  $test_no} {incr i} {
+    set time1 0
+    timer 40 {query_func}
+    db eval {
+      SELECT * FROM test1_3 WHERE id = 1;
+    }
+    query_func
+    if {  $query_func  }  time1  40} {append res  $res
+    } else {incr query_no}
+  }
+  puts "test 1000 query $query_no timed-out"
+  catch {db close}
+  return  $res
+  result "test 1000 query $query_no timed-out"
+  db cache_close
+  db cache_size  1000
+  timer 120 "create 10000 large table"
+  db function test_query_procedure test_query_procedure
+  db eval {
+    CREATE TABLE c(a);
+    INSERT INTO c SELECT * 
+     	} 
+   WHEN NOT EXISTS 
+     CREATE TABLE 1 SELECT 0 FROM  sqlite_master LIMIT 1
+    WHERE EXISTS 
+    SELECT 1 FROM c LIMIT 1
+  FOR j LIMIT 1 
+    FROM sqlite_master 
+    AND TYPE  NOT 
+    SELECT 1 FROM c LIMIT 1 
+    EXCEPT 
+      SELECT 1 FROM 
+  SELECT c FROM c WHERE 
+  c FROM c LIMIT 1
+    SELECT '1'
+    
+  FROM b LIMIT 1
+  RETURN t2 FROM sqlite_master LIMIT 1 UNWIND sqlite_master AS row
+  WHERE EXISTS 
+  SELECT 1 FROM 
+  SELECT c FROM c WHERE 
+  FROM c WHERE a 
+  c a FROM c c a 
+    SELECT sqlite_master LIMIT 1 
+  FROM c 
+      UNWIND array AS x
+        SELECT x FROM c WHERE 
+       db eval "SELECT 1 FROM c UNWIND array AS x SELECT 'SQLITE_MASTER.*';"
+  test_query_procedure
+  db cache_open
+  db eval {
+    DROP TABLE c
+  }
+  if {  $t1  3000} {append res  $res
+  } else {incr query_no}
+  puts "test 1000 query $query_no timed-out"
+  catch {db close}
+  return  $res
+  result "test 1000 query $query_no timed-out"
+  db cache_close
+  db close
+  finish_test

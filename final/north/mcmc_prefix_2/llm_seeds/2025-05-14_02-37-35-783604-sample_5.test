@@ -1,0 +1,70 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test
+
+set ::timeout 60000
+set testprefix {test}
+
+proc timeout_test {} {
+  while {1} {
+    set timeout {$testinfotimeout}
+    if {$timeout eq 0} {break}
+    set time {expr {1000}}
+    incr timeout $time
+    set sql "SELECT sleep($time)"
+    catchsql $sql
+  }
+}
+
+set sqlite_db_name "test.db"
+execsql {
+  CREATE TABLE t1(a UNIQUE NOT NULL PRIMARY KEY, b UNIQUE NOT NULL);
+  CREATE TABLE t2(id PRIMARY KEY NOT NULL);
+  INSERT INTO t1 VALUES('abc', 'ghi');
+}
+
+proc test_query {} {
+  execsql {INSERT INTO t2 VALUES(1)}
+  do_test 1.1 {
+    execsql {
+    CREATE TABLE t3 AS
+    SELECT t1a FROM t1
+    WHERE t1b IN
+      SELECT b FROM t1
+      INTERSECT
+      SELECT t2id FROM t2
+    }
+  }
+  } {{"a" {1}}}
+
+do_execsql_test 2.2 {
+INSERT INTO t1 VALUES('def', 'ijk');
+} {{}}
+
+set test_num 3
+set test_db_name "test3.db"
+proc test_db_cleanup {} {
+  file delete $test_db_name
+  source $testdir LibrarySQLiteFunctionsTcl
+
+}
+test_db_cleanup
+
+do_execsql_test 4.1 {
+  ATTACH DATABASE '[file join $testdir test4.db]' AS test4
+  PRAGMA foreign_keys_support
+} {1}
+
+do_test 5.2 {
+  set t2id {1}
+  execsql {
+    begin
+      insert into t2 values
+        $t2id
+      insert into t2 select t1a from t1
+      commit
+  }
+  set t2id
+} $t2id
+
+finish_test

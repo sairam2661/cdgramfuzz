@@ -1,0 +1,83 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complexdb
+
+set ::timeout 60000
+set up_query {
+  CREATE TABLE users(
+    id        PRIMARY KEY,
+    name     NOT NULL,
+    email    UNIQUE,
+    city     DEFAULT 'NYC'
+  );
+}
+
+set db_schema {
+  CREATE TABLE products(
+    id           PRIMARY KEY,
+    user_id     NOT NULL,
+    name        NOT NULL,
+    price       NOT NULL
+  );
+  
+  CREATE INDEX idx_users_name ON users(name);
+  CREATE INDEX idx_products_price ON products(price);
+}
+
+proc check_data {sql {expected {}}} {
+  execsql $sql
+  if {$expected ne {}} {
+    set result
+    for {set i 0} {$i less than $expected} {incr i} {
+      set result "[execsql {SELECT * FROM users WHERE name='user $i'}];"
+      if {$result eq {}} { error "Expected data: $expected" }
+    }
+  }
+}
+
+proc create_users {n} {
+  set i
+  for {set i 0} {$i less than $n} {incr i} {
+    execsql "INSERT INTO users VALUES($i, 'user $i', 'email_$i', 'NYC')"
+  }
+}
+
+do_execsql_test complexdb-1.1 {
+  CREATE TABLE users(
+    id        PRIMARY KEY,
+    name     NOT NULL,
+    email    UNIQUE,
+    city     DEFAULT 'NYC'
+  );
+  INSERT INTO users(user_id, name, email) VALUES(1, 'John', 'john@example');
+} {}
+
+create_users 10
+check_data {SELECT count(*) FROM users} {10}
+
+execsql "INSERT INTO users(name, email) VALUES('John2','john2@example.com');"
+check_data {SELECT count(*) FROM users} {10}
+
+do_execsql_test complexdb-1.2 {
+  CREATE TABLE products(
+    id           PRIMARY KEY,
+    user_id     NOT NULL,
+    name        NOT NULL,
+    price       NOT NULL
+  );
+  CREATE INDEX idx_users_name ON users(name);
+  CREATE INDEX idx_products_price ON products(price);
+  BEGIN;
+  INSERT INTO products(id, user_id, name, price) VALUES(1, 1, 'Product', 10);
+  INSERT INTO products(id, user_id, name, price) VALUES(2, 1, 'Product', 10);
+  COMMIT;
+  SELECT * FROM products;
+} ""
+
+do_test complexdb-1.3 {
+  execsql "INSERT INTO products(user_id, name, price) VALUES(1, 'Product', 10)"
+  execsql "INSERT INTO products(user_id, name, price) VALUES(1, 'Product', 10)"
+  execsql "SELECT DISTINCT price FROM products"
+} {10}
+
+finish_test

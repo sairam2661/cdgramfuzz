@@ -1,0 +1,118 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix concurrent
+set ::timeout 60000
+set temp_store 1
+set default_synchronous 0
+set wal_persistence 1
+unset sqlite_signal_handler
+set sqlite_panic_on_err 0
+set sqlite_limit_pagecache 1000
+unset journal_mode
+unset checkpoint_fullsync
+unset synchronous
+unset wal_synchronous
+unset page_mode
+
+proc concurrent_delete {} {
+  global data
+  array unset data
+}
+
+do_execsql_test concurrent-1.1 {
+  CREATE TABLE data(ID, NAME PRIMARY KEY);
+  INSERT INTO data(ID, NAME) VALUES(1, 'A');
+}
+
+"data-1.1" do_execsql_test {
+  SELECT * FROM data
+} {1 A}
+
+proc concurrent_insert {} {
+  execsql {
+    INSERT INTO data(ID, NAME) VALUES(2, 'B');
+  }
+  execsql {
+    SELECT * FROM data WHERE ID = 2;
+  }
+}
+
+"data-1.2" do_execsql_test {
+  SELECT * FROM data
+} {1 A 2 B}
+
+ifcapable checkpoint {
+  set testname checkpoint
+  set checkpt_db test_checkpoint
+
+  do_test checkpoint-1.0 {
+    set db checkpoint
+    execsql {
+      CREATE TABLE checkpoint1(a, b, c);
+      INSERT INTO checkpoint1 VALUES(1, 2, 3);
+    }
+  } {}
+
+  do_test checkpoint-1.1 {
+    execsql {
+      SELECT * FROM checkpoint1
+    }
+  } {1 2 3}
+
+  proc checkpoint_data {} {
+    expr {0}
+  }
+
+  set db test_checkpoint
+  do_execsql_test checkpoint-2.1 {
+    SELECT * FROM checkpoint1;
+  } {1 2 3}
+
+  proc checkpoint_data {} {
+    expr {1}
+  }
+
+  do_execsql_test checkpoint-2.2 {
+    PRAGMA integrity_check
+  } {ok}
+  execsql {
+    VACUUM
+  }
+}
+
+proc concurrent_func1 {} {
+  execsql {
+    CREATE TABLE table_a(a, b, c);
+    INSERT INTO table_a VALUES(1, 2, 3);
+    SELECT * FROM table_a;
+  }
+}
+
+proc concurrent_func2 {} {
+  execsql {
+    CREATE TABLE table_b(d, e, f);
+    INSERT INTO table_b VALUES(4, 5, 6);
+    SELECT * FROM table_b;
+  }
+}
+
+concurrent_func1
+concurrent_func2
+concurrent_delete
+unset testname
+unset checkpt_db
+unset checkpt_db
+
+do_test error-1.0 {
+  set tcl_test_handler {puts {Test Error}}
+  set sqlite_signal_handler {puts {SQL Error}}
+  set temp_store 0
+  catchsql {CREATE TABLE a(x);}
+  unset sqlite_signal_handler
+  unset tcl_test_handler
+} {1 {database or disk I full}}
+
+set no_journal 1
+catchsql {PRAGMA journal_mode=1}
+
+finish_test

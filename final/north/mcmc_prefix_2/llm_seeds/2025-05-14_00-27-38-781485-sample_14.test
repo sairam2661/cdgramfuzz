@@ -1,0 +1,116 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix test6
+
+set ::timeout 60000
+set disable_prng 1
+
+proc randfunc {} {
+  return 123
+}
+
+proc db_func {} {
+  return ok
+}
+
+proc insert_values {} {
+  execsql {
+    INSERT INTO t1 VALUES('a','b','c');
+    INSERT INTO t2 VALUES(1,2,3);
+  }
+}
+
+proc check_entries {} {
+  set result {}
+  unset result
+  upvar args args
+  execsql {
+    SELECT * FROM t1;
+    SELECT * FROM t2;
+  } args
+  set result
+  if {$args eq {a b c 1 2 3}} {
+    return ok
+  } else {
+    return error
+  }
+}
+
+do_execsql_test test6-1.1 {
+  CREATE TABLE t1(a,c);
+  CREATE TABLE t2(b,d);
+} {0}
+
+do_test test6-1.2 {
+  insert_values
+  db_func
+  set result
+  catch {
+    check_entries
+  } result
+  set result
+} {ok}
+do_test test6-1.3 {
+  set result
+  execsql {
+    DROP TABLE t1
+  }
+  db_func
+  catch {
+    execsql {
+      SELECT * FROM t1;
+    }
+  } result
+  set result
+} {1 {no such table}}
+do_test test6-1.4 {
+  set result
+  execsql {
+    pragma page_size
+  }
+  db_func
+  set result
+} {512}
+
+do_test test6-2.1 {
+  randfunc
+  db_func
+} {123}
+
+proc wal_func {} {
+  execsql {
+    PRAGMA journal_mode = 'WAL';
+  }
+}
+
+proc wal_check_func {} {
+  return wal
+}
+
+do_test test6-3.1 {
+  wal_func
+  set result
+  execsql {
+    PRAGMA journal_mode
+  }
+  wal_check_func
+  set result
+} {wal}
+
+do_test test6-4.1 {
+  unset x
+  set i 0
+  while {$i 100} {
+    execsql {
+      INSERT INTO t1 VALUES('a','b','c');
+    }
+    incr i
+  }
+  execsql {
+    DELETE FROM t1 WHERE a LIKE 'a%'
+  }
+} {}
+
+set sqlite_max_page_count 512
+
+finish_test

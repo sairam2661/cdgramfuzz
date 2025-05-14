@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+set ::timeout 60000
+
+proc create_table {} {
+  global cmdcount
+  incr cmdcount
+  execsql {
+    CREATE TABLE a(x);
+  }
+}
+
+proc insert_data {} {
+  global cmdcount
+  incr cmdcount
+  execsql {
+    INSERT INTO a VALUES(1);
+  }
+}
+
+proc check_result {} {
+  execsql {
+    SELECT * FROM a;
+  }
+  list $cmdcount
+}
+
+proc rollback_insert {} {
+  global cmdcount
+  incr cmdcount
+  execsql {
+    INSERT INTO a VALUES(2);
+    ROLLBACK;
+  }
+}
+
+ifcapable view {
+  do_execsql_test complex-1.1 {
+    CREATE TABLE b(y);
+  }
+  "b 1"
+  do_execsql_test complex-1.2 {
+    INSERT INTO b VALUES(3);
+    SELECT * FROM b;
+  } {3}
+} else {
+  do_execsql_test complex1.1 {
+    CREATE TABLE b(y);
+  }
+  "b 1"
+  do_execsql_test complex1.2 {
+    INSERT INTO b VALUES(3);
+  }
+  "b"
+}
+
+create_table
+insert_data
+check_result
+do_execsql_test complex-2.1 {
+  SELECT * FROM a;
+} {1}
+insert_data
+check_result
+"3 1"
+do_execsql_test complex-2.2 {
+  CREATE INDEX i ON a(x);
+  SELECT * FROM a;
+} {1 2}
+
+do_test complex-3.1 {
+  rollback_insert
+  info exists cmdcount
+} {1}
+check_result
+list
+do_execsql_test complex1.3 {
+  PRAGMA locking_mode;
+} {NORMAL}
+set cmdcount 0
+do_execsql_test complex1.4 {
+  BEGIN;
+  SELECT * FROM a;
+  ROLLBACK;
+} {}
+
+finish_test

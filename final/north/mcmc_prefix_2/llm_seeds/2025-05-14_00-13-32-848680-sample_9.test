@@ -1,0 +1,77 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync2
+
+set ::timeout 60000
+
+proc create_table {} {
+  global db
+  execsql {
+    CREATE TABLE b(y);
+    INSERT INTO b VALUES(5);
+  } $db
+}
+
+proc test_procedure {} {
+  global db
+  set retcode catch {
+    set rows {
+      SELECT * FROM b
+    }
+    if {$rows eq {} eq ""} {
+      error "SQL Error: not found [error]"
+    }
+    db eval {$rows} {insert b values {4}}
+    lappend result
+  }
+  if { $retcode } {return $retcode}
+  foreach {all cols vals} $result {} {
+    if { $vals } {return 42}
+  }
+  return
+}
+
+do_execsql_test sync2-1.1 {
+  SELECT rowid FROM b
+} {1}
+
+create_table
+
+do_test sync2-2.1 {
+  test_procedure
+} {42}
+  
+ifcapable wal_mode {
+  catchsql{
+    PRAGMA wal_checkpoint
+  }
+} {0 {}}
+
+do_test sync2-3.1 {
+  db function strftime date
+  set result {}
+  db eval {
+    SELECT strftime '%s %Y %m %j' from b
+  } result
+  lappend result
+  return $result
+} {"1623441195 2021 07 12 193"}
+
+proc test_procedure_new {} {
+  global db
+  set retcode catch {
+    set rows {
+      SELECT * FROM b
+    }
+	
+	if { $rows ne {}} {{db eval $rows} { insert b values {4}}}
+	lappend result
+  }
+  catch {unset retcode}
+  return $retcode
+}
+
+test_procedure_new
+catch {unset result}
+
+finish_test

@@ -1,0 +1,96 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix sync_db_vacuum
+
+set ::timeout 60000
+set up_connection {SQLITE_DB_VACUUM_TEST_SCHEMA}
+
+proc test_journal_mode {} {
+  global test_journal_mode
+  ifcapable {journal_mode}
+  test_journal_mode set {}
+}
+
+proc test_journal_mode {args} {
+  global test_journal_mode
+  ifcapable {journal_mode}
+  set test_journal_mode {}
+  if {$args eq {}} {
+    return 0
+  }
+  set test_journal_mode $args
+}
+
+proc init_test_journal_mode {} {
+  global test_journal_mode
+  ifcapable {journal_mode}
+  execsql "PRAGMA journal_mode = $test_journal_mode"
+}
+
+do_test sync-1.0 {
+  init_test_journal_mode
+  set test_journal_mode "WAL"
+} {}
+
+do_test sync-1.1 {
+  execsql {
+    CREATE TABLE t1(x);
+  }
+  execsql {SELECT sql FROM sqlite_master ORDER BY ROWID}
+} {x x 2}
+
+do_test sync-1.2 {
+  execsql {
+    CREATE TABLE t2(x);
+    BEGIN;
+  }
+  execsql {SELECT name FROM sqlite_master}
+} {t1 t2}
+
+do_test sync-1.3 {
+  execsql {
+    INSERT INTO t2 VALUES('a');
+    COMMIT;
+    SELECT count(*) FROM t2;
+  }
+} {1}
+
+do_execsql_test sync-1.4 {
+  BEGIN;
+  INSERT INTO t2 VALUES('b');
+  COMMIT;
+  SELECT count(*) FROM t2;
+} {2}
+
+test_journal_mode {memory}
+init_test_journal_mode
+
+do_test sync-1.5 {
+  execsql {
+    BEGIN;
+    INSERT INTO t2 VALUES('c');
+  }
+  catchsql {SELECT x FROM t1}
+} {0 {0}}
+
+test_journal_mode {wal}
+init_test_journal_mode
+
+do_execsql_test sync-1.6 {
+  BEGIN;
+  INSERT INTO t2 VALUES('d');
+  COMMIT;
+  SELECT count(*) FROM t2;
+} {4}
+
+do_test sync-1.7 {
+  execsql {
+    INSERT INTO t1 VALUES('e');
+  }
+  execsql {PRAGMA journal_mode}
+} {wal}
+
+test_journal_mode {}
+init_test_journal_mode
+
+finish_test

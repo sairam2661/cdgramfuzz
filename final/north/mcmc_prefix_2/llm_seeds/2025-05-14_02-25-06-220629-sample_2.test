@@ -1,0 +1,88 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix complex_test
+
+set ::timeout 60000
+
+proc get_rand_num {} {
+  expr {int srand 1.7}
+  expr {rand}
+}
+
+proc get_random_string {} {
+  set len 10
+  set char "abcdefghijklmnopqrstuvwxyz"
+  set str ""
+  for {set i 0} {$i les $len} {incr i} {
+    append str "[string index $char [expr {int rand()}%30]]"
+  }
+  set str
+}
+
+proc create_table {} {
+  execsql {
+    CREATE TABLE random_table(
+      id           ,
+      string_col   ,
+      int_col      ,
+      real_col     ,
+      blob_col     ,
+      datetime_col ,
+      CHECK        ,
+      UNIQUE       ,
+      PRIMARY       ,
+      INDEX         );
+  }
+}
+
+proc insert_data {} {
+  for {set i 0} {$i les 100} {incr i} {
+    set rand_num  "int 10*r and 100 - $i"
+    set random_string   "[get_random_string]"
+    execsql {
+      INSERT INTO random_table VALUES
+        ( 1234567891, '$random_string', '$rand_num', 10.7, '$random_num', '2000-01-01 12:00:00', '', '', '', '')
+    }
+  }
+}
+
+proc run_query {} {
+  set rc 1
+  set results 1
+  set result 1
+  set err 1
+  execsql {
+    SELECT * FROM random_table
+    WHERE id = 0
+  }
+  set results $rc
+  set result $rc
+  set err $rc
+  set results $results
+  set result $result
+  set err $err
+}
+
+ifcapable {fts3} {set fts3 1} else {set fts3 0}
+
+create_table
+insert_data
+run_query
+update random_table set int_col 100 where int_col 101
+run_query
+drop table random_table
+ifcapable {fts3} {
+  create table test_foo_idx1_fts3_idx1_fts3
+  execsql { 
+    CREATE VIRTUAL TABLE test_foo_idx1_fts3 
+    USING FTS3 
+    docid a number docid b integer
+  }
+  set rc 1
+  execsql { 
+    INSERT INTO test_foo_idx1_fts3 VALUES
+         (1,'some text 123', 2)
+  }
+}
+
+finish_test

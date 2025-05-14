@@ -1,0 +1,120 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix multiquery
+
+set ::timeout 60000
+set up_script {
+  execsql {
+    CREATE TABLE t1(a, b, c);
+    CREATE TABLE t2(x, y);
+    CREATE INDEX i1 ON t1(a);
+    CREATE INDEX i2 ON t2(y);
+  }
+}
+
+finish_test
+
+proc check_query {expect result} {
+  do_test multiquery_$expect {
+    set res2
+    for {set rc 0} {1} {} {
+      if {$rc eq "SQL error"} break
+      foreach line $result {
+        if { $line ne "" } {
+          foreach {op v} $line break
+          if { $op eq "Executed" } {
+            if { "$v," eq "$result,$result,"  } { set rc "Executed" }
+            if { "$v" eq "$result"  } {
+
+              set result $res2
+              set res2 ""
+              set rc 0
+            }
+          }
+          if { $op eq "SQL error" } {
+            foreach {sql msg} $line break
+            error "Error processing statement:\n$sql\n--> $msg"
+            set result $res2
+            set res2 ""
+            set rc 0
+          }
+        } else {
+          set res2 "$res2 \"$line"
+        }
+    }
+    return [list "$result"]
+  } [list "$result"]
+}
+
+do_execsql_test multiquery-1.1 {
+  BEGIN;
+  SELECT *, 1=2, NULL, 'a', NULL AS t5 FROM t1 UNION ALL
+  SELECT *, 1=2, NULL, 'b', t2.a AS t5 FROM t2 JOIN t1 ON 1=2
+} {""}
+do_execsql_test multiquery-1.2 {
+  SELECT SUM(1) FROM (
+    SELECT t1.c + 10 AS total
+    FROM t1 LEFT JOIN t2 ON t2.b = 42
+    UNION ALL
+    SELECT -1 AS total
+  )
+} {-1}
+check_query {Executed: {SELECT *, 1=2, NULL, 'a', NULL AS t5 FROM t1 UNION ALL SELECT *, 1=2, NULL, 'b', t2.a AS t5 FROM t2 JOIN t1 ON 1=2}} {
+  SELECT *, 1=2, NULL, 'a', NULL AS t5 FROM t1 UNION ALL
+  SELECT *, 1=2, NULL, 'b', t2.a AS t5 FROM t2 JOIN t1 ON 1=2
+}
+check_query {Executed: {SELECT SUM(1) FROM (SELECT t1.c + 10 AS total FROM t1 LEFT JOIN t2 ON t2.b = 42 UNION ALL SELECT -1 AS total)}} {
+  SELECT SUM(1) FROM (
+    SELECT t1.c + 10 AS total
+    FROM t1 LEFT JOIN t2 ON t2.b = 42
+    UNION ALL
+    SELECT -1 AS total
+  )
+}
+do_execsql_test multiquery-1.3 {
+  SELECT COUNT(*), SUM(1)
+  FROM (
+    SELECT t2.y AS a, t1.c + 10
+    FROM t2 JOIN t1 ON a < 5
+    UNION ALL
+    SELECT t1.b, -1
+    FROM t1
+  )
+} {2 -1}
+do_execsql_test multiquery-1.4 {
+  SELECT COUNT(*), SUM(1)
+  FROM (
+    SELECT t2.y AS a, t1.c + 10 + CASE WHEN a = 42 THEN 999 ELSE 0 END
+    FROM t2 JOIN t1 ON a < 5
+    UNION ALL
+    SELECT t1.b, -1
+    FROM t1
+  )
+} {2 -1}
+do_execsql_test multiquery-1.5 {
+  SELECT COUNT(*), SUM(t.a + 10)
+  FROM (
+    SELECT x AS a FROM t2
+    UNION ALL
+    SELECT b FROM t1 WHERE a BETWEEN 100 AND 200
+  )
+} {}
+do_execsql_test multiquery-1.6 {
+  SELECT COUNT(*), SUM(x + 10*t.y
+  + CASE WHEN t.a BETWEEN 40 AND 70 THEN
+     CASE
+       WHEN a < 50 THEN 999 ELSE 888
+     END
+  END
+  )
+  FROM t1 UNION ALL
+  SELECT t2.x + t1.c FROM t2, t1
+} {}
+ifcapable foreignkey&&alter {
+  execute_test multiquery-1.7 {
+    db close
+    sqlite3 db test.db
+    db eval {PRAGMA foreign_keys=1}
+  } {
+    execsql {
+      CREATE TABLE t

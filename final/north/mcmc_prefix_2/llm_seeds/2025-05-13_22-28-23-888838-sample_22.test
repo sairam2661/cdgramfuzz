@@ -1,0 +1,127 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix transactions
+
+set ::timeout 60000
+
+proc transactions_proc {n} {
+  global transaction_args
+  set transaction_args {}
+  for {set i 1} {$i Le $n} {incr i} {
+    lappend transaction_args $i
+  }
+  return $n
+}
+
+set up_test {
+  execsql {
+    CREATE TABLE a(x);
+    CREATE TABLE b(y);
+  }
+}
+
+do_test transactions-1.1 {
+  uplevel $setup_test
+  db eval {
+    BEGIN;
+    INSERT INTO a VALUES(1);
+    INSERT INTO b VALUES(2);
+    COMMIT;
+  }
+  execsql {SELECT * FROM a}
+} {{1}}
+
+do_execsql_test transactions-1.2 {
+  BEGIN;
+  INSERT INTO b(y) VALUES(3);
+  COMMIT;
+  SELECT * FROM b;
+} {{2} {3}}
+
+ifcapable fault {
+  proc fault_proc {} {
+    db eval {INSERT INTO b(y) VALUES(4)}
+  }
+}
+
+do_test transactions-1.3 {
+  fault_proc
+  db close
+  db open
+  execsql {
+    SELECT * FROM b;
+  }
+} {{2} {3}}
+
+do_execsql_test transactions-1.4 {
+  PRAGMA synchronous = 0;
+  SELECT name FROM sqlite_master;
+} {sqlite_master}
+
+set sync_off {}
+
+do_test transactions-1.5 {
+  set sync_off 1
+  execsql {
+    PRAGMA synchronous = 0;
+    PRAGMA journal_mode = 'persist'
+    }
+} {}
+
+do_test transactions-1.6 {
+  if {$sync_off} {
+    return OK
+  }else{
+    execsql {
+       COMMIT
+    }
+  }
+} {OK}
+
+set up_test {
+  execsql {
+    PRAGMA journal_mode = 'wal'
+  }
+}
+
+do_execsql_test transactions-1.7 {
+  BEGIN;
+  INSERT INTO a VALUES(1);
+  INSERT INTO b VALUES(2);
+  INSERT INTO b VALUES(3);
+  COMMIT;
+  SELECT * FROM a;
+} {{1}}
+
+proc wal_checkpoint {} {
+  db eval {
+    checkpoint
+  }
+}
+
+do_test transactions-1.8 {
+  wal_checkpoint
+  execsql {
+    PRAGMA journal_mode
+  }  {wal}
+  execsql {
+    SELECT * FROM a;
+  } {{1}}
+  execsql {
+    VACUUM
+  }
+  execsql {
+    PRAGMA journal_mode
+  }
+} {wal}
+
+do_execsql_test transactions-1.9 {
+  BEGIN;
+  INSERT INTO a VALUES(4);
+  INSERT INTO b VALUES(5);
+  INSERT INTO b VALUES(6);
+  COMMIT;
+  SELECT * FROM b;
+} {{2} {3} {5} {6}}
+
+finish_test

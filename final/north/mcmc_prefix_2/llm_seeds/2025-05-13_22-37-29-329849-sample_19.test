@@ -1,0 +1,160 @@
+set testdir [file dirname $argv0]
+source $testdir/tester.tcl
+set testprefix locking
+
+set ::timeout 60000
+
+proc foo {db} {
+  global tlist
+  set tlist Foley McSpanner Fluffy McFluffers
+  exec sql {
+    BEGIN;
+    INSERT INTO t1 VALUES('item-1', 't1-description-1', 'item-2', 't1-description-2');
+    COMMIT
+  }
+  exec sql {
+    SELECT rowid FROM t1 ORDER BY rowid DESC LIMIT 1
+  }
+}
+
+proc bar {db1 db2} {
+  global tlist t2desc
+  set t2desc {t2desc1 t2desc2 t2desc3 t2desc4}
+  exec sql "CREATE TABLE t2 AS SELECT * FROM t1"
+}
+
+proc lock_test {db} {
+  exec sql {
+    SELECT * FROM t1
+  }
+}
+
+ifcapable {blob journal_mode} {
+  execsql {
+    PRAGMA journal_mode = 'WAL'
+  }
+}
+
+set masterconn sqlitestandalone
+sqlite_connection masterconn
+do_test locking-1.1 {
+  set db masterconn
+  sqlite_db masterconn main
+  execsql {
+    CREATE TABLE t1(
+      itemid,
+      description
+    )
+  }
+  set masterconn ""
+} {}
+
+do_test locking-1.2 {
+  sqlite_db masterconn main
+  execsql {
+    CREATE TABLE t2 AS SELECT rowid FROM t1
+    CREATE TABLE t3 AS SELECT description FROM t1
+  }
+  execsql {
+    INSERT INTO t1 VALUES('item-1', 't1-description-1', 'item-2', 't1-description-2')
+  }
+} {}
+
+do_test locking-1.3 {
+  sqlite_db masterconn main
+  execsql {
+    INSERT INTO t1 VALUES('item-3-1', 't1-description-3-1', 'item-3-2', 't1-description-3-2')
+  }
+  execsql {
+    SELECT * FROM t1 WHERE description='t1-description-2'
+  }
+} {item2 t1 description 2 item3 1 t1 description 3 1 item3 2 t1 description 3 2}
+
+do_test locking-1.4 {
+  sqlite_db masterconn main
+  execsql {
+    UPDATE t1 SET itemid itemid WHERE description like 't1-description-1'
+  }
+} {}
+
+ifcapable {fts3} {
+  do_execsql_test locking{
+    CREATE VIRTUAL TABLE tt USING fts3
+  }
+  set rc1 "SELECT rowid FROM tt"
+  set rc2 "INSERT INTO tt VALUES(NULL, 'first second')"
+
+  sqlite_db masterconn tt
+  sqlite DB masterconn
+
+  foreach {rc1 rc2} { "$rc1 $rc2" } {
+    set db masterconn
+    if { $rc1 ne "" } {
+      set result ""
+      do_test locking {
+        set db masterconn
+        execsql { $rc1 }
+        sqltrace_off $masterconn
+      } $rc1
+    }
+    if { $rc2 ne "" } {
+      do_test locking {
+        set db masterconn
+        execsql { $rc2 }
+        sqltrace_off $masterconn
+        foo $masterconn
+      } {}
+    }
+    if { $rc1 ne "" } {
+      set result $result
+      sqltrace_off $masterconn
+    } else {
+      set result "SQLITE_ROW"
+    }
+    if { $rc2 ne "" } {
+      if { $result eq SQLITE_ROW } {
+        sqlite_db masterconn tt
+        foo $masterconn
+      }
+    }
+  }
+
+  sqlite_db masterconn tt
+  ifcapable {fts3aux} {
+    set result ""
+    do_test locking {
+      set db masterconn
+      execsql "INSERT INTO tt VALUES(NULL, 'first third fourth')"
+      foo $masterconn
+    } $result
+  }
+}
+
+set nCaches 3
+foreach nCache $nCaches {
+  sqlite_open_cache masterconn $nCache
+  sqlite DB masterconn
+  do_test locking {
+    set db masterconn
+    execsql {
+      CREATE TABLE t4 AS SELECT x FROM t3 UNION ALL SELECT x FROM t3
+    }
+    sqlite_db masterconn main
+  } {}  
+}
+
+sqlite_open_cache $masterconn 1
+
+sqlite_connection masterconn
+sqlite_db masterconn main
+do_execsql_test locking{
+  SELECT * FROM t4
+} {t1description 1 t1description 1 t1description 2 t1description 2 t1description 3 1 t1description 3 1 t1description 3 2 t1description 3 2}
+
+do_execsql_test locking{
+  exec sql {
+    SELECT t3 FROM t1
+  }
+} {}
+
+finish_test
