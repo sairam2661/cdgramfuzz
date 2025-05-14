@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xmlns="http://example.com"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en-US"
+ xmlns:fb="http://www.example.org">
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title xml:lang="fr">Les bananes sont les meilleures!</title>
+<style type="text/css">
+<![CDATA[
+  body { font-family: Arial, sans-serif; }
+  h1 { color: #FF0000; }
+]]>
+</style>
+</head>
+<body>
+<section>
+<paragraph xml:space="preserve">Bananas are very nutritious. &amp;</paragraph>
+</section>
+</body>
+</html>
+<metadata>
+<author xmlns:fb="http://www.example.org">John Doe</author>
+<date>2024-07-26</date>
+</metadata>
+</document>

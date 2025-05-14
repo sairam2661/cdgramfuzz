@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd" [
+ ]>
+<document xmlns="http://example.org/namespace"
+ AIT="true" xml:space="preserve">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XML is Fun</title>
+</head>
+<body>
+<section>
+<p>Some text with a reference to an entity: &entity;</p>
+</section>
+<metadata>
+<author>John Doe</author>
+<date>2024-07-26</date>
+</metadata>
+<annotation>
+<note xml:lang="en-GB">This is a note.</note>
+</annotation>
+</body>
+</html>
+</document>

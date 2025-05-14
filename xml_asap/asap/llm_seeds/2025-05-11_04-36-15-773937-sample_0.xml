@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  >
+<head>
+<title>Maths is Fun</title>
+<metadata
+ ="" xmlns="http://www.example.com/metadata"
+  />
+<stylesheet
+ ="" type="text/xsl"
+ href="style.xsl"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ >
+<![CDATA[
+<xsl:template match="/">
+<xsl:value-of select="document('')"/>
+</xsl:template>
+]]>
+</style>
+</head>
+<body>
+<section>
+<paragraph>&amp;#x20AC;</paragraph>
+</section>
+</body>
+</html>
+<metadata>
+<author>Jane Smith</author>
+<date>2025-05-10</date>
+</metadata>
+<comment>This is a test</comment>
+</document>

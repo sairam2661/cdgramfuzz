@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xmlns="http://example.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xi:schemaLocation="http://example.org http://example.com/schema.xsd"
+ xml:lang="en">
+<html>
+<head>
+<title>Test Document</title>
+<stylesheet
+ ="<?xml:stylesheet type='text/xsl' href='transform.xsl'?>"
+ xmlns="http://www.w3.org/1999/XSL/Transform"
+ version="1.0">
+<![CDATA[
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<html>
+<body>
+<h2>My CD Collection</h2>
+<ul>
+<xsl:for-each select="catalog/cd">
+<li><xsl:value-of select="title"/></li>
+</xsl:for-each>
+</ul>
+</body>
+</html>
+</xsl:template>
+</xsl:stylesheet>
+]]>
+</style>
+</head>
+<body>
+<p>This is a test document.</p>
+<metadata>
+<author>John Doe</author>
+<date>2024-07-26</date>
+</metadata>
+</body>
+</html>
+</document>

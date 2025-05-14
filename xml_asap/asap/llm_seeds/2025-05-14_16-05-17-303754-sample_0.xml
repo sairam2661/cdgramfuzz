@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE books [
+<!ELEMENT books (book+)>
+<!ATTLIST books 
+author CDATA #IMPLIED
+title CDATA #IMPLIED>
+<!ENTITY book-author "John Doe">
+<!ENTITY % book-title "My Book">
+<!NOTATION book-notation SYSTEM "book.dtd">
+%book-notation;
+<!--
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book 
+id ID #REQUIRED
+author CDATA #IMPLIED
+title CDATA #IMPLIED>
+<!-->]>
+<books author="Jane Doe" title="My Collection" xmlns:xi="http://www.w3.org/2001/XInclude"
+xmlns="http://example.com/schema">
+<xi:include href="book1.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<book id="bk1" author="&book-author;" title="&book-title;">This is a book.</book>
+</books>

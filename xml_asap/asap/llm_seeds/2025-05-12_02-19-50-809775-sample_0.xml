@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document xml:space="preserve">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:math="http://www.w3.org/1998/Math/MathML">
+<head>
+<title>Mathematics is fun</title>
+<meta name="keywords" content="maths, fun, learning" />
+<stylesheet
+ ="" type="text/xsl"
+ href="#maths-stylesheet"
+ media="screen"
+ title="Maths Stylesheet"
+ charset="UTF-8"
+ xml:lang="en-US"
+ xml:space="preserve"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns="http://www.w3.org/1999/XSL/Format"
+ version="1.0"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:mathml="http://www.w3.org/1998/Math/MathML"
+ xmlns:mathml2="http://www.w3.org/1998/Math/MathML"
+ xmlns:xlink2="http://www.w3.org/1999/xlink"
+ xmlns:html2="http://www.w3.org/1999/xhtml"
+ xmlns:svg2="http://www.w3.org/2000/svg"
+ xmlns:mathml3="http://www.w3.org/1998/Math/MathML"
+ xmlns:xlink3="http://www.w3.org/1999/xlink"
+ xmlns:html3="http://www.w3.org/1999/xhtml"
+ xmlns:svg3="http://www.w3.org/2000/svg"
+ xmlns:mathml4="http://www.w3.org/1998/Math/MathML"
+ xmlns:xlink4="http://www.w3.org/1999/xlink"
+ xmlns:html4="http://www.w3.org/1999/xhtml"
+ xmlns:svg4="http://www.w3.org/2000/svg"
+ xmlns:mathml5="http://www.w3.org/1998/Math/MathML"

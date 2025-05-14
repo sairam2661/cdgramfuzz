@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xmlns="http://example.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xi:schemaLocation="http://example.com schema.xsd">
+<html>
+<head>
+<title>XML Fuzz Test</title>
+<stylesheet
+ ="<?xml:stylesheet type='text/xsl' href='style.xsl'?>"
+ xmlns:msxsl="urn:schemas-microsoft-com:xslt"
+ xmlns:exslt="http://exslt.org/common"
+ xmlns:msxml="urn:schemas-microsoft-com:xslt">
+<![CDATA[
+body { font-family: Arial; }
+h1 { color: #FF0000; }
+]]>
+</style>
+</head>
+<body>
+<section>
+<paragraph>Hello, world!</paragraph>
+</section>
+</body>
+</html>
+</document>

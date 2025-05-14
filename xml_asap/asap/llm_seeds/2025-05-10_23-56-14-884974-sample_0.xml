@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xml:lang="fr-CA" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://www.example.com/ns"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace">
+<html>
+<head>
+<meta name="generator" content="My Generator"/>
+<meta charset="UTF-8"/>
+<title>Mon titre</title>
+</head>
+<body>
+<p>Mon paragraphe <span>texte en gras</span> et <span>texte en italique</span>.</p>
+</body>
+</html>
+<metadata>
+<author xml:lang="en-US">John Doe</author>
+<date>2023-01-01</date>
+</metadata>
+</document>

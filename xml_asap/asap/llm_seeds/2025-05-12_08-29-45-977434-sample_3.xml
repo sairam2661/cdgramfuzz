@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xmlns:custom="http://example.org/custom"
+ IGNORECHARS="yes" xml:space="preserve">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title xml:lang="en" xml:base="http://example.com/">XML Fuzz Test</title>
+<meta name="keywords" content="fuzz test, xml, parser"/>
+<style type="text/css">
+<![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { color: #FF0000; }
+]]>
+</style>
+</head>
+<body>
+<section>
+<custom:section xmlns:custom="http://example.org/custom">
+<p>XML is a markup language.</p>
+</custom:section>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2022-01-01</date>
+</metadata>
+</document>

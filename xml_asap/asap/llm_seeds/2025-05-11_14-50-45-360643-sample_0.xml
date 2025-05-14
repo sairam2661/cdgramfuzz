@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xmlns="http://example.com"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:fb="http://www.facebook.com"
+ xmlns:fb:graph="http://graph.facebook.com"
+ fb:graph="http://graph.facebook.com"
+ fb:graph="http://graph.facebook.com">
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="generator" content="XML Fuzz Test Generator"/>
+</head>
+<body>
+<section>
+<h1 xml:lang="en-US" xml:space="preserve">Hello World!</h1>
+<p>Foo &amp; bar &lt;baz&gt; qux &amp; &amp; &amp;</p>
+<p>Foo &amp; bar &lt;baz&gt; qux &amp; &amp; &amp; &amp;</p>
+</section>
+</body>
+</html>
+</document>

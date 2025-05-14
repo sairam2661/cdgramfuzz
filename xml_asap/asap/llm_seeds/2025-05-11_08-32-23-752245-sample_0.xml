@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/schema.dtd" [
+ ]>
+<document xml:lang="en" xmlns:foo="http://example.com/foo"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:base="http://example.com/base">
+<html>
+<head>
+<meta name="author" content="John Doe" />
+<meta name="keywords" content="XML, XHTML, XLink" />
+<title>Document Title</title>
+</head>
+<body>
+<section xml:lang="fr">
+<foo:element xmlns:foo="http://example.com/foo"> Foo Element </foo:element>
+<p xml:lang="en">This is a paragraph.</p>
+<p xml:lang="fr">Ceci est un paragraphe.</p>
+</section>
+</body>
+</html>
+</document>

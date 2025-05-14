@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML"
+ radan:xml="http://www.w3.org/XML/1998/namespace"
+ radan:lang="fr-FR">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Maths for Fun</title>
+<meta name="keywords" content="maths, algebra, geometry" />
+<stylesheet:href="maths.css"type="text/css"media="screen" title="Default Stylesheet" xml:lang="en-US" xmlns="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<![CDATA[
+body { font-family: Verdana, sans-serif; }
+h1 { color: #FF0000; }
+]]>
+</style>
+</head>
+<body>
+<h1>Maths for Fun</h1>
+<p>Maths is fun!</p>
+<math:math xmlns:math="http://www.w3.org/1998/Math/MathML">
+<math:semantics>
+<math:mrow>
+<math:mo>2</math:mo>
+<math:mo>+</math:mo>
+<math:mn>2</math:mn>
+</math:mrow>
+<math:annotation-xml encoding="application/mathml+xml">
+<math:annotation>
+<math:annotation-xml encoding="text/xml">
+<math:ci>result</math:ci>
+</math:annotation-xml>
+</math:annotation>
+</math:semantics>
+</math:math>
+</body>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2025-05-11</date>
+</metadata>
+<image src="maths.jpg" alt="Maths Image" />
+<section>
+<paragraph>Maths is very useful.</paragraph>
+</section>
+</document>

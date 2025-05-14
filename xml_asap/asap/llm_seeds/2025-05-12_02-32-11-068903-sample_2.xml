@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/fruit.dtd" [
+ ]>
+<document xmlns="http://example.org/xmlns">
+<html xmlns:math="http://www.w3.org/1998/Math/MathML"
+  >
+<head>
+<title>Apple</title>
+<metadata
+ ="#id1"
+  />
+<stylesheet
+ ="#id2"
+ ><![CDATA[
+  @namespace xhtml "http://www.w3.org/1999/xhtml";
+  @namespace math "http://www.w3.org/1998/Math/MathML";
+  @import "style.xsl";
+  ]]></style>
+</head>
+<body>
+<section>
+<para>Apple is a type of fruit.</para>
+</section>
+</body>
+</html>
+</document>

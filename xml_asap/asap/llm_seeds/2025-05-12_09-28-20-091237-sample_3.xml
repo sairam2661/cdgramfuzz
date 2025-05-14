@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/catalog.dtd" [
+ ]>
+<document xmlns:dc="http://purl.org/dc/elements/1.1/"
+ ><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XML Fuzz Test</title>
+<meta name="keywords" content="fuzz test, xml, parser" />
+</head>
+<body>
+<div xml:lang="en-GB">
+<section>
+<h2>Complex Fuzz Test</h2>
+<p>Test with nested elements and attributes.</p>
+<ul xmlns="http://www.w3.org/2000/svg">
+<li>Item 1</li>
+<li>Item 2
+<sub>Subitem 1</sub>
+<sub>Subitem 2</sub>
+</li>
+<li>Item 3</li>
+</ul>
+</section>
+</div>
+</body>
+</html>
+<metadata dc:creator="John Doe">
+<date>2023-01-01</date>
+</metadata>
+</document>

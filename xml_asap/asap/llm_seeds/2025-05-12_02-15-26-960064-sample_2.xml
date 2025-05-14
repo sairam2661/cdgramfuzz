@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xmlns="http://example.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:fo="http://www.w3.org/1999/XSL/Format"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xslt="http://www.w3.org/1999/XSL/Transform"
+ xml:lang="en"
+ xml:space="preserve"
+ xml:base="http://example.com">
+<html>
+<head>
+<meta name="title" content="Example Document"/>
+<meta name="description" content="This is an example document."/>
+</head>
+<body>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mfrac>
+<mrow>
+<mi>x</mi>
+<mo>+</mo>
+<mi>y</mi>
+</mrow>
+<mrow>
+<mi>x</mi>
+<mo>−</mo>
+<mi>y</mi>
+</mrow>
+</mfrac>
+</mrow>
+</math>
+<svg xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="10" width="50" height="50" fill="red"/>
+</svg>
+</body>
+</html>
+</document>

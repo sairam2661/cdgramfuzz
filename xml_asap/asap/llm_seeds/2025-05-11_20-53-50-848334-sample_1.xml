@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xmlns:custom="http://example.com/custom"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xi:schemaLocation="http://example.com/schema.xsd">
+<html>
+<head>
+<title>XML Fuzz Test</title>
+</head>
+<body>
+<custom:element>This is a custom element</custom:element>
+<element1><element2 attr="value">Text</element2></element1>
+</body>
+</html>
+</document>

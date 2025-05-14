@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document xmlns:math="http://www.example.com/math"
+ AITokenizer="XML">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ AITokenizer="XML">
+<head>
+<meta name="description" content="Maths &amp; Stats" />
+<title>Statistics and Probability</title>
+</head>
+<body>
+<section>
+<h1>Statistics</h1>
+<p>&math;mathml <mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mfrac></mrow></mathml></p>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2024-03-15</date>
+</metadata>
+</document>

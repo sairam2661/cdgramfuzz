@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (book+)>
+<!ATTLIST catalog
+ lang CDATA #IMPLIED
+ >
+<!ENTITY book "Book">
+<!ENTITY % bookEntity "<book><title>Unknown</title></book>"
+ >
+<!NOTATION ISO-8859-1 SYSTEM "ISO-8859-1 encoding">
+%bookEntity;
+<!---->
+]>
+<catalog lang="en">
+  <book>
+    <title>Book 1</title>
+    <author>Author 1</author>
+  </book>
+  <book>
+    <title>Book 2</title>
+    <author>Author 2</author>
+  </book>
+</catalog>

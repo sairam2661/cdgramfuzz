@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "shapes.dtd" [
+ ]>
+<document xmlns="http://example.com/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:math="http://example.com/mathML"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:lang="en"
+ xml:space="preserve"
+ xml:base="http://example.com">
+<html math:display="block">
+<head>
+<title xml:lang="fr">Les carrés sont les meilleurs!</title>
+<meta name="keywords" content="maths, géométrie" />
+<stylesheet
+ ="<?xml:stylesheet type='text/xsl' href='style.xsl'?>" xmlns="http://www.w3.org/1999/XSL/Transform"
+ version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<![CDATA[
+  <xsl:template match="/">
+    <html>
+      <body>
+        <h1><xsl:value-of select="."/></h1>
+      </body>
+    </html>
+  </xsl:template>
+]]></style>
+</head>
+<body>
+<p xml:lang="en">Squares are very interesting.</p>
+</body>
+</html>
+</document>

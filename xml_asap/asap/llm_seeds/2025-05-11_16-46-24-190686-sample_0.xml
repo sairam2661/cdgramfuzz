@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/fruit.dtd" [
+ ]>
+<document xmlns:fb="http://example.com/fb"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head
+profil="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ ><title>Apples</title><meta name="keywords" content="fruits, apples"/></head>
+<body><h1 fb:style="color: blue">Apples are juicy!</h1>
+  <p>Apples are very nutritious. <xsl:value-of select="note"/></p>
+  <section><p>Apples are the best fruit!</p></section>
+</body></html>
+<metadata><author>John Smith</author><date>2022-01-01</date></metadata> 
+<image src="apple.jpg" alt="An apple"/><section><paragraph>More about apples...</paragraph></section></document>

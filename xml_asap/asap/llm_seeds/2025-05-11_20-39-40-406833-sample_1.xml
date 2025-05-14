@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Test</title>
+</head>
+<body>
+<fb:fbml>
+<fb:if-can-post>
+<fb:request-form action="http://example.com" method="post">
+<fb:request-form-content content="Test" type="test" invite="true" />
+</fb:request-form>
+</fb:if-can-post>
+</fb:fbml>
+</body>
+</html>
+<metadata>
+<author xml:lang="fr">John Doe</author>
+<date>2024-07-26</date>
+</metadata>
+<annotation>
+<annotation xml:lang="en">This is an annotation.</annotation>
+</annotation>
+<section>
+<paragraph>This is a paragraph.</paragraph>
+</section> 
+<document> 
+</document> 
+</document>

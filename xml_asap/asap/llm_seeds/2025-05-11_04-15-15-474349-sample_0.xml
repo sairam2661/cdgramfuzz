@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xmlns="http://example.org/ns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:foo="http://example.com/foo"
+ xmlns:bar="http://example.com/bar"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ version="1.0"
+ foo:custom-attribute="custom-value">
+<html>
+<head>
+<title>Mathematics is fun!</title>
+<meta name="keywords" content="math, fun" />
+<stylesheet
+ ='<?CDATA[
+  @namespace fo "http://www.example.com/fo";
+  @namespace bar "http://www.example.com/bar";
+  @-rule1 { color: #FFFF00; }
+  @-rule2 { font-family: Georgia, serif; }
+  ]>'>
+<![CDATA[<fo:layout-master-set>
+<fo:simple-page-master master-name="default">
+<fo:region-body/>
+</fo:simple-page-master>
+</fo:layout-master-set>
+]]></style>
+</head>
+<body>
+<p>Mathematics is fun!</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mfrac>
+<mi>x</mi>
+<mrow>
+<mo>+</mo>
+<mi>y</mi>
+</mrow>
+</mfrac>
+</math>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2022-05-10</date>
+</metadata>
+<section>
+<paragraph>Mathematics is fun! &foo:custom-entity;</paragraph>
+</section>
+</document>

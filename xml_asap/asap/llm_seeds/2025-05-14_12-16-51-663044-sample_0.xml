@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (product*)>
+<!ATTLIST catalog
+ uthor CDATA #REQUIRED
+ >
+<!ENTITY product1 "Product 1">
+<!ENTITY % product2 "Product 2">
+<!NOTATION XML-Notation SYSTEM "XML">
+%product2;
+<!--
+  This is a comment
+-->
+
+<!ATTLIST product
+ ean CDATA #REQUIRED
+ >
+
+<!ENTITY catalog SYSTEM "catalog.xml">
+<!ENTITY % catalog SYSTEM "catalog.xml">
+<!ENTITY % catalog2 SYSTEM "catalog.xml">
+<!ENTITY % catalog3 SYSTEM "catalog.xml">
+
+<!ENTITY product SYSTEM "product.xml">
+<!ENTITY % product SYSTEM "product.xml">
+<!ENTITY % product2 SYSTEM "product.xml">
+
+<!ELEMENT product (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT image (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+<!ELEMENT product (
+title,
+description,
+category,
+image,
+price
+)>
+
+<!ELEMENT catalog (
+product
+)>
+
+<!ELEMENT root (
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product
+)>
+
+<!ELEMENT root (
+product,
+product,
+product,
+product,
+product,
+product,
+product,
+product

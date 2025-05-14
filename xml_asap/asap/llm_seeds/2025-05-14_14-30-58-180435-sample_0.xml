@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+<!ELEMENT note (to,from,heading,body)>
+<!ATTLIST note
+ xml:lang CDATA #IMPLIED
+ >
+<!ENTITY title "Important Notice">
+<!ENTITY % entities SYSTEM "entities.dtd">
+<!NOTATION GIF PUBLIC "image/gif" "image/gif.gif">
+%entities;
+<!--
+  This is a multi line comment
+  that spans over multiple lines
+-->
+
+<?a xmlns:a="http://example.com/schema" xmlns:b="http://example.org/schema">
+  <b:element attr="value">Text</b:element>
+  <c:element xmlns:c="http://example.net/schema">Text</c:element>
+  <d:element xmlns:d="http://example.io/schema" xml:lang="en">Text</d:element>
+  <e:element xmlns:e="http://example.co/schema" xml:space="preserve">Text</e:element>
+  <f:element xmlns:f="http://example.me/schema" xml:base="base URL">Text</f:element>
+  <g:element xmlns:g="http://example.mobi/schema" xml:lang="fr">Text</g:element>
+  <h:element xmlns:h="http://example.tv/schema" xml:lang="es">Text</h:element>
+  <i:element xmlns:i="http://example.com/schema" xml:lang="en">Text</i:element>
+</a>
+<message>&title;</message>
+<note>
+  <to>John</to>
+  <from>Jane</from>
+  <heading>&title;</heading>
+  <body>Dear John, &note;.</body>
+</note> 
+<!ENTITY % entity SYSTEM "entity.ent">
+<!ENTITY ent1 "Entity 1">
+<!ENTITY ent2 "Entity 2">
+<!ENTITY ent3 "Entity 3">
+<!ENTITY ent4 "Entity 4">
+<!ENTITY ent5 "Entity 5">
+<!ENTITY ent6 "Entity 6">
+<!ENTITY ent7 "Entity 7">
+<!ENTITY ent8 "Entity 8">
+<!ENTITY ent9 "Entity 9">
+<!ENTITY ent10 "Entity 10"> 
+<!NOTATION HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<!NOTATION PDF PUBLIC "-//Adobe//DTD PDF 1.3//EN">
+<!NOTATION SVG PUBLIC "-//W

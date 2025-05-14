@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+ ]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://example.com">
+<html>
+<head>
+<title>Colors</title>
+</head>
+<body>
+<section>
+<p>Red is a primary color.</p>
+<p>Blue is another primary color.</p>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ targetNamespace="http://example.com">
+<xs:element name="document">
+<xs:complexType>
+<xs:sequence>
+<xs:element ref="html"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2025-05-10</date>
+</metadata>
+</document>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/fruits.dtd" [
+ ]>
+<document xmlns:fb="http://example.com/fb"
+ fb:namespace="fb"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://example.com/doc"
+ xmlns:fb2="http://example.com/fb2"
+ fb2:attribute="value"
+ xmlns:fb3="http://example.com/fb3"
+ fb3:attribute="value"
+ xml:lang="fr"
+ xml:space="preserve"
+ DOCTYPE="document">
+<html>
+<head>
+<title xml:lang="en">Bananas are the best fruit!</title>
+<meta name="description" content="A blog on bananas." />
+<style><![CDATA[
+  body { font-family: Georgia, serif; }
+  h1 { color: #FFFF00; }
+]]></style>
+</head>
+<body>
+<section>
+<p xml:lang="es">Bananas are very nutritious.</p>
+</section>
+</body>
+</html>
+<metadata>
+<author>Jane Doe</author>
+<date>2025-05-10</date>
+</metadata>
+<section>
+<p>Some text with a <b>bold</b> word.</p>
+</section> 
+</document>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd" [
+ ]>
+<document xmlns:my="http://example.com/my-namespace"
+ zier="zig">
+<html>
+<head>
+<title>Test</title>
+<metadata
+ ="{http://example.com/my-namespace}attr"
+  />
+</head>
+<body>
+<section>
+<para>Test &para;</para>
+</section>
+</body>
+</html>
+<metadata>
+<author>John</author>
+<date>2022-01-01</date>
+</metadata>
+</document>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head><title>Math in XML</title>
+<metadata
+ ="<author>John Smith</author><date>2022-01-01</date>"
+  />
+</head>
+<body>
+  <math:math display="block">
+    <math:mrow>
+      <math:mi>x</math:mi>
+      <math:mo>=</math:mo>
+      <math:mfrac>
+        <math:mn>1</math:mn>
+        <math:mn>2</math:mn>
+      </math:mfrac>
+      <math:mo>+</math:mo>
+      <math:msqrt>
+        <math:mrow>
+          <math:mi>x</math:mi>
+          <math:mo>−</math:mo>
+          <math:mn>4</math:mn>
+        </math:mrow>
+      </math:msqrt>
+    </math:mrow>
+  </math:math>
+</body>
+</html>
+</document>

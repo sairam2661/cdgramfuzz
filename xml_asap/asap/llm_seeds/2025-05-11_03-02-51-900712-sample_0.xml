@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document xmlns="http://example.com/XMLSchema"
+ uczniowie:uczniowie="uczniowie">
+<html xmlns:html="http://www.w3.org/1999/xhtml"
+ uczniowie:uczniowie="uczniowie">
+<head>
+<title>Maths is fun!</title>
+<meta name="keywords" content="maths, fun" />
+<style><![CDATA[
+body { font-family: Verdana, sans-serif; }
+h1 { color: #008000; }
+]]></style>
+</head>
+<body>
+<h1>Maths is fun!</h1>
+<p>2 + 2 = 4</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<plus/>
+<ci>x</ci>
+<cn>2</cn>
+</apply>
+</math>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2025-05-10</date>
+</metadata>
+<section>
+<paragraph>Maths is very interesting. &quot;Note&quot;.</paragraph>
+</section> 
+</document>

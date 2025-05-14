@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://www.example.com/dtd">
+<document xmlns="http://example.com/ns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xi:schemaLocation="http://example.com/ns http://example.com/schema.xsd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<title>Test</title>
+<meta name="generator" content="My Generator"/>
+<style type="text/css">
+<![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { color: #00FF00; }
+]]>
+</style>
+</head>
+<body>
+<fb:profile-pic uid="1234567890"/>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2024-07-26</date>
+<note>&lt;note&gt;</note>
+</metadata>
+</document>

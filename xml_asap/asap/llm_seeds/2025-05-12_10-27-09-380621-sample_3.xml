@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:math="http://www.w3.org/1998/Math/MathML"
+xml:lang="en-GB">
+<head>
+<title>Maths Examples</title>
+<meta name="keywords" content="maths, examples, solutions" />
+</head>
+<body>
+<math:math xmlns:math="http://www.w3.org/1998/Math/MathML">
+<math:mrow>
+<math:mn>1</math:mn>
+<math:mo>+</math:mo>
+<math:mi>x</math:mi>
+<math:mo>=</math:mo>
+<math:mn>5</math:mn>
+</math:mrow>
+</math:math>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2024-07-15</date>
+</metadata>
+<section>
+<paragraph>This is an example of a maths equation: <math:math xmlns:math="http://www.w3.org/1998/Math/MathML"><math:mrow><math:mn>2</math:mn><math:mo>×</math:mo><math:mi>x</math:mi><math:mo>=</math:mo><math:mn>12</math:mn></math:mrow></math:math></paragraph>
+</section>
+<note>This is a note element.</note>
+</document>

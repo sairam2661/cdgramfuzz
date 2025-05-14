@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doctype.dtd" [
+ ]>
+<document xmlns="http://example.org"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:math="http://example.org/math"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xml:lang="en"
+ xi:schemaLocation="http://example.org http://example.org/schema.xsd">
+<html>
+<head>
+<title xml:space="preserve">Fruit Salad</title>
+<meta name="keywords" content="fruits, salad, yummy"/>
+<stylesheet
+ ="<?xml:stylesheet type='text/xsl' href='style.xsl'?>"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ version="1.0"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:math="http://example.org/math"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ exclude-result-prefixes="xsl math xs xsi"
+ extension-element-prefixes="math xs"
+ xml:lang="en">
+<![CDATA[
+<xsl:template match="/">
+<xsl:value-of select="document('http://example.org/data.xml')"/>
+</xsl:template>
+]]>
+</style>
+</head>
+<body>
+<p xml:lang="fr">Les fruits sont délicieux!</p>
+<math:equation xmlns:math="http://example.org/math">
+<math:apply>
+<math:plus>
+<math:ci>2</math:ci>
+<math:cn>3</math:cn>
+</math:plus>
+</math:apply>
+</math:equation>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2025-05-10</date>
+</metadata>
+<section>
+<paragraph xml:lang="en-US">Fruits are very nutritious. &amp;</paragraph>
+</section>
+</document>

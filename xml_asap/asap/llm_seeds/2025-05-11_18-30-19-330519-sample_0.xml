@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/document.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:svg="http://www.w3.org/2000/svg"
+xmlns:math="http://www.w3.org/1998/Math/MathML"
+xml:lang="en-US"
+xml:space="preserve">
+<head>
+<title>Mathematical Fruit Models</title>
+<meta name="keywords" content="bananas, apples, oranges" />
+<stylesheet
+ ="<?xml:namespace prefix="xsl-fo-1.1.0-20041015.dtd  ="
+   type="text.xsl-fo-1.1.0-20041015.dtd  ="
+  />
+</head>
+<body>
+<math:math>
+<math:mrow>
+<math:mi mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="mathvariant="normalActionCreators="

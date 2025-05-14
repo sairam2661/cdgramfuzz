@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd" [
+ ]>
+<document xmlns="http://example.org/ns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:math="http://example.com/math"
+ xmlns:custom="http://example.com/custom"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en-US"
+ xml:space="preserve">
+<html>
+<head>
+<title>Test</title>
+<meta name="author" content="John" />
+<metadata
+ ="${custom:meta} ${custom:meta}"
+  />
+</head>
+<body>
+<section>
+<para>Some text with a reference: <xlink:href xlink:title="example">example</xlink:href></para>
+</section>
+</body>
+</html>
+</document>

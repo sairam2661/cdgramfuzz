@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.org/dtd.dtd" [
+ ]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head
+><title>Complex Fruit</title>
+<metadata
+ ='<!ENTITY fruit "Apple">
+  'xml:lang="en-US"
+  /><meta name="description" content="A complex fruit document." />
+<stylesheet
+ =""><![CDATA[
+  @import url("styles.css");
+  ]]></style>
+</head>
+<body
+><section
+><p>Fruits are delicious &fruit;</p>
+</section>
+<math:math display="block"
+><math:apply><math:plus><math:cn>5</math:cn><math:cn>3</math:cn></math:plus></math:apply></math:math>
+</body>
+</html>
+<metadata
+><author>John Doe</author>
+<date>2022-01-01</date>
+</metadata>
+</document>

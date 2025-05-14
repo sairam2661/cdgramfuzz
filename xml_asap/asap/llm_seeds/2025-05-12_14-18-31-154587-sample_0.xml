@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+ ]>
+<document xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:fb="http://www.facebook.com/2008/fbml"
+ xmlns:fbml="http://www.facebook.com/2008/fbml">
+<html>
+<head>
+<meta charset="UTF-16" />
+<title xml:space="preserve">Bananas are the best fruit!</title>
+<metadata
+ =".metadata"
+ xmlns:fb="http://www.facebook.com/2008/fbml"
+ xmlns:fbml="http://www.facebook.com/2008/fbml"
+  />
+</head>
+<body>
+<section xml:lang="es-ES">
+<paragraph xml:lang="en-GB" xml:space="preserve">
+Bananas are very nutritious. &note;
+</paragraph>
+</section>
+</body>
+</html>
+<metadata>
+<author>Jane Doe</author>
+<date>2025-05-10</date>
+</metadata>
+</document>

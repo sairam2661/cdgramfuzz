@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd" [
+ ]>
+<document xml:lang="fr" xmlns="http://example.org/xmlns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:math="http://www.w3.org/2001/XMLSchema"
+ xmlns:html="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<title xml:space="preserve">Fruits</title>
+<meta name="keywords" content="apples, oranges, bananas"/>
+<style type="text/css"><![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { color: #FF0000; }
+]]></style>
+</head>
+<body>
+<section>
+<math:math xmlns:math="http://www.w3.org/2001/XMLSchema">
+<math:expression>2 + 2</math:expression>
+</math:math>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2025-05-10</date>
+</metadata>
+<section>
+<paragraph xml:lang="es">Las manzanas son muy nutritivas.</paragraph>
+</section>
+</document>

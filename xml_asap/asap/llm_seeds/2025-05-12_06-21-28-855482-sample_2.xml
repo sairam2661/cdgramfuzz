@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xmlns="http://example.org/ns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:math="http://example.org/math"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:ex="http://example.org/ex"
+ xml:lang="en"
+ xml:space="preserve"
+ xml:base="http://example.org/base"
+ doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+ doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+ version="1.0"
+ encoding="UTF-8"
+ standalone="yes"
+ notation="notation">
+<html>
+<head>
+<title>Mathematical Formula</title>
+<metadata
+ ='{ "title": "Math Formula", "author": "John Doe" }'
+ encoding="UTF-8"
+ standalone="no"
+ notation="notation"/>
+</head>
+<body>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<msqrt>
+<mi>x</mi>
+<mo>=</mo>
+<mo>−</mo>
+<msqrt>
+<mi>x</mi>
+</msqrt>
+</msqrt>
+</math>
+</body>
+</html>
+</document>

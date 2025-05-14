@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xml:lang="en"
+ xmlns:math="http://www.example.com/math"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns="http://www.example.com/document"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<html math:expression="1+2">
+<head>
+<meta name="author" content="John Doe"/>
+<meta name="title" content="Example Document"/>
+</head>
+<body>
+<p dc:identifier="urn:isbn:0-486-27557-4" fn:lang="en">
+This is an example of a document with mixed content and multiple namespaces.
+</p>
+</body>
+</html>
+</document>

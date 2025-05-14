@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+<!ELEMENT book (title,author,chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ENTITY chapter1 "Chapter 1: Introduction">
+<!ENTITY % chapter2 "Chapter 2: Theoretical Background">
+<!NOTATION biblio SYSTEM "biblio.dtd">
+%chapter2;
+<!--
+  Sample comment
+  with multiple lines
+-->
+<!ENTITY chapter3 "Chapter 3: Practical Implementation">
+]>
+<book id="mybook" xmlns="http://example.com/schema"
+ xi:nil="false"
+ xi:include="include.xml"
+ xi:fallback="fallback.xml">
+<title>My Book</title>
+<author>John Doe</author>
+<chapter>&chapter1;</chapter>
+<chapter>&chapter3;</chapter>
+<!--
+  Another sample comment
+-->
+</book>

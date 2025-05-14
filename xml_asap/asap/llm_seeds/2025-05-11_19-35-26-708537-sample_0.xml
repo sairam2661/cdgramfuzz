@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+ ]>
+<document xmlns:math="http://www.w3.org/1998/Math/MathML"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head
+><title>Mathematics is Fun</title>
+<metadata
+ ="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  /><meta name="description" content="A blog on mathematics." />
+</head>
+<body>
+<math:math display="block">
+<math:semantics>
+<math:annotation encoding="application/mathml+xml">
+<math:mrow>
+<math:mi>x</math:mi>
+<math:mo>=</math:mo>
+<math:mfrac>
+<math:mn>1</math:mn>
+<math:mn>2</math:mn>
+</math:mfrac>
+<math:mo>+</math:mo>
+<math:mo>−</math:mo>
+<math:mfrac>
+<math:mn>1</math:mn>
+<math:mn>3</math:mn>
+</math:mfrac>
+</math:mrow>
+</math:annotation>
+</math:semantics>
+</math:math>
+</body>
+</html>
+<metadata>
+<author>Jane Doe</author>
+<date>2025-05-10</date>
+</metadata>
+<section>
+<paragraph>Mathematics is a beautiful subject. </paragraph>
+</section>
+</document>

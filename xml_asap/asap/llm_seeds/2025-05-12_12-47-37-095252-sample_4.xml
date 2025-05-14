@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+ ]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head>
+<metadata
+ ="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  /><title>Apples and Oranges</title>
+</head>
+<body>
+<section><p>Some text with <b>bold</b> and <i>italic</i> markup.</p>
+<figure>
+<image src="image.jpg" alt="An image" />
+<figcaption>Figure 1: An image</figcaption>
+</figure>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2022-01-01</date>
+</metadata>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com">
+<xs:element name="document" type="xs:string"/>
+</xs:schema>
+</document>

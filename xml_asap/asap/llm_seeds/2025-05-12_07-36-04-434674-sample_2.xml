@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.org/mydtd.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:svg="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="http://example.org/schema.xsd"
+xml:lang="en"
+xml:base="http://example.org/base">
+<head>
+<title>Document Title</title>
+<meta name="keywords" content="example, test, xml" />
+<meta name="description" content="This is an example document." />
+<stylesheet
+ ="<?xml:stylesheet type='text/xsl' href='style.xsl'?>"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns="http://www.w3.org/1999/xhtml"
+ exclude-result-prefixes="xsl"
+ version="1.0"
+ ><![CDATA[
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Transformed Title</title>
+      </head>
+      <body>
+        <h1>Transformed Heading</h1>
+      </body>
+    </html>
+  </xsl:template>
+  ]]></style>
+</head>
+<body>
+<section>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+  <circle cx="50" cy="50" r="40" fill="red" />
+</svg>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2025-05-10</date>
+<note>This is a note</note>
+</metadata>
+</document>

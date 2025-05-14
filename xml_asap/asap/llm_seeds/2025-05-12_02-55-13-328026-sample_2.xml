@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "books.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:base="https://example.com">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Books</title>
+</head>
+<body>
+<section xmlns:fb="http://www.facebook.com/2008/fbml">
+<fb:like href="https://example.com/books" layout="button_count"></fb:like>
+</section>
+<metadata>
+<author xml:lang="en">
+<name>John Doe</name>
+<email>john.doe@example.com</email>
+</author>
+</metadata>
+<section>
+<paragraph xml:space="preserve">Books are very interesting. &amp;</paragraph>
+</section>
+</body>
+</html>
+<chapter>Chapter 1</chapter>
+</document>

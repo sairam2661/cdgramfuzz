@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document xml:lang="fr-CA" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ imdi:myAttr="true"
+ imdi:myNamespace="http://example.com/myNamespace"
+ imdi:myPrefix="myPrefix">
+<html xmlns:html="http://www.w3.org/1999/xhtml">
+<head>
+<title xml:lang="en-US">Apples are delicious!</title>
+<metadata
+ =""/>
+<metadata
+ =""/>
+</head>
+<body>
+<paragraph xml:space="preserve">Apples &amp; bananas are very nutritious.</paragraph>
+</body>
+</html>
+</document>

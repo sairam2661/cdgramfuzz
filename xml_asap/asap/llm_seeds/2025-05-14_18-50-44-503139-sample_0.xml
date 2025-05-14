@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+<!ELEMENT catalog (item+)>
+<!ATTLIST catalog
+ lang CDATA #IMPLIED
+ >
+<!ENTITY percent "%">
+<!ENTITY % entities "entity1 &#38; entity2 &#x27;&#x27;">
+<!NOTATION ISO-8859-1 SYSTEM "ISO-8859-1">
+%entities;
+<!--
+  This is a sample XML document.
+-->
+
+<!ATTLIST item
+ ean CDATA #REQUIRED
+ >
+<!ENTITY item1 "Item 1">
+<!ELEMENT item (#PCDATA)>
+<!ELEMENT address (street, city, state, zip)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+
+<!ATTLIST address
+ street CDATA #IMPLIED
+ >
+<!ATTLIST item
+ description CDATA #IMPLIED
+ >
+
+<!ATTLIST catalog
+ title CDATA #IMPLIED
+ >
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT item (title, description, address)>
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT address (street, city, state, zip)>
+
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+
+<!ELEMENT items (item+)>
+
+<!ELEMENT item (title, description, address)>
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT address (street, city, state, zip)>
+
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+
+<!ELEMENT item (title, description, address)>
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT address (street, city, state, zip)>
+
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+
+<!ELEMENT item (title, description, address)>
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT

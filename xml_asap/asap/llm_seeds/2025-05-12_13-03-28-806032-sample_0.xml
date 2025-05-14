@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/fruit.dtd" [
+ ]>
+<document xmlns:fb="http://example.com/fb"
+ fb:version="1.0">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  >
+<head>
+<meta name="author" content="John Smith"/>
+<title>Apple</title>
+</head>
+<body>
+<section fb:type="fruit">
+<para>Apple is red.</para>
+<figure>
+<img src="apple.jpg" alt="An apple"/>
+<figcaption>Image of an apple</figcaption>
+</figure>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2022-01-01</date>
+</metadata>
+<note>&lt;note&gt;</note>
+</document>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+ ]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<head>
+<title>XML Fuzz Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style><![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { font-size: 24pt; }
+]]></style>
+</head>
+<body>
+<div fb:profile-name="JohnDoe">
+<p>Testing XML parser with various features...</p>
+</div>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2025-05-15</date>
+</metadata>
+<annotation xml:id="test1" xml:lang="en-US">
+<text>This is a test annotation.</text>
+</annotation>
+</document>

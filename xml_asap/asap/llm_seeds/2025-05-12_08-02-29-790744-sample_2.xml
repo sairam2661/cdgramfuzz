@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "example.dtd" [
+ ]>
+<document xmlns="http://example.com/ns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en-US"
+ xi:schemaLocation="http://example.com/ns example.xsd">
+<html>
+<head>
+<meta name="generator" content="XML Generator"/>
+<title>Complex XML Document</title>
+</head>
+<body>
+<xs:element name="root">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="child" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</body>
+</html>
+<metadata>
+<author xml:lang="en-GB">John Doe</author>
+<date>2024-07-26</date>
+</metadata>
+</document>

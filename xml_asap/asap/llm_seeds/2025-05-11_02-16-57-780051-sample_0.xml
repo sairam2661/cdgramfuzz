@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xml:lang="en-US">
+<head>
+<meta name="keywords" content="#xml #fuzz #testing" />
+<meta http-equiv="refresh" content="5;url=https://example.com" />
+<title>XML Fuzz Test</title>
+<style type="text/css">
+<![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { font-size: 24pt; color: #008000; }
+]]>
+</style>
+</head>
+<body>
+<address>
+  <p>
+    <a href="mailto:john.doe@example.com">john.doe@example.com</a>
+    <span>123 Main St, Anytown, USA</span>
+  </p>
+</address>
+<aside>
+  <nav>
+    <ul>
+      <li><a href="#top">Top</a></li>
+      <li><a href="#bottom">Bottom</a></li>
+    </ul>
+  </nav>
+</aside>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2023-02-20</date>
+</metadata>
+<section>
+<paragraph>This is a paragraph of text.</paragraph>
+</section> 
+</document>

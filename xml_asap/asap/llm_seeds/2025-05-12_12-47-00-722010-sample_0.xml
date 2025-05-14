@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document>
+<html xmlns:fb="http://www.facebook.com/2008/fbml"
+xml:lang="fr-CA"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Maths are fun!</title>
+<meta name="keywords" content="algebra, geometry, calculus" />
+<stylesheet
+ ='<?xml:namespace prefix="xsl" namespace="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"?>'
+ xmlns="http://www.w3.org/1999/XSL/Transform"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ exclude-result-prefixes="xs"
+ version="1.0"
+ xmlns:fb="http://www.facebook.com/2008/fbml"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:fb="http://www.facebook.com/2008/fbml"
+ xmlns="http://www.w3.org/1999/xhtml">
+<![CDATA[
+<xsl:template match="/">
+<xsl:apply-templates select="/*"/>
+</xsl:template>
+<xsl:template match="/*">
+<xsl:value-of select="."/>
+</xsl:template>
+]]>
+</style>
+</head>
+<body>
+<p>1 + 1 = <span>2</span></p>
+<p>2 + 2 = <span>4</span></p>
+</body>
+</html>
+<metadata>
+<author>Jane Doe</author>
+<date>2025-05-10</date>
+</metadata>
+<reference xlink:href="https://www.maths.org">
+<para>Check out this maths website!</para>
+</reference>
+</document>

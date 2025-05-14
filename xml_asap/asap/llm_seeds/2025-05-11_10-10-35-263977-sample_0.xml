@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+ ]>
+<document xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head>
+<metadata
+ ='<xs:attribute name="color" type="xs:string" />' xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  />
+<title>Green</title>
+</head>
+<body>
+<paragraph xml:lang="fr-CA">Violet est un joli color</paragraph>
+<metadata>
+<author>John</author>
+<date>2022-01-01</date>
+</metadata>
+</body>
+</html>
+</document>

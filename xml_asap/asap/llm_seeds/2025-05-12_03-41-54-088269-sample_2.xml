@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://example.com/schema.dtd" [
+ ]>
+<document xmlns="http://example.com/xmlns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en-US"
+ xmlns:custom="http://example.com/custom"
+ custom:customAttr="value"
+ DOCTYPE="document">
+<html>
+<head>
+<meta name="generator" content="XML Fuzz-Test Generator"/>
+<title>Complex XML Document</title>
+</head>
+<body>
+<section>
+<paragraph xml:space="preserve">This is a &note; paragraph with a CDATA section: <![CDATA[
+This is a CDATA section.
+]]>
+</paragraph>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2024-07-26</date>
+</metadata>
+</document>

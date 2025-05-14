@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<head>
+<meta name="generator" content="XML Fuzz Tester" />
+<title>Colors of the Rainbow</title>
+<stylesheet:stylesheet
+ ="<?=CDATA[<?xml version="  ersion="1.0" encoding="UTF-8" standalone="yes"  > <![CDATA[<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"> <xsl:template match="/"> <xsl:value-of select="document('')"/> </xsl:template> </xsl:stylesheet>]]>
+ </style>
+</head>
+<body>
+<section>
+<paragraph>Red, Orange, Yellow, Green, Blue, Indigo, Violet</paragraph>
+</section>
+<metadata>
+<author>XML Fuzz Tester</author>
+<date>2023-01-01</date>
+</metadata>
+</body>
+</html>
+<comment>This is a comment</comment>
+<declaration xml:lang="en-US">This is a declaration</declaration>
+</document>

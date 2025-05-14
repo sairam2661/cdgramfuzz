@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doc.dtd" [
+ ]>
+<document xml:lang="fr" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>XML is fun</title>
+</head>
+<body>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://example.com/ns"
+ xmlns="http://example.com/ns">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="child" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<section>
+  <p>XML is a markup language.</p>
+</section>
+</body>
+</html>
+</document>

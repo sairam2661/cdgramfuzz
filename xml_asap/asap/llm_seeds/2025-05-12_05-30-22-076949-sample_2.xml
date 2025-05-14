@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schemas/document.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<head>
+<title xml:lang="fr">Fruits et légumes</title>
+<meta name="keywords" content="fruits, légumes, santé" />
+<stylesheet
+ ="<xsl:stylesheet version='1.0'
+  xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+  exclude-result-prefixes='xsl'
+  xmlns='http://www.example.com/fruit' />"
+ media="screen"
+ rel="stylesheet"
+ href="#example-stylesheet"
+ charset="ISO-8859-1"
+ type="text/xsl"
+ xml:lang="en"
+ title="Fruit Stylesheet"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xml:base="http://example.com/stylesheets/"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:fo="http://www.w3.org/1999/XSL/Format"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:dcterms="http://purl.org/dc/terms/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:cc="http://web.resource.org/cc/"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:fo="http://www.w3.org/1999/XSL/Format"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xlink="http://www.w3

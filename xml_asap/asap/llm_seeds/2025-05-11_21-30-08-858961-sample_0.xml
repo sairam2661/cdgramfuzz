@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:svg="http://www.w3.org/2000/svg"
+xml:lang="en-US"
+xml:space="preserve"
+xml:base="https://example.com">
+<head>
+<title>Bananas are the best fruit!</title>
+<meta name="description" content="A blog on bananas." />
+<metadata
+ ="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  />
+<metadata
+ ="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  />
+<style><![CDATA[
+body { font-family: Georgia, serif; }
+h1 { color: #FFFF00; }
+]]></style>
+</head>
+<body>
+<svg:svg
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ width="100%"
+ height="100%"
+ preserveAspectRatio="xMinYMin"
+ focusable="true"
+ aria-label="SVG content"
+ aria-roledescription="SVG"
+ aria-describedby="description"
+ aria-atomic="true"
+ aria-live="assertive"
+ aria-busy="true"
+ aria-relevant="additions removals"
+ aria-atomic="true"
+ aria-live="assertive"
+ aria-busy="true"
+ aria-relevant="additions removals"
+ aria-atomic="true"
+ aria-live="assertive"
+ aria-busy="true"
+ aria-relevant="additions removals"
+ aria-atomic="true"
+ aria-live="assertive"
+ aria-busy="true"
+ aria-relevant="additions removals"
+ aria-atomic="true"
+ aria-live="assertive"
+ aria-busy="true"
+ aria-relevant="additions removals"
+ aria-atomic="true"
+ aria-live="assertive"
+ aria-busy="true"
+ aria-relevant="additions removals"
+ aria

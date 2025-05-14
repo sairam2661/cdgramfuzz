@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "https://example.com/schema.dtd" [
+ ]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+ fb:fbml="true"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:ex="http://example.org/ns"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ xml:lang="en"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:space="preserve"
+ xmlns:fn="http://www.w3.org/2005/xpath-functions">
+<html>
+<head>
+<title>Math Example</title>
+<meta name="description" content="A math example." />
+<style type="text/css">
+<![CDATA[
+body { font-family: Georgia, serif; }
+h1 { color: #FFFF00; }
+]]>
+</style>
+</head>
+<body>
+<math:math display="block">
+<math:semantics>
+<math:annotation encoding="application/xhtml+xml">
+<html><body>
+<p>2 + 2 = <math:annotation-xml encoding="application/mathml+xml"><math:cn>4</math:cn></math:annotation-xml></p>
+</body></html>
+</math:annotation>
+</math:semantics>
+</math:math>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2025-05-10</date>
+</metadata>
+<section>
+<paragraph>Math is fun! &ex:example;</paragraph>
+</section>
+</document>

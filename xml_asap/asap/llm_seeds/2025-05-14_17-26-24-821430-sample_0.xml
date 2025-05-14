@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+<!ELEMENT notes (note+)>
+<!ATTLIST note id ID #REQUIRED>
+<!ENTITY author "John Doe">
+<!ENTITY % entities "<!ENTITY foo 'bar'>">
+<!NOTATION iso-8859-1 PUBLIC "ISO 8859-1 character encoding" "iso-8859-1.dtd">
+%entities;
+<!--
+  This is a sample XML document
+  with various features
+--> 
+<!NOTATION iso-8859-1 SYSTEM "iso-8859-1.dtd">
+<!ENTITY iso-8859-1 "ISO 8859-1">
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-1 SYSTEM "iso-8859-1.dtd" >
+<!ENTITY % iso-8859-

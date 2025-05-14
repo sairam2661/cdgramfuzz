@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doctype.dtd" [
+ ]>
+<document xmlns:foo="http://example.com/foo"
+ ><html xmlns="http://www.w3.org/1999/xhtml"
+  ><head>
+<title>XML is fun</title>
+<metadata
+ ='<foo:attribute1>value1</foo:attribute1><foo:attribute2>value2</foo:attribute2>'
+/>
+<stylesheet
+ ='
+  xmlns="http://www.w3.org/1999/XSL/Transform"
+  version="1.0"
+  >
+  <template match="/">
+    <xsl:value-of select="."/>
+  </template>
+  '
+ ><![CDATA[
+  ]]></style>
+</head>
+<body>
+<foo:element1 xmlns:foo="http://example.com/foo">Element 1</foo:element1>
+<foo:element2 xmlns:foo="http://example.com/foo">Element 2</foo:element2>
+</body>
+</html>
+<metadata
+ ><author>John Doe</author>
+<date>2022-01-01</date>
+</metadata>
+<section>
+<paragraph>This is a paragraph with &amp; character</paragraph>
+</section>
+</document>

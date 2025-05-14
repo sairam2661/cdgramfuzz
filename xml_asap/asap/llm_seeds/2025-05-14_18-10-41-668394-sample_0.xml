@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "root.dtd" [
+<!ELEMENT root (header, body)>
+<!ATTLIST root
+ atts (a|b) #REQUIRED
+ >
+<!ENTITY entity "Entity content">
+<!ENTITY % ent "%entity;">
+<!NOTATION notation SYSTEM "notation.dtd">
+%XInclude;
+<!--
+  This is a comment
+-->
+
+<!-- root element -->
+<!ATTLIST root
+ atts (a|b) "a"
+>
+<!ENTITY ent2 "&entity;">
+<!ENTITY ent3 "!">
+<!ENTITY ent4 "%ent;">
+<!ENTITY ent5 "&ent2;">
+<!ENTITY ent6 "&ent3;">
+<!ENTITY ent7 "&ent4;">
+<!ENTITY ent8 "&ent5;">
+<!ENTITY ent9 "&ent6;">
+<!ENTITY ent10 "&ent7;">
+<!ENTITY ent11 "&ent8;">
+<!ENTITY ent12 "&ent9;">
+<!ENTITY ent13 "&ent10;">
+<!ENTITY ent14 "&ent11;">
+<!ENTITY ent15 "&ent12;">
+<!ENTITY ent16 "&ent13;">
+<!ENTITY ent17 "&ent14;">
+<!ENTITY ent18 "&ent15;">
+<!ENTITY ent19 "&ent16;">
+<!ENTITY ent20 "&ent17;">
+<!ENTITY ent21 "&ent18;">
+<!ENTITY ent22 "&ent19;">
+<!ENTITY ent23 "&ent20;">
+<!ENTITY ent24 "&ent21;">
+<!ENTITY ent25 "&ent22;">
+<!ENTITY ent26 "&ent23;">
+<!ENTITY ent27 "&ent24;">
+<!ENTITY ent28 "&ent25;">
+<!ENTITY ent29 "&ent26;">
+<!ENTITY ent30 "&ent27;">
+<!ENTITY ent31 "&ent28;">
+<!ENTITY ent32 "&ent29;">
+<!ENTITY ent33 "&ent30;">
+<!ENTITY ent34 "&ent31;">
+<!ENTITY ent35 "&ent32;">
+<!ENTITY ent36 "&ent33;">
+<!ENTITY ent37 "&ent34;">
+<!ENTITY ent38 "&ent35;">
+<!ENTITY ent39 "&ent36;">
+<!ENTITY ent40 "&ent37;">
+<!ENTITY ent41 "&ent38;">
+<!ENTITY ent42 "&ent39;">
+<!ENTITY ent43 "&ent40;">
+<!ENTITY ent44 "&ent41;">
+<!ENTITY ent45 "&ent42;">
+<!ENTITY ent46 "&ent43;">
+<!ENTITY ent47 "&ent44;">
+<!ENTITY ent48 "&ent

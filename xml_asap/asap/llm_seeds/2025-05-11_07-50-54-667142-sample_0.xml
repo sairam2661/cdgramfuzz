@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document xmlns="http://example.com/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:math="http://www.example.com/mathml"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xml:lang="fr-CA"
+ xml:space="preserve"
+ xml:base="http://example.com"
+ version="1.0">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Maths</title>
+<metadata
+ ="<?=xml:lang?>" xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:prov="http://www.w3.org/ns/prov#"
+ xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+ xmlns:grddl="http://www.w3.org/2003/g/data-view#"
+ xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+ xmlns:dc11="http://purl.org/dc/elements/1.1/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:foaf11="http://xmlns.com/foaf/0.1/"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:owl11="http://www.w3.org/2002/07/owl#"
+ xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xmlns:rdf11="http://www.w3.org/1999/02/22-rdf-syntax-ns#"

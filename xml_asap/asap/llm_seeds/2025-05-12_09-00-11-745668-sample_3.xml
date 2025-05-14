@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" xml:space="preserve">
+<head>
+<meta name="generator" content="XML Generator"/>
+<meta charset="ISO-8859-1"/>
+<title>XML Document</title>
+</head>
+<body>
+<section xmlns:foo="http://example.com/foo">
+<foo:para>Paragraph with attribute.</foo:para>
+</section>
+<section>
+<para>Paragraph without attribute.</para>
+</section>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2025-05-10</date>
+</metadata>
+</document>

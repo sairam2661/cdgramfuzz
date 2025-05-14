@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE document SYSTEM "trees.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xml:lang="en-US">
+<head>
+<title>Tree Classification</title>
+<metadata
+ ='{ "title": "Tree Classification", "author": "John Smith" }'
+/>
+<style><![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { color: #00FF00; }
+]]></style>
+</head>
+<body>
+<tree>
+<node id="root">
+<node id="branch1">
+<node id="leaf1">Leaf 1</node>
+<node id="leaf2">Leaf 2</node>
+</node>
+<node id="branch2">
+<node id="leaf3">Leaf 3</node>
+</node>
+</node>
+</tree>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2025-05-10</date>
+</metadata>
+</document>

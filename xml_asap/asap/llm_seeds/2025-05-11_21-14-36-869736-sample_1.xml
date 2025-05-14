@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "music.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Music Festival</title>
+<style type="text/css"><![CDATA[
+body { font-family: Courier, monospace; }
+h1 { color: #008000; }
+]]></style>
+</head>
+<body>
+<metadata>
+<year>2024</year>
+<genre>Rock</genre>
+</metadata>
+<section>
+<sub-section>
+<sub-sub-section>
+<p>Concerts will be held on multiple stages.</p>
+</sub-sub-section>
+</sub-section>
+</section>
+</body>
+</html>
+<image src="music.jpg" />
+<footnote>This is a footnote.</footnote>
+</document>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/doctype.dtd" [
+ ]>
+<document xmlns="http://example.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xi:schemaLocation="http://example.org http://example.com/schema.xsd"
+ xmlns:math="http://www.example.com/math">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8"/>
+<title>Example</title>
+</head>
+<body>
+<math:equation>
+<math:sum>
+<math:term>2</math:term>
+<math:term>3</math:term>
+</math:sum>
+</math:equation>
+</body>
+</html>
+<note>This is a note</note>
+<metadata>
+<author>
+<name>John Doe</name>
+<email>johndoe@example.com</email>
+</author>
+</metadata> 
+<root>
+<child>1</child>
+<child>2</child>
+<child>3</child>
+</root> 
+<comment>This is a comment</comment> 
+</document>

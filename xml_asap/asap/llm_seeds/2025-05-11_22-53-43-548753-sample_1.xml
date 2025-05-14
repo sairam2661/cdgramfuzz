@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "http://example.com/dtd.dtd" [
+ ]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+ fb:namespace="facebook">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Facebook Feed</title>
+</head>
+<body>
+<div>
+<fb:profile name="John Doe" />
+</div>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2023-07-26</date>
+</metadata>
+<section>
+<paragraph>Connecting with friends and family has never been easier.</paragraph>
+</section>
+</document>

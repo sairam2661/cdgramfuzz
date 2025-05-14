@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "maths.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
+<head>
+<title>Maths Problem</title>
+<metadata
+ ="" xmlns:dc="http://purl.org/dc/elements/1.1/"
+  />
+</head>
+<body>
+<section xmlns="http://www.w3.org/1999/xhtml">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci>x</ci>
+<cn>2</cn>
+</apply>
+</math>
+</section>
+</body>
+</html>
+<metadata>
+<author>Jane Doe</author>
+<date>2025-05-10</date>
+</metadata>
+</document>

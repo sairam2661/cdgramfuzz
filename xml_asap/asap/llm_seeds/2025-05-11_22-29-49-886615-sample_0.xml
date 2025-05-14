@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document xmlns:fb="http://www.facebook.com/2008/fbml"
+ fb:app_id="1234567890"
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:math="http://www.w3.org/1998/Math/MathML"
+ xml:lang="en-US">
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Test</title>
+</head>
+<body>
+<svg:svg xmlns:svg="http://www.w3.org/2000/svg" width="100%" height="100%">
+<svg:circle cx="50" cy="50" r="40" fill="blue"/>
+</svg:svg>
+<math:math display="block">
+<math:mrow>
+<math:mi>x</math:mi>
+<math:mo>=</math:mo>
+<math:mfrac>
+<math:mn>1</math:mn>
+<math:mi>x</math:mi>
+</math:mfrac>
+</math:mrow>
+</math:math>
+</body>
+</html>
+<metadata>
+<author>John Doe</author>
+<date>2022-01-01</date>
+</metadata>
+<section>
+<paragraph>This is a test paragraph.</paragraph>
+</section>
+</document>

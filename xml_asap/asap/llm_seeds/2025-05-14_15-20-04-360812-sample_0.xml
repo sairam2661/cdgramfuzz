@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ENTITY author "John Doe">
+<!ENTITY % bookEntities "author">
+<!NOTATION bookFormat PUBLIC "Book Format" "application/xml">
+%bookEntities;
+<!--
+  Sample comment
+-->
+
+<!NOTATION bookFormat PUBLIC "Book Format" "application/xml">
+<!ELEMENT chapter (#PCDATA)>
+<!ATTLIST chapter number CDATA #REQUIRED>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+
+<!ENTITY bookFormat "application/xml">
+<!ENTITY chapter1 "Chapter 1">
+<!ENTITY chapter2 "Chapter 2">
+<!ENTITY book "Book Title">
+<!ENTITY authorName "&author;">
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+
+<!ENTITY % bookAttributes "id">
+<!ATTLIST chapter number CDATA #REQUIRED>
+
+<!ENTITY chapter "Chapter">
+<!ENTITY number "1">
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST chapter number CDATA #REQUIRED>
+
+<!ENTITY bookFormat "application/xml">
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST chapter number CDATA #REQUIRED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST chapter number CDATA #REQUIRED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST chapter number CDATA #REQUIRED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+
+<!ELEMENT chapter (#PCDATA)>
+
+<!ELEMENT book (title, author, chapter*)>
+<!ATTLIST book id CDATA #REQUIRED>
+<!ATTLIST chapter

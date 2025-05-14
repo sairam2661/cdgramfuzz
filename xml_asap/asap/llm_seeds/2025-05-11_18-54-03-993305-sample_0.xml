@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "colors.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<head>
+<title>Colors of the Rainbow</title>
+<metadata:meta-attribute-1
+ ="Meta-attribute value 1"
+  />
+<metadata:meta-attribute-2
+ ="Meta-attribute value 2"
+  />
+<metadata:meta-attribute-3
+ ="Meta-attribute value 3"
+  />
+</head>
+<body>
+<sect1>
+<sect2>
+<sect3>
+<sect4>
+<sect5>
+<sect6>
+<sect7>
+<sect8>
+<sect9>
+<sect10>
+</sect10>
+</sect9>
+</sect8>
+</sect7>
+</sect6>
+</sect5>
+</sect4>
+</sect3>
+</sect2>
+</sect1>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2023-02-20</date>
+</metadata>
+</document>

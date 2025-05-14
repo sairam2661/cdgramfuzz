@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:math="http://www.w3.org/1998/Math/MathML"
+  >
+<head>
+<title>Mathematical Fruit</title>
+<meta name="keywords" content="mathematics,fruits,geometry" />
+<stylesheet
+ ="<xsl:stylesheet xmlns:xsl="http:www.w3.org1999XSLTransformations
+ =""><![CDATA[
+    <xsl:template match="/">
+      <html>
+        <body>
+          <h1>Fruit Math</h1>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mrow>
+              <msup><mrow><mi>A</mi></mrow><mrow><mo>=</mo><mn>3</mn></mrow></msup>
+              <mo>×</mo><msup><mrow><mi>B</mi></mrow><mrow><mo>=</mo><mn>4</mn></mrow></msup>
+            </mrow>
+          </math>
+        </body>
+      </html>
+    </xsl:template>
+  ]]></style>
+</head>
+<body>
+<p>Geometric shapes in fruits.</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+  <mi>π</mi><mo>=</mo><mn>3.14</mn>
+</mrow>
+</math>
+</body>
+</html>
+<metadata>
+<author>John Smith</author>
+<date>2023-07-26</date>
+</metadata>
+</document>

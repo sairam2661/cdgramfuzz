@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "fruits.dtd" [
+ ]>
+<document xmlns="http://example.com/ns"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en-US"
+ xmlns:math="http://www.example.com/math"
+ xmlns:svg="http://www.w3.org/2000/svg">
+<html>
+<head>
+<title>Mathematical Expressions</title>
+<metadata
+ ="--"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:ex="http://example.com/ns"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:math="http://www.example.com/math"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://www.example.com/ns"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xml:lang="en-US"
+ xmlns:ex2="http://example.com/ex2"
+ xmlns:ex3="http://example.com/ex3"
+ xmlns:ex4="http://example.com/ex4"
+ xmlns:ex5="http://example.com/ex5"
+ xmlns:ex6="http://example.com/ex6"
+ xmlns:ex7="http://example.com/ex7"
+ xmlns:ex8="http://example.com/ex8"
+ xmlns:ex9="http://example.com/ex9"
+ xmlns:ex10="http://example.com/ex10"
+ xmlns:ex11="http://example.com/ex11"
+ xmlns:ex12="http://example.org/ex12"
+ xmlns:ex13="http://example.org/ex13"
+ xmlns:ex14="http://example.org/ex14"
+ xmlns:ex15="http://example.org/ex15"
+ xmlns:ex16="http://example.org/ex16"
+ xmlns:ex17="http://example.org/ex17"
+ xmlns:ex18="http://example.org/ex18"
+ xmlns:ex19="http://example.org/ex19"
+ xmlns:ex20="http://example.org/ex20"
+ xmlns:ex21="http://example

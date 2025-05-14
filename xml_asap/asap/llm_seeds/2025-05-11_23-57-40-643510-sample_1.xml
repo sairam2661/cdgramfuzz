@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.org/dtd">
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:space="preserve">
+<head>
+<meta charset="UTF-8"/>
+<meta name="generator" content="XML Fuzz-Test Generator"/>
+<title>XML Document</title>
+<style type="text/css">
+<![CDATA[
+body { font-family: Arial, sans-serif; }
+h1 { color: #FF0000; }
+]]>
+</style>
+</head>
+<body>
+<section xmlns:xlink="http://www.w3.org/1999/xlink">
+<para>Paragraph 1</para>
+<para>Paragraph 2 &amp;para;</para>
+</section>
+</body>
+</html>
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+<dc:title>Document Title</dc:title>
+<dc:creator>John Doe</dc:creator>
+<dc:date>2024-07-26</dc:date>
+</metadata>
+</document>

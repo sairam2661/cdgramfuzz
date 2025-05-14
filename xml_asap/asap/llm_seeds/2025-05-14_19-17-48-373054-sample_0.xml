@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+<!ELEMENT root (child1,child2,child3)>
+<!ATTLIST root id CDATA #REQUIRED>
+<!ENTITY author "John Doe">
+<!ENTITY % entity "Value">
+<!NOTATION notation SYSTEM "notation">
+%XInclude
+;<!----><!ELEMENT child1 (#PCDATA)>
+<!ELEMENT child2 EMPTY>
+<!ELEMENT child3 (grandchild1,grandchild2)>
+<!ELEMENT grandchild1 (#PCDATA)>
+<!ELEMENT grandchild2 EMPTY>
+<!ATTLIST child2 attr1 CDATA #REQUIRED>
+<!ATTLIST child3 attr2 CDATA #REQUIRED>
+<!ATTLIST grandchild1 attr3 CDATA #IMPLIED>
+]>
+<root id="root-id" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <xi:include href="included.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  <child1>This is child1</child1>
+  <child2 attr1="attr1-value"/>
+  <child3 attr2="attr2-value">
+    <grandchild1 attr3="attr3-value">This is grandchild1</grandchild1>
+    <grandchild2/>
+  </child3>
+  <message>&author;</message>
+  <message>&entity;</message>
+  <notation href="notation"/>
+</root>

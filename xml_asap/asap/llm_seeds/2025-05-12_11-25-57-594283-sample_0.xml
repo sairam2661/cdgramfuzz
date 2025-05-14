@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document SYSTEM "http://example.com/schema.dtd" [
+ ]>
+<document>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  >
+<head>
+<title xml:lang="fr">Les bananes sont les meilleures!</title>
+<metadata:meta
+ ="" xmlns:metadata="http://example.com/metadata"
+  />
+</head>
+<body>
+<section>
+<p xml:space="preserve">Bananas are very nutritious. &amp;note;</p>
+</section>
+</body>
+</html>
+<metadata>
+<author>Jane Doe</author>
+<date>2025-05-10</date>
+</metadata> 
+</document>
