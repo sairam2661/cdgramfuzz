@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d"[
+  <!ELEMENT catalog (product)*>
+  <!ATTLIST catalog
+    id ID #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY ent "P">
+
+  <!ENTITY % int "a">
+  <!NOTATION GIF PUBLIC "G"
+    "A">
+
+ %Xint; 
+  <!--&int; -->
+]>
+<catalog id="A" version="2">
+  <product>
+   <name>Product A</name>
+   <description>Product A description</description>
+   <price>19.99</price>
+  </product>
+  <product>
+   <name>Product B</name>
+   <description>Product B description</description>
+   <price>39.99</price>
+  </product>
+</catalog>

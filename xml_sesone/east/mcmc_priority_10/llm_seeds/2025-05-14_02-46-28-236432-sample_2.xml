@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY pi SYSTEM "a" NDATA a>
+  <!ENTITY % not "o">
+  <!NOTATION a PUBLIC "a" "a">
+  %not;
+  <!--<!ENTITY ent SystemIdent PUBLIC "systemPublicIdent" 'ent'>-->
+]>
+<note id="1">
+  <to>John</to>
+  <from>Jane</from>
+  <heading>Meeting invite</heading>
+  <body>&pi;</body>
+</note>

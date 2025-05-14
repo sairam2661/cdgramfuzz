@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (#PCDATA | item | category | description)>
+  <!ATTLIST item id ID #REQUIRED>
+  <!ENTITY cat1 "P">
+  <!ENTITY % cat2 "X">
+  <!NOTATION ISO-10260 PUBLIC "M" "D">
+  %cat2;
+  <!--
+    Note: XInclude and NVDL are not enabled.
+  -->
+]>
+<inventory xmlns="n"
+ xmlns:ixi="x"
+  xmlns:dl="d"
+  xmlns:dv="k"
+  include="n">  <!-- Include example -->
+  <item id="i">a item</item>
+  <category attr="p">a category</category>
+  <item id="i">
+   
+    <section><![CDATA[nested
+      section]]></section>
+    <item id="i">item
+      inside section</item>
+  </item>
+  
+  <description name="t">sample
+    text with embedded ref to entity &cat1;  ref to entity outside
+    this element: &cat1;</description>
+  <item id="i">last
+  item</item>
+</inventory>

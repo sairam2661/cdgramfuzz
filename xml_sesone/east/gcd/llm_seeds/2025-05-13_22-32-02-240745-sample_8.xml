@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY chapter1 "A"
+       >
+  <!ENTITY % chapter2-system
+    "A">
+  <!NOTATION ACRONYM-PUB-PDF PUBLIC "-"
+    "A">
+  %chapter2-system;
+  <!---->
+]>
+<book id="B">
+  <title>Book Title</title>
+  <author>Author Name</author>
+  <chapter entity-ref="#">&chapter1;</chapter>
+  <chapter>&chapter2;</chapter>
+  <chapter>
+    <notated-element notation-name="A"
+                      notation-publicId="-"><![CDATA[a piece<of>notation]]></notated-element>
+  </chapter>
+</book>

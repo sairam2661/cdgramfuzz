@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, authors+)>
+  <!ATTLIST book lang CDATA #IMPLIED>
+  <!ENTITY title "M" >
+  <!ENTITY  % booksys "Y" >
+  <!NOTATION eps SYSTEM "X">
+  %booksys;
+ <!---->]>
+<book xmlns:xs="h" xmlns:p="h">
+  <!-- 
+  <comment>This is a book about history</comment>
+  -->
+  <title>&title;</title>
+  <authors>
+    <author>
+      <name>John Smith</name>
+      <email>john.smith@example.com</email>
+    </author>
+  </authors>
+  <!-- 
+  <bibref system="dblp" key="journals/cacm/Dennis72"/>
+  -->
+  <p:p>Book note: <eps:eps/> eps file</p:p>
+</book>

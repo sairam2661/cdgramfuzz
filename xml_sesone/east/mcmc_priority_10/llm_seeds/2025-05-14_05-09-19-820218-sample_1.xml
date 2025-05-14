@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note-system [
+  <!ELEMENT note-system (note+, message+)>
+  <!ATTLIST note-system
+    id ID #REQUIRED
+    title CDATA #REQUIRED
+  >
+  <!ENTITY note "A"
+  >
+  <!ENTITY % note-list "(">
+  <!NOTATION ISO-NL PUBLIC "N"  "Y">
+  %note-list;
+  <!---->
+]>
+<note-system id="n" title="G">
+<note>&note;</note>
+<note>&note;</note>
+<message>Hi!</message>
+</note-system>

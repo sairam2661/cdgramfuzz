@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category+)>
+  <!ATTLIST category id CDATA #REQUIRED>
+  <!ENTITY address "1" >
+  <!ENTITY  
+    %date        "("
+    >    <!NOTATION f1 SYSTEM 'note1.pdf'>
+    %date   ;                
+  <!--%
+ !-->
+  ]
+><catalog  xmlns:xsi=" "
+   xsi:noNamespaceSchemaLocation=
+   "[">
+  <category id="1"><message>&address;</message>&date;f1</category>
+</catalog>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalogue [
+  <!ELEMENT catalogue (author, publisher, title, book*)>
+  <!ATTLIST catalogue 
+    version CDATA #IMPLIED>
+  <!ENTITY titleofbook "G"
+  >
+  <!ENTITY % note "A"
+  >
+  <!NOTATION xsl PUBLIC "X"
+  "X">
+  %note;
+  <!-- A comment -->
+]>
+<catalogue version="1">
+  <author>
+    <name>John</name>
+  </author>
+  <publisher>
+    <name>Publishers House</name>
+    <address>Anywhere</address>
+  </publisher>
+  <title>My title&titleofbook;</title>
+  <book>
+    <title>My book</title>
+    <author>John</author>
+  </book>
+  <book>
+    <title>Another book</title>
+    <author>Jane</author>
+  </book>
+</catalogue>

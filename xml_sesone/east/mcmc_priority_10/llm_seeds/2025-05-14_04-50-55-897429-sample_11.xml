@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC
+  "-"
+  "X" 
+  [
+    <!ELEMENT config (server, application) >
+    <!ATTLIST server 
+            id    CDATA   #REQUIRED 
+            port  CDATA   #REQUIRED>
+    <!ENTITY server.port " ">
+    <!ENTITY % server.id "("> 
+  <!NOTATION file SYSTEM "C">
+  																								%xref.xm
+																		
+		;<!--,.-->
+<!ELEMENT server (#PCDATA)>
+<!ELEMENT application (#PCDATA)>
+<!ELEMENT database (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT xref (#PCDATA)>
+<!ELEMENT root (#PCDATA)>
+<!ELEMENT content (#PCDATA)>
+<!ELEMENT data (#PCDATA)>
+<!ELEMENT sub-content (#PCDATA)>
+
+<?a hreflang  xmlns   xmlns xsi  xmlns href   xml nctype lang code xml encoding xml id   id   encoding   id encoding id encoding id a xmlns type xmlns    type      type   lang xmlns  id encoding      id encoding encoding type     encoding encoding      encoding  language a  encoding encoding id code   encoding type encoding id encoding id   encoding type type namespace x  type type   xml a   lang   type   encoding   id    type type code   encoding xmlns href id   lang     lang type encoding a type a  id   id lang type code encoding encoding encoding lang a lang   type     type type type lang namespace type type encoding type  language  encoding lang type type type encoding a type type  encoding a a language a   type lang language namespace a type type   encoding xmlns a    a  encoding id   encoding   type type     type type    id lang id   language a id type     type id id a   encoding id type     a a lang id lang  encoding language xmlns language   type type language  lang   type type a a   type encoding type encoding encoding language id language lang      type type a id   type a  type   id type type a a  xmlns a   language a a type   type  a  a a    a   lang type   encoding id encoding  lang  encoding a type xmlns id encoding   a     type   type lang   encoding a  lang a   language  a      lang type type   a     lang a lang  type   encoding id a lang  a type lang      a language type type lang a lang a   lang type   type   lang a a type  lang   lang  language lang lang   type type type   a lang  id  a    type      lang a id   a xmlns lang   encoding language language  language  encoding lang id     a lang  a   type     type      a type lang a id lang  lang id a  id lang a language a encoding encoding      type lang xmlns a type  id    encoding  lang a      a   lang id      xmlns    a  language  language      language  type a language encoding type encoding a   a       type a lang a language lang language      encoding id  lang  type   lang  id   type lang   id   id type       id a id       lang a  type  a  lang  type type  type a id   a lang  type language  lang a lang lang   lang   id  type lang   language     language     lang id a type lang a  lang id   language a id  lang id a  language lang  a      lang  lang a lang  type lang       type a lang      lang lang id type lang   a   type       lang  a a  a lang a  a a language a lang lang   lang   lang lang  a   lang lang a  lang   lang   lang  lang  a  lang lang   type id type      id  lang  a a  type   lang  id   lang   a      lang  a language a lang  lang id     lang type language id  a    type   lang lang  lang  lang lang a      id type id  a type lang   lang   id  lang    id      language   language  lang id   a lang   language id  id lang type     a a lang id   type      lang  a lang lang   lang  lang id   language   lang  a language  id a   id type  language  a language   language a lang language  language   lang a language  type a  lang  a   type language a lang  type      lang language lang   a id   lang     language type a lang a a type a       language  language a  lang a type  a lang id id    a lang       a lang lang  lang   lang   lang a lang lang  a type a lang      a   lang lang lang   type lang id  lang a lang id id      lang  language a   a  lang language id   language id   a lang   a lang   id a lang      a lang id type a a    a lang   lang language a a  lang   a    lang a   a  lang lang  a a lang id langue lang lang    id   lang lang  lang lang lang   id a  id type      a lang lang lang   lang   a lang lang a   a lang language   id a language id type lang id type id lang type type id a lang lang a   type lang id lang id   a language   type  id lang id    id type lang  a lang lang  a type lang   lang lang   lang   lang lang   type      lang     a type id lang lang type lang id lang  a language a lang language    a id a id      lang type   lang  a   lang a  a      a lang id   lang       type     lang

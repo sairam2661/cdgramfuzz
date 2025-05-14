@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (catalog, dedication)>
+  <!ATTLIST book
+    author CDATA #IMPLIED
+    language (german|english) "a"
+  >
+  <!ENTITY bookinfo "D">
+  <!ENTITY % attratt "%">
+  <!NOTATION bookformat SYSTEM "m">
+  %attratt;
+  <!--<!ENTITY % attratt "not att">--> <!-- This would raise a warning -->
+]>
+<book author="K" language="e">
+  <catalog/>
+  <dedication>&bookinfo;</dedication>
+</book>

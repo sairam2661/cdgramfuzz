@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library [
+  <!ELEMENT book (title, author, year)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  
+  <!ENTITY title1 "P">
+  <!ENTITY 	%title2 "e"
+           		> 
+  <!NOTATION iso-ccitt-publication 	PUBLIC "+"
+                        "
+"		>
+ 	%title1; 
+ 	<!-- 
+ -->
+ 	%title2;		<!--
+ 	--><!-- -->
+ 
+]><library>
+  <book id="B" year="1">
+    <title xmlns="&iso-ccitt-publication;">&P;e</title>
+    <author>anon</author>
+  </book>
+</library>

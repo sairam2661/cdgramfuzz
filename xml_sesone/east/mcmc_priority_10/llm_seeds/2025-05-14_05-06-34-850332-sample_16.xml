@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n"
+  [
+    <!ELEMENT note (to,from,body)>
+    <!ATTLIST note
+      id  CDATA  #REQUIRED
+      xmlns  CDATA  #FIXED 'http://example.com/schema'>
+  <!ENTITY ref SYSTEM "r" NDATA XInclude>   
+  <!ENTITY % XInclude 'http://www.w3.org/2001/XInclude'>
+  <!NOTATION XInclude PUBLIC 'XInclude Notation'
+    'http://www.w3.org/TR/xinclude/'>
+ 	   			    
+   	%XInclude;
+ 	<!-- 
+   The following entity declaration is just a placeholder for illustration purposes. 
+   Refer to the actual definition if implementing this in your application.
+  -->
+    <!ENTITY xrefSYSTEM "x"
+                NDATA xPointer1>
+  ]
+><note id='%ref;'
+xmlns='http://example.com/schema'>
+  <to>person B</to>
+  <from>John</from>
+  <body><![CDATA[
+  This is a <b>bolder</b> message.
+  ]]></body>
+</note>

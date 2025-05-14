@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,sample)>
+  <!ATTLIST book
+    lang CDATA #REQUIRED
+  >
+  <!ENTITY author "J"
+  >
+  <!ENTITY % section "%">
+  <!NOTATION xsl PUBLIC "-"
+  "x" >
+  %section;
+  <!--  xsl  -->
+]>
+<book lang='en'>
+  <title xml:space='preserve'>The Gungan<name>H</name></title>
+  &author;
+  <sample>&lt;sampling&gt;Some text&amp;lt;/sampling&gt;</sample>
+</book>

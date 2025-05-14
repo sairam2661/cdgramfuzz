@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- DTD includes and declarations -->
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (header, product*, footer) >
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY company-name "Y" >
+  <!ENTITY % section "A">
+  <!NOTATION ISO-8859-1 SYSTEM "m">
+  %section;
+  <!--%ISO--> <!-- comment -->
+]>
+<catalog id="c" xmlns="s">
+  <header entity-public-id="Y" name="Z">
+    &company-name;
+    &iso-8859-one;
+    <address>
+      <name>Company &company-name;</name>
+      <street>123 street</street>
+    </address>
+  </header>
+  <product category="P">
+    Sample Product!
+    <!-- embedded -->
+    <desc><![CDATA[<p description>Sample Product description</p>]]></desc>
+  </product>
+  <footer entity-public-id="Y">&company-name;</footer>
+</catalog>

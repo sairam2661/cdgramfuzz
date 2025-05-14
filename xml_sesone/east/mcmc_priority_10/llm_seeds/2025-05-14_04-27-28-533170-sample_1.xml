@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ELEMENT document (title, section+)>
+  <!ATTLIST document
+    id CDATA #REQUIRED
+    lang (en|fr|de) "e"
+  >
+  <!ENTITY pi SYSTEM "p">
+  <!ENTITY % ent "x">
+  <!NOTATION ISO-8859-1 PUBLIC "X" "Y">
+  %ent;
+  <!--[ XInclude comment [<![CDATA[ ]>]]> ]-->
+]>
+<document xmlns="a" xmlns:c="b" id="D" xml:lang="e">
+  <title>c:title</title>
+  <section>
+    <para>c:para>This is <b>bold</b><?pi?> and <i>italic</i></para>
+  </section>
+</document>

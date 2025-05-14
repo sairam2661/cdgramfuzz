@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog SYSTEM "g"
+ [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY entity "A">
+  <!ENTITY % p "A">
+  <!NOTATION n PUBLIC "N" "N">
+  
+  %p;
+  <!-- &entity; -->
+]>
+<catalog id="c" n:href="x">
+  <product>
+    <name><![CDATA[Product1]]></name>
+    <desc><![CDATA[Description1]]></desc>
+  </product>
+  <product>
+    <name>A</name>
+    <desc>&n;</desc>
+  </product>
+</catalog>

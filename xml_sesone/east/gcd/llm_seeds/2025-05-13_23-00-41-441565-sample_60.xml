@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note date CDATA #REQUIRED>
+  <!ENTITY desc "A" >
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION FTYPE PUBLIC "F" "a">
+  %ent;
+  <!--
+    PUBLIC 'B' 'F'
+    SYSTEM "f"
+    NDATA FTYPE
+  -->
+]>
+<note date="&date;">
+  <heading>Meeting Invitation</heading>
+  <from>John Doe</from>
+  <to>Jane Doe</to>
+  <body>Some &desc; text</body>
+</note>

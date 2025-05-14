@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter "I">
+  <!ENTITY  % bookentity "I">
+  <!NOTATION ISO-8859-1 SYSTEM'standard encoding for Europe'>
+  %bookentity;
+  <!--
+    Entity decl. for a CDATA section, as a character ref.
+    &chapter;
+  -->
+  <!ENTITY chapter2 "I">
+]>
+<book xmlns:xi="x" xmlns:xsi="y" id="1">
+  <title>Complex Book</title>
+  <author>John Doe</author>
+  <chapter>&chapter;</chapter>
+  <chapter><![CDATA[<data>Example text with & characters</data>]]></chapter>
+</book>

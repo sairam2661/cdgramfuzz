@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author,title,chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter-one SYSTEM "1">
+  <!ENTITY %x "X">
+  <!NOTATION ISO-8859-1 PUBLIC "W" "I">
+ %X;
+  <!-- internal subset -->
+]>
+<book id="b">
+  <author name="J">
+    <position>Author</position>
+  </author>
+  <title>A&amp;B</title>
+  <chapter ref="&chapter-one;">This is a sample chapter!</chapter>
+  <chapter name="Y"><![CDATA[Some
+  raw <text> without a closing tag!]]></chapter>
+</book>

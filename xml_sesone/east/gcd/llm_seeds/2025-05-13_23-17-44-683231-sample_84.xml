@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT cat (name,age)>
+  <!ATTLIST cat type CDATA #IMPLIED>
+  <!ENTITY desc "F">	
+  <!ENTITY % xmlns "I">
+  <!NOTATION GIF SYSTEM "G">
+ 		
+ 	%i;	
+ 	<!-- Sample comment -->	
+]>
+
+<catalog>
+  <!-- root element -->
+  <person name="A"><age>10</age></person>
+  <cat type="A">
+    <!-- text node with mixed content -->
+    This is a line of text with a <name>d</name>  <value> value</value>   that contains mixed content,
+    <address><street>ABC drive</street></address>, and <subaddress>another sub</subaddress> address.
+  </cat>
+  <message>&desc;</message>
+  <image GIF="G">
+    <!-- element with namespace, declared via xmlns attribute -->
+    <img src='http://example.com/image' xmlns:ns="a" ns:ns-attr='N'>
+      <!-- element with an attribute in the default namespace -->
+      <div attr='O'>
+	   <!-- entity reference -->
+	    &note;
+	  </div>
+    </img>
+  </image>
+</catalog>

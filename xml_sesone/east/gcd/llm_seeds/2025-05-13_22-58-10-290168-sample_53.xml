@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "m" [
+  <!ELEMENT note (#PCDATA|p|list|item|address|tel|url)>
+  <!ATTLIST note
+    id ID #REQUIRED
+    lang CDATA #IMPLIED
+ >
+  <!ENTITY title "M">
+  <!ENTITY % entity-macro SYSTEM "m" >
+  <!NOTATION ext-notation SYSTEM "s">
+  %entity-macro;
+  <!--
+    XML Schema
+    -->
+]>
+<note xmlns="m"
+  xmlns:xi="x" id="n" 
+  xml:lang="e" xml:space="p"
+  xlink:href="d" xlink:title="t" 
+  xmlns:xlink="a"
+  xmlns:xsi="b"
+  xsi:noNamespaceSchemaLocation="c"/>

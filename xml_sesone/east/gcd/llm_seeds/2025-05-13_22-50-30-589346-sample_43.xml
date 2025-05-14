@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article SYSTEM "m"
+
+
+  [
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST title style (normal|bold) 'normal'>
+  <!ENTITY year "&quot;">
+  <!ENTITY % ent SYSTEM "x">
+  <!NOTATION MATH SYSTEM "M">
+  
+  
+  
+  %ent;
+  <!--%ent-->
+  ]>
+
+<root xmlns:g="x" xmlns="y">
+  <g:greeting>Hi</g:greeting>
+  <title style='bold'>My Article</title>
+  <year xml:lang="z">&year;</year>
+  <info>
+    <link href='http://w'/>
+    <img src='http://x' alt="A"/>
+  </info>
+</root>

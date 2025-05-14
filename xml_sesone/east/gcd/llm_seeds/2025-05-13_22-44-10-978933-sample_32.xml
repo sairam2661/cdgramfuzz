@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "m"
+  [
+    <!ELEMENT note (to,from,message)>
+    <!ATTLIST note date CDATA #REQUIRED>
+    <!ENTITY x "1">
+    <!ENTITY % p "1">
+    <!NOTATION n SYSTEM "r">
+    %p;
+ <!--
+  Sample Note:
+  -->
+  ]>
+<note date="&date;">
+  <to>Hello World!</to>
+  <from xmlns="a"><name>Chef</name></from>
+  <message>&x;<r><n/></r></message>
+</note>

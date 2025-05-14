@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT root (a,b,c)>
+  <!ATTLIST root attrID ID #REQUIRED>
+  <!ENTITY e "E">
+  <!ENTITY % entREF "t">
+  <!NOTATION note SYSTEM "n">
+  %entREF;
+  <!---->
+  <!--
+    Copyright (c) 2023 example.com
+  -->
+]>
+<root attrID="r" xsi:schemaLocation="h" xmlns:h="i" xmlns:j="k">
+  <a>
+    <b>
+      <c>Element
+        <z>&e;</z></c><x>&note;</x>
+    </b>
+  </a>
+</root>

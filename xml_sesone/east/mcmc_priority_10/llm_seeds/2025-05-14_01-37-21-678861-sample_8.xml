@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter [
+  <!ELEMENT chapter (intro, section+, appendix?)>
+  <!ATTLIST chapter type CDATA #REQUIRED>
+  <!ENTITY chaptername "A"
+        >
+  <!ENTITY  
+  %chapterEntity "H">
+  <!NOTATION Acrobat  PUBLIC "X" "X">
+  %chapterEntity;
+  <!-- internal DTD included -->
+]>
+<chapter xmlns:xi="x" type="s">
+  <xi:include href="x">
+    <xi:fallback>
+      <para>fallback included</para>
+    </xi:fallback>
+  </xi:include>
+  <para>Some <b>bold</b> text</para>
+</chapter>

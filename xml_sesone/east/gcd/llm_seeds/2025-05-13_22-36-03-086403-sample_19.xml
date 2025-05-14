@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE bookstore [
+  <!ELEMENT bookstore (title, author)>
+  <!ATTLIST bookstore
+    id  CDATA  #REQUIRED
+    lang (en|fr|de) "x"
+  >
+  <!ENTITY myAddress "1"  >  
+  <!ENTITY % myEntity "'">
+  <!NOTATION ACR  PUBLIC "X" "A">
+  %myEntity;<!--><!--><!-- comment --><!NOTATION ACR SYSTEM "B">
+ ]>
+<bookstore xmlns:xi="x" id="B" lang="x"  xml:lang="x">
+  <title>&myAddress;</title>
+  <author>&myEntity;author</author> 
+</bookstore>

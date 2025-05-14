@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, chapter*, appendix*)>
+  <!ATTLIST book 
+    lang (en|fr|de|es) #IMPLIED 
+    date CDATA #IMPLIED 
+  >
+  <!ENTITY chapter1 "A" >
+  <!ENTITY % chapter2 "B" >
+  <!NOTATION ARIAL PUBLIC "X" "V">
+ 		
+		
+		
+ 	%chapter2; 	<!-- Include the content of the entity via parameter entity  -->
+]>
+<book lang='en' date='2023'>
+  <title>ABC</title>
+  &chapter1;  <!-- Use the entity like an element -->
+  <chapter>Chapter with CDATA:<![CDATA[Some <raw> text &note;]]></chapter>
+  <chapter>Chapter with reference to the <xi:include xmlns:xi="&xi;" href="C"/> notation and entity ARIAL: <ARIAL:font>Arial</ARIAL:font ></chapter>
+  <!--Appendices-->
+  <appendix>Appendix A</appendix>
+  <appendix>Appendix B</appendix>
+</book>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note [
+  <!ELEMENT note (to,from,heading,body)>
+  <!ATTLIST note
+    id  ID  #REQUIRED
+    ver CDATA  #REQUIRED
+  >
+  <!ENTITY text "A"
+    >
+  <!ENTITY % ent-ref SYSTEM "c"
+    >
+  <!NOTATION ISO-8859-1 PUBLIC "A"
+     "B"
+     >
+ 	%ent-ref;
+  <!--%
+     This comment has multiple lines.
+  -->	
+]>
+<note id='n1' ver='2.0'>
+	<to xml:lang="H">
+		Country of origin
+	</to>
+	<from xml:lang="A">
+		United States
+	</from>
+	<heading xml:lang="D">
+		Note from America
+	</heading>
+	<body>
+		&text;nternal</body>
+</note>

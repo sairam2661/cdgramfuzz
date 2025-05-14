@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This is a sample XML document -->
+<!DOCTYPE note [
+  <!ELEMENT note (#PCDATA|item|xref|comment|subnote|para|part)> 
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY pi SYSTEM "p"> 
+  <!ENTITY % entref SYSTEM "r"> 
+  <!NOTATION book SYSTEM "b"> 
+  %entref;
+  <!---->
+  <!-- External parsed entities: book, dtdref, entref, p -->
+]>
+<note id="n">
+  <!-- This is a comment -->
+  <item> Item 1 </item>
+  <xref ref="n" target="n"> This is an internal xref </xref>
+  <comment> This is some random comment</comment>
+  <subnote><![CDATA[This is the content of subnote]]></subnote>
+  <para>This paragraph has some text. <emphasis>with markup</emphasis>
+  </para>
+</note>

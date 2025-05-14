@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book SYSTEM "b" [
+  <!ELEMENT author (#PCDATA)>
+  <!ATTLIST author name CDATA #REQUIRED>
+  <!ENTITY title "A" >
+  <!ENTITY  % book "b" >
+  <!NOTATION ISO-8859-1 PUBLIC " " " ">
+  %book;
+  <!--processing instruction -->
+]>
+<book xmlns:xsi="x" xsi:noNamespaceSchemaLocation="x" xsi:schemaLocation='x'>
+  <author name="B"><![CDATA[
+  Some <raw> text 
+]]></author>
+  <title>&title;</title>
+</book>

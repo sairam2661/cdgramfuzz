@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE student [
+  <!ELEMENT student (name, address, contact) >
+  <!ATTLIST student 
+    id  CDATA  #REQUIRED
+    version CDATA #FIXED "1"
+  >
+  <!ENTITY contact "X">
+  <!ENTITY % address "B">
+  <!NOTATION text PUBLIC "-"
+     "A">
+  %address;
+  <!--
+    This is an xml text
+  -->
+]>
+<student id="S" version="1">
+  <name>John</name>
+  &contact;
+  <address>&address;</address>
+  <contact>&contact;</contact>
+</student>

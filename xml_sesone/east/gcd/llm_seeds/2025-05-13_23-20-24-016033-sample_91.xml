@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data [
+  <!ELEMENT data (description*)>
+  <!ATTLIST data
+    id ID #REQUIRED
+    language (EN|FR|ES) "!"
+  >
+  <!ENTITY desc1 "A">
+  <!ENTITY % desc2 "B">
+  <!NOTATION ISO-10360 PUBLIC "W" "C">
+  %desc2;<!---->
+]>
+<data id="D" language="!" xmlns:xi="w" xi:include="#"/>

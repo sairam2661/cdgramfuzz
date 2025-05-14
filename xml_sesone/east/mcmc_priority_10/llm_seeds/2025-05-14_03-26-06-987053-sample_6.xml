@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library [
+  <!ELEMENT library (book+)>
+  <!ATTLIST library owner CDATA #IMPLIED>
+  <!ENTITY book1-system "i"> 
+  <!ENTITY % book2-param "3">
+  <!NOTATION ISO-10303-1 SYSTEM "F">
+  %book2-param; <!-- Reference the parameter entity -->
+]>
+<library xmlns="x" xmlns:xsi="w" xsi:schemaLocation="y">
+  <!-- Sample comment -->
+</library>

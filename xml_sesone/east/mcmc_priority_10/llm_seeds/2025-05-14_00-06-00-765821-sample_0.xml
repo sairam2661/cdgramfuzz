@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "m" [
+  <!ELEMENT foo (#PCDATA)>
+  <!ATTLIST bar ID CDATA #IMPLIED>
+  <!ENTITY pi "3">
+  <!ENTITY  % ent "%">
+  <!NOTATION m SYSTEM "m" >
+  %ent;
+  <!-- Internal entity -->
+]>
+<root xml:lang="x" nmspc="x" xmlns:m="x">
+  <!-- Sample comment -->
+  <bar ID="z" attr="x">$</bar>
+  <foo>2</foo>
+  <expr>
+     <num><![CDATA[ 8 * 2 ^ pi ]]></num>
+     <num>24<pi/></num>
+  </expr>
+</root>

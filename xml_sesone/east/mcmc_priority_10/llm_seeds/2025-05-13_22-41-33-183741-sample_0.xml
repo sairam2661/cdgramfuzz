@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "f" [
+  <!ELEMENT root (elem | elem+)*>
+  <!ATTLIST root
+    id   CDATA  #REQUIRED
+    src  CDATA  #IMPLIED
+    data (text|data|data|CDATA) "1"
+  >
+  <!ENTITY x "2">
+  <!ENTITY % ent "5">
+  <!NOTATION svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'https://www.w3.org/Graphics/SVG/1.1/XMLSchema.dtd'>
+  %ent;
+  <!---->
+]>
+<root id='12' src='file.txt' data='text' xmlns:math='http://www.w3.org/1998/Math/MathML'>
+  <elem>Content</elem>
+  <elem attr='example'>Content 2</elem>
+  &x;
+!</root>

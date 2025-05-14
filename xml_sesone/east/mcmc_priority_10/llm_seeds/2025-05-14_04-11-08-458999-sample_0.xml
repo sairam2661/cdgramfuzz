@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter*)>
+  <!ATTLIST book 
+    id ID #REQUIRED 
+    lang CDATA #IMPLIED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "B">
+  <!NOTATION book-notation SYSTEM "p">
+   %chapter2;
+  <!-- other definitions here -->
+]>
+<book id="b" lang="x">
+  <title><![CDATA[<title>Sample Book</title>]]></title>
+  <author>Someone</author>
+  <chapter ref="c"><![CDATA[<p>Chapter content &chapter1;</p>]]></chapter>
+</book>

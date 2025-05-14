@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter [
+  <!ELEMENT chapter (title, para+, figure+)>
+  <!ATTLIST chapter author CDATA #REQUIRED>
+  <!ENTITY percent ".">
+  <!ENTITY % emarkup "p">
+  <!NOTATION fg SYSTEM "G" >
+  %emarkup;
+  <!--%emarkup;--><!ATTLIST p type NMTOKEN #REQUIRED>
+]>
+<chapter author="J" xmlns:xi="x" xmlns="y">
+    <title>Example</title>
+  <para>This <xi:include href="u" xmlns:xi="x"/> is a sample para.
+  &percent; of text.
+  <figure><p>This  is &percent; of text.</p></figure>
+  <p  type="t">Sample</p>
+</chapter> 
+
+<!--%emarkup;--><![CDATA[<p>]]></CDATABLOCK>

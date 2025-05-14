@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book+)>
+  <!ATTLIST catalog id ID #REQUIRED>
+  <!ENTITY book "A"
+          >
+  <!ENTITY % temp "<"
+         >
+  <!NOTATION book-notation PUBLIC "m" "n"
+         >
+  %temp;<!-- some unprocessed chars -->
+  <!-- some whitespace -->
+  <!-- entity -->
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book number CDATA #REQUIRED>
+]>
+<catalog id="1">
+  &book;
+  &temp;<!-- unprocessed char -->
+  <book number="1">Some text</book>
+  <book number="2">&book;</book>
+  <book number="3" />
+</catalog>

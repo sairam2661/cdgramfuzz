@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, year, chapters)>
+  <!ATTLIST book
+    id   CDATA  #REQUIRED
+    version CDATA #IMPLIED
+  >
+  <!ENTITY title  "W" >
+   <!ENTITY 	%titlecode 	"D"	>
+ <!NOTATION SystemId 	PUBLIC 	"1" 	"1"	>
+ 	%iDATA 	;
+  <!--
+	XML:Comments	Here are some sample comments
+  and data
+  -->]>
+<book id="b"   version='1'  xmlns:h='http://www.w3.org/TR/html4/'>
+  &title;
+  &titlecode;. The &title; &titlecode; book  is at chapter.
+  <!-- More comments -->
+  <author>XML Author</author>
+  <year>2024</year>
+  <chapter num="1">
+    <h:table>
+      <h:tr><h:td>Cell1</h:td><h:td>Cell2</h:td></h:tr>
+    </h:table>
+  </chapter>
+</book>

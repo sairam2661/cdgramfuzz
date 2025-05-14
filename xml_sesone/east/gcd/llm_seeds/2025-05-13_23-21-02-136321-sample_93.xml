@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library[
+  <!ELEMENT library (#PCDATA | book | author | title | year | price )>
+  <!ATTLIST library lang CDATA #REQUIRED>
+  <!ENTITY book "A"
+       >
+  <!ENTITY % attr "a">
+  <!NOTATION iso-8859-1 PUBLIC " "
+       "l" 
+  >
+  %attr;
+  <!--
+    Entity reference.
+  -->
+  <!ENTITY entref "&book;">
+]>
+<library lang='en'>
+  <book ref='1'><title>A</title>By the <author>Alexander</author>in <year>1981</year>costs <price>$20</price></book>
+  <book ref='2'><title>B</title>By the <author>David</author>in <year>1982</year>costs <price>$25</price></book>
+  <message>&entref;</message>
+</library>

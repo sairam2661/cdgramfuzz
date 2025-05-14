@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author+)>
+  <!ATTLIST catalog
+    id CDATA #IMPLIED
+    version CDATA #IMPLIED>
+  <!ENTITY author "J"> 
+  <!ENTITY  % section " ">
+  <!NOTATION book-format SYSTEM "X">
+  %section;
+  <!---->
+]>
+<catalog id="x" version="1">
+  <author><name>&author;</name></author>
+  <author><name>John</name></author>
+  <section><title>&section;</title><body>This is a body</body></section>
+  <title attr='some_value'>Some title</title>
+  <content> Content in a text block</content>
+  <link xlink:href="N"/>
+  <comment>Not sure about this</comment>
+</catalog>

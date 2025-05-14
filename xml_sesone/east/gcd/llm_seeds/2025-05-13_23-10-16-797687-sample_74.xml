@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY chapter1 "A">
+  <!ENTITY % chapter2 "<">
+  <!NOTATION isbn SYSTEM "X">
+  %chapter2;
+  <!--%chapter2; --> 
+]>
+<book id="B"> 
+  <title>This <!-- is a sample title --></title>
+  <author>John Doe</author> 
+  <chapter>&chapter1;</chapter>
+  <chapter isbn="#"> This is another chapter</chapter>
+  <chapter xmlns:xs="e" version="v" n="n" a="a" xmlns="a" version="b"><xs:id value='id' /></chapter> 
+</book>

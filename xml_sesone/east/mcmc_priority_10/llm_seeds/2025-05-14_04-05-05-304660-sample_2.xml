@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m"
+ [<!ELEMENT catalog (product+)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY cat-pic SYSTEM "f">
+  <!ENTITY % ent-keywords "K">
+  <!NOTATION iso-8859-1SYSTEM "W">
+  %ent-keywords;
+  <!-- internal subset comment -->
+  ]>
+<catalog id="1" xmlns:m="m"
+  xmlns:xsi="w">
+  <product>product 1</product>
+  <product>product 2</product>
+  <pic>&cat-pic;</pic>
+  <note>warning!</note>
+</catalog>

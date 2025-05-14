@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "x" [
+    <!ELEMENT root (item,anotheritem) >
+    <!ATTLIST root 
+        id ID #REQUIRED 
+        other CDATA #IMPLIED >
+    <!ENTITY ent "A">
+    <!ENTITY % ent2 "%">
+    <!NOTATION ext-pref SYSTEM "x">
+    %ent2;
+    <!---->
+]>
+<root xmlns:local="x"
+    local:id="x"
+    local:attr="x">
+    <item>Item 1</item>
+    <anotheritem>Another Item 1</anotheritem>
+    <item xmlns:xlink="x">item 2 <xlink:attribute>value</xlink:attribute></item>
+    <comment>This is <!-- a comment. --></comment>
+</root>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE catalogue[
+  <!ELEMENT catalogue (title,author,book*)>
+  <!ATTLIST author id ID #REQUIRED>
+  <!ENTITY title "G">
+  <!ENTITY % comment "<" >
+  <!NOTATION ISO-8859-1 SYSTEM " ">
+  %comment;<!-- This is a comment -->
+]>
+<catalogue>
+    <title>&title;</title>
+    <author id="A" xmlns:xi="x">
+    	<name>Franz Kafka</name>
+    </author>
+    <book>
+    	<title>The Metamorphosis</title>
+    	<author id="A">Franz Kafka</author>
+    	<year>1915</year>
+    	<price>19.99</price>
+    </book>
+    <book>
+    	<title>The Trial</title>
+    	<author id="A">Franz Kafka</author>
+    	<year>1925</year>
+    	<price>9.99</price>
+    </book>
+</catalogue>

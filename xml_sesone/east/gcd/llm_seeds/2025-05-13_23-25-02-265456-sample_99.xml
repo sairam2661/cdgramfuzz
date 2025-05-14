@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+    <!ELEMENT book (title, author, chapters)>
+    <!ATTLIST book id CDATA #REQUIRED>
+    <!ENTITY article "A">
+    <!ENTITY % bookref "<">
+    <!NOTATION biblio-system PUBLIC "b" "s">
+    %bookref;
+    <!-- Entities without CDATA section -->
+    <!ENTITY h3 "h">
+    <!ENTITY % greek "<"><!-- Using % to introduce the entity declaration -->
+    <!ELEMENT chapter (#PCDATA)>
+]>
+<book id="b" xmlns="w" xmlns:xlink="z">
+  <title>title</title>
+  <author>author</author>
+  <chapters>
+    <chapter>chapter 1</chapter>
+    <chapter>chapter &article; 2</chapter>
+  </chapters>
+</book>

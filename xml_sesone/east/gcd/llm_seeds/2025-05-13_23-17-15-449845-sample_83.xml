@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c" [
+  <!ELEMENT person (name, address)>
+  <!ATTLIST person 
+    id    ID   #REQUIRED
+    type  (customer|supplier)   #REQUIRED
+  >
+  <!ENTITY ent1 "1">
+  <!ENTITY % ent2 "2">
+  <!NOTATION SGML PUBLIC "+"
+    "I" 
+    >
+  %ent2;
+  <!--, 
+<!ELEMENT %t (m)-->
+<!ELEMENT d (m)>]>
+<catalog><!--,<!ELEMENT --><catalog-info>
+<catalog-name lang="&ent1;">Catalog</catalog-name>
+<catalog-description>&ent2;</catalog-description>
+</catalog-info>
+<catalog-description lang='-'>Catalog</catalog-description>
+catalog-entry>
+<author>
+<person type="b" id='aa'>&ent1;"></person>
+<name>author</name>
+</author>
+
+<data>
+<document xmlns:xsi="a" xmlns:xsd="-" xmlns:xi="b" xsi:schemaLocation="a">
+<id>111</id>
+<item>
+  <person id="b" type="s"></person>
+  <item>item</item>
+</item>
+</document>
+</data>
+</entry>

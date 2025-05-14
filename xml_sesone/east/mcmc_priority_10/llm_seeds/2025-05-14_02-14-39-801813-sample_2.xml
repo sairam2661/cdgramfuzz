@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "c" [
+  <!ELEMENT root (child1, child2)>
+  <!ATTLIST root attr1 (value1|value2) " ">
+  <!ENTITY ent1 "X">
+  <!ENTITY % ent2 SYSTEM "d">
+  <!NOTATION ext SYSTEM "e">
+  %ent2;
+  <!--
+    This is a comment that crosses line boundaries.
+  -->
+]>
+<root attr1=" ">
+  <child1>Contents of child1</child1>
+  <child2>
+    <![CDATA[
+      Some <special> characters &and; 
+      entities like &ent1;
+    ]]>
+  </child2>
+</root>

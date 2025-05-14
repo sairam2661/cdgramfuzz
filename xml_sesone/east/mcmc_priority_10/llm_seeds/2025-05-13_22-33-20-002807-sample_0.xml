@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 
+             'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'
+             [
+  <!ELEMENT img EMPTY>
+  <!ATTLIST img src CDATA #REQUIRED>
+  <!ENTITY jok "J"
+ 	> 
+  <!ENTITY  
+        
+   	   
+    
+    	%x "Z"
+  >
+    <!NOTATION MML SYSTEM "A">
+ 	%jok;        
+    <!-- %x; --> 
+]>
+<article xmlns="w"
+ xmlns:x="p"
+ xmlns:xsi="w"
+ x:link="A"
+ xmlns:cdata="#">
+  <!-- 
+  A & J 
+  -->
+  <section xml:lang="g">
+     <cdata>Some <![CDATA[<!]]><![CDATA[> embedded content]]></cdata>
+  </section>
+  <img src="A"/>
+</article>

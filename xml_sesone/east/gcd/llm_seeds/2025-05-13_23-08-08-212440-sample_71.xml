@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "c"
+
+ [
+  <!ELEMENT catalog (product*,comment+)>
+  <!ATTLIST catalog 
+    id ID #REQUIRED >
+  <!ENTITY book "A">
+  <!ENTITY % ext "%">
+  <!NOTATION book-notation SYSTEM "f">
+  
+  
+  %xi:model;
+  <!--inline namespace prefix for data typed as xs:QName-->
+  %declare:xs;
+  %declare:doc;
+
+]
+
+><catalog id="1"
+  xmlns="a"
+  xmlns:xi="b"
+  xmlns:xs="c">
+  <!-- sample comment -->
+  <product> 
+    <desc>&book;</desc> 
+    <tag>example</tag> 
+    <notation ref="g"/>
+    <xs:QName>data</xs:QName>
+  </product>
+  <comment>Test comment</comment>
+</catalog>

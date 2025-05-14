@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, chapter+)>
+  <!ATTLIST book 
+    id ID #REQUIRED 
+    lang CDATA #IMPLIED>
+  <!ENTITY date SYSTEM "d">
+  <!ENTITY % entity "<"> 
+  <!NOTATION ISO-8859-1 SYSTEM "d">
+   %entity;
+  <!--
+    Sample comment with 
+    multiple lines and &#124;
+    &#32; characters.
+   -->
+]>
+<book id="b" lang="x" xmlns:pi="P">
+  <author xmlns="x" pi:comment="y">z</author>
+  <title>t</title>
+  <chapter>c1</chapter>
+  <chapter>c2 xmlns="z">
+    <pi:pi p="v">q</pi:pi>
+  </chapter>
+</book>

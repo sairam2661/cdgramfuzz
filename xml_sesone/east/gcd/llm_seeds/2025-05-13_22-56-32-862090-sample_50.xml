@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*)>
+  <!ATTLIST catalog language CDATA #REQUIRED>
+  <!ENTITY desc "C"
+  ><!ENTITY % ent "#">
+  <!NOTATION ISBN SYSTEM "M">
+  %ent;
+  <!--(XML comments...)-->
+]>
+<catalog xmlns="x" xmlns:y="y" y:lang="J" language="1">
+  <![CDATA[Fun <foo> tags inside CDATA]]>  
+  <product identifier="A">
+    <description entity-ref="{">entity-ref</description>
+    <![CDATA[ &desc; ]]> - <y:tag>!]>, y:lang="{e">
+  </product>
+</catalog> 
+<!----> x:ref="<URI refs...more...at----Xref----

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE inventory SYSTEM "g"
+ [
+   <!ELEMENT inventory (item)+>
+   <!ATTLIST item id ID #REQUIRED name CDATA #REQUIRED>
+   <!ENTITY g "G">
+   <!ENTITY % e "e">
+   <!NOTATION eacute
+     PUBLIC "G"
+     "e">
+   %e;
+   <!--[if IE 5.5]>
+   <IDOCTYPE!
+   </[if]-->
+ ]>
+<inventory>
+  <item name="P" identifier="5" />
+</inventory>

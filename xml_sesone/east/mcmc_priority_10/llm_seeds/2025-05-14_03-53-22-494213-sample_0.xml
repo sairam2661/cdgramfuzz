@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Encoding declaration, DTD declaration, and processing instruction -->
+<!DOCTYPE student [
+  <!ELEMENT student (#PCDATA)>
+  <!ATTLIST student id CDATA #REQUIRED>
+  <!ENTITY roll "R" > 
+  <!ENTITY % year "I" > 
+  <!NOTATION iso-iec-14651 PUBLIC "G" "d">
+  %year; 
+  <!-- Entity reference for attribute reference-->
+  <!-- Entity reference for parameter entity reference -->
+  <!-- Internal declaration subset--> 
+]>
+
+<student id="S" xmlns:xs="x" 
+          xi:nil="i" xlink:type="s">
+  <!-- Simple element with a single attribute -->
+  <address>
+    <street>1 example <town> street</town></street>
+    <city>New York</city>
+    <!-- Comment -->
+    <!-- Character reference -->
+    <zipcode>NY123456&roll;</zipcode>
+  </address>
+</student>

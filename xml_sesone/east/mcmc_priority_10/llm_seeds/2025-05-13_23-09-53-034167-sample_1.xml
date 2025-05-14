@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE library [
+  <!ELEMENT library (#PCDATA)>
+  <!ATTLIST library lang CDATA #IMPLIED>
+  <!ENTITY nbsp "&#160;">
+  <!ENTITY % xinclude "X" >
+  <!NOTATION ISO-8859-1 PUBLIC "a" "b">
+  %xinclude;
+  <!--(a)-->
+
+]>
+<library lang="J">
+  <book>
+    &nbsp;<title> The Book &a;</title>
+  </book>
+</library>

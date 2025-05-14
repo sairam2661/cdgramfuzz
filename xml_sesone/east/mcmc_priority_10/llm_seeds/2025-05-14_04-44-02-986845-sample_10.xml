@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "n" [
+  <!ELEMENT note (#PCDATA | cdata | section | message | choice | option )>
+  <!ATTLIST note type CDATA #IMPLIED>
+  <!ENTITY name "J">
+  <!ENTITY % entities "e">
+  <!NOTATION ISO.PUB-NUMBER SYSTEM "n">
+  %entities;
+  <!--<!ENTITY % pubdata  SYSTEM "pubdata.dat" >--><!ENTITY % pubs '(book1 book2 article1 article2)'>
+  <!ELEMENT section (p|ul|ol | dl | image )*>
+  <!ELEMENT image (#PCDATA)>
+  ]>
+<note xmlns="x" xml:lang="x">
+  <section>
+    <p>This is a &note; from the creator</p>
+  </section>
+  <message>
+    Hello, my &name;.
+    <choice>
+      <option>Book one</option>
+      <option>Book two</option>
+    </choice>
+  </message>
+</note>

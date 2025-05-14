@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d" [<!ELEMENT catalog (item*)> <!ATTLIST item id ID #REQUIRED> <!ENTITY cat 'Feline' > <!ENTITY % gen 'General info about %cat;' > <!NOTATION xsl SYSTEM "x" >  %gen;  <!-- element declared globally to include in all elements -->
+]>
+<catalog xml:lang="x">
+  <item id="A"  target='url'><![CDATA[<b>This text is in Bold and a <em>special </em>case for it </b>]]></item>
+  <item id="B"  target='email'><![CDATA[Emails like this one <a href=''>will work like a link</a>]]></item>
+</catalog>

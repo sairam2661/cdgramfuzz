@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE articles PUBLIC "N" "A" [
+  <!ELEMENT A (T+)>
+  <!ATTLIST A
+    I CDATA #IMPLIED
+    J CDATA #IMPLIED
+  >
+  <!ENTITY name "F">
+  <!ENTITY 	%age "T">
+  <!NOTATION NATION SYSTEM "N">
+ 	               
+ 	%name;		<!--&name was defined earlier-->
+ 	<!NOTATION N SYSTEM "N">
+ 	<!ELEMENT T EMPTY>
+ 	<!ELEMENT I EMPTY>
+ 	<!ELEMENT J (J*)>
+]>
+<articles I="a" J="b">
+  <!-- Sample comment here -->
+  <A J="a">
+    <T/>
+    <I/>
+    <J><J/></J>
+    <T/>
+  </A>
+</articles>

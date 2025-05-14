@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root [
+  <!ELEMENT root (name,id,contact+)>
+  <!ATTLIST root
+    lang CDATA #IMPLIED
+    xml:lang CDATA #IMPLIED
+  >
+  <!ENTITY pi SYSTEM "d">
+  <!ENTITY % ent "x">
+  <!NOTATION external SYSTEM "e">
+  %ent;
+  <!--
+    Entity reference
+  -->
+  <!--
+    Comment with nested markup
+  -->
+]>
+<root lang='en' xml:lang='fr'>
+  <name><![CDATA[John Doe]]></name>
+  <id><xsl:value-of select='id'/></id>
+  <contact><![CDATA[+1 (123) 456-7890]]></contact>
+  <contact><![CDATA[john.doe@email.com]]></contact>
+  <pi>&d;</pi>
+</root>

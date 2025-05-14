@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,edition)> 
+  <!ATTLIST book 
+    id ID #REQUIRED 
+    lang CDATA #IMPLIED 
+    year CDATA #REQUIRED>
+  <!ENTITY book-title "A" >
+  <!ENTITY % entity-list 
+    "a"    >          <!NOTATION fsg PUBLIC 'Public Notation'        'Notation Resource'> 
+    %fsg;      
+  <!--
+    A comment with CDATA section 
+  -->]>
+<book xml:lang="x" xmlns:i="x" xmlns:f="y" id="B" year="a"><title>&book-title;</title>
+  <author>&a; <i:item>item</i:item></author>
+  <edition>&entity-list;</edition>
+</book>

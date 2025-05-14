@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "l" 
+  [
+    <!ELEMENT root (child, element)+>
+    <!ATTLIST root
+      id (text) #REQUIRED
+      xml:lang (en|fr|de) #REQUIRED
+    >
+    <!ENTITY e1 "M">
+    <!ENTITY % e2 "<">
+  <!NOTATION XMLS SYSTEM "1">
+  %e2;
+  <!-- Internal Subset -->
+  <!--[if html]><p>HTML comment</p><![endif]-->
+]>
+<root id="p" xml:lang="f">#<element a="b">Value</element>&e1;</root>

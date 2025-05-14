@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!DOCTYPE article PUBLIC "-"
+        "/"
+        [
+  <!ELEMENT article (title, body+, author+)>
+  <!ATTLIST article
+           id CDATA #IMPLIED
+          >
+  <!ENTITY note "T"
+          >
+  <!ENTITY % entity-set SYSTEM "d"
+          >
+  <!NOTATION notation-name SYSTEM "s"
+          >
+  %entity-set;
+  <!--
+        -->]>
+<article xmlns="h"
+        xmlns:xsi="h"
+        xsi:noNamespaceSchemaLocation="x"
+        id="1">
+  <info>id</info>
+  <title>Test</title>
+  <head>head</head>
+  <body>H</body>
+  <body>A</body>
+  <author>John Doe</author>
+  <msg>&note;!</msg>
+</article>

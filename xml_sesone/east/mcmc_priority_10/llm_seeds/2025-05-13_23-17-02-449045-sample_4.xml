@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root 
+  PUBLIC "+"
+  "/"
+  [
+  <!ELEMENT root (header, main, footer)> 
+  <!ATTLIST root 
+    lang CDATA #REQUIRED>  
+  <!ENTITY entref SYSTEM "r">
+  <!ENTITY % entdef PUBLIC "+"
+    "/"
+    >
+  <!NOTATION book SYSTEM "r">
+  %entdef;
+  <!-- Ignore this entity -->
+  %ignore;
+  ]>
+<root lang="t">
+  <header>
+    <title>Example</title>
+  </header>
+  <main>
+    <h1>Heading One</h1>
+    <p>This is a paragraph with <xref>&entref;</xref> elements.</p>
+    <p>This text includes a notation: <cite><book:notation ref="r"></book:notation></cite>.</p>
+  </main>
+  <footer>
+    <p>This is the footer.</p>
+  </footer>
+</root>

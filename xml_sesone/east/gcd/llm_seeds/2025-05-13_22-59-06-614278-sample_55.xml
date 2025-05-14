@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE itemset [
+  <!ELEMENT itemset (item*)>
+  <!ATTLIST itemset id ID #REQUIRED>
+  <!ENTITY desc "A">
+  <!ENTITY % ent SYSTEM "d">
+  <!NOTATION NOT  PUBLIC "F" "R">
+  %ent;
+  <!--
+  [<!ATTLIST item id ID #IMPLIED>]
+  -->
+]>
+<itemset id="a">
+  <item id="1"/>
+  <!--Sample Text-->
+  <subitem>&desc;</subitem>
+  <itemset xmlns="F">
+    <item NOT="F">B</item>
+    <item>C</item>
+  </itemset>
+</itemset>

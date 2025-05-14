@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "d" [
+  <!ELEMENT catalog (title, section+)>
+  <!ATTLIST catalog lang CDATA #IMPLIED>
+  <!ENTITY book "A" >
+  <!ENTITY % ent SYSTEM "e">
+  <!NOTATION xsl PUBLIC '-//W3C//DTD XSLT 1.1//EN' 'xsl11.dtd'>
+  %ent;
+  <!--entity --> 
+]>
+<catalog lang="f" xmlns:xlink="x">
+  <title>A <book/> title</title>
+  <!-- sample comment -->
+  <section xlink:href="#"/>
+  <section xlink:href="#"></section>
+  <section xlink:href="#">Some <raw> text</section>
+  <message>entity=&book;</message>
+</catalog>  &xsl;  a> book</catalog>

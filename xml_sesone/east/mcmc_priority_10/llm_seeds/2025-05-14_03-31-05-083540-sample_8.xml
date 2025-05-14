@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (author, title, year)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY author "J" >
+  <!ENTITY % year "1">
+  <!NOTATION ISBN PUBLIC "A" "B">
+ %iyear;
+  <!---->
+]>
+<book id="1" xmlns:xsi="x" xsi:schemaLocation="s">
+  <author><firstname>John</firstname><surname>Smith</surname></author>
+  <title></title>
+  &year;
+</book>

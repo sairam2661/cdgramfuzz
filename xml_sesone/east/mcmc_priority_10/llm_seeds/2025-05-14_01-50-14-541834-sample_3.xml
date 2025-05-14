@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note SYSTEM "L" [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note type (type1|type2) "F">
+  <!ENTITY desc SYSTEM "d">
+  <!ENTITY % param "p">
+  <!NOTATION xsl PUBLIC "x" "X">
+  %param;<!-- attribute value -->
+]>
+<note type='type2'>
+  <note type='type1'>Hello
+    <subnote>This is a subnote!</subnote> <!-- nested element -->
+    This is main note.
+  </note>
+  &desc;
+</note>

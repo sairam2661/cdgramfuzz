@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author+)>
+  <!ATTLIST book id ID #REQUIRED>
+  <!ENTITY title "A">
+  <!ENTITY % author "B">
+  <!NOTATION iso-8859-1 SYSTEM "C">
+  %author;<!--
+  -->]>
+<book id="1" xmlns:xsi="X" xmlns:xs="Y" xsi:noNamespaceSchemaLocation="Z">
+  <title>&title;</title>
+  <author>C</author>
+  <author>D</author>
+  <author E="F"/>
+</book>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author, chapter*)>
+  <!ATTLIST book type (novel|non-novel) #REQUIRED>
+  <!ENTITY desc "A"
+    >
+  <!ENTITY % ref SYSTEM "x">
+  <!NOTATION FOP PUBLIC "F"
+    "F"
+    >  %FOP-notation;
+  <!--This is a
+    comment
+  -->
+]>
+<book type="n" xml:lang="x" FPO="N">
+  <title>My Book</title>
+  <author>Me</author>
+  <chapter><text>&desc;&ref;</text></chapter>
+</book>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title,section*)>
+  <!ATTLIST article id CDATA #REQUIRED>
+  <!ENTITY author "J">
+  <!ENTITY % specialChars "<"    >
+  <!NOTATION ISO-8859-1 SYSTEM "R">
+ %xinclude:system 	;
+  <!--%comment: 1%-->
+]>
+<article xmlns:xi="x" id="A" x:include="x">
+  <title>Sample Article</title>
+  <section>
+    Sample Sample Sample
+    <!-- Not a comment because it starts with spaces:      -->
+    Raw text <content> </content>
+  </section>
+  <message>&author;</message>
+</article>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "m" [
+  <!ELEMENT author (#PCDATA)>
+  <!ATTLIST author
+    id  CDATA  #REQUIRED
+    name CDATA  #IMPLIED
+  >
+  <!ENTITY entity "&amp;">
+  <!ENTITY % entity-set SYSTEM "s">
+  <!NOTATION ISO-8859-1 SYSTEM "s">
+  %entity-set;
+  <!----><!ENTITY % internal-entity ''>
+]>
+<book xmlns:a="a">
+  <!-- &not; -->
+  <title>&nl;</title>
+  <a:subtitle>&entity;</a:subtitle>
+  <author id="A" name="B">C</author>
+  <address>
+    <street>&nl;</street>
+    <city>&nl;</city>
+  </address>
+  <note>&NL;</note>
+</book>

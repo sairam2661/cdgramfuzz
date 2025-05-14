@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-4"?>
+<!DOCTYPE notes  SYSTEM "m"
+  [
+    <!ELEMENT notes (note+)>
+    <!ATTLIST note xml:lang CDATA #IMPLIED>
+    <!ENTITY xmldec SYSTEM "l">
+    <!ENTITY % note-content "#">
+    <!NOTATION HTML PUBLIC "-"
+   "-"
+   >
+  %note-content;
+  <!--><!NOTATION Text PUBLIC "text" "http://www.text.org">
+   ]
+>
+<html xml:lang='ru' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<meta xml:lang='es' httpEquiv="Content-->
+<!-- HTML comment -->
+<!-->Script>
+<% 1+1 %>
+</Script>
+<!-->
+<!ENTITY % note-content "#"
+   >
+<!ELEMENT notes (note+)>
+<!ATTLIST note xml:lang CDATA #IMPLIED>
+<!ELEMENT note (#PCDATA)>
+<!ATTLIST note id CDATA #REQUIRED>
+<!ATTLIST note class CDATA #IMPLIED>
+<!NOTATION PDF PUBLIC "-"
+"
+">
+<!NOTATION SVG PUBLIC "-"
+"
+">
+  <!ELEMENT document (title,notes+)>
+  <!ELEMENT notes (note+)>
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT note (#PCDATA)>
+ <!--
+<!ELEMENT text (#PCDATA)>
+  -->
+  <!ATTLIST document type CDATA #FIXED "s">
+<!ATTLIST document data CDATA #REQUIRED>
+<!ATTLIST document creator CDATA #IMPLIED>
+<!ATTLIST note id CDATA #REQUIRED>
+<!ATTLIST note class CDATA #IMPLIED>
+<!ELEMENT declaration (#PCDATA | element-dep | attribute-dep | notation-dep | parameter-entity-dep | NDATA | element-dep-list | attribute-dep-list | character-dep | notation-dep-list | parameter-entity-dep-list | character-dep-list | condition-dep | condition-dep-list)>
+
+<!ATTLIST declaration name CDATA #REQUIRED>
+
+ <!--
+<!ATTLIST title type CDATA #IMPLIED>
+<!ATTLIST title name CDATA #REQUIRED> -->
+<!ATTLIST note xml:lang CDATA #IMPLIED>
+<!ELEMENT element-dep EMPTY>
+
+<!ATTLIST element-dep name CDATA #IMPLIED>
+<!ATTLIST element-dep type CDATA #IMPLIED>
+<!ELEMENT element-dep-list EMPTY

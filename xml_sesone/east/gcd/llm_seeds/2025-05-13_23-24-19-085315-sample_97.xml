@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE article [
+  <!ELEMENT article (title,paragraph+,section*)>
+  <!ATTLIST article lang CDATA #REQUIRED>
+  <!ENTITY date "1"
+    >
+  <!ENTITY % note "#">
+  <!NOTATION HTML SYSTEM "M" >
+  %note;
+  <!--
+  Note: The following XML declaration is inside the DTD
+   --><!--
+        <?xml version="1.0" encoding="UTF-->
+        <!--
+          --><!NOTATION HTML SYSTEM "M">
+]>
+<article lang="g" NOTATION="M">
+  <title>Sample Article</title>
+  <paragraph>This is the sample article which contains various paragraphs</paragraph>
+  <paragraph>Paragraph 2</paragraph>
+  <section><p>Paragraph 1 section 2</p><p>Paragraph 2 section 2</p></section>
+</article>

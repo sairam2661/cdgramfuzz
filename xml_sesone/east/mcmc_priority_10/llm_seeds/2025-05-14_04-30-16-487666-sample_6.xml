@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE articles SYSTEM "t" [
+  <!ELEMENT articles (article*)>
+  <!ATTLIST article id ID #REQUIRED>
+  <!ENTITY author  "J">
+  <!ENTITY % ext SYSTEM "x" >
+  <!NOTATION SGML SYSTEM "A">
+  %ext;
+  <!-- declaration -->
+]>
+<articles>
+  <article id="A"><title>&author; Works</title></article>
+  <!-- SGML notation -->
+  <p>&SGML;</p>
+</articles>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE xml-2.0 [
+  <!ELEMENT xml-2.0 (root)>
+  <!ATTLIST root id CDATA #REQUIRED>
+  <!ENTITY author "J"
+    >
+  <!ENTITY % macro "1"
+    >
+  <!NOTATION ISO-8859-1 SYSTEM "1">
+  %macro;
+  <!--
+
+  Some text -->]>
+<root id="r" xmlns:ix="x">&author;</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "m"
+ [
+   <!ELEMENT catalog (author+,editor?,note)>
+   <!ATTLIST catalog xmlns:xs CDATA #FIXED 'http://www.w3.org/2001/XMLSchema'
+   xmlns CDATA #FIXED 'http://example.com'>
+   <!ENTITY author-name "I">
+   <!ENTITY % note-type "t">
+   <!NOTATION ISO-8859-1 SYSTEM "m">
+   %note-type;
+  <!--!ENTITY % note "%note;"-->
+  ]
+>
+<catalog xmlns:xs="x" xmlns="e">
+  <author>Author: &author-name;</author>
+  <note>This is a <emph>note</emph>.</note>
+  <note>This is the <xs:annotation>second note</xs:annotation></note>
+  <editor>Editor</editor>
+</catalog>

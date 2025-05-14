@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book [
+  <!ELEMENT note (#PCDATA)>
+  <!ATTLIST note author CDATA #REQUIRED>
+  <!ENTITY title "A" >
+  <!ENTITY  % keyref "b" >
+  <!NOTATION svg PUBLIC "W"
+  "a" >
+  %keyref;
+  <!--
+   I
+    -->]>
+<book xmlns="x" xmlns:y="y">
+  <!-- sample comment -->
+  <note author="J">
+    &title; &keyref;
+  </note>
+  <y:para><svg:circle y:width="2"></svg:circle></y:para>
+</book>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,description,author+)>
+  <!ATTLIST book
+    id CDATA #REQUIRED
+    lang (eng|spa|fra) "f"
+  >
+  <!ENTITY xref "P"  >
+  <!ENTITY % extentAttList " ">
+
+  <!NOTATION ISO-8859-1 SYSTEM "w">
+  %ISO-8859-1;
+  <!---->
+]>
+<book id="b" lang="m">
+  <title>XSL Transformations (Xslt)</title>
+  <description>...</description>
+  <author>Michael Kay</author>
+  <author>James Clark</author>
+  <chapter>
+    <title>Stylesheet Syntax and Semantics</title>
+    <section>
+      <p>&xref;</p>
+      <xi:include href="x" xmlns:xi=" " select="a">
+        <param name="x">x</param>
+        <param name="a">a</param>
+      </xi:include>
+    </section>
+  </chapter>
+</book>

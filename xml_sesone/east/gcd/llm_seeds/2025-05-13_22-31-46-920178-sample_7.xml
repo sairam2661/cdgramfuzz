@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (book)+>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY book.title "P" >
+  <!ENTITY % book.elements "<" >
+  <!NOTATION ISO-8859-1 PUBLIC "M"
+"#">
+  %book.elements;
+  <!-- Default language -->
+  <!ELEMENT book (title,author)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ELEMENT author (#PCDATA)>
+  <!ELEMENT title (#PCDATA)>
+  <!ATTLIST title lang CDATA #REQUIRED>
+]>
+<catalog id="C" xmlns:xi="x" xmlns="y" xml:lang="e">
+  <book id="b" xmlns="z">
+    <title xml:lang="B" >&chapter.title;</title>
+    &ISO-8859-1;
+    <author>John Doe</author>
+  </book>
+</catalog>

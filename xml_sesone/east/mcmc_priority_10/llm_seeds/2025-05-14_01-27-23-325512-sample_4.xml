@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root
+  SYSTEM "C" 
+  [
+  <!ELEMENT root (parent1, parent2, parent3)>
+  <!ATTLIST root id ID #REQUIRED>
+  <!ENTITY parent1 "P">
+  <!ENTITY % parent2 "<">
+  <!NOTATION mynotation SYSTEM "m">
+  %parent2;<!-- Child Node of Root -->
+  ]
+>
+<root id="A" xmlns="a" xmlns:xsi="b" xsi:noNamespaceSchemaLocation="c" notationDecl="m">
+  <parent1Entity>&parent1;</parent1Entity>
+</root>

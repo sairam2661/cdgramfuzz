@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (author, publication+, note?)>
+  <!ATTLIST catalog
+    id  CDATA  #IMPLIED
+    source CDATA  #IMPLIED>
+  <!ENTITY book "B"> 
+  <!ENTITY % book-series "("> 
+  <!NOTATION ISO-8859-1 SYSTEM "F">
+  %book-series; 
+  <!--Entity reference-->
+  <!ENTITY ref SYSTEM "C">
+]>
+<catalog id="1" source="W">
+  <author>John </author>
+  <publication>
+    <title>
+      <language code="E">The &book; of</language>
+      <volume no="7"/>
+    </title>
+  </publication>
+  <publication>
+    <title>    
+      <language code="F">Le &book;</language>
+    </title>
+  </publication>
+  <note>A note</note>
+</catalog>

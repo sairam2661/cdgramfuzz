@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE data SYSTEM "C"
+  [<!ELEMENT data (header,group*)>
+   <!ATTLIST data xml:lang CDATA #IMPLIED>
+   <!ENTITY data-charset "L" >
+   <!ENTITY % dtd-partial SYSTEM "C" ><!NOTATION ISO-8859-1 SYSTEM "L" >
+  
+  %dtd-partial;
+  <!---->]>
+<data xml:lang="J"
+     xml:space="P"
+     xmlns:xs="W"
+     xmlns:xsi="W"
+     xsi:noNamespaceSchemaLocation="J"
+     xsi:schemaLocation="W">
+ <name>Person</name>
+ <header>
+  <title>John</title>
+  <age>31</age>
+ </header>
+ <group ref="J"><person name="J"/>
+</group>
+ <group ref="W"><text>Document written in</text><text>English.</text></group>
+</data>

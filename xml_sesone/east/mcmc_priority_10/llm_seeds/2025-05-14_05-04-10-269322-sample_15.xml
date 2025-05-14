@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE config PUBLIC
+    "Y" "X"
+    [<!ELEMENT config (server|client)*>
+     <!ATTLIST config
+         id ID #REQUIRED
+         type (server|client) #REQUIRED>
+     <!ENTITY desc "A" >
+    <!ENTITY % ent PUBLIC "A" "B">
+    <!NOTATION NOTATION-NAME PUBLIC "B" "C">
+    %ent;<!-- This is a CDATA section -->
+    ]>
+<config id="D" type="E" xmlns="F">
+  <server>CDATA</server>
+  <client>CDATA</client>
+</config>

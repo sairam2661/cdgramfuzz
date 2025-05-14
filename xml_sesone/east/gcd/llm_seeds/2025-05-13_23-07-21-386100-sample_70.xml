@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE root SYSTEM "B" [
+  <!ELEMENT foo (#PCDATA) >
+  <!ATTLIST foo bar CDATA #REQUIRED >
+  <!ENTITY bar "x">
+  <!ENTITY % ent SYSTEM "A">
+  <!NOTATION SYSTEM-PUBLIC-ID PUBLIC "P" "L">
+  %ent;
+  <!---->
+]>
+<root notUsed="N" xmlns:a="B" xmlns:b="A">
+  <foo bar="b">  <!--  This is a comment  -->
+    <![CDATA[  ]]>  <!--  Another comment <!-->  ]]>
+    &bar;
+    <!-- another comment  -->
+  </foo>
+  <notation name="o" publicId="P" system="L" systemId="P" notationName="o">
+    NOT USED
+  </notation>
+  <element xmlns:a="B" xmlns:b="A">
+    <e name="E" id="x" />
+  </element>
+  <message>&note;</message>
+</root>

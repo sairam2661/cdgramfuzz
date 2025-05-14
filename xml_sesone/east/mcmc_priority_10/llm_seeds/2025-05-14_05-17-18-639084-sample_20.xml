@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books [
+  <!ELEMENT books (book*)>
+  <!ATTLIST books date CDATA #IMPLIED>
+  <!ENTITY author "J"
+  >
+  <!ENTITY 	% publisher "W"
+  >
+  <!NOTATION Adobe-CB  PUBLIC 
+  " "
+  " "
+  >
+  %author;
+  <!--%publisher;--><!ENTITY book "b">%book;
+]>
+<books date="&date;">
+  <book>Book 1</book>
+  <book>Book 2</book>
+</books>

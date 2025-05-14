@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY nl "&#10;">
+  <!ENTITY % note-content "H" >
+  <!NOTATION ISO-8859-1 SYSTEM "G">
+  %note-content;
+  <!--
+    Content Model: (title?, (author, date+, address+) | date+)
+  -->
+]>
+<notes version="2">
+  <note id="1">
+    <title>Hello</title>
+    <!-- XML internal subset and comment -->
+    <!--
+    An XML internal subset cannot appear within a processing instruction
+    or within a document prologue for a different notation
+    -->
+    <author>John</author>
+    <date>2024-03-14</date>
+  </note>
+  <note id="2">
+    <title>XML</title>
+    <author>Jane</author>
+    <date>2024-03-03</date>
+  </note>
+</notes>

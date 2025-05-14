@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+	<!ELEMENT book (title,price*, author+)>
+	<!ATTLIST book id ID #REQUIRED>
+	<!ENTITY author "J"
+		><!ENTITY
+			%x "t"
+			><!NOTATION ebcotic SYSTEM "e"
+			>
+		
+		%x;
+		<!--
+
+<!-->	<!ELEMENT author (#PCDATA)>
+	<!ATTLIST author name CDATA #REQUIRED>
+]>
+<book id="B" xmlns:xi="x">
+	<title>C&amp;#123</title>
+	<xi:include xmlns:xi="x" href="p"></xi:include>
+	<author name="A"/>
+	<price>$9.99</price>
+</book>

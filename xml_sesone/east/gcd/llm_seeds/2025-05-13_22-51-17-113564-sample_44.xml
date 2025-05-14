@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite [
+  <!ELEMENT suite (#PCDATA)>
+  <!ATTLIST suite author CDATA #IMPLIED>
+  <!ENTITY note "T"
+    >
+  <!ENTITY % include SYSTEM "S">
+  <!NOTATION W3C.PDF PUBLIC "W"
+      "W">
+  %include;
+  <!---->
+]>
+<suiteme xmlns="h"
+    i="k"
+    a="c"
+    t="d">
+ <title xml:lang="e">
+     f
+  <meta>
+    <name>g</name>
+    <author>h</author>
+  </meta>
+  <message>&note;</message>
+  <nested>
+    <foo>bar</foo>
+  </nested>
+</suiteme>
+  <comment>This is a test</comment> 
+<subsubsection> 
+  <subsubsection>
+    <subsubsection>
+      <subsubsection>
+        <a href="#">example</a>
+        <foo> <!-- text with CDATA area  --> this shouldnt come out in the document </foo>
+        <comment> <!-- 1st level comment --> test comment </comment>
+      </subsubsection>
+  </subsubsection> 
+ </subsubsection> 
+</suiteme> 
+<!-- This is a 2nd level comment in the document --> 
+</suite>

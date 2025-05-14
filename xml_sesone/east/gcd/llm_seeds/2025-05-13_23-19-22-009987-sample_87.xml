@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id ID #REQUIRED>
+  <!ENTITY copyright "@">  
+  <!ENTITY % entity "a">  
+  <!NOTATION ISBN SYSTEM "a">
+  %entity;
+  <!--Internal DTDSubset, internal parameter entities-->
+  <!ENTITY % internal "x">
+]>
+<notes>
+  <note xmlns:xi="x" id='n1'></note>
+  <xi:include href="a"/>
+  <note id='n2'>
+    &note;
+   ©©©©©©&copyright;
+   ©©©©©©&internal;
+  </note>
+</notes>

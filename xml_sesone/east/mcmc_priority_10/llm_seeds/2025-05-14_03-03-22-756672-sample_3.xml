@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY entity1 "W">
+  <!ENTITY % entity2 "<">
+  <!NOTATION ISO-8859-1 SYSTEM "1">
+  %entity2;
+  <!--
+    <link xmlns:xsi="http://www.w3.org/2001/XMLSchema" />
+  -->
+]>
+<book id="1" n="2">
+  <title>Some book</title>
+  <author>&entity1;</author>
+</book>

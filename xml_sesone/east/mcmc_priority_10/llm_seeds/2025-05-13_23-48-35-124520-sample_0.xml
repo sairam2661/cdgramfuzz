@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title, author*, chapter+)>
+  <!ATTLIST book id CDATA #REQUIRED>
+  <!ENTITY author "J"
+  ><!ENTITY % section ">"
+  >
+  <!NOTATION ISO-8859-15 SYSTEM "8">
+  %section;
+  <!-- Some entities defined here -->
+]>
+<book id="X"><title>XML</title>
+  &author; &ISO-8859-15; &note;
+  <author>John</author>
+  <chapter>
+    <section>Introduction</section>
+  </chapter>
+  <chapter>
+    <section>Chapter 1</section>
+  </chapter>
+</book>

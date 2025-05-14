@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog PUBLIC
+  "-""."
+  [<!ELEMENT catalog (category+)>
+   <!ATTLIST catalog
+             version CDATA #REQUIRED
+             lang(NONE|RUS|ENG) "R">
+   <!ENTITY book "a"> 
+  <!ENTITY % xref-system SYSTEM "x">
+  <!NOTATION book-notation SYSTEM "b">
+ %Xinclude-start; <!-- xref.x -->
+
+<!ELEMENT category (subcat?, book+)>
+<!ELEMENT subcat (#PCDATA)>
+<!ATTLIST subcat id ID #REQUIRED>
+<!ELEMENT book (#PCDATA)>
+<!ATTLIST book title CDATA #REQUIRED
+              author CDATA #IMPLIED
+              year CDATA #IMPLIED
+              id   ID     #REQUIRED
+              book-notation NMTOKEN #IMPLIED>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT subtitle (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT editor (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+
+<!ELEMENT abstract (#PCDATA)>]>
+<catalog lang="R" version="2"><?xiinclude hrefresolution scheme attribute order algorithm nologging noshimpping norealative path defaultxmldecl defaulttextdecl defaultdoctypedecl allow element only attributes only namespace noreplace noremovenamespace defaultxml pi defaultxmldecl default textdecl defaultdoctype defaultdoctype system id nologging external parsedsystem noxmlparse defaultxml pi default textdecl defaultdoctype textdecl default xml default pi decl default pi elem default doctype system id noreplace doctype doctypedecl default xml default pi decl default pi elem default doctype system nologging external parsedsystem externalxml externalxml decl system id system noshimpping system noremovenamespace system parsed noxmlparse decl textdecl doctype doctypedecl doctype doctype  default default default doctypedecl default doctypedecl doctype default system parsed parsedparsed noremovenamespace decl system defaultdecl external noreplace decl decl default doctypedecl decl default noshimpping decl noremovenamespace noreplace doctype decl decl doctypedecl noreplace decl decl doctypedecl noreplace default decl decl doctypedecl decl system default parsed decl default doctypedecl decl system systemdecl doctypedecl decl decl decldecl doctype doctype doctype

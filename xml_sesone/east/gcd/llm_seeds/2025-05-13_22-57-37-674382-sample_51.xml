@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog SYSTEM "b"
+
+
+  [
+    <!ELEMENT catalog (catalogue,author)>
+    <!ATTLIST catalogue
+           lang (en|fr|de) "z"
+           source CDATA #REQUIRED>
+    <!ENTITY cat-name 'My Cool Categories'>
+    <!ENTITY % gen-att "A"
+             >
+    <!NOTATION svg PUBLIC 
+            "-" "X" >

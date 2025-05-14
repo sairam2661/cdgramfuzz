@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This is a sample XML document based on W3C XML Schema -->
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (category, product*)>
+  <!ATTLIST catalog
+    author CDATA #IMPLIED
+    version CDATA #REQUIRED
+  >
+  <!ENTITY nbsp "&#160;"  >
+  <!ENTITY % entity "a">
+  <!NOTATION internalnotations SYSTEM "s">
+  %entity;
+  <!-- External entity -->
+  <!ENTITY system SYSTEM "b">
+]>
+
+<catalog version="1">
+  <category name="F"  id="f">Food</category>
+  <product id="p">
+    <name>Product1</name>
+    <price>10.0</price>
+  </product>
+  <category name="T"  id="t">Tools</category>
+  <product id="p">
+    <name>Product2</name>
+    <price>20.0</price>
+  </product>
+</catalog>

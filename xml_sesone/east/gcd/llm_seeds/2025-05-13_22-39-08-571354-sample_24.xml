@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book SYSTEM "g"
+   [
+    <!ELEMENT book (title,author,timeline*)>
+    <!ATTLIST book
+         id     ID   #REQUIRED
+         lang   (en|fr|de)  "x">
+    <!ENTITY title "I"
+          >
+    <!ENTITY % note "(">
+    <!NOTATION book-system SYSTEM "g">
+   %note;<!--& book1 --> ]
+>
+<book id="b" lang="f">
+<timeline year="1">
+  <event>Start</event>
+</timeline>
+<timeline year="2">
+  <event>Event</event>
+</timeline>
+</book>

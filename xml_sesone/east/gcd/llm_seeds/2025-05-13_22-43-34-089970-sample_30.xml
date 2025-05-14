@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (product*, note+)>
+  <!ATTLIST catalog lang CDATA #FIXED "e">
+  <!ENTITY author "J">
+  <!ENTITY % ext-sys "X">
+  <!NOTATION iso8859-1 SYSTEM " ">
+  %ext-sys;<!-->>
+]>
+<catalog lang="e" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="catalog.xsd">
+  <product><name>&author; Book</name><price>19.99</price></product>
+  <product><name>&author; Product</name><price>9.99</price></product>
+  <note>Additional information</note>
+  <note>ISO 8859--><!NOTATION iso8859-1 SYSTEM " "><!-->-->  
+
+<!---->  <!---->   <!ELEMENT
+  iso8859-1 SYSTEM

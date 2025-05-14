@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog[
+    <!ELEMENT catalog (book+,author+)>
+    <!ATTLIST catalog 
+        id  (ID)
+    #REQUIRED>
+    <!ENTITY book "A">
+    <!ENTITY % author "B">
+    <!NOTATION ISO-8859-1 SYSTEM " ">
+    %notations;
+    <!--%author;>-->
+]>
+<catalog id="C" nillable="N">
+  <xsl:stylesheet version="1">
+    <book><title>Book 1</title><price>20.00</price></book>
+    <book><title>Book 2</title><price>30.00</price><bookid>2</bookid></book>
+  </xsl:stylesheet>
+  <author><name>C1</name><address>H1</address></author>
+</catalog>

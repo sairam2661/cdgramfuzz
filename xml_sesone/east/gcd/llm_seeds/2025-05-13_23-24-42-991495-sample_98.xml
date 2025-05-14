@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)>
+  <!ATTLIST book
+    id        CDATA  #REQUIRED
+    lang     CDATA  #IMPLIED
+  >
+  <!ENTITY author "J">
+  <!ENTITY  % bookAttrs   " ">
+  <!NOTATION pdf PUBLIC "P" "U">
+  %bookAttrs;
+  <!---->
+]>
+<book id="b" xmlns:xs=" ">
+<head>
+<title>Book 123</title>
+<note xml:lang="x">This is a book.</note>
+</head>
+<body>
+  <chapter id="c">
+    <section xsl-version="x">
+      <chapter id="c">
+        <author>&author;</author>
+        <title>Chapter Title</title>
+      </chapter>
+    </section>
+  </chapter>
+  <chapter>
+    <link xmlns:xlink="x" xlink:href="t">
+      <book id="b"/> <!-- example of id use -->
+    </link>
+  </chapter>
+  <xi:include xmlns:xi="x"
+  href="a"
+  xmlns:xml="x" />
+  <ns2:elem xmlns:ns2="m">
+	  <ns2:childElem attr1 ="2"/>
+  </ns2:elem>
+</body>
+</book>

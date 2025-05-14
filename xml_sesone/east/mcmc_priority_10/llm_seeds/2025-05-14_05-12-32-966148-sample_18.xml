@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<!DOCTYPE inventory [
+  <!ELEMENT inventory (item*)>
+  <!ATTLIST item id ID #REQUIRED>
+  <!ENTITY book "A" >
+  <!ENTITY % item-entity "("
+    > 
+  <!NOTATION biblio SYSTEM "b">
+  %item-entity;
+  <!---->
+]>
+<inventory xmlns:xsi="w"> 
+  <!-- 
+    sample text node --> 
+  <item ref="b">
+    <author>&book;</author>
+    <title>&book;</title>
+    <price>20.0</price>
+  </item>
+  <item id="A" ref="b">
+    <author>Smith</author>
+    <title>"Famous Works &quot;</title>
+    <price>40</price>
+  </item>
+  <item ref="#"> 
+      &quot;Sample Book &quot; 
+  </item>
+</inventory>

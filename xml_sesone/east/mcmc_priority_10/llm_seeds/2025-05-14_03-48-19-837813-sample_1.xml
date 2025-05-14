@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE note SYSTEM "m"
+  [
+    <!ELEMENT note (#PCDATA|item |para |itemize |ulist)> 
+    <!ATTLIST note
+      type CDATA #REQUIRED
+      id ID #IMPLIED>
+    <!ENTITY entity "W">
+<!ENTITY % ent "5">
+<!NOTATION ISO-10383 SYSTEM "X">
+  %ent;<!--
+-->
+<!ELEMENT item (#PCDATA | subitem | subitemize | sublist)>]
+  >
+<note xmlns="x" type="a" id="b">
+  <item>text
+    <subitem>sub text
+      <subitemize>
+        <sublist>1.</sublist>
+      </subitemize>
+    </subitem>
+  </item>
+  <item>item</item>
+  <para>
+    Some text.
+  </para>
+  <itemize>
+    <list>
+      <item>an item</item>
+      <item>another item</item>
+    </list>
+  </itemize>
+  <ulist>
+    <l>
+      <li>first item</li>
+      <li>second item</li>
+    </l>
+  </ulist>
+  <note>&entity;</note>
+</note>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE note-system [
+  <!ELEMENT note-system (note+)>
+  <!ATTLIST note-system
+    id ID #REQUIRED
+    version CDATA #IMPLIED>
+  <!ENTITY note-system.title "M"
+    >
+  <!ENTITY % entity-def SYSTEM "d">
+  <!NOTATION xml-javadoc SYSTEM "x">
+  %entity-def;
+  <!-- external entity -->
+]>
+<note-system xmlns="x" xmlns:xsi="y" xsi:schemaLocation="z" id="n"
+  version="v"><note author="1" category="c">2</note></note-system>

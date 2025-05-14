@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book
+    id CDATA #REQUIRED
+    author CDATA #IMPLIED
+    year CDATA #IMPLIED>
+  <!ENTITY book "<" > <!ENTITY  % id ">"
+  >
+  <!NOTATION nss-for-xml PUBLIC "N" "A">
+  %id;
+  <!--><!-->]>
+<catalog xmlns:dc="&ns;">
+  <ns:root xmlns:ns="&ns;">
+    <book id="1" author="J">Book 1</book>
+    <book id="2" author="K">Book 2</book>
+  </ns:root>
+  <message>&book;</message>
+</catalog>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document [
+  <!ELEMENT document (person+,address)>
+  <!ATTLIST document 
+    id ID #REQUIRED
+    version CDATA #IMPLIED>
+  <!ENTITY date "#"
+     >
+  <!ENTITY % entity "d">
+  <!NOTATION notation-system SYSTEM "m">
+  %notation-system;
+  <!--
+  [Entity] and element declarations (and ATTLIST declarations) 
+  can't be declared in this location.
+  -->]>
+<document id="m" version="1"> 
+  <![CDATA[<some>XML]]>
+  <person>
+    <name>John</name>
+    <address>
+      <city>NY</city>
+    </address>
+  </person>
+  <address>
+    <city>LA</city>
+  </address>
+  <person>
+    <name>Jane</name>
+    <address>
+      <street>23 Main St</street>
+    </address>
+  </person>
+  <message>&entity;</message>
+  <message>&date;</message>
+</document>

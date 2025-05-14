@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog[
+  <!ELEMENT catalog (product*, comment)>
+  <!ATTLIST catalog
+    id CDATA #REQUIRED
+    title CDATA #IMPLIED>
+  <!ENTITY author "J"> 
+  <!ENTITY % section "#"
+        >
+  <!NOTATION SYSTEM PUBLIC "m" "v"   
+        >     
+ %XINCLUDEYES;  
+  <!--
+        This document is for demonstration purpose.
+    -->
+]>
+<catalog id="1" title="X">
+  <!-- A comment here... -->
+  <product>
+    <price>
+      <!-- This markup is ignored. -->
+      <![CDATA[<b>$15.99</b>]]></price>
+  </product>
+  <product>
+    <description>
+      &note;
+    </description>
+  </product>
+  <!-- &author; -->
+</catalog>

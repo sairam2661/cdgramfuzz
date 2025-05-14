@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE catalog [
+  <!ELEMENT catalog (head, body)>
+  <!ATTLIST catalog id CDATA #REQUIRED>
+  <!ENTITY symbol "&#x1F600;" >
+  <!ENTITY % entities SYSTEM "D"
+
+  ><!NOTATION xml-stylesheet PUBLIC 
+   "-" "#"  >
+  %entities;
+  <!--(c)-->]>
+<catalog id="?"> 
+  <head><title>My Catalog</title></head>
+  <body><!-- <xi:include href="#section-->--><section xml:lang="x" xml:space="x"
+   ><![CDATA[Some <raw>&symbol;</raw> text ]]></section>
+  <catalog id="?"></catalog>
+</body>
+</catalog>

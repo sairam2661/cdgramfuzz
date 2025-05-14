@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<!DOCTYPE book [
+  <!ELEMENT book (#PCDATA)>
+  <!ATTLIST book
+    author CDATA #REQUIRED
+    title CDATA #REQUIRED
+  >
+  <!ENTITY author "J"
+    >
+  <!ENTITY % bookattr "(">
+  <!NOTATION bookformat SYSTEM "e"
+    >
+  %bookattr;
+  <!--[if IE 5]> this line will only be processed by Internet Explorer 5 or later versions <![endif]-->
+]>
+<book
+  xmlns="&attribNamespace;"
+  xmlns:xsi="&xsNamespace;"
+  xsi:schemaLocation="&attribSchema;"
+  author="&author;"
+  title="&title;">
+  <year>1995</year>
+  <!-- some info about the book -->
+  <translator>translator's name</translator>
+</book>

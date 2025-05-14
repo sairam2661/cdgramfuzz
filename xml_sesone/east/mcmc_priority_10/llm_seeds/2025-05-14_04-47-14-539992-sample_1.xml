@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  XML declarations and comments
+  http://www.example.com
+  @author: Example Author
+-->
+<!DOCTYPE root [
+  <!ELEMENT root (#PCDATA | element1 | element2 | element3 | comment | PI | CDATA | entityref)>
+  <!ATTLIST root
+    name CDATA #REQUIRED
+    version CDATA #IMPLIED
+    lang (en|fr|de) 'en'
+  >
+  <!ENTITY book "W"
+  ><!ENTITY % bookRef "%"
+  ><!NOTATION print-system SYSTEM "l"
+  >  
+  %bookDecl;
+  <!---->
+]>
+<root name="L" version="1"
+  lang=
+  "d">Element #2 (empty)<element1/><!-- comment element --></root>

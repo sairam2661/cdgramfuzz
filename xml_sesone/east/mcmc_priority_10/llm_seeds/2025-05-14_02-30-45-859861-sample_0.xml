@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE buildings [
+  <!ELEMENT buildings (building*)>
+  <!ATTLIST buildings 
+    author CDATA #REQUIRED>
+  <!ENTITY address "1">
+
+<!ENTITY % general "1">
+
+<!NOTATION iso-8859-1 SYSTEM "w" >  
+  %general; 
+  <!--entity reference to general--> 
+<!ELEMENT building (head, address+)>
+<!ELEMENT address (#PCDATA)>
+<!ATTLIST building
+     year CDATA #IMPLIED>
+]>
+<buildings author="K">
+  <building>
+    <head>Building Head</head>
+    <address>&address;</address>
+  </building>
+  <building year="2">
+    <head>Building Head</head>
+    <address xmlns:a="a">This is addressed</address>
+  </building>
+</buildings>

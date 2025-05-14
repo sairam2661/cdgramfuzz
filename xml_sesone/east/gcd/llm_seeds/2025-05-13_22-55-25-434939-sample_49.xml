@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note id CDATA #REQUIRED>
+  <!ENTITY abstract "A"
+  >
+  <!ENTITY % temp SYSTEM "d">
+  <!NOTATION SGML SYSTEM "M">
+  %temp;
+  <!---->
+]>
+<notes xmlns:f="f"
+  xmlns:p="p" xmlns:o="o"
+  xmlns:x="x" o:attr1="1"
+  o:attr1="1">
+  <note id="n">
+    <title>&abstract;</title>
+  </note>
+  <note id="o">
+    <title>Sample</title>
+    <f:a>Click</f:a>
+  </note>
+</notes>

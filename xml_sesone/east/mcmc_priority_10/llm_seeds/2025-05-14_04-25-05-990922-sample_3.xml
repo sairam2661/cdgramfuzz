@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes [
+  <!ELEMENT notes (note*, title)>
+  <!ATTLIST notes
+    id   CDATA  #REQUIRED
+    lang (en|fr|de) "e"
+  >
+  <!ENTITY note "<">
+  <!ENTITY % entity "%">
+  <!NOTATION xsl PUBLIC "X" "x">
+  %notall;
+  <!--<!ENTITY notat "&notall;">-->
+]>
+<notes id="N" lang="f">
+  <title>Important Notes</title>
+  <note>Birthday -&note;25/02&amp;</note>
+  <note>Phone -&note;1&amp;xsl></note>
+</notes>

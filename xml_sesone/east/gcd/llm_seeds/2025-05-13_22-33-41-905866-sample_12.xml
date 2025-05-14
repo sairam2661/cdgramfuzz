@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE book [
+  <!ELEMENT book (title,author,chapter+)> 
+  <!ATTLIST book
+    lang CDATA #IMPLIED
+    date CDATA #IMPLIED>
+  <!ENTITY chapterone "1">
+  <!ENTITY % chaptertwo "(">
+
+<!NOTATION w3c PUBLIC "W" "W">
+  %chaptertwo;
+<!--
+<!ELEMENT chapter (title,section*, (para+|(para*,list*,figure*,table*)))-->
+<!ELEMENT para (#PCDATA|emphasis|footnote)>
+  <!ATTLIST chapter id ID #REQUIRED>
+  <!ATTLIST para cite CDATA #IMPLIED>
+  <!ELEMENT list (item+)>
+  <!ELEMENT item (#PCDATA)>
+  <!ELEMENT section (#PCDATA)>
+  <!ELEMENT title (#PCDATA)>
+  <!ELEMENT figure (#PCDATA)>
+  <!ELEMENT table (#PCDATA)>
+  <!ELEMENT emphasis (#PCDATA)>
+  <!ELEMENT footnote (#PCDATA)>
+]>
+<book xmlns:xi="w" xmlns:xlink="w" xml:id="1" lang="E">    
+  <title>The Book</title> 
+  <author>Me</author>
+  <chapter id="A" date="1">
+    <title>Chapter A</title>
+    <para>&chapterone; Chapter A</para>
+    <figure>A figure example</figure>
+    <section>A section</section>
+  </chapter>
+  <chapter id="B" date="2">
+    <title>Chapter B</title>
+    <para>A paragraph</para>
+    <footnote>Some Foot note</footnote>
+    <list>
+      <item>Item 1</item>
+      <item>Item 2</item>
+      <item>Item 3</item>
+    </list>
+  </chapter>
+</book>

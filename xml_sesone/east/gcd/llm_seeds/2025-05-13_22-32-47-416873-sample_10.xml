@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE notes SYSTEM "c" [
+  <!ELEMENT notes (note+)>
+  <!ATTLIST note idCDATA #REQUIRED>
+  <!ENTITY c SYSTEM "c" NDATA sgml-dtd>
+  <!ENTITY % p "X">
+  <!NOTATION sgml-dtd PUBLIC " " "d">
+  %p;
+  <!--[ This is a comment
+  Testing notations
+  ]-->
+]>
+<notes version="1">
+  <note xml:lang="x" id='sample&#60;tag'/><note id="A" />
+</notes>
