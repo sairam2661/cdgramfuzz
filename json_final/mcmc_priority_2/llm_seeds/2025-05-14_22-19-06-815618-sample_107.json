@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "git commit -m 'Initial commit'",
+      "args": ["-a", "-m"]
+    },
+    {
+      "cmd": "docker run -p 8080:8080 myimage",
+      "args": ["-p", "8080:8080"]
+    }
+ ,
+  {
+    "cmd": "sudo apt-get install -y nginx",
+    "args": ["-y"]
+  }
+  ],
+  "configuration": {
+    "host": "localhost",
+    "port": 8080
+  },
+  "environment": {
+    "OS": "Ubuntu",
+    "version": "20.04"
+  },
+  "variables": {
+    "test": "value"
+  },
+  "logs": [
+    "2022-01-01 12:00:00",
+    "2022-01-02 13:00:00"
+  ]
+}

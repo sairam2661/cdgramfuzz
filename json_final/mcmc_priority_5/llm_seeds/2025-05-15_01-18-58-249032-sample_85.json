@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A"],
+      "result": "added files"
+    },
+    {
+      "cmd": "git commit -m'message'",
+      "args": ["-m", "message"],
+      "result": "committed files"
+    }
+ ,
+    {
+      "cmd": "node index.js",
+      "args": ["/path/index.js"],
+      "result": "executed node"
+    }
+  ],
+  "environment": {
+    "OS": "Windows 11",
+    "NodeVersion": "16.17.0"
+  },
+  "runtime": "2022-10-01T00:00:00.000Z"
+}

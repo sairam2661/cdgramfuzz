@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "timestamp": "2023-02-01T12:00:00"
+    },
+    {
+      "cmd": "git commit -m 'added changes'",
+      "args": [ "-m", "'added changes'"],
+      "timestamp": "2023-02-01T12:10:00"
+    }
+ ,
+    {
+      "cmd": "npm start",
+      "args": ["--host"],
+      "timestamp": "2023-02-01T12:15:00"
+    }
+  ],
+  "repository": {
+    "name": "myproject",
+    "id": "1234567890",
+    "branch": "main"
+  },
+  "status": "success"
+}

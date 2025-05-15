@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {"cmd": "start", "args": ["run.py", "-d"]},
+    {"cmd": "stop", "args": ["shutdown.py"]}
+ ,
+  {
+     "cmd":"synchronize", "args":["syncfolder", "/home/user"]
+  }
+],
+
+  "settings": {
+    "timezone": "America/Los_Angeles",
+    "notifications": ["email", "sms"],
+    "color_scheme": "dark"
+  },
+  "data": {
+    "sensor_1": 42.13,
+    "sensor_2": 99.32
+  },
+  "debug": false,
+  "license_key": "1234567890abcdef"
+}

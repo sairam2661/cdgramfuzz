@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["/root", "newfolder"]
+    },
+    {
+      "cmd": "chmod",
+      "args": ["755", "/root/newfolder"]
+    }
+ ,
+    {
+      "cmd": "touch",
+      "args": ["/root/newfolder/newfile.txt"]
+    }
+  ],
+  "variables": {
+    "DEBUG": true,
+    "LOG_LEVEL": "error"
+  },
+  "version": "1.0.1"
+}

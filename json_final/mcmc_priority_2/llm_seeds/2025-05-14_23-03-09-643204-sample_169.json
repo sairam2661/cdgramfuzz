@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "status": "pending"
+    },
+    {
+      "cmd": "git commit -m 'initial commit'",
+      "args": ["-S"],
+      "status": "completed"
+    }
+ ,
+    {
+      "cmd": "docker-compose up -d",
+      "args": ["--build"]
+    }
+  ],
+  "environment": {
+    "DOCKER_HOST": "/var/run/docker.sock"
+  },
+  "resources": [
+    "Dockerfile",
+    "docker-compose.yml"
+  ]
+}

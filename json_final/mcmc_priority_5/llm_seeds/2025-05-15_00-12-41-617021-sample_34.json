@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "output": "2023-05-01"
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, world!"],
+      "stderr": "Error: Not found"
+    }
+ ,
+  {
+    "cmd": "rm",
+    "args": ["-rf", "/tmp/file"],
+    "return_codes": [0, 127]
+  }
+  ],
+  "history": ["2023-04-01", "2023-05-01"],
+  "config": {
+    "lang": "en_US.UTF-8",
+    "timezone": "America/Chicago"
+  },
+  "metrics": {
+    "cpu_usage": 0.01,
+    "mem_usage": 0.05
+  },
+  "system_info": {
+    "os": "Linux",
+    "arch": "x86_64",
+    "platform": "Ubuntu 20.04"
+  },
+  "version": "1.0.0"
+}

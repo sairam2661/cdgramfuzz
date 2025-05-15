@@ -1,0 +1,31 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A"],
+      "output": "on branch",
+      "success": true
+    },
+    {
+      "cmd": "git commit -m 'feat: new feature'",
+      "args": ["-m", "feat: new feature"],
+      "output": "commit 12345",
+      "success": true
+    }
+ ,
+  {
+  "cmd": "npm install",
+  "args": [""],
+  "output": " installed packages",
+  "success": true
+  }],
+  "tasks": {
+    "build": true,
+    "deploy": false
+  },
+  "server": {
+    "port": 8080,
+    "host": "localhost"
+  },
+  "version": 1.0
+}

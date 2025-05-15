@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["/verbose", "/force"]
+    },
+    {
+      "cmd": "stop",
+      "args": ["/silent"]
+    }
+ ,
+    {
+      "cmd": "update",
+      "args": ["/patch"]
+    }
+  ],
+  "credentials": {
+    "username": "system_admin",
+    "password": "secure_pass"
+  },
+  "version": "v1_beta"
+}

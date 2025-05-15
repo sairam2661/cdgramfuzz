@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "result": "file.txt created"
+    },
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "result": "modified file changes"
+    }
+ ,
+    {
+      "cmd": "ping google.com",
+      "args": [ "-c", "3"],
+      "result": "connect success"
+    }
+  ],
+  "stats": {
+    "cpu": 10.99,
+    "memory": 83.42
+  },
+  "user_agent": "Mozilla/5.0"
+}

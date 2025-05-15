@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "/tmp/newdir"]
+    },
+    {
+      "cmd": "touch",
+      "args": ["/tmp/newfile"]
+    }
+ ,
+    {
+      "cmd": "rm",
+      "args": ["-rf", "/tmp/newdir"]
+    }
+  ],
+  "log_level": "INFO",
+  "timeout": 300
+}

@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--rebase"],
+      "output": "/dev/null"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--quiet"],
+      "output": "package.json"
+    }
+ ,
+  {
+      "cmd": "rm",
+      "args": ["-rf"],
+      "output": "/tmp/cache"
+  }],
+  "targets": [
+    {
+      "type": "server",
+      "port": 8080,
+      "uri": "http://localhost:8080"
+    },
+    {
+      "type": "client",
+      "port": 8081,
+      "uri": "http://localhost:8081"
+  }],
+
+  "system": {
+    "os": "Ubuntu",
+    "version": 20.04,
+    "architecture": "x86_64"
+  },
+  "status": "online"
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["localhost"],
+      "result": "pong"
+    },
+    {
+      "cmd": "ls",
+      "args": ["/etc"],
+      "result": "success"
+    }
+ ,
+    {
+      "cmd": "cat",
+      "args": ["file.txt"],
+      "result": "contents"
+    }
+  ],
+  "version": "1.0",
+  "author": "John Smith"
+}

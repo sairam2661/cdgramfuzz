@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "/bin/bash",
+      "args": ["-c", "ls -l"]
+    },
+    {
+      "cmd": "/usr/bin/python",
+      "args": ["-m", "numpy", "plot"],
+      "stdin": "Hello, world!"
+    }
+ ,
+  {
+      "cmd": "/usr/bin/perl",
+      "args": ["-e", "print 'perl'."]
+  }],
+  "logs": {
+    "file": "/var/log/app.log",
+    "level": "DEBUG"
+  },
+  "version": "v1.0"
+}

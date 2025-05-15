@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A"],
+      "output": "1 file changed, 2 deletions(-), 3 insertions(+)"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--verbose"],
+      "errors": ["error 1", "error 2"]
+    }
+ ,
+    {
+      "cmd": "npx create-react-app new-app",
+      "args": ["--template typescript"],
+      "notes": ["typescript support"]
+    }
+  ],
+  "results": [
+    "Installation complete",
+    "App created successfully"
+  ],
+  "version": "v1.0"
+}

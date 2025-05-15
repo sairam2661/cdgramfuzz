@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["-c", "3", "8.8.8.8"],
+      "result": "88.34% packet loss"
+    },
+    {
+      "cmd": "ssh",
+      "args": ["-o", "StrictHostKeyChecking=no", "user@localhost"],
+      "result": "Connection successful"
+    }
+ ,
+    {
+      "cmd": "curl",
+      "args": ["-i", "https://example.com"],
+      "result": "Successful request"
+    }
+  ],
+  "version": {
+    "platform": "Linux",
+    "os": "Ubuntu 20.04",
+    "build": "1.0.0"
+  },
+  "summary": "System status summarized from collected data"
+}

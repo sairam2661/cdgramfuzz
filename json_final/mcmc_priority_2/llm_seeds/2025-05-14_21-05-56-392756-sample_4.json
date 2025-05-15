@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "python main.py",
+      "args": ["--flag1", "--flag2"]
+    },
+    {
+      "cmd": "node script.js",
+      "args": ["--mode", "development"]
+    }
+ ,
+  {
+    "cmd": "gradle build",
+    "args": ["--build-cache"]
+  }
+  ],
+  "build": {
+    "project": "My App",
+    "target": "1.0"
+  },
+  "environment": {
+    "server": "AWS",
+    "region": "US East"
+  },
+  "logging": {
+    "level": "DEBUG",
+    "format": "{timestamp} [{level}] {message}"
+  },
+  "security": {
+    "tokens": ["token1", "token2"],
+    "key": "my-secret-key"
+  },
+  "status": "active"
+}

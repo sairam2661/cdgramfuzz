@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["--name", "update"],
+      "result": true
+    },
+    {
+      "cmd": "delete",
+      "args": ["--force", "--prompt"],
+      "result": false
+    }
+ ,
+  {
+    "cmd": "update",
+    "args": [
+      "--field",
+      "status",
+      "--value",
+      "approved"
+    ],
+    "result": true
+  }
+],
+
+  "logs": {
+    "server": "server1",
+    "system": "Linux-5.13-x86_64",
+    "level": 5
+  },
+  "summary": "all executed successfully"
+}

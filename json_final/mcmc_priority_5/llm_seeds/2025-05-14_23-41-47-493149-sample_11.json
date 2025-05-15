@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "output": "M  README.md"
+    },
+    {
+      "cmd": "node",
+      "args": ["--version"],
+      "output": "v16.14.2"
+    }
+ ,
+  {
+    "cmd": "java",
+    "args": ["--version"],
+    "output": "17.0.3"
+  }
+  ],
+  "machine": {
+    "arch": "x86_64",
+    "os": "Linux",
+    "ram": 16
+  },
+  "version": 1.1
+}

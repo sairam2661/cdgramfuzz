@@ -1,0 +1,55 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir -p /path/to/dir",
+      "args": ["-p", "/path/to/dir"]
+    },
+    {
+      "cmd": "cp *.txt /path/to/dir",
+      "args": ["*.txt", "/path/to/dir"]
+    }
+ ,
+  {
+    "cmd": "tar -czf archive.tgz -C /path/to/dir.",
+    "args": ["-C", "/path/to/dir", "."]
+ ,
+"metadata": {
+  "build": {
+    "version": "v1",
+    "timestamp": "2022-07-25T14:30:00"
+  },
+  "os": {
+    "type": "linux",
+    "arch": "amd64"
+  },
+  "node_id": "ABC123"
+  },
+"hobbies": ["reading", "hiking", "coding"],
+"profile": {
+  "email": "johndoe@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zip": "12345"
+  },
+  "phone": "555-555-5555"
+  },
+"social": {
+  "github": "https://github.com/johndoe",
+  "twitter": "https://twitter.com/johndoe"
+  },
+"about": {
+  "bio": "Full-stack developer with a passion for coding.",
+  "interests": ["machine learning", "cloud computing"]
+  },
+"education": [
+  {
+    "school": "Anytown High School",
+    "degree": "High School Diploma",
+    "grades": "90%"
+  },
+  {
+    "school": "Harvard University",
+    "degree": "Computer Science",
+    "grades":

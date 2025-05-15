@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "npm run build",
+      "args": ["--prod", "--verbose"]
+    },
+    {
+      "cmd": "yarn start",
+      "args": ["--hot", "--silent"]
+    }
+ ,
+    {
+        "cmd" : "python script.py",
+        "args" : ["-o", "output.txt"]
+    }
+  ],
+  "environment": {
+    "user": "admin",
+    "language": "english"
+  },
+  "permissions": {
+    "can_read": true,
+    "can_write": true
+  },
+  "version": "1.0.0"
+}

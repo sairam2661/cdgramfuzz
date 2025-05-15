@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-u", "--all"],
+      "completion": true,
+      "timestamp": "2025-05-31"
+    },
+    {
+      "cmd": "npm run build -- --watch",
+      "args": ["--env=dev"],
+      "stdout": "> build complete"
+    },
+    {
+      "cmd": "docker run -it busybox",
+      "args": ["-rm"],
+      "status": "exited"
+    }
+  ],
+  "version": 2
+}

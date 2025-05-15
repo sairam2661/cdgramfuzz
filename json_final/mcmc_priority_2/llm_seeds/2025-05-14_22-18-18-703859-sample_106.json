@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "pip install -U pandas",
+      "args": ["--user"]
+    },
+    {
+      "cmd": "git add. && git commit -m 'Feature update'",
+      "args": ["--force-with-lease"]
+    }
+ ,
+  {  "cmd": "python script.py", 
+ "args": ["--help", "--version"]  
+  }],
+  "scripts": {
+    "name": "main.py",
+    "size": 1024,
+    "language": "python"
+  },
+  "variables": {
+    "name": "my_var",
+    "value": 123,
+    "type": "int"
+  },
+  "results": [
+    {
+      "value": 3.14
+    },
+    {
+      "error": true
+    },
+    {
+      "warning": false
+    },
+    {
+      "message": "Execution successful"
+    }]}

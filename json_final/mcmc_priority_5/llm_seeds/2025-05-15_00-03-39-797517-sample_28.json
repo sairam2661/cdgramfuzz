@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "description": "Stage all changes"
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Initial commit"],
+      "description": "Commit changes"
+    }
+ ,
+  {
+   "cmd": "npm start",
+   "args": ["--dev"],
+   "description": "Start development server"
+  }
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 3000
+  },
+  "packages": ["package.json"]
+}

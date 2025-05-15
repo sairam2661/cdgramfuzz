@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "build",
+      "args": ["--debug", "--release"]
+    },
+    {
+      "cmd": "run",
+      "args": ["--env"]
+    }
+ ,
+  {
+    "cmd": "deploy",
+    "args": ["--host", "--port"]
+  }
+  ],
+  "settings": {
+    "theme": "light",
+    "language": "en"
+  },
+  "results": {
+    "success": true,
+    "message": "operation complete"
+  },
+  "logs": "application.txt"
+}

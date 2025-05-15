@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone https://github.com/user/repository",
+      "args": ["--recurse-submodules"],
+      "dir": "/path/to/checkout"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--production"],
+      "dir": "/path/to/project"
+    }
+ ,
+  {
+    "cmd": "aws s3 sync /path/to/local /path/to/s3",
+    "args": ["--delete"],
+    "bucket": "my-bucket"
+  }
+  ],
+  "history": "2024-07-26-14-30-00"
+}

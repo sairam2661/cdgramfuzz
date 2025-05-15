@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "pip install numpy",
+      "args": ["--upgrade"],
+      "environment": ["dev", "prod"]
+    },
+    {
+      "cmd": "git add.",
+      "args": [">> stash"],
+      "environment": ["staging"]
+    },
+    {
+      "cmd": "docker-compose up",
+      "args": ["--build"],
+      "environment": ["prod"]
+    }
+  ]
+ ,
+  "requirements": [
+    "numpy",
+    "pandas",
+    "matplotlib"
+  ]
+}

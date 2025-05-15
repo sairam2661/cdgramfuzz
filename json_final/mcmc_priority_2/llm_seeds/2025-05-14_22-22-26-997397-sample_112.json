@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["-h", "--verbose"],
+      "time": "2024-03-16T12:00:00"
+    },
+    {
+      "cmd": "test",
+      "args": ["-v", "--runtests"],
+      "environmentalVariables": [
+        {"name": "PATH", "value": "/usr/local/bin"}],
+      "dependentCommands": ["run"],
+      "status": "running"
+    }
+ ,
+    {
+      "cmd": "stop",
+      "args": ["-F"]
+    }
+  ],
+  "settings": {
+    "lang": "python",
+    "version": "3.9.7"
+  },
+  "output": "result.log"
+}

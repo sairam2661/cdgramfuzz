@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone",
+      "args": ["https://github.com/user/repo.git"],
+      "output": "Repository cloned successfully"
+    },
+    {
+      "cmd": "composer update",
+      "args": ["--no-dev"],
+      "output": "Dependencies updated"
+    }
+ ,
+    {
+      "cmd": "docker run",
+      "args": ["-it", "nginx", "bash"],
+      "output": "docker: Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?"
+    }
+  ],
+  "timestamp": 1669420395,
+  "status": "complete"
+}

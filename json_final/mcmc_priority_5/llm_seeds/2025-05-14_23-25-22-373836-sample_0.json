@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--ignore-errors"]
+    },
+    {
+      "cmd": "git commit -m fix bugs",
+      "args": ["-S"]
+    }
+ ,
+  {
+      "cmd": "npm install",
+      "args": ["--force"]
+  }],
+  "variables": {
+    "api_key": "secret123",
+    "base_url": "https://example.com"
+  },
+  "last_run": "2022-01-01"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "list of files"
+    },
+    {
+      "cmd": "git",
+      "args": ["status"],
+      "output": "git status"
+    }
+ ,
+  {
+    "cmd": "curl",
+    "args": ["http://example.com"],
+    "output": "example.com response"
+  }],
+  "server": {
+    "host": "localhost",
+    "port": 8080
+  },
+  "logs": {
+    "debug": "debug message",
+    "error": "error message"
+  },
+  "_id": "example123"
+}

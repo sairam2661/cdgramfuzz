@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "python app.py",
+      "args": ["--help"]
+    },
+    {
+      "cmd": "java Main",
+      "args": ["-Xmx512m"]
+    }
+ ,
+    {
+      "cmd": "mysql -u user -p password",
+      "args": ["-e", "CREATE DATABASE mydb"]
+    }
+  ],
+  "permissions": ["read", "write", "execute"],
+  "system": {
+    "os": "Ubuntu",
+    "version": 20.04
+  },
+  "config": {
+    "timezone": "America/New_York",
+    "lang": "en_US"
+  },
+  "notes": "Additional information"
+}

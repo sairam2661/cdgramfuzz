@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--yes"],
+      "output": "Updated successfully"
+    },
+    {
+      "cmd": "pip install pip",
+      "args": ["--upgrade"],
+      "output": "Pip upgraded successfully"
+    }
+ ,
+  {
+  "cmd": "git add.",
+  "args": ["--ignore-missing",
+  "--ignore-errors"],
+  "output": "Staged changes"
+  }
+  ],
+  "status": {
+    "exit_code": 0,
+    "timestamp": 1643723900
+  },
+  "env": {
+    "PATH": "/usr/local/bin:/usr/bin:/bin",
+    "HOME": "/home/user"
+  },
+  "tags": ["dev", "update"]
+}

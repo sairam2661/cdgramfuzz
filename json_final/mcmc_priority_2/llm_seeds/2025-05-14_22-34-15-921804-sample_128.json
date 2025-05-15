@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "FileList()"
+    },
+    {
+      "cmd": "grep",
+      "args": ["-E", "hello world"],
+      "output": "Hello World Match"
+    }
+ ,
+  {
+  "cmd": "make",
+  "args": ["-C", "/home/user/build"],
+  "output": "BuildComplete"
+  }
+  ],
+  "variables": {
+    "env": "dev",
+    "host": "192.168.1.100"
+  },
+  "result": "success"
+}

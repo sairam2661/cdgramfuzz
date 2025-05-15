@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["-v", "-x"],
+      "duration": 10
+    },
+    {
+      "cmd": "init",
+      "args": ["--debug"],
+      "stderr": "error message"
+    }
+ ,
+    {
+      "cmd": "commit",
+      "args": ["-m", "updated files"],
+      "result": true
+    }
+  ],
+  "status": "running"
+}

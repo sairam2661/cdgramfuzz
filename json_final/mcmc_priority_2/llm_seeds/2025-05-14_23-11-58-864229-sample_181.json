@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["program1"],
+      "output": "success"
+    },
+    {
+      "cmd": "stop",
+      "args": ["program2"],
+      "error": "failure"
+    }
+ ,
+    {
+      "cmd": "restart",
+      "args": ["program3"],
+      "output": "restarted"
+    }
+  ],
+  "stats": {
+    "cpu_usage": 0.8,
+    "memory_usage": 0.9
+  },
+  "settings": {
+    "timeout": 300,
+    "log_level": "debug"
+  },
+  "system": "linux"
+}

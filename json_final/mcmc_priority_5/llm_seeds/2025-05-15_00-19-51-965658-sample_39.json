@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "file1.txt file2.txt"
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"],
+      "output": "Hello, World!"
+    }
+ ,
+   {
+  "cmd": "rm",
+  "args": ["-rf"],
+  "output": "deletion successful"
+  }],
+  "status": "success",
+  "timestamp": "2023-03-01T00:00:00Z"
+}

@@ -1,0 +1,48 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": [ "--fix-missing", "-qq" ]
+    },
+    {
+      "cmd": "apt-get install",
+      "args": [ "curl", "-y" ]
+    }
+ ,
+  {
+      "cmd": "curl",
+      "args": [ "http://example.com", "-o", "result.txt" ]
+  }
+  ],
+  "logs": [
+    {
+      "level": "error",
+      "message": "Connection timed out"
+    },
+    {
+      "level": "info",
+      "message": "Data downloaded successfully"
+    },
+    {
+      "level": "warning",
+      "message": "Invalid data format"
+    },
+    {
+      "level": "debug",
+      "message": "Executing the query"
+    },
+    {
+      "level": "info",
+      "message": "Connection established"
+    },
+    {
+      "level": "error",
+      "message": "Data missing"
+
+    },
+    {
+      "level": "info",
+      "message": "Sending the data"
+
+  }]
+}

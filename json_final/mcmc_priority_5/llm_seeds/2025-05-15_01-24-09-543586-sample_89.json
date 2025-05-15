@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["root@localhost", "-p", "22"]
+    },
+    {
+      "cmd": "sudo",
+      "args": ["apt-get", "update"]
+    },
+    {
+      "cmd": "apt-get",
+      "args": ["upgrade", "-y"]
+    }
+  ],
+  "system": {
+    "os": "Ubuntu",
+    "version": "20.04.4"
+  },
+  "variables": {
+    "username": "root",
+    "environment": "testing"
+  },
+  "deployment": {
+    "target": "local",
+    "status": "success"
+  },
+  "timestamps": {
+    "started": "2021-01-01T12:00:00",
+    "finished": "2021-01-01T12:05:00"
+  },
+  "log": ["logged", "commands", "results"]
+}

@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "update",
+      "args": ["-h"],
+      "output": "Usage: update [options]"
+    },
+    {
+      "cmd": "install",
+      "args": ["nodejs"],
+      "output": "Installing nodejs..."
+    }
+ ,
+  {
+    "cmd": "create",
+      "args": ["new_dir", "-y"]
+  }
+  ],
+  "errors": [],
+  "warnings": ["invalid option 'nodejs'"]
+}

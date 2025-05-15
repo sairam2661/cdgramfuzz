@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "date": "2023-12-25T14:30:00"
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", ":)",
+      "date"]
+    }
+ ,
+  { "cmd": "git tag",
+ "args": ["v1.0"],
+ "date": "2023-12-31T10:00:00"}],
+  "errors": ["fatal: not a git repository"],
+  "success": [
+    {
+      "cmd": "git push origin master"
+    }]
+}

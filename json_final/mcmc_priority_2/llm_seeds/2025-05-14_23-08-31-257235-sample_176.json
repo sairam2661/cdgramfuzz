@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -lah",
+      "args": ["--all"],
+      "output": "Directory listing"
+    },
+    {
+      "cmd": "python main.py",
+      "args": ["--input", "data.txt"],
+      "output": "Program output"
+    }
+ ,
+    {
+      "cmd": "rm data.txt",
+      "args": ["--force"],
+      "output": "File removed"
+    }
+  ],
+  "errors": {
+    "type": "SyntaxError",
+    "message": "Invalid syntax"
+  },
+  "timestamp": "2024-07-26T12:30:00"
+}

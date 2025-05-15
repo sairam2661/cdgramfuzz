@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["--quiet", "--progress"]
+    },
+    {
+      "cmd": "npm run script",
+      "args": ["--env", "dev"]
+    },
+    {
+      "cmd": "pip install requirements.txt",
+      "args": ["--upgrade"]
+    }
+  ],
+  "config": {
+    "timeout": 300,
+    "retry": 5
+  },
+  "status": "success"
+}

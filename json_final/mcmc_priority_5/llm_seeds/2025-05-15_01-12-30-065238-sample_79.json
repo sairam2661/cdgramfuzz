@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {"cmd": "start", "args": ["--verbose"]},
+    {"cmd": "stop", "args": ["--force"]}
+ ,
+  {"cmd": "restart", "args": ["--no-wait"]}
+  ],
+  "settings": {
+    "theme": "dark",
+    "lang": "en"
+  },
+  "system": {
+    "os": "Windows 11",
+    "version": "22H2"
+  },
+  "server": {
+    "status": "online",
+    "port": 8080
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone https://example.com/repo.git",
+      "args": ["--depth", "1"],
+      "output": "/home/user/repo"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--prefix", "/home/user/repo"]
+    },
+    {
+      "cmd": "make install",
+      "args": ["--jobs", "4"],
+      "env": {
+        "CXX": "gcc",
+        "CC": "clang"
+      },
+      "timeout": 300
+    }
+  ],
+  "variables": {
+    "REPO": "/home/user/repo",
+    "OWNER": "john_doe"
+  },
+  "status": ["success", "error", "warning"]
+}

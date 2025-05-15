@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "init db",
+      "args": ["--no-interaction"]
+    },
+    {
+      "cmd": "backup data",
+      "args": ["--force"]
+    }
+ ,
+    {
+      "cmd": "deploy app",
+      "args": ["--latest"]
+    }
+  ],
+  "env": {
+    "DB_HOST": "localhost",
+    "DB_NAME": "mydb"
+  },
+  "results": {
+    "success": true,
+    "error": null
+  },
+  "info": {
+    "version": "1.2.3"
+  },
+  "messages": ["Backup successful", "Deployment complete"]
+}

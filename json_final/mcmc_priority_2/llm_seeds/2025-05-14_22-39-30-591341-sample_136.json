@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "status": "success"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--production"],
+      "status": "failed"
+    }
+ ,
+  {
+    "cmd": "npm start",
+    "args": ["--debug"],
+    "status": "running"
+  }
+  ]
+ ,
+  "settings": {
+    "editor": "vscode",
+    "language": "javascript"
+  },
+  "logs": [
+    "System startup",
+    "Package installation"
+  ]
+}

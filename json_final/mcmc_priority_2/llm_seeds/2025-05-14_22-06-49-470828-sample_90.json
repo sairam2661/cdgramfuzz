@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["folder", "dir"]
+    },
+    {
+      "cmd": "delete",
+      "args": ["file", "old"]
+    }
+ ,
+    {
+      "cmd": "copy",
+      "args": ["document", "new"],
+      "params": {
+        "overwrite": false
+      },
+      "extra": ["from", "source"]
+    }
+  ],
+  "results": {
+    "success": true,
+    "error": null
+  },
+  "runtime": 0.15
+}

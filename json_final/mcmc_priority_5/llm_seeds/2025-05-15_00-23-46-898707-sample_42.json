@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "make install",
+      "args": ["-v", "--force"]
+    },
+    {
+      "cmd": "cp -r",
+      "args": ["/path/to/src", "/path/to/dest"]
+    }
+ ,
+    {
+      "cmd": "npm install",
+      "args": ["package.json"]
+    }
+  ],
+  "version": "1.0.0",
+  "description": "Script for software development"
+}

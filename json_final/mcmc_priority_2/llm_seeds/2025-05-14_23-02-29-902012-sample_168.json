@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["--debug"],
+      "location": "/bin/Scripts"
+    },
+    {
+      "cmd": "sleep",
+      "args": [5],
+      "location": "/bin"
+    }
+ ,
+  {
+      "cmd": "install",
+      "args": ["--force"],
+      "location": "/usr/local/bin"
+    }
+  ],
+  "status": "succeeded",
+  "date": "2022-06-15"
+}

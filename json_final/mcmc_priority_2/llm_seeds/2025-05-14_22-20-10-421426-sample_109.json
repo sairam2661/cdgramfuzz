@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "build",
+      "args": ["--verbose", "--debug"]
+    },
+    {
+      "cmd": "install",
+      "args": ["--user"],
+      "exit": 0
+    }
+ ,
+    {
+      "cmd": "remove",
+      "args": ["--yes"],
+      "result": true
+    }
+  ],
+  "report": "success",
+  "log": "command log"
+}

@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "git push",
+      "args": ["origin", "main"],
+      "timestamp": "2024-07-26T14:30:00"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["@latest"],
+      "timestamp": "2024-07-25T10:45:00"
+    }
+ ,
+  {
+    "cmd": "python script.py",
+    "args": ["--mode", "verbose"]
+  }
+  ],
+  "projects": {
+    "current": "my project",
+    "path": "/home/user/projects"
+  },
+  "tools": ["editor1", "editor2"]
+}

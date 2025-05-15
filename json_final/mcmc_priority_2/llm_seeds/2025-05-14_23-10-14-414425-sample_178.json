@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "/tmp/newdir"]
+    },
+    {
+      "cmd": "touch",
+      "args": ["/tmp/newfile.txt"]
+    }
+ ,
+    {
+      "cmd": "mv",
+      "args": [
+        "/tmp/newfile.txt",
+        "/tmp/newdir"
+      ]
+    }
+  ],
+  "environment": {
+    "user": "root",
+    "cwd": "/tmp"
+  },
+  "exit_code": 0
+}

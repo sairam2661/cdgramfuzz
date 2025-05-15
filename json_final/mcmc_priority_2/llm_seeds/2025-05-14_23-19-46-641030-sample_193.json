@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--fetch"],
+      "completed": true
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--force"],
+      "error": true
+    }
+ ,
+  {
+    "cmd": "docker build",
+    "args": ["-t", "myimage"],
+     "status": "success"
+  }],
+  "project": {
+    "name": "sample project",
+    "description": "A test project",
+    "author": "John Doe"
+  },
+  "status": {
+    "run": "in progress",
+    "time": "10:30:00"
+  },
+  "version": 1.0
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-h"],
+      "output": "list of files"
+    },
+    {
+      "cmd": "cd ~",
+      "args": ["-v"],
+      "output": "user home directory"
+    }
+ ,
+    {
+      "cmd": "git status",
+      "args": ["-s"],
+      "output": "git repository status"
+    }
+  ],
+  "logs": {
+    "error": "Permission denied",
+    "warnings": ["invalid args", "unknown cmd"]
+  },
+  "version": "1.0"
+}

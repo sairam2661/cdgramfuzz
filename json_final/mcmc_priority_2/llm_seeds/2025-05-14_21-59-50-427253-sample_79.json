@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "cmd": "run-test",
+      "args": [
+        "--debug",
+        "--verbose"
+      ],
+      "timeout": 300
+    },
+    {
+      "cmd": "build-release",
+      "args": [
+        "--skip-tests",
+        "--force-compile"
+      ],
+      "output": "output.tar.gz"
+    }
+ ,
+  {
+
+    "cmd": "generate-report",
+    "args": [
+      "--format=pdf",
+      "--append-tables"
+    ],
+    "output": "report.pdf"
+  }
+  ],
+  "config": {
+    "test-server": "localhost:8080",
+    "test-port": 1234,
+    "timeout": 30
+  },
+  "version": "1.2.3"
+}

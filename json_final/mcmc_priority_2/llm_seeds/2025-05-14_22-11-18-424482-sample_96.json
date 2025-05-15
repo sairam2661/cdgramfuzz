@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--rebase"],
+      "output": "Merging... done."
+    },
+    {
+      "cmd": "make test",
+      "args": ["-j4"],
+      "error": "Failed test 4"
+    }
+ ,
+  {
+      "cmd": "npm install",
+      "args": ["--production"],
+      "time": "2:30"
+    }
+  ],
+  "files": {
+    "main.py": "import os",
+    "readme.md": "This is a project.",
+    "setup.py": "setup(...)"
+  },
+  "logs": [
+    "2022-01-01 12:00:00 INFO  App started.",
+    "2022-01-01 12:00:01 DEBUG Database connected."
+  ]
+}

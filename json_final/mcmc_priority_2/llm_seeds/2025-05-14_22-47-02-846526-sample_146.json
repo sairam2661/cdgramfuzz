@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["--verbose", "--progress"]
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--production", "--silent"]
+    }
+ ,
+  {
+    "cmd": "cd scripts",
+    "args": [
+      "node start.js",
+      "--help=true"
+    ]
+  }],
+
+  "results": {
+
+    "failed": 1,
+    "success": 2
+  },
+  "last_run": "2024-07-25T14:30:00Z"
+}

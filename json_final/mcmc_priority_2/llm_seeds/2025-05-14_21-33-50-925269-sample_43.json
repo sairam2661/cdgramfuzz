@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone",
+      "args": ["https://github.com/user/repo"],
+      "output": true
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--prod"],
+      "error": false
+    }
+ ,
+    {
+      "cmd": "pip install",
+      "args": ["numpy"],
+      "time": 2.5
+    }
+  ],
+  "system": {
+    "platform": "Windows 10",
+    "version": "10.0.19042"
+  },
+  "results": {
+    "pass": 10,
+    "fail": 2
+  },
+  "test_data": ["input1", "input2", "input3"]
+}

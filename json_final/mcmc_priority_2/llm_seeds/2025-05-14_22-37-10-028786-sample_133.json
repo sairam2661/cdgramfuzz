@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--force"],
+      "output": "remote: Counting objects: 5, done."
+    },
+    {
+      "cmd": "ls -la",
+      "args": ["-t"],
+      "output": "total 16K"
+    }
+ ,
+  {
+    "cmd": "python script.py",
+    "args": ["--prod"],
+    "output": "Script executed successfully"
+  }
+  ],
+  "results": {
+    "errors": 0,
+    "warnings": 2
+  },
+  "version": "v1.0"
+}

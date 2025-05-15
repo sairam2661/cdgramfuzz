@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["-c", "3", "www.example.com"]
+    },
+    {
+      "cmd": "ls",
+      "args": ["-l", "/"]
+    }
+ ,
+    {
+      "cmd": "curl",
+      "args": ["-X", "GET", "http://api.example.com/data"]
+    }
+  ],
+  "response": {
+    "status": 200,
+    "message": "Successful request"
+  },
+  "timestamp": "2022-07-25T14:30:00Z"
+}

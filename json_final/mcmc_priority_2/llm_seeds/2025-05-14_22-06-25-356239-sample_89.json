@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["--quiet"]
+    },
+    {
+      "cmd": "run",
+      "args": ["--debug", "--verbose"]
+    }
+ ,
+    {
+      "cmd": "stop",
+      "args": ["--graceful"]
+    }
+  ],
+  "results": ["Success", "Failure", "Timeout"],
+  "variables": {
+    "alpha": 1.2,
+    "beta": 3.4
+  },
+  "log": {
+    "console": "debug",
+    "file": "app.log"
+  },
+  "version": "v1.0"
+}

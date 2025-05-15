@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-t"],
+      "result": "permission denied"
+    },
+    {
+      "cmd": "mkdir test",
+      "args": ["-m", "755"],
+      "result": "created"
+    }
+ ,
+    {
+      "cmd": "rm -rf test",
+      "args": [""],
+      "result": "removed"
+    }
+  ],
+  "files": {
+    "script.sh": "export var",
+    "output.log": "script execution log"
+  },
+  "settings": {
+    "indent": 2,
+    "tab_size": 4
+  },
+  "version": 1
+}

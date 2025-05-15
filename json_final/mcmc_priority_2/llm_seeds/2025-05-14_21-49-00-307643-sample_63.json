@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--fix-missing"],
+      "priority": "high"
+    },
+    {
+      "cmd": "apt-get install",
+      "args": ["git", "build-essential"],
+      "priority": "medium"
+    }
+ ,
+    {
+      "cmd": "git add",
+      "args": [".", "--all"],
+      "priority": "low"
+    }
+  ],
+  "history": ["init", "configure", "build"]
+}

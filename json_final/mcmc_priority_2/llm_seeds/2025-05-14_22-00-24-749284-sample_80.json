@@ -1,0 +1,20 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["www.google.com", "-c", "4"]
+    },
+    {
+      "cmd": "docker",
+      "args": ["pull", "ubuntu:latest"]
+    }
+ ,
+  {
+    "cmd": "git",
+    "args": ["clone", "https://github.com/user/repo.git"]
+  }
+  ],
+  "status": "running",
+  "results": true,
+  "logs": ["Error: Permission denied", "Success: File cloned"]
+}

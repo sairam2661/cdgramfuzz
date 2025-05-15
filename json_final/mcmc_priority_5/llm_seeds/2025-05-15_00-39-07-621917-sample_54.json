@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "backup database",
+      "args": ["-s", "localhost"],
+      "result": "success"
+    },
+    {
+      "cmd": "clean cache",
+      "args": ["-f"],
+      "result": "failure"
+    }
+ ,
+    {
+      "cmd": "update packages",
+      "args": ["-u"],
+      "result": "success"
+    }
+  ],
+  "errors": [
+    "invalid input",
+    "file not found"
+  ],
+  "status": "up and running"
+}

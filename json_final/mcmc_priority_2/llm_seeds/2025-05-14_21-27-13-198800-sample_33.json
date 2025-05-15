@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["-v", "-d"]
+    },
+    {
+      "cmd": "run",
+      "args": ["-k", "--timeout=5"]
+    }
+ ,
+  {
+    "cmd": "exit",
+    "args": ["-q"]
+  }],
+  "parameters": {
+    "timeout": 10,
+    "iterations": 5,
+    "output": "result.txt"
+  },
+  "result": {
+    "status": "complete",
+    "error": null
+  },
+  "system_status": "paused" 
+}

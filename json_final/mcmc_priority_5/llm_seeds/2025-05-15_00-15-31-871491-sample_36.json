@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "python script.py",
+      "args": ["--debug", "--verbose"],
+      "time": 123.456
+    },
+    {
+      "cmd": "git push origin master",
+      "args": ["-u", "--force"],
+      "time": 90.123
+    }
+ ,
+  {
+    "cmd": "curl http://example.com",
+    "args": ["-s", "-H", "accept: application/json"],
+    "time": 0.789
+  }
+  ],
+  "session": 1234,
+  "completed": true
+}

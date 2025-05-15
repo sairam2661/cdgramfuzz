@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "python script.py",
+      "args": ["--verbose", "--debug"],
+      "stdin": "echo 'Hello, World!' | tr'' '_'"
+    },
+    {
+      "cmd": "compile java code",
+      "args": ["--release", 17],
+      "stdout": ">> compiled_code.txt"
+    }
+ ,
+    {
+      "cmd":" Run npm script", 
+      "args": ["build", "--version", "1.0"],
+      "stderr": ">> errors.log"
+    }
+  ],
+  "system": {
+    "arch": "amd64",
+    "platform": "linux"
+  },
+  "history": [2022, 2023]
+}

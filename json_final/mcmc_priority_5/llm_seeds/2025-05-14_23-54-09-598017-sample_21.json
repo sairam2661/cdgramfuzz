@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["--allow-unrelated-histories"],
+      "env": ["PATH=/usr/bin"]
+    },
+    {
+      "cmd": "docker build.",
+      "args": ["-t my-image"],
+      "env": ["DOCKER_BUILDKIT=1"]
+    }
+ ,
+    {
+      "cmd": "python script.py",
+      "args": [ "-f demo.txt"],
+      "env": ["PYTHONPATH=/scripts/"]
+    }
+  ],
+  "version": "1.0",
+  "author": "John Smith"
+}

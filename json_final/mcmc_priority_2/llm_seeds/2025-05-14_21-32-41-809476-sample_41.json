@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "python",
+      "args": ["myscript.py"]
+    },
+    {
+      "cmd": "cp",
+      "args": ["file.txtBackup", "file.txt"]
+    }
+ ,
+  {
+    "cmd": "ssh",
+    "args": ["user@server"]
+  }
+  ],
+  "variables": {
+    "DB_HOST": "localhost",
+    "DB_PORT": 5432,
+    "DB_USER": "postgres"
+  },
+  "output": true
+}

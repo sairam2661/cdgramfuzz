@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["-i", "-p", "1234"],
+      "time": "2023-02-16T14:30:00"
+    },
+    {
+      "cmd": "stop",
+      "args": ["-f", "-s"],
+      "time": "2023-02-16T15:00:00"
+    },
+    {
+      "cmd": "update",
+      "args": ["-x", "-a"]
+    }
+  ],
+  "configurations": {
+    "mode": "debug",
+    "timeout": 3600
+  },
+  "results": [
+    120,
+    150,
+    180
+  ]
+}

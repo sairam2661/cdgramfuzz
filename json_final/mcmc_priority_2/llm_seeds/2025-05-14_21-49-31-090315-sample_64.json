@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["file", "content"]
+    },
+    {
+      "cmd": "delete",
+      "args": ["directory", "path"]
+    },
+    {
+      "cmd": "update",
+      "args": ["name", "value"]
+    }
+  ],
+  "files": {
+    "config.json": "application configuration",
+    "settings.txt": "system settings"
+  },
+  "timestamp": "2024-07-26T15:30:00"
+}

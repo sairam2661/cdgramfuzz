@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "cmd": "install",
+      "args": ["pip", "numpy"]
+    },
+    {
+      "cmd": "run",
+      "args": ["python", "script.py"]
+    }
+ ,
+    {
+      "cmd": "update",
+      "args": ["pip", "matplotlib"]
+    }
+  ],
+  "environment": {
+    "lang": "python3",
+    "resources": ["cpu", "memory", "gpu"]
+  },
+  "status": {
+    "start": "2024-07-26",
+    "error": null,
+    "result": "success"
+  },
+  "outputs": {
+    "value": "completed"
+  },
+  "logs": {
+    "info": "process started",
+    "warn": "memory usage high",
+    "error": []
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "deploy",
+      "args": ["--prod"]
+    },
+    {
+      "cmd": "update",
+      "args": ["--beta"]
+    }
+ ,
+  {
+    "cmd": "restart",
+     "args": ["--incremental", "--auto"]
+  }],
+  "resources": {
+    "memory": 8192,
+    "cpu": 2.5
+  },
+  "configuration": "devEnv"
+}

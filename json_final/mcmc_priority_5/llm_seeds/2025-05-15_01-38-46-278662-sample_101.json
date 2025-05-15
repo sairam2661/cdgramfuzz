@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "run build",
+      "args": ["-o", "-p", "-c"],
+      "time": "2024-07-15T14:30:00"
+    },
+    {
+      "cmd": "deploy models",
+      "args": ["-s", "-t", "-d"],
+      "time": "2024-07-17T13:00:00"
+    }
+ ,
+    {
+      "cmd": "start services",
+      "args": ["-h", "-v", "-r"],
+      "time": "2024-07-20T10:30:00"
+    }
+  ],
+  "version": "V1.3",
+  "author": "Automation Group"
+}

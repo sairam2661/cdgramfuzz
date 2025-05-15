@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "newdir"]
+    }
+ ,
+    {
+      "cmd": "grep",
+      "args": ["-i", "-r", "pattern"]
+    }
+  ],
+  "results": [
+    "file1.log",
+    "newdir created",
+    [
+      "match 1",
+      "match 2",
+      "match 3"
+    ]
+  ]
+}

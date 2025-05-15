@@ -1,0 +1,13 @@
+{
+  "commands": [
+    { "cmd": "start server", "args": ["--port", 8080], "status": false },
+    { "cmd": "stop server", "args": ["--force"], "status": false }
+ ,
+    { "cmd": "init project", "args": ["--lang", "python"], "status": true }
+  ],
+  "results": {
+    "data": [12.5, 25.8, 37.2],
+    "status": "ok"
+  },
+  "version": "1.0.0"
+}

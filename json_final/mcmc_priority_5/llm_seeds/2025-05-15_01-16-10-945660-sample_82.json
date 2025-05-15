@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "cmd": "setup",
+      "args": ["-v", "--debug"],
+      "results": [
+        {"error": false, "output": "Setup complete"},
+        {"error": true, "output": "Failed to setup"}],
+      "status": "success"
+    },
+    {
+      "cmd": "create",
+      "args": ["--file"],
+      "results": [
+        {"error": false, "output": "Environment created"},
+        {"error": true, "output": "Failed to create"}],
+      "status": "failure"
+    }
+ ,
+  {
+  "cmd": "run",
+  "args": ["-f"],
+  "results": [
+    {"error": false, "output": "Process completed"},
+    {"error": true, "output": "Failed to run"}],
+  "status": "completed"
+  }
+  ]
+ , 
+  "stats": {
+    "memory": 100,
+    "cpu": 50,
+    "time": 45
+  },
+  "version": 2.0
+}

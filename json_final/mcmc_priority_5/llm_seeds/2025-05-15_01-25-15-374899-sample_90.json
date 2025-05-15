@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": [ "--all", "--verbose" ],
+      "output": true
+    },
+    {
+      "cmd": "npm install",
+      "args": [ "--save" ],
+      "stderr": false
+    }
+ ,
+  {
+     "cmd": "node app.js", 
+     "args": ["production"],
+     "stdout": true
+  }
+  ],
+  "log": {
+    "timestamp": "2023-01-01",
+    "severity": "INFO"
+  },
+  "error": "connection lost"
+}

@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--silent", "--verbose"],
+      "result": true
+    },
+    {
+      "cmd": "npm run deploy",
+      "args": ["--dry-run"],
+      "result": false
+    }
+ ,
+    {
+      "cmd": "git push",
+      "args": ["origin", "main"],
+      "result": true
+    }
+  ],
+  "environment": {
+    "OS": "Ubuntu",
+    "node": "16.17.0"
+  },
+  "metrics": {
+    "memory": 1024,
+    "cpu": 5
+  },
+  "version": "v1.0.0"
+}

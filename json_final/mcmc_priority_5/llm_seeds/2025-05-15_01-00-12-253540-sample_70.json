@@ -1,0 +1,17 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "/tmp/newdir"]
+    },
+    {
+      "cmd": "touch",
+      "args": ["/tmp/newfile", "Hello, World!"]
+    },
+    {
+      "cmd": "rm",
+      "args": ["/tmp/newfile"]
+    }
+  ],
+  "version": "1.0"
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["user", "@host", "-p", 22],
+      "output": "success"
+    },
+    {
+      "cmd": "git",
+      "args": ["clone", "https://github.com/repo.git"],
+      "error": "connection failed"
+    }
+ ,
+  {
+    "cmd": "curl",
+    "args": ["http://example.com"],
+    "status_code": 200
+  }
+  ],
+  "result": {
+    "passed": 1,
+    "failed": 1
+  },
+  "log": "debug mode"
+}

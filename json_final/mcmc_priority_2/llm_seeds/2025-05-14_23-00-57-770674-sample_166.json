@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git",
+      "args": ["pull", "--all"],
+      "env": {
+        "repo_name": "my_repo"
+      },
+      "status": false
+    },
+    {
+      "cmd": "npm",
+      "args": ["install", "--force"],
+      "dev": true
+    }
+ ,
+    {
+      "cmd": "ssh",
+      "args": ["-L", "8080:localhost:3306"],
+      "port-forwarding": true,
+      "ip": "192.168.1.100"
+    }
+  ],
+  "output": "success"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "build",
+      "args": ["--debug", "--verbose"],
+      "output": "2024-07-26 14:00:00"
+    },
+    {
+      "cmd": "run",
+      "args": ["--offline", "--silent"],
+      "logs": ["error1.log", "error2.log"]
+    }
+ ,
+  {
+    "cmd": "deploy",
+    "args": ["--live", "--backup"],
+    "status": "success"
+  }
+  ],
+  "variables": {
+    "env": {
+      "prod": true,
+      "dev": false
+    },
+    "path": "/home/user/project"
+  },
+  "errors": ["Syntax error", "runtime error"]
+}

@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["-c", "5"],
+      "hosts": ["192.168.1.1", "192.168.1.2"]
+    },
+    {
+      "cmd": "ssh",
+      "args": ["user@192.168.1.1"],
+      "credentials": ["password", "public_key"]
+    }
+ ,
+  {
+    "cmd": "scp",
+    "args": ["file.txt", "user@192.168.1.2:/home/user/"]
+  }
+  ],
+  "connections": {
+    "ssh_port": 22,
+    "timeout": 300
+  },
+  "logs": [
+    {
+      "level": "info",
+      "message": "Connection established"
+    },
+    {
+      "level": "warning",
+      "message": "Connection timed out"
+
+    },
+    {
+      "level": "error",
+      "message": "Connection refused"
+    }]
+}

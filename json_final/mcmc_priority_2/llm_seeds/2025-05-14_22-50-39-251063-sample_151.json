@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "outputs": [
+        "total 12",
+        "-rw-r--r-- 1 user user  1234 Jun 15 14:30 file1",
+        "-rw-r--r-- 1 user user  5678 Jun 15 14:30 file2"
+      ]
+    },
+    {
+      "cmd": "python",
+      "args": ["script.py", "--debug"],
+      "outputs": [
+        "Hello, world!",
+        "Debug mode: True"
+      ]
+    }
+ ,
+    {
+      "cmd": "java",
+      "args": ["-jar", "application.jar"],
+      "outputs": [
+        "Application started",
+        "PID: 12345"
+      ]
+    }
+  ],
+  "environment": {
+    "username": "johnDoe",
+    "platform": "ubuntu"
+  },
+  "status": "completed"
+}

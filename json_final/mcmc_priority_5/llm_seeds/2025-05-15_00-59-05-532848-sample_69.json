@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "list",
+      "args": ["-l", "-a"]
+    },
+    {
+      "cmd": "init",
+      "args": ["-v", "--name"]
+    },
+    {
+      "cmd": "restart",
+      "args": ["/etc/config.ini"]
+    }
+  ],
+  "settings": {
+    "timeout": 300,
+    "log_level": "INFO"
+  },
+  "targets": [
+    "target-1",
+    "target-2",
+    "target-3"
+  ]
+}

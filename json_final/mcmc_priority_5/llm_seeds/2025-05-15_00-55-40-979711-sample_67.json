@@ -1,0 +1,22 @@
+{
+  "commands": [{
+    "cmd": "ls -l",
+    "args": ["-a", "-h"],
+    "exit_code": 0
+  },
+  {
+    "cmd": "ping google.com",
+    "args": ["-c", "4"],
+    "timing": {
+      "response_time": 0.5,
+      "transfer_speed": 10
+    },
+    "exit_code": 0
+  }
+ ,{
+    "cmd": "apt-get install",
+    "args":["-y", "python3"]
+   ,"exit_code":0
+  }],
+  "hostname": "UbuntuServer"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-h"]
+    },
+    {
+      "cmd": "rm -rf",
+      "args": ["*"],
+      "dangerous": true
+    }
+ ,
+    {
+      "cmd": "git status",
+      "args": ["--short"]
+    }
+  ],
+  "target": "remote-server",
+  "environment": {
+    "LANG": "en_US.UTF-8",
+    "LC_ALL": "en_US.UTF-8"
+  },
+  "timestamps": [
+    "2024-01-01",
+    "2024-01-02",
+    "2024-01-03"
+  ]
+}

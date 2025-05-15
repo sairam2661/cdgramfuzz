@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "python",
+      "args": ["script.py"],
+      "response": "Success"
+    },
+    {
+      "cmd": "java",
+      "args": ["Main.java"],
+      "response": "Error: NoClassDefFoundError"
+    }
+ ,
+    {
+      "cmd": "docker",
+      "args": ["run -it ubuntu"],
+      "response": " Container created"
+    }
+  ],
+  "status": {
+    "success": 2,
+    "failure": 1
+  },
+  "log": "2024-07-26 08:59:21,123 INFO User authenticated"
+}

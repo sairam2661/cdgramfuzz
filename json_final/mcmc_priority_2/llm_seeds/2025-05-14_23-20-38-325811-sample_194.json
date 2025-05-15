@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-t"]
+    },
+    {
+      "cmd": "mkdir -p",
+      "args": ["/tmp/newdir"]
+    }
+ ,
+    {
+      "cmd": "pip install",
+      "args": ["requests"]
+    }
+  ],
+  "environment": {
+    "lang": "bash",
+    "os": "linux"
+  },
+  "variables": [
+    {
+      "name": "API_KEY",
+      "value": "your-api-key"
+    },
+    {
+      "name": "DEBUG_MODE",
+      "value": true
+    },
+    {
+      "name": "WORKSPACE",
+      "value": "/var/www"
+    }]}

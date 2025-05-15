@@ -1,0 +1,27 @@
+{
+
+  "commands": [
+    {
+      "cmd": "compile",
+      "args": ["-o", "output.txt"]
+    },
+    {
+      "cmd": "run",
+      "args": ["--config", "prod"]
+    }
+ ,
+    {
+      "cmd": "test",
+      "args": ["--debug", "--silent"]
+    }
+  ],
+  "environment": {
+    "os": "linux",
+    "version": "5.10.0"
+  },
+  "machine": {
+    "cpu": "intel",
+    "ram": 16
+  },
+  "timestamp": "2023-07-01T12:00:00Z"
+}

@@ -1,0 +1,48 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--rebase"],
+      "status": "running"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--save"],
+      "status": "completed"
+    }
+ ,
+    {
+      "cmd": "docker run",
+      "args": ["-it"],
+      "status": "pending"
+    }
+  ],
+  "logs": [
+    {
+      "level": "INFO",
+      "message": "Package installed successfully",
+      "date": "2024-07-26T14:30:00Z"
+    },
+    {
+      "level": "WARNING",
+      "message": "Timeout encountered",
+      "date": "2024-07-26T14:31:00Z"
+    },
+    {
+      "level": "ERROR",
+      "message": "Container not found",
+      "date": "2024-07-26T14:32:00Z"
+    },
+    {
+      "level": "INFO",
+      "message": "Session started",
+      "date": "2024-07-26T14:33:00Z"
+    },
+    {
+      "level": "INFO",
+      "message": "Session ended",
+      "date": "2024-07-26T14:35:00Z"
+    },
+    {
+      "level": "INFO",
+      "message": "File saved successfully

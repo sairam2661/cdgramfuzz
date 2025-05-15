@@ -1,0 +1,31 @@
+{
+  "commands": [
+    {
+      "cmd": "python setup.py",
+      "args": ["--debug", "--verbose"],
+      "output": "Installation completed successfully"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--force", "--save"],
+      "output": "Dependencies installed successfully"
+    }
+ ,
+  {
+    "cmd": "pip freeze",
+    "args": ["--local", "--all"],
+    "output": "Package versions:..."
+  }
+],
+  "projects": {
+    "id": 12345,
+    "name": "My Project",
+    "status": "active"
+  },
+  "credits": {
+    "total": 1000,
+    "earned": 500,
+    "remaining": 500
+  },
+  "debug": true
+}

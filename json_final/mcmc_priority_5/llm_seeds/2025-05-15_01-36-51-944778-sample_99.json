@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "file1.txt file2.txt"
+    },
+    {
+      "cmd": "mv",
+      "args": ["file1.txt", "backup/"],
+      "output": "file1.txt moved to backup/"
+    }
+ ,
+  {
+    "cmd": "sort",
+    "args": ["-r"],
+    "output": "file2.txt sorted in reverse"
+  }],
+  "status": {
+    "success": true,
+    "error": null
+  },
+  "host_info": {
+    "os": "linux",
+    "version": "Ubuntu",
+    "ip": "192.168.1.100"
+  },
+  "timestamp": "2023-03-01 12:00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "echo",
+      "args": ["Hello", "World"],
+      "output": "Hello World"
+    },
+    {
+      "cmd": "echo",
+      "args": ["Goodbye"],
+      "output": "Goodbye"
+    }
+ ,
+  {
+    "cmd": "run",
+    "args": ["./script.py"],
+    "output": "Script executed"
+  }
+  ],
+  "status": {
+    "build": "passed",
+    "errors": []
+  },
+  "config": {
+    "repo": "github",
+    "branch": "main"
+  },
+  "params": {
+    "key": "value"
+  },
+  "tasks": 2
+}

@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["/tmp/folder"],
+      "output": null
+    },
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": null
+    }
+ ,
+   {
+    "cmd": "rm",
+    "args": ["/tmp/folder"],
+    "output": null
+  }
+  ],
+  "sensors": {
+    "temperature": 25,
+    "humidity": 60
+  },
+  "system": {
+    "platform": "linux",
+    "version": "5.16.0-46-generic"
+  },
+  "datetime": "2023-12-31T23:59:59Z"
+}

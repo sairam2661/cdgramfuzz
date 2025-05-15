@@ -1,0 +1,26 @@
+{
+  "commands": [ 
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "output": "directories"
+    },
+    {
+      "cmd": "python script.py",
+      "args": ["--debug"],
+      "output": "results"
+    }
+ ,
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "output": "commits"
+    }
+  ],
+  "user": {
+    "id": 123456,
+    "name": "John Smith",
+    "experience": 10
+  },
+  "project": "Machine Learning Model"
+}

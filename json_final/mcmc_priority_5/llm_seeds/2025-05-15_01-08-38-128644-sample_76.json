@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "apt update",
+      "args": ["-qq"],
+      "stderr": "Error on stderr"
+    },
+    {
+      "cmd": "pip install requests",
+      "args": ["--ignore-errors"]
+    }
+ ,
+    {
+      "cmd": "apt-get install -y nginx",
+      "args": ["-O"],
+      "logs_path": "/tmp/logs"
+    }
+  ],
+  "results": {
+    "success": true,
+    "duration": 50.32
+  },
+  "version": 1.02
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["/tmp/backup"],
+      "stdout": "/tmp/backup mkdir: created directory",
+      "errors": 0
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"],
+      "stdout": "Hello, World!",
+      "stderr": ""
+    }
+ ,
+    {
+      "cmd": "apt-get",
+      "args": ["update"],
+      "stdout": "Hit:1 http://archive.ubuntu.com/ubuntu focal InRelease",
+      "stderr": ""
+    }
+  ],
+  "results": 7,
+  "timestamp": "1643723400"
+}

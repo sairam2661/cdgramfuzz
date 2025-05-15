@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "/usr/bin/g++",
+      "args": ["-o", "output", "source.cpp"],
+      "status": "success"
+    },
+    {
+      "cmd": "/bin/ls",
+      "args": ["-l"],
+      "output": "file1 file2 file3"
+    }
+ ,
+  {
+    "cmd": "/usr/bin/perl",
+    "args": ["script.pl"],
+    "error": ["syntax error"]
+  }
+  ],
+  "results": {
+    "completed": true,
+    "time": 120
+  },
+  "version": "v1.2"
+}

@@ -1,0 +1,52 @@
+{
+  "commands": [
+    {
+      "cmd": "/bin/bash",
+      "args": ["-c", "ls -l"]
+    },
+    {
+      "cmd": "/usr/bin/cat",
+      "args": ["file.txt"]
+    }
+ ,
+    {
+    "cmd": "/home/user/bin/script.py",
+    "args": ["--help"]
+    }
+  ],
+  "environments": [
+    {
+      "name": "prod",
+      "users": ["admin", "engineer"]
+    },
+    {
+      "name": "staging",
+      "users": ["QA", "dev"]
+    },
+    {
+      "name": "dev",
+      "users": ["engineer", "QA"]
+    },
+    {
+      "name": "test",
+      "users": ["QA", "admin"]
+    }],
+
+  "status": {
+    "online": true,
+    "uptime": 3651,
+    "version": "v1.0"
+  },
+  "servers": [
+    {
+      "name": "server1",
+      "ip": "192.168.1.1",
+      "os": "Ubuntu 18.04"
+    },
+    {
+      "name": "server2",
+      "ip": "192.168.1.2",
+      "os": "CentOS 7"
+    }]
+
+}

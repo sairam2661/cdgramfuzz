@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "git push origin main",
+      "args": ["--set-upstream"],
+      "description": "push code to remote repository"
+    },
+    {
+      "cmd": "python run.py",
+      "args": ["--debug", "--output", "output.txt"],
+      "description": "run python script"
+    }
+ ,
+  {
+    "cmd": "ls -l",
+    "args": ["/home/user/Documents"],
+    "description": "list files in directory"
+  }
+],
+"aliases": {
+  "g": "git",
+  "p": "python",
+  "ll": "ls -l"
+},
+"macros": {
+  "mymacro": ["git add.", "git commit -m ':wip:'", "git push"]
+},
+"config": {
+  "editor": "sublime",
+  "terminal": "default terminal"
+},
+"session": "active"
+}

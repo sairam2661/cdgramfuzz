@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--progress", "--verbose"],
+      "exit_status": 0
+    },
+    {
+      "cmd": "python test.py",
+      "args": ["--help"],
+      "stderr": "no errors"
+    }
+ ,
+  {
+    "cmd": "rm -rf",
+    "args": ["path/to/file"],
+    "stdout": "file removed"
+  }
+  ],
+  "timestamp": 1643723400,
+  "results": [
+    {
+      "test": "test1",
+      "pass": true
+    },
+    {
+      "test": "test2",
+      "message": "test failed"
+    },
+    {
+      "test": "test3",
+      "result": 0.8
+    }]
+}

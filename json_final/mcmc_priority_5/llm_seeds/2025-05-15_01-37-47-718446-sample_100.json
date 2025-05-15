@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "apt update",
+      "args": ["--fix-missing"],
+      "output": "/dev/null"
+    },
+    {
+      "cmd": "apt install",
+      "args": ["openssh-server"],
+      "output": "/dev/null"
+    }
+ ,
+  {
+    "cmd": "sshd -p 22",
+    "args": ["/dev/null"],
+    "output": "/dev/null"
+  }
+  ],
+  "servers": {
+    "primary": "ssh://user@host1",
+    "secondary": "ssh://user@host2"
+  },
+  "timeout": 300
+}

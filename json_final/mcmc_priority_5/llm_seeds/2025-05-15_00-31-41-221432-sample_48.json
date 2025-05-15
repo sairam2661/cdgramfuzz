@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "make",
+      "args": ["build"]
+    },
+    {
+      "cmd": "run",
+      "args": ["main.py"]
+    }
+ ,
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"]
+    }
+  ],
+  "output": "output.txt",
+  "error": "error.log"
+}

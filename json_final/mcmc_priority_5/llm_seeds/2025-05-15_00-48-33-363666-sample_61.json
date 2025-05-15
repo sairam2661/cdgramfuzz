@@ -1,0 +1,45 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["package-name"],
+      "duration": 3000,
+      "output": {
+        "log": "installed package"
+      },
+      "time": "2024-07-26T14:34:00.000Z"
+    },
+    {
+      "cmd": "yarn build",
+      "args": ["--prod"],
+      "duration": 2000,
+      "output": {
+        "log": "built project"
+      },
+      "time": "2024-07-26T14:36:00.000Z"
+    }
+ ,
+    {
+      "cmd": "git commit",
+      "args": ["--message", "update dependencies"],
+      "duration": 1500,
+      "output": {
+        "log": "committed changes"
+      },
+      "time": "2024-07-26T14:37:30.000Z"
+    }
+  ],
+  "logs": [
+    {
+      "log": "Error: unable to find package",
+      "timestamp": "2024-07-26T14:38:00.000Z",
+      "level": "error"
+    },
+    {
+      "log": "Build successfull",
+      "timestamp": "2024-07-26T14:39:00.000Z",
+      "level": "success"
+    },
+    {
+      "log": "Updated package list",
+      "timestamp": "2024-07-26T

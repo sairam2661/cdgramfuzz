@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone https://github.com/project.git",
+      "args": ["--quiet"],
+      "duration": 123
+    },
+    {
+      "cmd": "pip install requirements.txt",
+      "args": ["-r"],
+      "error": true
+    }
+ ,
+  {
+  "cmd": "npm install dependencies.js",
+  "args": [ "--force"],
+  "status": "success"
+  }
+  ],
+  "resources": ["disk space", "cpu capacity"],
+  "results": [true, true, false]
+}

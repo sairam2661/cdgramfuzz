@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "Directory listing"
+    },
+    {
+      "cmd": "cat",
+      "args": ["filename.txt"],
+      "output": "File content"
+    }
+ ,
+  {
+    "cmd": "rm",
+    "args": ["-f", "filename.txt"],
+    "output": "File removed"
+  }
+  ],
+  "options": {
+    "timeout": 300,
+    "memory": 1024
+  },
+  "variables": {
+    "HOME": "/root",
+    "PATH": "/bin:/sbin:/usr/bin:/usr/sbin"
+  },
+  "env": {
+    "user": "root",
+    "shell": "/bin/bash"
+  },
+  "logs": [
+    "shell.log",
+    "error.log"
+  ]
+}

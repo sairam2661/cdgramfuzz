@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-h"],
+      "success": true,
+      "stderr": "Permission denied"
+    },
+    {
+      "cmd": "git push",
+      "args": ["origin", "main"],
+      "success": false,
+      "stderr": "Authentication failed"
+    }
+ ,
+  {
+      "cmd": "helm install",
+      "args": ["mychart", "myvalue"],
+      "success": true,
+      "stderr": ""
+  }
+  ],
+  "metrics": {
+    "cpu_usage": 34.56,
+    "memory_usage": 567.89
+  },
+  "error": "Connection timed out"
+}

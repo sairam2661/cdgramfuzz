@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--recurse-submodules"],
+      "output": "Updated submodule"
+    },
+    {
+      "cmd": "make",
+      "args": ["build"],
+      "error": "Missing dependency"
+    }
+ ,
+  {
+    "cmd": "npm install",
+    "args": ["--save"],
+    "message": "Installed package"
+  }],
+  "environment": {
+    "version": "1.3.1",
+    "language": "javascript"
+  },
+  "result": "success"
+}

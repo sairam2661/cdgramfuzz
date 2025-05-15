@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "echo",
+      "args": ["Hello, world!"],
+      "output": "Hello, world!"
+    },
+    {
+      "cmd": "python",
+      "args": ["/path/to/script.py"],
+      "output": "Program executed successfully"
+    }
+ ,
+  {
+    "cmd": "runscript",
+    "args": ["mycript.py"],
+   "output": ""
+}
+  ],
+  "system": {
+    "version": "v2.7.5",
+    "os": "Ubuntu 20.04 LTS"
+  },
+  "timestamp": "2022-12-25T16:30:00Z"
+}

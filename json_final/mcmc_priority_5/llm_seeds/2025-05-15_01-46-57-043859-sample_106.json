@@ -1,0 +1,86 @@
+{
+  "commands": [
+    {
+      "cmd": "ping 127.0.0.1",
+      "args": ["-c", "3"]
+    },
+    {
+      "cmd": "sudo echo hello",
+      "args": ["root"]
+    }
+ ,
+    {
+      "cmd": "ls -l",
+      "args": ["/home"]
+    }
+  ],
+  "users": [
+    {
+      "uid": 123456,
+      "name": "John Doe",
+      "role": "staff"
+    },
+    {
+      "uid": 654321,
+      "name": "Jane Smith",
+      "role": "student"
+    },
+    {
+      "uid": 789012,
+      "name": "Bob Johnson"
+    },
+    {
+    "uid": 33333,
+    "name": "test user"
+  },
+    {
+      "uid": 11111,
+      "name": "Mike Brown"
+    },
+    {
+      "uid": 77777,
+      "name": "Emma Taylor"
+    },
+    {
+      "uid": 22222,
+      "name": "Oliver White"
+    },
+    {
+      "uid": 44444,
+      "name": "Amelia Green"
+    },
+    {
+      "uid": 55555,
+      "name": "William Lee"
+    },
+    {
+      "uid": 66666,
+      "name": "Harriet Kim"
+    },
+    {
+      "uid": 88888,
+      "name": "Charles Patel"
+    },
+    {
+      "uid": 99999,
+      "name": "Lucas Brooks"
+    },
+    {
+      "uid": 10101,
+      "name": "Sofia Martin"
+    },
+    {
+      "uid": 20202,
+      "name": "Alexander Hall"
+    },
+    {
+      "uid": 30303,
+      "name": "Isabella Walker"
+    },
+    {
+      "uid": 40404,
+      "name": "Benjamin Nguyen"
+    },
+    {
+      "uid": 50505,
+      "name": "A

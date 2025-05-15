@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    },
+    {
+      "cmd": "cd",
+      "args": ["/usr/bin"]
+    }
+ ,
+  {
+    "cmd": "update",
+    "args": ["--status"]
+  }
+  ],
+  "log": [
+    "2024-06-01: updated database",
+    "2024-06-02: backup successful"
+  ],
+  "project": {
+    "id": 567890,
+    "code": "sdt-234"
+  },
+  "time": "2024-06-01 14:30:00"
+}

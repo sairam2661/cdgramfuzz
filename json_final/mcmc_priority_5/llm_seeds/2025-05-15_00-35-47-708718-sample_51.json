@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["-g", "express"],
+      "workingDirectory": "/home/user/project"
+    },
+    {
+      "cmd": "webpack --mode development",
+      "args": ["--progress"],
+      "output": {
+        "stdout": "Compiling...",
+        "stderr": ""
+      },
+      "status": "success"
+    }
+ ,
+  {
+    "cmd": "git add. && git commit -m 'update 22.07.2024'",
+    "args": ["--amend", "-S"],
+    "repository": {
+      "name": "example-repo",
+      "url": "https://github.com/user/example-repo"
+    },
+    "status": "success"
+  }
+  ],
+  "lastRun": "2024-07-26T14:30:00Z",
+  "result": "success"
+}

@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "status": 0
+    },
+    {
+      "cmd": "cp",
+      "args": ["file1", "file2"],
+      "status": 1
+    }
+ ,
+   {
+      "cmd": "git",
+      "args": ["push"],
+      "status": 0
+   }
+  ],
+  "nodes": {
+    "A": ["B", "C"],
+    "B": ["D"],
+    "C": ["D"],
+    "D": ["E"],
+    "E": []
+  },
+  "counts": {
+    "cats": 5,
+    "dogs": 3
+  },
+  "settings": {
+    "theme": "light",
+    "language": "english"
+  },
+  "version": "1.0.0"
+}

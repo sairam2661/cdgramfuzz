@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "start_server",
+      "args": ["-config", "local.conf"]
+    },
+    {
+      "cmd": "deploy_backend",
+      "args": ["-port", 8080, "-env", "prod"]
+    }
+ ,
+    {
+      "cmd": "list_data",
+      "args": ["-sort", "asc", "-column", "id"]
+    }
+  ],
+  "dependencies": {
+    "mysql": "1.2.7",
+    "redis": "4.3.3"
+  },
+  "timestamp": "2023-12-25T14:30:00"
+}

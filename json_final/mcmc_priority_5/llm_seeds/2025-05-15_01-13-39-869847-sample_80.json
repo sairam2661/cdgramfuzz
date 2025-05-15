@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-l"],
+      "output": "total 12",
+      "error": null
+    },
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "output": "M  file1.txt",
+      "error": null
+    }
+ ,
+    {
+      "cmd": "python script.py",
+      "args": ["--debug"],
+      "output": null,
+      "error": "SyntaxError: invalid syntax"
+    }
+],
+  "logs": {
+    "time": 1643723400,
+    "messages": ["Startup", "Initialization completed"]
+  },
+  "state": {
+    "mode": "interactive",
+    "initialized": true
+  },
+  "config": {
+    "theme": "dark",
+    "fontSize": "12pt"
+  },
+  "plugins": ["debugger", "autocomplete"]
+}

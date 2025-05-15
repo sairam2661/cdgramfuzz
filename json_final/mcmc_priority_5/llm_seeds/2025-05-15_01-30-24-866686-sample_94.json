@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["-h"],
+      "output": "Help message printed"
+    },
+    {
+      "cmd": "build",
+      "args": ["--verbose"],
+      "output": "Build process started"
+    }
+ ,
+   {
+    "cmd": "deploy",
+      "args": ["--test"],
+      "output": "Deployment in test mode"
+    }
+  ],
+  "configuration": {
+    "debug": true,
+    "version": "v1.2"
+  },
+  "assets": ["image1.png", "image2.png"]
+}

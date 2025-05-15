@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "clear",
+      "args": [ "-a" ],
+      "output": "<result>"
+    },
+    {
+      "cmd": "ls",
+      "args": [ "-l" ],
+      "output": "<fileslist>"
+    }
+ ,
+  {
+    "cmd": "echo",
+    "args": [ "Hello World!" ],
+    "output": "Hello World!"
+  }
+  ],
+  "preferences": {
+    "user": "Jane Doe",
+    "language": "English"
+  },
+  "plugins": {
+    "github": true,
+     "visual studio": false
+  },
+  "version": "v2.0"
+}

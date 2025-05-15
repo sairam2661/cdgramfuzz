@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull"
+   ,
+      "args": ["--repo", "origin/master"]
+    },
+    {
+      "cmd": "make test",
+      "args": ["-j4"]
+    }
+ ,{
+    "cmd": "find",
+    "args": ["-name", "*.txt"]
+  }],
+  "targets": {
+    "host": "localhost",
+    "port": 8080
+  },
+  "results": [
+    true, false, true, false
+  ]
+}

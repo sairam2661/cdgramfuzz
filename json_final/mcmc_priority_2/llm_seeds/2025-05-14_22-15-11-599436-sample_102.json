@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "output": "/bin/bash"
+    },
+    {
+      "cmd": "cp file1 file2",
+      "args": ["-r", "-p"],
+      "error": "Permission denied"
+    }
+ ,
+  {
+    "cmd": "tar -cf archive.tar /home/",
+    "args": ["-v", "-v", "-a"],
+    "size": 1048576
+  }],
+  "system": {
+    "kernel": "4.14.0-198-generic",
+    "cpu": "Intel i7",
+    "memory": 16777216
+  },
+  "network": {
+    "ip": "192.168.1.100",
+    "Gateway": "192.168.1.1",
+    "ports": [8080, 80, 443]
+  },
+  "network_info": "eth0"
+}

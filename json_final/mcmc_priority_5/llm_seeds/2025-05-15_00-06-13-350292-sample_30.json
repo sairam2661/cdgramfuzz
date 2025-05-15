@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["--verbose"],
+      "status": true
+    },
+    {
+      "cmd": "run unit tests",
+      "args": ["--debug"],
+      "status": false
+    }
+ ,
+  {
+     "cmd": "deploy updates",
+     "args": [ "--prod",
+               "123456789" ],
+     "status": true
+  }
+  ],
+  "server": {
+    "port": 8080,
+    "protocol": "http",
+    "uptime": 30
+  },
+  "log": "Error while deployment: unable to access resource"
+}

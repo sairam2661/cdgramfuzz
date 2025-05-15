@@ -1,0 +1,50 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["-p", "--force"],
+      "last_run": "2022-12-15T14:30:00"
+    },
+    {
+      "cmd": "docker-compose up",
+      "args": ["-d"],
+      "last_run": "2023-02-10T10:00:00"
+    }
+ ,
+  {
+      "cmd": "python script.py",
+      "args": ["--debug", "--verbose"],
+      "last_run": "2023-07-01T12:00:00"
+  }],
+  "results": [
+    {
+      "output": "Script completed successfully",
+      "error": null,
+      "timestamp": "2022-12-15T14:35:00"
+    },
+    {
+      "output": null,
+      "error": "Failed to pull new version",
+      "timestamp": "2022-12-15T14:40:00"
+    },
+    {
+      "output": "New version of the script is online",
+      "error": null,
+      "timestamp": "2023-07-01T12:10:00"
+    },
+    {
+      "output": null,
+      "error": "Missing dependencies",
+      "timestamp": "2023-07-01T12:20:00"
+    },
+    {
+        "output": "All dependencies installed successfully",
+        "error": null,
+        "timestamp": "2023-07-01T12:22:00"
+    },
+    {
+      "output": null,
+      "error": "Error running the script",
+      "timestamp": "2023-07-01T12:30:00"
+    }]
+}

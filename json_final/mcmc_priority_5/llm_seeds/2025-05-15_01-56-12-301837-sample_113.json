@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--no-edit"],
+      "description": "Update repository"
+    },
+    {
+      "cmd": "npm start",
+      "args": [ "--watch"],
+      "description": "Compile and run application"
+    }
+ ,
+  {
+    "cmd": "node",
+    "args": [ "-v" ],
+    "description": "Display Node.js version"
+  }
+  ],
+  "options": {
+    "verbose": true,
+    "cache": false
+  },
+  "version": "1.0"
+}

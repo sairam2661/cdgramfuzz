@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "outputs": ["file1.txt", "file2.txt"]
+    },
+    {
+      "cmd": "cd",
+      "args": ["../"]
+    }
+ ,
+    {
+      "cmd": "wget",
+      "args": ["-q", "https://example.com/data"],
+      "outputs": ["data.txt"]
+    }
+  ],
+  "variables": {
+    "env_name": "staging",
+    "config_file": "config.json"
+  },
+  "logs": {
+    "warnings": ["missing data"],
+    "errors": ["connection refused"]
+  },
+  "result": true
+}

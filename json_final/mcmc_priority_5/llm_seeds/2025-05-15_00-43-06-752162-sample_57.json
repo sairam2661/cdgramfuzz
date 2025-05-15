@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "init",
+      "args": ["--verbose"],
+      "result": "success"
+    },
+    {
+      "cmd": "build",
+      "args": ["--release"],
+      "result": "error"
+    }
+ ,
+  {
+    "cmd": "deploy",
+    "args": ["--server"],
+    "result": "success"
+  }
+  ],
+  "stats": {
+    "compiled": 12,
+    "failed": 2,
+    "current": "beta"
+  },
+  "config": {
+    "database": "mysql",
+    "timeout": "300"
+  },
+  "versions": ["1.0", "1.1", "2.0"]
+}

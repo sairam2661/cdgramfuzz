@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--fix-missing"],
+      "error": "Unable to correct problems, you have held broken packages."
+    },
+    {
+      "cmd": "apt-get install",
+      "args": ["python3"],
+      "status": "up-to-date"
+    }
+ ,
+    {
+      "cmd": "pip3 freeze",
+      "args": ["--local", "--all-revisions"],
+      "format": "pip freeze --local --all-revisions > requirements.txt"
+    }
+  ],
+  "result": {
+    "success": true
+  },
+  "env": {
+    "dist": "Ubuntu"
+  },
+ "logs": [
+   "package is already up-to-date", 
+   "package is already up-to-date"
+ ]
+}

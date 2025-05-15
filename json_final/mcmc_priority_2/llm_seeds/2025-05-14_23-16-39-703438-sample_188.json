@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "output": "/dev/null"
+    },
+    {
+      "cmd": "git",
+      "args": ["status"],
+      "output": "stdout.txt"
+    }
+ ,
+    {
+      "cmd": "history",
+      "args": ["-5"],
+      "output": "history.log"
+    }
+  ],
+  "users": [
+    {
+      "name": "John Smith",
+      "role": "admin",
+      "email": "john.smith@company.com"
+    },
+    {
+      "name": "Jane Smith",
+      "role": "user",
+      "email": "jane.smith@company.com"
+    },
+    {
+      "name": "Bob Johnson",
+      "role": "admin",
+      "email": "bob.johnson@company.com"
+    },
+    {
+      "name": "Mary Brown",
+      "role": "user",
+      "email": "mary.brown@company.com"
+  },
+  "server_config" 
+  ] 
+  }

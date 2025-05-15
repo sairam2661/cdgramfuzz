@@ -1,0 +1,17 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A"]
+    },
+    {
+      "cmd": "git add README.md",
+      "args": ["--", "README.md"]
+    },
+    {
+      "cmd": "git commit -m 'Update README.md'",
+      "args": ["--", "HEAD"]
+    }
+  ],
+  "version": 1.2
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"],
+      "output": "Installing dev dependencies..."
+    },
+    {
+      "cmd": "npm run build",
+      "args": ["--watch"],
+      "output": "Watching file changes..."
+    }
+ ,
+  {
+    "cmd": "git status",
+    "args": [ "--short"],
+    "files": ["index.js", "package.json"]
+  }
+  ],
+  "lastUpdated": "2022-01-01T12:00:00.000Z",
+  "logLevel": "info"
+}

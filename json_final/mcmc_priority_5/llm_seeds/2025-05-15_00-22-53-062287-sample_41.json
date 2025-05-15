@@ -1,0 +1,48 @@
+{
+  "commands": [
+    {
+      "cmd": "clear",
+      "args": ["-a"],
+      "aliases": ["cls"]
+    },
+    {
+      "cmd": "history",
+      "args": [1, 50],
+      "flags": {
+        "-c": "clear",
+        "-d": "delete"
+      },
+      "aliases": ["hist"]
+    },
+    {
+      "cmd": "search",
+      "args": ["-s", "giphy"],
+      "flags": {
+        "-i": "image"
+      },
+      "aliases": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "My Project",
+      "description": "This is a test project",
+      "leader": "John Smith",
+      "members": ["Jane Doe", "Bob Brown"]
+    },
+    {
+      "name": "New Feature",
+      "description": "Add a new feature",
+      "leader": "Jane Doe",
+      "members": ["John Smith", "Bob Brown"]
+    },
+    {
+      "name": "Error Fix",
+      "description": "Fix a critical error",
+      "leader": "John Smith",
+      "members": ["Jane Doe", "Bob Brown"]
+    },
+    {
+      "name": "Security Upgrade",
+      "description": "Upgrade security",
+      "leader": "Bob

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "restart",
+      "args": ["-f", "--verbose"]
+    },
+    {
+      "cmd": "backup",
+      "args": ["-a", "--local"]
+    }
+ ,
+    {
+      "cmd": "update",
+      "args": ["-n", "--yes"]
+    }
+  ],
+  "config": {
+    "interval": 300,
+    "limit": 10
+  },
+  "status": "online"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "yum install httpd",
+      "args": ["-y"],
+      "completed": true,
+      "timestamp": "2024-07-26T13:30:00"
+    },
+    {
+      "cmd": "systemctl start httpd",
+      "args": ["-b"],
+      "completed": true,
+      "timestamp": "2024-07-26T13:30:30"
+    }
+ ,
+  {
+      "cmd": "firewall-cmd --zone=public --add-service=http --permanent",
+      "args": ["success"],
+      "completed": true,
+      "timestamp": "2024-07-26T13:31:00"
+  }
+  ],
+  "status": {
+    "code": 200,
+    "message": "success"
+  },
+  "summary": "server setup complete"
+}

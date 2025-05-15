@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "open",
+      "args": ["Chrome", "www.google.com"]
+    },
+    {
+      "cmd": "create",
+      "args": ["file.txt", "Hello World!"]
+    }
+ ,
+  {
+    "cmd": "read",
+    "args": ["file.txt"]
+  }
+  ],
+  "status": true,
+  "timestamp": 173446587
+}

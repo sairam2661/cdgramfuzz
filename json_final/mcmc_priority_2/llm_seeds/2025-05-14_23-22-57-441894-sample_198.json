@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+    "cmd": "python",
+    "args": [
+      "--version",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "output": [
+      "pip 22.2.2"
+    ]
+  },
+  {
+    "cmd": "bash",
+    "args": [
+      "-c",
+      "echo 'Hello World'"
+    ],
+    "output": [
+      "Hello World"
+    ]
+  } 
+ , 
+  {
+    "cmd": "node",
+    "args": [
+      "process",
+      ".env"
+    ],
+    "output": ["DB_PASSWORD=mypassword DB_USERNAME=john"]
+  }
+  ]
+     
+    ,"environments": {
+    "dev": "dev server",
+    "prod": "production server",
+    "testing": "testing server"
+      }}

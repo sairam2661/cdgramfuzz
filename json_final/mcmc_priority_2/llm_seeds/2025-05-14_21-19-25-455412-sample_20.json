@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir -p /tmp/example",
+      "args": ["-p", "/tmp/example"],
+      "environment": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin"
+      },
+      "output": "/tmp/example/output.log"
+    },
+    {
+      "cmd": "touch /tmp/example/file.txt",
+      "args": ["/tmp/example/file.txt"],
+      "environment": {
+        "HOME": "/home/user"
+      },
+      "output": "/tmp/example/output.log"
+    }
+ ,
+    {
+      "cmd": "rm -rf /tmp/example",
+      "args": ["-rf", "/tmp/example"]
+    }
+  ],
+  "error_handling": {
+    "max_redirects": 2,
+    "max_concurrency": 5
+  },
+  "resources": {
+    "cpu": 2,
+    "memory": 8192
+  },
+  "execution_time": 300
+}

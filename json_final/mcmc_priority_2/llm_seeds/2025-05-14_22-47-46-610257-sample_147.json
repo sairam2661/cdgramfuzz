@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["user", "John Smith"],
+      "output": "user created"
+    },
+    {
+      "cmd": "delete",
+      "args": ["file.txt"],
+      "output": "file deleted"
+    }
+ ,
+  {
+      "cmd": "backup",
+      "args": ["data.zip"]
+  }
+  ],
+  "result": {
+    "status": "success",
+    "error": null
+  },
+  "config": {
+    "mode": "debug",
+    "timeout": 300
+  },
+  "created": "2024-07-26T00:00:00Z",
+  "updated": "2024-07-26T00:00:00Z"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    },
+    {
+      "cmd": "cd",
+      "args": ["/home/user"],
+      "result": "directory changed"
+    }
+ ,
+    {
+      "cmd": "mkdir",
+      "args": ["backup", "2024"],
+      "result": "directory created"
+    }
+  ],
+  "options": {
+    "verbose": true,
+    "parallel": 3
+  },
+  "system": {
+    "kernel": "Linux",
+    "release": "5.19.0"
+  },
+  "status": "successful"
+}

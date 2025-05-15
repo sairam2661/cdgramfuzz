@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all", "--verbose"],
+      "output": "added file1.txt"
+    },
+    {
+      "cmd": "node script.js",
+      "args": ["arg1", "arg2"],
+      "error": "error message"
+    }
+ ,
+    {
+      "cmd": "mv package-lock.json package-lock.json.bak",
+      "args": [""],
+      "output": "moved package-lock.json"
+    }],
+  "config": {
+    "theme": "dark",
+    "font_size": 14
+  },
+  "results": {
+    "success": true,
+    "total": 300,
+    "time_taken": 1234
+  },
+  "status": "complete"
+}

@@ -1,0 +1,46 @@
+{
+  "commands": [
+    {
+      "cmd": "git",
+      "args": ["pull", "origin", "main"],
+      "output": "Updated to latest commit"
+    },
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "Directory listing"
+    }
+ ,
+    {
+      "cmd": "python",
+      "args": ["/path/to/script.py"],
+      "output": "Script executed"
+    }
+  ],
+  "history": {
+    "last_run": "2023-09-01",
+    "run_count": 12
+  },
+  "version": {
+    "build": "v1.2.3",
+    "node": "0.12.4"
+  },
+  "settings": {
+    "theme": "dark",
+    "window_size": 1920
+  },
+  "files": [
+    {
+      "filename": "script.py",
+      "size": 1024
+    },
+    {
+      "filename": "config.json",
+      "size": 1024
+    },
+    {
+      "filename": "README.md",
+      "size": 1024
+    },
+    {
+      "filename": "requirements.txt",

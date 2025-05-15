@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "stdout": "output of ls -l"
+    },
+    {
+      "cmd": "echo",
+      "args": ["hello world"],
+      "stderr": "error message"
+    }
+ ,
+  {
+    "cmd": "find",
+      "args": ["-name", "*.txt"],
+      "inputs": ["file1.txt", "file2.txt"],
+      "outputs": ["file1.txt"]
+  }],
+  "dependencies": {
+    "linux": ["bash", "grep"],
+    "windows": ["cmd", "findstr"]
+  },
+  "credits": "author: John"
+}

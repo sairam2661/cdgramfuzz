@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-d"]
+    },
+    {
+      "cmd": "curl https://example.com",
+      "args": ["-v", "-s"]
+    }
+ ,
+    {
+      "cmd": "find /path/to/files -name '*.txt'",
+      "args": ["-type", "f"]
+    }
+  ],
+  "results": {
+    "timestamp": "1643723400",
+    "status": "success"
+  },
+  "credentials": {
+    "username": "admin",
+    "password": "hashed_password123!"
+  },
+  "location": "server-101"
+}

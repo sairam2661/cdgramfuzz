@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["-f"],
+      "result": true
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--save"],
+      "result": false,
+      "error": "EACCES: permission denied"
+    }
+ ,
+    {
+      "cmd": "npm run build",
+      "args": [ "--env=dev"],
+      "result": true
+    }
+  ],
+  "machine": {
+    "ip": "192.168.1.100",
+    "os": "Ubuntu 20.04",
+    "cpus": 4,
+    "memory": 16
+  },
+  "datetime": "2024-07-26T14:30:00.000Z"
+}

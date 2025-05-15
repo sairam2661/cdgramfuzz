@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "python main.py",
+      "args": ["--debug"],
+      "output": ["main output 1", "main output 2"]
+    },
+    {
+      "cmd": "bash script.sh",
+      "args": ["1", "2", "3"],
+      "error": "script error"
+    }
+ ,
+    {
+      "cmd": "node app.js",
+      "args": ["--quiet"],
+      "exit": 0
+    }
+  ]
+ ,
+  "logs": {
+    "level": "INFO",
+    "date": "2022-07-25"
+  },
+  "version": 1.2
+}

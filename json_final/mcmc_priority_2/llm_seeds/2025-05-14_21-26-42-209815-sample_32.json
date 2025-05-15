@@ -1,0 +1,30 @@
+{
+  "commands" : [
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "result": "success"
+    },
+    {
+      "cmd": "ping google.com",
+      "args": [ "-c", "4" ],
+      "result": "complete"
+    }
+ ,
+    {
+      "cmd": "find /",
+      "args": ["/home"],
+      "result": "matched"
+    }
+  ],
+  "machine": {
+    "os": "ubuntu 20.04",
+    "cpu": "Intel Core i5",
+    "ram": "16 GB"
+  },
+  "environment": {
+    "location": "cloud",
+    "connection": "online"
+  },
+  "version": "1.0"
+}

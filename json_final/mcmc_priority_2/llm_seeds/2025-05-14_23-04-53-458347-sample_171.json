@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "cd /",
+      "args": ["-v"]
+    },
+    {
+      "cmd": "run",
+      "args": ["--debug", "--test"]
+    },
+    {
+      "cmd": "git",
+      "args": ["clone", "https://github.com/myrepo"]
+    }
+  ],
+  "settings": {
+    "timezone": "+5:30",
+    "language": "en-US"
+  },
+  "results": {
+    "success": true,
+    "timestamp": "2022-12-25T12:30:00Z"
+  },
+  "dependencies": ["numpy", "pandas", "matplotlib"]
+}

@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {"cmd": "upgrade", "args": ["--force"], "env": {"PATH": "/bin"}},
+    {"cmd": "stop", "args": ["-a"], "env": {"HOME": "/root"}}
+ ,
+  {
+    "cmd": "start",
+    "args": ["--quiet"],
+    "env": {"PWD": "/usr/local/bin"},
+    "status": "running"
+  }
+  ],
+  "machines": {
+    "hostname": "linux-01",
+    "os": "Ubuntu",
+    "version": 20.04
+  },
+  "schedule": ["10:00", "14:00", "18:00"]
+}

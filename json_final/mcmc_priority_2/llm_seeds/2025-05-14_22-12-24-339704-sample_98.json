@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "cd documents",
+      "args": ["-r"],
+      "result": "success"
+    },
+    {
+      "cmd": "mkdir temp",
+      "args": ["-p"],
+      "result": "success"
+    },
+    {
+      "cmd": "rm temp",
+      "args": ["-rf"],
+      "result": "success"
+    }
+  ],
+  "status": "completed",
+  "logs": "debug"
+}

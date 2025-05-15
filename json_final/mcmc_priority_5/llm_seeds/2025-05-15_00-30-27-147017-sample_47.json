@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all", "--verbose"],
+      "output": true
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Initial commit"],
+      "output": false
+    },
+    {
+      "cmd": "git push",
+      "args": ["origin", "main"],
+      "output": true
+    }
+  ],
+  "env": {
+    "branch": "main",
+    "repo": "my-repo"
+  },
+  "lastupdated": "2022-07-25T14:30:00"
+}

@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "start-server",
+      "args": ["--debug", "--port", 8080]
+    },
+    {
+      "cmd": "run-tests",
+      "args": ["-v", "--parallel"]
+    }
+ ,
+  {
+    "cmd": "stop-server",
+    "args": ["-f"]
+  }],
+  "credentials": {
+    "username": "admin",
+    "password": "password123"
+  },
+  "environment": {
+    "type": "dev"
+  },
+  "timestamp": "2021-12-31 23:59:59"
+}

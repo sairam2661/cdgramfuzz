@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "cd /path/to/directory",
+      "args": ["-r", "--verbose"],
+      "returncode": 0
+    },
+    {
+      "cmd": "pip install package",
+      "args": ["--upgrade", "--force-reinstall"],
+      "error": "Package not found"
+    }
+ ,
+    {
+      "cmd": "git add.",
+      "args": ["--all", "--ignore-errors"],
+      "output": "git-add:... files added,... files ignored."
+    }
+  ],
+  "logs": {
+    "warnings": ["invalid input", "inconsistent data"],
+    "errors": ["connection timeout", "no response"]
+  },
+  "parameters": {
+    "learning_rate": 0.01,
+    "batch_size": 1024
+  },
+  "status": "running"
+}

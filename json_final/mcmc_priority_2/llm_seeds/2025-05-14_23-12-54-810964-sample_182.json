@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A", "--ignore-bloom-filter"]
+    },
+    {
+      "cmd": "git status",
+      "args": ["--short"]
+    }
+ ,
+    {
+      "cmd": "ls",
+      "args": ["-l", "--color=always"]
+    }
+  ]
+,
+  "project": {
+    "name": "Sample Project",
+    "description": "A sample project for demonstration purposes"
+  },
+  "status": {
+    "updated": "2022-07-25T12:30:00Z",
+    "source": "local"
+  },
+  "tags": ["python", "bash", "development"]
+}

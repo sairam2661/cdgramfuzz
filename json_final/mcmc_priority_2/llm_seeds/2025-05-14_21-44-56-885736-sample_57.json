@@ -1,0 +1,20 @@
+{
+  "commands": [
+    {
+      "cmd": "init",
+      "args": ["--verbose", "--dry-run"]
+    },
+    {
+      "cmd": "deploy",
+      "args": ["--cluster", "local"],
+      "flags": ["--keep", "--verbose"]
+    }
+ ,
+  {
+    "cmd": "backup",
+    "args": ["--compress", "--encrypt"],
+    "target": "aws://mybucket"
+  }
+  ],
+  "status": "failed"
+}

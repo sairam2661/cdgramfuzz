@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "install dependencies",
+      "args": ["-y"],
+      "output": "dependencies installed"
+    },
+    {
+      "cmd": "run tests",
+      "args": ["-v"],
+      "output": "tests passed"
+    }
+ ,
+    {
+      "cmd": "backup data",
+      "args": ["--verbose", "--ignore-empty"],
+      "output": "data backed up"
+    }
+  ],
+  "server": {
+    "host": "example.org",
+    "port": 443,
+    "certs": ["ssl.crt", "ssl.key"]
+  },
+  "stats": {
+    "users": 100,
+    "status": "online"
+  },
+  "error": false
+}

@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["-g", "package-name"],
+      "output": "Installation complete"
+    },
+    {
+      "cmd": "git status",
+      "args": ["--long"],
+      "error": "Unauthorized"
+    }
+ ,
+    {
+      "cmd": "pip list",
+      "args": ["--local"],
+      "error": "Permission denied"
+    }
+  ],
+  "logs": {
+    "debug": "Session started",
+    "info": "Command executed"
+  },
+  "permissions": {
+    "owner": true,
+    "read_only": false
+  },
+  "owner": "admin"
+}

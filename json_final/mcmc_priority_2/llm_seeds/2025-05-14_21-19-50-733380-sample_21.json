@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["arg1", "arg2"]
+    },
+    {
+      "cmd": "stop",
+      "args": ["--status"]
+    }
+ ,
+    {
+      "cmd": "update",
+      "args": [1, "version-2"]
+    }
+  ],
+  "settings": {
+    "timeout": 300,
+    "verbose": false
+  },
+  "version": "v1.2"
+}

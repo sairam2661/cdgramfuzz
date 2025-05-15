@@ -1,0 +1,42 @@
+{
+  "commands": [
+    {
+      "cmd": "apt update",
+      "args": ["-y"]
+    },
+    {
+      "cmd": "apt-get install",
+      "args": ["ssh", "zip"]
+    }
+ ,
+    {
+      "cmd": "ansible-galaxy collection install",
+      "args": ["ansible.netcommon"]
+    }
+  ],
+  "credentials": {
+    "login": "joe_doe",
+    "password": "<hidden>",
+    "ssh_key": "my_private_key"
+  },
+  "outputs": {
+    "errors": ["error1", "error2"],
+    "result": {
+      "status": "success"
+    },
+    "stdout": {
+      "data": "Test successful"
+    },
+    "stderr": {
+      "data": "Command executed"
+    },
+    "success": true
+  },
+  "system_info": {
+    "os": "Ubuntu20.04",
+    "version": "5.10.0-17-generic",
+    "cpu_count": 8,
+    "ram_bytes": 17179869184,
+    "time": "2022-01-01T12:30:00-0500"
+  },
+  "test

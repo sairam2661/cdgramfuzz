@@ -1,0 +1,13 @@
+{
+  "commands": [
+    {"cmd": "apt-get install", "args": ["curl", "nano"]},
+    {"cmd": "rm -rf", "args": ["var/log"]}
+ ,
+    {"cmd": "grep", "args":["password", "/etc/passwd"]}
+  ],
+  "credentials": {
+    "username": "root",
+    "password": "supersecret"
+  },
+  "systems": ["server1", "server2", "server3"]
+}

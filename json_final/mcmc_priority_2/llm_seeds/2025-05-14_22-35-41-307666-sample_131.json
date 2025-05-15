@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "create-db",
+      "args": ["mydb", "-u", "root"]
+    },
+    {
+      "cmd": "use-db",
+      "args": ["mydb"]
+    },
+    {
+      "cmd": "insert-data",
+      "args": ["users", "John,25,Doe"]
+    }
+  ],
+  "parameters": {
+    "host": "localhost",
+    "port": 5432,
+    "timeout": 60
+  },
+  "status": "success"
+}

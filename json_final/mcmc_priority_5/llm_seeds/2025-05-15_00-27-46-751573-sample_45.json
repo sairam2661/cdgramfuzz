@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "init",
+      "args": ["--force"]
+    },
+    {
+      "cmd": "build",
+      "args": ["--debug"]
+    }
+ ,
+  {
+    "cmd": "test",
+    "args": ["--skip-coverage"],
+    "environment": {
+      "VARIABLE": "value"
+    },
+    "timeout": 300
+  }],
+  "variables": {
+    "TEST": true,
+    "RUN": "multiple"
+  },
+  "project": {
+    "name": "example-project",
+    "description": "A short description"
+  },
+  "version": "1.2.3a"
+}

@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "python",
+      "args": ["script.py", "--config", "local"]
+    },
+    {
+      "cmd": "git",
+      "args": ["pull", "origin", "main"]
+    }
+ ,
+    {
+      "cmd": "npm",
+      "args": ["install"]
+    }
+  ],
+  "environments": ["dev", "prod", "staging"],
+  "parameters": {
+    "timeout": 3600,
+    "cpu": 4
+  },
+  "version": "1.0"
+}

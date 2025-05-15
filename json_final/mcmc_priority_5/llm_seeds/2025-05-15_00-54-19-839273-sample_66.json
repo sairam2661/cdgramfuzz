@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {"cmd": "build", "args": ["-f", "-t"]},
+    {"cmd": "run", "args": ["-p", "-d"]}
+ ,
+  {
+    "cmd": "deploy",
+    "args": ["-e", "-u"],
+    "options": {
+      "timeout": 60,
+      "maxRetries": 3
+    },
+    "files": ["script.py", "requirements.txt"]
+  }
+] 
+
+,
+ "config": {
+   "base-path": "/home/user",
+   "timeout-in-seconds": 300
+ }}

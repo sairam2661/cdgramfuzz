@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": [-2, -1],
+      "status": "pending"
+    },
+    {
+      "cmd": "node run.ts",
+      "args": ["--test"],
+      "status": "completed"
+    }
+ ,
+  {
+    "cmd": "brew install python",
+    "args": [ "--HEAD"],
+    "error": "timeout"
+  }
+  ],
+  "servers": {
+    "primary": "machine-123",
+    "secondary": "machine-999"
+  },
+  "runtime": {
+    "start": "09:00:00",
+    "end": "17:00:00",
+    "timezone": "America/New_York"
+  },
+  "dependencies": {
+    "name": "lib123",
+    "owner": "ownerX"
+  },
+  "variables": {
+    "x": "10",
+    "y": "20"
+  },
+  "environment": "development"
+}

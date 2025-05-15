@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "result": {
+        "stdout": [
+          {"status": 0, "message": "success"},
+          {"status": 0, "message": "success"},
+          {"status": 0, "message": "success"},
+          {"status": 1, "message": "permission denied"}],
+          "stderr": []
+      },
+      "timestamp": "2022-01-01 12:00:00"
+    }
+ ,
+    {
+      "cmd": "pip install --upgrade tensorflow",
+      "args": ["--force-reinstall"],
+      "result": {
+        "stdout": [
+          {"status": 0, "message": "Success"},
+          {"status": 0, "message": "Success"},
+          {"status": 0, "message": "Success"}],
+          "stderr": []
+      },
+      "timestamp": "2022-01-02 13:00:00"
+    },
+    {
+      "cmd": "npm audit fix",
+      "args": ["--production"],
+      "result": {
+        "stdout": [
+          {"status": 0

@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "--recursive"],
+      "status": true
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["--mode", "755", "/path/to/dir"]
+    }
+ ,
+    {
+      "cmd": "rm",
+      "args": ["-f"],
+      "kwargs": {"recursive": true},
+      "caution": true
+    }
+  ],
+  "resources": {
+    "cpu": 1.5,
+    "memory": "2G",
+    "runtime": "container"
+  },
+  "results": {
+    "output": "stdout",
+    "error": "stderr"
+  },
+  "author": {
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "datetime": "2025-01-01 12:00:00"
+}

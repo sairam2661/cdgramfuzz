@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "sudo apt-get update",
+      "args": ["--fix-missing"],
+      "output": "done"
+    },
+    {
+      "cmd": "python script.py",
+      "args": ["--dev"],
+      "output": "success"
+    }
+ ,
+    {
+      "cmd": "git push origin main",
+      "args": ["--set-upstream"],
+      "output": "merged"
+     }
+],
+  "result": "success"
+}

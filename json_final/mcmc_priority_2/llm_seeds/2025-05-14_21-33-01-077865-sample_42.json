@@ -1,0 +1,18 @@
+{
+  "commands": [
+    {"cmd": "git pull", "args": ["--verbose"]},
+    {"cmd": "pip install", "args": ["requests"]}
+ ,
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "/home/user/Downloads"],
+      "output": "/home/user/Downloads"
+    }
+  ],
+  "logs": ["2022-01-01: initialized environment"],
+  "configuration": {
+    "environment": "development",
+    "timezone": "UTC+8"
+  },
+  "status": "active"
+}

@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "run", 
+      "args": ["python", "main.py"],
+      "output": "result.log"
+    },
+    {
+      "cmd": "test",
+      "args": ["java", "test/Main.java"],
+      "error": null
+    }
+ ,
+  {
+  "cmd": "build",
+  "args": ["mvn", "clean", "install"],
+  "status": "success"
+  }],
+  "projects": {
+    "main": "Main.java",
+    "tests": "Test.java"
+  },
+  "results": [
+    {
+      "test": "unit",
+      "pass": 10,
+      "fail": 1
+    },
+    {
+      "test": "integration",
+      "pass": 50,
+      "fail": 2
+    }]
+}

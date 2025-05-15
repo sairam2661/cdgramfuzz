@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["localhost", "-l", "admin"],
+      "output": "Connected to localhost"
+    },
+    {
+      "cmd": "git",
+      "args": ["clone", "git@github.com:user/repo.git"],
+      "output": "Cloning into'repo'"
+    }
+ ,
+    {
+      "cmd": "docker",
+      "args": ["run", "-it", "image:latest"],
+      "output": "Running image"
+    }
+  ],
+  "status": "completed",
+  "timestamp": "2023-02-15T14:30:00Z"
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "/start",
+      "args": ["--quiet"]
+    },
+    {
+      "cmd": "git",
+      "args": ["--version"]
+    }
+ ,
+    {
+      "cmd": "/list",
+      "args": ["--hidden"]
+    }
+  ],
+  "configuration": {
+    "color_scheme": "monokai",
+    "font_size": 12
+  },
+  "plugins": ["spell-checker", "code-snippets"]
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "completed": false
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--force"],
+      "logs": ["error 1", "error 2"]
+    }
+ ,
+  {
+      "cmd": "make build",
+      "args": [ "--debug"],
+      "time_taken": 120
+  }
+  ],
+  "server": {
+    "ip": "192.168.1.100",
+    "port": 80
+  },
+  "log_level": "INFO"
+}

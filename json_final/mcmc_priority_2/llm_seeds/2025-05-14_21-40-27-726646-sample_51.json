@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "output": true
+    },
+    {
+      "cmd": "git commit -m",
+      "args": ["initial commit"],
+      "output": false
+    }
+ ,
+      {
+      "cmd": "ssh-keygen",
+      "args": ["-t rsa", "-b 4096"],
+      "output": true
+    }
+  ],
+  "results": [
+    "files added successfully",
+    "commit message added successfully"
+  ],
+  "errors": ["invalid input"]
+}

@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin main",
+      "args": ["-q", "--no-edit"],
+      "output": true
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--verbose"],
+      "environment": {
+        "NODE_ENV": "development"
+      },
+      "timeout": 30000
+    }
+ ,
+    {
+      "cmd": "systemctl restart server",
+      "args": ["--no-pager"],
+      "output": false,
+      "error": "handle system errors"
+    }
+  ],
+  "last_run": "2024-07-20T14:30:00.000Z",
+  "status": "success"
+}

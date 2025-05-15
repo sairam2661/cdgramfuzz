@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--rebase", "--interactive"]
+    },
+    {
+      "cmd": "npm start",
+      "args": ["--debug"]
+    }
+ ,
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    }
+  ],
+  "environment": {
+    "server": "localhost",
+    "port": 8080
+  },
+  "log": {
+    "level": "info",
+    "timestamp": "2022-07-26T14:30:00Z"
+  },
+  "status": "running"
+}

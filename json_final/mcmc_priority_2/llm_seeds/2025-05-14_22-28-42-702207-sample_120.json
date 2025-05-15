@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "start", 
+      "args": ["-v"]
+    },
+    {
+      "cmd": "stop", 
+      "args": ["--force"]
+    }
+ ,
+    {
+      "cmd": "list", 
+      "args": ["-h"]
+    }
+  ],
+  "result": "succeeded",
+  "timestamp": "2023-12-31"
+}

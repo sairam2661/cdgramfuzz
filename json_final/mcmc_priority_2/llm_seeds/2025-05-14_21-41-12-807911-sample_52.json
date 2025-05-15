@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "make install",
+      "args": ["--verbose"],
+      "output": "Installation successful"
+    },
+    {
+      "cmd": "run script",
+      "args": ["script.sh"],
+      "error": "Script not found"
+    }
+ ,
+    {
+      "cmd": "deploy app",
+      "args": ["prod"],
+      "status": "deployed"
+    }
+  ],
+  "environment": {
+    "OS": "Ubuntu",
+    "version": "22.04"
+  },
+  "config": {
+    "timeout": 300,
+    "maxattempts": 5
+  },
+  "result": "success"
+}

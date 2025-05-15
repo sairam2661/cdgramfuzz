@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["www.google.com"]
+    },
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"]
+    }
+ ,
+    {
+      "cmd": "run_script",
+      "args": ["/home/user/script.sh"]
+    }
+  ],
+  "settings": {
+    "timezone": "UTC",
+    "prompt": "> "
+  },
+  "logs": {
+    "info": ["connected"],
+    "error": ["disconnected"]
+  },
+  "version": 1.2
+}

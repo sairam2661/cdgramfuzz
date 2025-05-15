@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "cd /",
+      "args": ["--local", "-t 10"],
+      "result": false
+    },
+    {
+      "cmd": "run benchmark",
+      "args": ["--fast", "--long"],
+      "result": true
+    }
+ ,
+  {
+    "cmd": "save checkpoint",
+    "args": ["/tmp/model", "10000"],
+    "result": null
+  }
+  ],
+  "logs": {
+    "warnings": ["out of memory", "invalid result"],
+    "errors": []
+  },
+  "info": "successfully cloned repository"
+}

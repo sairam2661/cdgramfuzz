@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "sudo apt-get update",
+      "args": ["--fix-missing"],
+      "output": "apt: updating database with server information.  "
+    },
+    {
+      "cmd": "apt-cache policy python3",
+      "args": ["-l"],
+      "output": "python3: 3.10.4-0ubuntu0~20.04.3"
+    }
+ ,
+    {
+      "cmd": "pip3 install pandas",
+      "args": ["--upgrade"],
+      "output": "Collecting pandas"
+    }
+  ],
+  "settings": {
+    "promptTimeout": 300,
+    "connection_type": "ssh"
+  },
+  "result": {
+    "status": "success",
+    "error": null
+  },
+  "session_id": "ABC123"
+}

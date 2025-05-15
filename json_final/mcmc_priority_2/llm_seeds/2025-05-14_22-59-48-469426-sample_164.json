@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "description": "list files"
+    },
+    {
+      "cmd": "cp",
+      "args": ["-r", "-p"],
+      "description": "copy directory"
+    }
+ ,
+  {
+     "cmd": "mkdir",
+     "args": ["-m", "755"],
+     "description": "make directory"
+  }],
+  "version": "v1.2",
+  "author": "John Smith",
+  "created": "2024-07-26"
+}

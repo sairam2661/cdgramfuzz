@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-i"],
+      "options": ["-q", "-v"]
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Initial commit"]
+    }
+ ,
+  {
+    "cmd": "npm install", 
+    "args": ["--legacy-peer-deps"]
+  }
+],
+"user": {
+  "id": 12345,
+  "name": "John Smith",
+  "email": "john.smith@example.com"
+},
+"output": "Build successful"
+}

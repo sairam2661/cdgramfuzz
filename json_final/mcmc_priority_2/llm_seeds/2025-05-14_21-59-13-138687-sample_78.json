@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--cached"],
+      "output": "No changes added."
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Initial commit"],
+      "output": "Commit message: Initial commit"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["lodash"],
+      "error": "Error: not found"
+    }
+  ],
+  "system": {
+    "platform": "Windows",
+    "arch": "x64"
+  },
+  "logs": [
+    "System initialized",
+    "Dependencies installed"
+  ]
+}

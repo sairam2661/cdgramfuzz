@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": [ "-l", "user", "localhost", "/remote/command" ],
+      "output": "Connection successful"
+    },
+    {
+      "cmd": "git",
+      "args": [ "-C", "/repo", "pull" ],
+      "output": "Merge conflict"
+    }
+ ,
+  {
+    "cmd": "upgrade_kernel",
+    "args": [ "-y", "apt-get update" ],
+    "output": "kernel updated to 4.19.0"
+  }
+  ],
+  "last_login": "2020-03-12T10:40:27",
+  "user_agent": "Mozilla/5.0"
+}

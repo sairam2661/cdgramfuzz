@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"]
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Initial commit"]
+    }
+ ,
+    {
+      "cmd": "ssh",
+      "args": ["user@host", "/home/user/"]
+    }
+  ],
+  "version": 1.0,
+  "env": ["dev", "local"]
+}

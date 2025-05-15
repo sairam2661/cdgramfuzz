@@ -1,0 +1,76 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["index.html", "--template=custom"]
+    },
+    {
+      "cmd": "deploy",
+      "args": ["https://example.com"]
+    }
+ ,
+   {
+      "cmd": "backup",
+      "args": ["--path=history"]
+    }
+  ]
+,
+"logs": [
+    {
+      "type": "warning",
+      "message": "database connection timed out"
+    },
+    {
+      "type": "info",
+      "message": "backup completed successfully"
+    },
+    {
+      "type": "error",
+      "message": "network request failed"
+    },
+    {
+      "type": "debug",
+      "message": "processing database queries"
+    },
+    {
+      "type": "debug",
+      "message": "handling network connections"
+    },
+    {
+      "type": "log",
+      "message": "system loaded successfully"
+    },
+    {
+      "type": "error",
+      "message": "invalid credentials"
+    },
+    {
+      "type": "warning",
+      "message": "session timeout exceeded"
+    },
+    {
+      "type": "info",
+      "message": "process completed"
+    },
+    {
+      "type": "log",
+      "message": "process started"
+    },
+    {
+      "type": "debug",
+      "message": "waiting for user input"
+    },
+    {
+      "type": "error",
+      "message": "process failed"
+    },
+    {
+      "type": "info",
+      "message": "system shut down normally"
+    },
+    {
+      "type": "warning",
+      "message": "memory usage exceeded warning threshold"
+    },
+    {
+      "type": "debug",

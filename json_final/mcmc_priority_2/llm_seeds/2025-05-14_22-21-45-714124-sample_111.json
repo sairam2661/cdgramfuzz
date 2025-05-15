@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--verbose"],
+      "environment": ["CI", "PROD"]
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--legacy-peer-deps"]
+    }
+ ,
+  {
+    "cmd": "curl",
+    "args": ["--silent", "--output index.html"],
+    "environment": ["QA", "TEST"],
+    "dependencies": ["http2"]
+  }
+  ],
+  "config": {
+    "server": "192.168.1.100",
+    "port": 80
+  },
+  "targets": [
+    {
+      "type": "Linux",
+      "version": "Ubuntu 20.04"
+    },
+    {
+      "type": "MacOS",
+      "version": "Mojave"
+    },
+    {
+      "type": "Windows",
+      "version": "10 Home"
+    }]
+}

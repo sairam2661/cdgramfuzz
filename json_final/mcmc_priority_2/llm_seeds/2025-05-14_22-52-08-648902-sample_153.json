@@ -1,0 +1,31 @@
+{
+  "commands": [
+    {
+      "cmd": "create database",
+      "args": ["mydb"],
+      "options": ["-v"]
+    },
+    {
+      "cmd": "insert data",
+      "args": ["table1", "column1"],
+      "options": ["--debug"]
+    }
+ ,
+  {
+    "cmd": "backup data",
+    "args": ["backupfile.sql", "datafolder"],
+    "options": ["-c", "--delete"]
+  }
+  ],
+  "settings": {
+    "theme": "dark",
+    "fontsize": "12",
+    "loglevel": "info"
+  },
+  "server": {
+    "port": 8080,
+    "bind": "127.0.0.1",
+    "maxconns": 100
+  },
+  "version": "1.2.3"
+}

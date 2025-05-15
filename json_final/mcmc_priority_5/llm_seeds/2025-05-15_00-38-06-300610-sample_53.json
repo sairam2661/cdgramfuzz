@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "init project",
+      "args": ["--verbose"],
+      "results": ["success"],
+      "stderr": null
+    },
+    {
+      "cmd": "run tests",
+      "args": ["--single"],
+      "results": ["pass", "fail"],
+      "stderr": "unknown error"
+    }
+ ,
+  {
+    "cmd": "deploy server",
+    "args": ["--production"],
+    "results": ["success"],
+    "stderr": null
+  }
+  ],
+  "version": 1.0,
+  "timestamp": "2023-11-11T14:30:00Z"
+}

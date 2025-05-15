@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["/usr/bin/executable", "--option1", "--option2"]
+    },
+    {
+      "cmd": "stop",
+      "args": ["/usr/bin/program", "-a", "val1", "-b", "val2"]
+    }
+ ,
+  {
+    "cmd": "restart",
+    "args": ["/usr/bin/service", "-c", "config.yaml"]
+  }
+  ],
+  "network": {
+    "ip": "192.168.1.100",
+    "mask": "255.255.255.0",
+    "gateway": "192.168.1.1"
+  },
+  "runtime": {
+    "pid": 1234,
+    "cpu_percent": 25.5,
+    "mem_percent": 10.2
+  },
+  "status": {
+    "error": false,
+    "code": 200,
+    "message": "Service started successfully"
+  },
+  "timestamp": "2024-07-25T12:00:00Z"
+}

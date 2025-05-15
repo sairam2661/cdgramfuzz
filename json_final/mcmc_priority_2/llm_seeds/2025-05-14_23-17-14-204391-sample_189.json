@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "python",
+      "args": ["main.py", "--verbose"]
+    },
+    {
+      "cmd": "npm",
+      "args": ["start"]
+    }
+ ,
+    {
+      "cmd": "java",
+      "args": ["-jar", "game.jar"]
+    }
+  ],
+  "schedule": [
+    "2024-07-27 10:00:00",
+    "2024-07-27 12:00:00",
+    "2024-07-27 15:00:00"
+  ],
+  "files": {
+    "config": "config.json",
+    "data": "data.db"
+  },
+  "report": "report.md"
+}

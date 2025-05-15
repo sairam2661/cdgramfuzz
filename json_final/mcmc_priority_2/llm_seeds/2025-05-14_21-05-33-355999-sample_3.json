@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-R"],
+      "output": "ls: cannot access '*.txt': No such file or directory"
+    },
+    {
+      "cmd": "echo Hello World!",
+      "args": [">", "hello.txt"]
+    }
+ ,
+  {
+    "cmd": "pip install requests"
+ ,  "args": ["--upgrade", "--user"],
+  "output": true
+ }
+  ],
+  "last_session": "mon",
+  "completed_attempts": 5
+}

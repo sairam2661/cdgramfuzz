@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["process1", "process2"],
+      "env": {
+        "VAR1": "value1",
+        "VAR2": "value2"
+      },
+      "logFile": "log1.log"
+    },
+    {
+      "cmd": "stop",
+      "args": ["process3"],
+      "retcode": 0
+    },
+    {
+      "cmd": "restart",
+      "args": ["service1", "service2"],
+      "timeout": 300,
+      "retries": 2
+    }
+  ],
+  "config": {
+    "host": "example.com",
+    "port": 80,
+    "timeout": 600
+  },
+  "status": "running"
+}

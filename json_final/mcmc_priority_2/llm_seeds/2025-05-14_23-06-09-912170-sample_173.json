@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "location": "/home/user/repo"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"],
+      "location": "/home/user/project"
+    }
+ ,
+  {
+    "cmd": "curl",
+    "args": ["https://api.example.com/data"],
+    "output": "/tmp/data.json"
+  }
+  ],
+  "credentials": {
+    "username": "johnDoe",
+    "password": "mySecretPass"
+  },
+  "status": "success"
+}

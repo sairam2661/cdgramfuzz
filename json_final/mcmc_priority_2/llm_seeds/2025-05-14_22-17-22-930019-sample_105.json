@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "cd ~",
+      "args": ["-v"],
+      "output": "User home directory"
+    },
+    {
+      "cmd": "ls -l",
+      "args": ["--human-readable"],
+      "output": "Directory listing"
+    }
+ ,
+    {
+      "cmd": "git status",
+      "args": ["-s"],
+      "output": "Git repository status"
+    }
+  ],
+  "permissions": {
+    "owner": "admin",
+    "group": "staff"
+  },
+  "network": {
+    "ip": "192.168.1.100",
+    "subnet": "24"
+  },
+  "timestamp": "2024-07-26T14:30:00Z"
+}

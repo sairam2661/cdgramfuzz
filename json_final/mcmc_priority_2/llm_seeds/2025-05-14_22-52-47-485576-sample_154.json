@@ -1,0 +1,41 @@
+{
+  "commands": [
+    {
+      "cmd": "python setup.py",
+      "args": ["--build"],
+      "stdout": "Building setup..."
+    },
+    {
+      "cmd": "pip install --upgrade pip",
+      "args": ["--user"],
+      "stderr": "/usr/bin/python: -c bad cmd"
+    }
+ ,
+  {
+    "cmd": "git status",
+    "args": ["--porcelain"],
+    "timestamp": 1663749909
+  }
+],
+"machine": {
+  "name": "Laptop",
+  "model": "XPS"
+},
+"logs": [
+    {
+      "source": "kernel",
+      "level": "info",
+      "message": "Kernel updated safely."
+    },
+    {
+      "source": "application",
+      "level": "warning",
+      "message": "Invalid input detected."
+    },
+    {
+      "source": "process",
+      "level": "error",
+      "message": "Process terminated due to timeout."
+    }]
+
+}

@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"],
+      "output": true
+    },
+    {
+      "cmd": "yarn start",
+      "args": ["--watch"],
+      "output": false
+    }
+ ,
+  {
+    "cmd": "git status",
+    "args": ["--porcelain"],
+    "output": true
+  }
+  ],
+  "variables": {
+    "environment": "dev",
+    "language": "javascript"
+  },
+  "results": {
+    "status": "success",
+    "message": "Operation completed successfully"
+  },
+  "timestamp": "2023-12-25T14:30:00"
+}

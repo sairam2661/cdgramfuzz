@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "cmd": "cd /",
+      "args": ["/usr"],
+      "completed": true
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["my_dir"],
+      "error": "file exist"
+    }
+ ,
+  {
+      "cmd": "ls -al",
+      "args": ["/home/"],
+      "results": ["file1.txt", "file2.txt"]
+  }
+  ],
+  "status": "running",
+  "metadata": {
+    "version": 2.1,
+    "running_time": "3:15:12"
+  },
+  "settings": {
+    "timeout_value": 3000,
+    "max_processes": 5
+  },
+  "host": {
+    "system": "linux",
+    "kernel": "4.15",
+    "architecture": "x86_64"
+  },
+  "output": [
+    "file1.txt",
+    "file2.txt"
+  ]
+}

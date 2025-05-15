@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "init system",
+      "args": ["--verbose", "--sync"],
+      "status": "success"
+    },
+    {
+      "cmd": "backup data",
+      "args": ["--incremental", "--archive"],
+      "status": "warning"
+    }
+ ,
+  {
+    "cmd": "deploy app",
+    "args": ["--live", "--update"],
+    "status": "error"
+  }
+  ],
+  "variables": {
+    "database": "mysql://user:password@host:port/dbname",
+    "timeout": 300
+  },
+  "timestamp": 1643723400
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "init",
+      "args": ["--force", "--verbose"],
+      "executed": true
+    },
+    {
+      "cmd": "build",
+      "args": ["--build-type", "Release"],
+      "executed": true
+    }
+ ,
+    {
+      "cmd": "clean",
+      "args": ["--all"],
+      "executed": false
+    }
+  ],
+  "dependencies": ["numpy", "pandas"],
+  "version": 1.2
+}

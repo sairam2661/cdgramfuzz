@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "start_server",
+      "args": ["http://localhost"],
+      "result": true
+    },
+    {
+      "cmd": "connect_database",
+      "args": ["mydb", "user123"],
+      "result": false
+    }
+ ,
+  {
+  "cmd": "run_algorithm",
+  "args": ["sort", "ascending"],
+  "result": true
+  }
+ ],
+ "errors": [
+   {
+     "error": "connection_timeout",
+     "message": "Waiting timed out"
+   },
+   {
+     "error": "authorization_denied",
+     "message": "Insufficient permissions to execute"
+   },
+   {
+     "error": "connection_lost",
+     "message": "Server connection was lost"
+   },
+  {
+  "error": "bad_argument",
+  "message": "Invalid argument type for sort"
+  }]
+}

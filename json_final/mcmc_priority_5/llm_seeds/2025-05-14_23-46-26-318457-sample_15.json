@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--ignore-missing-path",
+      "--ignore-valid",
+      "-p",
+      ".gitignore"],
+      "run": true,
+      "result": "success"
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "hotfix/1: Updated dependencies"],
+      "run": false,
+      "result": "pending"
+    }
+ ,
+    {
+      "cmd": "npm install pnp",
+      "args": ["--no-audit"],
+      "run": false,
+      "result": "pending"
+    }],
+    "errorLevel": 0
+}

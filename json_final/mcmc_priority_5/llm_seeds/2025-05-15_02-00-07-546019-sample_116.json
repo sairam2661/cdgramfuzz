@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["dir1", "dir2"]
+    },
+    {
+      "cmd": "git",
+      "args": ["pull", "origin", "main"]
+    }
+ ,
+    {
+      "cmd": "npm",
+      "args": ["install", "package1"]
+    }
+  ],
+  "results": [
+    true,
+    false,
+    null
+  ],
+  "logs": ["stdout", "stderr"]
+}

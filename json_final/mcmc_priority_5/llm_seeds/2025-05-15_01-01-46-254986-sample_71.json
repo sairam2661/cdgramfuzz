@@ -1,0 +1,18 @@
+{
+  "commands": [
+    {"cmd": "init", "args": ["-v", "--no-remote"]},
+    {"cmd": "clone", "args": ["--remote", "origin", "github.com/mojombo/git-notes"]},
+    {"cmd": "log", "args": ["--pretty=format:%ad %s", "-5", "--format=%an"]}
+  ],
+  "packages": [
+    {"name": "git", "version": "2.30.2"},
+    {"name": "bash", "version": "5.1.16"},
+    {"name": "zsh", "version": "5.9.1p1"},
+    {"name": "stow", "version": "2.4.0"},
+    {"name": "curl", "version": "7.74.0"},
+    {"name": "youtube-dl", "version": "2022.11.27"},
+    {"name": "jq", "version": "1.7"},
+    {"name": "tree", "version": "3.1.0"},
+    {"name": "bat", "version": "0.22.0"},
+    {"name": "tldr", "version": "5.25"},
+    {"name": "ne

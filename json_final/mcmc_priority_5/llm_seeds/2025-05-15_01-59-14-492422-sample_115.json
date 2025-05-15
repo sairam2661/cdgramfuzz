@@ -1,0 +1,17 @@
+{
+  "commands": [
+    {
+      "cmd": "cd /",
+      "args": ["-nointeractive"]
+    },
+    {
+      "cmd": "git status",
+      "args": ["--short"]
+    },
+    {
+      "cmd": "python",
+      "args": ["-v"]
+    }
+  ],
+  "user_input": "quit"
+}

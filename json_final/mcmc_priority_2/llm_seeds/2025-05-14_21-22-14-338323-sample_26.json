@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "npm",
+      "args": ["install", "express"],
+      "output": "/path/to/output.log"
+    },
+    {
+      "cmd": "git",
+      "args": ["pull", "--verbose"],
+      "output": "/path/to/git.log"
+    }
+ ,
+  {
+    "cmd": "mv",
+    "args": ["/path/to/src", "/path/to/dst"],
+    "output": "success"
+  }
+  ],
+  "status": "success"
+}

@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "docker",
+      "args": ["build", "-t", "my-image", "."]
+    },
+    {
+      "cmd": "kubectl",
+      "args": ["apply", "-f", "config.yaml"]
+    }
+ ,
+    {
+      "cmd": "git",
+      "args": ["push", "origin", "main"]
+    }
+  ],
+  "environments": ["dev", "prod", "stg"],
+  "status": "ready"
+}

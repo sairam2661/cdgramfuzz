@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--verbose"],
+      "output": "On branch master"
+    },
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "output": "total 64K"
+    }
+ ,
+    {
+      "cmd": "npm install",
+      "args": ["--production"],
+      "output": "added 1 package in 3.22s"
+    }
+  ],
+  "tools": {
+    "editor": "VSCode",
+    "browser": "Chrome"
+  },
+  "settings": {
+    "theme": "dark",
+    "font_size": 12
+  },
+  "logs": [
+    {
+      "level": "info",
+      "timestamp": "2024-06-25T14:30:00.000Z"
+    },
+    {
+      "level": "error",
+      "timestamp": "2024-06-25T14:31:00.000Z"
+    },
+    {
+      "level": "debug",
+      "timestamp": "2024-06-25T14:32:00.000Z"
+    },
+    {
+      "level": "info",
+      "timestamp": "2024-06-25T14:33:00.

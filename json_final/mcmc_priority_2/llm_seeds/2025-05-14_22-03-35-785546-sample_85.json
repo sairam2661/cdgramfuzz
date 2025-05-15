@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--all", "-t"],
+      "repo": "origin",
+      "status": "pending"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"]
+    }
+ ,
+    {
+      "cmd":"pip install",
+      "args":["-r","requirements.txt"],
+      "status":"completed"
+    }
+  ],
+  "parameters": {
+    "branch": "main",
+    "timeout": 300
+  },
+  "session": "abc456"
+}

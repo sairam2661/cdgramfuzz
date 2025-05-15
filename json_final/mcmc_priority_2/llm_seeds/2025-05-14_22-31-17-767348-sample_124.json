@@ -1,0 +1,12 @@
+{
+  "commands": [
+    {"cmd": "run", "args": ["init"] },
+    {"cmd": "run", "args": ["start"] },
+    {"cmd": "run", "args": ["stop"] }
+  ],
+  "data": {
+    "url": "http://api.example.com",
+    "version": 1.2
+  },
+  "status": true
+}

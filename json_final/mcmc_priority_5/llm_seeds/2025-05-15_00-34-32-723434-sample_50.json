@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["/system/boot"]
+    },
+    {
+      "cmd": "update",
+      "args": [
+        "/firmware",
+        "https://example.com/fw.img"
+      ]
+    }
+ ,
+    {
+      "cmd": "sync",
+      "args": [
+        "/storage",
+        "https://example.com/data"
+      ]
+    }
+  ],
+  "network": {
+    "ip": "192.168.1.100",
+    "gateway": "192.168.1.1"
+  },
+  "version": "1.0.0-alpha"
+}

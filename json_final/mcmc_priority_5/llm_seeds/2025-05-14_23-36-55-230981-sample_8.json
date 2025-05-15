@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "cmd": "git init",
+      "args": ["--quiet"],
+      "environment": {
+        "PATH": "/usr/bin"
+      },
+      "options": {
+        "stdout": "result.txt"
+      },
+      "type": "Shell",
+      "dependencies": ["bash"]
+    }
+ ,
+    {
+      "cmd": "npm install",
+      "args": ["--save"],
+      "environment": {
+        "USER": "devuser"
+      },
+      "options": {
+        "interactive": true
+      },
+      "type": "npm",
+      "dependencies": ["package.json"]
+    }
+ ,
+    {
+      "cmd": "bash script.sh",
+      "args": ["/path/to/script"],
+      "environment": {
+        "HOME": "/home/user"
+      },
+      "options": {
+        "pipe": true
+      },
+      "type": "Script",
+      "dependencies": ["script.sh"]
+    }
+  ],
+  "status": "success"
+}

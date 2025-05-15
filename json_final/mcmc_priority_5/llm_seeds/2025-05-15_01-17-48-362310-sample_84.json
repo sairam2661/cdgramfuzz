@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "note": "stage all files"
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "daily update"],
+      "user": "John Doe"
+    }
+ ,
+  {
+    "cmd": "npm install",
+    "args": ["express"],
+    "location": "/home/user/project"
+  }
+  ],
+  "settings": {
+    "editor": "Sublime Text",
+    "lang": "python"
+  },
+  "id": "abc456"
+}

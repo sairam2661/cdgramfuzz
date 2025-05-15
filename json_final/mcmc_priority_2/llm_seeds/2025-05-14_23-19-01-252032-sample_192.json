@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin/main", "--force"],
+      "success": true
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--force"],
+      "success": false
+    }
+ ,
+  {
+    "cmd": "ls -l",
+    "args": ["/home/user/documents"],
+    "output": ["file1.txt", "file2.txt"]
+  }
+  ],
+  "variables": {
+    "current_dir": "/home/user/documents/",
+    "total_files": 50
+  },
+  "results": {
+    "last_update": "2024-07-15",
+    "previous_run": "2024-07-10"
+  },
+  "environment": {
+    "os": "Ubuntu-20.04",
+    "version": 4.4
+  },
+  "logs": "command1 output"
+}

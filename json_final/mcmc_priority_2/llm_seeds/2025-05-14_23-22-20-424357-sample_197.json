@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--verbose"]
+    },
+    {
+      "cmd": "npm i",
+      "args": ["--force-production"]
+    }
+ ,
+    {
+      "cmd": "ssh-user@server",
+      "args": [
+        "copy",
+        "file.txt",
+        "/tmp/file.txt"
+      ]
+    }
+  ],
+  "outputs": ["console", "log"],
+  "status": "running"
+}

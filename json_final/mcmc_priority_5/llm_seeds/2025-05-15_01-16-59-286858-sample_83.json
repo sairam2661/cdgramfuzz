@@ -1,0 +1,10 @@
+{
+  "commands": [
+    {"cmd": "ls", "args": ["-l"]},
+    {"cmd": "mkdir", "args": ["temp"]}
+ ,
+    {"cmd": "rm", "args": ["-rf", "/tmp"]}
+  ],
+  "host": "localhost",
+  "port": 8080
+}

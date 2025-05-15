@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "cmd": "python app.py",
+      "args": ["--debug", "--verbose"],
+      "output": "Server started on port 8080"
+    },
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "output": "M  doc/README.md"
+    }
+ ,
+    {
+      "cmd": "npm install",
+      "args": ["--force"],
+      "output": "Installed dependencies successfully"
+    }
+  ],
+  "projects": [
+    {
+      "name": "My Project",
+      "members": ["John", "Jane"],
+      "progress": 50
+    },
+    {
+      "name": "Other Project",
+      "members": ["John"]
+    },
+    {
+      "name": "Team Project",
+      "members": ["Jane"]
+    },
+    {
+      "name": "New Project",
+      "members": ["John","Jane", "Jim"],
+      "description": "This is a description of the New Project"
+
+  }]
+}

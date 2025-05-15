@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["/usr/bin", "/bin", "/home"]
+    },
+    {
+      "cmd": "pwd",
+      "args": ["-p"]
+    }
+ ,
+    {
+      "cmd": "grep",
+      "args": ["search", "root"]
+    }
+  ],
+  "server": {
+    "ip": "192.168.1.100",
+    "port": 8080
+  },
+  "data": {
+    "key": "value",
+    "status": true
+  },
+  "logs": {
+    "admin": ["info", "warning", "error"],
+    "user": ["notice", "info"]
+  },
+  "env": {
+    "OS": "Linux",
+    "Version": "Ubuntu 20.04"
+  },
+  "time": {
+    "start": "2024-03-15",
+    "end": "2024-04-15"
+  },
+  "response": true
+}

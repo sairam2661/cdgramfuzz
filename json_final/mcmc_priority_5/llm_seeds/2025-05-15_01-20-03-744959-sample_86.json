@@ -1,0 +1,18 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--verbose"]
+    },
+    {
+      "cmd": "ssh user@host",
+      "args": ["-p 22"]
+    },
+    {
+      "cmd": "docker run",
+      "args": ["-d -p 8080:80"]
+    }
+  ]
+, "last_updated": "2024-07-20",
+  "git_repo": "https://github.com/repo.git"
+}

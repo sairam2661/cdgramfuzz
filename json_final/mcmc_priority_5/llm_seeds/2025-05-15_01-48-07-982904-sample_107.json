@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": [
+        "--verbose",
+        "--ignore-errors"
+      ],
+      "output": "Added 2nd snapshot"
+    },
+    {
+      "cmd": "git rm",
+      "args": [
+        "*.txt"
+      ],
+      "input": "File not found!"
+    },
+    {
+      "cmd": "find.",
+      "args": [
+        "-name",
+        "*.docx"
+      ],
+      "results": [
+        "path/to/your/file1.docx",
+        "path/to/your/file2.docx"
+      ]
+    }
+  ],
+  "version": "1.2.3",
+  "type": "script",
+  "modified": true
+}

@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["-o", "StrictHostKeyChecking=no", "user@machine"],
+      "outputs": ["connection successful"]
+    },
+    {
+      "cmd": "scp",
+      "args": ["file.txt", "user@machine:/remote/path"],
+      "outputs": ["file copied"]
+    }
+ ,
+    {
+      "cmd": "ls -l",
+      "args": ["local/dir"],
+      "outputs": ["file permissions"]
+    }
+  ],
+  "results": ["command run successfully"]
+}

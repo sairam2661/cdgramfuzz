@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "cmd": "update",
+      "args": ["-h"],
+      "options": {
+        "help": true
+      },
+      "stderr": ["Error: unknown option -h"]
+    },
+    {
+      "cmd": "backup",
+      "args": ["/path/to/data"],
+      "options": {
+        "compress": true,
+        "sync": false
+      },
+      "stdout": ["Backup completed successfully"]
+    }
+ ,
+  {
+      "cmd": "delete",
+      "args": ["--force"],
+      "options": {
+        "timeout": 10,
+        "verbose": true
+      },
+      "stderr": ["Error: Cannot delete file"]
+    }
+  ],
+  "status": {
+    "up_time": "12:30:01",
+    "memory": 2561
+  },
+  "configuration": {
+    "path": "/home/user",
+    "timeout": 300
+  },
+  "version": 1.2
+}

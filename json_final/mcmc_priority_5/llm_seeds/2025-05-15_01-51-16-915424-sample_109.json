@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "npm start",
+      "args": ["--dev"],
+      "environment": {
+        "NODE_ENV": "development"
+      },
+      "aliases": ["start dev"]
+    },
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "environment": {
+        "GIT_BRANCH": "main"
+      },
+      "aliases": ["pull main"]
+    }
+ ,
+  {
+    "cmd": "node index.js",
+    "args": ["--silent"],
+    "environment": {
+      "LOG_LEVEL": "error"
+    },
+    "aliases": ["run silent"]
+  }],
+  "history": ["2022-01-01", "2022-01-15"]
+}

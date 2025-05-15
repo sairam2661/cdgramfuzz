@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-u", "--all"],
+      "stdout": "On branch main"
+    },
+    {
+      "cmd": "git commit -m ':)",
+      "args": ["--file1", "--file2"],
+      "stderr": "error: pathspec"
+    }
+ ,
+  {
+    "cmd": "node --version",
+    "args": ["-v"],
+    "return_code": 1
+  }
+  ],
+  "servers": {
+    "web": "172.16.45.1",
+    "db": "172.16.45.2",
+    "smtp": "172.16.45.3"
+  },
+  "network": "local"
+}

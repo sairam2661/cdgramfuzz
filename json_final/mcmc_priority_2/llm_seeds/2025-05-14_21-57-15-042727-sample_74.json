@@ -1,0 +1,13 @@
+{
+  "commands": [
+    {"cmd": "git clone", "args": ["https://github.com/user/repo.git"]},
+    {"cmd": "pip install", "args": ["-r requirements.txt"]}
+ ,
+  {
+    "cmd": "python",
+    "args": ["main.py"]
+  }
+],
+"default_branch": "main",
+"repository_url": "https://github.com/user/repo.git" 
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"],
+      "output": "success"
+    },
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "output": "no changes"
+    }
+ ,
+  {
+    "cmd": "yarn start",
+    "args": [ "--watch"],
+    "output": "success"
+  }
+  ],
+  "projects": ["react", "angular", "vue"],
+  "toolkit": "webpack"
+}

@@ -1,0 +1,13 @@
+{
+  "commands": [
+    {"cmd": "start", "args": ["/usr/bin/app", "-x"]},
+    {"cmd": "stop", "args": ["--clean"]},
+    {"cmd": "update", "args": ["--version", 1]}
+  ],
+  "status": "online",
+  "log": [
+    "2024-07-26 12:05:05",
+    "error: failed to start service",
+    "warning: invalid argument"
+  ]
+}

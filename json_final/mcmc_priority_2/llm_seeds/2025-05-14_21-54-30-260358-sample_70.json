@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "cmd": "init",
+      "args": ["-y", "--force"]
+    },
+    {
+      "cmd": "build",
+      "args": ["-p", "--debug"]
+    }
+ ,
+    {
+      "cmd": "deploy",
+      "args": ["--host", "staging"]
+    }
+  ],
+  "packages": {
+    "app": {
+      "name": "my-app",
+      "version": "1.2.3"
+    },
+    "lib": {
+      "name": "my-lib",
+      "version": "0.1.2"
+    },
+    "dev": {
+      "name": "my-dev-lib",
+      "version": "0.0.1"
+    },
+    "scripts": {
+      "build": "npm run build",
+      "test": "npm run test"
+    },
+    "dependencies": ["module1", "module2"],
+    "devDependencies": ["dev-module"]
+  },
+  "scripts": ["start", "stop", "restart"] 
+}

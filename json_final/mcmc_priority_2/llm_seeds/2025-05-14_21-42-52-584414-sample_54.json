@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"],
+      "output": "Installing dependencies..."
+    },
+    {
+      "cmd": "yarn build",
+      "args": ["--watch"],
+      "output": "Building application..."
+    }
+ ,
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Update docs"],
+      "output": "Committing changes..."
+    }
+  ],
+  "project": {
+    "name": "my-project",
+    "description": "A sample web app"
+  },
+  "team": {
+    "lead": "John Smith",
+    "members": ["Samantha Johnson", "Michael Brown"]
+  },
+  "version": 1.2
+}

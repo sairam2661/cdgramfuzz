@@ -1,0 +1,20 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install express",
+      "args": ["-g"],
+      "result": "Command successful"
+    },
+    {
+      "cmd": "npm install mongoose",
+      "args": ["-g"],
+      "result": "Command successful"
+    }
+ ,
+  {"cmd": "npm init",
+  "args": ["-g"],
+  "result": "Command successful"}
+  ],
+  "status": "up to date",
+  "time": "1:01:11"
+}

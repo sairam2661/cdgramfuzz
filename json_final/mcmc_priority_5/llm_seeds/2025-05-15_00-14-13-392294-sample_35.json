@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A", "-u"],
+      "type": "commit"
+    },
+    {
+      "cmd": "git commit -m",
+      "args": ["fix #123"],
+      "type": "sync"
+    },
+    {
+      "cmd": "deploy",
+      "args": ["-t", "-u"],
+      "type": "sync"
+    }
+  ],
+  "environment": {
+    "node": "v16.14.2",
+    "os": "Darwin x64"
+  },
+  "stats": {
+    "cpu": 10.50,
+    "memory": 70.20
+  },
+  "tasks": ["build", "test", "deploy"]
+}

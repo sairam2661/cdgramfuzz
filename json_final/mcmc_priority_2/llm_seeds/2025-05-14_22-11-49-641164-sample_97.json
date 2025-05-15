@@ -1,0 +1,31 @@
+{
+  "commands": [
+    {
+      "cmd": "apt update",
+      "args": ["-y"],
+      "output": "Updated cache"
+    },
+    {
+      "cmd": "apt install",
+      "args": ["git", "-y"],
+      "output": "Installed git"
+    }
+,{
+    "cmd": "git config",
+    "args": ["user.name 'JohnDoe'"],
+    "output": "Configured user name"
+  }
+] 
+
+      ,
+  "machine": {
+            "type": "AWS EC2",
+            "id": "i-12345678",
+            "region":"us-east-1"
+            },
+    "date": {
+        "start": "2023-10-01",
+        "end": "2023-10-31"
+    },
+    "status":"success"
+}

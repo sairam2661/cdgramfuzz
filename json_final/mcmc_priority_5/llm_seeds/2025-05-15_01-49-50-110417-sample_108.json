@@ -1,0 +1,42 @@
+{
+  "commands": [
+    {
+      "cmd": "git init",
+      "args": ["--bare"]
+    },
+    {
+      "cmd": "git add.",
+      "args": ["--all"]
+    },
+    {
+      "cmd": "git commit -m",
+      "args": ["first commit"]
+    }
+  ],
+  "versions": {
+    "git": "2.38.1",
+    "node": "18.15.0"
+  },
+  "logs": {
+    "last_commit": "2022-12-31",
+    "files_changed": 5
+  },
+  "credentials": {
+    "owner": "john_doe",
+    "repo": "my_repo"
+  },
+  "environment": {
+    "os": "Linux",
+    "processor": "x86_64"
+  },
+  "settings": {
+    "encoding": "UTF-8",
+    "indentation": 4
+  },
+  "notifications": {
+    "email": "success@example.com",
+    "slack": "#general"
+  },
+  "files": {
+    "file1.txt": "This is the contents of file 1.",
+    "file2.txt": "This is the contents of file 2

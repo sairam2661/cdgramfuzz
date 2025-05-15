@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--global", "config", "user.name", "Your Name"],
+      "result": "true"
+    },
+    {
+      "cmd": "npm run build",
+      "args": ["-- production"],
+      "result": "success"
+    }
+ ,
+  {
+    "cmd": "rm -rf node_modules",
+    "args": ["-v"],
+    "result": "deleted"
+  }
+]
+ ,
+  "settings": {
+  "editor": "sublime",
+  "indentation": 4,
+  "timeout": 5000
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--verbose"],
+      "description": "Stage all changes"
+    },
+    {
+      "cmd": "git commit -m",
+      "args": [""],
+      "description": "Commit staged changes"
+    }
+ ,
+   {
+    "cmd": "curl",
+    "args": ["-X POST https://api.github.com/repos/user/repo/issues"],
+    "description": "Create GitHub issue"
+  }],
+  "server": {
+    "status": true,
+    "port": 8080
+  },
+  "dependencies": [
+    "Express.js",
+    "Node.js",
+    "Mocha"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "description": "Stage all files"
+    },
+    {
+      "cmd": "git commit -m",
+      "args": ["initial commit"],
+      "description": "Create initial commit"
+    }
+ ,
+  {
+    "cmd": "docker build",
+    "args": ["-t my-image."],
+    "description": "Build Docker image"
+  }
+],
+"is_interactive": true,
+"version": "1.2.3"
+}

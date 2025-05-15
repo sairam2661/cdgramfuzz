@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-u", "--all"],
+      "result": true
+    },
+    {
+      "cmd": "git commit",
+      "args": ["--message", ":wq"]
+    }
+ ,
+    {
+      "cmd": "npm install",
+      "args": ["@material-ui/core"]
+    }
+  ],
+  "error": "Permission denied",
+  "version": 1.2,
+  "status": "active"
+}

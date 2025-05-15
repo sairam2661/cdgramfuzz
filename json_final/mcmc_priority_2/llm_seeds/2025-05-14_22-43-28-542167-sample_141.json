@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["table", "data"],
+      "output": "result"
+    },
+    {
+      "cmd": "compile",
+      "args": ["script", "src"],
+      "errors": ["missing lib"]
+    }
+ ,
+  { "cmd": "compare", "args": ["file1", "file2"], "diff": "similar" }
+],
+  "system_info": {
+    "os": "Linux",
+    "architecture": "x64",
+    "version": "1.0"
+  },
+  "history": [
+    "2025-06-01: task A completed",
+    "2025-06-10: task B started"
+  ]
+}

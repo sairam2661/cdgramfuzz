@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "update",
+      "args": ["--version", "3.5"]
+    },
+    {
+      "cmd": "run",
+      "args": ["-v", "-t=5"]
+    }
+ ,
+    {
+      "cmd": "delete",
+      "args": ["--force"]
+    }
+  ],
+  "status": true,
+  "error": null
+}

@@ -1,0 +1,12 @@
+{
+  "commands": [
+    {"cmd": "start", "args": ["arg1", "arg2"]},
+    {"cmd": "stop", "args": ["--force"]}
+ ,
+    {"cmd": "restart",
+     "args": ["--verbose"],
+     "options": {"waitFor": true}}
+  ],
+  "server": {"status": "online", "ip": "192.168.0.1", "port": 8080},
+  "logs": ["event1", "event2", "event3"]
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "install",
+      "args": ["numpy", "pandas"],
+      "status": "pending"
+    },
+    {
+      "cmd": "configure",
+      "args": ["--debug", "--verbose"],
+      "status": "success"
+    }
+ ,
+  {
+  "cmd": "build",
+  "args": ["project1", "project2"],
+  "status": "running"
+  }
+  ],
+  "history": [
+    "2024-07-20: installed dependencies",
+    "2024-07-21: configured project"
+  ],
+  "error": null
+}

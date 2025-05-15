@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "build",
+      "args": ["option1", "option2", "-v"],
+      "result": true
+    },
+    {
+      "cmd": "run",
+      "args": ["-x", "-y"],
+      "environment": {
+        "var1": "value1",
+        "var2": "value2"
+      },
+      "result": false
+    }
+ ,
+    {
+      "cmd": "deploy",
+      "args": ["--remote"],
+      "options": {
+        "timeout": 60
+      },
+      "result": true
+    }
+  ],
+  "dependencies": {
+    "requirement1": "v1.0",
+    "requirement2": "v2.0"
+  },
+  "report": "success"
+}

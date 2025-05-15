@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "list of files"
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["newdir"],
+      "output": "directory created"
+    }
+ ,
+  {
+    "cmd": "rm",
+    "args": ["-r", "oldfile"],
+    "output": "file deleted"
+  }
+],
+"variables": {
+  "username": "admin",
+  "password": "password123"
+},
+"result": "success"
+}

@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--verbose", "--ignore-hooks"],
+      "output": "Everything up to date."
+    },
+    {
+      "cmd": "docker build -t my-image.",
+      "args": ["--build-arg", "VERSION=1.0"],
+      "output": ["Step 1/1"]
+    }
+ ,
+  {
+    "cmd": "npm install react",
+    "args": ["--registry", "https://registry.npmjs.org/", "--no-audit"],
+    "output": "added 168 packages from 165 contributors in 5.473s"
+  }
+  ],
+  "config": {
+    "editor": "vim",
+    "theme": "dark"
+  },
+  "timestamps": {
+    "today": "2024-07-26",
+    "startup": "2024-07-26T12:00:00.000Z"
+  },
+  "users": [
+    {
+      "id": 123456,
+      "name": "John Smith"
+    },
+    {
+      "id": 789012,
+      "name": "Jane Doe"
+    }]
+}

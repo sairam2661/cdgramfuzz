@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--recurse-submodules", "--no-edit"],
+      "status": "success",
+      "output": "remote: Enumerating objects: 14, done."
+    },
+    {
+      "cmd": "apt-get update",
+      "args": ["--allow-releaseinfo-change"],
+      "status": "failure",
+      "output": "E: The repository 'http://archive.ubuntu.com/ubuntu xenial InRelease' no longer has a Release file."
+    }
+ ,
+  {
+    "cmd": "npm install",
+    "args": ["package-1", "package-2"],
+    "status": "success",
+    "output": "npm notice [email address]@1.9.8: saved for later"
+  }
+  ],
+  "config": {
+    "loglevel": "INFO",
+    "interval": 5
+  },
+  "version": "1.5"
+}

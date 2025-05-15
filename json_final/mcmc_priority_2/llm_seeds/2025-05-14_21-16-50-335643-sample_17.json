@@ -1,0 +1,27 @@
+{
+
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--recursive"]
+    },
+    {
+      "cmd": "docker build",
+      "args": ["-t my-image"]
+    }
+ ,
+    {
+      "cmd": "docker push",
+      "args": ["my-image"]
+    }
+  ],
+  "hosts": {
+    "localhost": ["172.16.0.1"],
+    "remote": ["192.168.1.100"]
+  },
+  "settings": {
+    "timeout": 30,
+    "retries": 5
+  },
+  "tags": ["devops", "docker"]
+}

@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--recursive"],
+      "output": true
+    },
+    {
+      "cmd": "docker ps",
+      "args": ["-a"],
+      "output": true
+    }
+ ,
+  {
+    "cmd": "curl",
+    "args": ["-v", "https://www.example.com"],
+    "output": true
+  }],
+  "projects": [
+    {
+      "name": "myApp",
+      "path": "/home/user/apps/myApp"
+    },
+    {
+      "name": "myOtherApp",
+      "path": "/home/user/apps/myOtherApp"
+    }],
+  "status": {
+    "online": true,
+    "lastSync": "2024-06-15T14:30:00"
+  },
+  "logs": [
+    {
+      "log": "System started successfully",
+      "date": "2024-06-10",
+      "level": "info"
+    },
+    {
+      "log": "System failed to connect",
+      "date": "2024-06-15",
+      "level": "error"
+    }]
+}

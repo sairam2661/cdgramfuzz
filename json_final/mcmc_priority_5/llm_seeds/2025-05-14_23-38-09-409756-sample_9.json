@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    },
+    {
+      "cmd": "cd",
+      "args": ["/usr/local"]
+    }
+ ,
+    {
+      "cmd": "mkdir",
+      "args": ["newdir"]
+    }
+  ],
+  "settings": {
+    "theme": "dark",
+    "font_size": 12
+  },
+  "errors": ["Permission denied", "not found"]
+}

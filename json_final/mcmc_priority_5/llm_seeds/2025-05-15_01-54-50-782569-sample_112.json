@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A", "--ignore-errors"],
+      "description": "stage all changes"
+    },
+    {
+      "cmd": "npm start",
+      "args": ["--production"],
+      "description": "start production server"
+    }
+ ,
+  {
+      "cmd": "make clean",
+      "args": ["-f", "Makefile"],
+      "description": "clean build files"
+    }
+  ],
+  "tools": {
+    "text_editor": "VSCode",
+    "ide": "IntelliJ"
+  },
+  "version": "1.0"
+}

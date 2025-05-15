@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "start-server",
+      "args": ["-port", "8080"],
+      "status": "running"
+    },
+    {
+      "cmd": "deploy-app",
+      "args": ["-branch", "main"],
+      "status": "success"
+    }
+ ,
+    {
+      "cmd":  "restart-database",
+      "args": [  "-time",  "01:00"],
+      "status": "failed"
+    }],
+  "logs": {
+    "server": "access.log",
+    "application": "error.log"
+  },
+  "credentials": {
+    "server": "password123",
+    "database": "postmaster123"
+  },
+  "environment": {
+    "OS": "Ubuntu",
+    "browser": "Firefox"
+  },
+  "created": "2023-02-25T15:30:00",
+  "author": "John Smith"
+}

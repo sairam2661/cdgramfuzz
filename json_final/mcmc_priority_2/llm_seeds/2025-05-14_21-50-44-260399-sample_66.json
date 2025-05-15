@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["--verbose", "--debug"],
+      "output": "result.txt"
+    },
+    {
+      "cmd": "deploy",
+      "args": ["--cluster", "prod", "--env"],
+      "input": "config.json"
+    }
+ ,
+  {
+    "cmd": "update",
+    "args": ["--remote", "update-database"],
+    "status": "success"
+  }],
+  "variables": {
+    "base_url": "https://example.com",
+    "remote": "github.com/user(repo)"
+  },
+  "events": [
+    {
+      "name": "init",
+      "type": "startup",
+      "time": 1643723900
+    },
+    {
+      "name": "sync",
+      "type": "database",
+      "frequency": "every 5 minutes"
+    }]
+}

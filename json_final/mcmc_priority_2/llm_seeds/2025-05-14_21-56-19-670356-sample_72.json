@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "status": 0
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--force", "--production"],
+      "warnings": ["unmet dependencies"]
+    }
+ ,
+  {
+    "cmd": "node server.js",
+    "args": ["--debug"],
+    "stdout": ""
+  }],
+  "last_updated": "2023-07-25T14:30:00.000Z",
+  "version": "1.2.3"
+}

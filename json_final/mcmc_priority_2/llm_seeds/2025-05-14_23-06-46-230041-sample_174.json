@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--save"],
+      "status": "Success"
+    },
+    {
+      "cmd": "yarn build",
+      "args": ["--prod"],
+      "status": "Failure"
+    }
+ ,
+  {
+    "cmd": "git commit",
+    "args": ["-m", "Initial commit"],
+    "status": "Success"
+  }
+  ],
+  "repositories": {
+    "github": 2,
+    "gitlab": 1
+  },
+  "settings": {
+    "editor": "VSCode",
+    "theme": "Default"
+  },
+  "tags": ["javascript", "node", "development"]
+}

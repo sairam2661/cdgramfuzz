@@ -1,0 +1,44 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--verbose"],
+      "description": " staged all files"
+    },
+    {
+      "cmd": "git commit -m",
+      "args": ["'this is commit message'"],
+      "description": " committed with message"
+    }
+ ,
+  {"cmd": "git push origin main",
+   "args":["--set-upstream"],
+   "description": " pushed the code up to master"
+  }
+],
+  "environment": {
+    "os": "windows11",
+    "timezone": "utc",
+    "language": "javascript"
+  },
+  "variables": {
+    "app_id": "#test-app",
+    "port": 8000
+  },
+  "services": [
+    {
+      "name": "database",
+      "description": " managed database service",
+      "status": "active"
+    },
+    {
+      "name": "cache",
+      "description": " in-memory data store",
+      "status": "down"
+    },
+    {
+      "name": "queues",
+      "description": " task queue service",
+      "status": "idle"
+  }]
+}

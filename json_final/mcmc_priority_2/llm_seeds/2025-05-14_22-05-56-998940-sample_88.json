@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--force", "--save"],
+      "output": true
+    },
+    {
+      "cmd": "git push",
+      "args": ["--set-upstream", "origin", "main"],
+      "output": false
+    }
+ ,
+    {
+      "cmd": "create database",
+      "args": ["mydb", "--encoding", "utf-8"],
+      "output": true
+    }
+  ],
+  "parameters": {
+    "minSize": 1024,
+    "maxSize": 2048
+  },
+  "success": true
+}

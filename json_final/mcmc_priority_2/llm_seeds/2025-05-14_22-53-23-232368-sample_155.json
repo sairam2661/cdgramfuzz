@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "cd ~",
+      "args": ["--root", "/usr/local"]
+    },
+    {
+      "cmd": "sudo apt update",
+      "args": ["--list", "--verbose"]
+    }
+ ,
+    {
+      "cmd": "pip install requests",
+      "args": ["--user", "--install"]
+    }
+  ],
+  "environment": {
+    "username": "sysuser",
+    "current_dir": "/home/sysuser/Desktop",
+    "os": "Ubuntu"
+  },
+  "version": "v1.2.0"
+}
