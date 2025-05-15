@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["-qq", "-o", "DPDefaultCacheAge=2"]
+    },
+    {
+      "cmd": "pip install numpy",
+      "args": ["-u", "-i", "https://pypi.org/simple"]
+    }
+ ,
+      {
+      "cmd": "python code.py",
+      "args": ["-v", "--debug"]
+    }
+  ],
+  "script": "code.py",
+  "env": {
+    "PYTHONHOME": "/usr/bin/python3"
+  },
+  "runtime": "python3.11"
+}

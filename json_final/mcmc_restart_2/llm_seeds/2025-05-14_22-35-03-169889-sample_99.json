@@ -1,0 +1,41 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["--verbose", "--force"],
+      "env": {
+        "var1": "value1",
+        "var2": "value2"
+      },
+      "output": "result.log"
+    },
+    {
+      "cmd": "update",
+      "args": ["--prompt", "--backup"],
+      "env": {
+        "var3": "value3",
+        "var4": "value4"
+      },
+      "output": "backup.log"
+    }
+ ,
+    {
+      "cmd": "delete",
+      "args": ["--force", "--yes"],
+      "env": {},
+      "output": "deletion.log"
+    }
+  ],
+  "credentials": {
+    "token": "auth_token",
+    "password": "secret_password"
+  },
+  "config": {
+    "logging": true,
+    "debug": false
+  },
+  "logs": [
+    "file1.log",
+    "file2.log"
+  ]
+}

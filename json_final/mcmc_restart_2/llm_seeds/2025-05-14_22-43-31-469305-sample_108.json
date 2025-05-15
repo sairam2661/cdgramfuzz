@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-h"],
+      "output": true,
+      "env": ["HOME=/home/user"]
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"],
+      "redirect": [">","output.txt"]
+    }
+ ,
+    {
+      "cmd": "cp",
+      "args": ["src.txt", "/dstFolder"],
+      "permissions": "0755"
+    }
+  ],
+  "log": "logs.txt",
+  "version": "1.2"
+}

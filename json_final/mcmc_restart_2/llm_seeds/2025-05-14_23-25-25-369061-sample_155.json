@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--enable-list", "--print-uris"],
+      "output": "Updates available for installation..."
+    },
+    {
+      "cmd": "yum install",
+      "args": ["perl"],
+      "output": "Package perl installed successfully"
+    }
+ ,
+    {
+      "cmd" : "pip install",
+      "args" : ["wheel"],
+      "output" : "Successful installation of wheel"
+    }
+  ],
+  "log": {
+    "session": "log123",
+    "timestamp": 1638542100
+  },
+  "errors": [
+    {
+      "code": "500",
+      "message": "Internal Server Error"
+    },
+    {
+      "code": "404",
+      "message": "Page not found"
+    },
+  {
+    "code" : "502",
+    "message" : "Bad Gateway"
+  }]
+}

@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A", "--verbose"],
+      "stdout": "..."
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", ":rocket: ready for deployment."],
+      "stderr": "..."
+    }
+ ,
+  {
+    "cmd": "npm start",
+    "args": [ "--prod" ],
+    "status": true
+  }
+  ],
+  "project": {
+    "name": "My Web App",
+    "version": "1.0.0",
+    "author": "Max Power"
+  },
+  "builds": [163, 165, 168]
+}

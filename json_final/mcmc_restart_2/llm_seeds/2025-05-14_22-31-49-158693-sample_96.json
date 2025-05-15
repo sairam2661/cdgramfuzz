@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "output": "file1.txt, file2.txt, file3.txt"
+    },
+    {
+      "cmd": "echo",
+      "args": ["hello world"]
+    }
+ ,
+  {
+      "cmd": "sleep",
+      "args": ["10"]
+  }]
+ ,
+  "scripts": [
+    {
+      "name": "test_script",
+      "description": "test a new feature"
+    },
+    {
+      "name": "deploy_package",
+      "description": "deploy a package to production"
+  }]
+}

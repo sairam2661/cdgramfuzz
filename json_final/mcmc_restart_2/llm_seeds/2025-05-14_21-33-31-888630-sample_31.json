@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["user@localhost", "-p", "22"]
+    },
+    {
+      "cmd": "git",
+      "args": ["pull", "origin", "main"]
+    }
+ ,
+  {
+    "cmd": "npm",
+    "args": ["install", "express"]
+  }
+  ],
+  "status": "running",
+  "node": {
+    "version": "16.18.0",
+    "os": "Ubuntu"
+  },
+  "log": "2022-01-01T12:00:00"
+}

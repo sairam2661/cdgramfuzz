@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "output": "On branch main"
+    },
+    {
+      "cmd": "github deploy",
+      "args": ["--remote", "production"]
+    }
+ ,
+  {
+    "cmd": "update database",
+    "args": ["--incremental", "--quiet"]
+  }
+],
+  "report": {
+    "runtime": 15.6,
+    "memory": 123456
+  },
+  "deployment": "prod" 
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "init",
+      "args": ["--verbose"]
+    },
+    {
+      "cmd": "run",
+      "args": ["/usr/local/bin"],
+      "result": true
+    },
+    {
+      "cmd": "interrupt",
+      "args": [5]
+    }
+  ],
+  "metrics": {
+    "exec_time": 43.15,
+    "cpu_usage": 12.5
+  },
+  "logs": "debug_data.log"
+}

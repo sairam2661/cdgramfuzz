@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["root@192.168.1.100", "-p 22"]
+    },
+    {
+      "cmd": "scp",
+      "args": ["root@192.168.1.100:/path/to/file.txt", "/destination/path"]
+    }
+ ,
+    {
+      "cmd": "rsyslogd",
+      "args": ["-n", "-r"]
+    }
+  ],
+  "variables": {
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "LOG_LEVEL": "INFO"
+  },
+  "result": {
+    "status": 200,
+    "output": "Success!"
+  },
+  "config": {
+    "timeout": 3600,
+    "retry": 3
+  },
+  "id": "a1b2c3"
+}

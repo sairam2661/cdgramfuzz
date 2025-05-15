@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone",
+      "args": ["https://github.com/example.git"],
+      "output": "Cloning into 'example'..."
+    },
+    {
+      "cmd": "pip install",
+      "args": ["-r requirements.txt"],
+      "output": "Collecting..."
+    }
+ ,
+    {
+      "cmd": "node run",
+      "args": ["/script.js"],
+      "output": "Hello, World!"
+    }
+  ],
+  "status": {
+    "lastRun": "2023-03-15",
+    "success": true
+  },
+  "version": "1.2.9"
+
+}

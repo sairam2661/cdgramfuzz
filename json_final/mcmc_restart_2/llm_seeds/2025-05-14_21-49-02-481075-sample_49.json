@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "output": "files.txt"
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["folder1", "folder2"],
+      "error": "folder exists"
+    }
+ ,
+    {
+      "cmd": "git",
+      "args": ["add", "."],
+      "status": "committed"
+    }
+  ],
+  "error_codes": {
+    "permission_denied": 13,
+    "not_found": -2
+  },
+  "version": 2.7
+}

@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": [
+        "/home/user",
+        "/bin/bash",
+        "/opt/java"
+      ],
+      "returncode": 0
+    },
+    {
+      "cmd": "git",
+      "args": ["status"],
+      "output": [
+        "On branch develop",
+        "nothing to commit"
+      ],
+      "returncode": 0
+    }
+ ,
+  {
+      "cmd": "echo",
+      "args": ["Hello, World!"],
+      "output": [
+        "Hello, World!"
+      ],
+      "returncode": 0
+  }
+  ],
+  "scripts": {
+    "last_run": "2024-07-26",
+    "attempts": 5
+  },
+  "parameters": {
+    "language": "bash"
+  },
+  "last_run": true
+}

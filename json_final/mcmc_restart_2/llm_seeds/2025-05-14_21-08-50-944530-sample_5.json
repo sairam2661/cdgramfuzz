@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["script.py", "--debug"],
+      "timestamp": "2023-12-25 14:30:00"
+    },
+    {
+      "cmd": "stop",
+      "args": ["process123"],
+      "timestamp": "2023-12-25 14:40:00"
+    }
+ ,
+    {
+      "cmd": "restart",
+      "args": ["/home/user/executable"],
+      "timestamp": "2023-12-25 14:35:00"
+    }
+  ],
+  "result": {
+    "success": true,
+    "error": "none"
+  },
+  "version": 1.0
+}

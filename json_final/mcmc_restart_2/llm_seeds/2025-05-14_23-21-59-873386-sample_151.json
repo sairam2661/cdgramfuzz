@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-l"]
+    },
+    {
+      "cmd": "mkdir testing",
+      "args": ["testing"]
+    },
+    {
+      "cmd": "rm -rf testing",
+      "args": ["testing"]
+    }
+  ],
+  "schedule": {
+    "day": "monday",
+    "time": "08:00"
+  },
+  "options": {
+    "dry_run": true
+  },
+  "variables": {
+    "host": "example.org",
+    "port": 8080
+  },
+  "result": "success"
+}

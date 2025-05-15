@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "/usr/bin/init",
+      "args": ["--force"],
+      "options": ["--verbose"]
+    },
+    {
+      "cmd": "/bin/chmod",
+      "args": ["-r", "777"],
+      "options": ["--recursive"]
+    }
+ ,
+    {
+      "cmd": "/bin/echo",
+      "args": ["Hello "],
+      "options": ["--nodump"]
+    }
+  ],
+  "settings": {
+    "indent": 4,
+    "tab-size": 8
+  },
+  "resources": "https://example.com/resources"
+}

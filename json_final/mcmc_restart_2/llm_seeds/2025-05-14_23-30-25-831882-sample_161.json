@@ -1,0 +1,16 @@
+{
+  "commands": [
+    {"cmd": "ls", "args": ["-l"]},
+    {"cmd": "cd", "args": ["/home/user"]},
+    {"cmd": "mkdir", "args": ["newdir"]}
+  ],
+  "outputs": {
+    "file": "example.txt",
+    "status": "success"
+  },
+  "history": {
+    "user": "John Smith",
+    "time": "2024-07-26"
+  },
+  "logs": ["warning: file not found", "error: permission denied"]
+}

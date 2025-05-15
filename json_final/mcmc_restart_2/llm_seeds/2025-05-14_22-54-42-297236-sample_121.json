@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a,-t"],
+      "output": "list contents in verbose mode"
+    },
+    {
+      "cmd": "clear",
+      "args": ["/usr/bin/clear"]
+    }
+ ,
+    {
+      "cmd": "mkdir",
+      "args": ["-p /tmp/test"]
+    }
+  ],
+  "environment": {
+    "path": "/bin:/usr/bin:/usr/local/bin",
+    "hosts": {
+      "localhost": "127.0.0.1"
+    },
+    "os": "Ubuntu 22.04"
+  },
+  "configuration": {
+    "theme": "dark",
+    "fontsize": 12
+  },
+  "system": {
+    "hostname": "ubuntu-server",
+    "cpu": "Intel i7-11700K",
+    "ram": "32 GB DDR4"
+  },
+  "versions": {
+    "linux": "5.19.0-21-generic",
+    "node": "18.14.2",
+    "npm": "8.19.2"
+  },
+  "status": "online"
+}

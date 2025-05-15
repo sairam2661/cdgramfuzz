@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all", "--verbose"],
+      "executionTime": "2024-07-26T10:00:00",
+      "output": "On branch master"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--global-style"],
+      "executionTime": "2024-07-26T10:30:00",
+      "output": "added 123 packages"
+    }
+ ,
+    {
+      "cmd": "ssh user@server",
+      "args": ["-p 22"],
+      "executionTime": "2024-07-26T14:00:00",
+      "exitStatus": 0
+    }
+  ],
+  "status": "initialized",
+  "createdTime": "2024-07-26T09:00:00"
+}

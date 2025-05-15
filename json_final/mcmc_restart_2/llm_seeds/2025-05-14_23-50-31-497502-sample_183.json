@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--prod"],
+      "results": ["success"]
+    },
+    {
+      "cmd": "npm run build",
+      "args": ["--watch"],
+      "results": ["warning"]
+    }
+ ,
+  {
+    "cmd": "git add.",
+    "args": ["--ignore-removal"],
+    "results": ["success"]
+  }
+  ],
+  "output": {
+    "logs": ["/logs/output.log"]
+  },
+  "status": 0
+}

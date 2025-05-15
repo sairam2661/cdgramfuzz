@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": [ "--color", "always" ],
+      "output": "total 12",
+      "error": null
+    },
+    {
+      "cmd": "ps aux",
+      "args": [ "-o", "user,pid,pcpu,%mem", "--sort", "-pfd" ],
+      "output": "USER       PID %CPU %MEM     SZ  WCHAN  SYSTEM  COMMAND",
+      "error": null
+    }
+ ,
+    {
+      "cmd": "ping google.com",
+      "args": [ "-c", "3" ],
+      "output": "PING google.com (142.250.179.142) 56(84) bytes of data.",
+      "error": null
+    }
+  ],
+  "timestamp": "2022-01-01T00:00:00.000Z",
+  "platform": "Linux"
+}

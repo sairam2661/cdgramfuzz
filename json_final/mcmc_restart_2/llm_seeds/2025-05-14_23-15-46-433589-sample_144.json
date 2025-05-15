@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git-add",
+      "args": ["--all"],
+      "result": "success"
+    },
+    {
+      "cmd": "git-commit",
+      "args": ["-m", "initial commit"],
+      "result": "success"
+    },
+    {
+      "cmd": "git-push",
+      "args": ["origin", "main"],
+      "result": "success"
+    }
+  ]
+,
+"repository": {
+  "name": "my-project",
+  "url": "https://github.com/user/my-project.git"
+},
+"credentials": {
+  "username": "user",
+  "token": "token123"
+}}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-d", "-h"],
+      "description": "list files with detailed information"
+    },
+    {
+      "cmd": "grep -n",
+      "args": ["-v", "-i"],
+      "description": "search for pattern in files, show line numbers"
+    }
+ ,
+  {
+      "cmd": "curl -X GET",
+       "args": ["--header", "Accept: application/json"],
+      "description": "send HTTP GET request"
+    }
+  ],
+  "environment": {
+    "os": "linux",
+    "platform": "Ubuntu 20.04"
+  },
+  "version": "v1.0"
+}

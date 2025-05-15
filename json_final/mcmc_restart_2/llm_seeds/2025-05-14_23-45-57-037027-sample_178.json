@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "build",
+      "args": ["--debug", "--with-ssl"]
+    },
+    {
+      "cmd": "run",
+      "args": ["--config=dev"]
+    }
+ ,
+  {
+    "cmd": "test",
+    "args": ["--iterations=5"]
+  }
+  ],
+  "version": "1.2.3",
+  "author": "John Smith"
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"]
+    },
+    {
+      "cmd": "cd",
+      "args": ["~"]
+    }
+ ,
+    {
+      "cmd": "echo",
+      "args": ["'Hello, World!'"]
+    }],
+  "credentials": {
+    "username": "admin",
+    "password": "hashed",
+    "role": "superuser"
+  },
+  "status": "active"
+}

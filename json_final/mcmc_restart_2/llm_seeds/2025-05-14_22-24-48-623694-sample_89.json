@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "install python",
+      "args": ["-y", "-c", "python3.9"],
+      "alias": "install_new_python"
+    },
+    {
+      "cmd": "create docker",
+      "args": ["-it", "-m", "py:3.9"],
+      "alias": "create_py_docker"
+    }
+ ,
+    {
+      "cmd": "start application",
+      "args": ["--env", "dev"],
+      "alias": "start_dev_app"
+    }
+  ],
+  "tools": {
+    "database": "postgresql",
+    "framework": "flask"
+  },
+  "settings": {
+    "timezone": "utc",
+    "log_level": "error"
+  },
+  "variables": {
+    "database_url": "https://example.com",
+    "secret_key": "random_string"
+  },
+  "project": {
+    "title": "My Project",
+    "description": "This is my project description"
+  },
+  "dependencies": ["numpy", "pandas", "matplotlib"]
+}

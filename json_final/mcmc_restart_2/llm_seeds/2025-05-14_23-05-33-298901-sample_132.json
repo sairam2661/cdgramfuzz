@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["--all", "--human-readable"],
+      "duration": 0.5,
+      "exit_code": 0
+    },
+    {
+      "cmd": "git push",
+      "args": ["--set-upstream"],
+      "duration": 2.5,
+      "exit_code": 0
+    }
+ ,
+  {
+    "cmd": "pip install",
+    "args": ["requests"],
+    "duration": 0.01,
+    "exit_code": 0
+  }
+  ],
+  "system": {
+    "memory": 16,
+    "cpu": 4,
+    "kernel": "5.10"
+  },
+  "log_level": "DEBUG"
+}

@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "status": 0
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["newdir"],
+      "status": 0
+    }
+ ,
+   {
+ "cmd": "rm",
+      "args": ["-rf", "oldfile"],
+      "status": 1
+    }
+  ],
+  "variables": {
+    "lang": "bash",
+    "version": "5.8"
+  },
+  "results": {
+    "errors": [ "rm: cannot delete 'oldfile': No such file or directory" ]
+  },
+  "environment": "dev"
+}

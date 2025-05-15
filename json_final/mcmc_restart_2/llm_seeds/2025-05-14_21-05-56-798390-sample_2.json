@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"]
+    },
+    {
+      "cmd": "make build",
+      "args": ["-j5"]
+    }
+ ,
+  {
+    "cmd": "helm install",
+    "args": ["example", "stable/nginx-ingress"]
+  }],
+  "resources": {
+    "cpu": 2,
+    "memory": "4Gi"
+  },
+  "environment": {
+    "variables": {
+      "DB_HOST": "localhost:5432",
+      "DB_NAME": "testdb"
+    },
+    "profiles": ["dev", "stg"]
+  },
+  "name": "example deployment"
+}

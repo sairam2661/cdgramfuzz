@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["a.exe", "--arg1", "val1", "--arg2", "val2"],
+      "stderr": true,
+      "output": true
+    },
+    {
+      "cmd": "test",
+      "args": ["b.exe", "--test", "example"],
+      "timestamp": "2024-07-26T14:30:00.000Z",
+      "success": true
+    }
+ ,
+    {
+      "cmd": "build",
+      "args": ["c.exe", "--optimize"],
+      "error": "build failed"
+    }
+  ],
+  "variables": {
+    "build_system": "msbuild",
+    "runtime": "x64"
+  },
+  "credentials": {
+    "username": "system",
+    "password": "hidden_password"
+  },
+  "config": {
+    "setting1": true,
+    "setting2": false
+  },
+  "history": [
+    {"entry": "session1"},
+    {"entry": "session2"}]
+}

@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "ssh",
+      "args": ["user@host", "-p", "8022"]
+    },
+    {
+      "cmd": "sudo",
+      "args": ["apt", "get", "update"]
+    }
+ ,
+    {
+      "cmd": "git",
+      "args": ["pull"]
+    }
+  ],
+  "credentials": {
+    "user": "admin",
+    "password": "hashed-pass"
+  },
+  "status": {
+    "last_update": "2024-07-20",
+    "elapsed_time": 300
+  },
+  "versions": [
+    "3.2",
+    "5.1",
+    "7.0"
+  ]
+}

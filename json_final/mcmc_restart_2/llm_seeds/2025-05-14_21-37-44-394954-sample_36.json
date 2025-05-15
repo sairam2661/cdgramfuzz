@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"],
+      "output": "Hello, World!"
+    }
+ ,
+    {
+      "cmd": "rm",
+      "args": ["-f","file.txt"]
+    }
+  ],
+  "error_handling": [
+    {
+      "code": 404,
+      "message": "File not found"
+    },
+    {
+      "code": 500,
+      "message": "Internal Server Error"
+    },
+    {
+      "code": 200,
+      "message": "Operation completed successfully"
+    },
+  "api_keys"  ],
+  "status": "active"
+}

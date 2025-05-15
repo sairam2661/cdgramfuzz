@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--yes", "--quiet"]
+    },
+    {
+      "cmd": "apt-get install",
+      "args": ["apache2"]
+    }
+ ,
+    {
+      "cmd": "systemctl",
+      "args": ["status", "apache2"]
+    }
+  ],
+  "environment": {
+    "user": "root",
+    "server": "localhost"
+  },
+  "timestamp": "2024-07-26 12:00:00"
+}

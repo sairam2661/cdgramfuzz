@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    },
+    {
+      "cmd": "cd",
+      "args": ["/usr/bin"]
+    }
+ ,
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"]
+    }
+  ],
+  "config": {
+    "ssh": {
+      "port": 22
+    },
+    "user": "admin"
+  },
+  "settings": {
+    "timeout": 300,
+    "maxdepth": 5
+  },
+  "results": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 1
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "timestamp": "2023-03-21T14:30:00"
+    },
+    {
+      "cmd": "git commit -m 'Initial commit'",
+      "args": [""],
+      "output": "42f9f53c78a94a8f36f8d7db8da2a4e0c37c0e4b"
+    }
+ ,
+    {
+      "cmd": "docker-compose up",
+      "args": ["-d"],
+      "pid": 123
+    }
+  ]
+ ,
+  "logs": {
+    "info": "Compose file project root set to.",
+    "warning": "docker-compose versions don't match"
+  },
+  "version": "3.8"
+}

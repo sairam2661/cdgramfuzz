@@ -1,0 +1,39 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a"],
+      "env": {
+        "LANG": "en_US.UTF-8"
+      },
+      "cwd": "/"
+    },
+    {
+      "cmd": "cat file.txt",
+      "args": ["--help"],
+      "env": {
+        "HOME": "/"
+      },
+      "output": "file content"
+    }
+ ,
+  {
+      "cmd": "apt update",
+      "args": ["-y"]
+    }
+  ],
+  "results": [
+    {
+      "message": "directory listing",
+      "status": 0
+    },
+    {
+      "message": "file content: file.txt",
+      "status": 0
+    },
+    {
+      "message": "apt update done",
+      "status": 0
+    }],
+  "timestamp": 1664675698
+}

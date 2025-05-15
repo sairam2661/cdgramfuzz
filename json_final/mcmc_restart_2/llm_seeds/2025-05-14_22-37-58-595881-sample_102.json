@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--recursive"],
+      "dir": "/home/user/project"
+    },
+    {
+      "cmd": "pip install",
+      "args": ["requests"],
+      "dir": "/home/user/project"
+    }
+ ,
+    {
+      "cmd": "rm -rf",
+      "args": ["*"],
+      "dir": "/home/user/project"
+    }
+  ],
+  "environment": {
+    "os": "linux",
+    "version": "5.10",
+    "user": "admin"
+  },
+  "log": {
+    "level": "info",
+    "timestamp": "2023-12-14"
+  },
+  "files": {
+    "created": [
+      "/home/user/file.txt",
+      "/home/user/config.json"
+    ],
+    "deleted": [
+      "/home/user/data.log"
+    ]
+  },
+  "response": {
+    "status": "success",
+    "message": "operation completed"
+  },
+  "output": "result.log"
+}

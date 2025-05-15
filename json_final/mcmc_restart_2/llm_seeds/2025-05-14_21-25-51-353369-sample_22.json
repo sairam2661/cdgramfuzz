@@ -1,0 +1,45 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": [
+        "--rebase",
+        "--verbose"
+      ],
+      "output": "Updated to 2c89b43"
+    },
+    {
+      "cmd": "make",
+      "args": [
+        "--jobs=4",
+        "test"
+      ],
+      "output": "build/test Passed in 1.23s"
+    }
+ ,
+    {
+      "cmd": "node",
+      "args": [
+        "script/main.js",
+        "--verbose"
+      ],
+      "output": "Server started on port 3000"
+    }
+  ],
+  "environment": {
+    "node_version": "16.13.0",
+    "os": "Linux"
+  },
+  "results": {
+    "success": true,
+    "error": null
+  },
+  "time": {
+    "start": "2022-01-01T00:00:00.000Z",
+    "duration": 3600
+  },
+  "params": {
+    "mode": "dev"
+  },
+  "log": true
+}

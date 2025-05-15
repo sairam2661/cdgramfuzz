@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "update",
+      "args": ["--verbose"],
+      "result": true
+    },
+    {
+      "cmd": "create",
+      "args": [14, 16, 32],
+      "result": false
+    }
+ ,
+  {
+    "cmd": "delete",
+    "args": [88],
+    "result": true
+  }
+  ],
+  "systems": {
+    "OS": "Windows 11",
+    "kernel": {
+      "version": "1.1.1",
+      "architecture": "x64"
+    },
+    "software": ["node", "typescript"]
+  },
+  "logs": {
+    "created": "2024-05-12",
+    "updated": "2024-05-27"
+  },
+  "credits": 1000
+}

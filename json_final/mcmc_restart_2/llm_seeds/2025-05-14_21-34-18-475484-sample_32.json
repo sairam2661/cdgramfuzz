@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "output": ["M  README.md", "?? file.txt"]
+    },
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": ["-rw-r--r-- 1 user user 12 Jun  1  2022 README.md"]
+    }
+ ,
+    {
+      "cmd": "apt-get",
+      "args": ["update"],
+      "output": ["Get:1 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]"],
+      "progress": ["downloading..."]
+    }
+  ],
+  "result": true
+}

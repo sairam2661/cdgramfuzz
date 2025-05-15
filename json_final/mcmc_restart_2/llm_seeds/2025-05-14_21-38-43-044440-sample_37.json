@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "cmd": "upgrade",
+      "args": ["--force", "--no-prompt"],
+      "output": "Upgraded successfully."
+    },
+    {
+      "cmd": "install",
+      "args": ["--silent", "--package-manager", "yum"],
+      "output": "Installed successfully."
+    }
+ ,
+  {
+    "cmd": "backup",
+    "args": ["--verbose", "--exclude", "backup"],
+    "output": "Backed up successfully."
+  }
+  ],
+  "credentials": {
+    "username": "admin",
+    "password": "secure123",
+    "token": "xyz456"
+  },
+  "network": {
+    "protocols": ["https", "ssh"],
+    "nodes": [
+      {
+        "host": "dev1",
+        "port": 22
+      },
+      {
+        "host": "dev2",
+        "port": 8080
+      }]
+  },
+  "permissions": {
+    "read": ["admin", "user"],
+    "write": ["admin"]
+  }}

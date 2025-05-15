@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "timestamp": "2023-07-26T14:30:00"
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["new_dir"],
+      "timestamp": "2023-07-26T14:35:00"
+    }
+ ,
+    {
+      "cmd": "rm",
+      "args": ["-rf", "temp_dir"],
+      "timestamp": "2023-07-26T14:40:00"
+    }
+  ],
+  "users": {
+    "admin": "password123",
+    "guest": ""
+  },
+  "config": {
+    "theme": "dark",
+    "language": "en"
+  },
+  "version": "1.0"
+}

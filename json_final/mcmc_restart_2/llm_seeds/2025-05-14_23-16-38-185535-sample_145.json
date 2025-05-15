@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["--foo"]
+    },
+    {
+      "cmd": "stop",
+      "args": ["--bar"]
+    }
+ ,
+  {
+    "cmd": "restart",
+    "args": ["--baz"]
+  }],
+  "resources": {
+    "cpu": 2,
+    "memory": "4G"
+  },
+  "system": "local"
+}

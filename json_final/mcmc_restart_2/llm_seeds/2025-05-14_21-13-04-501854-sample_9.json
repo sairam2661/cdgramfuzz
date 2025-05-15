@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--force", "--verbose"]
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--production", "--loglevel=error"]
+    }
+ ,
+    {
+      "cmd": "python main.py",
+      "args": ["--debug", "--quiet"]
+    }
+  ],
+  "configuration": {
+    "environment": "dev",
+    "permissions": ["read", "write"],
+    "timeout": 60
+  },
+  "output": "results.json"
+}

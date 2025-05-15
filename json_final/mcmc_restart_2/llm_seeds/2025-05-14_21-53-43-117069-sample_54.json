@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "/tmp/newdir"],
+      "output": true,
+      "error": false
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"],
+      "output": true,
+      "error": false
+    }
+ ,
+    {
+      "cmd": "rm",
+      "args": ["-r", "/tmp/newdir"],
+      "output": false,
+      "error": true
+    }
+  ],
+  "status": {
+    "completed": true
+  },
+  "error": null
+}

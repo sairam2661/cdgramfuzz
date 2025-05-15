@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["-f", "-i"]
+    },
+    {
+      "cmd": "run",
+      "args": [1, "--debug"],
+      "stdout": "logs.txt"
+    }
+ ,
+    {
+      "cmd": "stop",
+      "args": ["--force"]
+    }
+  ],
+  "status": {
+    "running": true,
+    "error": ""
+  },
+  "options": {
+    "debug": true,
+    "trace": true
+  },
+  "result": "success"
+}

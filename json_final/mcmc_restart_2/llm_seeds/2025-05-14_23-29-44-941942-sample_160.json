@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "run",
+      "args": ["--help"],
+      "stdout": null,
+      "stderr": null
+    },
+    {
+      "cmd": "build",
+      "args": ["--verbose"],
+      "stdout": "Project built successfully",
+      "stderr": null
+    }
+ ,
+  {
+    "cmd": "start",
+    "args": ["--debug"],
+    "stdout": null,
+    "stderr": "Failed to start server"
+  }
+  ],
+  "results": {
+    "build": true,
+    "run": false
+  },
+  "log": {
+    "date": "2024-07-25",
+    "count": 10
+  },
+  "version": 1.0
+}

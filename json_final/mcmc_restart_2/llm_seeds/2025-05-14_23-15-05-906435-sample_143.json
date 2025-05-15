@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get install nodejs",
+      "args": ["-y"],
+      "result": true
+    },
+    {
+      "cmd": "npm install json",
+      "args": ["-g"],
+      "result": false
+    }
+ ,
+    {
+      "cmd": "node -v",
+      "args": [ "" ],
+      "result": true
+    }
+  ],
+  "output": "successfully installed nodejs and json"
+}

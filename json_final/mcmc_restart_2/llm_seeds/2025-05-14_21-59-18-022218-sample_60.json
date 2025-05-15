@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["file", "txt"]
+    },
+    {
+      "cmd": "delete",
+      "args": ["file2", "bak"]
+    }
+ ,
+  {
+    "cmd": "copy",
+    "args": ["file3",
+    "file4"]
+  }],
+  "logs": {
+    "date": "2024-07-26",
+    "severity": "success"
+  },
+  "files": [
+    {
+      "name": "example.txt",
+      "size": 1024
+    },
+    {
+      "name": "backup.bak",
+      "size": 512
+    }]
+}

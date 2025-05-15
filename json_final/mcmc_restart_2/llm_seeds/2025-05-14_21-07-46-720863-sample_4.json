@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--fix-missing"],
+      "status": true
+    },
+    {
+      "cmd": "rm -rf /tmp/cache",
+      "args": ["-f", "-i"],
+      "warning": "Be careful, this will remove all cached files"
+    }
+ ,
+
+    {
+      "cmd": "service httpd restart",
+      "args": ["-v"],
+      "status": false
+    }
+  ],
+  "version": 12345,
+  "dependencies": ["curl", "wget"]
+}

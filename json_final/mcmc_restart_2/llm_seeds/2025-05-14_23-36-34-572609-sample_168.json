@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "start server",
+      "args": ["-p 8080"],
+      "status": "success"
+    },
+    {
+      "cmd": "deploy app",
+      "args": ["prod"],
+      "status": "running"
+    }
+ ,
+  {
+    "cmd": "terminate container",
+    "args": ["--force"],
+    "status": "completed"
+  }],
+  "environment": {
+    "os": "ubuntu",
+    "version": "20.04"
+  },
+  "history": {
+    "changes": 5,
+    "last_update": "2023-02-01T12:00:00Z"
+  },
+  "stats": {
+    "cpu": 45.6,
+    "memory": 90.2
+  },
+  "timestamp": "2023-02-15T14:30:00Z"
+}

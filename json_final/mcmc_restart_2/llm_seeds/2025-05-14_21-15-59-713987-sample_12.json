@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "python",
+      "args": ["main.py", "--debug"]
+    },
+    {
+      "cmd": "bash",
+      "args": ["setup.sh"]
+    }
+ ,
+    {
+      "cmd": "git",
+      "args": ["commit", "-m", "first commit"]
+    }
+  ],
+  "dependencies": {
+    "python": "3.9.7",
+    "numpy": "^1.23.0"
+  },
+  "settings": {
+    "theme": "dark",
+    "font_size": 14
+  },
+  "project": {
+    "name": "my_project",
+    "description": "this is a short description"
+  },
+  "version": 1.0
+}

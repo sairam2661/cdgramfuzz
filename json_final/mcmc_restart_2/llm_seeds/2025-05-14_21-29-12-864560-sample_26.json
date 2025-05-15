@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "stdout.txt",
+      "error": "stderr.txt"
+    },
+    {
+      "cmd": "pip",
+      "args": ["install", "numpy"],
+      "output": "install.log"
+    }
+ ,
+    {
+      "cmd" : "git",
+      "args": ["add", ".gitignore"],
+      "output": "git.log"
+    }
+  ],
+  "results": {
+    "pass": 2,
+    "fail": 1
+  },
+  "last_run": "2022-01-20"
+}

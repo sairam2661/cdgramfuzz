@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": [
+        "--quiet",
+        "origin",
+        "main"
+      ],
+      "result": null
+    },
+    {
+      "cmd": "docker-compose up",
+      "args": [
+        "--build",
+        "--detach"
+      ],
+      "result": "success"
+    }
+ ,
+  {
+    "cmd": "python setup.py",
+    "args": [
+      "install"
+    ],
+    "result": true
+  }],
+  "environment": {
+    "os": "Ubuntu",
+    "release": "20.04",
+    "language": "Python"
+  },
+  "log": {
+    "date": "2023-01-01",
+    "level": "INFO"
+  },
+  "status": "active"
+}

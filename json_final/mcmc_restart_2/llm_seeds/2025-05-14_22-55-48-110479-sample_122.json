@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "output": "list files and directories"
+    },
+    {
+      "cmd": "git",
+      "args": ["pull", "origin"],
+      "output": "update repository"
+    }
+ ,
+  {
+    "cmd": "ssh",
+    "args": ["user@host"],
+    "output": "connect to server"
+  }
+  ],
+  "projects": {
+    "current": "proj1",
+    "status": "ongoing"
+  },
+  "log": ["error1", "error2"]
+}

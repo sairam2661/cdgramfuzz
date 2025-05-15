@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--force"]
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--production"]
+    }
+ ,
+  {
+      "cmd": "make",
+      "args": ["clean"]
+    }
+  ],
+  "result": true,
+  "errors": []
+}

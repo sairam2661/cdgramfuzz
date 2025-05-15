@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {"cmd": "ping", "args": [ "-c", "4", "127.0.0.1" ]},
+    {"cmd": "ls", "args": ["-l"]},
+    {"cmd": "ssh", "args": ["-p", "22", "localhost"]}
+  ],
+  "logs": {
+    "warnings": ["connection error", "command not found"],
+    "errors": ["Invalid syntax", "Host not found"]
+  },
+  "result": {
+    "ping": true,
+    "ls": {
+      "files": ["file1.txt", "file2.jpg"],
+      "permissions": ["rwx", "---"]
+    },
+    "ssh": true
+  },
+  "timing": {
+    "start-time": "2024-07-26 14:30:00",
+    "end-time": "2024-07-26 14:30:50"
+  },
+  "environment": {
+    "OS": "Linux",
+    "version": "Ubuntu 18.04"
+  },
+  "settings": {
+    "timeout": 60,
+    "interval": 10
+  },
+  "status": "success"
+}

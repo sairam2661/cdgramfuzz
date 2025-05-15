@@ -1,0 +1,13 @@
+{
+  "commands": [
+    {"cmd": "ssh", "args": ["root@server1", "-p", "22"]},
+    {"cmd": "scp", "args": ["file.txt", "user@server2:/home/user"]}
+ ,
+  {"cmd": "sudo", "args": ["apt-get", "install", "ssh-server"]}
+  ],
+  "credentials": {
+    "username": "admin",
+    "password": "mysecretpassword"
+  },
+  "hostnames": ["server1", "server2", "server3"]
+}

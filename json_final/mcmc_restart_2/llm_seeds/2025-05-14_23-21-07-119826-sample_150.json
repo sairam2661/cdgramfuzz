@@ -1,0 +1,28 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["https://github.com/user/repo.git"],
+      "environment": "production"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["package-lock.json"]
+    }
+ ,
+  {
+  "cmd": "create user",
+  "args": [ "alice", "secret"]
+}
+  ],
+  "users": [
+    {
+      "name": "bob",
+      "role": "admin"
+    },
+    {
+      "name": "carol",
+      "status": "active"
+    }],
+  "lastUpdate": "2023-12-01T12:00:00Z"
+}

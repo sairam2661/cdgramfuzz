@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-h"],
+      "timestamp": "2023-12-15T12:34:56"
+    },
+    {
+      "cmd": "git push origin master",
+      "args": ["--quiet"],
+      "timestamp": "2023-12-15T12:30:00"
+    }
+ ,
+  {
+  "cmd": "run test",
+  "args": ["--debug"],
+  "timestamp": "2023-12-15T12:48:00"
+  }],
+  "database": [
+    {
+      "id": 1,
+      "name": "John Smith"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith"
+    },
+    {
+      "id": 3,
+      "name": "Helen Brown"
+    }]
+}

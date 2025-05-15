@@ -1,0 +1,30 @@
+{
+  "commands":  [
+    {
+      "cmd": "mkdir",
+      "args": ["folder1", "folder2"],
+      "result": "success"
+    },
+    {
+      "cmd": "rm",
+      "args": ["file1", "file2"],
+      "result": false
+    }
+ ,
+  {
+    "cmd": "mv",
+    "args": ["file3", "folder3/file3"],
+    "result": true
+  }],
+  "variables": {
+    "variable1": 10.2,
+    "variable2": true,
+    "variable4": "test string"
+  },
+  "environment": {
+    "os": "linux",
+    "version": "ubuntu 20.04",
+    "arch": "amd64"
+  },
+  "log": "error: unexpected failure"
+}

@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "list"
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "newdir"],
+      "output": "created"
+    }
+ ,
+    {
+      "cmd": "cp",
+      "args": ["file.txt"]
+    }
+  ],
+  "results": {
+    "ls_results": {
+      "file": "file.txt",
+      "size": 1024
+    },
+    "mkdir_results": {
+      "dir": "newdir"
+    },
+    "cp_results": {
+      "file": "file.txt",
+      "size": 512
+    },
+    "execution_time": 10
+  },
+  "timestamp": "2024-07-26 08:34:00"
+}

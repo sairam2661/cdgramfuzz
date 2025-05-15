@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": [ "-a", "-t" ]
+    },
+    {
+      "cmd": "mkdir test",
+      "args": [ "-p" ]
+    }
+ ,
+  {
+      "cmd": "cat file.txt",
+      "args": [ ">output.txt" ]
+  }],
+  "directories": {
+    "home": "/home/user",
+    "root": "/"
+  },
+  "permissions": {
+    "read": 4,
+    "write": 2,
+    "execute": 1
+  },
+  "status": "running"
+}

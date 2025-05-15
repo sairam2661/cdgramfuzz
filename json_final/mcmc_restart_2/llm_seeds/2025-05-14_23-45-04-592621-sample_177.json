@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "Install",
+      "args": ["git", "python3"],
+      "status": "success"
+    },
+    {
+      "cmd": "Update",
+      "args": ["--list-all"],
+      "status": "pending"
+    }
+ ,
+  {
+    "cmd": "Backup",
+    "args": ["--path", "/usr"],
+    "status": "failure"
+  }
+  ],
+  "version": "1.2.3",
+  "authors": ["John Doe", "Jane Smith"]
+}

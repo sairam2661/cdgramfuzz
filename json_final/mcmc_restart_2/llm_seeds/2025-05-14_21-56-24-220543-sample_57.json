@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "create",
+      "args": ["-t", "-o", "test.txt"]
+    },
+    {
+      "cmd": "backup",
+      "args": ["-f", "/home/user/data"]
+    }
+ ,
+    {
+      "cmd": "restore",
+      "args": ["-f", "-s", "/path/to/snapshot"]
+    }
+  ],
+  "config": {
+    "timeout": 300,
+    "dryRun": false
+  },
+  "version": "1.2.3"
+}

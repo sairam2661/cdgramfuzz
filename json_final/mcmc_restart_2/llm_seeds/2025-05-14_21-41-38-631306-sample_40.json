@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "--time=usec"],
+      "output": "list of files"
+    },
+    {
+      "cmd": "find",
+      "args": ["-type", "f", "-name", "*.txt"],
+      "output": ["file1.txt", "file2.txt"]
+    }
+ ,
+    {
+      "cmd": "grep",
+      "args": ["-r", "-i", "hello"],
+      "output": ["file1.txt: hello world"]
+    }
+  ],
+  "env": {
+    "HOME": "/home/user",
+    "LANGUAGE": "en_US"
+  },
+  "time": "2024-07-26T14:30:00"
+}

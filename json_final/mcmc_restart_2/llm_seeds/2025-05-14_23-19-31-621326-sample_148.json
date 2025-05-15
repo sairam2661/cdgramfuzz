@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--remote"],
+      "description": "Update repository"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["-g"],
+      "description": "Install dependencies globally"
+    }
+ ,
+  {
+    "cmd": "docker run",
+    "args": ["-p 8080:8080"],
+    "description": "Run container"
+  }
+  ]
+, "config": {
+    "branch": "main",
+    "timeout": 300
+  },
+  "result": "success"
+}

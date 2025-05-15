@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {"cmd": "create user", "args": ["--admin"]},
+    {"cmd": "start service", "args": ["--test"]},
+    {"cmd": "build project", "args": ["--dev"]}
+  ],
+  "results": [
+    {"return_code": 0, "stdout": "Success!"},
+    {"return_code": 1, "stderr": "Error!"},
+    {"return_code": 0, "stdout": "Built!"}],
+  "system": {
+    "os": "Ubuntu",
+    "version": "22.04"
+  },
+  "version": {
+    "json": "v1.0"
+  },
+  "timestamp": "2024-07-26 12:00:00"
+}

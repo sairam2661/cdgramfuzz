@@ -1,0 +1,35 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull origin master",
+      "args": ["-v", "--progress"]
+    },
+    {
+      "cmd": "pip install -r requirements.txt",
+      "args": ["--upgrade"]
+    }
+ ,
+  {
+      "cmd": "docker-compose up",
+      "args": ["--build"]
+  }
+  ],
+  "status": {
+    "errors": [],
+    "warnings": ["package outdated"],
+    "success": true
+  },
+  "results": {
+    "branch": "main",
+    "repo": "github/example"
+  },
+  "config": {
+    "commit-msg": "@commitlint --from=HEAD",
+    "linter": "eslint --fix"
+  },
+  "environment": {
+    "NODE_ENV": "production",
+  "PORT": 8080
+  },
+  "version": 2.0
+}

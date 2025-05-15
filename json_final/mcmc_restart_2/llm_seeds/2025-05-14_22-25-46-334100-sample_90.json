@@ -1,0 +1,16 @@
+{
+  "commands": [
+    {"cmd": "ls", "args": ["-l", "-a"]},
+    {"cmd": "mkdir", "args": ["--verbose", "--parents"]}
+ ,
+    {"cmd": "rm", "args": ["-rf", "/tmp/file"]}
+  ],
+  "environment": {
+    "LANG": "en_US.UTF-8",
+    "PATH": "/usr/bin:/bin"
+  },
+  "options": [
+    "quiet",
+    "verbose"
+  ]
+}

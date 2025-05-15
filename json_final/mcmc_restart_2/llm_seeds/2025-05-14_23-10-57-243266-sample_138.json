@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-l"],
+      "response": "listing contents"
+    },
+    {
+      "cmd": "ls -a",
+      "args": ["-l"],
+      "response": "listing all"
+    }
+ ,
+     {
+      "cmd": "cd ~",
+      "args": ["/home/user"],
+      "response": "changing directory"
+    }
+  ],
+  "environment": {
+    "os": "Ubuntu 22.04.1 LTS (LTS)",
+    "node-version": "19.7.0",
+    "server-name": "Development Server"
+  },
+  "server": "production",
+  "status": "online"
+}

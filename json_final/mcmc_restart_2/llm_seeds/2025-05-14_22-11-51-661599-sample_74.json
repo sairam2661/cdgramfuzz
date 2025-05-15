@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "cmd": "/usr/bin/build",
+      "args": ["-x", "debug", "-v"],
+      "output": null
+    },
+    {
+      "cmd": "/usr/bin/push",
+      "args": ["-u", "public", "-p", "example"],
+      "output": {
+        "status": "success",
+        "time": 45.67
+      },
+      "errors": []
+    }
+ ,
+  {
+    "cmd": "git pull",
+    "args": ["--force", "-q"],
+    "output": "Changes are not done by git pull"
+  }
+  ],
+  "environment": {
+    "working_dir": "/opt/project",
+    "user": "root"
+  },
+  "history": [
+    {"step": "Initial setup"},
+    {"step": "Build artifacts"},
+    {"step": "Push update"},
+    {"step": "Cleaning up"},
+    {"step": "Remove cache"}]
+}

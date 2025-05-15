@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": [ "-u", "--all" ],
+      "status": 0,
+      "timestamp": "2024-07-26T14:30:00"
+    },
+    {
+      "cmd": "git commit -m updated files",
+      "args": [ "-m", "added new files" ],
+      "status": 0,
+      "timestamp": "2024-07-26T14:40:00"
+    }
+ ,
+  {
+    "cmd": "git push origin main",
+    "args": [ "origin", "main" ],
+    "status": 0,
+    "timestamp": "2024-07-26T14:50:00"
+  }
+  ],
+  "user": {
+    "name": "John Smith",
+    "email": "john.smith@example.com"
+  },
+  "repo": {
+    "name": "example-repo",
+    "url": "https://example.com/repo.git"
+  },
+  "branch": "main" 
+}

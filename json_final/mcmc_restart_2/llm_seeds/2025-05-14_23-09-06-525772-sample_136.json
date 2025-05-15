@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-t"],
+      "results": ["Permission denied"]
+    },
+    {
+      "cmd": "echo -n",
+      "args": ["Hello World!"]
+    }
+,{
+    "cmd": "find -name",
+    "args":["*.txt"], 
+    "results": [] 
+  }
+  ],
+  "env": {
+    "HOME": "/home/user",
+    "PATH": "/usr/bin:/bin:/usr/local/bin"
+  },
+  "config": {
+    "timezone": "America/New_York",
+    "language": "en_US.UTF-8"
+  },
+  "status": "active"
+}

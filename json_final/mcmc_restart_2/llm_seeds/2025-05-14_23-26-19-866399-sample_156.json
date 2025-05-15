@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["--debug", "-v"]
+    },
+    {
+      "cmd": "init",
+      "args": ["--test", "dev"]
+    }
+ ,
+    {
+      "cmd": "clean",
+      "args": ["--force", "-n"]
+    }
+  ],
+  "system": {
+    "platform": "linux",
+    "architecture": "x86_64"
+  },
+  "data": {
+    "name": "example.txt",
+    "size": 1024
+  },
+  "result": {
+    "success": true,
+    "code": 200
+  },
+  "version": "1.0.0"
+}

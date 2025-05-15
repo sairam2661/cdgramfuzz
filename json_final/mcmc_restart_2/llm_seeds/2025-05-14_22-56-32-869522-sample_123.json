@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "install",
+      "args": ["package1", "package2"],
+      "output": "installed"
+    },
+    {
+      "cmd": "update",
+      "args": ["script1"],
+      "error": "timeout"
+    }
+ ,
+  {
+    "cmd": "run",
+    "args": ["main.py"],
+    "start": "2023-02-20T14:30:00.000Z"
+  }],
+  "config": {
+    "timeout": 3600,
+    "retry": 3
+  },
+  "status": "running"
+}

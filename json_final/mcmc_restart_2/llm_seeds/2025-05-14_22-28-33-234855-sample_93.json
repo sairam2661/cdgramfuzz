@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["-u", "origin", "main"]
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--force", "--production"]
+    }
+ ,
+  {
+    "cmd": "rm -rf",
+    "args": ["output.txt"]
+  }
+  ],
+  "system": {
+    "macos": true,
+    "node": "16.17.0"
+  },
+  "environment": {
+    "branch": "main",
+    "username": "johndoe"
+  },
+  "runtime": {
+    "time": "2023-12-31T23:59:59.000Z",
+    "timestamp": 1672481199
+  },
+  "permissions": ["admin", "read-only"]
+}

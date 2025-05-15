@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "ping",
+      "args": ["-c", "3", "8.8.8.8"]
+    },
+    {
+      "cmd": "ls",
+      "args": ["-a"]
+    }
+ ,
+    {
+      "cmd": "curl",
+      "args": ["-X", "GET", "https://www.example.com"]
+    }
+  ],
+  "environment": {
+    "os": "linux",
+    "runtime": "docker"
+  },
+  "variables": {
+    "KEY1": "value1",
+    "KEY2": "value2"
+  },
+  "output": "Results will be saved here"
+}

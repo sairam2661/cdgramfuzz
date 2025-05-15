@@ -1,0 +1,20 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"]
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["newdir"]
+    }
+ ,
+    {
+      "cmd": "cp",
+      "args": ["-r", "file.txt", "/backup/"]
+    }
+  ],
+  "status": "complete",
+  "startedAt": "2024-07-26T14:30:00",
+  "executedBy": "admin"
+}

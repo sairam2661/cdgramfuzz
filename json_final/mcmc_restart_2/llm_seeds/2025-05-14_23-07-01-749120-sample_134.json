@@ -1,0 +1,46 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-l"],
+      "output": "permissions list"
+    },
+    {
+      "cmd": "git status",
+      "args": ["-s"],
+      "output": "repo status"
+    }
+ ,
+  {
+    "cmd": "ssh 192.168.1.1 ",
+    "args": ["-p","22" ],
+    "output": "ssh connection"
+  }
+  ],
+  "sessions": {
+    "active": true,
+    "duration": 30
+  },
+  "credentials": {
+    "username": "root",
+    "password": "helloworld"
+  },
+  "environment": [
+    {
+      "ip": "10.0.0.1",
+      "os": "ubuntu"
+    },
+    {
+      "ip": "10.0.0.2",
+      "os": "windows"
+    },
+    {
+      "ip": "10.0.0.3",
+      "os": "centos"
+    },
+    {
+      "ip": "192.168.1.1",
+      "os": "fedora"
+    }]
+
+}

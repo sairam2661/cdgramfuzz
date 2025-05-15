@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone https://github.com/user/project.git",
+      "args": ["-v", "--depth=1"],
+      "status": "success"
+    },
+    {
+      "cmd": "pip install -r requirements.txt",
+      "args": ["--no-cache-dir"],
+      "status": "skipped"
+    }
+ ,
+   {
+      "cmd": "npm install eslint",
+      "args": ["-g"],
+      "status": "failure"
+    }
+  ],
+  "environment": {
+    "os": "Ubuntu",
+    "version": "20.04"
+  },
+  "time": "2024-07-27T14:30:00"
+}

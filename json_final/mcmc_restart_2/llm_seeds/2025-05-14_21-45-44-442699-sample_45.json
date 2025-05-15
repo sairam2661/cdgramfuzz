@@ -1,0 +1,12 @@
+{
+  "commands": [
+    { "cmd": "install", "args": ["git", "package1"] },
+    { "cmd": "update", "args": ["package2", "package3"] },
+    { "cmd": "remove", "args": ["package1", "package4"] }
+  ],
+  "config": {
+    "theme": "dark_mode",
+    "language": "english"
+  },
+  "version": "v1.0"
+}

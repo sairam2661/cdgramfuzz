@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "python",
+      "args": ["-m", "test"],
+      "environment": {
+        "version": "3.9",
+        "dependencies": ["numpy", "pandas"]
+      },
+      "notes": ["Failed during setup"]
+    },
+    {
+      "cmd": "curl",
+      "args": ["--request", "POST", "http://example.com/api/v1"],
+      "environment": {
+        "version": "7.88.0",
+        "dependencies": ["openssl"]
+      },
+      "output": "Upload complete"
+    }
+ ,
+    {
+      "cmd": "docker",
+      "args": ["run", "alpine"],
+      "environment": {
+        "version": "20.10",
+        "dependencies": ["linux"]
+      },
+      "output": "Contaiiner started"
+    }
+  ],
+  "status": "warning"
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"],
+      "output": "Already up to date."
+    },
+    {
+      "cmd": "terraform init",
+      "args": ["-upgrade"],
+      "output": "Terraform has been successfully initialized..."
+    }
+ ,
+    {
+      "cmd": "docker pull",
+      "args": ["nginx"],
+      "output": "Pulling from library/nginx"
+    }
+  ],
+  "configuration": {
+    "branch": "main",
+    "remote": "origin"
+  },
+  "status": "success"
+}

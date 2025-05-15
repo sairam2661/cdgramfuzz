@@ -1,0 +1,44 @@
+{
+  "commands": [
+    {
+      "cmd": "cp",
+      "args": ["-r", "/media/", "/backup/"]
+    },
+    {
+      "cmd": "mv",
+      "args": ["/tmp/file", "/home/user/"]
+    }
+ ,
+    {
+      "cmd": "rm",
+      "args": [
+        "-rf",
+        "/tmp/file",
+        "/tmp/file2"
+      ]
+    }
+  ],
+  "config": {
+    "log": "/var/log/main.log", 
+    "backup_dir":"/media/"
+  },
+  "status": {
+    "online": true,
+    "since": "2022-09-01"
+  },
+  "version": {
+    "package": "1.2.3",
+    "commit": "abc789"
+  },
+  "output": {
+    "error": false,
+    "file": null
+  },
+  "result": {
+    "code": 100,
+    "msg": "success"
+  },
+  "environment": [
+    "NODE_TLS_REJECT_UNAUTHORIZED=0"
+  ]
+}

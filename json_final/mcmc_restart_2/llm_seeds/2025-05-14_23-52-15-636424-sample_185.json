@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": [ "--all" ],
+      "timestamp": "2022-01-01T12:00:00"
+    },
+    {
+      "cmd": "npm install",
+      "args": [ "--production" ],
+      "duration": 15
+    }
+ ,
+    {
+      "cmd": "git commit -m ':)",
+      "args": [ "--author", "johnDoe"],
+      "timestamp": "2022-01-01T13:00:00"
+    }
+  ],
+  "system": {
+    "os": "Ubuntu",
+    "version": 20.04
+  },
+  "errors": [ "Error 404: Not found",
+              "Error 500: Internal Server Error"
+  ]
+}

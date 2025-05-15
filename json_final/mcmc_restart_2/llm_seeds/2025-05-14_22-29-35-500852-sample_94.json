@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["origin", "main"]
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--save"]
+    },
+    {
+      "cmd": "mvn clean package",
+      "args": ["-DskipTests"]
+    }
+  ],
+  "output": {
+    "dir": "/tmp/logs",
+    "files": ["stdout.log", "stderr.log"]
+  },
+  "vars": {
+    "prefix": "PROD_",
+    "env": "prod"
+  },
+  "results": {
+    "tests": 10,
+    "successes": 9
+  },
+  "summary": "Deployment Successful"
+}

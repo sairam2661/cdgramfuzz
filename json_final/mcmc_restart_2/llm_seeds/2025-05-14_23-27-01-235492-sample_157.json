@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l", "-a"],
+      "output": "Directory contents"
+    },
+    {
+      "cmd": "cd",
+      "args": ["~/Documents"],
+      "output": "Changed directory"
+    }
+ ,
+  {
+  "cmd": "mkdir",
+  "args": ["newdir"]
+} 
+  ],
+  "status": {
+    "error": false,
+    "message": "Process completed"
+  },
+  "timestamp": "2022-01-01 12:00:00"
+}

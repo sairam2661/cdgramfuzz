@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "file list"
+    },
+    {
+      "cmd": "git",
+      "args": ["status"],
+      "output": "repository status"
+    }
+ ,
+    {
+      "cmd": "python",
+      "args": ["-V"],
+      "output": "python version"
+    }
+  ],
+  "results": {
+    "failed": 0,
+    "success": 3
+  },
+  "run_time": 5.67
+}

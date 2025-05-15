@@ -1,0 +1,30 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "/home/user/todolist"]
+    },
+    {
+      "cmd": "echo",
+      "args": ["Hello, World!"]
+    }
+ ,
+    {
+      "cmd": "ls",
+      "args": ["-l"]
+    }
+  ],
+  "log": {
+    "file": "/var/log/todolist.log",
+    "messages": ["task created", "task completed"]
+  },
+  "system": {
+    "os": "linux",
+    "kernel": "5.15.0"
+  },
+  "user": {
+    "id": 1001,
+    "status": "active"
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,17 @@
+{
+  "commands": [
+    {
+      "cmd": "docker",
+      "args": ["build", "-t", "myimage", "."]
+    },
+    {
+      "cmd": "kubectl",
+      "args": ["apply", "-f", "deployment.yaml"]
+    }
+ ,
+  {
+      "cmd": "git",
+      "args": ["pull", "-r"]
+  }],
+  "output": "build completed successfully"
+}

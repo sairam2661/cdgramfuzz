@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "cmd": "git status",
+      "args": ["--short"],
+      "result": "M  file.txt"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--production"],
+      "result": "installed successfully"
+    }
+ ,
+  {
+    "cmd": "npm run build",
+    "args": ["--type=integration"],
+    "result": "build completed"
+  }],
+  "system": {
+    "os": "Windows 10",
+    "version": "11.00.24"
+  },
+  "network": {
+    "ip": "192.168.1.100",
+    "isReachable": true
+  },
+  "error": [
+       {
+      "message": "Error message",
+      "code": 500,
+      "cause": "Unknown Reason"
+    },
+    {
+      "message": "Another Error",
+      "code": 501,
+      "cause": "Timeout"
+        }]
+  }

@@ -1,0 +1,13 @@
+{
+  "commands": [
+    {"cmd": "install", "args": ["npm", "express"]},
+    {"cmd": "start", "args": ["server", "9000"]}
+ ,
+  {
+    "cmd": "stop",
+    "args": ["server"],
+    "error_codes": [1, 2, 3]
+  }],
+  "environment": ["dev", "staging"],
+  "status": "online"
+}

@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["-v", "--debug"]
+    },
+    {
+      "cmd": "stop",
+      "args": ["-f"]
+    }
+ ,
+  {
+      "cmd": "restart",
+      "args": ["-t", "60"]
+    }
+  ],
+  "server": {
+    "address": "192.168.1.100",
+    "port": 8080
+  },
+  "status": "online"
+}

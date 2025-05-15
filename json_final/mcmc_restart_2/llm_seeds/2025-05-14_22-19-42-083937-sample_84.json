@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "cmd": "update",
+      "args": ["--version", "1.2.3"]
+    },
+    {
+      "cmd": "backup",
+      "args": ["--path", "/var/backups", "--force"]
+    }
+ ,
+    {
+      "cmd": "cleanup",
+      "args": ["--days", "30"]
+    }
+  ],
+  "lastRun": "2024-07-15T14:30:00",
+  "history": 5
+}

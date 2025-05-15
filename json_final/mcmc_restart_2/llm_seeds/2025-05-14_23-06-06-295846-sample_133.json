@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "echo",
+      "args": ["hello", "world"],
+      "result": "Hello, world!"
+    },
+    {
+      "cmd": "sleep",
+      "args": [10],
+      "result": "complete"
+    },
+    {
+      "cmd": "ls",
+      "args": ["/etc", "/bin"],
+      "result": ["/etc", "/bin"]
+    }
+  ],
+  "results": {
+    "error": false,
+    "success": true
+  },
+  "status": "ok"
+}

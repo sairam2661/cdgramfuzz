@@ -1,0 +1,33 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["-A"],
+      "status": true
+    },
+    {
+      "cmd": "git commit",
+      "args": ["-m", "Initial commit"],
+      "status": false
+    }
+ ,
+    {
+      "cmd": "npm install",
+      "args": ["--yes"],
+      "status": true
+    }
+  ],
+  "scripts": {
+    "build": "webpack --mode development",
+    "start": "npm run build && webpack-dev-server --mode development"
+  },
+  "dependencies": {
+    "webpack": "^5.60.0",
+    "webpack-dev-server": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10"
+  },
+  "author": "John Doe"
+}

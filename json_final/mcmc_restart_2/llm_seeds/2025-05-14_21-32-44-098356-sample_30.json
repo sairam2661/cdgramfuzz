@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--yes"],
+      "output": "/var/log/apt"
+    },
+    {
+      "cmd": "apt-get install",
+      "args": ["curl", "--yes"],
+      "output": "/var/log/apt"
+    }
+ ,
+   {
+    "cmd": "curl",
+    "args": ["https://api.example.com"],
+    "output": "/logs/example.log"
+   }
+  ],
+  "settings": {
+    "log_level": "debug",
+    "max_attempts": 10
+  },
+  "environment": {
+    "user": "john",
+    "shell": "/bin/bash"
+  },
+  "result": "succeeded"
+}

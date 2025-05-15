@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["-l"],
+      "output": "list of files"
+    },
+    {
+      "cmd": "cd",
+      "args": ["~"],
+      "error": "invalid directory"
+    }
+ ,
+  {
+      "cmd": "mkdir",
+      "args": ["new_dir"],
+      "output": "/home/user/new_dir"
+    }
+  ],
+  "parameters": {
+    "num_commands": 3,
+    "cmd_count": 1
+  },
+  "meta": {
+    "build": "abc12",
+    "version": "1.0"
+  },
+  "_version_": "2022.12.25"
+}

@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "rm -rf /",
+      "args": ["-i", "-v"],
+      "description": "Remove all files recursively"
+    },
+    {
+      "cmd": "grep ^ -rnf",
+      "args": ["*"],
+      "description": "Search recursively for files containing newline characters"
+    }
+ ,
+  {
+    "cmd": "du -h *",
+    "args": ["--max-depth=1"],
+    "description": "Display file sizes in a human-readable format"
+  }
+],
+
+"is_admin": true
+
+}

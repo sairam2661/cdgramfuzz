@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["-a", "-l"]
+    },
+    {
+      "cmd": "git status",
+      "args": ["--short"]
+    }
+ ,
+    {
+      "cmd": "echo 'Hello, World!'",
+      "args": [">", "output.txt"]
+    }
+  ],
+  "preferences": {
+    "language": "en",
+    "theme": "dark"
+  },
+  "stats": {
+    "cpu": 50,
+    "memory": 85
+  },
+  "history": [
+    "2022-01-01 - login",
+    "2022-01-02 - logout"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "commands": [
+    {
+      "cmd": "apt-get update",
+      "args": ["--fix-missing"]
+    },
+    {
+      "cmd": "install",
+      "args": ["python3", "pip3"]
+    }
+ ,
+  {
+      "cmd": "pip3",
+      "args": ["install", "pip3"]
+  }
+  ],
+  "parameters": {
+    "username": "admin",
+    "password": "*****",
+    "timeout": 300
+  },
+  "result": {
+    "success": true,
+    "message": "Installation completed"
+  },
+  "created_at": "2023-02-20T14:30:00Z"
+}

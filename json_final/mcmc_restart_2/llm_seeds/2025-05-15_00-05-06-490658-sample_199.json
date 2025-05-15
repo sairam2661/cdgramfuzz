@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir"
+     , "args": ["/home/user/newdir"]
+     , "result": true
+    },
+    {
+      "cmd": "cp"
+     , "args": ["/home/user/source.txt", "/home/user/destination.txt"]
+     , "result": false
+    }
+ ,
+    {
+      "cmd": "rm"
+     , "args": ["/home/user/destination.txt"]
+     , "result": true
+    }
+  ]
+ ,
+  "metadata": {
+    "session": "systemconfig"
+   , "user_id": 12345
+  },
+  "last_modified": "2022-01-01T00:00:00Z"
+}

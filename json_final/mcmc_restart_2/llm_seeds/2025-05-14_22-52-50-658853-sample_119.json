@@ -1,0 +1,23 @@
+{
+  "commands": [
+    {
+      "cmd": "start service",
+      "args": ["arg1", "arg2"]
+    },
+    {
+      "cmd": "stop service",
+      "args": ["arg3", "arg4"]
+    }
+ ,
+  {
+      "cmd": "query status",
+      "args": ["arg5", "arg6"]
+    }
+  ],
+  "system": {
+    "id": "123456",
+    "version": "v2.0",
+    "timezone": "UTC-8"
+  },
+  "state": "running"
+}

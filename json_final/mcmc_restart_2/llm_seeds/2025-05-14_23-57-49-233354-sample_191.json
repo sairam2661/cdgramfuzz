@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {"cmd": "start app", "args": ["--debug"]},
+    {"cmd": "stop server", "args": ["--force"]}
+ ,
+    {
+      "cmd": "update DB",
+      "args": ["--new schema"],
+      "params": {
+        "timeout": 10,
+        "retry": true
+      },
+      "tags": ["high priority"]
+    }
+  ],
+  "stats": {
+    "uptime": 24.5,
+    "memory": 512
+  },
+  "auth": {
+    "method": "token",
+    "token": "my_secret_key"
+  },
+  "messages": [
+    "welcome message",
+    "error",
+    "info"
+  ],
+  "config": {
+    "theme": "dark",
+    "lang": "en"
+  },
+  "version": "1.2.3"
+}

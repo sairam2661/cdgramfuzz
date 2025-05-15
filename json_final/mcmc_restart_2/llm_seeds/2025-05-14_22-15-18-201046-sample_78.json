@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "npm install",
+      "args": ["--global", "typescript@4.7.4"]
+    },
+    {
+      "cmd": "mkdir",
+      "args": ["typescript-project"]
+    }
+ ,
+    {
+      "cmd": "node",
+      "args": [ "-e", "console.log('Hello World')"]
+    }
+  ],
+  "environment": {
+    "OS": "Ubuntu",
+    "node_version": "18.12.1"
+  },
+  "results": ["typescript installed", "project created", "Hello World"]
+}

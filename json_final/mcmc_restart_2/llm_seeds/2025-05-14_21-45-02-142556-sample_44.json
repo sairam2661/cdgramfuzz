@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "git clone https://github.com/user/repo.git",
+      "args": ["--recursive", "--quiet"],
+      "directory": "/home/user/projects"
+    },
+    {
+      "cmd": "make build",
+      "args": ["dist/"],
+      "priority": 1
+    }
+ ,
+  {
+    "cmd": "python main.py",
+    "args": ["--config", "config.json"]
+  }
+
+  ],
+  "logging": {
+    "level": "INFO",
+    "output": "/var/log/myapp.log",
+    "format": "%(asctime)s:%(levelname)s:%(message)s"
+  },
+  "version": "1.2.3"
+}

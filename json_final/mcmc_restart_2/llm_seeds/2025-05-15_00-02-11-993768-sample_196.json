@@ -1,0 +1,24 @@
+{
+  "commands": [
+    {
+      "cmd": "git pull",
+      "args": ["--recursive", "--verbose"],
+      "output": "pulling latest code"
+    },
+    {
+      "cmd": "npm install",
+      "args": ["--save-dev"],
+      "output": "packages installed"
+    }
+ ,
+  {
+    "cmd": "node server.js",
+    "args": ["--port", 3000],
+    "output": "server started"
+  }],
+  "system": {
+    "host": "localhost",
+    "os": "linux"
+  },
+  "result": true
+}

@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "start",
+      "args": ["server", "-p", "8080"]
+    },
+    {
+      "cmd": "restart",
+      "args": ["cron", "-i", "2"]
+    }
+ ,
+  {
+      "cmd": "stop",
+      "args": ["database", "-f"]
+  }],
+  "hosts": {
+    "alpha": "192.168.5.1",
+    "beta": "192.168.5.2"
+  },
+  "logging": {
+    "level": "info",
+    "handler": "console"
+  },
+  "version": "1.2.9"
+}

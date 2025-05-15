@@ -1,0 +1,26 @@
+{
+  "commands": [
+    {
+      "cmd": "mkdir",
+      "args": ["-p", "output/dir"]
+    },
+    {
+      "cmd": "touch",
+      "args": ["file.txt"]
+    }
+ ,
+    {
+      "cmd": "echo",
+      "args": ["Hello, world! > output.txt"]
+    }
+  ],
+  "environment": {
+    "user": "root",
+    "os": "linux"
+  },
+  "events": [
+    "login",
+    "exec",
+    "terminated"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "cmd": "ls -l",
+      "args": ["/home/user"],
+      "output": "file1 file2 file3"
+    },
+    {
+      "cmd": "git status",
+      "args": ["/home/user/project"]
+    }
+ ,
+  {
+    "cmd": "npm run build",
+    "args": ["--prod", "--env=dev"],
+    "output": "build successful"
+  }
+  ]
+ ,
+  "packages": [
+    {
+      "name": "package1",
+      "version": "1.2.3",
+      "author": "John Smith"
+    },
+    {
+      "name": "package2",
+      "version": "2.3.4",
+      "dependencies": ["package1", "package3"]
+    },
+    {
+      "name": "package3",
+      "version": "3.1.2"
+    },
+  "envs"  ]
+}

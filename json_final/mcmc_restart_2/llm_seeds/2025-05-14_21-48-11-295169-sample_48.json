@@ -1,0 +1,25 @@
+{
+  "commands": [
+    {
+      "cmd": "git add.",
+      "args": ["--all"],
+      "output": "Added'src/**' recursively."
+    },
+    {
+      "cmd": "npm run build",
+      "args": ["--production"],
+      "output": "Building..."
+    }
+ ,
+    {
+      "cmd": "docker build -t my-image.",
+      "args": ["--file", "Dockerfile"],
+      "output": "Successfully built..."
+    }
+  ],
+  "config": {
+    "branch": "main",
+    "remote": "origin"
+  },
+  "status": "active"
+}

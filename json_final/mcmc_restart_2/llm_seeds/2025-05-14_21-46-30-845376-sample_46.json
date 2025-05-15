@@ -1,0 +1,21 @@
+{
+  "commands": [
+    {
+      "cmd": "sync",
+      "args": ["-a", "-v", "--delay=1"],
+      "timestamp": 1656789234
+    },
+    {
+      "cmd": "backup",
+      "args": ["-u", "root", "--exclude=*.tmp"],
+      "success": true
+    }
+ ,
+  {
+      "cmd": "upgrade",
+      "args": ["-h", "-d", "--wait=10"],
+      "warnings": ["check version"]
+  }
+  ],
+  "last_event": "system startup"
+}

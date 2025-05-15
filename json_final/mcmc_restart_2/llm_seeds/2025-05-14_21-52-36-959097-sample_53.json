@@ -1,0 +1,22 @@
+{
+  "commands": [
+    {
+      "cmd": "ls",
+      "args": ["/home/user"],
+      "output": "file1 file2 file3"
+    },
+    {
+      "cmd": "cd",
+      "args": ["/root"],
+      "error": "Permission denied"
+    }
+ ,
+  {
+    "cmd": "mkdir",
+    "args": ["/tmp/newdir"],
+    "status": 0
+  }
+  ],
+  "version": "1.0",
+  "timestamp": "2023-12-31T17:00:00.000Z"
+}
